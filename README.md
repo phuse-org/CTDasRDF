@@ -1,2 +1,2 @@
 # SDTM2RDF
-Draft files for PhUSE project converting SDTM domains to RDF
+This repository holds the scripts and data for the PhUSE project "SDTM Data to RDF."  This fiel will be updated as the project progresses.
