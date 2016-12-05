@@ -1,0 +1,379 @@
+@prefix cdiscsdtm: <http://rdf.cdisc.org/sdtm-terminology#> .
+@prefix study: <http://www.example.org/ontologies/study/> .
+@prefix code:  <http://www.example.org/sdtm/code/> .
+@prefix cts:   <http://rdf.cdisc.org/ct/schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix cdiscpilot01: <http://www.example.org/PharmaCo/CompoundX/Study/cdiscpilot01#> .
+@prefix fabio: <https://svn.code.sf.net/p/sempublishing/code/FaBiO/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix pro:   <http://purl.org/spar/pro/author> .
+@prefix mms:   <http://rdf.cdisc.org/mms#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix define: <http://www.example.org/CDISCDefine/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix prism: <http://prismstandard.org/namespaces/basic/2.0/> .
+@prefix sdtm:  <http://www.example.org/Standards/CDISC/SDTM/3-1/> .
+
+cdiscpilot01:Person_4
+        a                          study:Person ;
+        sdtm:hasACTARMCD           code:actarmcd-XAN_LO ;
+        sdtm:hasAGE                "74"^^xsd:int ;
+        sdtm:hasAGEU               code:unit-YEARS ;
+        sdtm:hasARMCD              code:armcd-XAN_LO ;
+        sdtm:hasDMDTC              "2014-03-10"^^xsd:date ;
+        sdtm:hasDMDY               "-8"^^xsd:int ;
+        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
+        sdtm:hasDTHFL              code:deathflag-NA ;
+        sdtm:hasETHNIC             code:ethnic-NOTHISPANICORLATINO ;
+        sdtm:hasRACE               code:race-WHITE ;
+        sdtm:hasRFENDTC            "2014-04-14"^^xsd:date ;
+        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
+        sdtm:hasRFPENDTC           "2014-09-15"^^xsd:dateTime ;
+        sdtm:hasRFSTDTC            "2014-03-18"^^xsd:date ;
+        sdtm:hasRFXENDTC           "2014-03-31"^^xsd:dateTime ;
+        sdtm:hasRFXSTDTC           "2014-03-18"^^xsd:date ;
+        sdtm:hasSEX                code:sex-M ;
+        sdtm:hasSITEID             code:site-701 ;
+        sdtm:hasSUBJID             cdiscpilot01:1033 ;
+        sdtm:hasUSUBJID            cdiscpilot01:01-701-1033 ;
+        sdtm:participatesInStudy   code:study-CDISCPILOT01 ;
+        study:hasUniqueIdentifier  cdiscpilot01:PersonID_4 .
+
+code:site-701  a                cdiscpilot01:StudySite , code:Site , skos:Concept ;
+        cdiscpilot01:hasSiteId  "701" ;
+        cdiscpilot01:locatedIn  code:country-USA ;
+        skos:inScheme           code:site ;
+        skos:topConceptOf       code:site .
+
+code:unit  a                skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: unit"@en ;
+        skos:hasTopConcept  code:unit-YEARS ;
+        skos:notation       "CL_UNIT" ;
+        skos:note           "Specifies the unit for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: unit"@en .
+
+code:armcd-PBO  a              skos:Concept , code:Armcd ;
+        rdfs:comment           "Corresponds to the value in the arm column of define"@en ;
+        dcterms:description    "Placebo control" ;
+        cdiscpilot01:hasARM    "Xanomeline Low Dose" , "Placebo" , "Xanomeline High Dose" ;
+        cdiscpilot01:hasARMCD  "Pbo" ;
+        skos:inScheme          code:armcd ;
+        skos:prefLabel         "Placebo" ;
+        skos:topConceptOf      code:armcd .
+
+cdiscpilot01:Person_3
+        a                          study:Person ;
+        sdtm:hasACTARMCD           code:actarmcd-XAN_HI ;
+        sdtm:hasAGE                "71"^^xsd:int ;
+        sdtm:hasAGEU               code:unit-YEARS ;
+        sdtm:hasARMCD              code:armcd-XAN_HI ;
+        sdtm:hasDMDTC              "2013-07-11"^^xsd:date ;
+        sdtm:hasDMDY               "-8"^^xsd:int ;
+        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
+        sdtm:hasDTHFL              code:deathflag-NA ;
+        sdtm:hasETHNIC             code:ethnic-NOTHISPANICORLATINO ;
+        sdtm:hasRACE               code:race-WHITE ;
+        sdtm:hasRFENDTC            "2014-01-14"^^xsd:date ;
+        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
+        sdtm:hasRFPENDTC           "NA"^^xsd:dateTime ;
+        sdtm:hasRFSTDTC            "2013-07-19"^^xsd:date ;
+        sdtm:hasRFXENDTC           "2014-01-14"^^xsd:dateTime ;
+        sdtm:hasRFXSTDTC           "2013-07-19"^^xsd:date ;
+        sdtm:hasSEX                code:sex-M ;
+        sdtm:hasSITEID             code:site-701 ;
+        sdtm:hasSUBJID             cdiscpilot01:1028 ;
+        sdtm:hasUSUBJID            cdiscpilot01:01-701-1028 ;
+        sdtm:participatesInStudy   code:study-CDISCPILOT01 ;
+        study:hasUniqueIdentifier  cdiscpilot01:PersonID_3 .
+
+code:study  a               skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: study"@en ;
+        skos:hasTopConcept  code:study-CDISCPILOT01 ;
+        skos:notation       "CL_STUDY" ;
+        skos:note           "Specifies the study for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: study"@en .
+
+code:Country  a          rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the country for each observation"@en ;
+        rdfs:label       "Class for code list: country"@en ;
+        rdfs:seeAlso     code:country ;
+        rdfs:subClassOf  skos:Concept .
+
+cdiscpilot01:Person_2
+        a                          study:Person ;
+        sdtm:hasACTARMCD           code:actarmcd-PBO ;
+        sdtm:hasAGE                "64"^^xsd:int ;
+        sdtm:hasAGEU               code:unit-YEARS ;
+        sdtm:hasARMCD              code:armcd-PBO ;
+        sdtm:hasDMDTC              "2012-07-22"^^xsd:date ;
+        sdtm:hasDMDY               "-14"^^xsd:int ;
+        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
+        sdtm:hasDTHFL              code:deathflag-NA ;
+        sdtm:hasETHNIC             code:ethnic-HISPANICORLATINO ;
+        sdtm:hasRACE               code:race-WHITE ;
+        sdtm:hasRFENDTC            "2012-09-02"^^xsd:date ;
+        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
+        sdtm:hasRFPENDTC           "2013-02-18"^^xsd:dateTime ;
+        sdtm:hasRFSTDTC            "2012-08-05"^^xsd:date ;
+        sdtm:hasRFXENDTC           "2012-09-01"^^xsd:dateTime ;
+        sdtm:hasRFXSTDTC           "2012-08-05"^^xsd:date ;
+        sdtm:hasSEX                code:sex-M ;
+        sdtm:hasSITEID             code:site-701 ;
+        sdtm:hasSUBJID             cdiscpilot01:1023 ;
+        sdtm:hasUSUBJID            cdiscpilot01:01-701-1023 ;
+        sdtm:participatesInStudy   code:study-CDISCPILOT01 ;
+        study:hasUniqueIdentifier  cdiscpilot01:PersonID_2 .
+
+code:sex  a                 skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: sex"@en ;
+        skos:hasTopConcept  code:sex-M , code:sex-F ;
+        skos:notation       "CL_SEX" ;
+        skos:note           "Specifies the sex for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: sex"@en .
+
+code:actarmcd-XAN_LO  a        code:Actarmcd , skos:Concept ;
+        rdfs:comment           "Corresponds to the value in the arm column of define"@en ;
+        dcterms:description    "Xanomeline Low Dose" ;
+        cdiscpilot01:hasARMCD  "Xan_Lo" ;
+        skos:inScheme          code:actarmcd ;
+        skos:prefLabel         "Xanomeline Low Dose" ;
+        skos:topConceptOf      code:actarmcd .
+
+code:Sdtmdomain  a       rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the sdtmdomain for each observation"@en ;
+        rdfs:label       "Class for code list: sdtmdomain"@en ;
+        rdfs:seeAlso     code:sdtmdomain ;
+        rdfs:subClassOf  skos:Concept .
+
+code:armcd-XAN_LO  a           code:Armcd , skos:Concept ;
+        rdfs:comment           "Corresponds to the value in the arm column of define"@en ;
+        dcterms:description    "Xanomeline Low Dose" ;
+        cdiscpilot01:hasARMCD  "Xan_Lo" ;
+        skos:inScheme          code:armcd ;
+        skos:prefLabel         "Xanomeline Low Dose" ;
+        skos:topConceptOf      code:armcd .
+
+cdiscpilot01:Person_1
+        a                          study:Person ;
+        sdtm:hasACTARMCD           code:actarmcd-PBO ;
+        sdtm:hasAGE                "63"^^xsd:int ;
+        sdtm:hasAGEU               code:unit-YEARS ;
+        sdtm:hasARMCD              code:armcd-PBO ;
+        sdtm:hasDMDTC              "2013-12-26"^^xsd:date ;
+        sdtm:hasDMDY               "-7"^^xsd:int ;
+        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
+        sdtm:hasDTHFL              code:deathflag-NA ;
+        sdtm:hasETHNIC             code:ethnic-HISPANICORLATINO ;
+        sdtm:hasRACE               code:race-WHITE ;
+        sdtm:hasRFENDTC            "2014-07-02"^^xsd:date ;
+        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
+        sdtm:hasRFPENDTC           "NA"^^xsd:dateTime ;
+        sdtm:hasRFSTDTC            "2014-01-02"^^xsd:date ;
+        sdtm:hasRFXENDTC           "2014-07-02"^^xsd:dateTime ;
+        sdtm:hasRFXSTDTC           "2014-01-02"^^xsd:date ;
+        sdtm:hasSEX                code:sex-F ;
+        sdtm:hasSITEID             code:site-701 ;
+        sdtm:hasSUBJID             cdiscpilot01:1015 ;
+        sdtm:hasUSUBJID            cdiscpilot01:01-701-1015 ;
+        sdtm:participatesInStudy   code:study-CDISCPILOT01 ;
+        study:hasUniqueIdentifier  cdiscpilot01:PersonID_1 .
+
+code:Study  a            rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the study for each observation"@en ;
+        rdfs:label       "Class for code list: study"@en ;
+        rdfs:seeAlso     code:study ;
+        rdfs:subClassOf  skos:Concept .
+
+code:actarmcd-PBO  a           skos:Concept , code:Actarmcd ;
+        rdfs:comment           "Corresponds to the value in the arm column of define"@en ;
+        dcterms:description    "Placebo control" ;
+        cdiscpilot01:hasARM    "Xanomeline Low Dose" , "Placebo" , "Xanomeline High Dose" ;
+        cdiscpilot01:hasARMCD  "Pbo" ;
+        skos:inScheme          code:actarmcd ;
+        skos:prefLabel         "Placebo" ;
+        skos:topConceptOf      code:actarmcd .
+
+code:Unit  a             rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the unit for each observation"@en ;
+        rdfs:label       "Class for code list: unit"@en ;
+        rdfs:seeAlso     code:unit ;
+        rdfs:subClassOf  skos:Concept .
+
+code:study-CDISCPILOT01
+        a                           cdiscpilot01:Study , code:Study , skos:Concept ;
+        dcterms:description         "CDISC PILOT 01 data from github. Original data from Lilly."@en ;
+        cdiscpilot01:hasSTUDYID     "CDISCPILOT01" ;
+        cdiscpilot01:hassdtmDOMAIN  code:sdtmdomain-SV , code:sdtmdomain-DM ;
+        skos:inScheme               code:study ;
+        skos:topConceptOf           code:study .
+
+code:Site  a             rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the site for each observation"@en ;
+        rdfs:label       "Class for code list: site"@en ;
+        rdfs:seeAlso     code:site ;
+        rdfs:subClassOf  skos:Concept .
+
+code:country  a             skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: country"@en ;
+        skos:hasTopConcept  code:country-USA ;
+        skos:notation       "CL_COUNTRY" ;
+        skos:note           "Specifies the country for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: country"@en .
+
+code:sex-M  a                code:Sex , skos:Concept ;
+        dcterms:description  "Male Gender"@en ;
+        cdiscsdtm:code       cdiscsdtm:C66731.C20197 ;
+        skos:inScheme        code:sex ;
+        skos:prefLabel       "M" ;
+        skos:topConceptOf    code:sex .
+
+cdiscpilot01:Person_6
+        a                          study:Person ;
+        sdtm:hasACTARMCD           code:actarmcd-PBO ;
+        sdtm:hasAGE                "85"^^xsd:int ;
+        sdtm:hasAGEU               code:unit-YEARS ;
+        sdtm:hasARMCD              code:armcd-PBO ;
+        sdtm:hasDMDTC              "2013-01-22"^^xsd:date ;
+        sdtm:hasDMDY               "-21"^^xsd:int ;
+        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
+        sdtm:hasDTHFL              code:deathflag-NA ;
+        sdtm:hasETHNIC             code:ethnic-NOTHISPANICORLATINO ;
+        sdtm:hasRACE               code:race-WHITE ;
+        sdtm:hasRFENDTC            "2013-03-29"^^xsd:date ;
+        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
+        sdtm:hasRFPENDTC           "2013-07-28"^^xsd:dateTime ;
+        sdtm:hasRFSTDTC            "2013-02-12"^^xsd:date ;
+        sdtm:hasRFXENDTC           "2013-03-09"^^xsd:dateTime ;
+        sdtm:hasRFXSTDTC           "2013-02-12"^^xsd:date ;
+        sdtm:hasSEX                code:sex-F ;
+        sdtm:hasSITEID             code:site-701 ;
+        sdtm:hasSUBJID             cdiscpilot01:1047 ;
+        sdtm:hasUSUBJID            cdiscpilot01:01-701-1047 ;
+        sdtm:participatesInStudy   code:study-CDISCPILOT01 ;
+        study:hasUniqueIdentifier  cdiscpilot01:PersonID_6 .
+
+code:country-USA  a          code:Country , skos:Concept ;
+        dcterms:description  "United States of Amercia country code"@en ;
+        skos:inScheme        code:country ;
+        skos:prefLabel       "USA" ;
+        skos:topConceptOf    code:country .
+
+cdiscpilot01:Person_5
+        a                          study:Person ;
+        sdtm:hasACTARMCD           code:actarmcd-XAN_HI ;
+        sdtm:hasAGE                "77"^^xsd:int ;
+        sdtm:hasAGEU               code:unit-YEARS ;
+        sdtm:hasARMCD              code:armcd-XAN_HI ;
+        sdtm:hasDMDTC              "2014-06-24"^^xsd:date ;
+        sdtm:hasDMDY               "-7"^^xsd:int ;
+        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
+        sdtm:hasDTHFL              code:deathflag-NA ;
+        sdtm:hasETHNIC             code:ethnic-NOTHISPANICORLATINO ;
+        sdtm:hasRACE               code:race-WHITE ;
+        sdtm:hasRFENDTC            "2014-12-30"^^xsd:date ;
+        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
+        sdtm:hasRFPENDTC           "NA"^^xsd:dateTime ;
+        sdtm:hasRFSTDTC            "2014-07-01"^^xsd:date ;
+        sdtm:hasRFXENDTC           "2014-12-30"^^xsd:dateTime ;
+        sdtm:hasRFXSTDTC           "2014-07-01"^^xsd:date ;
+        sdtm:hasSEX                code:sex-F ;
+        sdtm:hasSITEID             code:site-701 ;
+        sdtm:hasSUBJID             cdiscpilot01:1034 ;
+        sdtm:hasUSUBJID            cdiscpilot01:01-701-1034 ;
+        sdtm:participatesInStudy   code:study-CDISCPILOT01 ;
+        study:hasUniqueIdentifier  cdiscpilot01:PersonID_5 .
+
+code:unit-YEARS  a           code:Unit , skos:Concept ;
+        rdfs:comment         "A placeholder until we link it with a full units definition graph or codelist"@en ;
+        dcterms:description  "Age in Years"@en ;
+        dcterms:references   time:years ;
+        skos:inScheme        code:unit ;
+        skos:prefLabel       "YEARS" ;
+        skos:topConceptOf    code:unit .
+
+code:actarmcd-XAN_HI  a        code:Actarmcd , skos:Concept ;
+        rdfs:comment           "Corresponds to the value in the arm column of define"@en ;
+        dcterms:description    "Xanomeline High Dose" ;
+        cdiscpilot01:hasARMCD  "Xan_Hi" ;
+        skos:inScheme          code:actarmcd ;
+        skos:prefLabel         "Xanomeline High Dose" ;
+        skos:topConceptOf      code:actarmcd .
+
+code:site  a                skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: site"@en ;
+        skos:hasTopConcept  code:site-701 ;
+        skos:notation       "CL_SITE" ;
+        skos:note           "Specifies the site for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: site"@en .
+
+code:sex-F  a                code:Sex , skos:Concept ;
+        dcterms:description  "Female Gender"@en ;
+        cdiscsdtm:code       cdiscsdtm:C66731.C16576 ;
+        skos:inScheme        code:sex ;
+        skos:prefLabel       "F" ;
+        skos:topConceptOf    code:sex .
+
+code:Sex  a              rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the sex for each observation"@en ;
+        rdfs:label       "Class for code list: sex"@en ;
+        rdfs:seeAlso     code:sex ;
+        rdfs:subClassOf  skos:Concept .
+
+code:armcd-XAN_HI  a           code:Armcd , skos:Concept ;
+        rdfs:comment           "Corresponds to the value in the arm column of define"@en ;
+        dcterms:description    "Xanomeline High Dose" ;
+        cdiscpilot01:hasARMCD  "Xan_Hi" ;
+        skos:inScheme          code:armcd ;
+        skos:prefLabel         "Xanomeline High Dose" ;
+        skos:topConceptOf      code:armcd .
+
+code:sdtmdomain-DM  a        code:Sdtmdomain , skos:Concept ;
+        dcterms:description  "Subject demographics domain"@en ;
+        cdiscsdtm:code       cdiscsdtm:C66734.C49572 ;
+        skos:inScheme        code:sdtmdomain ;
+        skos:prefLabel       "DM" ;
+        skos:topConceptOf    code:sdtmdomain .
+
+code:armcd  a               skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: armcd"@en ;
+        skos:hasTopConcept  code:armcd-XAN_LO , code:armcd-XAN_HI , code:armcd-PBO ;
+        skos:notation       "CL_ARMCD" ;
+        skos:note           "Specifies the armcd for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: armcd"@en .
+
+code:actarmcd  a            skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: actarmcd"@en ;
+        skos:hasTopConcept  code:actarmcd-XAN_LO , code:actarmcd-XAN_HI , code:actarmcd-PBO ;
+        skos:notation       "CL_ACTARMCD" ;
+        skos:note           "Specifies the actarmcd for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: actarmcd"@en .
+
+code:sdtmdomain-SV  a        code:Sdtmdomain , skos:Concept ;
+        dcterms:description  "Subject visit domain"@en ;
+        cdiscsdtm:code       cdiscsdtm:C66734.C49617 ;
+        skos:inScheme        code:sdtmdomain ;
+        skos:prefLabel       "SV" ;
+        skos:topConceptOf    code:sdtmdomain .
+
+code:Actarmcd  a         rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the actarmcd for each observation"@en ;
+        rdfs:label       "Class for code list: actarmcd"@en ;
+        rdfs:seeAlso     code:actarmcd ;
+        rdfs:subClassOf  skos:Concept .
+
+code:Armcd  a            rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the armcd for each observation"@en ;
+        rdfs:label       "Class for code list: armcd"@en ;
+        rdfs:seeAlso     code:armcd ;
+        rdfs:subClassOf  skos:Concept .
+
+code:sdtmdomain  a          skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: sdtmdomain"@en ;
+        skos:hasTopConcept  code:sdtmdomain-DM , code:sdtmdomain-SV ;
+        skos:notation       "CL_SDTMDOMAIN" ;
+        skos:note           "Specifies the sdtmdomain for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: sdtmdomain"@en .
