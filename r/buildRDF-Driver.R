@@ -25,10 +25,10 @@ library(car)   # Recoding of values
 # Set working directory to the root of the work area
 setwd("C:/_github/SDTM2RDF")
 
-sourcePrefix<-"data/prefixesCSV.csv"  # List of prefixes for the resulting TTL file
+sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
 sourceData<-"data/source/dmSub.csv"  # Subset of DM data for development purposes.
 sourceData<-head(sourceData,1)       #DEV - Keep only first row for development purposes.
-sourceCodelist<-"data/source/codelist.csv"  # Codelist triples 
+sourceCodelist<-"data/config/codelist.csv"  # Codelist triples 
 outFile='data/rdf/DM.TTL'
 
 # Bring in the data source. Will be used in codeLists.R and triples.R
