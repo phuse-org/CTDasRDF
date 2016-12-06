@@ -1,26 +1,20 @@
 #########################################################################
-# $HeadURL: file:///C:/SVNLocalRepos/PhUSE/Projects/SDTM2RDF/r/triples.R $
-# $Rev: 86 $
-# $Date: 2016-12-05 10:31:14 -0500 (Mon, 05 Dec 2016) $
-# $Author: U041939 $
-#-----------------------------------------------------------------------------
+# NAME  : triples.R 
+# AUTH  : Tim W.
 # DESCR : Create the RDF Triples from the spreadsheet data source. Some recoding
 #             of original data occurs in buildRDF-Driver.R
-# STATUS: 
 # NOTES : 
-# INPUT : Input of raw data with minor massaging occurs in buildRDF-Driver.R
+# IN    : Input of raw data with minor massaging occurs in buildRDF-Driver.R
 # OUT   : 
+# REQ   : 
 # TODO  : CLean up the code so dates are only written to the file when the value
 #            is non-missing. Now writes N/A, which is good for debugging but 
 #            little else.
 ###############################################################################
 
-# Add the id var "pers<n>" for each HumanStudySubject observation 
+# Add the id var "Peson_<n>" for each HumanStudySubject observation 
 id<-1:(nrow(masterData))   # Generate a list of ID numbers
 masterData$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
-
-# Defines the person identifier in this study.  Link to ontology?
-masterData$persID<-paste0("PersonID_",id)  
 
 # CODED values 
 # UPPERCASE and remove spaces values of fields that will be coded to codelists
@@ -30,8 +24,8 @@ masterData$sexCoded        <- toupper(gsub(" ", "", masterData$sex))
 masterData$raceCoded       <- toupper(gsub(" ", "", masterData$race))
 masterData$ethnicCoded     <- toupper(gsub(" ", "", masterData$ethnic))
 masterData$ageuCoded       <- toupper(gsub(" ", "", masterData$ageu))
-masterData$armcdCoded      <- toupper(gsub(" ", "", masterData$armcd))
-masterData$actarmcdCoded   <- toupper(gsub(" ", "", masterData$actarmcd))
+masterData$armCoded        <- toupper(gsub(" ", "", masterData$arm))
+masterData$actarmCoded     <- toupper(gsub(" ", "", masterData$actarm))
 masterData$domainCoded     <- toupper(gsub(" ", "", masterData$domain))
 masterData$dthflCoded      <- toupper(gsub(" ", "", masterData$dthfl))
 
@@ -50,16 +44,11 @@ masterData$dthdtc_DT   <- as.POSIXct(masterData$dthdtc,   format="%m/%d/%Y")
 
 #------------------------------------------------------------------------------
 # Create triples 
-# TODO: Add the ENROLLID , non-coded value!
-# code:study-DISCPILOT01 is defined in the codelistCSV.R script;
-#        TODO: add is as "a" Study when creating the code list!
+#     TODO: add is as "a" Study when creating the code list!
 #----------------------- Data -------------------------------------------------
 
-
 # Loop through the masterData dataframe and create the triples for each 
-#     HumandStudySubject (pers<n>)
-
-# Create data for a Person
+#     Person_<n>
 for (i in 1:nrow(masterData))
 {
     # persNum - Human Study Subject Number. Created in code above. Just in index for the RDF
@@ -73,27 +62,19 @@ for (i in 1:nrow(masterData))
                     paste0(prefix.RDF,"type" ),
                     paste0(prefix.STUDY, "Person")
     )
-    
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"hasUniqueIdentifier" ),
-               paste0(prefix.CDISCPILOT01, masterData[i,"persID"])
-    )
-    
-
     add.triple(store,
                     paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"participatesInStudy" ),
-                    paste0(prefix.CODE, "study-", masterData[i,"studyCoded"])
+                    paste0(prefix.STUDY,"participatesInStudy" ),
+                    paste0(prefix.CODECUSTOM, "study-", masterData[i,"studyCoded"])
     )
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasUSUBJID" ),
+               paste0(prefix.STUDY,"hasUSUBJID" ),
                paste0(prefix.CDISCPILOT01, masterData[i,"usubjid"])
     )
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasSUBJID" ),
+               paste0(prefix.STUDY,"hasSUBJID" ),
                paste0(prefix.CDISCPILOT01, masterData[i,"subjid"])
     )
     add.data.triple(store,
@@ -123,21 +104,16 @@ for (i in 1:nrow(masterData))
     )
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasARMCD" ),
-               paste0(prefix.CODE, "armcd-",masterData[i,"armcdCoded"]) 
+               paste0(prefix.STUDY,"allocatedTo" ),
+               paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) 
     )
+    # Note how both allocatedTO and treatedAccordingTo use the same codelist 
+    #    for ARM. THere is not separate codelist for ARM vs. ACTARM.
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasACTARMCD" ),
-               paste0(prefix.CODE, "actarmcd-",masterData[i,"actarmcdCoded"]) 
+               paste0(prefix.STUDY,"treatedAccordingTo"),
+               paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"actarmCoded"]) 
     )
-    
-    # NO. The Human Subject does not get a DOMAIN.
-    #add.triple(store,
-    #           paste0(prefix.CDISCPILOT01, persNum),
-    #           paste0(prefix.SDTM,"hasSdtmDomain" ),
-    #           paste0(prefix.CODE, "sdtmdomain-",masterData[i,"domainCoded"]) 
-    #)
     add.data.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.SDTM,"hasRFSTDTC" ),
@@ -180,8 +156,8 @@ for (i in 1:nrow(masterData))
     )
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasSITEID" ),
-               paste0(prefix.CODE, "site-",masterData[i,"siteid"]) 
+               paste0(prefix.STUDY,"hasSite" ),
+               paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]) 
     )
     add.data.triple(store,
                     paste0(prefix.CDISCPILOT01, persNum),
@@ -193,6 +169,4 @@ for (i in 1:nrow(masterData))
                     paste0(prefix.SDTM,"hasDMDY" ),
                     paste0(masterData[i,"dmdy"]), "int"
     )
-    
-    
 }    # End looping through the study master dataframe.    

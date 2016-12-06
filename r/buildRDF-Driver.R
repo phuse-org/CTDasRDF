@@ -1,13 +1,8 @@
 ###############################################################################
-# $HeadURL: file:///C:/SVNLocalRepos/PhUSE/Projects/SDTM2RDF/r/buildRDF-Driver.R $
-# $Rev: 86 $
-# $Date: 2016-12-05 10:31:14 -0500 (Mon, 05 Dec 2016) $
-# $Author: U041939 $
-# -----------------------------------------------------------------------------
+# Name : buildRDF-Driver.R
+# AUTH : Tim W. 
 # DSCR : Master program for building the TTL file for the DM domain from 
 #            the CDISCPILOT01 example data.
-# SRC  : Code:Adapted from approach used in KMD project, TreatFlow Projects.
-#      : Data Source: https://github.com/phuse-org/phuse-scripts/blob/master/data/sdtm/
 # NOTES: Validation of the resulting TTL file with Apache Jenna riot
 #         Coded values cannot have spaces or special characters.
 # IN  :   prefixes.csv - prefixes and their namespaces

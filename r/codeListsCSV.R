@@ -177,8 +177,7 @@ codelist$codesLabel <- codelist$name
 
 # One call for each codelist to be built. Later: loop through and build all in 
 #     listed in the CSV?  
-buildCodelist("armcd")
-buildCodelist("actarmcd")
+buildCodelist("arm")
 buildCodelist("country")
 buildCodelist("sdtmdomain")
 buildCodelist("sex")

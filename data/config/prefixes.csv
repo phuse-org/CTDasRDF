@@ -1,20 +1,20 @@
 prefix,namespace,description
-cdiscpilot01,http://www.example.org/PharmaCo/,Resources relevant to this single named study.
-cdiscsdtm,http://rdf.cdisc.org/sdtm-terminology#,CDISC terminology code reference
+cdiscpilot01,http://www.example.org/PharmaCo/cdiscpilot01/,Resources relevant to this single named study.
+cdiscsdtm,http://rdf.cdisc.org/sdtm-terminology#,CDISC terminology code reference. Currently only used to reference out to the SDTM code values like C66731.C20197.  Limited usage - change to use of SDTM prefix only?
 code,http://www.example.org/auth/code/,Controlled terminology from authoritative sources. May later be replaced by links to resources published by those organizations.
 codecustom,http://www.example.org/PharmaCo/code/,Codes defined locally by the sponsor reused across multiple studies.
-cts,http://rdf.cdisc.org/ct/schema#,
-dcterms,http://purl.org/dc/terms/,
-define,http://www.example.org/CDISCDefine/,
-fabio,https://svn.code.sf.net/p/sempublishing/code/FaBiO/,
-mms,http://rdf.cdisc.org/mms#,
-owl,http://www.w3.org/2002/07/owl#,
-prism,http://prismstandard.org/namespaces/basic/2.0/,
-pro,http://purl.org/spar/pro/author,
-prov,http://www.w3.org/ns/prov#,
-rdf,http://www.w3.org/1999/02/22-rdf-syntax-ns#,
-rdfs,http://www.w3.org/2000/01/rdf-schema#,
+cts,http://rdf.cdisc.org/ct/schema#,NOT IN USE 6DEC16
+dcterms,http://purl.org/dc/terms/,Common terminology like descriptions  etc.
+define,http://www.example.org/CDISCDefine/,NOT IN USE 6DEC16. Will be used to define resources for DEFINE.XML-like displays.
+fabio,https://svn.code.sf.net/p/sempublishing/code/FaBiO/,NOT IN USE 6DEC16. May be used for publisning. Consider removal until that time.
+mms,http://rdf.cdisc.org/mms#,NOT IN USE 6DEC16. Is reference to the cdisc RDF. 
+owl,http://www.w3.org/2002/07/owl#,OWL
+prism,http://prismstandard.org/namespaces/basic/2.0/,NOT IN USE 6DEC16. Consider removal?
+pro,http://purl.org/spar/pro/author,NOT IN USE 6DEC16. Consider removal?
+prov,http://www.w3.org/ns/prov#,NOT IN USE 6DEC16.  May be used later to show data provenance. Leave in place for now.
+rdf,http://www.w3.org/1999/02/22-rdf-syntax-ns#,RDF
+rdfs,http://www.w3.org/2000/01/rdf-schema#,RDFs
 sdtm,http://www.example.org/Standards/CDISC/SDTM/3-1/,Resources related to the specified version of the SDTM standard
-skos,http://www.w3.org/2004/02/skos/core/,
+skos,http://www.w3.org/2004/02/skos/core/,SKOS
 study,http://www.example.org/ontologies/study/,Resources resusable across all studies independent of SDTM version
 time,http://www.w3.org/2006/time#,Years and other time units to be added.
