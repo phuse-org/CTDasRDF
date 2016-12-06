@@ -1,25 +1,22 @@
 ###############################################################################
-# $HeadURL: file:///C:/SVNLocalRepos/PhUSE/Projects/SDTM2RDF/r/codeListsCSV.R $
-# $Rev: 86 $
-# $Date: 2016-12-05 10:31:14 -0500 (Mon, 05 Dec 2016) $
-# $Author: U041939 $
-# -----------------------------------------------------------------------------
-# DESCR : Build code lists based on specications in the CSV codelist file 
-#       : Builds the Class, ConceptScheme and codes required for standard RDF 
-#             codelists.
-# NOTES : The function receives the name of the codelist to be built. Corresponds
-#             to the "name" column in the CSV. 
-#         Separate calls are made for each codelist to be created. 
-# INPUT : data/codelist.csv 
-# OUTPUT: See buildRDF-Driver.R 
-# REQ   : 
-# TODO  : Codelists are under development and likely incomplete. 
-#         Codelists like Country could be built from other existing sources? 
-#         Country:  build based on the values present in the data, and/or ref. 
-#             to an existing graph of all ISO country names?
-#         ARM/ARMCD codelists should later include description of the ARMs. 
-#         LATER: instead of one call per codelist, process the entire spreadsheet
-#                row by row and build all listed?
+# Name : codeListsCSV.R
+# AUTH : Tim W. 
+# DESCR: Build code lists based on specications in the CSV codelist file 
+#      : Builds the Class, ConceptScheme and codes required for standard RDF 
+#            codelists.
+# NOTES: The function receives the name of the codelist to be built. Corresponds
+#            to the "name" column in the CSV. 
+#        Separate calls are made for each codelist to be created. 
+# IN   : data/codelist.csv 
+# OUT  : See buildRDF-Driver.R 
+# REQ  : 
+# TODO : Codelists are under development and likely incomplete. 
+#        Codelists like Country could be built from other existing sources? 
+#        Country:  build based on the values present in the data, and/or ref. 
+#            to an existing graph of all ISO country names?
+#        ARM/ARMCD codelists should later include description of the ARMs. 
+#        LATER: instead of one call per codelist, process the entire spreadsheet
+#               row by row and build all listed?
 ###############################################################################
 
 #------------------------------------------------------------------------------
