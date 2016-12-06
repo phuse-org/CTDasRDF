@@ -1,19 +1,20 @@
 prefix,namespace,description
+cdiscpilot01,http://www.example.org/PharmaCo/,Resources relevant to this single named study.
 cdiscsdtm,http://rdf.cdisc.org/sdtm-terminology#,CDISC terminology code reference
-code,http://www.example.org/sdtm/code/,RDF Codelists for SDTM terms
+code,http://www.example.org/auth/code/,Controlled terminology from authoritative sources. May later be replaced by links to resources published by those organizations.
+codecustom,http://www.example.org/PharmaCo/code/,Codes defined locally by the sponsor reused across multiple studies.
 cts,http://rdf.cdisc.org/ct/schema#,
 dcterms,http://purl.org/dc/terms/,
 define,http://www.example.org/CDISCDefine/,
 fabio,https://svn.code.sf.net/p/sempublishing/code/FaBiO/,
 mms,http://rdf.cdisc.org/mms#,
 owl,http://www.w3.org/2002/07/owl#,
-cdiscpilot01,http://www.example.org/PharmaCo/CompoundX/Study/cdiscpilot01#,
 prism,http://prismstandard.org/namespaces/basic/2.0/,
 pro,http://purl.org/spar/pro/author,
 prov,http://www.w3.org/ns/prov#,
 rdf,http://www.w3.org/1999/02/22-rdf-syntax-ns#,
 rdfs,http://www.w3.org/2000/01/rdf-schema#,
-sdtm,http://www.example.org/Standards/CDISC/SDTM/3-1/,"SDTM-related triples, based on a version of the standard"
+sdtm,http://www.example.org/Standards/CDISC/SDTM/3-1/,Resources related to the specified version of the SDTM standard
 skos,http://www.w3.org/2004/02/skos/core/,
-study,http://www.example.org/ontologies/study/,
+study,http://www.example.org/ontologies/study/,Resources resusable across all studies independent of SDTM version
 time,http://www.w3.org/2006/time#,Years and other time units to be added.
