@@ -24,8 +24,10 @@ masterData$sexCoded        <- toupper(gsub(" ", "", masterData$sex))
 masterData$raceCoded       <- toupper(gsub(" ", "", masterData$race))
 masterData$ethnicCoded     <- toupper(gsub(" ", "", masterData$ethnic))
 masterData$ageuCoded       <- toupper(gsub(" ", "", masterData$ageu))
-masterData$armCoded        <- toupper(gsub(" ", "", masterData$arm))
-masterData$actarmCoded     <- toupper(gsub(" ", "", masterData$actarm))
+# for arm, use the coded form of both armcd and actarmcd to allow a short-hand linkage
+#    to the codelist where both ARM/ARMCD adn ACTARM/ACTARMCD are located.
+masterData$armCoded        <- toupper(gsub(" ", "", masterData$armcd))
+masterData$actarmCoded     <- toupper(gsub(" ", "", masterData$actarmcd))
 masterData$domainCoded     <- toupper(gsub(" ", "", masterData$domain))
 masterData$dthflCoded      <- toupper(gsub(" ", "", masterData$dthfl))
 

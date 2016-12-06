@@ -66,12 +66,12 @@ cdiscpilot01:Person_3
         sdtm:hasRFXENDTC           "2014-01-14"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2013-07-19"^^xsd:date ;
         sdtm:hasSEX                code:sex-M ;
-        study:allocatedTo          cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
+        study:allocatedTo          cdiscpilot01:arm-XAN_HI ;
         study:hasSUBJID            cdiscpilot01:1028 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1028 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE .
+        study:treatedAccordingTo   cdiscpilot01:arm-XAN_HI .
 
 code:arm-PBO  a              code:Arm , skos:Concept ;
         rdfs:comment         "Corresponds to the value in the arm column of define"@en ;
@@ -106,12 +106,12 @@ cdiscpilot01:Person_2
         sdtm:hasRFXENDTC           "2012-09-01"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2012-08-05"^^xsd:date ;
         sdtm:hasSEX                code:sex-M ;
-        study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
+        study:allocatedTo          cdiscpilot01:arm-PBO ;
         study:hasSUBJID            cdiscpilot01:1023 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1023 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
+        study:treatedAccordingTo   cdiscpilot01:arm-PBO .
 
 code:site-701  a                cdiscpilot01:StudySite , code:Site , skos:Concept ;
         cdiscpilot01:hasSiteId  "701" ;
@@ -142,12 +142,12 @@ cdiscpilot01:Person_1
         sdtm:hasRFXENDTC           "2014-07-02"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2014-01-02"^^xsd:date ;
         sdtm:hasSEX                code:sex-F ;
-        study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
+        study:allocatedTo          cdiscpilot01:arm-PBO ;
         study:hasSUBJID            cdiscpilot01:1015 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1015 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
+        study:treatedAccordingTo   cdiscpilot01:arm-PBO .
 
 code:Arm  a              rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the arm for each observation"@en ;
@@ -184,12 +184,12 @@ cdiscpilot01:Person_6
         sdtm:hasRFXENDTC           "2013-03-09"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2013-02-12"^^xsd:date ;
         sdtm:hasSEX                code:sex-F ;
-        study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
+        study:allocatedTo          cdiscpilot01:arm-PBO ;
         study:hasSUBJID            cdiscpilot01:1047 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1047 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
+        study:treatedAccordingTo   cdiscpilot01:arm-PBO .
 
 code:study  a               skos:ConceptScheme ;
         rdfs:label          "Codelist scheme: study"@en ;
@@ -264,12 +264,12 @@ cdiscpilot01:Person_5
         sdtm:hasRFXENDTC           "2014-12-30"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2014-07-01"^^xsd:date ;
         sdtm:hasSEX                code:sex-F ;
-        study:allocatedTo          cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
+        study:allocatedTo          cdiscpilot01:arm-XAN_HI ;
         study:hasSUBJID            cdiscpilot01:1034 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1034 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE .
+        study:treatedAccordingTo   cdiscpilot01:arm-XAN_HI .
 
 code:country-USA  a          code:Country , skos:Concept ;
         dcterms:description  "United States of Amercia country code"@en ;
@@ -323,12 +323,12 @@ cdiscpilot01:Person_4
         sdtm:hasRFXENDTC           "2014-03-31"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2014-03-18"^^xsd:date ;
         sdtm:hasSEX                code:sex-M ;
-        study:allocatedTo          cdiscpilot01:arm-XANOMELINELOWDOSE ;
+        study:allocatedTo          cdiscpilot01:arm-XAN_LO ;
         study:hasSUBJID            cdiscpilot01:1033 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1033 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINELOWDOSE .
+        study:treatedAccordingTo   cdiscpilot01:arm-XAN_LO .
 
 code:unit  a                skos:ConceptScheme ;
         rdfs:label          "Codelist scheme: unit"@en ;
