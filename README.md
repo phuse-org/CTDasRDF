@@ -1,15 +1,14 @@
 # SDTM2RDF
-This repository holds the scripts and data for the PhUSE project "SDTM Data to RDF."  This file will be updated as the project progresses.
+This repository holds the scripts and data for the PhUSE project "SDTM Data to RDF."  This file will be updated as the project progresses. All work is very early draft, contains errors, problems with the model, etc. 
 
 # Installation
 ## The Download Method
-Ensure you are on the DEV branch (https://github.com/NovasTaylor/SDTM2RDF/tree/DEV)
 Click "Clone or Download" and select "Download Zip"
 Extract the file to a location like  C:\\_github
-This will create the folder C:\\_github\\SDTM2RDF-DEV and subfolders.
+This will create the folder C:\\_github\\SDTM2RDF-MASTER and subfolders.
 Edit the file \\r\\buildRDF-Driver.R  to change have set setwd() point to the path where you installed the file.
  ```
- setwd("C:/_github/SDTM2RDF-DEV")
+ setwd("C:/_github/SDTM2RDF-MASTER")
 ```
 Ensure you have all the required R packages installed. Currently this includes:
 ```
