@@ -60,115 +60,150 @@ for (i in 1:nrow(masterData))
     
     #Define pers(n>) as HumanStudySubject
     add.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.RDF,"type" ),
-                    paste0(prefix.STUDY, "Person")
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.STUDY, "Person")
     )
     add.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.STUDY,"participatesInStudy" ),
-                    paste0(prefix.CODECUSTOM, "study-", masterData[i,"studyCoded"])
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"participatesInStudy" ),
+        paste0(prefix.CODECUSTOM, "study-", masterData[i,"studyCoded"])
     )
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"hasUSUBJID" ),
-               paste0(prefix.CDISCPILOT01, masterData[i,"usubjid"])
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"hasUSUBJID" ),
+        paste0(prefix.CDISCPILOT01, masterData[i,"usubjid"])
     )
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"hasSUBJID" ),
-               paste0(prefix.CDISCPILOT01, masterData[i,"subjid"])
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"hasSUBJID" ),
+        paste0(prefix.CDISCPILOT01, masterData[i,"subjid"])
     )
+    
+# original coding of AGE and AGEUNIT (coded) direct to the Person_<n>.    
+#    add.data.triple(store,
+#        paste0(prefix.CDISCPILOT01, persNum),
+#        paste0(prefix.SDTM,"hasAGE" ),
+#        paste0(masterData[i,"age"]), "int"
+#    )
+#    add.triple(store,
+#        paste0(prefix.CDISCPILOT01, persNum),
+#        paste0(prefix.SDTM,"hasAGEU" ),
+#        paste0(prefix.CODE, "unit-", masterData[i,"ageuCoded"])
+#    )
+    #---- New coding of Age using the Activity Approach
+    # Create the Activiy Age_<n>
+    # 1. Activity
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"hasActivity" ),
+        paste0(prefix.CDISCPILOT01, "Age_", i)
+    )
+    # 2. ActivityCode
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, "Age_", i),
+        paste0(prefix.CODE,"hasActivityCode" ),
+        paste0(prefix.CODE, "AgeCode")
+    )
+    # 3. ActivityOutcome
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, "Age_", i),
+        paste0(prefix.STUDY,"hasActivityOutcome" ),
+        paste0(prefix.CDISCPILOT01, "AgeOutcome_",i)
+    )
+    # 4. Age Outcome Unit
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, "AgeOutCome_", i),
+        paste0(prefix.STUDY,"hasUnit" ),
+        paste0(prefix.CODE, "time-year")
+    )
+    # 5. Age Outcome Value
     add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasAGE" ),
-                    paste0(masterData[i,"age"]), "int"
+        paste0(prefix.CDISCPILOT01, "AgeOutCome_", i),
+        paste0(prefix.STUDY,"hasValue" ),
+        paste0(masterData[i,"age"]), "int"
+    )
+    # End of AGE resource.
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasSEX" ),
+        paste0(prefix.CODE, "sex-", masterData[i,"sexCoded"]) 
     )
     add.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasAGEU" ),
-                    paste0(prefix.CODE, "unit-", masterData[i,"ageuCoded"])
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasRACE" ),
+        paste0(prefix.CODE, "race-", masterData[i,"raceCoded"]) 
     )
     add.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasSEX" ),
-                    paste0(prefix.CODE, "sex-", masterData[i,"sexCoded"]) 
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasETHNIC" ),
+        paste0(prefix.CODE, "ethnic-",masterData[i,"ethnicCoded"]) 
     )
     add.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasRACE" ),
-                    paste0(prefix.CODE, "race-", masterData[i,"raceCoded"]) 
-    )
-    add.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasETHNIC" ),
-                    paste0(prefix.CODE, "ethnic-",masterData[i,"ethnicCoded"]) 
-    )
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"allocatedTo" ),
-               paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) 
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"allocatedTo" ),
+        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) 
     )
     # Note how both allocatedTO and treatedAccordingTo use the same codelist 
     #    for ARM. THere is not separate codelist for ARM vs. ACTARM.
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"treatedAccordingTo"),
-               paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"actarmCoded"]) 
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"treatedAccordingTo"),
+        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"actarmCoded"]) 
     )
     add.data.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasRFSTDTC" ),
-               paste0(masterData[i,"rfstdtc_DT"]), "date"
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasRFSTDTC" ),
+        paste0(masterData[i,"rfstdtc_DT"]), "date"
     )
     add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasRFENDTC" ),
-                    paste0(masterData[i,"rfendtc_DT"]), "date"
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasRFENDTC" ),
+        paste0(masterData[i,"rfendtc_DT"]), "date"
     )
     add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasRFXSTDTC" ),
-                    paste0(masterData[i,"rfxstdtc_DT"]), "date"
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasRFXSTDTC" ),
+        paste0(masterData[i,"rfxstdtc_DT"]), "date"
     )
     add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasRFXENDTC" ),
-                    paste0(masterData[i,"rfxendtc_DT"]), "dateTime"
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasRFXENDTC" ),
+        paste0(masterData[i,"rfxendtc_DT"]), "dateTime"
     )
     add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasRFICDTC" ),
-                    paste0(masterData[i,"rficdtc_DT"]), "dateTime"
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasRFICDTC" ),
+        paste0(masterData[i,"rficdtc_DT"]), "dateTime"
     )
     add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasRFPENDTC" ),
-                    paste0(masterData[i,"rfpendtc_DT"]), "dateTime"
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasRFPENDTC" ),
+        paste0(masterData[i,"rfpendtc_DT"]), "dateTime"
     )
     add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasDTHDTC" ),
-                    paste0(masterData[i,"dthdtc_DT"]), "dateTime"
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasDTHDTC" ),
+        paste0(masterData[i,"dthdtc_DT"]), "dateTime"
     )
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasDTHFL" ),
-               paste0(prefix.CODE, "deathflag-",masterData[i,"dthfl"]) 
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasDTHFL" ),
+        paste0(prefix.CODE, "deathflag-",masterData[i,"dthfl"]) 
     )
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"hasSite" ),
-               paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]) 
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"hasSite" ),
+        paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]) 
     )
     add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasDMDTC" ),
-                    paste0(masterData[i,"dmdtc_DT"]), "date"
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasDMDTC" ),
+        paste0(masterData[i,"dmdtc_DT"]), "date"
     )
     add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, persNum),
-                    paste0(prefix.SDTM,"hasDMDY" ),
-                    paste0(masterData[i,"dmdy"]), "int"
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.SDTM,"hasDMDY" ),
+        paste0(masterData[i,"dmdy"]), "int"
     )
 }    # End looping through the study master dataframe.    
