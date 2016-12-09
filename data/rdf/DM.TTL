@@ -19,13 +19,10 @@
 @prefix prism: <http://prismstandard.org/namespaces/basic/2.0/> .
 @prefix sdtm:  <http://www.example.org/Standards/CDISC/SDTM/3-1/> .
 
-cdiscpilot01:Age_6  code:hasActivityCode
-                code:AgeCode ;
+cdiscpilot01:Age_6  a             study:Age ;
+        rdfs:comment              "Linkage from Age_6 to age AgeOutcome_6"@en ;
+        rdfs:label                "Age 6"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_6 .
-
-cdiscpilot01:AgeOutCome_2
-        study:hasUnit   code:time-year ;
-        study:hasValue  "64"^^xsd:int .
 
 code:country  a             skos:ConceptScheme ;
         rdfs:label          "Codelist scheme: country"@en ;
@@ -34,15 +31,15 @@ code:country  a             skos:ConceptScheme ;
         skos:note           "Specifies the country for each observation or group of obs."@en ;
         skos:prefLabel      "Codelist scheme: country"@en .
 
-code:sex-F  a                code:Sex , skos:Concept ;
-        dcterms:description  "Female Gender"@en ;
-        cdiscsdtm:code       cdiscsdtm:C66731.C16576 ;
-        skos:inScheme        code:sex ;
-        skos:prefLabel       "F" ;
-        skos:topConceptOf    code:sex .
+cdiscpilot01:AgeOutcome_5
+        a               study:AgeOutcome ;
+        rdfs:comment    "Specification of AgeOutCome_5"@en ;
+        rdfs:label      "Age outcome5"^^xsd:string ;
+        study:hasUnit   time:unitYear ;
+        study:hasValue  "77"^^xsd:float .
 
 cdiscpilot01:Person_5
-        a                          study:Person ;
+        a                          study:EnrolledSubject ;
         sdtm:hasDMDTC              "2014-06-24"^^xsd:date ;
         sdtm:hasDMDY               "-7"^^xsd:int ;
         sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
@@ -55,14 +52,14 @@ cdiscpilot01:Person_5
         sdtm:hasRFSTDTC            "2014-07-01"^^xsd:date ;
         sdtm:hasRFXENDTC           "2014-12-30"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2014-07-01"^^xsd:date ;
-        sdtm:hasSEX                code:sex-F ;
-        study:allocatedTo          cdiscpilot01:arm-XAN_HI ;
-        study:hasActivity          cdiscpilot01:Age_5 ;
+        sdtm:hasSEX                cdiscsdtm:C66731.C16576 ;
+        study:allocatedTo          cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
+        study:hasAge               cdiscpilot01:Age_5 ;
         study:hasSUBJID            cdiscpilot01:1034 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1034 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-XAN_HI .
+        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE .
 
 code:study-CDISCPILOT01
         a                           cdiscpilot01:Study , code:Study , skos:Concept ;
@@ -81,13 +78,10 @@ code:arm-PBO  a              code:Arm , skos:Concept ;
         skos:prefLabel       "Placebo" ;
         skos:topConceptOf    code:arm .
 
-cdiscpilot01:Age_5  code:hasActivityCode
-                code:AgeCode ;
+cdiscpilot01:Age_5  a             study:Age ;
+        rdfs:comment              "Linkage from Age_5 to age AgeOutcome_5"@en ;
+        rdfs:label                "Age 5"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_5 .
-
-cdiscpilot01:AgeOutCome_1
-        study:hasUnit   code:time-year ;
-        study:hasValue  "63"^^xsd:int .
 
 code:arm-XAN_HI  a           code:Arm , skos:Concept ;
         rdfs:comment         "Corresponds to the value in the arm column of define"@en ;
@@ -98,8 +92,15 @@ code:arm-XAN_HI  a           code:Arm , skos:Concept ;
         skos:prefLabel       "Xanomeline High Dose" ;
         skos:topConceptOf    code:arm .
 
+cdiscpilot01:AgeOutcome_4
+        a               study:AgeOutcome ;
+        rdfs:comment    "Specification of AgeOutCome_4"@en ;
+        rdfs:label      "Age outcome4"^^xsd:string ;
+        study:hasUnit   time:unitYear ;
+        study:hasValue  "74"^^xsd:float .
+
 cdiscpilot01:Person_4
-        a                          study:Person ;
+        a                          study:EnrolledSubject ;
         sdtm:hasDMDTC              "2014-03-10"^^xsd:date ;
         sdtm:hasDMDY               "-8"^^xsd:int ;
         sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
@@ -112,14 +113,14 @@ cdiscpilot01:Person_4
         sdtm:hasRFSTDTC            "2014-03-18"^^xsd:date ;
         sdtm:hasRFXENDTC           "2014-03-31"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2014-03-18"^^xsd:date ;
-        sdtm:hasSEX                code:sex-M ;
-        study:allocatedTo          cdiscpilot01:arm-XAN_LO ;
-        study:hasActivity          cdiscpilot01:Age_4 ;
+        sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
+        study:allocatedTo          cdiscpilot01:arm-XANOMELINELOWDOSE ;
+        study:hasAge               cdiscpilot01:Age_4 ;
         study:hasSUBJID            cdiscpilot01:1033 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1033 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-XAN_LO .
+        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINELOWDOSE .
 
 code:Sdtmdomain  a       rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the sdtmdomain for each observation"@en ;
@@ -134,10 +135,6 @@ code:unit-YEARS  a           code:Unit , skos:Concept ;
         skos:inScheme        code:unit ;
         skos:prefLabel       "YEARS" ;
         skos:topConceptOf    code:unit .
-
-cdiscpilot01:AgeOutCome_6
-        study:hasUnit   code:time-year ;
-        study:hasValue  "85"^^xsd:int .
 
 code:sdtmdomain-DM  a        code:Sdtmdomain , skos:Concept ;
         dcterms:description  "Subject demographics domain"@en ;
@@ -161,8 +158,9 @@ code:arm-XAN_LO  a           code:Arm , skos:Concept ;
         skos:prefLabel       "Xanomeline Low Dose" ;
         skos:topConceptOf    code:arm .
 
-cdiscpilot01:Age_4  code:hasActivityCode
-                code:AgeCode ;
+cdiscpilot01:Age_4  a             study:Age ;
+        rdfs:comment              "Linkage from Age_4 to age AgeOutcome_4"@en ;
+        rdfs:label                "Age 4"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_4 .
 
 code:arm  a                 skos:ConceptScheme ;
@@ -172,8 +170,15 @@ code:arm  a                 skos:ConceptScheme ;
         skos:note           "Specifies the arm for each observation or group of obs."@en ;
         skos:prefLabel      "Codelist scheme: arm"@en .
 
+cdiscpilot01:AgeOutcome_3
+        a               study:AgeOutcome ;
+        rdfs:comment    "Specification of AgeOutCome_3"@en ;
+        rdfs:label      "Age outcome3"^^xsd:string ;
+        study:hasUnit   time:unitYear ;
+        study:hasValue  "71"^^xsd:float .
+
 cdiscpilot01:Person_3
-        a                          study:Person ;
+        a                          study:EnrolledSubject ;
         sdtm:hasDMDTC              "2013-07-11"^^xsd:date ;
         sdtm:hasDMDY               "-8"^^xsd:int ;
         sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
@@ -186,24 +191,20 @@ cdiscpilot01:Person_3
         sdtm:hasRFSTDTC            "2013-07-19"^^xsd:date ;
         sdtm:hasRFXENDTC           "2014-01-14"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2013-07-19"^^xsd:date ;
-        sdtm:hasSEX                code:sex-M ;
-        study:allocatedTo          cdiscpilot01:arm-XAN_HI ;
-        study:hasActivity          cdiscpilot01:Age_3 ;
+        sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
+        study:allocatedTo          cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
+        study:hasAge               cdiscpilot01:Age_3 ;
         study:hasSUBJID            cdiscpilot01:1028 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1028 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-XAN_HI .
+        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE .
 
 code:Country  a          rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the country for each observation"@en ;
         rdfs:label       "Class for code list: country"@en ;
         rdfs:seeAlso     code:country ;
         rdfs:subClassOf  skos:Concept .
-
-cdiscpilot01:AgeOutCome_5
-        study:hasUnit   code:time-year ;
-        study:hasValue  "77"^^xsd:int .
 
 code:Arm  a              rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the arm for each observation"@en ;
@@ -218,8 +219,9 @@ code:unit  a                skos:ConceptScheme ;
         skos:note           "Specifies the unit for each observation or group of obs."@en ;
         skos:prefLabel      "Codelist scheme: unit"@en .
 
-cdiscpilot01:Age_3  code:hasActivityCode
-                code:AgeCode ;
+cdiscpilot01:Age_3  a             study:Age ;
+        rdfs:comment              "Linkage from Age_3 to age AgeOutcome_3"@en ;
+        rdfs:label                "Age 3"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_3 .
 
 code:Unit  a             rdfs:Class , owl:Class ;
@@ -227,6 +229,13 @@ code:Unit  a             rdfs:Class , owl:Class ;
         rdfs:label       "Class for code list: unit"@en ;
         rdfs:seeAlso     code:unit ;
         rdfs:subClassOf  skos:Concept .
+
+cdiscpilot01:AgeOutcome_2
+        a               study:AgeOutcome ;
+        rdfs:comment    "Specification of AgeOutCome_2"@en ;
+        rdfs:label      "Age outcome2"^^xsd:string ;
+        study:hasUnit   time:unitYear ;
+        study:hasValue  "64"^^xsd:float .
 
 code:site  a                skos:ConceptScheme ;
         rdfs:label          "Codelist scheme: site"@en ;
@@ -242,7 +251,7 @@ code:Site  a             rdfs:Class , owl:Class ;
         rdfs:subClassOf  skos:Concept .
 
 cdiscpilot01:Person_2
-        a                          study:Person ;
+        a                          study:EnrolledSubject ;
         sdtm:hasDMDTC              "2012-07-22"^^xsd:date ;
         sdtm:hasDMDY               "-14"^^xsd:int ;
         sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
@@ -255,14 +264,14 @@ cdiscpilot01:Person_2
         sdtm:hasRFSTDTC            "2012-08-05"^^xsd:date ;
         sdtm:hasRFXENDTC           "2012-09-01"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2012-08-05"^^xsd:date ;
-        sdtm:hasSEX                code:sex-M ;
-        study:allocatedTo          cdiscpilot01:arm-PBO ;
-        study:hasActivity          cdiscpilot01:Age_2 ;
+        sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
+        study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
+        study:hasAge               cdiscpilot01:Age_2 ;
         study:hasSUBJID            cdiscpilot01:1023 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1023 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-PBO .
+        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
 
 code:Study  a            rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the study for each observation"@en ;
@@ -277,23 +286,20 @@ code:study  a               skos:ConceptScheme ;
         skos:note           "Specifies the study for each observation or group of obs."@en ;
         skos:prefLabel      "Codelist scheme: study"@en .
 
-cdiscpilot01:AgeOutCome_4
-        study:hasUnit   code:time-year ;
-        study:hasValue  "74"^^xsd:int .
-
-code:sex  a                 skos:ConceptScheme ;
-        rdfs:label          "Codelist scheme: sex"@en ;
-        skos:hasTopConcept  code:sex-M , code:sex-F ;
-        skos:notation       "CL_SEX" ;
-        skos:note           "Specifies the sex for each observation or group of obs."@en ;
-        skos:prefLabel      "Codelist scheme: sex"@en .
-
-cdiscpilot01:Age_2  code:hasActivityCode
-                code:AgeCode ;
+cdiscpilot01:Age_2  a             study:Age ;
+        rdfs:comment              "Linkage from Age_2 to age AgeOutcome_2"@en ;
+        rdfs:label                "Age 2"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_2 .
 
+cdiscpilot01:AgeOutcome_1
+        a               study:AgeOutcome ;
+        rdfs:comment    "Specification of AgeOutCome_1"@en ;
+        rdfs:label      "Age outcome1"^^xsd:string ;
+        study:hasUnit   time:unitYear ;
+        study:hasValue  "63"^^xsd:float .
+
 cdiscpilot01:Person_1
-        a                          study:Person ;
+        a                          study:EnrolledSubject ;
         sdtm:hasDMDTC              "2013-12-26"^^xsd:date ;
         sdtm:hasDMDY               "-7"^^xsd:int ;
         sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
@@ -306,38 +312,29 @@ cdiscpilot01:Person_1
         sdtm:hasRFSTDTC            "2014-01-02"^^xsd:date ;
         sdtm:hasRFXENDTC           "2014-07-02"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2014-01-02"^^xsd:date ;
-        sdtm:hasSEX                code:sex-F ;
-        study:allocatedTo          cdiscpilot01:arm-PBO ;
-        study:hasActivity          cdiscpilot01:Age_1 ;
+        sdtm:hasSEX                cdiscsdtm:C66731.C16576 ;
+        study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
+        study:hasAge               cdiscpilot01:Age_1 ;
         study:hasSUBJID            cdiscpilot01:1015 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1015 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-PBO .
+        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
 
-code:Sex  a              rdfs:Class , owl:Class ;
-        rdfs:comment     "Specifies the sex for each observation"@en ;
-        rdfs:label       "Class for code list: sex"@en ;
-        rdfs:seeAlso     code:sex ;
-        rdfs:subClassOf  skos:Concept .
+cdiscpilot01:AgeOutcome_6
+        a               study:AgeOutcome ;
+        rdfs:comment    "Specification of AgeOutCome_6"@en ;
+        rdfs:label      "Age outcome6"^^xsd:string ;
+        study:hasUnit   time:unitYear ;
+        study:hasValue  "85"^^xsd:float .
 
-code:sex-M  a                code:Sex , skos:Concept ;
-        dcterms:description  "Male Gender"@en ;
-        cdiscsdtm:code       cdiscsdtm:C66731.C20197 ;
-        skos:inScheme        code:sex ;
-        skos:prefLabel       "M" ;
-        skos:topConceptOf    code:sex .
-
-cdiscpilot01:AgeOutCome_3
-        study:hasUnit   code:time-year ;
-        study:hasValue  "71"^^xsd:int .
-
-cdiscpilot01:Age_1  code:hasActivityCode
-                code:AgeCode ;
+cdiscpilot01:Age_1  a             study:Age ;
+        rdfs:comment              "Linkage from Age_1 to age AgeOutcome_1"@en ;
+        rdfs:label                "Age 1"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_1 .
 
 cdiscpilot01:Person_6
-        a                          study:Person ;
+        a                          study:EnrolledSubject ;
         sdtm:hasDMDTC              "2013-01-22"^^xsd:date ;
         sdtm:hasDMDY               "-21"^^xsd:int ;
         sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
@@ -350,14 +347,14 @@ cdiscpilot01:Person_6
         sdtm:hasRFSTDTC            "2013-02-12"^^xsd:date ;
         sdtm:hasRFXENDTC           "2013-03-09"^^xsd:dateTime ;
         sdtm:hasRFXSTDTC           "2013-02-12"^^xsd:date ;
-        sdtm:hasSEX                code:sex-F ;
-        study:allocatedTo          cdiscpilot01:arm-PBO ;
-        study:hasActivity          cdiscpilot01:Age_6 ;
+        sdtm:hasSEX                cdiscsdtm:C66731.C16576 ;
+        study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
+        study:hasAge               cdiscpilot01:Age_6 ;
         study:hasSUBJID            cdiscpilot01:1047 ;
         study:hasSite              cdiscpilot01:site-701 ;
         study:hasUSUBJID           cdiscpilot01:01-701-1047 ;
         study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-PBO .
+        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
 
 code:sdtmdomain  a          skos:ConceptScheme ;
         rdfs:label          "Codelist scheme: sdtmdomain"@en ;
