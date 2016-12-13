@@ -125,6 +125,53 @@ for (i in 1:nrow(masterData))
         paste0(prefix.STUDY,"hasUniqueSubjectID" ),
         paste0( masterData[i,"usubjid"]), type="string"
     )
+    # Birthdate
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.TIME,"hasBeginning" ),
+        paste0(prefix.CDISCPILOT01, "Birthdate_", i)
+    )
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, "Birthdate_", i),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.STUDY,"Birthdate" )
+    )
+    # Note use of strptime to convert from mm/dd/YYYY to dateTime.
+    #   Hokey-assed kludge to add T00:00:00. Fix with a  format
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, "Birthdate_", i),
+        paste0(prefix.TIME,"inXSDDatetime" ),
+        paste0( strptime(masterData[i,"brthdate"], "%Y-%m-%d"), "T00:00:00"), type="dateTime"
+    )
+    #WIP Deathdate
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.TIME,"hasEnd" ),
+        paste0(prefix.CDISCPILOT01, "Deathdate_", i)
+    )
+    add.triple(store,
+               paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+               paste0(prefix.RDF,"type" ),
+               paste0(prefix.STUDY,"Deathdate" )
+    )
+    # Note use of strptime to convert from mm/dd/YYYY to dateTime.
+    #   Hokey-assed kludge to add T00:00:00. Fix with a format
+    if (! is.na(masterData[i,"dthdtc"])) {
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+            paste0(prefix.TIME,"inXSDDatetime" ),
+            paste0( strptime(masterData[i,"dthdtc"], "%Y-%m-%d"), "T00:00:00"), type="dateTime"
+        )
+    }
+    else{
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+            paste0(prefix.TIME,"inXSDDatetime" ),
+            paste0( "NA"), type="dateTime"
+        )               
+    }
+    
+    
     
     # These triples link to elsewhere in the same graph for each individual.
     # The link follows the form:  xxxxxx_<n>
@@ -245,32 +292,97 @@ for (i in 1:nrow(masterData))
     add.triple(store,    
         paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
         paste0(prefix.RDF,"type" ),
-        paste0(prefix.STUDY,"DemogDataCollectionDate" )
+        paste0(prefix.STUDY,"DemographicDataCollectionDate" )
     )    
     add.data.triple(store,    
         paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
         paste0(prefix.RDFS,"label" ),
         paste0("Demographic data collection date ",i), type="string"
     )
-    add.data.triple(store,    
-        paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-        paste0(prefix.TIME,"inXSDDateTime" ),
-        paste0(masterData[i,"dmdtc"]), type="dateTime"
-    )
-    add.data.triple(store,    
-        paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-        paste0(prefix.RDFS,"commentl" ),
-        paste("TODO: Need to convert to proper datetime format before creating the triple."), type="en"
-    )
-                    
     
-    
-    #TODO: WIP to HERE
+    #WIP here.
+    if (! is.na(masterData[i,"dmdtc"])) {
+        add.data.triple(store,    
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+            paste0(prefix.TIME,"inXSDDateTime" ),
+            paste0( strptime(masterData[i,"dmdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+        )
+    }
+    else{
+        add.data.triple(store,    
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+            paste0(prefix.TIME,"inXSDDateTime" ),
+            paste0( "NA"), type="dateTime"
+        )
+    }
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"participatesIn" ),
-               paste0(prefix.CDISCPILOT01, "InformedConsent_", i)
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"participatesIn" ),
+        paste0(prefix.CDISCPILOT01, "InformedConsent_", i)
     )
+        #>> 190
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY,"InformedConsent")
+        )
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
+            paste0(prefix.STUDY,"hasActivityOutcome" ),
+            paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i)
+        )
+            #>>>> 169 
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.STUDY,"InformedConsentOutcome" )
+            )
+            # match to code.ttl graph
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i),
+                paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
+                paste0(prefix.CODE,"InformedConsent_granted" )
+            )
+            add.data.triple(store,    
+                paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i),
+                paste0(prefix.RDFS,"label" ),
+                paste0("Informed consent outcome ",i), type="string"
+            )
+    
+        #>>
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Informed consent ", i)
+        )
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
+            paste0(prefix.TIME,"hasBeginning" ),
+            paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i)
+        )
+            #>>>>   145     
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.STUDY,"InformedConsentBegin" )
+            )
+            add.triple(store,
+                 paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
+                 paste0(prefix.RDF,"type" ),
+                 paste0(prefix.STUDY,"StudyParticipationBegin" )
+            )
+            add.data.triple(store,    
+                paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
+                paste0(prefix.RDFS,"label" ),
+                paste0("Informed consent begin ",i), type="string"
+            )
+            add.data.triple(store,    
+                paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
+                paste0(prefix.TIME,"inXSDDateTime" ),
+                paste0(strptime(masterData[i,"rficdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+            )
+        
+    #WIP    
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"participatesIn" ),

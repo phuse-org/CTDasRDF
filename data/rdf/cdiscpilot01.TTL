@@ -1,6 +1,6 @@
 @prefix cdiscsdtm: <http://rdf.cdisc.org/sdtm-terminology#> .
 @prefix study: <http://www.example.org/ontologies/study/> .
-@prefix code:  <http://www.example.org/auth/code/> .
+@prefix code:  <http://www.example.org/code#> .
 @prefix cts:   <http://rdf.cdisc.org/ct/schema#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix cdiscpilot01: <http://www.example.org/PharmaCo/cdiscpilot01/> .
@@ -24,12 +24,20 @@ cdiscpilot01:Age_6  a             study:Age ;
         rdfs:label                "Age 6"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_6 .
 
-code:country  a             skos:ConceptScheme ;
-        rdfs:label          "Codelist scheme: country"@en ;
-        skos:hasTopConcept  code:country-USA ;
-        skos:notation       "CL_COUNTRY" ;
-        skos:note           "Specifies the country for each observation or group of obs."@en ;
-        skos:prefLabel      "Codelist scheme: country"@en .
+cdiscpilot01:Birthdate_6
+        a                   study:Birthdate ;
+        time:inXSDDatetime  "1942-08-06T00:00:00"^^xsd:dateTime .
+
+code:site  a                skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: site"@en ;
+        skos:hasTopConcept  code:site-701 ;
+        skos:notation       "CL_SITE" ;
+        skos:note           "Specifies the site for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: site"@en .
+
+cdiscpilot01:Deathdate_4
+        a                   study:Deathdate ;
+        time:inXSDDatetime  "NA"^^xsd:dateTime .
 
 cdiscpilot01:AgeOutcome_5
         a               study:AgeOutcome ;
@@ -38,15 +46,27 @@ cdiscpilot01:AgeOutcome_5
         study:hasUnit   time:unitYear ;
         study:hasValue  "77"^^xsd:float .
 
+code:sdtmdomain  a          skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: sdtmdomain"@en ;
+        skos:hasTopConcept  code:sdtmdomain-DM , code:sdtmdomain-SV ;
+        skos:notation       "CL_SDTMDOMAIN" ;
+        skos:note           "Specifies the sdtmdomain for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: sdtmdomain"@en .
+
+cdiscpilot01:InformedConsent_5
+        a                         study:InformedConsent ;
+        rdfs:label                "Informed consent 5" ;
+        study:hasActivityOutcome  cdiscpilot01:InformedConsentOutcome_5 ;
+        time:hasBeginning         cdiscpilot01:InformedConsentBegin_5 .
+
 cdiscpilot01:DemographicDataCollectionDate_5
-        a                   study:DemogDataCollectionDate ;
+        a                   study:DemographicDataCollectionDate ;
         rdfs:label          "Demographic data collection date 5"^^xsd:string ;
-        time:inXSDDateTime  "6/24/2014"^^xsd:dateTime .
+        time:inXSDDateTime  "2014-06-24T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:Person_5
         a                          study:EnrolledSubject ;
         sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
-        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_5 ;
         sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C16576 ;
         study:allocatedTo          cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
@@ -58,26 +78,14 @@ cdiscpilot01:Person_5
         study:hasUniqueSubjectID   "01-701-1034"^^xsd:string ;
         study:participatesIn       cdiscpilot01:ProductAdministration_5 , cdiscpilot01:InformedConsent_5 , cdiscpilot01:DemographicDataCollection_5 ;
         study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE .
+        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
+        time:hasBeginning          cdiscpilot01:Birthdate_5 ;
+        time:hasEnd                cdiscpilot01:Deathdate_5 .
 
-code:study-CDISCPILOT01
-        a                           cdiscpilot01:Study , code:Study , skos:Concept ;
-        dcterms:description         "CDISC PILOT 01 data from github. Original data from Lilly."@en ;
-        cdiscpilot01:hasSTUDYID     "CDISCPILOT01" ;
-        cdiscpilot01:hassdtmDOMAIN  sdtm:sdtmdomain-SV , sdtm:sdtmdomain-DM ;
-        skos:inScheme               code:study ;
-        skos:topConceptOf           code:study .
-
-code:arm-PBO  a              code:Arm , skos:Concept ;
-        rdfs:comment         "Corresponds to the value in the arm column of define"@en ;
-        dcterms:description  "Placebo control" ;
-        <http://www.example.org/PharmaCo/code/hasARM>
-                "Placebo" ;
-        <http://www.example.org/PharmaCo/code/hasARMCD>
-                "Pbo" ;
-        skos:inScheme        code:arm ;
-        skos:prefLabel       "Placebo" ;
-        skos:topConceptOf    code:arm .
+cdiscpilot01:InformedConsentOutcome_5
+        a                             study:InformedConsentOutcome ;
+        rdfs:label                    "Informed consent outcome 5"^^xsd:string ;
+        study:hasActivityOutcomeCode  code:InformedConsent_granted .
 
 cdiscpilot01:DemographicDataCollection_1
         a                  study:DemographicDataCollection ;
@@ -85,10 +93,97 @@ cdiscpilot01:DemographicDataCollection_1
         study:studyDay     "-7" ;
         time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_1 .
 
+cdiscpilot01:InformedConsentBegin_5
+        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label          "Informed consent begin 5"^^xsd:string ;
+        time:inXSDDateTime  "2014-06-24T00:00:00"^^xsd:dateTime .
+
+code:country-USA  a          code:Country , skos:Concept ;
+        dcterms:description  "United States of Amercia country code"@en ;
+        skos:inScheme        code:country ;
+        skos:prefLabel       "USA" ;
+        skos:topConceptOf    code:country .
+
 cdiscpilot01:Age_5  a             study:Age ;
         rdfs:comment              "Linkage from Age_5 to age AgeOutcome_5"@en ;
         rdfs:label                "Age 5"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_5 .
+
+cdiscpilot01:Birthdate_5
+        a                   study:Birthdate ;
+        time:inXSDDatetime  "1948-08-21T00:00:00"^^xsd:dateTime .
+
+cdiscpilot01:Deathdate_3
+        a                   study:Deathdate ;
+        time:inXSDDatetime  "NA"^^xsd:dateTime .
+
+cdiscpilot01:AgeOutcome_4
+        a               study:AgeOutcome ;
+        rdfs:comment    "Specification of AgeOutCome_4"@en ;
+        rdfs:label      "Age outcome 4"^^xsd:string ;
+        study:hasUnit   time:unitYear ;
+        study:hasValue  "74"^^xsd:float .
+
+cdiscpilot01:InformedConsent_4
+        a                         study:InformedConsent ;
+        rdfs:label                "Informed consent 4" ;
+        study:hasActivityOutcome  cdiscpilot01:InformedConsentOutcome_4 ;
+        time:hasBeginning         cdiscpilot01:InformedConsentBegin_4 .
+
+cdiscpilot01:DemographicDataCollectionDate_4
+        a                   study:DemographicDataCollectionDate ;
+        rdfs:label          "Demographic data collection date 4"^^xsd:string ;
+        time:inXSDDateTime  "2014-03-10T00:00:00"^^xsd:dateTime .
+
+cdiscpilot01:Person_4
+        a                          study:EnrolledSubject ;
+        sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
+        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
+        sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
+        study:allocatedTo          cdiscpilot01:arm-XANOMELINELOWDOSE ;
+        study:hasAge               cdiscpilot01:Age_4 ;
+        study:hasBeginning         cdiscpilot01:ReferenceStartDate_4 ;
+        study:hasEnd               cdiscpilot01:ReferenceEndDate_4 , cdiscpilot01:StudyParticipationEnd_4 ;
+        study:hasSite              cdiscpilot01:site-701 ;
+        study:hasSubjectID         "1033"^^xsd:string ;
+        study:hasUniqueSubjectID   "01-701-1033"^^xsd:string ;
+        study:participatesIn       cdiscpilot01:DemographicDataCollection_4 , cdiscpilot01:ProductAdministration_4 , cdiscpilot01:InformedConsent_4 ;
+        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
+        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINELOWDOSE ;
+        time:hasBeginning          cdiscpilot01:Birthdate_4 ;
+        time:hasEnd                cdiscpilot01:Deathdate_4 .
+
+code:Unit  a             rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the unit for each observation"@en ;
+        rdfs:label       "Class for code list: unit"@en ;
+        rdfs:seeAlso     code:unit ;
+        rdfs:subClassOf  skos:Concept .
+
+cdiscpilot01:DemographicDataCollection_6
+        a                  study:DemographicDataCollection ;
+        rdfs:label         "Demographic data collection 6"^^xsd:string ;
+        study:studyDay     "-21" ;
+        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_6 .
+
+cdiscpilot01:InformedConsentOutcome_4
+        a                             study:InformedConsentOutcome ;
+        rdfs:label                    "Informed consent outcome 4"^^xsd:string ;
+        study:hasActivityOutcomeCode  code:InformedConsent_granted .
+
+cdiscpilot01:arm-XANOMELINEHIGHDOSE
+        a                 study:Arm ;
+        study:hasArmCode  codecustom:armcd-PBO .
+
+code:Site  a             rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the site for each observation"@en ;
+        rdfs:label       "Class for code list: site"@en ;
+        rdfs:seeAlso     code:site ;
+        rdfs:subClassOf  skos:Concept .
+
+cdiscpilot01:InformedConsentBegin_4
+        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label          "Informed consent begin 4"^^xsd:string ;
+        time:inXSDDateTime  "2014-03-10T00:00:00"^^xsd:dateTime .
 
 code:arm-XAN_HI  a           code:Arm , skos:Concept ;
         rdfs:comment         "Corresponds to the value in the arm column of define"@en ;
@@ -101,34 +196,20 @@ code:arm-XAN_HI  a           code:Arm , skos:Concept ;
         skos:prefLabel       "Xanomeline High Dose" ;
         skos:topConceptOf    code:arm .
 
-cdiscpilot01:AgeOutcome_4
-        a               study:AgeOutcome ;
-        rdfs:comment    "Specification of AgeOutCome_4"@en ;
-        rdfs:label      "Age outcome 4"^^xsd:string ;
-        study:hasUnit   time:unitYear ;
-        study:hasValue  "74"^^xsd:float .
+cdiscpilot01:Age_4  a             study:Age ;
+        rdfs:comment              "Linkage from Age_4 to age AgeOutcome_4"@en ;
+        rdfs:label                "Age 4"^^xsd:string ;
+        study:hasActivityOutcome  cdiscpilot01:AgeOutcome_4 .
 
-cdiscpilot01:DemographicDataCollectionDate_4
-        a                   study:DemogDataCollectionDate ;
-        rdfs:label          "Demographic data collection date 4"^^xsd:string ;
-        time:inXSDDateTime  "3/10/2014"^^xsd:dateTime .
+code:site-701  a                cdiscpilot01:StudySite , code:Site , skos:Concept ;
+        cdiscpilot01:hasSiteId  "701" ;
+        cdiscpilot01:locatedIn  <http://www.example.org/auth/code/country-USA> ;
+        skos:inScheme           code:site ;
+        skos:topConceptOf       code:site .
 
-cdiscpilot01:Person_4
-        a                          study:EnrolledSubject ;
-        sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
-        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_4 ;
-        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
-        sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
-        study:allocatedTo          cdiscpilot01:arm-XANOMELINELOWDOSE ;
-        study:hasAge               cdiscpilot01:Age_4 ;
-        study:hasBeginning         cdiscpilot01:ReferenceStartDate_4 ;
-        study:hasEnd               cdiscpilot01:ReferenceEndDate_4 , cdiscpilot01:StudyParticipationEnd_4 ;
-        study:hasSite              cdiscpilot01:site-701 ;
-        study:hasSubjectID         "1033"^^xsd:string ;
-        study:hasUniqueSubjectID   "01-701-1033"^^xsd:string ;
-        study:participatesIn       cdiscpilot01:DemographicDataCollection_4 , cdiscpilot01:ProductAdministration_4 , cdiscpilot01:InformedConsent_4 ;
-        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINELOWDOSE .
+cdiscpilot01:Birthdate_4
+        a                   study:Birthdate ;
+        time:inXSDDatetime  "1951-01-18T00:00:00"^^xsd:dateTime .
 
 code:Sdtmdomain  a       rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the sdtmdomain for each observation"@en ;
@@ -136,36 +217,70 @@ code:Sdtmdomain  a       rdfs:Class , owl:Class ;
         rdfs:seeAlso     code:sdtmdomain ;
         rdfs:subClassOf  skos:Concept .
 
-cdiscpilot01:DemographicDataCollection_6
-        a                  study:DemographicDataCollection ;
-        rdfs:label         "Demographic data collection 6"^^xsd:string ;
-        study:studyDay     "-21" ;
-        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_6 .
+cdiscpilot01:Deathdate_2
+        a                   study:Deathdate ;
+        time:inXSDDatetime  "NA"^^xsd:dateTime .
 
-code:unit-YEARS  a           code:Unit , skos:Concept ;
-        rdfs:comment         "A placeholder until we link it with a full units definition graph or codelist"@en ;
-        dcterms:description  "Age in Years"@en ;
-        dcterms:references   time:years ;
-        skos:inScheme        code:unit ;
-        skos:prefLabel       "YEARS" ;
-        skos:topConceptOf    code:unit .
+cdiscpilot01:AgeOutcome_3
+        a               study:AgeOutcome ;
+        rdfs:comment    "Specification of AgeOutCome_3"@en ;
+        rdfs:label      "Age outcome 3"^^xsd:string ;
+        study:hasUnit   time:unitYear ;
+        study:hasValue  "71"^^xsd:float .
 
-cdiscpilot01:arm-XANOMELINEHIGHDOSE
-        a                 study:Arm ;
-        study:hasArmCode  codecustom:armcd-PBO .
+cdiscpilot01:InformedConsent_3
+        a                         study:InformedConsent ;
+        rdfs:label                "Informed consent 3" ;
+        study:hasActivityOutcome  cdiscpilot01:InformedConsentOutcome_3 ;
+        time:hasBeginning         cdiscpilot01:InformedConsentBegin_3 .
 
-code:sdtmdomain-DM  a        code:Sdtmdomain , skos:Concept ;
-        dcterms:description  "Subject demographics domain"@en ;
-        cdiscsdtm:code       cdiscsdtm:C66734.C49572 ;
+cdiscpilot01:DemographicDataCollectionDate_3
+        a                   study:DemographicDataCollectionDate ;
+        rdfs:label          "Demographic data collection date 3"^^xsd:string ;
+        time:inXSDDateTime  "2013-07-11T00:00:00"^^xsd:dateTime .
+
+code:arm  a                 skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: arm"@en ;
+        skos:hasTopConcept  code:arm-XAN_LO , code:arm-XAN_HI , code:arm-PBO ;
+        skos:notation       "CL_ARM" ;
+        skos:note           "Specifies the arm for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: arm"@en .
+
+cdiscpilot01:Person_3
+        a                          study:EnrolledSubject ;
+        sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
+        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
+        sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
+        study:allocatedTo          cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
+        study:hasAge               cdiscpilot01:Age_3 ;
+        study:hasBeginning         cdiscpilot01:ReferenceStartDate_3 ;
+        study:hasEnd               cdiscpilot01:StudyParticipationEnd_3 , cdiscpilot01:ReferenceEndDate_3 ;
+        study:hasSite              cdiscpilot01:site-701 ;
+        study:hasSubjectID         "1028"^^xsd:string ;
+        study:hasUniqueSubjectID   "01-701-1028"^^xsd:string ;
+        study:participatesIn       cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:InformedConsent_3 ;
+        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
+        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
+        time:hasBeginning          cdiscpilot01:Birthdate_3 ;
+        time:hasEnd                cdiscpilot01:Deathdate_3 .
+
+code:sdtmdomain-SV  a        code:Sdtmdomain , skos:Concept ;
+        dcterms:description  "Subject visit domain"@en ;
+        cdiscsdtm:code       cdiscsdtm:C66734.C49617 ;
         skos:inScheme        code:sdtmdomain ;
-        skos:prefLabel       "DM" ;
+        skos:prefLabel       "SV" ;
         skos:topConceptOf    code:sdtmdomain .
 
-code:site-701  a                cdiscpilot01:StudySite , code:Site , skos:Concept ;
-        cdiscpilot01:hasSiteId  "701" ;
-        cdiscpilot01:locatedIn  code:country-USA ;
-        skos:inScheme           code:site ;
-        skos:topConceptOf       code:site .
+cdiscpilot01:DemographicDataCollection_5
+        a                  study:DemographicDataCollection ;
+        rdfs:label         "Demographic data collection 5"^^xsd:string ;
+        study:studyDay     "-7" ;
+        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_5 .
+
+cdiscpilot01:InformedConsentOutcome_3
+        a                             study:InformedConsentOutcome ;
+        rdfs:label                    "Informed consent outcome 3"^^xsd:string ;
+        study:hasActivityOutcomeCode  code:InformedConsent_granted .
 
 code:arm-XAN_LO  a           code:Arm , skos:Concept ;
         rdfs:comment         "Corresponds to the value in the arm column of define"@en ;
@@ -178,86 +293,48 @@ code:arm-XAN_LO  a           code:Arm , skos:Concept ;
         skos:prefLabel       "Xanomeline Low Dose" ;
         skos:topConceptOf    code:arm .
 
-cdiscpilot01:Age_4  a             study:Age ;
-        rdfs:comment              "Linkage from Age_4 to age AgeOutcome_4"@en ;
-        rdfs:label                "Age 4"^^xsd:string ;
-        study:hasActivityOutcome  cdiscpilot01:AgeOutcome_4 .
+code:country  a             skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: country"@en ;
+        skos:hasTopConcept  code:country-USA ;
+        skos:notation       "CL_COUNTRY" ;
+        skos:note           "Specifies the country for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: country"@en .
 
-code:arm  a                 skos:ConceptScheme ;
-        rdfs:label          "Codelist scheme: arm"@en ;
-        skos:hasTopConcept  code:arm-XAN_LO , code:arm-XAN_HI , code:arm-PBO ;
-        skos:notation       "CL_ARM" ;
-        skos:note           "Specifies the arm for each observation or group of obs."@en ;
-        skos:prefLabel      "Codelist scheme: arm"@en .
-
-cdiscpilot01:AgeOutcome_3
-        a               study:AgeOutcome ;
-        rdfs:comment    "Specification of AgeOutCome_3"@en ;
-        rdfs:label      "Age outcome 3"^^xsd:string ;
-        study:hasUnit   time:unitYear ;
-        study:hasValue  "71"^^xsd:float .
-
-cdiscpilot01:DemographicDataCollectionDate_3
-        a                   study:DemogDataCollectionDate ;
-        rdfs:label          "Demographic data collection date 3"^^xsd:string ;
-        time:inXSDDateTime  "7/11/2013"^^xsd:dateTime .
-
-cdiscpilot01:Person_3
-        a                          study:EnrolledSubject ;
-        sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
-        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_3 ;
-        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
-        sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
-        study:allocatedTo          cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
-        study:hasAge               cdiscpilot01:Age_3 ;
-        study:hasBeginning         cdiscpilot01:ReferenceStartDate_3 ;
-        study:hasEnd               cdiscpilot01:StudyParticipationEnd_3 , cdiscpilot01:ReferenceEndDate_3 ;
-        study:hasSite              cdiscpilot01:site-701 ;
-        study:hasSubjectID         "1028"^^xsd:string ;
-        study:hasUniqueSubjectID   "01-701-1028"^^xsd:string ;
-        study:participatesIn       cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:InformedConsent_3 ;
-        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE .
-
-cdiscpilot01:DemographicDataCollection_5
-        a                  study:DemographicDataCollection ;
-        rdfs:label         "Demographic data collection 5"^^xsd:string ;
-        study:studyDay     "-7" ;
-        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_5 .
-
-code:Country  a          rdfs:Class , owl:Class ;
-        rdfs:comment     "Specifies the country for each observation"@en ;
-        rdfs:label       "Class for code list: country"@en ;
-        rdfs:seeAlso     code:country ;
-        rdfs:subClassOf  skos:Concept .
-
-code:Arm  a              rdfs:Class , owl:Class ;
-        rdfs:comment     "Specifies the arm for each observation"@en ;
-        rdfs:label       "Class for code list: arm"@en ;
-        rdfs:seeAlso     code:arm ;
-        rdfs:subClassOf  skos:Concept .
-
-code:unit  a                skos:ConceptScheme ;
-        rdfs:label          "Codelist scheme: unit"@en ;
-        skos:hasTopConcept  code:unit-YEARS ;
-        skos:notation       "CL_UNIT" ;
-        skos:note           "Specifies the unit for each observation or group of obs."@en ;
-        skos:prefLabel      "Codelist scheme: unit"@en .
+cdiscpilot01:InformedConsentBegin_3
+        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label          "Informed consent begin 3"^^xsd:string ;
+        time:inXSDDateTime  "2013-07-11T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:Age_3  a             study:Age ;
         rdfs:comment              "Linkage from Age_3 to age AgeOutcome_3"@en ;
         rdfs:label                "Age 3"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_3 .
 
-code:Unit  a             rdfs:Class , owl:Class ;
-        rdfs:comment     "Specifies the unit for each observation"@en ;
-        rdfs:label       "Class for code list: unit"@en ;
-        rdfs:seeAlso     code:unit ;
-        rdfs:subClassOf  skos:Concept .
-
 cdiscpilot01:arm-XANOMELINELOWDOSE
         a                 study:Arm ;
         study:hasArmCode  codecustom:armcd-PBO .
+
+cdiscpilot01:Birthdate_3
+        a                   study:Birthdate ;
+        time:inXSDDatetime  "1942-08-06T00:00:00"^^xsd:dateTime .
+
+code:study-CDISCPILOT01
+        a                           cdiscpilot01:Study , code:Study , skos:Concept ;
+        dcterms:description         "CDISC PILOT 01 data from github. Original data from Lilly."@en ;
+        cdiscpilot01:hasSTUDYID     "CDISCPILOT01" ;
+        cdiscpilot01:hassdtmDOMAIN  sdtm:sdtmdomain-SV , sdtm:sdtmdomain-DM ;
+        skos:inScheme               code:study ;
+        skos:topConceptOf           code:study .
+
+cdiscpilot01:Deathdate_1
+        a                   study:Deathdate ;
+        time:inXSDDatetime  "NA"^^xsd:dateTime .
+
+code:Arm  a              rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the arm for each observation"@en ;
+        rdfs:label       "Class for code list: arm"@en ;
+        rdfs:seeAlso     code:arm ;
+        rdfs:subClassOf  skos:Concept .
 
 cdiscpilot01:AgeOutcome_2
         a               study:AgeOutcome ;
@@ -266,28 +343,20 @@ cdiscpilot01:AgeOutcome_2
         study:hasUnit   time:unitYear ;
         study:hasValue  "64"^^xsd:float .
 
-code:site  a                skos:ConceptScheme ;
-        rdfs:label          "Codelist scheme: site"@en ;
-        skos:hasTopConcept  code:site-701 ;
-        skos:notation       "CL_SITE" ;
-        skos:note           "Specifies the site for each observation or group of obs."@en ;
-        skos:prefLabel      "Codelist scheme: site"@en .
+cdiscpilot01:InformedConsent_2
+        a                         study:InformedConsent ;
+        rdfs:label                "Informed consent 2" ;
+        study:hasActivityOutcome  cdiscpilot01:InformedConsentOutcome_2 ;
+        time:hasBeginning         cdiscpilot01:InformedConsentBegin_2 .
 
 cdiscpilot01:DemographicDataCollectionDate_2
-        a                   study:DemogDataCollectionDate ;
+        a                   study:DemographicDataCollectionDate ;
         rdfs:label          "Demographic data collection date 2"^^xsd:string ;
-        time:inXSDDateTime  "7/22/2012"^^xsd:dateTime .
-
-code:Site  a             rdfs:Class , owl:Class ;
-        rdfs:comment     "Specifies the site for each observation"@en ;
-        rdfs:label       "Class for code list: site"@en ;
-        rdfs:seeAlso     code:site ;
-        rdfs:subClassOf  skos:Concept .
+        time:inXSDDateTime  "2012-07-22T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:Person_2
         a                          study:EnrolledSubject ;
         sdtm:hasEthnicity          cdiscsdtm:C66790.C17459 ;
-        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_2 ;
         sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
         study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
@@ -299,17 +368,13 @@ cdiscpilot01:Person_2
         study:hasUniqueSubjectID   "01-701-1023"^^xsd:string ;
         study:participatesIn       cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:ProductAdministration_2 , cdiscpilot01:InformedConsent_2 ;
         study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
+        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO ;
+        time:hasBeginning          cdiscpilot01:Birthdate_2 ;
+        time:hasEnd                cdiscpilot01:Deathdate_2 .
 
 cdiscpilot01:arm-PLACEBO
         a                 study:Arm ;
         study:hasArmCode  codecustom:armcd-PBO .
-
-code:Study  a            rdfs:Class , owl:Class ;
-        rdfs:comment     "Specifies the study for each observation"@en ;
-        rdfs:label       "Class for code list: study"@en ;
-        rdfs:seeAlso     code:study ;
-        rdfs:subClassOf  skos:Concept .
 
 cdiscpilot01:DemographicDataCollection_4
         a                  study:DemographicDataCollection ;
@@ -317,17 +382,47 @@ cdiscpilot01:DemographicDataCollection_4
         study:studyDay     "-8" ;
         time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_4 .
 
-code:study  a               skos:ConceptScheme ;
-        rdfs:label          "Codelist scheme: study"@en ;
-        skos:hasTopConcept  code:study-CDISCPILOT01 ;
-        skos:notation       "CL_STUDY" ;
-        skos:note           "Specifies the study for each observation or group of obs."@en ;
-        skos:prefLabel      "Codelist scheme: study"@en .
+code:arm-PBO  a              code:Arm , skos:Concept ;
+        rdfs:comment         "Corresponds to the value in the arm column of define"@en ;
+        dcterms:description  "Placebo control" ;
+        <http://www.example.org/PharmaCo/code/hasARM>
+                "Placebo" ;
+        <http://www.example.org/PharmaCo/code/hasARMCD>
+                "Pbo" ;
+        skos:inScheme        code:arm ;
+        skos:prefLabel       "Placebo" ;
+        skos:topConceptOf    code:arm .
+
+cdiscpilot01:InformedConsentOutcome_2
+        a                             study:InformedConsentOutcome ;
+        rdfs:label                    "Informed consent outcome 2"^^xsd:string ;
+        study:hasActivityOutcomeCode  code:InformedConsent_granted .
+
+code:unit-YEARS  a           code:Unit , skos:Concept ;
+        rdfs:comment         "A placeholder until we link it with a full units definition graph or codelist"@en ;
+        dcterms:description  "Age in Years"@en ;
+        dcterms:references   time:years ;
+        skos:inScheme        code:unit ;
+        skos:prefLabel       "YEARS" ;
+        skos:topConceptOf    code:unit .
+
+cdiscpilot01:Deathdate_6
+        a                   study:Deathdate ;
+        time:inXSDDatetime  "NA"^^xsd:dateTime .
+
+cdiscpilot01:InformedConsentBegin_2
+        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label          "Informed consent begin 2"^^xsd:string ;
+        time:inXSDDateTime  "2012-07-22T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:Age_2  a             study:Age ;
         rdfs:comment              "Linkage from Age_2 to age AgeOutcome_2"@en ;
         rdfs:label                "Age 2"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_2 .
+
+cdiscpilot01:Birthdate_2
+        a                   study:Birthdate ;
+        time:inXSDDatetime  "1948-08-21T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:AgeOutcome_1
         a               study:AgeOutcome ;
@@ -336,15 +431,20 @@ cdiscpilot01:AgeOutcome_1
         study:hasUnit   time:unitYear ;
         study:hasValue  "63"^^xsd:float .
 
+cdiscpilot01:InformedConsent_1
+        a                         study:InformedConsent ;
+        rdfs:label                "Informed consent 1" ;
+        study:hasActivityOutcome  cdiscpilot01:InformedConsentOutcome_1 ;
+        time:hasBeginning         cdiscpilot01:InformedConsentBegin_1 .
+
 cdiscpilot01:DemographicDataCollectionDate_1
-        a                   study:DemogDataCollectionDate ;
+        a                   study:DemographicDataCollectionDate ;
         rdfs:label          "Demographic data collection date 1"^^xsd:string ;
-        time:inXSDDateTime  "12/26/2013"^^xsd:dateTime .
+        time:inXSDDateTime  "2013-12-26T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:Person_1
         a                          study:EnrolledSubject ;
         sdtm:hasEthnicity          cdiscsdtm:C66790.C17459 ;
-        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_1 ;
         sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C16576 ;
         study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
@@ -356,13 +456,36 @@ cdiscpilot01:Person_1
         study:hasUniqueSubjectID   "01-701-1015"^^xsd:string ;
         study:participatesIn       cdiscpilot01:ProductAdministration_1 , cdiscpilot01:DemographicDataCollection_1 , cdiscpilot01:InformedConsent_1 ;
         study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
+        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO ;
+        time:hasBeginning          cdiscpilot01:Birthdate_1 ;
+        time:hasEnd                cdiscpilot01:Deathdate_1 .
 
 cdiscpilot01:DemographicDataCollection_3
         a                  study:DemographicDataCollection ;
         rdfs:label         "Demographic data collection 3"^^xsd:string ;
         study:studyDay     "-8" ;
         time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_3 .
+
+code:sdtmdomain-DM  a        code:Sdtmdomain , skos:Concept ;
+        dcterms:description  "Subject demographics domain"@en ;
+        cdiscsdtm:code       cdiscsdtm:C66734.C49572 ;
+        skos:inScheme        code:sdtmdomain ;
+        skos:prefLabel       "DM" ;
+        skos:topConceptOf    code:sdtmdomain .
+
+cdiscpilot01:InformedConsentOutcome_1
+        a                             study:InformedConsentOutcome ;
+        rdfs:label                    "Informed consent outcome 1"^^xsd:string ;
+        study:hasActivityOutcomeCode  code:InformedConsent_granted .
+
+cdiscpilot01:Deathdate_5
+        a                   study:Deathdate ;
+        time:inXSDDatetime  "NA"^^xsd:dateTime .
+
+cdiscpilot01:InformedConsentBegin_1
+        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label          "Informed consent begin 1"^^xsd:string ;
+        time:inXSDDateTime  "2013-12-26T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:AgeOutcome_6
         a               study:AgeOutcome ;
@@ -371,10 +494,16 @@ cdiscpilot01:AgeOutcome_6
         study:hasUnit   time:unitYear ;
         study:hasValue  "85"^^xsd:float .
 
+cdiscpilot01:InformedConsent_6
+        a                         study:InformedConsent ;
+        rdfs:label                "Informed consent 6" ;
+        study:hasActivityOutcome  cdiscpilot01:InformedConsentOutcome_6 ;
+        time:hasBeginning         cdiscpilot01:InformedConsentBegin_6 .
+
 cdiscpilot01:DemographicDataCollectionDate_6
-        a                   study:DemogDataCollectionDate ;
+        a                   study:DemographicDataCollectionDate ;
         rdfs:label          "Demographic data collection date 6"^^xsd:string ;
-        time:inXSDDateTime  "1/22/2013"^^xsd:dateTime .
+        time:inXSDDateTime  "2013-01-22T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:Age_1  a             study:Age ;
         rdfs:comment              "Linkage from Age_1 to age AgeOutcome_1"@en ;
@@ -384,7 +513,6 @@ cdiscpilot01:Age_1  a             study:Age ;
 cdiscpilot01:Person_6
         a                          study:EnrolledSubject ;
         sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
-        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_6 ;
         sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C16576 ;
         study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
@@ -396,30 +524,52 @@ cdiscpilot01:Person_6
         study:hasUniqueSubjectID   "01-701-1047"^^xsd:string ;
         study:participatesIn       cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:ProductAdministration_6 , cdiscpilot01:InformedConsent_6 ;
         study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
-        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
+        study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO ;
+        time:hasBeginning          cdiscpilot01:Birthdate_6 ;
+        time:hasEnd                cdiscpilot01:Deathdate_6 .
 
-code:sdtmdomain  a          skos:ConceptScheme ;
-        rdfs:label          "Codelist scheme: sdtmdomain"@en ;
-        skos:hasTopConcept  code:sdtmdomain-DM , code:sdtmdomain-SV ;
-        skos:notation       "CL_SDTMDOMAIN" ;
-        skos:note           "Specifies the sdtmdomain for each observation or group of obs."@en ;
-        skos:prefLabel      "Codelist scheme: sdtmdomain"@en .
+cdiscpilot01:Birthdate_1
+        a                   study:Birthdate ;
+        time:inXSDDatetime  "1951-01-18T00:00:00"^^xsd:dateTime .
 
-code:country-USA  a          code:Country , skos:Concept ;
-        dcterms:description  "United States of Amercia country code"@en ;
-        skos:inScheme        code:country ;
-        skos:prefLabel       "USA" ;
-        skos:topConceptOf    code:country .
+code:Study  a            rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the study for each observation"@en ;
+        rdfs:label       "Class for code list: study"@en ;
+        rdfs:seeAlso     code:study ;
+        rdfs:subClassOf  skos:Concept .
 
-code:sdtmdomain-SV  a        code:Sdtmdomain , skos:Concept ;
-        dcterms:description  "Subject visit domain"@en ;
-        cdiscsdtm:code       cdiscsdtm:C66734.C49617 ;
-        skos:inScheme        code:sdtmdomain ;
-        skos:prefLabel       "SV" ;
-        skos:topConceptOf    code:sdtmdomain .
+code:Country  a          rdfs:Class , owl:Class ;
+        rdfs:comment     "Specifies the country for each observation"@en ;
+        rdfs:label       "Class for code list: country"@en ;
+        rdfs:seeAlso     code:country ;
+        rdfs:subClassOf  skos:Concept .
+
+cdiscpilot01:InformedConsentOutcome_6
+        a                             study:InformedConsentOutcome ;
+        rdfs:label                    "Informed consent outcome 6"^^xsd:string ;
+        study:hasActivityOutcomeCode  code:InformedConsent_granted .
 
 cdiscpilot01:DemographicDataCollection_2
         a                  study:DemographicDataCollection ;
         rdfs:label         "Demographic data collection 2"^^xsd:string ;
         study:studyDay     "-14" ;
         time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_2 .
+
+code:study  a               skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: study"@en ;
+        skos:hasTopConcept  code:study-CDISCPILOT01 ;
+        skos:notation       "CL_STUDY" ;
+        skos:note           "Specifies the study for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: study"@en .
+
+code:unit  a                skos:ConceptScheme ;
+        rdfs:label          "Codelist scheme: unit"@en ;
+        skos:hasTopConcept  code:unit-YEARS ;
+        skos:notation       "CL_UNIT" ;
+        skos:note           "Specifies the unit for each observation or group of obs."@en ;
+        skos:prefLabel      "Codelist scheme: unit"@en .
+
+cdiscpilot01:InformedConsentBegin_6
+        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label          "Informed consent begin 6"^^xsd:string ;
+        time:inXSDDateTime  "2013-01-22T00:00:00"^^xsd:dateTime .
