@@ -16,23 +16,35 @@
 id<-1:(nrow(masterData))   # Generate a list of ID numbers
 masterData$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
 
-# CODED values 
+
+#---- Data Massage
+#-- Create values not in the source that are required for testing or for later 
+#      versions of SDTM.
+# Birthdate 
+masterData$brthdate <- strptime(dmData$rfstdtc, "%m/%d/%Y") - (strtoi(dmData$age) * 365 * 24 * 60*60)
+
+# Informed Consent  (column present with missing values in DM source).
+masterData$rficdtc <- masterData$dmdtc
+
+# Investigator name and ID not present in source data
+masterData$invnam <- 'Jones'
+masterData$invid  <- '123'
+
+
+#-- CODED values 
 # UPPERCASE and remove spaces values of fields that will be coded to codelists
 # Phase:  "Phase 2" becomes "PHASE2"
 masterData$studyCoded      <- toupper(gsub(" ", "", masterData$study))
-#masterData$raceCoded       <- toupper(gsub(" ", "", masterData$race))
-#masterData$ethnicCoded     <- toupper(gsub(" ", "", masterData$ethnic))
 masterData$ageuCoded       <- toupper(gsub(" ", "", masterData$ageu))
 # for arm, use the coded form of both armcd and actarmcd to allow a short-hand linkage
 #    to the codelist where both ARM/ARMCD adn ACTARM/ACTARMCD are located.
 masterData$armCoded        <- toupper(gsub(" ", "", masterData$arm))
 masterData$actarmCoded     <- toupper(gsub(" ", "", masterData$actarm))
-
 masterData$domainCoded     <- toupper(gsub(" ", "", masterData$domain))
 masterData$dthflCoded      <- toupper(gsub(" ", "", masterData$dthfl))
 
 
-#---- Value/Code Translation
+#-- Value/Code Translation
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
 # Example: Sex is coded to the SDTM Terminology graph by translating the value 
@@ -287,12 +299,6 @@ for (i in 1:nrow(masterData))
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.SDTM,"hasEthnicity" ),
         paste0(prefix.CDISCSDTM, masterData[i,"ethnicSDTMCode"]) 
-    )
-    #TODO:  Lifespan definition is pending an answer from AO
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasLifeSpan" ),
-               paste0(prefix.CDISCPILOT01, "LifeSpan_", i)
     )
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
