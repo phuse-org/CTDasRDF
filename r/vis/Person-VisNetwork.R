@@ -1,21 +1,28 @@
 ###############################################################################
-# FILE : 
+# FILE : Person-VisNetwork.R
 # DESCR: 
 # SRC  : 
 # KEYS : 
 # NOTES: 
 #        
-# INPUT: 
+# INPUT: cdiscpilot01.TTL  (OR) local endpoint graph SDTMTORDF
 #      : 
 # OUT  : 
 # REQ  : 
-# TODO : 
+# TODO : add labels to nodes
+#        add labels to edges
 ###############################################################################
 library(rrdf)
 library(plyr)  # for rename
 library(visNetwork)
 
-endpoint = "http://localhost:8890/sparql"
+# For use with local TTL file:
+#setwd("C:/_gitHub/SDTM2RDF")
+#rdfSource = load.rdf("./data/rdf/cdiscpilot01.TTL", format="N3")
+
+
+# For use with local Endpoin, graph SDTMTORDF
+rdfSource = "http://localhost:8890/sparql"
 # Select all the information associated with Obs113
 query = 'PREFIX p: <http://www.example.org/PharmaCo/cdiscpilot01/> 
     PREFIX x: <example.org/foo/>
@@ -25,7 +32,7 @@ FROM <http://localhost:8890/SDTMTORDF>
         ?s ?p ?o . 
 }'
 
-DMTriples = as.data.frame(sparql.remote(endpoint, query))
+DMTriples = as.data.frame(sparql.remote(rdfSource, query))
 # Remove duplicates from the query
 DMTriples <- DMTriples[!duplicated(DMTriples),]
 

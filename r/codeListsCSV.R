@@ -178,7 +178,6 @@ codelist$codesLabel <- codelist$name
 buildCodelist("arm")
 buildCodelist("country")
 buildCodelist("sdtmdomain")
-buildCodelist("sex")
 buildCodelist("site")
 buildCodelist("study")
 buildCodelist("unit")

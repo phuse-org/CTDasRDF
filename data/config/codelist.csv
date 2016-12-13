@@ -16,12 +16,6 @@ arm ,XAN_LO,http://www.example.org/PharmaCo/code/hasARMCD,Xan_Lo,,
 arm ,XAN_LO,http://www.w3.org/2000/01/rdf-schema#comment,Corresponds to the value in the arm column of define,en,
 country,USA,http://purl.org/dc/terms/description,United States of Amercia country code,en,
 country,USA,http://www.w3.org/2004/02/skos/core/prefLabel,USA,,
-sex,F,http://purl.org/dc/terms/description,Female Gender,en,used for identification purposes only
-sex,F,http://www.w3.org/2004/02/skos/core/prefLabel,F ,,used for identification purposes only
-sex,F,http://rdf.cdisc.org/sdtm-terminology#code,http://rdf.cdisc.org/sdtm-terminology#C66731.C16576,uri,Link to SDTM terminology
-sex,M,http://purl.org/dc/terms/description,Male Gender,en,used for identification purposes only
-sex,M,http://www.w3.org/2004/02/skos/core/prefLabel,M,,used for identification purposes only
-sex,M,http://rdf.cdisc.org/sdtm-terminology#code,http://rdf.cdisc.org/sdtm-terminology#C66731.C20197,uri,Link to SDTM terminology
 sdtmdomain,SV,http://www.w3.org/2004/02/skos/core/prefLabel,SV,,used for identification purposes only
 sdtmdomain,SV,http://purl.org/dc/terms/description,Subject visit domain,en,used for identification purposes only
 sdtmdomain,SV,http://rdf.cdisc.org/sdtm-terminology#code,http://rdf.cdisc.org/sdtm-terminology#C66734.C49617,uri,Link to SDTM terminology

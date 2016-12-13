@@ -7,15 +7,17 @@
 #         Coded values cannot have spaces or special characters.
 # IN  :   prefixes.csv - prefixes and their namespaces
 #         dmSub.csv  - Subset of the CSV data source file.
-# OUT : data/rdf/DM.TTL
+# OUT : data/rdf/cdiscpilot01.TTL
 # REQ : Apache Jena 3.0.1: For riot, installed and avail at system path if 
 #           valdiation called
 # TODO: ARM codes to include URI's to graphs that contain descriptions of the arm
+#       SDTM terminology codes in triples.R currently hard coded. Move to a query
+#           within a new fnt().
 #
 ###############################################################################
 library(rrdf)
 library(Hmisc)
-library(car)   # Recoding of values
+library(car)   # Recoding of values for SDTM codes, etc.
 
 # Set working directory to the root of the work area
 setwd("C:/_github/SDTM2RDF")
@@ -24,7 +26,7 @@ sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting T
 sourceData<-"data/source/dmSub.csv"  # Subset of DM data for development purposes.
 sourceData<-head(sourceData,1)       #DEV - Keep only first row for development purposes.
 sourceCodelist<-"data/config/codelist.csv"  # Codelist triples 
-outFile='data/rdf/DM.TTL'
+outFile='data/rdf/cdiscpilot01.TTL'
 
 # Bring in the data source. Will be used in codeLists.R and triples.R
 masterData <- read.csv(sourceData,

@@ -8,7 +8,7 @@
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos:  <http://www.w3.org/2004/02/skos/core/> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix codecustom: <http://www.example.org/PharmaCo/code/> .
+@prefix codecustom: <http://www.example.org/custom#> .
 @prefix pro:   <http://purl.org/spar/pro/author> .
 @prefix mms:   <http://rdf.cdisc.org/mms#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -34,31 +34,30 @@ code:country  a             skos:ConceptScheme ;
 cdiscpilot01:AgeOutcome_5
         a               study:AgeOutcome ;
         rdfs:comment    "Specification of AgeOutCome_5"@en ;
-        rdfs:label      "Age outcome5"^^xsd:string ;
+        rdfs:label      "Age outcome 5"^^xsd:string ;
         study:hasUnit   time:unitYear ;
         study:hasValue  "77"^^xsd:float .
 
+cdiscpilot01:DemographicDataCollectionDate_5
+        a                   study:DemogDataCollectionDate ;
+        rdfs:label          "Demographic data collection date 5"^^xsd:string ;
+        time:inXSDDateTime  "6/24/2014"^^xsd:dateTime .
+
 cdiscpilot01:Person_5
         a                          study:EnrolledSubject ;
-        sdtm:hasDMDTC              "2014-06-24"^^xsd:date ;
-        sdtm:hasDMDY               "-7"^^xsd:int ;
-        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
-        sdtm:hasDTHFL              code:deathflag-NA ;
-        sdtm:hasETHNIC             code:ethnic-NOTHISPANICORLATINO ;
-        sdtm:hasRACE               code:race-WHITE ;
-        sdtm:hasRFENDTC            "2014-12-30"^^xsd:date ;
-        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
-        sdtm:hasRFPENDTC           "NA"^^xsd:dateTime ;
-        sdtm:hasRFSTDTC            "2014-07-01"^^xsd:date ;
-        sdtm:hasRFXENDTC           "2014-12-30"^^xsd:dateTime ;
-        sdtm:hasRFXSTDTC           "2014-07-01"^^xsd:date ;
+        sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
+        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_5 ;
+        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C16576 ;
         study:allocatedTo          cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
         study:hasAge               cdiscpilot01:Age_5 ;
-        study:hasSUBJID            cdiscpilot01:1034 ;
+        study:hasBeginning         cdiscpilot01:ReferenceStartDate_5 ;
+        study:hasEnd               cdiscpilot01:StudyParticipationEnd_5 , cdiscpilot01:ReferenceEndDate_5 ;
         study:hasSite              cdiscpilot01:site-701 ;
-        study:hasUSUBJID           cdiscpilot01:01-701-1034 ;
-        study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
+        study:hasSubjectID         "1034"^^xsd:string ;
+        study:hasUniqueSubjectID   "01-701-1034"^^xsd:string ;
+        study:participatesIn       cdiscpilot01:ProductAdministration_5 , cdiscpilot01:InformedConsent_5 , cdiscpilot01:DemographicDataCollection_5 ;
+        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE .
 
 code:study-CDISCPILOT01
@@ -72,11 +71,19 @@ code:study-CDISCPILOT01
 code:arm-PBO  a              code:Arm , skos:Concept ;
         rdfs:comment         "Corresponds to the value in the arm column of define"@en ;
         dcterms:description  "Placebo control" ;
-        codecustom:hasARM    "Placebo" ;
-        codecustom:hasARMCD  "Pbo" ;
+        <http://www.example.org/PharmaCo/code/hasARM>
+                "Placebo" ;
+        <http://www.example.org/PharmaCo/code/hasARMCD>
+                "Pbo" ;
         skos:inScheme        code:arm ;
         skos:prefLabel       "Placebo" ;
         skos:topConceptOf    code:arm .
+
+cdiscpilot01:DemographicDataCollection_1
+        a                  study:DemographicDataCollection ;
+        rdfs:label         "Demographic data collection 1"^^xsd:string ;
+        study:studyDay     "-7" ;
+        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_1 .
 
 cdiscpilot01:Age_5  a             study:Age ;
         rdfs:comment              "Linkage from Age_5 to age AgeOutcome_5"@en ;
@@ -86,8 +93,10 @@ cdiscpilot01:Age_5  a             study:Age ;
 code:arm-XAN_HI  a           code:Arm , skos:Concept ;
         rdfs:comment         "Corresponds to the value in the arm column of define"@en ;
         dcterms:description  "Xanomeline High Dose" ;
-        codecustom:hasARM    "Xanomeline High Dose" ;
-        codecustom:hasARMCD  "Xan_Hi" ;
+        <http://www.example.org/PharmaCo/code/hasARM>
+                "Xanomeline High Dose" ;
+        <http://www.example.org/PharmaCo/code/hasARMCD>
+                "Xan_Hi" ;
         skos:inScheme        code:arm ;
         skos:prefLabel       "Xanomeline High Dose" ;
         skos:topConceptOf    code:arm .
@@ -95,31 +104,30 @@ code:arm-XAN_HI  a           code:Arm , skos:Concept ;
 cdiscpilot01:AgeOutcome_4
         a               study:AgeOutcome ;
         rdfs:comment    "Specification of AgeOutCome_4"@en ;
-        rdfs:label      "Age outcome4"^^xsd:string ;
+        rdfs:label      "Age outcome 4"^^xsd:string ;
         study:hasUnit   time:unitYear ;
         study:hasValue  "74"^^xsd:float .
 
+cdiscpilot01:DemographicDataCollectionDate_4
+        a                   study:DemogDataCollectionDate ;
+        rdfs:label          "Demographic data collection date 4"^^xsd:string ;
+        time:inXSDDateTime  "3/10/2014"^^xsd:dateTime .
+
 cdiscpilot01:Person_4
         a                          study:EnrolledSubject ;
-        sdtm:hasDMDTC              "2014-03-10"^^xsd:date ;
-        sdtm:hasDMDY               "-8"^^xsd:int ;
-        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
-        sdtm:hasDTHFL              code:deathflag-NA ;
-        sdtm:hasETHNIC             code:ethnic-NOTHISPANICORLATINO ;
-        sdtm:hasRACE               code:race-WHITE ;
-        sdtm:hasRFENDTC            "2014-04-14"^^xsd:date ;
-        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
-        sdtm:hasRFPENDTC           "2014-09-15"^^xsd:dateTime ;
-        sdtm:hasRFSTDTC            "2014-03-18"^^xsd:date ;
-        sdtm:hasRFXENDTC           "2014-03-31"^^xsd:dateTime ;
-        sdtm:hasRFXSTDTC           "2014-03-18"^^xsd:date ;
+        sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
+        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_4 ;
+        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
         study:allocatedTo          cdiscpilot01:arm-XANOMELINELOWDOSE ;
         study:hasAge               cdiscpilot01:Age_4 ;
-        study:hasSUBJID            cdiscpilot01:1033 ;
+        study:hasBeginning         cdiscpilot01:ReferenceStartDate_4 ;
+        study:hasEnd               cdiscpilot01:ReferenceEndDate_4 , cdiscpilot01:StudyParticipationEnd_4 ;
         study:hasSite              cdiscpilot01:site-701 ;
-        study:hasUSUBJID           cdiscpilot01:01-701-1033 ;
-        study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
+        study:hasSubjectID         "1033"^^xsd:string ;
+        study:hasUniqueSubjectID   "01-701-1033"^^xsd:string ;
+        study:participatesIn       cdiscpilot01:DemographicDataCollection_4 , cdiscpilot01:ProductAdministration_4 , cdiscpilot01:InformedConsent_4 ;
+        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINELOWDOSE .
 
 code:Sdtmdomain  a       rdfs:Class , owl:Class ;
@@ -128,6 +136,12 @@ code:Sdtmdomain  a       rdfs:Class , owl:Class ;
         rdfs:seeAlso     code:sdtmdomain ;
         rdfs:subClassOf  skos:Concept .
 
+cdiscpilot01:DemographicDataCollection_6
+        a                  study:DemographicDataCollection ;
+        rdfs:label         "Demographic data collection 6"^^xsd:string ;
+        study:studyDay     "-21" ;
+        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_6 .
+
 code:unit-YEARS  a           code:Unit , skos:Concept ;
         rdfs:comment         "A placeholder until we link it with a full units definition graph or codelist"@en ;
         dcterms:description  "Age in Years"@en ;
@@ -135,6 +149,10 @@ code:unit-YEARS  a           code:Unit , skos:Concept ;
         skos:inScheme        code:unit ;
         skos:prefLabel       "YEARS" ;
         skos:topConceptOf    code:unit .
+
+cdiscpilot01:arm-XANOMELINEHIGHDOSE
+        a                 study:Arm ;
+        study:hasArmCode  codecustom:armcd-PBO .
 
 code:sdtmdomain-DM  a        code:Sdtmdomain , skos:Concept ;
         dcterms:description  "Subject demographics domain"@en ;
@@ -152,8 +170,10 @@ code:site-701  a                cdiscpilot01:StudySite , code:Site , skos:Concep
 code:arm-XAN_LO  a           code:Arm , skos:Concept ;
         rdfs:comment         "Corresponds to the value in the arm column of define"@en ;
         dcterms:description  "Xanomeline Low Dose" ;
-        codecustom:hasARM    "Xanomeline Low Dose" ;
-        codecustom:hasARMCD  "Xan_Lo" ;
+        <http://www.example.org/PharmaCo/code/hasARM>
+                "Xanomeline Low Dose" ;
+        <http://www.example.org/PharmaCo/code/hasARMCD>
+                "Xan_Lo" ;
         skos:inScheme        code:arm ;
         skos:prefLabel       "Xanomeline Low Dose" ;
         skos:topConceptOf    code:arm .
@@ -173,32 +193,37 @@ code:arm  a                 skos:ConceptScheme ;
 cdiscpilot01:AgeOutcome_3
         a               study:AgeOutcome ;
         rdfs:comment    "Specification of AgeOutCome_3"@en ;
-        rdfs:label      "Age outcome3"^^xsd:string ;
+        rdfs:label      "Age outcome 3"^^xsd:string ;
         study:hasUnit   time:unitYear ;
         study:hasValue  "71"^^xsd:float .
 
+cdiscpilot01:DemographicDataCollectionDate_3
+        a                   study:DemogDataCollectionDate ;
+        rdfs:label          "Demographic data collection date 3"^^xsd:string ;
+        time:inXSDDateTime  "7/11/2013"^^xsd:dateTime .
+
 cdiscpilot01:Person_3
         a                          study:EnrolledSubject ;
-        sdtm:hasDMDTC              "2013-07-11"^^xsd:date ;
-        sdtm:hasDMDY               "-8"^^xsd:int ;
-        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
-        sdtm:hasDTHFL              code:deathflag-NA ;
-        sdtm:hasETHNIC             code:ethnic-NOTHISPANICORLATINO ;
-        sdtm:hasRACE               code:race-WHITE ;
-        sdtm:hasRFENDTC            "2014-01-14"^^xsd:date ;
-        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
-        sdtm:hasRFPENDTC           "NA"^^xsd:dateTime ;
-        sdtm:hasRFSTDTC            "2013-07-19"^^xsd:date ;
-        sdtm:hasRFXENDTC           "2014-01-14"^^xsd:dateTime ;
-        sdtm:hasRFXSTDTC           "2013-07-19"^^xsd:date ;
+        sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
+        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_3 ;
+        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
         study:allocatedTo          cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
         study:hasAge               cdiscpilot01:Age_3 ;
-        study:hasSUBJID            cdiscpilot01:1028 ;
+        study:hasBeginning         cdiscpilot01:ReferenceStartDate_3 ;
+        study:hasEnd               cdiscpilot01:StudyParticipationEnd_3 , cdiscpilot01:ReferenceEndDate_3 ;
         study:hasSite              cdiscpilot01:site-701 ;
-        study:hasUSUBJID           cdiscpilot01:01-701-1028 ;
-        study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
+        study:hasSubjectID         "1028"^^xsd:string ;
+        study:hasUniqueSubjectID   "01-701-1028"^^xsd:string ;
+        study:participatesIn       cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:InformedConsent_3 ;
+        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingTo   cdiscpilot01:arm-XANOMELINEHIGHDOSE .
+
+cdiscpilot01:DemographicDataCollection_5
+        a                  study:DemographicDataCollection ;
+        rdfs:label         "Demographic data collection 5"^^xsd:string ;
+        study:studyDay     "-7" ;
+        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_5 .
 
 code:Country  a          rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the country for each observation"@en ;
@@ -230,10 +255,14 @@ code:Unit  a             rdfs:Class , owl:Class ;
         rdfs:seeAlso     code:unit ;
         rdfs:subClassOf  skos:Concept .
 
+cdiscpilot01:arm-XANOMELINELOWDOSE
+        a                 study:Arm ;
+        study:hasArmCode  codecustom:armcd-PBO .
+
 cdiscpilot01:AgeOutcome_2
         a               study:AgeOutcome ;
         rdfs:comment    "Specification of AgeOutCome_2"@en ;
-        rdfs:label      "Age outcome2"^^xsd:string ;
+        rdfs:label      "Age outcome 2"^^xsd:string ;
         study:hasUnit   time:unitYear ;
         study:hasValue  "64"^^xsd:float .
 
@@ -244,6 +273,11 @@ code:site  a                skos:ConceptScheme ;
         skos:note           "Specifies the site for each observation or group of obs."@en ;
         skos:prefLabel      "Codelist scheme: site"@en .
 
+cdiscpilot01:DemographicDataCollectionDate_2
+        a                   study:DemogDataCollectionDate ;
+        rdfs:label          "Demographic data collection date 2"^^xsd:string ;
+        time:inXSDDateTime  "7/22/2012"^^xsd:dateTime .
+
 code:Site  a             rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the site for each observation"@en ;
         rdfs:label       "Class for code list: site"@en ;
@@ -252,32 +286,36 @@ code:Site  a             rdfs:Class , owl:Class ;
 
 cdiscpilot01:Person_2
         a                          study:EnrolledSubject ;
-        sdtm:hasDMDTC              "2012-07-22"^^xsd:date ;
-        sdtm:hasDMDY               "-14"^^xsd:int ;
-        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
-        sdtm:hasDTHFL              code:deathflag-NA ;
-        sdtm:hasETHNIC             code:ethnic-HISPANICORLATINO ;
-        sdtm:hasRACE               code:race-WHITE ;
-        sdtm:hasRFENDTC            "2012-09-02"^^xsd:date ;
-        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
-        sdtm:hasRFPENDTC           "2013-02-18"^^xsd:dateTime ;
-        sdtm:hasRFSTDTC            "2012-08-05"^^xsd:date ;
-        sdtm:hasRFXENDTC           "2012-09-01"^^xsd:dateTime ;
-        sdtm:hasRFXSTDTC           "2012-08-05"^^xsd:date ;
+        sdtm:hasEthnicity          cdiscsdtm:C66790.C17459 ;
+        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_2 ;
+        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C20197 ;
         study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
         study:hasAge               cdiscpilot01:Age_2 ;
-        study:hasSUBJID            cdiscpilot01:1023 ;
+        study:hasBeginning         cdiscpilot01:ReferenceStartDate_2 ;
+        study:hasEnd               cdiscpilot01:StudyParticipationEnd_2 , cdiscpilot01:ReferenceEndDate_2 ;
         study:hasSite              cdiscpilot01:site-701 ;
-        study:hasUSUBJID           cdiscpilot01:01-701-1023 ;
-        study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
+        study:hasSubjectID         "1023"^^xsd:string ;
+        study:hasUniqueSubjectID   "01-701-1023"^^xsd:string ;
+        study:participatesIn       cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:ProductAdministration_2 , cdiscpilot01:InformedConsent_2 ;
+        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
+
+cdiscpilot01:arm-PLACEBO
+        a                 study:Arm ;
+        study:hasArmCode  codecustom:armcd-PBO .
 
 code:Study  a            rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the study for each observation"@en ;
         rdfs:label       "Class for code list: study"@en ;
         rdfs:seeAlso     code:study ;
         rdfs:subClassOf  skos:Concept .
+
+cdiscpilot01:DemographicDataCollection_4
+        a                  study:DemographicDataCollection ;
+        rdfs:label         "Demographic data collection 4"^^xsd:string ;
+        study:studyDay     "-8" ;
+        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_4 .
 
 code:study  a               skos:ConceptScheme ;
         rdfs:label          "Codelist scheme: study"@en ;
@@ -294,39 +332,49 @@ cdiscpilot01:Age_2  a             study:Age ;
 cdiscpilot01:AgeOutcome_1
         a               study:AgeOutcome ;
         rdfs:comment    "Specification of AgeOutCome_1"@en ;
-        rdfs:label      "Age outcome1"^^xsd:string ;
+        rdfs:label      "Age outcome 1"^^xsd:string ;
         study:hasUnit   time:unitYear ;
         study:hasValue  "63"^^xsd:float .
 
+cdiscpilot01:DemographicDataCollectionDate_1
+        a                   study:DemogDataCollectionDate ;
+        rdfs:label          "Demographic data collection date 1"^^xsd:string ;
+        time:inXSDDateTime  "12/26/2013"^^xsd:dateTime .
+
 cdiscpilot01:Person_1
         a                          study:EnrolledSubject ;
-        sdtm:hasDMDTC              "2013-12-26"^^xsd:date ;
-        sdtm:hasDMDY               "-7"^^xsd:int ;
-        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
-        sdtm:hasDTHFL              code:deathflag-NA ;
-        sdtm:hasETHNIC             code:ethnic-HISPANICORLATINO ;
-        sdtm:hasRACE               code:race-WHITE ;
-        sdtm:hasRFENDTC            "2014-07-02"^^xsd:date ;
-        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
-        sdtm:hasRFPENDTC           "NA"^^xsd:dateTime ;
-        sdtm:hasRFSTDTC            "2014-01-02"^^xsd:date ;
-        sdtm:hasRFXENDTC           "2014-07-02"^^xsd:dateTime ;
-        sdtm:hasRFXSTDTC           "2014-01-02"^^xsd:date ;
+        sdtm:hasEthnicity          cdiscsdtm:C66790.C17459 ;
+        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_1 ;
+        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C16576 ;
         study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
         study:hasAge               cdiscpilot01:Age_1 ;
-        study:hasSUBJID            cdiscpilot01:1015 ;
+        study:hasBeginning         cdiscpilot01:ReferenceStartDate_1 ;
+        study:hasEnd               cdiscpilot01:StudyParticipationEnd_1 , cdiscpilot01:ReferenceEndDate_1 ;
         study:hasSite              cdiscpilot01:site-701 ;
-        study:hasUSUBJID           cdiscpilot01:01-701-1015 ;
-        study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
+        study:hasSubjectID         "1015"^^xsd:string ;
+        study:hasUniqueSubjectID   "01-701-1015"^^xsd:string ;
+        study:participatesIn       cdiscpilot01:ProductAdministration_1 , cdiscpilot01:DemographicDataCollection_1 , cdiscpilot01:InformedConsent_1 ;
+        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
+
+cdiscpilot01:DemographicDataCollection_3
+        a                  study:DemographicDataCollection ;
+        rdfs:label         "Demographic data collection 3"^^xsd:string ;
+        study:studyDay     "-8" ;
+        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_3 .
 
 cdiscpilot01:AgeOutcome_6
         a               study:AgeOutcome ;
         rdfs:comment    "Specification of AgeOutCome_6"@en ;
-        rdfs:label      "Age outcome6"^^xsd:string ;
+        rdfs:label      "Age outcome 6"^^xsd:string ;
         study:hasUnit   time:unitYear ;
         study:hasValue  "85"^^xsd:float .
+
+cdiscpilot01:DemographicDataCollectionDate_6
+        a                   study:DemogDataCollectionDate ;
+        rdfs:label          "Demographic data collection date 6"^^xsd:string ;
+        time:inXSDDateTime  "1/22/2013"^^xsd:dateTime .
 
 cdiscpilot01:Age_1  a             study:Age ;
         rdfs:comment              "Linkage from Age_1 to age AgeOutcome_1"@en ;
@@ -335,25 +383,19 @@ cdiscpilot01:Age_1  a             study:Age ;
 
 cdiscpilot01:Person_6
         a                          study:EnrolledSubject ;
-        sdtm:hasDMDTC              "2013-01-22"^^xsd:date ;
-        sdtm:hasDMDY               "-21"^^xsd:int ;
-        sdtm:hasDTHDTC             "NA"^^xsd:dateTime ;
-        sdtm:hasDTHFL              code:deathflag-NA ;
-        sdtm:hasETHNIC             code:ethnic-NOTHISPANICORLATINO ;
-        sdtm:hasRACE               code:race-WHITE ;
-        sdtm:hasRFENDTC            "2013-03-29"^^xsd:date ;
-        sdtm:hasRFICDTC            "NA"^^xsd:dateTime ;
-        sdtm:hasRFPENDTC           "2013-07-28"^^xsd:dateTime ;
-        sdtm:hasRFSTDTC            "2013-02-12"^^xsd:date ;
-        sdtm:hasRFXENDTC           "2013-03-09"^^xsd:dateTime ;
-        sdtm:hasRFXSTDTC           "2013-02-12"^^xsd:date ;
+        sdtm:hasEthnicity          cdiscsdtm:C66790.C41222 ;
+        sdtm:hasLifeSpan           cdiscpilot01:LifeSpan_6 ;
+        sdtm:hasRACE               cdiscsdtm:C74457.C41261 ;
         sdtm:hasSEX                cdiscsdtm:C66731.C16576 ;
         study:allocatedTo          cdiscpilot01:arm-PLACEBO ;
         study:hasAge               cdiscpilot01:Age_6 ;
-        study:hasSUBJID            cdiscpilot01:1047 ;
+        study:hasBeginning         cdiscpilot01:ReferenceStartDate_6 ;
+        study:hasEnd               cdiscpilot01:StudyParticipationEnd_6 , cdiscpilot01:ReferenceEndDate_6 ;
         study:hasSite              cdiscpilot01:site-701 ;
-        study:hasUSUBJID           cdiscpilot01:01-701-1047 ;
-        study:participatesInStudy  codecustom:study-CDISCPILOT01 ;
+        study:hasSubjectID         "1047"^^xsd:string ;
+        study:hasUniqueSubjectID   "01-701-1047"^^xsd:string ;
+        study:participatesIn       cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:ProductAdministration_6 , cdiscpilot01:InformedConsent_6 ;
+        study:participatesInStudy  cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingTo   cdiscpilot01:arm-PLACEBO .
 
 code:sdtmdomain  a          skos:ConceptScheme ;
@@ -375,3 +417,9 @@ code:sdtmdomain-SV  a        code:Sdtmdomain , skos:Concept ;
         skos:inScheme        code:sdtmdomain ;
         skos:prefLabel       "SV" ;
         skos:topConceptOf    code:sdtmdomain .
+
+cdiscpilot01:DemographicDataCollection_2
+        a                  study:DemographicDataCollection ;
+        rdfs:label         "Demographic data collection 2"^^xsd:string ;
+        study:studyDay     "-14" ;
+        time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_2 .
