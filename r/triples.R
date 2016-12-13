@@ -94,6 +94,27 @@ masterData$dthdtc_DT   <- as.POSIXct(masterData$dthdtc,   format="%m/%d/%Y")
 #     TODO: add is as "a" Study when creating the code list!
 #----------------------- Data -------------------------------------------------
 
+# Part 1: FOr values created only once:
+#>> 489 : MOVE THIS TO THE CODELIST R SCRIPT.
+#  Value is hard coded here. Make it data driven.
+add.triple(store,
+           paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
+           paste0(prefix.RDF,"type" ),
+           paste0(prefix.STUDY,"Study")
+)
+add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
+                paste0(prefix.STUDY,"hasStudyID" ),
+                paste0("CDISCPILOT01"), type="string" 
+)
+add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
+                paste0(prefix.RDFS,"label" ),
+                paste0("Study-CDISCPILOT01"), type="string" 
+)
+
+
+# PART 2
 # Loop through the masterData dataframe and create the triples for each 
 #     Person_<n>
 for (i in 1:nrow(masterData))
@@ -108,12 +129,7 @@ for (i in 1:nrow(masterData))
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY, "EnrolledSubject")
     )
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.STUDY,"participatesInStudy" ),
-        paste0(prefix.CDISCPILOT01, "study-", masterData[i,"studyCoded"])
-    )
-    
+
     add.data.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"hasSubjectID" ),
@@ -381,15 +397,71 @@ for (i in 1:nrow(masterData))
                 paste0(prefix.TIME,"inXSDDateTime" ),
                 paste0(strptime(masterData[i,"rficdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
             )
-        
-    #WIP    
-    add.triple(store,
+     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"participatesIn" ),
                paste0(prefix.CDISCPILOT01, "ProductAdministration_", i)
     )
-    
-
+        #>>351
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY,"ProductAdministration" )
+        ) 
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Product administration ",i), type="string"
+        )
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
+            paste0(prefix.TIME,"hasBeginning"),
+            paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i)
+        )
+            #>> 309
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.STUDY,"ProductAdministrationBegin")
+            )
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
+                paste0(prefix.RDFS,"label" ),
+                paste0("Product administration begin ",i), type="string"
+            )
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
+                paste0(prefix.TIME,"inXSDDateTime"),
+                paste0(strptime(masterData[i,"rfstdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+            )
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
+            paste0(prefix.TIME,"hasEnd"),
+            paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i)
+        )
+            #>> 330
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.STUDY,"ProductAdministrationEnd")
+            )
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
+                paste0(prefix.RDFS,"label" ),
+                paste0("Product administration end ",i), type="string"
+            )
+            
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
+                paste0(prefix.TIME,"inXSDDateTime"),
+                paste0(strptime(masterData[i,"rfendtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+            )
+    #WIP
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"participatesInStudy" ),
+        paste0(prefix.CDISCPILOT01, "study-", masterData[i,"studyCoded"])
+    )
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"hasBeginning" ),

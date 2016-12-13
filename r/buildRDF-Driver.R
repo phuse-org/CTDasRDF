@@ -10,7 +10,7 @@
 # OUT : data/rdf/cdiscpilot01.TTL
 # REQ : Apache Jena 3.0.1: For riot, installed and avail at system path if 
 #           valdiation called
-# TODO: ARM codes t??? include URI's to graphs that contain descriptions of the arm
+# TODO: ARM codes to include URI's to graphs that contain descriptions of the arm
 #       SDTM terminology codes in triples.R currently hard coded. Move to a query
 #           within a new fnt().
 #

@@ -19,10 +19,26 @@
 @prefix prism: <http://prismstandard.org/namespaces/basic/2.0/> .
 @prefix sdtm:  <http://www.example.org/Standards/CDISC/SDTM/3-1/> .
 
+cdiscpilot01:ProductAdministrationBegin_2
+        a                   study:ProductAdministrationBegin ;
+        rdfs:label          "Product administration begin 2"^^xsd:string ;
+        time:inXSDDateTime  "2012-08-05T00:00:00"^^xsd:dateTime .
+
 cdiscpilot01:Age_6  a             study:Age ;
         rdfs:comment              "Linkage from Age_6 to age AgeOutcome_6"@en ;
         rdfs:label                "Age 6"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_6 .
+
+cdiscpilot01:ProductAdministrationEnd_6
+        a                   study:ProductAdministrationEnd ;
+        rdfs:label          "Product administration end 6"^^xsd:string ;
+        time:inXSDDateTime  "2013-03-29T00:00:00"^^xsd:dateTime .
+
+cdiscpilot01:ProductAdministration_2
+        a                  study:ProductAdministration ;
+        rdfs:label         "Product administration 2"^^xsd:string ;
+        time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_2 ;
+        time:hasEnd        cdiscpilot01:ProductAdministrationEnd_2 .
 
 cdiscpilot01:Birthdate_6
         a                   study:Birthdate ;
@@ -104,10 +120,26 @@ code:country-USA  a          code:Country , skos:Concept ;
         skos:prefLabel       "USA" ;
         skos:topConceptOf    code:country .
 
+cdiscpilot01:ProductAdministrationBegin_1
+        a                   study:ProductAdministrationBegin ;
+        rdfs:label          "Product administration begin 1"^^xsd:string ;
+        time:inXSDDateTime  "2014-01-02T00:00:00"^^xsd:dateTime .
+
 cdiscpilot01:Age_5  a             study:Age ;
         rdfs:comment              "Linkage from Age_5 to age AgeOutcome_5"@en ;
         rdfs:label                "Age 5"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_5 .
+
+cdiscpilot01:ProductAdministration_1
+        a                  study:ProductAdministration ;
+        rdfs:label         "Product administration 1"^^xsd:string ;
+        time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_1 ;
+        time:hasEnd        cdiscpilot01:ProductAdministrationEnd_1 .
+
+cdiscpilot01:ProductAdministrationEnd_5
+        a                   study:ProductAdministrationEnd ;
+        rdfs:label          "Product administration end 5"^^xsd:string ;
+        time:inXSDDateTime  "2014-12-30T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:Birthdate_5
         a                   study:Birthdate ;
@@ -165,6 +197,11 @@ cdiscpilot01:DemographicDataCollection_6
         study:studyDay     "-21" ;
         time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_6 .
 
+cdiscpilot01:ProductAdministrationBegin_6
+        a                   study:ProductAdministrationBegin ;
+        rdfs:label          "Product administration begin 6"^^xsd:string ;
+        time:inXSDDateTime  "2013-02-12T00:00:00"^^xsd:dateTime .
+
 cdiscpilot01:InformedConsentOutcome_4
         a                             study:InformedConsentOutcome ;
         rdfs:label                    "Informed consent outcome 4"^^xsd:string ;
@@ -179,6 +216,12 @@ code:Site  a             rdfs:Class , owl:Class ;
         rdfs:label       "Class for code list: site"@en ;
         rdfs:seeAlso     code:site ;
         rdfs:subClassOf  skos:Concept .
+
+cdiscpilot01:ProductAdministration_6
+        a                  study:ProductAdministration ;
+        rdfs:label         "Product administration 6"^^xsd:string ;
+        time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_6 ;
+        time:hasEnd        cdiscpilot01:ProductAdministrationEnd_6 .
 
 cdiscpilot01:InformedConsentBegin_4
         a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
@@ -206,6 +249,11 @@ code:site-701  a                cdiscpilot01:StudySite , code:Site , skos:Concep
         cdiscpilot01:locatedIn  <http://www.example.org/auth/code/country-USA> ;
         skos:inScheme           code:site ;
         skos:topConceptOf       code:site .
+
+cdiscpilot01:ProductAdministrationEnd_4
+        a                   study:ProductAdministrationEnd ;
+        rdfs:label          "Product administration end 4"^^xsd:string ;
+        time:inXSDDateTime  "2014-04-14T00:00:00"^^xsd:dateTime .
 
 cdiscpilot01:Birthdate_4
         a                   study:Birthdate ;
@@ -277,6 +325,11 @@ cdiscpilot01:DemographicDataCollection_5
         study:studyDay     "-7" ;
         time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_5 .
 
+cdiscpilot01:ProductAdministrationBegin_5
+        a                   study:ProductAdministrationBegin ;
+        rdfs:label          "Product administration begin 5"^^xsd:string ;
+        time:inXSDDateTime  "2014-07-01T00:00:00"^^xsd:dateTime .
+
 cdiscpilot01:InformedConsentOutcome_3
         a                             study:InformedConsentOutcome ;
         rdfs:label                    "Informed consent outcome 3"^^xsd:string ;
@@ -292,6 +345,12 @@ code:arm-XAN_LO  a           code:Arm , skos:Concept ;
         skos:inScheme        code:arm ;
         skos:prefLabel       "Xanomeline Low Dose" ;
         skos:topConceptOf    code:arm .
+
+cdiscpilot01:ProductAdministration_5
+        a                  study:ProductAdministration ;
+        rdfs:label         "Product administration 5"^^xsd:string ;
+        time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_5 ;
+        time:hasEnd        cdiscpilot01:ProductAdministrationEnd_5 .
 
 code:country  a             skos:ConceptScheme ;
         rdfs:label          "Codelist scheme: country"@en ;
@@ -314,17 +373,14 @@ cdiscpilot01:arm-XANOMELINELOWDOSE
         a                 study:Arm ;
         study:hasArmCode  codecustom:armcd-PBO .
 
+cdiscpilot01:ProductAdministrationEnd_3
+        a                   study:ProductAdministrationEnd ;
+        rdfs:label          "Product administration end 3"^^xsd:string ;
+        time:inXSDDateTime  "2014-01-14T00:00:00"^^xsd:dateTime .
+
 cdiscpilot01:Birthdate_3
         a                   study:Birthdate ;
         time:inXSDDatetime  "1942-08-06T00:00:00"^^xsd:dateTime .
-
-code:study-CDISCPILOT01
-        a                           cdiscpilot01:Study , code:Study , skos:Concept ;
-        dcterms:description         "CDISC PILOT 01 data from github. Original data from Lilly."@en ;
-        cdiscpilot01:hasSTUDYID     "CDISCPILOT01" ;
-        cdiscpilot01:hassdtmDOMAIN  sdtm:sdtmdomain-SV , sdtm:sdtmdomain-DM ;
-        skos:inScheme               code:study ;
-        skos:topConceptOf           code:study .
 
 cdiscpilot01:Deathdate_1
         a                   study:Deathdate ;
@@ -393,10 +449,21 @@ code:arm-PBO  a              code:Arm , skos:Concept ;
         skos:prefLabel       "Placebo" ;
         skos:topConceptOf    code:arm .
 
+cdiscpilot01:ProductAdministrationBegin_4
+        a                   study:ProductAdministrationBegin ;
+        rdfs:label          "Product administration begin 4"^^xsd:string ;
+        time:inXSDDateTime  "2014-03-18T00:00:00"^^xsd:dateTime .
+
 cdiscpilot01:InformedConsentOutcome_2
         a                             study:InformedConsentOutcome ;
         rdfs:label                    "Informed consent outcome 2"^^xsd:string ;
         study:hasActivityOutcomeCode  code:InformedConsent_granted .
+
+cdiscpilot01:ProductAdministration_4
+        a                  study:ProductAdministration ;
+        rdfs:label         "Product administration 4"^^xsd:string ;
+        time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_4 ;
+        time:hasEnd        cdiscpilot01:ProductAdministrationEnd_4 .
 
 code:unit-YEARS  a           code:Unit , skos:Concept ;
         rdfs:comment         "A placeholder until we link it with a full units definition graph or codelist"@en ;
@@ -419,6 +486,16 @@ cdiscpilot01:Age_2  a             study:Age ;
         rdfs:comment              "Linkage from Age_2 to age AgeOutcome_2"@en ;
         rdfs:label                "Age 2"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:AgeOutcome_2 .
+
+cdiscpilot01:ProductAdministrationEnd_2
+        a                   study:ProductAdministrationEnd ;
+        rdfs:label          "Product administration end 2"^^xsd:string ;
+        time:inXSDDateTime  "2012-09-02T00:00:00"^^xsd:dateTime .
+
+cdiscpilot01:study-CDISCPILOT01
+        a                 study:Study ;
+        rdfs:label        "Study-CDISCPILOT01"^^xsd:string ;
+        study:hasStudyID  "CDISCPILOT01"^^xsd:string .
 
 cdiscpilot01:Birthdate_2
         a                   study:Birthdate ;
@@ -473,10 +550,21 @@ code:sdtmdomain-DM  a        code:Sdtmdomain , skos:Concept ;
         skos:prefLabel       "DM" ;
         skos:topConceptOf    code:sdtmdomain .
 
+cdiscpilot01:ProductAdministrationBegin_3
+        a                   study:ProductAdministrationBegin ;
+        rdfs:label          "Product administration begin 3"^^xsd:string ;
+        time:inXSDDateTime  "2013-07-19T00:00:00"^^xsd:dateTime .
+
 cdiscpilot01:InformedConsentOutcome_1
         a                             study:InformedConsentOutcome ;
         rdfs:label                    "Informed consent outcome 1"^^xsd:string ;
         study:hasActivityOutcomeCode  code:InformedConsent_granted .
+
+cdiscpilot01:ProductAdministration_3
+        a                  study:ProductAdministration ;
+        rdfs:label         "Product administration 3"^^xsd:string ;
+        time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_3 ;
+        time:hasEnd        cdiscpilot01:ProductAdministrationEnd_3 .
 
 cdiscpilot01:Deathdate_5
         a                   study:Deathdate ;
@@ -532,11 +620,10 @@ cdiscpilot01:Birthdate_1
         a                   study:Birthdate ;
         time:inXSDDatetime  "1951-01-18T00:00:00"^^xsd:dateTime .
 
-code:Study  a            rdfs:Class , owl:Class ;
-        rdfs:comment     "Specifies the study for each observation"@en ;
-        rdfs:label       "Class for code list: study"@en ;
-        rdfs:seeAlso     code:study ;
-        rdfs:subClassOf  skos:Concept .
+cdiscpilot01:ProductAdministrationEnd_1
+        a                   study:ProductAdministrationEnd ;
+        rdfs:label          "Product administration end 1"^^xsd:string ;
+        time:inXSDDateTime  "2014-07-02T00:00:00"^^xsd:dateTime .
 
 code:Country  a          rdfs:Class , owl:Class ;
         rdfs:comment     "Specifies the country for each observation"@en ;
@@ -554,13 +641,6 @@ cdiscpilot01:DemographicDataCollection_2
         rdfs:label         "Demographic data collection 2"^^xsd:string ;
         study:studyDay     "-14" ;
         time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_2 .
-
-code:study  a               skos:ConceptScheme ;
-        rdfs:label          "Codelist scheme: study"@en ;
-        skos:hasTopConcept  code:study-CDISCPILOT01 ;
-        skos:notation       "CL_STUDY" ;
-        skos:note           "Specifies the study for each observation or group of obs."@en ;
-        skos:prefLabel      "Codelist scheme: study"@en .
 
 code:unit  a                skos:ConceptScheme ;
         rdfs:label          "Codelist scheme: unit"@en ;
