@@ -16,12 +16,12 @@
 id<-1:(nrow(masterData))   # Generate a list of ID numbers
 masterData$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
 
-
 #---- Data Massage
 #-- Create values not in the source that are required for testing or for later 
 #      versions of SDTM.
+# TODO: Move data massage/fabrication to separate R Script.
 # Birthdate 
-masterData$brthdate <- strptime(dmData$rfstdtc, "%m/%d/%Y") - (strtoi(dmData$age) * 365 * 24 * 60*60)
+masterData$brthdate <- strptime(masterData$rfstdtc, "%m/%d/%Y") - (strtoi(masterData$age) * 365 * 24 * 60*60)
 
 # Informed Consent  (column present with missing values in DM source).
 masterData$rficdtc <- masterData$dmdtc
