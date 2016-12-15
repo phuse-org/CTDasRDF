@@ -94,8 +94,8 @@ masterData$dthdtc_DT   <- as.POSIXct(masterData$dthdtc,   format="%m/%d/%Y")
 #     TODO: add is as "a" Study when creating the code list!
 #----------------------- Data -------------------------------------------------
 
-# Part 1: FOr values created only once:
-#>> 489 : MOVE THIS TO THE CODELIST R SCRIPT.
+#---- Part 1: FOr values created only once:
+#TODO: MOVE THIS TO THE CODELIST R SCRIPT.
 #  Value is hard coded here. Make it data driven.
 add.triple(store,
            paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
@@ -127,9 +127,7 @@ add.data.triple(store,
 #study:hasArmCode <http://example.org/custom#armcd-XAN_L0> ;         
 #rdfs:label "Xanomeline Low Dose"^^xsd:string ;                      
 
-
-
-# PART 2
+#---- PART 2
 # Loop through the masterData dataframe and create the triples for each 
 #     Person_<n>
 for (i in 1:nrow(masterData))
@@ -144,13 +142,11 @@ for (i in 1:nrow(masterData))
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY, "EnrolledSubject")
     )
-
     add.data.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"hasSubjectID" ),
                paste0(masterData[i,"subjid"]), type="string"
     )
-    
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"hasUniqueSubjectID" ),
@@ -222,98 +218,87 @@ for (i in 1:nrow(masterData))
                paste0(prefix.SDTM,"hasSEX" ),
                paste0(prefix.CDISCSDTM, masterData[i,"sexSDTMCode"]) 
     )
-    
-    
-    # These triples link to elsewhere in the same graph for each individual.
-    # The link follows the form:  xxxxxx_<n>
-    # TODO: Turn all of the following into a function call since the pattern 
-    #       is the same for each.
-    #--------------------------------------------------------------------------
-    #---- 1. Age
-    #-- New coding of Age using the Activity Approach
-    # Create the Activiy Age_<n>
-    #--Age :  hasAge  
+    # Age
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"hasAge" ),
                paste0(prefix.CDISCPILOT01, "Age_", i)
     )
-    #--Age : Age_<n>
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, "Age_", i),
-               paste0(prefix.RDF,"type" ),
-               paste0(prefix.STUDY,"Age" )
-    )
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, "Age_", i),
-               paste0(prefix.STUDY,"hasActivityOutcome" ),
-               paste0(prefix.CDISCPILOT01, "AgeOutcome_",i)
-    )
-    add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, "Age_", i),
-                    paste0(prefix.RDFS,"comment" ),
-                    paste0("Linkage from Age_",i, " to age AgeOutcome_", i), lang="en"
-    )
-    add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, "Age_", i),
-                    paste0(prefix.RDFS,"label" ),
-                    paste0("Age ",i), type="string"
-    )
-    #--Age : AgeOutcome_<n>
-    add.triple(store,
+        #>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "Age_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"Age" )
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "Age_", i),
+                   paste0(prefix.STUDY,"hasActivityOutcome" ),
+                   paste0(prefix.CDISCPILOT01, "AgeOutcome_",i)
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "Age_", i),
+                        paste0(prefix.RDFS,"comment" ),
+                        paste0("Linkage from Age_",i, " to age AgeOutcome_", i), lang="en"
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "Age_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Age ",i), type="string"
+        )
+            #>>
+            add.triple(store,
+                       paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
+                       paste0(prefix.RDF,"type" ),
+                       paste0(prefix.STUDY,"AgeOutcome")
+            )        
+            add.triple(store,
+                       paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
+                       paste0(prefix.STUDY,"hasUnit" ),
+                       paste0(prefix.TIME, "unitYear")
+            )        
+            #TW Type float or int for year?  OA has as Float from TopBraid.
+            add.data.triple(store,
                paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
-               paste0(prefix.RDF,"type" ),
-               paste0(prefix.STUDY,"AgeOutcome")
-    )        
-    add.triple(store,
+               paste0(prefix.STUDY,"hasValue" ),
+               paste0(masterData[i,"age"]), type="float"
+            )
+            add.data.triple(store,
                paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
-               paste0(prefix.STUDY,"hasUnit" ),
-               paste0(prefix.TIME, "unitYear")
-    )        
-    #TW Type float or int for year?  OA has as Float from TopBraid.
-    add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
-                    paste0(prefix.STUDY,"hasValue" ),
-                    paste0(masterData[i,"age"]), type="float"
-    )
-    add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
-                    paste0(prefix.RDFS,"comment" ),
-                    paste0("Specification of AgeOutCome_",i), lang="en"
-    )
-    add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
-                    paste0(prefix.RDFS,"label" ),
-                    paste0("Age outcome ",i), type="string"
-    )
+               paste0(prefix.RDFS,"comment" ),
+               paste0("Specification of AgeOutCome_",i), lang="en"
+            )
+            add.data.triple(store,
+               paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
+               paste0(prefix.RDFS,"label" ),
+               paste0("Age outcome ",i), type="string"
+            )
     #-- end of Age definition
     #-- Arm allocation
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"allocatedTo" ),
-               paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) 
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"allocatedTo" ),
+        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) 
     )
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) ,
-               paste0(prefix.RDF,"type" ),
-               paste0(prefix.STUDY,"Arm" )
+        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) ,
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.STUDY,"Arm" )
     )
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) ,
-               paste0(prefix.STUDY,"hasArmCode" ),
-               paste0(prefix.CODECUSTOM,"armcd-PBO" )
+        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) ,
+        paste0(prefix.STUDY,"hasArmCode" ),
+        paste0(prefix.CODECUSTOM,"armcd-PBO" )
     )
     # Currently omit label because it will be added for each obs of that type
     #    as a repeat.
     #add.data.triple(store,
-    #           paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) ,
-    #           paste0(prefix.RDFS,"label" ),
-    #           paste0("Placebo"), type="string"
+    #    paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) ,
+    #    paste0(prefix.RDFS,"label" ),
+    #    paste0("Placebo"), type="string"
     #)
     #-- end Arm allocation
     
-    #--Participates in: 
-    #    DemographicDataCollection
+    # DemographicDataCollection
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"participatesIn" ),
@@ -350,14 +335,12 @@ for (i in 1:nrow(masterData))
         paste0(prefix.RDFS,"label" ),
         paste0("Demographic data collection date ",i), type="string"
     )
-    
-    #WIP here.
     if (! is.na(masterData[i,"dmdtc"])) {
-        add.data.triple(store,    
-            paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-            paste0(prefix.TIME,"inXSDDateTime" ),
-            paste0( strptime(masterData[i,"dmdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
-        )
+       add.data.triple(store,    
+           paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+           paste0(prefix.TIME,"inXSDDateTime" ),
+           paste0( strptime(masterData[i,"dmdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+       )
     }
     else{
         add.data.triple(store,    
@@ -371,7 +354,7 @@ for (i in 1:nrow(masterData))
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, "InformedConsent_", i)
     )
-        #>> 190
+        #>>
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
             paste0(prefix.RDF,"type" ),
@@ -382,7 +365,7 @@ for (i in 1:nrow(masterData))
             paste0(prefix.STUDY,"hasActivityOutcome" ),
             paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i)
         )
-            #>>>> 169 
+            #>>>>
             add.triple(store,
                 paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i),
                 paste0(prefix.RDF,"type" ),
@@ -399,7 +382,6 @@ for (i in 1:nrow(masterData))
                 paste0(prefix.RDFS,"label" ),
                 paste0("Informed consent outcome ",i), type="string"
             )
-    
         #>>
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
@@ -411,16 +393,16 @@ for (i in 1:nrow(masterData))
             paste0(prefix.TIME,"hasBeginning" ),
             paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i)
         )
-            #>>>>   145     
+            #>>>>
             add.triple(store,
                 paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
                 paste0(prefix.RDF,"type" ),
                 paste0(prefix.STUDY,"InformedConsentBegin" )
             )
             add.triple(store,
-                 paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
-                 paste0(prefix.RDF,"type" ),
-                 paste0(prefix.STUDY,"StudyParticipationBegin" )
+                paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.STUDY,"StudyParticipationBegin" )
             )
             add.data.triple(store,    
                 paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
@@ -487,7 +469,6 @@ for (i in 1:nrow(masterData))
                 paste0(prefix.RDFS,"label" ),
                 paste0("Product administration end ",i), type="string"
             )
-            
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
                 paste0(prefix.TIME,"inXSDDateTime"),
@@ -510,7 +491,6 @@ for (i in 1:nrow(masterData))
             paste0(prefix.RDFS,"label" ),
             paste0("Randomization ",i), type="string"
         )
-
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Randomization_", i),
             paste0(prefix.STUDY,"hasActivityOutcome" ),
@@ -539,7 +519,6 @@ for (i in 1:nrow(masterData))
         paste0(prefix.STUDY,"treatedAccordingTo"),
         paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"actarmCoded"]) 
     )
-            
     # Site
     # QUESTION: Is treatedAtSite appropriate for all types of studies?
     add.triple(store,
@@ -567,10 +546,6 @@ for (i in 1:nrow(masterData))
              paste0(prefix.STUDY,"hasInvestigator" ),
              paste0(prefix.CDISCPILOT01,"Investigator_",masterData[i,"invid"])
         )
-            #>>>>
-            #add.triple(store,
-                 #paste0(prefix.CDISCPILOT01,"Investigator_",masterData[i,"invid"]),
-            
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]),
             paste0(prefix.STUDY,"hasSiteID" ),
@@ -655,5 +630,4 @@ for (i in 1:nrow(masterData))
                 paste0(prefix.TIME,"inXSDDateTime"),
                 paste0(strptime(masterData[i,"rfpendtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
             )
-                
 }    # End looping through the study master dataframe.    
