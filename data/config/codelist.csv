@@ -25,11 +25,6 @@ sdtmdomain,DM,http://rdf.cdisc.org/sdtm-terminology#code,http://rdf.cdisc.org/sd
 site,701,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.example.org/PharmaCo/cdiscpilot01/StudySite,uri,
 site,701,http://www.example.org/PharmaCo/cdiscpilot01/hasSiteId,701,,Later versions will code site from the data and from Country codelists.
 site,701,http://www.example.org/PharmaCo/cdiscpilot01/locatedIn,http://www.example.org/auth/code/country-USA,uri,
-study,CDISCPILOT01,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.example.org/PharmaCo/cdiscpilot01/Study,uri,"Defines this ""thing"" as ""a Study"""
-study,CDISCPILOT01,http://www.example.org/PharmaCo/cdiscpilot01/hasSTUDYID,CDISCPILOT01,,
-study,CDISCPILOT01,http://purl.org/dc/terms/description,CDISC PILOT 01 data from github. Original data from Lilly.,en,
-study,CDISCPILOT01,http://www.example.org/PharmaCo/cdiscpilot01/hassdtmDOMAIN,http://www.example.org/Standards/CDISC/SDTM/3-1/sdtmdomain-DM,uri,Each domain needs to be listed: DM SV etc. to show the domains that are in the study the odd name of sdtmdomain-DM refers to the other codelist here. Change as needed during later development.
-study,CDISCPILOT01,http://www.example.org/PharmaCo/cdiscpilot01/hassdtmDOMAIN,http://www.example.org/Standards/CDISC/SDTM/3-1/sdtmdomain-SV,uri,Each domain needs to be listed: DM SV etc. to show the domains that are in the study
 studyid,CDISCPILOT01,http://www.example.org/CDISCDefine/label,CDISCPILOT01,,predicate from DEFINE
 studyid,CDISCPILOT01,http://www.example.org/CDISCDefine/type,text,en,"predicate from DEFINE. Object ""text"" is appropriate here."
 studyid,CDISCPILOT01,http://www.example.org/CDISCDefine/origin,http://www.example.org/tf/code/CRF-PAGE7,,predicate from DEFINE
