@@ -397,12 +397,13 @@ for (i in 1:nrow(masterData))
                 paste0(prefix.TIME,"inXSDDateTime" ),
                 paste0(strptime(masterData[i,"rficdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
             )
-     add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"participatesIn" ),
-               paste0(prefix.CDISCPILOT01, "ProductAdministration_", i)
+    # Product Administration         
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"participatesIn" ),
+        paste0(prefix.CDISCPILOT01, "ProductAdministration_", i)
     )
-        #>>351
+        #>>
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
             paste0(prefix.RDF,"type" ),
@@ -418,7 +419,7 @@ for (i in 1:nrow(masterData))
             paste0(prefix.TIME,"hasBeginning"),
             paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i)
         )
-            #>> 309
+            #>>>>
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
                 paste0(prefix.RDF,"type" ),
@@ -434,12 +435,13 @@ for (i in 1:nrow(masterData))
                 paste0(prefix.TIME,"inXSDDateTime"),
                 paste0(strptime(masterData[i,"rfstdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
             )
+        #>>    
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
             paste0(prefix.TIME,"hasEnd"),
             paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i)
         )
-            #>> 330
+            #>>>>
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
                 paste0(prefix.RDF,"type" ),
@@ -456,6 +458,55 @@ for (i in 1:nrow(masterData))
                 paste0(prefix.TIME,"inXSDDateTime"),
                 paste0(strptime(masterData[i,"rfendtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
             )
+    # Randomization
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"participatesIn" ),
+        paste0(prefix.CDISCPILOT01, "Randomization_", i)
+    )
+        #>>        
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "Randomization_", i),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY,"Randomization" )
+        ) 
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "Randomization_", i),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Randomization ",i), type="string"
+        )
+
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "Randomization_", i),
+            paste0(prefix.STUDY,"hasActivityOutcome" ),
+            paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i)
+        )
+            #>>>>
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.STUDY,"RandomizationOutcome" )
+            )
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
+                paste0(prefix.RDFS,"label" ),
+                paste0("Randomization OUtcome ",i), type="string"            
+            )
+            
+    # Site
+    # QUESTION: Is treatedAtSite appropriate for all types of studies?
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"treatedAtSite" ),
+        paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]) 
+    )
+        #>>
+    
+            
+                      
+            
+            
+    # -- OLD BELOW HERE         
     #WIP
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
@@ -550,11 +601,6 @@ for (i in 1:nrow(masterData))
 #        paste0(prefix.SDTM,"hasDTHFL" ),
 #        paste0(prefix.CODE, "deathflag-",masterData[i,"dthfl"]) 
 #    )
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.STUDY,"hasSite" ),
-        paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]) 
-    )
 #    add.data.triple(store,
 #        paste0(prefix.CDISCPILOT01, persNum),
 #        paste0(prefix.SDTM,"hasDMDTC" ),
