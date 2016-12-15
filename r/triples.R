@@ -155,7 +155,7 @@ for (i in 1:nrow(masterData))
     # Birthdate
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.TIME,"hasBeginning" ),
+        paste0(prefix.TIME,"hasBirthdate" ),
         paste0(prefix.CDISCPILOT01, "Birthdate_", i)
     )
     add.triple(store,
@@ -173,7 +173,7 @@ for (i in 1:nrow(masterData))
     #WIP Deathdate
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.TIME,"hasEnd" ),
+        paste0(prefix.TIME,"hasDeathdate" ),
         paste0(prefix.CDISCPILOT01, "Deathdate_", i)
     )
     add.triple(store,
@@ -221,62 +221,51 @@ for (i in 1:nrow(masterData))
     # Age
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"hasAge" ),
-               paste0(prefix.CDISCPILOT01, "Age_", i)
+               paste0(prefix.STUDY,"hasAgeMeasurement" ),
+               paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i)
     )
         #>>
         add.triple(store,
-                   paste0(prefix.CDISCPILOT01, "Age_", i),
+                   paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
                    paste0(prefix.RDF,"type" ),
-                   paste0(prefix.STUDY,"Age" )
+                   paste0(prefix.STUDY,"AgeMeasurement" )
         )
         add.triple(store,
-                   paste0(prefix.CDISCPILOT01, "Age_", i),
+                   paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
                    paste0(prefix.STUDY,"hasActivityOutcome" ),
-                   paste0(prefix.CDISCPILOT01, "AgeOutcome_",i)
-        )
-        add.data.triple(store,
-                        paste0(prefix.CDISCPILOT01, "Age_", i),
-                        paste0(prefix.RDFS,"comment" ),
-                        paste0("Linkage from Age_",i, " to age AgeOutcome_", i), lang="en"
+                   paste0(prefix.CDISCPILOT01, "Age_",i)
         )
         add.data.triple(store,
                         paste0(prefix.CDISCPILOT01, "Age_", i),
                         paste0(prefix.RDFS,"label" ),
                         paste0("Age ",i), type="string"
         )
-            #>>
+            #>>>>
             add.triple(store,
-                       paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
+                       paste0(prefix.CDISCPILOT01, "Age_", i),
                        paste0(prefix.RDF,"type" ),
-                       paste0(prefix.STUDY,"AgeOutcome")
+                       paste0(prefix.STUDY,"Age")
             )        
             add.triple(store,
-                       paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
+                       paste0(prefix.CDISCPILOT01, "Age_", i),
                        paste0(prefix.STUDY,"hasUnit" ),
                        paste0(prefix.TIME, "unitYear")
             )        
-            #TW Type float or int for year?  OA has as Float from TopBraid.
             add.data.triple(store,
-               paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
+               paste0(prefix.CDISCPILOT01, "Age_", i),
                paste0(prefix.STUDY,"hasValue" ),
                paste0(masterData[i,"age"]), type="float"
             )
             add.data.triple(store,
-               paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
-               paste0(prefix.RDFS,"comment" ),
-               paste0("Specification of AgeOutCome_",i), lang="en"
-            )
-            add.data.triple(store,
-               paste0(prefix.CDISCPILOT01, "AgeOutcome_", i),
+               paste0(prefix.CDISCPILOT01, "Age_", i),
                paste0(prefix.RDFS,"label" ),
-               paste0("Age outcome ",i), type="string"
+               paste0("Age ",i), type="string"
             )
     #-- end of Age definition
     #-- Arm allocation
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.STUDY,"allocatedTo" ),
+        paste0(prefix.STUDY,"allocatedToArm" ),
         paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) 
     )
     add.triple(store,
@@ -298,6 +287,13 @@ for (i in 1:nrow(masterData))
     #)
     #-- end Arm allocation
     
+    # Death flag
+    #TODO: Code to blank when not present? 
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"deathFlag" ),
+        paste0(masterData[i,"dthfl"]), type="string"
+    )
     # DemographicDataCollection
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
@@ -516,7 +512,7 @@ for (i in 1:nrow(masterData))
     #    for ARM. THere is not separate codelist for ARM vs. ACTARM.
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.STUDY,"treatedAccordingTo"),
+        paste0(prefix.STUDY,"treatedAccordingToArm"),
         paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"actarmCoded"]) 
     )
     # Site
