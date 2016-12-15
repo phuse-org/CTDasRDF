@@ -113,6 +113,21 @@ add.data.triple(store,
                 paste0("Study-CDISCPILOT01"), type="string" 
 )
 
+#TODO:  COde for each INVESTIGATOR CREATED HERE
+#cdiscpilot01:Investigator_123                  
+#rdf:type study:Investigator ;                
+#study:hasInvestigatorID "123"^^xsd:string ;  
+#study:hasLastName "JONES"^^xsd:string ;      
+#rdfs:label "Investigator 123"^^xsd:string ;  
+
+
+#TODO: Code for each ARM value created here
+#cdiscpilot01:arm-PLACEBO                                     
+#rdf:type study:Arm ;                                                
+#study:hasArmCode <http://example.org/custom#armcd-XAN_L0> ;         
+#rdfs:label "Xanomeline Low Dose"^^xsd:string ;                      
+
+
 
 # PART 2
 # Loop through the masterData dataframe and create the triples for each 
@@ -501,11 +516,58 @@ for (i in 1:nrow(masterData))
         paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]) 
     )
         #>>
-    
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY,"Site" )
+        )
+        #TODO Change this to the coded value of Country based on the data, as per links
+        #     to Sex codelist, etc.
+        # exact coding may have to change based on the values in the graph:
+        #   /3166/#840 from AO to become 3166#840 or different value
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]),
+            paste0(prefix.STUDY,"hasCountry" ),
+            paste0(prefix.COUNTRY,"840" )
+        )
+        add.triple(store,
+             paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]),
+             paste0(prefix.STUDY,"hasInvestigator" ),
+             paste0(prefix.CDISCPILOT01,"Investigator_",masterData[i,"invid"])
+        )
+            #>>>>
+            #add.triple(store,
+                 #paste0(prefix.CDISCPILOT01,"Investigator_",masterData[i,"invid"]),
             
-                      
-            
-            
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]),
+            paste0(prefix.STUDY,"hasSiteID" ),
+            paste0(masterData[i,"siteid"]), type="string" 
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]),
+            paste0(prefix.RDFS,"label" ),
+            paste0("site-",masterData[i,"siteid"]), type="string" 
+        )
+        
+    # Person label
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.RDFS,"label" ),
+        paste0("Person ", i) 
+    )
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     # -- OLD BELOW HERE         
     #WIP
     add.triple(store,
