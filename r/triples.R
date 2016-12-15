@@ -202,6 +202,26 @@ for (i in 1:nrow(masterData))
         )               
     }
     
+    add.triple(store,
+               paste0(prefix.CDISCPILOT01, persNum),
+               paste0(prefix.SDTM,"hasEthnicity" ),
+               paste0(prefix.CDISCSDTM, masterData[i,"ethnicSDTMCode"]) 
+    )
+    add.triple(store,
+               paste0(prefix.CDISCPILOT01, persNum),
+               paste0(prefix.SDTM,"hasRACE" ),
+               paste0(prefix.CDISCSDTM, masterData[i,"raceSDTMCode"]) 
+    )
+    # SEX
+    # Sex is coded to the SDTM Terminology graph by translating the value 
+    #  the DM domain to its corresponding URI code in that graph.
+    #  F C66731.C16576
+    #  M 
+    add.triple(store,
+               paste0(prefix.CDISCPILOT01, persNum),
+               paste0(prefix.SDTM,"hasSEX" ),
+               paste0(prefix.CDISCSDTM, masterData[i,"sexSDTMCode"]) 
+    )
     
     
     # These triples link to elsewhere in the same graph for each individual.
@@ -507,6 +527,18 @@ for (i in 1:nrow(masterData))
                 paste0(prefix.RDFS,"label" ),
                 paste0("Randomization OUtcome ",i), type="string"            
             )
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"participatesInStudy" ),
+        paste0(prefix.CDISCPILOT01, "study-", masterData[i,"studyCoded"])
+    )
+    # Note how both allocatedTO and treatedAccordingTo use the same codelist 
+    #    for ARM. THere is not separate codelist for ARM vs. ACTARM.
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, persNum),
+        paste0(prefix.STUDY,"treatedAccordingTo"),
+        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"actarmCoded"]) 
+    )
             
     # Site
     # QUESTION: Is treatedAtSite appropriate for all types of studies?
@@ -549,128 +581,79 @@ for (i in 1:nrow(masterData))
             paste0(prefix.RDFS,"label" ),
             paste0("site-",masterData[i,"siteid"]), type="string" 
         )
-        
     # Person label
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.RDFS,"label" ),
         paste0("Person ", i) 
     )
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    # -- OLD BELOW HERE         
-    #WIP
+    # Reference start date
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.STUDY,"participatesInStudy" ),
-        paste0(prefix.CDISCPILOT01, "study-", masterData[i,"studyCoded"])
+        paste0(prefix.TIME,"hasBeginning" ),
+        paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i)
     )
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"hasBeginning" ),
-               paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i)
-    )
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"hasEnd" ),
-               paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i)
-    )
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.STUDY,"hasEnd" ),
-               paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i)
-    )
-    
-    
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.SDTM,"hasEthnicity" ),
-        paste0(prefix.CDISCSDTM, masterData[i,"ethnicSDTMCode"]) 
-    )
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasRACE" ),
-               paste0(prefix.CDISCSDTM, masterData[i,"raceSDTMCode"]) 
-    )
-    # SEX
-    # Sex is coded to the SDTM Terminology graph by translating the value 
-    #  the DM domain to its corresponding URI code in that graph.
-    #  F C66731.C16576
-    #  M 
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasSEX" ),
-               paste0(prefix.CDISCSDTM, masterData[i,"sexSDTMCode"]) 
-    )
-    
-    
-    
-    
-    # Note how both allocatedTO and treatedAccordingTo use the same codelist 
-    #    for ARM. THere is not separate codelist for ARM vs. ACTARM.
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.STUDY,"treatedAccordingTo"),
-        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"actarmCoded"]) 
-    )
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasRFSTDTC" ),
-#        paste0(masterData[i,"rfstdtc_DT"]), "date"
-#    )
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasRFENDTC" ),
-#        paste0(masterData[i,"rfendtc_DT"]), "date"
-#    )
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasRFXSTDTC" ),
-#        paste0(masterData[i,"rfxstdtc_DT"]), "date"
-#    )
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasRFXENDTC" ),
-#        paste0(masterData[i,"rfxendtc_DT"]), "dateTime"
-#    )
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasRFICDTC" ),
-#        paste0(masterData[i,"rficdtc_DT"]), "dateTime"
-#    )
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasRFPENDTC" ),
-#        paste0(masterData[i,"rfpendtc_DT"]), "dateTime"
-#    )
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasDTHDTC" ),
-#        paste0(masterData[i,"dthdtc_DT"]), "dateTime"
-#    )
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasDTHFL" ),
-#        paste0(prefix.CODE, "deathflag-",masterData[i,"dthfl"]) 
-#    )
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasDMDTC" ),
-#        paste0(masterData[i,"dmdtc_DT"]), "date"
-#    )
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, persNum),
-#        paste0(prefix.SDTM,"hasDMDY" ),
-#        paste0(masterData[i,"dmdy"]), "int"
-#    )
+        #>>    
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY,"ReferenceStartDate" )
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Reference start date ", i )
+        )
+        #TODO Add !is.na for this time.
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
+            paste0(prefix.TIME,"inXSDDateTime"),
+            paste0(strptime(masterData[i,"rfstdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+        )
+        # Reference end date
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, persNum),
+            paste0(prefix.TIME,"hasEnd" ),
+            paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i)
+        )
+        #>>    
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY,"ReferenceEndDate" )
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Reference end date ", i )
+        )
+        #TODO Add !is.na for this time.
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
+            paste0(prefix.TIME,"inXSDDateTime"),
+            paste0(strptime(masterData[i,"rfendtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+        )
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, persNum),
+            paste0(prefix.TIME,"hasEnd" ),
+            paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i)
+        )
+            #>>
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.STUDY,"StudyParticipationEnd" )
+            )
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
+                paste0(prefix.RDFS,"label" ),
+                paste0("Study participation end ", i )
+            )
+            #TODO add ! is.na
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
+                paste0(prefix.TIME,"inXSDDateTime"),
+                paste0(strptime(masterData[i,"rfpendtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+            )
+                
 }    # End looping through the study master dataframe.    
