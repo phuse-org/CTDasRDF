@@ -3,6 +3,7 @@ cdiscpilot01,http://www.example.org/PharmaCo/cdiscpilot01/,Resources relevant to
 cdiscsdtm,http://rdf.cdisc.org/sdtm-terminology#,CDISC terminology code reference. Currently only used to reference out to the SDTM code values like C66731.C20197.  Limited usage - change to use of SDTM prefix only?
 code,http://www.example.org/code#,Controlled terminology from authoritative sources. May later be replaced by links to resources published by those organizations.
 codecustom,http://www.example.org/custom#,Codes defined locally by the sponsor reused across multiple studies.
+country,http://psi.oasis-open.org/iso/3166#,Country codes graph
 cts,http://rdf.cdisc.org/ct/schema#,NOT IN USE 6DEC16
 dcterms,http://purl.org/dc/terms/,Common terminology like descriptions  etc.
 define,http://www.example.org/CDISCDefine/,NOT IN USE 6DEC16. Will be used to define resources for DEFINE.XML-like displays.
