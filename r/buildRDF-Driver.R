@@ -56,11 +56,7 @@ for (i in 1:nrow(prefixes)) {
     assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"])
 }
 
-#-- Codelist creation  : OUTDATED!  REMOVE from future dev line
-# source('R/codelistsCSV.R')
-
-# NEW!
-source('R/codeLists.R')
+source('R/singleResources.R')
 
 
 #-- Data triples creation
