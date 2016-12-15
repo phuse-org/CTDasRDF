@@ -33,6 +33,12 @@ masterData <- read.csv(sourceData,
                        header=T,
                        sep=',')
 
+
+#-- Massage the data as needed prior to building codelists and processing.
+#   Add data where needed for proof of concept. Clean data, etc.
+source('R/dataMassage.R')
+
+
 # Initialize. Includes OWL, XSD, RDF by default.
 store = new.rdf()  
 
@@ -50,8 +56,12 @@ for (i in 1:nrow(prefixes)) {
     assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"])
 }
 
-#-- Codelist creation
-source('R/codelistsCSV.R')
+#-- Codelist creation  : OUTDATED!  REMOVE from future dev line
+# source('R/codelistsCSV.R')
+
+# NEW!
+source('R/codeLists.R')
+
 
 #-- Data triples creation
 source('R/triples.R')
