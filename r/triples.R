@@ -124,47 +124,47 @@ for (i in 1:nrow(masterData))
         paste0(prefix.STUDY,"hasUniqueSubjectID" ),
         paste0( masterData[i,"usubjid"]), type="string"
     )
-    # Birthdate
+    # BirthDate
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.TIME,"hasBirthdate" ),
-        paste0(prefix.CDISCPILOT01, "Birthdate_", i)
+        paste0(prefix.STUDY,"hasBirthDate" ),
+        paste0(prefix.CDISCPILOT01, "BirthDate_", i)
     )
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "Birthdate_", i),
+        paste0(prefix.CDISCPILOT01, "BirthDate_", i),
         paste0(prefix.RDF,"type" ),
-        paste0(prefix.STUDY,"Birthdate" )
+        paste0(prefix.STUDY,"BirthDate" )
     )
     # Note use of strptime to convert from mm/dd/YYYY to dateTime.
     #   Hokey-assed kludge to add T00:00:00. Fix with a  format
     add.data.triple(store,
-        paste0(prefix.CDISCPILOT01, "Birthdate_", i),
+        paste0(prefix.CDISCPILOT01, "BirthDate_", i),
         paste0(prefix.TIME,"inXSDDatetime" ),
         paste0( strptime(masterData[i,"brthdate"], "%Y-%m-%d"), "T00:00:00"), type="dateTime"
     )
-    #WIP Deathdate
+    #WIP DeathDate
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.TIME,"hasDeathdate" ),
-        paste0(prefix.CDISCPILOT01, "Deathdate_", i)
+        paste0(prefix.STUDY,"hasDeathDate" ),
+        paste0(prefix.CDISCPILOT01, "DeathDate_", i)
     )
     add.triple(store,
-               paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+               paste0(prefix.CDISCPILOT01, "DeathDate_", i),
                paste0(prefix.RDF,"type" ),
-               paste0(prefix.STUDY,"Deathdate" )
+               paste0(prefix.STUDY,"DeathDate" )
     )
     # Note use of strptime to convert from mm/dd/YYYY to dateTime.
     #   Hokey-assed kludge to add T00:00:00. Fix with a format
     if (! is.na(masterData[i,"dthdtc"])) {
         add.data.triple(store,
-            paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+            paste0(prefix.CDISCPILOT01, "DeathDate_", i),
             paste0(prefix.TIME,"inXSDDatetime" ),
             paste0( strptime(masterData[i,"dthdtc"], "%Y-%m-%d"), "T00:00:00"), type="dateTime"
         )
     }
     else{
         add.data.triple(store,
-            paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+            paste0(prefix.CDISCPILOT01, "DeathDate_", i),
             paste0(prefix.TIME,"inXSDDatetime" ),
             paste0( "NA"), type="dateTime"
         )               
@@ -172,22 +172,22 @@ for (i in 1:nrow(masterData))
     
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasEthnicity" ),
+               paste0(prefix.STUDY,"hasEthnicity" ),
                paste0(prefix.CDISCSDTM, masterData[i,"ethnicSDTMCode"]) 
     )
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasRACE" ),
+               paste0(prefix.STUDY,"hasRace" ),
                paste0(prefix.CDISCSDTM, masterData[i,"raceSDTMCode"]) 
     )
-    # SEX
+    # Sex
     # Sex is coded to the SDTM Terminology graph by translating the value 
     #  the DM domain to its corresponding URI code in that graph.
     #  F C66731.C16576
     #  M 
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
-               paste0(prefix.SDTM,"hasSEX" ),
+               paste0(prefix.STUDY,"hasSex" ),
                paste0(prefix.CDISCSDTM, masterData[i,"sexSDTMCode"]) 
     )
     # Age
@@ -238,17 +238,17 @@ for (i in 1:nrow(masterData))
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"allocatedToArm" ),
-        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) 
+        paste0(prefix.CUSTOM, "armcd-",masterData[i,"armCoded"]) 
     )
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) ,
+        paste0(prefix.CDISCPILOT01, "armcd-",masterData[i,"armCoded"]) ,
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY,"Arm" )
     )
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) ,
+        paste0(prefix.CDISCPILOT01, "armcd-",masterData[i,"armCoded"]) ,
         paste0(prefix.STUDY,"hasArmCode" ),
-        paste0(prefix.CODECUSTOM,"armcd-PBO" )
+        paste0(prefix.CUSTOM,"armcd-PBO" )
     )
     # Currently omit label because it will be added for each obs of that type
     #    as a repeat.
@@ -470,6 +470,13 @@ for (i in 1:nrow(masterData))
                 paste0(prefix.RDF,"type" ),
                 paste0(prefix.STUDY,"RandomizationOutcome" )
             )
+            # New addition pre email on 16DEC16
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
+                paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
+                paste0(prefix.CUSTOM,"armcd-",masterData[i,"armCoded"] )
+            )
+            
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
                 paste0(prefix.RDFS,"label" ),
@@ -485,7 +492,7 @@ for (i in 1:nrow(masterData))
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"treatedAccordingToArm"),
-        paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"actarmCoded"]) 
+        paste0(prefix.CUSTOM, "armcd-",masterData[i,"actarmCoded"]) 
     )
     # Site
     # QUESTION: Is treatedAtSite appropriate for all types of studies?

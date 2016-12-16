@@ -28,6 +28,7 @@ version <- "0.0.1"
 # Set working directory to the root of the work area
 setwd("C:/_github/SDTM2RDF")
 
+
 sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
 inFilename <- "dmSub.csv"
 sourceData<-paste0("data/source/", inFilename)  # Subset of DM data for development purposes.

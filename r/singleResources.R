@@ -111,7 +111,7 @@ for (a in 1:nrow(arms))
     add.triple(store,
         paste0(prefix.CDISCPILOT01, "arm-", arms[a,"armUC"]),
         paste0(prefix.STUDY,"hasArmCode" ),
-        paste0(prefix.CODECUSTOM, "armcd-", arms[a,"armcdUC"])
+        paste0(prefix.CUSTOM, "armcd-", arms[a,"armcdUC"])
    )
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, "arm-", arms[a,"armUC"]),

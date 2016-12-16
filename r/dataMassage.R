@@ -31,7 +31,6 @@ masterData$rficdtc <- masterData$dmdtc
 masterData$invnam <- 'Jones'
 masterData$invid  <- '123'
 
-
 #-- CODED values 
 # UPPERCASE and remove spaces values of fields that will be coded to codelists
 # Phase:  "Phase 2" becomes "PHASE2"
@@ -39,8 +38,8 @@ masterData$studyCoded      <- toupper(gsub(" ", "", masterData$study))
 masterData$ageuCoded       <- toupper(gsub(" ", "", masterData$ageu))
 # for arm, use the coded form of both armcd and actarmcd to allow a short-hand linkage
 #    to the codelist where both ARM/ARMCD adn ACTARM/ACTARMCD are located.
-masterData$armCoded        <- toupper(gsub(" ", "", masterData$arm))
-masterData$actarmCoded     <- toupper(gsub(" ", "", masterData$actarm))
+masterData$armCoded        <- toupper(gsub(" ", "", masterData$armcd))
+masterData$actarmCoded     <- toupper(gsub(" ", "", masterData$actarmcd))
 masterData$domainCoded     <- toupper(gsub(" ", "", masterData$domain))
 masterData$dthflCoded      <- toupper(gsub(" ", "", masterData$dthfl))
 
@@ -57,7 +56,7 @@ masterData$dthflCoded      <- toupper(gsub(" ", "", masterData$dthfl))
 #        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
 #-- Sex code translation
 masterData$sexSDTMCode <- recode(masterData$sex, 
-                                 "'M' = 'C66731.C20197';
+    "'M' = 'C66731.C20197';
     'F'  = 'C66731.C16576';
     'U'  = 'C66731.C17998';
     'UNDIFFERENTIATED' = 'C66731.C45908'"

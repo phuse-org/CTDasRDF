@@ -1,8 +1,8 @@
 prefix,namespace,description
-cdiscpilot01,http://www.example.org/PharmaCo/cdiscpilot01/,Resources relevant to this single named study.
+cdiscpilot01,http://example.org/cdiscpilot01#,Resources relevant to this single named study.
 cdiscsdtm,http://rdf.cdisc.org/sdtm-terminology#,CDISC terminology code reference. Currently only used to reference out to the SDTM code values like C66731.C20197.  Limited usage - change to use of SDTM prefix only?
 code,http://www.example.org/code#,Controlled terminology from authoritative sources. May later be replaced by links to resources published by those organizations.
-codecustom,http://www.example.org/custom#,Codes defined locally by the sponsor reused across multiple studies.
+custom,http://www.example.org/custom#,Codes defined locally by the sponsor reused across multiple studies.
 country,http://psi.oasis-open.org/iso/3166#,Country codes graph
 cts,http://rdf.cdisc.org/ct/schema#,NOT IN USE 6DEC16
 dcat,http://www.w3.org/ns/dcat#,Distribution data
@@ -17,7 +17,7 @@ pro,http://purl.org/spar/pro/author,NOT IN USE 6DEC16. Consider removal?
 prov,http://www.w3.org/ns/prov#,Data provenance
 rdf,http://www.w3.org/1999/02/22-rdf-syntax-ns#,RDF
 rdfs,http://www.w3.org/2000/01/rdf-schema#,RDFs
-sdtm,http://www.example.org/Standards/CDISC/SDTM/3-1/,Resources related to the specified version of the SDTM standard
-skos,http://www.w3.org/2004/02/skos/core/,SKOS
-study,http://www.example.org/ontologies/study/,Resources resusable across all studies independent of SDTM version
+sdtm,http://cdisc.org/sdtm#,Resources related to the specified version of the SDTM standard. Later add the Version to the path?
+skos,http://www.w3.org/2004/02/skos/core#,SKOS
+study,http://example.org/study#,Resources resusable across all studies independent of SDTM version
 time,http://www.w3.org/2006/time#,Years and other time units to be added.
