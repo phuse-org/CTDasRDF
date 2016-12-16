@@ -42,6 +42,50 @@ for (j in 1:nrow(investigators))
     )
 }
 
+
+
+# Sites
+# Get unique investigator ID 
+sites <- masterData[,c("siteid", "invid", "countryCode" )]
+# Remove duplicates
+sites <- sites[!duplicated(sites),]
+
+# Loop through the unique investigators, building the triples for each one
+for (s in 1:nrow(sites))
+{
+    #TODO: Site definition must be moved to singleResource.R !
+    #>>
+    add.triple(store,
+               paste0(prefix.CDISCPILOT01, "site-",sites[s,"siteid"]),
+               paste0(prefix.RDF,"type" ),
+               paste0(prefix.STUDY,"Site" )
+    )
+    #TODO Change this to the coded value of Country based on the data, as per links
+    #     to Sex codelist, etc.
+    # exact coding may have to change based on the values in the graph:
+    #   /3166/#840 from AO to become 3166#840 or different value
+    add.triple(store,
+               paste0(prefix.CDISCPILOT01, "site-",sites[s,"siteid"]),
+               paste0(prefix.STUDY,"hasCountry" ),
+               paste0(prefix.COUNTRY,sites[s,"countryCode"] )
+    )
+    add.triple(store,
+               paste0(prefix.CDISCPILOT01, "site-", sites[s,"siteid"]),
+               paste0(prefix.STUDY,"hasInvestigator" ),
+               paste0(prefix.CDISCPILOT01,"Investigator_", sites[s,"invid"])
+    )
+    add.data.triple(store,
+                    paste0(prefix.CDISCPILOT01, "site-",sites[s,"siteid"]),
+                    paste0(prefix.STUDY,"hasSiteID" ),
+                    paste0(sites[s,"siteid"]), type="string" 
+    )
+    add.data.triple(store,
+                    paste0(prefix.CDISCPILOT01, "site-",sites[s,"siteid"]),
+                    paste0(prefix.RDFS,"label" ),
+                    paste0("site-",sites[s,"siteid"]), type="string" 
+    )
+}    
+
 # Treatment Arms
 #TODO : Build this out.
 #cdiscpilot01:arm-PLACEBO  ()

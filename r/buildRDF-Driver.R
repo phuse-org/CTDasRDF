@@ -19,14 +19,23 @@ library(rrdf)
 library(Hmisc)
 library(car)   # Recoding of values for SDTM codes, etc.
 
+
+# Version
+#    Used to identify the version of the code and data. Is part of the TTL
+#    metadata
+version <- "0.0.1"
+
 # Set working directory to the root of the work area
 setwd("C:/_github/SDTM2RDF")
 
 sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
-sourceData<-"data/source/dmSub.csv"  # Subset of DM data for development purposes.
+inFilename <- "dmSub.csv"
+sourceData<-paste0("data/source/", inFilename)  # Subset of DM data for development purposes.
 sourceData<-head(sourceData,1)       #DEV - Keep only first row for development purposes.
 sourceCodelist<-"data/config/codelist.csv"  # Codelist triples 
-outFile='data/rdf/cdiscpilot01.TTL'
+outFilename = "cdiscpilot01.TTL"
+outFile=paste0("data/rdf/", outFilename)
+
 
 # Bring in the data source. Will be used in codeLists.R and triples.R
 masterData <- read.csv(sourceData,
