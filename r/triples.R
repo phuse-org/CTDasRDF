@@ -470,13 +470,13 @@ for (i in 1:nrow(masterData))
             paste0(prefix.RDFS,"label" ),
             paste0("Randomization ",i), type="string"
         )
-        add.data.triple(store,
+        add.triple(store,
             paste0(prefix.CDISCPILOT01, "Randomization_", i),
             paste0(prefix.STUDY,"hasActivityOutcome" ),
             paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i)
         )
             #>>>>
-            add.data.triple(store,
+            add.triple(store,
                 paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
                 paste0(prefix.RDF,"type" ),
                 paste0(prefix.STUDY,"RandomizationOutcome" )
@@ -502,7 +502,7 @@ for (i in 1:nrow(masterData))
     # QUESTION: Is treatedAtSite appropriate for all types of studies?
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.STUDY,"treatedAtSite" ),
+        paste0(prefix.STUDY,"hasSite" ),
         paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]) 
     )
         #>>

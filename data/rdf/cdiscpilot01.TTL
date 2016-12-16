@@ -38,7 +38,7 @@ cdiscpilot01:ReferenceEndDate_1
 cdiscpilot01:Randomization_4
         a                         study:Randomization ;
         rdfs:label                "Randomization 4"^^xsd:string ;
-        study:hasActivityOutcome  "http://www.example.org/PharmaCo/cdiscpilot01/RandomizationOutcome_4" .
+        study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_4 .
 
 cdiscpilot01:ProductAdministration_2
         a                  study:ProductAdministration ;
@@ -83,19 +83,19 @@ cdiscpilot01:Person_5
         study:allocatedToArm         cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
         study:deathFlag              "NA"^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_5 ;
+        study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1034"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1034"^^xsd:string ;
         study:participatesIn         cdiscpilot01:ProductAdministration_5 , cdiscpilot01:Randomization_5 , cdiscpilot01:InformedConsent_5 , cdiscpilot01:DemographicDataCollection_5 ;
         study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingToArm  cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
-        study:treatedAtSite          cdiscpilot01:site-701 ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_5 ;
         time:hasBirthdate            cdiscpilot01:Birthdate_5 ;
         time:hasDeathdate            cdiscpilot01:Deathdate_5 ;
         time:hasEnd                  cdiscpilot01:StudyParticipationEnd_5 , cdiscpilot01:ReferenceEndDate_5 .
 
 cdiscpilot01:RandomizationOutcome_4
-        a           "http://www.example.org/ontologies/study/RandomizationOutcome" ;
+        a           study:RandomizationOutcome ;
         rdfs:label  "Randomization OUtcome 4"^^xsd:string .
 
 cdiscpilot01:ReferenceStartDate_2
@@ -142,7 +142,7 @@ cdiscpilot01:Age_5  a   study:Age ;
 cdiscpilot01:Randomization_3
         a                         study:Randomization ;
         rdfs:label                "Randomization 3"^^xsd:string ;
-        study:hasActivityOutcome  "http://www.example.org/PharmaCo/cdiscpilot01/RandomizationOutcome_3" .
+        study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_3 .
 
 cdiscpilot01:ProductAdministration_1
         a                  study:ProductAdministration ;
@@ -193,19 +193,19 @@ cdiscpilot01:Person_4
         study:allocatedToArm         cdiscpilot01:arm-XANOMELINELOWDOSE ;
         study:deathFlag              "NA"^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_4 ;
+        study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1033"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1033"^^xsd:string ;
         study:participatesIn         cdiscpilot01:DemographicDataCollection_4 , cdiscpilot01:Randomization_4 , cdiscpilot01:ProductAdministration_4 , cdiscpilot01:InformedConsent_4 ;
         study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingToArm  cdiscpilot01:arm-XANOMELINELOWDOSE ;
-        study:treatedAtSite          cdiscpilot01:site-701 ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_4 ;
         time:hasBirthdate            cdiscpilot01:Birthdate_4 ;
         time:hasDeathdate            cdiscpilot01:Deathdate_4 ;
         time:hasEnd                  cdiscpilot01:ReferenceEndDate_4 , cdiscpilot01:StudyParticipationEnd_4 .
 
 cdiscpilot01:RandomizationOutcome_3
-        a           "http://www.example.org/ontologies/study/RandomizationOutcome" ;
+        a           study:RandomizationOutcome ;
         rdfs:label  "Randomization OUtcome 3"^^xsd:string .
 
 cdiscpilot01:ReferenceStartDate_1
@@ -263,7 +263,7 @@ cdiscpilot01:Age_4  a   study:Age ;
 cdiscpilot01:Randomization_2
         a                         study:Randomization ;
         rdfs:label                "Randomization 2"^^xsd:string ;
-        study:hasActivityOutcome  "http://www.example.org/PharmaCo/cdiscpilot01/RandomizationOutcome_2" .
+        study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_2 .
 
 cdiscpilot01:ReferenceStartDate_6
         a                   study:ReferenceStartDate ;
@@ -307,19 +307,19 @@ cdiscpilot01:Person_3
         study:allocatedToArm         cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
         study:deathFlag              "NA"^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_3 ;
+        study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1028"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1028"^^xsd:string ;
         study:participatesIn         cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:Randomization_3 , cdiscpilot01:InformedConsent_3 ;
         study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingToArm  cdiscpilot01:arm-XANOMELINEHIGHDOSE ;
-        study:treatedAtSite          cdiscpilot01:site-701 ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_3 ;
         time:hasBirthdate            cdiscpilot01:Birthdate_3 ;
         time:hasDeathdate            cdiscpilot01:Deathdate_3 ;
         time:hasEnd                  cdiscpilot01:ReferenceEndDate_3 , cdiscpilot01:StudyParticipationEnd_3 .
 
 cdiscpilot01:RandomizationOutcome_2
-        a           "http://www.example.org/ontologies/study/RandomizationOutcome" ;
+        a           study:RandomizationOutcome ;
         rdfs:label  "Randomization OUtcome 2"^^xsd:string .
 
 cdiscpilot01:DemographicDataCollection_5
@@ -371,7 +371,7 @@ cdiscpilot01:Age_3  a   study:Age ;
 cdiscpilot01:Randomization_1
         a                         study:Randomization ;
         rdfs:label                "Randomization 1"^^xsd:string ;
-        study:hasActivityOutcome  "http://www.example.org/PharmaCo/cdiscpilot01/RandomizationOutcome_1" .
+        study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_1 .
 
 cdiscpilot01:ReferenceStartDate_5
         a                   study:ReferenceStartDate ;
@@ -416,12 +416,12 @@ cdiscpilot01:Person_2
         study:allocatedToArm         cdiscpilot01:arm-PLACEBO ;
         study:deathFlag              "NA"^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_2 ;
+        study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1023"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1023"^^xsd:string ;
         study:participatesIn         cdiscpilot01:Randomization_2 , cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:ProductAdministration_2 , cdiscpilot01:InformedConsent_2 ;
         study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingToArm  cdiscpilot01:arm-PLACEBO ;
-        study:treatedAtSite          cdiscpilot01:site-701 ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_2 ;
         time:hasBirthdate            cdiscpilot01:Birthdate_2 ;
         time:hasDeathdate            cdiscpilot01:Deathdate_2 ;
@@ -433,7 +433,7 @@ cdiscpilot01:arm-PLACEBO
         study:hasArmCode  codecustom:armcd-PBO .
 
 cdiscpilot01:RandomizationOutcome_1
-        a           "http://www.example.org/ontologies/study/RandomizationOutcome" ;
+        a           study:RandomizationOutcome ;
         rdfs:label  "Randomization OUtcome 1"^^xsd:string .
 
 cdiscpilot01:DemographicDataCollection_4
@@ -465,7 +465,7 @@ cdiscpilot01:ReferenceEndDate_3
 cdiscpilot01:Randomization_6
         a                         study:Randomization ;
         rdfs:label                "Randomization 6"^^xsd:string ;
-        study:hasActivityOutcome  "http://www.example.org/PharmaCo/cdiscpilot01/RandomizationOutcome_6" .
+        study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_6 .
 
 cdiscpilot01:site-701
         a                      study:Site ;
@@ -499,7 +499,7 @@ cdiscpilot01:Age_2  a   study:Age ;
         study:hasValue  "64"^^xsd:float .
 
 cdiscpilot01:RandomizationOutcome_6
-        a           "http://www.example.org/ontologies/study/RandomizationOutcome" ;
+        a           study:RandomizationOutcome ;
         rdfs:label  "Randomization OUtcome 6"^^xsd:string .
 
 cdiscpilot01:ReferenceStartDate_4
@@ -541,12 +541,12 @@ cdiscpilot01:Person_1
         study:allocatedToArm         cdiscpilot01:arm-PLACEBO ;
         study:deathFlag              "NA"^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_1 ;
+        study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1015"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1015"^^xsd:string ;
         study:participatesIn         cdiscpilot01:ProductAdministration_1 , cdiscpilot01:Randomization_1 , cdiscpilot01:DemographicDataCollection_1 , cdiscpilot01:InformedConsent_1 ;
         study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingToArm  cdiscpilot01:arm-PLACEBO ;
-        study:treatedAtSite          cdiscpilot01:site-701 ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_1 ;
         time:hasBirthdate            cdiscpilot01:Birthdate_1 ;
         time:hasDeathdate            cdiscpilot01:Deathdate_1 ;
@@ -581,7 +581,7 @@ cdiscpilot01:ReferenceEndDate_2
 cdiscpilot01:Randomization_5
         a                         study:Randomization ;
         rdfs:label                "Randomization 5"^^xsd:string ;
-        study:hasActivityOutcome  "http://www.example.org/PharmaCo/cdiscpilot01/RandomizationOutcome_5" .
+        study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_5 .
 
 cdiscpilot01:ProductAdministration_3
         a                  study:ProductAdministration ;
@@ -627,19 +627,19 @@ cdiscpilot01:Person_6
         study:allocatedToArm         cdiscpilot01:arm-PLACEBO ;
         study:deathFlag              "NA"^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_6 ;
+        study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1047"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1047"^^xsd:string ;
         study:participatesIn         cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:ProductAdministration_6 , cdiscpilot01:InformedConsent_6 , cdiscpilot01:Randomization_6 ;
         study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingToArm  cdiscpilot01:arm-PLACEBO ;
-        study:treatedAtSite          cdiscpilot01:site-701 ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_6 ;
         time:hasBirthdate            cdiscpilot01:Birthdate_6 ;
         time:hasDeathdate            cdiscpilot01:Deathdate_6 ;
         time:hasEnd                  cdiscpilot01:ReferenceEndDate_6 , cdiscpilot01:StudyParticipationEnd_6 .
 
 cdiscpilot01:RandomizationOutcome_5
-        a           "http://www.example.org/ontologies/study/RandomizationOutcome" ;
+        a           study:RandomizationOutcome ;
         rdfs:label  "Randomization OUtcome 5"^^xsd:string .
 
 cdiscpilot01:ReferenceStartDate_3
