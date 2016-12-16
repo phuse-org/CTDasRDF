@@ -77,40 +77,86 @@ masterData$dthdtc_DT   <- as.POSIXct(masterData$dthdtc,   format="%m/%d/%Y")
 #     TODO: add is as "a" Study when creating the code list!
 #----------------------- Data -------------------------------------------------
 
-#---- Part 1: FOr values created only once:
+#-- Part 1:  Metadata about the graph
+
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.RDFS, "comment"),
+    paste0("Example SDTM data converted from CDISC SDTM to RDF Graph as part of the SDTM Data to RDF project."), type="string"
+)
+
+add.data.triple(store,
+paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+paste0(prefix.RDFS, "label"),
+paste0("SDTM data as a graph."), type="string"
+)
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.DCTERMS, "description"),
+    paste0("Data converted from the CDISCPILOT01 SDTM DM domain to RDF."), type="string"
+)
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.DCTERMS, "title"),
+    paste0("SDTM data as RDF."), type="string"
+)
+# Later change these to link to FOAF description of the people as separate resources
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.DCTERMS, "contributor"),
+    paste0("Tim Williams"), type="string"
+)
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.DCTERMS, "contributor"),
+    paste0("Armando Oliva"), type="string"
+)
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.PAV, "createdOn"),
+    paste0(gsub("(\\d\\d)$", ":\\1",strftime(Sys.time(),"%Y-%m-%dT%H:%M:%S%z"))), type="dateTime"
+)
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.PAV, "createdWith"),
+    paste0("R Version ", R.version$major, ".", R.version$minor,
+        " Platform:", R.version$platform, " swith scripts from SDTM Data to RDF Working group"), type="string"
+)
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.PAV, "version"),
+    paste0(version), type="string"
+)
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.DCAT, "distribution"),
+    paste0(outFilename)
+)
+add.data.triple(store,
+    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+    paste0(prefix.PROV, "wasDerivedFrom"),
+    paste0(inFilename)
+)
+#-- Part 2: For values created only once:
 #TODO: MOVE THIS TO THE CODELIST R SCRIPT.
 #  Value is hard coded here. Make it data driven.
 add.triple(store,
-           paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
-           paste0(prefix.RDF,"type" ),
-           paste0(prefix.STUDY,"Study")
+    paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
+    paste0(prefix.RDF,"type" ),
+    paste0(prefix.STUDY,"Study")
 )
 add.data.triple(store,
-                paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
-                paste0(prefix.STUDY,"hasStudyID" ),
-                paste0("CDISCPILOT01"), type="string" 
+    paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
+    paste0(prefix.STUDY,"hasStudyID" ),
+    paste0("CDISCPILOT01"), type="string" 
 )
 add.data.triple(store,
-                paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
-                paste0(prefix.RDFS,"label" ),
-                paste0("Study-CDISCPILOT01"), type="string" 
+    paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
+    paste0(prefix.RDFS,"label" ),
+    paste0("Study-CDISCPILOT01"), type="string" 
 )
 
-#TODO:  COde for each INVESTIGATOR CREATED HERE
-#cdiscpilot01:Investigator_123                  
-#rdf:type study:Investigator ;                
-#study:hasInvestigatorID "123"^^xsd:string ;  
-#study:hasLastName "JONES"^^xsd:string ;      
-#rdfs:label "Investigator 123"^^xsd:string ;  
-
-
-#TODO: Code for each ARM value created here
-#cdiscpilot01:arm-PLACEBO                                     
-#rdf:type study:Arm ;                                                
-#study:hasArmCode <http://example.org/custom#armcd-XAN_L0> ;         
-#rdfs:label "Xanomeline Low Dose"^^xsd:string ;                      
-
-#---- PART 2
+#-- PART 3
 # Loop through the masterData dataframe and create the triples for each 
 #     Person_<n>
 for (i in 1:nrow(masterData))
@@ -484,7 +530,7 @@ for (i in 1:nrow(masterData))
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
                 paste0(prefix.RDFS,"label" ),
-                paste0("Randomization OUtcome ",i), type="string"            
+                paste0("Randomization Outcome ",i), type="string"            
             )
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
@@ -505,6 +551,7 @@ for (i in 1:nrow(masterData))
         paste0(prefix.STUDY,"hasSite" ),
         paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]) 
     )
+        #TODO: Site definition must be moved to singleResource.R !
         #>>
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]),
