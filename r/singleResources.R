@@ -44,3 +44,34 @@ for (j in 1:nrow(investigators))
 
 # Treatment Arms
 #TODO : Build this out.
+#cdiscpilot01:arm-PLACEBO  ()
+#  rdf:type study:Arm ; ()
+#  study:hasArmCode <http://example.org/custom#armcd-PBO> ; ()
+#  rdfs:label "Placebo"^^xsd:string ; ()
+# Get unique arm values 
+# ASSUMPTION: Source data has same values: arm/actarm and armcd/actarmcd.
+#     TODO: improve code by combining both to use any values that may differ 
+#            between the two
+arms <- masterData[,c("arm", "armcd")]
+# Remove duplicates
+arms <- arms[!duplicated(arms),]
+arms$armUC   <- toupper(gsub(" ", "", arms$arm))
+arms$armcdUC <- toupper(gsub(" ", "", arms$armcd))
+for (a in 1:nrow(arms))
+{
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, "arm-", arms[a,"armUC"]),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.STUDY, "Arm")
+    )
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, "arm-", arms[a,"armUC"]),
+        paste0(prefix.STUDY,"hasArmCode" ),
+        paste0(prefix.CODECUSTOM, "armcd-", arms[a,"armcdUC"])
+   )
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, "arm-", arms[a,"armUC"]),
+        paste0(prefix.RDFS,"label" ),
+        paste0(arms[a,"arm"]), type="string"
+    )
+}
