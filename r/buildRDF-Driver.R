@@ -30,7 +30,7 @@ setwd("C:/_github/SDTM2RDF")
 
 
 sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
-inFilename <- "dmSub.csv"
+inFilename <- "dm.xpt"
 sourceData<-paste0("data/source/", inFilename)  # Subset of DM data for development purposes.
 sourceData<-head(sourceData,1)       #DEV - Keep only first row for development purposes.
 # sourceCodelist<-"data/config/codelist.csv"  # Codelist triples 
@@ -39,10 +39,11 @@ outFile=paste0("data/rdf/", outFilename)
 
 
 # Bring in the data source. Will be used in codeLists.R and triples.R
-masterData <- read.csv(sourceData,
-                       header=T,
-                       sep=',')
-
+#masterData <- read.csv(sourceData,
+#                       header=T,
+#                       sep=',')
+masterData <- sasxport.get(sourceData)
+masterData <- head(masterData, 6)   # Subset for testing purposes
 
 #-- Massage the data as needed prior to building codelists and processing.
 #   Add data where needed for proof of concept. Clean data, etc.
