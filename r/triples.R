@@ -139,8 +139,8 @@ for (i in 1:nrow(masterData))
     #   Hokey-assed kludge to add T00:00:00. Fix with a  format
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, "BirthDate_", i),
-        paste0(prefix.TIME,"inXSDDatetime" ),
-        paste0( strptime(masterData[i,"brthdate"], "%Y-%m-%d"), "T00:00:00"), type="dateTime"
+        paste0(prefix.TIME,"inXSDDate" ),
+        paste0( strptime(masterData[i,"brthdate"], "%Y-%m-%d")), type="date"
     )
     #WIP DeathDate
     add.triple(store,
@@ -158,17 +158,18 @@ for (i in 1:nrow(masterData))
     if (! is.na(masterData[i,"dthdtc"])) {
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "DeathDate_", i),
-            paste0(prefix.TIME,"inXSDDatetime" ),
-            paste0( strptime(masterData[i,"dthdtc"], "%Y-%m-%d"), "T00:00:00"), type="dateTime"
+            paste0(prefix.TIME,"inXSDDate" ),
+            paste0( strptime(masterData[i,"dthdtc"], "%Y-%m-%d"), "T00:00:00"), type="date"
         )
     }
-    else{
-        add.data.triple(store,
-            paste0(prefix.CDISCPILOT01, "DeathDate_", i),
-            paste0(prefix.TIME,"inXSDDatetime" ),
-            paste0( "NA"), type="dateTime"
-        )               
-    }
+    
+    #DELelse{
+    #    add.data.triple(store,
+    #        paste0(prefix.CDISCPILOT01, "DeathDate_", i),
+    #        paste0(prefix.TIME,"inXSDDatetime" ),
+    #        paste0( "NA"), type="dateTime"
+    #    )               
+    #}
     
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
@@ -303,20 +304,23 @@ for (i in 1:nrow(masterData))
         paste0(prefix.RDFS,"label" ),
         paste0("Demographic data collection date ",i), type="string"
     )
+
     if (! is.na(masterData[i,"dmdtc"])) {
        add.data.triple(store,    
            paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-           paste0(prefix.TIME,"inXSDDateTime" ),
-           paste0( strptime(masterData[i,"dmdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+           paste0(prefix.TIME,"inXSDDate" ),
+           paste0( strptime(masterData[i,"dmdtc"], "%m/%d/%Y")), type="date"
        )
     }
-    else{
-        add.data.triple(store,    
-            paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-            paste0(prefix.TIME,"inXSDDateTime" ),
-            paste0( "NA"), type="dateTime"
-        )
-    }
+    #TW: Remove. do not code NA into dataTime. if different types of missing require identification, 
+    #    code this using additional triples.
+    #else{
+    #    add.data.triple(store,    
+    #        paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+    #        paste0(prefix.TIME,"inXSDDateTime" ),
+    #        paste0( "NA"), type="dateTime"
+    #    )
+    #}
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"participatesIn" ),
@@ -379,8 +383,8 @@ for (i in 1:nrow(masterData))
             )
             add.data.triple(store,    
                 paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
-                paste0(prefix.TIME,"inXSDDateTime" ),
-                paste0(strptime(masterData[i,"rficdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+                paste0(prefix.TIME,"inXSDDate" ),
+                paste0(strptime(masterData[i,"rficdtc"], "%m/%d/%Y")), type="date"
             )
     # Product Administration         
     add.triple(store,
@@ -417,8 +421,8 @@ for (i in 1:nrow(masterData))
             )
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
-                paste0(prefix.TIME,"inXSDDateTime"),
-                paste0(strptime(masterData[i,"rfstdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+                paste0(prefix.TIME,"inXSDDate"),
+                paste0(strptime(masterData[i,"rfstdtc"], "%m/%d/%Y")), type="date"
             )
         #>>    
         add.triple(store,
@@ -439,8 +443,8 @@ for (i in 1:nrow(masterData))
             )
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
-                paste0(prefix.TIME,"inXSDDateTime"),
-                paste0(strptime(masterData[i,"rfendtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+                paste0(prefix.TIME,"inXSDDate"),
+                paste0(strptime(masterData[i,"rfendtc"], "%m/%d/%Y")), type="date"
             )
     # Randomization
     add.triple(store,
@@ -527,8 +531,8 @@ for (i in 1:nrow(masterData))
         #TODO Add !is.na for this time.
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
-            paste0(prefix.TIME,"inXSDDateTime"),
-            paste0(strptime(masterData[i,"rfstdtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+            paste0(prefix.TIME,"inXSDDate"),
+            paste0(strptime(masterData[i,"rfstdtc"], "%m/%d/%Y")), type="date"
         )
         # Reference end date
         add.triple(store,
@@ -550,29 +554,49 @@ for (i in 1:nrow(masterData))
         #TODO Add !is.na for this time.
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
-            paste0(prefix.TIME,"inXSDDateTime"),
-            paste0(strptime(masterData[i,"rfendtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+            paste0(prefix.TIME,"inXSDDate"),
+            paste0(strptime(masterData[i,"rfendtc"], "%m/%d/%Y")), type="date"
         )
-        add.triple(store,
-            paste0(prefix.CDISCPILOT01, persNum),
-            paste0(prefix.TIME,"hasEnd" ),
-            paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i)
-        )
-            #>>
+        # Create triples for rfpendtc only if a value is present
+        if (! is.na(masterData[i,"rfpendtc"])) {
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, persNum),
+                paste0(prefix.TIME,"hasEnd" ),
+                paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i)
+            )
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
                 paste0(prefix.RDF,"type" ),
                 paste0(prefix.STUDY,"StudyParticipationEnd" )
             )
-            add.triple(store,
+            add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
                 paste0(prefix.RDFS,"label" ),
                 paste0("Study participation end ", i )
             )
-            #TODO add ! is.na
-            add.data.triple(store,
-                paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
-                paste0(prefix.TIME,"inXSDDateTime"),
-                paste0(strptime(masterData[i,"rfpendtc"], "%m/%d/%Y"), "T00:00:00"), type="dateTime"
+            #TODO Add a function that evaluates each DATE field value, then types it as either
+            #     xsd:date if valid yyyy-mm-dd value, or as xsd:string if(invalid/incomplete date OR
+            #     is a datetime value)
+            if (grepl(":",masterData[i,"rfpendtc"])
+                |
+                is.na(as.Date(masterData[i,"rfpendtc"], format = "%Y-%m-%d")) # UNTESTED
+                |
+                is.na(as.Date(masterData[i,"rfpendtc"], format = "%m/%d/%Y")) # UNTESTED
             )
+            {
+                # The value is not a valid DATE or is a datetime. Both to be coded as strings
+                add.data.triple(store,
+                    paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
+                                paste0(prefix.TIME,"inXSDString"),
+                                paste0(masterData[i,"rfpendtc"]), type="string"
+                )            
+            } else {
+                # Otherwise it is a valid yyyy-mm-dd so code as xsd:date
+                add.data.triple(store,
+                    paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
+                    paste0(prefix.TIME,"inXSDDate"),
+                    paste0(masterData[i,"rfpendtc"]), type="date"
+                )
+            }
+        }
 }    # End looping through the study master dataframe.    

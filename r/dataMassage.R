@@ -82,6 +82,10 @@ masterData$countryCode <- recode(masterData$country,
                                   "'USA' = '840';"
 )
 
+
+# Remove "T" from datetime value to allow later conversion to either Date or dateTime
+# masterData$rfpendtc <- gsub("T", "-", masterData$rfpendtc)
+
 # Date conversions. Convert to Date and DateTime as noted in the DEFINE doc
 #     for this study.
 masterData$rfstdtc_DT  <- as.Date(masterData$rfstdtc, "%m/%d/%Y")
@@ -90,7 +94,9 @@ masterData$rfxstdtc_DT <- as.Date(masterData$rfxstdtc, "%m/%d/%Y")
 masterData$dmdtc_DT    <- as.Date(masterData$dmdtc, "%m/%d/%Y")
 masterData$rfxendtc_DT <- as.POSIXct(masterData$rfxendtc, format="%m/%d/%Y")
 masterData$rficdtc_DT  <- as.POSIXct(masterData$rficdtc,  format="%m/%d/%Y")
-masterData$rfpendtc_DT <- as.POSIXct(masterData$rfpendtc, format="%m/%d/%Y")
 masterData$dthdtc_DT   <- as.POSIXct(masterData$dthdtc,   format="%m/%d/%Y")
+#rfpendtc is a datetime format that is inconsistently coded in the source.
+masterData$rfpendtc_DT <- as.POSIXct(masterData$rfpendtc, format="%m/%d/%Y")
+
 
 

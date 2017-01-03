@@ -33,7 +33,7 @@ sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting T
 inFilename <- "dmSub.csv"
 sourceData<-paste0("data/source/", inFilename)  # Subset of DM data for development purposes.
 sourceData<-head(sourceData,1)       #DEV - Keep only first row for development purposes.
-sourceCodelist<-"data/config/codelist.csv"  # Codelist triples 
+# sourceCodelist<-"data/config/codelist.csv"  # Codelist triples 
 outFilename = "cdiscpilot01.TTL"
 outFile=paste0("data/rdf/", outFilename)
 
@@ -77,6 +77,6 @@ source('R/triples.R')
 ###############################################################################
 store = save.rdf(store, filename=outFile, format="TURTLE")
 
-# Validate TTL file.
-#system(paste('riot --validate ', outFile),
-#             show.output.on.console = TRUE)
+# Validate TTL file.Always good to validate, friendo.
+system(paste('riot --validate ', outFile),
+    show.output.on.console = TRUE)

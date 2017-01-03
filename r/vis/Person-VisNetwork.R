@@ -71,10 +71,14 @@ nodes<- as.data.frame(nodeList[c("id")])
 
 
 # Assign groups used for icon types and colours
+# Order is important.
 # p:Person_1
 # nodes$group[nodes$id == "p:Person_1"]    <- "Person"  # Works
-nodes$group[grepl("Person_", nodes$id, perl=TRUE)] <- "Person"  #
 nodes$group[grepl("cdiscsdtm", nodes$id, perl=TRUE)] <- "SDTMTerm"  #
+nodes$group[grepl("study", nodes$id, perl=TRUE)] <- "Study"  #
+nodes$group[grepl("CDISCPILOT01", nodes$id, perl=TRUE)] <- "CDISCPilot"  #
+nodes$group[grepl("Person_", nodes$id, perl=TRUE)] <- "Person"  #
+
 
 # Assign labels used for mouseover
 nodes$title <- nodes$id
@@ -95,8 +99,16 @@ edges$length <- 500
 
 visNetwork(nodes, edges, width= "100%") %>%
     # visPhysics(solver = "forceAtlas2Based", forceAtlas2Based = list(gravitationalConstant = -10))%>%
+    #centralGravity = 0.3
+    visPhysics(stabilization = FALSE, barnesHut = list(
+        gravitationalConstant = -1000,
+        centralGravity = .5,
+        springConstant = 0.002,
+        springLength = 100)) %>%
     visGroups(groupname = "Person", color = "darkblue") %>%
     visGroups(groupname = "SDTMTerm", color = "red")  %>%
-    visNodes(shadow = TRUE, physics=FALSE)  %>%
-    visHierarchicalLayout(direction = "LR")
+    visGroups(groupname = "Study", color = "yellow")  %>%
+    visGroups(groupname = "CDISCPilot", color = "green") 
+    
+    #visNodes(shadow = TRUE, physics=FALSE) 
 
