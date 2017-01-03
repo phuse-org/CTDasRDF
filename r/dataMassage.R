@@ -16,12 +16,8 @@
 id<-1:(nrow(masterData))   # Generate a list of ID numbers
 masterData$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
 
-#---- Data Massage
-#-- Create values not in the source that are required for testing or for later 
-#      versions of SDTM.
-# TODO: Move data massage/fabrication to separate R Script.
 # Birthdate 
-masterData$brthdate <- strptime(masterData$rfstdtc, "%m/%d/%Y") - (strtoi(masterData$age) * 365 * 24 * 60*60)
+masterData$brthdate <- strptime(strptime(masterData$rfstdtc, "%Y-%m-%d") - (strtoi(masterData$age) * 365), "%Y-%m-%d")
 
 # Informed Consent  (column present with missing values in DM source).
 masterData$rficdtc <- masterData$dmdtc
@@ -88,15 +84,16 @@ masterData$countryCode <- recode(masterData$country,
 
 # Date conversions. Convert to Date and DateTime as noted in the DEFINE doc
 #     for this study.
-masterData$rfstdtc_DT  <- as.Date(masterData$rfstdtc, "%m/%d/%Y")
-masterData$rfendtc_DT  <- as.Date(masterData$rfendtc, "%m/%d/%Y")
-masterData$rfxstdtc_DT <- as.Date(masterData$rfxstdtc, "%m/%d/%Y")
-masterData$dmdtc_DT    <- as.Date(masterData$dmdtc, "%m/%d/%Y")
-masterData$rfxendtc_DT <- as.POSIXct(masterData$rfxendtc, format="%m/%d/%Y")
-masterData$rficdtc_DT  <- as.POSIXct(masterData$rficdtc,  format="%m/%d/%Y")
-masterData$dthdtc_DT   <- as.POSIXct(masterData$dthdtc,   format="%m/%d/%Y")
+# Removing conversions now that using source XPT file.
+#masterData$rfstdtc_DT  <- as.Date(masterData$rfstdtc, "%m/%d/%Y")
+#masterData$rfendtc_DT  <- as.Date(masterData$rfendtc, "%m/%d/%Y")
+#masterData$rfxstdtc_DT <- as.Date(masterData$rfxstdtc, "%m/%d/%Y")
+#masterData$dmdtc_DT    <- as.Date(masterData$dmdtc, "%m/%d/%Y")
+#masterData$rfxendtc_DT <- as.POSIXct(masterData$rfxendtc, format="%m/%d/%Y")
+#masterData$rficdtc_DT  <- as.POSIXct(masterData$rficdtc,  format="%m/%d/%Y")
+#masterData$dthdtc_DT   <- as.POSIXct(masterData$dthdtc,   format="%m/%d/%Y")
 #rfpendtc is a datetime format that is inconsistently coded in the source.
-masterData$rfpendtc_DT <- as.POSIXct(masterData$rfpendtc, format="%m/%d/%Y")
+#masterData$rfpendtc_DT <- as.POSIXct(masterData$rfpendtc, format="%m/%d/%Y")
 
 
 
