@@ -19,7 +19,6 @@ library(rrdf)
 library(Hmisc)
 library(car)   # Recoding of values for SDTM codes, etc.
 
-
 # Version
 #    Used to identify the version of the code and data. Is part of the TTL
 #    metadata
@@ -68,7 +67,6 @@ for (i in 1:nrow(prefixes)) {
 }
 
 source('R/singleResources.R')
-
 
 #-- Data triples creation
 source('R/triples.R')
