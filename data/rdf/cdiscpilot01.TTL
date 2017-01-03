@@ -23,14 +23,14 @@
 @prefix sdtm:  <http://cdisc.org/sdtm#> .
 
 cdiscpilot01:ProductAdministrationBegin_4
-        a                   study:ProductAdministrationBegin ;
-        rdfs:label          "Product administration begin 4"^^xsd:string ;
-        time:inXSDDateTime  "2014-03-18T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationBegin ;
+        rdfs:label      "Product administration begin 4"^^xsd:string ;
+        time:inXSDDate  "2014-03-18"^^xsd:date .
 
 cdiscpilot01:DemographicDataCollectionDate_6
-        a                   study:DemographicDataCollectionDate ;
-        rdfs:label          "Demographic data collection date 6"^^xsd:string ;
-        time:inXSDDateTime  "2013-01-22T00:00:00"^^xsd:dateTime .
+        a               study:DemographicDataCollectionDate ;
+        rdfs:label      "Demographic data collection date 6"^^xsd:string ;
+        time:inXSDDate  "2013-01-22"^^xsd:date .
 
 cdiscpilot01:ProductAdministration_4
         a                  study:ProductAdministration ;
@@ -44,9 +44,9 @@ cdiscpilot01:InformedConsentOutcome_4
         study:hasActivityOutcomeCode  code:InformedConsent_granted .
 
 cdiscpilot01:InformedConsentBegin_2
-        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
-        rdfs:label          "Informed consent begin 2"^^xsd:string ;
-        time:inXSDDateTime  "2012-07-22T00:00:00"^^xsd:dateTime .
+        a               study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label      "Informed consent begin 2"^^xsd:string ;
+        time:inXSDDate  "2012-07-22"^^xsd:date .
 
 cdiscpilot01:AgeMeasurement_2
         a                         study:AgeMeasurement ;
@@ -63,27 +63,18 @@ cdiscpilot01:RandomizationOutcome_2
         rdfs:label                    "Randomization Outcome 2"^^xsd:string ;
         study:hasActivityOutcomeCode  custom:armcd-PBO .
 
-cdiscpilot01:Deathdate_6
-        a                   study:Deathdate ;
-        time:inXSDDatetime  "NA"^^xsd:dateTime .
-
 cdiscpilot01:StudyParticipationEnd_1
-        a                   study:StudyParticipationEnd ;
-        rdfs:label          <Study participation end 1> ;
-        time:inXSDDateTime  "NAT00:00:00"^^xsd:dateTime .
-
-cdiscpilot01:Birthdate_2
-        a                   study:Birthdate ;
-        time:inXSDDatetime  "1948-08-21T00:00:00"^^xsd:dateTime .
+        a                 study:StudyParticipationEnd ;
+        rdfs:label        "Study participation end 1" ;
+        time:inXSDString  "2014-07-02T11:45"^^xsd:string .
 
 cdiscpilot01:Person_4
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person 4" ;
         study:allocatedToArm         custom:armcd-XAN_LO ;
-        study:deathFlag              "NA"^^xsd:string ;
+        study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_4 ;
-        study:hasBirthdate           cdiscpilot01:Birthdate_4 ;
-        study:hasDeathdate           cdiscpilot01:Deathdate_4 ;
+        study:hasBirthDate           cdiscpilot01:BirthDate_4 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C20197 ;
@@ -97,18 +88,18 @@ cdiscpilot01:Person_4
         time:hasEnd                  cdiscpilot01:StudyParticipationEnd_4 , cdiscpilot01:ReferenceEndDate_4 .
 
 cdiscpilot01:ProductAdministrationEnd_4
-        a                   study:ProductAdministrationEnd ;
-        rdfs:label          "Product administration end 4"^^xsd:string ;
-        time:inXSDDateTime  "2014-04-14T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationEnd ;
+        rdfs:label      "Product administration end 4"^^xsd:string ;
+        time:inXSDDate  "2014-04-14"^^xsd:date .
 
 cdiscpilot01:armcd-PBO
         a                 study:Arm ;
         study:hasArmCode  custom:armcd-PBO .
 
 cdiscpilot01:ReferenceEndDate_4
-        a                   study:ReferenceEndDate ;
-        rdfs:label          "Reference end date 4" ;
-        time:inXSDDateTime  "2014-04-14T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceEndDate ;
+        rdfs:label      "Reference end date 4" ;
+        time:inXSDDate  "2014-04-14"^^xsd:date .
 
 cdiscpilot01:Age_3  a   study:Age ;
         rdfs:label      "Age 3"^^xsd:string , "Age 3"^^xsd:string ;
@@ -116,9 +107,9 @@ cdiscpilot01:Age_3  a   study:Age ;
         study:hasValue  "71"^^xsd:float .
 
 cdiscpilot01:ReferenceStartDate_1
-        a                   study:ReferenceStartDate ;
-        rdfs:label          "Reference start date 1" ;
-        time:inXSDDateTime  "2014-01-02T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceStartDate ;
+        rdfs:label      "Reference start date 1" ;
+        time:inXSDDate  "2014-01-02"^^xsd:date .
 
 cdiscpilot01:InformedConsent_6
         a                         study:InformedConsent ;
@@ -137,24 +128,28 @@ cdiscpilot01:Randomization_5
         rdfs:label                "Randomization 5"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_5 .
 
+cdiscpilot01:BirthDate_4
+        a               study:BirthDate ;
+        time:inXSDDate  "2014-03-17"^^xsd:date .
+
 cdiscpilot01:armcd-XAN_HI
         a                 study:Arm ;
         study:hasArmCode  custom:armcd-PBO .
 
 cdiscpilot01:ProductAdministrationBegin_3
-        a                   study:ProductAdministrationBegin ;
-        rdfs:label          "Product administration begin 3"^^xsd:string ;
-        time:inXSDDateTime  "2013-07-19T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationBegin ;
+        rdfs:label      "Product administration begin 3"^^xsd:string ;
+        time:inXSDDate  "2013-07-19"^^xsd:date .
 
 cdiscpilot01:StudyParticipationEnd_6
-        a                   study:StudyParticipationEnd ;
-        rdfs:label          <Study participation end 6> ;
-        time:inXSDDateTime  "2013-07-28T00:00:00"^^xsd:dateTime .
+        a               study:StudyParticipationEnd ;
+        rdfs:label      "Study participation end 6" ;
+        time:inXSDDate  "2013-07-28"^^xsd:date .
 
 cdiscpilot01:DemographicDataCollectionDate_5
-        a                   study:DemographicDataCollectionDate ;
-        rdfs:label          "Demographic data collection date 5"^^xsd:string ;
-        time:inXSDDateTime  "2014-06-24T00:00:00"^^xsd:dateTime .
+        a               study:DemographicDataCollectionDate ;
+        rdfs:label      "Demographic data collection date 5"^^xsd:string ;
+        time:inXSDDate  "2014-06-24"^^xsd:date .
 
 cdiscpilot01:ProductAdministration_3
         a                  study:ProductAdministration ;
@@ -163,9 +158,9 @@ cdiscpilot01:ProductAdministration_3
         time:hasEnd        cdiscpilot01:ProductAdministrationEnd_3 .
 
 cdiscpilot01:InformedConsentBegin_1
-        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
-        rdfs:label          "Informed consent begin 1"^^xsd:string ;
-        time:inXSDDateTime  "2013-12-26T00:00:00"^^xsd:dateTime .
+        a               study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label      "Informed consent begin 1"^^xsd:string ;
+        time:inXSDDate  "2013-12-26"^^xsd:date .
 
 cdiscpilot01:InformedConsentOutcome_3
         a                             study:InformedConsentOutcome ;
@@ -181,14 +176,10 @@ cdiscpilot01:RandomizationOutcome_1
         rdfs:label                    "Randomization Outcome 1"^^xsd:string ;
         study:hasActivityOutcomeCode  custom:armcd-PBO .
 
-cdiscpilot01:Deathdate_5
-        a                   study:Deathdate ;
-        time:inXSDDatetime  "NA"^^xsd:dateTime .
-
 cdiscpilot01:ReferenceStartDate_6
-        a                   study:ReferenceStartDate ;
-        rdfs:label          "Reference start date 6" ;
-        time:inXSDDateTime  "2013-02-12T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceStartDate ;
+        rdfs:label      "Reference start date 6" ;
+        time:inXSDDate  "2013-02-12"^^xsd:date .
 
 cdiscpilot01:site-701
         a                      study:Site ;
@@ -197,18 +188,13 @@ cdiscpilot01:site-701
         study:hasInvestigator  cdiscpilot01:Investigator_123 ;
         study:hasSiteID        "701"^^xsd:string .
 
-cdiscpilot01:Birthdate_1
-        a                   study:Birthdate ;
-        time:inXSDDatetime  "1951-01-18T00:00:00"^^xsd:dateTime .
-
 cdiscpilot01:Person_3
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person 3" ;
         study:allocatedToArm         custom:armcd-XAN_HI ;
-        study:deathFlag              "NA"^^xsd:string ;
+        study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_3 ;
-        study:hasBirthdate           cdiscpilot01:Birthdate_3 ;
-        study:hasDeathdate           cdiscpilot01:Deathdate_3 ;
+        study:hasBirthDate           cdiscpilot01:BirthDate_3 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C20197 ;
@@ -228,19 +214,19 @@ cdiscpilot01:Investigator_123
         study:hasLastName        "Jones"^^xsd:string .
 
 cdiscpilot01:ProductAdministrationEnd_3
-        a                   study:ProductAdministrationEnd ;
-        rdfs:label          "Product administration end 3"^^xsd:string ;
-        time:inXSDDateTime  "2014-01-14T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationEnd ;
+        rdfs:label      "Product administration end 3"^^xsd:string ;
+        time:inXSDDate  "2014-01-14"^^xsd:date .
 
 cdiscpilot01:ReferenceEndDate_3
-        a                   study:ReferenceEndDate ;
-        rdfs:label          "Reference end date 3" ;
-        time:inXSDDateTime  "2014-01-14T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceEndDate ;
+        rdfs:label      "Reference end date 3" ;
+        time:inXSDDate  "2014-01-14"^^xsd:date .
 
 cdiscpilot01:InformedConsentBegin_6
-        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
-        rdfs:label          "Informed consent begin 6"^^xsd:string ;
-        time:inXSDDateTime  "2013-01-22T00:00:00"^^xsd:dateTime .
+        a               study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label      "Informed consent begin 6"^^xsd:string ;
+        time:inXSDDate  "2013-01-22"^^xsd:date .
 
 cdiscpilot01:armcd-XAN_LO
         a                 study:Arm ;
@@ -277,20 +263,24 @@ cdiscpilot01:Randomization_4
         rdfs:label                "Randomization 4"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_4 .
 
+cdiscpilot01:BirthDate_3
+        a               study:BirthDate ;
+        time:inXSDDate  "2013-07-18"^^xsd:date .
+
 cdiscpilot01:ProductAdministrationBegin_2
-        a                   study:ProductAdministrationBegin ;
-        rdfs:label          "Product administration begin 2"^^xsd:string ;
-        time:inXSDDateTime  "2012-08-05T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationBegin ;
+        rdfs:label      "Product administration begin 2"^^xsd:string ;
+        time:inXSDDate  "2012-08-05"^^xsd:date .
 
 cdiscpilot01:StudyParticipationEnd_5
-        a                   study:StudyParticipationEnd ;
-        rdfs:label          <Study participation end 5> ;
-        time:inXSDDateTime  "NAT00:00:00"^^xsd:dateTime .
+        a                 study:StudyParticipationEnd ;
+        rdfs:label        "Study participation end 5" ;
+        time:inXSDString  "2014-12-30T09:50"^^xsd:string .
 
 cdiscpilot01:DemographicDataCollectionDate_4
-        a                   study:DemographicDataCollectionDate ;
-        rdfs:label          "Demographic data collection date 4"^^xsd:string ;
-        time:inXSDDateTime  "2014-03-10T00:00:00"^^xsd:dateTime .
+        a               study:DemographicDataCollectionDate ;
+        rdfs:label      "Demographic data collection date 4"^^xsd:string ;
+        time:inXSDDate  "2014-03-10"^^xsd:date .
 
 cdiscpilot01:study-CDISCPILOT01
         a                 study:Study ;
@@ -308,27 +298,18 @@ cdiscpilot01:ProductAdministration_2
         time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_2 ;
         time:hasEnd        cdiscpilot01:ProductAdministrationEnd_2 .
 
-cdiscpilot01:Birthdate_6
-        a                   study:Birthdate ;
-        time:inXSDDatetime  "1928-03-05T00:00:00"^^xsd:dateTime .
-
-cdiscpilot01:Deathdate_4
-        a                   study:Deathdate ;
-        time:inXSDDatetime  "NA"^^xsd:dateTime .
-
 cdiscpilot01:ReferenceStartDate_5
-        a                   study:ReferenceStartDate ;
-        rdfs:label          "Reference start date 5" ;
-        time:inXSDDateTime  "2014-07-01T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceStartDate ;
+        rdfs:label      "Reference start date 5" ;
+        time:inXSDDate  "2014-07-01"^^xsd:date .
 
 cdiscpilot01:Person_2
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person 2" ;
         study:allocatedToArm         custom:armcd-PBO ;
-        study:deathFlag              "NA"^^xsd:string ;
+        study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_2 ;
-        study:hasBirthdate           cdiscpilot01:Birthdate_2 ;
-        study:hasDeathdate           cdiscpilot01:Deathdate_2 ;
+        study:hasBirthDate           cdiscpilot01:BirthDate_2 ;
         study:hasEthnicity           cdiscsdtm:C66790.C17459 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C20197 ;
@@ -342,19 +323,19 @@ cdiscpilot01:Person_2
         time:hasEnd                  cdiscpilot01:ReferenceEndDate_2 , cdiscpilot01:StudyParticipationEnd_2 .
 
 cdiscpilot01:ProductAdministrationEnd_2
-        a                   study:ProductAdministrationEnd ;
-        rdfs:label          "Product administration end 2"^^xsd:string ;
-        time:inXSDDateTime  "2012-09-02T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationEnd ;
+        rdfs:label      "Product administration end 2"^^xsd:string ;
+        time:inXSDDate  "2012-09-02"^^xsd:date .
 
 cdiscpilot01:ReferenceEndDate_2
-        a                   study:ReferenceEndDate ;
-        rdfs:label          "Reference end date 2" ;
-        time:inXSDDateTime  "2012-09-02T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceEndDate ;
+        rdfs:label      "Reference end date 2" ;
+        time:inXSDDate  "2012-09-02"^^xsd:date .
 
 cdiscpilot01:InformedConsentBegin_5
-        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
-        rdfs:label          "Informed consent begin 5"^^xsd:string ;
-        time:inXSDDateTime  "2014-06-24T00:00:00"^^xsd:dateTime .
+        a               study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label      "Informed consent begin 5"^^xsd:string ;
+        time:inXSDDate  "2014-06-24"^^xsd:date .
 
 cdiscpilot01:Age_1  a   study:Age ;
         rdfs:label      "Age 1"^^xsd:string , "Age 1"^^xsd:string ;
@@ -388,19 +369,23 @@ cdiscpilot01:Randomization_3
         study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_3 .
 
 cdiscpilot01:ProductAdministrationBegin_1
-        a                   study:ProductAdministrationBegin ;
-        rdfs:label          "Product administration begin 1"^^xsd:string ;
-        time:inXSDDateTime  "2014-01-02T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationBegin ;
+        rdfs:label      "Product administration begin 1"^^xsd:string ;
+        time:inXSDDate  "2014-01-02"^^xsd:date .
+
+cdiscpilot01:BirthDate_2
+        a               study:BirthDate ;
+        time:inXSDDate  "2012-08-04"^^xsd:date .
 
 cdiscpilot01:StudyParticipationEnd_4
-        a                   study:StudyParticipationEnd ;
-        rdfs:label          <Study participation end 4> ;
-        time:inXSDDateTime  "2014-09-15T00:00:00"^^xsd:dateTime .
+        a               study:StudyParticipationEnd ;
+        rdfs:label      "Study participation end 4" ;
+        time:inXSDDate  "2014-09-15"^^xsd:date .
 
 cdiscpilot01:DemographicDataCollectionDate_3
-        a                   study:DemographicDataCollectionDate ;
-        rdfs:label          "Demographic data collection date 3"^^xsd:string ;
-        time:inXSDDateTime  "2013-07-11T00:00:00"^^xsd:dateTime .
+        a               study:DemographicDataCollectionDate ;
+        rdfs:label      "Demographic data collection date 3"^^xsd:string ;
+        time:inXSDDate  "2013-07-11"^^xsd:date .
 
 cdiscpilot01:InformedConsentOutcome_1
         a                             study:InformedConsentOutcome ;
@@ -413,32 +398,23 @@ cdiscpilot01:ProductAdministration_1
         time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_1 ;
         time:hasEnd        cdiscpilot01:ProductAdministrationEnd_1 .
 
-cdiscpilot01:Birthdate_5
-        a                   study:Birthdate ;
-        time:inXSDDatetime  "1937-07-20T00:00:00"^^xsd:dateTime .
-
-cdiscpilot01:Deathdate_3
-        a                   study:Deathdate ;
-        time:inXSDDatetime  "NA"^^xsd:dateTime .
-
 cdiscpilot01:Age_6  a   study:Age ;
         rdfs:label      "Age 6"^^xsd:string , "Age 6"^^xsd:string ;
         study:hasUnit   time:unitYear ;
         study:hasValue  "85"^^xsd:float .
 
 cdiscpilot01:ReferenceStartDate_4
-        a                   study:ReferenceStartDate ;
-        rdfs:label          "Reference start date 4" ;
-        time:inXSDDateTime  "2014-03-18T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceStartDate ;
+        rdfs:label      "Reference start date 4" ;
+        time:inXSDDate  "2014-03-18"^^xsd:date .
 
 cdiscpilot01:Person_1
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person 1" ;
         study:allocatedToArm         custom:armcd-PBO ;
-        study:deathFlag              "NA"^^xsd:string ;
+        study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_1 ;
-        study:hasBirthdate           cdiscpilot01:Birthdate_1 ;
-        study:hasDeathdate           cdiscpilot01:Deathdate_1 ;
+        study:hasBirthDate           cdiscpilot01:BirthDate_1 ;
         study:hasEthnicity           cdiscsdtm:C66790.C17459 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C16576 ;
@@ -457,9 +433,9 @@ cdiscpilot01:arm-XANOMELINELOWDOSE
         study:hasArmCode  custom:armcd-XAN_LO .
 
 cdiscpilot01:ProductAdministrationEnd_1
-        a                   study:ProductAdministrationEnd ;
-        rdfs:label          "Product administration end 1"^^xsd:string ;
-        time:inXSDDateTime  "2014-07-02T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationEnd ;
+        rdfs:label      "Product administration end 1"^^xsd:string ;
+        time:inXSDDate  "2014-07-02"^^xsd:date .
 
 cdiscpilot01:arm-XANOMELINEHIGHDOSE
         a                 study:Arm ;
@@ -467,14 +443,14 @@ cdiscpilot01:arm-XANOMELINEHIGHDOSE
         study:hasArmCode  custom:armcd-XAN_HI .
 
 cdiscpilot01:ProductAdministrationBegin_6
-        a                   study:ProductAdministrationBegin ;
-        rdfs:label          "Product administration begin 6"^^xsd:string ;
-        time:inXSDDateTime  "2013-02-12T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationBegin ;
+        rdfs:label      "Product administration begin 6"^^xsd:string ;
+        time:inXSDDate  "2013-02-12"^^xsd:date .
 
 cdiscpilot01:ReferenceEndDate_1
-        a                   study:ReferenceEndDate ;
-        rdfs:label          "Reference end date 1" ;
-        time:inXSDDateTime  "2014-07-02T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceEndDate ;
+        rdfs:label      "Reference end date 1" ;
+        time:inXSDDate  "2014-07-02"^^xsd:date .
 
 cdiscpilot01:ProductAdministration_6
         a                  study:ProductAdministration ;
@@ -488,9 +464,9 @@ cdiscpilot01:InformedConsentOutcome_6
         study:hasActivityOutcomeCode  code:InformedConsent_granted .
 
 cdiscpilot01:InformedConsentBegin_4
-        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
-        rdfs:label          "Informed consent begin 4"^^xsd:string ;
-        time:inXSDDateTime  "2014-03-10T00:00:00"^^xsd:dateTime .
+        a               study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label      "Informed consent begin 4"^^xsd:string ;
+        time:inXSDDate  "2014-03-10"^^xsd:date .
 
 cdiscpilot01:AgeMeasurement_4
         a                         study:AgeMeasurement ;
@@ -518,32 +494,27 @@ cdiscpilot01:Randomization_2
         rdfs:label                "Randomization 2"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_2 .
 
+cdiscpilot01:BirthDate_1
+        a               study:BirthDate ;
+        time:inXSDDate  "2014-01-01"^^xsd:date .
+
 cdiscpilot01:StudyParticipationEnd_3
-        a                   study:StudyParticipationEnd ;
-        rdfs:label          <Study participation end 3> ;
-        time:inXSDDateTime  "NAT00:00:00"^^xsd:dateTime .
+        a                 study:StudyParticipationEnd ;
+        rdfs:label        "Study participation end 3" ;
+        time:inXSDString  "2014-01-14T11:10"^^xsd:string .
 
 cdiscpilot01:DemographicDataCollectionDate_2
-        a                   study:DemographicDataCollectionDate ;
-        rdfs:label          "Demographic data collection date 2"^^xsd:string ;
-        time:inXSDDateTime  "2012-07-22T00:00:00"^^xsd:dateTime .
-
-cdiscpilot01:Birthdate_4
-        a                   study:Birthdate ;
-        time:inXSDDatetime  "1940-04-04T00:00:00"^^xsd:dateTime .
-
-cdiscpilot01:Deathdate_2
-        a                   study:Deathdate ;
-        time:inXSDDatetime  "NA"^^xsd:dateTime .
+        a               study:DemographicDataCollectionDate ;
+        rdfs:label      "Demographic data collection date 2"^^xsd:string ;
+        time:inXSDDate  "2012-07-22"^^xsd:date .
 
 cdiscpilot01:Person_6
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person 6" ;
         study:allocatedToArm         custom:armcd-PBO ;
-        study:deathFlag              "NA"^^xsd:string ;
+        study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_6 ;
-        study:hasBirthdate           cdiscpilot01:Birthdate_6 ;
-        study:hasDeathdate           cdiscpilot01:Deathdate_6 ;
+        study:hasBirthDate           cdiscpilot01:BirthDate_6 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C16576 ;
@@ -557,14 +528,14 @@ cdiscpilot01:Person_6
         time:hasEnd                  cdiscpilot01:StudyParticipationEnd_6 , cdiscpilot01:ReferenceEndDate_6 .
 
 cdiscpilot01:ProductAdministrationEnd_6
-        a                   study:ProductAdministrationEnd ;
-        rdfs:label          "Product administration end 6"^^xsd:string ;
-        time:inXSDDateTime  "2013-03-29T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationEnd ;
+        rdfs:label      "Product administration end 6"^^xsd:string ;
+        time:inXSDDate  "2013-03-29"^^xsd:date .
 
 cdiscpilot01:ReferenceEndDate_6
-        a                   study:ReferenceEndDate ;
-        rdfs:label          "Reference end date 6" ;
-        time:inXSDDateTime  "2013-03-29T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceEndDate ;
+        rdfs:label      "Reference end date 6" ;
+        time:inXSDDate  "2013-03-29"^^xsd:date .
 
 cdiscpilot01:Age_5  a   study:Age ;
         rdfs:label      "Age 5"^^xsd:string , "Age 5"^^xsd:string ;
@@ -572,9 +543,9 @@ cdiscpilot01:Age_5  a   study:Age ;
         study:hasValue  "77"^^xsd:float .
 
 cdiscpilot01:ReferenceStartDate_3
-        a                   study:ReferenceStartDate ;
-        rdfs:label          "Reference start date 3" ;
-        time:inXSDDateTime  "2013-07-19T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceStartDate ;
+        rdfs:label      "Reference start date 3" ;
+        time:inXSDDate  "2013-07-19"^^xsd:date .
 
 cdiscpilot01:DemographicDataCollection_6
         a                  study:DemographicDataCollection ;
@@ -582,10 +553,14 @@ cdiscpilot01:DemographicDataCollection_6
         study:studyDay     "-21" ;
         time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_6 .
 
+cdiscpilot01:BirthDate_6
+        a               study:BirthDate ;
+        time:inXSDDate  "2013-02-11"^^xsd:date .
+
 cdiscpilot01:ProductAdministrationBegin_5
-        a                   study:ProductAdministrationBegin ;
-        rdfs:label          "Product administration begin 5"^^xsd:string ;
-        time:inXSDDateTime  "2014-07-01T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationBegin ;
+        rdfs:label      "Product administration begin 5"^^xsd:string ;
+        time:inXSDDate  "2014-07-01"^^xsd:date .
 
 cdiscpilot01:ProductAdministration_5
         a                  study:ProductAdministration ;
@@ -599,9 +574,9 @@ cdiscpilot01:InformedConsentOutcome_5
         study:hasActivityOutcomeCode  code:InformedConsent_granted .
 
 cdiscpilot01:InformedConsentBegin_3
-        a                   study:StudyParticipationBegin , study:InformedConsentBegin ;
-        rdfs:label          "Informed consent begin 3"^^xsd:string ;
-        time:inXSDDateTime  "2013-07-11T00:00:00"^^xsd:dateTime .
+        a               study:StudyParticipationBegin , study:InformedConsentBegin ;
+        rdfs:label      "Informed consent begin 3"^^xsd:string ;
+        time:inXSDDate  "2013-07-11"^^xsd:date .
 
 cdiscpilot01:AgeMeasurement_3
         a                         study:AgeMeasurement ;
@@ -624,31 +599,22 @@ cdiscpilot01:Randomization_1
         study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_1 .
 
 cdiscpilot01:StudyParticipationEnd_2
-        a                   study:StudyParticipationEnd ;
-        rdfs:label          <Study participation end 2> ;
-        time:inXSDDateTime  "2013-02-18T00:00:00"^^xsd:dateTime .
+        a               study:StudyParticipationEnd ;
+        rdfs:label      "Study participation end 2" ;
+        time:inXSDDate  "2013-02-18"^^xsd:date .
 
 cdiscpilot01:DemographicDataCollectionDate_1
-        a                   study:DemographicDataCollectionDate ;
-        rdfs:label          "Demographic data collection date 1"^^xsd:string ;
-        time:inXSDDateTime  "2013-12-26T00:00:00"^^xsd:dateTime .
-
-cdiscpilot01:Birthdate_3
-        a                   study:Birthdate ;
-        time:inXSDDatetime  "1942-08-06T00:00:00"^^xsd:dateTime .
-
-cdiscpilot01:Deathdate_1
-        a                   study:Deathdate ;
-        time:inXSDDatetime  "NA"^^xsd:dateTime .
+        a               study:DemographicDataCollectionDate ;
+        rdfs:label      "Demographic data collection date 1"^^xsd:string ;
+        time:inXSDDate  "2013-12-26"^^xsd:date .
 
 cdiscpilot01:Person_5
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person 5" ;
         study:allocatedToArm         custom:armcd-XAN_HI ;
-        study:deathFlag              "NA"^^xsd:string ;
+        study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_5 ;
-        study:hasBirthdate           cdiscpilot01:Birthdate_5 ;
-        study:hasDeathdate           cdiscpilot01:Deathdate_5 ;
+        study:hasBirthDate           cdiscpilot01:BirthDate_5 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C16576 ;
@@ -662,14 +628,14 @@ cdiscpilot01:Person_5
         time:hasEnd                  cdiscpilot01:StudyParticipationEnd_5 , cdiscpilot01:ReferenceEndDate_5 .
 
 cdiscpilot01:ProductAdministrationEnd_5
-        a                   study:ProductAdministrationEnd ;
-        rdfs:label          "Product administration end 5"^^xsd:string ;
-        time:inXSDDateTime  "2014-12-30T00:00:00"^^xsd:dateTime .
+        a               study:ProductAdministrationEnd ;
+        rdfs:label      "Product administration end 5"^^xsd:string ;
+        time:inXSDDate  "2014-12-30"^^xsd:date .
 
 cdiscpilot01:ReferenceEndDate_5
-        a                   study:ReferenceEndDate ;
-        rdfs:label          "Reference end date 5" ;
-        time:inXSDDateTime  "2014-12-30T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceEndDate ;
+        rdfs:label      "Reference end date 5" ;
+        time:inXSDDate  "2014-12-30"^^xsd:date .
 
 cdiscpilot01:Age_4  a   study:Age ;
         rdfs:label      "Age 4"^^xsd:string , "Age 4"^^xsd:string ;
@@ -677,9 +643,9 @@ cdiscpilot01:Age_4  a   study:Age ;
         study:hasValue  "74"^^xsd:float .
 
 cdiscpilot01:ReferenceStartDate_2
-        a                   study:ReferenceStartDate ;
-        rdfs:label          "Reference start date 2" ;
-        time:inXSDDateTime  "2012-08-05T00:00:00"^^xsd:dateTime .
+        a               study:ReferenceStartDate ;
+        rdfs:label      "Reference start date 2" ;
+        time:inXSDDate  "2012-08-05"^^xsd:date .
 
 cdiscpilot01:arm-PLACEBO
         a                 study:Arm ;
@@ -703,8 +669,12 @@ cdiscpilot01:sdtm-graph
         dcterms:contributor  "Tim Williams"^^xsd:string , "Armando Oliva"^^xsd:string ;
         dcterms:description  "Data converted from the CDISCPILOT01 SDTM DM domain to RDF."^^xsd:string ;
         dcterms:title        "SDTM data as RDF."^^xsd:string ;
-        pav:createdOn        "2016-12-16T13:43:08-05:00"^^xsd:dateTime ;
-        pav:createdWith      "R Version 3.3.0 Platform:x86_64-w64-mingw32 swith scripts from SDTM Data to RDF Working group"^^xsd:string ;
+        pav:createdOn        "2017-01-03T13:28:47-05:00"^^xsd:dateTime ;
+        pav:createdWith      "R Version 3.3.2 Platform:x86_64-w64-mingw32 swith scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "cdiscpilot01.TTL" ;
-        prov:wasDerivedFrom  "dmSub.csv" .
+        prov:wasDerivedFrom  "dm.xpt" .
+
+cdiscpilot01:BirthDate_5
+        a               study:BirthDate ;
+        time:inXSDDate  "2014-06-30"^^xsd:date .
