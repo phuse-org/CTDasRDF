@@ -79,8 +79,8 @@ nodes<- as.data.frame(nodeList[c("id")])
 nodes$group[grepl("cdiscsdtm", nodes$id, perl=TRUE)] <- "SDTMTerm"  #
 nodes$group[grepl("study", nodes$id, perl=TRUE)] <- "Study"  #
 nodes$group[grepl("CDISCPILOT01", nodes$id, perl=TRUE)] <- "CDISCPilot"  #
-nodes$group[grepl("Person_", nodes$id, perl=TRUE)] <- "Person"  # 
-# nodes$group[grepl(":", nodes$id, perl=TRUE)] <- "Literal"  #
+nodes$group[grepl("Person_", nodes$id, perl=TRUE)] <- "Person"  #
+nodes$group[! grepl(":", nodes$id, perl=TRUE)] <- "Literal"  #
 # temporary kludge that fails if a literal has a colon. Close enough for development.
 nodes$shape <- ifelse(grepl(":", nodes$id), "ellipse", "box")
 
@@ -111,8 +111,28 @@ edges$title <- edges$p  # title: present when mouseover edge.
 #            
 #    )
 
+# Possible Color Selections
+# "#FFFFFF", // 1-Wht     
+# "#00FF00", // 2-BrGre   
+# "#99FF99", // 3-LtGre   
+# "#FF0000", // 4-BrRed   
+# "#FA7D7D", // 5-LtRed   
+# "#0000FF", // 6-BrBlu   
+# "#8080FF", // 7-LtBlu   
+# "#FF6600", // 8-BrOr    
+# "#FFB280", // 9-LtOr    
+# "#CC00FF", // 10-BrPur  
+# "#EB99FF", // 11-LtPur  
+# "#FFFF00", // 12-BrYel  
+# "#FFFF80", // 13-LtYel  
+# "#006666", // 14-SlGre  
+# "#99C2C2", // 15-LtSlGre 
+# "#666699", // 16-BlGry  
+# "#A3A3C2"  // 17-LtBlGr 
 
-
+#TODO Add CLUSTERING. By colour? By x?  See docs
+#   fix overlap so there is none
+#  fix iterations/physics to get static right away. Try physics=FALSE
 visNetwork(nodes, edges, width="1500px", height="1000px") %>%
     # visPhysics(solver = "forceAtlas2Based", forceAtlas2Based = list(gravitationalConstant = -10))%>%
     #centralGravity = 0.3
@@ -121,15 +141,18 @@ visNetwork(nodes, edges, width="1500px", height="1000px") %>%
         avoidOverlap = 0.5,
         centralGravity = .02,
         springConstant = 0.002,
+        # stabilization = list(iterations=1),
+        stabilization = FALSE,
         springLength = 100)) %>%
-    visNodes(font=list(size="20")) %>%
+    visNodes(font=list(size="20"),
+             borderWidth=1) %>%
     visEdges(arrows = list(to = list(enabled = TRUE, scaleFactor = 0.5)),
-             smooth = list(enabled = TRUE, type = "cubicBezier", roundness=.8)) %>%
-    visGroups(groupname = "Person", color = "red") %>%
-    visGroups(groupname = "SDTMTerm", color = "green")  %>%
-    visGroups(groupname = "Study", color = "purple")  %>%
-    visGroups(groupname = "CDISCPilot", color = "orange") 
-# visGroups(groupname = "Literal", color = "white") 
+             smooth = list(enabled = FALSE, type = "cubicBezier", roundness=.8)) %>%
+    visGroups(groupname = "Person", color = "#feb24c") %>%
+    visGroups(groupname = "SDTMTerm", color = "#99FF99")  %>%
+    visGroups(groupname = "Study", color = "#A3A3C2")  %>%
+    visGroups(groupname = "CDISCPilot", color = "#8080FF") %>%
+    visGroups(groupname = "Literal", color = list(background="white", border="black"))
 
 
 
