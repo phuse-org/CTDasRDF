@@ -1,12 +1,12 @@
 @prefix country: <http://psi.oasis-open.org/iso/3166#> .
 @prefix cdiscsdtm: <http://rdf.cdisc.org/sdtm-terminology#> .
 @prefix study: <http://example.org/study#> .
-@prefix code:  <http://www.example.org/code#> .
+@prefix code:  <http://example.org/code#> .
 @prefix cts:   <http://rdf.cdisc.org/ct/schema#> .
 @prefix pav:   <http://purl.org/pav> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix cdiscpilot01: <http://example.org/cdiscpilot01#> .
-@prefix custom: <http://www.example.org/custom#> .
+@prefix custom: <http://example.org/custom#> .
 @prefix fabio: <https://svn.code.sf.net/p/sempublishing/code/FaBiO/> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
@@ -14,7 +14,7 @@
 @prefix pro:   <http://purl.org/spar/pro/author> .
 @prefix mms:   <http://rdf.cdisc.org/mms#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix define: <http://www.example.org/CDISCDefine/> .
+@prefix define: <http://example.org/CDISCDefine/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix time:  <http://www.w3.org/2006/time#> .
 @prefix dcat:  <http://www.w3.org/ns/dcat#> .
@@ -68,21 +68,24 @@ cdiscpilot01:StudyParticipationEnd_1
         rdfs:label        "Study participation end 1" ;
         time:inXSDString  "2014-07-02T11:45"^^xsd:string .
 
+cdiscpilot01:Birthdate_2
+        a               study:Birthdate ;
+        time:inXSDDate  "2012-08-04"^^xsd:date .
+
 cdiscpilot01:Person_4
-        a                            study:EnrolledSubject ;
+        a                            study:HumanStudySubject , study:EnrolledSubject , rdfs:Resource ;
         rdfs:label                   "Person 4" ;
         study:allocatedToArm         custom:armcd-XAN_LO ;
         study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_4 ;
-        study:hasBirthDate           cdiscpilot01:BirthDate_4 ;
+        study:hasBirthdate           cdiscpilot01:Birthdate_4 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C20197 ;
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1033"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1033"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:ProductAdministration_4 , cdiscpilot01:Randomization_4 , cdiscpilot01:InformedConsent_4 , cdiscpilot01:DemographicDataCollection_4 ;
-        study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
+        study:participatesIn         cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:ProductAdministration_4 , cdiscpilot01:Randomization_4 , cdiscpilot01:InformedConsent_4 , cdiscpilot01:DemographicDataCollection_4 ;
         study:treatedAccordingToArm  custom:armcd-XAN_LO ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_4 ;
         time:hasEnd                  cdiscpilot01:StudyParticipationEnd_4 , cdiscpilot01:ReferenceEndDate_4 .
@@ -127,10 +130,6 @@ cdiscpilot01:Randomization_5
         a                         study:Randomization ;
         rdfs:label                "Randomization 5"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_5 .
-
-cdiscpilot01:BirthDate_4
-        a               study:BirthDate ;
-        time:inXSDDate  "2014-03-17"^^xsd:date .
 
 cdiscpilot01:armcd-XAN_HI
         a                 study:Arm ;
@@ -188,21 +187,24 @@ cdiscpilot01:site-701
         study:hasInvestigator  cdiscpilot01:Investigator_123 ;
         study:hasSiteID        "701"^^xsd:string .
 
+cdiscpilot01:Birthdate_1
+        a               study:Birthdate ;
+        time:inXSDDate  "2014-01-01"^^xsd:date .
+
 cdiscpilot01:Person_3
-        a                            study:EnrolledSubject ;
+        a                            study:EnrolledSubject , study:HumanStudySubject , rdfs:Resource ;
         rdfs:label                   "Person 3" ;
         study:allocatedToArm         custom:armcd-XAN_HI ;
         study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_3 ;
-        study:hasBirthDate           cdiscpilot01:BirthDate_3 ;
+        study:hasBirthdate           cdiscpilot01:Birthdate_3 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C20197 ;
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1028"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1028"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:InformedConsent_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:Randomization_3 ;
-        study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
+        study:participatesIn         cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:InformedConsent_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:Randomization_3 ;
         study:treatedAccordingToArm  custom:armcd-XAN_HI ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_3 ;
         time:hasEnd                  cdiscpilot01:ReferenceEndDate_3 , cdiscpilot01:StudyParticipationEnd_3 .
@@ -263,10 +265,6 @@ cdiscpilot01:Randomization_4
         rdfs:label                "Randomization 4"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_4 .
 
-cdiscpilot01:BirthDate_3
-        a               study:BirthDate ;
-        time:inXSDDate  "2013-07-18"^^xsd:date .
-
 cdiscpilot01:ProductAdministrationBegin_2
         a               study:ProductAdministrationBegin ;
         rdfs:label      "Product administration begin 2"^^xsd:string ;
@@ -298,26 +296,29 @@ cdiscpilot01:ProductAdministration_2
         time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_2 ;
         time:hasEnd        cdiscpilot01:ProductAdministrationEnd_2 .
 
+cdiscpilot01:Birthdate_6
+        a               study:Birthdate ;
+        time:inXSDDate  "2013-02-11"^^xsd:date .
+
 cdiscpilot01:ReferenceStartDate_5
         a               study:ReferenceStartDate ;
         rdfs:label      "Reference start date 5" ;
         time:inXSDDate  "2014-07-01"^^xsd:date .
 
 cdiscpilot01:Person_2
-        a                            study:EnrolledSubject ;
+        a                            study:HumanStudySubject , rdfs:Resource , study:EnrolledSubject ;
         rdfs:label                   "Person 2" ;
         study:allocatedToArm         custom:armcd-PBO ;
         study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_2 ;
-        study:hasBirthDate           cdiscpilot01:BirthDate_2 ;
+        study:hasBirthdate           cdiscpilot01:Birthdate_2 ;
         study:hasEthnicity           cdiscsdtm:C66790.C17459 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C20197 ;
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1023"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1023"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:ProductAdministration_2 , cdiscpilot01:InformedConsent_2 , cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:Randomization_2 ;
-        study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
+        study:participatesIn         cdiscpilot01:ProductAdministration_2 , cdiscpilot01:InformedConsent_2 , cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:Randomization_2 , cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingToArm  custom:armcd-PBO ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_2 ;
         time:hasEnd                  cdiscpilot01:ReferenceEndDate_2 , cdiscpilot01:StudyParticipationEnd_2 .
@@ -373,10 +374,6 @@ cdiscpilot01:ProductAdministrationBegin_1
         rdfs:label      "Product administration begin 1"^^xsd:string ;
         time:inXSDDate  "2014-01-02"^^xsd:date .
 
-cdiscpilot01:BirthDate_2
-        a               study:BirthDate ;
-        time:inXSDDate  "2012-08-04"^^xsd:date .
-
 cdiscpilot01:StudyParticipationEnd_4
         a               study:StudyParticipationEnd ;
         rdfs:label      "Study participation end 4" ;
@@ -398,6 +395,10 @@ cdiscpilot01:ProductAdministration_1
         time:hasBeginning  cdiscpilot01:ProductAdministrationBegin_1 ;
         time:hasEnd        cdiscpilot01:ProductAdministrationEnd_1 .
 
+cdiscpilot01:Birthdate_5
+        a               study:Birthdate ;
+        time:inXSDDate  "2014-06-30"^^xsd:date .
+
 cdiscpilot01:Age_6  a   study:Age ;
         rdfs:label      "Age 6"^^xsd:string , "Age 6"^^xsd:string ;
         study:hasUnit   time:unitYear ;
@@ -409,20 +410,20 @@ cdiscpilot01:ReferenceStartDate_4
         time:inXSDDate  "2014-03-18"^^xsd:date .
 
 cdiscpilot01:Person_1
-        a                            study:EnrolledSubject ;
+        a                            rdfs:Resource , study:HumanStudySubject , study:EnrolledSubject ;
         rdfs:label                   "Person 1" ;
         study:allocatedToArm         custom:armcd-PBO ;
-        study:deathFlag              ""^^xsd:string ;
+        study:deathFlag              "Y"^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_1 ;
-        study:hasBirthDate           cdiscpilot01:BirthDate_1 ;
+        study:hasBirthdate           cdiscpilot01:Birthdate_1 ;
+        study:hasDeathdate           cdiscpilot01:Deathdate_1 ;
         study:hasEthnicity           cdiscsdtm:C66790.C17459 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C16576 ;
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1015"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1015"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:DemographicDataCollection_1 , cdiscpilot01:InformedConsent_1 , cdiscpilot01:Randomization_1 , cdiscpilot01:ProductAdministration_1 ;
-        study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
+        study:participatesIn         cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:DemographicDataCollection_1 , cdiscpilot01:InformedConsent_1 , cdiscpilot01:ProductAdministration_1 , cdiscpilot01:Randomization_1 ;
         study:treatedAccordingToArm  custom:armcd-PBO ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_1 ;
         time:hasEnd                  cdiscpilot01:ReferenceEndDate_1 , cdiscpilot01:StudyParticipationEnd_1 .
@@ -494,10 +495,6 @@ cdiscpilot01:Randomization_2
         rdfs:label                "Randomization 2"^^xsd:string ;
         study:hasActivityOutcome  cdiscpilot01:RandomizationOutcome_2 .
 
-cdiscpilot01:BirthDate_1
-        a               study:BirthDate ;
-        time:inXSDDate  "2014-01-01"^^xsd:date .
-
 cdiscpilot01:StudyParticipationEnd_3
         a                 study:StudyParticipationEnd ;
         rdfs:label        "Study participation end 3" ;
@@ -508,21 +505,24 @@ cdiscpilot01:DemographicDataCollectionDate_2
         rdfs:label      "Demographic data collection date 2"^^xsd:string ;
         time:inXSDDate  "2012-07-22"^^xsd:date .
 
+cdiscpilot01:Birthdate_4
+        a               study:Birthdate ;
+        time:inXSDDate  "2014-03-17"^^xsd:date .
+
 cdiscpilot01:Person_6
-        a                            study:EnrolledSubject ;
+        a                            study:HumanStudySubject , study:EnrolledSubject , rdfs:Resource ;
         rdfs:label                   "Person 6" ;
         study:allocatedToArm         custom:armcd-PBO ;
         study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_6 ;
-        study:hasBirthDate           cdiscpilot01:BirthDate_6 ;
+        study:hasBirthdate           cdiscpilot01:Birthdate_6 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C16576 ;
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1047"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1047"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:InformedConsent_6 , cdiscpilot01:ProductAdministration_6 , cdiscpilot01:Randomization_6 ;
-        study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
+        study:participatesIn         cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:InformedConsent_6 , cdiscpilot01:ProductAdministration_6 , cdiscpilot01:Randomization_6 ;
         study:treatedAccordingToArm  custom:armcd-PBO ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_6 ;
         time:hasEnd                  cdiscpilot01:StudyParticipationEnd_6 , cdiscpilot01:ReferenceEndDate_6 .
@@ -552,10 +552,6 @@ cdiscpilot01:DemographicDataCollection_6
         rdfs:label         "Demographic data collection 6"^^xsd:string ;
         study:studyDay     "-21" ;
         time:hasBeginning  cdiscpilot01:DemographicDataCollectionDate_6 .
-
-cdiscpilot01:BirthDate_6
-        a               study:BirthDate ;
-        time:inXSDDate  "2013-02-11"^^xsd:date .
 
 cdiscpilot01:ProductAdministrationBegin_5
         a               study:ProductAdministrationBegin ;
@@ -608,21 +604,28 @@ cdiscpilot01:DemographicDataCollectionDate_1
         rdfs:label      "Demographic data collection date 1"^^xsd:string ;
         time:inXSDDate  "2013-12-26"^^xsd:date .
 
+cdiscpilot01:Birthdate_3
+        a               study:Birthdate ;
+        time:inXSDDate  "2013-07-18"^^xsd:date .
+
+cdiscpilot01:Deathdate_1
+        a               study:Deathdate ;
+        time:inXSDDate  "2013-12-26"^^xsd:date .
+
 cdiscpilot01:Person_5
-        a                            study:EnrolledSubject ;
+        a                            study:EnrolledSubject , study:HumanStudySubject , rdfs:Resource ;
         rdfs:label                   "Person 5" ;
         study:allocatedToArm         custom:armcd-XAN_HI ;
         study:deathFlag              ""^^xsd:string ;
         study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_5 ;
-        study:hasBirthDate           cdiscpilot01:BirthDate_5 ;
+        study:hasBirthdate           cdiscpilot01:Birthdate_5 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
         study:hasSex                 cdiscsdtm:C66731.C16576 ;
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1034"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1034"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:DemographicDataCollection_5 , cdiscpilot01:InformedConsent_5 , cdiscpilot01:ProductAdministration_5 , cdiscpilot01:Randomization_5 ;
-        study:participatesInStudy    cdiscpilot01:study-CDISCPILOT01 ;
+        study:participatesIn         cdiscpilot01:DemographicDataCollection_5 , cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:InformedConsent_5 , cdiscpilot01:ProductAdministration_5 , cdiscpilot01:Randomization_5 ;
         study:treatedAccordingToArm  custom:armcd-XAN_HI ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_5 ;
         time:hasEnd                  cdiscpilot01:StudyParticipationEnd_5 , cdiscpilot01:ReferenceEndDate_5 .
@@ -669,12 +672,8 @@ cdiscpilot01:sdtm-graph
         dcterms:contributor  "Tim Williams"^^xsd:string , "Armando Oliva"^^xsd:string ;
         dcterms:description  "Data converted from the CDISCPILOT01 SDTM DM domain to RDF."^^xsd:string ;
         dcterms:title        "SDTM data as RDF."^^xsd:string ;
-        pav:createdOn        "2017-01-03T13:28:47-05:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-01-04T14:09:46-05:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.2 Platform:x86_64-w64-mingw32 swith scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "cdiscpilot01.TTL" ;
         prov:wasDerivedFrom  "dm.xpt" .
-
-cdiscpilot01:BirthDate_5
-        a               study:BirthDate ;
-        time:inXSDDate  "2014-06-30"^^xsd:date .

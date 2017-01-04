@@ -114,6 +114,18 @@ for (i in 1:nrow(masterData))
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY, "EnrolledSubject")
     )
+    # Next two triples new 2016-01-04 based on TTL from AO
+    add.triple(store,
+               paste0(prefix.CDISCPILOT01, persNum),
+               paste0(prefix.RDF,"type" ),
+               paste0(prefix.RDFS, "Resource")
+    )
+    add.triple(store,
+               paste0(prefix.CDISCPILOT01, persNum),
+               paste0(prefix.RDF,"type" ),
+               paste0(prefix.STUDY, "HumanStudySubject")
+    )
+    
     add.data.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"hasSubjectID" ),
