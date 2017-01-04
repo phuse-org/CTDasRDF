@@ -486,7 +486,7 @@ for (i in 1:nrow(masterData))
             )
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.STUDY,"participatesInStudy" ),
+        paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, "study-", masterData[i,"studyCoded"])
     )
     # Note how both allocatedTO and treatedAccordingTo use the same codelist 

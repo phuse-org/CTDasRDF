@@ -1,6 +1,6 @@
 ###############################################################################
 # FILE : dataMassage.R
-# DESCR: Massage the data as needed for the prototype.
+# DESCR: Massage the data as needed for the prototype. 
 # SRC  : 
 # KEYS : 
 # NOTES: 
@@ -11,21 +11,9 @@
 # REQ  : Called from buildRDF-Driver.R
 # TODO : 
 ###############################################################################
-
 # Add the id var "Peson_<n>" for each HumanStudySubject observation 
 id<-1:(nrow(masterData))   # Generate a list of ID numbers
 masterData$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
-
-# Birthdate 
-masterData$brthdate <- strptime(strptime(masterData$rfstdtc, "%Y-%m-%d") - (strtoi(masterData$age) * 365), "%Y-%m-%d")
-
-# Informed Consent  (column present with missing values in DM source).
-masterData$rficdtc <- masterData$dmdtc
-
-#-- Create Data required for prototyping
-# Investigator name and ID not present in source data
-masterData$invnam <- 'Jones'
-masterData$invid  <- '123'
 
 #-- CODED values 
 # UPPERCASE and remove spaces values of fields that will be coded to codelists
@@ -37,8 +25,6 @@ masterData$ageuCoded       <- toupper(gsub(" ", "", masterData$ageu))
 masterData$armCoded        <- toupper(gsub(" ", "", masterData$armcd))
 masterData$actarmCoded     <- toupper(gsub(" ", "", masterData$actarmcd))
 masterData$domainCoded     <- toupper(gsub(" ", "", masterData$domain))
-masterData$dthflCoded      <- toupper(gsub(" ", "", masterData$dthfl))
-
 
 #-- Value/Code Translation
 # Translate values in the domain to their corresponding codelist code
@@ -53,8 +39,8 @@ masterData$dthflCoded      <- toupper(gsub(" ", "", masterData$dthfl))
 #-- Sex code translation
 masterData$sexSDTMCode <- recode(masterData$sex, 
     "'M' = 'C66731.C20197';
-    'F'  = 'C66731.C16576';
-    'U'  = 'C66731.C17998';
+     'F'  = 'C66731.C16576';
+     'U'  = 'C66731.C17998';
     'UNDIFFERENTIATED' = 'C66731.C45908'"
 )
 #-- Ethnicity code translation
@@ -78,22 +64,6 @@ masterData$countryCode <- recode(masterData$country,
                                   "'USA' = '840';"
 )
 
-
-# Remove "T" from datetime value to allow later conversion to either Date or dateTime
-# masterData$rfpendtc <- gsub("T", "-", masterData$rfpendtc)
-
-# Date conversions. Convert to Date and DateTime as noted in the DEFINE doc
-#     for this study.
-# Removing conversions now that using source XPT file.
-#masterData$rfstdtc_DT  <- as.Date(masterData$rfstdtc, "%m/%d/%Y")
-#masterData$rfendtc_DT  <- as.Date(masterData$rfendtc, "%m/%d/%Y")
-#masterData$rfxstdtc_DT <- as.Date(masterData$rfxstdtc, "%m/%d/%Y")
-#masterData$dmdtc_DT    <- as.Date(masterData$dmdtc, "%m/%d/%Y")
-#masterData$rfxendtc_DT <- as.POSIXct(masterData$rfxendtc, format="%m/%d/%Y")
-#masterData$rficdtc_DT  <- as.POSIXct(masterData$rficdtc,  format="%m/%d/%Y")
-#masterData$dthdtc_DT   <- as.POSIXct(masterData$dthdtc,   format="%m/%d/%Y")
-#rfpendtc is a datetime format that is inconsistently coded in the source.
-#masterData$rfpendtc_DT <- as.POSIXct(masterData$rfpendtc, format="%m/%d/%Y")
-
-
+# Create date needed for testing purposes. Eg: Set a deathFlag value to allow testing of code.
+source('R/dataCreate.R')
 
