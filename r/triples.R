@@ -124,42 +124,42 @@ for (i in 1:nrow(masterData))
         paste0(prefix.STUDY,"hasUniqueSubjectID" ),
         paste0( masterData[i,"usubjid"]), type="string"
     )
-    # BirthDate
+    # Birthdate
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
-        paste0(prefix.STUDY,"hasBirthDate" ),
-        paste0(prefix.CDISCPILOT01, "BirthDate_", i)
+        paste0(prefix.STUDY,"hasBirthdate" ),
+        paste0(prefix.CDISCPILOT01, "Birthdate_", i)
     )
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "BirthDate_", i),
+        paste0(prefix.CDISCPILOT01, "Birthdate_", i),
         paste0(prefix.RDF,"type" ),
-        paste0(prefix.STUDY,"BirthDate" )
+        paste0(prefix.STUDY,"Birthdate" )
     )
     # Note use of strptime to convert from mm/dd/YYYY to dateTime.
     #   Hokey-assed kludge to add T00:00:00. Fix with a  format
     add.data.triple(store,
-        paste0(prefix.CDISCPILOT01, "BirthDate_", i),
+        paste0(prefix.CDISCPILOT01, "Birthdate_", i),
         paste0(prefix.TIME,"inXSDDate" ),
         #DEL paste0( strptime(masterData[i,"brthdate"], "%Y-%m-%d")), type="date"
         paste0(masterData[i,"brthdate"]), type="date"
     )
-    #DeathDate
+    #Deathdate
     # Note the funky conversion testing for missing! is.an will NOT work here. There is something
     #     in the field even when "blank"
     if (! as.character(masterData[i,"dthdtc"])=="") {
         add.triple(store,
             paste0(prefix.CDISCPILOT01, persNum),
-            paste0(prefix.STUDY,"hasDeathDate" ),
-            paste0(prefix.CDISCPILOT01, "DeathDate_", i)
+            paste0(prefix.STUDY,"hasDeathdate" ),
+            paste0(prefix.CDISCPILOT01, "Deathdate_", i)
         )
         add.triple(store,
-                   paste0(prefix.CDISCPILOT01, "DeathDate_", i),
+                   paste0(prefix.CDISCPILOT01, "Deathdate_", i),
                    paste0(prefix.RDF,"type" ),
-                   paste0(prefix.STUDY,"DeathDate" )
+                   paste0(prefix.STUDY,"Deathdate" )
         )
         
             add.data.triple(store,
-                paste0(prefix.CDISCPILOT01, "DeathDate_", i),
+                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
                 paste0(prefix.TIME,"inXSDDate" ),
                 #DEL paste0( strptime(masterData[i,"dthdtc"], "%Y-%m-%d"), "T00:00:00"), type="date"
                 paste0( masterData[i,"dthdtc"]), type="date"
