@@ -11,7 +11,6 @@
 # REQ  : 
 # TODO : 
 ###############################################################################
-
 require(rrdf)
 require(dplyr) # for compare of dataframes using anti_join
 # library(plyr)  # for rename
@@ -23,6 +22,9 @@ TWSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
 
 AOSource = load.rdf("data/rdf/Armando-21DEC16/cdiscpilot01local.TTL", format="N3")
 
+
+checkPerson <- function(){
+#--Person_(n)
 
 #  All triples directly attached to Person_<n>  
 # 
@@ -44,11 +46,38 @@ AOTriples = as.data.frame(sparql.rdf(AOSource, query))
 inTWNotAO<-anti_join(TWTriples, AOTriples)
 inAONotTW<-anti_join(AOTriples, TWTriples)
 
-                     
-    
 # In the TW TTL file but not in the AO file                 
 inTWNotAO
-
 # In the AO TTL file but not in the TO file
 inAONotTW
+
+}
+
+checkAgeMeasure <- function(){
+#-----------------------------------------------------------------
+#-- cdiscpilot01:Person_1 study:hasAgeMeasurement 
+query = 'PREFIX cdiscpilot01: <http://example.org/cdiscpilot01#>
+PREFIX custom: <http://example.org/custom#>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX study:  <http://example.org/study#>
+SELECT *
+FROM <http://localhost:8890/CDISCPILOT01>
+WHERE{
+cdiscpilot01:Person_1 study:hasAgeMeasurement ?s .
+?s ?p ?o
+}'
+TWTriples = as.data.frame(sparql.rdf(TWSource, query))
+AOTriples = as.data.frame(sparql.rdf(AOSource, query))
+
+inTWNotAO<-anti_join(TWTriples, AOTriples)
+inAONotTW<-anti_join(AOTriples, TWTriples)
+inAONotTW<-inAONotTW[!(inAONotTW$o==""),]  # remove cases where O is missing (atrifact from TopBraid)
+# In the TW TTL file but not in the AO file                 
+inTWNotAO
+# In the AO TTL file but not in the TO file
+inAONotTW
+}
+checkAgeMeasure()
 
