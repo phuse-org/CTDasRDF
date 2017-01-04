@@ -53,21 +53,42 @@ inAONotTW
 
 }
 
-checkAgeMeasure <- function(){
+checkPredicate <- function(predicate){
 #-----------------------------------------------------------------
 #-- cdiscpilot01:Person_1 study:hasAgeMeasurement 
-query = 'PREFIX cdiscpilot01: <http://example.org/cdiscpilot01#>
-PREFIX custom: <http://example.org/custom#>
-PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX study:  <http://example.org/study#>
-SELECT *
-FROM <http://localhost:8890/CDISCPILOT01>
-WHERE{
-cdiscpilot01:Person_1 study:hasAgeMeasurement ?s .
-?s ?p ?o
-}'
+predicate <- "study:hasAgeMeasurement"
+query = paste(' 
+    PREFIX cdiscpilot01: <http://example.org/cdiscpilot01#>
+    PREFIX custom: <http://example.org/custom#>
+    PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+    PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX study:  <http://example.org/study#>
+    SELECT *
+    FROM <http://localhost:8890/CDISCPILOT01>
+    WHERE{
+    cdiscpilot01:Person_1 ', 
+    predicate,
+    ' ?s .
+    ?s ?p ?o
+    }
+    ',
+    "\n"
+)
+
+# MODEL AFTER:
+#-----------------
+#    observations2Rq<-  paste( forsparqlprefix,
+#                              '
+#                              select *
+#                              where { ?s a qb:Observation ; ?p ?o .}
+#                              limit 10
+#                              ',
+#                              "\n"                               
+#    )
+#-----------------
+
+
 TWTriples = as.data.frame(sparql.rdf(TWSource, query))
 AOTriples = as.data.frame(sparql.rdf(AOSource, query))
 
@@ -79,5 +100,8 @@ inTWNotAO
 # In the AO TTL file but not in the TO file
 inAONotTW
 }
-checkAgeMeasure()
+checkPredicate("study:hasAgeMeasurement")
+
+
+
 
