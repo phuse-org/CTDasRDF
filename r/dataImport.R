@@ -12,7 +12,8 @@
 # OUT  : Calls dataCreate.R
 # FNT  : readXPT - reads XPT files 
 # REQ  : Called from buildRDF-Driver.R
-# TODO : 
+# TODO : Move domain-specific code like DM and VS work to their respective scripts:
+#         processDM.R , processVS.R (above the function calls.)
 ###############################################################################
 
 #------------------------------------------------------------------------------

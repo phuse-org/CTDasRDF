@@ -12,8 +12,6 @@
 #            little else.
 ###############################################################################
 
-source('R/processDM.R')
-
 #------------------------------------------------------------------------------
 # Create triples 
 #     TODO: add is as "a" Study when creating the code list!
@@ -100,5 +98,11 @@ add.data.triple(store,
 
 #-- DOMAIN PROCESSING ---------------------------------------------------------
 #---- DM DOMAIN
+source('R/processDM.R')
 processDM()
+
+
+#---- VS DOMAIN
+source('R/processVS.R')
+processVS()
 
