@@ -39,6 +39,9 @@ outFile=paste0("data/rdf/", outFilename)
 source('R/dataImport.R')
 
 
+# Create date needed for testing purposes. Eg: Set a deathFlag value to allow testing of code.
+source('R/dataCreate.R')
+
 # Initialize. Includes OWL, XSD, RDF by default.
 store = new.rdf()  
 

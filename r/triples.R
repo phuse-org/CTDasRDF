@@ -75,11 +75,12 @@ add.data.triple(store,
     paste0(prefix.DCAT, "distribution"),
     paste0(outFilename)
 )
-add.data.triple(store,
-    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
-    paste0(prefix.PROV, "wasDerivedFrom"),
-    paste0(inFilename)
-)
+#TODO:  Reinstate, listing source folder of files instead of indivdual files?
+#add.data.triple(store,
+#    paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+#    paste0(prefix.PROV, "wasDerivedFrom"),
+#    paste0(inFilename)
+#)
 #-- Part 2: For values created only once:
 #TODO: MOVE THIS TO THE CODELIST R SCRIPT.
 #  Value is hard coded here. Make it data driven.
@@ -100,13 +101,13 @@ add.data.triple(store,
 )
 
 #-- PART 3
-# Loop through the masterData dataframe and create the triples for each 
+# Loop through the dm dataframe and create the triples for each 
 #     Person_<n>
-for (i in 1:nrow(masterData))
+for (i in 1:nrow(dm))
 {
     # persNum - Human Study Subject Number. Created in code above. Just in index for the RDF
     #     used as the SUBJECT in each of the following triples in this section
-    persNum<- masterData[i,"pers"]
+    persNum<- dm[i,"pers"]
      
     #Define pers(n>) as HumanStudySubject
     add.triple(store,
@@ -129,12 +130,12 @@ for (i in 1:nrow(masterData))
     add.data.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"hasSubjectID" ),
-               paste0(masterData[i,"subjid"]), type="string"
+               paste0(dm[i,"subjid"]), type="string"
     )
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"hasUniqueSubjectID" ),
-        paste0( masterData[i,"usubjid"]), type="string"
+        paste0( dm[i,"usubjid"]), type="string"
     )
     # Birthdate
     add.triple(store,
@@ -152,13 +153,13 @@ for (i in 1:nrow(masterData))
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, "Birthdate_", i),
         paste0(prefix.TIME,"inXSDDate" ),
-        #DEL paste0( strptime(masterData[i,"brthdate"], "%Y-%m-%d")), type="date"
-        paste0(masterData[i,"brthdate"]), type="date"
+        #DEL paste0( strptime(dm[i,"brthdate"], "%Y-%m-%d")), type="date"
+        paste0(dm[i,"brthdate"]), type="date"
     )
     #Deathdate
     # Note the funky conversion testing for missing! is.an will NOT work here. There is something
     #     in the field even when "blank"
-    if (! as.character(masterData[i,"dthdtc"])=="") {
+    if (! as.character(dm[i,"dthdtc"])=="") {
         add.triple(store,
             paste0(prefix.CDISCPILOT01, persNum),
             paste0(prefix.STUDY,"hasDeathdate" ),
@@ -173,19 +174,19 @@ for (i in 1:nrow(masterData))
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "Deathdate_", i),
                 paste0(prefix.TIME,"inXSDDate" ),
-                #DEL paste0( strptime(masterData[i,"dthdtc"], "%Y-%m-%d"), "T00:00:00"), type="date"
-                paste0( masterData[i,"dthdtc"]), type="date"
+                #DEL paste0( strptime(dm[i,"dthdtc"], "%Y-%m-%d"), "T00:00:00"), type="date"
+                paste0( dm[i,"dthdtc"]), type="date"
             )
     }
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"hasEthnicity" ),
-               paste0(prefix.CDISCSDTM, masterData[i,"ethnicSDTMCode"]) 
+               paste0(prefix.CDISCSDTM, dm[i,"ethnicSDTMCode"]) 
     )
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"hasRace" ),
-               paste0(prefix.CDISCSDTM, masterData[i,"raceSDTMCode"]) 
+               paste0(prefix.CDISCSDTM, dm[i,"raceSDTMCode"]) 
     )
     # Sex
     # Sex is coded to the SDTM Terminology graph by translating the value 
@@ -195,7 +196,7 @@ for (i in 1:nrow(masterData))
     add.triple(store,
                paste0(prefix.CDISCPILOT01, persNum),
                paste0(prefix.STUDY,"hasSex" ),
-               paste0(prefix.CDISCSDTM, masterData[i,"sexSDTMCode"]) 
+               paste0(prefix.CDISCSDTM, dm[i,"sexSDTMCode"]) 
     )
     # Age
     add.triple(store,
@@ -244,7 +245,7 @@ for (i in 1:nrow(masterData))
             add.data.triple(store,
                paste0(prefix.CDISCPILOT01, "Age_", i),
                paste0(prefix.STUDY,"hasValue" ),
-               paste0(masterData[i,"age"]), type="float"
+               paste0(dm[i,"age"]), type="float"
             )
             add.data.triple(store,
                paste0(prefix.CDISCPILOT01, "Age_", i),
@@ -256,22 +257,22 @@ for (i in 1:nrow(masterData))
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"allocatedToArm" ),
-        paste0(prefix.CUSTOM, "armcd-",masterData[i,"armCoded"]) 
+        paste0(prefix.CUSTOM, "armcd-",dm[i,"armCoded"]) 
     )
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "armcd-",masterData[i,"armCoded"]) ,
+        paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY,"Arm" )
     )
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "armcd-",masterData[i,"armCoded"]) ,
+        paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
         paste0(prefix.STUDY,"hasArmCode" ),
         paste0(prefix.CUSTOM,"armcd-PBO" )
     )
     # Currently omit label because it will be added for each obs of that type
     #    as a repeat.
     #add.data.triple(store,
-    #    paste0(prefix.CDISCPILOT01, "arm-",masterData[i,"armCoded"]) ,
+    #    paste0(prefix.CDISCPILOT01, "arm-",dm[i,"armCoded"]) ,
     #    paste0(prefix.RDFS,"label" ),
     #    paste0("Placebo"), type="string"
     #)
@@ -282,7 +283,7 @@ for (i in 1:nrow(masterData))
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"deathFlag" ),
-        paste0(masterData[i,"dthfl"]), type="string"
+        paste0(dm[i,"dthfl"]), type="string"
     )
     # DemographicDataCollection
     add.triple(store,
@@ -298,7 +299,7 @@ for (i in 1:nrow(masterData))
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
         paste0(prefix.STUDY,"studyDay" ),
-        paste0( masterData[i,"dmdy"])
+        paste0( dm[i,"dmdy"])
     )
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
@@ -322,12 +323,12 @@ for (i in 1:nrow(masterData))
         paste0("Demographic data collection date ",i), type="string"
     )
 
-    if (! is.na(masterData[i,"dmdtc"])) {
+    if (! is.na(dm[i,"dmdtc"])) {
        add.data.triple(store,    
            paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
            paste0(prefix.TIME,"inXSDDate" ),
-           #DEL paste0( strptime(masterData[i,"dmdtc"], "%m/%d/%Y")), type="date"
-           paste0(masterData[i,"dmdtc"]), type="date"
+           #DEL paste0( strptime(dm[i,"dmdtc"], "%m/%d/%Y")), type="date"
+           paste0(dm[i,"dmdtc"]), type="date"
        )
     }
     #TW: Remove. do not code NA into dataTime. if different types of missing require identification, 
@@ -402,8 +403,8 @@ for (i in 1:nrow(masterData))
             add.data.triple(store,    
                 paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
                 paste0(prefix.TIME,"inXSDDate" ),
-                #DEL paste0(strptime(masterData[i,"rficdtc"], "%m/%d/%Y")), type="date"
-                paste0(masterData[i,"rficdtc"]), type="date"
+                #DEL paste0(strptime(dm[i,"rficdtc"], "%m/%d/%Y")), type="date"
+                paste0(dm[i,"rficdtc"]), type="date"
             )
     # Product Administration         
     add.triple(store,
@@ -441,8 +442,8 @@ for (i in 1:nrow(masterData))
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
                 paste0(prefix.TIME,"inXSDDate"),
-                #DEL paste0(strptime(masterData[i,"rfstdtc"], "%Y-%m-%d")), type="date"
-                paste0(masterData[i,"rfstdtc"]), type="date"
+                #DEL paste0(strptime(dm[i,"rfstdtc"], "%Y-%m-%d")), type="date"
+                paste0(dm[i,"rfstdtc"]), type="date"
             )
         #>>    
         add.triple(store,
@@ -464,8 +465,8 @@ for (i in 1:nrow(masterData))
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
                 paste0(prefix.TIME,"inXSDDate"),
-                #DELpaste0(strptime(masterData[i,"rfendtc"], "%m/%d/%Y")), type="date"
-                paste0(masterData[i,"rfendtc"]), type="date"
+                #DELpaste0(strptime(dm[i,"rfendtc"], "%m/%d/%Y")), type="date"
+                paste0(dm[i,"rfendtc"]), type="date"
             )
     # Randomization
     add.triple(store,
@@ -499,7 +500,7 @@ for (i in 1:nrow(masterData))
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
                 paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
-                paste0(prefix.CUSTOM,"armcd-",masterData[i,"armCoded"] )
+                paste0(prefix.CUSTOM,"armcd-",dm[i,"armCoded"] )
             )
             
             add.data.triple(store,
@@ -510,21 +511,21 @@ for (i in 1:nrow(masterData))
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"participatesIn" ),
-        paste0(prefix.CDISCPILOT01, "study-", masterData[i,"studyCoded"])
+        paste0(prefix.CDISCPILOT01, "study-", dm[i,"studyCoded"])
     )
     # Note how both allocatedTO and treatedAccordingTo use the same codelist 
     #    for ARM. THere is not separate codelist for ARM vs. ACTARM.
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"treatedAccordingToArm"),
-        paste0(prefix.CUSTOM, "armcd-",masterData[i,"actarmCoded"]) 
+        paste0(prefix.CUSTOM, "armcd-",dm[i,"actarmCoded"]) 
     )
     # Site
     # QUESTION: Is treatedAtSite appropriate for all types of studies?
     add.triple(store,
         paste0(prefix.CDISCPILOT01, persNum),
         paste0(prefix.STUDY,"hasSite" ),
-        paste0(prefix.CDISCPILOT01, "site-",masterData[i,"siteid"]) 
+        paste0(prefix.CDISCPILOT01, "site-",dm[i,"siteid"]) 
     )
     # Person label
     add.data.triple(store,
@@ -553,8 +554,8 @@ for (i in 1:nrow(masterData))
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
             paste0(prefix.TIME,"inXSDDate"),
-            #DEL paste0(strptime(masterData[i,"rfstdtc"], "%m/%d/%Y")), type="date"
-            paste0(masterData[i,"rfstdtc"]), type="date"
+            #DEL paste0(strptime(dm[i,"rfstdtc"], "%m/%d/%Y")), type="date"
+            paste0(dm[i,"rfstdtc"]), type="date"
         )
         # Reference end date
         add.triple(store,
@@ -577,11 +578,11 @@ for (i in 1:nrow(masterData))
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
             paste0(prefix.TIME,"inXSDDate"),
-            #DEL paste0(strptime(masterData[i,"rfendtc"], "%m/%d/%Y")), type="date"
-            paste0(masterData[i,"rfendtc"]), type="date"
+            #DEL paste0(strptime(dm[i,"rfendtc"], "%m/%d/%Y")), type="date"
+            paste0(dm[i,"rfendtc"]), type="date"
         )
         # Create triples for rfpendtc only if a value is present
-        if (! is.na(masterData[i,"rfpendtc"])){
+        if (! is.na(dm[i,"rfpendtc"])){
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, persNum),
                 paste0(prefix.TIME,"hasEnd" ),
@@ -602,16 +603,16 @@ for (i in 1:nrow(masterData))
             #     is a datetime value)
             # If valid either valid month format, type as xsd:date
             # Be ashamed of this programming....
-            if (! grepl(":",masterData[i,"rfpendtc"])
+            if (! grepl(":",dm[i,"rfpendtc"])
                 & (
-                ! is.na(as.Date(masterData[i,"rfpendtc"], format = "%Y-%m-%d")) # UNTESTED
+                ! is.na(as.Date(dm[i,"rfpendtc"], format = "%Y-%m-%d")) # UNTESTED
                 | 
-                ! is.na(as.Date(masterData[i,"rfpendtc"], format = "%m-%d-%Y"))
+                ! is.na(as.Date(dm[i,"rfpendtc"], format = "%m-%d-%Y"))
                 )){
                 add.data.triple(store,
                     paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
                     paste0(prefix.TIME,"inXSDDate"),
-                    paste0(masterData[i,"rfpendtc"]), type="date"
+                    paste0(dm[i,"rfpendtc"]), type="date"
                 )
             }else{
             # all other values in the date field are coded as string, including dateTime
@@ -619,10 +620,10 @@ for (i in 1:nrow(masterData))
                 add.data.triple(store,
                     paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
                     paste0(prefix.TIME,"inXSDString"),
-                    paste0(masterData[i,"rfpendtc"]), type="string"
+                    paste0(dm[i,"rfpendtc"]), type="string"
                 )            
             } # end of else
         } # end of creating the rfpendtc triple
         
         
-}    # End looping through the study master dataframe.    
+}    # End looping through the study dm dataframe.    

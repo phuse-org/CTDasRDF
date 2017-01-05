@@ -5,7 +5,7 @@
 #            to those created once for each person. Includes items like 
 #            investigators, treatment ARMs, etc.
 # NOTES: 
-# IN   : masterData dataframe
+# IN   : dm dataframe
 # OUT  : 
 # REQ  : Called from buildRDF-Driver.R
 # TODO : 
@@ -13,7 +13,7 @@
 
 #-- Investigators
 # Get unique investigator ID 
-investigators <- masterData[,c("invnam", "invid")]
+investigators <- dm[,c("invnam", "invid")]
 # Remove duplicates
 investigators <- investigators[!duplicated(investigators),]
 
@@ -46,7 +46,7 @@ for (j in 1:nrow(investigators))
 
 # Sites
 # Get unique investigator ID 
-sites <- masterData[,c("siteid", "invid", "countryCode" )]
+sites <- dm[,c("siteid", "invid", "countryCode" )]
 # Remove duplicates
 sites <- sites[!duplicated(sites),]
 
@@ -96,7 +96,7 @@ for (s in 1:nrow(sites))
 # ASSUMPTION: Source data has same values: arm/actarm and armcd/actarmcd.
 #     TODO: improve code by combining both to use any values that may differ 
 #            between the two
-arms <- masterData[,c("arm", "armcd")]
+arms <- dm[,c("arm", "armcd")]
 # Remove duplicates
 arms <- arms[!duplicated(arms),]
 arms$armUC   <- toupper(gsub(" ", "", arms$arm))

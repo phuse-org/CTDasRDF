@@ -684,8 +684,7 @@ cdiscpilot01:sdtm-graph
         dcterms:contributor  "Tim Williams"^^xsd:string , "Armando Oliva"^^xsd:string ;
         dcterms:description  "Data converted from the CDISCPILOT01 SDTM DM domain to RDF."^^xsd:string ;
         dcterms:title        "SDTM data as RDF."^^xsd:string ;
-        pav:createdOn        "2017-01-04T16:27:51-05:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-01-05T11:23:14-05:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.2 Platform:x86_64-w64-mingw32 swith scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
-        dcat:distribution    "cdiscpilot01.TTL" ;
-        prov:wasDerivedFrom  "dm.xpt" .
+        dcat:distribution    "cdiscpilot01.TTL" .
