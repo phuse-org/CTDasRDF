@@ -27,22 +27,60 @@ version <- "0.0.1"
 # Set working directory to the root of the work area
 setwd("C:/_github/SDTM2RDF")
 
-
+# Configuration: List of prefixes
 sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
-inFilename <- "dm.xpt"
-sourceData<-paste0("data/source/", inFilename)  # Subset of DM data for development purposes.
-sourceData<-head(sourceData,1)       #DEV - Keep only first row for development purposes.
-# sourceCodelist<-"data/config/codelist.csv"  # Codelist triples 
+
+# Output file
 outFilename = "cdiscpilot01.TTL"
 outFile=paste0("data/rdf/", outFilename)
 
+# Source SDTM as XPT
+readXPT<-function(xptFN)
+{
+    sourceFile <- paste0("data/source/", xptFN, ".XPT")
+    xptFN<-sasxport.get(sourceFile)
+    return (xptFN)
+    # Merge the multiple SDTM Domains into a single Master dataframe.
+    
+}
 
-# Bring in the data source. Will be used in codeLists.R and triples.R
-#masterData <- read.csv(sourceData,
-#                       header=T,
-#                       sep=',')
-masterData <- sasxport.get(sourceData)
-masterData <- head(masterData, 6)   # Subset for testing purposes
+readXPT("dm") 
+
+
+
+# MODEL TO READ and RETURN MUTLIPLE DATAFRAMES
+#ReadFiles <- function()
+#{
+#    files <- # fetch the files
+#        resultList <- vector("list",length(files))
+#    for(i in seq(1,length(files))) # process each file
+#    {
+#        file <- files[i]
+#        resultList[[i]] <- # fetch your data(frame)
+#    }
+#    resultList # Return the result!
+#}
+#
+#results <- readFiles()
+## You can now access your individual dataframes like this:
+#dataFrame1 <- results[[1]]
+## Or merge them all together if you like:
+#combinedDataFrame <- do.call("rbind",results)
+
+
+#-------------------------------------------------
+
+
+
+masterData <- head(masterData, 6) # subset for testing. CHange to later keep only first 6 patients by patient ID
+
+
+
+
+## DEVELOPMENT ABOVE HERE! 
+
+
+
 
 #-- Massage the data as needed prior to building codelists and processing.
 #   Add data where needed for proof of concept. Clean data, etc.
