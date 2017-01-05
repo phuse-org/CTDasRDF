@@ -35,16 +35,23 @@ outFilename = "cdiscpilot01.TTL"
 outFile=paste0("data/rdf/", outFilename)
 
 # Source SDTM as XPT
-readXPT<-function(xptFN)
+# Later change to read all XPT in folder? as per:
+#  http://stackoverflow.com/questions/31236384/saving-multiple-data-frames-and-return-them-from-a-function
+
+readXPT<-function(domains)
 {
-    sourceFile <- paste0("data/source/", xptFN, ".XPT")
-    xptFN<-sasxport.get(sourceFile)
-    return (xptFN)
-    # Merge the multiple SDTM Domains into a single Master dataframe.
-    
+    resultList <- vector("list", length(domains))
+    for (i in seq(1, length(domains))) {
+        
+        sourceFile <- paste0("data/source/", domains[i], ".XPT")
+        resultList[[i]]<-sasxport.get(sourceFile)
+        
+    }
+    resultList # return the dataframes from the function
+    #TODO Merge the multiple SDTM Domains into a single Master dataframe.
 }
 
-readXPT("dm") 
+results<-readXPT(c("dm", "vs")) 
 
 
 
