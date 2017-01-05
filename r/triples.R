@@ -623,4 +623,6 @@ for (i in 1:nrow(masterData))
                 )            
             } # end of else
         } # end of creating the rfpendtc triple
+        
+        
 }    # End looping through the study master dataframe.    

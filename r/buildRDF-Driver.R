@@ -61,14 +61,20 @@ domainsDF<-readXPT(c("dm", "vs"))
 # If keeping, make it a function to process the list of domains.
 dm <- data.frame(domainsDF["dm"])
 names(dm) <- gsub( "^dm.",  "", names(dm), perl = TRUE)
+dm <- dm[, !(names(dm) %in% c("domain"))]  # drop unnecessary columns
 
+# vs domain
 vs <- data.frame(domainsDF["vs"])
 names(vs) <- gsub( "^vs.",  "", names(vs), perl = TRUE)
+vs <- vs[, !(names(vs) %in% c("studyid", "domain"))]  # drop unnecessary columns
 
 # For testing, keep only the first 6 patients in DM
 dm <- head(dm, 6)
 
-# Merge with VS, keeping on the data for the DM testing subset
+# Merge dm with vs, keeping on the data for the DM testing subset
+# merge two data frames by ID and Country
+test <- merge(dm, vs, by=c("usubjid"))
+
 
 
 # Rename as masterData, the proceed with processing.
