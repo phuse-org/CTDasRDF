@@ -1,19 +1,69 @@
 ###############################################################################
-# FILE : dataMassage.R
-# DESCR: Massage the data as needed for the prototype. 
+# FILE : dataImpport.R
+# DESCR: Import and code data 
 # SRC  : 
 # KEYS : 
 # NOTES: 
 #        
 # INPUT: 
 #      : 
-# OUT  : 
+# OUT  : Calls dataCreate.R
+# FNT  : readXPT - reads XPT files 
 # REQ  : Called from buildRDF-Driver.R
 # TODO : 
 ###############################################################################
+
+#------------------------------------------------------------------------------
+# FNT: readXPT
+#      Read the requested domains into dataframes for processing.
+# TODO: Consider placing in separate Import.R script called by this driver.
+readXPT<-function(domains)
+{
+    resultList <- vector("list", length(domains)) # initialize vector to hold dataframes
+    for (i in seq(1, length(domains))) {
+        sourceFile <- paste0("data/source/", domains[i], ".XPT")
+        # resultList[[i]]<-sasxport.get(sourceFile)
+        # Each domain assembled into resultList by name "dm", "vs" etc.
+        resultList[[domains[i]]]<-sasxport.get(sourceFile)
+    }
+    resultList # return the dataframes from the function
+    #TODO Merge the multiple SDTM Domains into a single Master dataframe.
+}
+
+# Access individual dataframes based on name:  domainsDF["vs"], etc.
+domainsDF<-readXPT(c("dm", "vs")) 
+
+# Consider the utility of having the domain prefix (dm.usubjid, vs.usubjid) vs. stripping it as done here.
+# No name overlap due to SDTM naming conventions that add vs to vsdtc, dm to dmdtc, etc.
+# If keeping, make it a function to process the list of domains.
+dm <- data.frame(domainsDF["dm"])
+names(dm) <- gsub( "^dm.",  "", names(dm), perl = TRUE)
+dm <- dm[, !(names(dm) %in% c("domain"))]  # drop unnecessary columns
+
+# vs domain
+vs <- data.frame(domainsDF["vs"])
+names(vs) <- gsub( "^vs.",  "", names(vs), perl = TRUE)
+#DEL vs <- vs[, !(names(vs) %in% c("studyid", "domain"))]  # drop unnecessary columns NOT NEEDED
+
+# For testing, keep only the first 6 patients in DM
+dm <- head(dm, 6)
+
+
+# Create the Person ID (Person_(n)) in the DM dataset for merging data across domains 
+# during construction of the triples
 # Add the id var "Peson_<n>" for each HumanStudySubject observation 
-id<-1:(nrow(masterData))   # Generate a list of ID numbers
-masterData$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
+id<-1:(nrow(dm))   # Generate a list of ID numbers
+dm$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
+
+# Create an merge Index file for the other domains.
+personIndex <- dm[,c("pers", "usubjid")]
+
+#-- Merge the personIndex into the other domains to allow later looping during triple creation. 
+#-- vs domain subset down to the test population specified in the dm subsetting.
+vs <- merge(x = personIndex, y = vs, by="usubjid", all.x = TRUE)
+
+# -------------------------------------------------------------
+
 
 #-- CODED values 
 # UPPERCASE and remove spaces values of fields that will be coded to codelists

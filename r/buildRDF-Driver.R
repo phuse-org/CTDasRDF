@@ -34,67 +34,9 @@ sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting T
 outFilename = "cdiscpilot01.TTL"
 outFile=paste0("data/rdf/", outFilename)
 
-
-#------------------------------------------------------------------------------
-# FNT: readXPT
-#      Read the requested domains into dataframes for processing.
-# TODO: Consider placing in separate Import.R script called by this driver.
-readXPT<-function(domains)
-{
-    resultList <- vector("list", length(domains)) # initialize vector to hold dataframes
-    for (i in seq(1, length(domains))) {
-        sourceFile <- paste0("data/source/", domains[i], ".XPT")
-        # resultList[[i]]<-sasxport.get(sourceFile)
-        # Each domain assembled into resultList by name "dm", "vs" etc.
-        resultList[[domains[i]]]<-sasxport.get(sourceFile)
-    }
-    resultList # return the dataframes from the function
-    #TODO Merge the multiple SDTM Domains into a single Master dataframe.
-}
-
-
-# Access individual dataframes based on name:  domainsDF["vs"], etc.
-domainsDF<-readXPT(c("dm", "vs")) 
-
-# Consider the utility of having the domain prefix (dm.usubjid, vs.usubjid) vs. stripping it as done here.
-# No name overlap due to SDTM naming conventions that add vs to vsdtc, dm to dmdtc, etc.
-# If keeping, make it a function to process the list of domains.
-dm <- data.frame(domainsDF["dm"])
-names(dm) <- gsub( "^dm.",  "", names(dm), perl = TRUE)
-dm <- dm[, !(names(dm) %in% c("domain"))]  # drop unnecessary columns
-
-# vs domain
-vs <- data.frame(domainsDF["vs"])
-names(vs) <- gsub( "^vs.",  "", names(vs), perl = TRUE)
-vs <- vs[, !(names(vs) %in% c("studyid", "domain"))]  # drop unnecessary columns
-
-# For testing, keep only the first 6 patients in DM
-dm <- head(dm, 6)
-
-# Merge dm with vs, keeping on the data for the DM testing subset
-# merge two data frames by ID and Country
-test <- merge(dm, vs, by=c("usubjid"))
-
-
-
-# Rename as masterData, the proceed with processing.
-#-------------------------------------------------
-
-
-
-masterData <- head(masterData, 6) # subset for testing. CHange to later keep only first 6 patients by patient ID
-
-
-
-
-## DEVELOPMENT ABOVE HERE! 
-
-
-
-
-#-- Massage the data as needed prior to building codelists and processing.
+#-- Import and Code Data prior to building codelists and processing.
 #   Add data where needed for proof of concept. Clean data, etc.
-source('R/dataMassage.R')
+source('R/dataImport.R')
 
 
 # Initialize. Includes OWL, XSD, RDF by default.
