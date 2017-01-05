@@ -3,7 +3,9 @@
 # DESCR: Import and code data 
 # SRC  : 
 # KEYS : 
-# NOTES: 
+# NOTES: Creates the numeric personNum : index variable for each person in the
+#           DM domain, used for iterating through and across domains, building the
+#           the triples for each person.
 #        
 # INPUT: 
 #      : 
@@ -53,10 +55,12 @@ dm <- head(dm, 6)
 # during construction of the triples
 # Add the id var "Peson_<n>" for each HumanStudySubject observation 
 id<-1:(nrow(dm))   # Generate a list of ID numbers
-dm$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
+# dm$personNum<- dm[i,"pers"]
+dm$personNum<- id
+# dm$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
 
 # Create an merge Index file for the other domains.
-personIndex <- dm[,c("pers", "usubjid")]
+personIndex <- dm[,c("personNum", "usubjid")]
 
 #-- Merge the personIndex into the other domains to allow later looping during triple creation. 
 #-- vs domain subset down to the test population specified in the dm subsetting.

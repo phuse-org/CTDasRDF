@@ -1,18 +1,18 @@
 ###############################################################################
 # Name : buildRDF-Driver.R
 # AUTH : Tim W. 
-# DSCR : Master program for building the TTL file for the DM domain from 
+# DSCR : Master program for building the TTL file for the SDTM domains from 
 #            the CDISCPILOT01 example data.
 # NOTES: Validation of the resulting TTL file with Apache Jenna riot
 #         Coded values cannot have spaces or special characters.
 # IN  :   prefixes.csv - prefixes and their namespaces
-#         dmSub.csv  - Subset of the CSV data source file.
+#
 # OUT : data/rdf/cdiscpilot01.TTL
 # REQ : Apache Jena 3.0.1: For riot, installed and avail at system path if 
 #           valdiation called
-# TODO: ARM codes to include URI's to graphs that contain descriptions of the arm
-#       SDTM terminology codes in triples.R currently hard coded. Move to a query
-#           within a new fnt().
+# TODO: Code processVS.R
+#       Date format issues.
+#       birthdate calculation
 #
 ###############################################################################
 library(rrdf)

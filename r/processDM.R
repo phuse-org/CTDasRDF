@@ -1,0 +1,544 @@
+###############################################################################
+# FILE : processDM.R
+# DESCR: Create DM domain triples
+# SRC  : 
+# KEYS : 
+# NOTES: 
+#        
+# INPUT: 
+#      : 
+# OUT  : 
+# REQ  : 
+# TODO : 
+###############################################################################
+
+processDM<-function()
+{    
+    # Loop through the dm dataframe and create the triples for each 
+    #     Person_<n>
+    for (i in 1:nrow(dm))
+    {
+        # personNum - Human Study Subject Number. Created in code above. Just in index for the RDF
+        #     used as the SUBJECT in each of the following triples in this section
+        # persNum<- dm[i,"pers"]
+        
+        person <-  paste0("Person_", dm[i,"personNum"])
+        
+        #Define pers(n>) as HumanStudySubject
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY, "EnrolledSubject")
+        )
+        # Next two triples new 2016-01-04 based on TTL from AO
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.RDFS, "Resource")
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY, "HumanStudySubject")
+        )
+        
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, person),
+                        paste0(prefix.STUDY,"hasSubjectID" ),
+                        paste0(dm[i,"subjid"]), type="string"
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, person),
+                        paste0(prefix.STUDY,"hasUniqueSubjectID" ),
+                        paste0( dm[i,"usubjid"]), type="string"
+        )
+        # Birthdate
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"hasBirthdate" ),
+                   paste0(prefix.CDISCPILOT01, "Birthdate_", i)
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "Birthdate_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"Birthdate" )
+        )
+        # Note use of strptime to convert from mm/dd/YYYY to dateTime.
+        #   Hokey-assed kludge to add T00:00:00. Fix with a  format
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "Birthdate_", i),
+                        paste0(prefix.TIME,"inXSDDate" ),
+                        #DEL paste0( strptime(dm[i,"brthdate"], "%Y-%m-%d")), type="date"
+                        paste0(dm[i,"brthdate"]), type="date"
+        )
+        #Deathdate
+        # Note the funky conversion testing for missing! is.an will NOT work here. There is something
+        #     in the field even when "blank"
+        if (! as.character(dm[i,"dthdtc"])=="") {
+            add.triple(store,
+                       paste0(prefix.CDISCPILOT01, person),
+                       paste0(prefix.STUDY,"hasDeathdate" ),
+                       paste0(prefix.CDISCPILOT01, "Deathdate_", i)
+            )
+            add.triple(store,
+                       paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+                       paste0(prefix.RDF,"type" ),
+                       paste0(prefix.STUDY,"Deathdate" )
+            )
+            
+            add.data.triple(store,
+                            paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+                            paste0(prefix.TIME,"inXSDDate" ),
+                            #DEL paste0( strptime(dm[i,"dthdtc"], "%Y-%m-%d"), "T00:00:00"), type="date"
+                            paste0( dm[i,"dthdtc"]), type="date"
+            )
+        }
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"hasEthnicity" ),
+                   paste0(prefix.CDISCSDTM, dm[i,"ethnicSDTMCode"]) 
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"hasRace" ),
+                   paste0(prefix.CDISCSDTM, dm[i,"raceSDTMCode"]) 
+        )
+        # Sex
+        # Sex is coded to the SDTM Terminology graph by translating the value 
+        #  the DM domain to its corresponding URI code in that graph.
+        #  F C66731.C16576
+        #  M 
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"hasSex" ),
+                   paste0(prefix.CDISCSDTM, dm[i,"sexSDTMCode"]) 
+        )
+        # Age
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"hasAgeMeasurement" ),
+                   paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i)
+        )
+        #>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"AgeMeasurement" )
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
+                   paste0(prefix.STUDY,"hasActivityCode" ),
+                   paste0(prefix.CODE, "observationterm-AGE")
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
+                   paste0(prefix.STUDY,"hasActivityOutcome" ),
+                   paste0(prefix.CDISCPILOT01, "Age_",i)
+        )
+        
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Age ",i)
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "Age_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Age ",i), type="string"
+        )
+        #>>>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "Age_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"Age")
+        )        
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "Age_", i),
+                   paste0(prefix.STUDY,"hasUnit" ),
+                   paste0(prefix.TIME, "unitYear")
+        )        
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "Age_", i),
+                        paste0(prefix.STUDY,"hasValue" ),
+                        paste0(dm[i,"age"]), type="float"
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "Age_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Age ",i), type="string"
+        )
+        #-- end of Age definition
+        #-- Arm allocation
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"allocatedToArm" ),
+                   paste0(prefix.CUSTOM, "armcd-",dm[i,"armCoded"]) 
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"Arm" )
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
+                   paste0(prefix.STUDY,"hasArmCode" ),
+                   paste0(prefix.CUSTOM,"armcd-PBO" )
+        )
+        # Currently omit label because it will be added for each obs of that type
+        #    as a repeat.
+        #add.data.triple(store,
+        #    paste0(prefix.CDISCPILOT01, "arm-",dm[i,"armCoded"]) ,
+        #    paste0(prefix.RDFS,"label" ),
+        #    paste0("Placebo"), type="string"
+        #)
+        #-- end Arm allocation
+        
+        # Death flag
+        #TODO: Code to blank when not present? 
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, person),
+                        paste0(prefix.STUDY,"deathFlag" ),
+                        paste0(dm[i,"dthfl"]), type="string"
+        )
+        # DemographicDataCollection
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"participatesIn" ),
+                   paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i)
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"DemographicDataCollection" )
+        )    
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
+                        paste0(prefix.STUDY,"studyDay" ),
+                        paste0( dm[i,"dmdy"])
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Demographic data collection ",i), type="string"
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
+                   paste0(prefix.TIME,"hasBeginning" ),
+                   paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i)
+        )    
+        # DemographicDataCollectionDate_
+        add.triple(store,    
+                   paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"DemographicDataCollectionDate" )
+        )    
+        add.data.triple(store,    
+                        paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Demographic data collection date ",i), type="string"
+        )
+        
+        if (! is.na(dm[i,"dmdtc"])) {
+            add.data.triple(store,    
+                            paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+                            paste0(prefix.TIME,"inXSDDate" ),
+                            #DEL paste0( strptime(dm[i,"dmdtc"], "%m/%d/%Y")), type="date"
+                            paste0(dm[i,"dmdtc"]), type="date"
+            )
+        }
+        #TW: Remove. do not code NA into dataTime. if different types of missing require identification, 
+        #    code this using additional triples.
+        #else{
+        #    add.data.triple(store,    
+        #        paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+        #        paste0(prefix.TIME,"inXSDDateTime" ),
+        #        paste0( "NA"), type="dateTime"
+        #    )
+        #}
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"participatesIn" ),
+                   paste0(prefix.CDISCPILOT01, "InformedConsent_", i)
+        )
+        #>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"InformedConsent")
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
+                   paste0(prefix.STUDY,"hasActivityOutcome" ),
+                   paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i)
+        )
+        #>>>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"InformedConsentOutcome" )
+        )
+        # match to code.ttl graph
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i),
+                   paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
+                   paste0(prefix.CODE,"InformedConsent_granted" )
+        )
+        add.data.triple(store,    
+                        paste0(prefix.CDISCPILOT01,"InformedConsentOutcome_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Informed consent outcome ",i), type="string"
+        )
+        #>>
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Informed consent ", i)
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
+                   paste0(prefix.TIME,"hasBeginning" ),
+                   paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i)
+        )
+        #>>>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"InformedConsentBegin" )
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"StudyParticipationBegin" )
+        )
+        add.data.triple(store,    
+                        paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Informed consent begin ",i), type="string"
+        )
+        add.data.triple(store,    
+                        paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
+                        paste0(prefix.TIME,"inXSDDate" ),
+                        #DEL paste0(strptime(dm[i,"rficdtc"], "%m/%d/%Y")), type="date"
+                        paste0(dm[i,"rficdtc"]), type="date"
+        )
+        # Product Administration         
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"participatesIn" ),
+                   paste0(prefix.CDISCPILOT01, "ProductAdministration_", i)
+        )
+        #>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"ProductAdministration" )
+        ) 
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Product administration ",i), type="string"
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
+                   paste0(prefix.TIME,"hasBeginning"),
+                   paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i)
+        )
+        #>>>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"ProductAdministrationBegin")
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Product administration begin ",i), type="string"
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
+                        paste0(prefix.TIME,"inXSDDate"),
+                        #DEL paste0(strptime(dm[i,"rfstdtc"], "%Y-%m-%d")), type="date"
+                        paste0(dm[i,"rfstdtc"]), type="date"
+        )
+        #>>    
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "ProductAdministration_", i),
+                   paste0(prefix.TIME,"hasEnd"),
+                   paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i)
+        )
+        #>>>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"ProductAdministrationEnd")
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Product administration end ",i), type="string"
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
+                        paste0(prefix.TIME,"inXSDDate"),
+                        #DELpaste0(strptime(dm[i,"rfendtc"], "%m/%d/%Y")), type="date"
+                        paste0(dm[i,"rfendtc"]), type="date"
+        )
+        # Randomization
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"participatesIn" ),
+                   paste0(prefix.CDISCPILOT01, "Randomization_", i)
+        )
+        #>>        
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "Randomization_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"Randomization" )
+        ) 
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "Randomization_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Randomization ",i), type="string"
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "Randomization_", i),
+                   paste0(prefix.STUDY,"hasActivityOutcome" ),
+                   paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i)
+        )
+        #>>>>
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"RandomizationOutcome" )
+        )
+        # New addition pre email on 16DEC16
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
+                   paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
+                   paste0(prefix.CUSTOM,"armcd-",dm[i,"armCoded"] )
+        )
+        
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Randomization Outcome ",i), type="string"            
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"participatesIn" ),
+                   paste0(prefix.CDISCPILOT01, "study-", dm[i,"studyCoded"])
+        )
+        # Note how both allocatedTO and treatedAccordingTo use the same codelist 
+        #    for ARM. THere is not separate codelist for ARM vs. ACTARM.
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"treatedAccordingToArm"),
+                   paste0(prefix.CUSTOM, "armcd-",dm[i,"actarmCoded"]) 
+        )
+        # Site
+        # QUESTION: Is treatedAtSite appropriate for all types of studies?
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"hasSite" ),
+                   paste0(prefix.CDISCPILOT01, "site-",dm[i,"siteid"]) 
+        )
+        # Person label
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, person),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Person ", i) 
+        )
+        # Reference start date
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.TIME,"hasBeginning" ),
+                   paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i)
+        )
+        #>>    
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"ReferenceStartDate" )
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Reference start date ", i )
+        )
+        #TODO Add !is.na for this time.
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
+                        paste0(prefix.TIME,"inXSDDate"),
+                        #DEL paste0(strptime(dm[i,"rfstdtc"], "%m/%d/%Y")), type="date"
+                        paste0(dm[i,"rfstdtc"]), type="date"
+        )
+        # Reference end date
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.TIME,"hasEnd" ),
+                   paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i)
+        )
+        #>>    
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.STUDY,"ReferenceEndDate" )
+        )
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
+                        paste0(prefix.RDFS,"label" ),
+                        paste0("Reference end date ", i )
+        )
+        #TODO Add !is.na for this time.
+        add.data.triple(store,
+                        paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
+                        paste0(prefix.TIME,"inXSDDate"),
+                        #DEL paste0(strptime(dm[i,"rfendtc"], "%m/%d/%Y")), type="date"
+                        paste0(dm[i,"rfendtc"]), type="date"
+        )
+        # Create triples for rfpendtc only if a value is present
+        if (! is.na(dm[i,"rfpendtc"])){
+            add.triple(store,
+                       paste0(prefix.CDISCPILOT01, person),
+                       paste0(prefix.TIME,"hasEnd" ),
+                       paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i)
+            )
+            add.triple(store,
+                       paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
+                       paste0(prefix.RDF,"type" ),
+                       paste0(prefix.STUDY,"StudyParticipationEnd" )
+            )
+            add.data.triple(store,
+                            paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
+                            paste0(prefix.RDFS,"label" ),
+                            paste0("Study participation end ", i )
+            )
+            #TODO Add a function that evaluates each DATE field value, then types it as either
+            #     xsd:date if valid yyyy-mm-dd value, or as xsd:string if(invalid/incomplete date OR
+            #     is a datetime value)
+            # If valid either valid month format, type as xsd:date
+            # Be ashamed of this programming....
+            if (! grepl(":",dm[i,"rfpendtc"])
+                & (
+                    ! is.na(as.Date(dm[i,"rfpendtc"], format = "%Y-%m-%d")) # UNTESTED
+                    | 
+                    ! is.na(as.Date(dm[i,"rfpendtc"], format = "%m-%d-%Y"))
+                )){
+                add.data.triple(store,
+                                paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
+                                paste0(prefix.TIME,"inXSDDate"),
+                                paste0(dm[i,"rfpendtc"]), type="date"
+                )
+            }else{
+                # all other values in the date field are coded as string, including dateTime
+                #   values (which lack :ss, so are incomplete semantically)
+                add.data.triple(store,
+                                paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
+                                paste0(prefix.TIME,"inXSDString"),
+                                paste0(dm[i,"rfpendtc"]), type="string"
+                )            
+            } # end of else
+        } # end of creating the rfpendtc triple
+        # Process VS data for each 
+    }    # End looping through the study dm dataframe.    
+}

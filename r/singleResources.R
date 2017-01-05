@@ -42,8 +42,6 @@ for (j in 1:nrow(investigators))
     )
 }
 
-
-
 # Sites
 # Get unique investigator ID 
 sites <- dm[,c("siteid", "invid", "countryCode" )]
