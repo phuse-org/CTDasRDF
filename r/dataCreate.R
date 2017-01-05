@@ -14,7 +14,8 @@
 ###############################################################################
 
 # Birthdate 
-masterData$brthdate <- strptime(strptime(masterData$rfstdtc, "%Y-%m-%d") - (strtoi(masterData$age) * 365), "%Y-%m-%d")
+# NOTE: Date calculations based on SECONDS so you must convert the age in Years to seconds
+masterData$brthdate <- strptime(strptime(masterData$rfstdtc, "%Y-%m-%d") - (strtoi(masterData$age) * 365 * 24 * 60 * 60), "%Y-%m-%d")
 
 # Informed Consent  (column present with missing values in DM source).
 masterData$rficdtc <- masterData$dmdtc

@@ -50,6 +50,8 @@ cdiscpilot01:InformedConsentBegin_2
 
 cdiscpilot01:AgeMeasurement_2
         a                         study:AgeMeasurement ;
+        rdfs:label                "Age 2" ;
+        study:hasActivityCode     code:observationterm-AGE ;
         study:hasActivityOutcome  cdiscpilot01:Age_2 .
 
 cdiscpilot01:InformedConsent_1
@@ -70,7 +72,7 @@ cdiscpilot01:StudyParticipationEnd_1
 
 cdiscpilot01:Birthdate_2
         a               study:Birthdate ;
-        time:inXSDDate  "2012-08-04"^^xsd:date .
+        time:inXSDDate  "1948-08-21"^^xsd:date .
 
 cdiscpilot01:Person_4
         a                            study:HumanStudySubject , study:EnrolledSubject , rdfs:Resource ;
@@ -168,6 +170,8 @@ cdiscpilot01:InformedConsentOutcome_3
 
 cdiscpilot01:AgeMeasurement_1
         a                         study:AgeMeasurement ;
+        rdfs:label                "Age 1" ;
+        study:hasActivityCode     code:observationterm-AGE ;
         study:hasActivityOutcome  cdiscpilot01:Age_1 .
 
 cdiscpilot01:RandomizationOutcome_1
@@ -189,7 +193,7 @@ cdiscpilot01:site-701
 
 cdiscpilot01:Birthdate_1
         a               study:Birthdate ;
-        time:inXSDDate  "2014-01-01"^^xsd:date .
+        time:inXSDDate  "1951-01-18"^^xsd:date .
 
 cdiscpilot01:Person_3
         a                            study:EnrolledSubject , study:HumanStudySubject , rdfs:Resource ;
@@ -241,6 +245,8 @@ cdiscpilot01:Age_2  a   study:Age ;
 
 cdiscpilot01:AgeMeasurement_6
         a                         study:AgeMeasurement ;
+        rdfs:label                "Age 6" ;
+        study:hasActivityCode     code:observationterm-AGE ;
         study:hasActivityOutcome  cdiscpilot01:Age_6 .
 
 cdiscpilot01:InformedConsent_5
@@ -298,7 +304,7 @@ cdiscpilot01:ProductAdministration_2
 
 cdiscpilot01:Birthdate_6
         a               study:Birthdate ;
-        time:inXSDDate  "2013-02-11"^^xsd:date .
+        time:inXSDDate  "1928-03-05"^^xsd:date .
 
 cdiscpilot01:ReferenceStartDate_5
         a               study:ReferenceStartDate ;
@@ -345,6 +351,8 @@ cdiscpilot01:Age_1  a   study:Age ;
 
 cdiscpilot01:AgeMeasurement_5
         a                         study:AgeMeasurement ;
+        rdfs:label                "Age 5" ;
+        study:hasActivityCode     code:observationterm-AGE ;
         study:hasActivityOutcome  cdiscpilot01:Age_5 .
 
 cdiscpilot01:InformedConsent_4
@@ -397,7 +405,7 @@ cdiscpilot01:ProductAdministration_1
 
 cdiscpilot01:Birthdate_5
         a               study:Birthdate ;
-        time:inXSDDate  "2014-06-30"^^xsd:date .
+        time:inXSDDate  "1937-07-20"^^xsd:date .
 
 cdiscpilot01:Age_6  a   study:Age ;
         rdfs:label      "Age 6"^^xsd:string , "Age 6"^^xsd:string ;
@@ -471,6 +479,8 @@ cdiscpilot01:InformedConsentBegin_4
 
 cdiscpilot01:AgeMeasurement_4
         a                         study:AgeMeasurement ;
+        rdfs:label                "Age 4" ;
+        study:hasActivityCode     code:observationterm-AGE ;
         study:hasActivityOutcome  cdiscpilot01:Age_4 .
 
 cdiscpilot01:InformedConsent_3
@@ -507,7 +517,7 @@ cdiscpilot01:DemographicDataCollectionDate_2
 
 cdiscpilot01:Birthdate_4
         a               study:Birthdate ;
-        time:inXSDDate  "2014-03-17"^^xsd:date .
+        time:inXSDDate  "1940-04-04"^^xsd:date .
 
 cdiscpilot01:Person_6
         a                            study:HumanStudySubject , study:EnrolledSubject , rdfs:Resource ;
@@ -576,6 +586,8 @@ cdiscpilot01:InformedConsentBegin_3
 
 cdiscpilot01:AgeMeasurement_3
         a                         study:AgeMeasurement ;
+        rdfs:label                "Age 3" ;
+        study:hasActivityCode     code:observationterm-AGE ;
         study:hasActivityOutcome  cdiscpilot01:Age_3 .
 
 cdiscpilot01:InformedConsent_2
@@ -606,7 +618,7 @@ cdiscpilot01:DemographicDataCollectionDate_1
 
 cdiscpilot01:Birthdate_3
         a               study:Birthdate ;
-        time:inXSDDate  "2013-07-18"^^xsd:date .
+        time:inXSDDate  "1942-08-06"^^xsd:date .
 
 cdiscpilot01:Deathdate_1
         a               study:Deathdate ;
@@ -672,7 +684,7 @@ cdiscpilot01:sdtm-graph
         dcterms:contributor  "Tim Williams"^^xsd:string , "Armando Oliva"^^xsd:string ;
         dcterms:description  "Data converted from the CDISCPILOT01 SDTM DM domain to RDF."^^xsd:string ;
         dcterms:title        "SDTM data as RDF."^^xsd:string ;
-        pav:createdOn        "2017-01-04T14:09:46-05:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-01-04T16:27:51-05:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.2 Platform:x86_64-w64-mingw32 swith scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "cdiscpilot01.TTL" ;

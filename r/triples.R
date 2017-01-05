@@ -211,8 +211,19 @@ for (i in 1:nrow(masterData))
         )
         add.triple(store,
                    paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
+                   paste0(prefix.STUDY,"hasActivityCode" ),
+                   paste0(prefix.CODE, "observationterm-AGE")
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
                    paste0(prefix.STUDY,"hasActivityOutcome" ),
                    paste0(prefix.CDISCPILOT01, "Age_",i)
+        )
+        
+        add.data.triple(store,
+                   paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
+                   paste0(prefix.RDFS,"label" ),
+                   paste0("Age ",i)
         )
         add.data.triple(store,
                         paste0(prefix.CDISCPILOT01, "Age_", i),
