@@ -34,47 +34,44 @@ sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting T
 outFilename = "cdiscpilot01.TTL"
 outFile=paste0("data/rdf/", outFilename)
 
-# Source SDTM as XPT
-# Later change to read all XPT in folder? as per:
-#  http://stackoverflow.com/questions/31236384/saving-multiple-data-frames-and-return-them-from-a-function
 
+#------------------------------------------------------------------------------
+# FNT: readXPT
+#      Read the requested domains into dataframes for processing.
+# TODO: Consider placing in separate Import.R script called by this driver.
 readXPT<-function(domains)
 {
-    resultList <- vector("list", length(domains))
+    resultList <- vector("list", length(domains)) # initialize vector to hold dataframes
     for (i in seq(1, length(domains))) {
-        
         sourceFile <- paste0("data/source/", domains[i], ".XPT")
-        resultList[[i]]<-sasxport.get(sourceFile)
-        
+        # resultList[[i]]<-sasxport.get(sourceFile)
+        # Each domain assembled into resultList by name "dm", "vs" etc.
+        resultList[[domains[i]]]<-sasxport.get(sourceFile)
     }
     resultList # return the dataframes from the function
     #TODO Merge the multiple SDTM Domains into a single Master dataframe.
 }
 
-results<-readXPT(c("dm", "vs")) 
+
+# Access individual dataframes based on name:  domainsDF["vs"], etc.
+domainsDF<-readXPT(c("dm", "vs")) 
+
+# Consider the utility of having the domain prefix (dm.usubjid, vs.usubjid) vs. stripping it as done here.
+# No name overlap due to SDTM naming conventions that add vs to vsdtc, dm to dmdtc, etc.
+# If keeping, make it a function to process the list of domains.
+dm <- data.frame(domainsDF["dm"])
+names(dm) <- gsub( "^dm.",  "", names(dm), perl = TRUE)
+
+vs <- data.frame(domainsDF["vs"])
+names(vs) <- gsub( "^vs.",  "", names(vs), perl = TRUE)
+
+# For testing, keep only the first 6 patients in DM
+dm <- head(dm, 6)
+
+# Merge with VS, keeping on the data for the DM testing subset
 
 
-
-# MODEL TO READ and RETURN MUTLIPLE DATAFRAMES
-#ReadFiles <- function()
-#{
-#    files <- # fetch the files
-#        resultList <- vector("list",length(files))
-#    for(i in seq(1,length(files))) # process each file
-#    {
-#        file <- files[i]
-#        resultList[[i]] <- # fetch your data(frame)
-#    }
-#    resultList # Return the result!
-#}
-#
-#results <- readFiles()
-## You can now access your individual dataframes like this:
-#dataFrame1 <- results[[1]]
-## Or merge them all together if you like:
-#combinedDataFrame <- do.call("rbind",results)
-
-
+# Rename as masterData, the proceed with processing.
 #-------------------------------------------------
 
 
