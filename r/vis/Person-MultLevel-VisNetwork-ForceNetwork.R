@@ -1,6 +1,6 @@
 ###############################################################################
 # FILE : Person-MultLevel-VisNetwork-ForeNetwork.R
-# DESCR: Visualization of the nodes connected to Person_1 as a heirarchical tree
+# DESCR: Visualization of the nodes connected to Person_1 as a FN graph
 # SRC  : 
 # KEYS : 
 # NOTES:  
@@ -136,16 +136,17 @@ edges$title <- edges$p  # title: present when mouseover edge.
 visNetwork(nodes, edges, width="1500px", height="1000px") %>%
     # visPhysics(solver = "forceAtlas2Based", forceAtlas2Based = list(gravitationalConstant = -10))%>%
     #centralGravity = 0.3
-    visPhysics(stabilization = TRUE, barnesHut = list(
-        gravitationalConstant = -1000,
-        avoidOverlap = 0.5,
-        centralGravity = .02,
-        springConstant = 0.002,
-        # stabilization = list(iterations=1),
-        stabilization = FALSE,
-        springLength = 100)) %>%
+#    visPhysics(stabilization = TRUE, barnesHut = list(
+#        gravitationalConstant = -1000,
+#        avoidOverlap = 0.5,
+#        centralGravity = .02,
+#        springConstant = 0.002,
+#        # stabilization = list(iterations=1),
+#        stabilization = FALSE,
+#        springLength = 100)) %>%
     visNodes(font=list(size="20"),
-             borderWidth=1) %>%
+             borderWidth=1,
+             physics=FALSE) %>%
     visEdges(arrows = list(to = list(enabled = TRUE, scaleFactor = 0.5)),
              smooth = list(enabled = FALSE, type = "cubicBezier", roundness=.8)) %>%
     visGroups(groupname = "Person", color = "#feb24c") %>%

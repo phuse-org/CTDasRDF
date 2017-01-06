@@ -1,6 +1,6 @@
 ###############################################################################
 # FILE : dataImpport.R
-# DESCR: Import and code data 
+# DESCR: Import domains. Add Person ID for extractin data across domains 
 # SRC  : 
 # KEYS : 
 # NOTES: Creates the numeric personNum : index variable for each person in the
@@ -41,7 +41,7 @@ domainsDF<-readXPT(c("dm", "vs"))
 # If keeping, make it a function to process the list of domains.
 dm <- data.frame(domainsDF["dm"])
 names(dm) <- gsub( "^dm.",  "", names(dm), perl = TRUE)
-dm <- dm[, !(names(dm) %in% c("domain"))]  # drop unnecessary columns
+#DEL dm <- dm[, !(names(dm) %in% c("domain"))]  # drop unnecessary columns   # DROP is not needed. Delete
 
 # vs domain
 vs <- data.frame(domainsDF["vs"])
@@ -51,21 +51,26 @@ names(vs) <- gsub( "^vs.",  "", names(vs), perl = TRUE)
 # For testing, keep only the first 6 patients in DM
 dm <- head(dm, 6)
 
-
-# Create the Person ID (Person_(n)) in the DM dataset for merging data across domains 
-# during construction of the triples
-# Add the id var "Peson_<n>" for each HumanStudySubject observation 
+# Create the Person ID (Person_(n)) in the DM dataset for looping through the data by Person  
+#     across domains when creating triples
 id<-1:(nrow(dm))   # Generate a list of ID numbers
-# dm$personNum<- dm[i,"pers"]
 dm$personNum<- id
-# dm$pers<-paste0("Person_",id)  # Defines the person identifier as Person_<n>
 
 # Create an merge Index file for the other domains.
-personIndex <- dm[,c("personNum", "usubjid")]
+personId <- dm[,c("personNum", "usubjid")]
 
-#-- Merge the personIndex into the other domains to allow later looping during triple creation. 
+#------------------------------------------------------------------------------
+# FNT: addpersonId
+#-- Merge the personId into the other domains to allow later looping during triple creation. 
 #-- vs domain subset down to the test population specified in the dm subsetting.
-vs <- merge(x = personIndex, y = vs, by="usubjid", all.x = TRUE)
+
+#
+addpersonId<-function(domainName)
+{
+    withIndex <- merge(x = personId, y = domainName, by="usubjid", all.x = TRUE)
+    return(withIndex)
+}
+vs<-addpersonId(vs)
 
 # -------------------------------------------------------------
 
