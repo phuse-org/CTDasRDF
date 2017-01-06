@@ -20,7 +20,7 @@ setwd("C:/_gitHub/SDTM2RDF")
 
 TWSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
 
-AOSource = load.rdf("data/rdf/Armando-21DEC16/cdiscpilot01local.TTL", format="N3")
+AOSource = load.rdf("data/rdf/AO-2016-01-05/cdiscpilot01local.TTL", format="N3")
 
 
 checkPerson <- function(){
@@ -52,10 +52,11 @@ inTWNotAO
 inAONotTW
 
 }
+checkPerson()
 
 checkPredicate <- function(predicate){
-#-----------------------------------------------------------------
-#-- cdiscpilot01:Person_1 study:hasAgeMeasurement 
+    #-----------------------------------------------------------------
+    #-- cdiscpilot01:Person_1 study:hasAgeMeasurement 
     query = paste(' 
         PREFIX cdiscpilot01: <http://example.org/cdiscpilot01#>
         PREFIX custom: <http://example.org/custom#>

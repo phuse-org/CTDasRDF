@@ -75,7 +75,7 @@ cdiscpilot01:Birthdate_2
         time:inXSDDate  "1948-08-05"^^xsd:date .
 
 cdiscpilot01:Person_4
-        a                            rdfs:Resource , study:HumanStudySubject , study:EnrolledSubject ;
+        a                            study:HumanStudySubject , study:EnrolledSubject , rdfs:Resource ;
         rdfs:label                   "Person 4" ;
         study:allocatedToArm         custom:armcd-XAN_LO ;
         study:deathFlag              ""^^xsd:string ;
@@ -87,7 +87,7 @@ cdiscpilot01:Person_4
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1033"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1033"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:P4_DBP_19 , cdiscpilot01:ProductAdministration_4 , cdiscpilot01:P4_DBP_4 , cdiscpilot01:P4_DBP_8 , cdiscpilot01:P4_DBP_11 , cdiscpilot01:P4_DBP_7 , cdiscpilot01:P4_DBP_15 , cdiscpilot01:P4_DBP_18 , cdiscpilot01:DemographicDataCollection_4 , cdiscpilot01:P4_DBP_3 , cdiscpilot01:P4_DBP_21 , cdiscpilot01:P4_DBP_10 , cdiscpilot01:P4_DBP_2 , cdiscpilot01:P4_DBP_6 , cdiscpilot01:P4_DBP_14 , cdiscpilot01:P4_DBP_17 , cdiscpilot01:InformedConsent_4 , cdiscpilot01:P4_DBP_20 , cdiscpilot01:Randomization_4 , cdiscpilot01:P4_DBP_1 , cdiscpilot01:P4_DBP_5 , cdiscpilot01:P4_DBP_13 , cdiscpilot01:P4_DBP_9 , cdiscpilot01:P4_DBP_12 , cdiscpilot01:P4_DBP_16 , cdiscpilot01:study-CDISCPILOT01 ;
+        study:participatesIn         cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:ProductAdministration_4 , cdiscpilot01:Randomization_4 , cdiscpilot01:InformedConsent_4 , cdiscpilot01:DemographicDataCollection_4 ;
         study:treatedAccordingToArm  custom:armcd-XAN_LO ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_4 ;
         time:hasEnd                  cdiscpilot01:StudyParticipationEnd_4 , cdiscpilot01:ReferenceEndDate_4 .
@@ -196,7 +196,7 @@ cdiscpilot01:Birthdate_1
         time:inXSDDate  "1951-01-02"^^xsd:date .
 
 cdiscpilot01:Person_3
-        a                            rdfs:Resource , study:EnrolledSubject , study:HumanStudySubject ;
+        a                            study:EnrolledSubject , study:HumanStudySubject , rdfs:Resource ;
         rdfs:label                   "Person 3" ;
         study:allocatedToArm         custom:armcd-XAN_HI ;
         study:deathFlag              ""^^xsd:string ;
@@ -208,7 +208,7 @@ cdiscpilot01:Person_3
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1028"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1028"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:P3_DBP_38 , cdiscpilot01:P3_DBP_28 , cdiscpilot01:P3_DBP_18 , cdiscpilot01:P3_DBP_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:P3_DBP_6 , cdiscpilot01:P3_DBP_40 , cdiscpilot01:P3_DBP_30 , cdiscpilot01:P3_DBP_20 , cdiscpilot01:P3_DBP_14 , cdiscpilot01:P3_DBP_37 , cdiscpilot01:P3_DBP_33 , cdiscpilot01:Randomization_3 , cdiscpilot01:P3_DBP_23 , cdiscpilot01:P3_DBP_12 , cdiscpilot01:P3_DBP_27 , cdiscpilot01:P3_DBP_17 , cdiscpilot01:P3_DBP_2 , cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:P3_DBP_36 , cdiscpilot01:P3_DBP_5 , cdiscpilot01:P3_DBP_8 , cdiscpilot01:P3_DBP_13 , cdiscpilot01:P3_DBP_42 , cdiscpilot01:P3_DBP_32 , cdiscpilot01:P3_DBP_22 , cdiscpilot01:P3_DBP_26 , cdiscpilot01:P3_DBP_16 , cdiscpilot01:P3_DBP_1 , cdiscpilot01:P3_DBP_9 , cdiscpilot01:P3_DBP_11 , cdiscpilot01:P3_DBP_35 , cdiscpilot01:P3_DBP_39 , cdiscpilot01:P3_DBP_29 , cdiscpilot01:P3_DBP_19 , cdiscpilot01:P3_DBP_4 , cdiscpilot01:P3_DBP_7 , cdiscpilot01:InformedConsent_3 , cdiscpilot01:P3_DBP_41 , cdiscpilot01:P3_DBP_31 , cdiscpilot01:P3_DBP_21 , cdiscpilot01:P3_DBP_10 , cdiscpilot01:P3_DBP_25 , cdiscpilot01:P3_DBP_15 , cdiscpilot01:P3_DBP_34 , cdiscpilot01:P3_DBP_24 ;
+        study:participatesIn         cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:InformedConsent_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:Randomization_3 ;
         study:treatedAccordingToArm  custom:armcd-XAN_HI ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_3 ;
         time:hasEnd                  cdiscpilot01:ReferenceEndDate_3 , cdiscpilot01:StudyParticipationEnd_3 .
@@ -312,7 +312,7 @@ cdiscpilot01:ReferenceStartDate_5
         time:inXSDDate  "2014-07-01"^^xsd:date .
 
 cdiscpilot01:Person_2
-        a                            study:EnrolledSubject , rdfs:Resource , study:HumanStudySubject ;
+        a                            study:HumanStudySubject , rdfs:Resource , study:EnrolledSubject ;
         rdfs:label                   "Person 2" ;
         study:allocatedToArm         custom:armcd-PBO ;
         study:deathFlag              ""^^xsd:string ;
@@ -324,10 +324,10 @@ cdiscpilot01:Person_2
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1023"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1023"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:P2_DBP_13 , cdiscpilot01:P2_DBP_4 , cdiscpilot01:P2_DBP_16 , cdiscpilot01:P2_DBP_7 , cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:Randomization_2 , cdiscpilot01:ProductAdministration_2 , cdiscpilot01:P2_DBP_12 , cdiscpilot01:InformedConsent_2 , cdiscpilot01:P2_DBP_21 , cdiscpilot01:P2_DBP_3 , cdiscpilot01:P2_DBP_15 , cdiscpilot01:P2_DBP_6 , cdiscpilot01:P2_DBP_18 , cdiscpilot01:P2_DBP_9 , cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:P2_DBP_11 , cdiscpilot01:P2_DBP_20 , cdiscpilot01:P2_DBP_10 , cdiscpilot01:P2_DBP_2 , cdiscpilot01:P2_DBP_14 , cdiscpilot01:P2_DBP_1 , cdiscpilot01:P2_DBP_5 , cdiscpilot01:P2_DBP_17 , cdiscpilot01:P2_DBP_8 , cdiscpilot01:P2_DBP_19 ;
+        study:participatesIn         cdiscpilot01:ProductAdministration_2 , cdiscpilot01:InformedConsent_2 , cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:Randomization_2 , cdiscpilot01:study-CDISCPILOT01 ;
         study:treatedAccordingToArm  custom:armcd-PBO ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_2 ;
-        time:hasEnd                  cdiscpilot01:StudyParticipationEnd_2 , cdiscpilot01:ReferenceEndDate_2 .
+        time:hasEnd                  cdiscpilot01:ReferenceEndDate_2 , cdiscpilot01:StudyParticipationEnd_2 .
 
 cdiscpilot01:ProductAdministrationEnd_2
         a               study:ProductAdministrationEnd ;
@@ -418,7 +418,7 @@ cdiscpilot01:ReferenceStartDate_4
         time:inXSDDate  "2014-03-18"^^xsd:date .
 
 cdiscpilot01:Person_1
-        a                            rdfs:Resource , study:EnrolledSubject , study:HumanStudySubject ;
+        a                            rdfs:Resource , study:HumanStudySubject , study:EnrolledSubject ;
         rdfs:label                   "Person 1" ;
         study:allocatedToArm         custom:armcd-PBO ;
         study:deathFlag              "Y"^^xsd:string ;
@@ -431,7 +431,7 @@ cdiscpilot01:Person_1
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1015"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1015"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:P1_DBP_13 , cdiscpilot01:P1_DBP_30 , cdiscpilot01:P1_DBP_42 , cdiscpilot01:P1_DBP_5 , cdiscpilot01:P1_DBP_11 , cdiscpilot01:P1_DBP_9 , cdiscpilot01:P1_DBP_15 , cdiscpilot01:P1_DBP_32 , cdiscpilot01:P1_DBP_23 , cdiscpilot01:P1_DBP_27 , cdiscpilot01:P1_DBP_7 , cdiscpilot01:P1_DBP_35 , cdiscpilot01:P1_DBP_39 , cdiscpilot01:P1_DBP_29 , cdiscpilot01:P1_DBP_1 , cdiscpilot01:P1_DBP_40 , cdiscpilot01:P1_DBP_3 , cdiscpilot01:P1_DBP_31 , cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:P1_DBP_21 , cdiscpilot01:P1_DBP_25 , cdiscpilot01:P1_DBP_6 , cdiscpilot01:P1_DBP_12 , cdiscpilot01:InformedConsent_1 , cdiscpilot01:P1_DBP_16 , cdiscpilot01:P1_DBP_33 , cdiscpilot01:P1_DBP_37 , cdiscpilot01:P1_DBP_24 , cdiscpilot01:P1_DBP_28 , cdiscpilot01:ProductAdministration_1 , cdiscpilot01:P1_DBP_18 , cdiscpilot01:P1_DBP_2 , cdiscpilot01:P1_DBP_20 , cdiscpilot01:P1_DBP_41 , cdiscpilot01:Randomization_1 , cdiscpilot01:P1_DBP_4 , cdiscpilot01:P1_DBP_10 , cdiscpilot01:P1_DBP_8 , cdiscpilot01:P1_DBP_14 , cdiscpilot01:P1_DBP_22 , cdiscpilot01:P1_DBP_26 , cdiscpilot01:P1_DBP_17 , cdiscpilot01:P1_DBP_34 , cdiscpilot01:DemographicDataCollection_1 , cdiscpilot01:P1_DBP_38 , cdiscpilot01:P1_DBP_19 , cdiscpilot01:P1_DBP_36 ;
+        study:participatesIn         cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:DemographicDataCollection_1 , cdiscpilot01:InformedConsent_1 , cdiscpilot01:ProductAdministration_1 , cdiscpilot01:Randomization_1 ;
         study:treatedAccordingToArm  custom:armcd-PBO ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_1 ;
         time:hasEnd                  cdiscpilot01:ReferenceEndDate_1 , cdiscpilot01:StudyParticipationEnd_1 .
@@ -532,10 +532,10 @@ cdiscpilot01:Person_6
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1047"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1047"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:P6_DBP_4 , cdiscpilot01:P6_DBP_3 , cdiscpilot01:P6_DBP_24 , cdiscpilot01:P6_DBP_23 , cdiscpilot01:P6_DBP_12 , cdiscpilot01:P6_DBP_16 , cdiscpilot01:P6_DBP_13 , cdiscpilot01:P6_DBP_17 , cdiscpilot01:P6_DBP_9 , cdiscpilot01:P6_DBP_20 , cdiscpilot01:ProductAdministration_6 , cdiscpilot01:P6_DBP_6 , cdiscpilot01:P6_DBP_14 , cdiscpilot01:P6_DBP_18 , cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:P6_DBP_19 , cdiscpilot01:InformedConsent_6 , cdiscpilot01:P6_DBP_2 , cdiscpilot01:P6_DBP_1 , cdiscpilot01:Randomization_6 , cdiscpilot01:P6_DBP_5 , cdiscpilot01:P6_DBP_22 , cdiscpilot01:P6_DBP_21 , cdiscpilot01:P6_DBP_10 , cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:P6_DBP_11 , cdiscpilot01:P6_DBP_15 , cdiscpilot01:P6_DBP_8 , cdiscpilot01:P6_DBP_7 ;
+        study:participatesIn         cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:InformedConsent_6 , cdiscpilot01:ProductAdministration_6 , cdiscpilot01:Randomization_6 ;
         study:treatedAccordingToArm  custom:armcd-PBO ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_6 ;
-        time:hasEnd                  cdiscpilot01:ReferenceEndDate_6 , cdiscpilot01:StudyParticipationEnd_6 .
+        time:hasEnd                  cdiscpilot01:StudyParticipationEnd_6 , cdiscpilot01:ReferenceEndDate_6 .
 
 cdiscpilot01:ProductAdministrationEnd_6
         a               study:ProductAdministrationEnd ;
@@ -625,7 +625,7 @@ cdiscpilot01:Deathdate_1
         time:inXSDDate  "2013-12-26"^^xsd:date .
 
 cdiscpilot01:Person_5
-        a                            rdfs:Resource , study:HumanStudySubject , study:EnrolledSubject ;
+        a                            study:EnrolledSubject , study:HumanStudySubject , rdfs:Resource ;
         rdfs:label                   "Person 5" ;
         study:allocatedToArm         custom:armcd-XAN_HI ;
         study:deathFlag              ""^^xsd:string ;
@@ -637,7 +637,7 @@ cdiscpilot01:Person_5
         study:hasSite                cdiscpilot01:site-701 ;
         study:hasSubjectID           "1034"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1034"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:P5_DBP_31 , cdiscpilot01:P5_DBP_21 , cdiscpilot01:P5_DBP_10 , cdiscpilot01:P5_DBP_25 , cdiscpilot01:P5_DBP_14 , cdiscpilot01:P5_DBP_38 , cdiscpilot01:P5_DBP_34 , cdiscpilot01:P5_DBP_28 , cdiscpilot01:P5_DBP_24 , cdiscpilot01:P5_DBP_2 , cdiscpilot01:P5_DBP_5 , cdiscpilot01:InformedConsent_5 , cdiscpilot01:P5_DBP_17 , cdiscpilot01:P5_DBP_8 , cdiscpilot01:P5_DBP_30 , cdiscpilot01:P5_DBP_20 , cdiscpilot01:P5_DBP_1 , cdiscpilot01:P5_DBP_13 , cdiscpilot01:P5_DBP_37 , cdiscpilot01:P5_DBP_33 , cdiscpilot01:P5_DBP_23 , cdiscpilot01:P5_DBP_12 , cdiscpilot01:P5_DBP_27 , cdiscpilot01:P5_DBP_16 , cdiscpilot01:P5_DBP_36 , cdiscpilot01:P5_DBP_4 , cdiscpilot01:P5_DBP_7 , cdiscpilot01:P5_DBP_19 , cdiscpilot01:ProductAdministration_5 , cdiscpilot01:P5_DBP_32 , cdiscpilot01:P5_DBP_22 , cdiscpilot01:P5_DBP_26 , cdiscpilot01:P5_DBP_3 , cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:P5_DBP_11 , cdiscpilot01:P5_DBP_15 , cdiscpilot01:P5_DBP_35 , cdiscpilot01:P5_DBP_39 , cdiscpilot01:P5_DBP_29 , cdiscpilot01:P5_DBP_18 , cdiscpilot01:P5_DBP_6 , cdiscpilot01:P5_DBP_9 , cdiscpilot01:Randomization_5 , cdiscpilot01:DemographicDataCollection_5 ;
+        study:participatesIn         cdiscpilot01:DemographicDataCollection_5 , cdiscpilot01:study-CDISCPILOT01 , cdiscpilot01:InformedConsent_5 , cdiscpilot01:ProductAdministration_5 , cdiscpilot01:Randomization_5 ;
         study:treatedAccordingToArm  custom:armcd-XAN_HI ;
         time:hasBeginning            cdiscpilot01:ReferenceStartDate_5 ;
         time:hasEnd                  cdiscpilot01:StudyParticipationEnd_5 , cdiscpilot01:ReferenceEndDate_5 .
@@ -684,7 +684,7 @@ cdiscpilot01:sdtm-graph
         dcterms:contributor  "Tim Williams"^^xsd:string , "Armando Oliva"^^xsd:string ;
         dcterms:description  "Data converted from the CDISCPILOT01 SDTM DM domain to RDF."^^xsd:string ;
         dcterms:title        "SDTM data as RDF."^^xsd:string ;
-        pav:createdOn        "2017-01-05T15:53:09-05:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-01-06T11:15:49-05:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.2 Platform:x86_64-w64-mingw32 swith scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "cdiscpilot01.TTL" .
