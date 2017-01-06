@@ -63,7 +63,20 @@ for (i in 1:nrow(prefixes)) {
 source('R/singleResources.R')
 
 #-- Data triples creation
-source('R/triples.R')
+# Graph Metadata
+source('R/graphMeta.R')
+
+#-- DOMAIN PROCESSING ---------------------------------------------------------
+#---- DM DOMAIN
+source('R/processDM.R')
+processDM()
+
+
+#---- VS DOMAIN
+source('R/processVS.R')
+processVS()
+
+
 
 ##########
 # Output #
