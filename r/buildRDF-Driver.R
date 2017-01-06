@@ -18,6 +18,7 @@
 library(rrdf)
 library(Hmisc)
 library(car)   # Recoding of values for SDTM codes, etc.
+library(dplyr)
 
 # Version
 #    Used to identify the version of the code and data. Is part of the TTL
@@ -37,11 +38,9 @@ outFile=paste0("data/rdf/", outFilename)
 #-- Import and Code Data prior to building codelists and processing.
 #   Add data where needed for proof of concept. Clean data, etc.
 
-source('R/dataImport.R')
-
 
 # Create date needed for testing purposes. Eg: Set a deathFlag value to allow testing of code.
-source('R/dataCreate.R')
+#DEL source('R/dataCreate.R')
 
 # Initialize. Includes OWL, XSD, RDF by default.
 store = new.rdf()  
@@ -60,22 +59,22 @@ for (i in 1:nrow(prefixes)) {
     assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"])
 }
 
-source('R/singleResources.R')
-
+# source('R/singleResources.R')
 #-- Data triples creation
 # Graph Metadata
 source('R/graphMeta.R')
 
+# Import and indexing Functions (Called during domain processing) 
+source('R/dataImport.R')
+
+
 #-- DOMAIN PROCESSING ---------------------------------------------------------
 #---- DM DOMAIN
+#  DM  must be processd first: Creates data required in later steps.
 source('R/processDM.R')
-processDM()
-
 
 #---- VS DOMAIN
-source('R/processVS.R')
-processVS()
-
+# source('R/processVS.R')
 
 
 ##########
