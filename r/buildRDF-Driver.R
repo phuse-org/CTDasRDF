@@ -1,18 +1,17 @@
 ###############################################################################
-# Name : buildRDF-Driver.R
-# AUTH : Tim W. 
-# DSCR : Master program for building the TTL file for the SDTM domains from 
-#            the CDISCPILOT01 example data.
-# NOTES: Validation of the resulting TTL file with Apache Jenna riot
-#         Coded values cannot have spaces or special characters.
-# IN  :   prefixes.csv - prefixes and their namespaces
-#
-# OUT : data/rdf/cdiscpilot01.TTL
+# FILE: buildRDF-Driver.R
+# DESC: Master program for building the TTL file for the SDTM domains from 
+#        the CDISCPILOT01 example data.
+#       Loads all required libraries.
 # REQ : Apache Jena 3.0.1: For riot, installed and avail at system path if 
 #           valdiation called
-# TODO: Code processVS.R
-#       Date format issues.
-#       birthdate calculation
+# SRC : N/A
+# IN  :  prefixes.csv - prefixes and their namespaces
+#        Calls to other scripts for code, functions, data import.
+# OUT : data/rdf/cdiscpilot01.TTL
+# NOTE: Validation of the resulting TTL structure with Apache Jenna riot
+#        Later cross check with CompareTTL.R
+# TODO: 
 #
 ###############################################################################
 library(rrdf)
@@ -20,10 +19,11 @@ library(Hmisc)
 library(car)   # Recoding of values for SDTM codes, etc.
 library(dplyr)
 
-# Version
-#    Used to identify the version of the code and data. Is part of the TTL
-#    metadata
+# Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
+
+# Subset down for prototype development. 
+maxPerson = 6; # Used in processDM.R 
 
 # Set working directory to the root of the work area
 setwd("C:/_github/SDTM2RDF")
@@ -31,25 +31,18 @@ setwd("C:/_github/SDTM2RDF")
 # Configuration: List of prefixes
 sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
 
-# Output file
+# Output filename and location
 outFilename = "cdiscpilot01.TTL"
 outFile=paste0("data/rdf/", outFilename)
-
-#-- Import and Code Data prior to building codelists and processing.
-#   Add data where needed for proof of concept. Clean data, etc.
-
-
-# Create date needed for testing purposes. Eg: Set a deathFlag value to allow testing of code.
-#DEL source('R/dataCreate.R')
 
 # Initialize. Includes OWL, XSD, RDF by default.
 store = new.rdf()  
 
 #-- Build the Prefixes from the CSV file
 prefixes <- as.data.frame( read.csv(sourcePrefix,
-                                    header=T,
-                                    sep=',' ,
-                                    strip.white=TRUE))
+    header=T,
+    sep=',' ,
+    strip.white=TRUE))
 for (i in 1:nrow(prefixes)) {
     add.prefix(store,
         prefix=as.character(prefixes[i,"prefix"]),
@@ -59,29 +52,28 @@ for (i in 1:nrow(prefixes)) {
     assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"])
 }
 
-# source('R/singleResources.R')
-#-- Data triples creation
+#-- Data triples creation -----------------------------------------------------
 # Graph Metadata
 source('R/graphMeta.R')
 
 # Import and indexing Functions (Called during domain processing) 
-source('R/dataImport.R')
-
+source('R/dataImportFnts.R')
 
 #-- DOMAIN PROCESSING ---------------------------------------------------------
 #---- DM DOMAIN
-#  DM  must be processd first: Creates data required in later steps.
+#  NOTE: DM  MUST be processd first: Creates data required in later steps.
 source('R/processDM.R')
 
 #---- VS DOMAIN
 # source('R/processVS.R')
 
+#---- X DOMAIN  Additional Domains will be added here.......
 
 ##########
 # Output #
 ###############################################################################
 store = save.rdf(store, filename=outFile, format="TURTLE")
 
-# Validate TTL file.Always good to validate, friendo.
+# Validate TTL file. Always a good idea to validate, friendo.
 system(paste('riot --validate ', outFile),
     show.output.on.console = TRUE)
