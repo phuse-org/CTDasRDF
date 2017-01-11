@@ -242,7 +242,7 @@ for (i in 1:nrow(dm))
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Birthdate_", i),
             paste0(prefix.RDFS,"label" ),
-            paste0("Birthdate ",i)
+            paste0("Birthdate ",i), type="string"
         )
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Birthdate_", i),
@@ -266,8 +266,13 @@ for (i in 1:nrow(dm))
             
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "Deathdate_", i),
-                paste0(prefix.TIME,"inXSDDate" ),
-                paste0( dm[i,"dthdtc"]), type="date"
+                paste0(prefix.STUDY,"dateTimeInXSDString" ),
+                paste0( dm[i,"dthdtc"]), type="string"
+            )
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+                paste0(prefix.RDFS,"label" ),
+                paste0("Deathdate ",i), type="string"
             )
     }
     add.triple(store,
@@ -345,16 +350,19 @@ for (i in 1:nrow(dm))
        paste0(prefix.STUDY,"allocatedToArm" ),
        paste0(prefix.CUSTOM, "armcd-",dm[i,"armCoded"]) 
    )
-       add.triple(store,
-           paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
-           paste0(prefix.RDF,"type" ),
-           paste0(prefix.STUDY,"Arm" )
-       )
-       add.triple(store,
-           paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
-           paste0(prefix.STUDY,"hasArmCode" ),
-           paste0(prefix.CUSTOM,"armcd-PBO" )
-       )
+      # These triples are coded in the customTerminology file.
+      #   and not needed here.
+      #DEL add.triple(store,
+      #DEL     paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
+      #DEL     paste0(prefix.RDF,"type" ),
+      #DEL     paste0(prefix.STUDY,"Arm" )
+      #DEL )
+      #DEL add.triple(store,
+      #DEL     paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
+      #DEL     paste0(prefix.STUDY,"hasArmCode" ),
+      #DEL     paste0(prefix.CUSTOM,"armcd-PBO" )
+      #DEL )
+   
     # Death flag
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -579,6 +587,7 @@ for (i in 1:nrow(dm))
     )
     # Both allocatedTo and treatedAccordingTo use the same ARM codelist.
     #    THere is not separate codelist for ARM vs. ACTARM.
+    # Codes are in customterminology.ttl
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"treatedAccordingToArm"),
@@ -616,9 +625,15 @@ for (i in 1:nrow(dm))
         #TODO Add !is.na for this time.
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
-            paste0(prefix.TIME,"inXSDDate"),
-            paste0(dm[i,"rfstdtc"]), type="date"
+            paste0(prefix.STUDY,"dateTimeInXSDString"),
+            paste0(dm[i,"rfstdtc"]), type="string"
         )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "ReferenceStartDate_", i),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Reference start date ",i), type="string"
+        )
+
     # Reference end date
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -638,9 +653,15 @@ for (i in 1:nrow(dm))
         )
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
-            paste0(prefix.TIME,"inXSDDate"),
-            paste0(dm[i,"rfendtc"]), type="date"
+            paste0(prefix.TIME,"dateTimeInXSDString"),
+            paste0(dm[i,"rfendtc"]), type="string"
         )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Reference end date ",i), type="string"
+        )
+
     # Create triples for rfpendtc only if a value is present
     if (! is.na(dm[i,"rfpendtc"])){
         add.triple(store,
@@ -667,15 +688,15 @@ for (i in 1:nrow(dm))
             )){
             add.data.triple(store,
                             paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
-                            paste0(prefix.TIME,"inXSDDate"),
-                            paste0(dm[i,"rfpendtc"]), type="date"
+                            paste0(prefix.STUDY,"dateTimeInXSDString"),
+                            paste0(dm[i,"rfpendtc"]), type="string"
             )
         }else{
             # all other values in the date field are coded as string, including dateTime
             #   values (which lack :ss, so are incomplete semantically)
             add.data.triple(store,
                             paste0(prefix.CDISCPILOT01, "StudyParticipationEnd_", i),
-                            paste0(prefix.TIME,"inXSDString"),
+                            paste0(prefix.STUDY,"dateTimeInXSDString"),
                             paste0(dm[i,"rfpendtc"]), type="string"
             )            
         } # End of else
