@@ -76,29 +76,29 @@ dm$actarmCoded     <- toupper(gsub(" ", "", dm$actarmcd))
 #        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
 #---- Sex
 dm$sexSDTMCode <- recode(dm$sex, 
-    'M'  = 'C66731.C20197',
-    'F'  = 'C66731.C16576',
-    'U'  = 'C66731.C17998', 
-    'UNDIFFERENTIATED' = 'C66731.C45908' )
+    "'M'  = 'C66731.C20197';
+     'F'  = 'C66731.C16576';
+     'U'  = 'C66731.C17998'; 
+     'UNDIFFERENTIATED' = 'C66731.C45908'" )
 
 #---- Ethnicity
 dm$ethnicSDTMCode <- recode(dm$ethnic, 
-    'HISPANIC OR LATINO'     = 'C66790.C17459', 
-    'NOT HISPANIC OR LATINO' = 'C66790.C41222',
-    'NOT REPORTED'           = 'C66790.C43234',
-    'UNKNOWN'                = 'C66790.C17998')
+    "'HISPANIC OR LATINO'     = 'C66790.C17459';
+     'NOT HISPANIC OR LATINO' = 'C66790.C41222';
+     'NOT REPORTED'           = 'C66790.C43234';
+     'UNKNOWN'                = 'C66790.C17998'")
 
 #---- Race
 dm$raceSDTMCode <- recode(dm$race,
-    'AMERICAN INDIAN OR ALASKA NATIVE'          = 'C74457.C41259',
-    'ASIAN'                                     = 'C74457.C41260',
-    'BLACK OR AFRICAN AMERICAN'                 = 'C74457.C16352',
-    'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER' = 'C74457.C41219',
-    'WHITE'                                     = 'C74457.C41261')
+    "'AMERICAN INDIAN OR ALASKA NATIVE'          = 'C74457.C41259';
+     'ASIAN'                                     = 'C74457.C41260';
+     'BLACK OR AFRICAN AMERICAN'                 = 'C74457.C16352';
+     'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER' = 'C74457.C41219';
+     'WHITE'                                     = 'C74457.C41261'")
 
 #---- Country
 # Match to the code in the ontology identified by AO
-dm$countryCode <- recode(dm$country,'USA' = '840')
+dm$countryCode <- recode(dm$country,"'USA' = '840'")
 
 #-- End Data Coding -----------------------------------------------------------
 
@@ -246,8 +246,8 @@ for (i in 1:nrow(dm))
         )
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Birthdate_", i),
-            paste0(prefix.TIME,"inXSDDate" ),
-            paste0(dm[i,"brthdate"]), type="date"
+            paste0(prefix.STUDY,"dateTimeInXSDSTring" ),
+            paste0(dm[i,"brthdate"]), type="string"
         )
     #-- Deathdate
     # Note the funky conversion testing for missing! is.na will NOT work here. 
