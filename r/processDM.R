@@ -478,8 +478,8 @@ for (i in 1:nrow(dm))
             )
             add.data.triple(store,    
                 paste0(prefix.CDISCPILOT01,"InformedConsentBegin_", i),
-                paste0(prefix.TIME,"inXSDDate" ),
-                paste0(dm[i,"rficdtc"]), type="date"
+                paste0(prefix.STUDY,"dateTimeInXSDString" ),
+                paste0(dm[i,"rficdtc"]), type="string"
             )
     # Product Administration         
     add.triple(store,
@@ -516,8 +516,8 @@ for (i in 1:nrow(dm))
             )
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "ProductAdministrationBegin_", i),
-                paste0(prefix.TIME,"inXSDDate"),
-                paste0(dm[i,"rfstdtc"]), type="date"
+                paste0(prefix.STUDY,"dateTimeInXSDString"),
+                paste0(dm[i,"rfstdtc"]), type="string"
             )
         # Level 2    
         add.triple(store,
@@ -538,8 +538,8 @@ for (i in 1:nrow(dm))
             )
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "ProductAdministrationEnd_", i),
-                paste0(prefix.TIME,"inXSDDate"),
-                paste0(dm[i,"rfendtc"]), type="date"
+                paste0(prefix.STUDY,"dateTimeInXSDString"),
+                paste0(dm[i,"rfendtc"]), type="string"
             )
     # Randomization
     add.triple(store,
@@ -578,7 +578,7 @@ for (i in 1:nrow(dm))
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
                 paste0(prefix.RDFS,"label" ),
-                paste0("Randomization Outcome ",i), type="string"            
+                paste0("Randomization outcome ",i), type="string"            
             )
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -653,7 +653,7 @@ for (i in 1:nrow(dm))
         )
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "ReferenceEndDate_", i),
-            paste0(prefix.TIME,"dateTimeInXSDString"),
+            paste0(prefix.STUDY,"dateTimeInXSDString"),
             paste0(dm[i,"rfendtc"]), type="string"
         )
         add.data.triple(store,

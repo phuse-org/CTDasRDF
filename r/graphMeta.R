@@ -93,5 +93,5 @@ add.data.triple(store,
 add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),
                 paste0(prefix.RDFS,"label" ),
-                paste0("Study-CDISCPILOT01"), type="string" 
+                paste0("study-CDISCPILOT01"), type="string" 
 )

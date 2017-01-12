@@ -3,6 +3,7 @@
 # DESC: Master program for building the TTL file for the SDTM domains from 
 #        the CDISCPILOT01 example data.
 #       Loads all required libraries.
+#       Writes out TTL.
 # REQ : Apache Jena 3.0.1: For riot, installed and avail at system path if 
 #           valdiation called
 # SRC : N/A
@@ -16,8 +17,8 @@
 ###############################################################################
 library(rrdf)
 library(Hmisc)
-library(car)   # Recoding of values for SDTM codes, etc.
 library(dplyr)
+library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 
 # Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
