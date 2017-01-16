@@ -28,6 +28,9 @@ vs <- addpersonId(vs)
 # Loop through the dataframe and create the triples for each Person_<n>
 for (i in 1:nrow(vs))
 {
+    #DEV Limit to first 3 obs for testing purposes only
+    if (i<4) 
+    {
     person <-  paste0("Person_", vs[i,"personNum"])
     
     #-- DIABP 
@@ -39,7 +42,22 @@ for (i in 1:nrow(vs))
             paste0(prefix.STUDY,"participatesIn" ),
             paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"])
         )
-        #TODO Level 2 P(n)_DBP_(n)
+        # Level 2 P(n)_DBP_(n)
+        #TW if DiastolicBPMeasure in another file, this triple ends here.
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY, "DiastolicBPMeasure")
+        )
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+            paste0(prefix.STUDY,"activityStatus" ),
+            paste0(prefix.CODE, "DiastolicBPMeasure")
+        )
+        
+        
+        
+        
         #TODO Level 3 date-P(n)_DBP_(n)
     }
     #-- SYSBP
@@ -61,4 +79,5 @@ for (i in 1:nrow(vs))
     #-- WEIGHT
     #if (vs$vstestcd=="SYSBP"){
     #}
+    } # End limit of loop to first 3 obs
 }    # End looping through the domain dataframe.    
