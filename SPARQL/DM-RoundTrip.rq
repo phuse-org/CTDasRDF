@@ -1,0 +1,41 @@
+###############################################################################
+# FILE: DM-RoundTrip.rq
+# DESC: Create a CDISC-compliant table from RDF to demo roun-tripping
+# REQ : Uploads to virtuoso of:
+#       SDTM Terminlogy:  xxxx.owl
+#       Time Ontology:  xxx.owl
+#        <add others>
+# SRC : 
+# IN  : <http://localhost:8890/SDEDEC2016>   - CHANGE to SDTMtoRDF named graph
+# OUT : 
+# NOTE: ..just a start.
+#       Designed to execute in the quadstore.
+#
+# TODO: !ISSUE:  AGEU "YEARS" not in graph 2017-10-17 
+#       - CHANGE to SDTMtoRDF named graph
+#       Change ?domain and ?study to obtain from the graph (remove kludge))
+###############################################################################
+
+PREFIX study: <http://example.org/study#>
+SELECT ?study ?domain ?subjid ?usubjid ?age ?sex
+FROM <http://localhost:8890/SDEDEC2016>
+WHERE {
+ ?person a                        study:EnrolledSubject ;
+         study:hasSubjectID       ?subjid_ ;
+         study:hasUniqueSubjectID ?usubjid_ ;
+         study:hasAgeMeasurement  ?agemeas ;
+         study:hasSex             ?sex_ .
+
+  ?agemeas study:hasActivityOutcome ?ageOutcome.
+  ?ageOutcome  study:hasValue  ?age_.
+
+# Make so pretty-pretty
+bind( str(?subjid_) as ?subjid  )
+bind( str(?usubjid_) as ?usubjid  )
+bind( xsd:integer(?age_) as ?age )
+bind( strafter(str(?sex_),str('terminology#')) as ?sex  )
+
+# Cheating here. Pay no attention to that man behind the curtain
+bind("DM" as ?domain)
+bind("CDISCPILOT01" as ?study)
+} 
