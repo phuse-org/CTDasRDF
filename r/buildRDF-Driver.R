@@ -17,7 +17,8 @@
 ###############################################################################
 library(rrdf)
 library(Hmisc)
-library(dplyr)
+# library(dplyr)
+library(plyr)
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 
 # Version of COde/output. Triple created in graphMeta.R
@@ -66,7 +67,7 @@ source('R/dataImportFnts.R')
 source('R/processDM.R')
 
 #---- VS DOMAIN
-# source('R/processVS.R')
+source('R/processVS.R')
 
 #---- X DOMAIN  Additional Domains will be added here.......
 

@@ -23,7 +23,7 @@ vs <- vs[with(vs, order(usubjid, vstestcd, vsdtc_ymd)), ]
 # Add ID numbers within categories, excluding date (used for sorting, not for cat number)
 vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
 
-vs <- addpersonId(vs)
+vs <- addPersonId(vs)
 
 # Loop through the dataframe and create the triples for each Person_<n>
 for (i in 1:nrow(vs))
@@ -36,7 +36,7 @@ for (i in 1:nrow(vs))
     #-- DIABP 
     # uses coding as :  1_DBP_1  (person 1, DBP test 1), 1_DBP_2  (person 1, DBP test 2)
     # study:participatesIn cdiscpilot01:P1_DBP_1 ;
-    if (vs$vstestcd=="DIABP"){
+    if (vs[i, "vstestcd"] == "DIABP"){
         add.triple(store,
             paste0(prefix.CDISCPILOT01, person),
             paste0(prefix.STUDY,"participatesIn" ),

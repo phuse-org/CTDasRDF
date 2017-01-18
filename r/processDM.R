@@ -208,16 +208,16 @@ for (i in 1:nrow(dm))
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY, "EnrolledSubject")
     )
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, person),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.RDFS, "Resource")
-    )
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, person),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.STUDY, "HumanStudySubject")
-    )
+    #DELadd.triple(store,
+    #    paste0(prefix.CDISCPILOT01, person),
+    #    paste0(prefix.RDF,"type" ),
+    #    paste0(prefix.RDFS, "Resource")
+    #)
+    #DELadd.triple(store,
+    #DEL    paste0(prefix.CDISCPILOT01, person),
+    #DEL    paste0(prefix.RDF,"type" ),
+    #DEL    paste0(prefix.STUDY, "HumanStudySubject")
+    #DEL)
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"hasSubjectID" ),
