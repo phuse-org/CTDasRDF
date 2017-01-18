@@ -25,12 +25,17 @@ vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
 
 vs <- addPersonId(vs)
 
+
+## DEV/TESTING ONLY  ##
+#SUBSET THE DATA DOWN TO A SINGLE PATIENT AND SUBSET OF TESTS FOR DEVELOPMENT PURPOSES
+vs <- subset(vs, (personNum==1 
+                  & vstestcd %in% c("DIABP", "SYSBP") 
+                  & visit %in% c("SCREENING 1", "SCREENING 2")))
+
 # Loop through the dataframe and create the triples for each Person_<n>
 for (i in 1:nrow(vs))
 {
     #DEV Limit to first 3 obs for testing purposes only
-    if (i<4) 
-    {
     person <-  paste0("Person_", vs[i,"personNum"])
     
     #-- DIABP 
@@ -79,5 +84,5 @@ for (i in 1:nrow(vs))
     #-- WEIGHT
     #if (vs$vstestcd=="SYSBP"){
     #}
-    } # End limit of loop to first 3 obs
+    
 }    # End looping through the domain dataframe.    
