@@ -25,12 +25,35 @@ vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
 
 vs <- addPersonId(vs)
 
-
-## DEV/TESTING ONLY  ##
+##-----------------   DEV/TESTING ONLY  ---------------------------------------
 #SUBSET THE DATA DOWN TO A SINGLE PATIENT AND SUBSET OF TESTS FOR DEVELOPMENT PURPOSES
 vs <- subset(vs, (personNum==1 
                   & vstestcd %in% c("DIABP", "SYSBP") 
                   & visit %in% c("SCREENING 1", "SCREENING 2")))
+
+
+#-- Data Creation for testing purposes. --------------------------------------- 
+#---- vsloc  for DIABP, SYSBP all assigned as 'ARM' for development purposes.
+# Unfactorize the  column to allow entry of a bogus data
+vs$vsloc <- as.character(vs$vsloc)
+vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
+
+
+#-- Data COding ---------------------------------------------------------------
+
+#-- Value/Code Translation
+# Translate values in the domain to their corresponding codelist code
+# for linkage to the SDTM graph
+# Example: vsloc  is coded to the SDTM Terminology graph by translating the value 
+#  in the VS domain to its corresponding URI code in the SDTM terminology graph.
+# TODO: This type of recoding to external graphs will be moved to a function
+#        and driven by a config file and/or separate SPARQL query against the graph
+#        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
+#---- vsloc
+vs$vslocSDTMCode <- recode(vs$vsloc, 
+                         "'ARM'  =         'C74456.C32141';
+                          'EAR'  =         'C74456.C12394';                           
+                          'ORAL CAVITY'  = 'C74456.CC12421'" )
 
 # Loop through the dataframe and create the triples for each Person_<n>
 for (i in 1:nrow(vs))
