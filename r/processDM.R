@@ -55,6 +55,7 @@ dm$dthdtc[dm$personNum == 1 ] <- "2013-12-26"
 
 #-- Data COding ---------------------------------------------------------------
 #-- CODED values 
+#TODO: DELETE THESE toupper() statements. No longer used?  2017-01-18 TW ?
 # UPPERCASE and remove spaces values of fields that will be coded to codelists
 # Phase:  "Phase 2" becomes "PHASE2"
 dm$studyCoded      <- toupper(gsub(" ", "", dm$study))
