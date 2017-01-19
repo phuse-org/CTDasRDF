@@ -83,6 +83,11 @@ for (i in 1:nrow(vs))
             paste0(prefix.CODE, "DiastolicBPMeasure")
         )
         
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+            paste0(prefix.STUDY,"anatomicLocation" ),
+            paste0(prefix.CDISCSDTM, vs[i,"vslocSDTMCode"]) 
+        )
         
         
         
