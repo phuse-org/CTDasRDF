@@ -51,9 +51,29 @@ vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
 #        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
 #---- vsloc
 vs$vslocSDTMCode <- recode(vs$vsloc, 
-                         "'ARM'  =         'C74456.C32141';
-                          'EAR'  =         'C74456.C12394';                           
-                          'ORAL CAVITY'  = 'C74456.CC12421'" )
+                         "'ARM'         = 'C74456.C32141';
+                          'EAR'         = 'C74456.C12394';                           
+                          'ORAL CAVITY' = 'C74456.CC12421'" )
+# bodyPosition
+
+vs$posSDTMCode <- recode(vs$vspos, 
+                           "'STANDING' = 'C71148.C62166';
+                            'SUPINE'   = 'C71148.C62167'" )
+
+# activity code
+#  Note values in lowercase in SDTM terminlogy, unlike others above.
+#    This is correct match with vstest case in source data 
+vs$vstestSDTMCode <- recode(vs$vstest, 
+                          "'Systolic Blood Pressure'  =   'C67153.C25298';
+                           'Diastolic Blood Pressure' =   'C67153.C25299'" )
+
+# laterality
+vs$xxxxSDTMCode <- recode(vs$xxxx, 
+                          "'RIGHT' = 'C99073.C25228';
+                           'LEFT'  = 'C99073.C25229'" )
+
+
+
 
 # Loop through the dataframe and create the triples for each Person_<n>
 for (i in 1:nrow(vs))
