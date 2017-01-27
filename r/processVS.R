@@ -25,6 +25,8 @@ vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
 
 vs <- addPersonId(vs)
 
+
+
 ##-----------------   DEV/TESTING ONLY  ---------------------------------------
 #SUBSET THE DATA DOWN TO A SINGLE PATIENT AND SUBSET OF TESTS FOR DEVELOPMENT PURPOSES
 vs <- subset(vs, (personNum==1 
@@ -37,6 +39,34 @@ vs <- subset(vs, (personNum==1
 # Unfactorize the  column to allow entry of a bogus data
 vs$vsloc <- as.character(vs$vsloc)
 vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
+
+
+# More imputations for the first 3 records to match data created by AO : 2016-01-19
+vs$vsgrpid <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "GRPID1", "" )) 
+
+vs$vsscat <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "SCAT1", "" )) 
+
+vs$vsstat <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "COMPLETE", "" )) 
+
+
+# vsspid
+vs[vs$vsseq %in% c(1), "vsspid"]  <- "123"
+vs[vs$vsseq %in% c(2), "vsspid"]  <- "719"
+vs[vs$vsseq %in% c(3), "vsspid"]  <- "235"
+
+
+# vslat
+vs[vs$vsseq %in% c(1,3), "vslat"]  <- "RIGHT"
+vs[vs$vsseq %in% c(2), "vslat"]    <- "LEFT"
+
+
+vs[vs$vsseq %in% c(1), "vsblfl"]    <- "Y"
+
+
+vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "N", "" )) 
+vs$vsrftdtc <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "2013-12-16", "" )) 
+
+
 
 
 #-- Data COding ---------------------------------------------------------------
@@ -68,9 +98,48 @@ vs$vstestSDTMCode <- recode(vs$vstest,
                            'Diastolic Blood Pressure' =   'C67153.C25299'" )
 
 # laterality
-vs$xxxxSDTMCode <- recode(vs$xxxx, 
+vs$vslatSDTMCode <- recode(vs$vslat, 
                           "'RIGHT' = 'C99073.C25228';
                            'LEFT'  = 'C99073.C25229'" )
+
+#------------------------------------------------------------------------------
+# valueCode()
+#   Create a values code list that is later associated with the values for an individual.
+#  Two parts needed: 1: Create the list values as a section of triples
+#    2. Code the individiual person values to that triple.
+#
+# Cat col is used to select down to rows that contain the values
+#    that will build the list. Eg: domain=vs, catCol="DIABP"
+# See here: http://stackoverflow.com/questions/13040120/how-to-take-in-text-character-argument-without-quotes
+
+# domain = domain dataset (dm, vs...)
+# catCol = 
+# catVal = Category value used to subset down to the results. Eg: "DIABP", "SYSBP"
+# resCol = The "result column" from which to obtain the list of unique values to be coded
+valueCode <- function(domain, catCol, catVal, resCol)
+{
+    
+    # Build:  vs[vs$vstestcd == "DIAPBP", ]
+    # note use of [[]] instead of $ as per 
+    # http://stackoverflow.com/questions/2641653/pass-a-data-frame-column-name-to-a-function
+    tempDf <- domain[domain[[catCol]] == eval(substitute(catVal)), ]
+    # tempU <- unique(tempDf[[resCol]])
+    tempU <- domain[!duplicated(domain[[resCol]]), eval(substitute(resCol))]
+    for (i in tempU)
+    {
+        # ADD THE TRIPLES HERE FOR WRITING. Write to STORE Is OK as is GLOBAL DF
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, person),
+                   paste0(prefix.STUDY,"FOO" ),
+                   paste0(prefix.STUDY,"FOO" )
+        )
+    }   
+    
+    return(tempU)
+}
+
+# assignment not needed? 
+foo2<-valueCode(domain=vs, catCol="vstestcd", catVal="DIABP", resCol="vsorres")
 
 
 
@@ -97,19 +166,79 @@ for (i in 1:nrow(vs))
             paste0(prefix.RDF,"type" ),
             paste0(prefix.STUDY, "DiastolicBPMeasure")
         )
-        add.triple(store,
-            paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
-            paste0(prefix.STUDY,"activityStatus" ),
-            paste0(prefix.CODE, "DiastolicBPMeasure")
-        )
+#        add.triple(store,
+#            paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+#            paste0(prefix.STUDY,"activityStatus" ),
+#            paste0(prefix.CODE, "DiastolicBPMeasure")
+#        )
         
+        #-- SDTM codes for next triples...
+        #---- Anatomic Location
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
             paste0(prefix.STUDY,"anatomicLocation" ),
             paste0(prefix.CDISCSDTM, vs[i,"vslocSDTMCode"]) 
         )
+        #---- Body Position
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+            paste0(prefix.STUDY,"bodyPosition" ),
+            paste0(prefix.CDISCSDTM, vs[i,"posSDTMCode"]) 
+        )
+        #---- SDTM Activity Code
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+            paste0(prefix.STUDY,"hasActivityCOde" ),
+            paste0(prefix.CDISCSDTM, vs[i,"vstestSDTMCode"]) 
+        )
+        #---- SDTM laterality Code
+        if (! as.character(vs[i,"vslatSDTMCode"]) == "") {
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+                paste0(prefix.STUDY,"groupID" ),
+                paste0(vs[i, "vslatSDTMCode"]), type="string"
+            )
+        } 
         
         
+        #TODO Improve code here to deal with the possible vsstat values
+        if (vs[i, "vsstat"] == "COMPLETE"){
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+                paste0(prefix.STUDY,"activityStatus" ),
+                paste0(prefix.CODE, "activitystatus-CO") 
+            )
+        }    
+        
+        # Baseline flag
+        # If non-missing, code the value as the object (Y, N...)
+        if (! as.character(vs[i,"vsblfl"]) == "") {
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+                paste0(prefix.STUDY,"baselineFlag" ),
+                paste0(vs[i, "vsblfl"]), type="string"
+            )
+        }    
+        # Derived flag
+        # If non-missing, code the value as the object (Y, N...)
+        if (! as.character(vs[i,"vsdrvfl"]) == "") {
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+                paste0(prefix.STUDY,"derivedFlag" ),
+                paste0(vs[i, "vsdrvfl"]), type="string"
+            )
+        }    
+        # Group ID
+        # If non-missing, code the value as the object (Y, N...)
+        if (! as.character(vs[i,"vsgrpid"]) == "") {
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "P", vs[i,"personNum"],"_DBP_", vs[i,"vstestOrder"]),
+                paste0(prefix.STUDY,"groupID" ),
+                paste0(vs[i, "vsgrpid"]), type="string"
+            )
+        } 
+        
+# TO HERE                
         
         #TODO Level 3 date-P(n)_DBP_(n)
     }
