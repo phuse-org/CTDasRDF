@@ -94,12 +94,24 @@ suppdm$qnam_C <- paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", 
 # Loop over the dataframe using ddply 
 ddply(suppdm, .(personNum, qnam_), function(suppdm){
     
-    add.triple(store,
-               paste0(prefix.CDISCPILOT01, "Person_", suppdm$personNum ),
-               paste0(prefix.STUDY,"participatesIn" ),
-               paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_)
-    )
-}
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "Person_", suppdm$personNum ),
+            paste0(prefix.STUDY,"participatesIn" ),
+            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_)
+        )
+        #---- Second level triples for each popflag
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY, "PopulationFlag")
+        )
+        # Note use of qnam and not qnam_ in the following object 
+        # is qnam avail?
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.STUDY,"hasActivityCode" ),
+            paste0(prefix.CODE, "popflagterm-", suppdm$qnam_, "POP")
+        )
+
+    }
 )
-
-
