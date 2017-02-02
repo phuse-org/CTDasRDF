@@ -30,33 +30,6 @@ suppdm <- addPersonId(suppdm)
 #-- End Data Creation ---------------------------------------------------------
 
 #-- Data COding ---------------------------------------------------------------
-#-- CODED values 
-#TODO: DELETE THESE toupper() statements. No longer used?  2017-01-18 TW ?
-# UPPERCASE and remove spaces values of fields that will be coded to codelists
-# Phase:  "Phase 2" becomes "PHASE2"
-#dm$studyCoded      <- toupper(gsub(" ", "", dm$study))
-#dm$ageuCoded       <- toupper(gsub(" ", "", dm$ageu))
-# For arm, use the coded form of both armcd and actarmcd to allow a short-hand linkage
-#    to the codelist where both ARM/ARMCD adn ACTARM/ACTARMCD are located.
-#dm$armCoded        <- toupper(gsub(" ", "", dm$armcd))
-#dm$actarmCoded     <- toupper(gsub(" ", "", dm$actarmcd))
-
-#-- Value/Code Translation
-# Translate values in the domain to their corresponding codelist code
-# for linkage to the SDTM graph
-# Example: Sex is coded to the SDTM Terminology graph by translating the value 
-#  from the DM domain to its corresponding URI code in the SDTM terminology graph.
-#  F C66731.C16576
-#  M 
-# TODO: This type of recoding to external graphs will be moved to a function
-#        and driven by a config file and/or separate SPARQL query against the graph
-#        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
-#---- Sex
-#dm$sexSDTMCode <- recode(dm$sex, 
-#    "'M'  = 'C66731.C20197';
-#     'F'  = 'C66731.C16576';
-#     'U'  = 'C66731.C17998'; 
-#     'UNDIFFERENTIATED' = 'C66731.C45908'" )
 
 
 #-- End Data Coding -----------------------------------------------------------
@@ -85,9 +58,26 @@ qnamRecode <- function(x) {
            as.character(x)
     )
 }
+qvalRecode <- function(x) {
+    switch(as.character(x),
+           'Y' = 'YES',
+           'N' = 'NO',
+           as.character(x)
+    )
+}
+
+qevalRecode <- function(x) {
+    switch(as.character(x),
+           'CLINICAL STUDY SPONSOR' = 'STUDYSPONSOR',
+           as.character(x)
+    )
+}
 
 # Apply the function over the qnam values
 suppdm$qnam_ <- sapply(suppdm$qnam, qnamRecode)
+suppdm$qval_ <- sapply(suppdm$qval, qvalRecode)
+suppdm$qeval_ <- sapply(suppdm$qeval, qevalRecode)
+
 
 suppdm$qnam_C <- paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_)
 
@@ -113,5 +103,26 @@ ddply(suppdm, .(personNum, qnam_), function(suppdm){
             paste0(prefix.CODE, "popflagterm-", suppdm$qnam_, "POP")
         )
 
+        #TODO: TEST BELOW HERE 
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.STUDY,"hasActivityOutcome" ),
+            paste0(prefix.CODE, "popflagoutcome-", suppdm$qval_)
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+                   paste0(prefix.STUDY,"hasMethod" ),
+                   paste0(prefix.CODE, "activitymethod-", suppdm$qorig)
+        )
+        add.triple(store,
+                   paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+                   paste0(prefix.STUDY,"hasPerformer" ),
+                   paste0(prefix.CDISCPILOT01, "sponsor-", suppdm$qeval_)
+        )
+        add.data.triple(store,
+                   paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+                   paste0(prefix.RDFS,"label" ),
+                   paste0("popflag-P", suppdm$personNum,"_", suppdm$qnam_), type="string" 
+        )
     }
 )
