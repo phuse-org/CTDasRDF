@@ -20,7 +20,7 @@ setwd("C:/_gitHub/SDTM2RDF")
 
 TWSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
 
-AOSource = load.rdf("data/rdf/AO-2016-01-10/cdiscpilot01local.TTL", format="N3")
+AOSource = load.rdf("data/rdf/AO-2017-01-27/cdiscpilot01local.TTL", format="N3")
 
 
 ###############################################################################
@@ -119,7 +119,7 @@ checkPredicate <- function(predicate){
 
 ###############################################################################
 #--checkSubject()
-#   Check the p,o directly attached a subject. No grpah traversal
+#   Check the p,o directly attached a subject. No graph traversal
 
 checkSubject <- function(subject){
 
@@ -152,7 +152,7 @@ checkSubject <- function(subject){
     # In the AO TTL file but not in the TO file
     inAONotTW
 }
-
+# checkSubject("cdiscpilot01:P1_DBP_1")
 
 # checkSubject("cdiscpilot01:AgeMeasurement_1")
 # checkSubject("cdiscpilot01:Age_1")
