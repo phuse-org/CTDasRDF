@@ -8,6 +8,8 @@
 # NOTE: Logic decisions made on the vs field 
 #        vstestOrder = sequence number created to facilitate triple creation/identification
 # TODO: 
+#  !! Recode to use switch() for recoding and Dddply() instead of FOR loops
+#          See processSUPPDM.R for methods
 # - Collapse the categories DIABP, SYSBP, etc. into functions?
 ###############################################################################
 

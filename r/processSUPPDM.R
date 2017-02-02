@@ -7,19 +7,9 @@
 # OUT : 
 # NOTE: TESTING MODE: Uses only first 6 patients (set for DM migrates across 
 #           all domains)
-#       Coded values cannot have spaces or special characters.
-#       SDTM numeric codes, Country, Arm codes are set MANUALLY
-# Transform to add column to datframe in ddply
-# http://stackoverflow.com/questions/7573144/how-to-use-ddply-to-add-a-column-to-a-data-frame
-
+#       Coded values cannot have spaces or special characters. See Data Coding
+#       Method uses ddply instead of FOR loop. 
 # TODO: 
-#  - Add is.na to most triple creation blocks. Note may need !="" for some.
-#  - Collapse code segments in FUNT()s where possible
-#  - Add a function that evaluates each DATE value and types it as either
-#     xsd:date if valid yyyy-mm-dd value, or as xsd:string if(invalid/incomplete 
-#     date OR is a datetime value)
-#  - Consider new triples for incomplete dates (YYYY triple, MON  triple, etc.)
-#     for later implmentations
 ###############################################################################
 
 suppdm <- readXPT("suppdm")
@@ -27,63 +17,47 @@ suppdm <- readXPT("suppdm")
 # Add personID for merge with DM dataset
 suppdm <- addPersonId(suppdm)
 
+ # Other data needed for testing (??)
+
 #-- End Data Creation ---------------------------------------------------------
 
 #-- Data COding ---------------------------------------------------------------
+#   Used in formation of URIs where the original data can/should not be used
+qnamCode <- function(x) {
+    switch(as.character(x),
+        'COMPLT8'  = 'C8WK',
+        'COMPLT16' = 'C16WK',
+        'COMPLT24' = 'C24WK',
+        'EFFICACY' = 'EFF',
+        'SAFETY'   = 'SAF',
+        as.character(x)
+    )
+}
+qvalCode <- function(x) {
+    switch(as.character(x),
+        'Y' = 'YES',
+        'N' = 'NO',
+        as.character(x)
+    )
+}
 
+qevalCode <- function(x) {
+    switch(as.character(x),
+        'CLINICAL STUDY SPONSOR' = 'STUDYSPONSOR',
+        as.character(x)
+    )
+}
+suppdm$qnam_  <- sapply(suppdm$qnam, qnamCode)
+suppdm$qval_  <- sapply(suppdm$qval, qvalCode)
+suppdm$qeval_ <- sapply(suppdm$qeval, qevalCode)
 
 #-- End Data Coding -----------------------------------------------------------
 
-
-
-
-
-###############################################################################
-# Create triples from source domain
-# Loop through each row, creating triples for each Person_<n>
-# Loop through the dataframe and create the triples for each Person_<n>
-# New approach using ddply! 
-
-#------------------------------------------------------------------------------
-#-- popflag first level triples (attached directly to Person_(n)
-# Recode to the qnam as needed to form the object. Note: no need to recode
-#     ITT, so it comes across unchanged into qnam_
-qnamRecode <- function(x) {
-    switch(as.character(x),
-           'COMPLT8' = 'C8WK',
-           'COMPLT16' = 'C16WK',
-           'COMPLT24' = 'C24WK',
-           'EFFICACY' = 'EFF',
-           'SAFETY' = 'SAF',
-           as.character(x)
-    )
-}
-qvalRecode <- function(x) {
-    switch(as.character(x),
-           'Y' = 'YES',
-           'N' = 'NO',
-           as.character(x)
-    )
-}
-
-qevalRecode <- function(x) {
-    switch(as.character(x),
-           'CLINICAL STUDY SPONSOR' = 'STUDYSPONSOR',
-           as.character(x)
-    )
-}
-
-# Apply the function over the qnam values
-suppdm$qnam_ <- sapply(suppdm$qnam, qnamRecode)
-suppdm$qval_ <- sapply(suppdm$qval, qvalRecode)
-suppdm$qeval_ <- sapply(suppdm$qeval, qevalRecode)
-
-
-suppdm$qnam_C <- paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_)
+#DEL? suppdm$qnam_C <- paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_)
 
 # Loop over the dataframe using ddply 
 ddply(suppdm, .(personNum, qnam_), function(suppdm){
-    
+        #-- First level triples attached to Person_(n)    
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Person_", suppdm$personNum ),
             paste0(prefix.STUDY,"participatesIn" ),
@@ -96,33 +70,30 @@ ddply(suppdm, .(personNum, qnam_), function(suppdm){
             paste0(prefix.STUDY, "PopulationFlag")
         )
         # Note use of qnam and not qnam_ in the following object 
-        # is qnam avail?
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
             paste0(prefix.STUDY,"hasActivityCode" ),
             paste0(prefix.CODE, "popflagterm-", suppdm$qnam_, "POP")
         )
-
-        #TODO: TEST BELOW HERE 
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
             paste0(prefix.STUDY,"hasActivityOutcome" ),
             paste0(prefix.CODE, "popflagoutcome-", suppdm$qval_)
         )
         add.triple(store,
-                   paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
-                   paste0(prefix.STUDY,"hasMethod" ),
-                   paste0(prefix.CODE, "activitymethod-", suppdm$qorig)
+            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.STUDY,"hasMethod" ),
+            paste0(prefix.CODE, "activitymethod-", suppdm$qorig)
         )
         add.triple(store,
-                   paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
-                   paste0(prefix.STUDY,"hasPerformer" ),
-                   paste0(prefix.CDISCPILOT01, "sponsor-", suppdm$qeval_)
+            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.STUDY,"hasPerformer" ),
+            paste0(prefix.CDISCPILOT01, "sponsor-", suppdm$qeval_)
         )
         add.data.triple(store,
-                   paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
-                   paste0(prefix.RDFS,"label" ),
-                   paste0("popflag-P", suppdm$personNum,"_", suppdm$qnam_), type="string" 
+            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.RDFS,"label" ),
+            paste0("popflag-P", suppdm$personNum,"_", suppdm$qnam_), type="string" 
         )
     }
 )

@@ -10,6 +10,8 @@
 #       Coded values cannot have spaces or special characters.
 #       SDTM numeric codes, Country, Arm codes are set MANUALLY
 # TODO: 
+#  !! Recode to use switch() for recoding and Dddply() instead of FOR loops
+#          See processSUPPDM.R for methods
 #  - Add is.na to most triple creation blocks. Note may need !="" for some.
 #  - Collapse code segments in FUNT()s where possible
 #  - Add a function that evaluates each DATE value and types it as either
