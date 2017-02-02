@@ -17,7 +17,7 @@ vs <- readXPT("vs")
 #    to allow creation of number triples within that category.    
 # Convert for proper sorting
 vs$vsdtc_ymd = as.Date(vs$vsdtc, "%Y-%m-%d")
-# Sort by the categoies, including the date
+# Sort by the categories, including the date
 vs <- vs[with(vs, order(usubjid, vstestcd, vsdtc_ymd)), ]
 
 # Add ID numbers within categories, excluding date (used for sorting, not for cat number)
@@ -147,7 +147,6 @@ foo2<-valueCode(domain=vs, catCol="vstestcd", catVal="DIABP", resCol="vsorres")
 # Loop through the dataframe and create the triples for each Person_<n>
 for (i in 1:nrow(vs))
 {
-    #DEV Limit to first 3 obs for testing purposes only
     person <-  paste0("Person_", vs[i,"personNum"])
     
     #-- DIABP 

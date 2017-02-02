@@ -64,7 +64,10 @@ source('R/dataImportFnts.R')
 #-- DOMAIN PROCESSING ---------------------------------------------------------
 #---- DM DOMAIN
 #  NOTE: DM  MUST be processd first: Creates data required in later steps.
+#        DM MUST BE Run to create personNUm that is used when processing other domains.
 source('R/processDM.R')
+
+source('R/processSUPPDM.R')
 
 #---- VS DOMAIN
 source('R/processVS.R')
