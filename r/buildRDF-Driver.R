@@ -70,7 +70,7 @@ source('R/processDM.R')
 source('R/processSUPPDM.R')
 
 #---- VS DOMAIN
-source('R/processVS.R')
+# source('R/processVS.R')
 
 #---- X DOMAIN  Additional Domains will be added here.......
 
