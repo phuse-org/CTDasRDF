@@ -7,7 +7,9 @@
 # OUT : 
 # NOTE: TESTING MODE: Uses only first 6 patients (set for DM migrates across 
 #           all domains)
-#       Coded values cannot have spaces or special characters.
+#       Coded values:  cannot have spaces or special characters.
+#                      Are stored in variables with under suffix _ while 
+#                          originals are retained.
 #       SDTM numeric codes, Country, Arm codes are set MANUALLY
 # TODO: 
 #  !! Recode to use switch() for recoding and Dddply() instead of FOR loops
@@ -60,12 +62,12 @@ dm$dthdtc[dm$personNum == 1 ] <- "2013-12-26"
 #TODO: DELETE THESE toupper() statements. No longer used?  2017-01-18 TW ?
 # UPPERCASE and remove spaces values of fields that will be coded to codelists
 # Phase:  "Phase 2" becomes "PHASE2"
-dm$studyCoded      <- toupper(gsub(" ", "", dm$study))
-dm$ageuCoded       <- toupper(gsub(" ", "", dm$ageu))
-# For arm, use the coded form of both armcd and actarmcd to allow a short-hand linkage
+dm$study_ <- toupper(gsub(" ", "", dm$study))
+dm$ageu_  <- toupper(gsub(" ", "", dm$ageu))  # TODO: NOT USED?
+ # For arm, use the coded form of both armcd and actarmcd to allow a short-hand linkage
 #    to the codelist where both ARM/ARMCD adn ACTARM/ACTARMCD are located.
-dm$armCoded        <- toupper(gsub(" ", "", dm$armcd))
-dm$actarmCoded     <- toupper(gsub(" ", "", dm$actarmcd))
+dm$arm_    <- toupper(gsub(" ", "", dm$armcd))
+dm$actarm_ <- toupper(gsub(" ", "", dm$actarmcd))
 
 #-- Value/Code Translation
 # Translate values in the domain to their corresponding codelist code
@@ -78,27 +80,33 @@ dm$actarmCoded     <- toupper(gsub(" ", "", dm$actarmcd))
 #        and driven by a config file and/or separate SPARQL query against the graph
 #        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
 #---- Sex
-dm$sexSDTMCode <- recode(dm$sex, 
-    "'M'  = 'C66731.C20197';
-     'F'  = 'C66731.C16576';
-     'U'  = 'C66731.C17998'; 
-     'UNDIFFERENTIATED' = 'C66731.C45908'" )
+dm$sex_ <- sapply(dm$sex,function(x) {
+    switch(as.character(x),
+       'M'  = 'C66731.C20197',
+       'F'  = 'C66731.C16576',
+       'U'  = 'C66731.C17998', 
+       'UNDIFFERENTIATED' = 'C66731.C45908',
+        as.character(x) ) } )
 
 #---- Ethnicity
-dm$ethnicSDTMCode <- recode(dm$ethnic, 
-    "'HISPANIC OR LATINO'     = 'C66790.C17459';
-     'NOT HISPANIC OR LATINO' = 'C66790.C41222';
-     'NOT REPORTED'           = 'C66790.C43234';
-     'UNKNOWN'                = 'C66790.C17998'")
+dm$ethnic_ <- sapply(dm$ethnic,function(x) {
+    switch(as.character(x),
+        'HISPANIC OR LATINO'     = 'C66790.C17459',
+        'NOT HISPANIC OR LATINO' = 'C66790.C41222',
+        'NOT REPORTED'           = 'C66790.C43234',
+        'UNKNOWN'                = 'C66790.C17998',
+        as.character(x) ) } )
 
 #---- Race
-dm$raceSDTMCode <- recode(dm$race,
-    "'AMERICAN INDIAN OR ALASKA NATIVE'          = 'C74457.C41259';
-     'ASIAN'                                     = 'C74457.C41260';
-     'BLACK OR AFRICAN AMERICAN'                 = 'C74457.C16352';
-     'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER' = 'C74457.C41219';
-     'WHITE'                                     = 'C74457.C41261'")
-
+dm$race_  <- sapply(dm$race,function(x) {
+    switch(as.character(x),
+        'AMERICAN INDIAN OR ALASKA NATIVE'          = 'C74457.C41259',
+        'ASIAN'                                     = 'C74457.C41260',
+        'BLACK OR AFRICAN AMERICAN'                 = 'C74457.C16352',
+        'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER' = 'C74457.C41219',
+        'WHITE'                                     = 'C74457.C41261',
+        as.character(x) ) } )
+            
 #---- Country
 # Match to the code in the ontology identified by AO
 dm$countryCode <- recode(dm$country,"'USA' = '840'")
@@ -281,18 +289,18 @@ for (i in 1:nrow(dm))
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"hasEthnicity" ),
-        paste0(prefix.CDISCSDTM, dm[i,"ethnicSDTMCode"]) 
+        paste0(prefix.CDISCSDTM, dm[i,"ethnic_"]) 
     )
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"hasRace" ),
-        paste0(prefix.CDISCSDTM, dm[i,"raceSDTMCode"]) 
+        paste0(prefix.CDISCSDTM, dm[i,"race_"]) 
     )
     # Sex - coded to the SDTM Terminology graph in code above.
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"hasSex" ),
-        paste0(prefix.CDISCSDTM, dm[i,"sexSDTMCode"]) 
+        paste0(prefix.CDISCSDTM, dm[i,"sex_"]) 
     )
     # Age
     add.triple(store,
@@ -351,17 +359,17 @@ for (i in 1:nrow(dm))
    add.triple(store,
        paste0(prefix.CDISCPILOT01, person),
        paste0(prefix.STUDY,"allocatedToArm" ),
-       paste0(prefix.CUSTOM, "armcd-",dm[i,"armCoded"]) 
+       paste0(prefix.CUSTOM, "armcd-",dm[i,"arm_"]) 
    )
       # These triples are coded in the customTerminology file.
       #   and not needed here.
       #DEL add.triple(store,
-      #DEL     paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
+      #DEL     paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"arm_"]) ,
       #DEL     paste0(prefix.RDF,"type" ),
       #DEL     paste0(prefix.STUDY,"Arm" )
       #DEL )
       #DEL add.triple(store,
-      #DEL     paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"armCoded"]) ,
+      #DEL     paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"arm_"]) ,
       #DEL     paste0(prefix.STUDY,"hasArmCode" ),
       #DEL     paste0(prefix.CUSTOM,"armcd-PBO" )
       #DEL )
@@ -575,7 +583,7 @@ for (i in 1:nrow(dm))
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
                 paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
-                paste0(prefix.CUSTOM,"armcd-",dm[i,"armCoded"] )
+                paste0(prefix.CUSTOM,"armcd-",dm[i,"arm_"] )
             )
             
             add.data.triple(store,
@@ -586,7 +594,7 @@ for (i in 1:nrow(dm))
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"participatesIn" ),
-        paste0(prefix.CDISCPILOT01, "study-", dm[i,"studyCoded"])
+        paste0(prefix.CDISCPILOT01, "study-", dm[i,"study_"])
     )
     # Both allocatedTo and treatedAccordingTo use the same ARM codelist.
     #    THere is not separate codelist for ARM vs. ACTARM.
@@ -594,7 +602,7 @@ for (i in 1:nrow(dm))
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"treatedAccordingToArm"),
-        paste0(prefix.CUSTOM, "armcd-",dm[i,"actarmCoded"]) 
+        paste0(prefix.CUSTOM, "armcd-",dm[i,"actarm_"]) 
     )
     # Site
     add.triple(store,
