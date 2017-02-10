@@ -44,4 +44,21 @@ dateList$dateFrag <- paste0("Date_", 1:nrow(dateList))   # Generate a list of ID
 
 dateDict <- dateList[,c("dateKey", "dateFrag")]
 
+# Move following FUNCT to a sep file and the calls to processDM.R
+
+# addpersonId()
+# Merge the personId into the other domains to allow later looping during triple creation. 
+
+addDateFrag<-function(domainName, colName)
+{
+    withFrag <- merge(x = dateDict, y = domainName, by.x="dateKey", by.y=colName, all.y = TRUE)
+    # Rename dateFrag value to the name of column being matched plus the _Frag suffix
+    names(withFrag)[names(withFrag)=="dateFrag"] <- paste0(colName, "_Frag")
+    # Remove columns that are an artifact from the merge.
+    withFrag[ , !names(withFrag) %in% c("dateKey")] 
+    return(withFrag)
+}
+
+# Move to processDM.R
+dm <- addDateFrag(dm, "rfstdtc")  # change foo back to dm when done testing
 
