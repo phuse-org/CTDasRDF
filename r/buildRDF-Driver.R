@@ -95,7 +95,15 @@ dm$dthdtc <- as.character(dm$dthdtc)
 dm$dthdtc[dm$personNum == 1 ] <- "2013-12-26"
 
 
-#TODO: move import VS here
+# Import VS
+vs <- readXPT("vs")
+
+vs <- addPersonId(vs)
+##-----------------   DEV/TESTING ONLY  ---------------------------------------
+#SUBSET THE DATA DOWN TO A SINGLE PATIENT AND SUBSET OF TESTS FOR DEVELOPMENT PURPOSES
+vs <- subset(vs, (personNum==1 
+                  & vstestcd %in% c("DIABP", "SYSBP") 
+                  & visit %in% c("SCREENING 1", "SCREENING 2")))
 
 #TODO: move date URI call to here.
 

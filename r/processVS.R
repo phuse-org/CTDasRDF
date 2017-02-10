@@ -25,15 +25,7 @@ vs <- vs[with(vs, order(usubjid, vstestcd, vsdtc_ymd)), ]
 # Add ID numbers within categories, excluding date (used for sorting, not for cat number)
 vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
 
-vs <- addPersonId(vs)
 
-
-
-##-----------------   DEV/TESTING ONLY  ---------------------------------------
-#SUBSET THE DATA DOWN TO A SINGLE PATIENT AND SUBSET OF TESTS FOR DEVELOPMENT PURPOSES
-vs <- subset(vs, (personNum==1 
-                  & vstestcd %in% c("DIABP", "SYSBP") 
-                  & visit %in% c("SCREENING 1", "SCREENING 2")))
 
 
 #-- Data Creation for testing purposes. --------------------------------------- 

@@ -16,18 +16,20 @@
 ###############################################################################
 library(reshape2)
 
-# dm date columns
+# dm dates
 dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
 
-#TODO vs date columns
+# vs dates
+vsDates <- data.frame(vs[,"vsdtc"])
 
-#TODO Add vs:  Combined the date datframes  ((CBIND))
-allDates <- dmDates
+library(plyr)
+# Combined the date dataframes from all sources
+allDates <- merge(dmDates,vsDates)
 
-dateList <- melt(allDates, measure.vars=c("rfstdtc", "rfendtc", "rfxstdtc", 
-    "rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate"),
-    variable.name="source",
-    value.name="dateKey")
+# Melt all the dates into a single column of values
+dateList <- melt(allDates, measure.vars=colnames(allDates),
+                 variable.name="source",
+                 value.name="dateKey")
 
 # Remove duplicates
 dateList <- dateList[!duplicated(dateList$date), ]  # is DF here.
@@ -44,18 +46,17 @@ dateList$dateFrag <- paste0("Date_", 1:nrow(dateList))   # Generate a list of ID
 
 dateDict <- dateList[,c("dateKey", "dateFrag")]
 
-# Move following FUNCT to a sep file and the calls to processDM.R
 
-# addpersonId()
-# Merge the personId into the other domains to allow later looping during triple creation. 
-
+# Merge in the dateKey value to created a coded version of the date field, naming
+#    the column with a _Frag suffix.
 addDateFrag<-function(domainName, colName)
 {
     withFrag <- merge(x = dateDict, y = domainName, by.x="dateKey", by.y=colName, all.y = TRUE)
-    # Rename dateFrag value to the name of column being matched plus the _Frag suffix
+    # Rename the merged-in key value to the original column name to preserve original data
+    names(withFrag)[names(withFrag)=="dateKey"] <-  colName
+    # Rename dateFrag value to coded value using colname +  _Frag suffix
     names(withFrag)[names(withFrag)=="dateFrag"] <- paste0(colName, "_Frag")
-    # Remove columns that are an artifact from the merge.
-    withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")] 
+    # withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")]  #DEL - no longer needed
     return(withFrag)
 }
 
@@ -71,4 +72,7 @@ dm <- addDateFrag(dm, "rfpendtc")
 dm <- addDateFrag(dm, "dthdtc")
 dm <- addDateFrag(dm, "dmdtc")  
 dm <- addDateFrag(dm, "brthdate")  
+
+dmDatesList <- c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")
+
 
