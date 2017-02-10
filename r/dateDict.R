@@ -17,7 +17,7 @@
 library(reshape2)
 
 # dm date columns
-dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc_D", "dthdtc", "dmdtc", "brthdate")]
+dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
 
 #TODO vs date columns
 
@@ -25,7 +25,7 @@ dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpend
 allDates <- dmDates
 
 dateList <- melt(allDates, measure.vars=c("rfstdtc", "rfendtc", "rfxstdtc", 
-    "rfxendtc", "rficdtc", "rfpendtc_D", "dthdtc", "dmdtc", "brthdate"),
+    "rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate"),
     variable.name="source",
     value.name="dateKey")
 
@@ -55,10 +55,20 @@ addDateFrag<-function(domainName, colName)
     # Rename dateFrag value to the name of column being matched plus the _Frag suffix
     names(withFrag)[names(withFrag)=="dateFrag"] <- paste0(colName, "_Frag")
     # Remove columns that are an artifact from the merge.
-    withFrag[ , !names(withFrag) %in% c("dateKey")] 
+    withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")] 
     return(withFrag)
 }
 
-# Move to processDM.R
-dm <- addDateFrag(dm, "rfstdtc")  # change foo back to dm when done testing
+#TODO: Move to processDM.R
+#TODO: change to an lapply over the list of date fields instead of separate calls
+dm <- addDateFrag(dm, "rfstdtc")  
+
+dm <- addDateFrag(dm, "rfendtc")  
+dm <- addDateFrag(dm, "rfxstdtc")  
+dm <- addDateFrag(dm, "rfxendtc")  
+dm <- addDateFrag(dm, "rficdtc")  
+dm <- addDateFrag(dm, "rfpendtc")  
+dm <- addDateFrag(dm, "dthdtc")
+dm <- addDateFrag(dm, "dmdtc")  
+dm <- addDateFrag(dm, "brthdate")  
 

@@ -21,6 +21,7 @@ readXPT<-function(domain)
 {
     sourceFile <- paste0("data/source/", domain, ".XPT")
     result <- sasxport.get(sourceFile)
+
     result  # return the dataframe
 }
 #------------------------------------------------------------------------------

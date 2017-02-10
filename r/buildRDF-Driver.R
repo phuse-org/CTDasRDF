@@ -3,6 +3,8 @@
 # DESC: Master program for building the TTL file for the SDTM domains from 
 #        the CDISCPILOT01 example data.
 #       Loads all required libraries.
+#       Imports the various domains from XPT files
+#       Calls functions for unique URI creation (eg: Dates)
 #       Writes out TTL.
 # REQ : Apache Jena 3.0.1: For riot, installed and avail at system path if 
 #           valdiation called
@@ -61,13 +63,53 @@ source('R/graphMeta.R')
 # Import and indexing Functions (Called during domain processing) 
 source('R/dataImportFnts.R')
 
+
+#-- Import data. Needed here for creating unique URIS for values that span
+#   Multiple domains, like dates.
+#---- DM DOMAIN ---------------------------------------------------------------
+dm <- readXPT("dm")
+# For testing, keep only the first (n) patients in DM
+dm <- head(dm, maxPerson)  # maxPerson set above
+
+# Create the Person ID (Person_(n)) in the DM dataset for looping through the data by Person  
+#     across domains when creating triples
+id<-1:(nrow(dm))   # Generate a list of ID numbers
+dm$personNum<- id
+
+# Create an merge Index file for the other domains.
+personId <- dm[,c("personNum", "usubjid")]
+
+#------ Date Massage and Creation (for testing), etc.
+# rfpendtc is a mix of date and datetime. substring it to only date
+dm$rfpendtc <- substring(dm$rfpendtc, 1,10)
+#-- Data Creation for testing purposes. --------------------------------------- 
+#---- Birthdate : asbsent in source data
+# NOTE: Date calculations based on SECONDS so you must convert the age in Years to seconds
+#       Change to character to avoid later ddply problem in processDM.R
+dm$brthdate <- as.character(strptime(strptime(dm$rfstdtc, "%Y-%m-%d") - (strtoi(dm$age) * 365.25 * 24 * 60 * 60), "%Y-%m-%d"))
+#---- Informed Consent  (column present with missing values in DM source).  
+dm$rficdtc <- dm$dmdtc
+
+# Unfactorize the dthdtc column to allow entry of a bogus date
+dm$dthdtc <- as.character(dm$dthdtc)
+dm$dthdtc[dm$personNum == 1 ] <- "2013-12-26"
+
+
+#TODO: move import VS here
+
+#TODO: move date URI call to here.
+
+# Date coding
+source('R/dateDict.R')
+
 #-- DOMAIN PROCESSING ---------------------------------------------------------
 #---- DM DOMAIN
 #  NOTE: DM  MUST be processd first: Creates data required in later steps.
 #        DM MUST BE Run to create personNUm that is used when processing other domains.
-source('R/processDM.R')
+# source('R/processDM.R')
+source('R/processDMddply.R')
 
-source('R/processSUPPDM.R')
+#source('R/processSUPPDM.R')
 
 #---- VS DOMAIN
 # source('R/processVS.R')
