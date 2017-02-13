@@ -186,67 +186,70 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY, "EnrolledSubject")
     )
     
-   add.data.triple(store,
-       paste0(prefix.CDISCPILOT01, person),
-       paste0(prefix.STUDY,"hasSubjectID" ),
-       paste0(dm$subjid), type="string"
-   )
-   add.data.triple(store,
-       paste0(prefix.CDISCPILOT01, person),
-       paste0(prefix.STUDY,"hasUniqueSubjectID" ),
-       paste0(dm$usubjid), type="string"
-   )
-   #WIP HERE
-   #-- Birthdate
-   add.triple(store,
-       paste0(prefix.CDISCPILOT01, person),
-       paste0(prefix.STUDY,"hasBirthdate" ),
-       paste0(prefix.CDISCPILOT01, "Birthdate_", dm$personNum)
-   )
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"hasSubjectID" ),
+        paste0(dm$subjid), type="string"
+    )
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"hasUniqueSubjectID" ),
+        paste0(dm$usubjid), type="string"
+    )
+    #-- Birthdate URI fragment and date triples creation
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"hasBirthdate" ),
+        paste0(prefix.CDISCPILOT01, dm$brthdate_Frag)
+    )
+        #---- Date triples for the birthdate
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$brthdate_Frag),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY, "Birthdate")
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$brthdate_Frag),
+            paste0(prefix.STUDY, "dateTimeInXSDString" ),
+            paste0(dm$brthdate), type="string"
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$brthdate_Frag),
+            paste0(prefix.RDFS,"label" ),
+            paste0(dm$brthdate), type="string"
+        )
 
+        #    #-- Deathdate
+        #    # Note the funky conversion testing for missing! is.na will NOT work here. 
+        #    #    There is something in the field even when "blank"
+        #    if (! as.character(dm[i,"dthdtc"])=="") {
+        #        add.triple(store,
+        #            paste0(prefix.CDISCPILOT01, person),
+        #            paste0(prefix.STUDY,"hasDeathdate" ),
+        #            paste0(prefix.CDISCPILOT01, "Deathdate_", i)
+        #        )  
+        #            add.triple(store,
+        #                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+        #                paste0(prefix.RDF,"type" ),
+        #                paste0(prefix.STUDY,"Deathdate" )
+        #            )
+        #            
+        #            add.data.triple(store,
+        #                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+        #                paste0(prefix.STUDY,"dateTimeInXSDString" ),
+        #                paste0( dm[i,"dthdtc"]), type="string"
+        #            )
+        #            add.data.triple(store,
+        #                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
+        #                paste0(prefix.RDFS,"label" ),
+        #                paste0("Deathdate ",i), type="string"
+        #            )
+        #    }
+        
+        
+        
 }) # end of ddply for DM domain   
 
-    #        add.triple(store,
-#            paste0(prefix.CDISCPILOT01, "Birthdate_", i),
-#            paste0(prefix.RDF,"type" ),
-#            paste0(prefix.STUDY,"Birthdate" )
-#        )
-#        add.data.triple(store,
-#            paste0(prefix.CDISCPILOT01, "Birthdate_", i),
-#            paste0(prefix.RDFS,"label" ),
-#            paste0("Birthdate ",i), type="string"
-#        )
-#        add.data.triple(store,
-#            paste0(prefix.CDISCPILOT01, "Birthdate_", i),
-#            paste0(prefix.STUDY,"dateTimeInXSDSTring" ),
-#            paste0(dm[i,"brthdate"]), type="string"
-#        )
-#    #-- Deathdate
-#    # Note the funky conversion testing for missing! is.na will NOT work here. 
-#    #    There is something in the field even when "blank"
-#    if (! as.character(dm[i,"dthdtc"])=="") {
-#        add.triple(store,
-#            paste0(prefix.CDISCPILOT01, person),
-#            paste0(prefix.STUDY,"hasDeathdate" ),
-#            paste0(prefix.CDISCPILOT01, "Deathdate_", i)
-#        )  
-#            add.triple(store,
-#                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
-#                paste0(prefix.RDF,"type" ),
-#                paste0(prefix.STUDY,"Deathdate" )
-#            )
-#            
-#            add.data.triple(store,
-#                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
-#                paste0(prefix.STUDY,"dateTimeInXSDString" ),
-#                paste0( dm[i,"dthdtc"]), type="string"
-#            )
-#            add.data.triple(store,
-#                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
-#                paste0(prefix.RDFS,"label" ),
-#                paste0("Deathdate ",i), type="string"
-#            )
-#    }
 #    add.triple(store,
 #        paste0(prefix.CDISCPILOT01, person),
 #        paste0(prefix.STUDY,"hasEthnicity" ),

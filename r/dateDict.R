@@ -63,7 +63,6 @@ addDateFrag<-function(domainName, colName)
 #TODO: Move to processDM.R
 #TODO: change to an lapply over the list of date fields instead of separate calls
 dm <- addDateFrag(dm, "rfstdtc")  
-
 dm <- addDateFrag(dm, "rfendtc")  
 dm <- addDateFrag(dm, "rfxstdtc")  
 dm <- addDateFrag(dm, "rfxendtc")  
