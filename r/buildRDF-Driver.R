@@ -22,6 +22,8 @@ library(Hmisc)
 # library(dplyr)
 library(plyr)
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
+library(reshape2)
+
 
 # Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
@@ -109,6 +111,10 @@ vs <- subset(vs, (personNum==1
 
 # Date coding
 source('R/dateDict.R')
+
+# Age coding
+source('R/ageDict.R')
+
 
 #-- DOMAIN PROCESSING ---------------------------------------------------------
 #---- DM DOMAIN

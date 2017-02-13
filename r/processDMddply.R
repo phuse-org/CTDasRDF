@@ -12,15 +12,17 @@
 #                          originals are retained.
 #       SDTM numeric codes, Country, Arm codes are set MANUALLY
 # TODO: 
-#  !! Recode to use ddply() instead of FOR loops
-#          See processSUPPDM.R for methods
-#  - Add is.na to most triple creation blocks. Note may need !="" for some.
+#   
 #  - Collapse code segments in FUNT()s where possible
+#     Date creation triples to a function called for each type of date (birthdate, dthdtc, etc.)
 #  - Add a function that evaluates each DATE value and types it as either
 #     xsd:date if valid yyyy-mm-dd value, or as xsd:string if(invalid/incomplete 
 #     date OR is a datetime value)
 #  - Consider new triples for incomplete dates (YYYY triple, MON  triple, etc.)
 #     for later implmentations
+#   CUSTOM file creation
+#      Add creation of CUSTOMTERMINLOGY.TTL for terms like AgeOutcomeTerm_(nn)YRS
+#          this file and triples currently not created!
 ###############################################################################
 
 #---- Investigator name and ID not present in source data
@@ -185,7 +187,6 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY, "EnrolledSubject")
     )
-    
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"hasSubjectID" ),
@@ -202,7 +203,7 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"hasBirthdate" ),
         paste0(prefix.CDISCPILOT01, dm$brthdate_Frag)
     )
-        #---- Date triples for the birthdate
+        #---- Date triples
         add.triple(store,
             paste0(prefix.CDISCPILOT01, dm$brthdate_Frag),
             paste0(prefix.RDF,"type" ),
@@ -218,113 +219,148 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.RDFS,"label" ),
             paste0(dm$brthdate), type="string"
         )
+    #-- Deathdate
+    # Note the funky conversion testing for missing! is.na will NOT work here. 
+    #    #    There is something in the field even when "blank"
+    if (! as.character(dm$dthdtc)=="") {
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, person),
+            paste0(prefix.STUDY,"hasDeathdate" ),
+            paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag)
+        )
+        #---- Date triples
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY, "Deathdate")
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag),
+            paste0(prefix.STUDY, "dateTimeInXSDString" ),
+            paste0(dm$brthdate), type="string"
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag),
+            paste0(prefix.RDFS,"label" ),
+            paste0(dm$brthdate), type="string"
+        )
+    }
+    #-- Arm 
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"allocatedToArm" ),
+        paste0(prefix.CUSTOM, "armcd-",dm$arm_) 
+    )
+    # Death flag
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"deathFlag" ),
+        paste0(dm$dthfl), type="string"
+    )
+    # Ethnicity
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"hasEthnicity" ),
+        paste0(prefix.CDISCSDTM, dm$ethnic_) 
+    )
+    # Race
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"hasRace" ),
+        paste0(prefix.CDISCSDTM, dm$race_) 
+    )
+    # Sex 
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"hasSex" ),
+        paste0(prefix.CDISCSDTM, dm$sex_) 
+    )
+    # Site
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"hasSite" ),
+        paste0(prefix.CDISCPILOT01, "site-",dm$siteid) 
+    )
+    # Person label
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.RDFS,"label" ),
+        paste0(person) 
+    )
+    # Age
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"hasAgeMeasurement" ),
+        paste0(prefix.CDISCPILOT01, dm$age_Frag)
+    )
+        #----Age Measurement Triples
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$age_Frag),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.CODE,"Age")
+        )
+        #!! Note hard coding here for unit and formation of term
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$age_Frag),
+            paste0(prefix.STUDY,"hasActivityOutcome" ),
+            paste0(prefix.CUSTOM,"AgeOutcomeTerm_",dm$age,"YRS")
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$age_Frag),
+            paste0(prefix.RDFS,"label" ),
+            paste0(dm$age_Frag)
+        )
 
-        #    #-- Deathdate
-        #    # Note the funky conversion testing for missing! is.na will NOT work here. 
-        #    #    There is something in the field even when "blank"
-        #    if (! as.character(dm[i,"dthdtc"])=="") {
-        #        add.triple(store,
-        #            paste0(prefix.CDISCPILOT01, person),
-        #            paste0(prefix.STUDY,"hasDeathdate" ),
-        #            paste0(prefix.CDISCPILOT01, "Deathdate_", i)
-        #        )  
-        #            add.triple(store,
-        #                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
-        #                paste0(prefix.RDF,"type" ),
-        #                paste0(prefix.STUDY,"Deathdate" )
-        #            )
-        #            
-        #            add.data.triple(store,
-        #                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
-        #                paste0(prefix.STUDY,"dateTimeInXSDString" ),
-        #                paste0( dm[i,"dthdtc"]), type="string"
-        #            )
-        #            add.data.triple(store,
-        #                paste0(prefix.CDISCPILOT01, "Deathdate_", i),
-        #                paste0(prefix.RDFS,"label" ),
-        #                paste0("Deathdate ",i), type="string"
-        #            )
-        #    }
-        
-        
-        
+            #        add.triple(store,
+    #            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
+    #            paste0(prefix.STUDY,"hasActivityCode" ),
+    #            paste0(prefix.CODE, "observationterm-AGE")
+    #        )
+    #        add.triple(store,
+    #            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
+    #            paste0(prefix.STUDY,"hasActivityOutcome" ),
+    #            paste0(prefix.CDISCPILOT01, "Age_",i)
+    #        )
+    #        add.data.triple(store,
+    #            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
+    #            paste0(prefix.RDFS,"label" ),
+    #            paste0("Age ",i)
+    #        )
+    #            # Level 3
+    #            add.data.triple(store,
+    #                paste0(prefix.CDISCPILOT01, "Age_", i),
+    #                paste0(prefix.RDFS,"label" ),
+    #                paste0("Age ",i), type="string"
+    #            ) 
+    #            add.triple(store,
+    #                paste0(prefix.CDISCPILOT01, "Age_", i),
+    #                paste0(prefix.RDF,"type" ),
+    #                paste0(prefix.STUDY,"Age")
+    #            )        
+    #            add.triple(store,
+    #                paste0(prefix.CDISCPILOT01, "Age_", i),
+    #                paste0(prefix.STUDY,"hasUnit" ),
+    #                paste0(prefix.TIME, "unitYear")
+    #            )        
+    #            add.data.triple(store,
+    #                paste0(prefix.CDISCPILOT01, "Age_", i),
+    #                paste0(prefix.STUDY,"hasValue" ),
+    #                paste0(dm[i,"age"]), type="float"
+    #            )
+    #            add.data.triple(store,
+    #                paste0(prefix.CDISCPILOT01, "Age_", i),
+    #                paste0(prefix.RDFS,"label" ),
+    #                paste0("Age ",i), type="string"
+    #            )
+    
+    
 }) # end of ddply for DM domain   
 
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"hasEthnicity" ),
-#        paste0(prefix.CDISCSDTM, dm[i,"ethnic_"]) 
-#    )
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"hasRace" ),
-#        paste0(prefix.CDISCSDTM, dm[i,"race_"]) 
-#    )
-#    # Sex - coded to the SDTM Terminology graph in code above.
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"hasSex" ),
-#        paste0(prefix.CDISCSDTM, dm[i,"sex_"]) 
-#    )
-#    # Age
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"hasAgeMeasurement" ),
-#        paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i)
-#    )
-#        # Level 2
-#        add.triple(store,
-#            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
-#            paste0(prefix.RDF,"type" ),
-#            paste0(prefix.STUDY,"AgeMeasurement" )
-#        )
-#        add.triple(store,
-#            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
-#            paste0(prefix.STUDY,"hasActivityCode" ),
-#            paste0(prefix.CODE, "observationterm-AGE")
-#        )
-#        add.triple(store,
-#            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
-#            paste0(prefix.STUDY,"hasActivityOutcome" ),
-#            paste0(prefix.CDISCPILOT01, "Age_",i)
-#        )
-#        add.data.triple(store,
-#            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
-#            paste0(prefix.RDFS,"label" ),
-#            paste0("Age ",i)
-#        )
-#            # Level 3
-#            add.data.triple(store,
-#                paste0(prefix.CDISCPILOT01, "Age_", i),
-#                paste0(prefix.RDFS,"label" ),
-#                paste0("Age ",i), type="string"
-#            ) 
-#            add.triple(store,
-#                paste0(prefix.CDISCPILOT01, "Age_", i),
-#                paste0(prefix.RDF,"type" ),
-#                paste0(prefix.STUDY,"Age")
-#            )        
-#            add.triple(store,
-#                paste0(prefix.CDISCPILOT01, "Age_", i),
-#                paste0(prefix.STUDY,"hasUnit" ),
-#                paste0(prefix.TIME, "unitYear")
-#            )        
-#            add.data.triple(store,
-#                paste0(prefix.CDISCPILOT01, "Age_", i),
-#                paste0(prefix.STUDY,"hasValue" ),
-#                paste0(dm[i,"age"]), type="float"
-#            )
-#            add.data.triple(store,
-#                paste0(prefix.CDISCPILOT01, "Age_", i),
-#                paste0(prefix.RDFS,"label" ),
-#                paste0("Age ",i), type="string"
-#            )
-#   #-- Arm 
-#   add.triple(store,
-#       paste0(prefix.CDISCPILOT01, person),
-#       paste0(prefix.STUDY,"allocatedToArm" ),
-#       paste0(prefix.CUSTOM, "armcd-",dm[i,"arm_"]) 
-#   )
+
+
+
+
+
 #      # These triples are coded in the customTerminology file.
 #      #   and not needed here.
 #      #DEL add.triple(store,
@@ -338,12 +374,6 @@ ddply(dm, .(subjid), function(dm)
 #      #DEL     paste0(prefix.CUSTOM,"armcd-PBO" )
 #      #DEL )
 #   
-#    # Death flag
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"deathFlag" ),
-#        paste0(dm[i,"dthfl"]), type="string"
-#    )
 #    # DemographicDataCollection
 #    add.triple(store,
 #        paste0(prefix.CDISCPILOT01, person),
@@ -567,18 +597,6 @@ ddply(dm, .(subjid), function(dm)
 #        paste0(prefix.CDISCPILOT01, person),
 #        paste0(prefix.STUDY,"treatedAccordingToArm"),
 #        paste0(prefix.CUSTOM, "armcd-",dm[i,"actarm_"]) 
-#    )
-#    # Site
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"hasSite" ),
-#        paste0(prefix.CDISCPILOT01, "site-",dm[i,"siteid"]) 
-#    )
-#    # Person label
-#    add.data.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.RDFS,"label" ),
-#        paste0("Person ", i) 
 #    )
 #    # Reference start date
 #    add.triple(store,

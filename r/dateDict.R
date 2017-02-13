@@ -14,15 +14,12 @@
 # TODO: Extend to include dates in VS
 #
 ###############################################################################
-library(reshape2)
-
 # dm dates
 dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
 
 # vs dates
 vsDates <- data.frame(vs[,"vsdtc"])
 
-library(plyr)
 # Combined the date dataframes from all sources
 allDates <- merge(dmDates,vsDates)
 
