@@ -57,12 +57,12 @@ suppdm$qeval_ <- sapply(suppdm$qeval, qevalCode)
 
 # Loop over the dataframe using ddply 
 ddply(suppdm, .(personNum, qnam_), function(suppdm){
-        #-- First level triples attached to Person_(n)    
-        add.triple(store,
-            paste0(prefix.CDISCPILOT01, "Person_", suppdm$personNum ),
-            paste0(prefix.STUDY,"participatesIn" ),
-            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_)
-        )
+    #-- First level triples attached to Person_(n)    
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, "Person_", suppdm$personNum ),
+        paste0(prefix.STUDY,"participatesIn" ),
+        paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_)
+    )
         #---- Second level triples for each popflag
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
