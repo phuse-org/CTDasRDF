@@ -245,12 +245,19 @@ ddply(dm, .(subjid), function(dm)
             paste0(dm$brthdate), type="string"
         )
     }
-    #-- Arm 
+    # Arm 
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"allocatedToArm" ),
         paste0(prefix.CUSTOM, "armcd-",dm$arm_) 
     )
+    # Treated Arm
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"treatedAccordingToArm"),
+        paste0(prefix.CUSTOM, "armcd-",dm$actarm_) 
+    )
+    
     # Death flag
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -311,6 +318,22 @@ ddply(dm, .(subjid), function(dm)
             paste0(dm$age_Frag)
         )
 
+    # Product Administration
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"participatesIn" ),
+        paste0(prefix.CDISCPILOT01, dm$pAInt_Frag)
+    )
+        #----Product Admin  Triples
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, dm$pAInt_Frag),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY,"ProductAdministration")
+        )
+    
+        
+        
+        
             #        add.triple(store,
     #            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
     #            paste0(prefix.STUDY,"hasActivityCode" ),
@@ -593,11 +616,6 @@ ddply(dm, .(subjid), function(dm)
 #    # Both allocatedTo and treatedAccordingTo use the same ARM codelist.
 #    #    THere is not separate codelist for ARM vs. ACTARM.
 #    # Codes are in customterminology.ttl
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"treatedAccordingToArm"),
-#        paste0(prefix.CUSTOM, "armcd-",dm[i,"actarm_"]) 
-#    )
 #    # Reference start date
 #    add.triple(store,
 #        paste0(prefix.CDISCPILOT01, person),
