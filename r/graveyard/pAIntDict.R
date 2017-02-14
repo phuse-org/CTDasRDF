@@ -11,7 +11,11 @@
 # SRC : 
 # IN  : 
 # OUT : 
-# NOTE: dm$pAInt is created to allow merging of the product administration URI
+# NOTE: Product Admin is NOT handled in this way as of 2017-02-14. S
+#        Serves only as an example of how to combine fields to create a unique 
+#        URI fragment.
+#                
+#       dm$pAInt is created to allow merging of the product administration URI
 #        back into the dm dataframe. It serves no other purpose.
 #        
 # TODO: 
