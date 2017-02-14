@@ -107,18 +107,9 @@ vs <- subset(vs, (personNum==1
                   & vstestcd %in% c("DIABP", "SYSBP") 
                   & visit %in% c("SCREENING 1", "SCREENING 2")))
 
-#TODO: move date URI call to here.
-
-# TODO: Combine all the separate xxxDict.R into a single CreateFrag.R script
-# Date coding
-source('R/dateDict.R')
-
-# Age coding
-source('R/ageDict.R')
-
-# Product Administration Interval
-source('R/pAIntDict.R')
-
+# Create URI fragments for Dates and other categories that are shared URIs 
+# Eg: Date_1, AgeMeasurement_3
+source('R/createFrag.R')
 
 #-- DOMAIN PROCESSING ---------------------------------------------------------
 #---- DM DOMAIN
