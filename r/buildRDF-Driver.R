@@ -109,11 +109,15 @@ vs <- subset(vs, (personNum==1
 
 #TODO: move date URI call to here.
 
+# TODO: Combine all the separate xxxDict.R into a single CreateFrag.R script
 # Date coding
 source('R/dateDict.R')
 
 # Age coding
 source('R/ageDict.R')
+
+# Product Administration Interval
+source('R/pAIntDict.R')
 
 
 #-- DOMAIN PROCESSING ---------------------------------------------------------
@@ -121,7 +125,7 @@ source('R/ageDict.R')
 #  NOTE: DM  MUST be processd first: Creates data required in later steps.
 #        DM MUST BE Run to create personNUm that is used when processing other domains.
 # source('R/processDM.R')
-source('R/processDMddply.R')
+source('R/processDM.R')
 
 #source('R/processSUPPDM.R')
 
