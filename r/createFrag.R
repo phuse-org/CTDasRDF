@@ -66,8 +66,7 @@ addDateFrag<-function(domainName, colName)
     return(withFrag)
 }
 
-#TODO: Move to processDM.R
-#TODO: change to an lapply over the list of date fields instead of separate calls
+# Add fragments back to the DM dataframe. 
 dm <- addDateFrag(dm, "rfstdtc")  
 dm <- addDateFrag(dm, "rfendtc")  
 dm <- addDateFrag(dm, "rfxstdtc")  
