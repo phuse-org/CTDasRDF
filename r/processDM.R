@@ -461,16 +461,52 @@ ddply(dm, .(subjid), function(dm)
                     paste0("Interval_IC", dm$personNum)
                 )
     }
-    
-    #WIP TO HERE
     # Product Administration
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum)
     )
-    
-    #TODO: Add the admin triples here.            
+        #ProductAdministration_(n)
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY, "ProductAdministration")
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
+            paste0(prefix.RDFS,"label" ),
+            paste0("ProductAdministration_", dm$personNum)
+        )
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
+            paste0(prefix.STUDY,"hasActivityInterval" ),
+            paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum)
+        )
+            # Interval_PA(n)
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationInterval", dm$personNum)
+            )
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
+                paste0(prefix.RDFS,"label" ),
+                paste0("Interval_PA", dm$personNum)
+            )
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
+                paste0(prefix.TIME,"hasBeginning" ),
+                paste0(prefix.CDISCPILOT01, dm$rfxstdtc_Frag)
+            )
+            add.triple(store,
+                paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
+                paste0(prefix.TIME,"hasEnd" ),
+                paste0(prefix.CDISCPILOT01, dm$rfxendtc_Frag)
+            )
+
+  
+  #TODO: Add the admin triples here.            
 
     
 
