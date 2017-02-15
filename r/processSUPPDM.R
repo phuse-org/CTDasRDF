@@ -1,6 +1,6 @@
 ###############################################################################
 # FILE: processSUPPDM.R
-# DESC: Create DM domain triples from SUPPDM
+# DESC: Create triples from SUPPDM
 # REQ : 
 # SRC : 
 # IN  : 
@@ -61,39 +61,37 @@ ddply(suppdm, .(personNum, qnam_), function(suppdm){
     add.triple(store,
         paste0(prefix.CDISCPILOT01, "Person_", suppdm$personNum ),
         paste0(prefix.STUDY,"participatesIn" ),
-        paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_)
+        paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum)
     )
-        #---- Second level triples for each popflag
         add.triple(store,
-            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.RDF,"type" ),
-            paste0(prefix.STUDY, "PopulationFlag")
+            paste0(prefix.CUSTOM, "popflagterm_", suppdm$qnam_)
         )
-        # Note use of qnam and not qnam_ in the following object 
         add.triple(store,
-            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.STUDY,"hasActivityCode" ),
-            paste0(prefix.CODE, "popflagterm-", suppdm$qnam_, "POP")
+            paste0(prefix.CUSTOM, "popflagterm_", suppdm$qnam_)
         )
         add.triple(store,
-            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.STUDY,"hasActivityOutcome" ),
-            paste0(prefix.CODE, "popflagoutcome-", suppdm$qval_)
+            paste0(prefix.CODE, "popflagoutcome_", suppdm$qval_)
         )
         add.triple(store,
-            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.STUDY,"hasMethod" ),
-            paste0(prefix.CODE, "activitymethod-", suppdm$qorig)
+            paste0(prefix.CODE, "method_", suppdm$qorig)
         )
         add.triple(store,
-            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.STUDY,"hasPerformer" ),
-            paste0(prefix.CDISCPILOT01, "sponsor-", suppdm$qeval_)
+            paste0(prefix.CDISCPILOT01, "sponsor_", suppdm$qeval_)
         )
         add.data.triple(store,
-            paste0(prefix.CDISCPILOT01, "popflag-P", suppdm$personNum,"_", suppdm$qnam_),
+            paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.RDFS,"label" ),
-            paste0("popflag-P", suppdm$personNum,"_", suppdm$qnam_), type="string" 
+            paste0("popflag_", suppdm$qnam_,"_",suppdm$personNum), type="string" 
         )
     }
 )

@@ -16,9 +16,9 @@ library(Hmisc)
 # Set working directory to the root of the work area
 setwd("C:/_github/SDTM2RDF/data/source")
 
-foo <- sasxport.get("dm.xpt")
+foo <- sasxport.get("suppdm.xpt")
     
-dataSubset <- head(foo, 10)
+dataSubset <- head(foo, 100)
 
 
 # TEST BED
