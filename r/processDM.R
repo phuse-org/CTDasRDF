@@ -203,22 +203,9 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"hasBirthdate" ),
         paste0(prefix.CDISCPILOT01, dm$brthdate_Frag)
     )
-        #---- Date triples
-        add.triple(store,
-            paste0(prefix.CDISCPILOT01, dm$brthdate_Frag),
-            paste0(prefix.RDF,"type" ),
-            paste0(prefix.STUDY, "Birthdate")
-        )
-        add.data.triple(store,
-            paste0(prefix.CDISCPILOT01, dm$brthdate_Frag),
-            paste0(prefix.STUDY, "dateTimeInXSDString" ),
-            paste0(dm$brthdate), type="string"
-        )
-        add.data.triple(store,
-            paste0(prefix.CDISCPILOT01, dm$brthdate_Frag),
-            paste0(prefix.RDFS,"label" ),
-            paste0(dm$brthdate), type="string"
-        )
+    #---- Date triples
+    createDateTriples(dm$brthdate, dm$brthdate_Frag, "Birthdate")
+
     #-- Deathdate
     # Note the funky conversion testing for missing! is.na will NOT work here. 
     #    #    There is something in the field even when "blank"
@@ -229,21 +216,7 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag)
         )
         #---- Date triples
-        add.triple(store,
-            paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag),
-            paste0(prefix.RDF,"type" ),
-            paste0(prefix.STUDY, "Deathdate")
-        )
-        add.data.triple(store,
-            paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag),
-            paste0(prefix.STUDY, "dateTimeInXSDString" ),
-            paste0(dm$brthdate), type="string"
-        )
-        add.data.triple(store,
-            paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag),
-            paste0(prefix.RDFS,"label" ),
-            paste0(dm$brthdate), type="string"
-        )
+        createDateTriples(dm$dthdtc, dm$dthdtc_Frag, "Deathdate")
     }
     # Arm 
     add.triple(store,
@@ -257,7 +230,6 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"treatedAccordingToArm"),
         paste0(prefix.CUSTOM, "armcd-",dm$actarm_) 
     )
-    
     # Death flag
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -339,11 +311,17 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.TIME,"hasBeginning" ),
             paste0(prefix.CDISCPILOT01, dm$rfstdtc_Frag)
         )
+        #---- Date triples
+        createDateTriples(dm$rfstdtc, dm$rfstdtc_Frag, "ReferenceIntervalBegin")
+
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_RI", dm$personNum),
             paste0(prefix.TIME,"hasEnd" ),
             paste0(prefix.CDISCPILOT01, dm$rfendtc_Frag)
         )
+        #---- Date triples
+        createDateTriples(dm$rfendtc, dm$rfendtc_Frag, "ReferenceIntervalEnd")
+
     # Lifespan Interval
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -366,12 +344,17 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.TIME,"hasBeginning" ),
             paste0(prefix.CDISCPILOT01, dm$brthdate_Frag)
         )
+        #---- Date triples
+        createDateTriples(dm$brthdate, dm$brthdate_Frag, "LifespanIntervalBegin")
+
         if (!is.na(dm$dthdtc_Frag) && ! as.character(dm$dthdtc_Frag)=="") {
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "Interval_LS", dm$personNum),
                 paste0(prefix.TIME,"hasEnd" ),
                 paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag)
             )
+            #---- Date triples
+            createDateTriples(dm$dthdtc, dm$dthdtc_Frag, "LifespanIntervalEnd")
         }
     # Study Participation Interval
     add.triple(store,
@@ -396,12 +379,17 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.TIME,"hasBeginning" ),
             paste0(prefix.CDISCPILOT01, dm$rfstdtc_Frag)
         )
+        #---- Date triples
+        createDateTriples(dm$rfstdtc, dm$rfstdtc_Frag, "StudyParticipationBegin")
+        
         if (!is.na(dm$rfpendtc_Frag) && ! as.character(dm$rfpendtc_Frag)=="") {
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum),
                 paste0(prefix.TIME,"hasEnd" ),
                 paste0(prefix.CDISCPILOT01, dm$rfpendtc_Frag)
             )
+            #---- Date triples
+            createDateTriples(dm$rfpendtc, dm$rfpendtc_Frag, "StudyParticipationEnd")
         }
     # Informed Consent  
     # Create all triples and subgraphs associated with informed conssent if the 
@@ -450,16 +438,19 @@ ddply(dm, .(subjid), function(dm)
                     paste0(prefix.RDF,"type" ),
                     paste0(prefix.STUDY, "InformedConsentInterval")
                 )
-                add.triple(store,
-                    paste0(prefix.CDISCPILOT01,"Interval_IC", dm$personNum),
-                    paste0(prefix.TIME,"hasBeginning" ),
-                    paste0(prefix.CDISCPILOT01, dm$rficdtc_Frag)
-                )
                 add.data.triple(store,
                     paste0(prefix.CDISCPILOT01, "Interval_IC", dm$personNum),
                     paste0(prefix.RDFS,"label"),
                     paste0("Interval_IC", dm$personNum)
                 )
+                add.triple(store,
+                    paste0(prefix.CDISCPILOT01,"Interval_IC", dm$personNum),
+                    paste0(prefix.TIME,"hasBeginning" ),
+                    paste0(prefix.CDISCPILOT01, dm$rficdtc_Frag)
+                )
+                #---- Date triples
+                createDateTriples(dm$rficdtc, dm$rficdtc_Frag, "InformedConsentIntervalBegin")
+                #Note: There is no informedConsentIntervalEnd in the source data
     }
     # Product Administration
     add.triple(store,
@@ -494,18 +485,24 @@ ddply(dm, .(subjid), function(dm)
                 paste0(prefix.RDFS,"label" ),
                 paste0("Interval_PA", dm$personNum)
             )
+            # Product Administration Begin
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
                 paste0(prefix.TIME,"hasBeginning" ),
                 paste0(prefix.CDISCPILOT01, dm$rfxstdtc_Frag)
             )
+            #---- Date triples
+            createDateTriples(dm$rfxstdtc, dm$rfxstdtc_Frag, "ProductAdministrationBegin")
+
+            # Product Administration End
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
                 paste0(prefix.TIME,"hasEnd" ),
                 paste0(prefix.CDISCPILOT01, dm$rfxendtc_Frag)
             )
+            #---- Date triples
+            createDateTriples(dm$rfxendtc, dm$rfxendtc_Frag, "ProductAdministrationEnd")
 
-  
   #TODO: Add the admin triples here.            
 
     

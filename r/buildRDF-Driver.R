@@ -24,7 +24,6 @@ library(plyr)
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 library(reshape2)
 
-
 # Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
 
@@ -65,7 +64,6 @@ source('R/graphMeta.R')
 # Import and indexing Functions (Called during domain processing) 
 source('R/dataImportFnts.R')
 
-
 #-- Import data. Needed here for creating unique URIS for values that span
 #   Multiple domains, like dates.
 #---- DM DOMAIN ---------------------------------------------------------------
@@ -96,7 +94,6 @@ dm$rficdtc <- dm$dmdtc
 dm$dthdtc <- as.character(dm$dthdtc)
 dm$dthdtc[dm$personNum == 1 ] <- "2013-12-26"
 
-
 # Import VS
 vs <- readXPT("vs")
 
@@ -115,9 +112,10 @@ source('R/createFrag.R')
 #---- DM DOMAIN
 #  NOTE: DM  MUST be processd first: Creates data required in later steps.
 #        DM MUST BE Run to create personNUm that is used when processing other domains.
-# source('R/processDM.R')
-source('R/processDM.R')
-source('R/processSUPPDM.R')
+
+#source('R/processDM.R')
+
+# source('R/processSUPPDM.R')
 
 #---- VS DOMAIN
 # source('R/processVS.R')

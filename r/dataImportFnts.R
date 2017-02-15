@@ -27,8 +27,34 @@ readXPT<-function(domain)
 #------------------------------------------------------------------------------
 # addpersonId()
 # Merge the personId into the other domains to allow later looping during triple creation. 
-addPersonId<-function(domainName)
+addPersonId <- function(domainName)
 {
     withIndex <- merge(x = personId, y = domainName, by="usubjid", all.x = TRUE)
     return(withIndex)
 }
+
+
+#------------------------------------------------------------------------------
+# createDateTriples()
+#   Create the Date_(n) triples that describe a specific date URI
+#   dateVal  - date value string variable.  Eg: dm$brthdate
+#   dateFrag - date URI fragment variable. Eg: dm$brthdate_Frag
+#             date URI fragments are used, not the date string
+#   dateType - the class type for that date. Eg: Birthdate.  Must correspong
+#             to class names in the ontology.
+#------------------------------------------------------------------------------
+createDateTriples <- function(dateVal, dateFrag, dateType)
+{
+    #---- Date triples
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, dateFrag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.STUDY, dateType)
+    )
+ 
+}    
+
+
+    
+    
+
