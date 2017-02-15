@@ -56,21 +56,21 @@ dateDict <- dateList[,c("dateKey", "dateFrag")]
 # Create the label and dateTimeInXSDString triples for each new date _Frag to avoid 
 #   repeating the same values when createDateTriples is called
 
-#dply(dateDict, .(dateKey), function(dateDict)
-#
-#
-#   add.data.triple(store,
-#       paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
-#       paste0(prefix.STUDY, "dateTimeInXSDString" ),
-#       paste0(dateDict$dateKey), type="string"
-#   )
-#   add.data.triple(store,
-#       paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
-#       paste0(prefix.RDFS,"label" ),
-#       paste0(dateDict$dateFrag), type="string"
-#   )
-#   
-#)
+ddply(dateDict, .(dateKey), function(dateDict)
+{
+
+   add.data.triple(store,
+       paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
+       paste0(prefix.STUDY, "dateTimeInXSDString" ),
+       paste0(dateDict$dateKey), type="string"
+   )
+   add.data.triple(store,
+       paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
+       paste0(prefix.RDFS,"label" ),
+       paste0(dateDict$dateFrag), type="string"
+   )
+   
+})
 
 
 # Merge in the dateKey value to created a coded version of the date field, naming

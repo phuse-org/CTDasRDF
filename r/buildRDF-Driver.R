@@ -113,7 +113,7 @@ source('R/createFrag.R')
 #  NOTE: DM  MUST be processd first: Creates data required in later steps.
 #        DM MUST BE Run to create personNUm that is used when processing other domains.
 
-#source('R/processDM.R')
+source('R/processDM.R')
 
 # source('R/processSUPPDM.R')
 

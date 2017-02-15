@@ -18,7 +18,7 @@ setwd("C:/_github/SDTM2RDF/data/source")
 
 foo <- sasxport.get("dm.xpt")
     
-dataSubset <- head(foo, 100)
+dataSubset <- head(foo, 10)
 
 
 # TEST BED
