@@ -526,13 +526,13 @@ ddply(dm, .(subjid), function(dm)
              paste0(prefix.STUDY,"hasDate" ),
              paste0(prefix.CDISCPILOT01,dm$dmdtc_Frag)
         )    
-        add.triple(store,
+        add.data.triple(store,
              paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
              paste0(prefix.RDFS,"label" ),
              paste0(prefix.CDISCPILOT01,"Demographic data collection ", dm$personNum)
         )    
         #---- Assign Date Type
-        assignDateType(dm$rfxendtc, dm$rfxendtc_Frag, "DemogDataCollectionDate")
+        assignDateType(dm$rfxendtc, dm$dmdtc_Frag, "DemogDataCollectionDate")
 
 
 #        add.data.triple(store,
