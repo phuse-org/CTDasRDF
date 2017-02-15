@@ -155,17 +155,17 @@ arms$armcdUC <- toupper(gsub(" ", "", arms$armcd))
 ddply(arms, .(armUC), function(arms)
 {
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "arm-", arms$armUC),
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY, "Arm")
     )
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "arm-", arms$armUC),
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
         paste0(prefix.STUDY,"hasArmCode" ),
-        paste0(prefix.CUSTOM, "armcd-", arms$armcdUC)
+        paste0(prefix.CUSTOM, "armcd_", arms$armcdUC)
     )
     add.data.triple(store,
-        paste0(prefix.CDISCPILOT01, "arm-", arms$armUC),
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
         paste0(prefix.RDFS,"label" ),
         paste0(arms$arm), type="string"
     )
@@ -223,13 +223,13 @@ ddply(dm, .(subjid), function(dm)
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"allocatedToArm" ),
-        paste0(prefix.CUSTOM, "armcd-",dm$arm_) 
+        paste0(prefix.CUSTOM, "armcd_",dm$arm_) 
     )
     # Treated Arm
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"treatedAccordingToArm"),
-        paste0(prefix.CUSTOM, "armcd-",dm$actarm_) 
+        paste0(prefix.CUSTOM, "armcd_",dm$actarm_) 
     )
     # Death flag
     add.data.triple(store,
@@ -563,14 +563,14 @@ ddply(dm, .(subjid), function(dm)
 #      # These triples are coded in the customTerminology file.
 #      #   and not needed here.
 #      #DEL add.triple(store,
-#      #DEL     paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"arm_"]) ,
+#      #DEL     paste0(prefix.CDISCPILOT01, "armcd_",dm[i,"arm_"]) ,
 #      #DEL     paste0(prefix.RDF,"type" ),
 #      #DEL     paste0(prefix.STUDY,"Arm" )
 #      #DEL )
 #      #DEL add.triple(store,
-#      #DEL     paste0(prefix.CDISCPILOT01, "armcd-",dm[i,"arm_"]) ,
+#      #DEL     paste0(prefix.CDISCPILOT01, "armcd_",dm[i,"arm_"]) ,
 #      #DEL     paste0(prefix.STUDY,"hasArmCode" ),
-#      #DEL     paste0(prefix.CUSTOM,"armcd-PBO" )
+#      #DEL     paste0(prefix.CUSTOM,"armcd_PBO" )
 #      #DEL )
 #   
 #    # DemographicDataCollection
@@ -771,7 +771,7 @@ ddply(dm, .(subjid), function(dm)
 #            add.triple(store,
 #                paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
 #                paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
-#                paste0(prefix.CUSTOM,"armcd-",dm[i,"arm_"] )
+#                paste0(prefix.CUSTOM,"armcd_",dm[i,"arm_"] )
 #            )
 #            
 #            add.data.triple(store,
