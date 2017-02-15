@@ -171,6 +171,30 @@ ddply(arms, .(armUC), function(arms)
     )
 })
 
+# Triples that describe the Study CDISCPILOT01.
+# TODO: Recode this kludge to creates triples based on unique(studyid)
+#       Leave the commented lines intact until kludge recoded.
+add.triple(store,
+    # paste0(prefix.CDISCPILOT01, "study_", dm$studyid),
+    paste0(prefix.CDISCPILOT01, "study_CDISCPILOT01"),
+    paste0(prefix.RDF,"type" ),
+    paste0(prefix.STUDY, "Study")
+)
+add.data.triple(store,
+    # paste0(prefix.CDISCPILOT01, "study_", dm$studyid),
+    paste0(prefix.CDISCPILOT01, "study_CDISCPILOT01"),
+    paste0(prefix.STUDY,"hasStudyID" ),
+    # paste0(dm$studyid), type="string"
+    paste0("CDISCPILOT01"), type="string"
+)
+add.data.triple(store,
+    # paste0(prefix.CDISCPILOT01, "study_", dm$studyid),
+    paste0(prefix.CDISCPILOT01, "study_CDISCPILOT01"),
+    paste0(prefix.RDFS,"label" ),
+    # paste0("study_", dm$studyid), type="string"
+    paste0("study_CDISCPILOT01"), type="string"
+)
+
 ###############################################################################
 # Create triples from source domain
 # Loop through each row, creating triples for each Person_<n>
@@ -265,7 +289,7 @@ ddply(dm, .(subjid), function(dm)
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.RDFS,"label" ),
-        paste0(person) 
+        paste0(person), type="string"
     )
     # Age
     add.triple(store,
@@ -288,7 +312,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, dm$age_Frag),
             paste0(prefix.RDFS,"label" ),
-            paste0(dm$age_Frag)
+            paste0(dm$age_Frag), type="string"
         )
     # Reference Interval
     add.triple(store,
@@ -305,7 +329,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_RI", dm$personNum),
             paste0(prefix.RDFS,"label"),
-            paste0("Interval_RI", dm$personNum)
+            paste0("Interval_RI", dm$personNum), type="string"
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_RI", dm$personNum),
@@ -338,7 +362,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_LS", dm$personNum),
             paste0(prefix.RDFS,"label"),
-            paste0("Interval_LS", dm$personNum)
+            paste0("Interval_LS", dm$personNum), type="string"
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_LS", dm$personNum),
@@ -373,7 +397,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum),
             paste0(prefix.RDFS,"label"),
-            paste0("Interval_SP", dm$personNum)
+            paste0("Interval_SP", dm$personNum), type="string"
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum),
@@ -432,7 +456,7 @@ ddply(dm, .(subjid), function(dm)
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "InformedConsent_", dm$personNum),
                 paste0(prefix.RDFS,"label"),
-                paste0("InformedConsent_", dm$personNum)
+                paste0("InformedConsent_", dm$personNum), type="string"
             )
                 # Interval_IC(n)
                 add.triple(store,
@@ -443,7 +467,7 @@ ddply(dm, .(subjid), function(dm)
                 add.data.triple(store,
                     paste0(prefix.CDISCPILOT01, "Interval_IC", dm$personNum),
                     paste0(prefix.RDFS,"label"),
-                    paste0("Interval_IC", dm$personNum)
+                    paste0("Interval_IC", dm$personNum), type="string"
                 )
                 add.triple(store,
                     paste0(prefix.CDISCPILOT01,"Interval_IC", dm$personNum),
@@ -469,7 +493,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
             paste0(prefix.RDFS,"label" ),
-            paste0("ProductAdministration_", dm$personNum)
+            paste0("ProductAdministration_", dm$personNum), type="string"
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
@@ -485,7 +509,7 @@ ddply(dm, .(subjid), function(dm)
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
                 paste0(prefix.RDFS,"label" ),
-                paste0("Interval_PA", dm$personNum)
+                paste0("Interval_PA", dm$personNum), type="string"
             )
             # Product Administration Begin
             add.triple(store,
@@ -529,91 +553,41 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
              paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
              paste0(prefix.RDFS,"label" ),
-             paste0(prefix.CDISCPILOT01,"Demographic data collection ", dm$personNum)
+             paste0(prefix.CDISCPILOT01,"Demographic data collection ", dm$personNum), type="string"
         )    
         #---- Assign Date Type
         assignDateType(dm$rfxendtc, dm$dmdtc_Frag, "DemogDataCollectionDate")
 
+    # Study ID. Triples about the study are created ONE time, therefore not here!
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"participatesIn" ),
+        paste0(prefix.CDISCPILOT01, "study_", dm$studyid)
+    )
+    # Randomization
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"participatesIn" ),
+        paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum)
+    )
 
-#        add.data.triple(store,
-#           paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
-#           paste0(prefix.STUDY,"studyDay" ),
-#           paste0( dm[i,"dmdy"])
-#        )
-#        add.data.triple(store,
-#           paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
-#           paste0(prefix.RDFS,"label" ),
-#           paste0("Demographic data collection ",i), type="string"
-#        )
-#        add.triple(store,
-#           paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
-#           paste0(prefix.TIME,"hasBeginning" ),
-#           paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i)
-#        )
-#            # Level 3    
-#            # DemographicDataCollectionDate_
-#            add.triple(store,    
-#                paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-#                paste0(prefix.RDF,"type" ),
-#                paste0(prefix.STUDY,"DemographicDataCollectionDate" )
-#            )    
-#            add.data.triple(store,    
-#                paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-#                paste0(prefix.RDFS,"label" ),
-#                paste0("Demographic data collection date ",i), type="string"
-#            )
-#            
-#            if (! is.na(dm[i,"dmdtc"])) {
-#                add.data.triple(store,    
-#                    paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-#                    paste0(prefix.TIME,"inXSDDate" ),
-#                    paste0(dm[i,"dmdtc"]), type="date"
-#                )
-#            }
-
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY,"Randomization" )
+        ) 
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Randomization ",dm$personNum), type="string"
+        )
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum),
+            paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
+            paste0(prefix.CUSTOM,"armcd_",dm$arm_)
+        )
         
-            #        add.triple(store,
-    #            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
-    #            paste0(prefix.STUDY,"hasActivityCode" ),
-    #            paste0(prefix.CODE, "observationterm-AGE")
-    #        )
-    #        add.triple(store,
-    #            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
-    #            paste0(prefix.STUDY,"hasActivityOutcome" ),
-    #            paste0(prefix.CDISCPILOT01, "Age_",i)
-    #        )
-    #        add.data.triple(store,
-    #            paste0(prefix.CDISCPILOT01, "AgeMeasurement_", i),
-    #            paste0(prefix.RDFS,"label" ),
-    #            paste0("Age ",i)
-    #        )
-    #            # Level 3
-    #            add.data.triple(store,
-    #                paste0(prefix.CDISCPILOT01, "Age_", i),
-    #                paste0(prefix.RDFS,"label" ),
-    #                paste0("Age ",i), type="string"
-    #            ) 
-    #            add.triple(store,
-    #                paste0(prefix.CDISCPILOT01, "Age_", i),
-    #                paste0(prefix.RDF,"type" ),
-    #                paste0(prefix.STUDY,"Age")
-    #            )        
-    #            add.triple(store,
-    #                paste0(prefix.CDISCPILOT01, "Age_", i),
-    #                paste0(prefix.STUDY,"hasUnit" ),
-    #                paste0(prefix.TIME, "unitYear")
-    #            )        
-    #            add.data.triple(store,
-    #                paste0(prefix.CDISCPILOT01, "Age_", i),
-    #                paste0(prefix.STUDY,"hasValue" ),
-    #                paste0(dm[i,"age"]), type="float"
-    #            )
-    #            add.data.triple(store,
-    #                paste0(prefix.CDISCPILOT01, "Age_", i),
-    #                paste0(prefix.RDFS,"label" ),
-    #                paste0("Age ",i), type="string"
-    #            )
-    
+
     
 }) # end of ddply for DM domain   
 
@@ -755,50 +729,6 @@ ddply(dm, .(subjid), function(dm)
 #                paste0(prefix.STUDY,"dateTimeInXSDString"),
 #                paste0(dm[i,"rfendtc"]), type="string"
 #            )
-#    # Randomization
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"participatesIn" ),
-#        paste0(prefix.CDISCPILOT01, "Randomization_", i)
-#    )
-#        # Level 2        
-#        add.triple(store,
-#            paste0(prefix.CDISCPILOT01, "Randomization_", i),
-#            paste0(prefix.RDF,"type" ),
-#            paste0(prefix.STUDY,"Randomization" )
-#        ) 
-#        add.data.triple(store,
-#            paste0(prefix.CDISCPILOT01, "Randomization_", i),
-#            paste0(prefix.RDFS,"label" ),
-#            paste0("Randomization ",i), type="string"
-#        )
-#        add.triple(store,
-#            paste0(prefix.CDISCPILOT01, "Randomization_", i),
-#            paste0(prefix.STUDY,"hasActivityOutcome" ),
-#            paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i)
-#        )
-#            # Level 3
-#            add.triple(store,
-#                paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
-#                paste0(prefix.RDF,"type" ),
-#                paste0(prefix.STUDY,"RandomizationOutcome" )
-#            )
-#            add.triple(store,
-#                paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
-#                paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
-#                paste0(prefix.CUSTOM,"armcd_",dm[i,"arm_"] )
-#            )
-#            
-#            add.data.triple(store,
-#                paste0(prefix.CDISCPILOT01, "RandomizationOutcome_",i),
-#                paste0(prefix.RDFS,"label" ),
-#                paste0("Randomization outcome ",i), type="string"            
-#            )
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"participatesIn" ),
-#        paste0(prefix.CDISCPILOT01, "study-", dm[i,"study_"])
-#    )
 #    # Both allocatedTo and treatedAccordingTo use the same ARM codelist.
 #    #    THere is not separate codelist for ARM vs. ACTARM.
 #    # Codes are in customterminology.ttl
