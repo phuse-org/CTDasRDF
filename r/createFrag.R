@@ -55,6 +55,7 @@ dateDict <- dateList[,c("dateKey", "dateFrag")]
 
 # Create the label and dateTimeInXSDString triples for each new date _Frag to avoid 
 #   repeating the same values when createDateTriples is called
+#   Both the label and the string representation of the date are the same.
 
 ddply(dateDict, .(dateKey), function(dateDict)
 {
@@ -67,7 +68,7 @@ ddply(dateDict, .(dateKey), function(dateDict)
    add.data.triple(store,
        paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
        paste0(prefix.RDFS,"label" ),
-       paste0(dateDict$dateFrag), type="string"
+       paste0(dateDict$dateKey), type="string"
    )
    
 })
