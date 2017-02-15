@@ -43,7 +43,7 @@ addPersonId <- function(domainName)
 #   dateType - the class type for that date. Eg: Birthdate.  Must correspong
 #             to class names in the ontology.
 #------------------------------------------------------------------------------
-createDateTriples <- function(dateVal, dateFrag, dateType)
+assignDateType <- function(dateVal, dateFrag, dateType)
 {
     #---- Date triples
     add.triple(store,

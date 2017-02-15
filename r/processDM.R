@@ -204,8 +204,8 @@ ddply(dm, .(subjid), function(dm)
     #    paste0(prefix.STUDY,"hasBirthdate" ),
     #    paste0(prefix.CDISCPILOT01, dm$brthdate_Frag)
     #)
-    ##---- Date triples
-    #createDateTriples(dm$brthdate, dm$brthdate_Frag, "Birthdate")
+    ##---- Assign Date Type
+    #assignDateType(dm$brthdate, dm$brthdate_Frag, "Birthdate")
     ##-- Deathdate
     ## Note the funky conversion testing for missing! is.na will NOT work here. 
     ##    #    There is something in the field even when "blank"
@@ -215,8 +215,8 @@ ddply(dm, .(subjid), function(dm)
     #        paste0(prefix.STUDY,"hasDeathdate" ),
     #        paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag)
     #    )
-    #    #---- Date triples
-    #    createDateTriples(dm$dthdtc, dm$dthdtc_Frag, "Deathdate")
+    #    #---- Assign Date Type
+    #    assignDateType(dm$dthdtc, dm$dthdtc_Frag, "Deathdate")
     #}
     
     # Arm 
@@ -312,16 +312,16 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.TIME,"hasBeginning" ),
             paste0(prefix.CDISCPILOT01, dm$rfstdtc_Frag)
         )
-        #---- Date triples
-        createDateTriples(dm$rfstdtc, dm$rfstdtc_Frag, "ReferenceBegin")
+        #---- Assign Date Type
+        assignDateType(dm$rfstdtc, dm$rfstdtc_Frag, "ReferenceBegin")
 
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_RI", dm$personNum),
             paste0(prefix.TIME,"hasEnd" ),
             paste0(prefix.CDISCPILOT01, dm$rfendtc_Frag)
         )
-        #---- Date triples
-        createDateTriples(dm$rfendtc, dm$rfendtc_Frag, "ReferenceEnd")
+        #---- Assign Date Type
+        assignDateType(dm$rfendtc, dm$rfendtc_Frag, "ReferenceEnd")
 
     # Lifespan Interval
     add.triple(store,
@@ -345,8 +345,8 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.TIME,"hasBeginning" ),
             paste0(prefix.CDISCPILOT01, dm$brthdate_Frag)
         )
-        #---- Date triples
-        createDateTriples(dm$brthdate, dm$brthdate_Frag, "Birthdate")
+        #---- Assign Date Type
+        assignDateType(dm$brthdate, dm$brthdate_Frag, "Birthdate")
 
         if (!is.na(dm$dthdtc_Frag) && ! as.character(dm$dthdtc_Frag)=="") {
             add.triple(store,
@@ -354,8 +354,8 @@ ddply(dm, .(subjid), function(dm)
                 paste0(prefix.TIME,"hasEnd" ),
                 paste0(prefix.CDISCPILOT01, dm$dthdtc_Frag)
             )
-            #---- Date triples
-            createDateTriples(dm$dthdtc, dm$dthdtc_Frag, "Deathdate")
+            #---- Assign Date Type
+            assignDateType(dm$dthdtc, dm$dthdtc_Frag, "Deathdate")
         }
     # Study Participation Interval
     add.triple(store,
@@ -380,8 +380,8 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.TIME,"hasBeginning" ),
             paste0(prefix.CDISCPILOT01, dm$rfstdtc_Frag)
         )
-        #---- Date triples
-        createDateTriples(dm$rfstdtc, dm$rfstdtc_Frag, "StudyParticipationBegin")
+        #---- Assign Date Type
+        assignDateType(dm$rfstdtc, dm$rfstdtc_Frag, "StudyParticipationBegin")
         
         if (!is.na(dm$rfpendtc_Frag) && ! as.character(dm$rfpendtc_Frag)=="") {
             add.triple(store,
@@ -389,8 +389,8 @@ ddply(dm, .(subjid), function(dm)
                 paste0(prefix.TIME,"hasEnd" ),
                 paste0(prefix.CDISCPILOT01, dm$rfpendtc_Frag)
             )
-            #---- Date triples
-            createDateTriples(dm$rfpendtc, dm$rfpendtc_Frag, "StudyParticipationEnd")
+            #---- Assign Date Type
+            assignDateType(dm$rfpendtc, dm$rfpendtc_Frag, "StudyParticipationEnd")
         }
     # Informed Consent  
     # Create all triples and subgraphs associated with informed conssent if the 
@@ -450,8 +450,8 @@ ddply(dm, .(subjid), function(dm)
                     paste0(prefix.TIME,"hasBeginning" ),
                     paste0(prefix.CDISCPILOT01, dm$rficdtc_Frag)
                 )
-                #---- Date triples
-                createDateTriples(dm$rficdtc, dm$rficdtc_Frag, "InformedConsentBegin")
+                #---- Assign Date Type
+                assignDateType(dm$rficdtc, dm$rficdtc_Frag, "InformedConsentBegin")
                 #Note: There is no informedConsentEnd in the source data
     }
     # Product Administration
@@ -493,8 +493,8 @@ ddply(dm, .(subjid), function(dm)
                 paste0(prefix.TIME,"hasBeginning" ),
                 paste0(prefix.CDISCPILOT01, dm$rfxstdtc_Frag)
             )
-            #---- Date triples
-            createDateTriples(dm$rfxstdtc, dm$rfxstdtc_Frag, "ProductAdministrationBegin")
+            #---- Assign Date Type
+            assignDateType(dm$rfxstdtc, dm$rfxstdtc_Frag, "ProductAdministrationBegin")
 
             # Product Administration End
             add.triple(store,
@@ -502,12 +502,74 @@ ddply(dm, .(subjid), function(dm)
                 paste0(prefix.TIME,"hasEnd" ),
                 paste0(prefix.CDISCPILOT01, dm$rfxendtc_Frag)
             )
-            #---- Date triples
-            createDateTriples(dm$rfxendtc, dm$rfxendtc_Frag, "ProductAdministrationEnd")
+            #---- Assign Date Type
+            assignDateType(dm$rfxendtc, dm$rfxendtc_Frag, "ProductAdministrationEnd")
 
-  #TODO: Add the admin triples here.            
+    # DemographicDataCollection
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, person),
+        paste0(prefix.STUDY,"participatesIn" ),
+        paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum)
+    )
+        add.triple(store,
+             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+             paste0(prefix.RDF,"type" ),
+             paste0(prefix.STUDY,"DemographicDataCollection" )
+        )    
+        add.triple(store,
+             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+             paste0(prefix.STUDY,"hasActivityCode" ),
+             paste0(prefix.CODE,"observationterm-DEMOG")
+        )    
+        add.triple(store,
+             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+             paste0(prefix.STUDY,"hasDate" ),
+             paste0(prefix.CDISCPILOT01,dm$dmdtc_Frag)
+        )    
+        add.triple(store,
+             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+             paste0(prefix.RDFS,"label" ),
+             paste0(prefix.CDISCPILOT01,"Demographic data collection ", dm$personNum)
+        )    
+        #---- Assign Date Type
+        assignDateType(dm$rfxendtc, dm$rfxendtc_Frag, "DemogDataCollectionDate")
 
-    
+
+#        add.data.triple(store,
+#           paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
+#           paste0(prefix.STUDY,"studyDay" ),
+#           paste0( dm[i,"dmdy"])
+#        )
+#        add.data.triple(store,
+#           paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
+#           paste0(prefix.RDFS,"label" ),
+#           paste0("Demographic data collection ",i), type="string"
+#        )
+#        add.triple(store,
+#           paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
+#           paste0(prefix.TIME,"hasBeginning" ),
+#           paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i)
+#        )
+#            # Level 3    
+#            # DemographicDataCollectionDate_
+#            add.triple(store,    
+#                paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+#                paste0(prefix.RDF,"type" ),
+#                paste0(prefix.STUDY,"DemographicDataCollectionDate" )
+#            )    
+#            add.data.triple(store,    
+#                paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+#                paste0(prefix.RDFS,"label" ),
+#                paste0("Demographic data collection date ",i), type="string"
+#            )
+#            
+#            if (! is.na(dm[i,"dmdtc"])) {
+#                add.data.triple(store,    
+#                    paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
+#                    paste0(prefix.TIME,"inXSDDate" ),
+#                    paste0(dm[i,"dmdtc"]), type="date"
+#                )
+#            }
 
         
             #        add.triple(store,
@@ -573,53 +635,6 @@ ddply(dm, .(subjid), function(dm)
 #      #DEL     paste0(prefix.CUSTOM,"armcd_PBO" )
 #      #DEL )
 #   
-#    # DemographicDataCollection
-#    add.triple(store,
-#        paste0(prefix.CDISCPILOT01, person),
-#        paste0(prefix.STUDY,"participatesIn" ),
-#        paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i)
-#    )
-#        # Level 2
-#        add.triple(store,
-#            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
-#            paste0(prefix.RDF,"type" ),
-#            paste0(prefix.STUDY,"DemographicDataCollection" )
-#        )    
-#        add.data.triple(store,
-#           paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
-#           paste0(prefix.STUDY,"studyDay" ),
-#           paste0( dm[i,"dmdy"])
-#        )
-#        add.data.triple(store,
-#           paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
-#           paste0(prefix.RDFS,"label" ),
-#           paste0("Demographic data collection ",i), type="string"
-#        )
-#        add.triple(store,
-#           paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", i),
-#           paste0(prefix.TIME,"hasBeginning" ),
-#           paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i)
-#        )
-#            # Level 3    
-#            # DemographicDataCollectionDate_
-#            add.triple(store,    
-#                paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-#                paste0(prefix.RDF,"type" ),
-#                paste0(prefix.STUDY,"DemographicDataCollectionDate" )
-#            )    
-#            add.data.triple(store,    
-#                paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-#                paste0(prefix.RDFS,"label" ),
-#                paste0("Demographic data collection date ",i), type="string"
-#            )
-#            
-#            if (! is.na(dm[i,"dmdtc"])) {
-#                add.data.triple(store,    
-#                    paste0(prefix.CDISCPILOT01, "DemographicDataCollectionDate_", i),
-#                    paste0(prefix.TIME,"inXSDDate" ),
-#                    paste0(dm[i,"dmdtc"]), type="date"
-#                )
-#            }
 #        # Level 2
 #        add.triple(store,
 #            paste0(prefix.CDISCPILOT01, "InformedConsent_", i),
