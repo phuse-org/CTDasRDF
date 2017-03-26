@@ -1,12 +1,12 @@
 # baseURI: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code
 # imports: http://spinrdf.org/spin
 # imports: http://spinrdf.org/spl
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: http://www.w3.org/2006/time
 # imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/ct/schema
 # imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom
 # imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/mms
 # imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology
-# imports: http://www.w3.org/2004/02/skos/core
-# imports: http://www.w3.org/2006/time
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix code: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#> .
@@ -27,6 +27,30 @@
 <http://topbraid.org/countries#US>
   skos:prefLabel "USA"^^xsd:string ;
 .
+time:TemporalUnit
+  rdfs:subClassOf code:Unit ;
+.
+time:unitDay
+  rdfs:label "UNITDAY" ;
+.
+time:unitHour
+  rdfs:label "UNITHOUR" ;
+.
+time:unitMinute
+  rdfs:label "UNITMONTH" ;
+.
+time:unitMonth
+  rdfs:label "MONTH" ;
+.
+time:unitSecond
+  rdfs:label "SECOND" ;
+.
+time:unitWeek
+  rdfs:label "WEEK" ;
+.
+time:unitYear
+  rdfs:label "YEAR"^^xsd:string ;
+.
 <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code>
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
@@ -35,12 +59,12 @@
   spin:imports <http://topbraid.org/spin/spinowl> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://spinrdf.org/spl> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <http://www.w3.org/2006/time> ;
   owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/ct/schema> ;
   owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom> ;
   owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/mms> ;
   owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology> ;
-  owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <http://www.w3.org/2006/time> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 code:ActivityMethod
@@ -105,11 +129,11 @@ code:Age
         ) ;
       rdfs:comment "Looks for negative age"^^xsd:string ;
     ] ;
-  code:hasIdentifier "D12345"^^xsd:string ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Age"^^xsd:string ;
   rdfs:subClassOf code:Observation ;
   skos:definition ""^^xsd:string ;
+  code:hasIdentifier "D12345"^^xsd:string ;
 .
 code:AgeOutcome
   rdf:type owl:Class ;
@@ -150,7 +174,7 @@ code:Arm
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Arm term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedActivity ;
+  rdfs:subClassOf code:StudyActivity ;
   skos:definition ""^^xsd:string ;
 .
 code:Assessment
@@ -422,11 +446,11 @@ code:RandomizationOutcome
 .
 code:Randomization_BAL3
   rdf:type owl:Class ;
-  code:randomizationQuotient "0.67"^^xsd:float ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization BAL3"^^xsd:string ;
   rdfs:subClassOf code:Randomization ;
   skos:definition "Balanced Randomization among 3 arms, one of which is a placebo arm"^^xsd:string ;
+  code:randomizationQuotient "0.67"^^xsd:float ;
 .
 code:Rule
   rdf:type owl:Class ;
@@ -448,6 +472,12 @@ code:StartRule
   rdfs:label "Start rule term"^^xsd:string ;
   rdfs:subClassOf code:Rule ;
   skos:definition "describes when an activity should take place (planned date) based relative to the outcome of another Activity, the Anchor. "^^xsd:string ;
+.
+code:StudyActivity
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedActivity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Study activity"^^xsd:string ;
 .
 code:Subcategory
   rdf:type owl:Class ;
@@ -474,7 +504,7 @@ code:Visit
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Visit term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedActivity ;
+  rdfs:subClassOf code:StudyActivity ;
   skos:definition ""^^xsd:string ;
 .
 code:VisitOutcome
@@ -611,19 +641,18 @@ code:hasValue
 .
 code:in2cm
   rdf:type code:ConversionFactor ;
-  code:hasConversionFactor "2.54"^^xsd:float ;
-  code:hasOriginalUnit code:unit_IN ;
-  code:hasStandardUnit code:unit_CM ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "in2cm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  code:hasConversionFactor "2.54"^^xsd:float ;
+  code:hasOriginalUnit code:unit_IN ;
+  code:hasStandardUnit code:unit_CM ;
 .
-code:informedconsentterm-DEFAULT
+code:informedconsent_ADULT
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "informedconsentterm-DEFAULT"^^xsd:string ;
   rdfs:subClassOf code:InformedConsent ;
-  skos:definition "the default activity for obtaining informed consent for a study. It involves obtaining a signature from the human subject. "^^xsd:string ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "informedconsent ADULT"^^xsd:string ;
 .
 code:intervention_ASSUMEBODYPOSITIONSTANDING
   rdf:type owl:Class ;
@@ -653,12 +682,12 @@ code:method_DERIVED
 .
 code:mmHg2mmHg
   rdf:type code:ConversionFactor ;
-  code:hasConversionFactor "1"^^xsd:float ;
-  code:hasOriginalUnit code:pressureterm_MMHG ;
-  code:hasStandardUnit code:pressureterm_MMHG ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "mm hg2mm hg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  code:hasConversionFactor "1"^^xsd:float ;
+  code:hasOriginalUnit code:pressureterm_MMHG ;
+  code:hasStandardUnit code:pressureterm_MMHG ;
 .
 code:observation-DEMOG
   rdf:type code:Observation ;
@@ -676,30 +705,30 @@ code:permissibleOutcome
 .
 code:popflag_EFF
   rdf:type owl:Class ;
-  code:hasMethod code:method_DERIVED ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:PopulationFlag ;
   skos:altLabel "Efficacy Population Flag"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "EFFICACY"^^xsd:string ;
+  code:hasMethod code:method_DERIVED ;
 .
 code:popflag_ITT
   rdf:type owl:Class ;
-  code:hasMethod code:method_DERIVED ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:PopulationFlag ;
   skos:altLabel "Intent to Treat Population Flag"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ITT"^^xsd:string ;
+  code:hasMethod code:method_DERIVED ;
 .
 code:popflag_SAF
   rdf:type owl:Class ;
-  code:hasMethod code:method_DERIVED ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:PopulationFlag ;
   skos:altLabel "Safety Population Flag"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SAFETY"^^xsd:string ;
+  code:hasMethod code:method_DERIVED ;
 .
 code:popflagoutcome_NO
   rdf:type code:PopulationFlagOutcome ;
@@ -723,12 +752,12 @@ code:pressureterm_MMHG
 .
 code:randomizationQuotient
   rdf:type owl:DatatypeProperty ;
-  code:randomizationQuotient "0.67"^^xsd:float ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:Randomization ;
   rdfs:label "randomization quotient"^^xsd:string ;
   rdfs:range xsd:float ;
   skos:definition ""^^xsd:string ;
+  code:randomizationQuotient "0.67"^^xsd:float ;
 .
 code:ruleDescription
   rdf:type owl:DatatypeProperty ;
@@ -748,41 +777,41 @@ code:ruleDescriptionLong
 .
 code:startrule_LYING5
   rdf:type owl:Class ;
-  code:hasDelay "PT5M"^^xsd:duration ;
-  code:hasPermissiblePrerequisite "code:intervention-ASSUMEBODYPOSITIONSUPINE"^^xsd:string ;
-  code:hasPrerequisiteOutcome <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
-  code:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "startruleterm-LYING5"^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
   skos:altLabel "815"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  code:hasDelay "PT5M"^^xsd:duration ;
+  code:hasPermissiblePrerequisite "code:intervention-ASSUMEBODYPOSITIONSUPINE"^^xsd:string ;
+  code:hasPrerequisiteOutcome <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  code:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
+  code:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
 .
 code:startrule_STANDING1
   rdf:type owl:Class ;
-  code:hasDelay "PT1M"^^xsd:duration ;
-  code:hasPermissiblePrerequisite "code:intervention-ASSUMEBODYPOSITIONSTANDING"^^xsd:string ;
-  code:hasPrerequisiteOutcome <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
-  code:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "startruleterm-STANDING1"^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
   skos:altLabel "816"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  code:hasDelay "PT1M"^^xsd:duration ;
+  code:hasPermissiblePrerequisite "code:intervention-ASSUMEBODYPOSITIONSTANDING"^^xsd:string ;
+  code:hasPrerequisiteOutcome <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  code:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
+  code:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
 .
 code:startrule_STANDING3
   rdf:type owl:Class ;
-  code:hasDelay "PT3M"^^xsd:duration ;
-  code:hasPermissiblePrerequisite "code:intervention-ASSUMEBODYPOSITIONSTANDING"^^xsd:string ;
-  code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "startruleterm-STANDING3"^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
   skos:altLabel "817"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  code:hasDelay "PT3M"^^xsd:duration ;
+  code:hasPermissiblePrerequisite "code:intervention-ASSUMEBODYPOSITIONSTANDING"^^xsd:string ;
+  code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
+  code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
 .
 code:unit_CM
   rdf:type code:NormalizedUnit ;
@@ -795,9 +824,6 @@ code:unit_IN
   rdfs:comment ""^^xsd:string ;
   rdfs:label "in"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-.
-custom:Activity
-  rdfs:subClassOf code:DefinedActivity ;
 .
 custom:ActivityOutcome
   rdfs:subClassOf code:DefinedActivityOutcome ;
@@ -828,6 +854,9 @@ custom:CodedObservationOutcome
 .
 custom:CustomConcept
   rdfs:subClassOf code:DefinedConcept ;
+.
+custom:DefinedActivity
+  rdfs:subClassOf code:DefinedActivity ;
 .
 custom:NumericObservationOutcome
   rdfs:subClassOf code:NumericObservationOutcome ;
@@ -12945,28 +12974,4 @@ sdtm-terminology:C96782
 .
 <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C99079.C16032>
   skos:prefLabel "LONG-TERM FOLLOW-UP"^^xsd:string ;
-.
-time:TemporalUnit
-  rdfs:subClassOf code:Unit ;
-.
-time:unitDay
-  rdfs:label "UNITDAY" ;
-.
-time:unitHour
-  rdfs:label "UNITHOUR" ;
-.
-time:unitMinute
-  rdfs:label "UNITMONTH" ;
-.
-time:unitMonth
-  rdfs:label "MONTH" ;
-.
-time:unitSecond
-  rdfs:label "SECOND" ;
-.
-time:unitWeek
-  rdfs:label "WEEK" ;
-.
-time:unitYear
-  rdfs:label "YEAR"^^xsd:string ;
 .

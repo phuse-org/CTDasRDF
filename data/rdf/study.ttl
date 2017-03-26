@@ -1,7 +1,7 @@
 # baseURI: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study
 # imports: http://spinrdf.org/spl
-# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code
 # imports: http://www.w3.org/2004/02/skos/core
+# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -46,14 +46,25 @@ arg:refdate
   rdf:type rdf:Property ;
   rdfs:subPropertyOf sp:arg ;
 .
+owl:hasValue
+  owl:oneOf (
+      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
+      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
+      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
+      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
+    ) ;
+.
+time:hasBeginning
+  rdfs:subPropertyOf study:hasDate ;
+.
+time:inXSDDateTime
+  rdfs:subPropertyOf study:dateTimeInXSDString ;
+.
 <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Age>
   rdfs:subClassOf study:Observation ;
 .
 <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Arm>
   rdfs:subClassOf <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#DefinedActivityOutcome> ;
-.
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#InformedConsent>
-  rdfs:subClassOf study:AdministrativeActivity ;
 .
 <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Intervention>
   owl:equivalentClass [
@@ -61,15 +72,6 @@ arg:refdate
       owl:allValuesFrom <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#InterventionOutcome> ;
       owl:onProperty study:hasActivityOutcome ;
     ] ;
-.
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#PopulationFlag>
-  rdfs:subClassOf study:Analysis ;
-.
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Randomization_BAL3>
-  rdfs:subClassOf study:Randomization ;
-.
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#StartRule>
-  rdfs:subClassOf study:Rule ;
 .
 <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
   rdfs:label "F"^^xsd:string ;
@@ -83,15 +85,12 @@ arg:refdate
 <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
   rdfs:label "UNDIFFERENTIATED"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299>
-  rdfs:subClassOf study:VitalSign ;
-.
 <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study>
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   owl:imports <http://spinrdf.org/spl> ;
-  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 study:Activity
@@ -319,6 +318,12 @@ study:Analysis
   rdfs:subClassOf study:Activity ;
   skos:definition "An examination, usually via a mathematical manipulation, of one or more clinical observations to obtain a result."^^xsd:string ;
 .
+study:Arm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:StudyActivity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Arm"^^xsd:string ;
+.
 study:Assessment
   rdf:type owl:Class ;
   rdfs:comment "when formalized in a protocol, this is often called an Adjudication process. "^^xsd:string ;
@@ -399,6 +404,12 @@ study:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
   skos:definition ""^^xsd:string ;
 .
+study:Derivation
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Analysis ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Derivation"^^xsd:string ;
+.
 study:EligibilityCriteria
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -441,6 +452,12 @@ study:Event
   rdfs:subClassOf study:Entity ;
   skos:definition "An occurrence that persists in time. "^^xsd:string ;
 .
+study:Flag
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Derivation ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Flag"^^xsd:string ;
+.
 study:HumanStudySubject
   rdf:type owl:Class ;
   rdfs:comment "The subject participates in at least one screening activity but may not necessarily pass screening or continue in the study"^^xsd:string ;
@@ -467,6 +484,12 @@ study:Indication
   rdfs:label "Indication"^^xsd:string ;
   rdfs:subClassOf study:MedicalCondition ;
   skos:definition "A medical condition that is the target of an Intervention"^^xsd:string ;
+.
+study:InformedConsent
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:AdministrativeActivity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Informed consent"^^xsd:string ;
 .
 study:InformedConsentBegin
   rdf:type owl:Class ;
@@ -575,6 +598,12 @@ study:PlannedActivity
   rdfs:subClassOf study:Activity ;
   skos:definition "An Activity that is or was intended to occur. It is associated with a performer and/or a participant and is associated with a protocol specified start rule. "^^xsd:string ;
 .
+study:PopulationFlag
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Flag ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Population flag"^^xsd:string ;
+.
 study:PrerequisiteActivity
   rdf:type owl:Class ;
   rdfs:comment "For example: An activity to assume a supine body position can be an anchor for a BP measurement 5 minutes later. An activity outcome could be a medical condition, e.g. the ActivityOutcome can be a migraine headache, which triggers another activity: drug administration. "^^xsd:string ;
@@ -672,6 +701,12 @@ study:Sponsor
   rdfs:label "Sponsor"^^xsd:string ;
   rdfs:subClassOf study:Organization ;
   skos:definition ""^^xsd:string ;
+.
+study:StartRule
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Rule ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Start rule"^^xsd:string ;
 .
 study:Study
   rdf:type owl:Class ;
@@ -1501,18 +1536,4 @@ study:treatedAccordingToArm
   rdfs:label "treated according to"^^xsd:string ;
   rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Arm> ;
   skos:definition ""^^xsd:string ;
-.
-owl:hasValue
-  owl:oneOf (
-      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
-      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
-      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
-      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
-    ) ;
-.
-time:hasBeginning
-  rdfs:subPropertyOf study:hasDate ;
-.
-time:inXSDDateTime
-  rdfs:subPropertyOf study:dateTimeInXSDString ;
 .

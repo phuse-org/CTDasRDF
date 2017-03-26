@@ -1,8 +1,9 @@
 # baseURI: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-cdisc01
-# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm
-# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
+# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cd01p
+# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01
+# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -16,119 +17,126 @@
 @prefix spl: <http://spinrdf.org/spl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://www.w3.org/2006/time#unitYear>
+  skos:prefLabel "YEAR"^^xsd:string ;
+.
 <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-cdisc01>
   rdf:type owl:Ontology ;
-  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm> ;
-  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cd01p> ;
+  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01> ;
+  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 sdtm-cdisc01:DM_CDISCPILOT01
   rdf:type sdtm:DM_Domain ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "DM CDISCPILOT01"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
   sdtm:hasCode sdtm:domaincode-DM ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_DM_Record_1 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_DM_Record_2 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_DM_Record_3 ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "DM CDISCPILOT01"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
 .
 sdtm-cdisc01:SDTM_DM_Record_1
   rdf:type sdtm:SDTM_DM_Record ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM DM Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_DM_Record_2
   rdf:type sdtm:SDTM_DM_Record ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_2> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM DM Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_2> ;
 .
 sdtm-cdisc01:SDTM_DM_Record_3
   rdf:type sdtm:SDTM_DM_Record ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_3> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM DM Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_3> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_1
   rdf:type sdtm:SDTM_SUPPDM_Record ;
-  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_C16WK_1> ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_C16WK_1> ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_2
   rdf:type sdtm:SDTM_SUPPDM_Record ;
-  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_C24WK_1> ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_C24WK_1> ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_3
   rdf:type sdtm:SDTM_SUPPDM_Record ;
-  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_C8WK_1> ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_C8WK_1> ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_4
   rdf:type sdtm:SDTM_SUPPDM_Record ;
-  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_EFF_1> ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 4"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_EFF_1> ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_5
   rdf:type sdtm:SDTM_SUPPDM_Record ;
-  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_ITT_1> ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 5"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_ITT_1> ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_6
   rdf:type sdtm:SDTM_SUPPDM_Record ;
-  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_SAF_1> ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 6"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#popflag_SAF_1> ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_1
   rdf:type sdtm:SDTM_VS_Record ;
-  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#DBP_1> ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM VS Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#DBP_1> ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_2
   rdf:type sdtm:SDTM_VS_Record ;
-  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#DBP_2> ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM VS Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#DBP_2> ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_3
   rdf:type sdtm:SDTM_VS_Record ;
-  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#DBP_3> ;
-  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM VS Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  sdtm:hasActivity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#DBP_3> ;
+  sdtm:hasEntity <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SUPPDM_CDISCPILOT01
   rdf:type sdtm:SUPPDM_Domain ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "SUPPDM CDISCPILOT01"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
   sdtm:hasCode sdtm:domaincode-SUPPDM ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_1 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_2 ;
@@ -136,20 +144,14 @@ sdtm-cdisc01:SUPPDM_CDISCPILOT01
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_4 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_5 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_6 ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "SUPPDM CDISCPILOT01"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
 .
 sdtm-cdisc01:VS_CDISCPILOT01
   rdf:type sdtm:VS_Domain ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "VS CDISCPILOT01"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
   sdtm:hasCode sdtm:domaincode-VS ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_VS_Record_1 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_VS_Record_2 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_VS_Record_3 ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "VS CDISCPILOT01"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
-<http://www.w3.org/2006/time#unitYear>
-  skos:prefLabel "YEAR"^^xsd:string ;
 .
