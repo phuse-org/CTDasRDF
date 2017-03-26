@@ -1,0 +1,1518 @@
+# baseURI: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study
+# imports: http://spinrdf.org/spl
+# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code
+# imports: http://www.w3.org/2004/02/skos/core
+
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/ct/schema#> .
+@prefix sdtm-terminology: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix study: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+arg:activityDate
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:birthdate
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:datestring
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:datestring1
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:datestring2
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:refDate
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:refdate
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Age>
+  rdfs:subClassOf study:Observation ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Arm>
+  rdfs:subClassOf <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#DefinedActivityOutcome> ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#InformedConsent>
+  rdfs:subClassOf study:AdministrativeActivity ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Intervention>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#InterventionOutcome> ;
+      owl:onProperty study:hasActivityOutcome ;
+    ] ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#PopulationFlag>
+  rdfs:subClassOf study:Analysis ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Randomization_BAL3>
+  rdfs:subClassOf study:Randomization ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#StartRule>
+  rdfs:subClassOf study:Rule ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
+  rdfs:label "F"^^xsd:string ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
+  rdfs:label "U"^^xsd:string ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
+  rdfs:label "M"^^xsd:string ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
+  rdfs:label "UNDIFFERENTIATED"^^xsd:string ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299>
+  rdfs:subClassOf study:VitalSign ;
+.
+<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study>
+  rdf:type owl:Ontology ;
+  spin:imports <http://topbraid.org/spin/owlrl-all> ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+study:Activity
+  rdf:type owl:Class ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object study:PlannedActivity ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "strtrule"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasStartRule ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "strtrule"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "pldate"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasScheduledDate ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "scheddatexsd"^^xsd:string ;
+              ] ;
+            sp:predicate time:inXSDDateTime ;
+            sp:subject [
+                sp:varName "pldate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:ScheduledActivity ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "strtrule"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasStartRule ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pldate"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasPlannedDate ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "strtrulecode"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasIdentifier ;
+            sp:subject [
+                sp:varName "strtrule"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "anchoroutcometerm"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasPrerequisiteOutcome> ;
+            sp:subject [
+                sp:varName "strtrulecode"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "strtdelay"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasDelay> ;
+            sp:subject [
+                sp:varName "strtrulecode"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "anchor"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasPrerequisite ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "anchoroutcome"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasActivityOutcome ;
+            sp:subject [
+                sp:varName "anchor"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:eq ;
+                sp:arg1 [
+                    sp:varName "anchoroutcometerm"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "anchoroutcome"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "anchordate"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasDate ;
+            sp:subject [
+                sp:varName "anchor"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "anchrxsddate"^^xsd:string ;
+              ] ;
+            sp:predicate time:inXSDDateTime ;
+            sp:subject [
+                sp:varName "anchordate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:add ;
+                sp:arg1 [
+                    sp:varName "anchrxsddate"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "strtdelay"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "scheddatexsd"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "derive planned start date based on a start rule **in progress**"^^xsd:string ;
+    ] ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Activity"^^xsd:string ;
+  rdfs:subClassOf study:StudyComponent ;
+  skos:definition ""^^xsd:string ;
+.
+study:ActivityDate
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Activity date"^^xsd:string ;
+  rdfs:subClassOf study:Date ;
+  skos:definition ""^^xsd:string ;
+.
+study:ActivityEnd
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Activity end"^^xsd:string ;
+  rdfs:subClassOf study:EndInstant ;
+  skos:definition ""^^xsd:string ;
+.
+study:ActivityInterval
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Activity interval"^^xsd:string ;
+  rdfs:subClassOf time:Interval ;
+  skos:definition ""^^xsd:string ;
+.
+study:ActivityOutcome
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Activity outcome"^^xsd:string ;
+  rdfs:subClassOf study:Entity ;
+  skos:definition ""^^xsd:string ;
+.
+study:AdministrativeActivity
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Administrative activity"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition ""^^xsd:string ;
+.
+study:AdverseEvent
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Adverse event"^^xsd:string ;
+  rdfs:subClassOf study:MedicalCondition ;
+  skos:definition "An adverse Medical Condition that emerges or worsens following a Medical Intervention. Note: there is no presumption of causality."^^xsd:string ;
+.
+study:Allocation
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Allocation"^^xsd:string ;
+  rdfs:subClassOf study:AdministrativeActivity ;
+  skos:definition ""^^xsd:string ;
+.
+study:Analysis
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Analysis"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition "An examination, usually via a mathematical manipulation, of one or more clinical observations to obtain a result."^^xsd:string ;
+.
+study:Assessment
+  rdf:type owl:Class ;
+  rdfs:comment "when formalized in a protocol, this is often called an Adjudication process. "^^xsd:string ;
+  rdfs:label "Assessment"^^xsd:string ;
+  rdfs:subClassOf study:Analysis ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:Assessor ;
+      owl:onProperty study:hasPerformer ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:MedicalCondition ;
+      owl:onProperty study:hasActivityOutcome ;
+    ] ;
+  skos:definition "An analysis of one or more clinical observations to identify and/or characterize a Medical Condition."^^xsd:string ;
+.
+study:AssessmentRule
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Assessment rule"^^xsd:string ;
+  rdfs:subClassOf study:Rule ;
+  skos:definition ""^^xsd:string ;
+.
+study:Assessor
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Assessor"^^xsd:string ;
+  rdfs:subClassOf study:Party ;
+  skos:definition ""^^xsd:string ;
+.
+study:AssumeBodyPosition
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Assume a specific body position"^^xsd:string ;
+  rdfs:subClassOf study:Intervention ;
+  skos:definition ""^^xsd:string ;
+.
+study:BeginInstant
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Begin"^^xsd:string ;
+  rdfs:subClassOf study:Date ;
+  skos:definition ""^^xsd:string ;
+.
+study:Birthdate
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Birthdate"^^xsd:string ;
+  rdfs:subClassOf study:BeginInstant ;
+  skos:definition ""^^xsd:string ;
+.
+study:Date
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Date"^^xsd:string ;
+  rdfs:subClassOf time:Instant ;
+  skos:definition "The date and time when something occurs or begins"^^xsd:string ;
+.
+study:Deathdate
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Deathdate"^^xsd:string ;
+  rdfs:subClassOf study:EndInstant ;
+  skos:definition ""^^xsd:string ;
+.
+study:DemogDataCollectionDate
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Demog data collect begin"^^xsd:string ;
+  rdfs:subClassOf study:ActivityDate ;
+  skos:definition ""^^xsd:string ;
+.
+study:DemographicDataCollection
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Demographic data collection"^^xsd:string ;
+  rdfs:subClassOf study:Observation ;
+  skos:definition ""^^xsd:string ;
+.
+study:EligibilityCriteria
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Eligibility criteria"^^xsd:string ;
+  rdfs:subClassOf study:Rule ;
+  skos:definition ""^^xsd:string ;
+.
+study:EligibleSubject
+  rdf:type owl:Class ;
+  rdfs:comment "The eligible subject meets all eligibility criteria and is a candidate to proceed to the next activity, often allocation to a treatment strategy in a randomized trial."^^xsd:string ;
+  rdfs:label "Eligible subject"^^xsd:string ;
+  rdfs:subClassOf study:HumanStudySubject ;
+  skos:definition "A HumanStudySubject who has succesfully completed the Screening Activity"^^xsd:string ;
+.
+study:EndInstant
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "End"^^xsd:string ;
+  rdfs:subClassOf time:Instant ;
+  skos:definition ""^^xsd:string ;
+.
+study:EnrolledSubject
+  rdf:type owl:Class ;
+  rdfs:comment "an Enrolled Subject includes Eligible subjects but may include ineligible subjects who are accidentally or intentionally allocated to a treatment arm; therefore is not a subClass of Eligible Subject necessarily. In a randomized trial, it is equivalent to a Randomized Subject. "^^xsd:string ;
+  rdfs:label "Enrolled subject"^^xsd:string ;
+  rdfs:subClassOf study:HumanStudySubject ;
+  skos:definition "A Human Study Subject that has been allocated to a treatment arm in a Study"^^xsd:string ;
+.
+study:Entity
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Entity"^^xsd:string ;
+  rdfs:subClassOf study:StudyComponent ;
+  skos:definition ""^^xsd:string ;
+.
+study:Event
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Event"^^xsd:string ;
+  rdfs:subClassOf study:Entity ;
+  skos:definition "An occurrence that persists in time. "^^xsd:string ;
+.
+study:HumanStudySubject
+  rdf:type owl:Class ;
+  rdfs:comment "The subject participates in at least one screening activity but may not necessarily pass screening or continue in the study"^^xsd:string ;
+  rdfs:label "Human study subject"^^xsd:string ;
+  rdfs:subClassOf study:HumanSubject ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty study:participatesIn ;
+      owl:someValuesFrom study:Study ;
+    ] ;
+  skos:definition "A Human Subject who participates in any Study Activity"^^xsd:string ;
+.
+study:HumanSubject
+  rdf:type owl:Class ;
+  rdfs:comment "typically a Human Subject is the target of some recruitment activity or voluntarily inquires about participating in a Study. a human subject need not paraticipate in a study, but allows the collection of data or identifiable private information for the purpose of research. "^^xsd:string ;
+  rdfs:label "Human subject"^^xsd:string ;
+  rdfs:subClassOf study:Person ;
+  skos:definition """A Person of interest for participation in a Study. 45 CFR 46 defines a human subject as “a living individual about whom an investigator...conducting research obtains:
+Data through intervention or interaction with the individual, or Identifiable private information.”"""^^xsd:string ;
+.
+study:Indication
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Indication"^^xsd:string ;
+  rdfs:subClassOf study:MedicalCondition ;
+  skos:definition "A medical condition that is the target of an Intervention"^^xsd:string ;
+.
+study:InformedConsentBegin
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Informed consent begin"^^xsd:string ;
+  rdfs:subClassOf study:BeginInstant ;
+  skos:definition ""^^xsd:string ;
+.
+study:InformedConsentEnd
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Informed consent end"^^xsd:string ;
+  rdfs:subClassOf study:ActivityEnd ;
+  skos:definition ""^^xsd:string ;
+.
+study:InformedConsentInterval
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Informed consent interval"^^xsd:string ;
+  rdfs:subClassOf study:ActivityInterval ;
+  skos:definition ""^^xsd:string ;
+.
+study:Intervention
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Intervention"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition ""^^xsd:string ;
+.
+study:InterventionDate
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Intervention date"^^xsd:string ;
+  rdfs:subClassOf study:Date ;
+  skos:definition ""^^xsd:string ;
+.
+study:Investigator
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Investigator"^^xsd:string ;
+  rdfs:subClassOf study:ResearchStaff ;
+  skos:definition ""^^xsd:string ;
+.
+study:LaboratoryObservation
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Laboratory observation"^^xsd:string ;
+  rdfs:subClassOf study:Observation ;
+  skos:definition "A Clinical Observation that requires the collection of a biospecimen for submission to a laboratory for analysis. "^^xsd:string ;
+.
+study:Lifespan
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Lifespan"^^xsd:string ;
+  rdfs:subClassOf time:Interval ;
+  skos:definition ""^^xsd:string ;
+.
+study:MedicalCondition
+  rdf:type owl:Class ;
+  rdfs:comment "Medical conditions are the target of medical interventions.  Medical conditions explain the presence of clinical observations.  Most clinicians will agree that pregnancy is a medical condition because it benefits from medical intervention (e.g. prenatal care) to minimize complications to the mother and unborn child"^^xsd:string ;
+  rdfs:label "Medical condition"^^xsd:string ;
+  rdfs:subClassOf study:Event ;
+  skos:definition """a disease, injury, disorder, or transient physiologic state that interferes or may interfere with well-being. A medical condition persists in time. 
+"""^^xsd:string ;
+.
+study:Observation
+  rdf:type owl:Class ;
+  rdfs:comment """A (Clinical) Observation is ideally observed by a qualified individual, following a standard process, but without implying a cause. Many clinical observations simply reflect a normal physiological state. e.g. BP 120/80 mmHg.
+"""^^xsd:string ;
+  rdfs:label "Observation"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition " A measure of the physical, physiological, or psychological state of a Person."^^xsd:string ;
+.
+study:ObservationEndDate
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Observation end date"^^xsd:string ;
+  rdfs:subClassOf study:ActivityEnd ;
+  skos:definition ""^^xsd:string ;
+.
+study:Organization
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Organization"^^xsd:string ;
+  rdfs:subClassOf study:Party ;
+  skos:definition ""^^xsd:string ;
+.
+study:Party
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Party"^^xsd:string ;
+  rdfs:subClassOf study:Entity ;
+  skos:definition "A Person or an Organization."^^xsd:string ;
+.
+study:Person
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Person"^^xsd:string ;
+  rdfs:subClassOf study:Party ;
+  skos:definition ""^^xsd:string ;
+.
+study:PlannedActivity
+  rdf:type owl:Class ;
+  rdfs:comment "a planned activity can also be a completed activity if it has a protocol specified start rule. "^^xsd:string ;
+  rdfs:label "Planned activity"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition "An Activity that is or was intended to occur. It is associated with a performer and/or a participant and is associated with a protocol specified start rule. "^^xsd:string ;
+.
+study:PrerequisiteActivity
+  rdf:type owl:Class ;
+  rdfs:comment "For example: An activity to assume a supine body position can be an anchor for a BP measurement 5 minutes later. An activity outcome could be a medical condition, e.g. the ActivityOutcome can be a migraine headache, which triggers another activity: drug administration. "^^xsd:string ;
+  rdfs:label "Anchor / Time Point Reference"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition "An activity whose Date functions as a time point reference for other activities. "^^xsd:string ;
+.
+study:ProductAdministration
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration"^^xsd:string ;
+  rdfs:subClassOf study:Intervention ;
+  skos:definition ""^^xsd:string ;
+.
+study:ProductAdministrationBegin
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration begin"^^xsd:string ;
+  rdfs:subClassOf study:BeginInstant ;
+  skos:definition ""^^xsd:string ;
+.
+study:ProductAdministrationEnd
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration end"^^xsd:string ;
+  rdfs:subClassOf study:ActivityEnd ;
+  skos:definition ""^^xsd:string ;
+.
+study:ProductAdministrationInterval
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration interval"^^xsd:string ;
+  rdfs:subClassOf study:ActivityInterval ;
+  skos:definition ""^^xsd:string ;
+.
+study:Randomization
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Randomization"^^xsd:string ;
+  rdfs:subClassOf study:Allocation ;
+  skos:definition ""^^xsd:string ;
+.
+study:ReferenceBegin
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Reference start date"^^xsd:string ;
+  rdfs:subClassOf study:BeginInstant ;
+  skos:definition ""^^xsd:string ;
+.
+study:ReferenceEnd
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Reference end date"^^xsd:string ;
+  rdfs:subClassOf study:EndInstant ;
+  skos:definition ""^^xsd:string ;
+.
+study:ReferenceInterval
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Reference interval"^^xsd:string ;
+  rdfs:subClassOf time:Interval ;
+  skos:definition ""^^xsd:string ;
+.
+study:ResearchStaff
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Research staff"^^xsd:string ;
+  rdfs:subClassOf study:Person ;
+  skos:definition ""^^xsd:string ;
+.
+study:Rule
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Rule"^^xsd:string ;
+  rdfs:subClassOf study:Analysis ;
+  skos:definition ""^^xsd:string ;
+.
+study:ScheduledActivity
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Scheduled activity"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition ""^^xsd:string ;
+.
+study:Site
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Site"^^xsd:string ;
+  rdfs:subClassOf study:Organization ;
+  skos:definition ""^^xsd:string ;
+.
+study:Sponsor
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Sponsor"^^xsd:string ;
+  rdfs:subClassOf study:Organization ;
+  skos:definition ""^^xsd:string ;
+.
+study:Study
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Study"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition ""^^xsd:string ;
+.
+study:StudyActivity
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Study activity"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty study:isSubActivityOf ;
+      owl:someValuesFrom study:Study ;
+    ] ;
+  skos:definition "An Activity that is part of a Study"^^xsd:string ;
+.
+study:StudyComponent
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Study component"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+.
+study:StudyParticipationBegin
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Study participation begin"^^xsd:string ;
+  rdfs:subClassOf study:BeginInstant ;
+  skos:definition ""^^xsd:string ;
+.
+study:StudyParticipationEnd
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Study participation end"^^xsd:string ;
+  rdfs:subClassOf study:EndInstant ;
+  skos:definition ""^^xsd:string ;
+.
+study:StudyParticipationInterval
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Study participation interval"^^xsd:string ;
+  rdfs:subClassOf time:Interval ;
+  skos:definition ""^^xsd:string ;
+.
+study:Visit
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Visit"^^xsd:string ;
+  rdfs:subClassOf study:StudyActivity ;
+  skos:definition ""^^xsd:string ;
+.
+study:VisitDate
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Visit begin"^^xsd:string ;
+  rdfs:subClassOf study:ActivityDate ;
+  skos:definition ""^^xsd:string ;
+.
+study:VitalSign
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Diastolic BPMeasure"^^xsd:string ;
+  rdfs:subClassOf study:Observation ;
+  skos:definition ""^^xsd:string ;
+.
+study:activityStatus
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "activity status"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#ActivityStatus> ;
+  skos:definition ""^^xsd:string ;
+.
+study:agecalc
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "age"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:date ;
+                sp:arg1 [
+                    rdf:type sp:substr ;
+                    sp:arg1 [
+                        sp:varName "birthdate"^^xsd:string ;
+                      ] ;
+                    sp:arg2 1 ;
+                    sp:arg3 10 ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "bdate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:date ;
+                sp:arg1 [
+                    rdf:type sp:substr ;
+                    sp:arg1 [
+                        sp:varName "refdate"^^xsd:string ;
+                      ] ;
+                    sp:arg2 1 ;
+                    sp:arg3 10 ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "rfd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type smf:duration ;
+                sp:arg1 "y" ;
+                sp:arg2 [
+                    sp:varName "bdate"^^xsd:string ;
+                  ] ;
+                sp:arg3 [
+                    sp:varName "rfd"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "age"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:birthdate ;
+      spl:valueType xsd:string ;
+      rdfs:comment "calculates age from birthdate and reference start date"^^xsd:string ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:refdate ;
+      spl:valueType xsd:string ;
+    ] ;
+  spin:returnType xsd:integer ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "agecalc"^^xsd:string ;
+  rdfs:subClassOf spl:DateFunctions ;
+  skos:definition ""^^xsd:string ;
+.
+study:anatomicLocation
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Observation ;
+  rdfs:label "anatomic location"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#AnatomicLocation> ;
+  skos:definition ""^^xsd:string ;
+.
+study:baselineFlag
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Observation ;
+  rdfs:label "baseline flag"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:definition ""^^xsd:string ;
+.
+study:bodyPosition
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Observation ;
+  rdfs:label "body position"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#BodyPosition> ;
+  skos:definition ""^^xsd:string ;
+.
+study:dateTimeInXSDString
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "this is particularly useful for partial dates that would result in an error if represented using the xsd:dateTime datatype"^^xsd:string ;
+  rdfs:domain time:Instant ;
+  skos:definition "relates a date resource with its representation as a character string "^^xsd:string ;
+.
+study:dateiso
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "ISOdate"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:date ;
+                sp:arg1 [
+                    rdf:type sp:substr ;
+                    sp:arg1 [
+                        sp:varName "datestring"^^xsd:string ;
+                      ] ;
+                    sp:arg2 1 ;
+                    sp:arg3 10 ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "ISOdate"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:datestring ;
+      spl:valueType xsd:string ;
+      rdfs:comment "Takes date string in ISO 8601 format, truncates off any time elements and returns an ISO 8601 date. "^^xsd:string ;
+    ] ;
+  spin:returnType xsd:date ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "ISODate"^^xsd:string ;
+  rdfs:subClassOf spl:DateFunctions ;
+  skos:definition ""^^xsd:string ;
+.
+study:deathFlag
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "death flag"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:definition ""^^xsd:string ;
+.
+study:derivedFlag
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "derived flag"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:definition "describes that the method of obtaining the results of the test involve a derivation from other observations"^^xsd:string ;
+.
+study:durationiso
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "duration"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:date ;
+                sp:arg1 [
+                    rdf:type sp:substr ;
+                    sp:arg1 [
+                        sp:varName "datestring1"^^xsd:string ;
+                      ] ;
+                    sp:arg2 1 ;
+                    sp:arg3 10 ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "date1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:date ;
+                sp:arg1 [
+                    rdf:type sp:substr ;
+                    sp:arg1 [
+                        sp:varName "datestring2"^^xsd:string ;
+                      ] ;
+                    sp:arg2 1 ;
+                    sp:arg3 10 ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "date2"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type smf:duration ;
+                sp:arg1 "d" ;
+                sp:arg2 [
+                    sp:varName "date1"^^xsd:string ;
+                  ] ;
+                sp:arg3 [
+                    sp:varName "date2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "duration"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:datestring1 ;
+      spl:valueType xsd:string ;
+      rdfs:comment "converts two date strings into ISO date format and returns the duration. "^^xsd:string ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:datestring2 ;
+      spl:valueType xsd:string ;
+    ] ;
+  spin:returnType xsd:gDay ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "durationiso"^^xsd:string ;
+  rdfs:subClassOf spl:DateFunctions ;
+  skos:definition ""^^xsd:string ;
+.
+study:engagesIn
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:TransitiveProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Party ;
+  rdfs:label "has activity"^^xsd:string ;
+  rdfs:range study:Activity ;
+  skos:definition "relates an Party with  an Activity with which the Entity is involved, either actively or passively"^^xsd:string ;
+.
+study:groupID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "group ID"^^xsd:string ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasActivityID
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "has activity code"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#DefinedConcept> ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasActivityInterval
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "has activity interval"^^xsd:string ;
+  rdfs:range study:ActivityInterval ;
+  rdfs:subPropertyOf study:hasInterval ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasActivityOutcome
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#DefinedActivity> ;
+  rdfs:label "has activity outcome"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#DefinedActivityOutcome> ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasAge
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "has age"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#AgeOutcome> ;
+  owl:propertyChainAxiom (
+      study:hasAgeMeasurement
+      study:hasActivityOutcome
+    ) ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasAgeMeasurement
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "has age"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Age> ;
+  rdfs:subPropertyOf study:participatesIn ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasCategory
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "has category"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Category> ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasCountry
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Site ;
+  rdfs:label "country"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Country> ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasDate
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "has date"^^xsd:string ;
+  rdfs:range time:Instant ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasEthnicity
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "has ethnicity term"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Ethnicity> ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasIdentifier
+  rdf:type rdf:Property ;
+.
+study:hasInterval
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:StudyComponent ;
+  rdfs:label "has interval"^^xsd:string ;
+  rdfs:range time:Interval ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasInvestigator
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Site ;
+  rdfs:label "has investigator"^^xsd:string ;
+  rdfs:range study:Investigator ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasInvestigatorID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Investigator ;
+  rdfs:label "has investigator ID"^^xsd:string ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasLastName
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "has last name"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasLifespan
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "has lifespan"^^xsd:string ;
+  rdfs:range study:Lifespan ;
+  rdfs:subPropertyOf study:hasInterval ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasMethod
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "has method"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#ActivityMethod> ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition "links an activity with the method used to condct the activity, i.e. how the activity outcome/result was obtained. "^^xsd:string ;
+.
+study:hasPerformer
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "has performer"^^xsd:string ;
+  rdfs:range study:Party ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasPlannedDate
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:PlannedActivity ;
+  rdfs:label "has planned date"^^xsd:string ;
+  rdfs:range time:Instant ;
+  rdfs:subPropertyOf study:hasDate ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasPrerequisite
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "has anchor"^^xsd:string ;
+  rdfs:range study:PrerequisiteActivity ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasRace
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "has race"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Race> ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasReferenceInterval
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:HumanStudySubject ;
+  rdfs:label "has lifespan"^^xsd:string ;
+  rdfs:range study:ReferenceInterval ;
+  rdfs:subPropertyOf study:hasInterval ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasScheduledDate
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:ScheduledActivity ;
+  rdfs:label "has scheduled date"^^xsd:string ;
+  rdfs:range time:Instant ;
+  rdfs:subPropertyOf study:hasDate ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasSex
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "has sex"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Sex> ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasSite
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:HumanStudySubject ;
+  rdfs:label "has Site"^^xsd:string ;
+  rdfs:range study:Site ;
+  skos:definition "The organization (e.g. hospital, clinic) where a Human Study Subject goes to participate in many Study Activities."^^xsd:string ;
+.
+study:hasSiteID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Site ;
+  rdfs:label "has site ID"^^xsd:string ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasStartRule
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "has start rule"^^xsd:string ;
+  rdfs:range study:Rule ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasStudyActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Study ;
+  rdfs:label "has study activity"^^xsd:string ;
+  rdfs:range study:StudyActivity ;
+  rdfs:subPropertyOf study:hasSubActivity ;
+  owl:inverseOf study:isActivityOfStudy ;
+  owl:propertyChainAxiom (
+      study:hasStudyParticipant
+      study:engagesIn
+    ) ;
+  skos:definition "Relates a Study with a StudyActivity conducted as part of that Study"^^xsd:string ;
+.
+study:hasStudyID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Study ;
+  rdfs:label "has study ID"^^xsd:string ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasStudyParticipant
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Study ;
+  rdfs:label "has study participant"^^xsd:string ;
+  rdfs:range study:HumanStudySubject ;
+  owl:inverseOf study:participatesInStudy ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasStudyParticipationInterval
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:HumanStudySubject ;
+  rdfs:label "has study participation interval"^^xsd:string ;
+  rdfs:range study:StudyParticipationInterval ;
+  rdfs:subPropertyOf study:hasInterval ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasSubActivity
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:TransitiveProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "has sub activity"^^xsd:string ;
+  rdfs:range study:Activity ;
+  owl:inverseOf study:isSubActivityOf ;
+  skos:definition "Relates an Activity with a Sub-activity"^^xsd:string ;
+.
+study:hasSubcategory
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "has subcategory"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Subcategory> ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasSubjectID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "has unique subject ID"^^xsd:string ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasUniqueSubjectID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "has unique subject ID"^^xsd:string ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:isActivityOfStudy
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:StudyActivity ;
+  rdfs:label "is part of"^^xsd:string ;
+  rdfs:range study:Study ;
+  rdfs:subPropertyOf study:isSubActivityOf ;
+  skos:definition "relates StudyActivity with the Study of which it is a part. "^^xsd:string ;
+.
+study:isSubActivityOf
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:TransitiveProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "is sub activity of"^^xsd:string ;
+  rdfs:range study:Activity ;
+  skos:definition "relates an Activity with Another Activity of which it is a part"^^xsd:string ;
+.
+study:laterality
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "laterality"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Laterality> ;
+  skos:definition ""^^xsd:string ;
+.
+study:participatesIn
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Person ;
+  rdfs:label "participates in"^^xsd:string ;
+  rdfs:range study:Activity ;
+  rdfs:subPropertyOf study:engagesIn ;
+  skos:definition "relates an Entity with an Activity that the Entity participates in passively; i.e. the activity is performed on the Entity"^^xsd:string ;
+.
+study:participatesInStudy
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:HumanStudySubject ;
+  rdfs:label "participates in study"^^xsd:string ;
+  rdfs:range study:Study ;
+  rdfs:subPropertyOf study:participatesIn ;
+  owl:inverseOf study:hasStudyParticipant ;
+  skos:definition ""^^xsd:string ;
+.
+study:performsActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Party ;
+  rdfs:label "performs activity"^^xsd:string ;
+  rdfs:range study:Activity ;
+  rdfs:subPropertyOf study:engagesIn ;
+  owl:inverseOf study:hasPerformer ;
+  skos:definition "relates an Entity with an Activity that the Entity engages actively. "^^xsd:string ;
+.
+study:reasonNotDone
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "reason not done"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:definition ""^^xsd:string ;
+.
+study:seq
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "seq"^^xsd:string ;
+  rdfs:range xsd:float ;
+  skos:definition "relates a resource to a sequence number used for sorting similar resources"^^xsd:string ;
+.
+study:sponsordefinedID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
+  rdfs:label "sponsordefined ID"^^xsd:string ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition ""^^xsd:string ;
+.
+study:studyday
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "studyday"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:date ;
+                sp:arg1 [
+                    rdf:type sp:substr ;
+                    sp:arg1 [
+                        sp:varName "activityDate"^^xsd:string ;
+                      ] ;
+                    sp:arg2 1 ;
+                    sp:arg3 10 ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "date"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:date ;
+                sp:arg1 [
+                    rdf:type sp:substr ;
+                    sp:arg1 [
+                        sp:varName "refDate"^^xsd:string ;
+                      ] ;
+                    sp:arg2 1 ;
+                    sp:arg3 10 ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "rfd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type smf:duration ;
+                sp:arg1 "d" ;
+                sp:arg2 [
+                    sp:varName "rfd"^^xsd:string ;
+                  ] ;
+                sp:arg3 [
+                    sp:varName "date"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "std"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    rdf:type sp:lt ;
+                    sp:arg1 [
+                        sp:varName "std"^^xsd:string ;
+                      ] ;
+                    sp:arg2 0 ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "std"^^xsd:string ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type sp:add ;
+                    sp:arg1 [
+                        sp:varName "std"^^xsd:string ;
+                      ] ;
+                    sp:arg2 1 ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "studyday"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:activityDate ;
+      spl:valueType xsd:string ;
+      rdfs:comment "Takes a study activity date and calculates the study day based on the subject's reference start date. "^^xsd:string ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:refDate ;
+      spl:valueType xsd:string ;
+      rdfs:comment "the subject's reference start date in a study."^^xsd:string ;
+    ] ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "studyday"^^xsd:string ;
+  rdfs:subClassOf spl:DateFunctions ;
+  skos:definition "takes two date strings in ISO 8601 format and calculates the study day using activity date as the first argument and reference date as the 2nd argument"^^xsd:string ;
+.
+study:treatedAccordingToArm
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:EnrolledSubject ;
+  rdfs:label "treated according to"^^xsd:string ;
+  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Arm> ;
+  skos:definition ""^^xsd:string ;
+.
+owl:hasValue
+  owl:oneOf (
+      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
+      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
+      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
+      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
+    ) ;
+.
+time:hasBeginning
+  rdfs:subPropertyOf study:hasDate ;
+.
+time:inXSDDateTime
+  rdfs:subPropertyOf study:dateTimeInXSDString ;
+.
