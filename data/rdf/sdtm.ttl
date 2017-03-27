@@ -1,28 +1,28 @@
-# baseURI: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm
+# baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm
 # imports: http://spinrdf.org/spl
-# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study
+# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
 # imports: http://www.w3.org/2004/02/skos/core
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdtm: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm#> .
+@prefix sdtm: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spif: <http://spinrdf.org/spif#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
-@prefix study: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study#> .
+@prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#timepoint-PT_STANDING>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#timepoint-PT_STANDING>
   skos:prefLabel "PATIENT STANDING"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm>
   rdf:type owl:Ontology ;
   owl:imports <http://spinrdf.org/spl> ;
-  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study> ;
+  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
@@ -368,7 +368,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "AGE"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasValue> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasValue> ;
             sp:subject [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
@@ -377,7 +377,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "ageunit"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasUnit> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasUnit> ;
             sp:subject [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
@@ -450,7 +450,7 @@ sdtm:SDTM_DM_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#RandomizationOutcome> ;
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#RandomizationOutcome> ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "plannedarm"^^xsd:string ;
@@ -875,7 +875,7 @@ sdtm:SDTM_DM_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#InformedConsent_GRANTED> ;
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InformedConsent_GRANTED> ;
             sp:predicate study:hasActivityOutcome ;
             sp:subject [
                 sp:varName "informedconsent"^^xsd:string ;
@@ -1371,7 +1371,7 @@ sdtm:SDTM_SUPPDM_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#PopulationFlag> ;
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#PopulationFlag> ;
             sp:predicate rdfs:subClassOf ;
             sp:subject [
                 sp:varName "cde"^^xsd:string ;
@@ -1417,7 +1417,7 @@ sdtm:SDTM_SUPPDM_Record
             sp:object [
                 sp:varName "method"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasMethod> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasMethod> ;
             sp:subject [
                 sp:varName "cde"^^xsd:string ;
               ] ;
@@ -2074,7 +2074,7 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#StartRule> ;
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRule> ;
             sp:predicate rdfs:subClassOf ;
             sp:subject [
                 sp:varName "strtruletype"^^xsd:string ;
@@ -2084,7 +2084,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "VSELTM"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasDelay> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasDelay> ;
             sp:subject [
                 sp:varName "strtruletype"^^xsd:string ;
               ] ;
@@ -2380,7 +2380,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "VSORRES"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasValue> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasValue> ;
             sp:subject [
                 sp:varName "vstestoutcome"^^xsd:string ;
               ] ;
@@ -2389,7 +2389,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "orresu"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasUnit> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasUnit> ;
             sp:subject [
                 sp:varName "vstestoutcome"^^xsd:string ;
               ] ;
@@ -2407,7 +2407,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "orresu"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasOriginalUnit> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOriginalUnit> ;
             sp:subject [
                 sp:varName "cf"^^xsd:string ;
               ] ;
@@ -2416,7 +2416,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "cfn"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasConversionFactor> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasConversionFactor> ;
             sp:subject [
                 sp:varName "cf"^^xsd:string ;
               ] ;
@@ -2425,7 +2425,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "nrmunit"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasStandardUnit> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasStandardUnit> ;
             sp:subject [
                 sp:varName "cf"^^xsd:string ;
               ] ;
@@ -2873,7 +2873,7 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#StartRule> ;
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRule> ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
@@ -2883,7 +2883,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "VSTPT"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#ruleDescription> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#ruleDescription> ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
@@ -3492,1494 +3492,1494 @@ sdtm:variablecode-DM
   rdfs:label "DM"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C100130.C73428>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C100130.C73428>
   skos:prefLabel "TWIN, DIZYGOTIC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C100130.C96579>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C100130.C96579>
   skos:prefLabel "UNCLE, BIOLOGICAL MATERNAL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101834.C17998>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101834.C17998>
   skos:prefLabel "UNKNOWN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101843.C66915>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101843.C66915>
   skos:prefLabel "VARIANT ANGINA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101845.C99963>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101845.C99963>
   skos:prefLabel "INSERTED DURING PROCEDURE BUT PRIOR TO PERCUTANEOUS CORONARY INTERVENTION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101846.C80494>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101846.C80494>
   skos:prefLabel "Ischemic Myocardium Percentage"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101853.C100012>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101853.C100012>
   skos:prefLabel "SEVERE CARDIAC VALVE REGURGITATION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101856>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101856>
   skos:prefLabel "PRURGNCY"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101858.C100022>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101858.C100022>
   skos:prefLabel "TRANSCATHETER AORTIC VALVE IMPLANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101859.C100008>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101859.C100008>
   skos:prefLabel "RESCUE PERCUTANEOUS CORONARY INTERVENTION (PCI) FOR ST ELEVATION MYOCARDIAL INFARCTION (STEMI) (AFTER FAILED FULL-DOSE THROMBOLYTICS)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101859.C100045>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101859.C100045>
   skos:prefLabel "MANUFACTURER RECALL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101863.C28554>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101863.C28554>
   skos:prefLabel "EXPIRED"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101864.C100026>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101864.C100026>
   skos:prefLabel "UNABLE TO OBTAIN SATISFACTORY CORONARY SINUS ACCESS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C101865>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C101865>
   skos:prefLabel "ACSPCAT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C102576>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C102576>
   skos:prefLabel "DOBSTLOC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C102584.C102635>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C102584.C102635>
   skos:prefLabel "FAILURE AFTER FIRST TREATMENT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C102588.C102679>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C102588.C102679>
   skos:prefLabel "NON-HOUSEHOLD ENVIRONMENT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C103330.C74580>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C103330.C74580>
   skos:prefLabel "Skin Type"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C106478.C106551>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C106478.C106551>
   skos:prefLabel "Number of Pregnancies"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C106478.C120832>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C106478.C120832>
   skos:prefLabel "Number of Ectopic Pregnancies"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C106479.C120836>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C106479.C120836>
   skos:prefLabel "PRVPREGN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C106482.C116124>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C106482.C116124>
   skos:prefLabel "Inversion Time"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C106483.C112417>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C106483.C112417>
   skos:prefLabel "SIGFREQ"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C106483.C116128>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C106483.C116128>
   skos:prefLabel "RANDCORR"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C111106.C120828>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C111106.C120828>
   skos:prefLabel "DLCOHVAP"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C111107.C111200>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C111107.C111200>
   skos:prefLabel "Expiratory Reserve Volume"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C111112.C112278>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C111112.C112278>
   skos:prefLabel "FDA Device Classification"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C111114.C111278>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C111114.C111278>
   skos:prefLabel "msdRNA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C111114.C449>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C111114.C449>
   skos:prefLabel "DNA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C111114.C95953>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C111114.C95953>
   skos:prefLabel "piRNA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C112024.C112283>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C112024.C112283>
   skos:prefLabel "FLARESZ"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C114116.C120711>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C114116.C120711>
   skos:prefLabel "Cell Density, Minimum"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C114117>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C114117>
   skos:prefLabel "MOTESTCD"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C114117.C120720>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C114117.C120720>
   skos:prefLabel "THICKMIN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C116104>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C116104>
   skos:prefLabel "NVTESTCD"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C116105.C16277>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C116105.C16277>
   skos:prefLabel "Allele"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C116111.C86229>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C116111.C86229>
   skos:prefLabel "BUTTIAUXELLA AGRESTIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C116111.C86326>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C116111.C86326>
   skos:prefLabel "CORYNEBACTERIUM XEROSIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C116111.C86391>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C116111.C86391>
   skos:prefLabel "EWINGELLA AMERICANA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C116111.C86489>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C116111.C86489>
   skos:prefLabel "LEGIONELLA PNEUMOPHILA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C116111.C93023>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C116111.C93023>
   skos:prefLabel "NEWCASTLE DISEASE VIRUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C117738.C117747>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C117738.C117747>
   skos:prefLabel "West Haven Hepatic Encephalopathy Grade"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C117742.C117891>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C117742.C117891>
   skos:prefLabel "Number of Letters Correct"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C117743>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C117743>
   skos:prefLabel "OETESTCD"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C117743.C117890>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C117743.C117890>
   skos:prefLabel "LOGSCORE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C119014.C101230>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C119014.C101230>
   skos:prefLabel "Procedure Urgency Status Type"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C119014.C119579>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C119014.C119579>
   skos:prefLabel "Stroke Type"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C119014.C123424>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C119014.C123424>
   skos:prefLabel "Stent Thrombosis, Coronary, ARC Timing"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C119016.C119206>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C119016.C119206>
   skos:prefLabel "INCREASED JUGULAR VENOUS PRESSURE OR HEPATOJUGULAR REFLUX"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C119017.C119586>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C119017.C119586>
   skos:prefLabel "CORONARY THROMBUS TIMI GRADE 4"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C102592>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C102592>
   skos:prefLabel "ACUTE ANTEROSEPTAL WALL MYOCARDIAL INFARCTION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C102652>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C102652>
   skos:prefLabel "JUNCTIONAL PREMATURE COMPLEX"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C106520>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C106520>
   skos:prefLabel "EXTENSIVE ANTERIOR WALL MYOCARDIAL INFARCTION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C107098>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C107098>
   skos:prefLabel "QTCB PROLONGATION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C111100>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C111100>
   skos:prefLabel "SUPRAVENTRICULAR TACHYCARDIA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C114147>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C114147>
   skos:prefLabel "BASELINE WANDER"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C114175>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C114175>
   skos:prefLabel "ECG ACQUIRED WITH PRECORDIAL ELECTRODES PLACED ON RIGHT CHEST"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C119250>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C119250>
   skos:prefLabel "PAUSE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C62236>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C62236>
   skos:prefLabel "VENTRICULAR TACHYCARDIA, POLYMORPHIC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C62245>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C62245>
   skos:prefLabel "ECTOPIC ATRIAL RHYTHM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C71032>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C71032>
   skos:prefLabel "NOTCHED T WAVES"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C71041>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C71041>
   skos:prefLabel "RIGHT ATRIAL ABNORMALITY"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120522.C92232>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120522.C92232>
   skos:prefLabel "PACED ATRIAL AND VENTRICULAR RHYTHM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120523.C111132>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120523.C111132>
   skos:prefLabel "AXISVOLT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120524.C111285>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120524.C111285>
   skos:prefLabel "Pacemaker"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C120527.C120677>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C120527.C120677>
   skos:prefLabel "INFAAG"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C123650>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C123650>
   skos:prefLabel "TUIDRS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C100425>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C100425>
   skos:prefLabel "HDLCLDLC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C100434>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C100434>
   skos:prefLabel "NPAP"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C100462>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C100462>
   skos:prefLabel "A1MCREAT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C100471>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C100471>
   skos:prefLabel "APROTCRS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C102264>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C102264>
   skos:prefLabel "ETPLT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C103383>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C103383>
   skos:prefLabel "COL4"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C103434>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C103434>
   skos:prefLabel "PGE1"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C105440>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C105440>
   skos:prefLabel "CD11B"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C106569>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C106569>
   skos:prefLabel "SPWEIGHT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C111149>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C111149>
   skos:prefLabel "CD23"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C111209>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C111209>
   skos:prefLabel "HISTAB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C111246>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C111246>
   skos:prefLabel "MASTCE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C111283>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C111283>
   skos:prefLabel "THROMNUC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C112277>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C112277>
   skos:prefLabel "FACTXIII"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C112319>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C112319>
   skos:prefLabel "HYALUAC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C114218>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C114218>
   skos:prefLabel "RETICDW"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C116192>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C116192>
   skos:prefLabel "RETIM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C117830>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C117830>
   skos:prefLabel "ASTCREAT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C117849>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C117849>
   skos:prefLabel "PROTOZOA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C120640>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C120640>
   skos:prefLabel "LYSOZYME"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C122113>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C122113>
   skos:prefLabel "CTXIICRT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C122122>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C122122>
   skos:prefLabel "GLY"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C122150>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C122150>
   skos:prefLabel "SLAIGGAB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C123455>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C123455>
   skos:prefLabel "BCEFNCTN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C51947>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C51947>
   skos:prefLabel "RETI"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C64491>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C64491>
   skos:prefLabel "CKMB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C64816>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C64816>
   skos:prefLabel "UROBIL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C64825>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C64825>
   skos:prefLabel "MYBLALE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C64853>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C64853>
   skos:prefLabel "K"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74634>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74634>
   skos:prefLabel "BTECERBC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74643>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74643>
   skos:prefLabel "MLIGCEBC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74671>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74671>
   skos:prefLabel "CYCAPHOS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74680>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74680>
   skos:prefLabel "CYLEUC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74703>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74703>
   skos:prefLabel "CRENCE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74731>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74731>
   skos:prefLabel "ALDOLASE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74740>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74740>
   skos:prefLabel "HAPTOG"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74769>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74769>
   skos:prefLabel "CSGRANF"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74778>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74778>
   skos:prefLabel "CSWBC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74829>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74829>
   skos:prefLabel "INTLK31"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74838>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74838>
   skos:prefLabel "ACH"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74857>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74857>
   skos:prefLabel "ESTRONE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74866>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74866>
   skos:prefLabel "LEPTIN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C74894>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C74894>
   skos:prefLabel "ALBGLOB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C75354>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C75354>
   skos:prefLabel "LSD"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C79436>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C79436>
   skos:prefLabel "MGB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C79464>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C79464>
   skos:prefLabel "NACREAT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C80170>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C80170>
   skos:prefLabel "GUSB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C80365>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C80365>
   skos:prefLabel "TT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C81280>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C81280>
   skos:prefLabel "PHE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C81967>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C81967>
   skos:prefLabel "PROINSUL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C81976>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C81976>
   skos:prefLabel "ASCAB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C81995>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C81995>
   skos:prefLabel "IFNB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C82000>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C82000>
   skos:prefLabel "APOA2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C82019>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C82019>
   skos:prefLabel "GMCSF"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C92240>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C92240>
   skos:prefLabel "PROTOSML"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C92259>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C92259>
   skos:prefLabel "HGBA2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C92287>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C92287>
   skos:prefLabel "ALPBS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C92296>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C92296>
   skos:prefLabel "RBCMORPH"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C96563>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C96563>
   skos:prefLabel "AFPL2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C96591>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C96591>
   skos:prefLabel "CARBXHGB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C96605>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C96605>
   skos:prefLabel "RBCGHOST"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C96614>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C96614>
   skos:prefLabel "OXYCAP"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C96651>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C96651>
   skos:prefLabel "NEUTGT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C96689>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C96689>
   skos:prefLabel "HGBMET"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C98732>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C98732>
   skos:prefLabel "LLCFR"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C98741>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C98741>
   skos:prefLabel "HASIGGAB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C65047.C98867>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C65047.C98867>
   skos:prefLabel "KRCYMGCE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C42905>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C42905>
   skos:prefLabel "TABLET, DELAYED RELEASE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C42933>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C42933>
   skos:prefLabel "GAS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C42942>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C42942>
   skos:prefLabel "IMPLANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C42970>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C42970>
   skos:prefLabel "PLASTER"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C47889>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C47889>
   skos:prefLabel "SUTURE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C47898>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C47898>
   skos:prefLabel "SWAB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C60897>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C60897>
   skos:prefLabel "CREAM, AUGMENTED"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C60957>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C60957>
   skos:prefLabel "LOTION, AUGMENTED"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C60985>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C60985>
   skos:prefLabel "PASTILLE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66726.C60994>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66726.C60994>
   skos:prefLabel "SOLUTION, GEL FORMING / DROPS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66727.C48226>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66727.C48226>
   skos:prefLabel "LACK OF EFFICACY"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66727.C49628>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66727.C49628>
   skos:prefLabel "SCREEN FAILURE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66729.C38205>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66729.C38205>
   skos:prefLabel "ENDOCERVICAL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66729.C38242>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66729.C38242>
   skos:prefLabel "INTRADURAL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66729.C38251>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66729.C38251>
   skos:prefLabel "INTRALUMINAL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66729.C38289>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66729.C38289>
   skos:prefLabel "OROPHARYNGEAL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66729.C38298>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66729.C38298>
   skos:prefLabel "SUBCONJUNCTIVAL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66729.C38311>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66729.C38311>
   skos:prefLabel "UNKNOWN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
   skos:prefLabel "F"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
   skos:prefLabel "U"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66734.C102617>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66734.C102617>
   skos:prefLabel "DX"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66738.C112038>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66738.C112038>
   skos:prefLabel "INDIC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66738.C119560>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66738.C119560>
   skos:prefLabel "EGBLIND"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66738.C123629>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66738.C123629>
   skos:prefLabel "FDADEIND"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66738.C70793>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66738.C70793>
   skos:prefLabel "SPONSOR"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66738.C85826>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66738.C85826>
   skos:prefLabel "OBJPRIM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66738.C98704>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66738.C98704>
   skos:prefLabel "ADAPT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66741.C122232>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66741.C122232>
   skos:prefLabel "BODYFATM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66768>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66768>
   skos:prefLabel "OUT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66786.C16323>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66786.C16323>
   skos:prefLabel "BGD"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66786.C16449>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66786.C16449>
   skos:prefLabel "COL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66786.C16458>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66786.C16458>
   skos:prefLabel "COM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66786.C16634>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66786.C16634>
   skos:prefLabel "GEO"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66786.C16769>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66786.C16769>
   skos:prefLabel "KEN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66786.C16917>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66786.C16917>
   skos:prefLabel "NGA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66786.C17006>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66786.C17006>
   skos:prefLabel "PRT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66786.C17229>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66786.C17229>
   skos:prefLabel "UKR"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66786.C17266>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66786.C17266>
   skos:prefLabel "COD"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66787.C49651>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66787.C49651>
   skos:prefLabel "HEALTHY SUBJECTS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66790.C41222>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C41222>
   skos:prefLabel "NOT HISPANIC OR LATINO" ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67152.C119565>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67152.C119565>
   skos:prefLabel "ECG Replicates at Baseline"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67152.C98772>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67152.C98772>
   skos:prefLabel "Primary Outcome Measure"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67153.C100946>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C100946>
   skos:prefLabel "Forearm Circumference"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C100444>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C100444>
   skos:prefLabel "Immature Lymphocytes"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C100453>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C100453>
   skos:prefLabel "Plasmodium"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C102260>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C102260>
   skos:prefLabel "CD34"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C102279>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C102279>
   skos:prefLabel "P50 Oxygen"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C103351>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C103351>
   skos:prefLabel "Alpha-2 Antiplasmin"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C103402>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C103402>
   skos:prefLabel "HDL Particle Size"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C103430>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C103430>
   skos:prefLabel "Procalcitonin"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C103449>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C103449>
   skos:prefLabel "Vitamin K1"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C103810>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C103810>
   skos:prefLabel "CD4"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C106537>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C106537>
   skos:prefLabel "Glucose-dep Insulinotropic Pep, Intact"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C106574>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C106574>
   skos:prefLabel "Thrombin/Antithrombin"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C111130>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C111130>
   skos:prefLabel "Apolipoprotein J/Creatinine"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C111293>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C111293>
   skos:prefLabel "Platelet Aggregation Amplitude"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C112296>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C112296>
   skos:prefLabel "Histone 3 Antibody"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C114219>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C114219>
   skos:prefLabel "Fractional Calcium Excretion"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C116192>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C116192>
   skos:prefLabel "Medium Absorption Reticulocytes"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C116206>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C116206>
   skos:prefLabel "Osteoprotegerin"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C117748>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C117748>
   skos:prefLabel "Lipase"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C117845>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C117845>
   skos:prefLabel "Phosphorus Excretion Rate"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C119267>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C119267>
   skos:prefLabel "Liver Specific Alkaline Phosphatase"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C119276>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C119276>
   skos:prefLabel "Beta-2 Globulin"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C120627>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C120627>
   skos:prefLabel "Anti-Nucleosome Antibody"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C120646>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C120646>
   skos:prefLabel "Proliferating Cell Nuclear Antigen"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C120655>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C120655>
   skos:prefLabel "RLP Cholesterol"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C122128>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C122128>
   skos:prefLabel "Immunoglobulin G Subclass 2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C122137>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C122137>
   skos:prefLabel "Sodium/Potassium"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C123460>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C123460>
   skos:prefLabel "Macrophages/Leukocytes"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C51951>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C51951>
   skos:prefLabel "Platelets"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C64797>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C64797>
   skos:prefLabel "Ery. Mean Corpuscular Hemoglobin"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C64801>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C64801>
   skos:prefLabel "Dacryocytes"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C64848>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C64848>
   skos:prefLabel "Hemoglobin"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74629>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74629>
   skos:prefLabel "Reactive Lymphocytes"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74666>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74666>
   skos:prefLabel "Amorphous Sediment"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74694>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74694>
   skos:prefLabel "Phencyclidine"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74717>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74717>
   skos:prefLabel "Rheumatoid Factor"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74754>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74754>
   skos:prefLabel "Hippuric Acid Crystals"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74763>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74763>
   skos:prefLabel "Casts"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74791>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74791>
   skos:prefLabel "Progesterone"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74805>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74805>
   skos:prefLabel "Interleukin 1"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74814>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74814>
   skos:prefLabel "Interleukin 18"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74842>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74842>
   skos:prefLabel "Androstenediol"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74851>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74851>
   skos:prefLabel "Corticotropin Releasing Hormone"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74889>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74889>
   skos:prefLabel "LDH Isoenzyme 3"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74898>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74898>
   skos:prefLabel "Riboflavin"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74902>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74902>
   skos:prefLabel "Vitamin B7"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C74911>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C74911>
   skos:prefLabel "Mature Plasma Cells/Lymphocytes"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C79459>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C79459>
   skos:prefLabel "N-Acetyl Glucosamide"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C80165>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C80165>
   skos:prefLabel "Glucuronidase, Alpha"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C80193>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C80193>
   skos:prefLabel "Matrix Metalloproteinase 2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C81952>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C81952>
   skos:prefLabel "Eotaxin-1"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C81980>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C81980>
   skos:prefLabel "Beta-2 Microglobulin"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C81999>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C81999>
   skos:prefLabel "Amyloid, Beta"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C82004>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C82004>
   skos:prefLabel "Brain-Derived Neurotrophic Factor"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C82032>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C82032>
   skos:prefLabel "ProB-type Natriuretic Peptide"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C82041>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C82041>
   skos:prefLabel "Type II Collagen N-Telopeptides"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C84818>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C84818>
   skos:prefLabel "Vitamin D"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C92244>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C92244>
   skos:prefLabel "Amorphous Urate Crystals"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C92272>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C92272>
   skos:prefLabel "Hepatitis G RNA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C92281>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C92281>
   skos:prefLabel "Smith Antibody"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C96563>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C96563>
   skos:prefLabel "Alpha Fetoprotein L2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C96614>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C96614>
   skos:prefLabel "Oxygen Capacity"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C96623>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C96623>
   skos:prefLabel "Phospholipid"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C96651>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C96651>
   skos:prefLabel "Giant Neutrophils"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C96660>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C96660>
   skos:prefLabel "Hepatitis B Virus Core Antibody"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C96698>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C96698>
   skos:prefLabel "Herpes Simplex Virus 1/2 IgM Antibody"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C98727>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C98727>
   skos:prefLabel "Factor X"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C98736>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C98736>
   skos:prefLabel "GFR from Cystatin C Adjusted for BSA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C98764>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C98764>
   skos:prefLabel "Normoblasts/Total Cells"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67154.C98773>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67154.C98773>
   skos:prefLabel "Promyelocytes/Total Cells"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71113.C64518>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71113.C64518>
   skos:prefLabel "Q4H"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71113.C64527>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71113.C64527>
   skos:prefLabel "TID"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71113.C64954>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71113.C64954>
   skos:prefLabel "OCCASIONAL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71113.C71127>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71113.C71127>
   skos:prefLabel "EVERY 2 WEEKS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71113.C98856>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71113.C98856>
   skos:prefLabel "6 TIMES PER MONTH"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71148>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148>
   skos:prefLabel "POSITION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C102574>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C102574>
   skos:prefLabel "REPOLARIZATION ABNORMALITY"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C102653>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C102653>
   skos:prefLabel "LATE R WAVE TRANSITION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C102690>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C102690>
   skos:prefLabel "OLD OR AGE INDETERMINATE LATERAL WALL MYOCARDIAL INFARCTION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C111088>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C111088>
   skos:prefLabel "1ST DEGREE AV BLOCK"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C111097>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C111097>
   skos:prefLabel "SINUS BRADYCARDIA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C114148>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C114148>
   skos:prefLabel "MUSCLE TREMOR"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C114176>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C114176>
   skos:prefLabel "OTHER INCORRECT ELECTRODE PLACEMENT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C119251>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C119251>
   skos:prefLabel "PAUSE GREATER THAN 3.0 SECONDS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C35398>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C35398>
   skos:prefLabel "INFERIOR WALL MYOCARDIAL INFARCTION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C62250>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C62250>
   skos:prefLabel "PAROXYSMAL AV BLOCK"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C62269>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C62269>
   skos:prefLabel "LEFT BUNDLE BRANCH BLOCK"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C71032>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C71032>
   skos:prefLabel "NOTCHED T WAVES"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71150.C92228>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71150.C92228>
   skos:prefLabel "BORDERLINE QTCB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71151.C123444>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71151.C123444>
   skos:prefLabel "12 LEAD CONTINUOUS ECG"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71151.C71123>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71151.C71123>
   skos:prefLabel "12 LEAD EASI DOWER TRANSFORMATION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71152.C111132>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71152.C111132>
   skos:prefLabel "Axis and Voltage"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71152.C117763>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71152.C117763>
   skos:prefLabel "JTcB Interval, Aggregate"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71152.C117791>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71152.C117791>
   skos:prefLabel "RR Interval, Aggregate"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71152.C117805>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71152.C117805>
   skos:prefLabel "S Wave Amplitude, Aggregate"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71152.C117814>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71152.C117814>
   skos:prefLabel "T Wave Amplitude, Aggregate"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71152.C41255>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71152.C41255>
   skos:prefLabel "Interpretation"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71153.C111155>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71153.C111155>
   skos:prefLabel "CHYPTENL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71153.C111280>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71153.C111280>
   skos:prefLabel "MI"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71153.C111312>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71153.C111312>
   skos:prefLabel "SNRARRY"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71153.C117786>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71153.C117786>
   skos:prefLabel "QTCFAG"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71153.C117795>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71153.C117795>
   skos:prefLabel "RWAAG"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71153.C117809>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71153.C117809>
   skos:prefLabel "TPTESB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71153.C119259>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71153.C119259>
   skos:prefLabel "EGHRMN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C105487>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C105487>
   skos:prefLabel "hPa"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C105496>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C105496>
   skos:prefLabel "L/min/m2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C105500>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C105500>
   skos:prefLabel "mph"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C116233>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C116233>
   skos:prefLabel "SBE/mL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C117965>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C117965>
   skos:prefLabel "APL U/mL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C117974>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C117974>
   skos:prefLabel "nmol BCE/L"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C122206>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C122206>
   skos:prefLabel "fmol/L/sec"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C122215>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C122215>
   skos:prefLabel "mU/g"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C25613>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C25613>
   skos:prefLabel "%"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C28251>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C28251>
   skos:prefLabel "mm"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C42555>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C42555>
   skos:prefLabel "Siemens"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C48476>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C48476>
   skos:prefLabel "BOLUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C48527>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C48527>
   skos:prefLabel "%(w/v)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C48555>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C48555>
   skos:prefLabel "mol/L"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C49674>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C49674>
   skos:prefLabel "breaths/min"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C64387>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C64387>
   skos:prefLabel "mmol/L"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C64554>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C64554>
   skos:prefLabel "cg"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C64777>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C64777>
   skos:prefLabel "mL/min"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C67331>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C67331>
   skos:prefLabel "pg/dL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C67475>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C67475>
   skos:prefLabel "mEq/kg"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C68859>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C68859>
   skos:prefLabel "ft3"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C68896>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C68896>
   skos:prefLabel "10^6 CFU"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C69110>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C69110>
   skos:prefLabel "L/day"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C70485>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C70485>
   skos:prefLabel "log10 CCID 50/dose"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C70508>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C70508>
   skos:prefLabel "nkat"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C71168>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C71168>
   skos:prefLabel "kBq/uL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C71196>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C71196>
   skos:prefLabel "10^6 organisms/mL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C73721>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C73721>
   skos:prefLabel "g/mol"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C73730>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C73730>
   skos:prefLabel "ug/kg/h"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C73768>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C73768>
   skos:prefLabel "psec"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C73777>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C73777>
   skos:prefLabel "U/kg/day"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C92613>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C92613>
   skos:prefLabel "nmol/mL/min"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C71620.C98790>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71620.C98790>
   skos:prefLabel "10^3 RNA copies/mL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C74457.C41260>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41260>
   skos:prefLabel "ASIAN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C74559.C102711>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74559.C102711>
   skos:prefLabel "RISKSOC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C76348.C51775>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C76348.C51775>
   skos:prefLabel "WIDOWED"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C78734.C103411>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C78734.C103411>
   skos:prefLabel "LAVAGE FLUID"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C78734.C106555>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C78734.C106555>
   skos:prefLabel "SUPERNATANT, PLASMA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C78735.C25465>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C78735.C25465>
   skos:prefLabel "CLINICAL RESEARCH ASSOCIATE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C114252>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C114252>
   skos:prefLabel "FUSOBACTERIUM NAVIFORME"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C114261>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C114261>
   skos:prefLabel "CANDIDA ZEYLANOIDES"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C119328>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C119328>
   skos:prefLabel "PANNONIBACTER PHRAGMITETUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C122045>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C122045>
   skos:prefLabel "CESTODA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C122259>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C122259>
   skos:prefLabel "CHILOMASTIX MESNILI"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C122268>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C122268>
   skos:prefLabel "COLIFORM BACTERIA, NON-LACTOSE FERMENTING"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C122296>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C122296>
   skos:prefLabel "ENTAMOEBA HARTMANNI"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C122319>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C122319>
   skos:prefLabel "GRAM-NEGATIVE COCCOBACILLUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C123475>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C123475>
   skos:prefLabel "HAEMOPHILUS HAEMOLYTICUS, PENICILLINASE NEGATIVE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C123517>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C123517>
   skos:prefLabel "MORAXELLA CATARRHALIS, BETA-LACTAMASE NEGATIVE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C123526>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C123526>
   skos:prefLabel "NEISSERIA GONORRHOEAE, BETA-LACTAMASE POSITIVE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C123554>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C123554>
   skos:prefLabel "STREPTOCOCCUS NUTRITIONALLY VARIANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C14203>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C14203>
   skos:prefLabel "ENTEROVIRUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C14259>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C14259>
   skos:prefLabel "POLIOVIRUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C14296>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C14296>
   skos:prefLabel "HELICOBACTER"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C14347>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C14347>
   skos:prefLabel "DELTARETROVIRUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C73540>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C73540>
   skos:prefLabel "MYCOPLASMA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86010>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86010>
   skos:prefLabel "SERRATIA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86085>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86085>
   skos:prefLabel "ACIDOVORAX"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86094>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86094>
   skos:prefLabel "ACINETOBACTER JUNII"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86108>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86108>
   skos:prefLabel "ACTINOMYCES ISRAELII"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86117>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86117>
   skos:prefLabel "AEROBIC GRAM-NEGATIVE COCCUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86145>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86145>
   skos:prefLabel "ANAEROBIC GRAM-POSITIVE COCCUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86154>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86154>
   skos:prefLabel "ARCOBACTER CRYAEROPHILUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86182>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86182>
   skos:prefLabel "BACTEROIDES VULGATUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86191>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86191>
   skos:prefLabel "BETA STREPTOCOCCUS, GROUP C"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86205>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86205>
   skos:prefLabel "BORDETELLA PARAPERTUSSIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86233>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86233>
   skos:prefLabel "CAMPYLOBACTER FETUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86242>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86242>
   skos:prefLabel "CAPNOCYTOPHAGA SPUTIGENA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86270>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86270>
   skos:prefLabel "CLOSTRIDIUM BARATII"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86289>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86289>
   skos:prefLabel "CLOSTRIDIUM PUTRIFICUM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86321>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86321>
   skos:prefLabel "CORYNEBACTERIUM PSEUDOTUBERCULOSIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86330>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86330>
   skos:prefLabel "CUPRIAVIDUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86368>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86368>
   skos:prefLabel "ENTEROCOCCUS FAECALIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86377>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86377>
   skos:prefLabel "ERYSIPELOTHRIX RHUSIOPATHIAE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86419>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86419>
   skos:prefLabel "GORDONIA TERRAE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86428>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86428>
   skos:prefLabel "HAEMOPHILUS AEGYPTIUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86456>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86456>
   skos:prefLabel "KLEBSIELLA OZAENAE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86465>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86465>
   skos:prefLabel "KLUYVERA INTERMEDIA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86493>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86493>
   skos:prefLabel "LEMINORELLA GRIMONTII"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86516>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86516>
   skos:prefLabel "MITSUOKELLA MULTACIDA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86525>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86525>
   skos:prefLabel "MORAXELLA CANIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86544>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86544>
   skos:prefLabel "MYCOBACTERIUM LEPRAE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86590>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86590>
   skos:prefLabel "MYCOBACTERIUM SMEGMATIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86604>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86604>
   skos:prefLabel "NEISSERIA LACTAMICA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86613>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86613>
   skos:prefLabel "NOCARDIA BRASILIENSIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86641>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86641>
   skos:prefLabel "PEDIOCOCCUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86650>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86650>
   skos:prefLabel "PLANOCOCCUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86679>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86679>
   skos:prefLabel "PREVOTELLA VERORALIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86688>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86688>
   skos:prefLabel "PROTEUS PENNERI"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86701>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86701>
   skos:prefLabel "PSEUDOMONAS LUTEOLA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86739>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86739>
   skos:prefLabel "SERRATIA ODORIFERA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86748>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86748>
   skos:prefLabel "SPHINGOMONAS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86776>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86776>
   skos:prefLabel "STENOTROPHOMONAS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86785>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86785>
   skos:prefLabel "STREPTOCOCCUS BOVIS GROUP"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86827>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86827>
   skos:prefLabel "TROPHERYMA WHIPPLEI"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86836>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86836>
   skos:prefLabel "VARIBACULUM CAMBRIENSE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86864>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86864>
   skos:prefLabel "YOKENELLA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86873>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86873>
   skos:prefLabel "HELCOCOCCUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86915>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86915>
   skos:prefLabel "SALMONELLA SEROTYPE CHOLERAESUIS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86924>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86924>
   skos:prefLabel "SALMONELLA SEROTYPE PARATYPHI B"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C86961>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C86961>
   skos:prefLabel "SPHINGOBACTERIUM THALPOPHILUM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85491.C93023>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85491.C93023>
   skos:prefLabel "NEWCASTLE DISEASE VIRUS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C102669>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C102669>
   skos:prefLabel "MICROBIAL CULTURE, SOLID"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C111196>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C111196>
   skos:prefLabel "ENZYME MULTIPLIED IMMUNOASSAY TECHNIQUE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C120683>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C120683>
   skos:prefLabel "CONTACT SPECULAR MICROSCOPY"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C120692>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C120692>
   skos:prefLabel "HPLC-FL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C122165>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C122165>
   skos:prefLabel "FORCED OSCILLATION TECHNIQUE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C19263>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C19263>
   skos:prefLabel "LASER CAPTURE MICRODISSECTION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C20828>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C20828>
   skos:prefLabel "OPTICAL COHERENCE TOMOGRAPHY"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C23011>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C23011>
   skos:prefLabel "HEMATOXYLIN AND EOSIN STAIN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C23020>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C23020>
   skos:prefLabel "IHC"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C25300>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C25300>
   skos:prefLabel "MICROBIAL CULTURE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C25598>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C25598>
   skos:prefLabel "OBSERVATION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C29934>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C29934>
   skos:prefLabel "MRS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C62328>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C62328>
   skos:prefLabel "ICP-MS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C62667>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C62667>
   skos:prefLabel "SCINTIGRAPHY"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85492.C85697>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85492.C85697>
   skos:prefLabel "MACRO BROTH DILUTION"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493>
   skos:prefLabel "PKPARM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C102380>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C102380>
   skos:prefLabel "Vol Dist Steady State Obs Norm by WT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C111371>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C111371>
   skos:prefLabel "Vz for Dose Int Norm by SA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C112393>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C112393>
   skos:prefLabel "Pct Rec Infinity Pred Norm by SA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C122336>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C122336>
   skos:prefLabel "Renal CL for Dose Int Norm by SA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C85797>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C85797>
   skos:prefLabel "Total CL Pred"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C92327>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C92327>
   skos:prefLabel "AUMC to Last Nonzero Conc Norm by Dose"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C92336>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C92336>
   skos:prefLabel "AUMC Infinity Pred Norm by SA"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C92355>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C92355>
   skos:prefLabel "AURC Infinity Obs Norm by Dose"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C92373>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C92373>
   skos:prefLabel "Max Conc Norm by WT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C92392>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C92392>
   skos:prefLabel "Last Meas Excretion Rate Norm by Dose"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C92424>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C92424>
   skos:prefLabel "Total CL Pred Norm by WT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85493.C95007>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85493.C95007>
   skos:prefLabel "Effective Half-Life"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C105472>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C105472>
   skos:prefLabel "h*pg/mL/(mg/kg/day)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C111180>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C111180>
   skos:prefLabel "day*mol/L/m2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C111231>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C111231>
   skos:prefLabel "h*pmol/L/m2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C112262>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C112262>
   skos:prefLabel "day*pg/mL/g"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C112350>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C112350>
   skos:prefLabel "min*nmol/L/g"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C117922>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C117922>
   skos:prefLabel "h*mmol/L/(mg/g)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C117931>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C117931>
   skos:prefLabel "h*pg/mL/(mg/g/day)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C117950>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C117950>
   skos:prefLabel "min*nmol/L/(mg/g)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119344>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119344>
   skos:prefLabel "fg/mL/(ug/kg/day)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119353>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119353>
   skos:prefLabel "g/mL/(mg/day)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119372>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119372>
   skos:prefLabel "IU/mL/(ug/day)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119381>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119381>
   skos:prefLabel "IU/mL/ug"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119404>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119404>
   skos:prefLabel "mIU/mL/(ug/kg/day)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119432>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119432>
   skos:prefLabel "mol/L/(mg/m2)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119441>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119441>
   skos:prefLabel "mol/L/m2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119479>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119479>
   skos:prefLabel "pg/mL/(ug/m2)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119520>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119520>
   skos:prefLabel "uIU/mL/(ug/kg)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C119539>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C119539>
   skos:prefLabel "umol/L/(ug/m2/day)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C120728>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C120728>
   skos:prefLabel "(L/day)/(mg/day)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C120756>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C120756>
   skos:prefLabel "(L/min)/(ug/day)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C120765>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C120765>
   skos:prefLabel "(mL/day)/(mg/m2)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C120793>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C120793>
   skos:prefLabel "(mL/min)/(mg/kg)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C120807>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C120807>
   skos:prefLabel "L/(mg/kg)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C120816>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C120816>
   skos:prefLabel "mL/(kg/m2)"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C48155>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C48155>
   skos:prefLabel "g"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C48517>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C48517>
   skos:prefLabel "nmol"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C67377>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C67377>
   skos:prefLabel "IU/mL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C69160>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C69160>
   skos:prefLabel "L/h"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C85586>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C85586>
   skos:prefLabel "day*ug/mL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C85609>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C85609>
   skos:prefLabel "h2*pg/mL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C85646>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C85646>
   skos:prefLabel "IU/h"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C85674>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C85674>
   skos:prefLabel "(L/min)/mg"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C85725>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C85725>
   skos:prefLabel "min*g/mL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85494.C85734>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85494.C85734>
   skos:prefLabel "min*pg/mL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C102378>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C102378>
   skos:prefLabel "VSSOD"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C102387>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C102387>
   skos:prefLabel "RCPCTAUB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C111369>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C111369>
   skos:prefLabel "VZTAUB"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C112033>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C112033>
   skos:prefLabel "RCAMIFP"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C112228>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C112228>
   skos:prefLabel "RCAMIFPW"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C112390>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C112390>
   skos:prefLabel "RCPCIFOS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C114234>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C114234>
   skos:prefLabel "AILAMZ"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C122329>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C122329>
   skos:prefLabel "ARAUCINT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C85579>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C85579>
   skos:prefLabel "CMIN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C85764>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C85764>
   skos:prefLabel "AUCPEO"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C85792>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C85792>
   skos:prefLabel "AURCPEP"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C85824>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C85824>
   skos:prefLabel "TLAG"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C92308>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C92308>
   skos:prefLabel "AUCALLW"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C92336>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C92336>
   skos:prefLabel "AUMCIFPS"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C92345>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C92345>
   skos:prefLabel "AURCALLW"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C92373>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C92373>
   skos:prefLabel "CMAXW"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C85839.C92424>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C85839.C92424>
   skos:prefLabel "CLPW"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C103394>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C103394>
   skos:prefLabel "HIBERNOMA, MALIGNANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C2928>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C2928>
   skos:prefLabel "FIBROADENOCARCINOMA, MALIGNANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C3161>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C3161>
   skos:prefLabel "LEUKEMIA, MALIGNANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C3170>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C3170>
   skos:prefLabel "LEUKEMIA, MEGAKARYOCYTIC, MALIGNANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C3230>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C3230>
   skos:prefLabel "MENINGIOMA, UNDETERMINED"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C3296>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C3296>
   skos:prefLabel "OSTEOMA, BENIGN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C35815>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C35815>
   skos:prefLabel "SARCOMA, GRANULOCYTIC, MALIGNANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C3727>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C3727>
   skos:prefLabel "CARCINOMA, ADENOSQUAMOUS, MALIGNANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C3764>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C3764>
   skos:prefLabel "POLYP, ADENOMATOUS, UNDETERMINED"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C3903>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C3903>
   skos:prefLabel "GLIOMA, MIXED, MALIGNANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C4614>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C4614>
   skos:prefLabel "BASOSQUAMOUS TUMOR, BENIGN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C67006>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C67006>
   skos:prefLabel "SERTOLI CELL TUMOR, MALIGNANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C7155>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C7155>
   skos:prefLabel "OSTEOCHONDROSARCOMA, MALIGNANT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C8422>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C8422>
   skos:prefLabel "FIBROMA, OSSIFYING, BENIGN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C84356>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C84356>
   skos:prefLabel "EPITHELIOMA, NON-KERATINIZING, BENIGN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C8965>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C8965>
   skos:prefLabel "LYMPHANGIOMA, BENIGN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C88025.C92181>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C88025.C92181>
   skos:prefLabel "PHEOCHROMOCYTOMA, COMPLEX, BENIGN"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C89973.C112312>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C89973.C112312>
   skos:prefLabel "Human Epidermal Growth Factor Receptor 2"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C89973.C123560>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C89973.C123560>
   skos:prefLabel "Surgical Margins Status"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C89974>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C89974>
   skos:prefLabel "MITESTCD"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C89974.C123555>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C89974.C123555>
   skos:prefLabel "BRCA1"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C90013.C90361>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C90013.C90361>
   skos:prefLabel "LEAD aVL"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C90013.C90412>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C90013.C90412>
   skos:prefLabel "LEAD V1"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96778.C103347>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96778.C103347>
   skos:prefLabel "Absolute Change From Nadir"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96778.C96643>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96778.C96643>
   skos:prefLabel "Tumor State"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96779.C96632>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96779.C96632>
   skos:prefLabel "SUMLDIAM"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96781.C123624>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96781.C123624>
   skos:prefLabel "Molecular Response"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96781.C94534>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96781.C94534>
   skos:prefLabel "Target Response"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96782.C123628>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96782.C123628>
   skos:prefLabel "TUAGRESP"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96785.C123584>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96785.C123584>
   skos:prefLabel "FAVORABLE RESPONSE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96785.C123593>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96785.C123593>
   skos:prefLabel "MOLECULAR CR"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96785.C123607>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96785.C123607>
   skos:prefLabel "PDu"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C96785.C62222>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C96785.C62222>
   skos:prefLabel "NE"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C99073>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99073>
   skos:prefLabel "LAT"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C99074.C25309>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99074.C25309>
   skos:prefLabel "LOWER"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C99074.C25355>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99074.C25355>
   skos:prefLabel "UPPER"^^xsd:string ;
 .
