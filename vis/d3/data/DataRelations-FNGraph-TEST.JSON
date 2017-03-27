@@ -1,0 +1,94 @@
+{
+  "nodes": [
+    {
+      "type": "Country",
+      "label": "Czech Republic",
+      "freq": 1,
+      "nodeID": 0
+    },
+    {
+      "type": "Country",
+      "label": "Belgium",
+      "freq": 30,
+      "nodeID": 1
+    },
+
+    {
+      "type": "Organization",
+      "label": "Amgen",
+      "freq": 5,
+      "nodeID": 2
+    },
+    {
+      "type": "Organization",
+      "label": "StatGroup",
+      "freq": 1,
+      "nodeID": 3
+    },
+    {
+      "type": "Presentation",
+      "label": "OCCDS <U+FFFD> Creating flags or records",
+      "freq": 1,
+      "nodeID": 4
+    },
+    {
+      "type": "Presentation",
+      "label": "ToCreatedefine.xml using .XML and OpenCDISC validator",
+      "freq": 2,
+      "nodeID": 5
+    },
+    {
+      "type": "Stream",
+      "label": "Statistics & Pharmacokinetics",
+      "freq": 5,
+      "nodeID": 6
+    },
+    {
+      "type": "Stream",
+      "label": "Poster Presentation",
+      "freq": 24,
+      "nodeID": 7
+    },
+    {
+      "type": "Workshop",
+      "label": "SAS Hands-on Workshop",
+      "freq": 89,
+      "nodeID": 8
+    },
+    {
+      "type": "Workshop",
+      "label": "Semantics 101 for Pharma",
+      "freq": 97,
+      "nodeID": 9
+    },
+        {
+      "type": "Person",
+      "label": "James Johnson",
+      "freq": 1,
+      "nodeID": 10
+    },
+    {
+      "type": "Person",
+      "label": "Dustin Greenhill",
+      "freq": 1,
+      "nodeID": 11
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 1,
+      "type": "WORKS_AT"
+    },
+    {
+      "source": 2,
+      "target": 3,
+      "type": "FROM"
+    },
+    {
+      "source": 4,
+      "target": 5,
+      "type": "ATTENDS"
+    }
+  ]
+}

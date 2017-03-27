@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!-----------------------------------------------------------------------------
+FILE: Attendees-FNGraph.html
+DESCR: Network graph of Data Relations in the SDTM Data as RDF Project
+SRC:   Based on: (svn) /Phuse/Anual/2016/d3/Attendees-FNGraph.html
+INPUT:  /data/DataRelations-FNGraph-test.JSON  - for development
+        /data/Attendees-FNGraph-R.JSON , from R,   [TODO!!!]
+OUT  : 
+REQ  : DataRelations-FNGraph.js, SDTMasRDF.css
+NOTES: 
+TODO: : Create the R code based on the original from the Annual conference, but with
+        Data from this project.
+
+------------------------------------------------------------------------------>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>2016 Attendees FN Graph</title>
+    <script type="text/javascript" src="/SDTMasRDF/vis/d3/d3/d3.v3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/SDTMasRDF/vis/d3/SDTMasRDF.css">
+</head>
+<body>
+<h2>PhUSE 2016 Registrations, Presentations, Workshops</h2>
+<script type="text/javascript" src="/SDTMasRDF/vis/d3/DataRelations-FNGraph.js"></script>
+
+<script type="text/javascript">
+
+//---- LEGEND  ----------------------------------------------------------------
+// colors is not even used to color the legend or nodes. CSS now used.
+var colors = ["#969696", "#00ff00", "#B30000", "#FFFF00", "#D95F02","#9933ff"];
+var categories = ["Person", "Country", "Organization", "Presentation", "Stream", "Workshop"];
+
+// Create the color scale of categories to colors
+var colorScale = d3.scale.ordinal()
+    .domain(categories)
+    .range(colors);
+
+// node size scale
+var nodeScale = d3.scale.linear()
+    .domain([0,180])
+    .range([3,20]);
+
+// Indent from left margin
+var legendIndent=20;
+
+// Title 
+svg.append("text")
+     .text("Legend")
+     .attr("x",legendIndent+20)
+     .attr("y",25)
+     .attr("class", 'legendTitle'); 
+
+// Box to surround the legend
+svg.append("rect")
+     .attr("x",legendIndent-15)
+     .attr("y",35)
+     .attr("rx", 2) // Round the edge
+     .attr("ry", 2) // Round the edge
+     .attr("height", 192)
+     .attr("width", 145)
+     .attr("class", "legendBox");
+
+var legend = svg.selectAll(".legend")
+    .data(colorScale.domain())
+    .enter()
+    .append("g")
+    .attr("class", "legend");
+
+legend.append("circle") 
+    .attr("cx", legendIndent ) // legendIndent+n = to move in from legend box left edge
+       // first val is spacing between each rect
+       // +n = spacing down from top of legend box
+    .attr("cy",function(d, i) { return 32 * i +50; })
+    .attr("r", 8)
+    .attr("class", function (d, i) {
+            return categories[i];
+        })
+    .style("fill-opacity", 0.9);
+     
+legend.append("text")
+  .attr("class", "monoLG")
+  .text(function(d, i) { 
+  	 return categories[i];
+  })
+  .attr("x", legendIndent + 15)  // +n = spacing in from left edge of legend box
+  .attr("y", function(d, i) { return (32 * i) +55; }); // 32* = spacing, +nn to center on node
+//---- LEGEND END -------------------------------------------------------------
+
+ d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-test.JSON", function(dataset) {
+// d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-R.JSON", function(dataset) {
+    var force = d3.layout.force()
+        .nodes(dataset.nodes)
+        .links(dataset.edges)
+        .gravity(0.4)  //0.4
+        .charge(-90)  //-80
+        .linkDistance(50)
+        .size([w, h])
+        .start();
+    var drag = force.drag()
+        .on("dragstart", dragstart);
+
+    // id value - used to identify the edge. Where is it referenced?
+    var edges = svg.selectAll("line")
+        .data(dataset.edges)
+        .enter()
+        .append("line")
+        .attr("id",function(d,i){return 'edge'+i})
+        
+        .attr("class", function (d) {
+            return d.type;
+        });
+ 
+   // Add tooltip mouseover text for Edges (links) 
+     edges.append("title")
+         // .text(function(d){return d.value}); 
+        .text(function(d) { return d.type });
+         
+   var nodes = svg.selectAll("g.node")
+        .data(dataset.nodes)
+        .enter()
+        .append("g")
+        .attr("class", "node")
+        .on("dblclick", dblclick)
+        .on("click", function (d) {
+          if (d3.event.ctrlKey) { location.href = d.url;}
+        })
+        .call(drag);
+
+    // Change the R for size of the node
+    // Node size depends on Group id number
+    
+    
+    nodes.append("circle")
+        .attr("r", function(d) { return nodeScale(d.freq); 
+        	
+   //var scale = d3.scale.linear.domain([ inputMin, inputMax ]).range([ outputMin, outputMax ]);
+//vis.selectAll("circle")
+  // etc...
+ // .attr( 'r', function(d) { return scale(d.count) });     	
+          //  if (d.label == "NA")  	{
+        	//      return 3;
+        	//  }
+        	  // Scale the node size
+        //    else{
+          //  	return nodeScale(d);
+            //}
+
+        	  // OLD CODE FOLLOWS
+        	  //Decrease the size of the Country Node due to large number from a few countries.
+        	  //else if (d.type == "Country" && d.freq >6) {
+        	  //	     return (d.freq/6+3);
+        	 // }
+        	  //TODO : Decrease the size fo the OPTION (WORKSHOP) nodes similar to how is done for COUNTRY
+        	  
+        	 // else{
+        	 //     return (d.freq/2 + 3); 
+        	 // }
+        })
+        .attr("class", function (d) {
+            return d.type;
+        })
+        // Mousover Node - highlight node by fading the node colour during mouseover
+        .on('mouseover', function(d){
+            var nodeSelection = d3.select(this).style({opacity:'0.5'});
+        })
+        //Mouseout Node  - bring node back to full colour   
+        .on('mouseout', function(d){
+            var nodeSelection= d3.select(this).style({opacity:'1.0',}) 
+        })
+    // dx sets how close to the node the label appears
+    //TW TODO: Move font size and color to CSS STYLE
+   // id=nodegroup3  - a separate style for this node type. See #nodegroup3 in CSS section
+    nodes.append("text")
+        .attr("class", "nodetext")
+        .attr("dx",function(d){ 
+            if (d.id == 0) {return ""} 
+            else {return -15;}
+        ;})// offset the text from the node. 
+        //.attr("dy", ".35em") // used when offsetting the text from the node. 
+        .attr("dy", "-1.5em") // Move label above node with -
+        .attr("text-anchor", "middle")  // Center text horizontally
+        // .text(function(d) { return d.id+'-'+d.label }) //DEBUG: Adds id to the label
+        .text(function(d) { return d.label+' : '+d.freq  })            // Just the name
+        //.attr("stroke", "white")
+      //  .attr("id", function(d,i){return 'nodegroup'+d.labelgrp})
+         
+    // Paths along which to apply the edge label
+    //TW Why is fill and stroke entered but not used?? opacity=0!
+    var edgepaths = svg.selectAll(".edgepath")
+        .data(dataset.edges)
+        .enter()
+        .append('path')
+        .attr({'d': function(d) {return 'M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y},
+            'class':'edgepath',
+            'fill-opacity':0,
+            'stroke-opacity':0,
+            'fill':'blue',
+            'stroke':'red',
+            'id':function(d,i) {return 'edgepath'+i}})
+        .style("pointer-events", "none");
+
+    force.on("tick", function() {
+        edges.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+        nodes.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+      
+        edgepaths.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
+            //console.log(d)
+            return path});       
+
+      });     
+  });  // end of data read and manip
+</script>
+</body>
+</html>

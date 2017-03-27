@@ -1,0 +1,495 @@
+/*----------------  All Slides ----------------------------------------------*/
+/* @import url(../../lib/font/league-gothic/league-gothic.css);  from original reveal.js*/
+/* Need to import the League-Gothic font */
+@import "/PhUSE/Annual/2016/d3/d3/font/league-gothic/league-gothic.css";
+
+body {
+    background-color: "#002b36";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 20px 0;
+  color: #eee8d5;att
+  font-family: "League Gothic", sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  text-shadow: none;
+  word-wrap: break-word;
+  text-align: center }
+}
+
+h1 {
+  font-size: 3.77em; }
+
+h2 {
+/*  font-size: 2.11em; */
+    font-size: 46pt;
+}
+
+h3 {
+  font-size: 1.55em; }
+
+h4 {
+  font-size: 1em; }
+
+body {
+  background: #002b36;
+  background-color: #002b36; 
+}
+
+
+/*---- LEGEND ---------------------------------------------------------------*/
+.legendTitle, .explainText, labelBarchart {
+  /* stroke: #eee8d5; */
+  fill: #eee8d5;
+  font-size: 12pt;
+}
+.legendBox{
+    fill: #003d4d;
+    stroke: #006680;
+}
+
+/*----SLIDE: Attendees FN graph ---------------------------------------------*/
+text.monoLG {
+    font-size: 12pt;
+    font-family: Consolas, courier;
+    fill: #eee8d5;
+    
+    /*fill: #aaa;*/
+}
+
+.nodetext{
+   font-size:24px;
+   fill: #eee8d5;  /* keep with moon.css theme */
+   text-shadow: -4px 4px 3px   #000000;   /* add a drop shadow */
+ 
+}
+
+.node:not(:hover) .nodetext{
+    display: none;
+}
+.edge:not(:hover) .edgetext{
+    display: none;
+}
+
+/* Possible Color Selections
+"#FFFFFF", // 1-Wht     
+"#00FF00", // 2-BrGre   
+"#99FF99", // 3-LtGre   
+"#FF0000", // 4-BrRed   
+"#FA7D7D", // 5-LtRed   
+"#0000FF", // 6-BrBlu   
+"#8080FF", // 7-LtBlu   
+"#FF6600", // 8-BrOr    
+"#FFB280", // 9-LtOr    
+"#CC00FF", // 10-BrPur  
+"#EB99FF", // 11-LtPur  
+"#FFFF00", // 12-BrYel  
+"#FFFF80", // 13-LtYel  
+"#006666", // 14-SlGre  
+"#99C2C2", // 15-LtSlGre 
+"#666699", // 16-BlGry  
+"#A3A3C2"  // 17-LtBlGr 
+*/
+/*---- Nodes */
+.Person{
+    stroke: "gray";
+    stroke-width: 0.8;
+	  fill: #FFFF00;
+}
+.Organization{
+    stroke: #8080FF;
+    stroke-width: 0.8;
+    fill: #0000FF;
+}
+.Country{
+    stroke: #99FF99;
+    stroke-width: 0.8;
+    fill: #00FF00;
+	   
+}
+.Presentation{
+    stroke: #FA7D7D;
+    stroke-width: 0.8;
+	  fill: #FF0000;
+}
+.Stream{
+    stroke: #FFB280;
+    stroke-width: 0.8;
+	  fill: #FF6600; 
+}
+.Workshop{
+    stroke: #99C2C2;
+    stroke-width: 0.8;
+    fill: #006666;
+}
+
+
+/*----Edges */
+.WORKS_AT{
+	  stroke-width: 0.8;
+	  stroke: #8080FF;
+}
+.FROM{
+    stroke-width: 0.8;
+	  stroke: #99FF99;
+}
+.CONTRIB_TO{
+	  stroke-width: 0.8;
+	  stroke: #FA7D7D;
+}
+.IN_STREAM{
+	  stroke-width: 0.8;
+	  stroke: #FFB280;
+}
+.ATTENDS{
+	  stroke-width: 0.8;
+	  stroke: #99C2C2; 
+ }
+
+.tooltipLegend{
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    padding: 4px;
+    font: 12px sans-serif;
+    background: #00ccff;
+    border: 0px;
+    pointer-events: none;
+}
+
+.legendText{
+	  fill: #eee8d5;
+    font-size: 12px;  
+    font-weight:bold; 
+}
+
+.legendNodeText{       
+    fill: black;
+    font-size: 12px;  
+    font-weight:bold; 
+}
+
+.nodeText{
+    fill:#000000;
+    font-family: Serif, Georgia;
+    font-size: 24px;   
+    font-weight: bold;
+}
+.node {
+    fill: black;
+    font-size: 13px;  
+    font-weight:bold; 
+}
+/* Nodes coloured by Phase/Pool on a Brewer Scale */
+.Phase1-node{
+ fill:#e41a1c;
+ stroke:#b81417;
+}
+.Phase2-node{
+ fill:#4daf4a;
+ stroke:#3f903c;
+}
+.Phase3-node{
+ fill:#3773b8;
+ stroke:#2f629d;
+}
+.Phase4-node{
+ fill:#984ea3;
+ stroke:#80428a;
+}
+.Pool-node{
+ fill:#ffff33;
+ stroke:#e6e600;
+}
+
+/*--------------  StudyAgeCat.html ----------------------*/
+#queryResTab{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+#queryResTab td, #queryResTab th {
+    border: 3px solid #006680;
+    padding: 8px;
+}
+#queryResTab tr:nth-child(even){
+    /* background-color: #f2f2f2; */
+    background-color: #b3d1ff;
+}
+
+#queryResTab tr:nth-child(odd){
+    /* background-color: #f2f2f2; */
+    background-color: #cce0ff;
+}
+
+#queryResTab tr:hover {
+    background-color: #ddd;
+}
+
+#queryResTab th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    bgcolor: grey;
+   /*  background-color: #4CAF50; */
+    
+  /* background-color: #003d4d; */ 
+   /* color: #003d4d; */
+}
+
+/* linkable text in the result table */
+.linkable{
+    color: #0645AD;
+    font-size: 14px;
+    text-decoration: underline;  
+}
+/*---------------  AttendeesByCountry-BarChart ---------------------*/
+/* positions the SORT checkbox at top of chart. Add to right: to move left */
+labelBarchart {
+  position: absolute;
+  top: 80px;
+  right: 300px;
+  color: #eee8d5;
+  font-size: 1.2em; 
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
+/* Axis label values X,Y */
+.axis text {
+  font: 15px sans-serif;
+  fill: #eee8d5;
+}
+
+
+/* this does not work */
+#yaxis text {
+    font: 20px sans-serif;
+    color: red;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: grey;
+  shape-rendering: crispEdges;
+}
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+
+/* display:none removed it from the Gantt chart: Not what we currently want */
+.x.axis path {
+  /* display: none; */
+}
+
+/*--------------------  TreatChange-Sankey ----------------------------------*/
+.sankeyX {
+  font: 18px sans-serif;
+  fill: #eee8d5;
+}
+
+
+/*--------------------------------------------------------*/
+        
+.RDFNode{
+    stroke-width: 5px;
+    stroke: #eee8d5;
+}        
+
+/* Special Edge colours based on type of linkage*/
+#Default-edge{
+  stroke: #808080;
+  stroke-width: 4;
+}    
+
+#Reference-edge{
+  stroke: gray;
+  stroke-width: 4;
+  stroke-dasharray:5,5;
+}
+#QandA-edge{
+  stroke: orange;
+  stroke-width: 4;
+}
+#Evaluation-edge{
+  stroke: blue;
+  stroke-width: 4;
+}
+.edges{
+    stroke: #bebada;
+    stroke-width: 10;
+}
+
+/* REFPropG-NodeTypes.html */
+.edgeLabel{
+    fill:#eee8d5;
+    font-family: Serif, Georgia;
+    font-size: 18pt;   
+    font-weight: bold;
+}
+/* Original ----
+.tooltip{
+    position: absolute;
+    width: 150px;
+    height: 70px;
+    padding: 3px;
+    font: 15px sans-serif;
+    background: lightblue;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    pointer-events: none;
+}
+*/
+
+.tooltip{
+    position: absolute;
+    width: 250px;
+    height: 60px;
+    padding: 3px;
+    font: 16pt sans-serif;
+    background: #eee8d5;
+    border: 4px;
+    border-style: solid;
+    /*border-color: #006680; */
+    border-color: #003d4d;
+    pointer-events: none;
+}
+
+
+   
+.d3SlideH3{
+  margin: 0 0 20px 0;
+  fill: #eee8d5;
+  font-family: sans-serif, "League Gothic", Impact, ;
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-shadow: none;
+  word-wrap: break-word; 
+  font-size: 1.55em; }
+}
+
+/*---------------  studyPhases-Gantt ---------------------*/
+/* missing values */
+.bar {
+ /* fill: #969696; */  /* gray */
+ fill: #ffff33;  /* yellow */
+ border: 5px solid black;
+}
+/* Phase 1 */
+.bar-1 {
+  fill:#e41a1c;  /* red */
+}
+/* Phase 2 */
+.bar-2 {
+   fill: #4daf4a; /* green */
+}
+/* Phase 3 */
+.bar-3 {
+  fill: #377eb8; /* blue */
+  background: linear-gradient(
+    45deg,
+    #5d9634,
+    #5d9634 50%,
+    #538c2b 50%,
+    #538c2b
+  );
+  background-size: 5px 3px; 
+ 
+}
+/* Phase 4 */
+.bar-4 {
+  fill: #984ea3;  /* indigo */
+}
+.bar-yellow {
+  fill: #ffbb33;
+}
+/* Ongoing Phase 2 L not currently used */
+.bar-lightgreen {
+  fill: #b2df8a;
+}
+
+/* Ongoing Phase 3  N01361*/
+.bar-lightblue {
+  fill: #A2C2FF;
+}
+
+.tooltipGantt{
+    position: relative;
+    width: 150px;
+    height: 50px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightgreen;
+    border: 0px;
+    pointer-events: none;
+}
+
+/*---- StudyAgeCat.html -----------------------------------------------------*/
+
+.tooltipAgeCat{
+    position: absolute;
+    width: 250px;
+    height: 90px;
+    padding: 3px;
+    font: 16pt sans-serif;
+    background: #eee8d5;
+    border: 4px;
+    border-style: solid;
+    /*border-color: #006680; */
+    border-color: #003d4d;
+    pointer-events: none;
+}
+
+
+/* Font within the Rect */
+.nodeTextAgeCat{
+ 	stroke:black;
+ 	font-size: 16pt;
+}
+
+.nodeType-ALL, 
+.nodeType-ADU,
+.nodeType-PED,
+.nodeType-ADUONLY,
+.nodeType-ADUPED,
+.nodeType-PEDONLY {
+    stroke:#eee8d5;
+}
+.nodeType-ALL{
+ fill: #ffff99; /* yellow */
+}
+.nodeType-ADU{
+ fill: #fd8d3c ; /* orange */
+}
+.nodeType-PED{
+ fill: #74add1; /* light blue */
+}
+.nodeType-ADUONLY{
+ fill: #e31a1c; /* red */
+}
+.nodeType-ADUPED{
+ fill: #8073ac; /* purple */
+}
+.nodeType-PEDONLY{
+ fill: #225ea8; /* blue */
+}
+/* Connecting edges */
+.edgeAgeCat{
+  stroke: grey;
+  stroke-width: 5;
+}
