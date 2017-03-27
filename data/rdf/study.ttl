@@ -1,8 +1,10 @@
 # baseURI: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study
 # imports: http://spinrdf.org/spl
+# imports: http://www.bridgmodel.org/owl#
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code
 
+@prefix BRIDG_4.1.1.owl: <file:/Users/Frederik/Downloads/BRIDG_4.1.1.owl.xml> .
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -45,6 +47,12 @@ arg:refDate
 arg:refdate
   rdf:type rdf:Property ;
   rdfs:subPropertyOf sp:arg ;
+.
+<http://www.bridgmodel.org/owl#DataEntity>
+  rdfs:subClassOf study:BRIDGComponent ;
+.
+<http://www.bridgmodel.org/owl#SubDomain>
+  rdfs:subClassOf study:BRIDGComponent ;
 .
 owl:hasValue
   owl:oneOf (
@@ -89,9 +97,16 @@ time:inXSDDateTime
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   owl:imports <http://spinrdf.org/spl> ;
+  owl:imports <http://www.bridgmodel.org/owl#> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+study:ActiveProduct
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Product ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Active product"^^xsd:string ;
 .
 study:Activity
   rdf:type owl:Class ;
@@ -260,7 +275,8 @@ study:Activity
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Activity"^^xsd:string ;
   rdfs:subClassOf study:StudyComponent ;
-  skos:definition ""^^xsd:string ;
+  owl:equivalentClass <http://www.bridgmodel.org/owl#Activity> ;
+  skos:definition "see definition for bridg:Activity"^^xsd:string ;
 .
 study:ActivityDate
   rdf:type owl:Class ;
@@ -361,6 +377,11 @@ study:AssumeBodyPosition
   rdfs:label "Assume a specific body position"^^xsd:string ;
   rdfs:subClassOf study:Intervention ;
   skos:definition ""^^xsd:string ;
+.
+study:BRIDGComponent
+  rdf:type owl:Class ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "BRIDGComponent"^^xsd:string ;
 .
 study:BeginInstant
   rdf:type owl:Class ;
@@ -526,6 +547,19 @@ study:InterventionDate
   rdfs:subClassOf study:Date ;
   skos:definition ""^^xsd:string ;
 .
+study:InvestigationalProduct
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActiveProduct ;
+  owl:equivalentClass <http://www.bridgmodel.org/owl#StudyAgent> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Investigational product"^^xsd:string ;
+.
+study:InvestigationalSubstance
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Substance ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Investigational substance"^^xsd:string ;
+.
 study:Investigator
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -591,6 +625,12 @@ study:Person
   rdfs:subClassOf study:Party ;
   skos:definition ""^^xsd:string ;
 .
+study:PlaceboProduct
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Product ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Placebo product"^^xsd:string ;
+.
 study:PlannedActivity
   rdf:type owl:Class ;
   rdfs:comment "a planned activity can also be a completed activity if it has a protocol specified start rule. "^^xsd:string ;
@@ -610,6 +650,12 @@ study:PrerequisiteActivity
   rdfs:label "Anchor / Time Point Reference"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
   skos:definition "An activity whose Date functions as a time point reference for other activities. "^^xsd:string ;
+.
+study:Product
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Product"^^xsd:string ;
 .
 study:ProductAdministration
   rdf:type owl:Class ;
@@ -672,6 +718,7 @@ study:ResearchStaff
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Research staff"^^xsd:string ;
   rdfs:subClassOf study:Person ;
+  owl:equivalentClass <http://www.bridgmodel.org/owl#ResearchStaff> ;
   skos:definition ""^^xsd:string ;
 .
 study:Rule
@@ -713,13 +760,16 @@ study:Study
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Study"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
+  skos:broader <http://www.bridgmodel.org/owl#Study> ;
   skos:definition ""^^xsd:string ;
+  skos:note "The BRIDG concept Study is broader in that it includes nonclinical studies whereas this ontology is limited to human studies"^^xsd:string ;
 .
 study:StudyActivity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Study activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
+  owl:equivalentClass <http://www.bridgmodel.org/owl#StudyActivity> ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:onProperty study:isSubActivityOf ;
@@ -753,6 +803,12 @@ study:StudyParticipationInterval
   rdfs:label "Study participation interval"^^xsd:string ;
   rdfs:subClassOf time:Interval ;
   skos:definition ""^^xsd:string ;
+.
+study:Substance
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Substance"^^xsd:string ;
 .
 study:Visit
   rdf:type owl:Class ;

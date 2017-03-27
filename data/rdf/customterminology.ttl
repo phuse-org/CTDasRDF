@@ -153,7 +153,7 @@ custom:ObservationTerm
   rdfs:subClassOf custom:DefinedActivity ;
   skos:definition ""^^xsd:string ;
 .
-custom:PlaceboProductTerm
+custom:PlaceboProduct
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Placebo product term"^^xsd:string ;
@@ -302,7 +302,7 @@ custom:product_XANOMELINE-LO
   rdfs:label "product-XANOMELINE LO"^^xsd:string ;
 .
 custom:product_XANOMELINE-PLACEBO
-  rdf:type custom:PlaceboProductTerm ;
+  rdf:type custom:PlaceboProduct ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "product-XANOMELINE PLACEBO"^^xsd:string ;
 .
