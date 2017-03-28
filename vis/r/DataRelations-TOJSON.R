@@ -10,6 +10,7 @@
 #        Previous use from Neo4j used the original NEO4j IDs to merge the generated ID 
 #        in the NODES dataset into the EDGES dataframe, then use the generated ID's  
 #        for the from and to in the JSON.
+#        Source: C:\_sandbox\PhUSE\SDE\Dec2016-RTP\r\DM-ToJSON.R
 # INPUT: /SDTMasRDF/data/rdf/study.ttl
 #                           /code.ttl
 #                        ....etc.
@@ -51,10 +52,22 @@ PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT *
+SELECT ?s ?p ?o ?srcType ?srcGroup ?edgeType
 WHERE{
-?s ?p ?o .
-} LIMIT 100'
+    # Classes
+    {
+        ?s a owl:Class .
+        ?s ?p ?o .
+        VALUES (?srcType ?srcGroup ?edgeType) {("Class" "1" "owlEdge")}
+    }
+    # SubClasses
+    UNION
+    {
+        ?s rdfs:subClassOf  ?subclass .
+        ?s ?p ?o .
+        VALUES (?srcType ?srcGroup ?edgeType) {("SubClass" "2" "owlEdge")}
+    }
+}'
 
 triples = as.data.frame(sparql.rdf(rdfSource, query))
 
@@ -64,7 +77,7 @@ triples = as.data.frame(sparql.rdf(rdfSource, query))
 # Combine Subject and Object into a single column
 # "id.vars" is the list of columns to keep untouched. The unamed ones are 
 # melted into the "value" column.
-nodeList <- melt(dmObs, id.vars=c("p", "srcType", "srcGroup" ))   # subject, object into 1 column.
+nodeList <- melt(triples, id.vars=c("p", "srcType", "srcGroup" ))   # subject, object into 1 column.
 
 # A node can be both a Subject and a Predicate so ensure a unique list of node names
 #  by dropping duplicate values.
@@ -86,7 +99,7 @@ nodeList<-data.frame(id, nodeList)
 nodeList
 
 # Attach the ID values to Subject Nodes
-edgesList <- merge (dmObs, nodeList, by.x="s", by.y="name")
+edgesList <- merge (triples, nodeList, by.x="s", by.y="name")
 
 
 edgesList<-rename(edgesList, c("id"="source"))
