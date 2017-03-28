@@ -1,22 +1,22 @@
-# baseURI: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study
+# baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
 # imports: http://spinrdf.org/spl
 # imports: http://www.bridgmodel.org/owl#
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code
+# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code
 
 @prefix BRIDG_4.1.1.owl: <file:/Users/Frederik/Downloads/BRIDG_4.1.1.owl.xml> .
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/ct/schema#> .
-@prefix sdtm-terminology: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#> .
+@prefix schema: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#> .
+@prefix sdtm-terminology: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
-@prefix study: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study#> .
+@prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -56,10 +56,10 @@ arg:refdate
 .
 owl:hasValue
   owl:oneOf (
-      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
-      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
-      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
-      <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
+      <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
+      <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
+      <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
+      <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
     ) ;
 .
 time:hasBeginning
@@ -68,38 +68,38 @@ time:hasBeginning
 time:inXSDDateTime
   rdfs:subPropertyOf study:dateTimeInXSDString ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Age>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Age>
   rdfs:subClassOf study:Observation ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Arm>
-  rdfs:subClassOf <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#DefinedActivityOutcome> ;
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Arm>
+  rdfs:subClassOf <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DefinedActivityOutcome> ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Intervention>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Intervention>
   owl:equivalentClass [
       rdf:type owl:Restriction ;
-      owl:allValuesFrom <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#InterventionOutcome> ;
+      owl:allValuesFrom <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InterventionOutcome> ;
       owl:onProperty study:hasActivityOutcome ;
     ] ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
   rdfs:label "F"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
   rdfs:label "U"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
   rdfs:label "M"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
   rdfs:label "UNDIFFERENTIATED"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study>
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.bridgmodel.org/owl#> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code> ;
+  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 study:ActiveProduct
@@ -194,7 +194,7 @@ study:Activity
             sp:object [
                 sp:varName "anchoroutcometerm"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasPrerequisiteOutcome> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasPrerequisiteOutcome> ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
@@ -203,7 +203,7 @@ study:Activity
             sp:object [
                 sp:varName "strtdelay"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#hasDelay> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasDelay> ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
@@ -376,7 +376,7 @@ study:AssumeBodyPosition
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Assume a specific body position"^^xsd:string ;
   rdfs:subClassOf study:Intervention ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "An Intervention whose intent is to observe the Person s body position and change it to the desired body position, usually in preparation for another intervention."^^xsd:string ;
 .
 study:BRIDGComponent
   rdf:type owl:Class ;
@@ -396,6 +396,13 @@ study:Birthdate
   rdfs:label "Birthdate"^^xsd:string ;
   rdfs:subClassOf study:BeginInstant ;
   skos:definition ""^^xsd:string ;
+.
+study:ClinicalIntervention
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Intervention ;
+  skos:altLabel ""^^xsd:string ;
+  skos:definition "An Intervention whose intent is to have an effect on (e.g. treat, prevent) a Medical Condition"^^xsd:string ;
+  skos:prefLabel "Clinical intervention"^^xsd:string ;
 .
 study:Date
   rdf:type owl:Class ;
@@ -594,8 +601,8 @@ study:Observation
   rdfs:comment """A (Clinical) Observation is ideally observed by a qualified individual, following a standard process, but without implying a cause. Many clinical observations simply reflect a normal physiological state. e.g. BP 120/80 mmHg.
 """^^xsd:string ;
   rdfs:label "Observation"^^xsd:string ;
-  rdfs:subClassOf study:Activity ;
-  skos:definition " A measure of the physical, physiological, or psychological state of a Person."^^xsd:string ;
+  rdfs:subClassOf study:Intervention ;
+  skos:definition " An Intervention whose intent is to measure of the physical, physiological, or psychological state of a Person."^^xsd:string ;
 .
 study:ObservationEndDate
   rdf:type owl:Class ;
@@ -661,7 +668,7 @@ study:ProductAdministration
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product administration"^^xsd:string ;
-  rdfs:subClassOf study:Intervention ;
+  rdfs:subClassOf study:ClinicalIntervention ;
   skos:definition ""^^xsd:string ;
 .
 study:ProductAdministrationBegin
@@ -836,7 +843,7 @@ study:activityStatus
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "activity status"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#ActivityStatus> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#ActivityStatus> ;
   skos:definition ""^^xsd:string ;
 .
 study:agecalc
@@ -924,7 +931,7 @@ study:anatomicLocation
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Observation ;
   rdfs:label "anatomic location"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#AnatomicLocation> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#AnatomicLocation> ;
   skos:definition ""^^xsd:string ;
 .
 study:baselineFlag
@@ -941,7 +948,7 @@ study:bodyPosition
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Observation ;
   rdfs:label "body position"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#BodyPosition> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#BodyPosition> ;
   skos:definition ""^^xsd:string ;
 .
 study:dateTimeInXSDString
@@ -1108,7 +1115,7 @@ study:hasActivityID
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has activity code"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#DefinedConcept> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DefinedConcept> ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1125,9 +1132,9 @@ study:hasActivityOutcome
   rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#DefinedActivity> ;
+  rdfs:domain <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DefinedActivity> ;
   rdfs:label "has activity outcome"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#DefinedActivityOutcome> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DefinedActivityOutcome> ;
   skos:definition ""^^xsd:string ;
 .
 study:hasAge
@@ -1135,7 +1142,7 @@ study:hasAge
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has age"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#AgeOutcome> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#AgeOutcome> ;
   owl:propertyChainAxiom (
       study:hasAgeMeasurement
       study:hasActivityOutcome
@@ -1147,7 +1154,7 @@ study:hasAgeMeasurement
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has age"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Age> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Age> ;
   rdfs:subPropertyOf study:participatesIn ;
   skos:definition ""^^xsd:string ;
 .
@@ -1156,7 +1163,7 @@ study:hasCategory
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has category"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Category> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Category> ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1166,7 +1173,7 @@ study:hasCountry
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Site ;
   rdfs:label "country"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Country> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Country> ;
   skos:definition ""^^xsd:string ;
 .
 study:hasDate
@@ -1182,7 +1189,7 @@ study:hasEthnicity
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has ethnicity term"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Ethnicity> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Ethnicity> ;
   skos:definition ""^^xsd:string ;
 .
 study:hasIdentifier
@@ -1235,7 +1242,7 @@ study:hasMethod
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has method"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#ActivityMethod> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#ActivityMethod> ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "links an activity with the method used to condct the activity, i.e. how the activity outcome/result was obtained. "^^xsd:string ;
 .
@@ -1268,7 +1275,7 @@ study:hasRace
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has race"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Race> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Race> ;
   skos:definition ""^^xsd:string ;
 .
 study:hasReferenceInterval
@@ -1295,7 +1302,7 @@ study:hasSex
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has sex"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Sex> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Sex> ;
   skos:definition ""^^xsd:string ;
 .
 study:hasSite
@@ -1379,7 +1386,7 @@ study:hasSubcategory
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has subcategory"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Subcategory> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Subcategory> ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1424,7 +1431,7 @@ study:laterality
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "laterality"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Laterality> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Laterality> ;
   skos:definition ""^^xsd:string ;
 .
 study:participatesIn
@@ -1590,6 +1597,6 @@ study:treatedAccordingToArm
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:EnrolledSubject ;
   rdfs:label "treated according to"^^xsd:string ;
-  rdfs:range <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Arm> ;
+  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Arm> ;
   skos:definition ""^^xsd:string ;
 .

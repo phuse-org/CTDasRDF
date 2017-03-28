@@ -1,131 +1,131 @@
-# baseURI: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cd01p
+# baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study
+# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
 
-@prefix cd01p: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cd01p#> .
+@prefix cd01p: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix study: <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study#> .
+@prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/cd01p>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/study> ;
+  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#Randomization_BAL3>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Randomization_3>
   rdfs:subClassOf study:Randomization ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#informedconsent_ADULT>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#informedconsent_1>
   rdfs:subClassOf study:InformedConsent ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#intervention_ASSUMEBODYPOSITIONSTANDING>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#intervention_1>
   rdfs:subClassOf study:AssumeBodyPosition ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#intervention_ASSUMEBODYPOSITIONSUPINE>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#intervention_2>
   rdfs:subClassOf study:AssumeBodyPosition ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#popflag_EFF>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#popflag_EFF>
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#popflag_ITT>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#popflag_ITT>
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#popflag_SAF>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#popflag_SAF>
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#startrule_LYING5>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#startrule_1>
   rdfs:subClassOf study:StartRule ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#startrule_STANDING1>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#startrule_2>
   rdfs:subClassOf study:StartRule ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/code#startrule_STANDING3>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#startrule_3>
   rdfs:subClassOf study:StartRule ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#armcd_PBO>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#arm_1>
   rdfs:subClassOf study:Arm ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#armcd_SCRNFL>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#arm_2>
   rdfs:subClassOf study:Arm ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#armcd_XAN_HI>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#arm_3>
   rdfs:subClassOf study:Arm ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#armcd_XAN_L0>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#arm_4>
   rdfs:subClassOf study:Arm ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#popflag_C16WK>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#popflag_C16WK>
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#popflag_C24WK>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#popflag_C24WK>
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#popflag_C8WK>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#popflag_C8WK>
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#product_XANOMELINE-HI>
-  rdf:type study:InvestigationalProduct ;
-.
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#product_XANOMELINE-LO>
-  rdf:type study:InvestigationalProduct ;
-.
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#product_XANOMELINE-PLACEBO>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_1>
   rdf:type study:PlaceboProduct ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#substance_XANOMELINE>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_2>
+  rdf:type study:InvestigationalProduct ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_3>
+  rdf:type study:InvestigationalProduct ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#substance_1>
   rdf:type study:InvestigationalSubstance ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_BASELINE>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_1>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_ECGPLACE>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_10>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_ECGREMOVE>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_11>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_RETRIEVAL>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_12>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_SCREENING1>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_13>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_SCREENING2>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_14>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_UNSCHED3.1>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_15>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_WK12>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_2>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_WK16>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_3>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_WK2>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_3.1>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_WK20>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_4>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_WK24>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_5>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_WK26>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_6>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_WK4>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_7>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_WK6>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_8>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/custom#visit_WK8>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_9>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299>
   rdfs:subClassOf study:VitalSign ;
 .

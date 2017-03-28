@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <rdf:RDF
-    xmlns="https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/mms#"
+    xmlns="https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/mms#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-  xml:base="https://github.com/NovasTaylor/SDTM2RDF/blob/master/data/rdf/mms">
+  xml:base="https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/mms">
   <owl:Ontology rdf:about="">
     <skos:definition rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >The common CDISC Meta Model Schema defines a set of generic meta-model resources that provides a common language and infrastructure to describe the CDISC operational standards.</skos:definition>
