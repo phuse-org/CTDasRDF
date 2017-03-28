@@ -99,6 +99,12 @@ text.monoLG {
 "#A3A3C2"  // 17-LtBlGr 
 */
 /*---- Nodes */
+.study{
+    stroke: #e60000;
+    stroke-width: 0.8;
+    fill: #e60000;
+}
+
 .StudyOnt{
     stroke: #FA7D7D;
     stroke-width: 0.8;
@@ -120,36 +126,13 @@ text.monoLG {
     fill: #FFFF00;
 }
 
-
-/* old code to remove */
-/*
-.Person{
-    stroke: "gray";
-    stroke-width: 0.8;
-	  fill: #FFFF00;
-}
-.Workshop{
-    stroke: #99C2C2;
-    stroke-width: 0.8;
-    fill: #006666;
-}
-
-
 /*----Edges */
-/* OLD edges values */
 
-.RELATION1{
+.studyEdge{
 	  stroke-width: 0.8;
-	  stroke: #8080FF;
+	  stroke: #ff3333;
 }
-.RELATION2{
-    stroke-width: 0.8;
-	  stroke: #99FF99;
-}
-.RELATION3{
-	  stroke-width: 0.8;
-	  stroke: #FA7D7D;
-}
+
 
 .tooltipLegend{
     position: absolute;

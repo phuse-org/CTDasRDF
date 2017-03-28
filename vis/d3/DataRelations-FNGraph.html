@@ -5,7 +5,7 @@ DSCR: Network graph of Data Relations in the SDTM Data as RDF Project
 SRC :   Based on: (svn) /Phuse/Anual/2016/d3/Attendees-FNGraph.html
 INPUT:  /data/DataRelations-FNGraph-test.JSON  - for development
         /data/Attendees-FNGraph-R.JSON , from R,   [TODO!!!]
-OUT  : 
+OUT  :  http://localhost:8000/SDTMasRDF/vis/d3/DataRelations-FNGraph.html
 REQ  : DataRelations-FNGraph.js, SDTMasRDF.css
 NOTES: 
 TODO: : Create the R code based on the original from the Annual conference, but with
@@ -88,7 +88,8 @@ legend.append("text")
   .attr("y", function(d, i) { return (32 * i) +55; }); // 32* = spacing, +nn to center on node
 //---- LEGEND END -------------------------------------------------------------
 
- d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-test.JSON", function(dataset) {
+// d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-test.JSON", function(dataset) {
+ d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FROMR.JSON", function(dataset) {
 // d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-R.JSON", function(dataset) {
     var force = d3.layout.force()
         .nodes(dataset.nodes)
@@ -181,9 +182,8 @@ legend.append("text")
         //.attr("dy", ".35em") // used when offsetting the text from the node. 
         .attr("dy", "-1.5em") // Move label above node with -
         .attr("text-anchor", "middle")  // Center text horizontally
-        // .text(function(d) { return d.id+'-'+d.label }) //DEBUG: Adds id to the label
-        .text(function(d) { return d.label+' : '+d.freq  })            // Just the name
-        //.attr("stroke", "white")
+        // .text(function(d) { return d.label+' : '+d.freq  })  // Name and Freq
+        .text(function(d) { return d.label })            // Just the name
       //  .attr("id", function(d,i){return 'nodegroup'+d.labelgrp})
          
     // Paths along which to apply the edge label
