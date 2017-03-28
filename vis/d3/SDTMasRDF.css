@@ -1,7 +1,7 @@
 /*----------------  All Slides ----------------------------------------------*/
 /* @import url(../../lib/font/league-gothic/league-gothic.css);  from original reveal.js*/
 /* Need to import the League-Gothic font */
-@import "/PhUSE/Annual/2016/d3/d3/font/league-gothic/league-gothic.css";
+@import "/SDTMasRDF/vis/d3/d3/font/league-gothic/league-gothic.css";
 
 body {
     background-color: "#002b36";
@@ -99,31 +99,34 @@ text.monoLG {
 "#A3A3C2"  // 17-LtBlGr 
 */
 /*---- Nodes */
+.StudyOnt{
+    stroke: #FA7D7D;
+    stroke-width: 0.8;
+    fill: #FF0000;
+}
+.Protocol{
+    stroke: #ffb366;
+    stroke-width: 0.8;
+	  fill: #ffb366;
+}
+.Code{
+    stroke: #0000FF;
+    stroke-width: 0.8;
+    fill: #00FF00;
+}
+.StudyRes{
+    stroke: #8080FF;
+    stroke-width: 0.8;
+    fill: #FFFF00;
+}
+
+
+/* old code to remove */
+/*
 .Person{
     stroke: "gray";
     stroke-width: 0.8;
 	  fill: #FFFF00;
-}
-.Organization{
-    stroke: #8080FF;
-    stroke-width: 0.8;
-    fill: #0000FF;
-}
-.Country{
-    stroke: #99FF99;
-    stroke-width: 0.8;
-    fill: #00FF00;
-	   
-}
-.Presentation{
-    stroke: #FA7D7D;
-    stroke-width: 0.8;
-	  fill: #FF0000;
-}
-.Stream{
-    stroke: #FFB280;
-    stroke-width: 0.8;
-	  fill: #FF6600; 
 }
 .Workshop{
     stroke: #99C2C2;
@@ -133,26 +136,20 @@ text.monoLG {
 
 
 /*----Edges */
-.WORKS_AT{
+/* OLD edges values */
+
+.RELATION1{
 	  stroke-width: 0.8;
 	  stroke: #8080FF;
 }
-.FROM{
+.RELATION2{
     stroke-width: 0.8;
 	  stroke: #99FF99;
 }
-.CONTRIB_TO{
+.RELATION3{
 	  stroke-width: 0.8;
 	  stroke: #FA7D7D;
 }
-.IN_STREAM{
-	  stroke-width: 0.8;
-	  stroke: #FFB280;
-}
-.ATTENDS{
-	  stroke-width: 0.8;
-	  stroke: #99C2C2; 
- }
 
 .tooltipLegend{
     position: absolute;
@@ -164,13 +161,11 @@ text.monoLG {
     border: 0px;
     pointer-events: none;
 }
-
 .legendText{
 	  fill: #eee8d5;
     font-size: 12px;  
     font-weight:bold; 
 }
-
 .legendNodeText{       
     fill: black;
     font-size: 12px;  
@@ -187,27 +182,6 @@ text.monoLG {
     fill: black;
     font-size: 13px;  
     font-weight:bold; 
-}
-/* Nodes coloured by Phase/Pool on a Brewer Scale */
-.Phase1-node{
- fill:#e41a1c;
- stroke:#b81417;
-}
-.Phase2-node{
- fill:#4daf4a;
- stroke:#3f903c;
-}
-.Phase3-node{
- fill:#3773b8;
- stroke:#2f629d;
-}
-.Phase4-node{
- fill:#984ea3;
- stroke:#80428a;
-}
-.Pool-node{
- fill:#ffff33;
- stroke:#e6e600;
 }
 
 /*--------------  StudyAgeCat.html ----------------------*/

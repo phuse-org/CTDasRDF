@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-----------------------------------------------------------------------------
-FILE: Attendees-FNGraph.html
-DESCR: Network graph of Data Relations in the SDTM Data as RDF Project
-SRC:   Based on: (svn) /Phuse/Anual/2016/d3/Attendees-FNGraph.html
+FILE: DataRelations-FNGraph.html
+DSCR: Network graph of Data Relations in the SDTM Data as RDF Project
+SRC :   Based on: (svn) /Phuse/Anual/2016/d3/Attendees-FNGraph.html
 INPUT:  /data/DataRelations-FNGraph-test.JSON  - for development
         /data/Attendees-FNGraph-R.JSON , from R,   [TODO!!!]
 OUT  : 
@@ -15,20 +15,22 @@ TODO: : Create the R code based on the original from the Annual conference, but 
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>2016 Attendees FN Graph</title>
+    <title>SDTMasRDF Data Relations</title>
     <script type="text/javascript" src="/SDTMasRDF/vis/d3/d3/d3.v3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/SDTMasRDF/vis/d3/SDTMasRDF.css">
 </head>
 <body>
-<h2>PhUSE 2016 Registrations, Presentations, Workshops</h2>
+<h3>SDTM Data as RDF Data Relations</h3>
 <script type="text/javascript" src="/SDTMasRDF/vis/d3/DataRelations-FNGraph.js"></script>
 
 <script type="text/javascript">
 
 //---- LEGEND  ----------------------------------------------------------------
 // colors is not even used to color the legend or nodes. CSS now used.
-var colors = ["#969696", "#00ff00", "#B30000", "#FFFF00", "#D95F02","#9933ff"];
-var categories = ["Person", "Country", "Organization", "Presentation", "Stream", "Workshop"];
+// var colors = ["#969696", "#00ff00", "#B30000", "#FFFF00", "#D95F02","#9933ff"];  /* original scheme. Nice. Pick from this */
+// colors now assigned in .CSS, remove from here also requires remove of .range
+var colors = ["#969696", "#00ff00", "#B30000", "#FFFF00"];
+var categories = ["StudyOnt", "Protocol", "Code",  "StudyRes"];
 
 // Create the color scale of categories to colors
 var colorScale = d3.scale.ordinal()
