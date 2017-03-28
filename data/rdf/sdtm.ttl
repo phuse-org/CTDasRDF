@@ -1,7 +1,7 @@
 # baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm
 # imports: http://spinrdf.org/spl
-# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
 # imports: http://www.w3.org/2004/02/skos/core
+# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -22,8 +22,8 @@
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm>
   rdf:type owl:Ontology ;
   owl:imports <http://spinrdf.org/spl> ;
-  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 sdtm:DM_Domain
@@ -875,7 +875,7 @@ sdtm:SDTM_DM_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InformedConsent_GRANTED> ;
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InformedConsent_1> ;
             sp:predicate study:hasActivityOutcome ;
             sp:subject [
                 sp:varName "informedconsent"^^xsd:string ;

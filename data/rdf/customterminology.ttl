@@ -48,7 +48,7 @@ custom:AgeOutcomeTerm
   rdfs:label "Age outcome term"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-custom:AgeOutcome_63YRS
+custom:AgeOutcome_1
   rdf:type custom:AgeOutcomeTerm ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "63YRS"^^xsd:string ;
@@ -56,7 +56,7 @@ custom:AgeOutcome_63YRS
   code:hasUnit <http://www.w3.org/2006/time#unitYear> ;
   code:hasValue 63 ;
 .
-custom:AgeOutcome_64YRS
+custom:AgeOutcome_2
   rdf:type custom:AgeOutcomeTerm ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "64YRS"^^xsd:string ;
@@ -64,7 +64,7 @@ custom:AgeOutcome_64YRS
   code:hasUnit <http://www.w3.org/2006/time#unitYear> ;
   code:hasValue 64 ;
 .
-custom:AgeOutcome_71YRS
+custom:AgeOutcome_3
   rdf:type custom:AgeOutcomeTerm ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "71YRS"^^xsd:string ;
@@ -248,31 +248,31 @@ custom:arm_4
   skos:definition ""^^xsd:string ;
   skos:prefLabel "Screen Failure"^^xsd:string ;
 .
-custom:bpoutcome_57MMHG
+custom:bpoutcome_1
   rdf:type custom:BloodPressureOutcome ;
   rdfs:comment ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "57 mmHg"^^xsd:string ;
-  code:hasUnit code:pressureterm_MMHG ;
+  code:hasUnit code:pressureunit_1 ;
   code:hasValue "57"^^xsd:int ;
 .
-custom:bpoutcome_64MMHG
+custom:bpoutcome_2
   rdf:type custom:BloodPressureOutcome ;
   rdfs:comment ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "64 mmHg"^^xsd:string ;
-  code:hasUnit code:pressureterm_MMHG ;
+  code:hasUnit code:pressureunit_1 ;
   code:hasValue 64 ;
 .
-custom:bpoutcome_83MMHG
+custom:bpoutcome_3
   rdf:type custom:BloodPressureOutcome ;
   rdfs:comment ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "83 mmHg"^^xsd:string ;
-  code:hasUnit code:pressureterm_MMHG ;
+  code:hasUnit code:pressureunit_1 ;
   code:hasValue 83 ;
 .
-custom:category_VS1
+custom:category_1
   rdf:type custom:Category ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "CAT1"^^xsd:string ;
@@ -297,29 +297,29 @@ custom:popflag_C8WK
   skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT8"^^xsd:string ;
 .
-custom:product_XANOMELINE-HI
-  rdf:type custom:Product ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "product-XANOMELINE-HI"^^xsd:string ;
-.
-custom:product_XANOMELINE-LO
-  rdf:type custom:Product ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "product-XANOMELINE LO"^^xsd:string ;
-.
-custom:product_XANOMELINE-PLACEBO
+custom:product_1
   rdf:type custom:PlaceboProduct ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "product-XANOMELINE PLACEBO"^^xsd:string ;
 .
-custom:subcategory_VS1
+custom:product_2
+  rdf:type custom:Product ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "product-XANOMELINE LO"^^xsd:string ;
+.
+custom:product_3
+  rdf:type custom:Product ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "product-XANOMELINE-HI"^^xsd:string ;
+.
+custom:subcategory_1
   rdf:type custom:Subcategory ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SCAT1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SCAT1"^^xsd:string ;
 .
-custom:substance_XANOMELINE
+custom:substance_1
   rdf:type custom:ActiveSubstance ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "substance-XANOMELINE"^^xsd:string ;

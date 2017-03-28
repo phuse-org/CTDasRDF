@@ -66,16 +66,16 @@
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#popflag_C8WK>
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_XANOMELINE-HI>
-  rdf:type study:InvestigationalProduct ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_XANOMELINE-LO>
-  rdf:type study:InvestigationalProduct ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_XANOMELINE-PLACEBO>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_1>
   rdf:type study:PlaceboProduct ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#substance_XANOMELINE>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_2>
+  rdf:type study:InvestigationalProduct ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_3>
+  rdf:type study:InvestigationalProduct ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#substance_1>
   rdf:type study:InvestigationalSubstance ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_1>

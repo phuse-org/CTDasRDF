@@ -314,19 +314,19 @@ code:InformedConsentOutcome
   rdfs:subClassOf code:AdministrativeActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
-code:InformedConsent_GRANTED
+code:InformedConsent_1
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "informed consent granted"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-code:InformedConsent_NOTGRANTED
+code:InformedConsent_2
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent not granted"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-code:InformedConsent_WITHDRAWN
+code:InformedConsent_3
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent withdrawn"^^xsd:string ;
@@ -415,7 +415,7 @@ code:PopulationFlagOutcome
   rdfs:subClassOf code:AnalysisOutcome ;
   skos:definition ""^^xsd:string ;
 .
-code:PressureTerm
+code:PressureUnit
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Pressure term"^^xsd:string ;
@@ -534,7 +534,7 @@ code:VitalSignsOutcome
   rdfs:subClassOf code:ObservationOutcome ;
   skos:definition ""^^xsd:string ;
 .
-code:activitystatus_CO
+code:activitystatus_1
   rdf:type code:ActivityStatus ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "CO"^^xsd:string ;
@@ -542,7 +542,7 @@ code:activitystatus_CO
   skos:definition ""^^xsd:string ;
   skos:prefLabel "CO"^^xsd:string ;
 .
-code:activitystatus_ND
+code:activitystatus_2
   rdf:type code:ActivityStatus ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "ND"^^xsd:string ;
@@ -550,7 +550,7 @@ code:activitystatus_ND
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ND"^^xsd:string ;
 .
-code:country_USA
+code:country_1
   rdf:type code:Country ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "USA"^^xsd:string ;
@@ -651,8 +651,8 @@ code:in2cm
   rdfs:label "in2cm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasConversionFactor "2.54"^^xsd:float ;
-  code:hasOriginalUnit code:unit_IN ;
-  code:hasStandardUnit code:unit_CM ;
+  code:hasOriginalUnit code:unit_2 ;
+  code:hasStandardUnit code:unit_1 ;
 .
 code:informedconsent_1
   rdf:type owl:Class ;
@@ -674,13 +674,13 @@ code:intervention_2
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ASSUME BODY POSITION SUPINE"^^xsd:string ;
 .
-code:method_COLLECTED
+code:method_1
   rdf:type code:ActivityMethod ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "COLLECTED"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-code:method_DERIVED
+code:method_2
   rdf:type code:ActivityMethod ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "DERIVED"^^xsd:string ;
@@ -692,10 +692,10 @@ code:mmHg2mmHg
   rdfs:label "mm hg2mm hg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasConversionFactor "1"^^xsd:float ;
-  code:hasOriginalUnit code:pressureterm_MMHG ;
-  code:hasStandardUnit code:pressureterm_MMHG ;
+  code:hasOriginalUnit code:pressureunit_1 ;
+  code:hasStandardUnit code:pressureunit_1 ;
 .
-code:observation-DEMOG
+code:observation_1
   rdf:type code:Observation ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "DEMOG DATA COLLECTION"^^xsd:string ;
@@ -716,7 +716,7 @@ code:popflag_EFF
   skos:altLabel "Efficacy Population Flag"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "EFFICACY"^^xsd:string ;
-  code:hasMethod code:method_DERIVED ;
+  code:hasMethod code:method_2 ;
 .
 code:popflag_ITT
   rdf:type owl:Class ;
@@ -725,7 +725,7 @@ code:popflag_ITT
   skos:altLabel "Intent to Treat Population Flag"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ITT"^^xsd:string ;
-  code:hasMethod code:method_DERIVED ;
+  code:hasMethod code:method_2 ;
 .
 code:popflag_SAF
   rdf:type owl:Class ;
@@ -734,24 +734,24 @@ code:popflag_SAF
   skos:altLabel "Safety Population Flag"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SAFETY"^^xsd:string ;
-  code:hasMethod code:method_DERIVED ;
+  code:hasMethod code:method_2 ;
 .
-code:popflagoutcome_NO
+code:popflagoutcome_1
   rdf:type code:PopulationFlagOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "N"^^xsd:string ;
   skos:definition "indicates that the Person is not a member of the population in question. "^^xsd:string ;
   skos:prefLabel "N"^^xsd:string ;
 .
-code:popflagoutcome_YES
+code:popflagoutcome_2
   rdf:type code:PopulationFlagOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Y"^^xsd:string ;
   skos:definition "indicates that the Person is a member of the population in question. "^^xsd:string ;
   skos:prefLabel "Y"^^xsd:string ;
 .
-code:pressureterm_MMHG
-  rdf:type code:PressureTerm ;
+code:pressureunit_1
+  rdf:type code:PressureUnit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "mmHg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
@@ -820,13 +820,13 @@ code:startrule_3
   code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
 .
-code:unit_CM
+code:unit_1
   rdf:type code:NormalizedUnit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "cm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-code:unit_IN
+code:unit_2
   rdf:type code:OriginalUnit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "in"^^xsd:string ;
@@ -891,19 +891,19 @@ custom:Visit
   rdfs:subClassOf code:Visit ;
 .
 custom:popflag_C16WK
-  code:hasMethod code:method_DERIVED ;
+  code:hasMethod code:method_2 ;
 .
 custom:popflag_C24WK
-  code:hasMethod code:method_DERIVED ;
+  code:hasMethod code:method_2 ;
 .
 custom:popflag_C8WK
-  code:hasMethod code:method_DERIVED ;
+  code:hasMethod code:method_2 ;
 .
-custom:product_XANOMELINE-HI
-  code:hasIngredient custom:substance_XANOMELINE ;
+custom:product_2
+  code:hasIngredient custom:substance_1 ;
 .
-custom:product_XANOMELINE-LO
-  code:hasIngredient custom:substance_XANOMELINE ;
+custom:product_3
+  code:hasIngredient custom:substance_1 ;
 .
 custom:visit_1
   skos:prefLabel "SCREENING1"^^xsd:string ;
