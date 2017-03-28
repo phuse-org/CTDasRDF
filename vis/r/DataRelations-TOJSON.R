@@ -33,10 +33,13 @@ setwd("C:/_gitHub/SDTMasRDF")
 
 rdfSource = load.rdf("data/rdf/study.TTL", format="N3")
 
-# Select all the information associated with Obs113
+# Note how slashes must be DOUBLE escaped when writing the SPARQL query string
+#   within R
+#  TODO: Prefix as separate string, then paste it into >1 query
 query = 'PREFIX EG:    <http://www.example.org/cdiscpilot01#>
 PREFIX RDFS: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX BRIDG_4.1.1.owl: <file:/Users/Frederik/Downloads/BRIDG_4.1.1.owl.xml>
+PREFIX code: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#> 
 PREFIX arg: <http://spinrdf.org/arg#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -58,19 +61,23 @@ WHERE{
     {
         ?s a owl:Class .
         ?s ?p ?o .
-        VALUES (?srcType ?srcGroup ?edgeType) {("Class" "1" "owlEdge")}
+        VALUES (?srcType ?srcGroup ?edgeType) {("study" "1" "studyEdge")}
+        
     }
     # SubClasses
     UNION
     {
         ?s rdfs:subClassOf  ?subclass .
         ?s ?p ?o .
-        VALUES (?srcType ?srcGroup ?edgeType) {("SubClass" "2" "owlEdge")}
+        VALUES (?srcType ?srcGroup ?edgeType) {("study" "2" "studyEdge")}
     }
-}'
+    # Remove SPIN triples
+    FILTER(!(regex(str(?s), "spinrdf.org" ) )) .
+    FILTER(!(regex(str(?p), "spin" ) )) .
+    FILTER(REGEX(STR(?o), "\\\\w+", "i"))  .
+} LIMIT 100'
 
 triples = as.data.frame(sparql.rdf(rdfSource, query))
-
 
 # NEW 
 # Get the unique list of nodes as needed by the JSON file:
@@ -123,14 +130,14 @@ edgesList<-edgesList[c("s", "source", "value", "o", "target", "edgeType")]
 #!!!!!!!!!!!!!!!!!!! 
 #TODO  SET THE TYPES HERE for NODE TYPE!!! 
 
-
-nodeList$type[grepl('pers:pers', nodeList$name)] <- 'person'      
-nodeList$type[grepl('sdtmc:C', nodeList$name)]<- 'cdisc'  
-nodeList$type[grepl('code:', nodeList$name)]  <- 'code'  
+nodeList$type <- nodeList$srcType
+#nodeList$type[grepl('pers:pers', nodeList$name)] <- 'person'      
+#nodeList$type[grepl('sdtmc:C', nodeList$name)]<- 'cdisc'  
+#nodeList$type[grepl('code:', nodeList$name)]  <- 'code'  
 
 # Later change the following to RegX of code:<UppercaseLetter> to detect
 #   all the codelist classes.
-nodeList$freq <-60  # a default value for node size
+nodeList$freq <-20  # a default value for node size
 
 # nodeList$freq[grepl('code:Sex', nodeList$name)]  <- nodeList$freq*2;
 # THis appears to work!!
@@ -163,6 +170,6 @@ edges$type<-edges$edgeType
 all <- list(nodes=nodes,
             edges=edges)
 # Write out to JSON
-fileConn<-file("./data/dm-ToJSON.JSON")
+fileConn<-file("./vis/d3/data/DataRelations-FROMR.JSON")
 writeLines(toJSON(all, pretty=TRUE), fileConn)
 close(fileConn)
