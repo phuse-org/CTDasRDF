@@ -1,11 +1,11 @@
 # baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
 # imports: http://spinrdf.org/spl
-# imports: http://www.bridgmodel.org/owl#
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code
 
 @prefix BRIDG_4.1.1.owl: <file:/Users/Frederik/Downloads/BRIDG_4.1.1.owl.xml> .
 @prefix arg: <http://spinrdf.org/arg#> .
+@prefix code: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -68,16 +68,16 @@ time:hasBeginning
 time:inXSDDateTime
   rdfs:subPropertyOf study:dateTimeInXSDString ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Age>
+code:Age
   rdfs:subClassOf study:Observation ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Arm>
-  rdfs:subClassOf <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DefinedActivityOutcome> ;
+code:Arm
+  rdfs:subClassOf code:DefinedActivityOutcome ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Intervention>
+code:Intervention
   owl:equivalentClass [
       rdf:type owl:Restriction ;
-      owl:allValuesFrom <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InterventionOutcome> ;
+      owl:allValuesFrom code:InterventionOutcome ;
       owl:onProperty study:hasActivityOutcome ;
     ] ;
 .
@@ -97,7 +97,6 @@ time:inXSDDateTime
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   owl:imports <http://spinrdf.org/spl> ;
-  owl:imports <http://www.bridgmodel.org/owl#> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
@@ -194,7 +193,7 @@ study:Activity
             sp:object [
                 sp:varName "anchoroutcometerm"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasPrerequisiteOutcome> ;
+            sp:predicate code:hasPrerequisiteOutcome ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
@@ -203,7 +202,7 @@ study:Activity
             sp:object [
                 sp:varName "strtdelay"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasDelay> ;
+            sp:predicate code:hasDelay ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
@@ -843,7 +842,7 @@ study:activityStatus
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "activity status"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#ActivityStatus> ;
+  rdfs:range code:ActivityStatus ;
   skos:definition ""^^xsd:string ;
 .
 study:agecalc
@@ -931,7 +930,7 @@ study:anatomicLocation
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Observation ;
   rdfs:label "anatomic location"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#AnatomicLocation> ;
+  rdfs:range code:AnatomicLocation ;
   skos:definition ""^^xsd:string ;
 .
 study:baselineFlag
@@ -948,7 +947,7 @@ study:bodyPosition
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Observation ;
   rdfs:label "body position"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#BodyPosition> ;
+  rdfs:range code:BodyPosition ;
   skos:definition ""^^xsd:string ;
 .
 study:dateTimeInXSDString
@@ -1115,7 +1114,7 @@ study:hasActivityID
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has activity code"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DefinedConcept> ;
+  rdfs:range code:DefinedConcept ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1132,9 +1131,9 @@ study:hasActivityOutcome
   rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DefinedActivity> ;
+  rdfs:domain code:DefinedActivity ;
   rdfs:label "has activity outcome"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DefinedActivityOutcome> ;
+  rdfs:range code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
 study:hasAge
@@ -1142,7 +1141,7 @@ study:hasAge
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has age"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#AgeOutcome> ;
+  rdfs:range code:AgeOutcome ;
   owl:propertyChainAxiom (
       study:hasAgeMeasurement
       study:hasActivityOutcome
@@ -1154,7 +1153,7 @@ study:hasAgeMeasurement
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has age"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Age> ;
+  rdfs:range code:Age ;
   rdfs:subPropertyOf study:participatesIn ;
   skos:definition ""^^xsd:string ;
 .
@@ -1163,7 +1162,7 @@ study:hasCategory
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has category"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Category> ;
+  rdfs:range code:Category ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1173,7 +1172,7 @@ study:hasCountry
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Site ;
   rdfs:label "country"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Country> ;
+  rdfs:range code:Country ;
   skos:definition ""^^xsd:string ;
 .
 study:hasDate
@@ -1189,7 +1188,7 @@ study:hasEthnicity
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has ethnicity term"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Ethnicity> ;
+  rdfs:range code:Ethnicity ;
   skos:definition ""^^xsd:string ;
 .
 study:hasIdentifier
@@ -1242,7 +1241,7 @@ study:hasMethod
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has method"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#ActivityMethod> ;
+  rdfs:range code:ActivityMethod ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "links an activity with the method used to condct the activity, i.e. how the activity outcome/result was obtained. "^^xsd:string ;
 .
@@ -1275,7 +1274,7 @@ study:hasRace
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has race"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Race> ;
+  rdfs:range code:Race ;
   skos:definition ""^^xsd:string ;
 .
 study:hasReferenceInterval
@@ -1302,7 +1301,7 @@ study:hasSex
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has sex"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Sex> ;
+  rdfs:range code:Sex ;
   skos:definition ""^^xsd:string ;
 .
 study:hasSite
@@ -1386,7 +1385,7 @@ study:hasSubcategory
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has subcategory"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Subcategory> ;
+  rdfs:range code:Subcategory ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1431,7 +1430,7 @@ study:laterality
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "laterality"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Laterality> ;
+  rdfs:range code:Laterality ;
   skos:definition ""^^xsd:string ;
 .
 study:participatesIn
@@ -1597,6 +1596,6 @@ study:treatedAccordingToArm
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:EnrolledSubject ;
   rdfs:label "treated according to"^^xsd:string ;
-  rdfs:range <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Arm> ;
+  rdfs:range code:Arm ;
   skos:definition ""^^xsd:string ;
 .
