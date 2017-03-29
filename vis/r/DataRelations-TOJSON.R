@@ -11,6 +11,7 @@
 #        in the NODES dataset into the EDGES dataframe, then use the generated ID's  
 #        for the from and to in the JSON.
 #        Source: C:\_sandbox\PhUSE\SDE\Dec2016-RTP\r\DM-ToJSON.R
+# VIS  : http://localhost:8000/SDTMasRDF/vis/d3/DataRelations-FNGraph.html
 # INPUT: /SDTMasRDF/data/rdf/study.ttl
 #                           /code.ttl
 #                        ....etc.
@@ -31,17 +32,20 @@ library(visNetwork)
 #-- Local TTL file
 setwd("C:/_gitHub/SDTMasRDF")
 
-rdfSource = load.rdf("data/rdf/study.TTL", format="N3")
+studyRdfSource = load.rdf("data/rdf/study.TTL", format="N3")
+codeRdfSource  = load.rdf("data/rdf/code.TTL", format="N3")
 
 # Note how slashes must be DOUBLE escaped when writing the SPARQL query string
 #   within R
-#  TODO: Prefix as separate string, then paste it into >1 query
-query = 'PREFIX EG:    <http://www.example.org/cdiscpilot01#>
-PREFIX RDFS: <http://www.w3.org/2000/01/rdf-schema#>
+#  TODO: Review prefixes from removal: EG:
+prefixes = '
+PREFIX arg: <http://spinrdf.org/arg#>
 PREFIX BRIDG_4.1.1.owl: <file:/Users/Frederik/Downloads/BRIDG_4.1.1.owl.xml>
 PREFIX code: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#> 
-PREFIX arg: <http://spinrdf.org/arg#>
+prefix custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
+PREFIX EG:    <http://www.example.org/cdiscpilot01#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX schema: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#>
@@ -53,8 +57,15 @@ PREFIX spin: <http://spinrdf.org/spin#>
 PREFIX spl: <http://spinrdf.org/spl#>
 PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
 PREFIX time: <http://www.w3.org/2006/time#>
+prefix xhtm: <http://www.w3.org/1999/xhtml>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+'
 
+# Set a limit for the queries during development
+# limit = ""
+limit = "limit 1000"
+# Bring in only the Classes, Subclasses and associated triples from the Study Ontology
+studyQuery = '
 SELECT ?s ?p ?o ?srcType ?srcGroup ?edgeType
 WHERE{
     # Classes
@@ -75,9 +86,32 @@ WHERE{
     FILTER(!(regex(str(?s), "spinrdf.org" ) )) .
     FILTER(!(regex(str(?p), "spin" ) )) .
     FILTER(REGEX(STR(?o), "\\\\w+", "i"))  .
-} LIMIT 100'
+} '
 
-triples = as.data.frame(sparql.rdf(rdfSource, query))
+query<-paste0(prefixes, studyQuery, limit)
+studyTriples = as.data.frame(sparql.rdf(studyRdfSource, query))
+
+#-- CODE.TTL
+
+codeQuery = '
+SELECT ?s ?p ?o ?srcType ?srcGroup ?edgeType
+WHERE{
+    {
+        ?s ?p ?o .
+        VALUES (?srcType ?srcGroup ?edgeType) {("code" "2" "codeEdge")}
+    }
+    # Remove SPIN triples
+    FILTER(!(regex(str(?s), "spinrdf.org" ) )) .
+    FILTER(!(regex(str(?p), "spin" ) )) .
+    FILTER(REGEX(STR(?o), "\\\\w+", "i"))  .
+} '
+
+query<-paste0(prefixes, codeQuery, limit)
+codeTriples = as.data.frame(sparql.rdf(codeRdfSource, query))
+
+
+
+triples <- rbind(studyTriples, codeTriples)
 
 # NEW 
 # Get the unique list of nodes as needed by the JSON file:
@@ -137,11 +171,11 @@ nodeList$type <- nodeList$srcType
 
 # Later change the following to RegX of code:<UppercaseLetter> to detect
 #   all the codelist classes.
-nodeList$freq <-20  # a default value for node size
+nodeList$freq <-1  # a default value for node size
 
 # nodeList$freq[grepl('code:Sex', nodeList$name)]  <- nodeList$freq*2;
-# THis appears to work!!
-nodeList$freq[grepl('code:[A-Z]', nodeList$name)]  <- nodeList$freq*2;
+# Adjust node size based on type of node (if needed) 
+# nodeList$freq[grepl('code:[A-Z]', nodeList$name)]  <- nodeList$freq*2;
 
 
 nodes<-data.frame(id=nodeList$id,

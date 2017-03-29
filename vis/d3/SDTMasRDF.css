@@ -98,12 +98,28 @@ text.monoLG {
 "#666699", // 16-BlGry  
 "#A3A3C2"  // 17-LtBlGr 
 */
-/*---- Nodes */
+/*-- Nodes and Edges */
 .study{
     stroke: #e60000;
     stroke-width: 0.8;
     fill: #e60000;
 }
+.studyEdge{
+	  stroke-width: 0.8;
+	  stroke: #ff3333;
+}
+
+.code{
+    stroke: #00ff00;
+    stroke-width: 0.8;
+    fill: #00ff00;
+}
+.codeEdge{
+	  stroke-width: 0.8;
+	  stroke: #99ff99;
+}
+
+
 
 .StudyOnt{
     stroke: #FA7D7D;
@@ -125,14 +141,6 @@ text.monoLG {
     stroke-width: 0.8;
     fill: #FFFF00;
 }
-
-/*----Edges */
-
-.studyEdge{
-	  stroke-width: 0.8;
-	  stroke: #ff3333;
-}
-
 
 .tooltipLegend{
     position: absolute;
