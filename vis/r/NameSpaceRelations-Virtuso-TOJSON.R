@@ -1,40 +1,33 @@
 ###############################################################################
 # -----------------------------------------------------------------------------
-# FILE : /SDTMasRDF/vis/r/DataRelations-FNGraph.R
-# DESCR: Create JSON file consumed by DataRelations-FNGraph.html for display of 
-#        relations between the triples in study.ttl, code.ttl, etc.
-# SRC  : 
-# REF  : 
+# FILE : /SDTMasRDF/vis/r/NamespaceRelations-FNGraph.R
+# DESCR: Create JSON file consumed by NamespaceRelations-FNGraph.html for display of 
+#        relations between the namespaces in the SDTMasRDF named graph
+# REQ  : TTL data uploaded to Virtuoso named graph SDTMasRDF running on localhost
 # NOTES: visNetwork docs and examples: http://dataknowledge.github.io/visNetwork/
 #        For D3js, node ID must start at 0 and progress from there.
-#        Previous use from Neo4j used the original NEO4j IDs to merge the generated ID 
-#        in the NODES dataset into the EDGES dataframe, then use the generated ID's  
-#        for the from and to in the JSON.
-#        Source: C:\_sandbox\PhUSE\SDE\Dec2016-RTP\r\DM-ToJSON.R
+#        Node and Edge Types are coded as Upppercase for consistent implmentation 
+#          in the CSS
 # VIS  : http://localhost:8000/SDTMasRDF/vis/d3/DataRelations-FNGraph.html
 # INPUT: /SDTMasRDF/data/rdf/study.ttl
 #                           /code.ttl
-#                        ....etc.
+#                        ....etc., uploaded to Virtuoso & served on localhost
 # OUT  : /SDTMasRDF/vis/d3/data/DataRelations-FNGraph.JSON  
-# REQ  :
 #        
 # TODO : 
 #
 ###############################################################################
-library(rrdf)
-library(reshape)  #  melt
-library(visNetwork)
-library(plyr)
-library(jsonlite)
-library(visNetwork)
+library(rrdf)     # Read / Create RDF
+library(reshape)  # melt
+library(plyr)     # various goodies
+library(jsonlite) # Nice, clean JSON creation
 
-#-- Local TTL file
 setwd("C:/_gitHub/SDTMasRDF")
 
-studyRdfSource = load.rdf("data/rdf/study.TTL", format="N3")
-codeRdfSource  = load.rdf("data/rdf/code.TTL", format="N3")
+#-- Local endpoint
+endpoint = "http://localhost:8890/sparql"
 
-# Note how slashes must be DOUBLE escaped when writing the SPARQL query string
+# Note how back slashes must be DOUBLE escaped when writing the SPARQL query string
 #   within R
 #  TODO: Review prefixes from removal: EG:
 prefixes = '
@@ -59,65 +52,34 @@ PREFIX time: <http://www.w3.org/2006/time#>
 prefix xhtm: <http://www.w3.org/1999/xhtml>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 '
-
 # Set a limit for the queries during development
-# limit = ""
-limit = "limit 1000"
-# Bring in only the Classes, Subclasses and associated triples from the Study Ontology
-studyQuery = '
-SELECT ?s ?p ?o ?srcType ?srcGroup ?edgeType
-WHERE{
-    # Classes
-    {
-        ?s a owl:Class .
-        ?s ?p ?o .
-        VALUES (?srcType ?srcGroup ?edgeType) {("study" "1" "studyEdge")}
-        
-    }
-    # SubClasses
-    UNION
-    {
-        ?s rdfs:subClassOf  ?subclass .
-        ?s ?p ?o .
-        VALUES (?srcType ?srcGroup ?edgeType) {("study" "2" "studyEdge")}
-    }
-    # Remove SPIN triples
-    FILTER(!(regex(str(?s), "spinrdf.org" ) )) .
-    FILTER(!(regex(str(?p), "spin" ) )) .
-    FILTER(REGEX(STR(?o), "\\\\w+", "i"))  .
+limit = ""
+# limit = "limit 1000"
+
+# Currently only looking at code, study, time, protocol namespaces
+nameSpaceQuery = '
+SELECT *
+FROM <http://localhost:8890/SDTMasRDF>
+WHERE {
+   ?s ?p ?o
+   FILTER(regex(str(?s), "(code|study|time|cd01p)#"))
+   FILTER(regex(str(?o), "(code|study|time|cd01p)#"))
 } '
 
-query<-paste0(prefixes, studyQuery, limit)
-studyTriples = as.data.frame(sparql.rdf(studyRdfSource, query))
+query<-paste0(prefixes, nameSpaceQuery, limit)
+triples = as.data.frame(sparql.remote(endpoint, query))
 
-#-- CODE.TTL
-
-codeQuery = '
-SELECT ?s ?p ?o ?srcType ?srcGroup ?edgeType
-WHERE{
-    {
-        ?s ?p ?o .
-        VALUES (?srcType ?srcGroup ?edgeType) {("code" "2" "codeEdge")}
-    }
-    # Remove SPIN triples
-    FILTER(!(regex(str(?s), "spinrdf.org" ) )) .
-    FILTER(!(regex(str(?p), "spin" ) )) .
-    FILTER(REGEX(STR(?o), "\\\\w+", "i"))  .
-} '
-
-query<-paste0(prefixes, codeQuery, limit)
-codeTriples = as.data.frame(sparql.rdf(codeRdfSource, query))
-
-
-
-triples <- rbind(studyTriples, codeTriples)
+# Source node type set manually, post-query
+triples$srcType[grepl('code:', triples$s)] <- 'code'      
+triples$srcType[grepl('study:', triples$s)] <- 'study'      
+triples$srcType[grepl('time:', triples$s)] <- 'time'      
 
 # NEW 
 # Get the unique list of nodes as needed by the JSON file:
 # Combine Subject and Object into a single column
 # "id.vars" is the list of columns to keep untouched. The unamed ones are 
 # melted into the "value" column.
-nodeList <- melt(triples, id.vars=c("p", "srcType", "srcGroup" ))   # subject, object into 1 column.
+nodeList <- melt(triples, id.vars=c("p", "srcType" ))   # subject, object into 1 column.
 
 # A node can be both a Subject and a Predicate so ensure a unique list of node names
 #  by dropping duplicate values.
@@ -125,23 +87,22 @@ nodeList <- nodeList[!duplicated(nodeList$value),]
 
 # Rename the columns 
 # TODO: DROP ones not needed!
-colnames(nodeList)<-c("p", "srcType", "group", "var", "name")  # column name should be name, not value.
+colnames(nodeList)<-c("p", "srcType", "var", "name")  # column name should be name, not value.
 
 # Rename column value to name for use in nodes list for JSON
 nodeList <-arrange(nodeList,name)  # sort
 
-# Delete the artifact nodes where var=edgeType
-nodeList <-nodeList[!(nodeList$var=="edgeType"),]
 
 # Create the node ID values starting at 0 (as req. by D3JS)
 id<-0:(nrow(nodeList)-1)   # Generate a list of ID numbers
 nodeList<-data.frame(id, nodeList)  
-nodeList
+head(nodeList)
+head(triples)
 
 # Attach the ID values to Subject Nodes
 edgesList <- merge (triples, nodeList, by.x="s", by.y="name")
 
-
+# id becomes the subject node id
 edgesList<-rename(edgesList, c("id"="source"))
 
 # Attach ID values to Object Nodes
@@ -150,20 +111,20 @@ edgesList <- merge (edgesList, nodeList, by.x="o", by.y="name")
 
 
 edgesList<-rename(edgesList, c("id"="target", "p"="value"))
+
+# Construct edgeType by removing the prefix and converting to 
+#  upper case for use in CSS display
+edgesList$edgeType<-paste0("EDGE_", toupper(sub("(\\w+):","",edgesList$value)))
+
+
+
 head(edgesList)
+
 
 # Reorder for pretty-pretty
 edgesList<-edgesList[c("s", "source", "value", "o", "target", "edgeType")]
 
-# In code above, create "nodes" instead of nodesList
-# 1. Make the NODES dataframe 
-
-#nodeList$type<- ifelse(grepl(nodeList$name, tf:hss), 'Person', '')
-
-#!!!!!!!!!!!!!!!!!!! 
-#TODO  SET THE TYPES HERE for NODE TYPE!!! 
-
-nodeList$type <- nodeList$srcType
+nodeList$type <- toupper(nodeList$srcType)
 #nodeList$type[grepl('pers:pers', nodeList$name)] <- 'person'      
 #nodeList$type[grepl('sdtmc:C', nodeList$name)]<- 'cdisc'  
 #nodeList$type[grepl('code:', nodeList$name)]  <- 'code'  
@@ -176,14 +137,14 @@ nodeList$freq <-1  # a default value for node size
 # Adjust node size based on type of node (if needed) 
 # nodeList$freq[grepl('code:[A-Z]', nodeList$name)]  <- nodeList$freq*2;
 
+head(nodeList)
 
 nodes<-data.frame(id=nodeList$id,
                   nodeID=nodeList$id,
                   name=nodeList$name,
                   type=nodeList$type,
                   label=nodeList$name,
-                  freq=nodeList$freq,
-                  group=nodeList$group)
+                  freq=nodeList$freq)
 # Later can be set based on number of obs, etc.
 #nodes$nodesize=4  #
 
@@ -193,16 +154,10 @@ nodes<-data.frame(id=nodeList$id,
 edges<- as.data.frame(edgesList[c("source", "target", "value", "edgeType")])
 
 
-
-# Predicates
-# edges$type<-"FROM" #  DEFAULT 
-# edges$type[grepl('person', edges$edgeType)]  <- 'persEdge'  
-edges$type<-edges$edgeType
-
 # Combine the nodes and edges into a single dataframe for conversion to JSON
 all <- list(nodes=nodes,
             edges=edges)
 # Write out to JSON
-fileConn<-file("./vis/d3/data/DataRelations-FROMR.JSON")
+fileConn<-file("./vis/d3/data/NameSpaceRelations-FROMR.JSON")
 writeLines(toJSON(all, pretty=TRUE), fileConn)
 close(fileConn)

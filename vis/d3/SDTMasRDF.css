@@ -99,7 +99,7 @@ text.monoLG {
 "#A3A3C2"  // 17-LtBlGr 
 */
 /*-- Nodes and Edges */
-.study{
+.STUDY{
     stroke: #e60000;
     stroke-width: 0.8;
     fill: #e60000;
@@ -108,38 +108,48 @@ text.monoLG {
 	  stroke-width: 0.8;
 	  stroke: #ff3333;
 }
-
-.code{
+.CODE{
     stroke: #00ff00;
     stroke-width: 0.8;
     fill: #00ff00;
 }
-.codeEdge{
-	  stroke-width: 0.8;
-	  stroke: #99ff99;
-}
 
-
-
-.StudyOnt{
+.TIME{
     stroke: #FA7D7D;
     stroke-width: 0.8;
-    fill: #FF0000;
+    fill: blue;
 }
-.Protocol{
-    stroke: #ffb366;
-    stroke-width: 0.8;
-	  fill: #ffb366;
+
+/* Edge classes */
+
+.EDGE_SUBCLASSOF{ 
+	  stroke-width: 0.8;
+	  stroke: grey;
 }
-.Code{
-    stroke: #0000FF;
-    stroke-width: 0.8;
-    fill: #00FF00;
+.EDGE_EQUIVALENTCLASS{ 
+	  stroke-width: 0.8;
+	  stroke: green;
 }
-.StudyRes{
-    stroke: #8080FF;
-    stroke-width: 0.8;
-    fill: #FFFF00;
+.EDGE_DOMAIN{ 
+	  stroke-width: 0.8;
+	  stroke: blue;
+}
+.EDGE_RANGE{ 
+	  stroke-width: 0.8;
+	  stroke: lightblue;
+}
+.EDGE_TYPE{ 
+	  stroke-width: 0.8;
+	  stroke: purple;
+}
+.EDGE_SUBPROPERTYOF{ 
+	  stroke-width: 0.8;
+	  stroke: orange;
+}
+
+.EDGE_INVERSEOF{ 
+	  stroke-width: 0.8;
+	  stroke: red;
 }
 
 .tooltipLegend{

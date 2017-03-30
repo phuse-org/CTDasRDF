@@ -5,7 +5,7 @@ DSCR: Network graph of Data Relations in the SDTM Data as RDF Project
 SRC :   Based on: (svn) /Phuse/Anual/2016/d3/Attendees-FNGraph.html
 INPUT:  /data/DataRelations-FNGraph-test.JSON  - for development
         /data/Attendees-FNGraph-R.JSON , from R,   [TODO!!!]
-OUT  :  http://localhost:8000/SDTMasRDF/vis/d3/DataRelations-FNGraph.html
+OUT  :  http://localhost:8000/SDTMasRDF/vis/d3/NameSpaceRelations-FNGraph.html
 REQ  : DataRelations-FNGraph.js, SDTMasRDF.css
 NOTES: 
 TODO: : Create the R code based on the original from the Annual conference, but with
@@ -15,13 +15,13 @@ TODO: : Create the R code based on the original from the Annual conference, but 
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SDTMasRDF Data Relations</title>
+    <title>SDTMasRDF Namespace Relations</title>
     <script type="text/javascript" src="/SDTMasRDF/vis/d3/d3/d3.v3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/SDTMasRDF/vis/d3/SDTMasRDF.css">
 </head>
 <body>
 <h3>SDTM Data as RDF Data Relations</h3>
-<script type="text/javascript" src="/SDTMasRDF/vis/d3/DataRelations-FNGraph.js"></script>
+<script type="text/javascript" src="/SDTMasRDF/vis/d3/NamespaceRelations-FNGraph.js"></script>
 
 <script type="text/javascript">
 
@@ -89,7 +89,7 @@ legend.append("text")
 //---- LEGEND END -------------------------------------------------------------
 
 // d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-test.JSON", function(dataset) {
- d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FROMR.JSON", function(dataset) {
+ d3.json("/SDTMasRDF/vis/d3/data/NamespaceRelations-FROMR.JSON", function(dataset) {
 // d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-R.JSON", function(dataset) {
     var force = d3.layout.force()
         .nodes(dataset.nodes)
@@ -108,9 +108,9 @@ legend.append("text")
         .enter()
         .append("line")
         .attr("id",function(d,i){return 'edge'+i})
-        
+        //TW testing here
         .attr("class", function (d) {
-            return d.type;
+            return d.edgeType;
         });
  
    // Add tooltip mouseover text for Edges (links) 
