@@ -121,32 +121,32 @@ text.monoLG {
 }
 
 /* Edge classes */
-.EDGE_SUBCLASSOF{ 
+.SUBCLASSOF{ 
 
 	  stroke: grey;
 }
-.EDGE_EQUIVALENTCLASS{ 
+.EQUIVALENTCLASS{ 
 
 	  stroke: green;
 }
-.EDGE_DOMAIN{ 
+.DOMAIN{ 
 
 	  stroke: blue;
 }
-.EDGE_RANGE{ 
+.RANGE{ 
 
 	  stroke: lightblue;
 }
-.EDGE_TYPE{ 
+.TYPE{ 
 
 	  stroke: purple;
 }
-.EDGE_SUBPROPERTYOF{ 
+.SUBPROPERTYOF{ 
 
 	  stroke: orange;
 }
 
-.EDGE_INVERSEOF{ 
+.INVERSEOF{ 
 
 	  stroke: red;
 }

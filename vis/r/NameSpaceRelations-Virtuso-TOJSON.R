@@ -113,12 +113,10 @@ edgesList<-rename(edgesList, c("id"="target", "p"="value"))
 
 # Construct edgeType by removing the prefix and converting to 
 #  upper case for use in CSS display
-edgesList$edgeType<-paste0("EDGE_", toupper(sub("(\\w+):","",edgesList$value)))
-
-
+# edgesList$edgeType<-paste0("EDGE_", toupper(sub("(\\w+):","",edgesList$value)))
+edgesList$edgeType<-toupper(sub("(\\w+):","",edgesList$value))
 
 head(edgesList)
-
 
 # Reorder for pretty-pretty
 edgesList<-edgesList[c("s", "source", "value", "o", "target", "edgeType")]

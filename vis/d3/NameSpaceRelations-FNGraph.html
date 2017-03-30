@@ -20,7 +20,7 @@ TODO: : Create the R code based on the original from the Annual conference, but 
     <link rel="stylesheet" type="text/css" href="/SDTMasRDF/vis/d3/SDTMasRDF.css">
 </head>
 <body>
-<h3>SDTM Data as RDF Data Relations</h3>
+<h3>SDTM Data as RDF: Namespace Relations</h3>
 <script type="text/javascript">
 var w = 1300;  
 var h = 900;  
@@ -51,7 +51,6 @@ var color = d3.scale.ordinal()
                        "#99C2C2", // 15-LtSlGre Cube Struct Link
                        "#666699", // 16-BlGry  SKOS
                        "#A3A3C2"  // 17-LtBlGr SKOS Link
-                       
                        ]);
 
 //Width and height for SVG area
@@ -73,22 +72,13 @@ var svg = d3.select("body").append("svg")
   }
 
 //---- LEGEND  ----------------------------------------------------------------
-// colors is not even used to color the legend or nodes. CSS now used.
-// var colors = ["#969696", "#00ff00", "#B30000", "#FFFF00", "#D95F02","#9933ff"];  /* original scheme. Nice. Pick from this */
-// colors now assigned in .CSS, remove from here also requires remove of .range
-var colors = ["#969696", "#00ff00", "#B30000", "#FFFF00"];
-var categories = ["StudyOnt", "Protocol", "Code",  "StudyRes"];
+var nodeTypes = ["CODE", "STUDY", "TIME"];
 
 var nodeRadius = 5  // Size of nodes. Later make this a caculation based on number of nodes in display?
 // Variables for clustering 
 var nb_group=3 // divide display into  n regions, 1 for nodeCategory value
 var angle = 2*Math.PI/nb_group; // Angle to divide up the display
 var intensity = 200; // increase intensity if many groups
-
-// Create the color scale of categories to colors
-var colorScale = d3.scale.ordinal()
-    .domain(categories)
-    .range(colors);
 
 // node size scale
 var nodeScale = d3.scale.linear()
@@ -116,7 +106,7 @@ svg.append("rect")
      .attr("class", "legendBox");
 
 var legend = svg.selectAll(".legend")
-    .data(colorScale.domain())
+    .data(nodeTypes)
     .enter()
     .append("g")
     .attr("class", "legend");
@@ -128,14 +118,14 @@ legend.append("circle")
     .attr("cy",function(d, i) { return 32 * i +50; })
     .attr("r", 8)
     .attr("class", function (d, i) {
-            return categories[i];
+            return nodeTypes[i];
         })
     .style("fill-opacity", 0.9);
      
 legend.append("text")
   .attr("class", "monoLG")
   .text(function(d, i) { 
-  	 return categories[i];
+  	 return nodeTypes[i];
   })
   .attr("x", legendIndent + 15)  // +n = spacing in from left edge of legend box
   .attr("y", function(d, i) { return (32 * i) +55; }); // 32* = spacing, +nn to center on node
