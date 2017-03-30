@@ -21,9 +21,49 @@ TODO: : Create the R code based on the original from the Annual conference, but 
 </head>
 <body>
 <h3>SDTM Data as RDF Data Relations</h3>
-<script type="text/javascript" src="/SDTMasRDF/vis/d3/NamespaceRelations-FNGraph.js"></script>
-
 <script type="text/javascript">
+var w = 1300;  //1100
+var h = 900;  //700
+
+var color = d3.scale.ordinal()
+              .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
+              .range([ "#FFFFFF", // 1-Wht     Default/ Cube Structure
+                       "#00FF00", // 2-BrGre   Atributes
+                       "#99FF99", // 3-LtGre   Atribute link
+                       "#FF0000", // 4-BrRed   Measure
+                       "#FA7D7D", // 5-LtRed   Measure link
+                       "#0000FF", // 6-BrBlu   Dimension
+                       "#8080FF", // 7-LtBlu   Dimension link
+                       "#FF6600", // 8-BrOr    CodeLists
+                       "#FFB280", // 9-LtOr    CodeLists link
+                       "#CC00FF", // 10-BrPur  CDISC
+                       "#EB99FF", // 11-LtPur  CDISC link
+                       "#FFFF00", // 12-BrYel  Observations
+                       "#FFFF80", // 13-LtYel  Observations link
+                       "#006666", // 14-SlGre   Cube Struct
+                       "#99C2C2", // 15-LtSlGre Cube Struct Link
+                       "#666699", // 16-BlGry  SKOS
+                       "#A3A3C2"  // 17-LtBlGr SKOS Link
+                       
+                       ]);
+
+//Width and height for SVG area
+var svg = d3.select("body").append("svg")
+            .attr("width", w)
+            .attr("height", h)
+            //.attr("viewBox", "0 0 2500 2500")
+            .style("background-color", '#002b36');
+
+
+  // Double click to 'unfix' the node and have forces start to act on it again.
+  function dblclick(d) {
+    d3.select(this).classed("fixed", d.fixed = false);
+  }
+  // Set the "fixed" property of the dragged node to TRUE when a dragstart event is initiated,
+  //   - removes "forces" from acting on that node and changing its position.
+  function dragstart(d) {
+    d3.select(this).classed("fixed", d.fixed = true);
+  }
 
 //---- LEGEND  ----------------------------------------------------------------
 // colors is not even used to color the legend or nodes. CSS now used.
@@ -174,12 +214,23 @@ legend.append("text")
             'id':function(d,i) {return 'edgepath'+i}})
         .style("pointer-events", "none");
 
-    force.on("tick", function() {
+    force.on("tick", function(e) {
+    	  // position regulator for nodes must update d.x and d.y BEFORE edges are positioned
+        nodes.attr("transform", function(d) { 
+            d.x += (intensity*Math.cos(angle*(d.nodeCategory)) + w/2 - d.x)*e.alpha;
+            d.y += (intensity*Math.sin(angle*(d.nodeCategory)) + h/2 - d.y)*e.alpha;
+
+        	
+        	
+        	//return "translate(" + d.x + "," + d.y + ")"; 
+        	
+        	});
+
+
         edges.attr("x1", function(d) { return d.source.x; })
             .attr("y1", function(d) { return d.source.y; })
             .attr("x2", function(d) { return d.target.x; })
             .attr("y2", function(d) { return d.target.y; });
-        nodes.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
       
         edgepaths.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
             //console.log(d)
