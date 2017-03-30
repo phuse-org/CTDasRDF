@@ -5,7 +5,7 @@ DSCR: Network graph of Data Relations in the SDTM Data as RDF Project
 SRC :   Based on: (svn) /Phuse/Anual/2016/d3/Attendees-FNGraph.html
 INPUT:  /data/DataRelations-FNGraph-test.JSON  - for development
         /data/Attendees-FNGraph-R.JSON , from R,   [TODO!!!]
-OUT  :  http://localhost:8000/SDTMasRDF/vis/d3/NameSpaceRelations-FNGraph.html
+VIEW  :  http://localhost:8000/SDTMasRDF/vis/d3/NameSpaceRelations-FNGraph.html
 REQ  : DataRelations-FNGraph.js, SDTMasRDF.css
 NOTES: 
 TODO: : Create the R code based on the original from the Annual conference, but with
@@ -31,6 +31,12 @@ TODO: : Create the R code based on the original from the Annual conference, but 
 // colors now assigned in .CSS, remove from here also requires remove of .range
 var colors = ["#969696", "#00ff00", "#B30000", "#FFFF00"];
 var categories = ["StudyOnt", "Protocol", "Code",  "StudyRes"];
+
+var nodeRadius = 5  // Size of nodes. Later make this a caculation based on number of nodes in display?
+// Variables for clustering 
+var nb_group=43 // divide display into  n regions, 1 for nodeCategory value
+var angle = 2*Math.PI/nb_group; // Angle to divide up the display
+var intensity = 100; // increase intensity if many groups
 
 // Create the color scale of categories to colors
 var colorScale = d3.scale.ordinal()
@@ -108,14 +114,11 @@ legend.append("text")
         .enter()
         .append("line")
         .attr("id",function(d,i){return 'edge'+i})
-        //TW testing here
         .attr("class", function (d) {
             return d.edgeType;
         });
- 
-   // Add tooltip mouseover text for Edges (links) 
-     edges.append("title")
-         // .text(function(d){return d.value}); 
+    // Add tooltip mouseover text for Edges (links) 
+    edges.append("title")
         .text(function(d) { return d.type });
          
    var nodes = svg.selectAll("g.node")
@@ -129,36 +132,9 @@ legend.append("text")
         })
         .call(drag);
 
-    // Change the R for size of the node
-    // Node size depends on Group id number
-    
-    
     nodes.append("circle")
-        .attr("r", function(d) { return nodeScale(d.freq); 
-        	
-   //var scale = d3.scale.linear.domain([ inputMin, inputMax ]).range([ outputMin, outputMax ]);
-//vis.selectAll("circle")
-  // etc...
- // .attr( 'r', function(d) { return scale(d.count) });     	
-          //  if (d.label == "NA")  	{
-        	//      return 3;
-        	//  }
-        	  // Scale the node size
-        //    else{
-          //  	return nodeScale(d);
-            //}
-
-        	  // OLD CODE FOLLOWS
-        	  //Decrease the size of the Country Node due to large number from a few countries.
-        	  //else if (d.type == "Country" && d.freq >6) {
-        	  //	     return (d.freq/6+3);
-        	 // }
-        	  //TODO : Decrease the size fo the OPTION (WORKSHOP) nodes similar to how is done for COUNTRY
-        	  
-        	 // else{
-        	 //     return (d.freq/2 + 3); 
-        	 // }
-        })
+        // .attr("r", function(d) { return nodeScale(d.freq); 
+        .attr("r", nodeRadius)
         .attr("class", function (d) {
             return d.type;
         })
@@ -179,15 +155,12 @@ legend.append("text")
             if (d.id == 0) {return ""} 
             else {return -15;}
         ;})// offset the text from the node. 
-        //.attr("dy", ".35em") // used when offsetting the text from the node. 
-        .attr("dy", "-1.5em") // Move label above node with -
+        .attr("dy", "-1.5em") // Offset label fromnode. Move above node with -
         .attr("text-anchor", "middle")  // Center text horizontally
-        // .text(function(d) { return d.label+' : '+d.freq  })  // Name and Freq
         .text(function(d) { return d.label })            // Just the name
-      //  .attr("id", function(d,i){return 'nodegroup'+d.labelgrp})
-         
-    // Paths along which to apply the edge label
-    //TW Why is fill and stroke entered but not used?? opacity=0!
+
+    // Egdge Paths
+    //TODO remove stroke and path: are part of CSS now
     var edgepaths = svg.selectAll(".edgepath")
         .data(dataset.edges)
         .enter()

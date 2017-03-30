@@ -70,7 +70,7 @@ query<-paste0(prefixes, nameSpaceQuery, limit)
 triples = as.data.frame(sparql.remote(endpoint, query))
 
 # Source node type set manually, post-query
-triples$srcType[grepl('code:', triples$s)] <- 'code'      
+triples$srcType[grepl('code:', triples$s)] <- 'code' 
 triples$srcType[grepl('study:', triples$s)] <- 'study'      
 triples$srcType[grepl('time:', triples$s)] <- 'time'      
 
@@ -91,7 +91,6 @@ colnames(nodeList)<-c("p", "srcType", "var", "name")  # column name should be na
 
 # Rename column value to name for use in nodes list for JSON
 nodeList <-arrange(nodeList,name)  # sort
-
 
 # Create the node ID values starting at 0 (as req. by D3JS)
 id<-0:(nrow(nodeList)-1)   # Generate a list of ID numbers
@@ -125,13 +124,17 @@ head(edgesList)
 edgesList<-edgesList[c("s", "source", "value", "o", "target", "edgeType")]
 
 nodeList$type <- toupper(nodeList$srcType)
-#nodeList$type[grepl('pers:pers', nodeList$name)] <- 'person'      
+# nodeCategory used for grouping in the FN graph. Assign grouping based on type
+#   Make this smarter later: sort on unique type and assign index value.
+nodeList$nodeCategory[grepl('CODE',  nodeList$type)] <- '1'      
+nodeList$nodeCategory[grepl('STUDY', nodeList$type)] <- '2'      
+nodeList$nodeCategory[grepl('TIME',  nodeList$type)] <- '3'      
 #nodeList$type[grepl('sdtmc:C', nodeList$name)]<- 'cdisc'  
 #nodeList$type[grepl('code:', nodeList$name)]  <- 'code'  
 
 # Later change the following to RegX of code:<UppercaseLetter> to detect
 #   all the codelist classes.
-nodeList$freq <-1  # a default value for node size
+#DEL nodeList$freq <-1  # a default value for node size
 
 # nodeList$freq[grepl('code:Sex', nodeList$name)]  <- nodeList$freq*2;
 # Adjust node size based on type of node (if needed) 
@@ -144,7 +147,7 @@ nodes<-data.frame(id=nodeList$id,
                   name=nodeList$name,
                   type=nodeList$type,
                   label=nodeList$name,
-                  freq=nodeList$freq)
+                  nodeCategory=nodeList$nodeCategory)
 # Later can be set based on number of obs, etc.
 #nodes$nodesize=4  #
 
