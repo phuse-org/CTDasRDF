@@ -22,8 +22,15 @@ TODO: : Create the R code based on the original from the Annual conference, but 
 <body>
 <h3>SDTM Data as RDF Data Relations</h3>
 <script type="text/javascript">
-var w = 1300;  //1100
-var h = 900;  //700
+var w = 1300;  
+var h = 900;  
+
+// Factors affecting node display (spread, clustering, etc.)
+// Note: Colours set in .CSS
+var gravity  = .01
+var charge   = -240
+linkDistance = 80
+edgeWidth    = 3
 
 var color = d3.scale.ordinal()
               .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
@@ -74,9 +81,9 @@ var categories = ["StudyOnt", "Protocol", "Code",  "StudyRes"];
 
 var nodeRadius = 5  // Size of nodes. Later make this a caculation based on number of nodes in display?
 // Variables for clustering 
-var nb_group=43 // divide display into  n regions, 1 for nodeCategory value
+var nb_group=3 // divide display into  n regions, 1 for nodeCategory value
 var angle = 2*Math.PI/nb_group; // Angle to divide up the display
-var intensity = 100; // increase intensity if many groups
+var intensity = 200; // increase intensity if many groups
 
 // Create the color scale of categories to colors
 var colorScale = d3.scale.ordinal()
@@ -140,9 +147,9 @@ legend.append("text")
     var force = d3.layout.force()
         .nodes(dataset.nodes)
         .links(dataset.edges)
-        .gravity(0.4)  //0.4
-        .charge(-90)  //-80
-        .linkDistance(50)
+        .gravity(gravity) 
+        .charge(charge)
+        .linkDistance(linkDistance)
         .size([w, h])
         .start();
     var drag = force.drag()
@@ -154,12 +161,13 @@ legend.append("text")
         .enter()
         .append("line")
         .attr("id",function(d,i){return 'edge'+i})
+        .attr("stroke-width", edgeWidth)
         .attr("class", function (d) {
             return d.edgeType;
         });
     // Add tooltip mouseover text for Edges (links) 
     edges.append("title")
-        .text(function(d) { return d.type });
+        .text(function(d) { return d.value });
          
    var nodes = svg.selectAll("g.node")
         .data(dataset.nodes)
@@ -209,28 +217,21 @@ legend.append("text")
             'class':'edgepath',
             'fill-opacity':0,
             'stroke-opacity':0,
-            'fill':'blue',
-            'stroke':'red',
+            
             'id':function(d,i) {return 'edgepath'+i}})
         .style("pointer-events", "none");
 
     force.on("tick", function(e) {
-    	  // position regulator for nodes must update d.x and d.y BEFORE edges are positioned
+    	  // Position regulator for nodes must update d.x and d.y BEFORE edges are positioned
         nodes.attr("transform", function(d) { 
             d.x += (intensity*Math.cos(angle*(d.nodeCategory)) + w/2 - d.x)*e.alpha;
             d.y += (intensity*Math.sin(angle*(d.nodeCategory)) + h/2 - d.y)*e.alpha;
-
-        	
-        	
-        	//return "translate(" + d.x + "," + d.y + ")"; 
-        	
-        	});
-
-
+            return "translate(" + d.x + "," + d.y + ")"; 
+        });
         edges.attr("x1", function(d) { return d.source.x; })
-            .attr("y1", function(d) { return d.source.y; })
-            .attr("x2", function(d) { return d.target.x; })
-            .attr("y2", function(d) { return d.target.y; });
+            .attr("y1",  function(d) { return d.source.y; })
+            .attr("x2",  function(d) { return d.target.x; })
+            .attr("y2",  function(d) { return d.target.y; });
       
         edgepaths.attr('d', function(d) { var path='M '+d.source.x+' '+d.source.y+' L '+ d.target.x +' '+d.target.y;
             //console.log(d)
