@@ -27,10 +27,11 @@ var h = 900;
 
 // Factors affecting node display (spread, clustering, etc.)
 // Note: Colours set in .CSS
-var gravity  = .01
-var charge   = -240
-linkDistance = 80
-edgeWidth    = 3
+var gravity      = .01
+var charge       = -240
+var linkDistance = 80
+var edgeWidth    = 3
+var nodeRadius   = 5  // Size of nodes. Later make this a caculation based on number of nodes in display?
 
 var color = d3.scale.ordinal()
               .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
@@ -71,10 +72,6 @@ var svg = d3.select("body").append("svg")
     d3.select(this).classed("fixed", d.fixed = true);
   }
 
-//---- LEGEND  ----------------------------------------------------------------
-var nodeTypes = ["CODE", "STUDY", "TIME"];
-
-var nodeRadius = 5  // Size of nodes. Later make this a caculation based on number of nodes in display?
 // Variables for clustering 
 var nb_group=3 // divide display into  n regions, 1 for nodeCategory value
 var angle = 2*Math.PI/nb_group; // Angle to divide up the display
@@ -85,50 +82,157 @@ var nodeScale = d3.scale.linear()
     .domain([0,180])
     .range([3,20]);
 
-// Indent from left margin
-var legendIndent=20;
-
-// Title 
-svg.append("text")
+//---- LEGEND  ----------------------------------------------------------------
+  svg.append("text")
      .text("Legend")
-     .attr("x",legendIndent+20)
+     .attr("x",28)
      .attr("y",25)
      .attr("class", 'legendTitle'); 
-
-// Box to surround the legend
-svg.append("rect")
-     .attr("x",legendIndent-15)
+          
+  svg.append("rect")
+     .attr("x",10)
      .attr("y",35)
-     .attr("rx", 2) // Round the edge
-     .attr("ry", 2) // Round the edge
-     .attr("height", 192)
-     .attr("width", 145)
-     .attr("class", "legendBox");
+     .attr("width",140)
+     .attr("height",350)
+     .attr("class", 'legendBox');
 
-var legend = svg.selectAll(".legend")
-    .data(nodeTypes)
-    .enter()
-    .append("g")
-    .attr("class", "legend");
+  var xIndent = 20;       // indent node from left
+  var textx = xIndent+8;  // text to the right of the node
+  // Move the legend symbols DOWN by increasing yIndent 
+  var yIndent = 42;  // start down top.  Add 20 to each observation after the first. (i*20)
+  var lineSpace = 30; // space between each line in the legend
+  var data = {};
 
-legend.append("circle") 
-    .attr("cx", legendIndent ) // legendIndent+n = to move in from legend box left edge
-       // first val is spacing between each rect
-       // +n = spacing down from top of legend box
-    .attr("cy",function(d, i) { return 32 * i +50; })
-    .attr("r", 8)
-    .attr("class", function (d, i) {
-            return nodeTypes[i];
+  var tooltip = d3.select("body").append("div")
+      .attr("class", "tooltipLegend")
+      .style("opacity", 0);
+
+   var data = {
+    // first "color" value is not read for reasons unknown.
+     "nodes": [
+         {"title": "CODE",  "foo": "fooVal1", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fphase-POOL"},
+         {"title": "STUDY", "foo": "fooVal2", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fphase-PHASE1"},
+         {"title": "TIME",  "foo": "fooVal3", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fphase-PHASE2"}
+       ],
+     "legLine": [
+         {"title": "SUBCLASSOF", "descr": "description", "color": "blue", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fcontribtype-EVALUATION"},
+         {"title": "EQUIVALENTCLASS", "descr": "description", "color": "blue", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fcontribtype-EVALUATION"},
+         {"title": "DOMAIN", "descr": "description", "color": "blue", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fcontribtype-EVALUATION"},
+         {"title": "RANGE", "descr": "description", "color": "blue", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fcontribtype-EVALUATION"},
+         {"title": "TYPE", "descr": "description", "color": "blue", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fcontribtype-EVALUATION"},
+         {"title": "SUBPROPERTYOF", "descr": "description", "color": "blue", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fcontribtype-EVALUATION"},
+         {"title": "INVERSEOF", "descr": "description", "color": "blue", "url": "http%3A%2F%2Fwww.example.org%2Fkmd%2Fcode%2Fcontribtype-EVALUATION"}
+       ]
+     };
+  svg.selectAll("legendBox")
+      .data(data.nodes)
+      .enter()
+      .append("rect")
+      .attr("width", 60)
+      .attr("height", 17)
+      .attr("rx", 2) // Round the edge
+      .attr("ry", 2) // Round the edge
+      .attr("x", xIndent)
+      .attr("y", function(d,i){return (yIndent+i*lineSpace)})  // -1 brings the box up
+      .attr("class",function(d,i){return (d.title);})   
+      .on("click", function (d) {
+          if (d3.event.ctrlKey) { location.href = "http://localhost:8890/describe/?uri="+d.url;}
+       })
+      .on('mouseover', function(d){
+          var nodeSelection = d3.select(this).style({opacity:'0.5'});
+       })
+      //Mouseout Node  - bring node back to full colour   
+      .on('mouseout', function(d){
+          var nodeSelection= d3.select(this).style({opacity:'1.0',}) 
+       })
+      ;
+   svg.selectAll("boxText")
+      .data(data.nodes)
+      .enter()
+      .append("text")
+      .attr("x", textx)
+      .attr("y", function(d,i){return ((yIndent+5+i*lineSpace)+7)}) 
+      .attr("idBoxText",function(d,i){return 'ID-'+i})
+      .attr('class', 'legendNodeText') 
+      .text(function(d) {return d.title})
+      // same event as for the box, so user may click BOX or text
+      .on("click", function (d) {
+          if (d3.event.ctrlKey) { location.href = "http://localhost:8890/describe/?uri="+d.url;}
+       })
+      .on('mouseover', function(d){
+          var nodeSelection = d3.select(this).style({opacity:'0.5'});
+       })
+      //Mouseout Node  - bring node back to full colour   
+      .on('mouseout', function(d){
+          var nodeSelection= d3.select(this).style({opacity:'1.0',}) 
+       })
+      ;
+ // Lines
+  svg.selectAll("legendLine")
+      .data(data.legLine)
+      .enter()
+      .append("line")
+      // .attr("x1", xIndent+10)
+      .attr("x1", xIndent)
+      .attr("y1", function(d,i){return (yIndent+146+i*lineSpace)})
+      .attr("x2", 85) // increase for longer line
+      .attr("y2", function(d,i){return (yIndent+146+i*lineSpace)})
+      //.attr("idLine",function(d,i){return 'IDL-'+i}) // ID needed here to diff from edges in real graph
+      .attr("class",function(d,i){return (d.title);})   
+      //.style("fill", function(d){return (d.color) })
+      //.style("stroke", function(d){return (d.color) })
+      //.style("stroke-dasharray", function(d){
+      //    if  (d.dashed == "Y" ) {return "5,5"}
+      //    else {return "0,0"} })
+      .style("stroke-width", 4)
+      .on("click", function (d) {
+          if (d3.event.ctrlKey) { location.href = "http://localhost:8890/describe/?uri="+d.url;}
+       })
+      .on('mouseover', function(d){
+          var nodeSelection = d3.select(this).style({opacity:'0.5'});
+          
+       })
+      //Mouseout Node  - bring node back to full colour   
+      .on('mouseout', function(d){
+          var nodeSelection= d3.select(this).style({opacity:'1.0',}) 
         })
-    .style("fill-opacity", 0.9);
-     
-legend.append("text")
-  .attr("class", "monoLG")
-  .text(function(d, i) { 
-  	 return nodeTypes[i];
-  })
-  .attr("x", legendIndent + 15)  // +n = spacing in from left edge of legend box
-  .attr("y", function(d, i) { return (32 * i) +55; }); // 32* = spacing, +nn to center on node
+      ;
+   svg.selectAll("linesText")
+      .data(data.legLine)
+      .enter()
+      .append("text")
+      // .attr("x", textx)
+       .attr("x", xIndent)
+      .attr("y", function(d,i){return ((yIndent+140+i*lineSpace))})   // -2 to align better with circle
+      .attr("idLineText",function(d,i){return 'IDLT-'+i})
+      .attr('class', 'legendText')
+      .text(function(d) {return d.title})
+      .on("click", function (d) {
+          if (d3.event.ctrlKey) { location.href = "http://localhost:8890/describe/?uri="+d.url;}
+       })
+      .on('mouseover', function(d){
+          var nodeSelection = d3.select(this).style({opacity:'0.5'});
+          tooltip.transition()
+                 .duration(200)
+                 .style("opacity", .9);
+                     
+           tooltip.html(d.descr)
+          //   tooltip.html("TEST TOOL TIP")
+                      .style("left", (d3.event.pageX + 5) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px");
+  
+       })
+      //Mouseout Node  - bring node back to full colour   
+      .on('mouseout', function(d){
+          var nodeSelection= d3.select(this).style({opacity:'1.0',}) 
+          tooltip.transition()
+                 .duration(500)
+                 .style("opacity", 0);
+
+       })
+      ;
+
+
 //---- LEGEND END -------------------------------------------------------------
 
 // d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-test.JSON", function(dataset) {
