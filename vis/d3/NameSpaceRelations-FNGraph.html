@@ -32,7 +32,7 @@ var charge       = -240
 var linkDistance = 80
 var edgeWidth    = 3
 var nodeRadius   = 5  // Size of nodes. Later make this a caculation based on number of nodes in display?
-
+/*
 var color = d3.scale.ordinal()
               .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
               .range([ "#FFFFFF", // 1-Wht     Default/ Cube Structure
@@ -53,14 +53,13 @@ var color = d3.scale.ordinal()
                        "#666699", // 16-BlGry  SKOS
                        "#A3A3C2"  // 17-LtBlGr SKOS Link
                        ]);
+*/
+
 
 //Width and height for SVG area
 var svg = d3.select("body").append("svg")
             .attr("width", w)
-            .attr("height", h)
-            //.attr("viewBox", "0 0 2500 2500")
-            .style("background-color", '#002b36');
-
+            .attr("height", h);
 
   // Double click to 'unfix' the node and have forces start to act on it again.
   function dblclick(d) {
@@ -228,10 +227,8 @@ var nodeScale = d3.scale.linear()
           tooltip.transition()
                  .duration(500)
                  .style("opacity", 0);
-
        })
       ;
-
 
 //---- LEGEND END -------------------------------------------------------------
 
@@ -249,13 +246,31 @@ var nodeScale = d3.scale.linear()
     var drag = force.drag()
         .on("dragstart", dragstart);
 
+
+ // Build the arrow for RDF Triple
+    svg.append("svg:defs").selectAll("marker")
+        .data(["end"])      // Different link/path types can be defined here
+        .enter().append("svg:marker")    // This section adds in the arrows
+        .attr("id", String)
+        .attr("viewBox", "0 -5 10 10")
+        .attr("refX", 20)  // Increase this number to back the arrow away from the target node
+        .attr("refY", 0)
+        .attr("markerWidth", 2)  // Arrow height
+        .attr("markerHeight", 2) // Arrow width
+        .attr("orient", "auto")
+        .attr("fill", "black")
+        .attr("stroke", "grey")
+        .append("svg:path")
+        .attr("d", "M0,-5L10,0L0,5");
+
     // id value - used to identify the edge. Where is it referenced?
     var edges = svg.selectAll("line")
         .data(dataset.edges)
         .enter()
         .append("line")
         .attr("id",function(d,i){return 'edge'+i})
-        .attr("stroke-width", edgeWidth)
+        .attr("stroke-width", edgeWidth)  
+        .attr("marker-end", "url(#end)")   //TW TEST. REMOVE?
         .attr("class", function (d) {
             return d.edgeType;
         });
@@ -311,7 +326,6 @@ var nodeScale = d3.scale.linear()
             'class':'edgepath',
             'fill-opacity':0,
             'stroke-opacity':0,
-            
             'id':function(d,i) {return 'edgepath'+i}})
         .style("pointer-events", "none");
 
@@ -331,7 +345,10 @@ var nodeScale = d3.scale.linear()
             //console.log(d)
             return path});       
 
-      });     
+      });  
+      
+     //TW ADDING ARROWS
+         
   });  // end of data read and manip
 </script>
 </body>

@@ -24,26 +24,21 @@ h6 {
   word-wrap: break-word;
   text-align: center }
 }
-
 h1 {
   font-size: 3.77em; }
-
 h2 {
 /*  font-size: 2.11em; */
     font-size: 46pt;
 }
-
 h3 {
   font-size: 1.55em; }
-
 h4 {
   font-size: 1em; }
 
 body {
-  background: #002b36;
-  background-color: #002b36; 
+  background: #919191;
+  background-color: #919191; 
 }
-
 
 /*---- LEGEND ---------------------------------------------------------------*/
 .legendTitle, .explainText, labelBarchart {
@@ -52,8 +47,9 @@ body {
   font-size: 12pt;
 }
 .legendBox{
-    fill: #003d4d;
-    stroke: #006680;
+    fill: #999999;
+    stroke: #808080;
+    stroke-width: 3;
 }
 
 /*----SLIDE: Attendees FN graph ---------------------------------------------*/
@@ -64,78 +60,47 @@ text.monoLG {
     
     /*fill: #aaa;*/
 }
-
 .nodetext{
    font-size:24px;
    fill: #eee8d5;  /* keep with moon.css theme */
    text-shadow: -4px 4px 3px   #000000;   /* add a drop shadow */
- 
 }
-
 .node:not(:hover) .nodetext{
     display: none;
 }
 .edge:not(:hover) .edgetext{
     display: none;
 }
-
-/* Possible Color Selections
-"#FFFFFF", // 1-Wht     
-"#00FF00", // 2-BrGre   
-"#99FF99", // 3-LtGre   
-"#FF0000", // 4-BrRed   
-"#FA7D7D", // 5-LtRed   
-"#0000FF", // 6-BrBlu   
-"#8080FF", // 7-LtBlu   
-"#FF6600", // 8-BrOr    
-"#FFB280", // 9-LtOr    
-"#CC00FF", // 10-BrPur  
-"#EB99FF", // 11-LtPur  
-"#FFFF00", // 12-BrYel  
-"#FFFF80", // 13-LtYel  
-"#006666", // 14-SlGre  
-"#99C2C2", // 15-LtSlGre 
-"#666699", // 16-BlGry  
-"#A3A3C2"  // 17-LtBlGr 
-*/
-/*-- Nodes and Edges */
+/*-- Nodes */
+/* Stroke is 3 levels darker than fill on https://www.w3schools.com/colors/colors_picker.asp */
 .STUDY{
-    stroke: #e60000;
-    stroke-width: 0.8;
-    fill: #e60000;
-}
-.studyEdge{
-	  stroke-width: 0.8;
-	  stroke: #ff3333;
+    fill: #482C79;
+    stroke: #38225e;
+    stroke-width: 1.5;
 }
 .CODE{
-    stroke: #00ff00;
-    stroke-width: 0.8;
-    fill: #00ff00;
+    fill: #870922;
+    stroke: #600618;
+    stroke-width: 1.5;
 }
-
 .TIME{
-    stroke: #FA7D7D;
-    stroke-width: 0.8;
-    fill: blue;
+    fill: #1C5B64;
+    stroke: #164850;
+    stroke-width: 1.5;
 }
-
-/* Edge classes */
+/*-- Edges */
 .SUBCLASSOF{ 
-
-	  stroke: grey;
+	  stroke:  #5c5c8a;
 }
 .EQUIVALENTCLASS{ 
 
 	  stroke: green;
 }
 .DOMAIN{ 
-
-	  stroke: blue;
+	  stroke: #005c99;
 }
 .RANGE{ 
-
-	  stroke: lightblue;
+	  stroke: #0099e6;
 }
 .TYPE{ 
 
@@ -143,7 +108,7 @@ text.monoLG {
 }
 .SUBPROPERTYOF{ 
 
-	  stroke: orange;
+	  stroke: #e68a00;
 }
 
 .INVERSEOF{ 
@@ -167,7 +132,8 @@ text.monoLG {
     font-weight:bold; 
 }
 .legendNodeText{       
-    fill: black;
+    /* fill: #eee8d5; */
+    fill:#e1d7b7;  /* a little darker than the titles, etc.*/
     font-size: 12px;  
     font-weight:bold; 
 }

@@ -14,7 +14,7 @@
 #                        ....etc., uploaded to Virtuoso & served on localhost
 # OUT  : /SDTMasRDF/vis/d3/data/DataRelations-FNGraph.JSON  
 #        
-# TODO : 
+# TODO : !! ERROR:  Predicates not merged to nodes properly.
 #
 ###############################################################################
 library(rrdf)     # Read / Create RDF
@@ -66,15 +66,29 @@ WHERE {
    FILTER(regex(str(?o), "(code|study|time|cd01p)#"))
 } '
 
+# TEST QUERY FOR DEV
+#nameSpaceQuery = '
+#PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
+#SELECT ?s ?p ?o
+#FROM <http://localhost:8890/SDTMasRDF>
+#WHERE {
+#?s ?p study:hasDate
+#BIND("study:hasDate" AS ?o)
+#}'
+
+
+
+
 query<-paste0(prefixes, nameSpaceQuery, limit)
 triples = as.data.frame(sparql.remote(endpoint, query))
 
-# Source node type set manually, post-query
+# subject node type set manually, post-query
+triples$srcType <- 'NA'  # Default unassigned
 triples$srcType[grepl('code:', triples$s)] <- 'code' 
 triples$srcType[grepl('study:', triples$s)] <- 'study'      
 triples$srcType[grepl('time:', triples$s)] <- 'time'      
 
-# NEW 
+# NODES -----------------------------------------------------------------------
 # Get the unique list of nodes as needed by the JSON file:
 # Combine Subject and Object into a single column
 # "id.vars" is the list of columns to keep untouched. The unamed ones are 
@@ -85,77 +99,63 @@ nodeList <- melt(triples, id.vars=c("p", "srcType" ))   # subject, object into 1
 #  by dropping duplicate values.
 nodeList <- nodeList[!duplicated(nodeList$value),]
 
-# Rename the columns 
+# Rename column value to name for use in nodes list for JSON
 # TODO: DROP ones not needed!
 colnames(nodeList)<-c("p", "srcType", "var", "name")  # column name should be name, not value.
-
-# Rename column value to name for use in nodes list for JSON
-nodeList <-arrange(nodeList,name)  # sort
+nodeList <-arrange(nodeList,name)  # sort prior to adding ID value. (not necessary, of course)
 
 # Create the node ID values starting at 0 (as req. by D3JS)
-id<-0:(nrow(nodeList)-1)   # Generate a list of ID numbers
+id<-0:(nrow(nodeList)-1) 
 nodeList<-data.frame(id, nodeList)  
-head(nodeList)
-head(triples)
-
-# Attach the ID values to Subject Nodes
-edgesList <- merge (triples, nodeList, by.x="s", by.y="name")
-
-# id becomes the subject node id
-edgesList<-rename(edgesList, c("id"="source"))
-
-# Attach ID values to Object Nodes
-edgesList <- merge (edgesList, nodeList, by.x="o", by.y="name")
-# p is renamed to "value" for use in LINKS dataframe. "value" is needed above here.
-
-
-edgesList<-rename(edgesList, c("id"="target", "p"="value"))
-
-# Construct edgeType by removing the prefix and converting to 
-#  upper case for use in CSS display
-# edgesList$edgeType<-paste0("EDGE_", toupper(sub("(\\w+):","",edgesList$value)))
-edgesList$edgeType<-toupper(sub("(\\w+):","",edgesList$value))
-
-head(edgesList)
-
-# Reorder for pretty-pretty
-edgesList<-edgesList[c("s", "source", "value", "o", "target", "edgeType")]
 
 nodeList$type <- toupper(nodeList$srcType)
 # nodeCategory used for grouping in the FN graph. Assign grouping based on type
 #   Make this smarter later: sort on unique type and assign index value.
+#   Must now be updated manually when a new node type appears. Boo. Bad code.Bad!
 nodeList$nodeCategory[grepl('CODE',  nodeList$type)] <- '1'      
 nodeList$nodeCategory[grepl('STUDY', nodeList$type)] <- '2'      
 nodeList$nodeCategory[grepl('TIME',  nodeList$type)] <- '3'      
-#nodeList$type[grepl('sdtmc:C', nodeList$name)]<- 'cdisc'  
-#nodeList$type[grepl('code:', nodeList$name)]  <- 'code'  
-
-# Later change the following to RegX of code:<UppercaseLetter> to detect
-#   all the codelist classes.
-#DEL nodeList$freq <-1  # a default value for node size
-
-# nodeList$freq[grepl('code:Sex', nodeList$name)]  <- nodeList$freq*2;
-# Adjust node size based on type of node (if needed) 
-# nodeList$freq[grepl('code:[A-Z]', nodeList$name)]  <- nodeList$freq*2;
-
 head(nodeList)
-
 nodes<-data.frame(id=nodeList$id,
-                  nodeID=nodeList$id,
-                  name=nodeList$name,
                   type=nodeList$type,
                   label=nodeList$name,
                   nodeCategory=nodeList$nodeCategory)
+
+# Removed the following. Not needed in Vis.
+#DEL nodeID=nodeList$id,
+#DEL name=nodeList$name,
+
+# EDGES -----------------------------------------------------------------------
+# Now assign the node ID numbers to the Subject and Object nodes
+#-- Subject Nodes, ID becomes the subject ID node
+#   Assign node ID values to the Subject nodes
+edgesList <- merge (triples, nodeList, by.x="s", by.y="name")
+# id becomes the subject node id
+edgesList<-rename(edgesList, c("id" = "subjectID", "p.x" = "predicate"))
+edgesList<-edgesList[c("s", "subjectID", "predicate", "o")] #TW NEW
+
+#-- Object Nodes
+#   Assign node ID values to the Object nodes
+edgesList <- merge (edgesList, nodeList, by.x="o", by.y="name")
+# p is renamed to "value" for use in LINKS dataframe. "value" is needed above here.
+edgesList<-rename(edgesList, c("id"="objectID", "p"="value"))
+edgesList<-edgesList[c("s", "subjectID", "predicate", "o", "objectID")] #TW NEW
+
+# Construct edgeType: remove prefix, convert to upper case for use in CSS 
+edgesList$edgeType<-toupper(sub("(\\w+):","",edgesList$predicate))
+
 # Later can be set based on number of obs, etc.
 #nodes$nodesize=4  #
 
-# 2. make the EDGES dataframe that contains: source, target, value columns
-#   source, target,
+# 2. make the EDGES dataframe that contains: subject, predicate, value columns
+#   subject, predicate,
 #  named edges instead of links to match D3jS in .html file
+# A final rename to names needed in the D3js. 
+#   TODO: Make the renames earlier and get rid of this statement.
+edgesList<-rename(edgesList, c("subjectID"="source", "objectID"="target", "predicate"="value", "edgeType"="edgeType"))
 edges<- as.data.frame(edgesList[c("source", "target", "value", "edgeType")])
 
-
-# Combine the nodes and edges into a single dataframe for conversion to JSON
+#-- Combine the nodes and edges into a single dataframe for conversion to JSON
 all <- list(nodes=nodes,
             edges=edges)
 # Write out to JSON
