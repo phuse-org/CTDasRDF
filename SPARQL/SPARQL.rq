@@ -1,0 +1,91 @@
+###############################################################################
+# FILE: SPARQL-Virtuoso.rq
+# DESC: A collection of SPARQL queries for the data uploaded into a Virtuoso
+#       triple store. These are miscellaneous queries for the data, not the 
+#       more complex queries needed for SDTM creation, validation, etc.
+# REQ : 
+# SRC : 
+# IN  : 
+# OUT : 
+# NOTE: 
+# TODO: 
+###############################################################################
+
+//-----------------------------------------------------------------------------
+// Misc Query/Query Templates
+//-----------------------------------------------------------------------------
+
+//-- Classes used?
+PREFIX rdf: <http://www.w3.org/1999/02/22rdfsyntaxns#>
+SELECT DISTINCT ?t 
+WHERE {
+    ?s rdf:type ?t
+}
+
+//-- Properties Used and How often?
+SELECT ?p (COUNT(?p) AS ?count) 
+WHERE {
+    ?s ?p ?o
+}
+GROUP BY ?p
+ORDER BY DESC(?count)
+
+//--Classes used and how often
+PREFIX rdf: <http://www.w3.org/1999/02/22rdfsyntaxns#>
+SELECT ?t (COUNT(?t) AS ?count) 
+WHERE {
+    ?s rdf:type ?t
+}
+GROUP BY ?t
+
+
+//-- Classes: List a few example instances of a particular class
+PREFIX rdf: <http://www.w3.org/1999/02/22rdfsyntaxns#>
+PREFIX ssn: <http://purl.oclc.org/NET/ssnx/ssn#>
+SELECT ?s WHERE {
+?s rdf:type foo:bar
+}
+LIMIT 10
+
+
+
+SELECT *
+FROM <http://localhost:8890/SDTMasRDF>
+WHERE {
+?s ?p ?o
+} LIMIT 10
+
+//-----------------------------------------------------------------------------
+//-- Data troubleshooting/checking section
+// Subjects that point to the study:hasDate object.
+PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
+SELECT ?s ?p ?o
+FROM <http://localhost:8890/SDTMasRDF>
+WHERE {
+?s ?p study:hasDate
+BIND("study:hasDate" AS ?o)
+}
+
+
+
+# SELECT COUNT(*) as ?count
+SELECT *
+FROM <http://localhost:8890/SDTMasRDF>
+WHERE {
+?s ?p ?o
+# FILTER(regex(str(?s), "(code|custom)#"))
+FILTER(regex(str(?s), "(ActivityDate)"))
+} LIMIT 500
+
+// Connections between namespaces: code#, study#, time#, cd01p#
+SELECT *
+FROM <http://localhost:8890/SDTMasRDF>
+WHERE {
+   ?s ?p ?o
+   FILTER(regex(str(?s), "(code|study|time|cd01p)#"))
+   FILTER(regex(str(?o), "(code|study|time|cd01p)#"))
+} LIMIT 50 
+
+
+
+
