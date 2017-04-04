@@ -1,9 +1,59 @@
-{
-  "name": "Person_1", "type": "node", "nameSpace": "studyData",
-  "children": [
-        {"name": "EnrolledSubject", "type": "node", "nameSpace": "study"},
-        {"name": "Person 1", "type": "literal", "nameSpace": "none"},
-        {"name": "arm_1", "type": "node", "nameSpace": "none"}
-   ]
-}  
+{"name": "Person_1", 
+"type": "node", 
+"nameSpace": "studyData", 
+"children": [
+     {"name": "EnrolledSubject", 
+      "type": "node", 
+      "nameSpace": "study",
+      "predicate": "rdf:type",
+      "children": [
+          {"name": "Class", 
+          "type": "node", 
+          "nameSpace": "owl",
+          "predicate": "rdfs:type"},
+          
+          {"name": "Enrolled Subject", 
+          "type": "literal", 
+          "nameSpace": "none",
+          "predicate": "rdfs:label"},
+          
+          {"name": "HumanStudySubject", 
+          "type": "node", 
+          "nameSpace": "study",
+          "predicate": "rdfs:subClassOf",
+          "children": [
+              {"name": "Class", 
+              "type": "node", 
+              "nameSpace": "owl",
+              "predicate": "rdfs:subClassOf"} ,
+              
+              {"name": "HumanSubject", 
+              "type": "node", 
+              "nameSpace": "study", 
+              "predicate": "rdfs:subClassOf"}
+           ]}
+]},
+
+{"name": "arm_1", 
+"type": "literal", 
+"nameSpace": "none",
+"children": [
+    {"name": "Class", 
+    "type": "node", 
+    "nameSpace": "owl", 
+    "predicate": "rdf:type" },
+    
+    {"name": "RandomizationOutcome", 
+    "type": "node", 
+    "nameSpace": "code", 
+    "predicate": "rdf:type" }
+]},
+
+{"name": "Person 1", 
+"type": "literal", 
+"nameSpace": "none",
+"predicate": "rdfs:label"
+}
+
+]}  
  
