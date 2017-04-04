@@ -32,29 +32,6 @@ var charge       = -240
 var linkDistance = 80
 var edgeWidth    = 3
 var nodeRadius   = 5  // Size of nodes. Later make this a caculation based on number of nodes in display?
-/*
-var color = d3.scale.ordinal()
-              .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])
-              .range([ "#FFFFFF", // 1-Wht     Default/ Cube Structure
-                       "#00FF00", // 2-BrGre   Atributes
-                       "#99FF99", // 3-LtGre   Atribute link
-                       "#FF0000", // 4-BrRed   Measure
-                       "#FA7D7D", // 5-LtRed   Measure link
-                       "#0000FF", // 6-BrBlu   Dimension
-                       "#8080FF", // 7-LtBlu   Dimension link
-                       "#FF6600", // 8-BrOr    CodeLists
-                       "#FFB280", // 9-LtOr    CodeLists link
-                       "#CC00FF", // 10-BrPur  CDISC
-                       "#EB99FF", // 11-LtPur  CDISC link
-                       "#FFFF00", // 12-BrYel  Observations
-                       "#FFFF80", // 13-LtYel  Observations link
-                       "#006666", // 14-SlGre   Cube Struct
-                       "#99C2C2", // 15-LtSlGre Cube Struct Link
-                       "#666699", // 16-BlGry  SKOS
-                       "#A3A3C2"  // 17-LtBlGr SKOS Link
-                       ]);
-*/
-
 
 //Width and height for SVG area
 var svg = d3.select("body").append("svg")
@@ -105,7 +82,7 @@ var nodeScale = d3.scale.linear()
   var tooltip = d3.select("body").append("div")
       .attr("class", "tooltipLegend")
       .style("opacity", 0);
-
+  // Leaving http links in the legend for possible later implementation
    var data = {
     // first "color" value is not read for reasons unknown.
      "nodes": [
