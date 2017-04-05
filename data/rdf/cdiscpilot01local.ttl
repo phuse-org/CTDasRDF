@@ -26,21 +26,21 @@
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 cdiscpilot01:AgeMeasurement_1
-  rdf:type code:Age ;
+  rdf:type code:observation_Age ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Age 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:hasActivityOutcome custom:AgeOutcome_1 ;
 .
 cdiscpilot01:AgeMeasurement_2
-  rdf:type code:Age ;
+  rdf:type code:observation_Age ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Age 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:hasActivityOutcome custom:AgeOutcome_2 ;
 .
 cdiscpilot01:AgeMeasurement_3
-  rdf:type code:Age ;
+  rdf:type code:observation_Age ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Age 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
@@ -239,28 +239,40 @@ cdiscpilot01:Date_9
   study:dateTimeInXSDString "2012-09-01"^^xsd:string ;
 .
 cdiscpilot01:DemographicDataCollection_1
-  rdf:type study:DemographicDataCollection ;
+  rdf:type code:DemographicDataCollection ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Demographic data collection 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:hasActivityID code:observation_1 ;
+  study:hasActivityID code:DemographicDataCollection ;
+  study:hasAgeOutcome custom:AgeOutcome_1 ;
   study:hasDate cdiscpilot01:Date_19 ;
+  study:hasEthnicityOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17459> ;
+  study:hasRaceOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
+  study:hasSexOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576> ;
 .
 cdiscpilot01:DemographicDataCollection_2
-  rdf:type study:DemographicDataCollection ;
+  rdf:type code:DemographicDataCollection ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Demographic data collection 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:hasActivityID code:observation_1 ;
+  study:hasActivityID code:DemographicDataCollection ;
+  study:hasAgeOutcome custom:AgeOutcome_2 ;
   study:hasDate cdiscpilot01:Date_7 ;
+  study:hasEthnicityOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17459> ;
+  study:hasRaceOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
+  study:hasSexOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197> ;
 .
 cdiscpilot01:DemographicDataCollection_3
-  rdf:type study:DemographicDataCollection ;
+  rdf:type code:DemographicDataCollection ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Demographic data collection 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:hasActivityID code:observation_1 ;
+  study:hasActivityID code:DemographicDataCollection ;
+  study:hasAgeOutcome custom:AgeOutcome_3 ;
   study:hasDate cdiscpilot01:Date_16 ;
+  study:hasEthnicityOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C41222> ;
+  study:hasRaceOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
+  study:hasSexOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197> ;
 .
 cdiscpilot01:InformedConsent_1
   rdf:type code:informedconsent_1 ;
@@ -416,12 +428,8 @@ cdiscpilot01:Person_1
   skos:definition ""^^xsd:string ;
   study:allocatedToArm custom:arm_1 ;
   study:deathFlag "Y"^^xsd:string ;
-  study:hasAgeMeasurement cdiscpilot01:AgeMeasurement_1 ;
-  study:hasEthnicity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17459> ;
   study:hasLifespan cdiscpilot01:Interval_LS1 ;
-  study:hasRace <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
   study:hasReferenceInterval cdiscpilot01:Interval_RI1 ;
-  study:hasSex <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576> ;
   study:hasSite cdiscpilot01:site_701 ;
   study:hasStudyParticipationInterval cdiscpilot01:Interval_SP1 ;
   study:hasSubjectID "1015"^^xsd:string ;
@@ -441,9 +449,7 @@ cdiscpilot01:Person_1
   study:participatesIn cdiscpilot01:popflag_EFF_1 ;
   study:participatesIn cdiscpilot01:popflag_ITT_1 ;
   study:participatesIn cdiscpilot01:popflag_SAF_1 ;
-  study:participatesIn cdiscpilot01:study_CDISCPILOT01 ;
   study:participatesIn cdiscpilot01:visit_SCREENING1_P1 ;
-  study:participatesInStudy cdiscpilot01:study_CDISCPILOT01 ;
   study:treatedAccordingToArm custom:arm_1 ;
 .
 cdiscpilot01:Person_2
@@ -452,12 +458,8 @@ cdiscpilot01:Person_2
   rdfs:label "Person 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:allocatedToArm custom:arm_1 ;
-  study:hasAgeMeasurement cdiscpilot01:AgeMeasurement_2 ;
-  study:hasEthnicity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17459> ;
   study:hasLifespan cdiscpilot01:Interval_LS2 ;
-  study:hasRace <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
   study:hasReferenceInterval cdiscpilot01:Interval_RI2 ;
-  study:hasSex <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197> ;
   study:hasSite cdiscpilot01:site_701 ;
   study:hasStudyParticipationInterval cdiscpilot01:Interval_SP2 ;
   study:hasSubjectID "1023"^^xsd:string ;
@@ -466,8 +468,6 @@ cdiscpilot01:Person_2
   study:participatesIn cdiscpilot01:InformedConsent_2 ;
   study:participatesIn cdiscpilot01:ProductAdministration_2 ;
   study:participatesIn cdiscpilot01:Randomization_2 ;
-  study:participatesIn cdiscpilot01:study_CDISCPILOT01 ;
-  study:participatesInStudy cdiscpilot01:study_CDISCPILOT01 ;
   study:treatedAccordingToArm custom:arm_1 ;
 .
 cdiscpilot01:Person_3
@@ -476,12 +476,8 @@ cdiscpilot01:Person_3
   rdfs:label "Person 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:allocatedToArm custom:arm_3 ;
-  study:hasAgeMeasurement cdiscpilot01:AgeMeasurement_3 ;
-  study:hasEthnicity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C41222> ;
   study:hasLifespan cdiscpilot01:Interval_LS3 ;
-  study:hasRace <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
   study:hasReferenceInterval cdiscpilot01:Interval_RI3 ;
-  study:hasSex <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197> ;
   study:hasSite cdiscpilot01:site_701 ;
   study:hasStudyParticipationInterval cdiscpilot01:Interval_SP3 ;
   study:hasSubjectID "1028"^^xsd:string ;
@@ -490,8 +486,6 @@ cdiscpilot01:Person_3
   study:participatesIn cdiscpilot01:InformedConsent_3 ;
   study:participatesIn cdiscpilot01:ProductAdministration_3 ;
   study:participatesIn cdiscpilot01:Randomization_3 ;
-  study:participatesIn cdiscpilot01:study_CDISCPILOT01 ;
-  study:participatesInStudy cdiscpilot01:study_CDISCPILOT01 ;
   study:treatedAccordingToArm custom:arm_3 ;
 .
 cdiscpilot01:ProductAdministration_1
@@ -770,14 +764,6 @@ cdiscpilot01:startrule_3
   skos:definition ""^^xsd:string ;
   study:hasCode code:startrule_3 ;
   study:hasPrerequisite cdiscpilot01:bodypos_P1Standing ;
-.
-cdiscpilot01:study_CDISCPILOT01
-  rdf:type study:Study ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "study-CDISCPILOT01"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasStudyActivity cdiscpilot01:visit_SCREENING1_P1 ;
-  study:hasStudyID "CDISCPILOT01"^^xsd:string ;
 .
 cdiscpilot01:visit_SCREENING1_P1
   rdf:type custom:visit_1 ;

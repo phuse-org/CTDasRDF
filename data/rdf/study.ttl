@@ -68,11 +68,11 @@ time:hasBeginning
 time:inXSDDateTime
   rdfs:subPropertyOf study:dateTimeInXSDString ;
 .
-code:Age
-  rdfs:subClassOf study:Observation ;
-.
 code:Arm
   rdfs:subClassOf code:DefinedActivityOutcome ;
+.
+code:DemographicDataCollection
+  rdfs:subClassOf study:Observation ;
 .
 code:Intervention
   owl:equivalentClass [
@@ -303,6 +303,7 @@ study:ActivityOutcome
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Activity outcome"^^xsd:string ;
   rdfs:subClassOf study:Entity ;
+  owl:equivalentClass code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
 study:AdministrativeActivity
@@ -422,13 +423,6 @@ study:DemogDataCollectionDate
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Demog data collect begin"^^xsd:string ;
   rdfs:subClassOf study:ActivityDate ;
-  skos:definition ""^^xsd:string ;
-.
-study:DemographicDataCollection
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Demographic data collection"^^xsd:string ;
-  rdfs:subClassOf study:Observation ;
   skos:definition ""^^xsd:string ;
 .
 study:Derivation
@@ -776,11 +770,6 @@ study:StudyActivity
   rdfs:label "Study activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
   owl:equivalentClass <http://www.bridgmodel.org/owl#StudyActivity> ;
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:onProperty study:isSubActivityOf ;
-      owl:someValuesFrom study:Study ;
-    ] ;
   skos:definition "An Activity that is part of a Study"^^xsd:string ;
 .
 study:StudyComponent
@@ -1131,30 +1120,17 @@ study:hasActivityOutcome
   rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:DefinedActivity ;
+  rdfs:domain study:Activity ;
   rdfs:label "has activity outcome"^^xsd:string ;
   rdfs:range code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
-study:hasAge
+study:hasAgeOutcome
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Person ;
+  rdfs:domain code:DemographicDataCollection ;
   rdfs:label "has age"^^xsd:string ;
   rdfs:range code:AgeOutcome ;
-  owl:propertyChainAxiom (
-      study:hasAgeMeasurement
-      study:hasActivityOutcome
-    ) ;
-  skos:definition ""^^xsd:string ;
-.
-study:hasAgeMeasurement
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Person ;
-  rdfs:label "has age"^^xsd:string ;
-  rdfs:range code:Age ;
-  rdfs:subPropertyOf study:participatesIn ;
   skos:definition ""^^xsd:string ;
 .
 study:hasCategory
@@ -1182,12 +1158,11 @@ study:hasDate
   rdfs:range time:Instant ;
   skos:definition ""^^xsd:string ;
 .
-study:hasEthnicity
-  rdf:type owl:FunctionalProperty ;
+study:hasEthnicityOutcome
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Person ;
-  rdfs:label "has ethnicity term"^^xsd:string ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:label "has Ethnicity"^^xsd:string ;
   rdfs:range code:Ethnicity ;
   skos:definition ""^^xsd:string ;
 .
@@ -1269,11 +1244,11 @@ study:hasPrerequisite
   rdfs:range study:PrerequisiteActivity ;
   skos:definition ""^^xsd:string ;
 .
-study:hasRace
+study:hasRaceOutcome
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Person ;
-  rdfs:label "has race"^^xsd:string ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:label "has Race"^^xsd:string ;
   rdfs:range code:Race ;
   skos:definition ""^^xsd:string ;
 .
@@ -1295,12 +1270,11 @@ study:hasScheduledDate
   rdfs:subPropertyOf study:hasDate ;
   skos:definition ""^^xsd:string ;
 .
-study:hasSex
-  rdf:type owl:FunctionalProperty ;
+study:hasSexOutcome
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Person ;
-  rdfs:label "has sex"^^xsd:string ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:label "has Sex"^^xsd:string ;
   rdfs:range code:Sex ;
   skos:definition ""^^xsd:string ;
 .
@@ -1334,7 +1308,7 @@ study:hasStudyActivity
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Study ;
   rdfs:label "has study activity"^^xsd:string ;
-  rdfs:range study:StudyActivity ;
+  rdfs:range study:Activity ;
   rdfs:subPropertyOf study:hasSubActivity ;
   owl:inverseOf study:isActivityOfStudy ;
   owl:propertyChainAxiom (

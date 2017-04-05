@@ -95,51 +95,6 @@ code:AdministrativeActivityOutcome
   rdfs:subClassOf code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
-code:Age
-  rdf:type owl:Class ;
-  spin:constraint [
-      rdf:type sp:Ask ;
-      sp:where (
-          [
-            sp:object [
-                sp:varName "ageoutcome"^^xsd:string ;
-              ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#hasActivityOutcome> ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "age"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasValue ;
-            sp:subject [
-                sp:varName "ageoutcome"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Filter ;
-            sp:expression [
-                rdf:type sp:lt ;
-                sp:arg1 [
-                    sp:varName "age"^^xsd:string ;
-                  ] ;
-                sp:arg2 0 ;
-              ] ;
-          ]
-        ) ;
-      rdfs:comment "Looks for negative age"^^xsd:string ;
-    ] ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Age"^^xsd:string ;
-  rdfs:subClassOf code:Observation ;
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom code:AgeOutcome ;
-      owl:onProperty code:permissibleOutcome ;
-    ] ;
-  skos:definition ""^^xsd:string ;
-  code:hasIdentifier "D12345"^^xsd:string ;
-.
 code:AgeOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -293,10 +248,19 @@ code:DefinedConcept
   rdfs:subClassOf owl:Thing ;
   skos:definition ""^^xsd:string ;
 .
+code:DemographicDataCollection
+  rdf:type owl:Class ;
+  rdf:type code:Observation ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "DEMOG DATA COLLECTION"^^xsd:string ;
+  rdfs:subClassOf code:Observation ;
+  skos:definition ""^^xsd:string ;
+.
 code:Ethnicity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Ethnicity term"^^xsd:string ;
+  rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
@@ -386,7 +350,7 @@ code:ObservationOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Observation outcome term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedActivityOutcome ;
+  rdfs:subClassOf code:InterventionOutcome ;
   skos:definition ""^^xsd:string ;
 .
 code:OriginalUnit
@@ -428,6 +392,7 @@ code:Race
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Race term"^^xsd:string ;
+  rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
@@ -447,6 +412,7 @@ code:RandomizationOutcome
 .
 code:Randomization_3
   rdf:type owl:Class ;
+  rdf:type code:Randomization ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization BAL3"^^xsd:string ;
   rdfs:subClassOf code:Randomization ;
@@ -464,6 +430,7 @@ code:Sex
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Sex term"^^xsd:string ;
+  rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
@@ -651,6 +618,7 @@ code:in2cm
 .
 code:informedconsent_1
   rdf:type owl:Class ;
+  rdf:type code:InformedConsent ;
   rdfs:subClassOf code:InformedConsent ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "informedconsent ADULT"^^xsd:string ;
@@ -692,12 +660,6 @@ code:mmHg2mmHg
   code:hasOriginalUnit code:pressureunit_1 ;
   code:hasStandardUnit code:pressureunit_1 ;
 .
-code:observation_1
-  rdf:type code:Observation ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "DEMOG DATA COLLECTION"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
 code:permissibleOutcome
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -708,6 +670,7 @@ code:permissibleOutcome
 .
 code:popflag_EFF
   rdf:type owl:Class ;
+  rdf:type code:PopulationFlag ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:PopulationFlag ;
   skos:altLabel "Efficacy Population Flag"^^xsd:string ;
@@ -717,6 +680,7 @@ code:popflag_EFF
 .
 code:popflag_ITT
   rdf:type owl:Class ;
+  rdf:type code:PopulationFlag ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:PopulationFlag ;
   skos:altLabel "Intent to Treat Population Flag"^^xsd:string ;
@@ -726,6 +690,7 @@ code:popflag_ITT
 .
 code:popflag_SAF
   rdf:type owl:Class ;
+  rdf:type code:PopulationFlag ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:PopulationFlag ;
   skos:altLabel "Safety Population Flag"^^xsd:string ;
@@ -780,6 +745,7 @@ code:ruleDescriptionLong
 .
 code:startrule_1
   rdf:type owl:Class ;
+  rdf:type code:StartRule ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "startruleterm-LYING5"^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
@@ -794,6 +760,7 @@ code:startrule_1
 .
 code:startrule_2
   rdf:type owl:Class ;
+  rdf:type code:StartRule ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
   skos:altLabel "816"^^xsd:string ;
@@ -807,6 +774,7 @@ code:startrule_2
 .
 code:startrule_3
   rdf:type owl:Class ;
+  rdf:type code:StartRule ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
   skos:altLabel "817"^^xsd:string ;

@@ -348,9 +348,9 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "age"^^xsd:string ;
+                sp:varName "demogcoll"^^xsd:string ;
               ] ;
-            sp:predicate study:hasAgeMeasurement ;
+            sp:predicate study:participatesIn ;
             sp:subject [
                 sp:varName "subject"^^xsd:string ;
               ] ;
@@ -359,9 +359,9 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
-            sp:predicate study:hasActivityOutcome ;
+            sp:predicate study:hasAgeOutcome ;
             sp:subject [
-                sp:varName "age"^^xsd:string ;
+                sp:varName "demogcoll"^^xsd:string ;
               ] ;
           ]
           [
@@ -657,6 +657,20 @@ sdtm:SDTM_DM_Record
             sp:predicate sdtm:hasETHNIC ;
             sp:subject spin:_this ;
           ]
+          [
+            sp:object [
+                sp:varName "RACE"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasRACE ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "SEX"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasSEX ;
+            sp:subject spin:_this ;
+          ]
         ) ;
       sp:where (
           [
@@ -673,11 +687,27 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "ethn"^^xsd:string ;
+                sp:varName "demogcoll"^^xsd:string ;
               ] ;
-            sp:predicate study:hasEthnicity ;
+            sp:predicate study:participatesIn ;
             sp:subject [
                 sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DemographicDataCollection> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ethn"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasEthnicityOutcome ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
               ] ;
           ]
           [
@@ -687,6 +717,42 @@ sdtm:SDTM_DM_Record
             sp:predicate skos:prefLabel ;
             sp:subject [
                 sp:varName "ethn"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "race"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasRaceOutcome ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RACE"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "race"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sex"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasSexOutcome ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "SEX"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "sex"^^xsd:string ;
               ] ;
           ]
         ) ;
@@ -793,50 +859,6 @@ sdtm:SDTM_DM_Record
             sp:predicate study:hasLastName ;
             sp:subject [
                 sp:varName "inv"^^xsd:string ;
-              ] ;
-          ]
-        ) ;
-    ] ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "RACE"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasRACE ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object sdtm:SDTMRecord ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "subject"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasEntity ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "racer"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasRace ;
-            sp:subject [
-                sp:varName "subject"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "RACE"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "racer"^^xsd:string ;
               ] ;
           ]
         ) ;
@@ -1070,7 +1092,7 @@ sdtm:SDTM_DM_Record
               ] ;
           ]
           [
-            sp:object study:DemographicDataCollection ;
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DemographicDataCollection> ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "dmdatacoll"^^xsd:string ;
@@ -1208,50 +1230,6 @@ sdtm:SDTM_DM_Record
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
                 sp:varName "padminend"^^xsd:string ;
-              ] ;
-          ]
-        ) ;
-    ] ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "SEX"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasSEX ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object sdtm:SDTMRecord ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "subject"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasEntity ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "sx"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasSex ;
-            sp:subject [
-                sp:varName "subject"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "SEX"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "sx"^^xsd:string ;
               ] ;
           ]
         ) ;
