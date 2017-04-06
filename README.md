@@ -1,5 +1,7 @@
 # SDTM2RDF
-This repository holds the scripts and data for the PhUSE project "SDTM Data to RDF."  This file will be updated as the project progresses. All work is very early draft, contains errors, problems with the model, etc. 
+This repository holds the scripts and data for the PhUSE project "SDTM Data to RDF." All work is very early draft, contains errors, problems with the model, etc. 
+
+See the Project Wiki https://github.com/phuse-org/SDTMasRDF/wiki  for detailed descriptions of the project components.
 
 # Installation
 ## The Download Method
