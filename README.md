@@ -16,21 +16,7 @@ library(rrdf)
 library(Hmisc)
 library(car)
 ```
-Note on installing rrdf from github:
-```
-install.packages("rJava") # if not present already
-install.packages("devtools") # if not present already
-library(devtools)
-```
-
-The following two steps may be needed on some systems: 
-```
-library(httr)
-set_config(config(ssl_verifypeer = 0L))
-```
-Then: 
-```
-install_github("egonw/rrdf", subdir="rrdflibs")
-install_github("egonw/rrdf", subdir="rrdf", build_vignettes = FALSE)
-```
 Now run \r\buildRDF-Driver.R  to recreate the file:  \data\rdf\DM.TTL
+
+See the Wiki page https://github.com/phuse-org/SDTMasRDF/wiki/R-Scripts for how to install the required R package 'rrdf' which is not part of CRAN. 
+
