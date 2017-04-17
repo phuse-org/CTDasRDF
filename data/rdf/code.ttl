@@ -71,7 +71,7 @@ code:ActivityMethod
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Activity method"^^xsd:string ;
-  rdfs:subClassOf code:DefinedActivity ;
+  rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:ActivityStatus
@@ -145,7 +145,7 @@ code:Assessment
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:AssessmentOutcome ;
-      owl:onProperty code:permissibleOutcome ;
+      owl:onProperty code:hasOutcome ;
     ] ;
   skos:definition ""^^xsd:string ;
 .
@@ -165,7 +165,7 @@ code:AssumeBodyPosition
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:BodyPosition ;
-      owl:onProperty code:permissibleOutcome ;
+      owl:onProperty code:hasOutcome ;
     ] ;
   skos:definition ""^^xsd:string ;
 .
@@ -175,7 +175,7 @@ code:BloodPressure
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:BloodPressureOutcome ;
-      owl:onProperty code:permissibleOutcome ;
+      owl:onProperty code:hasOutcome ;
     ] ;
 .
 code:BloodPressureOutcome
@@ -518,6 +518,13 @@ code:country_1
   rdfs:label "USA"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
+code:hasAge
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:range code:AgeOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has age"^^xsd:string ;
+.
 code:hasConversionFactor
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -533,6 +540,13 @@ code:hasDelay
   rdfs:label "has delay"^^xsd:string ;
   rdfs:range xsd:duration ;
   skos:definition ""^^xsd:string ;
+.
+code:hasEthnicity
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:range code:Ethnicity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has Ethnicity"^^xsd:string ;
 .
 code:hasIdentifier
   rdf:type owl:DatatypeProperty ;
@@ -567,7 +581,15 @@ code:hasOriginalUnit
   rdfs:subPropertyOf code:hasUnit ;
   skos:definition ""^^xsd:string ;
 .
-code:hasPermissiblePrerequisite
+code:hasOutcome
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain code:DefinedActivity ;
+  rdfs:label "permissible outcome"^^xsd:string ;
+  rdfs:range code:DefinedActivityOutcome ;
+  skos:definition ""^^xsd:string ;
+.
+code:hasPrerequisite
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:StartRule ;
@@ -582,6 +604,20 @@ code:hasPrerequisiteOutcome
   rdfs:label "has anchor outcome"^^xsd:string ;
   rdfs:range code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
+.
+code:hasRace
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:range code:Race ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has Race"^^xsd:string ;
+.
+code:hasSex
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:range code:Sex ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has Sex"^^xsd:string ;
 .
 code:hasStandardUnit
   rdf:type owl:ObjectProperty ;
@@ -659,14 +695,6 @@ code:mmHg2mmHg
   code:hasConversionFactor "1"^^xsd:float ;
   code:hasOriginalUnit code:pressureunit_1 ;
   code:hasStandardUnit code:pressureunit_1 ;
-.
-code:permissibleOutcome
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:DefinedActivity ;
-  rdfs:label "permissible outcome"^^xsd:string ;
-  rdfs:range code:DefinedActivityOutcome ;
-  skos:definition ""^^xsd:string ;
 .
 code:popflag_EFF
   rdf:type owl:Class ;
@@ -753,7 +781,7 @@ code:startrule_1
   skos:definition "START AFTER LYING FOR 5 MIN"^^xsd:string ;
   skos:prefLabel "RULE LYING 5 MIN"^^xsd:string ;
   code:hasDelay "PT5M"^^xsd:duration ;
-  code:hasPermissiblePrerequisite code:intervention_2 ;
+  code:hasPrerequisite code:intervention_2 ;
   code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
   code:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
@@ -767,7 +795,7 @@ code:startrule_2
   skos:definition "RULE STANDING 1 MIN"^^xsd:string ;
   skos:prefLabel "STANDING1"^^xsd:string ;
   code:hasDelay "PT1M"^^xsd:duration ;
-  code:hasPermissiblePrerequisite code:intervention_1 ;
+  code:hasPrerequisite code:intervention_1 ;
   code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
   code:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
@@ -781,7 +809,7 @@ code:startrule_3
   skos:definition "RULE START AFTER STANDING 3 MIN"^^xsd:string ;
   skos:prefLabel "STANDING3"^^xsd:string ;
   code:hasDelay "PT3M"^^xsd:duration ;
-  code:hasPermissiblePrerequisite code:intervention_1 ;
+  code:hasPrerequisite code:intervention_1 ;
   code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
 .
@@ -913,6 +941,9 @@ custom:visit_3
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167>
   rdf:type code:BodyPosition ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141>
+  rdf:type code:AnatomicLocation ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C16352>
   rdf:type code:Race ;

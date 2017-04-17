@@ -48,12 +48,6 @@ arg:refdate
   rdf:type rdf:Property ;
   rdfs:subPropertyOf sp:arg ;
 .
-<http://www.bridgmodel.org/owl#DataEntity>
-  rdfs:subClassOf study:BRIDGComponent ;
-.
-<http://www.bridgmodel.org/owl#SubDomain>
-  rdfs:subClassOf study:BRIDGComponent ;
-.
 owl:hasValue
   owl:oneOf (
       <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
@@ -73,13 +67,6 @@ code:Arm
 .
 code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
-.
-code:Intervention
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom code:InterventionOutcome ;
-      owl:onProperty study:hasActivityOutcome ;
-    ] ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
   rdfs:label "F"^^xsd:string ;
@@ -218,7 +205,7 @@ study:Activity
             sp:object [
                 sp:varName "anchoroutcome"^^xsd:string ;
               ] ;
-            sp:predicate study:hasActivityOutcome ;
+            sp:predicate code:hasOutcome ;
             sp:subject [
                 sp:varName "anchor"^^xsd:string ;
               ] ;
@@ -350,11 +337,6 @@ study:Assessment
       owl:allValuesFrom study:Assessor ;
       owl:onProperty study:hasPerformer ;
     ] ;
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:MedicalCondition ;
-      owl:onProperty study:hasActivityOutcome ;
-    ] ;
   skos:definition "An analysis of one or more clinical observations to identify and/or characterize a Medical Condition."^^xsd:string ;
 .
 study:AssessmentRule
@@ -377,11 +359,6 @@ study:AssumeBodyPosition
   rdfs:label "Assume a specific body position"^^xsd:string ;
   rdfs:subClassOf study:Intervention ;
   skos:definition "An Intervention whose intent is to observe the Person s body position and change it to the desired body position, usually in preparation for another intervention."^^xsd:string ;
-.
-study:BRIDGComponent
-  rdf:type owl:Class ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "BRIDGComponent"^^xsd:string ;
 .
 study:BeginInstant
   rdf:type owl:Class ;
@@ -1116,23 +1093,6 @@ study:hasActivityInterval
   rdfs:subPropertyOf study:hasInterval ;
   skos:definition ""^^xsd:string ;
 .
-study:hasActivityOutcome
-  rdf:type owl:FunctionalProperty ;
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Activity ;
-  rdfs:label "has activity outcome"^^xsd:string ;
-  rdfs:range code:DefinedActivityOutcome ;
-  skos:definition ""^^xsd:string ;
-.
-study:hasAgeOutcome
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:DemographicDataCollection ;
-  rdfs:label "has age"^^xsd:string ;
-  rdfs:range code:AgeOutcome ;
-  skos:definition ""^^xsd:string ;
-.
 study:hasCategory
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1156,14 +1116,6 @@ study:hasDate
   rdfs:comment ""^^xsd:string ;
   rdfs:label "has date"^^xsd:string ;
   rdfs:range time:Instant ;
-  skos:definition ""^^xsd:string ;
-.
-study:hasEthnicityOutcome
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:DemographicDataCollection ;
-  rdfs:label "has Ethnicity"^^xsd:string ;
-  rdfs:range code:Ethnicity ;
   skos:definition ""^^xsd:string ;
 .
 study:hasIdentifier
@@ -1244,14 +1196,6 @@ study:hasPrerequisite
   rdfs:range study:PrerequisiteActivity ;
   skos:definition ""^^xsd:string ;
 .
-study:hasRaceOutcome
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:DemographicDataCollection ;
-  rdfs:label "has Race"^^xsd:string ;
-  rdfs:range code:Race ;
-  skos:definition ""^^xsd:string ;
-.
 study:hasReferenceInterval
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1268,14 +1212,6 @@ study:hasScheduledDate
   rdfs:label "has scheduled date"^^xsd:string ;
   rdfs:range time:Instant ;
   rdfs:subPropertyOf study:hasDate ;
-  skos:definition ""^^xsd:string ;
-.
-study:hasSexOutcome
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:DemographicDataCollection ;
-  rdfs:label "has Sex"^^xsd:string ;
-  rdfs:range code:Sex ;
   skos:definition ""^^xsd:string ;
 .
 study:hasSite

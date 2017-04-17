@@ -1,6 +1,7 @@
 # baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
+# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code
 # imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
 
 @prefix arg: <http://spinrdf.org/arg#> .
@@ -23,6 +24,7 @@
   rdf:type owl:Ontology ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code> ;
   owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
@@ -359,7 +361,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
-            sp:predicate study:hasAgeOutcome ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasAge> ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
               ] ;
@@ -705,7 +707,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "ethn"^^xsd:string ;
               ] ;
-            sp:predicate study:hasEthnicityOutcome ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasEthnicity> ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
               ] ;
@@ -723,7 +725,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "race"^^xsd:string ;
               ] ;
-            sp:predicate study:hasRaceOutcome ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasRace> ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
               ] ;
@@ -741,7 +743,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "sex"^^xsd:string ;
               ] ;
-            sp:predicate study:hasSexOutcome ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasSex> ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
               ] ;
@@ -1377,7 +1379,7 @@ sdtm:SDTM_SUPPDM_Record
             sp:object [
                 sp:varName "outcome"^^xsd:string ;
               ] ;
-            sp:predicate study:hasActivityOutcome ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOutcome> ;
             sp:subject [
                 sp:varName "activity"^^xsd:string ;
               ] ;
@@ -1508,7 +1510,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "vsvisitcode"^^xsd:string ;
               ] ;
-            sp:predicate study:hasCode ;
+            sp:predicate study:hasActivityID ;
             sp:subject [
                 sp:varName "vsvisit"^^xsd:string ;
               ] ;
@@ -2000,9 +2002,9 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "VSRFDTC"^^xsd:string ;
+                sp:varName "VSRFTDTC"^^xsd:string ;
               ] ;
-            sp:predicate sdtm:hasVSRFDTC ;
+            sp:predicate sdtm:hasVSRFTDTC ;
             sp:subject spin:_this ;
           ]
         ) ;
@@ -2080,7 +2082,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "anchroutcome"^^xsd:string ;
               ] ;
-            sp:predicate study:hasActivityOutcome ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOutcome> ;
             sp:subject [
                 sp:varName "anchr"^^xsd:string ;
               ] ;
@@ -2105,7 +2107,7 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "VSRFDTC"^^xsd:string ;
+                sp:varName "VSRFTDTC"^^xsd:string ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
@@ -2349,7 +2351,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "vstestoutcome"^^xsd:string ;
               ] ;
-            sp:predicate study:hasActivityOutcome ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOutcome> ;
             sp:subject [
                 sp:varName "vstst"^^xsd:string ;
               ] ;
@@ -2845,7 +2847,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
-            sp:predicate study:hasCode ;
+            sp:predicate study:hasActivityID ;
             sp:subject [
                 sp:varName "strtrule"^^xsd:string ;
               ] ;
@@ -3371,7 +3373,7 @@ sdtm:hasVSREASND
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-sdtm:hasVSRFDTC
+sdtm:hasVSRFTDTC
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain sdtm:SDTM_VS_Record ;
