@@ -2,7 +2,7 @@
 # FILE: createFrag.R
 # DESC: Create URI fragments for Dates, Ages and other fields that are shared 
 #         in common between various resources. Eg: A date (DATE_1) may be both
-#         a study start date and a product administrationg date. 
+#         a study start date and a product administration date. 
 #       dateKey - used to merge back into a column
 #       dateFrag - the fragment that will become part of a URI for a date col
 #
@@ -59,20 +59,17 @@ dateDict <- dateList[,c("dateKey", "dateFrag")]
 
 ddply(dateDict, .(dateKey), function(dateDict)
 {
-
-   add.data.triple(store,
-       paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
-       paste0(prefix.STUDY, "dateTimeInXSDString" ),
-       paste0(dateDict$dateKey), type="string"
-   )
-   add.data.triple(store,
-       paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
-       paste0(prefix.RDFS,"label" ),
-       paste0(dateDict$dateKey), type="string"
-   )
-   
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
+        paste0(prefix.STUDY, "dateTimeInXSDString" ),
+        paste0(dateDict$dateKey), type="string"
+    )
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(dateDict$dateKey), type="string"
+    )
 })
-
 
 # Merge in the dateKey value to created a coded version of the date field, naming
 #    the column with a _Frag suffix.

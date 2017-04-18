@@ -27,11 +27,11 @@ library(reshape2)
 # Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
 
-# Subset down for prototype development. 
+# Subset for prototype development. 
 maxPerson = 6; # Used in processDM.R 
 
 # Set working directory to the root of the work area
-setwd("C:/_github/SDTM2RDF")
+setwd("C:/_github/SDTMasRDF")
 
 # Configuration: List of prefixes
 sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
@@ -64,11 +64,11 @@ source('R/graphMeta.R')
 # Import and indexing Functions (Called during domain processing) 
 source('R/dataImportFnts.R')
 
-#-- Import data. Needed here for creating unique URIS for values that span
+#-- Import data. Needed here for creating unique URIs for values that span
 #   Multiple domains, like dates.
 #---- DM DOMAIN ---------------------------------------------------------------
 dm <- readXPT("dm")
-# For testing, keep only the first (n) patients in DM
+# For testing, keep only the first (maxPerson) patients in DM
 dm <- head(dm, maxPerson)  # maxPerson set above
 
 # Create the Person ID (Person_(n)) in the DM dataset for looping through the data by Person  
