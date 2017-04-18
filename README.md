@@ -1,5 +1,7 @@
 # SDTM2RDF
-This repository holds the scripts and data for the PhUSE project "SDTM Data to RDF."  This file will be updated as the project progresses. All work is very early draft, contains errors, problems with the model, etc. 
+This repository holds the scripts and data for the PhUSE project "SDTM Data to RDF." All work is very early draft, contains errors, problems with the model, etc. 
+
+See the Project Wiki https://github.com/phuse-org/SDTMasRDF/wiki  for detailed descriptions of the project components.
 
 # Installation
 ## The Download Method
@@ -16,21 +18,7 @@ library(rrdf)
 library(Hmisc)
 library(car)
 ```
-Note on installing rrdf from github:
-```
-install.packages("rJava") # if not present already
-install.packages("devtools") # if not present already
-library(devtools)
-```
-
-The following two steps may be needed on some systems: 
-```
-library(httr)
-set_config(config(ssl_verifypeer = 0L))
-```
-Then: 
-```
-install_github("egonw/rrdf", subdir="rrdflibs")
-install_github("egonw/rrdf", subdir="rrdf", build_vignettes = FALSE)
-```
 Now run \r\buildRDF-Driver.R  to recreate the file:  \data\rdf\DM.TTL
+
+See the Wiki page https://github.com/phuse-org/SDTMasRDF/wiki/R-Scripts for how to install the required R package 'rrdf' which is not part of CRAN. 
+

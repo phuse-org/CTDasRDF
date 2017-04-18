@@ -6,6 +6,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -14,6 +15,14 @@
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+cd01p:Study_CDISCPILOT01
+  rdf:type study:Study ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Study CDISCPILOT01"^^xsd:string ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DemographicDataCollection>
+  rdfs:subClassOf study:Observation ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Randomization_3>
   rdfs:subClassOf study:Randomization ;

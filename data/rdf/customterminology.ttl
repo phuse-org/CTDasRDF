@@ -281,18 +281,21 @@ custom:category_1
 .
 custom:popflag_C16WK
   rdf:type owl:Class ;
+  rdf:type custom:PopulationFlag ;
   rdfs:subClassOf custom:PopulationFlag ;
   skos:altLabel "Completers of Week 16 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT16"^^xsd:string ;
 .
 custom:popflag_C24WK
   rdf:type owl:Class ;
+  rdf:type custom:PopulationFlag ;
   rdfs:subClassOf custom:PopulationFlag ;
   skos:altLabel "Completers of Week 24 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT24"^^xsd:string ;
 .
 custom:popflag_C8WK
   rdf:type owl:Class ;
+  rdf:type custom:PopulationFlag ;
   rdfs:subClassOf custom:PopulationFlag ;
   skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT8"^^xsd:string ;
