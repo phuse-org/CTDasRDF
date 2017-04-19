@@ -226,7 +226,6 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"allocatedToArm" ),
         paste0(prefix.CUSTOM, "armcd_",dm$arm_) 
-    )
     # Treated Arm
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
