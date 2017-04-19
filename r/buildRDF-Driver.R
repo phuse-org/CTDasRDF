@@ -114,10 +114,10 @@ source('R/createFrag.R')
 #        DM MUST BE Run to create personNUm that is used when processing other domains.
 
 source('R/processDM.R')
-source('R/processSUPPDM.R')
+#TEMP source('R/processSUPPDM.R')
 
 #---- VS DOMAIN
-# source('R/processVS.R')
+#TEMP source('R/processVS.R')
 
 #---- X DOMAIN  Additional Domains will be added here.......
 

@@ -23,6 +23,7 @@
 #  Date Fragments
 #  All dates from across both DM and VS domains. 
 #  TODO: Add additional domains as project scope expands.
+#        - restructure this code - very kludgey...
 #------------------------------------------------------------------------------
 # dm dates
 dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
@@ -98,96 +99,28 @@ dm <- addDateFrag(dm, "brthdate")
 dmDatesList <- c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")
 
 #------------------------------------------------------------------------------
-#  Age Fragments
-#------------------------------------------------------------------------------
-# There is only 1 column of ages in the study
-ageKey <- dm$age
-
-ageList <-as.data.frame(ageKey)
-# Remove duplicates  ERROR: Changes from dataframe here!!! 
-ageList <- unique(ageList
-                  )
-# Remove missing(blank) ages by coding to NA and them omitting
-ageList[ageList==""] <- NA
-ageList <- na.omit(ageList)
-
-# Sort by age. Use dplyr arrange instead of order to avoid loss of df type
-ageList <- arrange(ageList, ageKey)
-
-# Create the coded value for each age as Age_n 
-ageList$ageFrag <- paste0("AgeMeasurement_", 1:nrow(ageList))   # Generate a list of ID numbers
-
-ageDict <- ageList[,c("ageKey", "ageFrag")]
-
-# Merge in the ageKey value to created a coded version of the age field, naming
-#    the column with a _Frag suffix.
-addAgeFrag<-function(domainName, colName)
-{
-    withFrag <- merge(x = ageDict, y = domainName, by.x="ageKey", by.y=colName, all.y = TRUE)
-    # Rename the merged-in key value to the original column name to preserve original data
-    names(withFrag)[names(withFrag)=="ageKey"] <-  colName
-    # Rename ageFrag value to coded value using colname +  _Frag suffix
-    names(withFrag)[names(withFrag)=="ageFrag"] <- paste0(colName, "_Frag")
-    return(withFrag)
-}
-
-# Add the age Fragment back into the DM dataframe.
-dm <- addAgeFrag(dm, "age")  
-
-#------------------------------------------------------------------------------
-#  arm (treatment arm) Age Fragments
-# TODO: Make a new function that creates fragments for columns, then call it 
-#    for columns: age, arm, armcd, etc.
-#------------------------------------------------------------------------------
-# There is only 1 column of ages in the study
-ageKey <- dm$age
-
-ageList <-as.data.frame(ageKey)
-# Remove duplicates  ERROR: Changes from dataframe here!!! 
-ageList <- unique(ageList
-                  )
-# Remove missing(blank) ages by coding to NA and them omitting
-ageList[ageList==""] <- NA
-ageList <- na.omit(ageList)
-
-# Sort by age. Use dplyr arrange instead of order to avoid loss of df type
-ageList <- arrange(ageList, ageKey)
-
-# Create the coded value for each age as Age_n 
-ageList$ageFrag <- paste0("AgeMeasurement_", 1:nrow(ageList))   # Generate a list of ID numbers
-
-ageDict <- ageList[,c("ageKey", "ageFrag")]
-
-# Merge in the ageKey value to created a coded version of the age field, naming
-#    the column with a _Frag suffix.
-addAgeFrag<-function(domainName, colName)
-{
-    withFrag <- merge(x = ageDict, y = domainName, by.x="ageKey", by.y=colName, all.y = TRUE)
-    # Rename the merged-in key value to the original column name to preserve original data
-    names(withFrag)[names(withFrag)=="ageKey"] <-  colName
-    # Rename ageFrag value to coded value using colname +  _Frag suffix
-    names(withFrag)[names(withFrag)=="ageFrag"] <- paste0(colName, "_Frag")
-    return(withFrag)
-}
-
-# Add the age Fragment back into the DM dataframe.
-dm <- addAgeFrag(dm, "age")  
-
-#------------------------------------------------------------------------------
 # createFrag()
-#  NEW 2017-04-18:   New code for a function that creates fragments for coding
-#                  values that exist in a single column. These fragments then used
-#                   to create URIs.
-# TODO: replace all addAgeFrag section with a call to this function!
+#   Create URI fragments for coded values in a SINGLE column.
+#     - Create a unique list of all the values in that column 
+#     - Index the unique values
+#     - Create a coded value that includes that index number (_<n>)
+#     - Merge indexed fragment back into the data
+#     - Use the fragment to construct IRIs
+#     domainName = domain dataset. Eg: dm, vs, ...
+#     processColumn = name of the column to process. Eg: armcd, age ...
+#     outPrefix  = prefix value used in both the new column name for the fragments 
+#       and the fragments themselves. Eg:
+#       column: actarm_frag, has values: actarm_1, actarm_3...
+#       Note: original source data has columns actarmcd, armcd. The 'cd'  
+#         is not needed in the RDF context, so drop that part of the name
 #------------------------------------------------------------------------------
-
-createFrag<-function(domainName, columnName)
+createFrag<-function(domainName, processColumn, outPrefix)
 {
-    keyVals <- domainName[,columnName]
+    keyVals <- domainName[,processColumn]
     # uniqueVals <-as.data.frame(keyVals)
     
     # Remove duplicates  ERROR: Changes from dataframe here!!! 
-    uniques <<- unique(domainName[,columnName])
+    uniques <<- unique(domainName[,processColumn])
 
     # Remove missing(blank) values by coding to NA, then omitt
     uniques[uniques==""] <- NA
@@ -200,22 +133,23 @@ createFrag<-function(domainName, columnName)
     uniqueVals <- as.data.frame(keyVals)
     
     # Create the coded value for each unique value as <value_n> 
-    uniqueVals$valFrag <- paste0(columnName,"_cd_", 1:nrow(uniqueVals))   # Generate a list of ID numbers
+    uniqueVals$valFrag <- paste0(outPrefix,"_", 1:nrow(uniqueVals))   # Generate a list of ID numbers
     
     valDict <- uniqueVals[,c("keyVals", "valFrag")]
     
     # Merge in the keyVals value to created a coded version of the value field, naming
     #    the column with a _Frag suffix.
-    withFrag <- merge(x = valDict, y = domainName, by.x="keyVals", by.y=columnName, all.y = TRUE)
+    withFrag <- merge(x = valDict, y = domainName, by.x="keyVals", by.y=processColumn, all.y = TRUE)
     # Rename the merged-in key value to the original column name to preserve original data
-    names(withFrag)[names(withFrag)=="keyVals"] <-  columnName
-    # Rename valFrag value to coded value using columnName +  _Frag suffix
-    names(withFrag)[names(withFrag)=="valFrag"] <- paste0(columnName, "_Frag")
+    names(withFrag)[names(withFrag)=="keyVals"] <-  processColumn
+    # Rename valFrag value to coded value using processColumn +  _Frag suffix
+    names(withFrag)[names(withFrag)=="valFrag"] <- paste0(outPrefix, "_Frag")
     return(withFrag)
 }
 # Add the Fragment back into the dataframe.
-foo <-createFrag(dm, "armcd")  
-
+dm <- createFrag(dm, "age", "age")  # See how/if used now. Was AgeMeasurement that is now part of Demographics collection...
+dm <- createFrag(dm, "armcd", "arm")  
+dm <- createFrag(dm, "actarmcd", "actarm")  
 
 
 

@@ -221,16 +221,18 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"hasUniqueSubjectID" ),
         paste0(dm$usubjid), type="string"
     )
+    
     # Arm 
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"allocatedToArm" ),
-        paste0(prefix.CUSTOM, "armcd_",dm$arm_) 
+        paste0(prefix.CUSTOM, dm$arm_Frag) 
+    )
     # Treated Arm
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"treatedAccordingToArm"),
-        paste0(prefix.CUSTOM, "armcd_",dm$actarm_) 
+        paste0(prefix.CUSTOM, dm$actarm_Frag) 
     )
     # Death flag
     add.data.triple(store,

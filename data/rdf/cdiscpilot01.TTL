@@ -22,23 +22,10 @@
 @prefix prism: <http://prismstandard.org/namespaces/basic/2.0/> .
 @prefix sdtm:  <http://cdisc.org/sdtm#> .
 
-cdiscpilot01:popflag_EFF_1
-        a                         custom:popflagterm_EFF ;
-        rdfs:label                "popflag_EFF_1"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_EFF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
 cdiscpilot01:ProductAdministration_4
         a                          study:ProductAdministration ;
         rdfs:label                 "ProductAdministration_4"^^xsd:string ;
         study:hasActivityInterval  cdiscpilot01:Interval_PA4 .
-
-cdiscpilot01:AgeMeasurement_2
-        a                         code:Age ;
-        rdfs:label                "AgeMeasurement_2"^^xsd:string ;
-        study:hasActivityOutcome  custom:AgeOutcomeTerm_64YRS .
 
 cdiscpilot01:Date_24  a            study:ProductAdministrationBegin , study:StudyParticipationBegin , study:ReferenceBegin ;
         rdfs:label                 "2014-03-18"^^xsd:string ;
@@ -50,22 +37,6 @@ cdiscpilot01:InformedConsent_1
         study:hasActivityCode      code:informedconsentterm-DEFAULT ;
         study:hasActivityInterval  cdiscpilot01:Interval_IC1 ;
         study:hasActivityOutcome   code:InformedConsent_granted .
-
-cdiscpilot01:popflag_ITT_1
-        a                         custom:popflagterm_ITT ;
-        rdfs:label                "popflag_ITT_1"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_ITT ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
-cdiscpilot01:popflag_SAF_3
-        a                         custom:popflagterm_SAF ;
-        rdfs:label                "popflag_SAF_3"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_SAF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
 
 cdiscpilot01:Interval_SP3
         a                  study:StudyParticipationInterval ;
@@ -80,9 +51,9 @@ cdiscpilot01:Date_31  a            study:ProductAdministrationEnd , study:StudyP
 cdiscpilot01:Person_4
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person_4"^^xsd:string ;
-        study:allocatedToArm         custom:armcd_XAN_LO ;
+        study:allocatedToArm         custom:arm_3 ;
         study:deathFlag              ""^^xsd:string ;
-        study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_4 ;
+        study:hasAgeMeasurement      cdiscpilot01:age_4 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasLifespan            cdiscpilot01:Interval_LS4 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
@@ -93,20 +64,12 @@ cdiscpilot01:Person_4
                 cdiscpilot01:Interval_SP4 ;
         study:hasSubjectID           "1033"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1033"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:study_CDISCPILOT01 , cdiscpilot01:popflag_ITT_4 , cdiscpilot01:ProductAdministration_4 , cdiscpilot01:Randomization_4 , cdiscpilot01:popflag_EFF_4 , cdiscpilot01:popflag_SAF_4 , cdiscpilot01:InformedConsent_4 , cdiscpilot01:DemographicDataCollection_4 ;
-        study:treatedAccordingToArm  custom:armcd_XAN_LO .
+        study:participatesIn         cdiscpilot01:study_CDISCPILOT01 , cdiscpilot01:ProductAdministration_4 , cdiscpilot01:Randomization_4 , cdiscpilot01:InformedConsent_4 , cdiscpilot01:DemographicDataCollection_4 ;
+        study:treatedAccordingToArm  custom:actarm_3 .
 
 cdiscpilot01:Date_8  a             study:ProductAdministrationBegin , study:StudyParticipationBegin , study:ReferenceBegin ;
         rdfs:label                 "2012-08-05"^^xsd:string ;
         study:dateTimeInXSDString  "2012-08-05"^^xsd:string .
-
-cdiscpilot01:popflag_C16WK_3
-        a                         custom:popflagterm_C16WK ;
-        rdfs:label                "popflag_C16WK_3"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_C16WK ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
 
 cdiscpilot01:Interval_RI4
         a                  study:ReferenceInterval ;
@@ -117,30 +80,6 @@ cdiscpilot01:Interval_RI4
 cdiscpilot01:Date_16  a            study:DemogDataCollectionDate , study:InformedConsentBegin ;
         rdfs:label                 "2013-07-11"^^xsd:string ;
         study:dateTimeInXSDString  "2013-07-11"^^xsd:string .
-
-cdiscpilot01:popflag_ITT_6
-        a                         custom:popflagterm_ITT ;
-        rdfs:label                "popflag_ITT_6"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_ITT ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
-cdiscpilot01:popflag_EFF_6
-        a                         custom:popflagterm_EFF ;
-        rdfs:label                "popflag_EFF_6"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_EFF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
-cdiscpilot01:popflag_C8WK_5
-        a                         custom:popflagterm_C8WK ;
-        rdfs:label                "popflag_C8WK_5"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_C8WK ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
 
 cdiscpilot01:InformedConsent_6
         a                          code:informedconsentterm-DEFAULT ;
@@ -158,14 +97,6 @@ cdiscpilot01:DemographicDataCollection_4
         rdfs:label             "http://example.org/cdiscpilot01#Demographic data collection 4"^^xsd:string ;
         study:hasActivityCode  code:observationterm-DEMOG ;
         study:hasDate          cdiscpilot01:Date_23 .
-
-cdiscpilot01:popflag_C24WK_3
-        a                         custom:popflagterm_C24WK ;
-        rdfs:label                "popflag_C24WK_3"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_C24WK ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
 
 cdiscpilot01:Randomization_5
         a                             study:Randomization ;
@@ -192,31 +123,22 @@ cdiscpilot01:Interval_PA2
         time:hasBeginning  cdiscpilot01:Date_8 ;
         time:hasEnd        cdiscpilot01:Date_9 .
 
+cdiscpilot01:age_3  a             code:Age ;
+        rdfs:label                "age_3"^^xsd:string ;
+        study:hasActivityOutcome  custom:AgeOutcomeTerm_71YRS .
+
 cdiscpilot01:Date_10  a            study:ReferenceEnd ;
         rdfs:label                 "2012-09-02"^^xsd:string ;
         study:dateTimeInXSDString  "2012-09-02"^^xsd:string .
-
-cdiscpilot01:ProductAdministration_3
-        a                          study:ProductAdministration ;
-        rdfs:label                 "ProductAdministration_3"^^xsd:string ;
-        study:hasActivityInterval  cdiscpilot01:Interval_PA3 .
 
 cdiscpilot01:Date_23  a            study:DemogDataCollectionDate , study:InformedConsentBegin ;
         rdfs:label                 "2014-03-10"^^xsd:string ;
         study:dateTimeInXSDString  "2014-03-10"^^xsd:string .
 
-cdiscpilot01:AgeMeasurement_1
-        a                         code:Age ;
-        rdfs:label                "AgeMeasurement_1"^^xsd:string ;
-        study:hasActivityOutcome  custom:AgeOutcomeTerm_63YRS .
-
-cdiscpilot01:popflag_SAF_2
-        a                         custom:popflagterm_SAF ;
-        rdfs:label                "popflag_SAF_2"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_SAF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
+cdiscpilot01:ProductAdministration_3
+        a                          study:ProductAdministration ;
+        rdfs:label                 "ProductAdministration_3"^^xsd:string ;
+        study:hasActivityInterval  cdiscpilot01:Interval_PA3 .
 
 cdiscpilot01:site-701
         a                      study:Site ;
@@ -238,9 +160,9 @@ cdiscpilot01:Date_30  a            study:StudyParticipationEnd ;
 cdiscpilot01:Person_3
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person_3"^^xsd:string ;
-        study:allocatedToArm         custom:armcd_XAN_HI ;
+        study:allocatedToArm         custom:arm_2 ;
         study:deathFlag              ""^^xsd:string ;
-        study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_3 ;
+        study:hasAgeMeasurement      cdiscpilot01:age_3 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasLifespan            cdiscpilot01:Interval_LS3 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
@@ -251,8 +173,8 @@ cdiscpilot01:Person_3
                 cdiscpilot01:Interval_SP3 ;
         study:hasSubjectID           "1028"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1028"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:popflag_C8WK_3 , cdiscpilot01:study_CDISCPILOT01 , cdiscpilot01:InformedConsent_3 , cdiscpilot01:popflag_C24WK_3 , cdiscpilot01:popflag_EFF_3 , cdiscpilot01:popflag_SAF_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:popflag_C16WK_3 , cdiscpilot01:popflag_ITT_3 , cdiscpilot01:Randomization_3 ;
-        study:treatedAccordingToArm  custom:armcd_XAN_HI .
+        study:participatesIn         cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:study_CDISCPILOT01 , cdiscpilot01:InformedConsent_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:Randomization_3 ;
+        study:treatedAccordingToArm  custom:actarm_2 .
 
 cdiscpilot01:Investigator_123
         a                        study:Investigator ;
@@ -274,19 +196,6 @@ cdiscpilot01:Date_15  a            study:ReferenceEnd ;
         rdfs:label                 "2013-03-29"^^xsd:string ;
         study:dateTimeInXSDString  "2013-03-29"^^xsd:string .
 
-cdiscpilot01:popflag_EFF_5
-        a                         custom:popflagterm_EFF ;
-        rdfs:label                "popflag_EFF_5"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_EFF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
-cdiscpilot01:AgeMeasurement_6
-        a                         code:Age ;
-        rdfs:label                "AgeMeasurement_6"^^xsd:string ;
-        study:hasActivityOutcome  custom:AgeOutcomeTerm_85YRS .
-
 cdiscpilot01:InformedConsent_5
         a                          code:informedconsentterm-DEFAULT ;
         rdfs:label                 "InformedConsent_5"^^xsd:string ;
@@ -303,14 +212,6 @@ cdiscpilot01:DemographicDataCollection_3
         rdfs:label             "http://example.org/cdiscpilot01#Demographic data collection 3"^^xsd:string ;
         study:hasActivityCode  code:observationterm-DEMOG ;
         study:hasDate          cdiscpilot01:Date_16 .
-
-cdiscpilot01:popflag_ITT_5
-        a                         custom:popflagterm_ITT ;
-        rdfs:label                "popflag_ITT_5"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_ITT ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
 
 cdiscpilot01:Randomization_4
         a                             study:Randomization ;
@@ -338,6 +239,10 @@ cdiscpilot01:Interval_PA1
         time:hasBeginning  cdiscpilot01:Date_21 ;
         time:hasEnd        cdiscpilot01:Date_29 .
 
+cdiscpilot01:age_2  a             code:Age ;
+        rdfs:label                "age_2"^^xsd:string ;
+        study:hasActivityOutcome  custom:AgeOutcomeTerm_64YRS .
+
 cdiscpilot01:ProductAdministration_2
         a                          study:ProductAdministration ;
         rdfs:label                 "ProductAdministration_2"^^xsd:string ;
@@ -357,14 +262,6 @@ cdiscpilot01:arm_PLACEBO
         rdfs:label        "Placebo"^^xsd:string ;
         study:hasArmCode  custom:armcd_PBO .
 
-cdiscpilot01:popflag_SAF_1
-        a                         custom:popflagterm_SAF ;
-        rdfs:label                "popflag_SAF_1"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_SAF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
 cdiscpilot01:Interval_SP1
         a                  study:StudyParticipationInterval ;
         rdfs:label         "Interval_SP1"^^xsd:string ;
@@ -374,9 +271,9 @@ cdiscpilot01:Interval_SP1
 cdiscpilot01:Person_2
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person_2"^^xsd:string ;
-        study:allocatedToArm         custom:armcd_PBO ;
+        study:allocatedToArm         custom:arm_1 ;
         study:deathFlag              ""^^xsd:string ;
-        study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_2 ;
+        study:hasAgeMeasurement      cdiscpilot01:age_2 ;
         study:hasEthnicity           cdiscsdtm:C66790.C17459 ;
         study:hasLifespan            cdiscpilot01:Interval_LS2 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
@@ -387,8 +284,8 @@ cdiscpilot01:Person_2
                 cdiscpilot01:Interval_SP2 ;
         study:hasSubjectID           "1023"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1023"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:ProductAdministration_2 , cdiscpilot01:InformedConsent_2 , cdiscpilot01:popflag_ITT_2 , cdiscpilot01:popflag_SAF_2 , cdiscpilot01:popflag_EFF_2 , cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:Randomization_2 , cdiscpilot01:study_CDISCPILOT01 ;
-        study:treatedAccordingToArm  custom:armcd_PBO .
+        study:participatesIn         cdiscpilot01:ProductAdministration_2 , cdiscpilot01:InformedConsent_2 , cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:Randomization_2 , cdiscpilot01:study_CDISCPILOT01 ;
+        study:treatedAccordingToArm  custom:actarm_1 .
 
 cdiscpilot01:Interval_LS6
         a                  study:Lifespan ;
@@ -405,14 +302,6 @@ cdiscpilot01:Interval_PA6
         time:hasBeginning  cdiscpilot01:Date_12 ;
         time:hasEnd        cdiscpilot01:Date_14 .
 
-cdiscpilot01:popflag_C16WK_1
-        a                         custom:popflagterm_C16WK ;
-        rdfs:label                "popflag_C16WK_1"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_C16WK ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
 cdiscpilot01:Interval_RI2
         a                  study:ReferenceInterval ;
         rdfs:label         "Interval_RI2"^^xsd:string ;
@@ -422,27 +311,6 @@ cdiscpilot01:Interval_RI2
 cdiscpilot01:Date_14  a            study:ProductAdministrationEnd ;
         rdfs:label                 "2013-03-09"^^xsd:string ;
         study:dateTimeInXSDString  "2013-03-09"^^xsd:string .
-
-cdiscpilot01:popflag_EFF_4
-        a                         custom:popflagterm_EFF ;
-        rdfs:label                "popflag_EFF_4"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_EFF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
-cdiscpilot01:popflag_C8WK_3
-        a                         custom:popflagterm_C8WK ;
-        rdfs:label                "popflag_C8WK_3"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_C8WK ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
-cdiscpilot01:AgeMeasurement_5
-        a                         code:Age ;
-        rdfs:label                "AgeMeasurement_5"^^xsd:string ;
-        study:hasActivityOutcome  custom:AgeOutcomeTerm_77YRS .
 
 cdiscpilot01:InformedConsent_4
         a                          code:informedconsentterm-DEFAULT ;
@@ -466,39 +334,19 @@ cdiscpilot01:Randomization_3
         rdfs:label                    "Randomization 3"^^xsd:string ;
         study:hasActivityOutcomeCode  custom:armcd_XAN_HI .
 
-cdiscpilot01:popflag_ITT_4
-        a                         custom:popflagterm_ITT ;
-        rdfs:label                "popflag_ITT_4"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_ITT ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
 cdiscpilot01:Interval_IC2
         a                  study:InformedConsentInterval ;
         rdfs:label         "Interval_IC2"^^xsd:string ;
         time:hasBeginning  cdiscpilot01:Date_7 .
 
-cdiscpilot01:popflag_C24WK_1
-        a                         custom:popflagterm_C24WK ;
-        rdfs:label                "popflag_C24WK_1"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_C24WK ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
+cdiscpilot01:age_1  a             code:Age ;
+        rdfs:label                "age_1"^^xsd:string ;
+        study:hasActivityOutcome  custom:AgeOutcomeTerm_63YRS .
 
 cdiscpilot01:arm_XANOMELINEHIGHDOSE
         a                 study:Arm ;
         rdfs:label        "Xanomeline High Dose"^^xsd:string ;
         study:hasArmCode  custom:armcd_XAN_HI .
-
-cdiscpilot01:popflag_SAF_6
-        a                         custom:popflagterm_SAF ;
-        rdfs:label                "popflag_SAF_6"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_SAF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
 
 cdiscpilot01:Date_21  a            study:ProductAdministrationBegin , study:StudyParticipationBegin , study:ReferenceBegin ;
         rdfs:label                 "2014-01-02"^^xsd:string ;
@@ -522,9 +370,9 @@ cdiscpilot01:Date_19  a            study:DemogDataCollectionDate , study:Informe
 cdiscpilot01:Person_1
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person_1"^^xsd:string ;
-        study:allocatedToArm         custom:armcd_PBO ;
+        study:allocatedToArm         custom:arm_1 ;
         study:deathFlag              "Y"^^xsd:string ;
-        study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_1 ;
+        study:hasAgeMeasurement      cdiscpilot01:age_1 ;
         study:hasEthnicity           cdiscsdtm:C66790.C17459 ;
         study:hasLifespan            cdiscpilot01:Interval_LS1 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
@@ -535,8 +383,8 @@ cdiscpilot01:Person_1
                 cdiscpilot01:Interval_SP1 ;
         study:hasSubjectID           "1015"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1015"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:popflag_C16WK_1 , cdiscpilot01:popflag_C24WK_1 , cdiscpilot01:popflag_EFF_1 , cdiscpilot01:DemographicDataCollection_1 , cdiscpilot01:popflag_C8WK_1 , cdiscpilot01:InformedConsent_1 , cdiscpilot01:popflag_ITT_1 , cdiscpilot01:ProductAdministration_1 , cdiscpilot01:Randomization_1 , cdiscpilot01:popflag_SAF_1 , cdiscpilot01:study_CDISCPILOT01 ;
-        study:treatedAccordingToArm  custom:armcd_PBO .
+        study:participatesIn         cdiscpilot01:DemographicDataCollection_1 , cdiscpilot01:InformedConsent_1 , cdiscpilot01:ProductAdministration_1 , cdiscpilot01:Randomization_1 , cdiscpilot01:study_CDISCPILOT01 ;
+        study:treatedAccordingToArm  custom:actarm_1 .
 
 cdiscpilot01:Interval_LS5
         a                  study:Lifespan ;
@@ -553,6 +401,10 @@ cdiscpilot01:Interval_PA5
         time:hasBeginning  cdiscpilot01:Date_28 ;
         time:hasEnd        cdiscpilot01:Date_31 .
 
+cdiscpilot01:age_6  a             code:Age ;
+        rdfs:label                "age_6"^^xsd:string ;
+        study:hasActivityOutcome  custom:AgeOutcomeTerm_85YRS .
+
 cdiscpilot01:Interval_RI1
         a                  study:ReferenceInterval ;
         rdfs:label         "Interval_RI1"^^xsd:string ;
@@ -568,23 +420,10 @@ cdiscpilot01:Date_13  a            study:StudyParticipationEnd ;
         rdfs:label                 "2013-02-18"^^xsd:string ;
         study:dateTimeInXSDString  "2013-02-18"^^xsd:string .
 
-cdiscpilot01:popflag_EFF_3
-        a                         custom:popflagterm_EFF ;
-        rdfs:label                "popflag_EFF_3"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_EFF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
 cdiscpilot01:ProductAdministration_6
         a                          study:ProductAdministration ;
         rdfs:label                 "ProductAdministration_6"^^xsd:string ;
         study:hasActivityInterval  cdiscpilot01:Interval_PA6 .
-
-cdiscpilot01:AgeMeasurement_4
-        a                         code:Age ;
-        rdfs:label                "AgeMeasurement_4"^^xsd:string ;
-        study:hasActivityOutcome  custom:AgeOutcomeTerm_74YRS .
 
 cdiscpilot01:InformedConsent_3
         a                          code:informedconsentterm-DEFAULT ;
@@ -608,26 +447,10 @@ cdiscpilot01:Randomization_2
         rdfs:label                    "Randomization 2"^^xsd:string ;
         study:hasActivityOutcomeCode  custom:armcd_PBO .
 
-cdiscpilot01:popflag_ITT_3
-        a                         custom:popflagterm_ITT ;
-        rdfs:label                "popflag_ITT_3"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_ITT ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
 cdiscpilot01:Interval_IC1
         a                  study:InformedConsentInterval ;
         rdfs:label         "Interval_IC1"^^xsd:string ;
         time:hasBeginning  cdiscpilot01:Date_19 .
-
-cdiscpilot01:popflag_SAF_5
-        a                         custom:popflagterm_SAF ;
-        rdfs:label                "popflag_SAF_5"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_SAF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
 
 cdiscpilot01:Date_20  rdfs:label   "2013-12-31"^^xsd:string ;
         study:dateTimeInXSDString  "2013-12-31"^^xsd:string .
@@ -641,9 +464,9 @@ cdiscpilot01:Interval_SP5
 cdiscpilot01:Person_6
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person_6"^^xsd:string ;
-        study:allocatedToArm         custom:armcd_PBO ;
+        study:allocatedToArm         custom:arm_1 ;
         study:deathFlag              ""^^xsd:string ;
-        study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_6 ;
+        study:hasAgeMeasurement      cdiscpilot01:age_6 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasLifespan            cdiscpilot01:Interval_LS6 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
@@ -654,16 +477,8 @@ cdiscpilot01:Person_6
                 cdiscpilot01:Interval_SP6 ;
         study:hasSubjectID           "1047"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1047"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:study_CDISCPILOT01 , cdiscpilot01:popflag_SAF_6 , cdiscpilot01:InformedConsent_6 , cdiscpilot01:popflag_EFF_6 , cdiscpilot01:ProductAdministration_6 , cdiscpilot01:popflag_ITT_6 , cdiscpilot01:Randomization_6 ;
-        study:treatedAccordingToArm  custom:armcd_PBO .
-
-cdiscpilot01:popflag_C16WK_5
-        a                         custom:popflagterm_C16WK ;
-        rdfs:label                "popflag_C16WK_5"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_C16WK ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
+        study:participatesIn         cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:study_CDISCPILOT01 , cdiscpilot01:InformedConsent_6 , cdiscpilot01:ProductAdministration_6 , cdiscpilot01:Randomization_6 ;
+        study:treatedAccordingToArm  custom:actarm_1 .
 
 cdiscpilot01:Interval_RI6
         a                  study:ReferenceInterval ;
@@ -680,14 +495,6 @@ cdiscpilot01:DemographicDataCollection_6
         rdfs:label             "http://example.org/cdiscpilot01#Demographic data collection 6"^^xsd:string ;
         study:hasActivityCode  code:observationterm-DEMOG ;
         study:hasDate          cdiscpilot01:Date_11 .
-
-cdiscpilot01:popflag_C24WK_5
-        a                         custom:popflagterm_C24WK ;
-        rdfs:label                "popflag_C24WK_5"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_C24WK ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
 
 cdiscpilot01:Interval_IC6
         a                  study:InformedConsentInterval ;
@@ -709,35 +516,18 @@ cdiscpilot01:Interval_PA4
         time:hasBeginning  cdiscpilot01:Date_24 ;
         time:hasEnd        cdiscpilot01:Date_25 .
 
+cdiscpilot01:age_5  a             code:Age ;
+        rdfs:label                "age_5"^^xsd:string ;
+        study:hasActivityOutcome  custom:AgeOutcomeTerm_77YRS .
+
 cdiscpilot01:Date_12  a            study:ProductAdministrationBegin , study:StudyParticipationBegin , study:ReferenceBegin ;
         rdfs:label                 "2013-02-12"^^xsd:string ;
         study:dateTimeInXSDString  "2013-02-12"^^xsd:string .
-
-cdiscpilot01:popflag_EFF_2
-        a                         custom:popflagterm_EFF ;
-        rdfs:label                "popflag_EFF_2"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_EFF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
-cdiscpilot01:popflag_C8WK_1
-        a                         custom:popflagterm_C8WK ;
-        rdfs:label                "popflag_C8WK_1"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_C8WK ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
 
 cdiscpilot01:ProductAdministration_5
         a                          study:ProductAdministration ;
         rdfs:label                 "ProductAdministration_5"^^xsd:string ;
         study:hasActivityInterval  cdiscpilot01:Interval_PA5 .
-
-cdiscpilot01:AgeMeasurement_3
-        a                         code:Age ;
-        rdfs:label                "AgeMeasurement_3"^^xsd:string ;
-        study:hasActivityOutcome  custom:AgeOutcomeTerm_71YRS .
 
 cdiscpilot01:Date_25  a            study:ProductAdministrationEnd ;
         rdfs:label                 "2014-03-31"^^xsd:string ;
@@ -755,22 +545,6 @@ cdiscpilot01:Randomization_1
         rdfs:label                    "Randomization 1"^^xsd:string ;
         study:hasActivityOutcomeCode  custom:armcd_PBO .
 
-cdiscpilot01:popflag_ITT_2
-        a                         custom:popflagterm_ITT ;
-        rdfs:label                "popflag_ITT_2"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_ITT ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
-cdiscpilot01:popflag_SAF_4
-        a                         custom:popflagterm_SAF ;
-        rdfs:label                "popflag_SAF_4"^^xsd:string ;
-        study:hasActivityCode     custom:popflagterm_SAF ;
-        study:hasActivityOutcome  code:popflagoutcome_YES ;
-        study:hasMethod           code:method_DERIVED ;
-        study:hasPerformer        cdiscpilot01:sponsor_STUDYSPONSOR .
-
 cdiscpilot01:Interval_SP4
         a                  study:StudyParticipationInterval ;
         rdfs:label         "Interval_SP4"^^xsd:string ;
@@ -785,9 +559,9 @@ cdiscpilot01:study_CDISCPILOT01
 cdiscpilot01:Person_5
         a                            study:EnrolledSubject ;
         rdfs:label                   "Person_5"^^xsd:string ;
-        study:allocatedToArm         custom:armcd_XAN_HI ;
+        study:allocatedToArm         custom:arm_2 ;
         study:deathFlag              ""^^xsd:string ;
-        study:hasAgeMeasurement      cdiscpilot01:AgeMeasurement_5 ;
+        study:hasAgeMeasurement      cdiscpilot01:age_5 ;
         study:hasEthnicity           cdiscsdtm:C66790.C41222 ;
         study:hasLifespan            cdiscpilot01:Interval_LS5 ;
         study:hasRace                cdiscsdtm:C74457.C41261 ;
@@ -798,8 +572,8 @@ cdiscpilot01:Person_5
                 cdiscpilot01:Interval_SP5 ;
         study:hasSubjectID           "1034"^^xsd:string ;
         study:hasUniqueSubjectID     "01-701-1034"^^xsd:string ;
-        study:participatesIn         cdiscpilot01:DemographicDataCollection_5 , cdiscpilot01:popflag_C8WK_5 , cdiscpilot01:popflag_C24WK_5 , cdiscpilot01:study_CDISCPILOT01 , cdiscpilot01:popflag_SAF_5 , cdiscpilot01:InformedConsent_5 , cdiscpilot01:popflag_EFF_5 , cdiscpilot01:popflag_C16WK_5 , cdiscpilot01:ProductAdministration_5 , cdiscpilot01:popflag_ITT_5 , cdiscpilot01:Randomization_5 ;
-        study:treatedAccordingToArm  custom:armcd_XAN_HI .
+        study:participatesIn         cdiscpilot01:DemographicDataCollection_5 , cdiscpilot01:study_CDISCPILOT01 , cdiscpilot01:InformedConsent_5 , cdiscpilot01:ProductAdministration_5 , cdiscpilot01:Randomization_5 ;
+        study:treatedAccordingToArm  custom:actarm_2 .
 
 cdiscpilot01:Date_9  a             study:ProductAdministrationEnd ;
         rdfs:label                 "2012-09-01"^^xsd:string ;
@@ -846,13 +620,17 @@ cdiscpilot01:Interval_PA3
         time:hasBeginning  cdiscpilot01:Date_17 ;
         time:hasEnd        cdiscpilot01:Date_22 .
 
+cdiscpilot01:age_4  a             code:Age ;
+        rdfs:label                "age_4"^^xsd:string ;
+        study:hasActivityOutcome  custom:AgeOutcomeTerm_74YRS .
+
 cdiscpilot01:sdtm-graph
         rdfs:comment         "Example SDTM data converted from CDISC SDTM to RDF Graph as part of the SDTM Data to RDF project."^^xsd:string ;
         rdfs:label           "SDTM data as a graph."^^xsd:string ;
         dcterms:contributor  "Tim Williams"^^xsd:string , "Armando Oliva"^^xsd:string ;
         dcterms:description  "Data converted from the CDISCPILOT01 SDTM DM domain to RDF."^^xsd:string ;
         dcterms:title        "SDTM data as RDF."^^xsd:string ;
-        pav:createdOn        "2017-04-18T14:22:07-04:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-04-19T11:03:19-04:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.3 Platform:x86_64-w64-mingw32 swith scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "cdiscpilot01.TTL" .
