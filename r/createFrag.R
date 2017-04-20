@@ -3,12 +3,6 @@
 # DESC: Create URI fragments for Dates, Ages and other fields that are shared 
 #         in common between various resources. Eg: A date (DATE_1) may be both
 #         a study start date and a product administration date. 
-#       dateKey - used to merge back into a column
-#       dateFrag - the fragment that will become part of a URI for a date col
-#
-#       ageKey - used to merge back into a column
-#       ageFrag - the fragment that will become part of a URI for a age col
-#
 # REQ : 
 #       
 # SRC : 
@@ -16,14 +10,17 @@
 # OUT : 
 # NOTE: 
 #       Ages are all assumed to be in YEARS for this dataset. 
-# TODO: Combine the common elements into function(s) where possible
+# TODO: (see individual functions for TODO list) 
 #
 ###############################################################################
+
 #------------------------------------------------------------------------------
 #  Date Fragments
-#  All dates from across both DM and VS domains. 
-#  TODO: Add additional domains as project scope expands.
-#        - restructure this code - very kludgey...
+#    All dates from across both DM and VS domains. 
+#    TODO: 
+#      Add additional domains as project scope expands.
+#      Recode into a new function createFragMultDomain(), following the 
+#        same approach as createFragOneDomain()
 #------------------------------------------------------------------------------
 # dm dates
 dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
@@ -52,6 +49,8 @@ dateList <- dateList[with(dateList, order(dateKey)),]
 # Create the coded value for each date as Date_n 
 dateList$dateFrag <- paste0("Date_", 1:nrow(dateList))   # Generate a list of ID numbers
 
+#  dateKey - used to merge back into a column
+#  dateFrag - the fragment that will become part of a URI for a date col
 dateDict <- dateList[,c("dateKey", "dateFrag")]
 
 # Create the label and dateTimeInXSDString triples for each new date _Frag to avoid 
@@ -99,66 +98,22 @@ dm <- addDateFrag(dm, "brthdate")
 dmDatesList <- c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")
 
 #------------------------------------------------------------------------------
-# createFragOneCol()
-#   Create URI fragments for coded values in a SINGLE column.
-#     - Create a unique list of all the values in that column 
-#     - Index the unique values
-#     - Create a coded value that includes that index number (_<n>)
-#     - Merge indexed fragment back into the data
-#     - Use the fragment to construct IRIs
-#     domainName = domain dataset. Eg: dm, vs, ...
-#     processColumn = name of the column to process. Eg: armcd, age ...
-#     outPrefix  = prefix value used in both the new column name for the fragments 
-#       and the fragments themselves. Eg:
-#       column: actarm_frag, has values: actarm_1, actarm_3...
-#       Note: original source data has columns actarmcd, armcd. The 'cd'  
+#  createFragOneDomain()
+#    Create URI fragments for coded values in a single or mutliple column. 
+#      - If more than one column, combine values into a single column to process
+#      - Create numeric index the unique values
+#      - Create a coded value that includes that index number (_<n>)
+#      - Merge indexed IRI fragment back into the source data column(s)
+#      - Use the fragment in the process<DOMAIN>.R scripts to construct IRIs
+#    domainName = A single, source domain dataset. Eg: dm, vs, ...
+#    processColumns = names of one of more columns for the source values
+#    fragPrefix  = a prefix value used in both the new column name for 
+#      the fragments and the fragment value itself. 
+#      Examples: column: actarm_frag, has values: actarm_1, actarm_3...
+#    Note: original source data has columns actarmcd, armcd. The 'cd'  
 #         is not needed in the RDF context, so drop that part of the name
 #------------------------------------------------------------------------------
-createFragOneCol<-function(domainName, processColumn, outPrefix)
-{
-    keyVals <- domainName[,processColumn]
-    # uniqueVals <-as.data.frame(keyVals)
-    
-    # Remove duplicates  ERROR: Changes from dataframe here!!! 
-    uniques <<- unique(domainName[,processColumn])
-
-    # Remove missing(blank) values by coding to NA, then omitt
-    uniques[uniques==""] <- NA
-    uniques <- na.omit(uniques)
-    keyVals <- sort(uniques, decreasing = F)
-    # Sort by values. Prev code: Use dplyr arrange instead of order/sort to avoid loss of df type
-    #OLD CODE uniqueVals <- arrange(uniqueVals, keyVals)
-    # uniqueVals$keyVals <- as.data.frame(sort(uniques))
-    # uniqueVals <- as.data.frame(sort(uniques))
-    uniqueVals <- as.data.frame(keyVals)
-    
-    # Create the coded value for each unique value as <value_n> 
-    uniqueVals$valFrag <- paste0(outPrefix,"_", 1:nrow(uniqueVals))   # Generate a list of ID numbers
-    
-    valDict <- uniqueVals[,c("keyVals", "valFrag")]
-    
-    # Merge in the keyVals value to created a coded version of the value field, naming
-    #    the column with a _Frag suffix.
-    withFrag <- merge(x = valDict, y = domainName, by.x="keyVals", by.y=processColumn, all.y = TRUE)
-    # Rename the merged-in key value to the original column name to preserve original data
-    names(withFrag)[names(withFrag)=="keyVals"] <-  processColumn
-    # Rename valFrag value to coded value using processColumn +  _Frag suffix
-    names(withFrag)[names(withFrag)=="valFrag"] <- paste0(outPrefix, "_Frag")
-    return(withFrag)
-}
-# Add the Fragment back into the dataframe.
-dm <- createFragOneCol(dm, "age", "age")  # See how/if used now. Was AgeMeasurement that is now part of Demographics collection...
-
-
-
-#------------------------------------------------------------------------------
-#  createFragMultCol()
-# Values from mroe than one column need to be combined to create the list of
-#   possible values, then merge the fragments back into those multiple columns
-#   Assumes the colunns are all in the SAME dataframe.
-#   Eg: arm, actarmm both in DM
-
-createFragMultCol<-function(domainName, processColumns, fragPrefix)
+createFragOneDomain<-function(domainName, processColumns, fragPrefix)
 {
     # Combine the multiple columns into one
     columnData <- domainName[,c(processColumns)] # keep only the requested cols in the df
@@ -205,7 +160,8 @@ createFragMultCol<-function(domainName, processColumns, fragPrefix)
 #    return(withFrag)
 }
 
-dm <- createFragMultCol(domainName=dm, processColumns=c("armcd", "actarmcd"), fragPrefix="arm"  )
-# dm <- createFragMultCol(domainName=dm, processColumns=c("armcd"), fragPrefix="arm"  )
-# dm <- createFragMultCol(domainName=dm, processColumns=c("actarmcd"), fragPrefix="arm"  )
+dm <- createFragOneDomain(domainName=dm, processColumns=c("armcd", "actarmcd"), fragPrefix="arm"  )
+# dm <- createFragOneDomain(domainName=dm, processColumns=c("armcd"), fragPrefix="arm"  )
+# dm <- createFragOneDomain(domainName=dm, processColumns=c("actarmcd"), fragPrefix="arm"  )
+dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="age"  )
 
