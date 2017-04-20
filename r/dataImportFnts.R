@@ -35,9 +35,8 @@ addPersonId <- function(domainName)
     return(withIndex)
 }
 
-
 #------------------------------------------------------------------------------
-# createDateTriples()
+# assignDateType()
 #   Create the Date_(n) triples that describe a specific date URI
 #   dateVal  - date value string variable.  Eg: dm$brthdate
 #   dateFrag - date URI fragment variable. Eg: dm$brthdate_Frag

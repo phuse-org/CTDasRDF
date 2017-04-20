@@ -240,24 +240,7 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"deathFlag" ),
         paste0(dm$dthfl), type="string"
     )
-    # Ethnicity
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, person),
-        paste0(prefix.STUDY,"hasEthnicity" ),
-        paste0(prefix.CDISCSDTM, dm$ethnic_) 
-    )
-    # Race
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, person),
-        paste0(prefix.STUDY,"hasRace" ),
-        paste0(prefix.CDISCSDTM, dm$race_) 
-    )
-    # Sex 
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, person),
-        paste0(prefix.STUDY,"hasSex" ),
-        paste0(prefix.CDISCSDTM, dm$sex_) 
-    )
+
     # Site
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -270,29 +253,6 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.RDFS,"label" ),
         paste0(person), type="string"
     )
-    # Age
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, person),
-        paste0(prefix.STUDY,"hasAgeMeasurement" ),
-        paste0(prefix.CDISCPILOT01, dm$age_Frag)
-    )
-        #----Age Measurement Triples
-        add.triple(store,
-            paste0(prefix.CDISCPILOT01, dm$age_Frag),
-            paste0(prefix.RDF,"type" ),
-            paste0(prefix.CODE,"Age")
-        )
-        #!! Note hard coding here for unit and formation of term
-        add.triple(store,
-            paste0(prefix.CDISCPILOT01, dm$age_Frag),
-            paste0(prefix.STUDY,"hasActivityOutcome" ),
-            paste0(prefix.CUSTOM,"AgeOutcomeTerm_",dm$age,"YRS")
-        )
-        add.data.triple(store,
-            paste0(prefix.CDISCPILOT01, dm$age_Frag),
-            paste0(prefix.RDFS,"label" ),
-            paste0(dm$age_Frag), type="string"
-        )
     # Reference Interval
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -503,30 +463,75 @@ ddply(dm, .(subjid), function(dm)
             assignDateType(dm$rfxendtc, dm$rfxendtc_Frag, "ProductAdministrationEnd")
 
     # DemographicDataCollection
+    #  Age, Ethnicity, Race, Sex, etc. are all part of the Demographic Data collection
+    #    triples for a specific person. Person_<n> -->  DemographicDataCollection_<n>       
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum)
     )
         add.triple(store,
-             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-             paste0(prefix.RDF,"type" ),
-             paste0(prefix.STUDY,"DemographicDataCollection" )
-        )    
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.STUDY,"DemographicDataCollection" )
+        )  
         add.triple(store,
-             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-             paste0(prefix.STUDY,"hasActivityCode" ),
-             paste0(prefix.CODE,"observationterm-DEMOG")
-        )    
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Demographic data collection ", dm$personNum), type="string"
+        )  
+        # Age
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+            paste0(prefix.STUDY,"hasAge" ),
+            paste0(prefix.CUSTOM, dm$age_Frag)
+    )
+           #----Age Measurement Triples
+           #TODO: Confirm these against AO's model!
+           add.triple(store,
+               paste0(prefix.CUSTOM, dm$age_Frag),
+               paste0(prefix.RDF,"type" ),
+               paste0(prefix.CODE,"Age")
+           )
+           #!! Note hard coding here for unit and formation of term
+           add.triple(store,
+               paste0(prefix.CUSTOM, dm$age_Frag),
+               paste0(prefix.STUDY,"hasActivityOutcome" ),
+               paste0(prefix.CUSTOM,"AgeOutcomeTerm_",dm$age,"YRS")
+           )
+           add.data.triple(store,
+               paste0(prefix.CUSTOM, dm$age_Frag),
+               paste0(prefix.RDFS,"label" ),
+               paste0(dm$age_Frag), type="string"
+           )
+        # Ethnicity
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+            paste0(prefix.STUDY,"hasEthnicity" ),
+            paste0(prefix.CDISCSDTM, dm$ethnic_) 
+        )
+        # Race
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+            paste0(prefix.STUDY,"hasRace" ),
+            paste0(prefix.CDISCSDTM, dm$race_) 
+        )
+        # Sex 
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, person),
+            paste0(prefix.STUDY,"hasSex" ),
+            paste0(prefix.CDISCSDTM, dm$sex_) 
+        )
+        #DEL  ActivityCode no longer in use 2017-04-19
+        #add.triple(store,
+        #     paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+        #     paste0(prefix.STUDY,"hasActivityCode" ),
+        #     paste0(prefix.CODE,"observationterm-DEMOG")
+        #)    
         add.triple(store,
              paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
              paste0(prefix.STUDY,"hasDate" ),
              paste0(prefix.CDISCPILOT01,dm$dmdtc_Frag)
-        )    
-        add.data.triple(store,
-             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-             paste0(prefix.RDFS,"label" ),
-             paste0(prefix.CDISCPILOT01,"Demographic data collection ", dm$personNum), type="string"
         )    
         #---- Assign Date Type
         assignDateType(dm$rfxendtc, dm$dmdtc_Frag, "DemogDataCollectionDate")

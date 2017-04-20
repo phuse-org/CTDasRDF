@@ -99,7 +99,7 @@ dm <- addDateFrag(dm, "brthdate")
 dmDatesList <- c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")
 
 #------------------------------------------------------------------------------
-# createFrag()
+# createFragOneCol()
 #   Create URI fragments for coded values in a SINGLE column.
 #     - Create a unique list of all the values in that column 
 #     - Index the unique values
@@ -114,7 +114,7 @@ dmDatesList <- c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpend
 #       Note: original source data has columns actarmcd, armcd. The 'cd'  
 #         is not needed in the RDF context, so drop that part of the name
 #------------------------------------------------------------------------------
-createFrag<-function(domainName, processColumn, outPrefix)
+createFragOneCol<-function(domainName, processColumn, outPrefix)
 {
     keyVals <- domainName[,processColumn]
     # uniqueVals <-as.data.frame(keyVals)
@@ -147,9 +147,65 @@ createFrag<-function(domainName, processColumn, outPrefix)
     return(withFrag)
 }
 # Add the Fragment back into the dataframe.
-dm <- createFrag(dm, "age", "age")  # See how/if used now. Was AgeMeasurement that is now part of Demographics collection...
-dm <- createFrag(dm, "armcd", "arm")  
-dm <- createFrag(dm, "actarmcd", "actarm")  
+dm <- createFragOneCol(dm, "age", "age")  # See how/if used now. Was AgeMeasurement that is now part of Demographics collection...
 
 
+
+#------------------------------------------------------------------------------
+#  createFragMultCol()
+# Values from mroe than one column need to be combined to create the list of
+#   possible values, then merge the fragments back into those multiple columns
+#   Assumes the colunns are all in the SAME dataframe.
+#   Eg: arm, actarmm both in DM
+
+createFragMultCol<-function(domainName, processColumns, fragPrefix)
+{
+    # Combine the multiple columns into one
+    columnData <- domainName[,c(processColumns)] # keep only the requested cols in the df
+    
+    sourceVals <- melt(columnData, measure.vars=colnames(columnData),
+                 variable.name="source",
+                 value.name="value")
+    
+    # Keep only the values. Source not important
+    #TW:NOT NEEDED #sourceVals <- sourceVals[ , c("value")]
+    # 
+    # Remove duplicates  ERROR: Changes from dataframe here!!! 
+    # uniques <<- unique(domainName[,processColumn])
+    uniques <- unique(sourceVals[,"value"])
+    # Remove missing(blank) values by coding to NA, then omitt
+    uniques[uniques==""] <- NA
+    uniques <- na.omit(uniques)
+    keyVals <- sort(uniques, decreasing = F)
+    # Sort by values. Prev code: Use dplyr arrange instead of order/sort to avoid loss of df type
+    uniqueVals <- as.data.frame(keyVals)
+    
+    # Create the coded value for each unique value as <value_n> 
+    uniqueVals$valFrag <- paste0(fragPrefix,"_", 1:nrow(uniqueVals))   # Generate a list of ID numbers
+    
+    valDict <<- uniqueVals[,c("keyVals", "valFrag")]
+    
+    # Merge in the keyVals value to created a coded version of the value field, naming
+    #    the column with a _Frag suffix.
+    for (i in processColumns) {
+        domainName <- merge(x = valDict, y = domainName, by.x="keyVals", by.y=i, all.y = TRUE)
+        # Rename the merged-in key value to the original column name to preserve original data
+        names(domainName)[names(domainName)=="keyVals"] <-  i
+        # Rename valFrag value to coded value using processColumn +  _Frag suffix
+        # names(withFrag)[names(withFrag)=="valFrag"] <- paste0(fragPrefix, "_Frag")
+        names(domainName)[names(domainName)=="valFrag"] <- paste0(i, "_Frag")
+    
+    }
+     return(domainName)
+#    withFrag <- merge(x = valDict, y = domainName, by.x="keyVals", by.y=processColumn, all.y = TRUE)
+    # Rename the merged-in key value to the original column name to preserve original data
+#    names(withFrag)[names(withFrag)=="keyVals"] <-  processColumn
+    # Rename valFrag value to coded value using processColumn +  _Frag suffix
+#    names(withFrag)[names(withFrag)=="valFrag"] <- paste0(fragPrefix, "_Frag")
+#    return(withFrag)
+}
+
+dm <- createFragMultCol(domainName=dm, processColumns=c("armcd", "actarmcd"), fragPrefix="arm"  )
+# dm <- createFragMultCol(domainName=dm, processColumns=c("armcd"), fragPrefix="arm"  )
+# dm <- createFragMultCol(domainName=dm, processColumns=c("actarmcd"), fragPrefix="arm"  )
 

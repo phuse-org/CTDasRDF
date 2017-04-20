@@ -104,6 +104,8 @@ vs <- subset(vs, (personNum==1
                   & vstestcd %in% c("DIABP", "SYSBP") 
                   & visit %in% c("SCREENING 1", "SCREENING 2")))
 
+
+
 # Create URI fragments for Dates and other categories that are shared URIs 
 # Eg: Date_1, AgeMeasurement_3
 source('R/createFrag.R')
