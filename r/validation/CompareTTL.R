@@ -168,6 +168,6 @@ checkSubject <- function(subject){
 # checkSubject("cdiscpilot01:ReferenceEndDate_1")
 # checkSubject("cdiscpilot01:ReferenceStartDate_1")
 # checkSubject("cdiscpilot01:StudyParticipationEnd_1")
-# checkSubject("cdiscpilot01:site-701")
+# checkSubject("cdiscpilot01:site_701")
 # checkSubject("cdiscpilot01:study-CDISCPILOT01")
 
