@@ -11,7 +11,7 @@
 #                      Are stored in variables with under suffix _ while 
 #                          originals are retained.
 #       SDTM numeric codes, Country, Arm codes are set MANUALLY
-#       Birthdate and Deatdate are now part of the Lifespan interval. 
+#       Birthdate and Deathdate are now part of the Lifespan interval. 
 # TODO: 
 #   
 #  - Collapse code segments in FUNT()s where possible
@@ -25,13 +25,11 @@
 #          this file and triples currently not created!
 ###############################################################################
 
+#-- Data Creation (for testing) -----------------------------------------------
 #---- Investigator name and ID not present in source data
 dm$invnam <- 'Jones'
 dm$invid  <- '123'
-
-#-- Data Creation ---------------------------------------------------------
 dm$dthfl[dm$personNum == 1 ] <- "Y" # Set a Death flag  for Person_1
-
 #-- End Data Creation ---------------------------------------------------------
 
 #-- Data COding ---------------------------------------------------------------
@@ -41,7 +39,7 @@ dm$dthfl[dm$personNum == 1 ] <- "Y" # Set a Death flag  for Person_1
 # Phase:  "Phase 2" becomes "PHASE2"
 dm$study_ <- toupper(gsub(" ", "", dm$study))
 dm$ageu_  <- toupper(gsub(" ", "", dm$ageu))  # TODO: NOT USED?
- # For arm, use the coded form of both armcd and actarmcd to allow a short-hand linkage
+# For arm, use the coded form of both armcd and actarmcd to allow a short-hand linkage
 #    to the codelist where both ARM/ARMCD adn ACTARM/ACTARMCD are located.
 dm$arm_    <- toupper(gsub(" ", "", dm$armcd))
 dm$actarm_ <- toupper(gsub(" ", "", dm$actarmcd))
@@ -121,29 +119,29 @@ sites <- sites[!duplicated(sites),]
 ddply(sites, .(siteid), function(sites)
 {
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "site-",sites$siteid),
+        paste0(prefix.CDISCPILOT01, "site_",sites$siteid),
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY,"Site" )
     )
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "site-",sites$siteid),
+        paste0(prefix.CDISCPILOT01, "site_",sites$siteid),
         paste0(prefix.STUDY,"hasCountry" ),
         paste0(prefix.COUNTRY,sites$country )
     )
     add.triple(store,
-        paste0(prefix.CDISCPILOT01, "site-",sites$siteid),
+        paste0(prefix.CDISCPILOT01, "site_",sites$siteid),
         paste0(prefix.STUDY,"hasInvestigator" ),
         paste0(prefix.CDISCPILOT01,"Investigator_", sites$invid)
     )
     add.data.triple(store,
-        paste0(prefix.CDISCPILOT01, "site-",sites$siteid),
+        paste0(prefix.CDISCPILOT01, "site_",sites$siteid),
         paste0(prefix.STUDY,"hasSiteID" ),
         paste0(sites$siteid), type="string" 
     )
     add.data.triple(store,
-        paste0(prefix.CDISCPILOT01, "site-",sites$siteid),
+        paste0(prefix.CDISCPILOT01, "site_",sites$siteid),
         paste0(prefix.RDFS,"label" ),
-        paste0("site-",sites$siteid), type="string" 
+        paste0("site_",sites$siteid), type="string" 
     )
 })
 #---- Treatment Arms : Build triples for each unique Treatment Arm
@@ -226,13 +224,13 @@ ddply(dm, .(subjid), function(dm)
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"allocatedToArm" ),
-        paste0(prefix.CUSTOM, dm$arm_Frag) 
+        paste0(prefix.CUSTOM, dm$armcd_Frag) 
     )
     # Treated Arm
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
-        paste0(prefix.STUDY,"treatedAccordingToArm"),
-        paste0(prefix.CUSTOM, dm$actarm_Frag) 
+        paste0(prefix.STUDY,"actualArm"),
+        paste0(prefix.CUSTOM, dm$actarmcd_Frag) 
     )
     # Death flag
     add.data.triple(store,
@@ -245,7 +243,7 @@ ddply(dm, .(subjid), function(dm)
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"hasSite" ),
-        paste0(prefix.CDISCPILOT01, "site-",dm$siteid) 
+        paste0(prefix.CDISCPILOT01, "site_",dm$siteid) 
     )
     # Person label
     add.data.triple(store,
@@ -475,7 +473,7 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.RDF,"type" ),
             paste0(prefix.STUDY,"DemographicDataCollection" )
         )  
-        add.triple(store,
+        add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.RDFS,"label" ),
             paste0("Demographic data collection ", dm$personNum), type="string"
@@ -518,7 +516,7 @@ ddply(dm, .(subjid), function(dm)
         )
         # Sex 
         add.triple(store,
-            paste0(prefix.CDISCPILOT01, person),
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.STUDY,"hasSex" ),
             paste0(prefix.CDISCSDTM, dm$sex_) 
         )

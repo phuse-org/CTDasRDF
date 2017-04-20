@@ -15,7 +15,6 @@
 # NOTE: Validation of the resulting TTL structure with Apache Jenna riot
 #        Later cross check with CompareTTL.R
 # TODO: 
-#
 ###############################################################################
 library(rrdf)
 library(Hmisc)
