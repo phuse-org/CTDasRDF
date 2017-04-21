@@ -198,7 +198,7 @@ study:Activity
             sp:object [
                 sp:varName "anchor"^^xsd:string ;
               ] ;
-            sp:predicate study:hasPrerequisite ;
+            sp:predicate code:hasPrerequisite ;
             sp:subject spin:_this ;
           ]
           [
@@ -811,6 +811,14 @@ study:activityStatus
   rdfs:range code:ActivityStatus ;
   skos:definition ""^^xsd:string ;
 .
+study:actualArm
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:EnrolledSubject ;
+  rdfs:label "treated according to"^^xsd:string ;
+  rdfs:range code:Arm ;
+  skos:definition ""^^xsd:string ;
+.
 study:agecalc
   rdf:type spin:Function ;
   spin:body [
@@ -1072,15 +1080,6 @@ study:groupID
   rdfs:comment ""^^xsd:string ;
   rdfs:label "group ID"^^xsd:string ;
   rdfs:range xsd:string ;
-  rdfs:subPropertyOf study:hasIdentifier ;
-  skos:definition ""^^xsd:string ;
-.
-study:hasActivityID
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Activity ;
-  rdfs:label "has activity code"^^xsd:string ;
-  rdfs:range code:DefinedConcept ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1500,12 +1499,4 @@ study:studyday
   rdfs:label "studyday"^^xsd:string ;
   rdfs:subClassOf spl:DateFunctions ;
   skos:definition "takes two date strings in ISO 8601 format and calculates the study day using activity date as the first argument and reference date as the 2nd argument"^^xsd:string ;
-.
-study:treatedAccordingToArm
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:EnrolledSubject ;
-  rdfs:label "treated according to"^^xsd:string ;
-  rdfs:range code:Arm ;
-  skos:definition ""^^xsd:string ;
 .

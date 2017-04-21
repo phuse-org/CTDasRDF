@@ -54,6 +54,13 @@ sdtm:SDTMComponent
   rdfs:subClassOf owl:Thing ;
   skos:definition ""^^xsd:string ;
 .
+sdtm:SDTMDefineRecord
+  rdf:type owl:Class ;
+  rdfs:subClassOf sdtm:SDTMRecord ;
+  skos:altLabel ""^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "SDTMDefine record"^^xsd:string ;
+.
 sdtm:SDTMDomain
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -257,7 +264,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "actualarm"^^xsd:string ;
               ] ;
-            sp:predicate study:treatedAccordingToArm ;
+            sp:predicate study:actualArm ;
             sp:subject [
                 sp:varName "subject"^^xsd:string ;
               ] ;
@@ -301,7 +308,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "actualarm"^^xsd:string ;
               ] ;
-            sp:predicate study:treatedAccordingToArm ;
+            sp:predicate study:actualArm ;
             sp:subject [
                 sp:varName "subject"^^xsd:string ;
               ] ;
@@ -446,7 +453,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "plannedarm"^^xsd:string ;
               ] ;
-            sp:predicate study:hasActivityOutcome ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOutcome> ;
             sp:subject [
                 sp:varName "rndmact"^^xsd:string ;
               ] ;
@@ -900,7 +907,7 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InformedConsent_1> ;
-            sp:predicate study:hasActivityOutcome ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOutcome> ;
             sp:subject [
                 sp:varName "informedconsent"^^xsd:string ;
               ] ;
@@ -1507,10 +1514,8 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            sp:object [
-                sp:varName "vsvisitcode"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasActivityID ;
+            sp:object study:Visit ;
+            sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "vsvisit"^^xsd:string ;
               ] ;
@@ -1521,7 +1526,7 @@ sdtm:SDTM_VS_Record
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "vsvisitcode"^^xsd:string ;
+                sp:varName "vsvisit"^^xsd:string ;
               ] ;
           ]
         ) ;
@@ -2073,7 +2078,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "anchr"^^xsd:string ;
               ] ;
-            sp:predicate study:hasPrerequisite ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasPrerequisite> ;
             sp:subject [
                 sp:varName "strtrule"^^xsd:string ;
               ] ;
@@ -2915,6 +2920,19 @@ sdtm:VariableCode
   rdfs:subClassOf sdtm:SDTMTerminology ;
   skos:definition ""^^xsd:string ;
 .
+sdtm:VariableCode-DOMAIN
+  rdf:type sdtm:VariableCode ;
+  rdfs:comment ""^^xsd:string ;
+  skos:altLabel "Domain Abbreviation"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "DOMAIN"^^xsd:string ;
+.
+sdtm:VariableCode_STUDYID
+  rdf:type sdtm:VariableCode ;
+  skos:altLabel ""^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "Variable code STUDYID"^^xsd:string ;
+.
 sdtm:domaincode-DM
   rdf:type sdtm:DomainCode ;
   rdfs:comment ""^^xsd:string ;
@@ -3464,12 +3482,6 @@ sdtm:hasVSTPTREF
   rdfs:comment ""^^xsd:string ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
-sdtm:variablecode-DM
-  rdf:type sdtm:VariableCode ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "DM"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C100130.C73428>

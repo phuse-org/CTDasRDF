@@ -269,6 +269,11 @@ code:InformedConsent
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent term"^^xsd:string ;
   rdfs:subClassOf code:AdministrativeActivity ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:InformedConsentOutcome ;
+      owl:onProperty code:hasOutcome ;
+    ] ;
   skos:definition ""^^xsd:string ;
 .
 code:InformedConsentOutcome
@@ -365,6 +370,11 @@ code:PopulationFlag
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Population flag term"^^xsd:string ;
   rdfs:subClassOf code:Analysis ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:PopulationFlagOutcome ;
+      owl:onProperty code:hasOutcome ;
+    ] ;
   skos:definition ""^^xsd:string ;
 .
 code:PopulationFlagOutcome
@@ -401,6 +411,11 @@ code:Randomization
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization"^^xsd:string ;
   rdfs:subClassOf code:Allocation ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:RandomizationOutcome ;
+      owl:onProperty code:hasOutcome ;
+    ] ;
   skos:definition ""^^xsd:string ;
 .
 code:RandomizationOutcome
@@ -424,7 +439,18 @@ code:Rule
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Rule term"^^xsd:string ;
   rdfs:subClassOf code:Analysis ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:RuleOutcome ;
+      owl:onProperty code:hasOutcome ;
+    ] ;
   skos:definition ""^^xsd:string ;
+.
+code:RuleOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:AnalysisOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Rule outcome"^^xsd:string ;
 .
 code:Sex
   rdf:type owl:Class ;
