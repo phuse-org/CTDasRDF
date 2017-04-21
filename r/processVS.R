@@ -13,8 +13,6 @@
 # - Collapse the categories DIABP, SYSBP, etc. into functions?
 ###############################################################################
 
-vs <- readXPT("vs")
-
 # Create numbering within each usubjid, vstestcd, sorted by date (vsdtc)
 #    to allow creation of number triples within that category.    
 # Convert for proper sorting
