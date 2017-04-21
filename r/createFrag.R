@@ -160,6 +160,7 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix)
 #    return(withFrag)
 }
 
+#TODO: Move the dm calls out to processDM
 dm <- createFragOneDomain(domainName=dm, processColumns=c("armcd", "actarmcd"), fragPrefix="arm"  )
 # dm <- createFragOneDomain(domainName=dm, processColumns=c("armcd"), fragPrefix="arm"  )
 # dm <- createFragOneDomain(domainName=dm, processColumns=c("actarmcd"), fragPrefix="arm"  )
