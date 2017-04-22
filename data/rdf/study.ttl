@@ -463,7 +463,7 @@ study:HumanStudySubject
   rdfs:subClassOf study:HumanSubject ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
-      owl:onProperty study:participatesIn ;
+      owl:onProperty study:participatesInStudy ;
       owl:someValuesFrom study:Study ;
     ] ;
   skos:definition "A Human Subject who participates in any Study Activity"^^xsd:string ;
@@ -1349,6 +1349,10 @@ study:participatesIn
   rdfs:label "participates in"^^xsd:string ;
   rdfs:range study:Activity ;
   rdfs:subPropertyOf study:engagesIn ;
+  owl:propertyChainAxiom (
+      study:participatesIn
+      study:hasSubActivity
+    ) ;
   skos:definition "relates an Entity with an Activity that the Entity participates in passively; i.e. the activity is performed on the Entity"^^xsd:string ;
 .
 study:participatesInStudy
@@ -1357,7 +1361,6 @@ study:participatesInStudy
   rdfs:domain study:HumanStudySubject ;
   rdfs:label "participates in study"^^xsd:string ;
   rdfs:range study:Study ;
-  rdfs:subPropertyOf study:participatesIn ;
   owl:inverseOf study:hasStudyParticipant ;
   skos:definition ""^^xsd:string ;
 .

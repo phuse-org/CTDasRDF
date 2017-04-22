@@ -112,13 +112,6 @@ cdiscpilot01:Date_16
   skos:definition ""^^xsd:string ;
   study:dateTimeInXSDString "2013-07-11"^^xsd:string ;
 .
-cdiscpilot01:Date_16a
-  rdf:type study:StudyParticipationEnd ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "2014-07-02T11:45"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:dateTimeInXSDString "2014-07-02T11:45"^^xsd:string ;
-.
 cdiscpilot01:Date_17
   rdf:type study:ProductAdministrationBegin ;
   rdf:type study:ReferenceBegin ;
@@ -127,7 +120,7 @@ cdiscpilot01:Date_17
   skos:definition ""^^xsd:string ;
   study:dateTimeInXSDString "2013-07-19"^^xsd:string ;
 .
-cdiscpilot01:Date_18a
+cdiscpilot01:Date_18
   rdf:type study:StudyParticipationEnd ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "2014-01-14T11:10"^^xsd:string ;
@@ -144,7 +137,7 @@ cdiscpilot01:Date_19
   skos:definition ""^^xsd:string ;
   study:dateTimeInXSDString "2013-12-26"^^xsd:string ;
 .
-cdiscpilot01:Date_19a
+cdiscpilot01:Date_20
   rdf:type study:VisitDate ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "2013-12-26T09:00"^^xsd:string ;
@@ -166,6 +159,13 @@ cdiscpilot01:Date_22
   rdfs:label "2014-01-14"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:dateTimeInXSDString "2014-01-14"^^xsd:string ;
+.
+cdiscpilot01:Date_23
+  rdf:type study:StudyParticipationEnd ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2014-07-02T11:45"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2014-07-02T11:45"^^xsd:string ;
 .
 cdiscpilot01:Date_29
   rdf:type study:ProductAdministrationEnd ;
@@ -374,7 +374,7 @@ cdiscpilot01:Interval_SP1
   rdfs:label "Interval 13"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_19 ;
-  time:hasEnd cdiscpilot01:Date_16a ;
+  time:hasEnd cdiscpilot01:Date_23 ;
 .
 cdiscpilot01:Interval_SP2
   rdf:type study:StudyParticipationInterval ;
@@ -390,7 +390,7 @@ cdiscpilot01:Interval_SP3
   rdfs:label "Interval 15"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_16 ;
-  time:hasEnd cdiscpilot01:Date_18a ;
+  time:hasEnd cdiscpilot01:Date_18 ;
 .
 cdiscpilot01:Investigator_123
   rdf:type study:Investigator ;
@@ -414,15 +414,10 @@ cdiscpilot01:Person_1
   study:hasStudyParticipationInterval cdiscpilot01:Interval_SP1 ;
   study:hasSubjectID "1015"^^xsd:string ;
   study:hasUniqueSubjectID "01-701-1015"^^xsd:string ;
-  study:participatesIn cdiscpilot01:DBP_1 ;
-  study:participatesIn cdiscpilot01:DBP_2 ;
-  study:participatesIn cdiscpilot01:DBP_3 ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_1 ;
   study:participatesIn cdiscpilot01:InformedConsent_1 ;
   study:participatesIn cdiscpilot01:ProductAdministration_1 ;
   study:participatesIn cdiscpilot01:Randomization_1 ;
-  study:participatesIn cdiscpilot01:bodypos_P1Standing ;
-  study:participatesIn cdiscpilot01:bodypos_P1Supine ;
   study:participatesIn cdiscpilot01:popflag_C16WK_1 ;
   study:participatesIn cdiscpilot01:popflag_C24WK_1 ;
   study:participatesIn cdiscpilot01:popflag_C8WK_1 ;
@@ -740,7 +735,7 @@ cdiscpilot01:visit_SCREENING1_P1
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SCREENING1"^^xsd:string ;
   study:activityStatus code:activitystatus_1 ;
-  study:hasDate cdiscpilot01:Date_19a ;
+  study:hasDate cdiscpilot01:Date_20 ;
   study:hasSubActivity cdiscpilot01:DBP_1 ;
   study:hasSubActivity cdiscpilot01:DBP_2 ;
   study:hasSubActivity cdiscpilot01:DBP_3 ;
