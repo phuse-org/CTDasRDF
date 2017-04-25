@@ -8,10 +8,13 @@
 # NOTE: Logic decisions made on the vs field 
 #        vstestOrder = sequence number created to facilitate triple creation/identification
 # TODO: 
-#    USE createFrag to create the IRI fragments for DBP, then use those fragements to 
-#       create the triples!
-#  !! Recode to use switch() for recoding and Dddply() instead of FOR loops
-#          See processSUPPDM.R for methods
+#   
+#   *****  Only DIABP working. Add SYSBP, and the other tests.
+#           
+#   ** vsdtc was converted to date only. consider as mix of date and datetime 
+#           as originally entered
+#  * Recode to use switch() for recoding and Dddply() instead of FOR loops
+#          see processSUPPDM.R for methods
 # - Collapse the categories DIABP, SYSBP, etc. into functions?
 ###############################################################################
 
@@ -85,6 +88,17 @@ vs$vslatSDTMCode <- recode(vs$vslat,
                           "'RIGHT' = 'C99073.C25228';
                            'LEFT'  = 'C99073.C25229'" )
 
+# Merge in the date fragment from the date dictionary created in createFrag.R
+vs <- addDateFrag(vs, "vsdtc")  
+
+
+
+# Drop vars that are not needed in triple creation
+dropMe <- c("studyid", "domain")  # usubjid used later, could be replaced by use of personNum
+vs<-vs[ , !(names(vs) %in% dropMe)]
+
+
+
     ##DEL Delete following after new Fragments approach is implemented.
     ## Following is not implemented
     ##------------------------------------------------------------------------------
@@ -126,12 +140,16 @@ vs$vslatSDTMCode <- recode(vs$vslat,
     #foo2<-valueCode(domain=vs, catCol="vstestcd", catVal="DIABP", resCol="vsorres")
 
 library(reshape2)
+
+# TESTIN HERE!!
 # Cast the data from long to wide based on values in vstestcd
 vsWide <- dcast(vs, ... ~ vstestcd, value.var="vsorres")
 
 # Create IRI fragments
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="DIABP", fragPrefix="DBP"  )
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="SYSBP", fragPrefix="SBP"  )
+vsWide <- createFragOneDomain(domainName=vsWide, processColumns="vspos", fragPrefix="vspos"  )
+
 #TODO: Add fragments for the other results...
 
 # visit_Frag is a special case that combines the text value of the visit name with the personNum
@@ -149,122 +167,151 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag)
     )
+    
     if (! is.na(vsWide$DIABP_Frag)){
         add.triple(store,
-            paste0(prefix.CDISCPILOT01, person),
-            paste0(prefix.STUDY,"participatesIn" ),
+            paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
+            paste0(prefix.STUDY,"hasSubActivity" ),
             paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag)
         )
-            # Level 2 DBP_(n)
-            add.triple(store,
-                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-                paste0(prefix.RDF,"type" ),
-                paste0(prefix.STUDY, "DiastolicBPMeasure")
-            )
-            add.data.triple(store,
-                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-                paste0(prefix.RDFS,"label" ),
-                paste0("P", vsWide$personNum, "DBP", vsWide$visitnum), type="string"
-            )
-            #TODO hasOutcome custom:bpoutcome_2   ??
-            
-            #TODO activityStatus code:activitystatus_1
-            
-            # anatomicLocation
-            add.triple(store,
-                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-                paste0(prefix.STUDY,"anatomicLocation" ),
-                paste0(prefix.STUDY, vsWide$vslocSDTMCode)
-            )
-            #baselineFlag
-            if (! as.character(vsWide$vsblfl) == "") {
-                add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-                    paste0(prefix.STUDY,"baselineFlag" ),
-                    paste0(vsWide$vsblfl), type="string"
-                )
-            }
-            # bodyPosition
-            add.triple(store,
-                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-                paste0(prefix.STUDY,"bodyPosition" ),
-                paste0(prefix.STUDY, vsWide$posSDTMCode)
-            )
-
-            # derivedflag
-            # If non-missing, code the value as the object (Y, N...)
-            if (! as.character(vsWide$vsdrvfl) == "") {
-                add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-                    paste0(prefix.STUDY,"derivedFlag" ),
-                    paste0(vsWide$vsdrvfl), type="string"
-                )
-            }
-            # groupID
-            if (! as.character(vsWide$vsgrpid) == "") {
-                add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-                    paste0(prefix.STUDY,"groupID" ),
-                    paste0(vsWide$vsgrpid), type="string"
-                )
-            }
-            # activityID
-           add.triple(store,
-               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-               paste0(prefix.STUDY,"hasActivityID" ),
-               paste0(prefix.STUDY, vsWide$vstestSDTMCode)
-           )
-          
-           #TODO hasCategory custom:category_1
-           add.triple(store,
-               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-               paste0(prefix.STUDY,"hasCategory" ),
-               paste0(prefix.CUSTOM, "TO_BE_DEFINED_")
-           )
-            
-            #TODO hasPlannedDate    (?planned? ask AO )
-            #add.triple(store,
-            #  paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-            #   paste0(prefix.STUDY,"hasPlannedDate" ),
-            #    paste0(prefix.STUDY, vsWide$vstestSDTMCode)
-            #)
-           
-           #TODO hasPlannedDate    (?planned? ask AO )
-           
-           #TODO hasStartRule   
-        
-           #TODO hasSubcategory
-            
-           if ( ! is.na (vsWide$vslatSDTMCode)) {
-               add.triple(store,
-                   paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),       
-                   paste0(prefix.STUDY,"laterality" ),
-                   paste0(vsWide$vslatSDTMCode)
-               )
-           }
-            
-           #TODO plannedReferenceTimePoint  code:timepoint-PT_STANDING                
-            
-           #TODO seq  vsTestOrder or vseq here?  Which source?
-           #add.triple(store,
-           #   paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),       
-           #   paste0(prefix.STUDY,"seq" ),
-           #   paste0(vsWide$vstestOrder), type="int"
-           #)
-           
-           # sponsordefinedID
-           # NOTE: value is hard-coded in processDM.R
-           add.data.triple(store,
-               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-               paste0(prefix.STUDY,"sponsordefinedID" ),
-               paste0(vsWide$invid), type="string"
-           )
     }
+#WIP HERE    
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
+        paste0(prefix.STUDY,"hasSubActivity" ),
+        paste0(prefix.CDISCPILOT01, vsWide$vspos_Frag)
+    )
+    
+    
+    
+    
+#TODO !!!!  MOVE THESE UNDER THE VISIT CREATION.
+    
+    
+    # Build out the hasSubActivity triples under visit_<visitName>P<n>. Eg: visit_SCREENING2_P1
+#                add.data.triple(store,
+#            paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
+#            paste0(prefix.RDFS,"label" ),
+#            paste0("P", vsWide$personNum, "DBP", vsWide$visitnum), type="string"
+#         )
+
+#            add.triple(store,
+#            paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
+#            paste0(prefix.RDF,"type" ),
+#            paste0(prefix.CUSTOM, vsWide$visit_Frag)
+#        )
+
+#        
+#        add.triple(store,
+#            paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
+#            paste0(prefix.STUDY,"hasSubActivity" ),
+#            paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag)
+#        )
+#            # Level 2 DBP_(n)
+#            add.triple(store,
+#                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#                paste0(prefix.RDF,"type" ),
+#                paste0(prefix.STUDY, "DiastolicBPMeasure")
+#            )
+#            #TODO hasOutcome custom:bpoutcome_2   ??
+#            
+#            
+#            
+#            # anatomicLocation
+#            add.triple(store,
+#                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#                paste0(prefix.STUDY,"anatomicLocation" ),
+#                paste0(prefix.STUDY, vsWide$vslocSDTMCode)
+#            )
+#            #baselineFlag
+#            if (! as.character(vsWide$vsblfl) == "") {
+#                add.data.triple(store,
+#                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#                    paste0(prefix.STUDY,"baselineFlag" ),
+#                    paste0(vsWide$vsblfl), type="string"
+#                )
+#            }
+#            # bodyPosition
+#            add.triple(store,
+#                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#                paste0(prefix.STUDY,"bodyPosition" ),
+#                paste0(prefix.STUDY, vsWide$posSDTMCode)
+#            )
+#
+#            # derivedflag
+#            # If non-missing, code the value as the object (Y, N...)
+#            if (! as.character(vsWide$vsdrvfl) == "") {
+#                add.data.triple(store,
+#                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#                    paste0(prefix.STUDY,"derivedFlag" ),
+#                    paste0(vsWide$vsdrvfl), type="string"
+#                )
+#            }
+#            # groupID
+#            if (! as.character(vsWide$vsgrpid) == "") {
+#                add.data.triple(store,
+#                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#                    paste0(prefix.STUDY,"groupID" ),
+#                    paste0(vsWide$vsgrpid), type="string"
+#                )
+#            }
+#            # activityID
+#           add.triple(store,
+#               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#               paste0(prefix.STUDY,"hasActivityID" ),
+#               paste0(prefix.STUDY, vsWide$vstestSDTMCode)
+#           )
+#          
+#           #TODO hasCategory custom:category_1
+#           add.triple(store,
+#               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#               paste0(prefix.STUDY,"hasCategory" ),
+#               paste0(prefix.CUSTOM, "TO_BE_DEFINED_")
+#           )
+#            
+#            #TODO hasPlannedDate    (?planned? ask AO )
+#            #add.triple(store,
+#            #  paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#            #   paste0(prefix.STUDY,"hasPlannedDate" ),
+#            #    paste0(prefix.STUDY, vsWide$vstestSDTMCode)
+#            #)
+#           
+#           #TODO hasPlannedDate    (?planned? ask AO )
+#           
+#           #TODO hasStartRule   
+#        
+#           #TODO hasSubcategory
+#            
+#           if ( ! is.na (vsWide$vslatSDTMCode)) {
+#               add.triple(store,
+#                   paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),       
+#                   paste0(prefix.STUDY,"laterality" ),
+#                   paste0(vsWide$vslatSDTMCode)
+#               )
+#           }
+#            
+#           #TODO plannedReferenceTimePoint  code:timepoint-PT_STANDING                
+#            
+#           #TODO seq  vsTestOrder or vseq here?  Which source?
+#           #add.triple(store,
+#           #   paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),       
+#           #   paste0(prefix.STUDY,"seq" ),
+#           #   paste0(vsWide$vstestOrder), type="int"
+#           #)
+#           
+#           # sponsordefinedID
+#           # NOTE: value is hard-coded in processDM.R
+#           add.data.triple(store,
+#               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#               paste0(prefix.STUDY,"sponsordefinedID" ),
+#               paste0(vsWide$invid), type="string"
+#           )
+#    }
 })
    
-# Create Visit triples. Eg: visit_SCREENING1_P1
+# Create Visit triples that should orrd ONLY ONCE: Eg: TYPE, LABEL, PREFLABEL. 
 # Subset down to only the columns needed
-vsVisits <- vsWide[,c("personVisit_Frag", "visit_Frag", "personNum", "visit")]
+vsVisits <- vsWide[,c("personVisit_Frag", "visit_Frag", "personNum", "visit", "visitnum", "vsdtc_Frag")]
 # remove duplicate rows
 vsVisits <-vsVisits[!duplicated(vsVisits), ]
 
@@ -279,13 +326,18 @@ ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.RDFS,"label" ),
-            paste0("P", vsVisits$personNum, "Visit", vsVisits$visitnum), type="string"
+            paste0("P", vsVisits$personNum, " Visit ", vsVisits$visitnum), type="string"
         )
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.SKOS,"prefLabel" ),
             paste0(gsub(" ", "", vsVisits$visit)), type="string"
         )
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+            paste0(prefix.STUDY,"hasDate" ),
+            paste0(prefix.CDISCPILOT01,vsVisits$vsdtc_Frag)   #TODO: Build out custom:visit_<n>
+        )
+        #TODO activityStatus code:activitystatus_1
+        #TODO  study:seq "1" 
 })
-
-#TODO Create a function here that creates DIABP, SYSBP measures

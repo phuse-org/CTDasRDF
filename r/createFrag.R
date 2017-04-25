@@ -85,6 +85,7 @@ addDateFrag<-function(domainName, colName)
 }
 
 # Add fragments back to the DM dataframe. 
+#TODO: Move this to processDM.R
 dm <- addDateFrag(dm, "rfstdtc")  
 dm <- addDateFrag(dm, "rfendtc")  
 dm <- addDateFrag(dm, "rfxstdtc")  
