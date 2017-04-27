@@ -45,7 +45,7 @@ where { CDISCPILOT01:Person_1 (x:foo|!x:bar)* ?s .
 #DMTriples = as.data.frame(sparql.remote(rdfSource, query))  # for local EP
 
 #-- Local TTL file
-setwd("C:/_gitHub/SDTM2RDF")
+setwd("C:/_gitHub/SDTMasRDF")
 rdfSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
 
 DMTriples = as.data.frame(sparql.rdf(rdfSource, query))
