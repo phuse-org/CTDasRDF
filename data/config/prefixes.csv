@@ -1,23 +1,21 @@
 prefix,namespace,description
-cdiscpilot01,http://example.org/cdiscpilot01#,Resources relevant to this single named study.
-cdiscsdtm,http://rdf.cdisc.org/sdtm-terminology#,CDISC terminology code reference. Currently only used to reference out to the SDTM code values like C66731.C20197.  Limited usage - change to use of SDTM prefix only?
-code,http://example.org/code#,Controlled terminology from authoritative sources. May later be replaced by links to resources published by those organizations.
-custom,http://example.org/custom#,Codes defined locally by the sponsor reused across multiple studies.
+cdiscpilot01,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#,Resources relevant to this single named study.
+code,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#,Controlled terminology from authoritative sources. May later be replaced by links to resources published by those organizations.
+custom,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#,Codes defined locally by the sponsor reused across multiple studies.
+owl,http://www.w3.org/2002/07/owl#,OWL
+rdf,http://www.w3.org/1999/02/22-rdf-syntax-ns#,RDF
+rdfs,http://www.w3.org/2000/01/rdf-schema#,RDFs
+sdtm,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#,Resources related to the specified version of the SDTM standard. Later add the Version to the path?
+sdtm-terminology,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#,CDISC RDF Terminology
+skos,http://www.w3.org/2004/02/skos/core#,SKOS
+sp,http://spinrdf.org/sp#,SPIN RDF
+spin,http://spinrdf.org/spin#,SPIN
+study,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#,Study
+time,http://www.w3.org/2006/time#,Years and other time units to be added.
+xsd,http://www.w3.org/2001/XMLSchema#,XML Schema
 country,http://psi.oasis-open.org/iso/3166/#,Country codes graph
 cts,http://rdf.cdisc.org/ct/schema#,NOT IN USE 6DEC16
 dcat,http://www.w3.org/ns/dcat#,Distribution data
 dcterms,http://purl.org/dc/terms/,Common terminology like descriptions  etc.
-define,http://example.org/CDISCDefine/,NOT IN USE 6DEC16. Will be used to define resources for DEFINE.XML-like displays.
-fabio,https://svn.code.sf.net/p/sempublishing/code/FaBiO/,NOT IN USE 6DEC16. May be used for publisning. Consider removal until that time.
-mms,http://rdf.cdisc.org/mms#,NOT IN USE 6DEC16. Is reference to the cdisc RDF. 
-owl,http://www.w3.org/2002/07/owl#,OWL
 pav,http://purl.org/pav,Creation and authorship. Graph metadata
-prism,http://prismstandard.org/namespaces/basic/2.0/,NOT IN USE 6DEC16. Consider removal?
-pro,http://purl.org/spar/pro/author,NOT IN USE 6DEC16. Consider removal?
 prov,http://www.w3.org/ns/prov#,Data provenance
-rdf,http://www.w3.org/1999/02/22-rdf-syntax-ns#,RDF
-rdfs,http://www.w3.org/2000/01/rdf-schema#,RDFs
-sdtm,http://cdisc.org/sdtm#,Resources related to the specified version of the SDTM standard. Later add the Version to the path?
-skos,http://www.w3.org/2004/02/skos/core#,SKOS
-study,http://example.org/study#,Resources resusable across all studies independent of SDTM version
-time,http://www.w3.org/2006/time#,Years and other time units to be added.
