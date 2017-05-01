@@ -56,21 +56,32 @@ WHERE { cdiscpilot01:Person_1 ?p ?o .
    sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
    triplesOnt <<- as.data.frame(sparql.rdf(sourceOnt, query))
 
-   inRNotOnt<<-anti_join(triplesR, triplesOnt)
-   inBNotR<<-anti_join(triplesOnt, triplesR)
-   
-   # output$inRNotOnt <- renderTable({inRNotOnt})
-   inRNotOnt
-   # TO ADD
-   # output$inOntNotR<- renderTable({inOntNotA})
+   if (input$comp=='inRNotOnt') {
+
+       compResult <<-anti_join(triplesR, triplesOnt)
+   }
+   else if (input$comp=='inOntNotR') {
+       compResult <<- anti_join(triplesOnt, triplesR)
+   }
+   compResult
     })
+    
+#TESTING    
+   
+    
 }
 
 ui <- fluidPage(
-  fileInput('fileR', 'TTL from R'),
-  fileInput('fileOnt', 'TTL from Ont'),
-  # visNetworkOutput("network",height = "500px"),
-  # textOutput('text1'),
+  titlePanel("Compare TTLs from R and Ontology "),
+  fluidRow (
+      column(4, fileInput('fileR', 'TTL from R')),
+      column(4, fileInput('fileOnt', 'TTL from Ont')
+      ),
+      column(3, textInput('qnam', "Subject QName"))
+  ),
+  radioButtons("comp", "Compare:",
+                c("In R, not in Ontology" = "inRNotOnt",
+                  "In Ontology, not in R" = "inOntNotR")),    
   tableOutput('contents')
 )
 shinyApp(ui = ui, server = server)
