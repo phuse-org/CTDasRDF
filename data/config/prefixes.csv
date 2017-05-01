@@ -1,8 +1,15 @@
 prefix,namespace,description
+arg,http://spinrdf.org/arg#,SPIN related
 cdiscpilot01,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#,Resources relevant to this single named study.
 code,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#,Controlled terminology from authoritative sources. May later be replaced by links to resources published by those organizations.
+country,http://psi.oasis-open.org/iso/3166/#,Country codes graph
+cts,http://rdf.cdisc.org/ct/schema#,NOT IN USE 6DEC16
 custom,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#,Codes defined locally by the sponsor reused across multiple studies.
+dcat,http://www.w3.org/ns/dcat#,Distribution data
+dcterms,http://purl.org/dc/terms/,Common terminology like descriptions  etc.
 owl,http://www.w3.org/2002/07/owl#,OWL
+pav,http://purl.org/pav,Creation and authorship. Graph metadata
+prov,http://www.w3.org/ns/prov#,Data provenance
 rdf,http://www.w3.org/1999/02/22-rdf-syntax-ns#,RDF
 rdfs,http://www.w3.org/2000/01/rdf-schema#,RDFs
 sdtm,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#,Resources related to the specified version of the SDTM standard. Later add the Version to the path?
@@ -10,12 +17,8 @@ sdtmterm,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-termin
 skos,http://www.w3.org/2004/02/skos/core#,SKOS
 sp,http://spinrdf.org/sp#,SPIN RDF
 spin,http://spinrdf.org/spin#,SPIN
+spl,http://spinrdf.org/spl#,
 study,https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#,Study
 time,http://www.w3.org/2006/time#,Years and other time units to be added.
 xsd,http://www.w3.org/2001/XMLSchema#,XML Schema
-country,http://psi.oasis-open.org/iso/3166/#,Country codes graph
-cts,http://rdf.cdisc.org/ct/schema#,NOT IN USE 6DEC16
-dcat,http://www.w3.org/ns/dcat#,Distribution data
-dcterms,http://purl.org/dc/terms/,Common terminology like descriptions  etc.
-pav,http://purl.org/pav,Creation and authorship. Graph metadata
-prov,http://www.w3.org/ns/prov#,Data provenance
+,,
