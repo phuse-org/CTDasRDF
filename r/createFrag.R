@@ -121,8 +121,8 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix)
     columnData <- domainName[,c(processColumns)] # keep only the requested cols in the df
     
     sourceVals <- melt(columnData, measure.vars=colnames(columnData),
-                 variable.name="source",
-                 value.name="value")
+                    variable.name="source",
+                    value.name="value")
     
     # Keep only the values. Source not important
     #TW:NOT NEEDED #sourceVals <- sourceVals[ , c("value")]
@@ -162,9 +162,73 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix)
 #    return(withFrag)
 }
 
+# -- Treatment Arms Processing ------------------------------------------------
 #TODO: Move the dm calls out to processDM
 dm <- createFragOneDomain(domainName=dm, processColumns=c("armcd", "actarmcd"), fragPrefix="arm"  )
-# dm <- createFragOneDomain(domainName=dm, processColumns=c("armcd"), fragPrefix="arm"  )
-# dm <- createFragOneDomain(domainName=dm, processColumns=c("actarmcd"), fragPrefix="arm"  )
+#  Create custom terminlogy list for arm_1, arm_2 etc.
+dm1 <- dm[,c("actarm", "actarmcd", "actarmcd_Frag")]
+dm1 <- rename(dm1, c("actarm"= "arm", "actarmcd" = "armcd", "actarmcd_Frag" = "armcd_Frag"))
+dm2 <- dm[,c("arm", "armcd", "armcd_Frag")]
+
+
+
+dmArms <- rbind(dm1,dm2)
+dmArms <- dmArms[!duplicated(dmArms), ]
+
+#!!! HARD CODING !!!!  CUATION  !!!
+#KLUDGE/TESTING: Add Screen Failure category: is in the ontology, not  not in  test data
+dmFab <-data.frame(arm="Screen Failure", armcd="Scrnfail", armcd_Frag="arm_4")
+
+dmArms <-rbind(dmArms,dmFab)
+
+# Loop through the arm_ codes to create  custom-terminology triples
+
+#ERROR is within the ddply
+ddply(dmArms, .(armcd_Frag), function(dmArms)
+{
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.OWL, "Class")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CODE, "RandomizationOutcome")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"type" ),
+        paste0(prefix.CUSTOM, "Arm")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(dmArms$armcd), type="string"
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "Arm")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "RandomizationOutcome")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.SKOS,"altLabel" ),
+        paste0(dmArms$armcd), type="string"
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.SKOS,"prefLabel" ),
+        paste0(dmArms$arm), type="string"
+    )
+})    
+
+# - end creating custom-terminlogy for arm_
+
 dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="age"  )
 

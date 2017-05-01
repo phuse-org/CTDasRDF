@@ -11,8 +11,9 @@
 # SRC : N/A
 # IN  :  prefixes.csv - prefixes and their namespaces
 #        Calls to other scripts for code, functions, data import.
-# OUT : data/rdf/cdiscpilot01.TTL
-# NOTE: Validation of the resulting TTL structure with Apache Jenna riot
+# OUT : data/rdf/cdiscpilot01-R.TTL
+#       data/rdf/customterminology-R.TTL 
+# NOTE: Validation of the resulting TTL files with Apache Jenna riot
 #        Later cross check with CompareTTL.R
 # TODO: 
 ###############################################################################
@@ -34,17 +35,26 @@ maxPerson = 6; # Used in processDM.R
 setwd("C:/_github/SDTMasRDF")
 
 # Configuration: List of prefixes
-sourcePrefix<-"data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
+allPrefix <- "data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
+
 
 # Output filename and location
-outFilename = "cdiscpilot01.TTL"
-outFile=paste0("data/rdf/", outFilename)
+outFileMain = "data/rdf/cdiscpilot01-R.TTL"
+outFileCustom = "data/rdf/customterminology-R.TTL"
+# outFile=paste0("data/rdf/", outFilename)
 
 # Initialize. Includes OWL, XSD, RDF by default.
-store = new.rdf()  
+store = new.rdf()    # The mmain datafile. Later change name to 'mainTTL" or similar
+custom = new.rdf()  # customterminology-R.ttl
 
-#-- Build the Prefixes from the CSV file
-prefixes <- as.data.frame( read.csv(sourcePrefix,
+#------------------------------------------------------------------------------
+# Build Prefixes
+#   For simplicity, one set of prefixes is built for all files. Files like 
+#     custom-R.ttl, cdiscpilot01-R.TTL, etc. all have the same list of prefixes
+#     Also helps to ensure consistency between files.
+#------------------------------------------------------------------------------
+#-- cdiscpilot01-R.TTL
+prefixes <- as.data.frame( read.csv(allPrefix,
     header=T,
     sep=',' ,
     strip.white=TRUE))
@@ -53,9 +63,17 @@ for (i in 1:nrow(prefixes)) {
         prefix=as.character(prefixes[i,"prefix"]),
         namespace=as.character(prefixes[i, "namespace"])
     )
+    # Add same prefixes to customterminology.ttl file
+    add.prefix(custom,
+        prefix=as.character(prefixes[i,"prefix"]),
+        namespace=as.character(prefixes[i, "namespace"])
+    )
+    
     # Create uppercase prefix names for use in add() in triples.R
     assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"])
 }
+
+
 
 #-- Data triples creation -----------------------------------------------------
 # Graph Metadata
@@ -127,8 +145,15 @@ source('R/processVS.R')
 ##########
 # Output #
 ###############################################################################
-store = save.rdf(store, filename=outFile, format="TURTLE")
+store  = save.rdf(store,  filename=outFileMain, format="TURTLE")
+custom = save.rdf(custom, filename=outFileCustom, format="TURTLE")
 
-# Validate TTL file. Always a good idea to validate, friendo.
-system(paste('riot --validate ', outFile),
+
+#-- Validation ----------------------------------------------------------------
+#  Validate TTL file. Always a good idea to validate, friendo.
+system(paste('riot --validate ', outFileMain),
     show.output.on.console = TRUE)
+
+system(paste('riot --validate ', outFileMain),
+    show.output.on.console = TRUE)
+
