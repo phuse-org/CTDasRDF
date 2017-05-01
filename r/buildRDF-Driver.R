@@ -18,8 +18,9 @@
 ###############################################################################
 library(rrdf)
 library(Hmisc)
-# library(dplyr)
-library(plyr)
+
+library(plyr)  # plyr must load prior to dplyr!
+# library(dplyr)  
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 library(reshape2)
 

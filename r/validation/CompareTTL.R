@@ -12,16 +12,17 @@
 # TODO : 
 ###############################################################################
 require(rrdf)
+# library(plyr)  # for rename . ply must load prior to dplyr!
 require(dplyr) # for compare of dataframes using anti_join
-# library(plyr)  # for rename
+
 
 # For use with local TTL file:
-setwd("C:/_gitHub/SDTM2RDF")
+setwd("C:/_gitHub/SDTMasRDF")
 
 TWSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
 
-AOSource = load.rdf("data/rdf/AO-2017-01-27/cdiscpilot01local.TTL", format="N3")
-
+# AOSource = load.rdf("data/rdf/AO-2017-01-27/cdiscpilot01local.TTL", format="N3")
+AOSource = load.rdf("data/rdf/cdiscpilot01local.TTL", format="N3")
 
 ###############################################################################
 #--checkPers()
@@ -29,12 +30,12 @@ AOSource = load.rdf("data/rdf/AO-2017-01-27/cdiscpilot01local.TTL", format="N3")
 
 checkPerson <- function(){
 
-query = 'PREFIX cdiscpilot01: <http://example.org/cdiscpilot01#>
-PREFIX custom: <http://example.org/custom#>
+query = 'PREFIX cdiscpilot01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#>
+PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
 PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX study:  <http://example.org/study#>
+PREFIX study:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
 
 SELECT ?s ?p ?o
 WHERE { cdiscpilot01:Person_1 ?p ?o . 
@@ -50,10 +51,13 @@ inAONotTW<-anti_join(AOTriples, TWTriples)
 # In the TW TTL file but not in the AO file                 
 inTWNotAO
 # In the AO TTL file but not in the TO file
+# Clean up the artifacts from TopBraid
+inAONotTW <- inAONotTW[!is.na(inAONotTW$o), ]
+inAONotTW <- inAONotTW[!(inAONotTW$o==""), ]  # The values are actually "", not NA. 
 inAONotTW
 
 }
-#checkPerson()
+checkPerson()
 
 
 ###############################################################################

@@ -36,6 +36,7 @@ dateList <- melt(allDates, measure.vars=colnames(allDates),
                  variable.name="source",
                  value.name="dateKey")
 
+# ERROR IS IN FOLLOWING STEP HERE!!!!!
 # Remove duplicates
 dateList <- dateList[!duplicated(dateList$date), ]  # is DF here.
 

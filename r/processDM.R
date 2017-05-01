@@ -249,7 +249,8 @@ ddply(dm, .(subjid), function(dm)
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.RDFS,"label" ),
-        paste0(person), type="string"
+        # paste0(person), type="string"
+        paste0("Person ", dm$personNum), type="string"
     )
     # Reference Interval
     add.triple(store,
@@ -506,19 +507,19 @@ ddply(dm, .(subjid), function(dm)
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.STUDY,"hasEthnicity" ),
-            paste0(prefix.CDISCSDTM, dm$ethnic_) 
+            paste0(prefix.SDTMTERM, dm$ethnic_) 
         )
         # Race
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.STUDY,"hasRace" ),
-            paste0(prefix.CDISCSDTM, dm$race_) 
+            paste0(prefix.SDTMTERM, dm$race_) 
         )
         # Sex 
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.STUDY,"hasSex" ),
-            paste0(prefix.CDISCSDTM, dm$sex_) 
+            paste0(prefix.SDTMTERM, dm$sex_) 
         )
         #DEL  ActivityCode no longer in use 2017-04-19
         #add.triple(store,
@@ -535,11 +536,12 @@ ddply(dm, .(subjid), function(dm)
         assignDateType(dm$rfxendtc, dm$dmdtc_Frag, "DemogDataCollectionDate")
 
     # Study ID. Triples about the study are created ONE time, therefore not here!
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, person),
-        paste0(prefix.STUDY,"participatesIn" ),
-        paste0(prefix.CDISCPILOT01, "study_", dm$studyid)
-    )
+    #DEL not in current structure: moved elsewhere.
+    #add.triple(store,
+    #    paste0(prefix.CDISCPILOT01, person),
+    #    paste0(prefix.STUDY,"participatesIn" ),
+    #    paste0(prefix.CDISCPILOT01, "study_", dm$studyid)
+    #)
     # Randomization
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
