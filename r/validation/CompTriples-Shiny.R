@@ -37,18 +37,34 @@ server <- function(input, output) {
                paste(inFileR$datapath, ".ttl", sep=""))
     file.rename(inFileOnt$datapath,
                paste(inFileOnt$datapath, ".ttl", sep=""))
+
+#     
+#         
+#    query = 'PREFIX cdiscpilot01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#>
+# PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
+# PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+# PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
+# PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+# PREFIX study:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
+# 
+# SELECT ?s ?p ?o
+# WHERE { cdiscpilot01:Person_1 ?p ?o . 
+#   BIND("cdiscpilot01:Person_1" as ?s)
+# }'
     
-   query = 'PREFIX cdiscpilot01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#>
+    
+       query = paste0("PREFIX cdiscpilot01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#>
 PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
 PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX study:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
-
 SELECT ?s ?p ?o
-WHERE { cdiscpilot01:Person_1 ?p ?o . 
-  BIND("cdiscpilot01:Person_1" as ?s)
-}'
+WHERE {", input$qnam, " ?p ?o . 
+  BIND(\"", input$qnam, "\" as ?s) } ")
+
+    foo <<- query
+    
    sourceR = load.rdf(paste(inFileR$datapath,".ttl",sep=""), format="N3")
    # Global assign for trouble shooting
    triplesR <<- as.data.frame(sparql.rdf(sourceR, query))
@@ -77,7 +93,7 @@ ui <- fluidPage(
       column(4, fileInput('fileR', 'TTL from R')),
       column(4, fileInput('fileOnt', 'TTL from Ont')
       ),
-      column(3, textInput('qnam', "Subject QName"))
+      column(3, textInput('qnam', "Subject QName", value = "cdiscpilot01:Person_1"))
   ),
   radioButtons("comp", "Compare:",
                 c("In R, not in Ontology" = "inRNotOnt",
