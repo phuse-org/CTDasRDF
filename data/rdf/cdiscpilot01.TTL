@@ -71,7 +71,7 @@ cdiscpilot01:Randomization_3
 
 cdiscpilot01:Person_1
         a                           study:EnrolledSubject ;
-        rdfs:label                  "Person  1"^^xsd:string ;
+        rdfs:label                  "Person 1"^^xsd:string ;
         study:actualArm             custom:arm_1 ;
         study:allocatedToArm        custom:arm_1 ;
         study:deathFlag             "Y"^^xsd:string ;
@@ -134,7 +134,7 @@ cdiscpilot01:Interval_IC6
 
 cdiscpilot01:Person_6
         a                           study:EnrolledSubject ;
-        rdfs:label                  "Person  6"^^xsd:string ;
+        rdfs:label                  "Person 6"^^xsd:string ;
         study:actualArm             custom:arm_1 ;
         study:allocatedToArm        custom:arm_1 ;
         study:deathFlag             ""^^xsd:string ;
@@ -241,7 +241,7 @@ cdiscpilot01:sdtm-graph
         dcterms:contributor  "Armando Oliva"^^xsd:string , "Tim Williams"^^xsd:string ;
         dcterms:description  "Data converted from the CDISCPILOT01 SDTM DM domain to RDF."^^xsd:string ;
         dcterms:title        "SDTM data as RDF."^^xsd:string ;
-        pav:createdOn        "2017-04-28T14:46:27-04:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-05-01T14:40:04-04:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.3 Platform:x86_64-w64-mingw32 swith scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "cdiscpilot01.TTL" .
@@ -271,7 +271,7 @@ cdiscpilot01:Interval_IC5
 
 cdiscpilot01:Person_5
         a                           study:EnrolledSubject ;
-        rdfs:label                  "Person  5"^^xsd:string ;
+        rdfs:label                  "Person 5"^^xsd:string ;
         study:actualArm             custom:arm_2 ;
         study:allocatedToArm        custom:arm_2 ;
         study:deathFlag             ""^^xsd:string ;
@@ -389,7 +389,7 @@ cdiscpilot01:Interval_IC4
 
 cdiscpilot01:Person_4
         a                           study:EnrolledSubject ;
-        rdfs:label                  "Person  4"^^xsd:string ;
+        rdfs:label                  "Person 4"^^xsd:string ;
         study:actualArm             custom:arm_3 ;
         study:allocatedToArm        custom:arm_3 ;
         study:deathFlag             ""^^xsd:string ;
@@ -483,7 +483,7 @@ cdiscpilot01:Interval_IC3
 
 cdiscpilot01:Person_3
         a                           study:EnrolledSubject ;
-        rdfs:label                  "Person  3"^^xsd:string ;
+        rdfs:label                  "Person 3"^^xsd:string ;
         study:actualArm             custom:arm_2 ;
         study:allocatedToArm        custom:arm_2 ;
         study:deathFlag             ""^^xsd:string ;
@@ -595,7 +595,7 @@ cdiscpilot01:Randomization_4
 
 cdiscpilot01:Person_2
         a                           study:EnrolledSubject ;
-        rdfs:label                  "Person  2"^^xsd:string ;
+        rdfs:label                  "Person 2"^^xsd:string ;
         study:actualArm             custom:arm_1 ;
         study:allocatedToArm        custom:arm_1 ;
         study:deathFlag             ""^^xsd:string ;
