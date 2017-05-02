@@ -1,0 +1,797 @@
+# baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p
+# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
+
+@prefix cdiscpilot01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#> .
+@prefix code: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#> .
+@prefix custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtm: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#> .
+@prefix sdtm-terminology: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p#Study_CDISCPILOT01>
+  study:hasStudyID "CDISCPILOT01"^^xsd:string ;
+  study:hasStudyParticipant cdiscpilot01:Person_1 ;
+  study:hasStudyParticipant cdiscpilot01:Person_2 ;
+  study:hasStudyParticipant cdiscpilot01:Person_3 ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01>
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p> ;
+  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+cdiscpilot01:DBP_1
+  rdf:type <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 DBP 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome custom:bpoutcome_2 ;
+  study:activityStatus code:activitystatus_1 ;
+  study:anatomicLocation <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141> ;
+  study:baselineFlag "Y"^^xsd:string ;
+  study:bodyPosition <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:groupID "GRPID1"^^xsd:string ;
+  study:hasCategory custom:category_1 ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:startrule_1 ;
+  study:hasSubcategory custom:subcategory_1 ;
+  study:laterality <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99073.C25228> ;
+  study:reasonNotDone "not applicable"^^xsd:string ;
+  study:seq "1"^^xsd:float ;
+  study:sponsordefinedID "123"^^xsd:string ;
+.
+cdiscpilot01:DBP_2
+  rdf:type <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 DBP 2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome custom:bpoutcome_3 ;
+  study:anatomicLocation <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141> ;
+  study:bodyPosition <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:groupID "GRPID1"^^xsd:string ;
+  study:hasCategory custom:category_1 ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:startrule_2 ;
+  study:hasSubcategory custom:subcategory_1 ;
+  study:laterality <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99073.C25229> ;
+  study:plannedReferenceTimePoint code:timepoint-PT_STANDING ;
+  study:seq "2"^^xsd:float ;
+  study:sponsordefinedID "719"^^xsd:string ;
+.
+cdiscpilot01:DBP_3
+  rdf:type <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 DBP 3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome custom:bpoutcome_1 ;
+  study:anatomicLocation <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141> ;
+  study:bodyPosition <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:groupID "GRPID1"^^xsd:string ;
+  study:hasCategory custom:category_1 ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:startrule_3 ;
+  study:hasSubcategory custom:subcategory_1 ;
+  study:laterality <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99073.C25228> ;
+  study:plannedReferenceTimePoint code:timepoint-PT_STANDING ;
+  study:seq "3"^^xsd:float ;
+.
+cdiscpilot01:Date_10
+  rdf:type study:ReferenceEnd ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2012-09-02"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2012-09-02"^^xsd:string ;
+.
+cdiscpilot01:Date_13
+  rdf:type study:StudyParticipationEnd ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2013-02-18"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2013-02-18"^^xsd:string ;
+.
+cdiscpilot01:Date_16
+  rdf:type study:DemogDataCollectionDate ;
+  rdf:type study:InformedConsentBegin ;
+  rdf:type study:StudyParticipationBegin ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2013-07-11"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2013-07-11"^^xsd:string ;
+.
+cdiscpilot01:Date_17
+  rdf:type study:ProductAdministrationBegin ;
+  rdf:type study:ReferenceBegin ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2013-07-19"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2013-07-19"^^xsd:string ;
+.
+cdiscpilot01:Date_18
+  rdf:type study:StudyParticipationEnd ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2014-01-14T11:10"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2014-01-14T11:10"^^xsd:string ;
+.
+cdiscpilot01:Date_19
+  rdf:type study:Deathdate ;
+  rdf:type study:DemogDataCollectionDate ;
+  rdf:type study:InformedConsentBegin ;
+  rdf:type study:StudyParticipationBegin ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2013-12-26"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2013-12-26"^^xsd:string ;
+.
+cdiscpilot01:Date_20
+  rdf:type study:VisitDate ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2013-12-26T09:00"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2013-12-26T09:00"^^xsd:string ;
+.
+cdiscpilot01:Date_21
+  rdf:type study:ProductAdministrationBegin ;
+  rdf:type study:ReferenceBegin ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2014-01-02"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2014-01-02"^^xsd:string ;
+.
+cdiscpilot01:Date_22
+  rdf:type study:ProductAdministrationEnd ;
+  rdf:type study:ReferenceEnd ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2014-01-14"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2014-01-14"^^xsd:string ;
+.
+cdiscpilot01:Date_23
+  rdf:type study:StudyParticipationEnd ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2014-07-02T11:45"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2014-07-02T11:45"^^xsd:string ;
+.
+cdiscpilot01:Date_29
+  rdf:type study:ProductAdministrationEnd ;
+  rdf:type study:ReferenceEnd ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2014-07-02"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2014-07-02"^^xsd:string ;
+.
+cdiscpilot01:Date_4
+  rdf:type study:Birthdate ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "1942-07-19"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "1942-07-19"^^xsd:string ;
+.
+cdiscpilot01:Date_5
+  rdf:type study:Birthdate ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "1948-08-05"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "1948-08-05"^^xsd:string ;
+.
+cdiscpilot01:Date_6
+  rdf:type study:Birthdate ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "1951-01-02"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "1951-01-02"^^xsd:string ;
+.
+cdiscpilot01:Date_7
+  rdf:type study:DemogDataCollectionDate ;
+  rdf:type study:InformedConsentBegin ;
+  rdf:type study:StudyParticipationBegin ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2012-07-22"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2012-07-22"^^xsd:string ;
+.
+cdiscpilot01:Date_8
+  rdf:type study:ProductAdministrationBegin ;
+  rdf:type study:ReferenceBegin ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2012-08-05"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2012-08-05"^^xsd:string ;
+.
+cdiscpilot01:Date_9
+  rdf:type study:ProductAdministrationEnd ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2012-09-01"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2012-09-01"^^xsd:string ;
+.
+cdiscpilot01:DemographicDataCollection_1
+  rdf:type code:DemographicDataCollection ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Demographic data collection 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasAge custom:AgeOutcome_1 ;
+  code:hasEthnicity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17459> ;
+  code:hasRace <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
+  code:hasSex <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576> ;
+  study:hasDate cdiscpilot01:Date_19 ;
+.
+cdiscpilot01:DemographicDataCollection_2
+  rdf:type code:DemographicDataCollection ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Demographic data collection 2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasAge custom:AgeOutcome_2 ;
+  code:hasEthnicity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17459> ;
+  code:hasRace <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
+  code:hasSex <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197> ;
+  study:hasDate cdiscpilot01:Date_7 ;
+.
+cdiscpilot01:DemographicDataCollection_3
+  rdf:type code:DemographicDataCollection ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Demographic data collection 3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasAge custom:AgeOutcome_3 ;
+  code:hasEthnicity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C41222> ;
+  code:hasRace <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
+  code:hasSex <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197> ;
+  study:hasDate cdiscpilot01:Date_16 ;
+.
+cdiscpilot01:InformedConsent_1
+  rdf:type code:informedconsent_1 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Informed consent 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome code:InformedConsent_1 ;
+  study:hasActivityInterval cdiscpilot01:Interval_IC1 ;
+.
+cdiscpilot01:InformedConsent_2
+  rdf:type code:informedconsent_1 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Informed consent 2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome code:InformedConsent_1 ;
+  study:hasActivityInterval cdiscpilot01:Interval_IC2 ;
+.
+cdiscpilot01:InformedConsent_3
+  rdf:type code:informedconsent_1 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Informed consent 3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome code:InformedConsent_1 ;
+  study:hasActivityInterval cdiscpilot01:Interval_IC3 ;
+.
+cdiscpilot01:Interval_IC1
+  rdf:type study:InformedConsentInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_19 ;
+.
+cdiscpilot01:Interval_IC2
+  rdf:type study:InformedConsentInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_7 ;
+.
+cdiscpilot01:Interval_IC3
+  rdf:type study:InformedConsentInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_16 ;
+.
+cdiscpilot01:Interval_LS1
+  rdf:type study:Lifespan ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 4"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_6 ;
+  time:hasEnd cdiscpilot01:Date_19 ;
+.
+cdiscpilot01:Interval_LS2
+  rdf:type study:Lifespan ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 5"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_5 ;
+.
+cdiscpilot01:Interval_LS3
+  rdf:type study:Lifespan ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 6"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_4 ;
+.
+cdiscpilot01:Interval_PA1
+  rdf:type study:ProductAdministrationInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 7"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_21 ;
+  time:hasEnd cdiscpilot01:Date_29 ;
+.
+cdiscpilot01:Interval_PA2
+  rdf:type study:ProductAdministrationInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 8"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_8 ;
+  time:hasEnd cdiscpilot01:Date_9 ;
+.
+cdiscpilot01:Interval_PA3
+  rdf:type study:ProductAdministrationInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 9"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_17 ;
+  time:hasEnd cdiscpilot01:Date_22 ;
+.
+cdiscpilot01:Interval_RI1
+  rdf:type study:ReferenceInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 10"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_21 ;
+  time:hasEnd cdiscpilot01:Date_29 ;
+.
+cdiscpilot01:Interval_RI2
+  rdf:type study:ReferenceInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 11"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_8 ;
+  time:hasEnd cdiscpilot01:Date_10 ;
+.
+cdiscpilot01:Interval_RI3
+  rdf:type study:ReferenceInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 12"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_17 ;
+  time:hasEnd cdiscpilot01:Date_22 ;
+.
+cdiscpilot01:Interval_SP1
+  rdf:type study:StudyParticipationInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 13"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_19 ;
+  time:hasEnd cdiscpilot01:Date_23 ;
+.
+cdiscpilot01:Interval_SP2
+  rdf:type study:StudyParticipationInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 14"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_7 ;
+  time:hasEnd cdiscpilot01:Date_13 ;
+.
+cdiscpilot01:Interval_SP3
+  rdf:type study:StudyParticipationInterval ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Interval 15"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_16 ;
+  time:hasEnd cdiscpilot01:Date_18 ;
+.
+cdiscpilot01:Investigator_123
+  rdf:type study:Investigator ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Investigator 123"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasInvestigatorID "123"^^xsd:string ;
+  study:hasLastName "Jones"^^xsd:string ;
+.
+cdiscpilot01:Person_1
+  rdf:type study:EnrolledSubject ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Person 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:actualArm custom:arm_1 ;
+  study:allocatedToArm custom:arm_1 ;
+  study:deathFlag "Y"^^xsd:string ;
+  study:hasLifespan cdiscpilot01:Interval_LS1 ;
+  study:hasReferenceInterval cdiscpilot01:Interval_RI1 ;
+  study:hasSite cdiscpilot01:site_701 ;
+  study:hasStudyParticipationInterval cdiscpilot01:Interval_SP1 ;
+  study:hasSubjectID "1015"^^xsd:string ;
+  study:hasUniqueSubjectID "01-701-1015"^^xsd:string ;
+  study:participatesIn cdiscpilot01:DemographicDataCollection_1 ;
+  study:participatesIn cdiscpilot01:InformedConsent_1 ;
+  study:participatesIn cdiscpilot01:ProductAdministration_1 ;
+  study:participatesIn cdiscpilot01:Randomization_1 ;
+  study:participatesIn cdiscpilot01:popflag_C16WK_1 ;
+  study:participatesIn cdiscpilot01:popflag_C24WK_1 ;
+  study:participatesIn cdiscpilot01:popflag_C8WK_1 ;
+  study:participatesIn cdiscpilot01:popflag_EFF_1 ;
+  study:participatesIn cdiscpilot01:popflag_ITT_1 ;
+  study:participatesIn cdiscpilot01:popflag_SAF_1 ;
+  study:participatesIn cdiscpilot01:visit_SCREENING1_P1 ;
+.
+cdiscpilot01:Person_2
+  rdf:type study:EnrolledSubject ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Person 2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:actualArm custom:arm_1 ;
+  study:allocatedToArm custom:arm_1 ;
+  study:hasLifespan cdiscpilot01:Interval_LS2 ;
+  study:hasReferenceInterval cdiscpilot01:Interval_RI2 ;
+  study:hasSite cdiscpilot01:site_701 ;
+  study:hasStudyParticipationInterval cdiscpilot01:Interval_SP2 ;
+  study:hasSubjectID "1023"^^xsd:string ;
+  study:hasUniqueSubjectID "01-701-1023"^^xsd:string ;
+  study:participatesIn cdiscpilot01:DemographicDataCollection_2 ;
+  study:participatesIn cdiscpilot01:InformedConsent_2 ;
+  study:participatesIn cdiscpilot01:ProductAdministration_2 ;
+  study:participatesIn cdiscpilot01:Randomization_2 ;
+.
+cdiscpilot01:Person_3
+  rdf:type study:EnrolledSubject ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Person 3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:actualArm custom:arm_3 ;
+  study:allocatedToArm custom:arm_3 ;
+  study:hasLifespan cdiscpilot01:Interval_LS3 ;
+  study:hasReferenceInterval cdiscpilot01:Interval_RI3 ;
+  study:hasSite cdiscpilot01:site_701 ;
+  study:hasStudyParticipationInterval cdiscpilot01:Interval_SP3 ;
+  study:hasSubjectID "1028"^^xsd:string ;
+  study:hasUniqueSubjectID "01-701-1028"^^xsd:string ;
+  study:participatesIn cdiscpilot01:DemographicDataCollection_3 ;
+  study:participatesIn cdiscpilot01:InformedConsent_3 ;
+  study:participatesIn cdiscpilot01:ProductAdministration_3 ;
+  study:participatesIn cdiscpilot01:Randomization_3 ;
+.
+cdiscpilot01:ProductAdministration_1
+  rdf:type study:ProductAdministration ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasActivityInterval cdiscpilot01:Interval_PA1 ;
+.
+cdiscpilot01:ProductAdministration_2
+  rdf:type study:ProductAdministration ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration 2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasActivityInterval cdiscpilot01:Interval_PA2 ;
+.
+cdiscpilot01:ProductAdministration_3
+  rdf:type study:ProductAdministration ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration 3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasActivityInterval cdiscpilot01:Interval_PA3 ;
+.
+cdiscpilot01:Randomization_1
+  rdf:type code:Randomization_3 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Randomization 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome custom:arm_1 ;
+.
+cdiscpilot01:Randomization_2
+  rdf:type code:Randomization_3 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Randomization 2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome custom:arm_1 ;
+.
+cdiscpilot01:Randomization_3
+  rdf:type code:Randomization_3 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Randomization 3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome custom:arm_3 ;
+.
+cdiscpilot01:popflag_C16WK_1
+  rdf:type custom:popflag_C16WK ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "popflag-P1C16WK"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome code:popflagoutcome_2 ;
+  study:hasPerformer cdiscpilot01:sponsor_STUDYSPONSOR ;
+.
+cdiscpilot01:popflag_C24WK_1
+  rdf:type custom:popflag_C24WK ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "popflag-P1C24WK"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome code:popflagoutcome_2 ;
+  study:hasPerformer cdiscpilot01:sponsor_STUDYSPONSOR ;
+.
+cdiscpilot01:popflag_C8WK_1
+  rdf:type custom:popflag_C8WK ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "popflag-P1C8WK"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome code:popflagoutcome_2 ;
+  study:hasPerformer cdiscpilot01:sponsor_STUDYSPONSOR ;
+.
+cdiscpilot01:popflag_EFF_1
+  rdf:type code:popflag_EFF ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "popflag-P1EFF"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome code:popflagoutcome_2 ;
+  study:hasPerformer cdiscpilot01:sponsor_STUDYSPONSOR ;
+.
+cdiscpilot01:popflag_ITT_1
+  rdf:type code:popflag_ITT ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "popflag-P1ITT"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome code:popflagoutcome_2 ;
+  study:hasPerformer cdiscpilot01:sponsor_STUDYSPONSOR ;
+.
+cdiscpilot01:popflag_SAF_1
+  rdf:type code:popflag_SAF ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "popflag-P1SAF"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome code:popflagoutcome_2 ;
+  study:hasPerformer cdiscpilot01:sponsor_STUDYSPONSOR ;
+.
+cdiscpilot01:site_701
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-701"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasInvestigator cdiscpilot01:Investigator_123 ;
+  study:hasSiteID "701"^^xsd:string ;
+.
+cdiscpilot01:site_702
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-702"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "702"^^xsd:string ;
+.
+cdiscpilot01:site_703
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-703"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "703"^^xsd:string ;
+.
+cdiscpilot01:site_704
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-704"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "704"^^xsd:string ;
+.
+cdiscpilot01:site_705
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-705"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "705"^^xsd:string ;
+.
+cdiscpilot01:site_706
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-706"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "706"^^xsd:string ;
+.
+cdiscpilot01:site_707
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-707"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "707"^^xsd:string ;
+.
+cdiscpilot01:site_708
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-708"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "708"^^xsd:string ;
+.
+cdiscpilot01:site_709
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-709"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "709"^^xsd:string ;
+.
+cdiscpilot01:site_710
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-710"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "710"^^xsd:string ;
+.
+cdiscpilot01:site_711
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-711"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "711"^^xsd:string ;
+.
+cdiscpilot01:site_712
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-712"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "712"^^xsd:string ;
+.
+cdiscpilot01:site_713
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-713"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "713"^^xsd:string ;
+.
+cdiscpilot01:site_714
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-714"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "714"^^xsd:string ;
+.
+cdiscpilot01:site_715
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-715"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "715"^^xsd:string ;
+.
+cdiscpilot01:site_716
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "site-716"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:hasCountry code:country_1 ;
+  study:hasSiteID "716"^^xsd:string ;
+.
+cdiscpilot01:sponsor_STUDYSPONSOR
+  rdf:type study:Sponsor ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "CLINICAL STUDY SPONSOR"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+.
+cdiscpilot01:startrule_1
+  rdf:type code:startrule_1 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "startrule-P1BP1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasPrerequisite cdiscpilot01:vspos_2 ;
+.
+cdiscpilot01:startrule_2
+  rdf:type code:startrule_2 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "startrule-P1BP2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasPrerequisite cdiscpilot01:vspos_1 ;
+.
+cdiscpilot01:startrule_3
+  rdf:type code:startrule_3 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "startrule-P1BP3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasPrerequisite cdiscpilot01:vspos_1 ;
+.
+cdiscpilot01:visit_SCREENING1_P1
+  rdf:type custom:visit_1 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 Visit 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "SCREENING1"^^xsd:string ;
+  study:activityStatus code:activitystatus_1 ;
+  study:hasDate cdiscpilot01:Date_20 ;
+  study:hasSubActivity cdiscpilot01:DBP_1 ;
+  study:hasSubActivity cdiscpilot01:DBP_2 ;
+  study:hasSubActivity cdiscpilot01:DBP_3 ;
+  study:hasSubActivity cdiscpilot01:vspos_1 ;
+  study:hasSubActivity cdiscpilot01:vspos_2 ;
+  study:seq "1"^^xsd:float ;
+.
+cdiscpilot01:vspos_1
+  rdf:type study:AssumeBodyPosition ;
+  rdf:type study:PrerequisiteActivity ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "assume standing position"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  study:activityStatus code:activitystatus_1 ;
+  study:hasDate cdiscpilot01:Date_19 ;
+.
+cdiscpilot01:vspos_2
+  rdf:type study:AssumeBodyPosition ;
+  rdf:type study:PrerequisiteActivity ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "assume supine position"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:activityStatus code:activitystatus_1 ;
+  study:hasDate cdiscpilot01:Date_19 ;
+.
+code:pressureunit_1
+  skos:prefLabel "mmHg"^^xsd:string ;
+.
+code:startrule_1
+  rdfs:subClassOf code:StartRule ;
+.
+code:startrule_2
+  rdfs:subClassOf code:StartRule ;
+.
+code:startrule_3
+  rdfs:subClassOf code:StartRule ;
+.
+code:timepoint-PT_SUPINE
+  skos:prefLabel "PATIENT SUPINE"^^xsd:string ;
+.
+sdtm:hasEntity
+  rdfs:range study:HumanStudySubject ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17459>
+  rdfs:label "HISPANIC OR LATINO"^^xsd:string ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17998>
+  rdfs:label "UNKNOWN" ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C41222>
+  rdfs:label "NOT HISPANIC OR LATINO" ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C43234>
+  rdfs:label "NOT REPORTED" ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167>
+  skos:prefLabel "SUPINE"^^xsd:string ;
+.
+study:Arm
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:Arm ;
+      owl:onProperty study:hasArmCode ;
+    ] ;
+.
+study:hasInformedConsentInterval
+  rdfs:range code:InformedConsentInterval ;
+.
+study:hasMethod
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "has method"^^xsd:string ;
+  skos:definition "links an activity with the method used to conduct the activity, i.e. how the activity outcome/result was obtained."^^xsd:string ;
+.
+study:isActivityOfStudy
+  owl:inverseOf study:hasStudyActivity ;
+.

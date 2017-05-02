@@ -1,10 +1,13 @@
 # baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm
+# imports: http://rdf.cdisc.org/std/sdtmig-3-1-3
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code
 # imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
 
 @prefix arg: <http://spinrdf.org/arg#> .
+@prefix cdiscs: <http://rdf.cdisc.org/std/schema#> .
+@prefix mms: <http://rdf.cdisc.org/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -17,11 +20,231 @@
 @prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARM>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARMCD>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.AGE>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.AGEU>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ARM>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ARMCD>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.BRTHDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.COUNTRY>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDY>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DOMAIN>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHFL>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ETHNIC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.INVID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.INVNAM>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RACE>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFENDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFICDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFPENDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFSTDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXENDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXSTDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SEX>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SITEID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.STUDYID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SUBJID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.USUBJID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVAR>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVARVAL>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QEVAL>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QLABEL>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QNAM>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QORIG>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QVAL>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.RDOMAIN>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.STUDYID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.USUBJID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.DOMAIN>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.STUDYID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.USUBJID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISIT>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITDY>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITNUM>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSBLFL>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSCAT>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDRVFL>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDY>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSELTM>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSGRPID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSLOC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSORRES>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSORRESU>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSPOS>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSREASND>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSRFTDTC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSCAT>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSEQ>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSPID>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTAT>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESC>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESN>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESU>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTEST>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTESTCD>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPT>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTNUM>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTREF>
+  rdf:type sdtm:VariableCode ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.DM>
+  rdf:type sdtm:DomainCode ;
+  rdfs:label "DM" ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.SUPPQUAL>
+  rdf:type sdtm:DomainCode ;
+  rdfs:label "SUPPQUAL" ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.VS>
+  rdf:type sdtm:DomainCode ;
+  rdfs:label "VS" ;
+.
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#timepoint-PT_STANDING>
   skos:prefLabel "PATIENT STANDING"^^xsd:string ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm>
   rdf:type owl:Ontology ;
+  owl:imports <http://rdf.cdisc.org/std/sdtmig-3-1-3> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code> ;
@@ -35,10 +258,20 @@ sdtm:DM_Domain
   rdfs:subClassOf sdtm:SDTMDomain ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
-      owl:hasValue sdtm:domaincode-DM ;
-      owl:onProperty study:hasCode ;
+      owl:hasValue <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.DM> ;
+      owl:onProperty sdtm:hasCode ;
     ] ;
   skos:definition ""^^xsd:string ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#Dataset.SUPPDM>
+  rdf:type mms:Dataset ;
+  rdf:type sdtm:DomainCode ;
+  mms:context <http://rdf.cdisc.org/std/sdtmig-3-1-3#RelationshipDataset> ;
+  mms:contextLabel "Supplemental Qualifiers"^^xsd:string ;
+  mms:contextName "SUPPQUAL"^^xsd:string ;
+  mms:ordinal "35"^^xsd:positiveInteger ;
+  cdiscs:datasetStructure "One record per IDVAR, IDVARVAL, and QNAM value per subject"^^xsd:string ;
+  rdfs:label "SUPPDM" ;
 .
 sdtm:DomainCode
   rdf:type owl:Class ;
@@ -56,10 +289,146 @@ sdtm:SDTMComponent
 .
 sdtm:SDTMDefineRecord
   rdf:type owl:Class ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "varname"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFVariableName ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "label"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFLabel ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "type"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFType ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "role"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFRole ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFVariable ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "varname"^^xsd:string ;
+              ] ;
+            sp:predicate mms:dataElementName ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "label"^^xsd:string ;
+              ] ;
+            sp:predicate mms:dataElementLabel ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "datype"^^xsd:string ;
+              ] ;
+            sp:predicate cdiscs:dataElementType ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "type"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "datype"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "darole"^^xsd:string ;
+              ] ;
+            sp:predicate cdiscs:dataElementRole ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "role"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "darole"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
   rdfs:subClassOf sdtm:SDTMRecord ;
   skos:altLabel ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SDTMDefine record"^^xsd:string ;
+.
+sdtm:SDTMDefineRecord_DM
+  rdf:type owl:Class ;
+  rdfs:subClassOf sdtm:SDTMDefineRecord ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "SDTMDefine record DM"^^xsd:string ;
+.
+sdtm:SDTMDefineRecord_DM_STUDYID
+  rdf:type owl:Class ;
+  spin:constructor [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object 1 ;
+            sp:predicate sdtm:hasDFSequence ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.STUDYID> ;
+            sp:predicate sdtm:hasDFVariable ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where () ;
+    ] ;
+  rdfs:subClassOf sdtm:SDTMDefineRecord_DM ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "SDTMDefine record DM STUDYID"^^xsd:string ;
+.
+sdtm:SDTMDefineRecord_SUPPDM
+  rdf:type owl:Class ;
+  rdfs:subClassOf sdtm:SDTMDefineRecord ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "SDTMDefine record SUPPDM"^^xsd:string ;
+.
+sdtm:SDTMDefineRecord_VS
+  rdf:type owl:Class ;
+  rdfs:subClassOf sdtm:SDTMDefineRecord ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "SDTMDefine record VS"^^xsd:string ;
 .
 sdtm:SDTMDomain
   rdf:type owl:Class ;
@@ -1455,7 +1824,7 @@ sdtm:SDTM_SUPPDM_Record
                 sp:varName "dcode"^^xsd:string ;
               ] ;
             sp:predicate rdfs:label ;
-            sp:subject sdtm:domaincode-DM ;
+            sp:subject <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.DM> ;
           ]
         ) ;
     ] ;
@@ -2896,8 +3265,8 @@ sdtm:SUPPDM_Domain
   rdfs:subClassOf sdtm:SDTMDomain ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
-      owl:hasValue sdtm:domaincode-SUPPDM ;
-      owl:onProperty study:hasCode ;
+      owl:hasValue <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#Dataset.SUPPDM> ;
+      owl:onProperty sdtm:hasCode ;
     ] ;
   skos:definition ""^^xsd:string ;
 .
@@ -2908,8 +3277,8 @@ sdtm:VS_Domain
   rdfs:subClassOf sdtm:SDTMDomain ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
-      owl:hasValue sdtm:domaincode-VS ;
-      owl:onProperty study:hasCode ;
+      owl:hasValue <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.VS> ;
+      owl:onProperty sdtm:hasCode ;
     ] ;
   skos:definition ""^^xsd:string ;
 .
@@ -2918,43 +3287,6 @@ sdtm:VariableCode
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Variable code"^^xsd:string ;
   rdfs:subClassOf sdtm:SDTMTerminology ;
-  skos:definition ""^^xsd:string ;
-.
-sdtm:VariableCode-DOMAIN
-  rdf:type sdtm:VariableCode ;
-  rdfs:comment ""^^xsd:string ;
-  skos:altLabel "Domain Abbreviation"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "DOMAIN"^^xsd:string ;
-.
-sdtm:VariableCode_STUDYID
-  rdf:type sdtm:VariableCode ;
-  skos:altLabel ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Variable code STUDYID"^^xsd:string ;
-.
-sdtm:domaincode-DM
-  rdf:type sdtm:DomainCode ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "DM"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
-sdtm:domaincode-SUPPDM
-  rdf:type sdtm:DomainCode ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "SUPPDM"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
-sdtm:domaincode-SV
-  rdf:type sdtm:DomainCode ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "SV"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
-sdtm:domaincode-VS
-  rdf:type sdtm:DomainCode ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "VS"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
 sdtm:hasACTARM
@@ -3044,6 +3376,69 @@ sdtm:hasDEATHFL
   rdfs:label "DEATHFL"^^xsd:string ;
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
+.
+sdtm:hasDFComment
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:string ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has DFComment"^^xsd:string ;
+.
+sdtm:hasDFControlledTerm
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:string ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has DFControlledTerminology"^^xsd:string ;
+.
+sdtm:hasDFLabel
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:string ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has DFLabel"^^xsd:string ;
+.
+sdtm:hasDFOrigin
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:string ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has DFOrigin"^^xsd:string ;
+.
+sdtm:hasDFRole
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:string ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has DFRole"^^xsd:string ;
+.
+sdtm:hasDFSequence
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:integer ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has DFSequence"^^xsd:string ;
+.
+sdtm:hasDFType
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:string ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has DFType"^^xsd:string ;
+.
+sdtm:hasDFVariable
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range sdtm:VariableCode ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has DFVariable"^^xsd:string ;
+.
+sdtm:hasDFVariableName
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:string ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has DFVariable"^^xsd:string ;
 .
 sdtm:hasDMDTC
   rdf:type owl:DatatypeProperty ;

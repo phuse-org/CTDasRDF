@@ -34,10 +34,17 @@ sdtm-cdisc01:DM_CDISCPILOT01
   rdfs:comment ""^^xsd:string ;
   rdfs:label "DM CDISCPILOT01"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasCode sdtm:domaincode-DM ;
+  sdtm:hasCode <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.DM> ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_DM_Record_1 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_DM_Record_2 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_DM_Record_3 ;
+.
+sdtm-cdisc01:SDTMDefineRecord_DM_STUDYID_1
+  rdf:type sdtm:SDTMDefineRecord_DM_STUDYID ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "SDTMDefine record DM STUDYID 1"^^xsd:string ;
+  sdtm:hasDFSequence 1 ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.STUDYID> ;
 .
 sdtm-cdisc01:SDTM_DM_Record_1
   rdf:type sdtm:SDTM_DM_Record ;
@@ -137,7 +144,7 @@ sdtm-cdisc01:SUPPDM_CDISCPILOT01
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SUPPDM CDISCPILOT01"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasCode sdtm:domaincode-SUPPDM ;
+  sdtm:hasCode <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#Dataset.SUPPDM> ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_1 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_2 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_3 ;
@@ -150,7 +157,7 @@ sdtm-cdisc01:VS_CDISCPILOT01
   rdfs:comment ""^^xsd:string ;
   rdfs:label "VS CDISCPILOT01"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasCode sdtm:domaincode-VS ;
+  sdtm:hasCode <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.VS> ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_VS_Record_1 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_VS_Record_2 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_VS_Record_3 ;

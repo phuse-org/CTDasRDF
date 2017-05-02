@@ -218,14 +218,13 @@ custom:arm_1
 .
 custom:arm_2
   rdf:type owl:Class ;
-  rdf:type code:RandomizationOutcome ;
   rdf:type custom:Arm ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Xan_Lo"^^xsd:string ;
+  rdfs:label "Scrnfail"^^xsd:string ;
   rdfs:subClassOf custom:Arm ;
-  rdfs:subClassOf custom:RandomizationOutcome ;
-  skos:altLabel "Xan_Lo"^^xsd:string ;
-  skos:prefLabel "Xanomeline Low Dose"^^xsd:string ;
+  skos:altLabel "Scrnfail"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "Screen Failure"^^xsd:string ;
 .
 custom:arm_3
   rdf:type owl:Class ;
@@ -240,13 +239,14 @@ custom:arm_3
 .
 custom:arm_4
   rdf:type owl:Class ;
+  rdf:type code:RandomizationOutcome ;
   rdf:type custom:Arm ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Scrnfail"^^xsd:string ;
+  rdfs:label "Xan_Lo"^^xsd:string ;
   rdfs:subClassOf custom:Arm ;
-  skos:altLabel "Scrnfail"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Screen Failure"^^xsd:string ;
+  rdfs:subClassOf custom:RandomizationOutcome ;
+  skos:altLabel "Xan_Lo"^^xsd:string ;
+  skos:prefLabel "Xanomeline Low Dose"^^xsd:string ;
 .
 custom:bpoutcome_1
   rdf:type custom:BloodPressureOutcome ;
