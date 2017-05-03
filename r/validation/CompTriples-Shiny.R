@@ -23,7 +23,7 @@ library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!
 library(reshape) #  melt
 library(rrdf)
 library(shiny)
-
+setwd("C:/_gitHub/SDTMasRDF/data/rdf")
 server <- function(input, output) {
     output$contents <- renderTable({ 
     inFileR <<- input$fileR
@@ -55,10 +55,13 @@ server <- function(input, output) {
     
        query = paste0("PREFIX cdiscpilot01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#>
 PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
+PREFIX code:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#>
+prefix owl:   <http://www.w3.org/2002/07/owl#>
 PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX study:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
+prefix time:  <http://www.w3.org/2006/time#>
 SELECT ?s ?p ?o
 WHERE {", input$qnam, " ?p ?o . 
   BIND(\"", input$qnam, "\" as ?s) } ")
@@ -70,18 +73,19 @@ WHERE {", input$qnam, " ?p ?o .
    triplesR <<- as.data.frame(sparql.rdf(sourceR, query))
    
    sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
-   triplesOnt <<- as.data.frame(sparql.rdf(sourceOnt, query))
+   triplesOnt <- as.data.frame(sparql.rdf(sourceOnt, query))
 
+   # Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
+   triplesOnt <-triplesOnt[!(triplesOnt$o==""),]
+   triplesOnt <<- triplesOnt[complete.cases(triplesOnt), ]
    if (input$comp=='inRNotOnt') {
-
        compResult <<-anti_join(triplesR, triplesOnt)
    }
    else if (input$comp=='inOntNotR') {
-       compResult <<- anti_join(triplesOnt, triplesR)
+       compResult <- anti_join(triplesOnt, triplesR)
    }
    compResult
-    })
-    
+})
 #TESTING    
    
     
@@ -90,8 +94,8 @@ WHERE {", input$qnam, " ?p ?o .
 ui <- fluidPage(
   titlePanel("Compare TTLs from R and Ontology "),
   fluidRow (
-      column(4, fileInput('fileR', 'TTL from R')),
-      column(4, fileInput('fileOnt', 'TTL from Ont')
+      column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
+      column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')
       ),
       column(3, textInput('qnam', "Subject QName", value = "cdiscpilot01:Person_1"))
   ),

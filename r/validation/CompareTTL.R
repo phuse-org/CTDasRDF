@@ -42,6 +42,8 @@ WHERE { cdiscpilot01:Person_1 ?p ?o .
   BIND("cdiscpilot01:Person_1" as ?s)
 }'
 TWTriples = as.data.frame(sparql.rdf(TWSource, query))
+
+
 AOTriples = as.data.frame(sparql.rdf(AOSource, query))
 
 
@@ -174,4 +176,41 @@ checkSubject <- function(subject){
 # checkSubject("cdiscpilot01:StudyParticipationEnd_1")
 # checkSubject("cdiscpilot01:site_701")
 # checkSubject("cdiscpilot01:study-CDISCPILOT01")
+
+
+getClasses <- function(subject){
+
+    query = paste(' 
+prefix arg: <http://spinrdf.org/arg#> .                                               
+prefix code: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#> .    
+prefix custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#> .
+prefix owl: <http://www.w3.org/2002/07/owl#> .                                        
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .                           
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .                                
+prefix skos: <http://www.w3.org/2004/02/skos/core#> .                                 
+prefix sp: <http://spinrdf.org/sp#> .                                                 
+prefix spin: <http://spinrdf.org/spin#> .                                             
+prefix spl: <http://spinrdf.org/spl#> .                                               
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> .                                     
+
+SELECT *
+FROM <http://localhost:8890/CDISCPILOT01>
+WHERE{?class rdfs:subClassOf ?subclass 
+                  }
+                  ',
+                  "\n"
+    )
+    
+    TWTriples = as.data.frame(sparql.rdf(TWSource, query))
+    AOTriples = as.data.frame(sparql.rdf(AOSource, query))
+    
+    inTWNotAO<-anti_join(TWTriples, AOTriples)
+    inAONotTW<-anti_join(AOTriples, TWTriples)
+    inAONotTW<-inAONotTW[!(inAONotTW$o==""),]  # remove cases where O is missing (atrifact from TopBraid)
+    # In the TW TTL file but not in the AO file                 
+    inTWNotAO
+    # In the AO TTL file but not in the TO file
+    inAONotTW
+}
+
 
