@@ -80,9 +80,6 @@ dm$race_  <- sapply(dm$race,function(x) {
         'WHITE'                                     = 'C74457.C41261',
         as.character(x) ) } )
             
-#---- Country
-# Match to the code in the ontology identified by AO
-dm$country_ <- recode(dm$country,"'USA' = '840'")
 #-- End Data Coding -----------------------------------------------------------
 
 #-- Single Resource Creation --------------------------------------------------
@@ -114,8 +111,8 @@ ddply(investigators, .(invnam), function(investigators)
     )
 })
 # ---- Sites : Build triples for each unique Site
-sites <- dm[,c("siteid", "invid", "country_" )]
-sites <- sites[!duplicated(sites),]
+sites <- dm[,c("siteid", "invid", "country", "country_Frag" )]
+sites <<- sites[!duplicated(sites), ]
 ddply(sites, .(siteid), function(sites)
 {
     add.triple(store,
@@ -126,7 +123,7 @@ ddply(sites, .(siteid), function(sites)
     add.triple(store,
         paste0(prefix.CDISCPILOT01, "site_",sites$siteid),
         paste0(prefix.STUDY,"hasCountry" ),
-        paste0(prefix.COUNTRY,sites$country )
+        paste0(prefix.CODE,sites$country_Frag )
     )
     add.triple(store,
         paste0(prefix.CDISCPILOT01, "site_",sites$siteid),
@@ -141,9 +138,48 @@ ddply(sites, .(siteid), function(sites)
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, "site_",sites$siteid),
         paste0(prefix.RDFS,"label" ),
-        paste0("site_",sites$siteid), type="string" 
+        paste0("site-",sites$siteid), type="string" 
     )
 })
+
+# WIP
+# Build the codes for each Country into code.ttl file
+countries <- dm[,c("country", "country_Frag" )]
+countries <<- countries[!duplicated(countries), ]
+countries <-na.omit(countries)
+
+ddply(countries, .(country_Frag), function(countries)
+{
+    add.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CODE,"Country" )
+    )
+    add.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CODE,"DefinedConcept" )
+    )
+    add.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.RDFS,"Resource" )
+    )
+    add.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.OWL,"Thing" )
+    )
+    
+    
+    add.data.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(countries$country), type="string" 
+    )
+})
+
+
 #---- Treatment Arms : Build triples for each unique Treatment Arm
 #     Note combination of arm and armcd to capture all possible values
 arms <- dm[,c("arm", "armcd")]
@@ -300,7 +336,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_LS", dm$personNum),
             paste0(prefix.RDFS,"label"),
-            paste0("Interval_LS", dm$personNum), type="string"
+            paste0("Lifepsan Interval ", dm$personNum), type="string"
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_LS", dm$personNum),
@@ -340,7 +376,7 @@ ddply(dm, .(subjid), function(dm)
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum),
             paste0(prefix.TIME,"hasBeginning" ),
-            paste0(prefix.CDISCPILOT01, dm$rfstdtc_Frag)
+            paste0(prefix.CDISCPILOT01, dm$dmdtc_Frag)
         )
         #---- Assign Date Type
         assignDateType(dm$rfstdtc, dm$rfstdtc_Frag, "StudyParticipationBegin")
@@ -472,7 +508,7 @@ ddply(dm, .(subjid), function(dm)
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.RDF,"type" ),
-            paste0(prefix.STUDY,"DemographicDataCollection" )
+            paste0(prefix.CODE,"DemographicDataCollection" )
         )  
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
@@ -482,7 +518,7 @@ ddply(dm, .(subjid), function(dm)
         # Age
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-            paste0(prefix.STUDY,"hasAge" ),
+            paste0(prefix.CODE,"hasAge" ),
             paste0(prefix.CUSTOM, dm$age_Frag)
     )
            #----Age Measurement Triples
@@ -506,19 +542,19 @@ ddply(dm, .(subjid), function(dm)
         # Ethnicity
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-            paste0(prefix.STUDY,"hasEthnicity" ),
+            paste0(prefix.CODE,"hasEthnicity" ),
             paste0(prefix.SDTMTERM, dm$ethnic_) 
         )
         # Race
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-            paste0(prefix.STUDY,"hasRace" ),
+            paste0(prefix.CODE,"hasRace" ),
             paste0(prefix.SDTMTERM, dm$race_) 
         )
         # Sex 
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-            paste0(prefix.STUDY,"hasSex" ),
+            paste0(prefix.CODE,"hasSex" ),
             paste0(prefix.SDTMTERM, dm$sex_) 
         )
         #DEL  ActivityCode no longer in use 2017-04-19

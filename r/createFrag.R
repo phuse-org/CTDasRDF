@@ -170,20 +170,10 @@ dm1 <- dm[,c("actarm", "actarmcd", "actarmcd_Frag")]
 dm1 <- rename(dm1, c("actarm"= "arm", "actarmcd" = "armcd", "actarmcd_Frag" = "armcd_Frag"))
 dm2 <- dm[,c("arm", "armcd", "armcd_Frag")]
 
-
-
 dmArms <- rbind(dm1,dm2)
 dmArms <- dmArms[!duplicated(dmArms), ]
 
-#!!! HARD CODING !!!!  CUATION  !!!
-#KLUDGE/TESTING: Add Screen Failure category: is in the ontology, not  not in  test data
-dmFab <-data.frame(arm="Screen Failure", armcd="Scrnfail", armcd_Frag="arm_4")
-
-dmArms <-rbind(dmArms,dmFab)
-
 # Loop through the arm_ codes to create  custom-terminology triples
-
-#ERROR is within the ddply
 ddply(dmArms, .(armcd_Frag), function(dmArms)
 {
     add.triple(custom,
@@ -194,12 +184,22 @@ ddply(dmArms, .(armcd_Frag), function(dmArms)
     add.triple(custom,
         paste0(prefix.CUSTOM, dmArms$armcd_Frag),
         paste0(prefix.RDF,"type" ),
+        paste0(prefix.CUSTOM, "CustomConcept")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDF,"type" ),
         paste0(prefix.CODE, "RandomizationOutcome")
     )
     add.triple(custom,
         paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDFS,"type" ),
+        paste0(prefix.RDF,"type" ),
         paste0(prefix.CUSTOM, "Arm")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(dmArms$arm), type="string"
     )
     add.data.triple(custom,
         paste0(prefix.CUSTOM, dmArms$armcd_Frag),
@@ -216,6 +216,26 @@ ddply(dmArms, .(armcd_Frag), function(dmArms)
         paste0(prefix.RDFS,"subClassOf" ),
         paste0(prefix.CUSTOM, "RandomizationOutcome")
     )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "AdministrativeActivityOutcome")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "CustomConcept")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "ActivityOutcome")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "RandomizationOutcome")
+    )
     add.data.triple(custom,
         paste0(prefix.CUSTOM, dmArms$armcd_Frag),
         paste0(prefix.SKOS,"altLabel" ),
@@ -226,9 +246,59 @@ ddply(dmArms, .(armcd_Frag), function(dmArms)
         paste0(prefix.SKOS,"prefLabel" ),
         paste0(dmArms$arm), type="string"
     )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CUSTOM, "Arm")
+    )
 })    
 
-# - end creating custom-terminlogy for arm_
+#------------------------------------------------------------------------------
+# Age
+#------------------------------------------------------------------------------
+# - age fragment as AgeOutcome_
+dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  )
 
-dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="age"  )
+# Keep only the columns needed to create triples in the terminology file
+ageList <- dm[,c("age", "ageu", "age_Frag")]
 
+ageList <- ageList[!duplicated(ageList), ]
+
+# Loop through the arm_ codes to create  custom-terminology triples
+ddply(ageList, .(age_Frag), function(ageList)
+{
+    add.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CUSTOM, "AgeOutcomeTerm")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(ageList$age, " ", ageList$ageu), type="string"
+    )
+    #TODO Make this triple conditional: if ageu=YEARS, then:
+    add.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.CODE,"hasUnit" ),
+        paste0(prefix.TIME, "unitYear")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.CODE,"hasUnit" ),
+        paste0(prefix.TIME, "unitYear")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.CODE,"hasValue" ),
+        paste0(ageList$age), type="int"
+    )
+})    
+
+
+#------------------------------------------------------------------------------
+# Country
+#------------------------------------------------------------------------------
+dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="country"  )
+
+# Does country get recorded in CUSTOM.TTL or elsewhere?

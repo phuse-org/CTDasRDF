@@ -68,7 +68,7 @@ add.data.triple(store,
 add.data.triple(store,
     paste0(prefix.CDISCPILOT01, "sdtm-graph"),
     paste0(prefix.DCAT, "distribution"),
-    paste0(outFilename)
+    paste0(outFileMain)
 )
 #TODO:  Reinstate, listing source folder of files instead of indivdual files?
 #add.data.triple(store,

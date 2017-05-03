@@ -6,7 +6,7 @@
 #       Imports the various domains from XPT files
 #       Calls functions for unique URI creation (eg: Dates)
 #       Writes out TTL.
-# REQ : Apache Jena 3.0.1: For riot, installed and avail at system path if 
+# REQ : Apache Jena 3.+0.1: For riot, installed and avail at system path if 
 #           valdiation called
 # SRC : N/A
 # IN  :  prefixes.csv - prefixes and their namespaces
@@ -19,9 +19,8 @@
 ###############################################################################
 library(rrdf)
 library(Hmisc)
-
 library(plyr)  # plyr must load prior to dplyr!
-# library(dplyr)  
+# library(dplyr)  #DEL not currently in use?
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 library(reshape2)
 
@@ -37,16 +36,16 @@ setwd("C:/_github/SDTMasRDF")
 # Configuration: List of prefixes
 allPrefix <- "data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
 
-
 # Output filename and location
-outFileMain = "data/rdf/cdiscpilot01-R.TTL"
+outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
 outFileCustom = "data/rdf/customterminology-R.TTL"
+outFileCode   = "data/rdf/code-R.TTL"
 # outFile=paste0("data/rdf/", outFilename)
 
 # Initialize. Includes OWL, XSD, RDF by default.
-store = new.rdf()    # The mmain datafile. Later change name to 'mainTTL" or similar
+store  = new.rdf()  # The main datafile. Later change name to 'mainTTL" or similar
 custom = new.rdf()  # customterminology-R.ttl
-
+code   = new.rdf()  # code-R.ttl
 #------------------------------------------------------------------------------
 # Build Prefixes
 #   For simplicity, one set of prefixes is built for all files. Files like 
@@ -59,6 +58,7 @@ prefixes <- as.data.frame( read.csv(allPrefix,
     sep=',' ,
     strip.white=TRUE))
 for (i in 1:nrow(prefixes)) {
+    # Add prefixes to main instance-data file.
     add.prefix(store,
         prefix=as.character(prefixes[i,"prefix"]),
         namespace=as.character(prefixes[i, "namespace"])
@@ -68,23 +68,36 @@ for (i in 1:nrow(prefixes)) {
         prefix=as.character(prefixes[i,"prefix"]),
         namespace=as.character(prefixes[i, "namespace"])
     )
-    
+    # Add same prefixes to code.ttl file
+    add.prefix(code,
+        prefix=as.character(prefixes[i,"prefix"]),
+        namespace=as.character(prefixes[i, "namespace"])
+    )
+
     # Create uppercase prefix names for use in add() in triples.R
     assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"])
 }
 
-
-
 #-- Data triples creation -----------------------------------------------------
 # Graph Metadata
 source('R/graphMeta.R')
+
+#DEL ONTOLOGY TRIPLES
+# DEL This step NOT needed. Non-instance triples will come in from files generated
+#   by Protege/Topbraid
+#   Create the supporting ontology triples that are not based on the instance data
+#   THese are the Classes, subclasses etc. normally built in either Protege or TopBraid
+# source('R/customOnt.R')
 
 # Import and indexing Functions (Called during domain processing) 
 source('R/dataImportFnts.R')
 
 #-- Import data. Needed here for creating unique URIs for values that span
 #   Multiple domains, like dates.
-#---- DM DOMAIN ---------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# DM DOMAIN
+#------------------------------------------------------------------------------
 dm <- readXPT("dm")
 # For testing, keep only the first (maxPerson) patients in DM
 dm <- head(dm, maxPerson)  # maxPerson set above
@@ -98,8 +111,9 @@ dm$personNum<- id
 personId <- dm[,c("personNum", "usubjid")]
 
 #------ Date Massage and Creation (for testing), etc.
+#TW: REMOVED 2017-05-03. Dates should reflect original format
 # rfpendtc is a mix of date and datetime. substring it to only date
-dm$rfpendtc <- substring(dm$rfpendtc, 1,10)
+# dm$rfpendtc <- substring(dm$rfpendtc, 1,10)
 #-- Data Creation for testing purposes. --------------------------------------- 
 #---- Birthdate : asbsent in source data
 # NOTE: Date calculations based on SECONDS so you must convert the age in Years to seconds
@@ -112,6 +126,26 @@ dm$rficdtc <- dm$dmdtc
 dm$dthdtc <- as.character(dm$dthdtc)
 dm$dthdtc[dm$personNum == 1 ] <- "2013-12-26"
 
+#TODO:  Move this "data creation" to a separate DF that is then appended to the source df? 
+# Add an new row to the DM dataframe to contain information needed for development
+# SAUCE: https://gregorybooma.wordpress.com/2012/07/18/add-an-empty-column-and-row-to-an-r-data-frame/
+#   Create a one-row matrix the same length as data
+temprow <- matrix(c(rep.int(NA,length(dm))),nrow=1,ncol=length(dm))
+ 
+# Convert to df with  cols the same names as the original (dm) df
+newrow <- data.frame(temprow)
+colnames(newrow) <- colnames(dm)
+ 
+# rbind the empty row back to original df
+dm <- rbind(dm,newrow)
+ 
+# now populate the values in the last row of the data
+dm[nrow(dm),"arm"]   <- 'Screen Failure'
+dm[nrow(dm),"armcd"] <- 'Scrnfail'
+
+#------------------------------------------------------------------------------
+# VS DOMAIN
+#------------------------------------------------------------------------------
 # Import VS
 vs <- readXPT("vs")
 
@@ -123,12 +157,19 @@ vs <- subset(vs, (personNum==1
                   & visit %in% c("SCREENING 1", "SCREENING 2")))
 
 
+#------------------------------------------------------------------------------
+# xx DOMAIN
+#   Additional domains to be added.
+#------------------------------------------------------------------------------
 
 # Create URI fragments for Dates and other categories that are shared URIs 
 # Eg: Date_1, AgeMeasurement_3
 source('R/createFrag.R')
 
-#-- DOMAIN PROCESSING ---------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Domain Processing
+#------------------------------------------------------------------------------
 #---- DM DOMAIN
 #  NOTE: DM  MUST be processd first: Creates data required in later steps.
 #        DM MUST BE Run to create personNUm that is used when processing other domains.
@@ -142,18 +183,23 @@ source('R/processVS.R')
 
 #---- X DOMAIN  Additional Domains will be added here.......
 
-##########
-# Output #
-###############################################################################
-store  = save.rdf(store,  filename=outFileMain, format="TURTLE")
+#------------------------------------------------------------------------------
+# OUTPUT
+#   Write out the TTL files
+#------------------------------------------------------------------------------
+store  = save.rdf(store,  filename=outFileMain,   format="TURTLE")
 custom = save.rdf(custom, filename=outFileCustom, format="TURTLE")
+code   = save.rdf(code,   filename=outFileCode,   format="TURTLE")
 
-
-#-- Validation ----------------------------------------------------------------
-#  Validate TTL file. Always a good idea to validate, friendo.
+#------------------------------------------------------------------------------
+# VALIDATION
+#   Always a good idea to validate, friendo.
+#------------------------------------------------------------------------------
 system(paste('riot --validate ', outFileMain),
     show.output.on.console = TRUE)
 
-system(paste('riot --validate ', outFileMain),
+system(paste('riot --validate ', outFileCustom),
     show.output.on.console = TRUE)
 
+system(paste('riot --validate ', outFileCode),
+    show.output.on.console = TRUE)
