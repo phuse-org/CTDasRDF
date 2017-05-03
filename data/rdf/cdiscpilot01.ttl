@@ -132,17 +132,11 @@ cdiscpilot01:Date_19
   rdf:type study:DemogDataCollectionDate ;
   rdf:type study:InformedConsentBegin ;
   rdf:type study:StudyParticipationBegin ;
+  rdf:type study:VisitDate ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "2013-12-26"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:dateTimeInXSDString "2013-12-26"^^xsd:string ;
-.
-cdiscpilot01:Date_20
-  rdf:type study:VisitDate ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "2013-12-26T09:00"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:dateTimeInXSDString "2013-12-26T09:00"^^xsd:string ;
 .
 cdiscpilot01:Date_21
   rdf:type study:ProductAdministrationBegin ;
@@ -715,7 +709,7 @@ cdiscpilot01:visit_SCREENING1_P1
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SCREENING1"^^xsd:string ;
   study:activityStatus code:activitystatus_1 ;
-  study:hasDate cdiscpilot01:Date_20 ;
+  study:hasDate cdiscpilot01:Date_19 ;
   study:hasSubActivity cdiscpilot01:DBP_1 ;
   study:hasSubActivity cdiscpilot01:DBP_2 ;
   study:hasSubActivity cdiscpilot01:DBP_3 ;
