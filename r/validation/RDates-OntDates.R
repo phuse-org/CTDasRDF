@@ -12,6 +12,7 @@
 # TODO: 
 ###############################################################################
 library(rrdf)
+library(plyr)  # rename
 library(reshape)   # melt
 # For use with local TTL file:
 setwd("C:/_gitHub/SDTMasRDF")
@@ -41,20 +42,17 @@ dateComp <- merge(rTriples, ontTriples, by.x="dateVal", by.y="dateVal", all.x=TR
 
 # OLD SHITE BELOW HERE
 
-classes <- melt(ontTriples, measure.vars = c("class", "subclass"))
+#classes <- melt(ontTriples, measure.vars = c("class", "subclass"))
 
-classes <- data.frame(classes[,"value"])
+#classes <- data.frame(classes[,"value"])
 # remote dupes
-classes <- data.frame(classes[!duplicated(classes), ])  # is DF here.
+#classes <- data.frame(classes[!duplicated(classes), ])  # is DF here.
 
 # Rename column
-names(classes)[names(classes) == 'classes..duplicated.classes....'] <- 'class'
-
+#names(classes)[names(classes) == 'classes..duplicated.classes....'] <- 'class'
 
 # Get list of those that are created from rdf frags in the data. custom: prefix with
 #   '_' 
 # These are the ones you need to create in R,  others are created in Protege/TopBraid.
 # keep the custom: classes
-
-classes <- subset(classes, grepl("custom:\\S+_\\S+", class, perl=TRUE))
-
+#classes <- subset(classes, grepl("custom:\\S+_\\S+", class, perl=TRUE))

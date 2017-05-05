@@ -40,7 +40,7 @@ vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
 # More imputations for the first 3 records to match data created by AO : 2016-01-19
 vs$vsgrpid <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "GRPID1", "" )) 
 vs$vsscat <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "SCAT1", "" )) 
-vs$vsstat <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "COMPLETE", "" )) 
+vs$vsstat <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "CO", "" ))  # changed 05May17
 
 # vsspid
 vs[vs$vsseq %in% c(1), "vsspid"]  <- "123"
@@ -91,6 +91,10 @@ vs$vslatSDTMCode <- recode(vs$vslat,
 # Merge in the date fragment from the date dictionary created in createFrag.R
 vs <- addDateFrag(vs, "vsdtc")  
 
+#------------------------------------------------------------------------------
+# vsstat
+#------------------------------------------------------------------------------
+vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="activitystatus"  )
 
 
 # Drop vars that are not needed in triple creation
@@ -339,5 +343,14 @@ ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
             paste0(prefix.CDISCPILOT01,vsVisits$vsdtc_Frag)   #TODO: Build out custom:visit_<n>
         )
         #TODO activityStatus code:activitystatus_1
+        add.triple(store,
+            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+            paste0(prefix.STUDY,"activityStatus" ),
+            paste0(prefix.CODE,"activitystatus_",vsVisits$vsdtc_Frag)   #TODO: Build out custom:visit_<n>
+        )
+        
+        
+        
+        
         #TODO  study:seq "1" 
 })

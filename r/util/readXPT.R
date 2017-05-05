@@ -16,9 +16,12 @@ library(Hmisc)
 # Set working directory to the root of the work area
 setwd("C:/_github/SDTMasRDF/data/source")
 
-dm <- sasxport.get("dm.xpt")
-    
-dataSubset <- head(dm, 100)
+readXPTDomain <- function (domainName){
+   domainValues <- sasxport.get(paste0(domainName, ".xpt"))
+   dataSubset   <- head(domainValues, 100)    
+}
+
+domainVals <- readXPTDomain("vs")
 
 
 # TEST BED

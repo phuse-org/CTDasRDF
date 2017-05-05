@@ -302,3 +302,5 @@ ddply(ageList, .(age_Frag), function(ageList)
 dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="country"  )
 
 # Does country get recorded in CUSTOM.TTL or elsewhere?
+
+

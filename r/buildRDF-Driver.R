@@ -48,27 +48,27 @@ custom = new.rdf()  # customterminology-R.ttl
 code   = new.rdf()  # code-R.ttl
 #------------------------------------------------------------------------------
 # Build Prefixes
-#   For simplicity, one set of prefixes is built for all files. Files like 
-#     custom-R.ttl, cdiscpilot01-R.TTL, etc. all have the same list of prefixes
-#     Also helps to ensure consistency between files.
+#   Add prefixes to files cdiscpilot01-R.TTL, customterminology-R.ttl, 
+#      code-R.ttl
+#   For simplicity, one set of prefixes is built for all files. All output files
+#     have the same list of prefixes for both code simplicity consistency.
 #------------------------------------------------------------------------------
-#-- cdiscpilot01-R.TTL
 prefixes <- as.data.frame( read.csv(allPrefix,
     header=T,
     sep=',' ,
     strip.white=TRUE))
 for (i in 1:nrow(prefixes)) {
-    # Add prefixes to main instance-data file.
+    # Prefixes to cdiscpilot01-R.TTL
     add.prefix(store,
         prefix=as.character(prefixes[i,"prefix"]),
         namespace=as.character(prefixes[i, "namespace"])
     )
-    # Add same prefixes to customterminology.ttl file
+    # Prefixes to customterminology-R.ttl
     add.prefix(custom,
         prefix=as.character(prefixes[i,"prefix"]),
         namespace=as.character(prefixes[i, "namespace"])
     )
-    # Add same prefixes to code.ttl file
+    # Prefixes to code-R.ttl file
     add.prefix(code,
         prefix=as.character(prefixes[i,"prefix"]),
         namespace=as.character(prefixes[i, "namespace"])
@@ -81,13 +81,6 @@ for (i in 1:nrow(prefixes)) {
 #-- Data triples creation -----------------------------------------------------
 # Graph Metadata
 source('R/graphMeta.R')
-
-#DEL ONTOLOGY TRIPLES
-# DEL This step NOT needed. Non-instance triples will come in from files generated
-#   by Protege/Topbraid
-#   Create the supporting ontology triples that are not based on the instance data
-#   THese are the Classes, subclasses etc. normally built in either Protege or TopBraid
-# source('R/customOnt.R')
 
 # Import and indexing Functions (Called during domain processing) 
 source('R/dataImportFnts.R')
@@ -157,6 +150,22 @@ vs <- subset(vs, (personNum==1
                   & visit %in% c("SCREENING 1", "SCREENING 2")))
 
 
+
+# Add new rows of data used to create code lists for categories missing in 
+#    the original test data.
+temprow <- matrix(c(rep.int(NA,length(vs))),nrow=1,ncol=length(vs))
+# Convert to df with  cols the same names as the original (vs) df
+newrow <- data.frame(temprow)
+colnames(newrow) <- colnames(vs)
+ 
+# rbind the empty row back to original df
+vs <- rbind(vs,newrow)
+ 
+# now populate the values in the last row of the data
+vs[nrow(vs),"vsstat"]   <- 'ND'  # add the ND value for creating activitystatus_2
+
+
+
 #------------------------------------------------------------------------------
 # xx DOMAIN
 #   Additional domains to be added.
@@ -187,7 +196,7 @@ source('R/processVS.R')
 # OUTPUT
 #   Write out the TTL files
 #------------------------------------------------------------------------------
-store  = save.rdf(store,  filename=outFileMain,   format="TURTLE")
+store  = save.rdf(store,  filename=outFileMain,   format="TURTLE")   
 custom = save.rdf(custom, filename=outFileCustom, format="TURTLE")
 code   = save.rdf(code,   filename=outFileCode,   format="TURTLE")
 

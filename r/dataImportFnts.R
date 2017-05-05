@@ -37,11 +37,14 @@ addPersonId <- function(domainName)
 
 #------------------------------------------------------------------------------
 # assignDateType()
-#   Create the Date_(n) triples that describe a specific date URI
+#   Add 'Date Type Triple" to an existing  Date_(n) to describe a specific date URI
+#     Identifies that various types of things attached to a date. A date can be
+#       attached to many times of things: InformedConsentBegin, a DPB Measure,
+#       a study death, etc.
 #   dateVal  - date value string variable.  Eg: dm$brthdate
 #   dateFrag - date URI fragment variable. Eg: dm$brthdate_Frag
 #             date URI fragments are used to create date object URI
-#   dateType - the class type for that date. Eg: Birthdate.  Must correspong
+#   dateType - the class type for that date. Eg: Birthdate.  Must correspond
 #             to class names in the ontology.
 #------------------------------------------------------------------------------
 assignDateType <- function(dateVal, dateFrag, dateType)

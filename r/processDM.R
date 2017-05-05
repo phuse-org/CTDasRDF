@@ -12,6 +12,8 @@
 #                          originals are retained.
 #       SDTM numeric codes, Country, Arm codes are set MANUALLY
 #       Birthdate and Deathdate are now part of the Lifespan interval. 
+#       Instance  data named lowercase. Eg:  arm_1
+#       Class codes named using CamelCase. Eg: InformedConsent_1
 # TODO: 
 #   
 #  - Collapse code segments in FUNT()s where possible
@@ -20,9 +22,6 @@
 #     date OR is a datetime value)
 #  - Consider new triples for incomplete dates (YYYY triple, MON  triple, etc.)
 #     for later implmentations
-#   CUSTOM file creation
-#      Add creation of CUSTOMTERMINLOGY.TTL for terms like AgeOutcomeTerm_(nn)YRS
-#          this file and triples currently not created!
 ###############################################################################
 
 #-- Data Creation (for testing) -----------------------------------------------
@@ -141,8 +140,6 @@ ddply(sites, .(siteid), function(sites)
         paste0("site-",sites$siteid), type="string" 
     )
 })
-
-# WIP
 # Build the codes for each Country into code.ttl file
 countries <- dm[,c("country", "country_Frag" )]
 countries <<- countries[!duplicated(countries), ]
@@ -285,7 +282,6 @@ ddply(dm, .(subjid), function(dm)
     add.data.triple(store,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.RDFS,"label" ),
-        # paste0(person), type="string"
         paste0("Person ", dm$personNum), type="string"
     )
     # Reference Interval
@@ -303,7 +299,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_RI", dm$personNum),
             paste0(prefix.RDFS,"label"),
-            paste0("Interval_RI", dm$personNum), type="string"
+            paste0("Reference Interval ", dm$personNum), type="string"
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_RI", dm$personNum),
@@ -336,7 +332,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_LS", dm$personNum),
             paste0(prefix.RDFS,"label"),
-            paste0("Lifepsan Interval ", dm$personNum), type="string"
+            paste0("Lifespan Interval ", dm$personNum), type="string"
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_LS", dm$personNum),
@@ -371,7 +367,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum),
             paste0(prefix.RDFS,"label"),
-            paste0("Interval_SP", dm$personNum), type="string"
+            paste0("Study Participation Interval ", dm$personNum), type="string"
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum),
@@ -403,49 +399,60 @@ ddply(dm, .(subjid), function(dm)
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "InformedConsent_", dm$personNum),
                 paste0(prefix.RDF,"type" ),
-                paste0(prefix.CODE,"informedconsentterm-DEFAULT")
+                paste0(prefix.CODE,"InformedConsentAdult")
+            )
+            add.data.triple(store,
+                paste0(prefix.CDISCPILOT01, "InformedConsent_", dm$personNum),
+                paste0(prefix.RDFS,"label"),
+                paste0("Informed consent ", dm$personNum), type="string"
             )
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "InformedConsent_", dm$personNum),
-                paste0(prefix.STUDY,"hasActivityCode" ),
-                paste0(prefix.CODE,"informedconsentterm-DEFAULT")
+                paste0(prefix.CODE,"hasOutcome" ),
+                paste0(prefix.CODE,"InformedConsentOutcome_", dm$personNum)
             )
+                 # InformedConsent_<n> to code.ttl
+                add.triple(code,
+                    paste0(prefix.CODE, "InformedConsentOutcome_", dm$personNum),
+                    paste0(prefix.RDF,"type" ),
+                    paste0(prefix.CODE, "InformedConsentOutcome")
+                )
+                add.data.triple(store,
+                    paste0(prefix.CODE, "InformedConsentOutcome_", dm$personNum),
+                    paste0(prefix.RDFS,"label"),
+                    paste0("informed consent granted "), type="string"
+                )
             # Key triple to link to Interval for Informed consent
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "InformedConsent_", dm$personNum),
                 paste0(prefix.STUDY,"hasActivityInterval" ),
                 paste0(prefix.CDISCPILOT01,"Interval_IC", dm$personNum)
             )
-            add.triple(store,
-                paste0(prefix.CDISCPILOT01, "InformedConsent_", dm$personNum),
-                paste0(prefix.STUDY,"hasActivityOutcome" ),
-                paste0(prefix.CODE,"InformedConsent_granted")
-            )
-            add.data.triple(store,
-                paste0(prefix.CDISCPILOT01, "InformedConsent_", dm$personNum),
-                paste0(prefix.RDFS,"label"),
-                paste0("InformedConsent_", dm$personNum), type="string"
-            )
-                # Interval_IC(n)
+                #Interval_IC<n>
                 add.triple(store,
                     paste0(prefix.CDISCPILOT01,"Interval_IC", dm$personNum),
                     paste0(prefix.RDF,"type" ),
-                    paste0(prefix.STUDY, "InformedConsentInterval")
+                    paste0(prefix.STUDY,"InformedConsentInterval" )
                 )
                 add.data.triple(store,
-                    paste0(prefix.CDISCPILOT01, "Interval_IC", dm$personNum),
+                    paste0(prefix.CDISCPILOT01,"Interval_IC", dm$personNum),
                     paste0(prefix.RDFS,"label"),
-                    paste0("Interval_IC", dm$personNum), type="string"
-                )
+                    paste0("Interval ", dm$personNum), type="string"
+                )            
                 add.triple(store,
                     paste0(prefix.CDISCPILOT01,"Interval_IC", dm$personNum),
                     paste0(prefix.TIME,"hasBeginning" ),
-                    paste0(prefix.CDISCPILOT01, dm$rficdtc_Frag)
+                    paste0(prefix.CDISCPILOT01, dm$rficdtc_Frag )
                 )
-                #---- Assign Date Type
+                # This date is an Informed Consent date                
                 assignDateType(dm$rficdtc, dm$rficdtc_Frag, "InformedConsentBegin")
                 #Note: There is no informedConsentEnd in the source data
+                
     }
+#WIP to here
+        
+        
+        
     # Product Administration
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -461,7 +468,7 @@ ddply(dm, .(subjid), function(dm)
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
             paste0(prefix.RDFS,"label" ),
-            paste0("ProductAdministration_", dm$personNum), type="string"
+            paste0("Product administration ", dm$personNum), type="string"
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
@@ -472,12 +479,12 @@ ddply(dm, .(subjid), function(dm)
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
                 paste0(prefix.RDF,"type" ),
-                paste0(prefix.CDISCPILOT01, "ProductAdministrationInterval")
+                paste0(prefix.STUDY, "ProductAdministrationInterval")
             )
             add.data.triple(store,
                 paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
                 paste0(prefix.RDFS,"label" ),
-                paste0("Interval_PA", dm$personNum), type="string"
+                paste0("Product administration interval ", dm$personNum), type="string"
             )
             # Product Administration Begin
             add.triple(store,
