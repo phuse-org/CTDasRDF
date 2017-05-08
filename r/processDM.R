@@ -591,11 +591,11 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum)
     )
-
+        #Hard coding of RandomizationBAL3. Email from AO 05May17 for explanation
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum),
             paste0(prefix.RDF,"type" ),
-            paste0(prefix.STUDY,"Randomization" )
+            paste0(prefix.CODE,"RandomizationBAL3" )
         ) 
         add.data.triple(store,
             paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum),
@@ -604,7 +604,7 @@ ddply(dm, .(subjid), function(dm)
         )
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum),
-            paste0(prefix.STUDY,"hasActivityOutcomeCode" ),
-            paste0(prefix.CUSTOM,"armcd_",dm$arm_)
+            paste0(prefix.CODE,"hasOutcome" ),
+            paste0(prefix.CUSTOM,dm$armcd_Frag)
         )
 }) # end of ddply for DM domain   

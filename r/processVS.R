@@ -40,7 +40,10 @@ vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
 # More imputations for the first 3 records to match data created by AO : 2016-01-19
 vs$vsgrpid <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "GRPID1", "" )) 
 vs$vsscat <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "SCAT1", "" )) 
-vs$vsstat <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "CO", "" ))  # changed 05May17
+
+# Assign 1st 3 obs as COMPLETE to match AO
+vs$vsstat <- as.character(vs$vsstat) # Unfactorize to all allow assignment 
+vs[1:3,grep("vsstat", colnames(vs))] <- "COMPLETE"
 
 # vsspid
 vs[vs$vsseq %in% c(1), "vsspid"]  <- "123"
@@ -95,6 +98,43 @@ vs <- addDateFrag(vs, "vsdtc")
 # vsstat
 #------------------------------------------------------------------------------
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="activitystatus"  )
+
+
+# Create the codelist values for vsstat/activitystatus_<n>
+vsstat <- vs[,c("vsstat", "vsstat_Frag")]
+vsstat <- vsstat[!duplicated(vsstat), ]
+
+vsstat$shortLabel[vsstat$vsstat=="COMPLETE"] <- 'CO'
+vsstat$shortLabel[vsstat$vsstat=="NOT DONE"] <- 'ND'
+
+#WIP HERE 
+# Loop through the arm_ codes to create  custom-terminology triples
+ddply(vsstat, .(vsstat_Frag), function(vsstat)
+{
+    add.triple(code,
+        paste0(prefix.CODE, vsstat$vsstat_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CODE, "ActivityStatus")
+    )
+    add.data.triple(code,
+        paste0(prefix.CODE, vsstat$vsstat_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(vsstat$shortLabel), type="string"
+    )
+    # Original value here:  NOT DONE, COMPLETE
+    add.data.triple(code,
+        paste0(prefix.CODE, vsstat$vsstat_Frag),
+        paste0(prefix.SKOS,"altLabel" ),
+        paste0(vsstat$vsstat), type="string"
+    )
+    add.data.triple(code,
+        paste0(prefix.CODE, vsstat$vsstat_Frag),
+        paste0(prefix.SKOS,"prefLabel" ),
+        paste0(vsstat$shortLabel), type="string"
+    )
+    
+})
+
 
 
 # Drop vars that are not needed in triple creation

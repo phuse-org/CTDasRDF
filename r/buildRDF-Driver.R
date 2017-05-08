@@ -162,7 +162,7 @@ colnames(newrow) <- colnames(vs)
 vs <- rbind(vs,newrow)
  
 # now populate the values in the last row of the data
-vs[nrow(vs),"vsstat"]   <- 'ND'  # add the ND value for creating activitystatus_2
+vs[nrow(vs),"vsstat"]   <- 'NOT DONE'  # add the ND value for creating activitystatus_2. Found later in the orginal data
 
 
 
