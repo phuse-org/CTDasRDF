@@ -14,7 +14,6 @@
 ###############################################################################
 
 #------------------------------------------------------------------------------
-
 # readXPT()
 # Read the requested domains into dataframes for processing.
 # TODO: Consider placing in separate Import.R script called by this driver.
@@ -50,7 +49,7 @@ addPersonId <- function(domainName)
 assignDateType <- function(dateVal, dateFrag, dateType)
 {
     #---- Date triples
-    add.triple(store,
+    add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, dateFrag),
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY, dateType)

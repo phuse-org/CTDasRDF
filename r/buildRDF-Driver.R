@@ -43,7 +43,7 @@ outFileCode   = "data/rdf/code-R.TTL"
 # outFile=paste0("data/rdf/", outFilename)
 
 # Initialize. Includes OWL, XSD, RDF by default.
-store  = new.rdf()  # The main datafile. Later change name to 'mainTTL" or similar
+cdiscpilot01  = new.rdf()  # The main datafile. Later change name to 'mainTTL" or similar
 custom = new.rdf()  # customterminology-R.ttl
 code   = new.rdf()  # code-R.ttl
 #------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ prefixes <- as.data.frame( read.csv(allPrefix,
     strip.white=TRUE))
 for (i in 1:nrow(prefixes)) {
     # Prefixes to cdiscpilot01-R.TTL
-    add.prefix(store,
+    add.prefix(cdispilot01,
         prefix=as.character(prefixes[i,"prefix"]),
         namespace=as.character(prefixes[i, "namespace"])
     )
@@ -198,9 +198,9 @@ source('R/processVS.R')
 # OUTPUT
 #   Write out the TTL files
 #------------------------------------------------------------------------------
-store  = save.rdf(store,  filename=outFileMain,   format="TURTLE")   
-custom = save.rdf(custom, filename=outFileCustom, format="TURTLE")
-code   = save.rdf(code,   filename=outFileCode,   format="TURTLE")
+cdiscpilot01 = save.rdf(cdispilot01,  filename=outFileMain,   format="TURTLE")   
+custom       = save.rdf(custom, filename=outFileCustom, format="TURTLE")
+code         = save.rdf(code,   filename=outFileCode,   format="TURTLE")
 
 #------------------------------------------------------------------------------
 # VALIDATION
