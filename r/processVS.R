@@ -170,7 +170,7 @@ vs<-vs[ , !(names(vs) %in% dropMe)]
     #    for (i in tempU)
     #    {
     #        # ADD THE TRIPLES HERE FOR WRITING. Write to STORE Is OK as is GLOBAL DF
-    #        add.triple(cdispilot01,
+    #        add.triple(cdiscpilot01,
     #                   paste0(prefix.CDISCPILOT01, person),
     #                   paste0(prefix.STUDY,"FOO" ),
     #                   paste0(prefix.STUDY,"FOO" )
@@ -205,21 +205,21 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
     person <-  paste0("Person_", vsWide$personNum)
     
     # Each person has a visit in the VS dataset
-    add.triple(cdispilot01,
+    add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag)
     )
     
     if (! is.na(vsWide$DIABP_Frag)){
-        add.triple(cdispilot01,
+        add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
             paste0(prefix.STUDY,"hasSubActivity" ),
             paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag)
         )
     }
 #WIP HERE    
-    add.triple(cdispilot01,
+    add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
         paste0(prefix.STUDY,"hasSubActivity" ),
         paste0(prefix.CDISCPILOT01, vsWide$vspos_Frag)
@@ -232,26 +232,26 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
     
     
     # Build out the hasSubActivity triples under visit_<visitName>P<n>. Eg: visit_SCREENING2_P1
-#                add.data.triple(cdispilot01,
+#                add.data.triple(cdiscpilot01,
 #            paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
 #            paste0(prefix.RDFS,"label" ),
 #            paste0("P", vsWide$personNum, "DBP", vsWide$visitnum), type="string"
 #         )
 
-#            add.triple(cdispilot01,
+#            add.triple(cdiscpilot01,
 #            paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
 #            paste0(prefix.RDF,"type" ),
 #            paste0(prefix.CUSTOM, vsWide$visit_Frag)
 #        )
 
 #        
-#        add.triple(cdispilot01,
+#        add.triple(cdiscpilot01,
 #            paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
 #            paste0(prefix.STUDY,"hasSubActivity" ),
 #            paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag)
 #        )
 #            # Level 2 DBP_(n)
-#            add.triple(cdispilot01,
+#            add.triple(cdiscpilot01,
 #                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #                paste0(prefix.RDF,"type" ),
 #                paste0(prefix.STUDY, "DiastolicBPMeasure")
@@ -261,21 +261,21 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 #            
 #            
 #            # anatomicLocation
-#            add.triple(cdispilot01,
+#            add.triple(cdiscpilot01,
 #                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #                paste0(prefix.STUDY,"anatomicLocation" ),
 #                paste0(prefix.STUDY, vsWide$vslocSDTMCode)
 #            )
 #            #baselineFlag
 #            if (! as.character(vsWide$vsblfl) == "") {
-#                add.data.triple(cdispilot01,
+#                add.data.triple(cdiscpilot01,
 #                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #                    paste0(prefix.STUDY,"baselineFlag" ),
 #                    paste0(vsWide$vsblfl), type="string"
 #                )
 #            }
 #            # bodyPosition
-#            add.triple(cdispilot01,
+#            add.triple(cdiscpilot01,
 #                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #                paste0(prefix.STUDY,"bodyPosition" ),
 #                paste0(prefix.STUDY, vsWide$posSDTMCode)
@@ -284,7 +284,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 #            # derivedflag
 #            # If non-missing, code the value as the object (Y, N...)
 #            if (! as.character(vsWide$vsdrvfl) == "") {
-#                add.data.triple(cdispilot01,
+#                add.data.triple(cdiscpilot01,
 #                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #                    paste0(prefix.STUDY,"derivedFlag" ),
 #                    paste0(vsWide$vsdrvfl), type="string"
@@ -292,28 +292,28 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 #            }
 #            # groupID
 #            if (! as.character(vsWide$vsgrpid) == "") {
-#                add.data.triple(cdispilot01,
+#                add.data.triple(cdiscpilot01,
 #                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #                    paste0(prefix.STUDY,"groupID" ),
 #                    paste0(vsWide$vsgrpid), type="string"
 #                )
 #            }
 #            # activityID
-#           add.triple(cdispilot01,
+#           add.triple(cdiscpilot01,
 #               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #               paste0(prefix.STUDY,"hasActivityID" ),
 #               paste0(prefix.STUDY, vsWide$vstestSDTMCode)
 #           )
 #          
 #           #TODO hasCategory custom:category_1
-#           add.triple(cdispilot01,
+#           add.triple(cdiscpilot01,
 #               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #               paste0(prefix.STUDY,"hasCategory" ),
 #               paste0(prefix.CUSTOM, "TO_BE_DEFINED_")
 #           )
 #            
 #            #TODO hasPlannedDate    (?planned? ask AO )
-#            #add.triple(cdispilot01,
+#            #add.triple(cdiscpilot01,
 #            #  paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #            #   paste0(prefix.STUDY,"hasPlannedDate" ),
 #            #    paste0(prefix.STUDY, vsWide$vstestSDTMCode)
@@ -326,7 +326,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 #           #TODO hasSubcategory
 #            
 #           if ( ! is.na (vsWide$vslatSDTMCode)) {
-#               add.triple(cdispilot01,
+#               add.triple(cdiscpilot01,
 #                   paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),       
 #                   paste0(prefix.STUDY,"laterality" ),
 #                   paste0(vsWide$vslatSDTMCode)
@@ -336,7 +336,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 #           #TODO plannedReferenceTimePoint  code:timepoint-PT_STANDING                
 #            
 #           #TODO seq  vsTestOrder or vseq here?  Which source?
-#           #add.triple(cdispilot01,
+#           #add.triple(cdiscpilot01,
 #           #   paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),       
 #           #   paste0(prefix.STUDY,"seq" ),
 #           #   paste0(vsWide$vstestOrder), type="int"
@@ -344,7 +344,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 #           
 #           # sponsordefinedID
 #           # NOTE: value is hard-coded in processDM.R
-#           add.data.triple(cdispilot01,
+#           add.data.triple(cdiscpilot01,
 #               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #               paste0(prefix.STUDY,"sponsordefinedID" ),
 #               paste0(vsWide$invid), type="string"
@@ -364,33 +364,33 @@ vsVisits <-vsVisits[!duplicated(vsVisits), ]
 ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
 {
         #Build out visit_Frag here. Eg: visit_SCREENING1_P1 
-        add.triple(cdispilot01,
+        add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.RDF,"type" ),
             paste0(prefix.CUSTOM,vsVisits$visit_Frag)   #TODO: Build out custom:visit_<n>
         )
-        add.data.triple(cdispilot01,
+        add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.RDFS,"label" ),
             paste0("P", vsVisits$personNum, " Visit ", vsVisits$visitnum), type="string"
         )
-        add.data.triple(cdispilot01,
+        add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.SKOS,"prefLabel" ),
             paste0(gsub(" ", "", vsVisits$visit)), type="string"
         )
-        add.triple(cdispilot01,
+        add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.STUDY,"hasDate" ),
             paste0(prefix.CDISCPILOT01,vsVisits$vsdtc_Frag)   #TODO: Build out custom:visit_<n>
         )
-        add.triple(cdispilot01,
+        add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.STUDY,"activityStatus" ),
             paste0(prefix.CODE,"activitystatus_",vsVisits$vsstat_Frag)   
             
         )
-        add.data.triple(cdispilot01,
+        add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.STUDY,"seq" ),
             paste0(vsVisits$visitnum), type="float"   

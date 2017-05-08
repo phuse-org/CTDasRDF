@@ -58,37 +58,37 @@ suppdm$qeval_ <- sapply(suppdm$qeval, qevalCode)
 # Loop over the dataframe using ddply 
 ddply(suppdm, .(personNum, qnam_), function(suppdm){
     #-- First level triples attached to Person_(n)    
-    add.triple(cdispilot01,
+    add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, "Person_", suppdm$personNum ),
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum)
     )
-        add.triple(cdispilot01,
+        add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.RDF,"type" ),
             paste0(prefix.CUSTOM, "popflagterm_", suppdm$qnam_)
         )
-        add.triple(cdispilot01,
+        add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.STUDY,"hasActivityCode" ),
             paste0(prefix.CUSTOM, "popflagterm_", suppdm$qnam_)
         )
-        add.triple(cdispilot01,
+        add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.STUDY,"hasActivityOutcome" ),
             paste0(prefix.CODE, "popflagoutcome_", suppdm$qval_)
         )
-        add.triple(cdispilot01,
+        add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.STUDY,"hasMethod" ),
             paste0(prefix.CODE, "method_", suppdm$qorig)
         )
-        add.triple(cdispilot01,
+        add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.STUDY,"hasPerformer" ),
             paste0(prefix.CDISCPILOT01, "sponsor_", suppdm$qeval_)
         )
-        add.data.triple(cdispilot01,
+        add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "popflag_", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.RDFS,"label" ),
             paste0("popflag_", suppdm$qnam_,"_",suppdm$personNum), type="string" 

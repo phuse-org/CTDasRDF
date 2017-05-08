@@ -62,12 +62,12 @@ createDateDict <- function()
     
     ddply(dateDict, .(dateKey), function(dateDict)
     {
-        add.data.triple(cdispilot01,,
+        add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
             paste0(prefix.STUDY, "dateTimeInXSDString" ),
             paste0(dateDict$dateKey), type="string"
         )
-        add.data.triple(cdispilot01,,
+        add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
             paste0(prefix.RDFS,"label" ),
             paste0(dateDict$dateKey), type="string"
