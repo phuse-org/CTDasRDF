@@ -17,8 +17,6 @@ suppdm <- readXPT("suppdm")
 # Add personID for merge with DM dataset
 suppdm <- addPersonId(suppdm)
 
- # Other data needed for testing (??)
-
 #-- End Data Creation ---------------------------------------------------------
 
 #-- Data COding ---------------------------------------------------------------

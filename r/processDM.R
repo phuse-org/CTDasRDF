@@ -30,7 +30,7 @@ dm$invid  <- '123'
 dm$dthfl[dm$personNum == 1 ] <- "Y" # Set a Death flag  for Person_1
 #-- End Data Creation ---------------------------------------------------------
 
-#-- Data COding ---------------------------------------------------------------
+#-- Data Coding ---------------------------------------------------------------
 #-- CODED values 
 #TODO: DELETE THESE toupper() statements. No longer used?  2017-01-18 TW ?
 # UPPERCASE and remove spaces values of fields that will be coded to codelists
@@ -79,7 +79,7 @@ dm$race_  <- sapply(dm$race,function(x) {
         as.character(x) ) } )
 #-- End Data Coding -----------------------------------------------------------
 
-#-- Fragment Creation and merging
+#-- Fragment Creation and merging ---------------------------------------------
 dm <- addDateFrag(dm, "rfstdtc")  
 dm <- addDateFrag(dm, "rfendtc")  
 dm <- addDateFrag(dm, "rfxstdtc")  
@@ -101,10 +101,9 @@ dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="c
 #   Create triples for unique values (ones that are not one obs per patient)
 #    eg. Treatment arm, country, etc.
 #------------------------------------------------------------------------------
-# CUSTOM namespace
-#-- Treatment Arms -----------------------------------------------------------
-#---- CUSTOM
-#        Create custom terminlogy list for arm_1, arm_2 etc.
+#-- CUSTOM namespace ----------------------------------------------------------
+#-- Treatment Arms 
+#   Create custom terminlogy list for arm_1, arm_2 etc.
 dm1 <- dm[,c("actarm", "actarmcd", "actarmcd_Frag")]
 dm1 <- rename(dm1, c("actarm"= "arm", "actarmcd" = "armcd", "actarmcd_Frag" = "armcd_Frag"))
 dm2 <- dm[,c("arm", "armcd", "armcd_Frag")]
@@ -188,37 +187,10 @@ ddply(dmArms, .(armcd_Frag), function(dmArms)
         paste0(prefix.CUSTOM, "Arm")
     )
 })
-#-- Treatment Arms
-#---- STORE 
-#       Note combination of arm and armcd to capture all possible values
-arms <- dm[,c("arm", "armcd")]
-arms <- arms[!duplicated(arms),]
-arms$armUC   <- toupper(gsub(" ", "", arms$arm))
-arms$armcdUC <- toupper(gsub(" ", "", arms$armcd))
-ddply(arms, .(armUC), function(arms)
-{
-    add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.STUDY, "Arm")
-    )
-    add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
-        paste0(prefix.STUDY,"hasArmCode" ),
-        paste0(prefix.CUSTOM, "armcd_", arms$armcdUC)
-    )
-    add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
-        paste0(prefix.RDFS,"label" ),
-        paste0(arms$arm), type="string"
-    )
-})
 #-- Age
-#---- CUSTOM
-#       Keep only the columns needed to create triples in the terminology file
+#   Keep only the columns needed to create triples in the terminology file
 ageList <- dm[,c("age", "ageu", "age_Frag")]
 ageList <- ageList[!duplicated(ageList), ]
-#-- CUSTOM
 # Loop through the arm_ codes to create  custom-terminology triples
 ddply(ageList, .(age_Frag), function(ageList)
 {
@@ -249,8 +221,66 @@ ddply(ageList, .(age_Frag), function(ageList)
         paste0(ageList$age), type="int"
     )
 })    
+#-- CODE namespace ------------------------------------------------------------
+#-- Country
+countries <- dm[,c("country", "country_Frag" )]
+countries <<- countries[!duplicated(countries), ]
+countries <-na.omit(countries)
+
+ddply(countries, .(country_Frag), function(countries)
+{
+    add.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CODE,"Country" )
+    )
+    add.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CODE,"DefinedConcept" )
+    )
+    add.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.RDFS,"Resource" )
+    )
+    add.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.OWL,"Thing" )
+    )
+    add.data.triple(code,
+        paste0(prefix.CODE, countries$country_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(countries$country), type="string" 
+    )
+})
+#-- CDISCPILOT01 namespace -----------------------------------------------------------
+#-- Treatment Arms
+#  Note combination of arm and armcd to capture all possible values
+arms <- dm[,c("arm", "armcd")]
+arms <- arms[!duplicated(arms),]
+arms$armUC   <- toupper(gsub(" ", "", arms$arm))
+arms$armcdUC <- toupper(gsub(" ", "", arms$armcd))
+ddply(arms, .(armUC), function(arms)
+{
+    add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.STUDY, "Arm")
+    )
+    add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
+        paste0(prefix.STUDY,"hasArmCode" ),
+        paste0(prefix.CUSTOM, "armcd_", arms$armcdUC)
+    )
+    add.data.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
+        paste0(prefix.RDFS,"label" ),
+        paste0(arms$arm), type="string"
+    )
+})
 #-- Study CDISCPILOT01
-#---- STORE
 # TODO: Recode this kludge to create triples based on unique(studyid)
 #       Leave the commented lines intact until kludge recoded.
 add.triple(cdiscpilot01,
@@ -330,46 +360,10 @@ ddply(sites, .(siteid), function(sites)
         paste0("site-",sites$siteid), type="string" 
     )
 })
-#-- Country
-#---- CODE
-countries <- dm[,c("country", "country_Frag" )]
-countries <<- countries[!duplicated(countries), ]
-countries <-na.omit(countries)
-
-ddply(countries, .(country_Frag), function(countries)
-{
-    add.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CODE,"Country" )
-    )
-    add.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CODE,"DefinedConcept" )
-    )
-    add.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.RDFS,"Resource" )
-    )
-    add.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.OWL,"Thing" )
-    )
-    add.data.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDFS,"label" ),
-        paste0(countries$country), type="string" 
-    )
-})
-###############################################################################
+#------------------------------------------------------------------------------
 # Create triples from source domain
 # Loop through each row, creating triples for each Person_<n>
-#for (i in 1:nrow(dm))
-#{
-# ddply(dm, .(personNum), function(dm)
+#------------------------------------------------------------------------------
 ddply(dm, .(subjid), function(dm)
 {
     # Create var to shorten code during repeats in following lines

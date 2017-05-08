@@ -22,7 +22,7 @@ library(Hmisc)
 library(plyr)  # plyr must load prior to dplyr!
 # library(dplyr)  #DEL not currently in use?
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
-library(reshape2)
+library(reshape2)  # decast and others...
 
 # Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
@@ -148,9 +148,6 @@ vs <- addPersonId(vs)
 vs <- subset(vs, (personNum==1 
                   & vstestcd %in% c("DIABP", "SYSBP") 
                   & visit %in% c("SCREENING 1", "SCREENING 2")))
-
-
-
 # Add new rows of data used to create code lists for categories missing in 
 #    the original test data.
 temprow <- matrix(c(rep.int(NA,length(vs))),nrow=1,ncol=length(vs))

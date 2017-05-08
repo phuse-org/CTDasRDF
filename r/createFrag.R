@@ -59,7 +59,6 @@ createDateDict <- function()
     # Create the label and dateTimeInXSDString triples for each new date _Frag to avoid 
     #   repeating the same values when createDateTriples is called
     #   Both the label and the string representation of the date are the same.
-    
     ddply(dateDict, .(dateKey), function(dateDict)
     {
         add.data.triple(cdiscpilot01,

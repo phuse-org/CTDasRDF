@@ -11,27 +11,22 @@
 #   
 #   *****  Only DIABP working. Add SYSBP, and the other tests.
 #           
-#   ** vsdtc was converted to date only. consider as mix of date and datetime 
-#           as originally entered
 #  * Recode to use switch() for recoding and Dddply() instead of FOR loops
 #          see processSUPPDM.R for methods
 # - Collapse the categories DIABP, SYSBP, etc. into functions?
 ###############################################################################
-
+#-- Data Creation for prototype development -----------------------------------
 # Create numbering within each usubjid, vstestcd, sorted by date (vsdtc)
 #    to allow creation of number triples within that category.    
-# Convert for proper sorting
+# Convert for proper sorting 
+#TODO: Evaluate next lines if needed now that using Frag approach
 vs$vsdtc_ymd = as.Date(vs$vsdtc, "%Y-%m-%d")
 # Sort by the categories, including the date
 vs <- vs[with(vs, order(usubjid, vstestcd, vsdtc_ymd)), ]
-
 # Add ID numbers within categories, excluding date (used for sorting, not for cat number)
 vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
-
-#-- Data Creation for testing purposes. --------------------------------------- 
 # Investigator ID hard coded. See also processDM.R
 vs$invid  <- '123'
-
 #---- vsloc  for DIABP, SYSBP all assigned as 'ARM' for development purposes.
 # Unfactorize the  column to allow entry of a bogus data
 vs$vsloc <- as.character(vs$vsloc)
@@ -40,28 +35,22 @@ vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
 # More imputations for the first 3 records to match data created by AO : 2016-01-19
 vs$vsgrpid <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "GRPID1", "" )) 
 vs$vsscat <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "SCAT1", "" )) 
-
 # Assign 1st 3 obs as COMPLETE to match AO
 vs$vsstat <- as.character(vs$vsstat) # Unfactorize to all allow assignment 
 vs[1:3,grep("vsstat", colnames(vs))] <- "COMPLETE"
-
 # vsspid
 vs[vs$vsseq %in% c(1), "vsspid"]  <- "123"
 vs[vs$vsseq %in% c(2), "vsspid"]  <- "719"
 vs[vs$vsseq %in% c(3), "vsspid"]  <- "235"
-
 # vslat
 vs[vs$vsseq %in% c(1,3), "vslat"]  <- "RIGHT"
 vs[vs$vsseq %in% c(2), "vslat"]    <- "LEFT"
-
-
 vs[vs$vsseq %in% c(1), "vsblfl"]    <- "Y"
-
-
 vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "N", "" )) 
 vs$vsrftdtc <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "2013-12-16", "" )) 
 
-#-- Data COding ---------------------------------------------------------------
+#-- End Data Creation ---------------------------------------------------------
+#-- Data Coding ---------------------------------------------------------------
 #-- Value/Code Translation
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
@@ -91,14 +80,13 @@ vs$vslatSDTMCode <- recode(vs$vslat,
                           "'RIGHT' = 'C99073.C25228';
                            'LEFT'  = 'C99073.C25229'" )
 
-# Merge in the date fragment from the date dictionary created in createFrag.R
+#-- Fragment Creation and merging ---------------------------------------------
 vs <- addDateFrag(vs, "vsdtc")  
-
-#------------------------------------------------------------------------------
-# vsstat
-#------------------------------------------------------------------------------
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="activitystatus"  )
-
+#TODO: Add fragments for the other results...
+# visit_Frag is a special case that combines the text value of the visit name with the personNum
+vsWide$personVisit_Frag <- paste0("visit_", gsub(" ", "", vsWide$visit), "_P", vsWide$personNum)
+vsWide$visit_Frag <- paste0("visit_", vsWide$visitnum)  # Links to a visit description in custom:
 
 # Create the codelist values for vsstat/activitystatus_<n>
 vsstat <- vs[,c("vsstat", "vsstat_Frag")]
@@ -107,6 +95,14 @@ vsstat <- vsstat[!duplicated(vsstat), ]
 vsstat$shortLabel[vsstat$vsstat=="COMPLETE"] <- 'CO'
 vsstat$shortLabel[vsstat$vsstat=="NOT DONE"] <- 'ND'
 
+#------------------------------------------------------------------------------
+#  Single/Unique Resource Creation for CUSTOM, CODE, CDISCPILOT01 namespaces
+#   Create triples for unique values (ones that are not one obs per patient)
+#    eg. Treatment arm, country, etc.
+#------------------------------------------------------------------------------
+#-- CUSTOM namespace ----------------------------------------------------------
+
+#-- CODE namespace ------------------------------------------------------------
 # Loop through the arm_ codes to create  custom-terminology triples
 ddply(vsstat, .(vsstat_Frag), function(vsstat)
 {
@@ -134,13 +130,9 @@ ddply(vsstat, .(vsstat_Frag), function(vsstat)
     
 })
 
-
-
 # Drop vars that are not needed in triple creation
 dropMe <- c("studyid", "domain")  # usubjid used later, could be replaced by use of personNum
 vs<-vs[ , !(names(vs) %in% dropMe)]
-
-
 
     ##DEL Delete following after new Fragments approach is implemented.
     ## Following is not implemented
@@ -182,7 +174,6 @@ vs<-vs[ , !(names(vs) %in% dropMe)]
     # #assignment not needed? 
     #foo2<-valueCode(domain=vs, catCol="vstestcd", catVal="DIABP", resCol="vsorres")
 
-library(reshape2)
 
 # TESTIN HERE!!
 # Cast the data from long to wide based on values in vstestcd
@@ -193,12 +184,12 @@ vsWide <- createFragOneDomain(domainName=vsWide, processColumns="DIABP", fragPre
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="SYSBP", fragPrefix="SBP"  )
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="vspos", fragPrefix="vspos"  )
 
-#TODO: Add fragments for the other results...
 
-# visit_Frag is a special case that combines the text value of the visit name with the personNum
-vsWide$personVisit_Frag <- paste0("visit_", gsub(" ", "", vsWide$visit), "_P", vsWide$personNum)
-vsWide$visit_Frag <- paste0("visit_", vsWide$visitnum)  # Links to a visit description in custom:
 
+
+
+
+#-- CDISCPILOT01 namespace ------------------------------------------------------------
 # First-level triples attached to Person_<n>
 ddply(vsWide, .(personNum, vsseq), function(vsWide)
 {
