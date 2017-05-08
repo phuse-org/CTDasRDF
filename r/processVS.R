@@ -107,7 +107,6 @@ vsstat <- vsstat[!duplicated(vsstat), ]
 vsstat$shortLabel[vsstat$vsstat=="COMPLETE"] <- 'CO'
 vsstat$shortLabel[vsstat$vsstat=="NOT DONE"] <- 'ND'
 
-#WIP HERE 
 # Loop through the arm_ codes to create  custom-terminology triples
 ddply(vsstat, .(vsstat_Frag), function(vsstat)
 {
@@ -200,7 +199,7 @@ vsWide <- createFragOneDomain(domainName=vsWide, processColumns="vspos", fragPre
 vsWide$personVisit_Frag <- paste0("visit_", gsub(" ", "", vsWide$visit), "_P", vsWide$personNum)
 vsWide$visit_Frag <- paste0("visit_", vsWide$visitnum)  # Links to a visit description in custom:
 
-# Create first-level triples attached to Person_<n>
+# First-level triples attached to Person_<n>
 ddply(vsWide, .(personNum, vsseq), function(vsWide)
 {
     person <-  paste0("Person_", vsWide$personNum)
@@ -353,7 +352,10 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 #    }
 })
    
-# Create Visit triples that should orrd ONLY ONCE: Eg: TYPE, LABEL, PREFLABEL. 
+
+# Create Visit triples that should be created ONLY ONCE: Eg: TYPE, LABEL, PREFLABEL. 
+# cdiscpilot:visit_<VISITTYPE><n>_P<n>
+#   EG: cdiscpilot01:visit_SCREENING1_P1
 # Subset down to only the columns needed
 vsVisits <- vsWide[,c("personVisit_Frag", "visit_Frag", "personNum", "visit", "visitnum", "vsdtc_Frag")]
 # remove duplicate rows
@@ -382,15 +384,17 @@ ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
             paste0(prefix.STUDY,"hasDate" ),
             paste0(prefix.CDISCPILOT01,vsVisits$vsdtc_Frag)   #TODO: Build out custom:visit_<n>
         )
-        #TODO activityStatus code:activitystatus_1
         add.triple(store,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.STUDY,"activityStatus" ),
-            paste0(prefix.CODE,"activitystatus_",vsVisits$vsdtc_Frag)   #TODO: Build out custom:visit_<n>
+            paste0(prefix.CODE,"activitystatus_",vsVisits$vsstat_Frag)   
+            
         )
-        
-        
-        
-        
-        #TODO  study:seq "1" 
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+            paste0(prefix.STUDY,"seq" ),
+            paste0(vsVisits$visitnum), type="float"   
+            
+        )
+
 })
