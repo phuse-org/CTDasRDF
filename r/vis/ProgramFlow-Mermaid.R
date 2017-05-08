@@ -25,6 +25,9 @@ graph TB
     idPrefixes(prefixes.csv)
     idMeta(graphMeta.R)
     idImport(dataImportFnts.R)
+    idFntimportXPT{importXPT}
+    idFntaddPersonId{addPersonId}
+    idFntassignDateType{assignDateType}
     idDMxpt((DM.xpt))
     idVSxpt((VS.xpt))
 
@@ -32,24 +35,31 @@ graph TB
     idPDM(processDM.R)
     idPSDM(processSUPPDM.R)
     idPVS(processVS.R)
-
+    idFntaddDateFrag{addDateFrag}
+    idFntcreateFragOneDomain{createFragOneDomain}
+ 
     idOutMain(CDISCPILOT01-R.TTL)
     idOutCustom(CUSTOM-R.TTL)
     idOutCode(CODE-R.TTL)
     idFin>Fin]
-
 
     idStart-->idMain1
     idPrefixes--READ_BY-->idMain1
     idMain1-->idMain2
     idMeta--SOURCED_BY-->idMain2
     idImport--SOURCED_BY-->idMain2
+    idFntimportXPT-->idImport
+    idFntaddPersonId-->idImport
+    idFntassignDateType-->idImport
 
     idMain2-->idMain3
+    
     idDMxpt--READ_BY-->idMain3
     idVSxpt--READ_BY-->idMain3
 
     idMain3-->idMain4
+    idFntaddDateFrag-->idFrag
+    idFntcreateFragOneDomain-->idFrag
     idFrag--SOURCED_BY-->idMain4
 
     idMain4-->idMain5
@@ -57,12 +67,10 @@ graph TB
     idPSDM--SOURCED_BY-->idMain5
     idPVS--SOURCED_BY-->idMain5
 
-
     idMain5-->idMain6
     idMain6--CREATES-->idOutMain
     idMain6--CREATES-->idOutCustom
     idMain6--CREATES-->idOutCode
-    
 
     idMain6-->idMain7
     idMain7-->idFin
@@ -71,10 +79,12 @@ graph TB
   classDef sourced  fill:#ffff99, stroke:#666600,stroke-width:3px;
   classDef xpt      fill:#b3b3ff, stroke:#0000cc,stroke-width:3px;
   classDef outTTL   fill:#ff6666, stroke:#000000,stroke-width:3px;
-  
+  classDef fnt      fill:#ffe680, stroke:#ffd11a,stroke-width:3px;
+
   classDef terminus fill:lightgreen,stroke:#000000,stroke-width:3px;
 
   class idMain1,idMain2,idMain3,idMain4,idMain5,idMain6,idMain7 main;
+  class idFntDataImport,idFntaddDateFrag fnt;
   class idMeta,idImport,idFrag,idPDM,idPSDM,idPVS sourced;
   class idDMxpt,idVSxpt xpt;
   class idOutMain,idOutCustom,idOutCode outTTL;
@@ -82,34 +92,3 @@ graph TB
 
 ")
 
-# nodes to create
-# 
-
-
-
-
-#OLDE CODE EXAMPLE
-
-#mermaid("
-#graph TB
-#	IDea86bba7(spath)-->IDd556d63d(centerv_PS0010_201702_2)
-#	IDd556d63d(centerv_PS0010_201702_2)-->IDf3b61b38(4.compare)
-#	IDf3b61b38(4.compare)-->ID98389409>End]
-#	ID792369be((dva_mahap_datvs))-->IDf3b61b38(4.compare)
-#	IDf77f28ca((dva_mahap_datvs))-->IDf3b61b38(4.compare)
-#	IDf3b61b38(4.compare)-- creates -->ID16ab1491((dva_mahap_datvs))
-#	ID98389409>End]-->NA
-#
-#	classDef macro      fill:#ffffb3,stroke:#e6e600,stroke-width:3px;
-#	classDef dataset    fill:#9999ff,stroke:#3333ff,stroke-width:3px;
-#	classDef valDataset fill:#9999ff,stroke:#b32d00,stroke-width:2px,stroke-dasharray: 5, 5;
-#	classDef text       fill:#ccffcc,stroke:#00b300,stroke-width:3px;
-#	classDef terminus   fill:#ccffcc,stroke:#00b300,stroke-width:3px;
-#
-#	class IDea86bba7,IDd556d63d,IDf3b61b38 macro;
-#	class ID792369be dataset;
-#	class IDf77f28ca valDataset;
-#	class ID16ab1491 text;
-#	class ID98389409 terminus;
-#
-#")

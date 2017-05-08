@@ -16,12 +16,12 @@ library(rrdf)
 library(DiagrammeR)
 
 # Select all the information associated with Obs113
-query = 'PREFIX CDISCPILOT01: <http://example.org/cdiscpilot01#> 
-PREFIX study: <http://example.org/study#>
+query = 'PREFIX CDISCPILOT01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#> 
+PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX cdiscsdtm: <http://rdf.cdisc.org/sdtm-terminology#>
-PREFIX code:  <http://www.example.org/code#>
-PREFIX custom: <http://example.org/custom#>
+PREFIX sdtm-terminology: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#>
+PREFIX code:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#>
+PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
 prefix time:  <http://www.w3.org/2006/time#>
 prefix country: <http://psi.oasis-open.org/iso/3166#>
 prefix x: <http://example.org/bogus>

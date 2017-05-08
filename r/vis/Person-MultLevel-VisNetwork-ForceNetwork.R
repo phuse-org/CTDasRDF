@@ -16,18 +16,18 @@
 #        add different colours 
 #        change background colour to dark
 ###############################################################################
-library(plyr)  #  rename
+library(plyr)     #  rename
 library(reshape)  #  melt
 library(rrdf)
 library(visNetwork)
 
 # Select all the information associated with Obs113
-query = 'PREFIX CDISCPILOT01: <http://example.org/cdiscpilot01#> 
-PREFIX study: <http://example.org/study#>
+query = 'PREFIX CDISCPILOT01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#> 
+PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX cdiscsdtm: <http://rdf.cdisc.org/sdtm-terminology#>
-PREFIX code:  <http://www.example.org/code#>
-PREFIX custom: <http://www.example.org/custom#>
+PREFIX sdtm-terminology: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#>
+PREFIX code:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#>
+PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
 prefix time:  <http://www.w3.org/2006/time#>
 prefix country: <http://psi.oasis-open.org/iso/3166#>
 prefix x: <http://example.org/bogus>
@@ -92,6 +92,9 @@ nodes$label <- nodes$id
 #---- Edges
 # Create list of edges by keeping the Subject and Predicate from query result.
 edges<-rename(DMTriples, c("s" = "from", "o" = "to"))
+
+
+
 # edges$arrows <- "to"
 # edges$label <-"Edge"   # label : text always present
 edges$title <- edges$p  # title: present when mouseover edge.
@@ -132,6 +135,7 @@ edges$title <- edges$p  # title: present when mouseover edge.
 
 #TODO Add CLUSTERING. By colour? By x?  See docs
 #   fix overlap so there is none
+
 #  fix iterations/physics to get static right away. Try physics=FALSE
 visNetwork(nodes, edges, width="1500px", height="1000px") %>%
     # visPhysics(solver = "forceAtlas2Based", forceAtlas2Based = list(gravitationalConstant = -10))%>%
