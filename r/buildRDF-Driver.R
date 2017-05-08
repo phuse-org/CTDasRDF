@@ -164,8 +164,6 @@ vs <- rbind(vs,newrow)
 # now populate the values in the last row of the data
 vs[nrow(vs),"vsstat"]   <- 'NOT DONE'  # add the ND value for creating activitystatus_2. Found later in the orginal data
 
-
-
 #------------------------------------------------------------------------------
 # xx DOMAIN
 #   Additional domains to be added.
@@ -174,6 +172,10 @@ vs[nrow(vs),"vsstat"]   <- 'NOT DONE'  # add the ND value for creating activitys
 # Create URI fragments for Dates and other categories that are shared URIs 
 # Eg: Date_1, AgeMeasurement_3
 source('R/createFrag.R')
+
+# Create the date translation table from all dates across domains
+dateDict<-createDateDict()  
+
 
 
 #------------------------------------------------------------------------------

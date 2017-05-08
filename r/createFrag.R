@@ -8,69 +8,73 @@
 # SRC : 
 # IN  : 
 # OUT : 
-# NOTE: 
+# NOTE: createDateDict() Create a translation table of dates to date fragments
+#       addDateFrag()  - merges fragments back into corresponding date column
+#       createFragOneDomain() - creates fragment from within a single domain, from
+#         one or more columns within that df
 #       Ages are all assumed to be in YEARS for this dataset. 
 # TODO: (see individual functions for TODO list) 
 #
 ###############################################################################
 
 #------------------------------------------------------------------------------
-#  Date Fragments
+# createDateDict()
+#   Create a translation table of dates to date fragments
 #    All dates from across both DM and VS domains. 
 #    TODO: 
-#      Add additional domains as project scope expands.
-#      Recode into a new function createFragMultDomain(), following the 
-#        same approach as createFragOneDomain()
+#      Add additional domains as project scope expands. Make function flexible
+#      to accept these as arguments instead of hard coded.
 #------------------------------------------------------------------------------
-# dm dates
-dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
-
-# vs dates
-vsDates <- data.frame(vs[,"vsdtc"])
-
-# Combined the date dataframes from all sources
-allDates <- merge(dmDates,vsDates)
-
-# Melt all the dates into a single column of values
-dateList <- melt(allDates, measure.vars=colnames(allDates),
-                 variable.name="source",
-                 value.name="dateKey")
-
-# ERROR IS IN FOLLOWING STEP HERE!!!!!
-# Remove duplicates
-dateList <- dateList[!duplicated(dateList$date), ]  # is DF here.
-
-# Remove missing(blank) dates by coding to NA and them omitting
-dateList[dateList==""] <- NA
-dateList <- na.omit(dateList)
-
-# Sort by date
-dateList <- dateList[with(dateList, order(dateKey)),]
-
-# Create the coded value for each date as Date_n 
-dateList$dateFrag <- paste0("Date_", 1:nrow(dateList))   # Generate a list of ID numbers
-
-#  dateKey - used to merge back into a column
-#  dateFrag - the fragment that will become part of a URI for a date col
-dateDict <- dateList[,c("dateKey", "dateFrag")]
-
-# Create the label and dateTimeInXSDString triples for each new date _Frag to avoid 
-#   repeating the same values when createDateTriples is called
-#   Both the label and the string representation of the date are the same.
-
-ddply(dateDict, .(dateKey), function(dateDict)
+createDateDict <- function()
 {
-    add.data.triple(store,
-        paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
-        paste0(prefix.STUDY, "dateTimeInXSDString" ),
-        paste0(dateDict$dateKey), type="string"
-    )
-    add.data.triple(store,
-        paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
-        paste0(prefix.RDFS,"label" ),
-        paste0(dateDict$dateKey), type="string"
-    )
-})
+    # dm dates
+    dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
+    # vs dates
+    vsDates <- data.frame(vs[,"vsdtc"])
+    
+    # Combined the date dataframes from all sources
+    allDates <- merge(dmDates,vsDates)
+    
+    # Melt all the dates into a single column of values
+    dateList <- melt(allDates, measure.vars=colnames(allDates),
+                     variable.name="source",
+                     value.name="dateKey")
+    # Remove duplicates
+    dateList <- dateList[!duplicated(dateList$date), ]
+    
+    # Remove missing(blank) dates by coding to NA and then omitting
+    dateList[dateList==""] <- NA
+    dateList <- na.omit(dateList)
+    
+    # Sort by date
+    dateList <- dateList[with(dateList, order(dateKey)),]
+    
+    # Create the coded value for each date as Date_n 
+    dateList$dateFrag <- paste0("Date_", 1:nrow(dateList))   # Generate a list of ID numbers
+    
+    #  dateKey - used to merge back into a column
+    #  dateFrag - the fragment that will become part of a URI for a date col
+    dateDict <- dateList[,c("dateKey", "dateFrag")]
+    
+    # Create the label and dateTimeInXSDString triples for each new date _Frag to avoid 
+    #   repeating the same values when createDateTriples is called
+    #   Both the label and the string representation of the date are the same.
+    
+    ddply(dateDict, .(dateKey), function(dateDict)
+    {
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
+            paste0(prefix.STUDY, "dateTimeInXSDString" ),
+            paste0(dateDict$dateKey), type="string"
+        )
+        add.data.triple(store,
+            paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
+            paste0(prefix.RDFS,"label" ),
+            paste0(dateDict$dateKey), type="string"
+        )
+    })
+    return(dateDict)
+}
 
 # Merge in the dateKey value to created a coded version of the date field, naming
 #    the column with a _Frag suffix.
@@ -84,21 +88,6 @@ addDateFrag<-function(domainName, colName)
     # withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")]  #DEL - no longer needed
     return(withFrag)
 }
-
-# Add fragments back to the DM dataframe. 
-#TODO: Move this to processDM.R
-dm <- addDateFrag(dm, "rfstdtc")  
-dm <- addDateFrag(dm, "rfendtc")  
-dm <- addDateFrag(dm, "rfxstdtc")  
-dm <- addDateFrag(dm, "rfxendtc")  
-dm <- addDateFrag(dm, "rficdtc")  
-dm <- addDateFrag(dm, "rfpendtc")  
-dm <- addDateFrag(dm, "dthdtc")
-dm <- addDateFrag(dm, "dmdtc")  
-dm <- addDateFrag(dm, "brthdate")  
-
-dmDatesList <- c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")
-
 #------------------------------------------------------------------------------
 #  createFragOneDomain()
 #    Create URI fragments for coded values in a single or mutliple column. 
@@ -127,10 +116,8 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix)
     # Keep only the values. Source not important
     #TW:NOT NEEDED #sourceVals <- sourceVals[ , c("value")]
     # 
-    # Remove duplicates  ERROR: Changes from dataframe here!!! 
-    # uniques <<- unique(domainName[,processColumn])
     uniques <- unique(sourceVals[,"value"])
-    # Remove missing(blank) values by coding to NA, then omitt
+    # Remove missing(blank) values by coding to NA, then omit
     uniques[uniques==""] <- NA
     uniques <- na.omit(uniques)
     keyVals <- sort(uniques, decreasing = F)

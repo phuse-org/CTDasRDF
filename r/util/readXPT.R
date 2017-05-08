@@ -18,7 +18,7 @@ setwd("C:/_github/SDTMasRDF/data/source")
 
 readXPTDomain <- function (domainName){
    domainValues <- sasxport.get(paste0(domainName, ".xpt"))
-   dataSubset   <- head(domainValues, 100)    
+   # dataSubset   <- head(domainValues, 100)    
 }
 
 domainVals <- readXPTDomain("vs")

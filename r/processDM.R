@@ -23,7 +23,6 @@
 #  - Consider new triples for incomplete dates (YYYY triple, MON  triple, etc.)
 #     for later implmentations
 ###############################################################################
-
 #-- Data Creation (for testing) -----------------------------------------------
 #---- Investigator name and ID not present in source data
 dm$invnam <- 'Jones'
@@ -78,14 +77,204 @@ dm$race_  <- sapply(dm$race,function(x) {
         'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER' = 'C74457.C41219',
         'WHITE'                                     = 'C74457.C41261',
         as.character(x) ) } )
-            
 #-- End Data Coding -----------------------------------------------------------
 
-#-- Single Resource Creation --------------------------------------------------
-#---- Investigators : Build triples for each unique Investigator
-# Get unique investigator ID 
+#-- Fragment Creation and merging
+dm <- addDateFrag(dm, "rfstdtc")  
+dm <- addDateFrag(dm, "rfendtc")  
+dm <- addDateFrag(dm, "rfxstdtc")  
+dm <- addDateFrag(dm, "rfxendtc")  
+dm <- addDateFrag(dm, "rficdtc")  
+dm <- addDateFrag(dm, "rfpendtc")  
+dm <- addDateFrag(dm, "dthdtc")
+dm <- addDateFrag(dm, "dmdtc")  
+dm <- addDateFrag(dm, "brthdate") 
+# arm_Frag 
+dm <- createFragOneDomain(domainName=dm, processColumns=c("armcd", "actarmcd"), fragPrefix="arm"  )
+# ageOutcome_Frag
+dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
+# country_Frag
+dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="country"  )
+
+#------------------------------------------------------------------------------
+#  Single/Unique Resource Creation 
+#   Create triples for unique values (ones that are not one obs per patient)
+#    eg. Treatment arm, country, etc.
+#------------------------------------------------------------------------------
+#-- Treatment Arms -----------------------------------------------------------
+#---- CUSTOM
+#        Create custom terminlogy list for arm_1, arm_2 etc.
+dm1 <- dm[,c("actarm", "actarmcd", "actarmcd_Frag")]
+dm1 <- rename(dm1, c("actarm"= "arm", "actarmcd" = "armcd", "actarmcd_Frag" = "armcd_Frag"))
+dm2 <- dm[,c("arm", "armcd", "armcd_Frag")]
+dmArms <- rbind(dm1,dm2)
+dmArms <- dmArms[!duplicated(dmArms), ]
+ddply(dmArms, .(armcd_Frag), function(dmArms)
+{
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.OWL, "Class")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CUSTOM, "CustomConcept")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CODE, "RandomizationOutcome")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CUSTOM, "Arm")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(dmArms$arm), type="string"
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(dmArms$armcd), type="string"
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "Arm")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "RandomizationOutcome")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "AdministrativeActivityOutcome")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "CustomConcept")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "ActivityOutcome")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDFS,"subClassOf" ),
+        paste0(prefix.CUSTOM, "RandomizationOutcome")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.SKOS,"altLabel" ),
+        paste0(dmArms$armcd), type="string"
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.SKOS,"prefLabel" ),
+        paste0(dmArms$arm), type="string"
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CUSTOM, "Arm")
+    )
+})
+#-- Treatment Arms
+#---- STORE 
+#       Note combination of arm and armcd to capture all possible values
+arms <- dm[,c("arm", "armcd")]
+arms <- arms[!duplicated(arms),]
+arms$armUC   <- toupper(gsub(" ", "", arms$arm))
+arms$armcdUC <- toupper(gsub(" ", "", arms$armcd))
+ddply(arms, .(armUC), function(arms)
+{
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.STUDY, "Arm")
+    )
+    add.triple(store,
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
+        paste0(prefix.STUDY,"hasArmCode" ),
+        paste0(prefix.CUSTOM, "armcd_", arms$armcdUC)
+    )
+    add.data.triple(store,
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
+        paste0(prefix.RDFS,"label" ),
+        paste0(arms$arm), type="string"
+    )
+})
+#-- Age
+#---- CUSTOM
+#       Keep only the columns needed to create triples in the terminology file
+ageList <- dm[,c("age", "ageu", "age_Frag")]
+ageList <- ageList[!duplicated(ageList), ]
+#-- CUSTOM
+# Loop through the arm_ codes to create  custom-terminology triples
+ddply(ageList, .(age_Frag), function(ageList)
+{
+    add.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CUSTOM, "AgeOutcomeTerm")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(ageList$age, " ", ageList$ageu), type="string"
+    )
+    #TODO Make this triple conditional: if ageu=YEARS, then:
+    add.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.CODE,"hasUnit" ),
+        paste0(prefix.TIME, "unitYear")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.CODE,"hasUnit" ),
+        paste0(prefix.TIME, "unitYear")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, ageList$age_Frag),
+        paste0(prefix.CODE,"hasValue" ),
+        paste0(ageList$age), type="int"
+    )
+})    
+#-- Study CDISCPILOT01
+#---- STORE
+# TODO: Recode this kludge to create triples based on unique(studyid)
+#       Leave the commented lines intact until kludge recoded.
+add.triple(store,
+    # paste0(prefix.CDISCPILOT01, "study_", dm$studyid),
+    paste0(prefix.CDISCPILOT01, "study_CDISCPILOT01"),
+    paste0(prefix.RDF,"type" ),
+    paste0(prefix.STUDY, "Study")
+)
+add.data.triple(store,
+    # paste0(prefix.CDISCPILOT01, "study_", dm$studyid),
+    paste0(prefix.CDISCPILOT01, "study_CDISCPILOT01"),
+    paste0(prefix.STUDY,"hasStudyID" ),
+    # paste0(dm$studyid), type="string"
+    paste0("CDISCPILOT01"), type="string"
+)
+add.data.triple(store,
+    # paste0(prefix.CDISCPILOT01, "study_", dm$studyid),
+    paste0(prefix.CDISCPILOT01, "study_CDISCPILOT01"),
+    paste0(prefix.RDFS,"label" ),
+    # paste0("study_", dm$studyid), type="string"
+    paste0("study_CDISCPILOT01"), type="string"
+)
+#-- Investigators 
 investigators <- dm[,c("invnam", "invid")]
-investigators <- investigators[!duplicated(investigators),] 
+investigators <- investigators[!duplicated(investigators),]  # Unique investigator ID 
 ddply(investigators, .(invnam), function(investigators)
 {
     add.triple(store,
@@ -109,7 +298,7 @@ ddply(investigators, .(invnam), function(investigators)
         paste0("Investigator ", investigators$invid), type="string"
     )
 })
-# ---- Sites : Build triples for each unique Site
+#-- Sites 
 sites <- dm[,c("siteid", "invid", "country", "country_Frag" )]
 sites <<- sites[!duplicated(sites), ]
 ddply(sites, .(siteid), function(sites)
@@ -140,7 +329,8 @@ ddply(sites, .(siteid), function(sites)
         paste0("site-",sites$siteid), type="string" 
     )
 })
-# Build the codes for each Country into code.ttl file
+#-- Country
+#---- CODE
 countries <- dm[,c("country", "country_Frag" )]
 countries <<- countries[!duplicated(countries), ]
 countries <-na.omit(countries)
@@ -167,65 +357,12 @@ ddply(countries, .(country_Frag), function(countries)
         paste0(prefix.RDF,"type" ),
         paste0(prefix.OWL,"Thing" )
     )
-    
-    
     add.data.triple(code,
         paste0(prefix.CODE, countries$country_Frag),
         paste0(prefix.RDFS,"label" ),
         paste0(countries$country), type="string" 
     )
 })
-
-
-#---- Treatment Arms : Build triples for each unique Treatment Arm
-#     Note combination of arm and armcd to capture all possible values
-arms <- dm[,c("arm", "armcd")]
-arms <- arms[!duplicated(arms),]
-arms$armUC   <- toupper(gsub(" ", "", arms$arm))
-arms$armcdUC <- toupper(gsub(" ", "", arms$armcd))
-ddply(arms, .(armUC), function(arms)
-{
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.STUDY, "Arm")
-    )
-    add.triple(store,
-        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
-        paste0(prefix.STUDY,"hasArmCode" ),
-        paste0(prefix.CUSTOM, "armcd_", arms$armcdUC)
-    )
-    add.data.triple(store,
-        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
-        paste0(prefix.RDFS,"label" ),
-        paste0(arms$arm), type="string"
-    )
-})
-
-# Triples that describe the Study CDISCPILOT01.
-# TODO: Recode this kludge to creates triples based on unique(studyid)
-#       Leave the commented lines intact until kludge recoded.
-add.triple(store,
-    # paste0(prefix.CDISCPILOT01, "study_", dm$studyid),
-    paste0(prefix.CDISCPILOT01, "study_CDISCPILOT01"),
-    paste0(prefix.RDF,"type" ),
-    paste0(prefix.STUDY, "Study")
-)
-add.data.triple(store,
-    # paste0(prefix.CDISCPILOT01, "study_", dm$studyid),
-    paste0(prefix.CDISCPILOT01, "study_CDISCPILOT01"),
-    paste0(prefix.STUDY,"hasStudyID" ),
-    # paste0(dm$studyid), type="string"
-    paste0("CDISCPILOT01"), type="string"
-)
-add.data.triple(store,
-    # paste0(prefix.CDISCPILOT01, "study_", dm$studyid),
-    paste0(prefix.CDISCPILOT01, "study_CDISCPILOT01"),
-    paste0(prefix.RDFS,"label" ),
-    # paste0("study_", dm$studyid), type="string"
-    paste0("study_CDISCPILOT01"), type="string"
-)
-
 ###############################################################################
 # Create triples from source domain
 # Loop through each row, creating triples for each Person_<n>
@@ -252,7 +389,6 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"hasUniqueSubjectID" ),
         paste0(dm$usubjid), type="string"
     )
-    
     # Arm 
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -271,7 +407,6 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"deathFlag" ),
         paste0(dm$dthfl), type="string"
     )
-
     # Site
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -316,7 +451,6 @@ ddply(dm, .(subjid), function(dm)
         )
         #---- Assign Date Type
         assignDateType(dm$rfendtc, dm$rfendtc_Frag, "ReferenceEnd")
-
     # Lifespan Interval
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -357,7 +491,6 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"hasStudyParticipationInterval" ),
         paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum)
     )
-
     #---- Study Participation Interval triples
         add.triple(store,
             paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum),
@@ -376,7 +509,6 @@ ddply(dm, .(subjid), function(dm)
         )
         #---- Assign Date Type
         assignDateType(dm$rfstdtc, dm$rfstdtc_Frag, "StudyParticipationBegin")
-        
         if (!is.na(dm$rfpendtc_Frag) && ! as.character(dm$rfpendtc_Frag)=="") {
             add.triple(store,
                 paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum),
@@ -447,12 +579,7 @@ ddply(dm, .(subjid), function(dm)
                 # This date is an Informed Consent date                
                 assignDateType(dm$rficdtc, dm$rficdtc_Frag, "InformedConsentBegin")
                 #Note: There is no informedConsentEnd in the source data
-                
     }
-#WIP to here
-        
-        
-        
     # Product Administration
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
@@ -503,7 +630,6 @@ ddply(dm, .(subjid), function(dm)
             )
             #---- Assign Date Type
             assignDateType(dm$rfxendtc, dm$rfxendtc_Frag, "ProductAdministrationEnd")
-
     # DemographicDataCollection
     #  Age, Ethnicity, Race, Sex, etc. are all part of the Demographic Data collection
     #    triples for a specific person. Person_<n> -->  DemographicDataCollection_<n>       
@@ -527,7 +653,7 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.CODE,"hasAge" ),
             paste0(prefix.CUSTOM, dm$age_Frag)
-    )
+        )
            #----Age Measurement Triples
            #TODO: Confirm these against AO's model!
            add.triple(store,
@@ -564,12 +690,6 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.CODE,"hasSex" ),
             paste0(prefix.SDTMTERM, dm$sex_) 
         )
-        #DEL  ActivityCode no longer in use 2017-04-19
-        #add.triple(store,
-        #     paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-        #     paste0(prefix.STUDY,"hasActivityCode" ),
-        #     paste0(prefix.CODE,"observationterm-DEMOG")
-        #)    
         add.triple(store,
              paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
              paste0(prefix.STUDY,"hasDate" ),
@@ -577,14 +697,6 @@ ddply(dm, .(subjid), function(dm)
         )    
         #---- Assign Date Type
         assignDateType(dm$rfxendtc, dm$dmdtc_Frag, "DemogDataCollectionDate")
-
-    # Study ID. Triples about the study are created ONE time, therefore not here!
-    #DEL not in current structure: moved elsewhere.
-    #add.triple(store,
-    #    paste0(prefix.CDISCPILOT01, person),
-    #    paste0(prefix.STUDY,"participatesIn" ),
-    #    paste0(prefix.CDISCPILOT01, "study_", dm$studyid)
-    #)
     # Randomization
     add.triple(store,
         paste0(prefix.CDISCPILOT01, person),
