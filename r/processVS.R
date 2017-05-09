@@ -84,6 +84,8 @@ vs$vslatSDTMCode <- recode(vs$vslat,
 vs <- addDateFrag(vs, "vsdtc")  
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="activitystatus"  )
 #TODO: Add fragments for the other results...
+# Cast the data from long to wide based on values in vstestcd
+vsWide <- dcast(vs, ... ~ vstestcd, value.var="vsorres")
 # visit_Frag is a special case that combines the text value of the visit name with the personNum
 vsWide$personVisit_Frag <- paste0("visit_", gsub(" ", "", vsWide$visit), "_P", vsWide$personNum)
 vsWide$visit_Frag <- paste0("visit_", vsWide$visitnum)  # Links to a visit description in custom:
@@ -102,6 +104,43 @@ vsstat$shortLabel[vsstat$vsstat=="NOT DONE"] <- 'ND'
 #------------------------------------------------------------------------------
 #-- CUSTOM namespace ----------------------------------------------------------
 
+# visit_n
+valToIndex <-vsWide[,c("visit_Frag", "visit")]
+valToIndex <- unique(valToIndex)  # list of unique values
+# a kludge late in the process to remove NA introducted when adding values for
+#   the prototype. 
+#TODO: Fix this earlier!
+valToIndex <- na.omit(valToIndex)  
+ddply(valToIndex, .(visit_Frag), function(valToIndex)
+{
+    add.triple(custom,
+        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.OWL, "Class")
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CUSTOM, "Visit")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
+        paste0(prefix.RDFS,"label" ),
+        paste0(valToIndex$visit), type="string"
+    )
+    add.triple(custom,
+        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
+        paste0(prefix.RDFS,"subClassOf"),
+        paste0(prefix.CUSTOM, "Visit")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
+        paste0(prefix.SKOS,"prefLabel" ),
+        paste0(valToIndex$visit), type="string"
+    )
+})
+
+
 #-- CODE namespace ------------------------------------------------------------
 # Loop through the arm_ codes to create  custom-terminology triples
 ddply(vsstat, .(vsstat_Frag), function(vsstat)
@@ -116,7 +155,7 @@ ddply(vsstat, .(vsstat_Frag), function(vsstat)
         paste0(prefix.RDFS,"label" ),
         paste0(vsstat$shortLabel), type="string"
     )
-    # Original value here:  NOT DONE, COMPLETE
+    # Original value here, equals  'NOT DONE', 'COMPLETE'
     add.data.triple(code,
         paste0(prefix.CODE, vsstat$vsstat_Frag),
         paste0(prefix.SKOS,"altLabel" ),
@@ -175,33 +214,73 @@ vs<-vs[ , !(names(vs) %in% dropMe)]
     #foo2<-valueCode(domain=vs, catCol="vstestcd", catVal="DIABP", resCol="vsorres")
 
 
-# TESTIN HERE!!
-# Cast the data from long to wide based on values in vstestcd
-vsWide <- dcast(vs, ... ~ vstestcd, value.var="vsorres")
-
-# Create IRI fragments
+#-- Fragment Creation ---------------------------------------------------------
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="DIABP", fragPrefix="DBP"  )
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="SYSBP", fragPrefix="SBP"  )
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="vspos", fragPrefix="vspos"  )
 
 
-
-
-
-
 #-- CDISCPILOT01 namespace ------------------------------------------------------------
+# Create Visit triples that should be created ONLY ONCE: Eg: Triples that describe an 
+# individual visit. Eg: visit_<VISITTYPE><n>_P<n> = cdiscpilot01:visit_SCREENING1_P1
+
+#---- visit_<VISITTYPE><n>_P<n>
+# Subset down to only the columns needed
+vsVisits <- vsWide[,c("personVisit_Frag", "visit_Frag", "personNum", "visit", "visitnum", "vsdtc_Frag")]
+# remove duplicate rows
+vsVisits <-vsVisits[!duplicated(vsVisits), ]
+ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
+{
+        #Build out visit_Frag here. Eg: visit_SCREENING1_P1 
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.CUSTOM,vsVisits$visit_Frag)   #TODO: Build out custom:visit_<n>
+        )
+        add.data.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+            paste0(prefix.RDFS,"label" ),
+            paste0("P", vsVisits$personNum, " Visit ", vsVisits$visitnum), type="string"
+        )
+        add.data.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+            paste0(prefix.SKOS,"prefLabel" ),
+            paste0(gsub(" ", "", vsVisits$visit)), type="string"
+        )
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+            paste0(prefix.STUDY,"hasDate" ),
+            paste0(prefix.CDISCPILOT01,vsVisits$vsdtc_Frag)   #TODO: Build out custom:visit_<n>
+        )
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+            paste0(prefix.STUDY,"activityStatus" ),
+            paste0(prefix.CODE,"activitystatus_",vsVisits$vsstat_Frag)   
+            
+        )
+        add.data.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+            paste0(prefix.STUDY,"seq" ),
+            paste0(vsVisits$visitnum), type="float"   
+            
+        )
+
+})
+
+#------------------------------------------------------------------------------
+# Triples from each row in the (widened) source domain
+# Loop through each row in the widened df, create triples for each observation
+#------------------------------------------------------------------------------
 # First-level triples attached to Person_<n>
 ddply(vsWide, .(personNum, vsseq), function(vsWide)
 {
     person <-  paste0("Person_", vsWide$personNum)
-    
     # Each person has a visit in the VS dataset
     add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag)
     )
-    
     if (! is.na(vsWide$DIABP_Frag)){
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
@@ -209,13 +288,13 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
             paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag)
         )
     }
-#WIP HERE    
-    add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
-        paste0(prefix.STUDY,"hasSubActivity" ),
-        paste0(prefix.CDISCPILOT01, vsWide$vspos_Frag)
-    )
-    
+    if (! is.na(vsWide$vspos_Frag)){
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
+            paste0(prefix.STUDY,"hasSubActivity" ),
+            paste0(prefix.CDISCPILOT01, vsWide$vspos_Frag)
+        )
+    } 
     
     
     
@@ -344,48 +423,3 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 })
    
 
-# Create Visit triples that should be created ONLY ONCE: Eg: TYPE, LABEL, PREFLABEL. 
-# cdiscpilot:visit_<VISITTYPE><n>_P<n>
-#   EG: cdiscpilot01:visit_SCREENING1_P1
-# Subset down to only the columns needed
-vsVisits <- vsWide[,c("personVisit_Frag", "visit_Frag", "personNum", "visit", "visitnum", "vsdtc_Frag")]
-# remove duplicate rows
-vsVisits <-vsVisits[!duplicated(vsVisits), ]
-
-ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
-{
-        #Build out visit_Frag here. Eg: visit_SCREENING1_P1 
-        add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
-            paste0(prefix.RDF,"type" ),
-            paste0(prefix.CUSTOM,vsVisits$visit_Frag)   #TODO: Build out custom:visit_<n>
-        )
-        add.data.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
-            paste0(prefix.RDFS,"label" ),
-            paste0("P", vsVisits$personNum, " Visit ", vsVisits$visitnum), type="string"
-        )
-        add.data.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
-            paste0(prefix.SKOS,"prefLabel" ),
-            paste0(gsub(" ", "", vsVisits$visit)), type="string"
-        )
-        add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
-            paste0(prefix.STUDY,"hasDate" ),
-            paste0(prefix.CDISCPILOT01,vsVisits$vsdtc_Frag)   #TODO: Build out custom:visit_<n>
-        )
-        add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
-            paste0(prefix.STUDY,"activityStatus" ),
-            paste0(prefix.CODE,"activitystatus_",vsVisits$vsstat_Frag)   
-            
-        )
-        add.data.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
-            paste0(prefix.STUDY,"seq" ),
-            paste0(vsVisits$visitnum), type="float"   
-            
-        )
-
-})

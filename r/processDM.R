@@ -79,7 +79,7 @@ dm$race_  <- sapply(dm$race,function(x) {
         as.character(x) ) } )
 #-- End Data Coding -----------------------------------------------------------
 
-#-- Fragment Creation and merging ---------------------------------------------
+#-- Fragment Creation ---------------------------------------------------------
 dm <- addDateFrag(dm, "rfstdtc")  
 dm <- addDateFrag(dm, "rfendtc")  
 dm <- addDateFrag(dm, "rfxstdtc")  
@@ -361,7 +361,7 @@ ddply(sites, .(siteid), function(sites)
     )
 })
 #------------------------------------------------------------------------------
-# Create triples from source domain
+# Triples from each row in the source domain
 # Loop through each row, creating triples for each Person_<n>
 #------------------------------------------------------------------------------
 ddply(dm, .(subjid), function(dm)
