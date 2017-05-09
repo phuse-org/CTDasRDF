@@ -118,22 +118,36 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix)
     uniques <- unique(sourceVals[,"value"])
     # Remove missing(blank) values by coding to NA, then omit
     uniques[uniques==""] <- NA
-    uniques <- na.omit(uniques)
-    keyVals <- sort(uniques, decreasing = F)
+    uniques <<- na.omit(uniques)
+    
+    # SORT
+    # Sort method depends on whether the values are character or numeric.
     # Sort by values. Prev code: Use dplyr arrange instead of order/sort to avoid loss of df type
-    uniqueVals <- as.data.frame(keyVals)
+    uniqueVals <- as.data.frame(uniques)
+    uniqueVals <<- na.omit(uniqueVals)
     
+    if(is.numeric(uniqueVals[1,1])) {
+        # Numbers. Convert and sort. 
+        # Convert first to character, then to numeric. Otherwise get the order according to the factors.
+        sorted.uniqueVals <<-data.frame( uniqueVals[order(as.numeric(as.character(uniqueVals$uniques))), ])
+    }
+    else{
+        # Characters
+        sorted.uniqueVals <<- data.frame(uniqueVals[order(as.character(uniqueVals$uniques)), ])
+    }
+    colnames(sorted.uniqueVals) <- "keyVal" 
+    sorted.uniqueVals <-na.omit(sorted.uniqueVals)
     # Create the coded value for each unique value as <value_n> 
-    uniqueVals$valFrag <- paste0(fragPrefix,"_", 1:nrow(uniqueVals))   # Generate a list of ID numbers
+    sorted.uniqueVals$valFrag <- paste0(fragPrefix,"_", 1:nrow(sorted.uniqueVals))   # Generate a list of ID numbers
     
-    valDict <<- uniqueVals[,c("keyVals", "valFrag")]
+    valDict <<- sorted.uniqueVals[,c("keyVal", "valFrag")]
     
     # Merge in the keyVals value to created a coded version of the value field, naming
     #    the column with a _Frag suffix.
     for (i in processColumns) {
-        domainName <- merge(x = valDict, y = domainName, by.x="keyVals", by.y=i, all.y = TRUE)
+        domainName <- merge(x = valDict, y = domainName, by.x="keyVal", by.y=i, all.y = TRUE)
         # Rename the merged-in key value to the original column name to preserve original data
-        names(domainName)[names(domainName)=="keyVals"] <-  i
+        names(domainName)[names(domainName)=="keyVal"] <-  i
         # Rename valFrag value to coded value using processColumn +  _Frag suffix
         # names(withFrag)[names(withFrag)=="valFrag"] <- paste0(fragPrefix, "_Frag")
         names(domainName)[names(domainName)=="valFrag"] <- paste0(i, "_Frag")
