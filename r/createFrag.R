@@ -95,15 +95,17 @@ addDateFrag<-function(domainName, colName)
 #      - Create a coded value that includes that index number (_<n>)
 #      - Merge indexed IRI fragment back into the source data column(s)
 #      - Use the fragment in the process<DOMAIN>.R scripts to construct IRIs
-#    domainName = A single, source domain dataset. Eg: dm, vs, ...
+#    domainName     = A single, source domain dataset. Eg: dm, vs, ...
 #    processColumns = names of one of more columns for the source values
-#    fragPrefix  = a prefix value used in both the new column name for 
-#      the fragments and the fragment value itself. 
+#    fragPrefix     = a prefix used in both the new column name for 
+#                     the fragments and the fragment value itself. 
+#    numSort        = FALSE/TRUE  . Specify as TRUE to sort a numeric series of
+#                     values, like a blood pressure.
 #      Examples: column: actarm_frag, has values: actarm_1, actarm_3...
 #    Note: original source data has columns actarmcd, armcd. The 'cd'  
 #         is not needed in the RDF context, so drop that part of the name
 #------------------------------------------------------------------------------
-createFragOneDomain<-function(domainName, processColumns, fragPrefix)
+createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FALSE)
 {
     # Combine the multiple columns into one
     columnData <- domainName[,c(processColumns)] # keep only the requested cols in the df
@@ -126,7 +128,9 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix)
     uniqueVals <- as.data.frame(uniques)
     uniqueVals <<- na.omit(uniqueVals)
     
-    if(is.numeric(uniqueVals[1,1])) {
+    # if(is.numeric(uniqueVals[1,1])) {
+    # if (regexpr(uniqueVals[1,1], "\\d", perl=TRUE)){
+    if(numSort){
         # Numbers. Convert and sort. 
         # Convert first to character, then to numeric. Otherwise get the order according to the factors.
         sorted.uniqueVals <<-data.frame( uniqueVals[order(as.numeric(as.character(uniqueVals$uniques))), ])
@@ -149,7 +153,12 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix)
         # Rename the merged-in key value to the original column name to preserve original data
         names(domainName)[names(domainName)=="keyVal"] <-  i
         # Rename valFrag value to coded value using processColumn +  _Frag suffix
-        # names(withFrag)[names(withFrag)=="valFrag"] <- paste0(fragPrefix, "_Frag")
+
+#!!!ERROR WHEN mult columns of same name processed in previous step, get incorrect assignment
+#     when code in line 2 executed. Occurs for bpoutcome in vsWide
+        #OLDE CODE NOW ERRORS names(withFrag)[names(withFrag)=="valFrag"] <- paste0(fragPrefix, "_Frag")
+        # names(domainName)[names(domainName)=="valFrag"] <- paste0(fragPrefix, "_Frag")
+        # This line works correctly for first call of SYSBP, DIABP
         names(domainName)[names(domainName)=="valFrag"] <- paste0(i, "_Frag")
     
     }

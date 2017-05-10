@@ -8,7 +8,8 @@
 # NOTE: Logic decisions made on the vs field 
 #        vstestOrder = sequence number created to facilitate triple creation/identification
 # TODO: 
-#   
+#   !!!ERROR  in assignment of vsstat_Frag in vsWide. Possibly move fragment creation to 
+#       after creation of vsWide?
 #   *****  Only DIABP working. Add SYSBP, and the other tests.
 #           
 #  * Recode to use switch() for recoding and Dddply() instead of FOR loops
@@ -82,13 +83,49 @@ vs$vslatSDTMCode <- recode(vs$vslat,
 
 #-- Fragment Creation and merging ---------------------------------------------
 vs <- addDateFrag(vs, "vsdtc")  
-vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="activitystatus"  )
-#TODO: Add fragments for the other results...
+vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="activitystatus")
+
+# Create bpoutcome_n fragment. 
+#  Blood pressure results come from both SYSBP and DIABP so only these values from 
+#    vstestcd / vsorres must be coded to bpoutcome
+#TODO Later this becomes a function to allow creation of similar 
+# fragments that rely on values from different vstestcd. 
+# Possible solution: createFragOneDomain: add another parameter: valSubset that creates 
+#    the fragment numbering based only a subset of values in the column: eg; SYSBP, DIABP
+vstestcd.subset <- vs[,c("vstestcd", "vsorres", "vsorresu")]
+vstestcd.subset.bp <- subset(vstestcd.subset, vstestcd %in% c("SYSBP", "DIABP"))
+
+# create the bpoutcome_(n) fragment
+vstestcd.subset.bp  <- createFragOneDomain(domainName=vstestcd.subset.bp, 
+       processColumns=c("vsorres"), fragPrefix="bpoutcome", numSort = TRUE)
+
+# Keep only the value field for the match (vsorres) and the fragement to merge in
+vstestcd.frag <- vstestcd.subset.bp[, c("vsorres", "vsorres_Frag")]
+
+# Merge the vsorres_Frag created in the steps above back into the VS domain.
+vs <- merge(x = vs, y = vstestcd.frag, by.x="vsorres", by.y="vsorres", all.y = TRUE)
+
+#  NOTE: Other test value fragements are created from vsWide to disttinguish between
+#   similar and dissimilar tests AT THE TEST LEVEL attached to a PERSON_(n)
 # Cast the data from long to wide based on values in vstestcd
 vsWide <- dcast(vs, ... ~ vstestcd, value.var="vsorres")
+
+# Fragments for the type of test: DIABP_<n>, SYSBP_<n>, but NOT for the numeric results of those
+#   tests. See later frag creation.
+vsWide <- createFragOneDomain(domainName=vsWide, processColumns="DIABP", fragPrefix="DBP")
+vsWide <- createFragOneDomain(domainName=vsWide, processColumns="SYSBP", fragPrefix="SBP")
+vsWide <- createFragOneDomain(domainName=vsWide, processColumns="vspos", fragPrefix="vspos")
+
+# Results in problem of additional columns SYSBP_Frag, DIABP_Frag as already created!
+# vsWide <- createFragOneDomain(domainName=vsWide, 
+#    processColumns=c("SYSBP", "DIABP"), fragPrefix="bpoutcome", numSort = TRUE)
+
+#TODO: Add fragments for the other results...
 # visit_Frag is a special case that combines the text value of the visit name with the personNum
 vsWide$personVisit_Frag <- paste0("visit_", gsub(" ", "", vsWide$visit), "_P", vsWide$personNum)
 vsWide$visit_Frag <- paste0("visit_", vsWide$visitnum)  # Links to a visit description in custom:
+
+# end fragment creation
 
 # Create the codelist values for vsstat/activitystatus_<n>
 vsstat <- vs[,c("vsstat", "vsstat_Frag")]
@@ -139,6 +176,59 @@ ddply(valToIndex, .(visit_Frag), function(valToIndex)
         paste0(valToIndex$visit), type="string"
     )
 })
+
+
+## bpoutcome_<n> 
+#    from  vstestcd.subset.bp : "vstestcd", "vsorres", "vsorresu")]
+#    to create the values list in the CUSTOM file
+# TODO: Wrap this within another function that process data similar to the vstestcd.subset.bp 
+ddply(vstestcd.subset.bp, .(vsorres_Frag), function(vstestcd.subset.bp)
+{
+    add.triple(custom,
+        paste0(prefix.CUSTOM, vstestcd.subset.bp$vsorres_Frag),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.CUSTOM, "BloodPressureOutcome")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, vstestcd.subset.bp$vsorres_Frag),
+        paste0(prefix.SKOS,"prefLabel" ),
+        paste0(vstestcd.subset.bp$vsorres, " ",vstestcd.subset.bp$vsorresu )
+    )
+    # Note: Pressure Unit URI is hard coded kludge
+    add.triple(custom,
+        paste0(prefix.CUSTOM, vstestcd.subset.bp$vsorres_Frag),
+        paste0(prefix.CODE,"hasUnit" ),
+        paste0(prefix.CODE, "pressureunit_1")
+    )
+    add.data.triple(custom,
+        paste0(prefix.CUSTOM, vstestcd.subset.bp$vsorres_Frag),
+        paste0(prefix.CODE,"hasValue" ),
+        paste0(vstestcd.subset.bp$vsorres), type="int"
+    )
+    
+    
+#    add.triple(custom,
+#        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
+#        paste0(prefix.RDF,"type" ),
+#        paste0(prefix.CUSTOM, "Visit")
+#    )
+#    add.data.triple(custom,
+#        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
+#        paste0(prefix.RDFS,"label" ),
+#        paste0(valToIndex$visit), type="string"
+#    )
+#    add.triple(custom,
+#        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
+#        paste0(prefix.RDFS,"subClassOf"),
+#        paste0(prefix.CUSTOM, "Visit")
+#    )
+#    add.data.triple(custom,
+#        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
+#        paste0(prefix.SKOS,"prefLabel" ),
+#        paste0(valToIndex$visit), type="string"
+#    )
+})
+
 
 
 #-- CODE namespace ------------------------------------------------------------
@@ -214,11 +304,6 @@ vs<-vs[ , !(names(vs) %in% dropMe)]
     #foo2<-valueCode(domain=vs, catCol="vstestcd", catVal="DIABP", resCol="vsorres")
 
 
-#-- Fragment Creation ---------------------------------------------------------
-vsWide <- createFragOneDomain(domainName=vsWide, processColumns="DIABP", fragPrefix="DBP"  )
-vsWide <- createFragOneDomain(domainName=vsWide, processColumns="SYSBP", fragPrefix="SBP"  )
-vsWide <- createFragOneDomain(domainName=vsWide, processColumns="vspos", fragPrefix="vspos"  )
-
 
 #-- CDISCPILOT01 namespace ------------------------------------------------------------
 # Create Visit triples that should be created ONLY ONCE: Eg: Triples that describe an 
@@ -226,9 +311,16 @@ vsWide <- createFragOneDomain(domainName=vsWide, processColumns="vspos", fragPre
 
 #---- visit_<VISITTYPE><n>_P<n>
 # Subset down to only the columns needed
-vsVisits <- vsWide[,c("personVisit_Frag", "visit_Frag", "personNum", "visit", "visitnum", "vsdtc_Frag")]
+#ERROR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+vsVisits <- vsWide[,c("personVisit_Frag", "visit_Frag", "personNum", "visit", "visitnum", "vsdtc_Frag", "vsstat_Frag")]
 # remove duplicate rows
 vsVisits <-vsVisits[!duplicated(vsVisits), ]
+
+# a kludge late in the process to remove NA introducted when adding values for
+#   the prototype. 
+#TODO: Fix this earlier!
+vsVisits <- na.omit(vsVisits)  
+
 ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
 {
         #Build out visit_Frag here. Eg: visit_SCREENING1_P1 
@@ -252,12 +344,20 @@ ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
             paste0(prefix.STUDY,"hasDate" ),
             paste0(prefix.CDISCPILOT01,vsVisits$vsdtc_Frag)   #TODO: Build out custom:visit_<n>
         )
-        add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
-            paste0(prefix.STUDY,"activityStatus" ),
-            paste0(prefix.CODE,"activitystatus_",vsVisits$vsstat_Frag)   
+            # Add that this date is a Visit Date (Date_<n> is a study:VisitDate)
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsVisits$vsdtc_Frag),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.STUDY, "VisitDate")
+            )
+        if (! is.na(vsVisits$vsstat_Frag)){
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
+                paste0(prefix.STUDY,"activityStatus" ),
+                paste0(prefix.CODE, vsVisits$vsstat_Frag)   
             
-        )
+            )
+        }    
         add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.STUDY,"seq" ),
@@ -266,6 +366,7 @@ ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
         )
 
 })
+
 
 #------------------------------------------------------------------------------
 # Triples from each row in the (widened) source domain
@@ -287,16 +388,101 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
             paste0(prefix.STUDY,"hasSubActivity" ),
             paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag)
         )
-    }
-    if (! is.na(vsWide$vspos_Frag)){
-        add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
-            paste0(prefix.STUDY,"hasSubActivity" ),
-            paste0(prefix.CDISCPILOT01, vsWide$vspos_Frag)
-        )
-    } 
-    
-    
+            #DBP_<n> is created per person, per row of DIABP data in vsWide 
+            # Level 2 DBP_(n)
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.SDTMTERM, vsWide$vstestSDTMCode)
+            )
+            add.data.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                paste0(prefix.RDFS,"label" ),
+                paste0("P ", vsWide$personNum, " ", vsWide$DIABP_Frag)
+            )
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                paste0(prefix.CODE,"hasOutcome" ),
+                paste0(prefix.CUSTOM, vsWide$vsorres_Frag)
+            )
+            #WIP 
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                paste0(prefix.STUDY,"activityStatus" ),
+                paste0(prefix.CODE, vsWide$vsstat_Frag)
+            )
+            # anatomicLocation
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                paste0(prefix.STUDY,"anatomicLocation" ),
+                paste0(prefix.SDTMTERM, vsWide$vslocSDTMCode)
+            )
+            #baselineFlag
+            if (! as.character(vsWide$vsblfl) == "") {
+                add.data.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                   paste0(prefix.STUDY,"baselineFlag" ),
+                   paste0(vsWide$vsblfl), type="string"
+               )
+           }
+           # bodyPosition
+           add.triple(cdiscpilot01,
+               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+               paste0(prefix.STUDY,"bodyPosition" ),
+               paste0(prefix.SDTMTERM, vsWide$posSDTMCode)
+           )
+
+           # derivedflag
+           # If non-missing, code the value as the object (Y, N...)
+           if (! as.character(vsWide$vsdrvfl) == "") {
+               add.data.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                   paste0(prefix.STUDY,"derivedFlag" ),
+                   paste0(vsWide$vsdrvfl), type="string"
+               )
+           }
+           # groupID
+           if (! as.character(vsWide$vsgrpid) == "") {
+               add.data.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                   paste0(prefix.STUDY,"groupID" ),
+                   paste0(vsWide$vsgrpid), type="string"
+               )
+           }
+#         
+#          #TODO hasCategory custom:category_1
+#          add.triple(cdiscpilot01,
+#              paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+#              paste0(prefix.STUDY,"hasCategory" ),
+#              paste0(prefix.CUSTOM, "TO_BE_DEFINED_")
+#          )
+           
+           
+           add.triple(cdiscpilot01,
+               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+               paste0(prefix.STUDY,"hasPlannedDate" ),
+               paste0(prefix.CDISCPILOT01, vsWide$vsdtc_Frag)
+           )
+           if (! is.na(vsWide$vslatSDTMCode)){
+               add.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
+                   paste0(prefix.STUDY,"laterality" ),
+                   paste0(prefix.SDTMTERM, vsWide$vslatSDTMCode)
+                )
+           }
+           add.data.triple(cdiscpilot01,
+               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+               paste0(prefix.STUDY,"seq" ),
+               paste0(vsWide$vstestOrder), type="int"
+           )
+           add.data.triple(cdiscpilot01,
+               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+               paste0(prefix.STUDY,"sponsordefinedID" ),
+               paste0(vsWide$invid), type="string"
+           )
+               
+
+    }# end processing of DIABP     
     
 #TODO !!!!  MOVE THESE UNDER THE VISIT CREATION.
     
@@ -320,74 +506,6 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 #            paste0(prefix.STUDY,"hasSubActivity" ),
 #            paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag)
 #        )
-#            # Level 2 DBP_(n)
-#            add.triple(cdiscpilot01,
-#                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#                paste0(prefix.RDF,"type" ),
-#                paste0(prefix.STUDY, "DiastolicBPMeasure")
-#            )
-#            #TODO hasOutcome custom:bpoutcome_2   ??
-#            
-#            
-#            
-#            # anatomicLocation
-#            add.triple(cdiscpilot01,
-#                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#                paste0(prefix.STUDY,"anatomicLocation" ),
-#                paste0(prefix.STUDY, vsWide$vslocSDTMCode)
-#            )
-#            #baselineFlag
-#            if (! as.character(vsWide$vsblfl) == "") {
-#                add.data.triple(cdiscpilot01,
-#                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#                    paste0(prefix.STUDY,"baselineFlag" ),
-#                    paste0(vsWide$vsblfl), type="string"
-#                )
-#            }
-#            # bodyPosition
-#            add.triple(cdiscpilot01,
-#                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#                paste0(prefix.STUDY,"bodyPosition" ),
-#                paste0(prefix.STUDY, vsWide$posSDTMCode)
-#            )
-#
-#            # derivedflag
-#            # If non-missing, code the value as the object (Y, N...)
-#            if (! as.character(vsWide$vsdrvfl) == "") {
-#                add.data.triple(cdiscpilot01,
-#                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#                    paste0(prefix.STUDY,"derivedFlag" ),
-#                    paste0(vsWide$vsdrvfl), type="string"
-#                )
-#            }
-#            # groupID
-#            if (! as.character(vsWide$vsgrpid) == "") {
-#                add.data.triple(cdiscpilot01,
-#                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#                    paste0(prefix.STUDY,"groupID" ),
-#                    paste0(vsWide$vsgrpid), type="string"
-#                )
-#            }
-#            # activityID
-#           add.triple(cdiscpilot01,
-#               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#               paste0(prefix.STUDY,"hasActivityID" ),
-#               paste0(prefix.STUDY, vsWide$vstestSDTMCode)
-#           )
-#          
-#           #TODO hasCategory custom:category_1
-#           add.triple(cdiscpilot01,
-#               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#               paste0(prefix.STUDY,"hasCategory" ),
-#               paste0(prefix.CUSTOM, "TO_BE_DEFINED_")
-#           )
-#            
-#            #TODO hasPlannedDate    (?planned? ask AO )
-#            #add.triple(cdiscpilot01,
-#            #  paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#            #   paste0(prefix.STUDY,"hasPlannedDate" ),
-#            #    paste0(prefix.STUDY, vsWide$vstestSDTMCode)
-#            #)
 #           
 #           #TODO hasPlannedDate    (?planned? ask AO )
 #           

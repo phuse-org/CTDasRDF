@@ -104,6 +104,7 @@ dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="c
 #-- CUSTOM namespace ----------------------------------------------------------
 #-- Treatment Arms 
 #   Create custom terminlogy list for arm_1, arm_2 etc.
+#TODO: Change this to a melt() similar to processVS.R
 dm1 <- dm[,c("actarm", "actarmcd", "actarmcd_Frag")]
 dm1 <- rename(dm1, c("actarm"= "arm", "actarmcd" = "armcd", "actarmcd_Frag" = "armcd_Frag"))
 dm2 <- dm[,c("arm", "armcd", "armcd_Frag")]

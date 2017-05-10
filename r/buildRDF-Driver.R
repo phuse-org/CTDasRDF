@@ -147,7 +147,8 @@ vs <- addPersonId(vs)
 #SUBSET THE DATA DOWN TO A SINGLE PATIENT AND SUBSET OF TESTS FOR DEVELOPMENT PURPOSES
 vs <- subset(vs, (personNum==1 
                   & vstestcd %in% c("DIABP", "SYSBP") 
-                  & visit %in% c("SCREENING 1", "SCREENING 2")))
+                  # & visit %in% c("SCREENING 1", "SCREENING 2")))
+                  & visit %in% c("SCREENING 1")))  # Subset further down to match AO data: 09May2017
 # Add new rows of data used to create code lists for categories missing in 
 #    the original test data.
 temprow <- matrix(c(rep.int(NA,length(vs))),nrow=1,ncol=length(vs))
