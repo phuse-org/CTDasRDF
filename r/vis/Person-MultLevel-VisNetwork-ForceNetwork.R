@@ -3,18 +3,18 @@
 # DESCR: Visualization of the nodes connected to Person_1 as a FN graph
 # SRC  : 
 # KEYS : 
-# NOTES:  
+# NOTES: Docs:  https://cran.r-project.org/web/packages/visNetwork/visNetwork.pdf 
 #         
 #
 # INPUT: cdiscpilot01.TTL  (OR) local endpoint graph SDTMTORDF
 #      : 
 # OUT  : 
 # REQ  : 
-# TODO : add mouseover labels to nodes
-#        add mouseover labels to edges
-#        add special icon for Person
-#        add different colours 
-#        change background colour to dark
+# TODO : 
+#        Clean up the RDF:TYPE edge label tl 'a'
+#        
+#        
+#        
 ###############################################################################
 library(plyr)     #  rename
 library(reshape)  #  melt
@@ -110,27 +110,31 @@ edges$title <-gsub("\\S+:", "", edges$p)   # label : text always present
 #edges<-edges[!(edges$to==""),]
 
 # Graph selectible by ID or Group. 
-visNetwork(nodes, edges, height = "700px", width = "100%") %>%
+visNetwork(nodes, edges, height = "500px", width = "100%") %>%
   visOptions(selectedBy = "group", 
              highlightNearest = TRUE, 
              nodesIdSelection = TRUE) %>%
     visEdges(arrows = list(to = list(enabled = TRUE, scaleFactor = 0.5)),
              smooth = list(enabled = FALSE, type = "cubicBezier", roundness=.8)) %>%
     visGroups(groupname = "Person",    color = "#ffff33") %>%
-    visGroups(groupname = "SDTMTerm",  color = "#99FF99")  %>%
-    visGroups(groupname = "Study",     color = "#A3A3C2")  %>%
-    visGroups(groupname = "Code",      color = "#99C2C2")  %>%
-    visGroups(groupname = "Custom",    color = "#FFB280")  %>%
+    visGroups(groupname = "SDTMTerm",  color = "#99FF99") %>%
+    visGroups(groupname = "Study",     color = "#A3A3C2") %>%
+    visGroups(groupname = "Code",      color = "#99C2C2") %>%
+    visGroups(groupname = "Custom",    color = "#FFB280") %>%
     visGroups(groupname = "CDISCPilot",color = "#8080FF") %>%
     visGroups(groupname = "Rdf",       color = "#c68c53") %>%
     visGroups(groupname = "Literal",   color = list(background="white", border="black")) %>%
     # visPhysics(stabilization = FALSE)  # physics enabled
     # enable drag repositioning 
+    #  Higher damping = less motion between interations
     visPhysics(stabilization=FALSE, barnesHut = list(
                                        avoidOverlap=1,
-                                       gravitationalConstant = -10000,
-                                       springConstant = 0.002,
-                                       springLength = 150
-                                       ))  %>%
-    #NoDo visClusteringByGroup(groups = c("SDTMTerm", "Study", "Code", "Custom")) %>%
-    visInteraction(navigationButtons = TRUE)
+                                       gravitationalConstant = -3000,
+                                       springConstant = 0.0004,
+                                       damping = 0.9,
+                                       springLength = 40
+                                       ))  
+   # visClusteringByGroup(groups = c("SDTMTerm", "Study", "Code", "Custom"), label = "Group : ") 
+    # visInteraction(navigationButtons = TRUE)
+
+
