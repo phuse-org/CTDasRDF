@@ -76,88 +76,61 @@ nodes<- as.data.frame(nodeList[c("id")])
 # Order is important.
 # p:Person_1
 # nodes$group[nodes$id == "p:Person_1"]    <- "Person"  # Works
-nodes$group[grepl("cdiscsdtm", nodes$id, perl=TRUE)] <- "SDTMTerm"  #
-nodes$group[grepl("study", nodes$id, perl=TRUE)] <- "Study"  #
-nodes$group[grepl("CDISCPILOT01", nodes$id, perl=TRUE)] <- "CDISCPilot"  #
-nodes$group[grepl("Person_", nodes$id, perl=TRUE)] <- "Person"  #
-nodes$group[! grepl(":", nodes$id, perl=TRUE)] <- "Literal"  #
+nodes$group[grepl("sdtm-terminology", nodes$id, perl=TRUE)] <- "SDTMTerm"  
+nodes$group[grepl("study", nodes$id, perl=TRUE)] <- "Study"  
+nodes$group[grepl("code", nodes$id, perl=TRUE)] <- "Code"  
+nodes$group[grepl("custom", nodes$id, perl=TRUE)] <- "Custom"  
+nodes$group[grepl("CDISCPILOT01", nodes$id, perl=TRUE)] <- "CDISCPilot"  
+nodes$group[grepl("Person_", nodes$id, perl=TRUE)] <- "Person"  
+nodes$group[! grepl(":", nodes$id, perl=TRUE)] <- "Literal"
+nodes$group[ grepl("T\\d+:\\d+", nodes$id, perl=TRUE)] <- "Literal"# Time values
+nodes$group[ grepl("rdfs:", nodes$id, perl=TRUE)] <- "Rdf"
 # temporary kludge that fails if a literal has a colon. Close enough for development.
 nodes$shape <- ifelse(grepl(":", nodes$id), "ellipse", "box")
 
 # Assign labels used for mouseover and for label
 nodes$title <- nodes$id
-nodes$label <- nodes$id
-# nodes$size <- 30
+nodes$label <- gsub("\\S+:", "", nodes$id)
+
 
 #---- Edges
 # Create list of edges by keeping the Subject and Predicate from query result.
 edges<-rename(DMTriples, c("s" = "from", "o" = "to"))
 
-
-
+# Edge values
+#   use edges$label for values always present
+#   use edges$title for values only present on mouseover
+#     CAUTION: possible mouse-over issue with large number values?
 # edges$arrows <- "to"
 # edges$label <-"Edge"   # label : text always present
-edges$title <- edges$p  # title: present when mouseover edge.
-# edges$length <- 500
+edges$title <-gsub("\\S+:", "", edges$p)   # label : text always present
+
 
 # Remove any rows that do not have a TO value since edges must be completed by a destination node
 #edges<-edges[!(edges$to==""),]
 
-# Visualize 
-# Important options:
-# visPhysics(enabled="FALSE")  - enable drag repositioning 
-#visNetwork(nodes, edges,  width="1500px", height="1000px") %>%
-   # visPhysics(enabled="TRUE") %>%
-#    visNodes(font=list(size="20")) %>%
-#    visEdges(arrows = list(to = list(enabled = TRUE, scaleFactor = 0.5)),
-#             smooth = list(enabled = TRUE, type = "cubicBezier", roundness=.8)
-#            
-#    )
-
-# Possible Color Selections
-# "#FFFFFF", // 1-Wht     
-# "#00FF00", // 2-BrGre   
-# "#99FF99", // 3-LtGre   
-# "#FF0000", // 4-BrRed   
-# "#FA7D7D", // 5-LtRed   
-# "#0000FF", // 6-BrBlu   
-# "#8080FF", // 7-LtBlu   
-# "#FF6600", // 8-BrOr    
-# "#FFB280", // 9-LtOr    
-# "#CC00FF", // 10-BrPur  
-# "#EB99FF", // 11-LtPur  
-# "#FFFF00", // 12-BrYel  
-# "#FFFF80", // 13-LtYel  
-# "#006666", // 14-SlGre  
-# "#99C2C2", // 15-LtSlGre 
-# "#666699", // 16-BlGry  
-# "#A3A3C2"  // 17-LtBlGr 
-
-#TODO Add CLUSTERING. By colour? By x?  See docs
-#   fix overlap so there is none
-
-#  fix iterations/physics to get static right away. Try physics=FALSE
-visNetwork(nodes, edges, width="1500px", height="1000px") %>%
-    # visPhysics(solver = "forceAtlas2Based", forceAtlas2Based = list(gravitationalConstant = -10))%>%
-    #centralGravity = 0.3
-#    visPhysics(stabilization = TRUE, barnesHut = list(
-#        gravitationalConstant = -1000,
-#        avoidOverlap = 0.5,
-#        centralGravity = .02,
-#        springConstant = 0.002,
-#        # stabilization = list(iterations=1),
-#        stabilization = FALSE,
-#        springLength = 100)) %>%
-    visNodes(font=list(size="20"),
-             borderWidth=1,
-             physics=FALSE) %>%
+# Graph selectible by ID or Group. 
+visNetwork(nodes, edges, height = "700px", width = "100%") %>%
+  visOptions(selectedBy = "group", 
+             highlightNearest = TRUE, 
+             nodesIdSelection = TRUE) %>%
     visEdges(arrows = list(to = list(enabled = TRUE, scaleFactor = 0.5)),
              smooth = list(enabled = FALSE, type = "cubicBezier", roundness=.8)) %>%
-    visGroups(groupname = "Person", color = "#feb24c") %>%
-    visGroups(groupname = "SDTMTerm", color = "#99FF99")  %>%
-    visGroups(groupname = "Study", color = "#A3A3C2")  %>%
-    visGroups(groupname = "CDISCPilot", color = "#8080FF") %>%
-    visGroups(groupname = "Literal", color = list(background="white", border="black"))
-
-
-
+    visGroups(groupname = "Person",    color = "#ffff33") %>%
+    visGroups(groupname = "SDTMTerm",  color = "#99FF99")  %>%
+    visGroups(groupname = "Study",     color = "#A3A3C2")  %>%
+    visGroups(groupname = "Code",      color = "#99C2C2")  %>%
+    visGroups(groupname = "Custom",    color = "#FFB280")  %>%
+    visGroups(groupname = "CDISCPilot",color = "#8080FF") %>%
+    visGroups(groupname = "Rdf",       color = "#c68c53") %>%
+    visGroups(groupname = "Literal",   color = list(background="white", border="black")) %>%
+    # visPhysics(stabilization = FALSE)  # physics enabled
+    # enable drag repositioning 
+    visPhysics(stabilization=FALSE, barnesHut = list(
+                                       avoidOverlap=1,
+                                       gravitationalConstant = -10000,
+                                       springConstant = 0.002,
+                                       springLength = 150
+                                       ))  %>%
+    #NoDo visClusteringByGroup(groups = c("SDTMTerm", "Study", "Code", "Custom")) %>%
+    visInteraction(navigationButtons = TRUE)
