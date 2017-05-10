@@ -24,11 +24,11 @@ cd01p:Study_CDISCPILOT01
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DemographicDataCollection>
   rdfs:subClassOf study:Observation ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#Randomization_3>
-  rdfs:subClassOf study:Randomization ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#informedconsent_1>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InformedConsentAdult>
   rdfs:subClassOf study:InformedConsent ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#RandomizationBAL3>
+  rdfs:subClassOf study:Randomization ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#popflag_EFF>
   rdfs:subClassOf study:PopulationFlag ;

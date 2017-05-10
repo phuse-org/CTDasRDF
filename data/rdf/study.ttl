@@ -321,6 +321,12 @@ study:Analysis
   rdfs:subClassOf study:Activity ;
   skos:definition "An examination, usually via a mathematical manipulation, of one or more clinical observations to obtain a result."^^xsd:string ;
 .
+study:AnnotatedCaseReportForm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:BlankCaseReportForm ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Annotated Case Report Form"^^xsd:string ;
+.
 study:Arm
   rdf:type owl:Class ;
   rdfs:subClassOf study:StudyActivity ;
@@ -374,6 +380,18 @@ study:Birthdate
   rdfs:subClassOf study:BeginInstant ;
   skos:definition ""^^xsd:string ;
 .
+study:BlankCaseReportForm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:CaseReportForm ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Blank case report form"^^xsd:string ;
+.
+study:CaseReportForm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Document ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Case report form"^^xsd:string ;
+.
 study:ClinicalIntervention
   rdf:type owl:Class ;
   rdfs:subClassOf study:Intervention ;
@@ -407,6 +425,12 @@ study:Derivation
   rdfs:subClassOf study:Analysis ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Derivation"^^xsd:string ;
+.
+study:Document
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Document"^^xsd:string ;
 .
 study:EligibilityCriteria
   rdf:type owl:Class ;
@@ -661,6 +685,12 @@ study:ProductAdministrationInterval
   rdfs:label "Product administration interval"^^xsd:string ;
   rdfs:subClassOf study:ActivityInterval ;
   skos:definition ""^^xsd:string ;
+.
+study:ProtocolDocument
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Document ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Protocol document"^^xsd:string ;
 .
 study:Randomization
   rdf:type owl:Class ;
@@ -1092,6 +1122,14 @@ study:hasActivityInterval
   rdfs:subPropertyOf study:hasInterval ;
   skos:definition ""^^xsd:string ;
 .
+study:hasAnnotatedCRF
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:AnnotatedCaseReportForm ;
+  rdfs:subPropertyOf study:hasDocument ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has annotated CRF"^^xsd:string ;
+.
 study:hasCategory
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1116,6 +1154,12 @@ study:hasDate
   rdfs:label "has date"^^xsd:string ;
   rdfs:range time:Instant ;
   skos:definition ""^^xsd:string ;
+.
+study:hasDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:range study:Document ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has document"^^xsd:string ;
 .
 study:hasIdentifier
   rdf:type rdf:Property ;

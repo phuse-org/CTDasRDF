@@ -120,13 +120,6 @@ cdiscpilot01:Date_17
   skos:definition ""^^xsd:string ;
   study:dateTimeInXSDString "2013-07-19"^^xsd:string ;
 .
-cdiscpilot01:Date_18
-  rdf:type study:StudyParticipationEnd ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "2014-01-14T11:10"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:dateTimeInXSDString "2014-01-14T11:10"^^xsd:string ;
-.
 cdiscpilot01:Date_19
   rdf:type study:Deathdate ;
   rdf:type study:DemogDataCollectionDate ;
@@ -157,17 +150,24 @@ cdiscpilot01:Date_22
 cdiscpilot01:Date_23
   rdf:type study:StudyParticipationEnd ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "2014-07-02T11:45"^^xsd:string ;
+  rdfs:label "2014-01-14T11:10"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:dateTimeInXSDString "2014-07-02T11:45"^^xsd:string ;
+  study:dateTimeInXSDString "2014-01-14T11:10"^^xsd:string ;
 .
-cdiscpilot01:Date_29
+cdiscpilot01:Date_30
   rdf:type study:ProductAdministrationEnd ;
   rdf:type study:ReferenceEnd ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "2014-07-02"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:dateTimeInXSDString "2014-07-02"^^xsd:string ;
+.
+cdiscpilot01:Date_31
+  rdf:type study:StudyParticipationEnd ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "2014-07-02T11:45"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:dateTimeInXSDString "2014-07-02T11:45"^^xsd:string ;
 .
 cdiscpilot01:Date_4
   rdf:type study:Birthdate ;
@@ -248,54 +248,54 @@ cdiscpilot01:DemographicDataCollection_3
   study:hasDate cdiscpilot01:Date_16 ;
 .
 cdiscpilot01:InformedConsent_1
-  rdf:type code:informedconsent_1 ;
+  rdf:type code:InformedConsentAdult ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome code:InformedConsent_1 ;
+  code:hasOutcome code:InformedConsentOutcome_1 ;
   study:hasActivityInterval cdiscpilot01:Interval_IC1 ;
 .
 cdiscpilot01:InformedConsent_2
-  rdf:type code:informedconsent_1 ;
+  rdf:type code:InformedConsentAdult ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome code:InformedConsent_1 ;
+  code:hasOutcome code:InformedConsentOutcome_1 ;
   study:hasActivityInterval cdiscpilot01:Interval_IC2 ;
 .
 cdiscpilot01:InformedConsent_3
-  rdf:type code:informedconsent_1 ;
+  rdf:type code:InformedConsentAdult ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome code:InformedConsent_1 ;
+  code:hasOutcome code:InformedConsentOutcome_1 ;
   study:hasActivityInterval cdiscpilot01:Interval_IC3 ;
 .
 cdiscpilot01:Interval_IC1
   rdf:type study:InformedConsentInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 1"^^xsd:string ;
+  rdfs:label "Informed Consent Interval 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_19 ;
 .
 cdiscpilot01:Interval_IC2
   rdf:type study:InformedConsentInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 2"^^xsd:string ;
+  rdfs:label "Informed Consent Interval 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_7 ;
 .
 cdiscpilot01:Interval_IC3
   rdf:type study:InformedConsentInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 3"^^xsd:string ;
+  rdfs:label "Informed Consent Interval 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_16 ;
 .
 cdiscpilot01:Interval_LS1
   rdf:type study:Lifespan ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 4"^^xsd:string ;
+  rdfs:label "Lifespan Interval 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_6 ;
   time:hasEnd cdiscpilot01:Date_19 ;
@@ -303,29 +303,29 @@ cdiscpilot01:Interval_LS1
 cdiscpilot01:Interval_LS2
   rdf:type study:Lifespan ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 5"^^xsd:string ;
+  rdfs:label "Lifespan Interval 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_5 ;
 .
 cdiscpilot01:Interval_LS3
   rdf:type study:Lifespan ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 6"^^xsd:string ;
+  rdfs:label "Lifespan Interval 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_4 ;
 .
 cdiscpilot01:Interval_PA1
   rdf:type study:ProductAdministrationInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 7"^^xsd:string ;
+  rdfs:label "Product Administration Interval 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_21 ;
-  time:hasEnd cdiscpilot01:Date_29 ;
+  time:hasEnd cdiscpilot01:Date_30 ;
 .
 cdiscpilot01:Interval_PA2
   rdf:type study:ProductAdministrationInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 8"^^xsd:string ;
+  rdfs:label "Product Administration Interval 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_8 ;
   time:hasEnd cdiscpilot01:Date_9 ;
@@ -333,7 +333,7 @@ cdiscpilot01:Interval_PA2
 cdiscpilot01:Interval_PA3
   rdf:type study:ProductAdministrationInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 9"^^xsd:string ;
+  rdfs:label "Product Administration Interval 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_17 ;
   time:hasEnd cdiscpilot01:Date_22 ;
@@ -341,15 +341,15 @@ cdiscpilot01:Interval_PA3
 cdiscpilot01:Interval_RI1
   rdf:type study:ReferenceInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 10"^^xsd:string ;
+  rdfs:label "Reference Interval 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_21 ;
-  time:hasEnd cdiscpilot01:Date_29 ;
+  time:hasEnd cdiscpilot01:Date_30 ;
 .
 cdiscpilot01:Interval_RI2
   rdf:type study:ReferenceInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 11"^^xsd:string ;
+  rdfs:label "Reference Interval 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_8 ;
   time:hasEnd cdiscpilot01:Date_10 ;
@@ -357,7 +357,7 @@ cdiscpilot01:Interval_RI2
 cdiscpilot01:Interval_RI3
   rdf:type study:ReferenceInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 12"^^xsd:string ;
+  rdfs:label "Reference Interval 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_17 ;
   time:hasEnd cdiscpilot01:Date_22 ;
@@ -365,15 +365,15 @@ cdiscpilot01:Interval_RI3
 cdiscpilot01:Interval_SP1
   rdf:type study:StudyParticipationInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 13"^^xsd:string ;
+  rdfs:label "Study Participation Interval 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_19 ;
-  time:hasEnd cdiscpilot01:Date_23 ;
+  time:hasEnd cdiscpilot01:Date_31 ;
 .
 cdiscpilot01:Interval_SP2
   rdf:type study:StudyParticipationInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 14"^^xsd:string ;
+  rdfs:label "Study Participation Interval 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_7 ;
   time:hasEnd cdiscpilot01:Date_13 ;
@@ -381,10 +381,10 @@ cdiscpilot01:Interval_SP2
 cdiscpilot01:Interval_SP3
   rdf:type study:StudyParticipationInterval ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Interval 15"^^xsd:string ;
+  rdfs:label "Study Participation Interval 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_16 ;
-  time:hasEnd cdiscpilot01:Date_18 ;
+  time:hasEnd cdiscpilot01:Date_23 ;
 .
 cdiscpilot01:Investigator_123
   rdf:type study:Investigator ;
@@ -478,21 +478,21 @@ cdiscpilot01:ProductAdministration_3
   study:hasActivityInterval cdiscpilot01:Interval_PA3 ;
 .
 cdiscpilot01:Randomization_1
-  rdf:type code:Randomization_3 ;
+  rdf:type code:RandomizationBAL3 ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasOutcome custom:arm_1 ;
 .
 cdiscpilot01:Randomization_2
-  rdf:type code:Randomization_3 ;
+  rdf:type code:RandomizationBAL3 ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasOutcome custom:arm_1 ;
 .
 cdiscpilot01:Randomization_3
-  rdf:type code:Randomization_3 ;
+  rdf:type code:RandomizationBAL3 ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;

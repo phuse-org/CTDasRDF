@@ -31,6 +31,100 @@
 .
 sdtm-cdisc01:DM_CDISCPILOT01
   rdf:type sdtm:DM_Domain ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "DOMAIN"^^xsd:string ;
+          ]
+          [
+            sp:varName "STUDYID"^^xsd:string ;
+          ]
+          [
+            sp:varName "USUBJID"^^xsd:string ;
+          ]
+          [
+            sp:varName "SUBJID"^^xsd:string ;
+          ]
+          [
+            sp:varName "ACTARMCD"^^xsd:string ;
+          ]
+          [
+            sp:varName "ACTARM"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "DOMAIN"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.DM> ;
+          ]
+          [
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#Study> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "study"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "STUDYID"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#hasStudyID> ;
+            sp:subject [
+                sp:varName "study"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "SUBJID"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#hasSubjectID> ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "USUBJID"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#hasUniqueSubjectID> ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "actualarm"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#actualArm> ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ACTARM"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "actualarm"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ACTARMCD"^^xsd:string ;
+              ] ;
+            sp:predicate skos:altLabel ;
+            sp:subject [
+                sp:varName "actualarm"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "work in progress to create a single DM domain query"^^xsd:string ;
+    ] ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "DM CDISCPILOT01"^^xsd:string ;
   skos:definition ""^^xsd:string ;

@@ -169,6 +169,22 @@ code:AssumeBodyPosition
     ] ;
   skos:definition ""^^xsd:string ;
 .
+code:AssumeBodyPositionStanding
+  rdf:type owl:Class ;
+  rdf:type code:AssumeBodyPosition ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:subClassOf code:AssumeBodyPosition ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "ASSUME BODY POSITION STANDING"^^xsd:string ;
+.
+code:AssumeBodyPositionSupine
+  rdf:type owl:Class ;
+  rdf:type code:AssumeBodyPosition ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:subClassOf code:AssumeBodyPosition ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "ASSUME BODY POSITION SUPINE"^^xsd:string ;
+.
 code:BloodPressure
   rdf:type owl:Class ;
   rdfs:subClassOf code:VitalSign ;
@@ -276,6 +292,13 @@ code:InformedConsent
     ] ;
   skos:definition ""^^xsd:string ;
 .
+code:InformedConsentAdult
+  rdf:type owl:Class ;
+  rdf:type code:InformedConsent ;
+  rdfs:subClassOf code:InformedConsent ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "informedconsent ADULT"^^xsd:string ;
+.
 code:InformedConsentOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -283,19 +306,19 @@ code:InformedConsentOutcome
   rdfs:subClassOf code:AdministrativeActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
-code:InformedConsent_1
+code:InformedConsentOutcome_1
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "informed consent granted"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-code:InformedConsent_2
+code:InformedConsentOutcome_2
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent not granted"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-code:InformedConsent_3
+code:InformedConsentOutcome_3
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent withdrawn"^^xsd:string ;
@@ -418,14 +441,7 @@ code:Randomization
     ] ;
   skos:definition ""^^xsd:string ;
 .
-code:RandomizationOutcome
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Randomization outcome term"^^xsd:string ;
-  rdfs:subClassOf code:AdministrativeActivityOutcome ;
-  skos:definition ""^^xsd:string ;
-.
-code:Randomization_3
+code:RandomizationBAL3
   rdf:type owl:Class ;
   rdf:type code:Randomization ;
   rdfs:comment ""^^xsd:string ;
@@ -433,6 +449,13 @@ code:Randomization_3
   rdfs:subClassOf code:Randomization ;
   skos:definition "Balanced Randomization among 3 arms, one of which is a placebo arm"^^xsd:string ;
   code:randomizationQuotient "0.67"^^xsd:float ;
+.
+code:RandomizationOutcome
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Randomization outcome term"^^xsd:string ;
+  rdfs:subClassOf code:AdministrativeActivityOutcome ;
+  skos:definition ""^^xsd:string ;
 .
 code:Rule
   rdf:type owl:Class ;
@@ -678,29 +701,6 @@ code:in2cm
   code:hasOriginalUnit code:unit_2 ;
   code:hasStandardUnit code:unit_1 ;
 .
-code:informedconsent_1
-  rdf:type owl:Class ;
-  rdf:type code:InformedConsent ;
-  rdfs:subClassOf code:InformedConsent ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "informedconsent ADULT"^^xsd:string ;
-.
-code:intervention_1
-  rdf:type owl:Class ;
-  rdf:type code:AssumeBodyPosition ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:AssumeBodyPosition ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ASSUME BODY POSITION STANDING"^^xsd:string ;
-.
-code:intervention_2
-  rdf:type owl:Class ;
-  rdf:type code:AssumeBodyPosition ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:AssumeBodyPosition ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ASSUME BODY POSITION SUPINE"^^xsd:string ;
-.
 code:method_1
   rdf:type code:ActivityMethod ;
   rdfs:comment ""^^xsd:string ;
@@ -807,7 +807,7 @@ code:startrule_1
   skos:definition "START AFTER LYING FOR 5 MIN"^^xsd:string ;
   skos:prefLabel "RULE LYING 5 MIN"^^xsd:string ;
   code:hasDelay "PT5M"^^xsd:duration ;
-  code:hasPrerequisite code:intervention_2 ;
+  code:hasPrerequisite code:AssumeBodyPositionSupine ;
   code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
   code:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
@@ -821,7 +821,7 @@ code:startrule_2
   skos:definition "RULE STANDING 1 MIN"^^xsd:string ;
   skos:prefLabel "STANDING1"^^xsd:string ;
   code:hasDelay "PT1M"^^xsd:duration ;
-  code:hasPrerequisite code:intervention_1 ;
+  code:hasPrerequisite code:AssumeBodyPositionStanding ;
   code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
   code:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
@@ -835,7 +835,7 @@ code:startrule_3
   skos:definition "RULE START AFTER STANDING 3 MIN"^^xsd:string ;
   skos:prefLabel "STANDING3"^^xsd:string ;
   code:hasDelay "PT3M"^^xsd:duration ;
-  code:hasPrerequisite code:intervention_1 ;
+  code:hasPrerequisite code:AssumeBodyPositionStanding ;
   code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
 .
@@ -851,13 +851,10 @@ code:unit_2
   rdfs:label "in"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-custom:ActivityOutcome
-  rdfs:subClassOf code:DefinedActivityOutcome ;
-.
 custom:AdministrativeActivityOutcome
   rdfs:subClassOf code:AdministrativeActivityOutcome ;
 .
-custom:AgeOutcomeTerm
+custom:AgeOutcome
   rdfs:subClassOf code:AgeOutcome ;
 .
 custom:Analysis
@@ -883,6 +880,9 @@ custom:CustomConcept
 .
 custom:DefinedActivity
   rdfs:subClassOf code:DefinedActivity ;
+.
+custom:DefinedActivityOutcome
+  rdfs:subClassOf code:DefinedActivityOutcome ;
 .
 custom:NumericObservationOutcome
   rdfs:subClassOf code:NumericObservationOutcome ;
