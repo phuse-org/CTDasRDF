@@ -10,7 +10,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#> .
-@prefix sdtm-terminology: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#> .
+@prefix sdtmterm: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sp: <http://spinrdf.org/sp#> .
@@ -198,7 +198,7 @@ study:Activity
             sp:object [
                 sp:varName "anchor"^^xsd:string ;
               ] ;
-            sp:predicate study:hasPrerequisite ;
+            sp:predicate code:hasPrerequisite ;
             sp:subject spin:_this ;
           ]
           [
@@ -321,6 +321,12 @@ study:Analysis
   rdfs:subClassOf study:Activity ;
   skos:definition "An examination, usually via a mathematical manipulation, of one or more clinical observations to obtain a result."^^xsd:string ;
 .
+study:AnnotatedCaseReportForm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:BlankCaseReportForm ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Annotated Case Report Form"^^xsd:string ;
+.
 study:Arm
   rdf:type owl:Class ;
   rdfs:subClassOf study:StudyActivity ;
@@ -374,6 +380,18 @@ study:Birthdate
   rdfs:subClassOf study:BeginInstant ;
   skos:definition ""^^xsd:string ;
 .
+study:BlankCaseReportForm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:CaseReportForm ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Blank case report form"^^xsd:string ;
+.
+study:CaseReportForm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Document ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Case report form"^^xsd:string ;
+.
 study:ClinicalIntervention
   rdf:type owl:Class ;
   rdfs:subClassOf study:Intervention ;
@@ -407,6 +425,12 @@ study:Derivation
   rdfs:subClassOf study:Analysis ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Derivation"^^xsd:string ;
+.
+study:Document
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Document"^^xsd:string ;
 .
 study:EligibilityCriteria
   rdf:type owl:Class ;
@@ -463,7 +487,7 @@ study:HumanStudySubject
   rdfs:subClassOf study:HumanSubject ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
-      owl:onProperty study:participatesIn ;
+      owl:onProperty study:participatesInStudy ;
       owl:someValuesFrom study:Study ;
     ] ;
   skos:definition "A Human Subject who participates in any Study Activity"^^xsd:string ;
@@ -662,6 +686,12 @@ study:ProductAdministrationInterval
   rdfs:subClassOf study:ActivityInterval ;
   skos:definition ""^^xsd:string ;
 .
+study:ProtocolDocument
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Document ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Protocol document"^^xsd:string ;
+.
 study:Randomization
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -809,6 +839,14 @@ study:activityStatus
   rdfs:domain study:Activity ;
   rdfs:label "activity status"^^xsd:string ;
   rdfs:range code:ActivityStatus ;
+  skos:definition ""^^xsd:string ;
+.
+study:actualArm
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:EnrolledSubject ;
+  rdfs:label "treated according to"^^xsd:string ;
+  rdfs:range code:Arm ;
   skos:definition ""^^xsd:string ;
 .
 study:agecalc
@@ -1075,15 +1113,6 @@ study:groupID
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
-study:hasActivityID
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Activity ;
-  rdfs:label "has activity code"^^xsd:string ;
-  rdfs:range code:DefinedConcept ;
-  rdfs:subPropertyOf study:hasIdentifier ;
-  skos:definition ""^^xsd:string ;
-.
 study:hasActivityInterval
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1092,6 +1121,14 @@ study:hasActivityInterval
   rdfs:range study:ActivityInterval ;
   rdfs:subPropertyOf study:hasInterval ;
   skos:definition ""^^xsd:string ;
+.
+study:hasAnnotatedCRF
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:AnnotatedCaseReportForm ;
+  rdfs:subPropertyOf study:hasDocument ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has annotated CRF"^^xsd:string ;
 .
 study:hasCategory
   rdf:type owl:ObjectProperty ;
@@ -1117,6 +1154,12 @@ study:hasDate
   rdfs:label "has date"^^xsd:string ;
   rdfs:range time:Instant ;
   skos:definition ""^^xsd:string ;
+.
+study:hasDocument
+  rdf:type owl:ObjectProperty ;
+  rdfs:range study:Document ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has document"^^xsd:string ;
 .
 study:hasIdentifier
   rdf:type rdf:Property ;
@@ -1350,6 +1393,10 @@ study:participatesIn
   rdfs:label "participates in"^^xsd:string ;
   rdfs:range study:Activity ;
   rdfs:subPropertyOf study:engagesIn ;
+  owl:propertyChainAxiom (
+      study:participatesIn
+      study:hasSubActivity
+    ) ;
   skos:definition "relates an Entity with an Activity that the Entity participates in passively; i.e. the activity is performed on the Entity"^^xsd:string ;
 .
 study:participatesInStudy
@@ -1358,7 +1405,6 @@ study:participatesInStudy
   rdfs:domain study:HumanStudySubject ;
   rdfs:label "participates in study"^^xsd:string ;
   rdfs:range study:Study ;
-  rdfs:subPropertyOf study:participatesIn ;
   owl:inverseOf study:hasStudyParticipant ;
   skos:definition ""^^xsd:string ;
 .
@@ -1500,12 +1546,4 @@ study:studyday
   rdfs:label "studyday"^^xsd:string ;
   rdfs:subClassOf spl:DateFunctions ;
   skos:definition "takes two date strings in ISO 8601 format and calculates the study day using activity date as the first argument and reference date as the 2nd argument"^^xsd:string ;
-.
-study:treatedAccordingToArm
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:EnrolledSubject ;
-  rdfs:label "treated according to"^^xsd:string ;
-  rdfs:range code:Arm ;
-  skos:definition ""^^xsd:string ;
 .

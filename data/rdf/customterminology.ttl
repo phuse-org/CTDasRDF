@@ -28,49 +28,43 @@ custom:ActiveSubstance
   rdfs:label "Active substance term"^^xsd:string ;
   rdfs:subClassOf custom:Substance ;
 .
-custom:ActivityOutcome
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Activity outcome term"^^xsd:string ;
-  rdfs:subClassOf custom:CustomConcept ;
-  skos:definition ""^^xsd:string ;
-.
 custom:AdministrativeActivityOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Administrative activity outcome term"^^xsd:string ;
-  rdfs:subClassOf custom:ActivityOutcome ;
+  rdfs:subClassOf custom:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
-custom:AgeOutcomeTerm
+custom:AgeOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Age outcome term"^^xsd:string ;
+  rdfs:subClassOf custom:NumericObservationOutcome ;
   skos:definition ""^^xsd:string ;
 .
 custom:AgeOutcome_1
-  rdf:type custom:AgeOutcomeTerm ;
+  rdf:type custom:AgeOutcome ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "63YRS"^^xsd:string ;
+  rdfs:label "63 YEARS"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasUnit <http://www.w3.org/2006/time#unitYear> ;
-  code:hasValue 63 ;
+  code:hasValue "63"^^xsd:int ;
 .
 custom:AgeOutcome_2
-  rdf:type custom:AgeOutcomeTerm ;
+  rdf:type custom:AgeOutcome ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "64YRS"^^xsd:string ;
+  rdfs:label "64 YEARS"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasUnit <http://www.w3.org/2006/time#unitYear> ;
-  code:hasValue 64 ;
+  code:hasValue "64"^^xsd:int ;
 .
 custom:AgeOutcome_3
-  rdf:type custom:AgeOutcomeTerm ;
+  rdf:type custom:AgeOutcome ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "71YRS"^^xsd:string ;
+  rdfs:label "71 YEARS"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasUnit <http://www.w3.org/2006/time#unitYear> ;
-  code:hasValue 71 ;
+  code:hasValue "71"^^xsd:int ;
 .
 custom:Analysis
   rdf:type owl:Class ;
@@ -83,7 +77,7 @@ custom:AnalysisOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Analysis outcome term"^^xsd:string ;
-  rdfs:subClassOf custom:ActivityOutcome ;
+  rdfs:subClassOf custom:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
 custom:Arm
@@ -132,6 +126,13 @@ custom:DefinedActivity
   rdfs:subClassOf custom:CustomConcept ;
   skos:definition ""^^xsd:string ;
 .
+custom:DefinedActivityOutcome
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Activity outcome term"^^xsd:string ;
+  rdfs:subClassOf custom:CustomConcept ;
+  skos:definition ""^^xsd:string ;
+.
 custom:Intervention
   rdf:type owl:Class ;
   rdfs:subClassOf code:Intervention ;
@@ -156,7 +157,7 @@ custom:ObservationOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Observation outcome term"^^xsd:string ;
-  rdfs:subClassOf custom:ActivityOutcome ;
+  rdfs:subClassOf custom:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
 custom:PlaceboProduct
@@ -218,14 +219,13 @@ custom:arm_1
 .
 custom:arm_2
   rdf:type owl:Class ;
-  rdf:type code:RandomizationOutcome ;
   rdf:type custom:Arm ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Xan_Lo"^^xsd:string ;
+  rdfs:label "Scrnfail"^^xsd:string ;
   rdfs:subClassOf custom:Arm ;
-  rdfs:subClassOf custom:RandomizationOutcome ;
-  skos:altLabel "Xan_Lo"^^xsd:string ;
-  skos:prefLabel "Xanomeline Low Dose"^^xsd:string ;
+  skos:altLabel "Scrnfail"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "Screen Failure"^^xsd:string ;
 .
 custom:arm_3
   rdf:type owl:Class ;
@@ -240,23 +240,16 @@ custom:arm_3
 .
 custom:arm_4
   rdf:type owl:Class ;
+  rdf:type code:RandomizationOutcome ;
   rdf:type custom:Arm ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Scrnfail"^^xsd:string ;
+  rdfs:label "Xan_Lo"^^xsd:string ;
   rdfs:subClassOf custom:Arm ;
-  skos:altLabel "Scrnfail"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Screen Failure"^^xsd:string ;
+  rdfs:subClassOf custom:RandomizationOutcome ;
+  skos:altLabel "Xan_Lo"^^xsd:string ;
+  skos:prefLabel "Xanomeline Low Dose"^^xsd:string ;
 .
 custom:bpoutcome_1
-  rdf:type custom:BloodPressureOutcome ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "57 mmHg"^^xsd:string ;
-  code:hasUnit code:pressureunit_1 ;
-  code:hasValue "57"^^xsd:int ;
-.
-custom:bpoutcome_2
   rdf:type custom:BloodPressureOutcome ;
   rdfs:comment ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
@@ -264,13 +257,21 @@ custom:bpoutcome_2
   code:hasUnit code:pressureunit_1 ;
   code:hasValue 64 ;
 .
-custom:bpoutcome_3
+custom:bpoutcome_2
   rdf:type custom:BloodPressureOutcome ;
   rdfs:comment ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "83 mmHg"^^xsd:string ;
   code:hasUnit code:pressureunit_1 ;
   code:hasValue 83 ;
+.
+custom:bpoutcome_3
+  rdf:type custom:BloodPressureOutcome ;
+  rdfs:comment ""^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "57 mmHg"^^xsd:string ;
+  code:hasUnit code:pressureunit_1 ;
+  code:hasValue "57"^^xsd:int ;
 .
 custom:category_1
   rdf:type custom:Category ;
@@ -331,7 +332,7 @@ custom:visit_1
   rdf:type owl:Class ;
   rdf:type custom:Visit ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "SCREENING1"^^xsd:string ;
+  rdfs:label "SCREENING 1"^^xsd:string ;
   rdfs:subClassOf custom:Visit ;
   skos:definition ""^^xsd:string ;
 .
