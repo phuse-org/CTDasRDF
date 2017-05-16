@@ -485,10 +485,52 @@ code:Sex
 .
 code:StartRule
   rdf:type owl:Class ;
-  rdfs:comment "To evaluate the rule, one must know what is the Anchor Activity (e.g. assume lying position for Person_1), a successful outcome (e.g. lying down) and the time the Anchor activity took place. The outcome of the Rule is the planned start time for the Activity. "^^xsd:string ;
+  rdfs:comment "To evaluate the rule, one must know what is the Prerequisite Activity (e.g. assume lying position for Person_1), a successful outcome (e.g. lying down) and the time the Anchor activity took place. The outcome of the Rule is the planned start time for the Activity. "^^xsd:string ;
   rdfs:label "Start rule term"^^xsd:string ;
   rdfs:subClassOf code:Rule ;
   skos:definition "describes when an activity should take place (planned date) based relative to the outcome of another Activity, the Anchor. "^^xsd:string ;
+.
+code:StartRuleLying5
+  rdf:type owl:Class ;
+  rdf:type code:StartRule ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "startrule-LYING5"^^xsd:string ;
+  rdfs:subClassOf code:StartRule ;
+  skos:altLabel "815"^^xsd:string ;
+  skos:definition "START AFTER LYING FOR 5 MIN"^^xsd:string ;
+  skos:prefLabel "RULE LYING 5 MIN"^^xsd:string ;
+  code:hasDelay "PT5M"^^xsd:duration ;
+  code:hasPrerequisite code:AssumeBodyPositionSupine ;
+  code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  code:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
+  code:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
+.
+code:StartRuleStanding1
+  rdf:type owl:Class ;
+  rdf:type code:StartRule ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:subClassOf code:StartRule ;
+  skos:altLabel "816"^^xsd:string ;
+  skos:definition "RULE STANDING 1 MIN"^^xsd:string ;
+  skos:prefLabel "STANDING1"^^xsd:string ;
+  code:hasDelay "PT1M"^^xsd:duration ;
+  code:hasPrerequisite code:AssumeBodyPositionStanding ;
+  code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  code:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
+  code:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
+.
+code:StartRuleStanding3
+  rdf:type owl:Class ;
+  rdf:type code:StartRule ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:subClassOf code:StartRule ;
+  skos:altLabel "817"^^xsd:string ;
+  skos:definition "RULE START AFTER STANDING 3 MIN"^^xsd:string ;
+  skos:prefLabel "STANDING3"^^xsd:string ;
+  code:hasDelay "PT3M"^^xsd:duration ;
+  code:hasPrerequisite code:AssumeBodyPositionStanding ;
+  code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
+  code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
 .
 code:StudyActivity
   rdf:type owl:Class ;
@@ -796,48 +838,6 @@ code:ruleDescriptionLong
   rdfs:label "rule description long"^^xsd:string ;
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
-.
-code:startrule_1
-  rdf:type owl:Class ;
-  rdf:type code:StartRule ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "startruleterm-LYING5"^^xsd:string ;
-  rdfs:subClassOf code:StartRule ;
-  skos:altLabel "815"^^xsd:string ;
-  skos:definition "START AFTER LYING FOR 5 MIN"^^xsd:string ;
-  skos:prefLabel "RULE LYING 5 MIN"^^xsd:string ;
-  code:hasDelay "PT5M"^^xsd:duration ;
-  code:hasPrerequisite code:AssumeBodyPositionSupine ;
-  code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
-  code:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
-.
-code:startrule_2
-  rdf:type owl:Class ;
-  rdf:type code:StartRule ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:StartRule ;
-  skos:altLabel "816"^^xsd:string ;
-  skos:definition "RULE STANDING 1 MIN"^^xsd:string ;
-  skos:prefLabel "STANDING1"^^xsd:string ;
-  code:hasDelay "PT1M"^^xsd:duration ;
-  code:hasPrerequisite code:AssumeBodyPositionStanding ;
-  code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
-  code:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
-.
-code:startrule_3
-  rdf:type owl:Class ;
-  rdf:type code:StartRule ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:StartRule ;
-  skos:altLabel "817"^^xsd:string ;
-  skos:definition "RULE START AFTER STANDING 3 MIN"^^xsd:string ;
-  skos:prefLabel "STANDING3"^^xsd:string ;
-  code:hasDelay "PT3M"^^xsd:duration ;
-  code:hasPrerequisite code:AssumeBodyPositionStanding ;
-  code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
 .
 code:unit_1
   rdf:type code:NormalizedUnit ;

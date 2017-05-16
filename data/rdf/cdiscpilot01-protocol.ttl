@@ -21,6 +21,12 @@ cd01p:Study_CDISCPILOT01
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Study CDISCPILOT01"^^xsd:string ;
 .
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#AssumeBodyPositionStanding>
+  rdfs:subClassOf study:AssumeBodyPosition ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#AssumeBodyPositionSupine>
+  rdfs:subClassOf study:AssumeBodyPosition ;
+.
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DemographicDataCollection>
   rdfs:subClassOf study:Observation ;
 .
@@ -30,6 +36,15 @@ cd01p:Study_CDISCPILOT01
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#RandomizationBAL3>
   rdfs:subClassOf study:Randomization ;
 .
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRuleLying5>
+  rdfs:subClassOf study:StartRule ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRuleStanding1>
+  rdfs:subClassOf study:StartRule ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRuleStanding3>
+  rdfs:subClassOf study:StartRule ;
+.
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#popflag_EFF>
   rdfs:subClassOf study:PopulationFlag ;
 .
@@ -38,15 +53,6 @@ cd01p:Study_CDISCPILOT01
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#popflag_SAF>
   rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#startrule_1>
-  rdfs:subClassOf study:StartRule ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#startrule_2>
-  rdfs:subClassOf study:StartRule ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#startrule_3>
-  rdfs:subClassOf study:StartRule ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#arm_1>
   rdfs:subClassOf study:Arm ;

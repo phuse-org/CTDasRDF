@@ -31,12 +31,30 @@
   owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
+cdiscpilot01:AssumeBodyPositionStanding_1
+  rdf:type code:AssumeBodyPositionStanding ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "assume standing position"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  study:activityStatus code:activitystatus_1 ;
+  study:hasDate cdiscpilot01:Date_19 ;
+.
+cdiscpilot01:AssumeBodyPositionSupine_1
+  rdf:type code:AssumeBodyPositionSupine ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "assume supine position"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:activityStatus code:activitystatus_1 ;
+  study:hasDate cdiscpilot01:Date_19 ;
+.
 cdiscpilot01:DBP_1
   rdf:type <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 DBP 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome custom:bpoutcome_2 ;
+  code:hasOutcome custom:bpoutcome_1 ;
   study:activityStatus code:activitystatus_1 ;
   study:anatomicLocation <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141> ;
   study:baselineFlag "Y"^^xsd:string ;
@@ -45,7 +63,7 @@ cdiscpilot01:DBP_1
   study:groupID "GRPID1"^^xsd:string ;
   study:hasCategory custom:category_1 ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
-  study:hasStartRule cdiscpilot01:startrule_1 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
   study:hasSubcategory custom:subcategory_1 ;
   study:laterality <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99073.C25228> ;
   study:reasonNotDone "not applicable"^^xsd:string ;
@@ -57,14 +75,14 @@ cdiscpilot01:DBP_2
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 DBP 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome custom:bpoutcome_3 ;
+  code:hasOutcome custom:bpoutcome_2 ;
   study:anatomicLocation <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141> ;
   study:bodyPosition <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
   study:groupID "GRPID1"^^xsd:string ;
   study:hasCategory custom:category_1 ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
-  study:hasStartRule cdiscpilot01:startrule_2 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
   study:hasSubcategory custom:subcategory_1 ;
   study:laterality <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99073.C25229> ;
   study:plannedReferenceTimePoint code:timepoint-PT_STANDING ;
@@ -76,14 +94,14 @@ cdiscpilot01:DBP_3
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 DBP 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome custom:bpoutcome_1 ;
+  code:hasOutcome custom:bpoutcome_3 ;
   study:anatomicLocation <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141> ;
   study:bodyPosition <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
   study:groupID "GRPID1"^^xsd:string ;
   study:hasCategory custom:category_1 ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
-  study:hasStartRule cdiscpilot01:startrule_3 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
   study:hasSubcategory custom:subcategory_1 ;
   study:laterality <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99073.C25228> ;
   study:plannedReferenceTimePoint code:timepoint-PT_STANDING ;
@@ -498,6 +516,27 @@ cdiscpilot01:Randomization_3
   skos:definition ""^^xsd:string ;
   code:hasOutcome custom:arm_3 ;
 .
+cdiscpilot01:StartRuleLying5_1
+  rdf:type code:StartRuleLying5 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "startrule-P1BP1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1 ;
+.
+cdiscpilot01:StartRuleStanding1_1
+  rdf:type code:StartRuleStanding1 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "startrule-P1BP2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 ;
+.
+cdiscpilot01:StartRuleStanding3_1
+  rdf:type code:StartRuleStanding3 ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "startrule-P1BP3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 ;
+.
 cdiscpilot01:popflag_C16WK_1
   rdf:type custom:popflag_C16WK ;
   rdfs:comment ""^^xsd:string ;
@@ -681,27 +720,6 @@ cdiscpilot01:sponsor_STUDYSPONSOR
   rdfs:label "CLINICAL STUDY SPONSOR"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-cdiscpilot01:startrule_1
-  rdf:type code:startrule_1 ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "startrule-P1BP1"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  code:hasPrerequisite cdiscpilot01:vspos_2 ;
-.
-cdiscpilot01:startrule_2
-  rdf:type code:startrule_2 ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "startrule-P1BP2"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  code:hasPrerequisite cdiscpilot01:vspos_1 ;
-.
-cdiscpilot01:startrule_3
-  rdf:type code:startrule_3 ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "startrule-P1BP3"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  code:hasPrerequisite cdiscpilot01:vspos_1 ;
-.
 cdiscpilot01:visit_SCREENING1_P1
   rdf:type custom:visit_1 ;
   rdfs:comment ""^^xsd:string ;
@@ -710,44 +728,26 @@ cdiscpilot01:visit_SCREENING1_P1
   skos:prefLabel "SCREENING1"^^xsd:string ;
   study:activityStatus code:activitystatus_1 ;
   study:hasDate cdiscpilot01:Date_19 ;
+  study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_1 ;
+  study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_1 ;
   study:hasSubActivity cdiscpilot01:DBP_1 ;
   study:hasSubActivity cdiscpilot01:DBP_2 ;
   study:hasSubActivity cdiscpilot01:DBP_3 ;
-  study:hasSubActivity cdiscpilot01:vspos_1 ;
-  study:hasSubActivity cdiscpilot01:vspos_2 ;
   study:seq "1"^^xsd:float ;
 .
-cdiscpilot01:vspos_1
-  rdf:type study:AssumeBodyPosition ;
-  rdf:type study:PrerequisiteActivity ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "assume standing position"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  code:hasOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
-  study:activityStatus code:activitystatus_1 ;
-  study:hasDate cdiscpilot01:Date_19 ;
+code:StartRuleLying5
+  rdfs:subClassOf code:StartRule ;
 .
-cdiscpilot01:vspos_2
-  rdf:type study:AssumeBodyPosition ;
-  rdf:type study:PrerequisiteActivity ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "assume supine position"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  code:hasOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
-  study:activityStatus code:activitystatus_1 ;
-  study:hasDate cdiscpilot01:Date_19 ;
+code:StartRuleStanding1
+  rdfs:label "startrule-STANDING1" ;
+  rdfs:subClassOf code:StartRule ;
+.
+code:StartRuleStanding3
+  rdfs:label "startrule-STANDING3" ;
+  rdfs:subClassOf code:StartRule ;
 .
 code:pressureunit_1
   skos:prefLabel "mmHg"^^xsd:string ;
-.
-code:startrule_1
-  rdfs:subClassOf code:StartRule ;
-.
-code:startrule_2
-  rdfs:subClassOf code:StartRule ;
-.
-code:startrule_3
-  rdfs:subClassOf code:StartRule ;
 .
 code:timepoint-PT_SUPINE
   skos:prefLabel "PATIENT SUPINE"^^xsd:string ;

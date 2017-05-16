@@ -253,25 +253,25 @@ custom:bpoutcome_1
   rdf:type custom:BloodPressureOutcome ;
   rdfs:comment ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  skos:prefLabel "57 mmHg"^^xsd:string ;
-  code:hasUnit code:pressureunit_1 ;
-  code:hasValue "57"^^xsd:int ;
-.
-custom:bpoutcome_2
-  rdf:type custom:BloodPressureOutcome ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
   skos:prefLabel "64 mmHg"^^xsd:string ;
   code:hasUnit code:pressureunit_1 ;
   code:hasValue 64 ;
 .
-custom:bpoutcome_3
+custom:bpoutcome_2
   rdf:type custom:BloodPressureOutcome ;
   rdfs:comment ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "83 mmHg"^^xsd:string ;
   code:hasUnit code:pressureunit_1 ;
   code:hasValue 83 ;
+.
+custom:bpoutcome_3
+  rdf:type custom:BloodPressureOutcome ;
+  rdfs:comment ""^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "57 mmHg"^^xsd:string ;
+  code:hasUnit code:pressureunit_1 ;
+  code:hasValue "57"^^xsd:int ;
 .
 custom:category_1
   rdf:type custom:Category ;

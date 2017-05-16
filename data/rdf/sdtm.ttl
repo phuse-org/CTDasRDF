@@ -3219,9 +3219,9 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "strtrulecode"^^xsd:string ;
+                sp:varName "strtruleclass"^^xsd:string ;
               ] ;
-            sp:predicate study:hasActivityID ;
+            sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "strtrule"^^xsd:string ;
               ] ;
@@ -3230,7 +3230,7 @@ sdtm:SDTM_VS_Record
             sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRule> ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "strtrulecode"^^xsd:string ;
+                sp:varName "strtruleclass"^^xsd:string ;
               ] ;
           ]
           [
@@ -3239,7 +3239,7 @@ sdtm:SDTM_VS_Record
               ] ;
             sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#ruleDescription> ;
             sp:subject [
-                sp:varName "strtrulecode"^^xsd:string ;
+                sp:varName "strtruleclass"^^xsd:string ;
               ] ;
           ]
           [
@@ -3248,7 +3248,7 @@ sdtm:SDTM_VS_Record
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "strtrulecode"^^xsd:string ;
+                sp:varName "strtruleclass"^^xsd:string ;
               ] ;
           ]
         ) ;
