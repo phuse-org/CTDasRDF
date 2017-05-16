@@ -84,6 +84,9 @@ vs$vslatSDTMCode <- recode(vs$vslat,
 #-- Fragment Creation and merging ---------------------------------------------
 vs <- addDateFrag(vs, "vsdtc")  
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="activitystatus")
+# position fragment
+vs <- createFragOneDomain(domainName=vs, processColumns="vspos", fragPrefix="vspos")
+
 
 # Create bpoutcome_n fragment. 
 #  Blood pressure results come from both SYSBP and DIABP so only these values from 
@@ -115,7 +118,6 @@ vsWide <- dcast(vs, ... ~ vstestcd, value.var="vsorres")
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="DIABP", fragPrefix="DBP")
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="SYSBP", fragPrefix="SBP")
 vsWide <- createFragOneDomain(domainName=vsWide, processColumns="vspos", fragPrefix="vspos")
-
 # Results in problem of additional columns SYSBP_Frag, DIABP_Frag as already created!
 # vsWide <- createFragOneDomain(domainName=vsWide, 
 #    processColumns=c("SYSBP", "DIABP"), fragPrefix="bpoutcome", numSort = TRUE)
@@ -332,7 +334,7 @@ ddply(vsVisits, .(personVisit_Frag), function(vsVisits)
         add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),
             paste0(prefix.RDFS,"label" ),
-            paste0("P", vsVisits$personNum, " Visit ", vsVisits$visitnum), type="string"
+            paste0("Person ", vsVisits$personNum, " Visit ", vsVisits$visitnum), type="string"
         )
         add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsVisits$personVisit_Frag),

@@ -1,5 +1,5 @@
 ###############################################################################
-# FILE : Person-MultLevel-VisNetwork-ForeNetwork.R
+# FILE : Person-MultLevel-VisNetwork-ForceNetwork.R
 # DESCR: Visualization of the nodes connected to Person_1 as a FN graph
 # SRC  : 
 # KEYS : 

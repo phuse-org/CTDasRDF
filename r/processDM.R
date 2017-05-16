@@ -607,7 +607,7 @@ ddply(dm, .(subjid), function(dm)
             add.data.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
                 paste0(prefix.RDFS,"label" ),
-                paste0("Product administration interval ", dm$personNum), type="string"
+                paste0("Product Administration Interval ", dm$personNum), type="string"
             )
             # Product Administration Begin
             add.triple(cdiscpilot01,
