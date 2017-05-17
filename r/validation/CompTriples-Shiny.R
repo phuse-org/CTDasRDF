@@ -10,7 +10,7 @@
 # NOTE: Includes display of the triples available from Ont,R, not just the ones
 #         that do not match.
 # TODO: 
-#       
+#    ERROR: Display of triplesOnt, triplesR is NOT reactive     
 # 
 ###############################################################################
 library(plyr)    #  rename
@@ -62,14 +62,25 @@ WHERE {", input$qnam, " ?p ?o .
        else if (input$comp=='inOntNotR') {
            compResult <- anti_join(triplesOnt, triplesR)
        }
+
+       output$triplesOnt <-renderTable({triplesOnt})    
+       output$triplesR <-renderTable({triplesR})    
+
+       # TESTING
+#       triplesOnt <<- reactive({ 
+#        triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
+#    })
+#    triplesR <<-  reactive({ 
+#        triplesR <- triplesR[with(triplesR, order(s,p,o)), ]
+#    })
+       
        compResult
     })
     # sort for visual compare in the interface
-    triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
-    triplesR <- triplesR[with(triplesR, order(s,p,o)), ]
-    
     output$triplesOnt <-renderTable({triplesOnt})    
     output$triplesR <-renderTable({triplesR})    
+    
+  
 }
 
 ui <- fluidPage(
