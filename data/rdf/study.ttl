@@ -180,7 +180,7 @@ study:Activity
             sp:object [
                 sp:varName "anchoroutcometerm"^^xsd:string ;
               ] ;
-            sp:predicate code:hasPrerequisiteOutcome ;
+            sp:predicate code:hasExpectedOutcome ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;

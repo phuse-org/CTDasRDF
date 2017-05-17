@@ -176,6 +176,7 @@ code:AssumeBodyPositionStanding
   rdfs:subClassOf code:AssumeBodyPosition ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ASSUME BODY POSITION STANDING"^^xsd:string ;
+  code:hasExpectedOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
 .
 code:AssumeBodyPositionSupine
   rdf:type owl:Class ;
@@ -184,6 +185,7 @@ code:AssumeBodyPositionSupine
   rdfs:subClassOf code:AssumeBodyPosition ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ASSUME BODY POSITION SUPINE"^^xsd:string ;
+  code:hasExpectedOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
 .
 code:BloodPressure
   rdf:type owl:Class ;
@@ -501,7 +503,6 @@ code:StartRuleLying5
   skos:prefLabel "RULE LYING 5 MIN"^^xsd:string ;
   code:hasDelay "PT5M"^^xsd:duration ;
   code:hasPrerequisite code:AssumeBodyPositionSupine ;
-  code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62167> ;
   code:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
 .
@@ -515,7 +516,6 @@ code:StartRuleStanding1
   skos:prefLabel "STANDING1"^^xsd:string ;
   code:hasDelay "PT1M"^^xsd:duration ;
   code:hasPrerequisite code:AssumeBodyPositionStanding ;
-  code:hasPrerequisiteOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
   code:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
 .
@@ -639,6 +639,14 @@ code:hasEthnicity
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "has Ethnicity"^^xsd:string ;
 .
+code:hasExpectedOutcome
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain code:DefinedActivity ;
+  rdfs:label "has anchor outcome"^^xsd:string ;
+  rdfs:range code:DefinedActivityOutcome ;
+  skos:definition ""^^xsd:string ;
+.
 code:hasIdentifier
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -687,14 +695,6 @@ code:hasPrerequisite
   rdfs:label "has Prerequisite"^^xsd:string ;
   rdfs:range code:DefinedActivity ;
   skos:definition "links the start of an activity relative to another activity known as a Prerequisite. "^^xsd:string ;
-.
-code:hasPrerequisiteOutcome
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:StartRule ;
-  rdfs:label "has anchor outcome"^^xsd:string ;
-  rdfs:range code:DefinedActivityOutcome ;
-  skos:definition ""^^xsd:string ;
 .
 code:hasRace
   rdf:type owl:ObjectProperty ;
