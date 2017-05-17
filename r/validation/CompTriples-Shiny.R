@@ -62,25 +62,18 @@ WHERE {", input$qnam, " ?p ?o .
        else if (input$comp=='inOntNotR') {
            compResult <- anti_join(triplesOnt, triplesR)
        }
-
+  
+       triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
+       triplesR   <- triplesR[with(triplesR, order(s,p,o)), ]
+       
        output$triplesOnt <-renderTable({triplesOnt})    
        output$triplesR <-renderTable({triplesR})    
 
-       # TESTING
-#       triplesOnt <<- reactive({ 
-#        triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
-#    })
-#    triplesR <<-  reactive({ 
-#        triplesR <- triplesR[with(triplesR, order(s,p,o)), ]
-#    })
-       
        compResult
     })
     # sort for visual compare in the interface
     output$triplesOnt <-renderTable({triplesOnt})    
     output$triplesR <-renderTable({triplesR})    
-    
-  
 }
 
 ui <- fluidPage(
@@ -94,12 +87,15 @@ ui <- fluidPage(
   radioButtons("comp", "Compare:",
                 c("In R, not in Ontology" = "inRNotOnt",
                   "In Ontology, not in R" = "inOntNotR")),    
-  h4("Comparison Result:"),
+  h4("Comparison Result:",
+    style= "color:#e60000"),
   hr(),    
   tableOutput('contents'), 
-  h4("Ontology Triples"),
+  h4("Ontology Triples",
+    style= "color:#000099"),
   tableOutput('triplesOnt'),
-  h4("R Triples"),
+  h4("R Triples",
+    style= "color:#00802b"),
   tableOutput('triplesR')
     
 )
