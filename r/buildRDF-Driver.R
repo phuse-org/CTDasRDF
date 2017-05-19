@@ -13,6 +13,7 @@
 #        Calls to other scripts for code, functions, data import.
 # OUT : data/rdf/cdiscpilot01-R.TTL
 #       data/rdf/customterminology-R.TTL 
+#       data/rdf/code-R.TTL 
 # NOTE: Validation of the resulting TTL files with Apache Jenna riot
 #        Later cross check with CompareTTL.R
 # TODO: 
@@ -173,8 +174,6 @@ source('R/createFrag.R')
 
 # Create the date translation table from all dates across domains
 dateDict<-createDateDict()  
-
-
 
 #------------------------------------------------------------------------------
 # Domain Processing

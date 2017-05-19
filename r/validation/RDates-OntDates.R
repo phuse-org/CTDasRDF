@@ -36,9 +36,11 @@ rTriples <- rTriples[!duplicated(rTriples), ]  # remove dupes
 
 dateComp <- merge(rTriples, ontTriples, by.x="dateVal", by.y="dateVal", all.x=TRUE, all.y=TRUE)
 
+dateComp <- rename(dateComp, c(dateURI.x = "R", dateURI.y = "Ontology"))
 
 
-
+library(xlsx)
+write.xlsx(dateComp, "data/validation/DateComp.xlsx")
 
 # OLD SHITE BELOW HERE
 
