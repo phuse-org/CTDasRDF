@@ -18,16 +18,13 @@ endpoint = "http://localhost:8890/sparql"
 
 
 query = 'PREFIX code: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#> 
-prefix : <http://www.semanticweb.org/administrator/ontologies/2014/7/untitled-ontology-9#>
-PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#> 
-prefix owl: <http://www.w3.org/2002/07/owl#>
+PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 PREFIX sdtm-terminology: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#> 
 PREFIX time: <http://www.w3.org/2006/time#> 
-
 PREFIX time: <http://www.w3.org/2006/time#> 
-PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#Visit>
 SELECT ?parent ?relation ?child
 FROM <http://localhost:8890/CODE>
 WHERE
@@ -36,16 +33,45 @@ WHERE
    FILTER(REGEX(STR(?parent), "code"))  
    FILTER(!(REGEX(STR(?parent), "spin")))
 
-    BIND ("subClassOf" AS ?relation)
+    BIND ("hasChild" AS ?relation)
 }
 ORDER BY ?parent
 
 '
 classes = sparql.remote(endpoint, query)
 
-# classes = as.data.frame(sparql.rdf(codeData, query))
-# write.table(classes, "classes.txt")
 
-# rename(classes, c)
+#---- Nodes Construction
+# Unique list of nodes by combine Subject and Object into a single column
+#   "id.vars" is the list of columns to keep untouched. The unamed ones (parent,child)  
+#   melt into the "value" column.
+nodeList <- melt(classes, id.vars=c("relation" ))
+
+# A node can be both Subject and Object. Ensure a unique list of node names
+#   by dropping duplicate values.
+nodeList <- nodeList[!duplicated(nodeList$value),]
+
+# Rename to ID for use in visNetwork and keep only that column
+nodeList <- rename(nodeList, c("value" = "id" ))
+nodes<- as.data.frame(nodeList[c("id")])
+
+#OPTIONAL
+# Assign groups used for icon types and colours
+# Order is important.
+#nodes$group[grepl("sdtm-terminology", nodes$id, perl=TRUE)] <- "SDTMTerm"  
+#nodes$group[grepl("study", nodes$id, perl=TRUE)] <- "Study"  
+
+#---- Edges
+# Create list of edges by keeping the Subject and Predicate from query result.
+edges<-rename(classes, c("parent" = "from", "child" = "to"))
+
+# Not implemented....
+# Edge values
+#   use edges$label for values always present
+#   use edges$title for values only present on mouseover
+# edges$title <-gsub("\\S+:", "", edges$p)   # label : text always present
+
+
+
 
 
