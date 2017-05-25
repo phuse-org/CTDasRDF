@@ -12,6 +12,7 @@
 #                          originals are retained.
 #       SDTM numeric codes, Country, Arm codes are set MANUALLY
 #       Birthdate and Deathdate are now part of the Lifespan interval. 
+#       StudyParticipationBegin set as date of informed consent as per email from AO 2071-02-16
 #       Instance  data named lowercase. Eg:  arm_1
 #       Class codes named using CamelCase. Eg: InformedConsent_1
 # TODO: 
@@ -504,7 +505,6 @@ ddply(dm, .(subjid), function(dm)
             paste0(prefix.CDISCPILOT01, dm$dmdtc_Frag)
         )
         #---- Assign Date Type
-        assignDateType(dm$rfstdtc, dm$rfstdtc_Frag, "StudyParticipationBegin")
         if (!is.na(dm$rfpendtc_Frag) && ! as.character(dm$rfpendtc_Frag)=="") {
             add.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, "Interval_SP", dm$personNum),
@@ -565,15 +565,17 @@ ddply(dm, .(subjid), function(dm)
                 add.data.triple(cdiscpilot01,
                     paste0(prefix.CDISCPILOT01,"Interval_IC", dm$personNum),
                     paste0(prefix.RDFS,"label"),
-                    paste0("Interval ", dm$personNum), type="string"
+                    paste0("Informed Consent Interval ", dm$personNum), type="string"
                 )            
                 add.triple(cdiscpilot01,
                     paste0(prefix.CDISCPILOT01,"Interval_IC", dm$personNum),
                     paste0(prefix.TIME,"hasBeginning" ),
                     paste0(prefix.CDISCPILOT01, dm$rficdtc_Frag )
                 )
-                # This date is an Informed Consent date                
+                # Create triples for specific date type assignments. 
+                # StudyParticipationBegin set as date of informed consent as per email from AO 2071-02-16
                 assignDateType(dm$rficdtc, dm$rficdtc_Frag, "InformedConsentBegin")
+                assignDateType(dm$rficdtc, dm$rficdtc_Frag, "StudyParticipationBegin")
                 #Note: There is no informedConsentEnd in the source data
     }
     # Product Administration

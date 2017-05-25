@@ -184,7 +184,7 @@ dateDict<-createDateDict()
 #        SUPPDM can be omitted during development steps.
 
 source('R/processDM.R')
-#TW source('R/processSUPPDM.R')
+source('R/processSUPPDM.R')
 
 #---- VS DOMAIN
 source('R/processVS.R')
@@ -206,8 +206,10 @@ code         = save.rdf(code,   filename=outFileCode,   format="TURTLE")
 system(paste('riot --validate ', outFileMain),
     show.output.on.console = TRUE)
 
-system(paste('riot --validate ', outFileCustom),
-    show.output.on.console = TRUE)
+#NB: Not updating custom.ttl or code.ttl as of 2017-05-25 . 
+#    Focus is only on cdiscpilot01
+#system(paste('riot --validate ', outFileCustom),
+#    show.output.on.console = TRUE)
 
-system(paste('riot --validate ', outFileCode),
-    show.output.on.console = TRUE)
+#system(paste('riot --validate ', outFileCode),
+#    show.output.on.console = TRUE)
