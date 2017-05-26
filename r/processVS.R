@@ -414,6 +414,9 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
             paste0(prefix.STUDY,"hasDate"),
             paste0(prefix.CDISCPILOT01,vsWide$vsdtc_Frag) 
         )
+        # The date is a visit date, to mark it as such.
+        assignDateType(vsWide$vsdtc, vsWide$vsdtc_Frag, "VisitDate")
+
 #AOQUESTION: 2017-05-26
        add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
@@ -421,6 +424,8 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
             # paste0(vsWide$vsseq), type="int" 
             paste0(vsWide$visitnum), type="int"     
         )
+#TODO: Condense the STANDING/SUPINE triple creation into a function with values STANDING/SUPINE...
+
        # Next triple should cover addition of Objects like AssumeBodyPositionStanding_(n) discpilot01:AssumeBodyPositionSupine_(n)
        if( vsWide$vspos =="STANDING"){
            add.triple(cdiscpilot01,
@@ -428,6 +433,36 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
                 paste0(prefix.STUDY,"hasSubActivity"),
                 paste0(prefix.CDISCPILOT01,"AssumeBodyPositionStanding_", vsWide$personNum) 
            )
+               #----AssumeBodyPositionStanding_(n) subtriples
+               add.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01,"AssumeBodyPositionStanding_", vsWide$personNum), 
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.CODE, "AssumeBodyPositionStanding")
+               )
+               add.data.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01,"AssumeBodyPositionStanding_", vsWide$personNum), 
+                   paste0(prefix.RDFS,"label" ),
+                   paste0("assume standing position"), type="string"
+               )
+               add.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01,"AssumeBodyPositionStanding_", vsWide$personNum),
+                   paste0(prefix.CODE,"hasOutcome" ),
+                   paste0(prefix.SDTMTERM, vsWide$posSDTMCode)
+               )
+#CONFIRM: Correct status fragment used?
+               if (! is.na(vsWide$vsstat_Frag)){
+                   add.triple(cdiscpilot01,
+                       paste0(prefix.CDISCPILOT01,"AssumeBodyPositionStanding_", vsWide$personNum), 
+                       paste0(prefix.STUDY,"activityStatus" ),
+                       paste0(prefix.CODE, vsWide$vsstat_Frag)
+                   )
+               }
+#CONFIRM: DATE_19 triple need an assignDate call here to assign type to that date URI?
+               add.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01,"AssumeBodyPositionStanding_", vsWide$personNum), 
+                   paste0(prefix.STUDY,"hasDate" ),
+                   paste0(prefix.CDISCPILOT01, vsWide$vsdtc_Frag)
+               )
        }
        else if ( vsWide$vspos =="SUPINE"){
            add.triple(cdiscpilot01,
@@ -435,8 +470,39 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
                 paste0(prefix.STUDY,"hasSubActivity"),
                 paste0(prefix.CDISCPILOT01,"AssumeBodyPositionSupine_", vsWide$personNum) 
            )
+               #----AssumeBodyPositionSupine_(n) subtriples
+               add.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01,"AssumeBodyPositionSupine_", vsWide$personNum), 
+                   paste0(prefix.RDF,"type" ),
+                   paste0(prefix.CODE, "AssumeBodyPositionSupine")
+               )
+               add.data.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01,"AssumeBodyPositionSupine_", vsWide$personNum), 
+                   paste0(prefix.RDFS,"label" ),
+                   paste0("assume supine position"), type="string"
+               )
+               add.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01,"AssumeBodyPositionSupine_", vsWide$personNum), 
+                   paste0(prefix.CODE,"hasOutcome" ),
+                   paste0(prefix.SDTMTERM, vsWide$posSDTMCode)
+               )
+#CONFIRM: Correct status fragment used?
+               
+               if (! is.na(vsWide$vsstat_Frag)){
+                   add.triple(cdiscpilot01,
+                       paste0(prefix.CDISCPILOT01,"AssumeBodyPositionSupine_", vsWide$personNum),
+                       paste0(prefix.STUDY,"activityStatus" ),
+                       paste0(prefix.CODE, vsWide$vsstat_Frag)
+                   )
+               }
+#CONFIRM: DATE_19 triple need an assignDate call here to assign type to that date URI?
+               add.triple(cdiscpilot01,
+                   paste0(prefix.CDISCPILOT01,"AssumeBodyPositionSupine_", vsWide$personNum),
+                   paste0(prefix.STUDY,"hasDate" ),
+                   paste0(prefix.CDISCPILOT01, vsWide$vsdtc_Frag)
+               )
        }
-#TODO: Add creation of child triples for AssumeBodyPositionStanding_(n), ...SUPINE_(n)
+
         #-- DBP_(n) attached to visit_(VISIT)_(n)
         if (! is.na(vsWide$DIABP_Frag)){
             add.triple(cdiscpilot01,
