@@ -33,6 +33,15 @@ cd01p:Study_CDISCPILOT01
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InformedConsentAdult>
   rdfs:subClassOf study:InformedConsent ;
 .
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#PopulationFlagEFF>
+  rdfs:subClassOf study:PopulationFlag ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#PopulationFlagITT>
+  rdfs:subClassOf study:PopulationFlag ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#PopulationFlagSAF>
+  rdfs:subClassOf study:PopulationFlag ;
+.
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#RandomizationBAL3>
   rdfs:subClassOf study:Randomization ;
 .
@@ -45,94 +54,85 @@ cd01p:Study_CDISCPILOT01
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRuleStanding3>
   rdfs:subClassOf study:StartRule ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#popflag_EFF>
-  rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#popflag_ITT>
-  rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#popflag_SAF>
-  rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#arm_1>
-  rdfs:subClassOf study:Arm ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#arm_2>
-  rdfs:subClassOf study:Arm ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#arm_3>
-  rdfs:subClassOf study:Arm ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#arm_4>
-  rdfs:subClassOf study:Arm ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#popflag_C16WK>
-  rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#popflag_C24WK>
-  rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#popflag_C8WK>
-  rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_1>
-  rdf:type study:PlaceboProduct ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_2>
-  rdf:type study:InvestigationalProduct ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#product_3>
-  rdf:type study:InvestigationalProduct ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#substance_1>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ActiveSubstance_1>
   rdf:type study:InvestigationalSubstance ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_1>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ArmPlacebo>
+  rdfs:subClassOf study:Arm ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ArmScreenFailure>
+  rdfs:subClassOf study:Arm ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ArmXanomelineHigh>
+  rdfs:subClassOf study:Arm ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ArmXanomelineLow>
+  rdfs:subClassOf study:Arm ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#PlaceboProduct_1>
+  rdf:type study:PlaceboProduct ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#PopulationFlagC16Wk>
+  rdfs:subClassOf study:PopulationFlag ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#PopulationFlagC24Wk>
+  rdfs:subClassOf study:PopulationFlag ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#PopulationFlagC8Wk>
+  rdfs:subClassOf study:PopulationFlag ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#Product_1>
+  rdf:type study:InvestigationalProduct ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#Product_2>
+  rdf:type study:InvestigationalProduct ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitAmbulECGPlace>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_10>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitAmbulECGRemove>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_11>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitBaseline>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_12>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitRetrieval>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_13>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitScreening1>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_14>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitScreening2>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_15>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitUnscheduled31>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_2>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk12>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_3>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk16>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_3.1>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk2>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_4>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk20>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_5>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk24>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_6>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk26>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_7>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk4>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_8>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk6>
   rdfs:subClassOf study:Visit ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_9>
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk8>
   rdfs:subClassOf study:Visit ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299>

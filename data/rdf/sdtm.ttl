@@ -995,7 +995,7 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "DEATHFL"^^xsd:string ;
+                sp:varName "DTHFL"^^xsd:string ;
               ] ;
             sp:predicate sdtm:hasDEATHFL ;
             sp:subject spin:_this ;
@@ -1016,7 +1016,7 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "DEATHFL"^^xsd:string ;
+                sp:varName "DTHFL"^^xsd:string ;
               ] ;
             sp:predicate study:deathFlag ;
             sp:subject [
@@ -1092,7 +1092,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "ETHNIC"^^xsd:string ;
               ] ;
-            sp:predicate skos:prefLabel ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
             sp:subject [
                 sp:varName "ethn"^^xsd:string ;
               ] ;
@@ -1110,7 +1110,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "RACE"^^xsd:string ;
               ] ;
-            sp:predicate skos:prefLabel ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
             sp:subject [
                 sp:varName "race"^^xsd:string ;
               ] ;
@@ -1128,7 +1128,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "SEX"^^xsd:string ;
               ] ;
-            sp:predicate skos:prefLabel ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
             sp:subject [
                 sp:varName "sex"^^xsd:string ;
               ] ;

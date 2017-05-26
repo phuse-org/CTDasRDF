@@ -15,6 +15,7 @@
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
+@prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.w3.org/2006/time#unitYear>
@@ -33,12 +34,20 @@ sdtm-cdisc01:DM_CDISCPILOT01
   rdf:type sdtm:DM_Domain ;
   spin:query [
       rdf:type sp:Select ;
+      sp:orderBy (
+          [
+            rdf:type sp:Asc ;
+            sp:expression [
+                sp:varName "USUBJID"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
       sp:resultVariables (
           [
-            sp:varName "DOMAIN"^^xsd:string ;
+            sp:varName "STUDYID"^^xsd:string ;
           ]
           [
-            sp:varName "STUDYID"^^xsd:string ;
+            sp:varName "DOMAIN"^^xsd:string ;
           ]
           [
             sp:varName "USUBJID"^^xsd:string ;
@@ -47,10 +56,76 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:varName "SUBJID"^^xsd:string ;
           ]
           [
+            sp:varName "RFSTDTC"^^xsd:string ;
+          ]
+          [
+            sp:varName "RFENDTC"^^xsd:string ;
+          ]
+          [
+            sp:varName "RFXSTDTC"^^xsd:string ;
+          ]
+          [
+            sp:varName "RFXENDTC"^^xsd:string ;
+          ]
+          [
+            sp:varName "RFICDTC"^^xsd:string ;
+          ]
+          [
+            sp:varName "RFPENDTC"^^xsd:string ;
+          ]
+          [
+            sp:varName "BRTHDTC"^^xsd:string ;
+          ]
+          [
+            sp:varName "DTHDTC"^^xsd:string ;
+          ]
+          [
+            sp:varName "DTHFL"^^xsd:string ;
+          ]
+          [
+            sp:varName "SITEID"^^xsd:string ;
+          ]
+          [
+            sp:varName "INVNAM"^^xsd:string ;
+          ]
+          [
+            sp:varName "INVID"^^xsd:string ;
+          ]
+          [
+            sp:varName "AGE"^^xsd:string ;
+          ]
+          [
+            sp:varName "AGEU"^^xsd:string ;
+          ]
+          [
+            sp:varName "SEX"^^xsd:string ;
+          ]
+          [
+            sp:varName "RACE"^^xsd:string ;
+          ]
+          [
+            sp:varName "ETHNIC"^^xsd:string ;
+          ]
+          [
+            sp:varName "ARMCD"^^xsd:string ;
+          ]
+          [
+            sp:varName "ARM"^^xsd:string ;
+          ]
+          [
             sp:varName "ACTARMCD"^^xsd:string ;
           ]
           [
             sp:varName "ACTARM"^^xsd:string ;
+          ]
+          [
+            sp:varName "COUNTRY"^^xsd:string ;
+          ]
+          [
+            sp:varName "DMDTC"^^xsd:string ;
+          ]
+          [
+            sp:varName "DMDY"^^xsd:string ;
           ]
         ) ;
       sp:where (
@@ -58,11 +133,11 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "DOMAIN"^^xsd:string ;
               ] ;
-            sp:predicate rdfs:label ;
+            sp:predicate <http://rdf.cdisc.org/mms#contextName> ;
             sp:subject <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.DM> ;
           ]
           [
-            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#Study> ;
+            sp:object study:Study ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "study"^^xsd:string ;
@@ -72,7 +147,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "STUDYID"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#hasStudyID> ;
+            sp:predicate study:hasStudyID ;
             sp:subject [
                 sp:varName "study"^^xsd:string ;
               ] ;
@@ -81,7 +156,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "SUBJID"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#hasSubjectID> ;
+            sp:predicate study:hasSubjectID ;
             sp:subject [
                 sp:varName "subject"^^xsd:string ;
               ] ;
@@ -90,7 +165,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "USUBJID"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#hasUniqueSubjectID> ;
+            sp:predicate study:hasUniqueSubjectID ;
             sp:subject [
                 sp:varName "subject"^^xsd:string ;
               ] ;
@@ -99,7 +174,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "actualarm"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#actualArm> ;
+            sp:predicate study:actualArm ;
             sp:subject [
                 sp:varName "subject"^^xsd:string ;
               ] ;
@@ -120,6 +195,507 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:predicate skos:altLabel ;
             sp:subject [
                 sp:varName "actualarm"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "rndmact"^^xsd:string ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:Randomization ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "rndmact"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "plannedarm"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOutcome> ;
+            sp:subject [
+                sp:varName "rndmact"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#RandomizationOutcome> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "plannedarm"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ARM"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "plannedarm"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ARMCD"^^xsd:string ;
+              ] ;
+            sp:predicate skos:altLabel ;
+            sp:subject [
+                sp:varName "plannedarm"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "lfspn"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasLifespan ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "brthd"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
+            sp:subject [
+                sp:varName "lfspn"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "BRTHDTC"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "brthd"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "dthdate"^^xsd:string ;
+                    ] ;
+                  sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
+                  sp:subject [
+                      sp:varName "lfspn"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "DTHDTC"^^xsd:string ;
+                    ] ;
+                  sp:predicate study:dateTimeInXSDString ;
+                  sp:subject [
+                      sp:varName "dthdate"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "DTHFL"^^xsd:string ;
+                    ] ;
+                  sp:predicate study:deathFlag ;
+                  sp:subject [
+                      sp:varName "subject"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            sp:object [
+                sp:varName "refintrvl"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasReferenceInterval ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "refstrt"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
+            sp:subject [
+                sp:varName "refintrvl"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RFSTDTC"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "refstrt"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "refend"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
+            sp:subject [
+                sp:varName "refintrvl"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RFENDTC"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "refend"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DemographicDataCollection> ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "dmdatacolldate"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasDate ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:DemogDataCollectionDate ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "dmdatacolldate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "DMDTC"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "dmdatacolldate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type study:studyday ;
+                arg:activityDate [
+                    sp:varName "DMDTC"^^xsd:string ;
+                  ] ;
+                arg:refDate [
+                    sp:varName "RFSTDTC"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "DMDY"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ageoutcome"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasAge> ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AGE"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasValue> ;
+            sp:subject [
+                sp:varName "ageoutcome"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ageunit"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasUnit> ;
+            sp:subject [
+                sp:varName "ageoutcome"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AGEU"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "ageunit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ethn"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasEthnicity> ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ETHNIC"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
+            sp:subject [
+                sp:varName "ethn"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "race"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasRace> ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RACE"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
+            sp:subject [
+                sp:varName "race"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sex"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasSex> ;
+            sp:subject [
+                sp:varName "demogcoll"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "SEX"^^xsd:string ;
+              ] ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
+            sp:subject [
+                sp:varName "sex"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "padmin"^^xsd:string ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:ProductAdministration ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "padmin"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "paintrvl"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasActivityInterval ;
+            sp:subject [
+                sp:varName "padmin"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "padminstart"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
+            sp:subject [
+                sp:varName "paintrvl"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RFXSTDTC"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "padminstart"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "padminend"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
+            sp:subject [
+                sp:varName "paintrvl"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RFXENDTC"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "padminend"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "informedconsent"^^xsd:string ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InformedConsentOutcome_1> ;
+            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOutcome> ;
+            sp:subject [
+                sp:varName "informedconsent"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "icinterval"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasActivityInterval ;
+            sp:subject [
+                sp:varName "informedconsent"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "icbegin"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
+            sp:subject [
+                sp:varName "icinterval"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:InformedConsentBegin ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "icbegin"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RFICDTC"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "icbegin"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "spi"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasStudyParticipationInterval ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "rfpend"^^xsd:string ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
+            sp:subject [
+                sp:varName "spi"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RFPENDTC"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "rfpend"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "site"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasSite ;
+            sp:subject [
+                sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "SITEID"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasSiteID ;
+            sp:subject [
+                sp:varName "site"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "inv"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasInvestigator ;
+            sp:subject [
+                sp:varName "site"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "INVID"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasInvestigatorID ;
+            sp:subject [
+                sp:varName "inv"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "INVNAM"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasLastName ;
+            sp:subject [
+                sp:varName "inv"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ctry"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasCountry ;
+            sp:subject [
+                sp:varName "site"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "COUNTRY"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "ctry"^^xsd:string ;
               ] ;
           ]
         ) ;
@@ -166,7 +742,7 @@ sdtm-cdisc01:SDTM_SUPPDM_Record_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#popflag_C16WK_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagC16WK_1> ;
   sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_2
@@ -174,7 +750,7 @@ sdtm-cdisc01:SDTM_SUPPDM_Record_2
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#popflag_C24WK_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagC24WK_1> ;
   sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_3
@@ -182,7 +758,7 @@ sdtm-cdisc01:SDTM_SUPPDM_Record_3
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#popflag_C8WK_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagC8WK_1> ;
   sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_4
@@ -190,7 +766,7 @@ sdtm-cdisc01:SDTM_SUPPDM_Record_4
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 4"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#popflag_EFF_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagEFF_1> ;
   sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_5
@@ -198,7 +774,7 @@ sdtm-cdisc01:SDTM_SUPPDM_Record_5
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 5"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#popflag_ITT_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagITT_1> ;
   sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_6
@@ -206,7 +782,7 @@ sdtm-cdisc01:SDTM_SUPPDM_Record_6
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 6"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#popflag_SAF_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagSAF_1> ;
   sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_1
@@ -214,7 +790,7 @@ sdtm-cdisc01:SDTM_VS_Record_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM VS Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#DBP_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_1> ;
   sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_2
@@ -222,7 +798,7 @@ sdtm-cdisc01:SDTM_VS_Record_2
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM VS Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#DBP_2> ;
+  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_2> ;
   sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_3
@@ -230,7 +806,7 @@ sdtm-cdisc01:SDTM_VS_Record_3
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM VS Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#DBP_3> ;
+  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_3> ;
   sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SUPPDM_CDISCPILOT01

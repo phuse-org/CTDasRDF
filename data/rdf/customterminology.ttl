@@ -28,6 +28,11 @@ custom:ActiveSubstance
   rdfs:label "Active substance term"^^xsd:string ;
   rdfs:subClassOf custom:Substance ;
 .
+custom:ActiveSubstance_1
+  rdf:type custom:ActiveSubstance ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "substance-XANOMELINE"^^xsd:string ;
+.
 custom:AdministrativeActivityOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -86,12 +91,79 @@ custom:Arm
   rdfs:label "Arm term"^^xsd:string ;
   rdfs:subClassOf custom:CustomConcept ;
 .
+custom:ArmPlacebo
+  rdf:type owl:Class ;
+  rdf:type code:RandomizationOutcome ;
+  rdf:type custom:Arm ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Pbo"^^xsd:string ;
+  rdfs:subClassOf custom:Arm ;
+  rdfs:subClassOf custom:RandomizationOutcome ;
+  skos:altLabel "Pbo"^^xsd:string ;
+  skos:prefLabel "Placebo"^^xsd:string ;
+.
+custom:ArmScreenFailure
+  rdf:type owl:Class ;
+  rdf:type custom:Arm ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Scrnfail"^^xsd:string ;
+  rdfs:subClassOf custom:Arm ;
+  skos:altLabel "Scrnfail"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "Screen Failure"^^xsd:string ;
+.
+custom:ArmXanomelineHigh
+  rdf:type owl:Class ;
+  rdf:type code:RandomizationOutcome ;
+  rdf:type custom:Arm ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Xan_Hi"^^xsd:string ;
+  rdfs:subClassOf custom:Arm ;
+  rdfs:subClassOf custom:RandomizationOutcome ;
+  skos:altLabel "Xan_Hi"^^xsd:string ;
+  skos:prefLabel "Xanomemline High Dose"^^xsd:string ;
+.
+custom:ArmXanomelineLow
+  rdf:type owl:Class ;
+  rdf:type code:RandomizationOutcome ;
+  rdf:type custom:Arm ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Xan_Lo"^^xsd:string ;
+  rdfs:subClassOf custom:Arm ;
+  rdfs:subClassOf custom:RandomizationOutcome ;
+  skos:altLabel "Xan_Lo"^^xsd:string ;
+  skos:prefLabel "Xanomeline Low Dose"^^xsd:string ;
+.
 custom:BloodPressureOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Blood pressure outcome term"^^xsd:string ;
   rdfs:subClassOf custom:NumericObservationOutcome ;
   skos:definition ""^^xsd:string ;
+.
+custom:BloodPressureOutcome_1
+  rdf:type custom:BloodPressureOutcome ;
+  rdfs:comment ""^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "64 mmHg"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 64 ;
+.
+custom:BloodPressureOutcome_2
+  rdf:type custom:BloodPressureOutcome ;
+  rdfs:comment ""^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "83 mmHg"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 83 ;
+.
+custom:BloodPressureOutcome_3
+  rdf:type custom:BloodPressureOutcome ;
+  rdfs:comment ""^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "57 mmHg"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue "57"^^xsd:int ;
 .
 custom:BodyPosition
   rdf:type owl:Class ;
@@ -106,6 +178,13 @@ custom:Category
   rdfs:label "Category term"^^xsd:string ;
   rdfs:subClassOf custom:CustomConcept ;
   skos:definition ""^^xsd:string ;
+.
+custom:Category_1
+  rdf:type custom:Category ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "CAT1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "CAT1"^^xsd:string ;
 .
 custom:CodedObservationOutcome
   rdf:type owl:Class ;
@@ -166,6 +245,11 @@ custom:PlaceboProduct
   rdfs:label "Placebo product term"^^xsd:string ;
   rdfs:subClassOf custom:Product ;
 .
+custom:PlaceboProduct_1
+  rdf:type custom:PlaceboProduct ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "product-XANOMELINE PLACEBO"^^xsd:string ;
+.
 custom:PopulationFlag
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -173,11 +257,42 @@ custom:PopulationFlag
   rdfs:subClassOf custom:Analysis ;
   skos:definition ""^^xsd:string ;
 .
+custom:PopulationFlagC16Wk
+  rdf:type owl:Class ;
+  rdf:type custom:PopulationFlag ;
+  rdfs:subClassOf custom:PopulationFlag ;
+  skos:altLabel "Completers of Week 16 Population Flag"^^xsd:string ;
+  skos:prefLabel "COMPLT16"^^xsd:string ;
+.
+custom:PopulationFlagC24Wk
+  rdf:type owl:Class ;
+  rdf:type custom:PopulationFlag ;
+  rdfs:subClassOf custom:PopulationFlag ;
+  skos:altLabel "Completers of Week 24 Population Flag"^^xsd:string ;
+  skos:prefLabel "COMPLT24"^^xsd:string ;
+.
+custom:PopulationFlagC8Wk
+  rdf:type owl:Class ;
+  rdf:type custom:PopulationFlag ;
+  rdfs:subClassOf custom:PopulationFlag ;
+  skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
+  skos:prefLabel "COMPLT8"^^xsd:string ;
+.
 custom:Product
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product term"^^xsd:string ;
   rdfs:subClassOf custom:CustomConcept ;
+.
+custom:Product_1
+  rdf:type custom:Product ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "product-XANOMELINE LO"^^xsd:string ;
+.
+custom:Product_2
+  rdf:type custom:Product ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "product-XANOMELINE-HI"^^xsd:string ;
 .
 custom:RandomizationOutcome
   rdf:type owl:Class ;
@@ -193,6 +308,13 @@ custom:Subcategory
   rdfs:subClassOf custom:CustomConcept ;
   skos:definition ""^^xsd:string ;
 .
+custom:Subcategory_1
+  rdf:type custom:Subcategory ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "SCAT1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "SCAT1"^^xsd:string ;
+.
 custom:Substance
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -206,164 +328,7 @@ custom:Visit
   rdfs:subClassOf custom:CustomConcept ;
   skos:definition ""^^xsd:string ;
 .
-custom:arm_1
-  rdf:type owl:Class ;
-  rdf:type code:RandomizationOutcome ;
-  rdf:type custom:Arm ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Pbo"^^xsd:string ;
-  rdfs:subClassOf custom:Arm ;
-  rdfs:subClassOf custom:RandomizationOutcome ;
-  skos:altLabel "Pbo"^^xsd:string ;
-  skos:prefLabel "Placebo"^^xsd:string ;
-.
-custom:arm_2
-  rdf:type owl:Class ;
-  rdf:type custom:Arm ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Scrnfail"^^xsd:string ;
-  rdfs:subClassOf custom:Arm ;
-  skos:altLabel "Scrnfail"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Screen Failure"^^xsd:string ;
-.
-custom:arm_3
-  rdf:type owl:Class ;
-  rdf:type code:RandomizationOutcome ;
-  rdf:type custom:Arm ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Xan_Hi"^^xsd:string ;
-  rdfs:subClassOf custom:Arm ;
-  rdfs:subClassOf custom:RandomizationOutcome ;
-  skos:altLabel "Xan_Hi"^^xsd:string ;
-  skos:prefLabel "Xanomemline High Dose"^^xsd:string ;
-.
-custom:arm_4
-  rdf:type owl:Class ;
-  rdf:type code:RandomizationOutcome ;
-  rdf:type custom:Arm ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Xan_Lo"^^xsd:string ;
-  rdfs:subClassOf custom:Arm ;
-  rdfs:subClassOf custom:RandomizationOutcome ;
-  skos:altLabel "Xan_Lo"^^xsd:string ;
-  skos:prefLabel "Xanomeline Low Dose"^^xsd:string ;
-.
-custom:bpoutcome_1
-  rdf:type custom:BloodPressureOutcome ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "64 mmHg"^^xsd:string ;
-  code:hasUnit code:pressureunit_1 ;
-  code:hasValue 64 ;
-.
-custom:bpoutcome_2
-  rdf:type custom:BloodPressureOutcome ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "83 mmHg"^^xsd:string ;
-  code:hasUnit code:pressureunit_1 ;
-  code:hasValue 83 ;
-.
-custom:bpoutcome_3
-  rdf:type custom:BloodPressureOutcome ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "57 mmHg"^^xsd:string ;
-  code:hasUnit code:pressureunit_1 ;
-  code:hasValue "57"^^xsd:int ;
-.
-custom:category_1
-  rdf:type custom:Category ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "CAT1"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "CAT1"^^xsd:string ;
-.
-custom:popflag_C16WK
-  rdf:type owl:Class ;
-  rdf:type custom:PopulationFlag ;
-  rdfs:subClassOf custom:PopulationFlag ;
-  skos:altLabel "Completers of Week 16 Population Flag"^^xsd:string ;
-  skos:prefLabel "COMPLT16"^^xsd:string ;
-.
-custom:popflag_C24WK
-  rdf:type owl:Class ;
-  rdf:type custom:PopulationFlag ;
-  rdfs:subClassOf custom:PopulationFlag ;
-  skos:altLabel "Completers of Week 24 Population Flag"^^xsd:string ;
-  skos:prefLabel "COMPLT24"^^xsd:string ;
-.
-custom:popflag_C8WK
-  rdf:type owl:Class ;
-  rdf:type custom:PopulationFlag ;
-  rdfs:subClassOf custom:PopulationFlag ;
-  skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
-  skos:prefLabel "COMPLT8"^^xsd:string ;
-.
-custom:product_1
-  rdf:type custom:PlaceboProduct ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "product-XANOMELINE PLACEBO"^^xsd:string ;
-.
-custom:product_2
-  rdf:type custom:Product ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "product-XANOMELINE LO"^^xsd:string ;
-.
-custom:product_3
-  rdf:type custom:Product ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "product-XANOMELINE-HI"^^xsd:string ;
-.
-custom:subcategory_1
-  rdf:type custom:Subcategory ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "SCAT1"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SCAT1"^^xsd:string ;
-.
-custom:substance_1
-  rdf:type custom:ActiveSubstance ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "substance-XANOMELINE"^^xsd:string ;
-.
-custom:visit_1
-  rdf:type owl:Class ;
-  rdf:type custom:Visit ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "SCREENING 1"^^xsd:string ;
-  rdfs:subClassOf custom:Visit ;
-  skos:definition ""^^xsd:string ;
-.
-custom:visit_10
-  rdf:type owl:Class ;
-  rdf:type custom:Visit ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "WEEK 20	"^^xsd:string ;
-  rdfs:subClassOf custom:Visit ;
-  skos:definition "	"^^xsd:string ;
-  skos:prefLabel "WEEK 20"^^xsd:string ;
-.
-custom:visit_11
-  rdf:type owl:Class ;
-  rdf:type custom:Visit ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "WEEK 24	"^^xsd:string ;
-  rdfs:subClassOf custom:Visit ;
-  skos:definition "	"^^xsd:string ;
-  skos:prefLabel "WEEK 24"^^xsd:string ;
-.
-custom:visit_12
-  rdf:type owl:Class ;
-  rdf:type custom:Visit ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "WEEK 26"^^xsd:string ;
-  rdfs:subClassOf custom:Visit ;
-  skos:definition "	"^^xsd:string ;
-  skos:prefLabel "WEEK 26"^^xsd:string ;
-.
-custom:visit_13
+custom:VisitAmbulECGPlace
   rdf:type owl:Class ;
   rdf:type custom:Visit ;
   rdfs:comment ""^^xsd:string ;
@@ -372,7 +337,7 @@ custom:visit_13
   skos:definition ""^^xsd:string ;
   skos:prefLabel "AMBUL ECG PLACEMENT"^^xsd:string ;
 .
-custom:visit_14
+custom:VisitAmbulECGRemove
   rdf:type owl:Class ;
   rdf:type custom:Visit ;
   rdfs:comment ""^^xsd:string ;
@@ -381,7 +346,15 @@ custom:visit_14
   skos:definition ""^^xsd:string ;
   skos:prefLabel "AMBUL ECG REMOVAL"^^xsd:string ;
 .
-custom:visit_15
+custom:VisitBaseline
+  rdf:type owl:Class ;
+  rdf:type custom:Visit ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "BASELINE"^^xsd:string ;
+  rdfs:subClassOf custom:Visit ;
+  skos:definition ""^^xsd:string ;
+.
+custom:VisitRetrieval
   rdf:type owl:Class ;
   rdf:type custom:Visit ;
   rdfs:comment ""^^xsd:string ;
@@ -390,7 +363,15 @@ custom:visit_15
   skos:definition ""^^xsd:string ;
   skos:prefLabel "RETRIEVAL"^^xsd:string ;
 .
-custom:visit_2
+custom:VisitScreening1
+  rdf:type owl:Class ;
+  rdf:type custom:Visit ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "SCREENING 1"^^xsd:string ;
+  rdfs:subClassOf custom:Visit ;
+  skos:definition ""^^xsd:string ;
+.
+custom:VisitScreening2
   rdf:type owl:Class ;
   rdf:type custom:Visit ;
   rdfs:comment ""^^xsd:string ;
@@ -398,15 +379,7 @@ custom:visit_2
   rdfs:subClassOf custom:Visit ;
   skos:definition ""^^xsd:string ;
 .
-custom:visit_3
-  rdf:type owl:Class ;
-  rdf:type custom:Visit ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "BASELINE"^^xsd:string ;
-  rdfs:subClassOf custom:Visit ;
-  skos:definition ""^^xsd:string ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#visit_3.1>
+custom:VisitUnscheduled31
   rdf:type owl:Class ;
   rdf:type custom:Visit ;
   rdfs:comment ""^^xsd:string ;
@@ -415,43 +388,7 @@ custom:visit_3
   skos:definition ""^^xsd:string ;
   skos:prefLabel "UNSCHEDULED 3.1"^^xsd:string ;
 .
-custom:visit_4
-  rdf:type owl:Class ;
-  rdf:type custom:Visit ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "WEEK 2	"^^xsd:string ;
-  rdfs:subClassOf custom:Visit ;
-  skos:definition "	"^^xsd:string ;
-  skos:prefLabel "WEEK 2"^^xsd:string ;
-.
-custom:visit_5
-  rdf:type owl:Class ;
-  rdf:type custom:Visit ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "WEEK 4	"^^xsd:string ;
-  rdfs:subClassOf custom:Visit ;
-  skos:definition "	"^^xsd:string ;
-  skos:prefLabel "WEEK 4"^^xsd:string ;
-.
-custom:visit_6
-  rdf:type owl:Class ;
-  rdf:type custom:Visit ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "WEEK 6	"^^xsd:string ;
-  rdfs:subClassOf custom:Visit ;
-  skos:definition "	"^^xsd:string ;
-  skos:prefLabel "WEEK 6"^^xsd:string ;
-.
-custom:visit_7
-  rdf:type owl:Class ;
-  rdf:type custom:Visit ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "WEEK 8	"^^xsd:string ;
-  rdfs:subClassOf custom:Visit ;
-  skos:definition "	"^^xsd:string ;
-  skos:prefLabel "WEEK 8"^^xsd:string ;
-.
-custom:visit_8
+custom:VisitWk12
   rdf:type owl:Class ;
   rdf:type custom:Visit ;
   rdfs:comment ""^^xsd:string ;
@@ -460,7 +397,7 @@ custom:visit_8
   skos:definition "	"^^xsd:string ;
   skos:prefLabel "WEEK 12"^^xsd:string ;
 .
-custom:visit_9
+custom:VisitWk16
   rdf:type owl:Class ;
   rdf:type custom:Visit ;
   rdfs:comment ""^^xsd:string ;
@@ -468,4 +405,67 @@ custom:visit_9
   rdfs:subClassOf custom:Visit ;
   skos:definition "	"^^xsd:string ;
   skos:prefLabel "WEEK 16"^^xsd:string ;
+.
+custom:VisitWk2
+  rdf:type owl:Class ;
+  rdf:type custom:Visit ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "WEEK 2	"^^xsd:string ;
+  rdfs:subClassOf custom:Visit ;
+  skos:definition "	"^^xsd:string ;
+  skos:prefLabel "WEEK 2"^^xsd:string ;
+.
+custom:VisitWk20
+  rdf:type owl:Class ;
+  rdf:type custom:Visit ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "WEEK 20	"^^xsd:string ;
+  rdfs:subClassOf custom:Visit ;
+  skos:definition "	"^^xsd:string ;
+  skos:prefLabel "WEEK 20"^^xsd:string ;
+.
+custom:VisitWk24
+  rdf:type owl:Class ;
+  rdf:type custom:Visit ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "WEEK 24	"^^xsd:string ;
+  rdfs:subClassOf custom:Visit ;
+  skos:definition "	"^^xsd:string ;
+  skos:prefLabel "WEEK 24"^^xsd:string ;
+.
+custom:VisitWk26
+  rdf:type owl:Class ;
+  rdf:type custom:Visit ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "WEEK 26"^^xsd:string ;
+  rdfs:subClassOf custom:Visit ;
+  skos:definition "	"^^xsd:string ;
+  skos:prefLabel "WEEK 26"^^xsd:string ;
+.
+custom:VisitWk4
+  rdf:type owl:Class ;
+  rdf:type custom:Visit ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "WEEK 4	"^^xsd:string ;
+  rdfs:subClassOf custom:Visit ;
+  skos:definition "	"^^xsd:string ;
+  skos:prefLabel "WEEK 4"^^xsd:string ;
+.
+custom:VisitWk6
+  rdf:type owl:Class ;
+  rdf:type custom:Visit ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "WEEK 6	"^^xsd:string ;
+  rdfs:subClassOf custom:Visit ;
+  skos:definition "	"^^xsd:string ;
+  skos:prefLabel "WEEK 6"^^xsd:string ;
+.
+custom:VisitWk8
+  rdf:type owl:Class ;
+  rdf:type custom:Visit ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "WEEK 8	"^^xsd:string ;
+  rdfs:subClassOf custom:Visit ;
+  skos:definition "	"^^xsd:string ;
+  skos:prefLabel "WEEK 8"^^xsd:string ;
 .
