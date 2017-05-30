@@ -26,29 +26,7 @@ vs$vsdtc_ymd = as.Date(vs$vsdtc, "%Y-%m-%d")
 vs <- vs[with(vs, order(usubjid, vstestcd, vsdtc_ymd)), ]
 # Add ID numbers within categories, excluding date (used for sorting, not for cat number)
 vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
-# Investigator ID hard coded. See also processDM.R
-vs$invid  <- '123'
-#---- vsloc  for DIABP, SYSBP all assigned as 'ARM' for development purposes.
-# Unfactorize the  column to allow entry of a bogus data
-vs$vsloc <- as.character(vs$vsloc)
-vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
 
-# More imputations for the first 3 records to match data created by AO : 2016-01-19
-vs$vsgrpid <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "GRPID1", "" )) 
-vs$vsscat <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "SCAT1", "" )) 
-# Assign 1st 3 obs as COMPLETE to match AO
-vs$vsstat <- as.character(vs$vsstat) # Unfactorize to all allow assignment 
-vs[1:3,grep("vsstat", colnames(vs))] <- "COMPLETE"
-# vsspid
-vs[vs$vsseq %in% c(1), "vsspid"]  <- "123"
-vs[vs$vsseq %in% c(2), "vsspid"]  <- "719"
-vs[vs$vsseq %in% c(3), "vsspid"]  <- "235"
-# vslat
-vs[vs$vsseq %in% c(1,3), "vslat"]  <- "RIGHT"
-vs[vs$vsseq %in% c(2), "vslat"]    <- "LEFT"
-vs[vs$vsseq %in% c(1), "vsblfl"]    <- "Y"
-vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "N", "" )) 
-vs$vsrftdtc <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "2013-12-16", "" )) 
 
 #-- End Data Creation ---------------------------------------------------------
 #-- Data Coding ---------------------------------------------------------------
@@ -308,7 +286,7 @@ vs<-vs[ , !(names(vs) %in% dropMe)]
 
 #---- visit_<VISITTYPE><n>_P<n>
 # Subset down to only the columns needed
-vsVisits <- vsWide[,c("personVisit_Frag", "visit_Frag", "personNum", "visit", "visitnum", "vsdtc_Frag", "vsstat_Frag")]
+vsVisits <- vsWide[,c("personVisit_Frag", "visit_Frag", "personNum", "visit", "visitnum", "vsdtc_Frag", "vsstat_Frag", "vsreasnd")]
 # remove duplicate rows
 vsVisits <-vsVisits[!duplicated(vsVisits), ]
 
@@ -511,7 +489,13 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
                 paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag)
             )
            #DBP_<n> is created per person, per row of DIABP data in vsWide 
-            # Level 2 DBP_(n)
+            #---- Level 2 DBP_(n)
+            #        bpoutcome_(n)
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                paste0(prefix.CODE,"hasOutcome" ),
+                paste0(prefix.CUSTOM, vsWide$vsorres_Frag)
+            )
             add.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
                 paste0(prefix.RDF,"type" ),
@@ -520,14 +504,8 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
             add.data.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
                 paste0(prefix.RDFS,"label" ),
-                paste0("P ", vsWide$personNum, " ", vsWide$DIABP_Frag)
+                paste0("P", vsWide$personNum, " ", gsub("_", " ", vsWide$DIABP_Frag))
             )
-            add.triple(cdiscpilot01,
-                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-                paste0(prefix.CODE,"hasOutcome" ),
-                paste0(prefix.CUSTOM, vsWide$vsorres_Frag)
-            )
-            #WIP 
             add.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
                 paste0(prefix.STUDY,"activityStatus" ),
@@ -540,6 +518,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
                 paste0(prefix.SDTMTERM, vsWide$vslocSDTMCode)
             )
             #baselineFlag
+#AOQUESTION: Possible data fabrication issue. email to AO 2017-05-26
             if (! as.character(vsWide$vsblfl) == "") {
                 add.data.triple(cdiscpilot01,
                    paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
@@ -570,38 +549,62 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
                    paste0(vsWide$vsgrpid), type="string"
                )
            }
-#         
-#          #TODO hasCategory custom:category_1
-#          add.triple(cdiscpilot01,
-#              paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-#              paste0(prefix.STUDY,"hasCategory" ),
-#              paste0(prefix.CUSTOM, "TO_BE_DEFINED_")
-#          )
-           
-           
+#AOQuestion. Category and Subcategory is hard coded. What is the source and fnt of this triple? CUSTOM: is not helpful.
+          add.triple(cdiscpilot01,
+              paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+              paste0(prefix.STUDY,"hasCategory" ),
+              paste0(prefix.CUSTOM, "category_1")
+          )
+          add.triple(cdiscpilot01,
+              paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+              paste0(prefix.STUDY,"hasSubcategory" ),
+              paste0(prefix.CUSTOM, "subcategory_1")
+          )
            add.triple(cdiscpilot01,
                paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
                paste0(prefix.STUDY,"hasPlannedDate" ),
                paste0(prefix.CDISCPILOT01, vsWide$vsdtc_Frag)
            )
-           #if (! is.na(vsWide$vslatSDTMCode)){
-           #    add.triple(cdiscpilot01,
-           #        paste0(prefix.CDISCPILOT01, vsWide$personVisit_Frag),
-           #        paste0(prefix.STUDY,"laterality" ),
-           #        paste0(prefix.SDTMTERM, vsWide$vslatSDTMCode)
-           #     )
-           #}
-           add.data.triple(cdiscpilot01,
-               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-               paste0(prefix.STUDY,"seq" ),
-               paste0(vsWide$vstestOrder), type="int"
-           )
-           add.data.triple(cdiscpilot01,
-               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
-               paste0(prefix.STUDY,"sponsordefinedID" ),
-               paste0(vsWide$invid), type="string"
-           )
+
+
+#AOQuestion: start rule is hard coded. How add from data??
+#TODO Must make conditional and dynamice for _1 suffix!
+          add.triple(cdiscpilot01,
+              paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+              paste0(prefix.STUDY,"hasStartRule" ),
+              paste0(prefix.CDISCPILOT01, "StartRuleLying5_1")
+          )
+#TODO: ADD coding of child triples for CDISCPILOT01:StartRuleLying5_1
+          if (! is.na(vsWide$vslatSDTMCode)){
+              add.triple(cdiscpilot01,
+                  paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                  paste0(prefix.STUDY,"laterality" ),
+                  paste0(prefix.SDTMTERM, vsWide$vslatSDTMCode)
+               )
+          }
+
+          
+          if (! is.na(vsWide$vsreasnd)){
+              add.data.triple(cdiscpilot01,
+                  paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+                  paste0(prefix.STUDY,"reasonNotDone" ),
+                  paste0(vsWide$vsreasnd), type="string"
+              )
+          }
+          add.data.triple(cdiscpilot01,
+              paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+              paste0(prefix.STUDY,"seq" ),
+              paste0(vsWide$vstestOrder), type="int"
+          )
+          add.data.triple(cdiscpilot01,
+              paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
+              paste0(prefix.STUDY,"sponsordefinedID" ),
+              paste0(vsWide$invid), type="string"
+          )
         }# end processing of DIABP     
+
+
+
     
 #TODO !!!!  MOVE THESE UNDER THE VISIT CREATION.
     

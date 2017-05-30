@@ -24,13 +24,6 @@
 #  - Consider new triples for incomplete dates (YYYY triple, MON  triple, etc.)
 #     for later implmentations
 ###############################################################################
-#-- Data Creation for prototype development -----------------------------------
-#---- Investigator name and ID not present in source data
-dm$invnam <- 'Jones'
-dm$invid  <- '123'
-dm$dthfl[dm$personNum == 1 ] <- "Y" # Set a Death flag  for Person_1
-#-- End Data Creation ---------------------------------------------------------
-
 #-- Data Coding ---------------------------------------------------------------
 #-- CODED values 
 #TODO: DELETE THESE toupper() statements. No longer used?  2017-01-18 TW ?
@@ -107,7 +100,10 @@ dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="c
 #   Create custom terminlogy list for arm_1, arm_2 etc.
 #TODO: Change this to a melt() similar to processVS.R
 dm1 <- dm[,c("actarm", "actarmcd", "actarmcd_Frag")]
+
+# ERROR IN THE FOLLOWING
 dm1 <- rename(dm1, c("actarm"= "arm", "actarmcd" = "armcd", "actarmcd_Frag" = "armcd_Frag"))
+
 dm2 <- dm[,c("arm", "armcd", "armcd_Frag")]
 dmArms <- rbind(dm1,dm2)
 dmArms <- dmArms[!duplicated(dmArms), ]
