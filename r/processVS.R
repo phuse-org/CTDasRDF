@@ -402,7 +402,19 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
             # paste0(vsWide$vsseq), type="int" 
             paste0(vsWide$visitnum), type="int"     
         )
-#TODO: Condense the STANDING/SUPINE triple creation into a function with values STANDING/SUPINE...
+
+       
+        #Activity Status CO/activitystatus_1 ; ND/activitystatus_2 is attached to the 
+        if (! is.na(vsWide$vsstat_Frag)){
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01,"AssumeBodyPositionStanding_", vsWide$personNum), 
+                paste0(prefix.STUDY,"activityStatus" ),
+                paste0(prefix.CODE, vsWide$vsstat_Frag)
+            )
+        }
+
+       
+       #TODO: Condense the STANDING/SUPINE triple creation into a function with values STANDING/SUPINE...
 
        # Next triple should cover addition of Objects like AssumeBodyPositionStanding_(n) discpilot01:AssumeBodyPositionSupine_(n)
        if( vsWide$vspos =="STANDING"){
@@ -427,14 +439,6 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
                    paste0(prefix.CODE,"hasOutcome" ),
                    paste0(prefix.SDTMTERM, vsWide$posSDTMCode)
                )
-#CONFIRM: Correct status fragment used?
-               if (! is.na(vsWide$vsstat_Frag)){
-                   add.triple(cdiscpilot01,
-                       paste0(prefix.CDISCPILOT01,"AssumeBodyPositionStanding_", vsWide$personNum), 
-                       paste0(prefix.STUDY,"activityStatus" ),
-                       paste0(prefix.CODE, vsWide$vsstat_Frag)
-                   )
-               }
 #CONFIRM: DATE_19 triple need an assignDate call here to assign type to that date URI?
                add.triple(cdiscpilot01,
                    paste0(prefix.CDISCPILOT01,"AssumeBodyPositionStanding_", vsWide$personNum), 
