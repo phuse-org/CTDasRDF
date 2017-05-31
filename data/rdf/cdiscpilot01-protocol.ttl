@@ -16,6 +16,33 @@
   owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
+cd01p:ArmPlacebo
+  rdf:type study:Arm ;
+  rdf:type study:RandomizationOutcome ;
+  rdfs:label "Pbo" ;
+  skos:altLabel "Pbo"^^xsd:string ;
+  skos:prefLabel "Placebo"^^xsd:string ;
+.
+cd01p:ArmScreenFailure
+  rdf:type study:Arm ;
+  rdfs:label "Scrnfail" ;
+  skos:altLabel "Scrnfail"^^xsd:string ;
+  skos:prefLabel "Screen Failure"^^xsd:string ;
+.
+cd01p:ArmXanomelineHigh
+  rdf:type study:Arm ;
+  rdf:type study:RandomizationOutcome ;
+  rdfs:label "Xan_Hi" ;
+  skos:altLabel "Xan_Hi"^^xsd:string ;
+  skos:prefLabel "Xanomeline High"^^xsd:string ;
+.
+cd01p:ArmXanomelineLow
+  rdf:type study:Arm ;
+  rdf:type study:RandomizationOutcome ;
+  rdfs:label "Xan_Lo"^^xsd:string ;
+  skos:altLabel "Xan_Lo"^^xsd:string ;
+  skos:prefLabel "Xanomeline Low"^^xsd:string ;
+.
 cd01p:Study_CDISCPILOT01
   rdf:type study:Study ;
   skos:altLabel ""^^xsd:string ;
@@ -56,18 +83,6 @@ cd01p:Study_CDISCPILOT01
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ActiveSubstance_1>
   rdf:type study:InvestigationalSubstance ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ArmPlacebo>
-  rdfs:subClassOf study:Arm ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ArmScreenFailure>
-  rdfs:subClassOf study:Arm ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ArmXanomelineHigh>
-  rdfs:subClassOf study:Arm ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ArmXanomelineLow>
-  rdfs:subClassOf study:Arm ;
 .
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#PlaceboProduct_1>
   rdf:type study:PlaceboProduct ;
@@ -135,6 +150,21 @@ cd01p:Study_CDISCPILOT01
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk8>
   rdfs:subClassOf study:Visit ;
 .
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25206>
+  rdfs:subClassOf study:VitalSign ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25208>
+  rdfs:subClassOf study:VitalSign ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25298>
+  rdfs:subClassOf study:VitalSign ;
+.
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299>
+  rdfs:subClassOf study:VitalSign ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25347>
+  rdfs:subClassOf study:VitalSign ;
+.
+<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C49676>
   rdfs:subClassOf study:VitalSign ;
 .

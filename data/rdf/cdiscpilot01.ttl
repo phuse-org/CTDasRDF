@@ -31,6 +31,27 @@
   owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
+cdiscpilot01:AgeOutcome_1
+  rdf:type study:AgeOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "63 YEARS"^^xsd:string ;
+  code:hasUnit time:unitYear ;
+  code:hasValue 63 ;
+.
+cdiscpilot01:AgeOutcome_2
+  rdf:type study:AgeOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "64 YEARS"^^xsd:string ;
+  code:hasUnit time:unitYear ;
+  code:hasValue 64 ;
+.
+cdiscpilot01:AgeOutcome_3
+  rdf:type study:AgeOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "71 YEARS"^^xsd:string ;
+  code:hasUnit time:unitYear ;
+  code:hasValue 71 ;
+.
 cdiscpilot01:AssumeBodyPositionStanding_1
   rdf:type code:AssumeBodyPositionStanding ;
   rdfs:comment ""^^xsd:string ;
@@ -49,12 +70,33 @@ cdiscpilot01:AssumeBodyPositionSupine_1
   study:activityStatus code:ActivityStatus_1 ;
   study:hasDate cdiscpilot01:Date_19 ;
 .
+cdiscpilot01:BloodPressureOutcome_1
+  rdf:type study:BloodPressureOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Blood pressure outcome 1"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 64 ;
+.
+cdiscpilot01:BloodPressureOutcome_2
+  rdf:type study:BloodPressureOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Blood pressure outcome 2"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 83 ;
+.
+cdiscpilot01:BloodPressureOutcome_3
+  rdf:type study:BloodPressureOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Blood pressure outcome 3"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 57 ;
+.
 <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_1>
   rdf:type <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 DBP 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome custom:BloodPressureOutcome_1 ;
+  code:hasOutcome cdiscpilot01:BloodPressureOutcome_1 ;
   study:activityStatus code:ActivityStatus_1 ;
   study:anatomicLocation <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141> ;
   study:baselineFlag "Y"^^xsd:string ;
@@ -75,7 +117,7 @@ cdiscpilot01:AssumeBodyPositionSupine_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 DBP 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome custom:BloodPressureOutcome_2 ;
+  code:hasOutcome cdiscpilot01:BloodPressureOutcome_2 ;
   study:anatomicLocation <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141> ;
   study:bodyPosition <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
@@ -85,7 +127,6 @@ cdiscpilot01:AssumeBodyPositionSupine_1
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
   study:hasSubcategory custom:Subcategory_1 ;
   study:laterality <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99073.C25229> ;
-  study:plannedReferenceTimePoint code:timepoint-PT_STANDING ;
   study:seq "2"^^xsd:float ;
   study:sponsordefinedID "719"^^xsd:string ;
 .
@@ -94,7 +135,7 @@ cdiscpilot01:AssumeBodyPositionSupine_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 DBP 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome custom:BloodPressureOutcome_3 ;
+  code:hasOutcome cdiscpilot01:BloodPressureOutcome_3 ;
   study:anatomicLocation <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74456.C32141> ;
   study:bodyPosition <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
@@ -104,7 +145,6 @@ cdiscpilot01:AssumeBodyPositionSupine_1
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
   study:hasSubcategory custom:Subcategory_1 ;
   study:laterality <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C99073.C25228> ;
-  study:plannedReferenceTimePoint code:timepoint-PT_STANDING ;
   study:seq "3"^^xsd:float ;
 .
 cdiscpilot01:Date_10
@@ -237,7 +277,7 @@ cdiscpilot01:DemographicDataCollection_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Demographic data collection 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasAge custom:AgeOutcome_1 ;
+  code:hasAge cdiscpilot01:AgeOutcome_1 ;
   code:hasEthnicity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17459> ;
   code:hasRace <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
   code:hasSex <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576> ;
@@ -248,7 +288,7 @@ cdiscpilot01:DemographicDataCollection_2
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Demographic data collection 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasAge custom:AgeOutcome_2 ;
+  code:hasAge cdiscpilot01:AgeOutcome_2 ;
   code:hasEthnicity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C17459> ;
   code:hasRace <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
   code:hasSex <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197> ;
@@ -259,7 +299,7 @@ cdiscpilot01:DemographicDataCollection_3
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Demographic data collection 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasAge custom:AgeOutcome_3 ;
+  code:hasAge cdiscpilot01:AgeOutcome_3 ;
   code:hasEthnicity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66790.C41222> ;
   code:hasRace <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C74457.C41261> ;
   code:hasSex <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197> ;
@@ -345,8 +385,7 @@ cdiscpilot01:Person_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Person 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:actualArm custom:ArmPlacebo ;
-  study:allocatedToArm custom:ArmPlacebo ;
+  study:actualArm <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p#ArmPlacebo> ;
   study:deathFlag "Y"^^xsd:string ;
   study:hasLifespan cdiscpilot01:Lifespan_1 ;
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_1 ;
@@ -371,8 +410,7 @@ cdiscpilot01:Person_2
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Person 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:actualArm custom:ArmPlacebo ;
-  study:allocatedToArm custom:ArmPlacebo ;
+  study:actualArm <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p#ArmPlacebo> ;
   study:hasLifespan cdiscpilot01:Lifespan_2 ;
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_2 ;
   study:hasSite cdiscpilot01:Site_1 ;
@@ -389,8 +427,7 @@ cdiscpilot01:Person_3
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Person 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:actualArm custom:ArmXanomelineHigh ;
-  study:allocatedToArm custom:ArmXanomelineHigh ;
+  study:actualArm <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p#ArmXanomelineHigh> ;
   study:hasLifespan cdiscpilot01:Lifespan_3 ;
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_3 ;
   study:hasSite cdiscpilot01:Site_1 ;
@@ -500,21 +537,21 @@ cdiscpilot01:RandomizationBAL3_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome custom:ArmPlacebo ;
+  code:hasOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p#ArmPlacebo> ;
 .
 cdiscpilot01:RandomizationBAL3_2
   rdf:type code:RandomizationBAL3 ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome custom:ArmPlacebo ;
+  code:hasOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p#ArmPlacebo> ;
 .
 cdiscpilot01:RandomizationBAL3_3
   rdf:type code:RandomizationBAL3 ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  code:hasOutcome custom:ArmXanomelineHigh ;
+  code:hasOutcome <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p#ArmXanomelineHigh> ;
 .
 cdiscpilot01:ReferenceInterval_1
   rdf:type study:ReferenceInterval ;
@@ -733,7 +770,6 @@ cdiscpilot01:VisitScreening1_1
   study:hasSubActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_1> ;
   study:hasSubActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_2> ;
   study:hasSubActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_3> ;
-  study:seq "1"^^xsd:float ;
 .
 code:StartRuleLying5
   rdfs:subClassOf code:StartRule ;

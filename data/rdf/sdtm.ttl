@@ -828,7 +828,7 @@ sdtm:SDTM_DM_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#RandomizationOutcome> ;
+            sp:object study:RandomizationOutcome ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "plannedarm"^^xsd:string ;
