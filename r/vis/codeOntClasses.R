@@ -4,14 +4,16 @@
 # SRC : code.ttl - file created by AO
 # IN  : 
 # OUT : 
-# REQ : code.ttl uploaded to local Virtuoso Endpoint
+# REQ : code.ttl, customterminology.TTL uploaded to local Virtuoso Endpoint graph 'CTDasRDF'
 # SRC :  
 # NOTE: THe first filter selects only direct subclasses as desdribed here:
 #        https://stackoverflow.com/questions/23699246/how-to-query-for-all-direct-subclasses-in-sparql
+#       ?Relation is needed for the Melt
 # TODO: 
 ###############################################################################
 library(rrdf)
 library(plyr)
+library(dplyr)
 setwd("C:/_github/SDTMasRDF/data/rdf")
 # codeData = load.rdf("code.TTL", format="N3")
 endpoint = "http://localhost:8890/sparql"
@@ -25,27 +27,34 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sdtm-terminology: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#> 
 PREFIX time: <http://www.w3.org/2006/time#> 
 PREFIX time: <http://www.w3.org/2006/time#> 
-SELECT ?parent ?relation ?child
-FROM <http://localhost:8890/CODE>
+SELECT ?Parent ?Child ?Relation
+FROM <http://localhost:8890/CTDasRDF>
 WHERE
  {
-    ?child rdfs:subClassOf ?parent
-   FILTER(REGEX(STR(?parent), "code"))  
-   FILTER(!(REGEX(STR(?parent), "spin")))
-
-    BIND ("hasChild" AS ?relation)
+    ?Child rdfs:subClassOf ?Parent
+   # FILTER(REGEX(STR(?Parent), "code"))  
+   FILTER(!(REGEX(STR(?Parent), "spin")))
+   BIND ("hasChild" AS ?Relation)
 }
-ORDER BY ?parent
-
+ORDER BY ?Parent
 '
-classes = sparql.remote(endpoint, query)
+classes = data.frame(sparql.remote(endpoint, query))
+
+tree <- FromDataFrameNetwork(classes)
+df <- ToDataFrameTypeCol(tree)
+df <- data.frame(df)
+
+# need to now remove those unnecessary "."s
+collapsibleTree(df, colnames(df)[2:5])
 
 
+
+#DEL DELETE BELOW HERE
 #---- Nodes Construction
 # Unique list of nodes by combine Subject and Object into a single column
 #   "id.vars" is the list of columns to keep untouched. The unamed ones (parent,child)  
 #   melt into the "value" column.
-nodeList <- melt(classes, id.vars=c("relation" ))
+nodeList <- melt(classes, id.vars=c("Relation" ))
 
 # A node can be both Subject and Object. Ensure a unique list of node names
 #   by dropping duplicate values.
@@ -63,7 +72,7 @@ nodes<- as.data.frame(nodeList[c("id")])
 
 #---- Edges
 # Create list of edges by keeping the Subject and Predicate from query result.
-edges<-rename(classes, c("parent" = "from", "child" = "to"))
+# edges<-rename(classes, c("parent" = "from", "child" = "to"))
 
 # Not implemented....
 # Edge values
