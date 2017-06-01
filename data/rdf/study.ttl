@@ -290,7 +290,6 @@ study:ActivityOutcome
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Activity outcome"^^xsd:string ;
   rdfs:subClassOf study:Entity ;
-  owl:equivalentClass code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
 study:AdministrativeActivity
@@ -300,6 +299,12 @@ study:AdministrativeActivity
   rdfs:subClassOf study:Activity ;
   skos:definition ""^^xsd:string ;
 .
+study:AdministrativeActivityOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Administrative activity outcome"^^xsd:string ;
+.
 study:AdverseEvent
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -307,12 +312,24 @@ study:AdverseEvent
   rdfs:subClassOf study:MedicalCondition ;
   skos:definition "An adverse Medical Condition that emerges or worsens following a Medical Intervention. Note: there is no presumption of causality."^^xsd:string ;
 .
+study:AgeOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ObservationOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Age"^^xsd:string ;
+.
 study:Allocation
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Allocation"^^xsd:string ;
   rdfs:subClassOf study:AdministrativeActivity ;
   skos:definition ""^^xsd:string ;
+.
+study:AllocationOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:AdministrativeActivityOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Allocation outcome"^^xsd:string ;
 .
 study:Analysis
   rdf:type owl:Class ;
@@ -385,6 +402,12 @@ study:BlankCaseReportForm
   rdfs:subClassOf study:CaseReportForm ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Blank case report form"^^xsd:string ;
+.
+study:BloodPressureOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ObservationOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Blood pressure outcome"^^xsd:string ;
 .
 study:CaseReportForm
   rdf:type owl:Class ;
@@ -534,6 +557,12 @@ study:InformedConsentInterval
   rdfs:subClassOf study:ActivityInterval ;
   skos:definition ""^^xsd:string ;
 .
+study:InformedConsentOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:AdministrativeActivityOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Informed consent outcome"^^xsd:string ;
+.
 study:Intervention
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -547,6 +576,12 @@ study:InterventionDate
   rdfs:label "Intervention date"^^xsd:string ;
   rdfs:subClassOf study:Date ;
   skos:definition ""^^xsd:string ;
+.
+study:InterventionOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Intervention outcome"^^xsd:string ;
 .
 study:InvestigationalProduct
   rdf:type owl:Class ;
@@ -604,6 +639,12 @@ study:ObservationEndDate
   rdfs:label "Observation end date"^^xsd:string ;
   rdfs:subClassOf study:ActivityEnd ;
   skos:definition ""^^xsd:string ;
+.
+study:ObservationOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:InterventionOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Observation outcome"^^xsd:string ;
 .
 study:Organization
   rdf:type owl:Class ;
@@ -698,6 +739,12 @@ study:Randomization
   rdfs:label "Randomization"^^xsd:string ;
   rdfs:subClassOf study:Allocation ;
   skos:definition ""^^xsd:string ;
+.
+study:RandomizationOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:AllocationOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Randomization outcome"^^xsd:string ;
 .
 study:ReferenceBegin
   rdf:type owl:Class ;
@@ -845,8 +892,8 @@ study:actualArm
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:EnrolledSubject ;
-  rdfs:label "treated according to"^^xsd:string ;
-  rdfs:range code:Arm ;
+  rdfs:label "actual arm"^^xsd:string ;
+  rdfs:range study:Arm ;
   skos:definition ""^^xsd:string ;
 .
 study:agecalc
