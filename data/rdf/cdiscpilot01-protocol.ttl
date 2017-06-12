@@ -1,19 +1,30 @@
-# baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p
+# baseURI: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study
 
-@prefix cd01p: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p#> .
+@prefix cd01p: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p#> .
+@prefix code: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
+@prefix study: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 cd01p:ArmPlacebo
@@ -22,12 +33,14 @@ cd01p:ArmPlacebo
   rdfs:label "Pbo" ;
   skos:altLabel "Pbo"^^xsd:string ;
   skos:prefLabel "Placebo"^^xsd:string ;
+  study:hasCode study:Arm ;
 .
 cd01p:ArmScreenFailure
   rdf:type study:Arm ;
   rdfs:label "Scrnfail" ;
   skos:altLabel "Scrnfail"^^xsd:string ;
   skos:prefLabel "Screen Failure"^^xsd:string ;
+  study:hasCode study:Arm ;
 .
 cd01p:ArmXanomelineHigh
   rdf:type study:Arm ;
@@ -35,6 +48,7 @@ cd01p:ArmXanomelineHigh
   rdfs:label "Xan_Hi" ;
   skos:altLabel "Xan_Hi"^^xsd:string ;
   skos:prefLabel "Xanomeline High"^^xsd:string ;
+  study:hasCode study:Arm ;
 .
 cd01p:ArmXanomelineLow
   rdf:type study:Arm ;
@@ -42,129 +56,229 @@ cd01p:ArmXanomelineLow
   rdfs:label "Xan_Lo"^^xsd:string ;
   skos:altLabel "Xan_Lo"^^xsd:string ;
   skos:prefLabel "Xanomeline Low"^^xsd:string ;
+  study:hasCode study:Arm ;
 .
-cd01p:Study_CDISCPILOT01
+cd01p:Category_1
+  rdf:type study:Category ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "CAT1"^^xsd:string ;
+.
+cd01p:InvestigationalProduct_1
+  rdf:type study:InvestigationalProduct ;
+  rdfs:label "XANOMELINE LO" ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Investigational product 1"^^xsd:string ;
+  code:hasIngredient cd01p:InvestigationalSubstance_1 ;
+.
+cd01p:InvestigationalProduct_2
+  rdf:type study:InvestigationalProduct ;
+  rdfs:label "XANOMELINE HI" ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Investigational product 2"^^xsd:string ;
+  code:hasIngredient cd01p:InvestigationalSubstance_1 ;
+.
+cd01p:InvestigationalSubstance_1
+  rdf:type study:InvestigationalSubstance ;
+  rdfs:label "XANOMELINE" ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Investigational substance 1"^^xsd:string ;
+.
+cd01p:PlaceboProduct_1
+  rdf:type study:PlaceboProduct ;
+  rdfs:label "XANOMELINE PLACEBO" ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Placebo product 1"^^xsd:string ;
+.
+cd01p:PopulationFlagC16Wk
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:PopulationFlag ;
+  skos:altLabel "Completers of Week 16 Population Flag"^^xsd:string ;
+  skos:prefLabel "COMPLT16"^^xsd:string ;
+  code:hasMethod code:ActivityMethod_2 ;
+.
+cd01p:PopulationFlagC24Wk
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:PopulationFlag ;
+  skos:altLabel "Completers of Week 24 Population Flag"^^xsd:string ;
+  skos:prefLabel "COMPLT24"^^xsd:string ;
+  code:hasMethod code:ActivityMethod_2 ;
+.
+cd01p:PopulationFlagC8Wk
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:PopulationFlag ;
+  skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
+  skos:prefLabel "COMPLT8"^^xsd:string ;
+  code:hasMethod code:ActivityMethod_2 ;
+.
+cd01p:Study_1
   rdf:type study:Study ;
+  rdfs:label "CDISCPILOT01" ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Study CDISCPILOT01"^^xsd:string ;
+  study:hasCode study:Study ;
+  study:hasStudyID "CDISCPILOT01"^^xsd:string ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#AssumeBodyPositionStanding>
+cd01p:Subcategory_1
+  rdf:type study:Subcategory ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "SCAT1"^^xsd:string ;
+.
+cd01p:VisitAmbulECGPlace
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "AMBUL ECG PLACE"^^xsd:string ;
+.
+cd01p:VisitAmbulECGRemove
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "AMBUL ECG REMOVAL"^^xsd:string ;
+.
+cd01p:VisitBaseline
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "BASELINE"^^xsd:string ;
+.
+cd01p:VisitRetrieval
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "RETRIEVAL"^^xsd:string ;
+.
+cd01p:VisitScreening1
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "SCREENING 1"^^xsd:string ;
+.
+cd01p:VisitScreening2
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "SCREENING 2"^^xsd:string ;
+.
+cd01p:VisitUnscheduled31
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "UNSCHEDULED 3.1"^^xsd:string ;
+.
+cd01p:VisitWk12
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 12"^^xsd:string ;
+.
+cd01p:VisitWk16
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 16"^^xsd:string ;
+.
+cd01p:VisitWk2
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 2"^^xsd:string ;
+.
+cd01p:VisitWk20
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 20"^^xsd:string ;
+.
+cd01p:VisitWk24
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 24"^^xsd:string ;
+.
+cd01p:VisitWk26
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 26"^^xsd:string ;
+.
+cd01p:VisitWk4
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 4"^^xsd:string ;
+.
+cd01p:VisitWk6
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 6"^^xsd:string ;
+.
+cd01p:VisitWk8
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 8"^^xsd:string ;
+.
+code:AssumeBodyPositionStanding
   rdfs:subClassOf study:AssumeBodyPosition ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#AssumeBodyPositionSupine>
+code:AssumeBodyPositionSupine
   rdfs:subClassOf study:AssumeBodyPosition ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DemographicDataCollection>
+code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InformedConsentAdult>
+code:InformedConsentAdult
   rdfs:subClassOf study:InformedConsent ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#PopulationFlagEFF>
+code:PopulationFlagEFF
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#PopulationFlagITT>
+code:PopulationFlagITT
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#PopulationFlagSAF>
+code:PopulationFlagSAF
   rdfs:subClassOf study:PopulationFlag ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#RandomizationBAL3>
+code:RandomizationBAL3
   rdfs:subClassOf study:Randomization ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRuleLying5>
+code:StartRuleLying5
   rdfs:subClassOf study:StartRule ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRuleStanding1>
+code:StartRuleStanding1
   rdfs:subClassOf study:StartRule ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#StartRuleStanding3>
+code:StartRuleStanding3
   rdfs:subClassOf study:StartRule ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#ActiveSubstance_1>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#ActiveSubstance_1>
   rdf:type study:InvestigationalSubstance ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#PlaceboProduct_1>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PlaceboProduct_1>
   rdf:type study:PlaceboProduct ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#PopulationFlagC16Wk>
-  rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#PopulationFlagC24Wk>
-  rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#PopulationFlagC8Wk>
-  rdfs:subClassOf study:PopulationFlag ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#Product_1>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#Product_1>
   rdf:type study:InvestigationalProduct ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#Product_2>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#Product_2>
   rdf:type study:InvestigationalProduct ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitAmbulECGPlace>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitAmbulECGRemove>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitBaseline>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitRetrieval>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitScreening1>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitScreening2>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitUnscheduled31>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk12>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk16>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk2>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk20>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk24>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk26>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk4>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk6>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#VisitWk8>
-  rdfs:subClassOf study:Visit ;
-.
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25206>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25206>
   rdfs:subClassOf study:VitalSign ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25208>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25208>
   rdfs:subClassOf study:VitalSign ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25298>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25298>
   rdfs:subClassOf study:VitalSign ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25299>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299>
   rdfs:subClassOf study:VitalSign ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C25347>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25347>
   rdfs:subClassOf study:VitalSign ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C67153.C49676>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676>
   rdfs:subClassOf study:VitalSign ;
 .

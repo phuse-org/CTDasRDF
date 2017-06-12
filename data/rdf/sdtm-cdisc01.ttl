@@ -1,33 +1,45 @@
-# baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-cdisc01
+# baseURI: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-cdisc01
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p
-# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01
-# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdtm: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#> .
-@prefix sdtm-cdisc01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-cdisc01#> .
+@prefix sdtm: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm#> .
+@prefix sdtm-cdisc01: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-cdisc01#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
-@prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
+@prefix study: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.w3.org/2006/time#unitYear>
   skos:prefLabel "YEAR"^^xsd:string ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-cdisc01>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-cdisc01>
   rdf:type owl:Ontology ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cd01p> ;
-  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01> ;
-  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 sdtm-cdisc01:DM_CDISCPILOT01
@@ -217,13 +229,13 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "plannedarm"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOutcome> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasPermissibleOutcome> ;
             sp:subject [
                 sp:varName "rndmact"^^xsd:string ;
               ] ;
           ]
           [
-            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#RandomizationOutcome> ;
+            sp:object <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#RandomizationOutcome> ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "plannedarm"^^xsd:string ;
@@ -361,7 +373,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
               ] ;
           ]
           [
-            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#DemographicDataCollection> ;
+            sp:object <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#DemographicDataCollection> ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
@@ -411,7 +423,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasAge> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasAge> ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
               ] ;
@@ -420,7 +432,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "AGE"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasValue> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasValue> ;
             sp:subject [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
@@ -429,7 +441,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "ageunit"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasUnit> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasUnit> ;
             sp:subject [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
@@ -447,7 +459,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "ethn"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasEthnicity> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasEthnicity> ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
               ] ;
@@ -456,7 +468,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "ETHNIC"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
             sp:subject [
                 sp:varName "ethn"^^xsd:string ;
               ] ;
@@ -465,7 +477,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "race"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasRace> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasRace> ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
               ] ;
@@ -474,7 +486,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "RACE"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
             sp:subject [
                 sp:varName "race"^^xsd:string ;
               ] ;
@@ -483,7 +495,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "sex"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasSex> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasSex> ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
               ] ;
@@ -492,7 +504,7 @@ sdtm-cdisc01:DM_CDISCPILOT01
             sp:object [
                 sp:varName "SEX"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema#cdiscSubmissionValue> ;
             sp:subject [
                 sp:varName "sex"^^xsd:string ;
               ] ;
@@ -568,8 +580,8 @@ sdtm-cdisc01:DM_CDISCPILOT01
               ] ;
           ]
           [
-            sp:object <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#InformedConsentOutcome_1> ;
-            sp:predicate <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#hasOutcome> ;
+            sp:object <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#InformedConsentOutcome_1> ;
+            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasPermissibleOutcome> ;
             sp:subject [
                 sp:varName "informedconsent"^^xsd:string ;
               ] ;
@@ -721,100 +733,100 @@ sdtm-cdisc01:SDTM_DM_Record_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM DM Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_DM_Record_2
   rdf:type sdtm:SDTM_DM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM DM Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_2> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_2> ;
 .
 sdtm-cdisc01:SDTM_DM_Record_3
   rdf:type sdtm:SDTM_DM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM DM Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_3> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_3> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_1
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagC16WK_1> ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#PopulationFlagC16WK_1> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_2
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagC24WK_1> ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#PopulationFlagC24WK_1> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_3
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagC8WK_1> ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#PopulationFlagC8WK_1> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_4
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 4"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagEFF_1> ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#PopulationFlagEFF_1> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_5
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 5"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagITT_1> ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#PopulationFlagITT_1> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_6
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 6"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#PopulationFlagSAF_1> ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#PopulationFlagSAF_1> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_1
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM VS Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_1> ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_1> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_2
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM VS Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_2> ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_2> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_3
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM VS Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#C67153.C25299_3> ;
-  sdtm:hasEntity <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#Person_1> ;
+  sdtm:hasActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_3> ;
+  sdtm:hasEntity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#Person_1> ;
 .
 sdtm-cdisc01:SUPPDM_CDISCPILOT01
   rdf:type sdtm:SUPPDM_Domain ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SUPPDM CDISCPILOT01"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasCode <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#Dataset.SUPPDM> ;
+  sdtm:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm#Dataset.SUPPDM> ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_1 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_2 ;
   sdtm:hasRecord sdtm-cdisc01:SDTM_SUPPDM_Record_3 ;

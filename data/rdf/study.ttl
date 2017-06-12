@@ -1,22 +1,26 @@
-# baseURI: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study
+# baseURI: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms
+# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology
 
 @prefix BRIDG_4.1.1.owl: <file:/Users/Frederik/Downloads/BRIDG_4.1.1.owl.xml> .
 @prefix arg: <http://spinrdf.org/arg#> .
-@prefix code: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#> .
+@prefix code: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#> .
-@prefix sdtmterm: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#> .
+@prefix schema: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema#> .
+@prefix sdtmterm: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
-@prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#> .
+@prefix study: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -50,10 +54,10 @@ arg:refdate
 .
 owl:hasValue
   owl:oneOf (
-      <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
-      <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
-      <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
-      <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
+      <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C20197>
+      <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C45908>
+      <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C16576>
+      <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C17998>
     ) ;
 .
 time:hasBeginning
@@ -68,24 +72,28 @@ code:Arm
 code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C16576>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C16576>
   rdfs:label "F"^^xsd:string ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C17998>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C17998>
   rdfs:label "U"^^xsd:string ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C20197>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C20197>
   rdfs:label "M"^^xsd:string ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#C66731.C45908>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C45908>
   rdfs:label "UNDIFFERENTIATED"^^xsd:string ;
 .
-<https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study>
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study>
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms> ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 study:ActiveProduct
@@ -205,7 +213,7 @@ study:Activity
             sp:object [
                 sp:varName "anchoroutcome"^^xsd:string ;
               ] ;
-            sp:predicate code:hasOutcome ;
+            sp:predicate code:hasPermissibleOutcome ;
             sp:subject [
                 sp:varName "anchor"^^xsd:string ;
               ] ;
@@ -414,6 +422,12 @@ study:CaseReportForm
   rdfs:subClassOf study:Document ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Case report form"^^xsd:string ;
+.
+study:Category
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Category"^^xsd:string ;
 .
 study:ClinicalIntervention
   rdf:type owl:Class ;
@@ -853,6 +867,12 @@ study:StudyParticipationInterval
   rdfs:subClassOf time:Interval ;
   skos:definition ""^^xsd:string ;
 .
+study:Subcategory
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Subcategory"^^xsd:string ;
+.
 study:Substance
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
@@ -1152,6 +1172,14 @@ study:engagesIn
   rdfs:range study:Activity ;
   skos:definition "relates an Party with  an Activity with which the Entity is involved, either actively or passively"^^xsd:string ;
 .
+study:ethnicity
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:range code:Ethnicity ;
+  rdfs:subPropertyOf study:outcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "ethnicity"^^xsd:string ;
+.
 study:groupID
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1185,6 +1213,11 @@ study:hasCategory
   rdfs:range code:Category ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
+.
+study:hasCode
+  rdf:type owl:ObjectProperty ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has code"^^xsd:string ;
 .
 study:hasCountry
   rdf:type owl:FunctionalProperty ;
@@ -1256,11 +1289,7 @@ study:hasLifespan
 study:hasMethod
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Activity ;
   rdfs:label "has method"^^xsd:string ;
-  rdfs:range code:ActivityMethod ;
-  rdfs:subPropertyOf study:hasIdentifier ;
-  skos:definition "links an activity with the method used to condct the activity, i.e. how the activity outcome/result was obtained. "^^xsd:string ;
 .
 study:hasPerformer
   rdf:type owl:ObjectProperty ;
@@ -1433,6 +1462,11 @@ study:laterality
   rdfs:range code:Laterality ;
   skos:definition ""^^xsd:string ;
 .
+study:outcome
+  rdf:type rdf:Property ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has outcome"^^xsd:string ;
+.
 study:participatesIn
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1465,6 +1499,14 @@ study:performsActivity
   owl:inverseOf study:hasPerformer ;
   skos:definition "relates an Entity with an Activity that the Entity engages actively. "^^xsd:string ;
 .
+study:race
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:range code:Race ;
+  rdfs:subPropertyOf study:outcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "race"^^xsd:string ;
+.
 study:reasonNotDone
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1479,6 +1521,14 @@ study:seq
   rdfs:label "seq"^^xsd:string ;
   rdfs:range xsd:float ;
   skos:definition "relates a resource to a sequence number used for sorting similar resources"^^xsd:string ;
+.
+study:sex
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DemographicDataCollection ;
+  rdfs:range code:Sex ;
+  rdfs:subPropertyOf study:outcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "sex"^^xsd:string ;
 .
 study:sponsordefinedID
   rdf:type owl:DatatypeProperty ;
