@@ -18,7 +18,7 @@ library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!
 library(reshape) #  melt
 library(rrdf)
 library(shiny)
-setwd("C:/_gitHub/SDTMasRDF/data/rdf")
+setwd("C:/_gitHub/CTDasRDF/data/rdf")
 server <- function(input, output) {
     output$contents <- renderTable({ 
         inFileR <<- input$fileR
