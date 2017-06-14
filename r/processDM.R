@@ -316,17 +316,17 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"hasUniqueSubjectID" ),
         paste0(dm$usubjid), type="string"
     )
-    # Arm 
-    add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, person),
-        paste0(prefix.STUDY,"allocatedToArm" ),
-        paste0(prefix.CUSTOM, dm$armcd_Frag) 
-    )
+    #DEL moved to randomization
+    #add.triple(cdiscpilot01,
+    #    paste0(prefix.CDISCPILOT01, person),
+    #    paste0(prefix.STUDY,"allocatedToArm" ),
+    #    paste0(prefix.CUSTOM, dm$armcd_Frag) 
+    #)
     # Treated Arm
     add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"actualArm"),
-        paste0(prefix.CUSTOM, dm$actarmcd_Frag) 
+        paste0(prefix.CD01P, dm$actarmcd_Frag) 
     )
     # Death flag
     add.data.triple(cdiscpilot01,
@@ -646,7 +646,7 @@ ddply(dm, .(subjid), function(dm)
     add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.STUDY,"participatesIn" ),
-        paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum)
+        paste0(prefix.CDISCPILOT01, "RandomizationBAL3_", dm$personNum)
     )
         #Hard coding of RandomizationBAL3. Email from AO 05May17 for explanation
         add.triple(cdiscpilot01,

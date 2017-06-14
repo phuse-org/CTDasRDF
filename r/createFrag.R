@@ -1,8 +1,7 @@
 ###############################################################################
 # FILE: createFrag.R
-# DESC: Create URI fragments for Dates, Ages and other fields that are shared 
-#         in common between various resources. Eg: A date (DATE_1) may be both
-#         a study start date and a product administration date. 
+# DESC: Functions and the calls that create URI fragments for Dates, Ages and 
+#         other fields that are shared in common between various resources. 
 # REQ : 
 #       
 # SRC : 
@@ -13,6 +12,10 @@
 #       createFragOneDomain() - creates fragment from within a single domain, from
 #         one or more columns within that df
 #       Ages are all assumed to be in YEARS for this dataset. 
+#         Eg: A date (DATE_1) may be a birthdate(DM) and a product 
+#           administration date (VS) so dates from all domains are needed to first
+#           create the date fragment dictionary, then apply it to that specific
+#           domain using addDateFrag
 # TODO: (see individual functions for TODO list) 
 #
 ###############################################################################
@@ -164,3 +167,48 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
     }
      return(domainName)
 }
+
+#------------------------------------------------------------------------------
+#  Fragment Creation 
+#------------------------------------------------------------------------------
+
+# Create fragment dictionaries that cross domains
+dateDict<-createDateDict()    
+
+
+#-- DM fragment creation
+dm <- addDateFrag(dm, "rfstdtc")  
+dm <- addDateFrag(dm, "rfendtc")  
+dm <- addDateFrag(dm, "rfxstdtc")  
+dm <- addDateFrag(dm, "rfxendtc")  
+dm <- addDateFrag(dm, "rficdtc")  
+dm <- addDateFrag(dm, "rfpendtc")  
+dm <- addDateFrag(dm, "dthdtc")
+dm <- addDateFrag(dm, "dmdtc")  
+dm <- addDateFrag(dm, "brthdate") 
+
+dm <- createFragOneDomain(domainName=dm, processColumns="siteid", fragPrefix="Site" )
+dm <- createFragOneDomain(domainName=dm, processColumns="invid",  fragPrefix="Investigator" )
+dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
+dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
+dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="Country"  )
+
+#TODO: CHANGE! arm_Frag 
+dm$armcd_Frag <- sapply(dm$armcd,function(x) {
+    switch(as.character(x),
+        'Pbo'      = 'ArmPlacebo',
+        'Xan_Hi'   = 'ArmXanomelin_Hi',
+        'Xan_Lo'   = 'ArmXanomelin_Lo',
+        'Scrnfail' = 'ArmScreenFailure',
+        as.character(x) ) } )
+
+dm$actarmcd_Frag <- sapply(dm$actarmcd,function(x) {
+    switch(as.character(x),
+        'Pbo'      = 'ArmPlacebo',
+        'Xan_Hi'   = 'ArmXanomelin_Hi',
+        'Xan_Lo'   = 'ArmXanomelin_Lo',
+        'Scrnfail' = 'ArmScreenFailure',
+        as.character(x) ) } )
+
+#-- VS fragment creation
+# TBD!!!!!!!!!!!!

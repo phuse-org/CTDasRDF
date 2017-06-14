@@ -97,9 +97,10 @@ source('R/dataImportFnts.R')
 dm <- readXPT("dm")
 # For testing, keep only the first (maxPerson) patients in DM
 dm <- head(dm, maxPerson)  # maxPerson set above
-source('R/imputeDM.R')
 
-
+# Create the date translation table from all dates across domains
+#   Needed by both imputeDM and in later code where DM is processed.
+source('R/imputeDM.R')  # requires import of VS to get dates from VS that are used as part of DateDict/dateFrag creation
 
 
 
@@ -189,12 +190,15 @@ vs[nrow(vs),"vsstat"]   <- 'ND'  # add the ND value for creating activitystatus_
 #   Additional domains to be added.
 #------------------------------------------------------------------------------
 
-# Create URI fragments for Dates and other categories that are shared URIs 
+
+#------------------------------------------------------------------------------
+# Fragment Creation for the domains
+#   Called after all relevent domains available, since some fragment values 
+#      eg: dates, cross multiple domains.
+# Functions to create URI fragments for Dates and other categories that are shared URIs 
 # Eg: Date_1, AgeMeasurement_3
 source('R/createFrag.R')
 
-# Create the date translation table from all dates across domains
-dateDict<-createDateDict()  
 
 #------------------------------------------------------------------------------
 # Domain Processing
@@ -208,6 +212,7 @@ source('R/processDM.R')
 source('R/processSUPPDM.R')
 
 #---- VS DOMAIN
+#TODO: VS script needs to move code to imputeVS and to createFrag!
 #TWsource('R/processVS.R')
 
 #---- X DOMAIN  Additional Domains will be added here.......

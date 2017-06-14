@@ -5,7 +5,7 @@
 # SRC : N/A
 # IN  : dm dataframe 
 # OUT : modified dm dataframe 
-# NOTE: 
+# NOTE: Does NOT include URI fragment creation, which relies on multiple domains.
 # TODO: 
 ###############################################################################
 # Create the Person ID (Person_(n)) in the DM dataset for looping through the data by Person  
@@ -103,28 +103,3 @@ dm$race_  <- sapply(dm$race,function(x) {
         'WHITE'                                     = 'C74457.C41261',
         as.character(x) ) } )
 #-- End Data Coding -----------------------------------------------------------
-
-#-- Fragment Creation ---------------------------------------------------------
-dm <- addDateFrag(dm, "rfstdtc")  
-dm <- addDateFrag(dm, "rfendtc")  
-dm <- addDateFrag(dm, "rfxstdtc")  
-dm <- addDateFrag(dm, "rfxendtc")  
-dm <- addDateFrag(dm, "rficdtc")  
-dm <- addDateFrag(dm, "rfpendtc")  
-dm <- addDateFrag(dm, "dthdtc")
-dm <- addDateFrag(dm, "dmdtc")  
-dm <- addDateFrag(dm, "brthdate") 
-
-
-
-#TODO: CHANGE! arm_Frag 
-dm <- createFragOneDomain(domainName=dm, processColumns=c("armcd", "actarmcd"), fragPrefix="arm"  )
-
-
-dm <- createFragOneDomain(domainName=dm, processColumns="siteid", fragPrefix="Site" )
-dm <- createFragOneDomain(domainName=dm, processColumns="invid",  fragPrefix="Investigator" )
-dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
-dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
-dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="Country"  )
-
-
