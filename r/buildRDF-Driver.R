@@ -213,7 +213,11 @@ source('R/processSUPPDM.R')
 
 #---- VS DOMAIN
 #TODO: VS script needs to move code to imputeVS and to createFrag!
-#TWsource('R/processVS.R')
+#WIP
+#HERE
+
+
+source('R/processVS.R')
 
 #---- X DOMAIN  Additional Domains will be added here.......
 
