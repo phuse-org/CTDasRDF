@@ -17,7 +17,7 @@ require(dplyr) # for compare of dataframes using anti_join
 
 
 # For use with local TTL file:
-setwd("C:/_gitHub/SDTMasRDF")
+setwd("C:/_gitHub/CTDasRDF")
 
 TWSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
 
@@ -30,12 +30,12 @@ AOSource = load.rdf("data/rdf/cdiscpilot01local.TTL", format="N3")
 
 checkPerson <- function(){
 
-query = 'PREFIX cdiscpilot01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#>
-PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
+query = 'PREFIX cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/cdiscpilot01#>
+PREFIX custom: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/custom#>
 PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX study:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
+PREFIX study:  <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/study#>
 
 SELECT ?s ?p ?o
 WHERE { cdiscpilot01:Person_1 ?p ?o . 
@@ -182,8 +182,8 @@ getClasses <- function(subject){
 
     query = paste(' 
 prefix arg: <http://spinrdf.org/arg#> .                                               
-prefix code: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#> .    
-prefix custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#> .
+prefix code: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/code#> .    
+prefix custom: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/custom#> .
 prefix owl: <http://www.w3.org/2002/07/owl#> .                                        
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .                           
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .                                

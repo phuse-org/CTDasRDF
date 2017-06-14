@@ -34,7 +34,7 @@ version <- "0.0.1"
 maxPerson = 6; # Used in processDM.R 
 
 # Set working directory to the root of the work area
-setwd("C:/_github/SDTMasRDF")
+setwd("C:/_github/CTDasRDF")
 
 # Configuration: List of prefixes
 allPrefix <- "data/config/prefixes.csv"  # List of prefixes for the resulting TTL file

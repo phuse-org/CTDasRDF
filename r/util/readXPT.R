@@ -14,7 +14,7 @@
 library(Hmisc)
 
 # Set working directory to the root of the work area
-setwd("C:/_github/SDTMasRDF/data/source")
+setwd("C:/_github/CTDasRDF/data/source")
 
 readXPTDomain <- function (domainName){
    domainValues <- sasxport.get(paste0(domainName, ".xpt"))

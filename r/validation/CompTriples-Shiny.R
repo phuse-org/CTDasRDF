@@ -33,14 +33,14 @@ server <- function(input, output) {
         file.rename(inFileOnt$datapath,
             paste(inFileOnt$datapath, ".ttl", sep=""))
 
-        query = paste0("PREFIX cdiscpilot01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#>
-PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
-PREFIX code:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#>
+        query = paste0("PREFIX cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/cdiscpilot01#>
+PREFIX custom: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/custom#>
+PREFIX code:  <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/code#>
 prefix owl:   <http://www.w3.org/2002/07/owl#>
 PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX study:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
+PREFIX study:  <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/study#>
 prefix time:  <http://www.w3.org/2006/time#>
 SELECT ?s ?p ?o
 WHERE {", input$qnam, " ?p ?o . 
