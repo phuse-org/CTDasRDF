@@ -838,7 +838,7 @@ study:StudyActivity
   rdfs:label "Study activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
   owl:equivalentClass <http://www.bridgmodel.org/owl#StudyActivity> ;
-  skos:definition "An Activity that is part of a Study"^^xsd:string ;
+  skos:definition "An Activity that is part of a Study. "^^xsd:string ;
 .
 study:StudyComponent
   rdf:type owl:Class ;
@@ -878,6 +878,12 @@ study:Substance
   rdfs:subClassOf study:Entity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Substance"^^xsd:string ;
+.
+study:UnscheduledVisit
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Unscheduled visit"^^xsd:string ;
 .
 study:Visit
   rdf:type owl:Class ;
@@ -1315,6 +1321,20 @@ study:hasPrerequisite
   rdfs:range study:PrerequisiteActivity ;
   skos:definition ""^^xsd:string ;
 .
+study:hasProtocolSpecifiedActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Study ;
+  rdfs:label "has protocol specified activity"^^xsd:string ;
+  rdfs:range study:Activity ;
+  rdfs:subPropertyOf study:hasSubActivity ;
+  owl:inverseOf study:isActivityOfStudy ;
+  owl:propertyChainAxiom (
+      study:hasStudyParticipant
+      study:engagesIn
+    ) ;
+  skos:definition "Relates a Study with a ProtocolSpecifiedActivity conducted as part of that Study"^^xsd:string ;
+.
 study:hasReferenceInterval
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1357,20 +1377,6 @@ study:hasStartRule
   rdfs:label "has start rule"^^xsd:string ;
   rdfs:range study:Rule ;
   skos:definition ""^^xsd:string ;
-.
-study:hasStudyActivity
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Study ;
-  rdfs:label "has study activity"^^xsd:string ;
-  rdfs:range study:Activity ;
-  rdfs:subPropertyOf study:hasSubActivity ;
-  owl:inverseOf study:isActivityOfStudy ;
-  owl:propertyChainAxiom (
-      study:hasStudyParticipant
-      study:engagesIn
-    ) ;
-  skos:definition "Relates a Study with a StudyActivity conducted as part of that Study"^^xsd:string ;
 .
 study:hasStudyID
   rdf:type owl:DatatypeProperty ;

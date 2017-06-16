@@ -416,12 +416,12 @@ cdiscpilot01:Person_1
   study:hasUniqueSubjectID "01-701-1015"^^xsd:string ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_1 ;
   study:participatesIn cdiscpilot01:InformedConsentAdult_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagC16WK_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagC24WK_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagC8WK_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagEFF_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagITT_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagSAF_1 ;
+  study:participatesIn cdiscpilot01:PopFlagCmpltr16Wk_1 ;
+  study:participatesIn cdiscpilot01:PopFlagCmpltr24Wk_1 ;
+  study:participatesIn cdiscpilot01:PopFlagCmpltr8Wk_1 ;
+  study:participatesIn cdiscpilot01:PopFlagEff_1 ;
+  study:participatesIn cdiscpilot01:PopFlagItt_1 ;
+  study:participatesIn cdiscpilot01:PopFlagSaf_1 ;
   study:participatesIn cdiscpilot01:ProductAdministration_1 ;
   study:participatesIn cdiscpilot01:RandomizationBAL3_1 ;
   study:participatesIn cdiscpilot01:VisitScreening1_1 ;
@@ -460,35 +460,35 @@ cdiscpilot01:Person_3
   study:participatesIn cdiscpilot01:ProductAdministration_3 ;
   study:participatesIn cdiscpilot01:RandomizationBAL3_3 ;
 .
-cdiscpilot01:PopulationFlagC16WK_1
-  rdf:type cd01p:PopulationFlagC16Wk ;
+cdiscpilot01:PopFlagCmpltr16Wk_1
+  rdf:type cd01p:PopFlagCmpltr16Wk ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "popflag-P1C16WK"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:hasCode cd01p:PopulationFlagC16Wk ;
+  study:hasCode cd01p:PopFlagCmpltr16Wk ;
   study:hasPerformer cdiscpilot01:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagC24WK_1
-  rdf:type cd01p:PopulationFlagC24Wk ;
+cdiscpilot01:PopFlagCmpltr24Wk_1
+  rdf:type cd01p:PopFlagCmpltr24Wk ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "popflag-P1C24WK"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:hasCode cd01p:PopulationFlagC24Wk ;
+  study:hasCode cd01p:PopFlagCmpltr24Wk ;
   study:hasPerformer cdiscpilot01:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagC8WK_1
-  rdf:type cd01p:PopulationFlagC8Wk ;
+cdiscpilot01:PopFlagCmpltr8Wk_1
+  rdf:type cd01p:PopFlagCmpltr8Wk ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "popflag-P1C8WK"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:hasCode cd01p:PopulationFlagC16Wk ;
+  study:hasCode cd01p:PopFlagCmpltr8Wk ;
   study:hasPerformer cdiscpilot01:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagEFF_1
-  rdf:type code:PopulationFlagEFF ;
+cdiscpilot01:PopFlagEff_1
+  rdf:type cd01p:PopFlagEff ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "popflag-P1EFF"^^xsd:string ;
   skos:definition ""^^xsd:string ;
@@ -496,8 +496,8 @@ cdiscpilot01:PopulationFlagEFF_1
   study:hasPerformer cdiscpilot01:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagITT_1
-  rdf:type code:PopulationFlagITT ;
+cdiscpilot01:PopFlagItt_1
+  rdf:type cd01p:PopFlagItt ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "popflag-P1ITT"^^xsd:string ;
   skos:definition ""^^xsd:string ;
@@ -505,8 +505,8 @@ cdiscpilot01:PopulationFlagITT_1
   study:hasPerformer cdiscpilot01:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagSAF_1
-  rdf:type code:PopulationFlagSAF ;
+cdiscpilot01:PopFlagSaf_1
+  rdf:type cd01p:PopFlagSaf ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "popflag-P1SAF"^^xsd:string ;
   skos:definition ""^^xsd:string ;
@@ -793,6 +793,11 @@ cdiscpilot01:StudyParticipationInterval_3
   time:hasBeginning cdiscpilot01:Date_16 ;
   time:hasEnd cdiscpilot01:Date_22 ;
 .
+cdiscpilot01:UnscheduledVisit_1
+  rdf:type study:UnscheduledVisit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "UNSCHEDULED 3.1"^^xsd:string ;
+.
 cdiscpilot01:VisitScreening1_1
   rdf:type cd01p:VisitScreening1 ;
   rdfs:comment ""^^xsd:string ;
@@ -854,5 +859,5 @@ study:hasInformedConsentInterval
   rdfs:range code:InformedConsentInterval ;
 .
 study:isActivityOfStudy
-  owl:inverseOf study:hasStudyActivity ;
+  owl:inverseOf study:hasProtocolSpecifiedActivity ;
 .

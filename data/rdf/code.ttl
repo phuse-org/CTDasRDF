@@ -364,43 +364,6 @@ code:ObservationOutcome
   rdfs:subClassOf code:InterventionOutcome ;
   skos:definition ""^^xsd:string ;
 .
-code:PopulationFlag
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Population flag term"^^xsd:string ;
-  rdfs:subClassOf code:Analysis ;
-  skos:definition ""^^xsd:string ;
-.
-code:PopulationFlagEFF
-  rdf:type owl:Class ;
-  rdf:type code:PopulationFlag ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:PopulationFlag ;
-  skos:altLabel "Efficacy Population Flag"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "EFFICACY"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
-.
-code:PopulationFlagITT
-  rdf:type owl:Class ;
-  rdf:type code:PopulationFlag ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:PopulationFlag ;
-  skos:altLabel "Intent to Treat Population Flag"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ITT"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
-.
-code:PopulationFlagSAF
-  rdf:type owl:Class ;
-  rdf:type code:PopulationFlag ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:PopulationFlag ;
-  skos:altLabel "Safety Population Flag"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SAFETY"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
-.
 code:Product
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;

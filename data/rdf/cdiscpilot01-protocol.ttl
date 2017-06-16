@@ -89,25 +89,46 @@ cd01p:PlaceboProduct_1
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Placebo product 1"^^xsd:string ;
 .
-cd01p:PopulationFlagC16Wk
+cd01p:PopFlagCmpltr16Wk
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
   skos:altLabel "Completers of Week 16 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT16"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
 .
-cd01p:PopulationFlagC24Wk
+cd01p:PopFlagCmpltr24Wk
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
   skos:altLabel "Completers of Week 24 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT24"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
 .
-cd01p:PopulationFlagC8Wk
+cd01p:PopFlagCmpltr8Wk
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
   skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT8"^^xsd:string ;
+  code:hasMethod code:ActivityMethod_2 ;
+.
+cd01p:PopFlagEff
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:PopulationFlag ;
+  skos:altLabel "Eficacy Population Flag"^^xsd:string ;
+  skos:prefLabel "EFFICACY"^^xsd:string ;
+  code:hasMethod code:ActivityMethod_2 ;
+.
+cd01p:PopFlagItt
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:PopulationFlag ;
+  skos:altLabel "Intent To Treat Population Flag"^^xsd:string ;
+  skos:prefLabel "ITT"^^xsd:string ;
+  code:hasMethod code:ActivityMethod_2 ;
+.
+cd01p:PopFlagSaf
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:PopulationFlag ;
+  skos:altLabel "Safety Population Flag"^^xsd:string ;
+  skos:prefLabel "SAFETY"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
 .
 cd01p:Study_1
@@ -116,6 +137,25 @@ cd01p:Study_1
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Study CDISCPILOT01"^^xsd:string ;
   study:hasCode study:Study ;
+  study:hasProtocolSpecifiedActivity cd01p:ArmPlacebo ;
+  study:hasProtocolSpecifiedActivity cd01p:ArmScreenFailure ;
+  study:hasProtocolSpecifiedActivity cd01p:ArmXanomelineHigh ;
+  study:hasProtocolSpecifiedActivity cd01p:ArmXanomelineLow ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitAmbulECGPlace ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitAmbulECGRemove ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitBaseline ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitRetrieval ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitScreening1 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitScreening2 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitWk12 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitWk16 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitWk2 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitWk20 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitWk24 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitWk26 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitWk4 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitWk6 ;
+  study:hasProtocolSpecifiedActivity cd01p:VisitWk8 ;
   study:hasStudyID "CDISCPILOT01"^^xsd:string ;
 .
 cd01p:Subcategory_1
@@ -125,6 +165,7 @@ cd01p:Subcategory_1
 .
 cd01p:VisitAmbulECGPlace
   rdf:type owl:Class ;
+  rdf:type study:Visit ;
   rdfs:subClassOf study:Visit ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "AMBUL ECG PLACE"^^xsd:string ;
@@ -158,12 +199,6 @@ cd01p:VisitScreening2
   rdfs:subClassOf study:Visit ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "SCREENING 2"^^xsd:string ;
-.
-cd01p:VisitUnscheduled31
-  rdf:type owl:Class ;
-  rdfs:subClassOf study:Visit ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "UNSCHEDULED 3.1"^^xsd:string ;
 .
 cd01p:VisitWk12
   rdf:type owl:Class ;
@@ -230,15 +265,6 @@ code:DemographicDataCollection
 .
 code:InformedConsentAdult
   rdfs:subClassOf study:InformedConsent ;
-.
-code:PopulationFlagEFF
-  rdfs:subClassOf study:PopulationFlag ;
-.
-code:PopulationFlagITT
-  rdfs:subClassOf study:PopulationFlag ;
-.
-code:PopulationFlagSAF
-  rdfs:subClassOf study:PopulationFlag ;
 .
 code:RandomizationBAL3
   rdfs:subClassOf study:Randomization ;
