@@ -9,7 +9,6 @@
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix code: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#> .
-@prefix custom: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -631,9 +630,6 @@ code:ruleDescriptionLong
   rdfs:label "rule description long"^^xsd:string ;
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
-.
-custom:CustomConcept
-  rdfs:subClassOf code:DefinedConcept ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C16576>
   rdf:type code:Sex ;

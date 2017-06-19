@@ -3,7 +3,6 @@
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology
 
@@ -91,7 +90,6 @@ code:DemographicDataCollection
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema> ;
-  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
@@ -344,7 +342,7 @@ study:Analysis
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Analysis"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
-  skos:definition "An examination, usually via a mathematical manipulation, of one or more clinical observations to obtain a result."^^xsd:string ;
+  skos:definition "An examination, sometimes via a mathematical manipulation, of one or more clinical observations to obtain a result."^^xsd:string ;
 .
 study:AnnotatedCaseReportForm
   rdf:type owl:Class ;
@@ -368,7 +366,7 @@ study:Assessment
       owl:allValuesFrom study:Assessor ;
       owl:onProperty study:hasPerformer ;
     ] ;
-  skos:definition "An analysis of one or more clinical observations to identify and/or characterize a Medical Condition."^^xsd:string ;
+  skos:definition "An examination of one or more clinical observations to identify and/or characterize a Medical Condition."^^xsd:string ;
 .
 study:AssessmentRule
   rdf:type owl:Class ;
@@ -1321,20 +1319,6 @@ study:hasPrerequisite
   rdfs:range study:PrerequisiteActivity ;
   skos:definition ""^^xsd:string ;
 .
-study:hasProtocolSpecifiedActivity
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:Study ;
-  rdfs:label "has protocol specified activity"^^xsd:string ;
-  rdfs:range study:Activity ;
-  rdfs:subPropertyOf study:hasSubActivity ;
-  owl:inverseOf study:isActivityOfStudy ;
-  owl:propertyChainAxiom (
-      study:hasStudyParticipant
-      study:engagesIn
-    ) ;
-  skos:definition "Relates a Study with a ProtocolSpecifiedActivity conducted as part of that Study"^^xsd:string ;
-.
 study:hasReferenceInterval
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1377,6 +1361,20 @@ study:hasStartRule
   rdfs:label "has start rule"^^xsd:string ;
   rdfs:range study:Rule ;
   skos:definition ""^^xsd:string ;
+.
+study:hasStudyActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Study ;
+  rdfs:label "has study activity"^^xsd:string ;
+  rdfs:range study:Activity ;
+  rdfs:subPropertyOf study:hasSubActivity ;
+  owl:inverseOf study:isActivityOfStudy ;
+  owl:propertyChainAxiom (
+      study:hasStudyParticipant
+      study:engagesIn
+    ) ;
+  skos:definition "Relates a Study with an Activity conducted as part of that Study"^^xsd:string ;
 .
 study:hasStudyID
   rdf:type owl:DatatypeProperty ;

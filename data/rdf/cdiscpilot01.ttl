@@ -414,14 +414,14 @@ cdiscpilot01:Person_1
   study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_1 ;
   study:hasSubjectID "1015"^^xsd:string ;
   study:hasUniqueSubjectID "01-701-1015"^^xsd:string ;
+  study:participatesIn cd01p:PopFlagCmpltr16Wk_1 ;
+  study:participatesIn cd01p:PopFlagCmpltr24Wk_1 ;
+  study:participatesIn cd01p:PopFlagCmpltr8Wk_1 ;
+  study:participatesIn cd01p:PopFlagEff_1 ;
+  study:participatesIn cd01p:PopFlagItt_1 ;
+  study:participatesIn cd01p:PopFlagSaf_1 ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_1 ;
   study:participatesIn cdiscpilot01:InformedConsentAdult_1 ;
-  study:participatesIn cdiscpilot01:PopFlagCmpltr16Wk_1 ;
-  study:participatesIn cdiscpilot01:PopFlagCmpltr24Wk_1 ;
-  study:participatesIn cdiscpilot01:PopFlagCmpltr8Wk_1 ;
-  study:participatesIn cdiscpilot01:PopFlagEff_1 ;
-  study:participatesIn cdiscpilot01:PopFlagItt_1 ;
-  study:participatesIn cdiscpilot01:PopFlagSaf_1 ;
   study:participatesIn cdiscpilot01:ProductAdministration_1 ;
   study:participatesIn cdiscpilot01:RandomizationBAL3_1 ;
   study:participatesIn cdiscpilot01:VisitScreening1_1 ;
@@ -459,60 +459,6 @@ cdiscpilot01:Person_3
   study:participatesIn cdiscpilot01:InformedConsentAdult_3 ;
   study:participatesIn cdiscpilot01:ProductAdministration_3 ;
   study:participatesIn cdiscpilot01:RandomizationBAL3_3 ;
-.
-cdiscpilot01:PopFlagCmpltr16Wk_1
-  rdf:type cd01p:PopFlagCmpltr16Wk ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1C16WK"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode cd01p:PopFlagCmpltr16Wk ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
-.
-cdiscpilot01:PopFlagCmpltr24Wk_1
-  rdf:type cd01p:PopFlagCmpltr24Wk ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1C24WK"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode cd01p:PopFlagCmpltr24Wk ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
-.
-cdiscpilot01:PopFlagCmpltr8Wk_1
-  rdf:type cd01p:PopFlagCmpltr8Wk ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1C8WK"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode cd01p:PopFlagCmpltr8Wk ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
-.
-cdiscpilot01:PopFlagEff_1
-  rdf:type cd01p:PopFlagEff ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1EFF"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode code:PopulationFlagEFF ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
-.
-cdiscpilot01:PopFlagItt_1
-  rdf:type cd01p:PopFlagItt ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1ITT"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode code:PopulationFlagITT ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
-.
-cdiscpilot01:PopFlagSaf_1
-  rdf:type cd01p:PopFlagSaf ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1SAF"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode code:PopulationFlagSAF ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:ProductAdministrationInterval_1
   rdf:type study:ProductAdministrationInterval ;
@@ -739,12 +685,6 @@ cdiscpilot01:Site_9
   study:hasCountry code:Country_1 ;
   study:hasSiteID "709"^^xsd:string ;
 .
-cdiscpilot01:Sponsor_1
-  rdf:type study:Sponsor ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "CLINICAL STUDY SPONSOR"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
 cdiscpilot01:StartRuleLying5_1
   rdf:type code:StartRuleLying5 ;
   rdfs:comment ""^^xsd:string ;
@@ -799,13 +739,13 @@ cdiscpilot01:UnscheduledVisit_1
   skos:prefLabel "UNSCHEDULED 3.1"^^xsd:string ;
 .
 cdiscpilot01:VisitScreening1_1
-  rdf:type cd01p:VisitScreening1 ;
+  rdf:type custom:VisitScreening1 ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 Visit 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SCREENING1"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode cd01p:VisitScreening1 ;
+  study:hasCode custom:VisitScreening1 ;
   study:hasDate cdiscpilot01:Date_19 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_1 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_1 ;
@@ -859,5 +799,5 @@ study:hasInformedConsentInterval
   rdfs:range code:InformedConsentInterval ;
 .
 study:isActivityOfStudy
-  owl:inverseOf study:hasProtocolSpecifiedActivity ;
+  owl:inverseOf study:hasStudyActivity ;
 .
