@@ -127,13 +127,6 @@ code:Analysis
   rdfs:subClassOf code:DefinedActivity ;
   skos:definition ""^^xsd:string ;
 .
-code:AnalysisOutcome
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Analysis outcome term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedActivityOutcome ;
-  skos:definition ""^^xsd:string ;
-.
 code:AnatomicLocation
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -188,13 +181,6 @@ code:BodyPosition
   rdfs:label "Body position term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:InterventionOutcome ;
-  skos:definition ""^^xsd:string ;
-.
-code:Category
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Category term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:ClinicalIntervention
@@ -363,13 +349,6 @@ code:ObservationOutcome
   rdfs:subClassOf code:InterventionOutcome ;
   skos:definition ""^^xsd:string ;
 .
-code:Product
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Product term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
-.
 code:Race
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -452,13 +431,6 @@ code:StartRuleStanding3
   code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
 .
-code:Subcategory
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Subcategory term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
-.
 code:Substance
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -489,13 +461,6 @@ code:Unit_3
   rdf:type code:Unit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "mmHg"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
-code:VisitOutcome
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Visit outcome"^^xsd:string ;
-  rdfs:subClassOf code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
 code:VitalSign
@@ -546,7 +511,6 @@ code:hasIdentifier
 code:hasIngredient
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:Product ;
   rdfs:label "has ingredient"^^xsd:string ;
   rdfs:range code:Substance ;
   skos:definition ""^^xsd:string ;
@@ -684,12 +648,6 @@ code:ruleDescriptionLong
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
-.
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166>
-  rdf:type code:BodyPosition ;
-.
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167>
-  rdf:type code:BodyPosition ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74456.C32141>
   rdf:type code:AnatomicLocation ;
