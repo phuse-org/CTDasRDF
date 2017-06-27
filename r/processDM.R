@@ -464,22 +464,12 @@ ddply(dm, .(subjid), function(dm)
                 paste0(prefix.RDFS,"label"),
                 paste0("Informed consent ", dm$personNum), type="string"
             )
+# WIP HERE            
             add.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
-                paste0(prefix.CODE,"hasOutcome" ),
+                paste0(prefix.STUDY,"outcome" ),
                 paste0(prefix.CODE,"InformedConsentOutcome_", dm$personNum)
             )
-                 # InformedConsentAdult_<n> to code.ttl
-                add.triple(code,
-                    paste0(prefix.CODE, "InformedConsentOutcome_", dm$personNum),
-                    paste0(prefix.RDF,"type" ),
-                    paste0(prefix.CODE, "InformedConsentOutcome")
-                )
-                add.data.triple(cdiscpilot01,
-                    paste0(prefix.CODE, "InformedConsentOutcome_", dm$personNum),
-                    paste0(prefix.RDFS,"label"),
-                    paste0("informed consent granted "), type="string"
-                )
             # Key triple to link to Interval for Informed consent
             add.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
@@ -507,6 +497,13 @@ ddply(dm, .(subjid), function(dm)
                 assignDateType(dm$rficdtc, dm$rficdtc_Frag, "InformedConsentBegin")
                 assignDateType(dm$rficdtc, dm$rficdtc_Frag, "StudyParticipationBegin")
                 #Note: There is no informedConsentEnd in the source data
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+                paste0(prefix.STUDY,"hasCode" ),
+                paste0(prefix.CODE,"InformedConsentAdult")
+            )
+            #TODO: Build out CODE.TTL with InfromedConsentOutcome_n?
+
     }
     # Product Administration
     add.triple(cdiscpilot01,
@@ -558,6 +555,7 @@ ddply(dm, .(subjid), function(dm)
             )
             #---- Assign Date Type
             assignDateType(dm$rfxendtc, dm$rfxendtc_Frag, "ProductAdministrationEnd")
+
     # DemographicDataCollection
     #  Age, Ethnicity, Race, Sex, etc. are all part of the Demographic Data collection
     #    triples for a specific person. Person_<n> -->  DemographicDataCollection_<n>       
@@ -566,24 +564,12 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum)
     )
-        add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-            paste0(prefix.RDF,"type" ),
-            paste0(prefix.CODE,"DemographicDataCollection" )
-        )  
-        add.data.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-            paste0(prefix.RDFS,"label" ),
-            paste0("Demographic data collection ", dm$personNum), type="string"
-        )  
         # Age
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.CODE,"hasAge" ),
             paste0(prefix.CDISCPILOT01, dm$age_Frag)
         )
-           #----Age Measurement Triples
-        
            # Age unit from ageu
            if (grepl("YEARS",dm$ageu)){
                add.triple(cdiscpilot01,
@@ -617,31 +603,49 @@ ddply(dm, .(subjid), function(dm)
                paste0(prefix.RDF,"type" ),
                paste0(prefix.STUDY,"AgeOutcome")
            )
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+            paste0(prefix.RDF,"type" ),
+            paste0(prefix.CODE,"DemographicDataCollection" )
+        )  
+        add.data.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+            paste0(prefix.RDFS,"label" ),
+            paste0("Demographic data collection ", dm$personNum), type="string"
+        )  
+           #----Age Measurement Triples
         # Ethnicity
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-            paste0(prefix.CODE,"hasEthnicity" ),
+            paste0(prefix.STUDY,"ethnicity" ),
             paste0(prefix.SDTMTERM, dm$ethnic_) 
         )
-        # Race
+        # Code
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-            paste0(prefix.CODE,"hasRace" ),
-            paste0(prefix.SDTMTERM, dm$race_) 
+            paste0(prefix.STUDY,"hasCode" ),
+            paste0(prefix.CODE, "DemographicDataCollection") 
         )
-        # Sex 
-        add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-            paste0(prefix.CODE,"hasSex" ),
-            paste0(prefix.SDTMTERM, dm$sex_) 
-        )
+        # Demog Data Collection Date
         add.triple(cdiscpilot01,
              paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
              paste0(prefix.STUDY,"hasDate" ),
              paste0(prefix.CDISCPILOT01,dm$dmdtc_Frag)
         )    
-        #---- Assign Date Type
-        assignDateType(dm$rfxendtc, dm$dmdtc_Frag, "DemogDataCollectionDate")
+            #---- Assign Date Type
+            assignDateType(dm$rfxendtc, dm$dmdtc_Frag, "DemogDataCollectionDate")
+        # Race
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+            paste0(prefix.STUDY,"race" ),
+            paste0(prefix.SDTMTERM, dm$race_) 
+        )
+        # Sex 
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+            paste0(prefix.STUDY,"sex" ),
+            paste0(prefix.SDTMTERM, dm$sex_) 
+        )
     # Randomization
     add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, person),

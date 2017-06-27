@@ -43,30 +43,31 @@ ddply(suppdm, .(personNum, qnam_), function(suppdm){
         #   C8WK,C16WK,C21WK are custom:
         #   EFF,ITT,SAF are code:
         #   May to need add more conditions when default of CODE: not appropriate.
-    
-        add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, "PopulationFlag", suppdm$qnam_,"_",suppdm$personNum),
-            paste0(prefix.CODE,"hasOutcome" ),
-            paste0(prefix.CODE, suppdm$qval_Frag)
-        )
         # note use of lowercase for custom: class
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "PopulationFlag", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.RDF,"type" ),
-            paste0(prefix.CUSTOM, "PopulationFlag", suppdm$qnamClass_)
+            paste0(prefix.CD01P, "PopulationFlag", suppdm$qnamClass_)
         )
         add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "PopulationFlag", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.RDFS,"label" ),
             paste0("popflag-P", suppdm$personNum, suppdm$qnam_), type="string" 
         )
-
-        
-        
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, "PopulationFlag", suppdm$qnam_,"_",suppdm$personNum),
+            paste0(prefix.STUDY,"hasCode" ),
+            paste0(prefix.CD01P, "PopulationFlag", suppdm$qnamClass_)
+        )
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "PopulationFlag", suppdm$qnam_,"_",suppdm$personNum),
             paste0(prefix.STUDY,"hasPerformer" ),
             paste0(prefix.CDISCPILOT01, suppdm$sponsor_Frag)
+        )
+        add.data.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, "PopulationFlag", suppdm$qnam_,"_",suppdm$personNum),
+            paste0(prefix.STUDY,"outcome" ),
+            paste0(suppdm$qval_Frag)
         )
     }
 )

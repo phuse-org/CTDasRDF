@@ -191,26 +191,6 @@ ddply(vstestcd.subset.bp, .(vsorres_Frag), function(vstestcd.subset.bp)
     )
     
     
-#    add.triple(custom,
-#        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
-#        paste0(prefix.RDF,"type" ),
-#        paste0(prefix.CUSTOM, "Visit")
-#    )
-#    add.data.triple(custom,
-#        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
-#        paste0(prefix.RDFS,"label" ),
-#        paste0(valToIndex$visit), type="string"
-#    )
-#    add.triple(custom,
-#        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
-#        paste0(prefix.RDFS,"subClassOf"),
-#        paste0(prefix.CUSTOM, "Visit")
-#    )
-#    add.data.triple(custom,
-#        paste0(prefix.CUSTOM, valToIndex$visit_Frag),
-#        paste0(prefix.SKOS,"prefLabel" ),
-#        paste0(valToIndex$visit), type="string"
-#    )
 })
 
 
@@ -246,46 +226,6 @@ ddply(vsstat, .(vsstat_Frag), function(vsstat)
 # Drop vars that are not needed in triple creation
 dropMe <- c("studyid", "domain")  # usubjid used later, could be replaced by use of personNum
 vs<-vs[ , !(names(vs) %in% dropMe)]
-
-    ##DEL Delete following after new Fragments approach is implemented.
-    ## Following is not implemented
-    ##------------------------------------------------------------------------------
-    ## valueCode()
-    ##   Create a values code list that is later associated with the values for an individual.
-    ##  Two parts needed: 1: Create the list values as a section of triples
-    ##    2. Code the individiual person values to that triple.
-    ##
-    ## Cat col is used to select down to rows that contain the values
-    ##    that will build the list. Eg: domain=vs, catCol="DIABP"
-    ## See here: http://stackoverflow.com/questions/13040120/how-to-take-in-text-character-argument-without-quotes
-    #
-    ## domain = domain dataset (dm, vs...)
-    ## catCol = 
-    ## catVal = Category value used to subset down to the results. Eg: "DIABP", "SYSBP"
-    ## resCol = The "result column" from which to obtain the list of unique values to be coded
-    #valueCode <- function(domain, catCol, catVal, resCol)
-    #{
-    #    
-    #    # Build:  vs[vs$vstestcd == "DIAPBP", ]
-    #    # note use of [[]] instead of $ as per 
-    #    # http://stackoverflow.com/questions/2641653/pass-a-data-frame-column-name-to-a-function
-    #    tempDf <- domain[domain[[catCol]] == eval(substitute(catVal)), ]
-    #    # tempU <- unique(tempDf[[resCol]])
-    #    tempU <- domain[!duplicated(domain[[resCol]]), eval(substitute(resCol))]
-    #    for (i in tempU)
-    #    {
-    #        # ADD THE TRIPLES HERE FOR WRITING. Write to STORE Is OK as is GLOBAL DF
-    #        add.triple(cdiscpilot01,
-    #                   paste0(prefix.CDISCPILOT01, person),
-    #                   paste0(prefix.STUDY,"FOO" ),
-    #                   paste0(prefix.STUDY,"FOO" )
-    #        )
-    #    }   
-    #    
-    #    return(tempU)
-    #}
-    # #assignment not needed? 
-    #foo2<-valueCode(domain=vs, catCol="vstestcd", catVal="DIABP", resCol="vsorres")
 
 #------------------------------------------------------------------------------
 #-- CDISCPILOT01 namespace
