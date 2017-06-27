@@ -9,7 +9,6 @@
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix code: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#> .
-@prefix custom: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -128,13 +127,6 @@ code:Analysis
   rdfs:subClassOf code:DefinedActivity ;
   skos:definition ""^^xsd:string ;
 .
-code:AnalysisOutcome
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Analysis outcome term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedActivityOutcome ;
-  skos:definition ""^^xsd:string ;
-.
 code:AnatomicLocation
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -189,13 +181,6 @@ code:BodyPosition
   rdfs:label "Body position term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:InterventionOutcome ;
-  skos:definition ""^^xsd:string ;
-.
-code:Category
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Category term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:ClinicalIntervention
@@ -364,50 +349,6 @@ code:ObservationOutcome
   rdfs:subClassOf code:InterventionOutcome ;
   skos:definition ""^^xsd:string ;
 .
-code:PopulationFlag
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Population flag term"^^xsd:string ;
-  rdfs:subClassOf code:Analysis ;
-  skos:definition ""^^xsd:string ;
-.
-code:PopulationFlagEFF
-  rdf:type owl:Class ;
-  rdf:type code:PopulationFlag ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:PopulationFlag ;
-  skos:altLabel "Efficacy Population Flag"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "EFFICACY"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
-.
-code:PopulationFlagITT
-  rdf:type owl:Class ;
-  rdf:type code:PopulationFlag ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:PopulationFlag ;
-  skos:altLabel "Intent to Treat Population Flag"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ITT"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
-.
-code:PopulationFlagSAF
-  rdf:type owl:Class ;
-  rdf:type code:PopulationFlag ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:PopulationFlag ;
-  skos:altLabel "Safety Population Flag"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SAFETY"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
-.
-code:Product
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Product term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
-.
 code:Race
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -490,13 +431,6 @@ code:StartRuleStanding3
   code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
 .
-code:Subcategory
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Subcategory term"^^xsd:string ;
-  rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
-.
 code:Substance
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -527,13 +461,6 @@ code:Unit_3
   rdf:type code:Unit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "mmHg"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
-code:VisitOutcome
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Visit outcome"^^xsd:string ;
-  rdfs:subClassOf code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
 code:VitalSign
@@ -584,7 +511,6 @@ code:hasIdentifier
 code:hasIngredient
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:Product ;
   rdfs:label "has ingredient"^^xsd:string ;
   rdfs:range code:Substance ;
   skos:definition ""^^xsd:string ;
@@ -669,9 +595,6 @@ code:ruleDescriptionLong
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
 .
-custom:CustomConcept
-  rdfs:subClassOf code:DefinedConcept ;
-.
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C16576>
   rdf:type code:Sex ;
 .
@@ -725,12 +648,6 @@ custom:CustomConcept
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
-.
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166>
-  rdf:type code:BodyPosition ;
-.
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167>
-  rdf:type code:BodyPosition ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74456.C32141>
   rdf:type code:AnatomicLocation ;

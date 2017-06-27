@@ -3,7 +3,6 @@
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology
 
@@ -66,23 +65,51 @@ time:hasBeginning
 time:inXSDDateTime
   rdfs:subPropertyOf study:dateTimeInXSDString ;
 .
-code:Arm
-  rdfs:subClassOf code:DefinedActivityOutcome ;
-.
 code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C16576>
+  rdf:type study:Sex ;
   rdfs:label "F"^^xsd:string ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C17998>
+  rdf:type study:Sex ;
   rdfs:label "U"^^xsd:string ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C20197>
+  rdf:type study:Sex ;
   rdfs:label "M"^^xsd:string ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C45908>
+  rdf:type study:Sex ;
   rdfs:label "UNDIFFERENTIATED"^^xsd:string ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C17459>
+  rdf:type study:Ethnicity ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C17998>
+  rdf:type study:Ethnicity ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C41222>
+  rdf:type study:Ethnicity ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C43234>
+  rdf:type study:Ethnicity ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74457.C16352>
+  rdf:type study:Race ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74457.C41219>
+  rdf:type study:Race ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74457.C41259>
+  rdf:type study:Race ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74457.C41260>
+  rdf:type study:Race ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74457.C41261>
+  rdf:type study:Race ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study>
   rdf:type owl:Ontology ;
@@ -91,7 +118,6 @@ code:DemographicDataCollection
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema> ;
-  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
@@ -318,10 +344,33 @@ study:AdverseEvent
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Adverse event"^^xsd:string ;
   rdfs:subClassOf study:MedicalCondition ;
-  skos:definition "An adverse Medical Condition that emerges or worsens following a Medical Intervention. Note: there is no presumption of causality."^^xsd:string ;
+  skos:definition "An adverse Medical Condition that emerges or worsens following a Medical Intervention, including the use of a drug. Note: there is no presumption of causality."^^xsd:string ;
 .
 study:AgeOutcome
   rdf:type owl:Class ;
+  spin:constraint [
+      rdf:type sp:Ask ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "age"^^xsd:string ;
+              ] ;
+            sp:predicate code:hasValue ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:lt ;
+                sp:arg1 [
+                    sp:varName "age"^^xsd:string ;
+                  ] ;
+                sp:arg2 0 ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Checks to see if age is negative"^^xsd:string ;
+    ] ;
   rdfs:subClassOf study:ObservationOutcome ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Age"^^xsd:string ;
@@ -344,7 +393,7 @@ study:Analysis
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Analysis"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
-  skos:definition "An examination, usually via a mathematical manipulation, of one or more clinical observations to obtain a result."^^xsd:string ;
+  skos:definition "An examination, sometimes via a mathematical manipulation, of one or more clinical observations to obtain a result."^^xsd:string ;
 .
 study:AnnotatedCaseReportForm
   rdf:type owl:Class ;
@@ -368,14 +417,14 @@ study:Assessment
       owl:allValuesFrom study:Assessor ;
       owl:onProperty study:hasPerformer ;
     ] ;
-  skos:definition "An analysis of one or more clinical observations to identify and/or characterize a Medical Condition."^^xsd:string ;
+  skos:definition "An examination of one or more clinical observations to identify and/or characterize a Medical Condition."^^xsd:string ;
 .
 study:AssessmentRule
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Assessment rule"^^xsd:string ;
   rdfs:subClassOf study:Rule ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "A Rule that describes how an Assessment is to be performed."^^xsd:string ;
 .
 study:Assessor
   rdf:type owl:Class ;
@@ -383,13 +432,6 @@ study:Assessor
   rdfs:label "Assessor"^^xsd:string ;
   rdfs:subClassOf study:Party ;
   skos:definition ""^^xsd:string ;
-.
-study:AssumeBodyPosition
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Assume a specific body position"^^xsd:string ;
-  rdfs:subClassOf study:Intervention ;
-  skos:definition "An Intervention whose intent is to observe the Person s body position and change it to the desired body position, usually in preparation for another intervention."^^xsd:string ;
 .
 study:BeginInstant
   rdf:type owl:Class ;
@@ -473,8 +515,8 @@ study:EligibilityCriteria
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Eligibility criteria"^^xsd:string ;
-  rdfs:subClassOf study:Rule ;
-  skos:definition ""^^xsd:string ;
+  rdfs:subClassOf study:StartRule ;
+  skos:definition "A Rule that determines whether a Subject can start the next Protocol Specified Activity in a Study; often the Randomization Activity."^^xsd:string ;
 .
 study:EligibleSubject
   rdf:type owl:Class ;
@@ -504,12 +546,11 @@ study:Entity
   rdfs:subClassOf study:StudyComponent ;
   skos:definition ""^^xsd:string ;
 .
-study:Event
+study:Ethnicity
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Event"^^xsd:string ;
-  rdfs:subClassOf study:Entity ;
-  skos:definition "An occurrence that persists in time. "^^xsd:string ;
+  rdfs:subClassOf study:ObservationOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Ethnicity"^^xsd:string ;
 .
 study:Flag
   rdf:type owl:Class ;
@@ -582,7 +623,7 @@ study:Intervention
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Intervention"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "An Activity where the Performer intervenes in the otherwise normal routine of a Person"^^xsd:string ;
 .
 study:InterventionDate
   rdf:type owl:Class ;
@@ -633,9 +674,9 @@ study:Lifespan
 .
 study:MedicalCondition
   rdf:type owl:Class ;
-  rdfs:comment "Medical conditions are the target of medical interventions.  Medical conditions explain the presence of clinical observations.  Most clinicians will agree that pregnancy is a medical condition because it benefits from medical intervention (e.g. prenatal care) to minimize complications to the mother and unborn child"^^xsd:string ;
+  rdfs:comment "Medical conditions are the target of medical interventions.  Medical conditions explain the presence of clinical observations.  Most clinicians will agree that pregnancy is a medical condition because it benefits from medical intervention (e.g. prenatal care) to minimize complications to the mother and unborn child. Other transient physiologic states in this class include hyper- and hypothermia due to extreme environmental conditions. Drug withdrawal states can also be considered medical conditions. "^^xsd:string ;
   rdfs:label "Medical condition"^^xsd:string ;
-  rdfs:subClassOf study:Event ;
+  rdfs:subClassOf study:Entity ;
   skos:definition """a disease, injury, disorder, or transient physiologic state that interferes or may interfere with well-being. A medical condition persists in time. 
 """^^xsd:string ;
 .
@@ -674,6 +715,13 @@ study:Party
   rdfs:subClassOf study:Entity ;
   skos:definition "A Person or an Organization."^^xsd:string ;
 .
+study:PerformedActivity
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Activity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:definition "An activity that was performed on a specific point in time. It is associated with a performer and/or a participant/Subject. "^^xsd:string ;
+  skos:prefLabel "Performed activity"^^xsd:string ;
+.
 study:Person
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -692,7 +740,7 @@ study:PlannedActivity
   rdfs:comment "a planned activity can also be a completed activity if it has a protocol specified start rule. "^^xsd:string ;
   rdfs:label "Planned activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
-  skos:definition "An Activity that is or was intended to occur. It is associated with a performer and/or a participant and is associated with a protocol specified start rule. "^^xsd:string ;
+  skos:definition "An Activity that is or was intended to occur. It is associated with a performer and/or a participant/Subject and is associated with a protocol specified start rule. "^^xsd:string ;
 .
 study:PopulationFlag
   rdf:type owl:Class ;
@@ -702,10 +750,10 @@ study:PopulationFlag
 .
 study:PrerequisiteActivity
   rdf:type owl:Class ;
-  rdfs:comment "For example: An activity to assume a supine body position can be an anchor for a BP measurement 5 minutes later. An activity outcome could be a medical condition, e.g. the ActivityOutcome can be a migraine headache, which triggers another activity: drug administration. "^^xsd:string ;
-  rdfs:label "Anchor / Time Point Reference"^^xsd:string ;
+  rdfs:comment "For example: An activity to assume a supine body position can be a prerequisite for a BP measurement 5 minutes later. An activity outcome could be a medical condition, e.g. the ActivityOutcome can be a migraine headache, which triggers another activity: drug administration. "^^xsd:string ;
+  rdfs:label "Prerequisite Activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
-  skos:definition "An activity whose Date functions as a time point reference for other activities. "^^xsd:string ;
+  skos:definition "An activity whose Date functions as a time point reference for other activities. Often the outcome of a Prerequisite Activity determines whether other Activities may begin. "^^xsd:string ;
 .
 study:Product
   rdf:type owl:Class ;
@@ -746,6 +794,19 @@ study:ProtocolDocument
   rdfs:subClassOf study:Document ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Protocol document"^^xsd:string ;
+.
+study:ProtocolSpecifiedActivity
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:StudyActivity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:definition "A study activity that is described in the protocol. A protocol specified activity is often instantiated many times, one or more times per subject. e.g. Serum glucose measurement at 6 weeks. "^^xsd:string ;
+  skos:prefLabel "Protocol specified activity"^^xsd:string ;
+.
+study:Race
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ObservationOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Race"^^xsd:string ;
 .
 study:Randomization
   rdf:type owl:Class ;
@@ -801,7 +862,13 @@ study:ScheduledActivity
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Scheduled activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "An Activity that is scheduled to occur at a particular and specified point in time. It is associated with a performer and/or participant/Subject"^^xsd:string ;
+.
+study:Sex
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ObservationOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Sex"^^xsd:string ;
 .
 study:Site
   rdf:type owl:Class ;
@@ -838,7 +905,7 @@ study:StudyActivity
   rdfs:label "Study activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
   owl:equivalentClass <http://www.bridgmodel.org/owl#StudyActivity> ;
-  skos:definition "An Activity that is part of a Study"^^xsd:string ;
+  skos:definition "An Activity that is part of a Study. "^^xsd:string ;
 .
 study:StudyComponent
   rdf:type owl:Class ;
@@ -878,6 +945,12 @@ study:Substance
   rdfs:subClassOf study:Entity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Substance"^^xsd:string ;
+.
+study:UnscheduledVisit
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Unscheduled visit"^^xsd:string ;
 .
 study:Visit
   rdf:type owl:Class ;
@@ -1315,6 +1388,14 @@ study:hasPrerequisite
   rdfs:range study:PrerequisiteActivity ;
   skos:definition ""^^xsd:string ;
 .
+study:hasProtocolSpecifiedActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:ProtocolSpecifiedActivity ;
+  rdfs:subPropertyOf study:hasStudyActivity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "has protocol specified activity"^^xsd:string ;
+.
 study:hasReferenceInterval
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1363,14 +1444,14 @@ study:hasStudyActivity
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Study ;
   rdfs:label "has study activity"^^xsd:string ;
-  rdfs:range study:Activity ;
+  rdfs:range study:StudyActivity ;
   rdfs:subPropertyOf study:hasSubActivity ;
   owl:inverseOf study:isActivityOfStudy ;
   owl:propertyChainAxiom (
       study:hasStudyParticipant
       study:engagesIn
     ) ;
-  skos:definition "Relates a Study with a StudyActivity conducted as part of that Study"^^xsd:string ;
+  skos:definition "Relates a Study with an Activity conducted as part of that Study"^^xsd:string ;
 .
 study:hasStudyID
   rdf:type owl:DatatypeProperty ;

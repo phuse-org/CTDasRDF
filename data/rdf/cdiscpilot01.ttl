@@ -24,6 +24,12 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+cd01p:BodyPosition
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ObservationOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Body position"^^xsd:string ;
+.
 cd01p:Study_1
   study:hasStudyParticipant cdiscpilot01:Person_1 ;
   study:hasStudyParticipant cdiscpilot01:Person_2 ;
@@ -416,12 +422,12 @@ cdiscpilot01:Person_1
   study:hasUniqueSubjectID "01-701-1015"^^xsd:string ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_1 ;
   study:participatesIn cdiscpilot01:InformedConsentAdult_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagC16WK_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagC24WK_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagC8WK_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagEFF_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagITT_1 ;
-  study:participatesIn cdiscpilot01:PopulationFlagSAF_1 ;
+  study:participatesIn cdiscpilot01:PopFlagCmpltr16Wk_1 ;
+  study:participatesIn cdiscpilot01:PopFlagCmpltr24Wk_1 ;
+  study:participatesIn cdiscpilot01:PopFlagCmpltr8Wk_1 ;
+  study:participatesIn cdiscpilot01:PopFlagEff_1 ;
+  study:participatesIn cdiscpilot01:PopFlagItt_1 ;
+  study:participatesIn cdiscpilot01:PopFlagSaf_1 ;
   study:participatesIn cdiscpilot01:ProductAdministration_1 ;
   study:participatesIn cdiscpilot01:RandomizationBAL3_1 ;
   study:participatesIn cdiscpilot01:VisitScreening1_1 ;
@@ -460,58 +466,51 @@ cdiscpilot01:Person_3
   study:participatesIn cdiscpilot01:ProductAdministration_3 ;
   study:participatesIn cdiscpilot01:RandomizationBAL3_3 ;
 .
-cdiscpilot01:PopulationFlagC16WK_1
-  rdf:type cd01p:PopulationFlagC16Wk ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1C16WK"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode cd01p:PopulationFlagC16Wk ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
+cdiscpilot01:PopFlagCmpltr16Wk_1
+  rdf:type custom:PopFlagCmpltr16Wk ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Y"^^xsd:string ;
+  study:hasCode custom:PopFlagCmpltr16Wk ;
+  study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagC24WK_1
-  rdf:type cd01p:PopulationFlagC24Wk ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1C24WK"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode cd01p:PopulationFlagC24Wk ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
+cdiscpilot01:PopFlagCmpltr24Wk_1
+  rdf:type custom:PopFlagCmpltr24Wk ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Pop flag saf 1"^^xsd:string ;
+  study:hasCode custom:PopFlagCmpltr24Wk ;
+  study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagC8WK_1
-  rdf:type cd01p:PopulationFlagC8Wk ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1C8WK"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode cd01p:PopulationFlagC16Wk ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
+cdiscpilot01:PopFlagCmpltr8Wk_1
+  rdf:type custom:PopFlagCmpltr8Wk ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Y"^^xsd:string ;
+  study:hasCode custom:PopFlagCmpltr8Wk ;
+  study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagEFF_1
-  rdf:type code:PopulationFlagEFF ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1EFF"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode code:PopulationFlagEFF ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
+cdiscpilot01:PopFlagEff_1
+  rdf:type custom:PopFlagEff ;
+  skos:prefLabel "Y"^^xsd:string ;
+  study:hasCode custom:PopFlagEff ;
+  study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagITT_1
-  rdf:type code:PopulationFlagITT ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1ITT"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode code:PopulationFlagITT ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
+cdiscpilot01:PopFlagItt_1
+  rdf:type custom:PopFlagItt ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Y"^^xsd:string ;
+  study:hasCode custom:PopFlagItt ;
+  study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
-cdiscpilot01:PopulationFlagSAF_1
-  rdf:type code:PopulationFlagSAF ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "popflag-P1SAF"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  study:hasCode code:PopulationFlagSAF ;
-  study:hasPerformer cdiscpilot01:Sponsor_1 ;
+cdiscpilot01:PopFlagSaf_1
+  rdf:type custom:PopFlagSaf ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Pop flag saf 1"^^xsd:string ;
+  study:hasCode custom:PopFlagSaf ;
+  study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:ProductAdministrationInterval_1
@@ -739,12 +738,6 @@ cdiscpilot01:Site_9
   study:hasCountry code:Country_1 ;
   study:hasSiteID "709"^^xsd:string ;
 .
-cdiscpilot01:Sponsor_1
-  rdf:type study:Sponsor ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "CLINICAL STUDY SPONSOR"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
 cdiscpilot01:StartRuleLying5_1
   rdf:type code:StartRuleLying5 ;
   rdfs:comment ""^^xsd:string ;
@@ -793,14 +786,19 @@ cdiscpilot01:StudyParticipationInterval_3
   time:hasBeginning cdiscpilot01:Date_16 ;
   time:hasEnd cdiscpilot01:Date_22 ;
 .
+cdiscpilot01:UnscheduledVisit_1
+  rdf:type study:UnscheduledVisit ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "UNSCHEDULED 3.1"^^xsd:string ;
+.
 cdiscpilot01:VisitScreening1_1
-  rdf:type cd01p:VisitScreening1 ;
+  rdf:type custom:VisitScreening1 ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 Visit 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SCREENING1"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode cd01p:VisitScreening1 ;
+  study:hasCode custom:VisitScreening1 ;
   study:hasDate cdiscpilot01:Date_19 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_1 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_1 ;
@@ -840,7 +838,13 @@ code:timepoint-PT_SUPINE
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C43234>
   rdfs:label "NOT REPORTED" ;
 .
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166>
+  rdf:type cd01p:AssumeBodyPositionOutcome ;
+  rdf:type cd01p:BodyPosition ;
+.
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167>
+  rdf:type cd01p:AssumeBodyPositionOutcome ;
+  rdf:type cd01p:BodyPosition ;
   skos:prefLabel "SUPINE"^^xsd:string ;
 .
 study:Arm
