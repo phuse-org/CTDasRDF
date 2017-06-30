@@ -469,7 +469,6 @@ cdiscpilot01:Person_3
 cdiscpilot01:PopFlagCmpltr16Wk_1
   rdf:type custom:PopFlagCmpltr16Wk ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Y"^^xsd:string ;
   study:hasCode custom:PopFlagCmpltr16Wk ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
@@ -477,7 +476,6 @@ cdiscpilot01:PopFlagCmpltr16Wk_1
 cdiscpilot01:PopFlagCmpltr24Wk_1
   rdf:type custom:PopFlagCmpltr24Wk ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Pop flag saf 1"^^xsd:string ;
   study:hasCode custom:PopFlagCmpltr24Wk ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
@@ -485,14 +483,12 @@ cdiscpilot01:PopFlagCmpltr24Wk_1
 cdiscpilot01:PopFlagCmpltr8Wk_1
   rdf:type custom:PopFlagCmpltr8Wk ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Y"^^xsd:string ;
   study:hasCode custom:PopFlagCmpltr8Wk ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagEff_1
   rdf:type custom:PopFlagEff ;
-  skos:prefLabel "Y"^^xsd:string ;
   study:hasCode custom:PopFlagEff ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
@@ -500,7 +496,6 @@ cdiscpilot01:PopFlagEff_1
 cdiscpilot01:PopFlagItt_1
   rdf:type custom:PopFlagItt ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Y"^^xsd:string ;
   study:hasCode custom:PopFlagItt ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
@@ -508,7 +503,6 @@ cdiscpilot01:PopFlagItt_1
 cdiscpilot01:PopFlagSaf_1
   rdf:type custom:PopFlagSaf ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Pop flag saf 1"^^xsd:string ;
   study:hasCode custom:PopFlagSaf ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
