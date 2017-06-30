@@ -164,49 +164,6 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
         # This line works correctly for first call of SYSBP, DIABP
         names(domainName)[names(domainName)=="valFrag"] <- paste0(i, "_Frag")
     
-    }
+    } 
      return(domainName)
 }
-
-#------------------------------------------------------------------------------
-#  Fragment Creation 
-#------------------------------------------------------------------------------
-
-
-
-#-- DM fragment creation
-dm <- addDateFrag(dm, "rfstdtc")  
-dm <- addDateFrag(dm, "rfendtc")  
-dm <- addDateFrag(dm, "rfxstdtc")  
-dm <- addDateFrag(dm, "rfxendtc")  
-dm <- addDateFrag(dm, "rficdtc")  
-dm <- addDateFrag(dm, "rfpendtc")  
-dm <- addDateFrag(dm, "dthdtc")
-dm <- addDateFrag(dm, "dmdtc")  
-dm <- addDateFrag(dm, "brthdate") 
-
-dm <- createFragOneDomain(domainName=dm, processColumns="siteid", fragPrefix="Site" )
-dm <- createFragOneDomain(domainName=dm, processColumns="invid",  fragPrefix="Investigator" )
-dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
-dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
-dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="Country"  )
-
-#TODO: CHANGE! arm_Frag 
-dm$armcd_Frag <- sapply(dm$armcd,function(x) {
-    switch(as.character(x),
-        'Pbo'      = 'ArmPlacebo',
-        'Xan_Hi'   = 'ArmXanomelin_Hi',
-        'Xan_Lo'   = 'ArmXanomelin_Lo',
-        'Scrnfail' = 'ArmScreenFailure',
-        as.character(x) ) } )
-
-dm$actarmcd_Frag <- sapply(dm$actarmcd,function(x) {
-    switch(as.character(x),
-        'Pbo'      = 'ArmPlacebo',
-        'Xan_Hi'   = 'ArmXanomelin_Hi',
-        'Xan_Lo'   = 'ArmXanomelin_Lo',
-        'Scrnfail' = 'ArmScreenFailure',
-        as.character(x) ) } )
-
-#-- VS fragment creation
-# TBD!!!!!!!!!!!!

@@ -86,104 +86,27 @@ for (i in 1:nrow(prefixes)) {
 source('R/graphMeta.R')
 
 # Import and indexing Functions (Called during domain processing) 
-source('R/dataImportFnts.R')
-
-#-- Import data. Needed here for creating unique URIs for values that span
-#   Multiple domains, like dates.
+source('R/dataImport_F.R')
 
 #------------------------------------------------------------------------------
-# DM DOMAIN
+# Fragment Creation Functions for the domains
+# Functions to create URI fragments for Dates and other categories that are shared URIs 
+# Eg: Date_1, AgeMeasurement_3
+source('R/createFrag_F.R')
+
+
 #------------------------------------------------------------------------------
+# Imports 
+#------------------------------------------------------------------------------
+# DM 
 dm <- readXPT("dm")
 # For testing, keep only the first (maxPerson) patients in DM
 dm <- head(dm, maxPerson)  # maxPerson set above
+source('R/imputeDM.R')     # Create values needed for testing. 
 
-# Create the date translation table from all dates across domains
-#   Needed by both imputeDM and in later code where DM is processed.
-source('R/imputeDM.R')  # requires import of VS to get dates from VS that are used as part of DateDict/dateFrag creation
-
-
-
-#------------------------------------------------------------------------------
-# VS DOMAIN
-#------------------------------------------------------------------------------
-# Import VS
+# VS
 vs <- readXPT("vs")
-
-vs <- addPersonId(vs)
-##-----------------   DEV/TESTING ONLY  ---------------------------------------
-#SUBSET THE DATA DOWN TO A SINGLE PATIENT AND SUBSET OF TESTS FOR DEVELOPMENT PURPOSES
-vs <- subset(vs, (personNum==1 
-                  & vstestcd %in% c("DIABP", "SYSBP") 
-                  # & visit %in% c("SCREENING 1", "SCREENING 2")))
-                  & visit %in% c("SCREENING 1")))  # Subset further down to match AO data: 09May2017
-
-#-- Data Imputation for Prototype Testing ---------------------------------------
-# More imputations for the first 3 records to match data created by AO : 2016-01-19
-#   These are new COLUMNS and values not present in original source!
-vs$vsgrpid <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "GRPID1", "" )) 
-vs$vscat   <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "CAT1", "" )) 
-vs$vsscat  <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "SCAT1", "" )) 
-vs$vsreasnd <- with(vs, ifelse(vsseq %in% c(1) & personNum == 1, "not applicable", "" )) 
-
-# vsspid
-vs[vs$vsseq %in% c(1), "vsspid"]  <- "123"
-vs[vs$vsseq %in% c(2), "vsspid"]  <- "719"
-vs[vs$vsseq %in% c(3), "vsspid"]  <- "235"
-
-# vs[1:3,grep("vsstat", colnames(vs))] <- "CO"  (complete)
-# Unfactorize the  column to allow entry of a bogus data
-vs$vsstat <- as.character(vs$vsstat)
-vs[1,grep("vsstat", colnames(vs))] <- "CO"
-
-
-# fragment for coded value. Links from CDISCPILOT01 to CODE namespace
-#vs$vsstat_Frag <- recode(vs$vsstat, 
-#                         "'CO'         = 'activitystatus_1';
-#                          'ND'         = 'activitystatus_2' 
-#                         " )
-
-
-
-
-#---- vsloc  for DIABP, SYSBP all assigned as 'ARM' for development purposes.
-# Unfactorize the  column to allow entry of a bogus data
-vs$vsloc <- as.character(vs$vsloc)
-vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
-
-# vslat
-vs[vs$vsseq %in% c(1,3), "vslat"]  <- "RIGHT"
-vs[vs$vsseq %in% c(2), "vslat"]    <- "LEFT"
-
-vs[vs$vsseq %in% c(1), "vsblfl"]    <- "Y"
-
-vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "N", "" )) 
-
-# Investigator ID hard coded. See also processDM.R
-vs$invid  <- '123'
-
-# Assign 1st 3 obs as COMPLETE to match AO
-vs$vsstat <- as.character(vs$vsstat) # Unfactorize to all allow assignment 
-
-vs$vsrftdtc <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "2013-12-16", "" )) 
-
-# -- Additional Value creation
-# Create an extra row of data that is used to create values not present in the orignal
-#   subset of data. The row is used to create codelists, etc. dynamically during the script run
-#   as an alternative to hard coding, since these values are not associated within any one subject
-#   in the subset. The values likely are part of the larger set.
-# Add new rows of data used to create code lists for categories missing in 
-#    the original test data.
-temprow <- matrix(c(rep.int(NA,length(vs))),nrow=1,ncol=length(vs))
-# Convert to df with  cols the same names as the original (vs) df
-newrow <- data.frame(temprow)
-colnames(newrow) <- colnames(vs)
-
-# rbind the empty row back to original df
-vs <- rbind(vs,newrow)
-
-# now populate the values in the last row of the data
-vs[nrow(vs),"vsstat"]   <- 'ND'  # add the ND value for creating activitystatus_2. Found later in the orginal data
+source('R/imputeVS.R')  # restructure and impute, and subset for dev purposes
 
 #------------------------------------------------------------------------------
 # xx DOMAIN
@@ -191,13 +114,20 @@ vs[nrow(vs),"vsstat"]   <- 'ND'  # add the ND value for creating activitystatus_
 #------------------------------------------------------------------------------
 
 
-#------------------------------------------------------------------------------
-# Fragment Creation for the domains
-#   Called after all relevent domains available, since some fragment values 
+# Create the date translation table from all dates across domains
+#   Needed by both imputeDM and in later code where DM is processed.
+dateDict<-createDateDict()    
+
+
+
+# Create fragment dictionaries that cross domains
+#   Called after all contributing  domains available, since some fragment values 
 #      eg: dates, cross multiple domains.
-# Functions to create URI fragments for Dates and other categories that are shared URIs 
-# Eg: Date_1, AgeMeasurement_3
-source('R/createFrag.R')
+source('R/frag_DM.R')  # requires import of VS to get dates from VS that are used as part of DateDict/dateFrag creation
+
+
+
+
 
 
 #------------------------------------------------------------------------------
@@ -211,13 +141,9 @@ source('R/createFrag.R')
 source('R/processDM.R')
 source('R/processSUPPDM.R')
 
-#---- VS DOMAIN
-#TODO: VS script needs to move code to imputeVS and to createFrag!
-#WIP
-#HERE
 
 
-source('R/processVS.R')
+#TW source('R/processVS.R')
 
 #---- X DOMAIN  Additional Domains will be added here.......
 
@@ -226,8 +152,6 @@ source('R/processVS.R')
 #   Write out the TTL files
 #------------------------------------------------------------------------------
 cdiscpilot01 = save.rdf(cdiscpilot01,  filename=outFileMain,   format="TURTLE")   
-custom       = save.rdf(custom, filename=outFileCustom, format="TURTLE")
-code         = save.rdf(code,   filename=outFileCode,   format="TURTLE")
 
 #------------------------------------------------------------------------------
 # VALIDATION
@@ -235,11 +159,3 @@ code         = save.rdf(code,   filename=outFileCode,   format="TURTLE")
 #------------------------------------------------------------------------------
 system(paste('riot --validate ', outFileMain),
     show.output.on.console = TRUE)
-
-#NB: Not updating custom.ttl or code.ttl as of 2017-05-25 . 
-#    Focus is only on cdiscpilot01
-#system(paste('riot --validate ', outFileCustom),
-#    show.output.on.console = TRUE)
-
-#system(paste('riot --validate ', outFileCode),
-#    show.output.on.console = TRUE)

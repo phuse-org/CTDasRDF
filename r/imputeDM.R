@@ -1,6 +1,7 @@
 ###############################################################################
 # FILE: imputeDM.R
-# DESC: Impute data required for prototyping. 
+# DESC: Impute data required for prototyping. Creates data values. 
+#       URI fragments are created in fragDm.R
 # REQ : Prior import of the DM domain by driver script.
 # SRC : N/A
 # IN  : dm dataframe 
@@ -34,6 +35,9 @@ dm$dthdtc <- as.character(dm$dthdtc)
 dm$dthdtc[dm$personNum == 1 ] <- "2013-12-26"  # Death Date
 dm$dthfl[dm$personNum == 1 ] <- "Y" # Set a Death flag  for Person_1
 
+# DELETED THE FOLLOWING SINCE CODE LIST GENERATION IS NOT PART OF THE CURRENT REMIT,
+# WHICH is focussed soley on CDISCPILOT01-R.TTL. Not CODE.TTL, etc. at this time.
+
 # -- Additional Value creation# Create an extra row of data that is used to create values not present in the orignal
 #   subset of data. The row is used to create codelists, etc. dynamically during the script run
 #   as an alternative to hard coding, since these values are not associated within any one subject
@@ -41,65 +45,17 @@ dm$dthfl[dm$personNum == 1 ] <- "Y" # Set a Death flag  for Person_1
 #   Add an new row to the DM dataframe to contain information needed for development
 # SAUCE: https://gregorybooma.wordpress.com/2012/07/18/add-an-empty-column-and-row-to-an-r-data-frame/
 #   Create a one-row matrix the same length as data
-temprow <- matrix(c(rep.int(NA,length(dm))),nrow=1,ncol=length(dm))
+#temprow <- matrix(c(rep.int(NA,length(dm))),nrow=1,ncol=length(dm))
  
 # Convert to df with  cols the same names as the original (dm) df
-newrow <- data.frame(temprow)
-colnames(newrow) <- colnames(dm)
+#newrow <- data.frame(temprow)
+#colnames(newrow) <- colnames(dm)
  
 # rbind the empty row back to original df
-dm <- rbind(dm,newrow)
+#dm <- rbind(dm,newrow)
  
 # Populate the values in the last row of the data
-dm[nrow(dm),"arm"]   <- 'Screen Failure'
-dm[nrow(dm),"armcd"] <- 'Scrnfail'
+#dm[nrow(dm),"arm"]   <- 'Screen Failure'
+#dm[nrow(dm),"armcd"] <- 'Scrnfail'
 
 
-#-- Data Coding ---------------------------------------------------------------
-#-- CODED values 
-#TODO: DELETE THESE toupper() statements. No longer used?  2017-01-18 TW ?
-# UPPERCASE and remove spaces values of fields that will be coded to codelists
-# Phase:  "Phase 2" becomes "PHASE2"
-dm$study_ <- toupper(gsub(" ", "", dm$study))
-dm$ageu_  <- toupper(gsub(" ", "", dm$ageu))  # TODO: NOT USED?
-# For arm, use the coded form of both armcd and actarmcd for short-hand linkage
-#    to the codelist where both ARM/ARMCD adn ACTARM/ACTARMCD are located.
-dm$arm_    <- toupper(gsub(" ", "", dm$armcd))
-dm$actarm_ <- toupper(gsub(" ", "", dm$actarmcd))
-
-#-- Value/Code Translation
-# Translate values in the domain to their corresponding codelist code
-# for linkage to the SDTM graph
-# Example: Sex is coded to the SDTM Terminology graph by translating the value 
-#  from the DM domain to its corresponding URI code in the SDTM terminology graph.
-#  F C66731.C16576
-#  M C66731.C20197
-# TODO: This type of recoding to external graphs will be moved to a function
-#        and driven by a config file and/or separate SPARQL query against the graph
-#        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
-#---- Sex
-dm$sex_ <- sapply(dm$sex,function(x) {
-    switch(as.character(x),
-       'M'  = 'C66731.C20197',
-       'F'  = 'C66731.C16576',
-       'U'  = 'C66731.C17998', 
-       'UNDIFFERENTIATED' = 'C66731.C45908',
-        as.character(x) ) } )
-#---- Ethnicity
-dm$ethnic_ <- sapply(dm$ethnic,function(x) {
-    switch(as.character(x),
-        'HISPANIC OR LATINO'     = 'C66790.C17459',
-        'NOT HISPANIC OR LATINO' = 'C66790.C41222',
-        'NOT REPORTED'           = 'C66790.C43234',
-        'UNKNOWN'                = 'C66790.C17998',
-        as.character(x) ) } )
-#---- Race
-dm$race_  <- sapply(dm$race,function(x) {
-    switch(as.character(x),
-        'AMERICAN INDIAN OR ALASKA NATIVE'          = 'C74457.C41259',
-        'ASIAN'                                     = 'C74457.C41260',
-        'BLACK OR AFRICAN AMERICAN'                 = 'C74457.C16352',
-        'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER' = 'C74457.C41219',
-        'WHITE'                                     = 'C74457.C41261',
-        as.character(x) ) } )
-#-- End Data Coding -----------------------------------------------------------
