@@ -172,8 +172,6 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
 #  Fragment Creation 
 #------------------------------------------------------------------------------
 
-# Create fragment dictionaries that cross domains
-dateDict<-createDateDict()    
 
 
 #-- DM fragment creation
