@@ -524,23 +524,29 @@ ddply(dm, .(subjid), function(dm)
         )
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
+            paste0(prefix.STUDY,"hasCode" ),
+            paste0(prefix.STUDY, "ProductAdministration")
+        )
+
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
             paste0(prefix.STUDY,"hasActivityInterval" ),
-            paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum)
+            paste0(prefix.CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum)
         )
             # Interval_PA(n)
             add.triple(cdiscpilot01,
-                paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum),
                 paste0(prefix.RDF,"type" ),
                 paste0(prefix.STUDY, "ProductAdministrationInterval")
             )
             add.data.triple(cdiscpilot01,
-                paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum),
                 paste0(prefix.RDFS,"label" ),
                 paste0("Product Administration Interval ", dm$personNum), type="string"
             )
             # Product Administration Begin
             add.triple(cdiscpilot01,
-                paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum),
                 paste0(prefix.TIME,"hasBeginning" ),
                 paste0(prefix.CDISCPILOT01, dm$rfxstdtc_Frag)
             )
@@ -549,7 +555,7 @@ ddply(dm, .(subjid), function(dm)
 
             # Product Administration End
             add.triple(cdiscpilot01,
-                paste0(prefix.CDISCPILOT01, "Interval_PA", dm$personNum),
+                paste0(prefix.CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum),
                 paste0(prefix.TIME,"hasEnd" ),
                 paste0(prefix.CDISCPILOT01, dm$rfxendtc_Frag)
             )
@@ -652,20 +658,24 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"participatesIn" ),
         paste0(prefix.CDISCPILOT01, "RandomizationBAL3_", dm$personNum)
     )
-        #Hard coding of RandomizationBAL3. Email from AO 05May17 for explanation
         add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum),
+            paste0(prefix.CDISCPILOT01, "RandomizationBAL3_", dm$personNum),
             paste0(prefix.RDF,"type" ),
             paste0(prefix.CODE,"RandomizationBAL3" )
         ) 
         add.data.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum),
+            paste0(prefix.CDISCPILOT01, "RandomizationBAL3_", dm$personNum),
             paste0(prefix.RDFS,"label" ),
             paste0("Randomization ",dm$personNum), type="string"
         )
         add.triple(cdiscpilot01,
-            paste0(prefix.CDISCPILOT01, "Randomization_", dm$personNum),
-            paste0(prefix.CODE,"hasOutcome" ),
-            paste0(prefix.CUSTOM,dm$armcd_Frag)
+            paste0(prefix.CDISCPILOT01, "RandomizationBAL3_", dm$personNum),
+            paste0(prefix.STUDY,"hasCode" ),
+            paste0(prefix.CODE,"RandomizationBAL3")
+        )
+        add.triple(cdiscpilot01,
+            paste0(prefix.CDISCPILOT01, "RandomizationBAL3_", dm$personNum),
+            paste0(prefix.STUDY,"outcome" ),
+            paste0(prefix.CD01P,dm$armcd_Frag)
         )
 }) # end of ddply for DM domain   
