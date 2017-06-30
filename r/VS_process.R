@@ -1,5 +1,5 @@
 ###############################################################################
-# FILE : processVS.R
+# FILE : VS_process.R
 # DESC: Create VS domain triples
 # REQ : 
 # SRC : 
@@ -13,7 +13,7 @@
 #   *****  Only DIABP working. Add SYSBP, and the other tests.
 #           
 #  * Recode to use switch() for recoding and Dddply() instead of FOR loops
-#          see processSUPPDM.R for methods
+#          see SUPPDM_process.R for methods
 # - Collapse the categories DIABP, SYSBP, etc. into functions?
 ###############################################################################
 #-- Data Creation for prototype development -----------------------------------
@@ -192,8 +192,6 @@ ddply(vstestcd.subset.bp, .(vsorres_Frag), function(vstestcd.subset.bp)
     
     
 })
-
-
 
 #-- CODE namespace ------------------------------------------------------------
 # Loop through the arm_ codes to create  custom-terminology triples
@@ -607,7 +605,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
 #           #)
 #           
 #           # sponsordefinedID
-#           # NOTE: value is hard-coded in processDM.R
+#           # NOTE: value is hard-coded in DM_process.R
 #           add.data.triple(cdiscpilot01,
 #               paste0(prefix.CDISCPILOT01, vsWide$DIABP_Frag),
 #               paste0(prefix.STUDY,"sponsordefinedID" ),

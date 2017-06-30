@@ -31,7 +31,7 @@ library(reshape2)  # decast and others...
 version <- "0.0.1"
 
 # Subset for prototype development. 
-maxPerson = 6; # Used in processDM.R 
+maxPerson = 6; # Used in DM_process.R 
 
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
@@ -85,8 +85,8 @@ for (i in 1:nrow(prefixes)) {
 # Graph Metadata
 source('R/graphMeta.R')
 
-# Import and indexing Functions (Called during domain processing) 
-source('R/dataImport_F.R')
+# Misc funt. : data import, person ID, etc. 
+source('R/misc_F.R')
 
 #------------------------------------------------------------------------------
 # Fragment Creation Functions for the domains
@@ -102,11 +102,11 @@ source('R/createFrag_F.R')
 dm <- readXPT("dm")
 # For testing, keep only the first (maxPerson) patients in DM
 dm <- head(dm, maxPerson)  # maxPerson set above
-source('R/imputeDM.R')     # Create values needed for testing. 
+source('R/DM_impute.R')     # Create values needed for testing. 
 
 # VS
 vs <- readXPT("vs")
-source('R/imputeVS.R')  # restructure and impute, and subset for dev purposes
+source('R/VS_impute.R')  # restructure and impute, and subset for dev purposes
 
 #------------------------------------------------------------------------------
 # xx DOMAIN
@@ -115,7 +115,7 @@ source('R/imputeVS.R')  # restructure and impute, and subset for dev purposes
 
 
 # Create the date translation table from all dates across domains
-#   Needed by both imputeDM and in later code where DM is processed.
+#   Needed by both DM_impute and in later code where DM is processed.
 dateDict<-createDateDict()    
 
 
@@ -123,12 +123,7 @@ dateDict<-createDateDict()
 # Create fragment dictionaries that cross domains
 #   Called after all contributing  domains available, since some fragment values 
 #      eg: dates, cross multiple domains.
-source('R/frag_DM.R')  # requires import of VS to get dates from VS that are used as part of DateDict/dateFrag creation
-
-
-
-
-
+source('R/DM_frag.R')  # requires import of VS to get dates from VS that are used as part of DateDict/dateFrag creation
 
 #------------------------------------------------------------------------------
 # Domain Processing
@@ -138,12 +133,11 @@ source('R/frag_DM.R')  # requires import of VS to get dates from VS that are use
 #        DM MUST BE Run to create personNUm that is used when processing other domains.
 #        SUPPDM can be omitted during development steps.
 
-source('R/processDM.R')
-source('R/processSUPPDM.R')
+source('R/DM_process.R')
+source('R/SUPPDM_process.R')
 
 
-
-#TW source('R/processVS.R')
+#TW source('R/VS_process.R')
 
 #---- X DOMAIN  Additional Domains will be added here.......
 

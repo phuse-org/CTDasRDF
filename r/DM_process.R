@@ -1,4 +1,4 @@
-# FILE: processDM.R
+# FILE: DM_process.R
 # DESC: Create DM domain triples
 # REQ : 
 # SRC : 
@@ -32,7 +32,7 @@
 #-- CUSTOM namespace ----------------------------------------------------------
 #-- Treatment Arms 
 #   Create custom terminlogy list for arm_1, arm_2 etc.
-#TODO: Change this to a melt() similar to processVS.R
+#TODO: Change this to a melt() similar to VS_process.R
 dm1 <- dm[,c("actarm", "actarmcd", "actarmcd_Frag")]
 
 # ERROR IN THE FOLLOWING

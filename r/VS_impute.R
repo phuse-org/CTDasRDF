@@ -1,5 +1,5 @@
 ###############################################################################
-# FILE: imputeVS.R
+# FILE: VS_impute.R
 # DESC: Impute data required for prototyping. 
 # REQ : Prior import of the VS domain by driver script.
 # SRC : N/A
@@ -60,7 +60,7 @@ vs[vs$vsseq %in% c(1), "vsblfl"]    <- "Y"
 
 vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "N", "" )) 
 
-# Investigator ID hard coded. See also processDM.R
+# Investigator ID hard coded. See also DM_process.R
 vs$invid  <- '123'
 
 # Assign 1st 3 obs as COMPLETE to match AO

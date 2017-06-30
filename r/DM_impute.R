@@ -1,7 +1,7 @@
 ###############################################################################
-# FILE: imputeDM.R
+# FILE: DM_impute.R
 # DESC: Impute data required for prototyping. Creates data values. 
-#       URI fragments are created in fragDm.R
+#       URI fragments are created in DM_frag.R
 # REQ : Prior import of the DM domain by driver script.
 # SRC : N/A
 # IN  : dm dataframe 
@@ -24,7 +24,7 @@ dm$invid_Frag  <- 'Investigator_1'
 
 #---- Birthdate : asbsent in source data
 # NOTE: Date calculations based on SECONDS so you must convert the age in Years to seconds
-#      Change to character to avoid later ddply problem in processDM.R
+#      Change to character to avoid later ddply problem in DM_process.R
 #      Dates reflect their original mixed format of DATE or DATETIME in same col.
 dm$brthdate <- as.character(strptime(strptime(dm$rfstdtc, "%Y-%m-%d") - (strtoi(dm$age) * 365.25 * 24 * 60 * 60), "%Y-%m-%d"))
 #---- Informed Consent  (column present with missing values in DM source).  

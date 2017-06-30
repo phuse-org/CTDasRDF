@@ -1,5 +1,5 @@
 ###############################################################################
-# FILE: processSUPPDM.R
+# FILE: SUPPDM_process.R
 # DESC: Create triples from SUPPDM
 # REQ : 
 # SRC : 
@@ -9,13 +9,13 @@
 #           all domains)
 #       Coded values cannot have spaces or special characters. See Data Coding
 #       Method uses ddply instead of FOR loop. 
-#       Study Sponsor value is hard coded here and in imputeSUPPDM.R
+#       Study Sponsor value is hard coded here and in SUPPDM_impute.R
 # TODO: 
 ###############################################################################
 
 suppdm <- readXPT("suppdm")
 
-source("R/imputeSUPPDM.R")
+source("R/SUPPDM_impute.R")
 
 
 # Hard coded. Study sponsor triple creation.
