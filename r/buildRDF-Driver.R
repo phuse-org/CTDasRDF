@@ -94,9 +94,8 @@ source('R/misc_F.R')
 # Eg: Date_1, AgeMeasurement_3
 source('R/createFrag_F.R')
 
-
 #------------------------------------------------------------------------------
-# Imports 
+# Import and Impute 
 #------------------------------------------------------------------------------
 # DM 
 dm <- readXPT("dm")
@@ -113,22 +112,20 @@ source('R/VS_impute.R')  # restructure and impute, and subset for dev purposes
 #   Additional domains to be added.
 #------------------------------------------------------------------------------
 
-
 # Create the date translation table from all dates across domains
 #   Needed by both DM_impute and in later code where DM is processed.
 dateDict<-createDateDict()    
 
-
-
 # Create fragment dictionaries that cross domains
 #   Called after all contributing  domains available, since some fragment values 
 #      eg: dates, cross multiple domains.
-source('R/DM_frag.R')  # requires import of VS to get dates from VS that are used as part of DateDict/dateFrag creation
+source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part 
+                       #   of DateDict/dateFrag creation
 
 #------------------------------------------------------------------------------
 # Domain Processing
 #------------------------------------------------------------------------------
-#---- DM DOMAIN
+#-- DM DOMAIN
 #  NOTE: DM  MUST be processd first: Creates data required in later steps.
 #        DM MUST BE Run to create personNUm that is used when processing other domains.
 #        SUPPDM can be omitted during development steps.
@@ -137,7 +134,9 @@ source('R/DM_process.R')
 source('R/SUPPDM_process.R')
 
 
-#TW source('R/VS_process.R')
+#-- VS Domain
+source('R/VS_frag.R')
+source('R/VS_process.R')
 
 #---- X DOMAIN  Additional Domains will be added here.......
 

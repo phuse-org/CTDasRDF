@@ -8,7 +8,6 @@
 # NOTE:
 # TODO:
 ################################################################################
-# frag starts here
 #-- Data Coding ---------------------------------------------------------------
 #-- CODED values 
 #TODO: DELETE THESE toupper() statements. No longer used?  2017-01-18 TW ?

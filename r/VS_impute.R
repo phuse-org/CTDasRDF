@@ -60,10 +60,10 @@ vs[vs$vsseq %in% c(1), "vsblfl"]    <- "Y"
 
 vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "N", "" )) 
 
-# Investigator ID hard coded. See also DM_process.R
+# Investigator ID hard coded. Same value as in DM_impute.R
 vs$invid  <- '123'
 
-# Assign 1st 3 obs as COMPLETE to match AO
+# Assign 1st 3 obs as COMPLETE to match AO ontology
 vs$vsstat <- as.character(vs$vsstat) # Unfactorize to all allow assignment 
 
 vs$vsrftdtc <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "2013-12-16", "" )) 
