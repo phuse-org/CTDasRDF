@@ -27,6 +27,8 @@ library(plyr)  # plyr must load prior to dplyr!
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 library(reshape2)  # decast and others...
 
+rm(list=ls())  # Clear workspace from prior runs.
+
 # Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
 
@@ -129,10 +131,8 @@ source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part
 #  NOTE: DM  MUST be processd first: Creates data required in later steps.
 #        DM MUST BE Run to create personNUm that is used when processing other domains.
 #        SUPPDM can be omitted during development steps.
-
 source('R/DM_process.R')
 source('R/SUPPDM_process.R')
-
 
 #-- VS Domain
 source('R/VS_frag.R')
