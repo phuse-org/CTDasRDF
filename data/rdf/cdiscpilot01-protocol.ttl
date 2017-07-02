@@ -1,4 +1,5 @@
 # baseURI: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p
+# imports: file:/Users/aoliva/Google%20Drive/TBCMEWorkspace/Projects/PhUSEStudy/study.ttl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
@@ -18,6 +19,7 @@
 
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p>
   rdf:type owl:Ontology ;
+  owl:imports <file:/Users/aoliva/Google%20Drive/TBCMEWorkspace/Projects/PhUSEStudy/study.ttl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema> ;
@@ -339,4 +341,10 @@ custom:VisitWk8
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676>
   rdf:type study:VitalSign ;
   rdfs:subClassOf study:VitalSign ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166>
+  rdf:type cd01p:AssumeBodyPositionOutcome ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167>
+  rdf:type cd01p:AssumeBodyPositionOutcome ;
 .

@@ -1,14 +1,9 @@
-# baseURI: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study
-# imports: http://spinrdf.org/spl
-# imports: http://www.w3.org/2004/02/skos/core
+# baseURI: file:/Users/aoliva/Google%20Drive/TBCMEWorkspace/Projects/PhUSEStudy/study.ttl
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology
 
-@prefix BRIDG_4.1.1.owl: <file:/Users/Frederik/Downloads/BRIDG_4.1.1.owl.xml> .
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix code: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#> .
+@prefix ns1: <file:/Users/Frederik/Downloads/BRIDG_4.1.1.owl.xml> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -21,52 +16,90 @@
 @prefix spl: <http://spinrdf.org/spl#> .
 @prefix study: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study#> .
 @prefix time: <http://www.w3.org/2006/time#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<file:/Users/aoliva/Google%20Drive/TBCMEWorkspace/Projects/PhUSEStudy/study.ttl>
+  rdf:type owl:Ontology ;
+  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
+.
 arg:activityDate
-  rdf:type rdf:Property ;
+  rdf:type owl:AnnotationProperty ;
   rdfs:subPropertyOf sp:arg ;
 .
 arg:birthdate
-  rdf:type rdf:Property ;
+  rdf:type owl:AnnotationProperty ;
   rdfs:subPropertyOf sp:arg ;
 .
 arg:datestring
-  rdf:type rdf:Property ;
+  rdf:type owl:AnnotationProperty ;
   rdfs:subPropertyOf sp:arg ;
 .
 arg:datestring1
-  rdf:type rdf:Property ;
+  rdf:type owl:AnnotationProperty ;
   rdfs:subPropertyOf sp:arg ;
 .
 arg:datestring2
-  rdf:type rdf:Property ;
+  rdf:type owl:AnnotationProperty ;
   rdfs:subPropertyOf sp:arg ;
 .
 arg:refDate
-  rdf:type rdf:Property ;
+  rdf:type owl:AnnotationProperty ;
   rdfs:subPropertyOf sp:arg ;
 .
 arg:refdate
-  rdf:type rdf:Property ;
+  rdf:type owl:AnnotationProperty ;
   rdfs:subPropertyOf sp:arg ;
 .
-owl:hasValue
-  owl:oneOf (
-      <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C20197>
-      <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C45908>
-      <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C16576>
-      <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C17998>
-    ) ;
+smf:duration
+  rdf:type owl:Class ;
+.
+<http://www.bridgmodel.org/owl#Activity>
+  rdf:type owl:Class ;
+  owl:equivalentClass study:Activity ;
+.
+<http://www.bridgmodel.org/owl#ResearchStaff>
+  rdf:type owl:Class ;
+  owl:equivalentClass study:ResearchStaff ;
+.
+<http://www.bridgmodel.org/owl#Study>
+  rdf:type owl:NamedIndividual ;
+.
+<http://www.bridgmodel.org/owl#StudyActivity>
+  rdf:type owl:Class ;
+  owl:equivalentClass study:StudyActivity ;
+.
+<http://www.bridgmodel.org/owl#StudyAgent>
+  rdf:type owl:Class ;
+  owl:equivalentClass study:InvestigationalProduct ;
+.
+xsd:date
+  rdf:type owl:Class ;
 .
 time:hasBeginning
   rdfs:subPropertyOf study:hasDate ;
 .
 time:inXSDDateTime
+  rdf:type owl:NamedIndividual ;
   rdfs:subPropertyOf study:dateTimeInXSDString ;
 .
 code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
+.
+code:hasDelay
+  rdf:type owl:NamedIndividual ;
+.
+code:hasExpectedOutcome
+  rdf:type owl:NamedIndividual ;
+.
+code:hasPermissibleOutcome
+  rdf:type owl:NamedIndividual ;
+.
+code:hasPrerequisite
+  rdf:type owl:NamedIndividual ;
+.
+code:hasValue
+  rdf:type owl:NamedIndividual ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C16576>
   rdf:type study:Sex ;
@@ -130,172 +163,21 @@ study:ActiveProduct
 .
 study:Activity
   rdf:type owl:Class ;
+  rdf:type owl:NamedIndividual ;
   spin:rule [
       rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object study:PlannedActivity ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object [
-                sp:varName "strtrule"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasStartRule ;
-            sp:subject spin:_this ;
-          ]
-          [
-            rdf:type sp:Filter ;
-            sp:expression [
-                rdf:type sp:not ;
-                sp:arg1 [
-                    rdf:type sp:bound ;
-                    sp:arg1 [
-                        sp:varName "strtrule"^^xsd:string ;
-                      ] ;
-                  ] ;
-              ] ;
-          ]
-        ) ;
+      sp:templates [] ;
+      sp:where [] ;
     ] ;
   spin:rule [
       rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "pldate"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasScheduledDate ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "scheddatexsd"^^xsd:string ;
-              ] ;
-            sp:predicate time:inXSDDateTime ;
-            sp:subject [
-                sp:varName "pldate"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object study:ScheduledActivity ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object [
-                sp:varName "strtrule"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasStartRule ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "pldate"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasPlannedDate ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "strtrulecode"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasIdentifier ;
-            sp:subject [
-                sp:varName "strtrule"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "anchoroutcometerm"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasExpectedOutcome ;
-            sp:subject [
-                sp:varName "strtrulecode"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "strtdelay"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasDelay ;
-            sp:subject [
-                sp:varName "strtrulecode"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "anchor"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasPrerequisite ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "anchoroutcome"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasPermissibleOutcome ;
-            sp:subject [
-                sp:varName "anchor"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Filter ;
-            sp:expression [
-                rdf:type sp:eq ;
-                sp:arg1 [
-                    sp:varName "anchoroutcometerm"^^xsd:string ;
-                  ] ;
-                sp:arg2 [
-                    sp:varName "anchoroutcome"^^xsd:string ;
-                  ] ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "anchordate"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasDate ;
-            sp:subject [
-                sp:varName "anchor"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "anchrxsddate"^^xsd:string ;
-              ] ;
-            sp:predicate time:inXSDDateTime ;
-            sp:subject [
-                sp:varName "anchordate"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type sp:add ;
-                sp:arg1 [
-                    sp:varName "anchrxsddate"^^xsd:string ;
-                  ] ;
-                sp:arg2 [
-                    sp:varName "strtdelay"^^xsd:string ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "scheddatexsd"^^xsd:string ;
-              ] ;
-          ]
-        ) ;
+      sp:templates [] ;
+      sp:where [] ;
       rdfs:comment "derive planned start date based on a start rule **in progress**"^^xsd:string ;
     ] ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Activity"^^xsd:string ;
   rdfs:subClassOf study:StudyComponent ;
-  owl:equivalentClass <http://www.bridgmodel.org/owl#Activity> ;
   skos:definition "see definition for bridg:Activity"^^xsd:string ;
 .
 study:ActivityDate
@@ -348,27 +230,10 @@ study:AdverseEvent
 .
 study:AgeOutcome
   rdf:type owl:Class ;
+  rdf:type owl:NamedIndividual ;
   spin:constraint [
       rdf:type sp:Ask ;
-      sp:where (
-          [
-            sp:object [
-                sp:varName "age"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasValue ;
-            sp:subject spin:_this ;
-          ]
-          [
-            rdf:type sp:Filter ;
-            sp:expression [
-                rdf:type sp:lt ;
-                sp:arg1 [
-                    sp:varName "age"^^xsd:string ;
-                  ] ;
-                sp:arg2 0 ;
-              ] ;
-          ]
-        ) ;
+      sp:where [] ;
       rdfs:comment "Checks to see if age is negative"^^xsd:string ;
     ] ;
   rdfs:subClassOf study:ObservationOutcome ;
@@ -641,7 +506,6 @@ study:InterventionOutcome
 study:InvestigationalProduct
   rdf:type owl:Class ;
   rdfs:subClassOf study:ActiveProduct ;
-  owl:equivalentClass <http://www.bridgmodel.org/owl#StudyAgent> ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Investigational product"^^xsd:string ;
 .
@@ -847,7 +711,6 @@ study:ResearchStaff
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Research staff"^^xsd:string ;
   rdfs:subClassOf study:Person ;
-  owl:equivalentClass <http://www.bridgmodel.org/owl#ResearchStaff> ;
   skos:definition ""^^xsd:string ;
 .
 study:Rule
@@ -892,6 +755,7 @@ study:StartRule
 .
 study:Study
   rdf:type owl:Class ;
+  rdf:type owl:NamedIndividual ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Study"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
@@ -904,7 +768,6 @@ study:StudyActivity
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Study activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
-  owl:equivalentClass <http://www.bridgmodel.org/owl#StudyActivity> ;
   skos:definition "An Activity that is part of a Study. "^^xsd:string ;
 .
 study:StudyComponent
@@ -991,65 +854,12 @@ study:actualArm
 .
 study:agecalc
   rdf:type spin:Function ;
+  rdf:type owl:Class ;
+  rdf:type owl:NamedIndividual ;
   spin:body [
       rdf:type sp:Select ;
-      sp:resultVariables (
-          [
-            sp:varName "age"^^xsd:string ;
-          ]
-        ) ;
-      sp:where (
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type xsd:date ;
-                sp:arg1 [
-                    rdf:type sp:substr ;
-                    sp:arg1 [
-                        sp:varName "birthdate"^^xsd:string ;
-                      ] ;
-                    sp:arg2 1 ;
-                    sp:arg3 10 ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "bdate"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type xsd:date ;
-                sp:arg1 [
-                    rdf:type sp:substr ;
-                    sp:arg1 [
-                        sp:varName "refdate"^^xsd:string ;
-                      ] ;
-                    sp:arg2 1 ;
-                    sp:arg3 10 ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "rfd"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type smf:duration ;
-                sp:arg1 "y" ;
-                sp:arg2 [
-                    sp:varName "bdate"^^xsd:string ;
-                  ] ;
-                sp:arg3 [
-                    sp:varName "rfd"^^xsd:string ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "age"^^xsd:string ;
-              ] ;
-          ]
-        ) ;
+      sp:resultVariables [] ;
+      sp:where [] ;
     ] ;
   spin:constraint [
       rdf:type spl:Argument ;
@@ -1102,32 +912,12 @@ study:dateTimeInXSDString
 .
 study:dateiso
   rdf:type spin:Function ;
+  rdf:type owl:Class ;
+  rdf:type owl:NamedIndividual ;
   spin:body [
       rdf:type sp:Select ;
-      sp:resultVariables (
-          [
-            sp:varName "ISOdate"^^xsd:string ;
-          ]
-        ) ;
-      sp:where (
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type xsd:date ;
-                sp:arg1 [
-                    rdf:type sp:substr ;
-                    sp:arg1 [
-                        sp:varName "datestring"^^xsd:string ;
-                      ] ;
-                    sp:arg2 1 ;
-                    sp:arg3 10 ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "ISOdate"^^xsd:string ;
-              ] ;
-          ]
-        ) ;
+      sp:resultVariables [] ;
+      sp:where [] ;
     ] ;
   spin:constraint [
       rdf:type spl:Argument ;
@@ -1159,65 +949,12 @@ study:derivedFlag
 .
 study:durationiso
   rdf:type spin:Function ;
+  rdf:type owl:Class ;
+  rdf:type owl:NamedIndividual ;
   spin:body [
       rdf:type sp:Select ;
-      sp:resultVariables (
-          [
-            sp:varName "duration"^^xsd:string ;
-          ]
-        ) ;
-      sp:where (
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type xsd:date ;
-                sp:arg1 [
-                    rdf:type sp:substr ;
-                    sp:arg1 [
-                        sp:varName "datestring1"^^xsd:string ;
-                      ] ;
-                    sp:arg2 1 ;
-                    sp:arg3 10 ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "date1"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type xsd:date ;
-                sp:arg1 [
-                    rdf:type sp:substr ;
-                    sp:arg1 [
-                        sp:varName "datestring2"^^xsd:string ;
-                      ] ;
-                    sp:arg2 1 ;
-                    sp:arg3 10 ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "date2"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type smf:duration ;
-                sp:arg1 "d" ;
-                sp:arg2 [
-                    sp:varName "date1"^^xsd:string ;
-                  ] ;
-                sp:arg3 [
-                    sp:varName "date2"^^xsd:string ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "duration"^^xsd:string ;
-              ] ;
-          ]
-        ) ;
+      sp:resultVariables [] ;
+      sp:where [] ;
     ] ;
   spin:constraint [
       rdf:type spl:Argument ;
@@ -1279,11 +1016,11 @@ study:hasAnnotatedCRF
   skos:prefLabel "has annotated CRF"^^xsd:string ;
 .
 study:hasCategory
+  rdf:type owl:DatatypeProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has category"^^xsd:string ;
-  rdfs:range code:Category ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1302,6 +1039,7 @@ study:hasCountry
   skos:definition ""^^xsd:string ;
 .
 study:hasDate
+  rdf:type owl:NamedIndividual ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "has date"^^xsd:string ;
@@ -1315,7 +1053,8 @@ study:hasDocument
   skos:prefLabel "has document"^^xsd:string ;
 .
 study:hasIdentifier
-  rdf:type rdf:Property ;
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:NamedIndividual ;
 .
 study:hasInterval
   rdf:type owl:ObjectProperty ;
@@ -1364,15 +1103,21 @@ study:hasMethod
   rdfs:comment ""^^xsd:string ;
   rdfs:label "has method"^^xsd:string ;
 .
+study:hasNullFlavor
+  rdf:type owl:ObjectProperty ;
+  rdfs:range code:NullFlavor ;
+.
 study:hasPerformer
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has performer"^^xsd:string ;
   rdfs:range study:Party ;
+  owl:inverseOf study:performsActivity ;
   skos:definition ""^^xsd:string ;
 .
 study:hasPlannedDate
+  rdf:type owl:NamedIndividual ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:PlannedActivity ;
@@ -1406,6 +1151,7 @@ study:hasReferenceInterval
   skos:definition ""^^xsd:string ;
 .
 study:hasScheduledDate
+  rdf:type owl:NamedIndividual ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:ScheduledActivity ;
@@ -1432,6 +1178,7 @@ study:hasSiteID
   skos:definition ""^^xsd:string ;
 .
 study:hasStartRule
+  rdf:type owl:NamedIndividual ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
@@ -1447,10 +1194,15 @@ study:hasStudyActivity
   rdfs:range study:StudyActivity ;
   rdfs:subPropertyOf study:hasSubActivity ;
   owl:inverseOf study:isActivityOfStudy ;
-  owl:propertyChainAxiom (
-      study:hasStudyParticipant
-      study:engagesIn
-    ) ;
+  owl:propertyChainAxiom [
+      rdf:type rdf:List ;
+      rdf:first study:hasStudyParticipant ;
+      rdf:rest [
+          rdf:type rdf:List ;
+          rdf:first study:engagesIn ;
+          rdf:rest () ;
+        ] ;
+    ] ;
   skos:definition "Relates a Study with an Activity conducted as part of that Study"^^xsd:string ;
 .
 study:hasStudyID
@@ -1491,11 +1243,11 @@ study:hasSubActivity
   skos:definition "Relates an Activity with a Sub-activity"^^xsd:string ;
 .
 study:hasSubcategory
+  rdf:type owl:DatatypeProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has subcategory"^^xsd:string ;
-  rdfs:range code:Subcategory ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1544,7 +1296,7 @@ study:laterality
   skos:definition ""^^xsd:string ;
 .
 study:outcome
-  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "has outcome"^^xsd:string ;
 .
@@ -1555,10 +1307,15 @@ study:participatesIn
   rdfs:label "participates in"^^xsd:string ;
   rdfs:range study:Activity ;
   rdfs:subPropertyOf study:engagesIn ;
-  owl:propertyChainAxiom (
-      study:participatesIn
-      study:hasSubActivity
-    ) ;
+  owl:propertyChainAxiom [
+      rdf:type rdf:List ;
+      rdf:first study:participatesIn ;
+      rdf:rest [
+          rdf:type rdf:List ;
+          rdf:first study:hasSubActivity ;
+          rdf:rest () ;
+        ] ;
+    ] ;
   skos:definition "relates an Entity with an Activity that the Entity participates in passively; i.e. the activity is performed on the Entity"^^xsd:string ;
 .
 study:participatesInStudy
@@ -1567,7 +1324,6 @@ study:participatesInStudy
   rdfs:domain study:HumanStudySubject ;
   rdfs:label "participates in study"^^xsd:string ;
   rdfs:range study:Study ;
-  owl:inverseOf study:hasStudyParticipant ;
   skos:definition ""^^xsd:string ;
 .
 study:performsActivity
@@ -1577,7 +1333,6 @@ study:performsActivity
   rdfs:label "performs activity"^^xsd:string ;
   rdfs:range study:Activity ;
   rdfs:subPropertyOf study:engagesIn ;
-  owl:inverseOf study:hasPerformer ;
   skos:definition "relates an Entity with an Activity that the Entity engages actively. "^^xsd:string ;
 .
 study:race
@@ -1622,91 +1377,12 @@ study:sponsordefinedID
 .
 study:studyday
   rdf:type spin:Function ;
+  rdf:type owl:Class ;
+  rdf:type owl:NamedIndividual ;
   spin:body [
       rdf:type sp:Select ;
-      sp:resultVariables (
-          [
-            sp:varName "studyday"^^xsd:string ;
-          ]
-        ) ;
-      sp:where (
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type xsd:date ;
-                sp:arg1 [
-                    rdf:type sp:substr ;
-                    sp:arg1 [
-                        sp:varName "activityDate"^^xsd:string ;
-                      ] ;
-                    sp:arg2 1 ;
-                    sp:arg3 10 ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "date"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type xsd:date ;
-                sp:arg1 [
-                    rdf:type sp:substr ;
-                    sp:arg1 [
-                        sp:varName "refDate"^^xsd:string ;
-                      ] ;
-                    sp:arg2 1 ;
-                    sp:arg3 10 ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "rfd"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type smf:duration ;
-                sp:arg1 "d" ;
-                sp:arg2 [
-                    sp:varName "rfd"^^xsd:string ;
-                  ] ;
-                sp:arg3 [
-                    sp:varName "date"^^xsd:string ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "std"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type sp:if ;
-                sp:arg1 [
-                    rdf:type sp:lt ;
-                    sp:arg1 [
-                        sp:varName "std"^^xsd:string ;
-                      ] ;
-                    sp:arg2 0 ;
-                  ] ;
-                sp:arg2 [
-                    sp:varName "std"^^xsd:string ;
-                  ] ;
-                sp:arg3 [
-                    rdf:type sp:add ;
-                    sp:arg1 [
-                        sp:varName "std"^^xsd:string ;
-                      ] ;
-                    sp:arg2 1 ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "studyday"^^xsd:string ;
-              ] ;
-          ]
-        ) ;
+      sp:resultVariables [] ;
+      sp:where [] ;
     ] ;
   spin:constraint [
       rdf:type spl:Argument ;
@@ -1725,3 +1401,372 @@ study:studyday
   rdfs:subClassOf spl:DateFunctions ;
   skos:definition "takes two date strings in ISO 8601 format and calculates the study day using activity date as the first argument and reference date as the 2nd argument"^^xsd:string ;
 .
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type sp:add ;
+      sp:arg1 [
+          sp:varName "anchrxsddate"^^xsd:string ;
+        ] ;
+      sp:arg2 [
+          sp:varName "strtdelay"^^xsd:string ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "scheddatexsd"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type sp:if ;
+      sp:arg1 [
+          rdf:type sp:lt ;
+          sp:arg1 [
+              sp:varName "std"^^xsd:string ;
+            ] ;
+          sp:arg2 0 ;
+        ] ;
+      sp:arg2 [
+          sp:varName "std"^^xsd:string ;
+        ] ;
+      sp:arg3 [
+          rdf:type sp:add ;
+          sp:arg1 [
+              sp:varName "std"^^xsd:string ;
+            ] ;
+          sp:arg2 1 ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "studyday"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type smf:duration ;
+      sp:arg1 "d" ;
+      sp:arg2 [
+          sp:varName "date1"^^xsd:string ;
+        ] ;
+      sp:arg3 [
+          sp:varName "date2"^^xsd:string ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "duration"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type smf:duration ;
+      sp:arg1 "d" ;
+      sp:arg2 [
+          sp:varName "rfd"^^xsd:string ;
+        ] ;
+      sp:arg3 [
+          sp:varName "date"^^xsd:string ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "std"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type smf:duration ;
+      sp:arg1 "y" ;
+      sp:arg2 [
+          sp:varName "bdate"^^xsd:string ;
+        ] ;
+      sp:arg3 [
+          sp:varName "rfd"^^xsd:string ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "age"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type xsd:date ;
+      sp:arg1 [
+          rdf:type sp:substr ;
+          sp:arg1 [
+              sp:varName "activityDate"^^xsd:string ;
+            ] ;
+          sp:arg2 1 ;
+          sp:arg3 10 ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "date"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type xsd:date ;
+      sp:arg1 [
+          rdf:type sp:substr ;
+          sp:arg1 [
+              sp:varName "birthdate"^^xsd:string ;
+            ] ;
+          sp:arg2 1 ;
+          sp:arg3 10 ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "bdate"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type xsd:date ;
+      sp:arg1 [
+          rdf:type sp:substr ;
+          sp:arg1 [
+              sp:varName "datestring"^^xsd:string ;
+            ] ;
+          sp:arg2 1 ;
+          sp:arg3 10 ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "ISOdate"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type xsd:date ;
+      sp:arg1 [
+          rdf:type sp:substr ;
+          sp:arg1 [
+              sp:varName "datestring1"^^xsd:string ;
+            ] ;
+          sp:arg2 1 ;
+          sp:arg3 10 ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "date1"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type xsd:date ;
+      sp:arg1 [
+          rdf:type sp:substr ;
+          sp:arg1 [
+              sp:varName "datestring2"^^xsd:string ;
+            ] ;
+          sp:arg2 1 ;
+          sp:arg3 10 ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "date2"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type xsd:date ;
+      sp:arg1 [
+          rdf:type sp:substr ;
+          sp:arg1 [
+              sp:varName "refDate"^^xsd:string ;
+            ] ;
+          sp:arg2 1 ;
+          sp:arg3 10 ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "rfd"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Bind ;
+  sp:expression [
+      rdf:type xsd:date ;
+      sp:arg1 [
+          rdf:type sp:substr ;
+          sp:arg1 [
+              sp:varName "refdate"^^xsd:string ;
+            ] ;
+          sp:arg2 1 ;
+          sp:arg3 10 ;
+        ] ;
+    ] ;
+  sp:variable [
+      sp:varName "rfd"^^xsd:string ;
+    ] ;
+].
+[
+  rdf:type sp:Filter ;
+  sp:expression [
+      rdf:type sp:eq ;
+      sp:arg1 [
+          sp:varName "anchoroutcometerm"^^xsd:string ;
+        ] ;
+      sp:arg2 [
+          sp:varName "anchoroutcome"^^xsd:string ;
+        ] ;
+    ] ;
+].
+[
+  rdf:type sp:Filter ;
+  sp:expression [
+      rdf:type sp:lt ;
+      sp:arg1 [
+          sp:varName "age"^^xsd:string ;
+        ] ;
+      sp:arg2 0 ;
+    ] ;
+].
+[
+  rdf:type sp:Filter ;
+  sp:expression [
+      rdf:type sp:not ;
+      sp:arg1 [
+          rdf:type sp:bound ;
+          sp:arg1 [
+              sp:varName "strtrule"^^xsd:string ;
+            ] ;
+        ] ;
+    ] ;
+].
+[
+  sp:object study:PlannedActivity ;
+  sp:predicate rdf:type ;
+  sp:subject spin:_this ;
+].
+[
+  sp:object study:ScheduledActivity ;
+  sp:predicate rdf:type ;
+  sp:subject spin:_this ;
+].
+[
+  sp:object [
+      sp:varName "age"^^xsd:string ;
+    ] ;
+  sp:predicate code:hasValue ;
+  sp:subject spin:_this ;
+].
+[
+  sp:object [
+      sp:varName "anchor"^^xsd:string ;
+    ] ;
+  sp:predicate code:hasPrerequisite ;
+  sp:subject spin:_this ;
+].
+[
+  sp:object [
+      sp:varName "anchordate"^^xsd:string ;
+    ] ;
+  sp:predicate study:hasDate ;
+  sp:subject [
+      sp:varName "anchor"^^xsd:string ;
+    ] ;
+].
+[
+  sp:object [
+      sp:varName "anchoroutcome"^^xsd:string ;
+    ] ;
+  sp:predicate code:hasPermissibleOutcome ;
+  sp:subject [
+      sp:varName "anchor"^^xsd:string ;
+    ] ;
+].
+[
+  sp:object [
+      sp:varName "anchoroutcometerm"^^xsd:string ;
+    ] ;
+  sp:predicate code:hasExpectedOutcome ;
+  sp:subject [
+      sp:varName "strtrulecode"^^xsd:string ;
+    ] ;
+].
+[
+  sp:object [
+      sp:varName "anchrxsddate"^^xsd:string ;
+    ] ;
+  sp:predicate time:inXSDDateTime ;
+  sp:subject [
+      sp:varName "anchordate"^^xsd:string ;
+    ] ;
+].
+[
+  sp:object [
+      sp:varName "pldate"^^xsd:string ;
+    ] ;
+  sp:predicate study:hasPlannedDate ;
+  sp:subject spin:_this ;
+].
+[
+  sp:object [
+      sp:varName "pldate"^^xsd:string ;
+    ] ;
+  sp:predicate study:hasScheduledDate ;
+  sp:subject spin:_this ;
+].
+[
+  sp:object [
+      sp:varName "scheddatexsd"^^xsd:string ;
+    ] ;
+  sp:predicate time:inXSDDateTime ;
+  sp:subject [
+      sp:varName "pldate"^^xsd:string ;
+    ] ;
+].
+[
+  sp:object [
+      sp:varName "strtdelay"^^xsd:string ;
+    ] ;
+  sp:predicate code:hasDelay ;
+  sp:subject [
+      sp:varName "strtrulecode"^^xsd:string ;
+    ] ;
+].
+[
+  sp:object [
+      sp:varName "strtrule"^^xsd:string ;
+    ] ;
+  sp:predicate study:hasStartRule ;
+  sp:subject spin:_this ;
+].
+[
+  sp:object [
+      sp:varName "strtrule"^^xsd:string ;
+    ] ;
+  sp:predicate study:hasStartRule ;
+  sp:subject spin:_this ;
+].
+[
+  sp:object [
+      sp:varName "strtrulecode"^^xsd:string ;
+    ] ;
+  sp:predicate study:hasIdentifier ;
+  sp:subject [
+      sp:varName "strtrule"^^xsd:string ;
+    ] ;
+].
+[
+  sp:varName "ISOdate"^^xsd:string ;
+].
+[
+  sp:varName "age"^^xsd:string ;
+].
+[
+  sp:varName "duration"^^xsd:string ;
+].
+[
+  sp:varName "studyday"^^xsd:string ;
+].

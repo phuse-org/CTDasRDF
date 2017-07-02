@@ -335,6 +335,125 @@ code:MedicalCondition
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
+code:NullFlavor
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:altLabel ""^^xsd:string ;
+  skos:definition "Provides an attribute to describe why a value/data point is missing"^^xsd:string ;
+  skos:prefLabel "Null flavor"^^xsd:string ;
+  code:hasIdentifier "2.16.840.1.113883.5.1008 "^^xsd:string ;
+.
+code:NullFlavor_1
+  rdf:type code:NullFlavor ;
+  skos:altLabel "No Information"^^xsd:string ;
+  skos:definition """The value is exceptional (missing, omitted, incomplete, improper). No
+information as to the reason for being an exceptional value is provided. This is
+the most general exceptional value. It is also the default exceptional value."""^^xsd:string ;
+  skos:prefLabel "NI"^^xsd:string ;
+.
+code:NullFlavor_10
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Temporarily unavailable"^^xsd:string ;
+  skos:definition """Information is not available at this time, but it is expected that it will be
+available later."""^^xsd:string ;
+  skos:prefLabel "NAV"^^xsd:string ;
+.
+code:NullFlavor_11
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Not Asked"^^xsd:string ;
+  skos:definition "This information has not been sought"^^xsd:string ;
+  skos:example "Patient was not asked"^^xsd:string ;
+  skos:prefLabel "NASK"^^xsd:string ;
+.
+code:NullFlavor_12
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Quantity sufficient"^^xsd:string ;
+  skos:definition """The specific quantity is not known, but is known to be non-zero and is not
+specified because it makes up the bulk of the material. 'Add 10 mg of
+ingredient X, 50 mg of ingredient Y, and sufficient quantity of water to 100 ml.'
+The null flavor would be used to express the quantity of water"""^^xsd:string ;
+  skos:prefLabel "QS"^^xsd:string ;
+.
+code:NullFlavor_13
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Trace"^^xsd:string ;
+  skos:definition "The content is greater than zero, but too small to be quantified."^^xsd:string ;
+  skos:prefLabel "TRC"^^xsd:string ;
+.
+code:NullFlavor_14
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Masked"^^xsd:string ;
+  skos:definition """There is information on this item available, but it has not been provided by the
+sender due to security, privacy or other reasons. There may be an alternate
+mechanism for gaining access to this information.
+WARNING — Use of this null flavor does provide information that may be
+a breach of confidentiality, even though no detailed data are provided. Its
+primary purpose is for those circumstances where it is necessary to
+inform the receiver that the information does exist without providing any
+detail."""^^xsd:string ;
+  skos:prefLabel "MSK"^^xsd:string ;
+.
+code:NullFlavor_15
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Not applicable"^^xsd:string ;
+  skos:definition "No proper value is applicable in this context.	"^^xsd:string ;
+  skos:example "Last menstrual period for a male. "^^xsd:string ;
+  skos:prefLabel "NA"^^xsd:string ;
+.
+code:NullFlavor_2
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Invalid"^^xsd:string ;
+  skos:definition """The value as represented in the instance is not a member of the set of
+permitted data values in the constrained value domain of a variable."""^^xsd:string ;
+  skos:prefLabel "INV"^^xsd:string ;
+.
+code:NullFlavor_3
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Other"^^xsd:string ;
+  skos:definition """The actual value is not a member of the set of permitted data values in the
+constrained value domain of a variable (e.g. concept not provided by required
+code system)."""^^xsd:string ;
+  skos:prefLabel "OTH"^^xsd:string ;
+.
+code:NullFlavor_4
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Positive infinity"^^xsd:string ;
+  skos:definition "Positive infinity of numbers"^^xsd:string ;
+  skos:prefLabel "PINF"^^xsd:string ;
+.
+code:NullFlavor_5
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Negative infinity"^^xsd:string ;
+  skos:definition "Negative Infinity of numbers"^^xsd:string ;
+  skos:prefLabel "NINF"^^xsd:string ;
+.
+code:NullFlavor_6
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Unencoded"^^xsd:string ;
+  skos:definition """No attempt has been made to encode the information correctly but the raw
+source information is represented (usually in originalText)."""^^xsd:string ;
+  skos:prefLabel "UNC"^^xsd:string ;
+.
+code:NullFlavor_7
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Derived"^^xsd:string ;
+  skos:definition """An actual value may exist, but it must be derived from the information provided
+(usually an expression is provided directly)."""^^xsd:string ;
+  skos:prefLabel "DER"^^xsd:string ;
+.
+code:NullFlavor_8
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Unknown"^^xsd:string ;
+  skos:definition "A proper value is applicable, but not known."^^xsd:string ;
+  skos:prefLabel "UNK"^^xsd:string ;
+.
+code:NullFlavor_9
+  rdf:type code:NullFlavor ;
+  skos:altLabel "Asked but unknown"^^xsd:string ;
+  skos:definition "Information was sought but not found."^^xsd:string ;
+  skos:example "Patient was asked but didn't know. "^^xsd:string ;
+  skos:prefLabel "ASKU"^^xsd:string ;
+.
 code:Observation
   rdf:type owl:Class ;
   rdfs:comment "could be replaced in the future with a robust terminology for observations such as CDISC terminology or LOINC"^^xsd:string ;
