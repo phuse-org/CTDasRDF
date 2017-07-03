@@ -38,8 +38,8 @@ addPersonId <- function(domainName)
 #------------------------------------------------------------------------------
 # assignDateType()
 #   Add 'Date Type Triple" to an existing  Date_(n) to describe a specific date URI
-#     Identifies that various types of things attached to a date. A date can be
-#       attached to many times of things: InformedConsentBegin, a DPB Measure,
+#     Identifies that various types of things attached to a date. A single date 
+#       can be attached to many types: InformedConsentBegin, a DPB Measure,
 #       a study death, etc.
 #   dateVal  - date value string variable.  Eg: dm$brthdate
 #   dateFrag - date URI fragment variable. Eg: dm$brthdate_Frag

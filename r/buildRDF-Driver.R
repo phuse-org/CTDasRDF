@@ -43,9 +43,10 @@ allPrefix <- "data/config/prefixes.csv"  # List of prefixes for the resulting TT
 
 # Output filename and location
 outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
-outFileCustom = "data/rdf/customterminology-R.TTL"
-outFileCode   = "data/rdf/code-R.TTL"
-# outFile=paste0("data/rdf/", outFilename)
+#DEL Currently only creating the one main data file. Codes etc. may be 
+#    reinstitued  later. 
+#DEL outFileCustom = "data/rdf/customterminology-R.TTL"
+#DEL outFileCode   = "data/rdf/code-R.TTL"
 
 # Initialize. Includes OWL, XSD, RDF by default.
 cdiscpilot01  = new.rdf()  # The main datafile. Later change name to 'mainTTL" or similar

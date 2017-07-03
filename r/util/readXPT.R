@@ -21,7 +21,7 @@ readXPTDomain <- function (domainName){
    # dataSubset   <- head(domainValues, 100)    
 }
 
-domainVals <- readXPTDomain("dm")
+domainVals <- readXPTDomain("vs")
 
 
 # TEST BED

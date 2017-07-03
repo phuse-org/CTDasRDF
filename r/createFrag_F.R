@@ -100,6 +100,7 @@ addDateFrag<-function(domainName, colName)
 #      - Use the fragment in the process<DOMAIN>.R scripts to construct IRIs
 #    domainName     = A single, source domain dataset. Eg: dm, vs, ...
 #    processColumns = names of one of more columns for the source values
+#                     E.g.: processColumns=c("DIABP", "SYSBP"),
 #    fragPrefix     = a prefix used in both the new column name for 
 #                     the fragments and the fragment value itself. 
 #    numSort        = FALSE/TRUE  . Specify as TRUE to sort a numeric series of
