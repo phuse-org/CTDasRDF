@@ -341,7 +341,7 @@ code:NullFlavor
   skos:altLabel ""^^xsd:string ;
   skos:definition "Provides an attribute to describe why a value/data point is missing"^^xsd:string ;
   skos:prefLabel "Null flavor"^^xsd:string ;
-  code:hasIdentifier "2.16.840.1.113883.5.1008 "^^xsd:string ;
+  code:hasIdentifier "2.16.840.1.113883.5.1008"^^xsd:string ;
 .
 code:NullFlavor_1
   rdf:type code:NullFlavor ;
@@ -767,6 +767,12 @@ code:ruleDescriptionLong
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166>
+  rdf:type code:BodyPosition ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167>
+  rdf:type code:BodyPosition ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74456.C32141>
   rdf:type code:AnatomicLocation ;

@@ -1,5 +1,4 @@
 # baseURI: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p
-# imports: file:/Users/aoliva/Google%20Drive/TBCMEWorkspace/Projects/PhUSEStudy/study.ttl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
@@ -19,7 +18,6 @@
 
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p>
   rdf:type owl:Ontology ;
-  owl:imports <file:/Users/aoliva/Google%20Drive/TBCMEWorkspace/Projects/PhUSEStudy/study.ttl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema> ;
@@ -58,18 +56,6 @@ cd01p:ArmXanomelineLow
   skos:altLabel "Xan_Lo"^^xsd:string ;
   skos:prefLabel "Xanomeline Low"^^xsd:string ;
   study:hasCode study:Arm ;
-.
-cd01p:AssumeBodyPosition
-  rdf:type owl:Class ;
-  rdfs:subClassOf study:Intervention ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Assume body position"^^xsd:string ;
-.
-cd01p:AssumeBodyPositionOutcome
-  rdf:type owl:Class ;
-  rdfs:subClassOf study:InterventionOutcome ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Assume body position outcome"^^xsd:string ;
 .
 cd01p:Category_1
   rdf:type study:Category ;
@@ -113,15 +99,15 @@ cd01p:Subcategory_1
   skos:prefLabel "SCAT1"^^xsd:string ;
 .
 code:AssumeBodyPositionStanding
-  rdf:type cd01p:AssumeBodyPosition ;
+  rdf:type study:AssumeBodyPosition ;
   rdf:type study:PrerequisiteActivity ;
-  rdfs:subClassOf cd01p:AssumeBodyPosition ;
+  rdfs:subClassOf study:AssumeBodyPosition ;
   rdfs:subClassOf study:PrerequisiteActivity ;
 .
 code:AssumeBodyPositionSupine
-  rdf:type cd01p:AssumeBodyPosition ;
+  rdf:type study:AssumeBodyPosition ;
   rdf:type study:PrerequisiteActivity ;
-  rdfs:subClassOf cd01p:AssumeBodyPosition ;
+  rdfs:subClassOf study:AssumeBodyPosition ;
   rdfs:subClassOf study:PrerequisiteActivity ;
 .
 code:DemographicDataCollection
@@ -341,10 +327,4 @@ custom:VisitWk8
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676>
   rdf:type study:VitalSign ;
   rdfs:subClassOf study:VitalSign ;
-.
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166>
-  rdf:type cd01p:AssumeBodyPositionOutcome ;
-.
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167>
-  rdf:type cd01p:AssumeBodyPositionOutcome ;
 .
