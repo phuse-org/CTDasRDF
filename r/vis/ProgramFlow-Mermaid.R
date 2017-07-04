@@ -21,36 +21,39 @@ graph TB
     idMain5(buildRDF-Driver.R)
     idMain6(buildRDF-Driver.R)
     idMain7(buildRDF-Driver.R)
+    idMain8(buildRDF-Driver.R)
+    idMain9(buildRDF-Driver.R)
+
 
     idPrefixes(prefixes.csv)
     idMeta(graphMeta.R)
-    idImport(dataImportFnts.R)
-    idFntimportXPT{importXPT}
+    miscF(misc_F.R)
+    idFntreadXPT{readXPT}
     idFntaddPersonId{addPersonId}
     idFntassignDateType{assignDateType}
     idDMxpt((DM.xpt))
     idVSxpt((VS.xpt))
 
-    idFrag(createFrag.R)
+    IdCreateFrag(createFrag_F.R)
+    idFntaddDateFrag{addDateFrag}
+    idFntCreateDateDict{createDateDict}
+    idFntcreateFragOneDomain{createFragOneDomain}
+
     idPDM(processDM.R)
     idPSDM(processSUPPDM.R)
     idPVS(processVS.R)
-    idFntaddDateFrag{addDateFrag}
-    idFntcreateFragOneDomain{createFragOneDomain}
  
     idOutMain(CDISCPILOT01-R.TTL)
-    idOutCustom(CUSTOM-R.TTL)
-    idOutCode(CODE-R.TTL)
     idFin>Fin]
 
     idStart-->idMain1
     idPrefixes--READ_BY-->idMain1
     idMain1-->idMain2
     idMeta--SOURCED_BY-->idMain2
-    idImport--SOURCED_BY-->idMain2
-    idFntimportXPT-->idImport
-    idFntaddPersonId-->idImport
-    idFntassignDateType-->idImport
+    miscF--SOURCED_BY-->idMain2
+    idFntreadXPT-->miscF
+    idFntaddPersonId-->miscF
+    idFntassignDateType-->miscF
 
     idMain2-->idMain3
     
@@ -58,9 +61,9 @@ graph TB
     idVSxpt--READ_BY-->idMain3
 
     idMain3-->idMain4
-    idFntaddDateFrag-->idFrag
-    idFntcreateFragOneDomain-->idFrag
-    idFrag--SOURCED_BY-->idMain4
+    idFntaddDateFrag-->IdCreateFrag
+    idFntcreateFragOneDomain-->IdCreateFrag
+    IdCreateFrag--SOURCED_BY-->idMain4
 
     idMain4-->idMain5
     idPDM--SOURCED_BY-->idMain5
@@ -69,8 +72,6 @@ graph TB
 
     idMain5-->idMain6
     idMain6--CREATES-->idOutMain
-    idMain6--CREATES-->idOutCustom
-    idMain6--CREATES-->idOutCode
 
     idMain6-->idMain7
     idMain7-->idFin
@@ -85,9 +86,9 @@ graph TB
 
   class idMain1,idMain2,idMain3,idMain4,idMain5,idMain6,idMain7 main;
   class idFntDataImport,idFntaddDateFrag fnt;
-  class idMeta,idImport,idFrag,idPDM,idPSDM,idPVS sourced;
+  class idMeta,miscF,IdCreateFrag,idPDM,idPSDM,idPVS sourced;
   class idDMxpt,idVSxpt xpt;
-  class idOutMain,idOutCustom,idOutCode outTTL;
+  class idOutMain, outTTL;
   class idPrefixes terminus;
 
 ")
