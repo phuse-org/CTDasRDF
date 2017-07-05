@@ -94,7 +94,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
     add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, vsWide$visitPerson_Frag),
         paste0(prefix.STUDY,"hasSubActivity" ),
-        paste0(prefix.CDISCPILOT01,vsWide$AssumeBodyPos_Frag)   
+        paste0(prefix.CDISCPILOT01,vsWide$vspos_Frag)   
     )
     # AsssumeBodyPosition sub-triples....    
     
