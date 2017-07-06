@@ -87,6 +87,7 @@ ddply(vsVisits, .(visitPerson_Frag), function(vsVisits)
         assignDateType(vsVisits$vsdtc, vsVisits$vsdtc_Frag, "VisitDate")
 })
 
+# hasSubActivity
 # Loop through vsWide to add the subActivites to each visit.
 ddply(vsWide, .(personNum, vsseq), function(vsWide)
 {
@@ -97,8 +98,16 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
         paste0(prefix.CDISCPILOT01,vsWide$vspos_Frag)   
     )
     # AsssumeBodyPosition sub-triples....    
-    
-    
+    #TODO ADD SUBTRIPLES HERE
+   
+    #SDTM CODES for the values  (only DBP at the moment)
+    add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01, vsWide$visitPerson_Frag),
+        paste0(prefix.STUDY,"hasSubActivity" ),
+        paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag)   
+    )
+    #TODO add subtriples 
+
 })
 
 
