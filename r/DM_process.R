@@ -15,7 +15,7 @@
 #       Instance  data named lowercase. Eg:  arm_1
 #       Class codes named using CamelCase. Eg: InformedConsentAdult_1
 # TODO: 
-#   
+#     Move all hard coded Object values into VS_Frag and VS_Impute   
 #  - Collapse code segments in FUNT()s where possible
 #  - Add a function that evaluates each DATE value and types it as either
 #     xsd:date if valid yyyy-mm-dd value, or as xsd:string if(invalid/incomplete 
@@ -24,170 +24,20 @@
 #     for later implmentations
 ###############################################################################
 
-#------------------------------------------------------------------------------
-#  Single/Unique Resource Creation for CUSTOM, CODE, CDISCPILOT01 namespaces
-#   Create triples for unique values (ones that are not one obs per patient)
-#    eg. Treatment arm, country, etc.
-#------------------------------------------------------------------------------
-#-- CUSTOM namespace ----------------------------------------------------------
-#-- Treatment Arms 
-#   Create custom terminlogy list for arm_1, arm_2 etc.
-#TODO: Change this to a melt() similar to VS_process.R
-dm1 <- dm[,c("actarm", "actarmcd", "actarmcd_Frag")]
-
-# ERROR IN THE FOLLOWING
-dm1 <- rename(dm1, c("actarm"= "arm", "actarmcd" = "armcd", "actarmcd_Frag" = "armcd_Frag"))
-
-dm2 <- dm[,c("arm", "armcd", "armcd_Frag")]
-dmArms <- rbind(dm1,dm2)
-dmArms <- dmArms[!duplicated(dmArms), ]
-ddply(dmArms, .(armcd_Frag), function(dmArms)
+# Study --> Persons
+# List of study participants: Persons assigned to the Study
+dmUnique_Persons <- dm[!duplicated(dm$personNum),]
+ddply(dmUnique_Persons, .(personNum), function(dmUnique_Persons)
 {
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.OWL, "Class")
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CUSTOM, "CustomConcept")
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CODE, "RandomizationOutcome")
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CUSTOM, "Arm")
-    )
-    add.data.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDFS,"label" ),
-        paste0(dmArms$arm), type="string"
-    )
-    add.data.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDFS,"label" ),
-        paste0(dmArms$armcd), type="string"
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDFS,"subClassOf" ),
-        paste0(prefix.CUSTOM, "Arm")
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDFS,"subClassOf" ),
-        paste0(prefix.CUSTOM, "RandomizationOutcome")
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDFS,"subClassOf" ),
-        paste0(prefix.CUSTOM, "AdministrativeActivityOutcome")
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDFS,"subClassOf" ),
-        paste0(prefix.CUSTOM, "CustomConcept")
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDFS,"subClassOf" ),
-        paste0(prefix.CUSTOM, "ActivityOutcome")
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDFS,"subClassOf" ),
-        paste0(prefix.CUSTOM, "RandomizationOutcome")
-    )
-    add.data.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.SKOS,"altLabel" ),
-        paste0(dmArms$armcd), type="string"
-    )
-    add.data.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.SKOS,"prefLabel" ),
-        paste0(dmArms$arm), type="string"
-    )
-    add.triple(custom,
-        paste0(prefix.CUSTOM, dmArms$armcd_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CUSTOM, "Arm")
+    add.triple(cdiscpilot01,
+        paste0(prefix.CD01P, dmUnique_Persons$study_Frag),
+        paste0(prefix.STUDY,"hasStudyParticipant" ),
+        paste0(prefix.CDISCPILOT01, "Person_", dmUnique_Persons$personNum)
     )
 })
-#-- Age
-#   Keep only the columns needed to create triples in the terminology file
-ageList <- dm[,c("age", "ageu", "age_Frag")]
-ageList <- ageList[!duplicated(ageList), ]
-# Loop through the arm_ codes to create  custom-terminology triples
-#ddply(ageList, .(age_Frag), function(ageList)
-#{
-#    add.triple(custom,
-#        paste0(prefix.CUSTOM, ageList$age_Frag),
-#        paste0(prefix.RDF,"type" ),
-#        paste0(prefix.CUSTOM, "AgeOutcomeTerm")
-#    )
-#    add.data.triple(custom,
-#        paste0(prefix.CUSTOM, ageList$age_Frag),
-#        paste0(prefix.RDFS,"label" ),
-#        paste0(ageList$age, " ", ageList$ageu), type="string"
-#    )
-#    #TODO Make this triple conditional: if ageu=YEARS, then:
-#    add.triple(custom,
-#        paste0(prefix.CUSTOM, ageList$age_Frag),
-#        paste0(prefix.CODE,"hasUnit" ),
-#        paste0(prefix.TIME, "unitYear")
-#    )
-#    add.triple(custom,
-#        paste0(prefix.CUSTOM, ageList$age_Frag),
-#        paste0(prefix.CODE,"hasUnit" ),
-#        paste0(prefix.TIME, "unitYear")
-#    )
-#    add.data.triple(custom,
-#        paste0(prefix.CUSTOM, ageList$age_Frag),
-#        paste0(prefix.CODE,"hasValue" ),
-#        paste0(ageList$age), type="int"
-#    )
-#})    
-#-- CODE namespace ------------------------------------------------------------
-#-- Country
-countries <- dm[,c("country", "country_Frag" )]
-countries <<- countries[!duplicated(countries), ]
-countries <-na.omit(countries)
+rm(dmUnique_Persons)
 
-ddply(countries, .(country_Frag), function(countries)
-{
-    add.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CODE,"Country" )
-    )
-    add.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CODE,"DefinedConcept" )
-    )
-    add.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.RDFS,"Resource" )
-    )
-    add.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.OWL,"Thing" )
-    )
-    add.data.triple(code,
-        paste0(prefix.CODE, countries$country_Frag),
-        paste0(prefix.RDFS,"label" ),
-        paste0(countries$country), type="string" 
-    )
-})
-#-- CDISCPILOT01 namespace -----------------------------------------------------------
+
 #-- Treatment Arms
 #  Note combination of arm and armcd to capture all possible values
 arms <- dm[,c("arm", "armcd")]

@@ -18,7 +18,7 @@
 #       data/rdf/code-R.TTL 
 # NOTE: Validation of the resulting TTL files with Apache Jenna riot
 #        Later cross check with CompareTTL.R
-# TODO: Move imputations for DS, VS to separate .R scipts.
+# TODO: 
 ###############################################################################
 library(rrdf)
 library(Hmisc)
@@ -26,6 +26,7 @@ library(plyr)  # plyr must load prior to dplyr!
 # library(dplyr)  #DEL not currently in use?
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 library(reshape2)  # decast and others...
+library(stringr)
 
 rm(list=ls())  # Clear workspace from prior runs.
 

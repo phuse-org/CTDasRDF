@@ -83,9 +83,26 @@ vs$startRuleType_Frag <- recode(vs$vstpt,
 vs$startRule_Frag <- paste0(vs$startRuleType_Frag, "_", vs$personNum) 
 
 
+vs$vsstresu_Frag <- recode(vs$vsorresu, 
+                           "'cm'   = 'Unit_1';
+                            'in'   = 'Unit_2';
+                            'mmHg' = 'Unit_3'" )
+
+vs$vstestOutcomeType_Frag <- recode(vs$vstest, 
+                           "'Systolic Blood Pressure'   = 'BloodPressureOutcome';
+                            'Diastolic Blood Pressure'  = 'BloodPressureOutcome';
+                            'Foo'                       = 'FooOutcome'" )
+
+# The starting point for blood pressure outcome later. Add number to it later.
+vs$vstestOutcomeType_Label <- recode(vs$vstest, 
+                           "'Systolic Blood Pressure'   = 'Blood pressure outcome';
+                            'Diastolic Blood Pressure'  = 'Blood pressure outcome';
+                            'Foo'                       = 'FooOutcome'" )
+
+
 # Create label strings for the various tests. NA values not allowed in the source column!
-vs$vstestcd_Label_[!is.na(vs$vstestcd) & vs$vstestcd=="SYSBP"] <- paste0('P', vs$personNum, ' SBP ', vs$visitnum)
-vs$vstestcd_Label_[!is.na(vs$vstestcd) &vs$vstestcd=="DIABP"] <- paste0('P', vs$personNum, ' DBP ', vs$visitnum)
+vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="SYSBP"] <- paste0('P', vs$personNum, ' SBP ', vs$visitnum)
+vs$vstestcd_Label[!is.na(vs$vstestcd) &vs$vstestcd=="DIABP"] <- paste0('P', vs$personNum, ' DBP ', vs$visitnum)
 
 
 
@@ -108,6 +125,9 @@ vstestcd.frag <- vstestcd.subset.bp[, c("vsorres", "vsorres_Frag")]
 
 # Merge the vsorres_Frag created in the steps above back into the VS domain.
 vs <- merge(x = vs, y = vstestcd.frag, by.x="vsorres", by.y="vsorres", all.y = TRUE)
+
+# Pick off the number after the _  from vsorres_Frag and make it part of the label
+vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extract(vs$vsorres_Frag, "\\d+$"))
 
 #  NOTE: Other test value fragements are created from vsWide to disttinguish between
 #   similar and dissimilar tests AT THE TEST LEVEL attached to a PERSON_(n)

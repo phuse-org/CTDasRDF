@@ -8,13 +8,10 @@
 # NOTE: Logic decisions made on the vs field 
 #        vstestOrder = sequence number created to facilitate triple creation/identification
 # TODO: 
+#     Move all hard coded Object values into VS_Frag and VS_Impute
 #   
-#   
-#   *****  Only DIABP working. Add SYSBP, and the other tests.
-#           
 #  
 #  
-# - Collapse the categories DIABP, SYSBP, etc. into functions?
 ###############################################################################
 
 # Create Visit triples that should be created ONLY ONCE: Eg: Triples that describe an 
@@ -196,7 +193,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
         add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
             paste0(prefix.RDFS,"label" ),
-            paste0(vsWide$vstestcd_Label_)
+            paste0(vsWide$vstestcd_Label)
         )
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
@@ -280,22 +277,19 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
             add.data.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, vsWide$startRule_Frag),
                 paste0(prefix.RDFS,"label" ),
-                paste0(paste0("startrule-", vsWide$vstestcd_Label_))
+                paste0(paste0("startrule-", vsWide$vstestcd_Label))
             )
             add.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, vsWide$startRule_Frag),
                 paste0(prefix.CODE,"hasPrerequisite" ),
                 paste0(prefix.CDISCPILOT01, vsWide$vspos_Frag)
             )
-            
             #TODO: Confirm build out of the XXX in the PRESVIOUS TRIPLE. EG: code:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1 ;
             add.triple(cdiscpilot01,
                 paste0(prefix.CDISCPILOT01, vsWide$startRule_Frag),
                 paste0(prefix.STUDY,"hasCode" ),
                 paste0(prefix.CODE, vsWide$startRuleType_Frag)
             )
-        
-            
         if (! is.na(vsWide$vslatSDTMCode)){
              add.triple(cdiscpilot01,
                  paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
@@ -308,6 +302,28 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
              paste0(prefix.STUDY,"outcome" ),
              paste0(prefix.CDISCPILOT01, vsWide$vsorres_Frag)
          )
+         
+             # Build out the result triples
+             add.triple(cdiscpilot01,
+                 paste0(prefix.CDISCPILOT01, vsWide$vsorres_Frag),
+                 paste0(prefix.RDF,"type" ),
+                 paste0(prefix.STUDY, vsWide$vstestOutcomeType_Frag)
+             )
+             add.data.triple(cdiscpilot01,
+                 paste0(prefix.CDISCPILOT01, vsWide$vsorres_Frag),
+                 paste0(prefix.SKOS,"prefLabel" ),
+                 paste0(vsWide$vstestOutcomeType_Label)
+             )
+             add.triple(cdiscpilot01,
+                 paste0(prefix.CDISCPILOT01, vsWide$vsorres_Frag),
+                 paste0(prefix.CODE,"hasUnit" ),
+                 paste0(prefix.CODE, vsWide$vsstresu_Frag)
+             )
+             add.data.triple(cdiscpilot01,
+                 paste0(prefix.CDISCPILOT01, vsWide$vsorres_Frag),
+                 paste0(prefix.CODE,"hasValue" ),
+                 paste0(vsWide$vsstresc)
+             )
          if (! is.na(vsWide$vsreasnd)){
              add.data.triple(cdiscpilot01,
                  paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),

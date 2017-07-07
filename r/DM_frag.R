@@ -76,6 +76,9 @@ dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOu
 dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
 dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="Country"  )
 
+dm$study_Frag <- "Study_1"
+
+
 #TODO: CHANGE! arm_Frag 
 dm$armcd_Frag <- sapply(dm$armcd,function(x) {
     switch(as.character(x),
