@@ -35,8 +35,9 @@ vs[vs$vsseq %in% c(3), "vsspid"]  <- "235"
 # vs[1:3,grep("vsstat", colnames(vs))] <- "CO"  (complete)
 # Unfactorize the  column to allow entry of a bogus data
 vs$vsstat <- as.character(vs$vsstat)
-vs[1,grep("vsstat", colnames(vs))] <- "CO"
-
+# vs[1,grep("vsstat", colnames(vs))] <- "CO"
+#  Set all to a status of completed. TODO: Add other values for testing purposes.
+vs[,"vsstat"] <- "CO"
 
 # fragment for coded value. Links from CDISCPILOT01 to CODE namespace
 #vs$vsstat_Frag <- recode(vs$vsstat, 
