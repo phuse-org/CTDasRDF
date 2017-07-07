@@ -21,17 +21,17 @@ library(shiny)
 setwd("C:/_gitHub/CTDasRDF/data/rdf")
 server <- function(input, output) {
     output$contents <- renderTable({ 
-        inFileR <<- input$fileR
-        inFileOnt <<- input$fileOnt
+        #inFileR <<- input$fileR
+        #inFileOnt <<- input$fileOnt
         # Do not do anything until both FileR and FileOnt have been specified.
-        if(is.null(inFileR) | is.null(inFileOnt) )
-            return(NULL)
+        #if(is.null(inFileR) | is.null(inFileOnt) )
+        #    return(NULL)
     
         #TODO Confirm these two steps
-        file.rename(inFileR$datapath,
-            paste(inFileR$datapath, ".ttl", sep=""))
-        file.rename(inFileOnt$datapath,
-            paste(inFileOnt$datapath, ".ttl", sep=""))
+        #file.rename(inFileR$datapath,
+        #    paste(inFileR$datapath, ".ttl", sep=""))
+        #file.rename(inFileOnt$datapath,
+        #    paste(inFileOnt$datapath, ".ttl", sep=""))
 
         query = paste0("PREFIX cd01p: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p#>
 PREFIX cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#>
@@ -53,11 +53,13 @@ SELECT ?s ?p ?o
 WHERE {", input$qnam, " ?p ?o . 
   BIND(\"", input$qnam, "\" as ?s) } ")
 
-       sourceR = load.rdf(paste(inFileR$datapath,".ttl",sep=""), format="N3")
+       # sourceR = load.rdf(paste(inFileR$datapath,".ttl",sep=""), format="N3")
+       sourceR = load.rdf("C:/_gitHub/CTDasRDF/data/rdf/cdiscpilot01-R.TTL", format="N3")
        # Global assign for trouble shooting
        triplesR <<- as.data.frame(sparql.rdf(sourceR, query))
        
-       sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
+       # sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
+       sourceOnt = load.rdf("C:/_gitHub/CTDasRDF/data/rdf/cdiscpilot01.TTL", format="N3")
        triplesOnt <- as.data.frame(sparql.rdf(sourceOnt, query))
     
        # Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
@@ -84,11 +86,11 @@ WHERE {", input$qnam, " ?p ?o .
 }
 
 ui <- fluidPage(
-  titlePanel("Compare TTLs from R and Ontology "),
+  titlePanel(HTML("<h3>Compare cdiscpilot01.TTL (ont) with cdiscpilot01-R.TTL (from R)</h3>")),
   fluidRow (
-      column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
-      column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')
-      ),
+      #column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
+      #column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')
+      #),
       column(3, textInput('qnam', "Subject QName", value = "cdiscpilot01:Person_1"))
   ),
   radioButtons("comp", "Compare:",

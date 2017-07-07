@@ -15,14 +15,14 @@ library(rrdf)
 library(plyr)  # rename
 library(reshape)   # melt
 # For use with local TTL file:
-setwd("C:/_gitHub/SDTMasRDF")
+setwd("C:/_gitHub/CTDasRDF")
 
 rSource = load.rdf("data/rdf/cdiscpilot01-R.TTL", format="N3")
 ontSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
 
 
-query = 'prefix cdiscpilot01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#>
-prefix study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
+query = 'prefix cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/cdiscpilot01#>
+prefix study: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/study#>
 
 SELECT  ?dateURI ?dateVal
 WHERE { ?dateURI study:dateTimeInXSDString  ?dateVal .}

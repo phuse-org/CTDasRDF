@@ -1,22 +1,20 @@
 ###############################################################################
-# FILE: dataImportFnts.R
-# DESC: Data Import Functions called when importing the domains. 
+# FILE: misc_F.R
+# DESC: Miscellaneous functions including: 
 #       readXPT() - read the requestd XPT file
 #       addPersonId() - adds the ID created from DM data to domain being processed
+#       assignDateType()
 # REQ : 
 # SRC : 
 # IN  : 
 # OUT : 
-# NOTE: Creates the numeric personNum:index variable for each person in the
-#       DM domain, used when iterating through and across domains when building 
-#       the triples for each person.
-# TODO: 
+# NOTE: 
+# TODO:  
 ###############################################################################
 
 #------------------------------------------------------------------------------
 # readXPT()
 # Read the requested domains into dataframes for processing.
-# TODO: Consider placing in separate Import.R script called by this driver.
 readXPT<-function(domain)
 {
     sourceFile <- paste0("data/source/", domain, ".XPT")
@@ -27,6 +25,9 @@ readXPT<-function(domain)
 
 #------------------------------------------------------------------------------
 # addpersonId()
+# Creates the numeric personNum:index variable for each person in the
+#   DM domain, used when iterating through and across domains when building 
+#   the triples for each person.
 # Merge the personId into the other domains to allow later looping during triple creation. 
 addPersonId <- function(domainName)
 {
@@ -37,8 +38,8 @@ addPersonId <- function(domainName)
 #------------------------------------------------------------------------------
 # assignDateType()
 #   Add 'Date Type Triple" to an existing  Date_(n) to describe a specific date URI
-#     Identifies that various types of things attached to a date. A date can be
-#       attached to many times of things: InformedConsentBegin, a DPB Measure,
+#     Identifies that various types of things attached to a date. A single date 
+#       can be attached to many types: InformedConsentBegin, a DPB Measure,
 #       a study death, etc.
 #   dateVal  - date value string variable.  Eg: dm$brthdate
 #   dateFrag - date URI fragment variable. Eg: dm$brthdate_Frag

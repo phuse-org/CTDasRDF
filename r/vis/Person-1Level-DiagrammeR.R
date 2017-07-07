@@ -16,12 +16,12 @@ library(rrdf)
 library(DiagrammeR)
 
 # Select all the information associated with Obs113
-query = 'PREFIX CDISCPILOT01: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/cdiscpilot01#> 
-PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
+query = 'PREFIX CDISCPILOT01: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/cdiscpilot01#> 
+PREFIX study: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/study#>
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX sdtm-terminology: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#>
-PREFIX code:  <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#>
-PREFIX custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
+PREFIX sdtm-terminology: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/sdtm-terminology#>
+PREFIX code:  <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/code#>
+PREFIX custom: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/custom#>
 prefix time:  <http://www.w3.org/2006/time#>
 prefix country: <http://psi.oasis-open.org/iso/3166#>
 prefix x: <http://example.org/bogus>
@@ -39,7 +39,7 @@ BIND ("CDISCPILOT01:Person_1" AS ?s)
 #DMTriples = as.data.frame(sparql.remote(rdfSource, query))  # for local EP
 
 #-- Local TTL file
-setwd("C:/_gitHub/SDTMasRDF")
+setwd("C:/_gitHub/CTDasRDF")
 rdfSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
 
 DMTriples = as.data.frame(sparql.rdf(rdfSource, query))

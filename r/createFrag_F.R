@@ -1,8 +1,7 @@
 ###############################################################################
-# FILE: createFrag.R
-# DESC: Create URI fragments for Dates, Ages and other fields that are shared 
-#         in common between various resources. Eg: A date (DATE_1) may be both
-#         a study start date and a product administration date. 
+# FILE: createFrag_F.R
+# DESC: Functions and the calls that create URI fragments for Dates, Ages and 
+#         other fields that are shared in common between various resources. 
 # REQ : 
 #       
 # SRC : 
@@ -13,6 +12,10 @@
 #       createFragOneDomain() - creates fragment from within a single domain, from
 #         one or more columns within that df
 #       Ages are all assumed to be in YEARS for this dataset. 
+#         Eg: A date (DATE_1) may be a birthdate(DM) and a product 
+#           administration date (VS) so dates from all domains are needed to first
+#           create the date fragment dictionary, then apply it to that specific
+#           domain using addDateFrag
 # TODO: (see individual functions for TODO list) 
 #
 ###############################################################################
@@ -97,6 +100,7 @@ addDateFrag<-function(domainName, colName)
 #      - Use the fragment in the process<DOMAIN>.R scripts to construct IRIs
 #    domainName     = A single, source domain dataset. Eg: dm, vs, ...
 #    processColumns = names of one of more columns for the source values
+#                     E.g.: processColumns=c("DIABP", "SYSBP"),
 #    fragPrefix     = a prefix used in both the new column name for 
 #                     the fragments and the fragment value itself. 
 #    numSort        = FALSE/TRUE  . Specify as TRUE to sort a numeric series of
@@ -161,6 +165,6 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
         # This line works correctly for first call of SYSBP, DIABP
         names(domainName)[names(domainName)=="valFrag"] <- paste0(i, "_Frag")
     
-    }
+    } 
      return(domainName)
 }
