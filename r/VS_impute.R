@@ -25,7 +25,7 @@ vs <- subset(vs, (personNum==1
 vs$vsgrpid <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "GRPID1", "" )) 
 vs$vscat   <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "CAT1", "" )) 
 vs$vsscat  <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "SCAT1", "" )) 
-vs$vsreasnd <- with(vs, ifelse(vsseq %in% c(1) & personNum == 1, "not applicable", "" )) 
+vs$vsreasnd <- with(vs, ifelse(vsseq %in% c(1,2,3,4,5,6) & personNum == 1, "not applicable", "" )) 
 
 # vsspid
 vs[vs$vsseq %in% c(1), "vsspid"]  <- "123"

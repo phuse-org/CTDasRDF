@@ -48,20 +48,26 @@ ddply(uniqueVisits, .(visitPerson_Frag), function(uniqueVisits)
     )
 
        #-- Visit sub triples. Eg: VisitScreening1_1
+       # Removed 2017-07-07 to match AO file
+       #add.triple(cdiscpilot01,
+       #    paste0(prefix.CDISCPILOT01, uniqueVisits$visitPerson_Frag),
+       #    paste0(prefix.RDF,"type" ),
+       #    paste0(prefix.OWL,"NamedIndividual")
+       #)
        add.triple(cdiscpilot01,
            paste0(prefix.CDISCPILOT01, uniqueVisits$visitPerson_Frag),
            paste0(prefix.RDF,"type" ),
-           paste0(prefix.OWL,"NamedIndividual")
-       )
-       add.triple(cdiscpilot01,
-           paste0(prefix.CDISCPILOT01, uniqueVisits$visitPerson_Frag),
-           paste0(prefix.RDF,"type" ),
-           paste0(prefix.CUSTOM,uniqueVisits$visit_Frag)
+           paste0(prefix.CDISCPILOT01,uniqueVisits$visit_Frag)
        )
        add.data.triple(cdiscpilot01,
            paste0(prefix.CDISCPILOT01, uniqueVisits$visitPerson_Frag),
            paste0(prefix.RDFS,"label" ),
            paste0("P", uniqueVisits$personNum, " Visit ", uniqueVisits$visitnum), type="string"
+       )
+       add.data.triple(cdiscpilot01,
+           paste0(prefix.CDISCPILOT01, uniqueVisits$visitPerson_Frag),
+           paste0(prefix.RDFS,"label" ),
+           paste0(gsub(" ", "", uniqueVisits$visit)), type="string"
        )
        add.data.triple(cdiscpilot01,
            paste0(prefix.CDISCPILOT01, uniqueVisits$visitPerson_Frag),
@@ -78,7 +84,7 @@ ddply(uniqueVisits, .(visitPerson_Frag), function(uniqueVisits)
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, uniqueVisits$visitPerson_Frag),
             paste0(prefix.STUDY,"hasCode" ),
-            paste0(prefix.CUSTOM,uniqueVisits$visit_Frag)
+            paste0(prefix.CDISCPILOT01,uniqueVisits$visit_Frag)
         )
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, uniqueVisits$visitPerson_Frag),
@@ -134,7 +140,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsWide$vspos_Frag),
             paste0(prefix.STUDY,"outcome" ),
-            paste0(prefix.SDTM,"C71148.C62166")   
+            paste0(prefix.SDTMTERM,"C71148.C62166")   
         )
     }
     
@@ -171,7 +177,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, vsWide$vspos_Frag),
             paste0(prefix.STUDY,"outcome" ),
-            paste0(prefix.SDTM,"C71148.C62167")   
+            paste0(prefix.SDTMTERM,"C71148.C62167")   
         )
     }
 #!!! NEW CODE UNTESTED BELOW HERE 2017-07-06
@@ -190,7 +196,7 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
         add.data.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
             paste0(prefix.RDFS,"label" ),
-            paste0("P", vsWide$personNum, "_", vsWide$testNumber)
+            paste0(vsWide$vstestcd_Label_)
         )
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
@@ -232,20 +238,22 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
         }
         # Category & Subcategory hard coded. See email from AO May, 2017.
         #  May change with addition of more results.
+        #TODO: Change to use of vscat
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
             paste0(prefix.STUDY,"hasCategory" ),
-            paste0(prefix.CD01P, "category_1")
+            paste0(prefix.CD01P, "Category_1")
         )
+        #TODO: Change to use of vsscat
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
             paste0(prefix.STUDY,"hasSubcategory" ),
-            paste0(prefix.CD01P, "subcategory_1")
+            paste0(prefix.CD01P, "Subcategory_1")
         )
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
             paste0(prefix.STUDY,"hasCode" ),
-            paste0(prefix.SDTM, vsWide$vstestSDTMCode)
+            paste0(prefix.SDTMTERM, vsWide$vstestSDTMCode)
         )
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
@@ -258,8 +266,37 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
             paste0(prefix.STUDY,"hasStartRule" ),
             paste0(prefix.CDISCPILOT01, vsWide$startRule_Frag)
         )
-        #TODO: Add Subtriples for the start rule frags
-         if (! is.na(vsWide$vslatSDTMCode)){
+            #Add Subtriples for the start rule frags
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$startRule_Frag),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.CODE, vsWide$startRuleType_Frag)
+            )
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$startRule_Frag),
+                paste0(prefix.RDF,"type" ),
+                paste0(prefix.CODE, "StartRule")
+            )
+            add.data.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$startRule_Frag),
+                paste0(prefix.RDFS,"label" ),
+                paste0(paste0("startrule-", vsWide$vstestcd_Label_))
+            )
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$startRule_Frag),
+                paste0(prefix.CODE,"hasPrerequisite" ),
+                paste0(prefix.CDISCPILOT01, vsWide$vspos_Frag)
+            )
+            
+            #TODO: Confirm build out of the XXX in the PRESVIOUS TRIPLE. EG: code:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1 ;
+            add.triple(cdiscpilot01,
+                paste0(prefix.CDISCPILOT01, vsWide$startRule_Frag),
+                paste0(prefix.STUDY,"hasCode" ),
+                paste0(prefix.CODE, vsWide$startRuleType_Frag)
+            )
+        
+            
+        if (! is.na(vsWide$vslatSDTMCode)){
              add.triple(cdiscpilot01,
                  paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
                  paste0(prefix.STUDY,"laterality" ),
@@ -268,8 +305,8 @@ ddply(vsWide, .(personNum, vsseq), function(vsWide)
          }
          add.triple(cdiscpilot01,
              paste0(prefix.CDISCPILOT01,vsWide$vstestSDTMCode_Frag),
-             paste0(prefix.CODE,"outcome" ),
-             paste0(prefix.CUSTOM, vsWide$vsorres_Frag)
+             paste0(prefix.STUDY,"outcome" ),
+             paste0(prefix.CDISCPILOT01, vsWide$vsorres_Frag)
          )
          if (! is.na(vsWide$vsreasnd)){
              add.data.triple(cdiscpilot01,

@@ -72,13 +72,21 @@ vs<-vs[, !(names(vs) %in% c("tempId", "tempField"))]
 
 
 # bodyPosition Rules.  1. Create the prefix
-vs$startRule_Frag <- recode(vs$vstpt, 
-                           "'AFTER STANDING FOR 1 MINUTE'    = 'StartRuleStanding1_';
-                            'AFTER STANDING FOR 3 MINUTES'   = 'StartRuleStanding3_';
-                            'AFTER LYING DOWN FOR 5 MINUTES' = 'StartRuleLying5_'" )
+vs$startRuleType_Frag <- recode(vs$vstpt, 
+                           "'AFTER STANDING FOR 1 MINUTE'    = 'StartRuleStanding1';
+                            'AFTER STANDING FOR 3 MINUTES'   = 'StartRuleStanding3';
+                            'AFTER LYING DOWN FOR 5 MINUTES' = 'StartRuleLying5'" )
+
+
 # 2. Add the suffix as personNum. 
 #TODO Confirm use of personNum
-vs$startRule_Frag <- paste0(vs$startRule_Frag, vs$personNum) 
+vs$startRule_Frag <- paste0(vs$startRuleType_Frag, "_", vs$personNum) 
+
+
+# Create label strings for the various tests. NA values not allowed in the source column!
+vs$vstestcd_Label_[!is.na(vs$vstestcd) & vs$vstestcd=="SYSBP"] <- paste0('P', vs$personNum, ' SBP ', vs$visitnum)
+vs$vstestcd_Label_[!is.na(vs$vstestcd) &vs$vstestcd=="DIABP"] <- paste0('P', vs$personNum, ' DBP ', vs$visitnum)
+
 
 
 # Create BloodPressureOutcome_n fragment. 
