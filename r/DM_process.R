@@ -418,7 +418,7 @@ ddply(dm, .(subjid), function(dm)
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.STUDY,"ethnicity" ),
-            paste0(prefix.SDTMTERM, dm$ethnic_) 
+            paste0(prefix.SDTMTERM, dm$ethnic_Frag) 
         )
         # Code
         add.triple(cdiscpilot01,
@@ -438,13 +438,13 @@ ddply(dm, .(subjid), function(dm)
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.STUDY,"race" ),
-            paste0(prefix.SDTMTERM, dm$race_) 
+            paste0(prefix.SDTMTERM, dm$race_Frag) 
         )
         # Sex 
         add.triple(cdiscpilot01,
             paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
             paste0(prefix.STUDY,"sex" ),
-            paste0(prefix.SDTMTERM, dm$sex_) 
+            paste0(prefix.SDTMTERM, dm$sex_Frag) 
         )
     # Randomization
     add.triple(cdiscpilot01,
