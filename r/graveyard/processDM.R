@@ -21,6 +21,8 @@
 #     for later implmentations
 ###############################################################################
 
+
+
 dm <- readXPT("dm")
 
 # For testing, keep only the first (n) patients in DM
@@ -705,3 +707,29 @@ for (i in 1:nrow(dm))
         } # End of else
     } # End of creating the rfpendtc triple
 }    # End looping through the dataframe.    
+
+#-- Treatment Arms  - MOVED TO CD01P.....
+#  Note combination of arm and armcd to capture all possible values
+arms <- dm[,c("arm", "armcd")]
+arms <- arms[!duplicated(arms),]
+arms$armUC   <- toupper(gsub(" ", "", arms$arm))
+arms$armcdUC <- toupper(gsub(" ", "", arms$armcd))
+ddply(arms, .(armUC), function(arms)
+{
+    add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
+        paste0(prefix.RDF,"type" ),
+        paste0(prefix.STUDY, "Arm")
+    )
+    add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
+        paste0(prefix.STUDY,"hasArmCode" ),
+        paste0(prefix.CUSTOM, "armcd_", arms$armcdUC)
+    )
+    add.data.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01, "arm_", arms$armUC),
+        paste0(prefix.RDFS,"label" ),
+        paste0(arms$arm), type="string"
+    )
+})
+rm(arms)  # Clean up
