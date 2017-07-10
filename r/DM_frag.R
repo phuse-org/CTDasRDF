@@ -1,20 +1,26 @@
 ###############################################################################
 # FILE: DM_frag.R
-# DESC: Creates URI fragment values from existing columnd in the DM dataframe
+# DESC: Data recoding and URI fragment creation for values that exist in thh 
+#       DM dataframe
 # REQ : 
 # SRC : 
 # IN  : 
 # OUT : 
-# NOTE:
+# NOTE: No value creation, only recoding.
+#       Coded values:  - cannot have spaces or special characters.
+#                      - are stored in variables with under suffix _ while 
+#                          originals are retained.
+#       SDTM numeric codes, Country, Arm codes are set MANUALLY
 # TODO:
 ################################################################################
 #-- Data Coding ---------------------------------------------------------------
 #-- CODED values 
-#TODO: DELETE THESE toupper() statements. No longer used?  2017-01-18 TW ?
-# UPPERCASE and remove spaces values of fields that will be coded to codelists
-# Phase:  "Phase 2" becomes "PHASE2"
-dm$study_ <- toupper(gsub(" ", "", dm$study))
-dm$ageu_  <- toupper(gsub(" ", "", dm$ageu))  # TODO: NOT USED?
+
+dm$ageu_Frag <- sapply(dm$ageu,function(x) {
+    switch(as.character(x),
+        'YEARS'      = 'unitYear',
+        as.character(x) ) } )
+
 # For arm, use the coded form of both armcd and actarmcd for short-hand linkage
 #    to the codelist where both ARM/ARMCD adn ACTARM/ACTARMCD are located.
 dm$arm_    <- toupper(gsub(" ", "", dm$armcd))
@@ -27,7 +33,7 @@ dm$actarm_ <- toupper(gsub(" ", "", dm$actarmcd))
 #  from the DM domain to its corresponding URI code in the SDTM terminology graph.
 #  F C66731.C16576
 #  M C66731.C20197
-# TODO: This type of recoding to external graphs will be moved to a function
+# NOTE: This type of recoding to external graphs should be moved to a function
 #        and driven by a config file and/or separate SPARQL query against the graph
 #        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
 #---- Sex
@@ -70,16 +76,13 @@ dm <- addDateFrag(dm, "dthdtc")
 dm <- addDateFrag(dm, "dmdtc")  
 dm <- addDateFrag(dm, "brthdate") 
 
-dm <- createFragOneDomain(domainName=dm, processColumns="siteid", fragPrefix="Site" )
-dm <- createFragOneDomain(domainName=dm, processColumns="invid",  fragPrefix="Investigator" )
-dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
-dm <- createFragOneDomain(domainName=dm, processColumns="age", fragPrefix="AgeOutcome"  ) 
+dm <- createFragOneDomain(domainName=dm, processColumns="siteid",  fragPrefix="Site" )
+dm <- createFragOneDomain(domainName=dm, processColumns="invid",   fragPrefix="Investigator" )
+dm <- createFragOneDomain(domainName=dm, processColumns="age",     fragPrefix="AgeOutcome"  ) 
+dm <- createFragOneDomain(domainName=dm, processColumns="age",     fragPrefix="AgeOutcome"  ) 
 dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="Country"  )
 
-dm$study_Frag <- "Study_1"
 
-
-#TODO: CHANGE! arm_Frag 
 dm$armcd_Frag <- sapply(dm$armcd,function(x) {
     switch(as.character(x),
         'Pbo'      = 'ArmPlacebo',

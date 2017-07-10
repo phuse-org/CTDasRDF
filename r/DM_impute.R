@@ -1,12 +1,15 @@
 ###############################################################################
 # FILE: DM_impute.R
 # DESC: Impute data required for prototyping. Creates data values. 
-#       URI fragments are created in DM_frag.R
 # REQ : Prior import of the DM domain by driver script.
 # SRC : N/A
 # IN  : dm dataframe 
 # OUT : modified dm dataframe 
-# NOTE: Does NOT include URI fragment creation, which relies on multiple domains.
+# NOTE: 
+#       URI fragments are created in DM_frag.R
+#       Coded values:  - cannot have spaces or special characters.
+#                      - are stored in variables with under suffix _ while 
+#                          originals are retained.
 # TODO: 
 ###############################################################################
 # Create the Person ID (Person_(n)) in the DM dataset for looping through the data by Person  
@@ -20,7 +23,14 @@ personId <- dm[,c("personNum", "usubjid")]
 #---- Investigator name and ID not present in original source data
 dm$invnam <- 'Jones'
 dm$invid  <- '123'
-dm$invid_Frag  <- 'Investigator_1'
+
+dm$inv  <- 'Investigator_1'
+dm$rand <- 'RandomizationBAL3'
+
+# Method of assigning Study_(n) must change
+#    when more than one study to be managed in the triplestore!
+dm$study <- "Study_1"
+
 
 #---- Birthdate : asbsent in source data
 # NOTE: Date calculations based on SECONDS so you must convert the age in Years to seconds
