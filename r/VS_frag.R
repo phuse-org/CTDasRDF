@@ -1,11 +1,12 @@
 ###############################################################################
 # FILE: VS_frag.R
 # DESC: Data recoding and URI fragment creation from existing domain values
+#       Creates vsWide format of the vs DF for processing by test result type.
 # REQ : 
 # SRC : 
 # IN  : 
 # OUT : 
-# NOTE:
+# NOTE: 
 # TODO:
 ################################################################################
 # Create numbering within each usubjid, vstestcd, sorted by date (vsdtc)
@@ -77,11 +78,25 @@ vs$startRuleType_Frag <- recode(vs$vstpt,
                             'AFTER STANDING FOR 3 MINUTES'   = 'StartRuleStanding3';
                             'AFTER LYING DOWN FOR 5 MINUTES' = 'StartRuleLying5'" )
 
-
 # 2. Add the suffix as personNum. 
 #TODO Confirm use of personNum
 vs$startRule_Frag <- paste0(vs$startRuleType_Frag, "_", vs$personNum) 
 
+# bodyPosition Rules. 
+vs$vsposCode_Frag <- recode(vs$vspos, 
+                           "'STANDING' = 'AssumeBodyPositionStanding';
+                            'SUPINE'   = 'AssumeBodyPositionSupine'" )
+vs$vspos_Label <- recode(vs$vspos, 
+                           "'STANDING' = 'assume standing position';
+                            'SUPINE'   = 'assume supine position'" )
+# SDTM code value
+vs$vsposSDTM_Frag <- recode(vs$vspos, 
+                           "'STANDING' = 'C71148.C62166';
+                            'SUPINE'   = 'C71148.C62167'" )
+
+# Category and Subcategory hard coding.  See AO email 2071-05
+vs$vscat_Frag  <- 'Category_1'
+vs$vsscat_Frag <- 'Subcategory_1'
 
 vs$vsstresu_Frag <- recode(vs$vsorresu, 
                            "'cm'   = 'Unit_1';
@@ -99,12 +114,9 @@ vs$vstestOutcomeType_Label <- recode(vs$vstest,
                             'Diastolic Blood Pressure'  = 'Blood pressure outcome';
                             'Foo'                       = 'FooOutcome'" )
 
-
 # Create label strings for the various tests. NA values not allowed in the source column!
 vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="SYSBP"] <- paste0('P', vs$personNum, ' SBP ', vs$visitnum)
 vs$vstestcd_Label[!is.na(vs$vstestcd) &vs$vstestcd=="DIABP"] <- paste0('P', vs$personNum, ' DBP ', vs$visitnum)
-
-
 
 # Create BloodPressureOutcome_n fragment. 
 #  Blood pressure results come from both SYSBP and DIABP so only these values from 
@@ -170,4 +182,3 @@ vsstat$shortLabel[vsstat$vsstat=="NOT DONE"] <- 'ND'
 #   by vsorres_Frag to match arbitrary coding covention used in above steps.
 vsWide<-ddply(vsWide, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
 vsWide$vstestSDTMCode_Frag <- paste0(vsWide$vstestSDTMCode, "_", vsWide$testNumber)
-

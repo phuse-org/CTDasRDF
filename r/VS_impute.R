@@ -17,8 +17,6 @@ vs <- subset(vs, (personNum==1
                   # & visit %in% c("SCREENING 1", "SCREENING 2")))
                   & visit %in% c("SCREENING 1")))  # Subset further down to match AO data: 09May2017
 
-
-
 #-- Data Imputation for Prototype Testing ---------------------------------------
 # More imputations for the first 3 records to match data created by AO : 2016-01-19
 #   These are new COLUMNS and values not present in original source!
@@ -44,9 +42,6 @@ vs[,"vsstat"] <- "CO"
 #                         "'CO'         = 'activitystatus_1';
 #                          'ND'         = 'activitystatus_2' 
 #                         " )
-
-
-
 
 #---- vsloc  for DIABP, SYSBP all assigned as 'ARM' for development purposes.
 # Unfactorize the  column to allow entry of a bogus data

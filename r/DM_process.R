@@ -16,16 +16,16 @@
 
 # Study --> Persons
 # List of study participants: Persons assigned to the Study
-u_Persons <- dm[!duplicated(dm$personNum),]
-ddply(u_Persons, .(personNum), function(u_Persons)
+u_Person <- dm[!duplicated(dm$personNum),]
+ddply(u_Person, .(personNum), function(u_Person)
 {
     add.triple(cdiscpilot01,
-        paste0(prefix.CD01P, u_Persons$study),
+        paste0(prefix.CD01P, u_Person$study),
         paste0(prefix.STUDY,"hasStudyParticipant" ),
-        paste0(prefix.CDISCPILOT01, "Person_", u_Persons$personNum)
+        paste0(prefix.CDISCPILOT01, "Person_", u_Person$personNum)
     )
 })
-rm(u_Persons) # Clean up
+rm(u_Person) # Clean up
 
 #-- Investigators 
 investigators <- dm[,c("invnam", "invid", "inv")]
@@ -57,36 +57,36 @@ rm(u_Invest) # Clean up
 
 #-- Sites 
 sites <- dm[,c("siteid", "siteid_Frag", "inv", "country", "country_Frag" )]
-u_Sites <- sites[!duplicated(sites), ]
-ddply(u_Sites, .(siteid), function(u_Sites)
+u_Site <- sites[!duplicated(sites), ]
+ddply(u_Site, .(siteid), function(u_Site)
 {
     add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, u_Sites$siteid_Frag),
+        paste0(prefix.CDISCPILOT01, u_Site$siteid_Frag),
         paste0(prefix.RDF,"type" ),
         paste0(prefix.STUDY,"Site" )
     )
     add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, u_Sites$siteid_Frag),
+        paste0(prefix.CDISCPILOT01, u_Site$siteid_Frag),
         paste0(prefix.STUDY, "hasCountry" ),
-        paste0(prefix.CODE, u_Sites$country_Frag )
+        paste0(prefix.CODE, u_Site$country_Frag )
     )
     add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, u_Sites$siteid_Frag),
+        paste0(prefix.CDISCPILOT01, u_Site$siteid_Frag),
         paste0(prefix.STUDY, "hasInvestigator" ),
-        paste0(prefix.CDISCPILOT01, u_Sites$inv)
+        paste0(prefix.CDISCPILOT01, u_Site$inv)
     )
     add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, u_Sites$siteid_Frag),
+        paste0(prefix.CDISCPILOT01, u_Site$siteid_Frag),
         paste0(prefix.STUDY,"hasSiteID" ),
-        paste0(u_Sites$siteid), type="string" 
+        paste0(u_Site$siteid), type="string" 
     )
     add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, u_Sites$siteid_Frag),
+        paste0(prefix.CDISCPILOT01, u_Site$siteid_Frag),
         paste0(prefix.RDFS,"label" ),
-        paste0("site-",u_Sites$siteid), type="string" 
+        paste0("site-",u_Site$siteid), type="string" 
     )
 })
-rm(u_Sites) # Clean up
+rm(u_Site) # Clean up
 
 
 #------------------------------------------------------------------------------
