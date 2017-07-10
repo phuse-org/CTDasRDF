@@ -34,7 +34,9 @@ dm$actarmcd_Frag <- sapply(dm$actarmcd,function(x) {
         'Xan_Lo'   = 'ArmXanomelin_Lo',
         'Scrnfail' = 'ArmScreenFailure',
         as.character(x) ) } )
-
+#------------------------------------------------------------------------------
+#  SDTM code values 
+#------------------------------------------------------------------------------
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
 # Example: Sex is coded to the SDTM Terminology graph by translating the value 
