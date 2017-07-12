@@ -1,0 +1,60 @@
+---
+title: "CTDasRDF"
+output:
+  html_document:
+    toc: true
+    theme: united
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Scripts
+
+### R Package
+The project currently uses Egon Willighagen's R package rrdf <https://github.com/egonw/rrdf> for creating and querying RDF. The package is not available from CRAN. You are not using the PhUSE cloud server you must install and configure your system using these instructions.
+
+#### Installation Instructions
+Run the following commands from RStudio console
+
+```{r install, eval=FALSE}
+install.packages("rJava") # if not present already
+
+install.packages("devtools") # if not present already
+
+library(devtools)
+```
+If an error occurs, the following additional steps may be needed on some systems:
+
+```{r ifInstallError, eval=FALSE}
+library(httr)
+
+set_config(config(ssl_verifypeer = 0L))
+
+install_github("egonw/rrdf", subdir="rrdflibs")
+
+install_github("egonw/rrdf", subdir="rrdf", build_vignettes = FALSE)
+```
+
+The package is now available for use from R.
+
+
+### Installation Troubleshooting
+
+- If the installation fails during installation of rJava, try re-installing your Java JRE.
+- Ensure your Java versions match your OS: java -version should display "32-bit" for 32 bit OS, "64-bit" for 64 bit OS.
+Additional Notes from J. Ulander for Windows installs:
+
+The command: ```{r ifInstallError, eval=FALSE} install_github("egonw/rrdf", subdir="rrdflibs")``` may result in an error for rJava. A likely cause is the fact that the Java download defaults to the 'bits' of your web browser application, not the Windows OS itself. Eg: On Windows 10 you likely need 64-bit Java for RStudio, but if your browser is 32 bit, you will get the wrong version of Java! To get the correct (in this case, 64-bit) Java version, go here: <https://www.java.com/en/download/manual.jsp> and pick the 64-bit version. Both 32-bit and 64 bit Java should be able to co-exist on the same machine if you need both for other applications.
+
+
+## Program Code
+### Code Flow
+```{r path, eval = T, echo = F}
+library(knitr)
+read_chunk("r/vis/ProgramFlow-Mermaid.R")
+```
+
+```{r processFlow, eval=T, echo = F, fig.height=11, fig.width=10}
+```
+

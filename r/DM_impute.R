@@ -44,28 +44,3 @@ dm$rficdtc <- dm$dmdtc
 dm$dthdtc <- as.character(dm$dthdtc)
 dm$dthdtc[dm$personNum == 1 ] <- "2013-12-26"  # Death Date
 dm$dthfl[dm$personNum == 1 ] <- "Y" # Set a Death flag  for Person_1
-
-# DELETED THE FOLLOWING SINCE CODE LIST GENERATION IS NOT PART OF THE CURRENT REMIT,
-# WHICH is focussed soley on CDISCPILOT01-R.TTL. Not CODE.TTL, etc. at this time.
-
-# -- Additional Value creation# Create an extra row of data that is used to create values not present in the orignal
-#   subset of data. The row is used to create codelists, etc. dynamically during the script run
-#   as an alternative to hard coding, since these values are not associated within any one subject
-#   in the subset. The values likely are part of the larger set.
-#   Add an new row to the DM dataframe to contain information needed for development
-# SAUCE: https://gregorybooma.wordpress.com/2012/07/18/add-an-empty-column-and-row-to-an-r-data-frame/
-#   Create a one-row matrix the same length as data
-#temprow <- matrix(c(rep.int(NA,length(dm))),nrow=1,ncol=length(dm))
- 
-# Convert to df with  cols the same names as the original (dm) df
-#newrow <- data.frame(temprow)
-#colnames(newrow) <- colnames(dm)
- 
-# rbind the empty row back to original df
-#dm <- rbind(dm,newrow)
- 
-# Populate the values in the last row of the data
-#dm[nrow(dm),"arm"]   <- 'Screen Failure'
-#dm[nrow(dm),"armcd"] <- 'Scrnfail'
-
-

@@ -17,7 +17,6 @@ suppdm <- readXPT("suppdm")
 
 source("R/SUPPDM_impute.R")
 
-
 # Hard coded. Study sponsor triple creation.
 #TODO: Move to processing of TSPARMCD or other source domain later in the project.
 add.triple(cdiscpilot01,

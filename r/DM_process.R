@@ -98,7 +98,6 @@ ddply(dm, .(subjid), function(dm)
     # Create var to shorten code during repeats in following lines
     person <-  paste0("Person_", dm$personNum)
 
-
     add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, person),
         paste0(prefix.RDF,"type" ),

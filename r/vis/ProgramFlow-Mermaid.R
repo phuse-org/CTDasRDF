@@ -9,6 +9,7 @@
 # NOTE: 
 # TODO: 
 ###############################################################################
+## @knitr processFlow
 library(DiagrammeR)
 # Example submitted on Github as issue: Flag nodes not receiving styles.
 mermaid("
