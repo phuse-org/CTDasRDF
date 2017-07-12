@@ -48,7 +48,7 @@ graph TB
     idFntcreateFragOneDomain((createFragOneDomain))
 
     idDMFrag(DM_Frag.R)
-    idVSFrag(DS_Frag.R)
+    idVSFrag(VS_Frag.R)
 
     idDMProcess(DM_process.R)
     idSUPPDMProcess(SUPPDM_process.R)
