@@ -143,33 +143,15 @@ vs <- merge(x = vs, y = vstestcd.frag, by.x="vsorres", by.y="vsorres", all.y = T
 # Pick off the number after the _  from vsorres_Frag and make it part of the label
 vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extract(vs$vsorres_Frag, "\\d+$"))
 
-
-#------------------------------------------------------------------------------
-# vsWide DF creation 
-#------------------------------------------------------------------------------
-# Cast the data from long to wide based on values in vstestcd
-vsWide <- dcast(vs, ... ~ vstestcd, value.var="vsorres")
-
-# Fragments for the type of test: DIABP_<n>, SYSBP_<n>, but NOT for the numeric results of those
-#   tests. See later frag creation.
-#   DIABP and SYSBP combined as per email from AO 2017-07-02
-vsWide <- createFragOneDomain(domainName=vsWide, processColumns=c("DIABP", "SYSBP"), 
-    fragPrefix="BloodPressureOutcome", numSort = TRUE)
-
-#TODO: Add fragments for the other results...
-# visit_Frag is a special case that combines the text value of the visit name with the personNum
-# vsWide$personVisit_Frag <- paste0("VisitScreening", gsub(" ", "", vsWide$visit), "_", vsWide$personNum)
-vsWide$visit_Frag <- sapply(vsWide$visit,function(x) {
+# Visit Fragments
+vs$visit_Frag <- sapply(vs$visit,function(x) {
     switch(as.character(x),
         'SCREENING 1' = 'VisitScreening1',
         as.character(x) ) } )
-
-# Add personNum to finish creation of the fragment.
-#  Eg: VisitScreening1_1
-vsWide$visitPerson_Frag <- paste0(vsWide$visit_Frag,"_",vsWide$personNum)
+vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
 
 # vstestSDTMCode
 # Create a tempId as a counter within the categores of vstestSDTMCode, sorted
 #   by vsorres_Frag to match arbitrary coding covention used in above steps.
-vsWide<-ddply(vsWide, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
-vsWide$vstestSDTMCode_Frag <- paste0(vsWide$vstestSDTMCode, "_", vsWide$testNumber)
+vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
+vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
