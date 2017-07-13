@@ -28,6 +28,12 @@
 #      Add additional domains as project scope expands. Make function flexible
 #      to accept these as arguments instead of hard coded.
 #------------------------------------------------------------------------------
+#' Title
+#'
+#' @return
+#' @export
+#'
+#' @examples
 createDateDict <- function()
 {
     # dm dates
@@ -80,6 +86,15 @@ createDateDict <- function()
 
 # Merge in the dateKey value to created a coded version of the date field, naming
 #    the column with a _Frag suffix.
+#' Title
+#'
+#' @param domainName 
+#' @param colName 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 addDateFrag<-function(domainName, colName)
 {
     withFrag <- merge(x = dateDict, y = domainName, by.x="dateKey", by.y=colName, all.y = TRUE)
@@ -109,6 +124,17 @@ addDateFrag<-function(domainName, colName)
 #    Note: original source data has columns actarmcd, armcd. The 'cd'  
 #         is not needed in the RDF context, so drop that part of the name
 #------------------------------------------------------------------------------
+#' Title
+#'
+#' @param domainName 
+#' @param processColumns 
+#' @param fragPrefix 
+#' @param numSort 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FALSE)
 {
     # Combine the multiple columns into one

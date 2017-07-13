@@ -15,6 +15,14 @@
 #------------------------------------------------------------------------------
 # readXPT()
 # Read the requested domains into dataframes for processing.
+#' Title
+#'
+#' @param domain 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 readXPT<-function(domain)
 {
     sourceFile <- paste0("data/source/", domain, ".XPT")
@@ -28,6 +36,14 @@ readXPT<-function(domain)
 #   DM domain, used when iterating through and across domains when building 
 #   the triples for each person.
 # Merge the personId into the other domains to allow later looping during triple creation. 
+#' Title
+#'
+#' @param domainName 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 addPersonId <- function(domainName)
 {
     withIndex <- merge(x = personId, y = domainName, by="usubjid", all.x = TRUE)
@@ -46,6 +62,17 @@ addPersonId <- function(domainName)
 #   dateType - the class type for that date. Eg: Birthdate.  Must correspond
 #             to class names in the ontology.
 #------------------------------------------------------------------------------
+#' Assign Date Types to Date Value
+#'
+#' Each date Object value 
+#' @param dateVal 
+#' @param dateFrag 
+#' @param dateType 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 assignDateType <- function(dateVal, dateFrag, dateType)
 {
     #---- Date triples

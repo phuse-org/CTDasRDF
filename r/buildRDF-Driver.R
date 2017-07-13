@@ -71,15 +71,16 @@ for (i in 1:nrow(prefixes)) {
         namespace=as.character(prefixes[i, "namespace"])
     )
     # Prefixes to customterminology-R.ttl
-    add.prefix(custom,
-        prefix=as.character(prefixes[i,"prefix"]),
-        namespace=as.character(prefixes[i, "namespace"])
-    )
+    # RETAIN for later implementation
+    #add.prefix(custom,
+    #    prefix=as.character(prefixes[i,"prefix"]),
+    #    namespace=as.character(prefixes[i, "namespace"])
+    #)
     # Prefixes to code-R.ttl file
-    add.prefix(code,
-        prefix=as.character(prefixes[i,"prefix"]),
-        namespace=as.character(prefixes[i, "namespace"])
-    )
+    #add.prefix(code,
+    #    prefix=as.character(prefixes[i,"prefix"]),
+    #    namespace=as.character(prefixes[i, "namespace"])
+    #)
 
     # Create uppercase prefix names for use in add() in triples.R
     assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"])
