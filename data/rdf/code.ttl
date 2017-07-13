@@ -106,6 +106,14 @@ code:ActivityStatus_2
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ND"^^xsd:string ;
 .
+code:ActivityStatus_3
+  rdf:type code:ActivityStatus ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "ST"^^xsd:string ;
+  skos:altLabel "STARTED"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "ND"^^xsd:string ;
+.
 code:AdministrativeActivity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -160,7 +168,7 @@ code:AssumeBodyPositionStanding
   rdfs:subClassOf code:AssumeBodyPosition ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ASSUME BODY POSITION STANDING"^^xsd:string ;
-  code:hasExpectedOutcome <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  code:hasPrereqExpectedOutcome <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166> ;
 .
 code:AssumeBodyPositionSupine
   rdf:type owl:Class ;
@@ -169,7 +177,7 @@ code:AssumeBodyPositionSupine
   rdfs:subClassOf code:AssumeBodyPosition ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ASSUME BODY POSITION SUPINE"^^xsd:string ;
-  code:hasExpectedOutcome <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  code:hasPrereqExpectedOutcome <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
 .
 code:BloodPressure
   rdf:type owl:Class ;
@@ -212,6 +220,28 @@ code:ConversionFactor_2
   code:hasConversionFactor "1"^^xsd:float ;
   code:hasOriginalUnit code:Unit_3 ;
   code:hasStandardUnit code:Unit_3 ;
+.
+code:ConversionFactor_3
+  rdf:type code:ConversionFactor ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "lb2kg"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasConversionFactor "0.4545"^^xsd:float ;
+  code:hasOriginalUnit code:Unit_8 ;
+  code:hasStandardUnit code:Unit_7 ;
+.
+code:ConversionFactor_4
+  rdf:type code:ConversionFactor ;
+  rdfs:label "F2C"^^xsd:string ;
+.
+code:ConversionFactor_5
+  rdf:type code:ConversionFactor ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "bpm2bpm"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  code:hasConversionFactor "1"^^xsd:float ;
+  code:hasOriginalUnit code:Unit_4 ;
+  code:hasStandardUnit code:Unit_4 ;
 .
 code:Country
   rdf:type owl:Class ;
@@ -520,6 +550,8 @@ code:StartRuleLying5
   skos:definition "START AFTER LYING FOR 5 MIN"^^xsd:string ;
   skos:prefLabel "RULE LYING 5 MIN"^^xsd:string ;
   code:hasDelay "PT5M"^^xsd:duration ;
+  code:hasPrereqExpectedOutcome <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   code:hasPrerequisite code:AssumeBodyPositionSupine ;
   code:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
@@ -533,6 +565,8 @@ code:StartRuleStanding1
   skos:definition "RULE STANDING 1 MIN"^^xsd:string ;
   skos:prefLabel "STANDING1"^^xsd:string ;
   code:hasDelay "PT1M"^^xsd:duration ;
+  code:hasPrereqExpectedOutcome <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   code:hasPrerequisite code:AssumeBodyPositionStanding ;
   code:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
@@ -546,6 +580,8 @@ code:StartRuleStanding3
   skos:definition "RULE START AFTER STANDING 3 MIN"^^xsd:string ;
   skos:prefLabel "STANDING3"^^xsd:string ;
   code:hasDelay "PT3M"^^xsd:duration ;
+  code:hasPrereqExpectedOutcome <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   code:hasPrerequisite code:AssumeBodyPositionStanding ;
   code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
   code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
@@ -573,7 +609,7 @@ code:Unit_1
 code:Unit_2
   rdf:type code:Unit ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "in"^^xsd:string ;
+  rdfs:label "IN"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
 code:Unit_3
@@ -581,6 +617,26 @@ code:Unit_3
   rdfs:comment ""^^xsd:string ;
   rdfs:label "mmHg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+.
+code:Unit_4
+  rdf:type code:Unit ;
+  rdfs:label "BEATS/MIN"^^xsd:string ;
+.
+code:Unit_5
+  rdf:type code:Unit ;
+  rdfs:label "C"^^xsd:string ;
+.
+code:Unit_6
+  rdf:type code:Unit ;
+  rdfs:label "F"^^xsd:string ;
+.
+code:Unit_7
+  rdf:type code:Unit ;
+  rdfs:label "kg"^^xsd:string ;
+.
+code:Unit_8
+  rdf:type code:Unit ;
+  rdfs:label "LB"^^xsd:string ;
 .
 code:VitalSign
   rdf:type owl:Class ;
@@ -609,14 +665,6 @@ code:hasDelay
   rdfs:domain code:StartRule ;
   rdfs:label "has delay"^^xsd:string ;
   rdfs:range xsd:duration ;
-  skos:definition ""^^xsd:string ;
-.
-code:hasExpectedOutcome
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:DefinedActivity ;
-  rdfs:label "has anchor outcome"^^xsd:string ;
-  rdfs:range code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
 code:hasIdentifier
@@ -657,6 +705,19 @@ code:hasPermissibleOutcome
   rdfs:domain code:DefinedActivity ;
   rdfs:label "permissible outcome"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+.
+code:hasPrereqExpectedOutcome
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain code:DefinedActivity ;
+  rdfs:label "has anchor outcome"^^xsd:string ;
+  rdfs:range code:DefinedActivityOutcome ;
+  skos:definition ""^^xsd:string ;
+.
+code:hasPrereqExpectedStatus
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has prereq expected status"^^xsd:string ;
+  rdfs:range code:ActivityStatus ;
 .
 code:hasPrerequisite
   rdf:type owl:ObjectProperty ;
@@ -773,6 +834,9 @@ code:ruleDescriptionLong
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167>
   rdf:type code:BodyPosition ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74456.C12421>
+  rdf:type code:AnatomicLocation ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74456.C32141>
   rdf:type code:AnatomicLocation ;

@@ -3,7 +3,6 @@
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology
 # imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study
@@ -35,7 +34,6 @@ cd01p:Study_1
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema> ;
-  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology> ;
   owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study> ;
@@ -103,6 +101,87 @@ cdiscpilot01:BloodPressureOutcome_3
   code:hasUnit code:Unit_3 ;
   code:hasValue 57 ;
 .
+cdiscpilot01:BloodPressureOutcome_4
+  rdf:type study:BloodPressureOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Blood pressure outcome 1"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 131 ;
+.
+cdiscpilot01:BloodPressureOutcome_5
+  rdf:type study:BloodPressureOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Blood pressure outcome 5"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 129 ;
+.
+cdiscpilot01:BloodPressureOutcome_6
+  rdf:type study:BloodPressureOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Blood pressure outcome 6"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 147 ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25206_1>
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25206> ;
+  rdfs:label "P1 Screening1 Weight"^^xsd:string ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25206> ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
+  study:outcome cdiscpilot01:TemperatureOutcome_1 ;
+  study:seq "128"^^xsd:float ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25208_1>
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25208> ;
+  rdfs:label "P1 Screening1 Weight"^^xsd:string ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25208> ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
+  study:outcome cdiscpilot01:WeightMassOutcome_1 ;
+  study:seq "142"^^xsd:float ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_1>
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25298> ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 SBP 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:activityStatus code:ActivityStatus_1 ;
+  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_4 ;
+  study:seq "86"^^xsd:float ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_2>
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25298> ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 SBP 2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:activityStatus code:ActivityStatus_1 ;
+  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_5 ;
+  study:seq "87"^^xsd:float ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_3>
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25298> ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 SBP 3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:activityStatus code:ActivityStatus_1 ;
+  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_6 ;
+  study:seq "87"^^xsd:float ;
+.
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_1>
   rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
   rdfs:comment ""^^xsd:string ;
@@ -161,6 +240,56 @@ cdiscpilot01:BloodPressureOutcome_3
   study:laterality <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C99073.C25228> ;
   study:outcome cdiscpilot01:BloodPressureOutcome_3 ;
   study:seq "3"^^xsd:float ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25347_1>
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25347> ;
+  rdfs:label "C67153.C25347 1"^^xsd:string ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25347> ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
+  study:outcome cdiscpilot01:HeightLengthOutcome_1 ;
+  study:seq "43"^^xsd:float ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_1>
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 Pulse 1"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:activityStatus code:ActivityStatus_1 ;
+  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+  study:outcome cdiscpilot01:PulseHROutcome_1 ;
+  study:seq "44"^^xsd:float ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_2>
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 Pulse 2"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:activityStatus code:ActivityStatus_1 ;
+  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
+  study:outcome cdiscpilot01:PulseHROutcome_2 ;
+  study:seq "45"^^xsd:float ;
+.
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_3>
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "P1 Pulse 3"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+  study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
+  study:outcome cdiscpilot01:PulseHROutcome_3 ;
+  study:seq "46"^^xsd:float ;
 .
 cdiscpilot01:Date_10
   rdf:type study:ReferenceEnd ;
@@ -322,6 +451,12 @@ cdiscpilot01:DemographicDataCollection_3
   study:hasDate cdiscpilot01:Date_16 ;
   study:race <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74457.C41261> ;
   study:sex <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C20197> ;
+.
+cdiscpilot01:HeightLengthOutcome_1
+  rdf:type study:HeightLengthOutcome ;
+  rdfs:label "Height length outcome 1"^^xsd:string ;
+  code:hasUnit code:Unit_2 ;
+  code:hasValue 58 ;
 .
 cdiscpilot01:InformedConsentAdult_1
   rdf:type code:InformedConsentAdult ;
@@ -544,6 +679,24 @@ cdiscpilot01:ProductAdministration_3
   study:hasActivityInterval cdiscpilot01:ProductAdministrationInterval_3 ;
   study:hasCode study:ProductAdministration ;
 .
+cdiscpilot01:PulseHROutcome_1
+  rdf:type study:PulseHROutcome ;
+  rdfs:label "Pulse HROutcome 1"^^xsd:string ;
+  code:hasUnit code:Unit_4 ;
+  code:hasValue 57 ;
+.
+cdiscpilot01:PulseHROutcome_2
+  rdf:type study:PulseHROutcome ;
+  rdfs:label "Pulse HROutcome 2"^^xsd:string ;
+  code:hasUnit code:Unit_4 ;
+  code:hasValue 62 ;
+.
+cdiscpilot01:PulseHROutcome_3
+  rdf:type study:PulseHROutcome ;
+  rdfs:label "Pulse HROutcome 3"^^xsd:string ;
+  code:hasUnit code:Unit_4 ;
+  code:hasValue 65 ;
+.
 cdiscpilot01:RandomizationBAL3_1
   rdf:type code:RandomizationBAL3 ;
   rdfs:comment ""^^xsd:string ;
@@ -724,10 +877,15 @@ cdiscpilot01:Site_9
 cdiscpilot01:StartRuleLying5_1
   rdf:type code:StartRuleLying5 ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "startrule-P1BP1"^^xsd:string ;
+  rdfs:label "Start Rule Lying 5 P1 Screening1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1 ;
   study:hasCode code:StartRuleLying5 ;
+.
+cdiscpilot01:StartRuleNone_1
+  rdf:type cd01p:StartRuleNone ;
+  rdfs:label "Start rule none 1"^^xsd:string ;
+  study:hasCode cd01p:StartRuleNone ;
 .
 cdiscpilot01:StartRuleStanding1_1
   rdf:type code:StartRuleStanding1 ;
@@ -769,6 +927,12 @@ cdiscpilot01:StudyParticipationInterval_3
   time:hasBeginning cdiscpilot01:Date_16 ;
   time:hasEnd cdiscpilot01:Date_22 ;
 .
+cdiscpilot01:TemperatureOutcome_1
+  rdf:type study:TemperatureOutcome ;
+  rdfs:label "96.9 F"^^xsd:string ;
+  code:hasUnit code:Unit_6 ;
+  code:hasValue "96.9"^^xsd:float ;
+.
 cdiscpilot01:UnscheduledVisit_1
   rdf:type study:UnscheduledVisit ;
   skos:altLabel ""^^xsd:string ;
@@ -785,19 +949,34 @@ cdiscpilot01:VisitScreening1_1
   study:hasDate cdiscpilot01:Date_19 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_1 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_1 ;
+  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25206_1> ;
+  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25208_1> ;
+  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_1> ;
+  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_2> ;
+  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_3> ;
   study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_1> ;
   study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_2> ;
   study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_3> ;
+  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25347_1> ;
+  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_1> ;
+  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_2> ;
+  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_3> ;
+.
+cdiscpilot01:WeightMassOutcome_1
+  rdf:type study:WeightMassOutcome ;
+  rdfs:label "Weight mass outcome 1"^^xsd:string ;
+  code:hasUnit code:Unit_8 ;
+  code:hasValue 119 ;
 .
 code:StartRuleLying5
   rdfs:subClassOf code:StartRule ;
 .
 code:StartRuleStanding1
-  rdfs:label "startrule-STANDING1" ;
+  rdfs:label "Start Rule Standing 1 P1 Screening1"^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
 .
 code:StartRuleStanding3
-  rdfs:label "startrule-STANDING3" ;
+  rdfs:label "Start Rule Standing 3 P1 Screening1"^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
 .
 code:Unit_3

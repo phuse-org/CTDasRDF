@@ -186,7 +186,7 @@ study:Activity
             sp:object [
                 sp:varName "anchoroutcometerm"^^xsd:string ;
               ] ;
-            sp:predicate code:hasExpectedOutcome ;
+            sp:predicate code:hasPrereqExpectedOutcome ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
@@ -411,7 +411,7 @@ study:BlankCaseReportForm
 .
 study:BloodPressureOutcome
   rdf:type owl:Class ;
-  rdfs:subClassOf study:ObservationOutcome ;
+  rdfs:subClassOf study:VitalSignOutcome ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Blood pressure outcome"^^xsd:string ;
 .
@@ -514,6 +514,11 @@ study:Flag
   rdfs:subClassOf study:Derivation ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Flag"^^xsd:string ;
+.
+study:HeightLengthOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Height length outcome"^^xsd:string ;
+  rdfs:subClassOf study:VitalSignOutcome ;
 .
 study:HumanStudySubject
   rdf:type owl:Class ;
@@ -672,6 +677,12 @@ study:Party
   rdfs:subClassOf study:Entity ;
   skos:definition "A Person or an Organization."^^xsd:string ;
 .
+study:PerformedActivity
+  rdf:type owl:Class ;
+  rdfs:label "Performed activity"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition "An Activity that was performed on a Subject on a specific date/time"^^xsd:string ;
+.
 study:Person
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -745,6 +756,17 @@ study:ProtocolDocument
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Protocol document"^^xsd:string ;
 .
+study:ProtocolSpecifiedActivity
+  rdf:type owl:Class ;
+  rdfs:label "Protocol specified activity"^^xsd:string ;
+  rdfs:subClassOf study:Activity ;
+  skos:definition "An Activity that is specified in the Protocol to occur in the Study. It is associated with a start rule. A protocol specified activity is instantiated for each Subject in the study that is intended to participate in that activity. The instance of a protocol specified activity becomes a Planned Activity. "^^xsd:string ;
+.
+study:PulseHROutcome
+  rdf:type owl:Class ;
+  rdfs:label "Pulse or Heart Rate outcome"^^xsd:string ;
+  rdfs:subClassOf study:VitalSignOutcome ;
+.
 study:Randomization
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -799,7 +821,7 @@ study:ScheduledActivity
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Scheduled activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "An activity that is or was scheduled to occur on a Subject at a specific date/time"^^xsd:string ;
 .
 study:Site
   rdf:type owl:Class ;
@@ -877,6 +899,11 @@ study:Substance
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Substance"^^xsd:string ;
 .
+study:TemperatureOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Temperature outcome"^^xsd:string ;
+  rdfs:subClassOf study:VitalSignOutcome ;
+.
 study:UnscheduledVisit
   rdf:type owl:Class ;
   rdfs:subClassOf study:Visit ;
@@ -903,6 +930,16 @@ study:VitalSign
   rdfs:label "Diastolic BPMeasure"^^xsd:string ;
   rdfs:subClassOf study:Observation ;
   skos:definition ""^^xsd:string ;
+.
+study:VitalSignOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Vital sign outcome"^^xsd:string ;
+  rdfs:subClassOf study:ObservationOutcome ;
+.
+study:WeightMassOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Weight mass outcome"^^xsd:string ;
+  rdfs:subClassOf study:VitalSignOutcome ;
 .
 study:activityStatus
   rdf:type owl:ObjectProperty ;
@@ -1301,6 +1338,26 @@ study:hasNullFlavor
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "has null flavor"^^xsd:string ;
 .
+study:hasPSActivityGroup
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:label "has protocol specified activity"^^xsd:string ;
+  rdfs:range study:ProtocolSpecifiedActivity ;
+.
+study:hasPSSubactivityGroup
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Activity ;
+  rdfs:label "has PSSubactivity group"^^xsd:string ;
+  rdfs:range study:ProtocolSpecifiedActivity ;
+  rdfs:subPropertyOf study:hasPSActivityGroup ;
+.
+study:hasPerformedDate
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:PerformedActivity ;
+  rdfs:label "Object property 1"^^xsd:string ;
+  rdfs:range study:ActivityDate ;
+  rdfs:subPropertyOf study:hasDate ;
+.
 study:hasPerformer
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1339,7 +1396,7 @@ study:hasScheduledDate
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:ScheduledActivity ;
   rdfs:label "has scheduled date"^^xsd:string ;
-  rdfs:range time:Instant ;
+  rdfs:range study:ActivityDate ;
   rdfs:subPropertyOf study:hasDate ;
   skos:definition ""^^xsd:string ;
 .
@@ -1473,7 +1530,9 @@ study:laterality
   skos:definition ""^^xsd:string ;
 .
 study:outcome
-  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Activity ;
+  rdfs:range study:ActivityOutcome ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "has outcome"^^xsd:string ;
 .
