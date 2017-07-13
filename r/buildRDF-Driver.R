@@ -23,7 +23,7 @@
 library(rrdf)
 library(Hmisc)
 library(plyr)  # plyr must load prior to dplyr!
-# library(dplyr)  #DEL not currently in use?
+library(dplyr)  #DEL not currently in use?
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 library(reshape2)  # decast and others...
 library(stringr)
@@ -51,8 +51,8 @@ outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
 
 # Initialize. Includes OWL, XSD, RDF by default.
 cdiscpilot01  = new.rdf()  # The main datafile. Later change name to 'mainTTL" or similar
-custom = new.rdf()  # customterminology-R.ttl
-code   = new.rdf()  # code-R.ttl
+# custom = new.rdf()  # customterminology-R.ttl  : NOT CURRENTLY IN USE
+# code   = new.rdf()  # code-R.ttl               : NOT CURRENTLY IN USE
 #------------------------------------------------------------------------------
 # Build Prefixes
 #   Add prefixes to files cdiscpilot01-R.TTL, customterminology-R.ttl, 
