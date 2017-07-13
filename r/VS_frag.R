@@ -131,6 +131,9 @@ vstestcd.subset <- vs[,c("vstestcd", "vsorres", "vsorresu")]
 vstestcd.subset.bp <- subset(vstestcd.subset, vstestcd %in% c("SYSBP", "DIABP"))
 
 # create the BloodPressureOutcome_(n) fragment
+#!! PROBLEM HERE: The SORT makes for a problem against AO's data - wrong order.
+#TODO Possible solution is to create fragment using  row number from original dataset instead of 
+#   numbering based on order within test result category.
 vstestcd.subset.bp  <- createFragOneDomain(domainName=vstestcd.subset.bp, 
        processColumns=c("vsorres"), fragPrefix="BloodPressureOutcome", numSort = TRUE)
 
