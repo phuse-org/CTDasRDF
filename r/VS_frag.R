@@ -20,7 +20,6 @@ vs <- vs[with(vs, order(usubjid, vstestcd, vsdtc_ymd)), ]
 # Add ID numbers within categories, excluding date (used for sorting, not for cat number)
 vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
 
-
 # Category and Subcategory hard coding.  See AO email 2071-05
 vs$vscat_Frag  <- 'Category_1'
 vs$vsscat_Frag <- 'Subcategory_1'
@@ -29,10 +28,7 @@ vs$vsstresu_Frag <- recode(vs$vsorresu,
                            "'cm'   = 'Unit_1';
                             'in'   = 'Unit_2';
                             'mmHg' = 'Unit_3'" )
-
-#------------------------------------------------------------------------------
-#  SDTM code values 
-#------------------------------------------------------------------------------
+#  SDTM code values -----------------------------------------------------------
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
 # Example: vsloc  is coded to the SDTM Terminology graph by translating the value 
@@ -40,7 +36,7 @@ vs$vsstresu_Frag <- recode(vs$vsorresu,
 # TODO: This type of recoding to external graphs will be moved to a function
 #        and driven by a config file and/or separate SPARQL query against the graph
 #        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
-#---- vsloc
+# vsloc
 vs$vslocSDTMCode <- recode(vs$vsloc, 
                          "'ARM'         = 'C74456.C32141';
                           'EAR'         = 'C74456.C12394';                           
@@ -63,15 +59,10 @@ vs$vslatSDTMCode <- recode(vs$vslat,
 vs$vsposSDTM_Frag <- recode(vs$vspos, 
                            "'STANDING' = 'C71148.C62166';
                             'SUPINE'   = 'C71148.C62167'" )
-
-#------------------------------------------------------------------------------
-#  Fragment Creation by function call (vs, not vsWide)
-#------------------------------------------------------------------------------
+# Fragment  -------------------------------------------------------------------
 vs <- addDateFrag(vs, "vsdtc")  
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="ActivityStatus")
 
-
-#------------------------------------------------------------------------------
 # vspos_Frag
 #   Create fragment for creating hasSubActivity AssumeBodyPositionXXXX_n, where n
 #      is numbered within patient x visit. See emails with AO 2017-07-05
@@ -131,6 +122,9 @@ vstestcd.subset <- vs[,c("vstestcd", "vsorres", "vsorresu")]
 vstestcd.subset.bp <- subset(vstestcd.subset, vstestcd %in% c("SYSBP", "DIABP"))
 
 # create the BloodPressureOutcome_(n) fragment
+#!! PROBLEM HERE: The SORT makes for a problem against AO's data - wrong order.
+#TODO Possible solution is to create fragment using  row number from original dataset instead of 
+#   numbering based on order within test result category.
 vstestcd.subset.bp  <- createFragOneDomain(domainName=vstestcd.subset.bp, 
        processColumns=c("vsorres"), fragPrefix="BloodPressureOutcome", numSort = TRUE)
 
@@ -143,33 +137,15 @@ vs <- merge(x = vs, y = vstestcd.frag, by.x="vsorres", by.y="vsorres", all.y = T
 # Pick off the number after the _  from vsorres_Frag and make it part of the label
 vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extract(vs$vsorres_Frag, "\\d+$"))
 
-
-#------------------------------------------------------------------------------
-# vsWide DF creation 
-#------------------------------------------------------------------------------
-# Cast the data from long to wide based on values in vstestcd
-vsWide <- dcast(vs, ... ~ vstestcd, value.var="vsorres")
-
-# Fragments for the type of test: DIABP_<n>, SYSBP_<n>, but NOT for the numeric results of those
-#   tests. See later frag creation.
-#   DIABP and SYSBP combined as per email from AO 2017-07-02
-vsWide <- createFragOneDomain(domainName=vsWide, processColumns=c("DIABP", "SYSBP"), 
-    fragPrefix="BloodPressureOutcome", numSort = TRUE)
-
-#TODO: Add fragments for the other results...
-# visit_Frag is a special case that combines the text value of the visit name with the personNum
-# vsWide$personVisit_Frag <- paste0("VisitScreening", gsub(" ", "", vsWide$visit), "_", vsWide$personNum)
-vsWide$visit_Frag <- sapply(vsWide$visit,function(x) {
+# Visit Fragments
+vs$visit_Frag <- sapply(vs$visit,function(x) {
     switch(as.character(x),
-        'SCREENING 1' = 'VisitScreening1',
-        as.character(x) ) } )
-
-# Add personNum to finish creation of the fragment.
-#  Eg: VisitScreening1_1
-vsWide$visitPerson_Frag <- paste0(vsWide$visit_Frag,"_",vsWide$personNum)
+      'SCREENING 1' = 'VisitScreening1',
+      as.character(x) ) } )
+vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
 
 # vstestSDTMCode
 # Create a tempId as a counter within the categores of vstestSDTMCode, sorted
 #   by vsorres_Frag to match arbitrary coding covention used in above steps.
-vsWide<-ddply(vsWide, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
-vsWide$vstestSDTMCode_Frag <- paste0(vsWide$vstestSDTMCode, "_", vsWide$testNumber)
+vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
+vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
