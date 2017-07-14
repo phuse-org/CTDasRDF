@@ -20,105 +20,84 @@
 #        Later cross check with CompareTTL.R
 # TODO: 
 ###############################################################################
+# Configuration and initial setup ---------------------------------------------
 library(rrdf)
 library(Hmisc)
-library(plyr)  # plyr must load prior to dplyr!
-library(dplyr)  #DEL not currently in use?
+library(plyr)   # plyr must load prior to dplyr
+library(dplyr)  
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 library(reshape2)  # decast and others...
 library(stringr)
 
 rm(list=ls())  # Clear workspace from prior runs.
 
+# Set working directory to the root of the work area
+setwd("C:/_github/CTDasRDF")
+
 # Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
 
 # Subset for prototype development. 
-maxPerson = 6; # Used in DM_process.R 
-
-# Set working directory to the root of the work area
-setwd("C:/_github/CTDasRDF")
-
-# Configuration: List of prefixes
-allPrefix <- "data/config/prefixes.csv"  # List of prefixes for the resulting TTL file
+maxPerson = 6; # Used in DM_process.R for subsetting
 
 # Output filename and location
 outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
-#DEL Currently only creating the one main data file. Codes etc. may be 
-#    reinstitued  later. 
-#DEL outFileCustom = "data/rdf/customterminology-R.TTL"
-#DEL outFileCode   = "data/rdf/code-R.TTL"
 
 # Initialize. Includes OWL, XSD, RDF by default.
 cdiscpilot01  = new.rdf()  # The main datafile. Later change name to 'mainTTL" or similar
-# custom = new.rdf()  # customterminology-R.ttl  : NOT CURRENTLY IN USE
-# code   = new.rdf()  # code-R.ttl               : NOT CURRENTLY IN USE
+    # custom = new.rdf()  # customterminology-R.ttl  : NOT CURRENTLY IN USE
+    # code   = new.rdf()  # code-R.ttl               : NOT CURRENTLY IN USE
+
+# Build Prefixes --------------------------------------------------------------
+#   Add prefixes to files cdiscpilot01-R.TTL, and later to other namespace TTL
+#     files if/when implemented, allowing one source of prefix definitions for
+#     both building the TTL file and for later query and vis. R scripts.
 #------------------------------------------------------------------------------
-# Build Prefixes
-#   Add prefixes to files cdiscpilot01-R.TTL, customterminology-R.ttl, 
-#      code-R.ttl
-#   For simplicity, one set of prefixes is built for all files. All output files
-#     have the same list of prefixes for both code simplicity consistency.
-#------------------------------------------------------------------------------
+allPrefix <- "data/config/prefixes.csv"  # List of prefixes
+
 prefixes <- as.data.frame( read.csv(allPrefix,
-    header=T,
-    sep=',' ,
-    strip.white=TRUE))
-for (i in 1:nrow(prefixes)) {
-    # Prefixes to cdiscpilot01-R.TTL
-    add.prefix(cdiscpilot01,
-        prefix=as.character(prefixes[i,"prefix"]),
-        namespace=as.character(prefixes[i, "namespace"])
-    )
-    # Prefixes to customterminology-R.ttl
-    # RETAIN for later implementation
-    #add.prefix(custom,
-    #    prefix=as.character(prefixes[i,"prefix"]),
-    #    namespace=as.character(prefixes[i, "namespace"])
-    #)
-    # Prefixes to code-R.ttl file
-    #add.prefix(code,
-    #    prefix=as.character(prefixes[i,"prefix"]),
-    #    namespace=as.character(prefixes[i, "namespace"])
-    #)
+  header=T,
+  sep=',' ,
+  strip.white=TRUE))
 
-    # Create uppercase prefix names for use in add() in triples.R
-    assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"])
-}
+ddply(prefixes, .(prefix), function(prefixes)
+{
+  add.prefix(cdiscpilot01,
+    prefix=as.character(prefixes$prefix),
+    namespace=as.character(prefixes$namespace)
+  )
+  # Add output to other TTL files as per this example. 
+  # Prefixes to code-R.ttl file
+  #add.prefix(code,
+  #  prefix=as.character(prefixes$prefix),
+  #  namespace=as.character(prefixes$namespace)
+  #)
 
-#-- Data triples creation -----------------------------------------------------
-# Graph Metadata
-source('R/graphMeta.R')
+  # Create uppercase prefix names for use in add() statements in the 
+  #   xx_process.R scripts. 
+  assign(paste0("prefix.",toupper(prefixes$prefix)), prefixes$namespace, envir=globalenv())
+  # assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"], envir=globalenv()))
+})
 
-# Misc funt. : data import, person ID, etc. 
-source('R/misc_F.R')
+source('R/graphMeta.R') # Graph Metadata
 
-#------------------------------------------------------------------------------
-# Fragment Creation Functions for the domains
-# Functions to create URI fragments for Dates and other categories that are shared URIs 
-# Eg: Date_1, AgeMeasurement_3
-source('R/createFrag_F.R')
+# Functions for later use -----------------------------------------------------
+source('R/misc_F.R')  # Data import, personID, etc.
+source('R/createFrag_F.R') # URI fragement Creation. Eg. Date_1, AgeMeasurement_3
 
-#------------------------------------------------------------------------------
-# Import and Impute 
-#------------------------------------------------------------------------------
-# DM 
+# Import and Impute DM --------------------------------------------------------
 dm <- readXPT("dm")
-# For testing, keep only the first (maxPerson) patients in DM
-dm <- head(dm, maxPerson)  # maxPerson set above
+dm <- head(dm, maxPerson)  # Keep only first maxPerson obs for development
 source('R/DM_impute.R')     # Create values needed for testing. 
 
-# VS
+# Import and Impute VS --------------------------------------------------------
 vs <- readXPT("vs")
-source('R/VS_impute.R')  # restructure and impute, and subset for dev purposes
+source('R/VS_impute.R') 
 
-#------------------------------------------------------------------------------
-# xx DOMAIN
-#   Additional domains to be added.
-#------------------------------------------------------------------------------
+# Import and Impute other domains ---- : to be added later----------------------
 
 # Create the date translation table from all dates across domains
-#   Needed by both DM_impute and in later code where DM is processed.
+#   Needed by both xx_impute and xx_process scripts.
 dateDict<-createDateDict()    
 
 # Create fragment dictionaries that cross domains
@@ -127,37 +106,24 @@ dateDict<-createDateDict()
 source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part 
                        #   of DateDict/dateFrag creation
 
+# Domain Processing -----------------------------------------------------------
 #------------------------------------------------------------------------------
-# Domain Processing
-#------------------------------------------------------------------------------
-#-- DM DOMAIN
-#  NOTE: DM  MUST be processd first: Creates data required in later steps.
-#        DM MUST BE Run to create personNUm that is used when processing other domains.
-#        SUPPDM can be omitted during development steps.
-
-
+# DM DOMAIN ----
+#    DM MUST be processed first: Creates data required in later steps, 
+#      including personNum. 
 source('R/DM_process.R')
 source('R/SUPPDM_process.R')
 
-#-- VS Domain
+# VS Domain ----
 source('R/VS_frag.R')
-
-
-
 source('R/VS_process.R')
 
-#---- X DOMAIN  Additional Domains will be added here.......
+# XX Domain (to be added) ---- 
 
-#------------------------------------------------------------------------------
-# OUTPUT
-#   Write out the TTL files
-#------------------------------------------------------------------------------
+# Write out to TTL ------------------------------------------------------------
 cdiscpilot01 = save.rdf(cdiscpilot01,  filename=outFileMain,   format="TURTLE")   
 
-#------------------------------------------------------------------------------
-# VALIDATION
+# Validate --------------------------------------------------------------------
 #   Always a good idea to validate, friendo.
-#------------------------------------------------------------------------------
 system(paste('riot --validate ', outFileMain),
-    show.output.on.console = TRUE)
-
+  show.output.on.console = TRUE)

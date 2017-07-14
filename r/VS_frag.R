@@ -20,7 +20,6 @@ vs <- vs[with(vs, order(usubjid, vstestcd, vsdtc_ymd)), ]
 # Add ID numbers within categories, excluding date (used for sorting, not for cat number)
 vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
 
-
 # Category and Subcategory hard coding.  See AO email 2071-05
 vs$vscat_Frag  <- 'Category_1'
 vs$vsscat_Frag <- 'Subcategory_1'
@@ -29,10 +28,7 @@ vs$vsstresu_Frag <- recode(vs$vsorresu,
                            "'cm'   = 'Unit_1';
                             'in'   = 'Unit_2';
                             'mmHg' = 'Unit_3'" )
-
-#------------------------------------------------------------------------------
-#  SDTM code values 
-#------------------------------------------------------------------------------
+#  SDTM code values -----------------------------------------------------------
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
 # Example: vsloc  is coded to the SDTM Terminology graph by translating the value 
@@ -40,7 +36,7 @@ vs$vsstresu_Frag <- recode(vs$vsorresu,
 # TODO: This type of recoding to external graphs will be moved to a function
 #        and driven by a config file and/or separate SPARQL query against the graph
 #        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
-#---- vsloc
+# vsloc
 vs$vslocSDTMCode <- recode(vs$vsloc, 
                          "'ARM'         = 'C74456.C32141';
                           'EAR'         = 'C74456.C12394';                           
@@ -63,15 +59,10 @@ vs$vslatSDTMCode <- recode(vs$vslat,
 vs$vsposSDTM_Frag <- recode(vs$vspos, 
                            "'STANDING' = 'C71148.C62166';
                             'SUPINE'   = 'C71148.C62167'" )
-
-#------------------------------------------------------------------------------
-#  Fragment Creation by function call (vs, not vsWide)
-#------------------------------------------------------------------------------
+# Fragment  -------------------------------------------------------------------
 vs <- addDateFrag(vs, "vsdtc")  
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="ActivityStatus")
 
-
-#------------------------------------------------------------------------------
 # vspos_Frag
 #   Create fragment for creating hasSubActivity AssumeBodyPositionXXXX_n, where n
 #      is numbered within patient x visit. See emails with AO 2017-07-05
@@ -149,8 +140,8 @@ vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extrac
 # Visit Fragments
 vs$visit_Frag <- sapply(vs$visit,function(x) {
     switch(as.character(x),
-        'SCREENING 1' = 'VisitScreening1',
-        as.character(x) ) } )
+      'SCREENING 1' = 'VisitScreening1',
+      as.character(x) ) } )
 vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
 
 # vstestSDTMCode

@@ -1,5 +1,5 @@
 ---
-title: "CTDasRDF"
+title: "CTDasRDF Project Documentation"
 output:
   html_document:
     toc: true
@@ -9,15 +9,23 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Data Files
-### SDTM Data Sources
+# Introduction
+This document describes the project data files, R scripts, coding conventions, and data modeling decisions for the CTDasRDF project.
+
+**CAUTION: If you are reading this document outside of the R environment, the information is likely out of date! See the .rmd file in the root /CTDasRDF folder for the latest information.**
+
+Information about the PhUSE cloud server environment is contained in separate documentation.
+
+
+# Data Files
+## SDTM Data Sources
 Source from the PhUSE CDISCPILOT01 study SDTM files here: https://github.com/phuse-org/phuse-scripts/blob/master/data/sdtm/cdiscpilot01/
 
 Data augmentation for development and testing occurs in files named with xxxx_impute.R, so data created during conversion will not be an exact match with the original .XPT source files.
 
 **DM**, **SUPPDM**,  and **VS** are the initial domains used in the project. This may expand if the project timeline permits.
 
-#### Configuration Files
+### Configuration Files
 * **prefixes.csv**
     - List of prefixes either currently in use or planned. Includes the prefix name, namespace, and description. Any commas in the description field must have the entire text in quotes.
 
@@ -41,15 +49,12 @@ Later development may include the addition of classes like "Protocol-Specified A
 * **sdtm-cdisc01.ttl**
     - Links cdiscpilot01local.ttl with study.ttl for round-tripping the data back to the SDTM standard.
 
+# R Scripts
 
-
-
-## R Scripts
-
-### R Package
+## R Package
 The project currently uses Egon Willighagen's R package rrdf <https://github.com/egonw/rrdf> for creating and querying RDF. The package is not available from CRAN. You are not using the PhUSE cloud server you must install and configure your system using these instructions.
 
-#### Installation Instructions
+## Installation Instructions
 Run the following commands from RStudio console
 
 ```{r install, eval=FALSE}
@@ -74,7 +79,7 @@ install_github("egonw/rrdf", subdir="rrdf", build_vignettes = FALSE)
 The package is now available for use from R.
 
 
-### Installation Troubleshooting
+## Installation Troubleshooting
 
 - If the installation fails during installation of rJava, try re-installing your Java JRE.
 - Ensure your Java versions match your OS: java -version should display "32-bit" for 32 bit OS, "64-bit" for 64 bit OS.
@@ -82,8 +87,39 @@ Additional Notes from J. Ulander for Windows installs:
 
 The command: ```{r ifInstallError, eval=FALSE} install_github("egonw/rrdf", subdir="rrdflibs")``` may result in an error for rJava. A likely cause is the fact that the Java download defaults to the 'bits' of your web browser application, not the Windows OS itself. Eg: On Windows 10 you likely need 64-bit Java for RStudio, but if your browser is 32 bit, you will get the wrong version of Java! To get the correct (in this case, 64-bit) Java version, go here: <https://www.java.co/en/download/manual.jsp> and pick the 64-bit version. Both 32-bit and 64 bit Java should be able to co-exist on the same machine if you need both for other applications.
 
-## TTL File Creation
-### R Script Code Flow
+## R Script Style conventions
+* **General**
+Use of:
+    * dplyr aproaches for code readability and compactness.[CONVERSION IN PROGRESS]. Examples: use of mutate() instead of fooDF$var <- value .
+    * apply() functions instead of FOR loops (where practical)
+    * Google's R Style Guide <https://google.github.io/styleguide/Rguide.xml> [work in progress]    
+      Notable Exceptions:    
+          * Indent 4 spaces instead of 2 for improved readability.
+          * Functions use Roxygen comment style. From within a Function, in RStudio: Code | Insert Roxygen
+          Skeleton
+          * Use RStudio comment style for sections to allow navigation
+    ```{r sectionComment, eval = F, echo = T}
+    # <section name> ----
+    ```
+
+    * R Markdown for higher level project documentation.<http://rmarkdown.rstudio.com/> Example: *This document.*
+    
+## File names designate their function
+* **xx_F.R**
+    * Functions called by various other scripts. Not run when sourced.
+
+* **xx_impute.R**
+    * Create values for the named domain used for development purposes and rule 
+    testing. Results in values not present in original source (XPT) data.
+
+* **xx_frag.R**
+    * URI fragment creation for the named domain.
+    
+* **xx_process.R**
+    * Triple creation for the named domain. 
+
+# TTL File Creation
+## R Script Code Flow
 *To properly view this diagram you must use Google Chrome. Copy/Paste the URL into Chrome if the file opens by default into IE or another browser.*
 
 ```{r path, eval = T, echo = F}
@@ -94,7 +130,7 @@ read_chunk("r/vis/ProgramFlow-Mermaid.R")
 ```{r processFlow, eval=T, echo = F, fig.height=11, fig.width=10}
 ```
 
-### File Descriptions  
+## File Descriptions  
 
 * **BuildRDF-Driver.R**  
     - Main/Driver program for building the TTL file for the SDTM domains from the CDISCPILOT01 example data. Loads all libraries, sources all .R scripts, writes out TTL.
@@ -110,7 +146,6 @@ read_chunk("r/vis/ProgramFlow-Mermaid.R")
 
 * **createFrag_F.R**
     * Functions that create URI "fragments" used to create URIs when building the triples. Includes functions like **createDateDict()**, **addDateFrag()**, **createFragOneDomain()**.
-
 
 * **DM_impute.R**
 Create DM values not in the original source data for testing and development purposes.
@@ -136,13 +171,14 @@ Create DM values not in the original source data for testing and development pur
 * **VS_process.R**
     * Create VS triples
 
-### Validation
+## Validation
 * **CompTriples-Shiny.R**
     * R Shiny App to facilitate c of .TTL file created by TW's R script with the ontology instances created by AO using TopBraid or Protege.
 
-### Visualization
+## Visualization
 * **Person-MultLevel-VisNetwork-ForceNetwork.R**
     * Triples attached to Person_1 in cdiscpilot01.TTL as a force network graph using visNetwork. Functionality includes: selection by node or group, node selection by mouse click, mouseover of relations.
+
 
 # Coding Conventions
 ## Variable naming
@@ -184,7 +220,7 @@ Prior to import into a triplestore, several of the namespaces correspond to the 
 
 
 ## Data Types
-#### Dates
+### Dates
 Date values are evaluated during the conversion to RDF.
 
 * Date values (as represented in fields like rfstdtc, rfendtc, rfxendtc, etc.) with complete and valid year, month, and data values are typed as xsd:date.

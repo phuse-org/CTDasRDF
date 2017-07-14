@@ -72,9 +72,7 @@ dm$race_Frag  <- sapply(dm$race,function(x) {
         'WHITE'                                     = 'C74457.C41261',
         as.character(x) ) } )
 
-#------------------------------------------------------------------------------
-#  Fragment Creation by function call
-#------------------------------------------------------------------------------
+#  Fragment Creation by function call ------------------------------------------
 dm <- addDateFrag(dm, "rfstdtc")  
 dm <- addDateFrag(dm, "rfendtc")  
 dm <- addDateFrag(dm, "rfxstdtc")  

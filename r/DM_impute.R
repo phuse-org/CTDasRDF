@@ -31,7 +31,6 @@ dm$rand <- 'RandomizationBAL3'
 #    when more than one study to be managed in the triplestore!
 dm$study <- "Study_1"
 
-
 #---- Birthdate : asbsent in source data
 # NOTE: Date calculations based on SECONDS so you must convert the age in Years to seconds
 #      Change to character to avoid later ddply problem in DM_process.R

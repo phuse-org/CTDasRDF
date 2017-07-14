@@ -7,6 +7,8 @@
 # REQ : 
 # SRC : 
 # NOTE: 
+#   To install DiagrammeR:   
+#      devtools::install_github('rich-iannone/DiagrammeR')
 # TODO: 
 ###############################################################################
 ## @knitr processFlow
@@ -52,6 +54,7 @@ graph TB
 
     idDMProcess(DM_process.R)
     idSUPPDMProcess(SUPPDM_process.R)
+    idSUPPDMImpute(SUPPDM_impute.R)
     idVSProcess(VS_process.R)
  
     idOutMain(CDISCPILOT01-R.TTL)
@@ -96,6 +99,8 @@ graph TB
     idMain10-->idMain11
     idSUPPDMProcess--SOURCED_BY-->idMain11
 
+    idSUPPDMImpute--SOURCED_BY-->idSUPPDMProcess
+
     idMain11-->idMain12
     idVSFrag--SOURCED_BY-->idMain12
 
@@ -129,7 +134,7 @@ graph TB
   class idFntreadXPT,idFntaddPersonId,idFntassignDateType,idFntaddDateFrag,idFntcreateFragOneDomain,idFntCreateDateDict fnt;
   class idMeta,idMiscF,idDMProcess,idPSDM,idVSProcess sourced;
   class idDMxpt,idVSxpt xpt;
-  class idDMImpute,idVSImpute RImpute;
+  class idDMImpute,idVSImpute,idSUPPDMImpute RImpute;
   class idCreateFrag,idDMFrag,idVSFrag RFrag;
   class idDMProcess,idSUPPDMProcess,idVSProcess RProcess;
   class idOutMain outTTL;
