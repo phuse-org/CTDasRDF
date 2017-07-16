@@ -65,9 +65,6 @@ time:hasBeginning
 time:inXSDDateTime
   rdfs:subPropertyOf study:dateTimeInXSDString ;
 .
-code:Arm
-  rdfs:subClassOf code:DefinedActivityOutcome ;
-.
 code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
 .

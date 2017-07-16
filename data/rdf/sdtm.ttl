@@ -11,6 +11,7 @@
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix cdiscs: <http://rdf.cdisc.org/std/schema#> .
+@prefix code: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#> .
 @prefix mms: <http://rdf.cdisc.org/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -243,7 +244,7 @@
   rdf:type sdtm:Domain ;
   rdfs:label "VS" ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#timepoint-PT_STANDING>
+code:timepoint-PT_STANDING
   skos:prefLabel "PATIENT STANDING"^^xsd:string ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm>
@@ -745,7 +746,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasAge> ;
+            sp:predicate code:hasAge ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
               ] ;
@@ -754,7 +755,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "AGE"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasValue> ;
+            sp:predicate code:hasValue ;
             sp:subject [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
@@ -763,7 +764,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "ageunit"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasUnit> ;
+            sp:predicate code:hasUnit ;
             sp:subject [
                 sp:varName "ageoutcome"^^xsd:string ;
               ] ;
@@ -1081,7 +1082,7 @@ sdtm:SDTM_DM_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#DemographicDataCollection> ;
+            sp:object code:DemographicDataCollection ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "demogcoll"^^xsd:string ;
@@ -1283,7 +1284,7 @@ sdtm:SDTM_DM_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#InformedConsentOutcome_1> ;
+            sp:object code:InformedConsentOutcome_1 ;
             sp:predicate study:outcome ;
             sp:subject [
                 sp:varName "informedconsent"^^xsd:string ;
@@ -1478,7 +1479,7 @@ sdtm:SDTM_DM_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#DemographicDataCollection> ;
+            sp:object code:DemographicDataCollection ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "dmdatacoll"^^xsd:string ;
@@ -1786,7 +1787,7 @@ sdtm:SDTM_SUPPDM_Record
             sp:object [
                 sp:varName "method"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasMethod> ;
+            sp:predicate code:hasMethod ;
             sp:subject [
                 sp:varName "cde"^^xsd:string ;
               ] ;
@@ -2441,7 +2442,7 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            sp:object <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#StartRule> ;
+            sp:object code:StartRule ;
             sp:predicate rdfs:subClassOf ;
             sp:subject [
                 sp:varName "strtruletype"^^xsd:string ;
@@ -2451,7 +2452,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "VSELTM"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasDelay> ;
+            sp:predicate code:hasDelay ;
             sp:subject [
                 sp:varName "strtruletype"^^xsd:string ;
               ] ;
@@ -2460,7 +2461,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "anchr"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasPrerequisite> ;
+            sp:predicate code:hasPrerequisite ;
             sp:subject [
                 sp:varName "strtrule"^^xsd:string ;
               ] ;
@@ -2747,7 +2748,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "VSORRES"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasValue> ;
+            sp:predicate code:hasValue ;
             sp:subject [
                 sp:varName "vstestoutcome"^^xsd:string ;
               ] ;
@@ -2756,7 +2757,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "orresu"^^xsd:string ;
               ] ;
-            sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasUnit> ;
+            sp:predicate code:hasUnit ;
             sp:subject [
                 sp:varName "vstestoutcome"^^xsd:string ;
               ] ;
@@ -2771,76 +2772,40 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "orresu"^^xsd:string ;
-                    ] ;
-                  sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasOriginalUnit> ;
-                  sp:subject [
-                      sp:varName "cf"^^xsd:string ;
-                    ] ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "cfn"^^xsd:string ;
-                    ] ;
-                  sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasConversionFactor> ;
-                  sp:subject [
-                      sp:varName "cf"^^xsd:string ;
-                    ] ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "nrmunit"^^xsd:string ;
-                    ] ;
-                  sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#hasStandardUnit> ;
-                  sp:subject [
-                      sp:varName "cf"^^xsd:string ;
-                    ] ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "VSSTRESU"^^xsd:string ;
-                    ] ;
-                  sp:predicate rdfs:label ;
-                  sp:subject [
-                      sp:varName "nrmunit"^^xsd:string ;
-                    ] ;
-                ]
-                [
-                  rdf:type sp:Bind ;
-                  sp:expression [
-                      rdf:type spif:decimalFormat ;
-                      sp:arg1 [
-                          rdf:type sp:mul ;
-                          sp:arg1 [
-                              sp:varName "VSORRES"^^xsd:string ;
-                            ] ;
-                          sp:arg2 [
-                              sp:varName "cfn"^^xsd:string ;
-                            ] ;
-                        ] ;
-                      sp:arg2 "#" ;
-                    ] ;
-                  sp:variable [
-                      sp:varName "VSSTRESN"^^xsd:string ;
-                    ] ;
-                ]
-                [
-                  rdf:type sp:Bind ;
-                  sp:expression [
-                      rdf:type xsd:string ;
-                      sp:arg1 [
-                          sp:varName "VSSTRESN"^^xsd:string ;
-                        ] ;
-                    ] ;
-                  sp:variable [
-                      sp:varName "VSSTRESC"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type code:unitConversion ;
+                arg:origResult [
+                    sp:varName "vstestoutcome"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "VSSTRESN"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type code:unitNormalized ;
+                arg:origResult [
+                    sp:varName "vstestoutcome"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "VSSTRESU"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type code:unitConversionChar ;
+                arg:origResult [
+                    sp:varName "vstestoutcome"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "VSSTRESC"^^xsd:string ;
+              ] ;
           ]
         ) ;
     ] ;
@@ -3258,7 +3223,7 @@ sdtm:SDTM_VS_Record
                   sp:object [
                       sp:varName "VSTPT"^^xsd:string ;
                     ] ;
-                  sp:predicate <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#ruleDescription> ;
+                  sp:predicate code:ruleDescription ;
                   sp:subject [
                       sp:varName "strtruleclass"^^xsd:string ;
                     ] ;

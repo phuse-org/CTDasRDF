@@ -16,12 +16,17 @@
 @prefix sdtm-terminology: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
+@prefix spif: <http://spinrdf.org/spif#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xhtm: <http://www.w3.org/1999/xhtml> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+arg:origResult
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
 <http://topbraid.org/countries#US>
   skos:prefLabel "USA"^^xsd:string ;
 .
@@ -233,6 +238,8 @@ code:ConversionFactor_3
 code:ConversionFactor_4
   rdf:type code:ConversionFactor ;
   rdfs:label "F2C"^^xsd:string ;
+  code:hasOriginalUnit code:Unit_6 ;
+  code:hasStandardUnit code:Unit_5 ;
 .
 code:ConversionFactor_5
   rdf:type code:ConversionFactor ;
@@ -774,6 +781,215 @@ code:ruleDescriptionLong
   rdfs:label "rule description long"^^xsd:string ;
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
+.
+code:unitConversion
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "normResult"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "orresu"^^xsd:string ;
+              ] ;
+            sp:predicate code:hasUnit ;
+            sp:subject [
+                sp:varName "origResult"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "orres"^^xsd:string ;
+              ] ;
+            sp:predicate code:hasValue ;
+            sp:subject [
+                sp:varName "origResult"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "orresu"^^xsd:string ;
+              ] ;
+            sp:predicate code:hasOriginalUnit ;
+            sp:subject [
+                sp:varName "convfactor"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cfn"^^xsd:string ;
+                    ] ;
+                  sp:predicate code:hasConversionFactor ;
+                  sp:subject [
+                      sp:varName "convfactor"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    rdf:type sp:eq ;
+                    sp:arg1 [
+                        sp:varName "orresu"^^xsd:string ;
+                      ] ;
+                    sp:arg2 code:Unit_6 ;
+                  ] ;
+                sp:arg2 [
+                    rdf:type spif:decimalFormat ;
+                    sp:arg1 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            rdf:type sp:sub ;
+                            sp:arg1 [
+                                sp:varName "orres"^^xsd:string ;
+                              ] ;
+                            sp:arg2 32 ;
+                          ] ;
+                        sp:arg2 [
+                            rdf:type sp:divide ;
+                            sp:arg1 5 ;
+                            sp:arg2 9 ;
+                          ] ;
+                      ] ;
+                    sp:arg2 "#.#" ;
+                  ] ;
+                sp:arg3 [
+                    rdf:type spif:decimalFormat ;
+                    sp:arg1 [
+                        rdf:type sp:mul ;
+                        sp:arg1 [
+                            sp:varName "orres"^^xsd:string ;
+                          ] ;
+                        sp:arg2 [
+                            sp:varName "cfn"^^xsd:string ;
+                          ] ;
+                      ] ;
+                    sp:arg2 "#" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "normResult"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:origResult ;
+      spl:valueType rdfs:Resource ;
+    ] ;
+  rdfs:label "Unit conversion"^^xsd:string ;
+  rdfs:subClassOf spin:Functions ;
+.
+code:unitConversionChar
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "normResultChar"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type code:unitConversion ;
+                arg:origResult [
+                    sp:varName "origResult"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "normResult"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:string ;
+                sp:arg1 [
+                    sp:varName "normResult"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "normResultChar"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:origResult ;
+      spl:valueType rdfs:Resource ;
+    ] ;
+  rdfs:label "Unit conversion"^^xsd:string ;
+  rdfs:subClassOf spin:Functions ;
+.
+code:unitNormalized
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "normUnit"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "orresu"^^xsd:string ;
+              ] ;
+            sp:predicate code:hasUnit ;
+            sp:subject [
+                sp:varName "origResult"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "orresu"^^xsd:string ;
+              ] ;
+            sp:predicate code:hasOriginalUnit ;
+            sp:subject [
+                sp:varName "convfactor"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sresu"^^xsd:string ;
+              ] ;
+            sp:predicate code:hasStandardUnit ;
+            sp:subject [
+                sp:varName "convfactor"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "normUnit"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "sresu"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:origResult ;
+      spl:valueType rdfs:Resource ;
+    ] ;
+  rdfs:label "unit normalized"^^xsd:string ;
+  rdfs:subClassOf spin:Functions ;
 .
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C16576>
   rdf:type code:Sex ;
