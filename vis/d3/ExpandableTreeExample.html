@@ -24,7 +24,7 @@
 
 </style>
 <body>
-<script type="text/javascript" src="/SDTMasRDF/vis/d3/d3/d3.v3.min.js""></script>
+<script type="text/javascript" src="js/d3.v3.min.js""></script>
 <script>
 
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
@@ -48,7 +48,7 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-d3.json("/SDTMasRDF/vis/d3/data/ExpandableTreeExample.json", function(error, flare) {
+d3.json("data/ExpandableTreeExample.json", function(error, flare) {
   root = flare;
   root.x0 = height / 2;
   root.y0 = 0;
@@ -76,7 +76,7 @@ function update(source) {
   // Normalize for fixed-depth.
   nodes.forEach(function(d) { d.y = d.depth * 180; });
 
-  // Update the nodes…
+  // Update the nodesï¿½
   var node = svg.selectAll("g.node")
       .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
@@ -121,7 +121,7 @@ function update(source) {
   nodeExit.select("text")
       .style("fill-opacity", 1e-6);
 
-  // Update the links…
+  // Update the linksï¿½
   var link = svg.selectAll("path.link")
       .data(links, function(d) { return d.target.id; });
 
