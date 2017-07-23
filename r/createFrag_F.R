@@ -186,3 +186,71 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
   } 
    return(domainName)
 }
+
+
+#' Title
+#'
+#' @param domainName  - domain dataframe name
+#' @param dataCol     - column containing the data to indexed
+#' @param byCol       - column containing the 'by variable" within with to index
+#' @param fragPrefixCol - column containing the prefix name. 
+#'                     Eg:  vstestCat = BloodPressureOutcome, PulseHROutcome
+#' @param numSort  - TRUE/FALSE to sort the data prior to indexing it.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'    crreateFragOneColByCat(domainName=vs, dataCol=vsorres, byCol=vsTestCat, fragPrefixCol=vsTestCat, numSort=TRUE)
+#'    
+createFragOneColByCat<-function(domainName, dataCol, byCol, fragPrefixCol, numSort=FALSE)
+{
+  # Combine the multiple columns into one
+  columnData <- domainName[,c(processColumns)] # keep only the requested cols in the df
+  
+  sourceVals <- melt(columnData, measure.vars=colnames(columnData),
+          variable.name="source",
+          value.name="value")
+  
+  # Keep only the values. Source not important
+  #TW:NOT NEEDED #sourceVals <- sourceVals[ , c("value")]
+  # 
+  uniques <- unique(sourceVals[,"value"])
+  # Remove missing(blank) values by coding to NA, then omit
+  uniques[uniques==""] <- NA
+  uniques <<- na.omit(uniques)
+  
+  # SORT
+  # Sort method depends on whether the values are character or numeric.
+  # Sort by values. Prev code: Use dplyr arrange instead of order/sort to avoid loss of df type
+  uniqueVals <- as.data.frame(uniques)
+  uniqueVals <<- na.omit(uniqueVals)
+  
+  # if(is.numeric(uniqueVals[1,1])) {
+  # if (regexpr(uniqueVals[1,1], "\\d", perl=TRUE)){
+  if(numSort){
+    # Numbers. Convert and sort. 
+    # Convert first to character, then to numeric. Otherwise get the order according to the factors.
+    sorted.uniqueVals <<-data.frame( uniqueVals[order(as.numeric(as.character(uniqueVals$uniques))), ])
+  } else {
+    # Characters
+    sorted.uniqueVals <<- data.frame(uniqueVals[order(as.character(uniqueVals$uniques)), ])
+  }
+  colnames(sorted.uniqueVals) <- "keyVal" 
+  sorted.uniqueVals <-na.omit(sorted.uniqueVals)
+  # Create the coded value for each unique value as <value_n> 
+  sorted.uniqueVals$valFrag <- paste0(fragPrefix,"_", 1:nrow(sorted.uniqueVals))   # Generate a list of ID numbers
+  
+  valDict <<- sorted.uniqueVals[,c("keyVal", "valFrag")]
+  
+  # Merge in the keyVals value to created a coded version of the value field, naming
+  #  the column with a _Frag suffix.
+  for (i in processColumns) {
+    domainName <- merge(x = valDict, y = domainName, by.x="keyVal", by.y=i, all.y = TRUE)
+    # Rename the merged-in key value to the original column name to preserve original data
+    names(domainName)[names(domainName)=="keyVal"] <-  i
+    # Rename valFrag value to coded value using processColumn +  _Frag suffix
+    names(domainName)[names(domainName)=="valFrag"] <- paste0(i, "_Frag")
+  } 
+   return(domainName)
+}

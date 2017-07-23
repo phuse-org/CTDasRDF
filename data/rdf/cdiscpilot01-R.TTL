@@ -122,11 +122,11 @@ cdiscpilot01:BloodPressureOutcome_3
         code:hasValue   "83" .
 
 cdiscpilot01:VisitScreening1_1
-        a                     cdiscpilot01:VisitScreening1 ;
+        a                     custom:VisitScreening1 ;
         rdfs:label            "P1 Visit 1"^^xsd:string , "SCREENING1"^^xsd:string ;
         skos:prefLabel        "SCREENING1"^^xsd:string ;
         study:activityStatus  code:ActivityStatus_1 ;
-        study:hasCode         cdiscpilot01:VisitScreening1 ;
+        study:hasCode         custom:VisitScreening1 ;
         study:hasDate         cdiscpilot01:Date_19 ;
         study:hasSubActivity  cdiscpilot01:C67153.C25298_2 , cdiscpilot01:AssumeBodyPositionStanding_1 , cdiscpilot01:C67153.C25299_1 , cdiscpilot01:C67153.C25298_1 , cdiscpilot01:C67153.C25299_3 , cdiscpilot01:AssumeBodyPositionSupine_1 , cdiscpilot01:C67153.C25298_3 , cdiscpilot01:C67153.C25299_2 .
 
@@ -369,7 +369,7 @@ cdiscpilot01:sdtm-graph
         dcterms:contributor  "Armando Oliva"^^xsd:string , "Tim Williams"^^xsd:string ;
         dcterms:description  "CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, which is created by converting source .XPT files using R. \n  Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data. Only select observations from \n  source XPT are present, including a subset of VS results. The focus in July 2017 is on building out the framework for DBP \n  and SBP blood pressure values."^^xsd:string ;
         dcterms:title        "SDTM data as RDF."^^xsd:string ;
-        pav:createdOn        "2017-07-14T16:49:01-04:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-07-21T13:15:01-04:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.3 Platform:x86_64-w64-mingw32 with scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "data/rdf/cdiscpilot01-R.TTL" .
