@@ -1,42 +1,45 @@
-# baseURI: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01
+# baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology
-# imports: https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study
+# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl
+# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
+# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf
+# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/meta-model-schema.rdf
+# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf
+# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
 
-@prefix cd01p: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p#> .
-@prefix cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#> .
-@prefix code: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#> .
+@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
+@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
+@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
 @prefix custom: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdtm: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#> .
-@prefix sdtm-terminology: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#> .
+@prefix sdtm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.#> .
+@prefix sdtm-terminology: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
-@prefix study: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study#> .
+@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm#hasEntity>
+  rdfs:range study:HumanStudySubject ;
+.
 cd01p:Study_1
   study:hasStudyParticipant cdiscpilot01:Person_1 ;
   study:hasStudyParticipant cdiscpilot01:Person_2 ;
   study:hasStudyParticipant cdiscpilot01:Person_3 ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01>
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p> ;
-  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code> ;
-  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/ct/schema> ;
-  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/mms> ;
-  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology> ;
-  owl:imports <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study> ;
+  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl> ;
+  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl> ;
+  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf> ;
+  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/meta-model-schema.rdf> ;
+  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf> ;
+  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 cdiscpilot01:AgeOutcome_1
@@ -68,7 +71,7 @@ cdiscpilot01:AssumeBodyPositionStanding_1
   study:activityStatus code:ActivityStatus_1 ;
   study:hasCode code:AssumeBodyPositionStanding ;
   study:hasDate cdiscpilot01:Date_19 ;
-  study:outcome <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
 .
 cdiscpilot01:AssumeBodyPositionSupine_1
   rdf:type code:AssumeBodyPositionSupine ;
@@ -78,7 +81,7 @@ cdiscpilot01:AssumeBodyPositionSupine_1
   study:activityStatus code:ActivityStatus_1 ;
   study:hasCode code:AssumeBodyPositionSupine ;
   study:hasDate cdiscpilot01:Date_19 ;
-  study:outcome <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
 .
 cdiscpilot01:BloodPressureOutcome_1
   rdf:type study:BloodPressureOutcome ;
@@ -122,170 +125,182 @@ cdiscpilot01:BloodPressureOutcome_6
   code:hasUnit code:Unit_3 ;
   code:hasValue 147 ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25206_1>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25206> ;
-  rdfs:label "P1 Screening1 Weight"^^xsd:string ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25206> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25206_1>
+  rdf:type cd01p:VisitScreening1Temperature ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
+  rdfs:label "P1 Screening1 Temperature"^^xsd:string ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
   study:outcome cdiscpilot01:TemperatureOutcome_1 ;
   study:seq "128"^^xsd:float ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25208_1>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25208> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25208_1>
+  rdf:type cd01p:VisitScreening1Weight ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
   rdfs:label "P1 Screening1 Weight"^^xsd:string ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25208> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
   study:outcome cdiscpilot01:WeightMassOutcome_1 ;
   study:seq "142"^^xsd:float ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_1>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25298> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_1>
+  rdf:type cd01p:VisitScreening1BloodPressure ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 SBP 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
   study:derivedFlag "N"^^xsd:string ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
   study:outcome cdiscpilot01:BloodPressureOutcome_4 ;
   study:seq "86"^^xsd:float ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_2>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25298> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_2>
+  rdf:type cd01p:VisitScreening1BloodPressure ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 SBP 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
   study:derivedFlag "N"^^xsd:string ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
   study:outcome cdiscpilot01:BloodPressureOutcome_5 ;
   study:seq "87"^^xsd:float ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_3>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25298> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_3>
+  rdf:type cd01p:VisitScreening1BloodPressure ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 SBP 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
   study:derivedFlag "N"^^xsd:string ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
   study:outcome cdiscpilot01:BloodPressureOutcome_6 ;
   study:seq "87"^^xsd:float ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_1>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_1>
+  rdf:type cd01p:VisitScreening1BloodPressure ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 DBP 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:anatomicLocation <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74456.C32141> ;
+  study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
   study:baselineFlag "Y"^^xsd:string ;
-  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
   study:derivedFlag "N"^^xsd:string ;
   study:groupID "GRPID1"^^xsd:string ;
   study:hasCategory cd01p:Category_1 ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
-  study:laterality <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C99073.C25228> ;
+  study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
   study:outcome cdiscpilot01:BloodPressureOutcome_1 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "1"^^xsd:float ;
   study:sponsordefinedID "123"^^xsd:string ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_2>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_2>
+  rdf:type cd01p:VisitScreening1BloodPressure ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 DBP 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:anatomicLocation <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74456.C32141> ;
-  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
   study:groupID "GRPID1"^^xsd:string ;
   study:hasCategory cd01p:Category_1 ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
-  study:laterality <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C99073.C25229> ;
+  study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25229> ;
   study:outcome cdiscpilot01:BloodPressureOutcome_2 ;
   study:seq "2"^^xsd:float ;
   study:sponsordefinedID "719"^^xsd:string ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_3>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_3>
+  rdf:type cd01p:VisitScreening1BloodPressure ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 DBP 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:anatomicLocation <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74456.C32141> ;
-  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
   study:groupID "GRPID1"^^xsd:string ;
   study:hasCategory cd01p:Category_1 ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25299> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
-  study:laterality <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C99073.C25228> ;
+  study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
   study:outcome cdiscpilot01:BloodPressureOutcome_3 ;
   study:seq "3"^^xsd:float ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25347_1>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25347> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25347_1>
+  rdf:type cd01p:VisitScreening1Height ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
   rdfs:label "C67153.C25347 1"^^xsd:string ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C25347> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
   study:outcome cdiscpilot01:HeightLengthOutcome_1 ;
   study:seq "43"^^xsd:float ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_1>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_1>
+  rdf:type cd01p:VisitScreening1Pulse ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 Pulse 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
   study:derivedFlag "N"^^xsd:string ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
   study:outcome cdiscpilot01:PulseHROutcome_1 ;
   study:seq "44"^^xsd:float ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_2>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_2>
+  rdf:type cd01p:VisitScreening1Pulse ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 Pulse 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
   study:derivedFlag "N"^^xsd:string ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
   study:outcome cdiscpilot01:PulseHROutcome_2 ;
   study:seq "45"^^xsd:float ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_3>
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_3>
+  rdf:type cd01p:VisitScreening1Pulse ;
+  rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 Pulse 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  study:bodyPosition <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62166> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C67153.C49676> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
   study:outcome cdiscpilot01:PulseHROutcome_3 ;
@@ -422,11 +437,11 @@ cdiscpilot01:DemographicDataCollection_1
   rdfs:label "Demographic data collection 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_1 ;
-  study:ethnicity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C17459> ;
+  study:ethnicity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459> ;
   study:hasCode code:DemographicDataCollection ;
   study:hasDate cdiscpilot01:Date_19 ;
-  study:race <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74457.C41261> ;
-  study:sex <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C16576> ;
+  study:race <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41261> ;
+  study:sex <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C16576> ;
 .
 cdiscpilot01:DemographicDataCollection_2
   rdf:type code:DemographicDataCollection ;
@@ -434,11 +449,11 @@ cdiscpilot01:DemographicDataCollection_2
   rdfs:label "Demographic data collection 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_2 ;
-  study:ethnicity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C17459> ;
+  study:ethnicity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459> ;
   study:hasCode code:DemographicDataCollection ;
   study:hasDate cdiscpilot01:Date_7 ;
-  study:race <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74457.C41261> ;
-  study:sex <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C20197> ;
+  study:race <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41261> ;
+  study:sex <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C20197> ;
 .
 cdiscpilot01:DemographicDataCollection_3
   rdf:type code:DemographicDataCollection ;
@@ -446,11 +461,11 @@ cdiscpilot01:DemographicDataCollection_3
   rdfs:label "Demographic data collection 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_3 ;
-  study:ethnicity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C41222> ;
+  study:ethnicity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C41222> ;
   study:hasCode code:DemographicDataCollection ;
   study:hasDate cdiscpilot01:Date_16 ;
-  study:race <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C74457.C41261> ;
-  study:sex <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66731.C20197> ;
+  study:race <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41261> ;
+  study:sex <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C20197> ;
 .
 cdiscpilot01:HeightLengthOutcome_1
   rdf:type study:HeightLengthOutcome ;
@@ -949,18 +964,18 @@ cdiscpilot01:VisitScreening1_1
   study:hasDate cdiscpilot01:Date_19 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_1 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_1 ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25206_1> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25208_1> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_1> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_2> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25298_3> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_1> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_2> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25299_3> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C25347_1> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_1> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_2> ;
-  study:hasSubActivity <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#C67153.C49676_3> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25206_1> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25208_1> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_1> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_2> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_3> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_1> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_2> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_3> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25347_1> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_1> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_2> ;
+  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_3> ;
 .
 cdiscpilot01:WeightMassOutcome_1
   rdf:type study:WeightMassOutcome ;
@@ -985,22 +1000,19 @@ code:Unit_3
 code:timepoint-PT_SUPINE
   skos:prefLabel "PATIENT SUPINE"^^xsd:string ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm#hasEntity>
-  rdfs:range study:HumanStudySubject ;
-.
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C17459>
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459>
   rdfs:label "HISPANIC OR LATINO"^^xsd:string ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C17998>
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17998>
   rdfs:label "UNKNOWN" ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C41222>
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C41222>
   rdfs:label "NOT HISPANIC OR LATINO" ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C66790.C43234>
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C43234>
   rdfs:label "NOT REPORTED" ;
 .
-<https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#C71148.C62167>
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167>
   skos:prefLabel "SUPINE"^^xsd:string ;
 .
 study:Arm
