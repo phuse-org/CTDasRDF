@@ -25,9 +25,13 @@ vs$vscat_Frag  <- 'Category_1'
 vs$vsscat_Frag <- 'Subcategory_1'
 
 vs$vsstresu_Frag <- recode(vs$vsorresu, 
-                           "'cm'   = 'Unit_1';
-                            'in'   = 'Unit_2';
-                            'mmHg' = 'Unit_3'" )
+                           "'cm'        = 'Unit_1';
+                            'IN'        = 'Unit_2';
+                            'mmHg'      = 'Unit_3';
+                            'BEATS/MIN' = 'Unit_4';
+                            'F'         = 'Unit_6';
+                            'LB'        = 'Unit_8'")
+
 #  SDTM code values -----------------------------------------------------------
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
@@ -36,21 +40,25 @@ vs$vsstresu_Frag <- recode(vs$vsorresu,
 # TODO: This type of recoding to external graphs will be moved to a function
 #        and driven by a config file and/or separate SPARQL query against the graph
 #        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
-# vsloc
+# vsloc ----
 vs$vslocSDTMCode <- recode(vs$vsloc, 
                          "'ARM'         = 'C74456.C32141';
                           'EAR'         = 'C74456.C12394';                           
                           'ORAL CAVITY' = 'C74456.CC12421'" )
-# bodyPosition
+# bodyPosition ----
 vs$posSDTMCode <- recode(vs$vspos, 
                            "'STANDING' = 'C71148.C62166';
                             'SUPINE'   = 'C71148.C62167'" )
-# activity code
-#  Note values in lowercase in SDTM terminlogy, unlike others above.
-#    This is correct match with vstest case in source data 
+
+# vstest ----
 vs$vstestSDTMCode <- recode(vs$vstest, 
-                          "'Systolic Blood Pressure'  =   'C67153.C25298';
-                           'Diastolic Blood Pressure' =   'C67153.C25299'" )
+                          "'Systolic Blood Pressure'  = 'C67153.C25298';
+                           'Diastolic Blood Pressure' = 'C67153.C25299';
+                           'Height'                   = 'C67153.C25347';
+                           'Pulse Rate'               = 'C67153.C49676';
+                           'Temperature'              = 'C67153.C25206';
+                           'Weight'                   = 'C67153.C25208';
+  " )
 # laterality
 vs$vslatSDTMCode <- recode(vs$vslat, 
                           "'RIGHT' = 'C99073.C25228';
@@ -59,6 +67,8 @@ vs$vslatSDTMCode <- recode(vs$vslat,
 vs$vsposSDTM_Frag <- recode(vs$vspos, 
                            "'STANDING' = 'C71148.C62166';
                             'SUPINE'   = 'C71148.C62167'" )
+
+
 # Fragment  -------------------------------------------------------------------
 vs <- addDateFrag(vs, "vsdtc")  
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="ActivityStatus")
@@ -97,42 +107,68 @@ vs$vspos_Label <- recode(vs$vspos,
                            "'STANDING' = 'assume standing position';
                             'SUPINE'   = 'assume supine position'" )
 
-# Blood Pressure Outcomes
+# Outcomes  
+# TODO: REMOVE in preference to vsTestCat
 vs$vstestOutcomeType_Frag <- recode(vs$vstest, 
-                           "'Systolic Blood Pressure'   = 'BloodPressureOutcome';
-                            'Diastolic Blood Pressure'  = 'BloodPressureOutcome';
-                            'Foo'                       = 'FooOutcome'" )
-# The starting point for blood pressure outcome later. Add number to it later.
+                           "'Systolic Blood Pressure'  = 'BloodPressureOutcome';
+                            'Diastolic Blood Pressure' = 'BloodPressureOutcome';
+                            'Height'                   = 'HeightLengthOutcome';
+                            'Pulse Rate'               = 'PulseHROutcome';
+                            'Temperature'              = 'TemperatureOutcome';
+                            'Weight'                   = 'WeightMassOutcome'" )
+
+
+# vsTestCat = categorized tests. Allows for fragment creation using function
+#   createFragOneColByCat by grouping results for indexing WITHIN a category.
+#   Eg: SYSBP, DIABP are indexed together as a BloodPressureOutcome_(n)
+vs$vstestCat <- recode(vs$vstest, 
+                           "'Systolic Blood Pressure'  = 'BloodPressureOutcome';
+                            'Diastolic Blood Pressure' = 'BloodPressureOutcome';
+                            'Height'                   = 'HeightLengthOutcome';
+                            'Pulse Rate'               = 'PulseHROutcome';
+                            'Temperature'              = 'TemperatureOutcome';
+                            'Weight'                   = 'WeightMassOutcome'" )
+
+# Outcome labels
 vs$vstestOutcomeType_Label <- recode(vs$vstest, 
-                           "'Systolic Blood Pressure'   = 'Blood pressure outcome';
-                            'Diastolic Blood Pressure'  = 'Blood pressure outcome';
-                            'Foo'                       = 'FooOutcome'" )
+                           "'Systolic Blood Pressure'  = 'Blood pressure outcome';
+                            'Diastolic Blood Pressure' = 'Blood pressure outcome';
+                            'Height'                   = 'Height length outcome';
+                            'Pulse Rate'               = 'Pulse HR outcome';
+                            'Temperature'              = 'Temperature outcome';
+                            'Weight'                   = 'Weight mass outcome'" )
+
 # Create label strings for the various tests. NA values not allowed in the source column!
-vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="SYSBP"] <- paste0('P', vs$personNum, ' SBP ', vs$visitnum)
-vs$vstestcd_Label[!is.na(vs$vstestcd) &vs$vstestcd=="DIABP"] <- paste0('P', vs$personNum, ' DBP ', vs$visitnum)
+vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="SYSBP"]  <- paste0('P', vs$personNum, ' SBP ', vs$visitnum)
+vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="DIABP"]  <- paste0('P', vs$personNum, ' DBP ', vs$visitnum)
+vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="HEIGHT"] <- paste0('P', vs$personNum, ' Height ', vs$visitnum)
+vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="PULSE"]  <- paste0('P', vs$personNum, ' Pulse ', vs$visitnum)
+vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="TEMP"]   <- paste0('P', vs$personNum, ' Temperature ', vs$visitnum)
+vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="WEIGHT"] <- paste0('P', vs$personNum, ' Weight ', vs$visitnum)
+
+#TESTING TO HERE ------------------------------
 
 # Create BloodPressureOutcome_n fragment. 
 #  Blood pressure results come from both SYSBP and DIABP so only these values from 
 #    vstestcd / vsorres must be coded to BloodPressureOutcome
 #TODO Later this becomes a function to allow creation of similar 
-# fragments that rely on values from different vstestcd. 
+# fragments that rely on values from more than one type of vstestcd. 
 # Possible solution: createFragOneDomain: add another parameter: valSubset that creates 
 #    the fragment numbering based only a subset of values in the column: eg; SYSBP, DIABP
-vstestcd.subset <- vs[,c("vstestcd", "vsorres", "vsorresu")]
+vstestcd.subset <- vs[,c("vstestcd", "vsorres")]
 vstestcd.subset.bp <- subset(vstestcd.subset, vstestcd %in% c("SYSBP", "DIABP"))
 
 # create the BloodPressureOutcome_(n) fragment
 #!! PROBLEM HERE: The SORT makes for a problem against AO's data - wrong order.
 #TODO Possible solution is to create fragment using  row number from original dataset instead of 
 #   numbering based on order within test result category.
-vstestcd.subset.bp  <- createFragOneDomain(domainName=vstestcd.subset.bp, 
+vstestcd.frag  <- createFragOneDomain(domainName=vstestcd.subset.bp, 
        processColumns=c("vsorres"), fragPrefix="BloodPressureOutcome", numSort = TRUE)
 
-# Keep only the value field for the match (vsorres) and the fragement to merge in
-vstestcd.frag <- vstestcd.subset.bp[, c("vsorres", "vsorres_Frag")]
-
 # Merge the vsorres_Frag created in the steps above back into the VS domain.
-vs <- merge(x = vs, y = vstestcd.frag, by.x="vsorres", by.y="vsorres", all.y = TRUE)
+vs <- merge(x = vs, y = vstestcd.frag, by.x=c("vstestcd","vsorres"), by.y=c("vstestcd","vsorres"), all.x = TRUE)
+
+
 
 # Pick off the number after the _  from vsorres_Frag and make it part of the label
 vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extract(vs$vsorres_Frag, "\\d+$"))

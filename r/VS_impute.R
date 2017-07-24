@@ -8,14 +8,20 @@
 # NOTE: 
 # TODO: 
 ###############################################################################
-vs <- addPersonId(vs)
 
-##-----------------   DEV/TESTING ONLY  ---------------------------------------
+# Subset VS data for Dev purposes
 # SUBSET THE DATA DOWN TO A SINGLE PATIENT AND SUBSET OF TESTS FOR DEVELOPMENT PURPOSES
-vs <- subset(vs, (personNum==1 
-                  & vstestcd %in% c("DIABP", "SYSBP") 
-                  # & visit %in% c("SCREENING 1", "SCREENING 2")))
-                  & visit %in% c("SCREENING 1")))  # Subset further down to match AO data: 09May2017
+#  All for Person 1, Screening 1
+# Row     Data
+# 1:3     DIABP
+# 86:88   SYSBP
+# 43      Ht
+# 44:46   Pulse
+# 128     Temp
+# 142     Wt
+vs <- vs[c(1:3, 86:88, 43, 44:46, 128, 142), ]
+  # vs <- addPersonId(vs)  # add back in when > 1 person!
+vs$personNum <- 1
 
 #-- Data Imputation for Prototype Testing ---------------------------------------
 # More imputations for the first 3 records to match data created by AO : 2016-01-19
@@ -65,6 +71,7 @@ vs$vsstat <- as.character(vs$vsstat) # Unfactorize to all allow assignment
 vs$vsrftdtc <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "2013-12-16", "" )) 
 
 # -- Additional Value creation
+# Create ND value not in original data ----------------------------------------
 # Create an extra row of data that is used to create values not present in the orignal
 #   subset of data. The row is used to create codelists, etc. dynamically during the script run
 #   as an alternative to hard coding, since these values are not associated within any one subject
@@ -81,3 +88,4 @@ vs <- rbind(vs,newrow)
 
 # now populate the values in the last row of the data
 vs[nrow(vs),"vsstat"]   <- 'ND'  # add the ND value for creating activitystatus_2. Found later in the orginal data
+#TODO: Need personNum and other data here??

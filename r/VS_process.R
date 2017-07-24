@@ -42,7 +42,7 @@ ddply(u_Visit, .(visitPerson_Frag), function(u_Visit)
      add.triple(cdiscpilot01,
        paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
        paste0(prefix.RDF,"type" ),
-       paste0(prefix.CDISCPILOT01,u_Visit$visit_Frag)
+       paste0(prefix.CUSTOM,u_Visit$visit_Frag)
      )
      add.data.triple(cdiscpilot01,
        paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
@@ -69,7 +69,7 @@ ddply(u_Visit, .(visitPerson_Frag), function(u_Visit)
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
       paste0(prefix.STUDY,"hasCode" ),
-      paste0(prefix.CDISCPILOT01,u_Visit$visit_Frag)
+      paste0(prefix.CUSTOM,u_Visit$visit_Frag)
     )
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
