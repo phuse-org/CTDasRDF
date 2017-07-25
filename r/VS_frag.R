@@ -138,15 +138,30 @@ vs$vstestOutcomeType_Label <- recode(vs$vstest,
                             'Temperature'              = 'Temperature outcome';
                             'Weight'                   = 'Weight mass outcome'" )
 
+
+#ERRORS BELOW HERE
+
+# TODO: Move these to after the Result creation and script them using a Regex to crate the value?
 # Create label strings for the various tests. NA values not allowed in the source column!
-vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="SYSBP"]  <- paste0('P', vs$personNum, ' SBP ', vs$visitnum)
-vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="DIABP"]  <- paste0('P', vs$personNum, ' DBP ', vs$visitnum)
-vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="HEIGHT"] <- paste0('P', vs$personNum, ' Height ', vs$visitnum)
-vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="PULSE"]  <- paste0('P', vs$personNum, ' Pulse ', vs$visitnum)
-vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="TEMP"]   <- paste0('P', vs$personNum, ' Temperature ', vs$visitnum)
-vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="WEIGHT"] <- paste0('P', vs$personNum, ' Weight ', vs$visitnum)
+#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="SYSBP"]  <- paste0('P', vs$personNum, ' SBP ', vs$visitnum)
+#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="DIABP"]  <- paste0('P', vs$personNum, ' DBP ', vs$visitnum)
+#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="HEIGHT"] <- paste0('P', vs$personNum, ' Height ', vs$visitnum)
+#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="PULSE"]  <- paste0('P', vs$personNum, ' Pulse ', vs$visitnum)
+#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="TEMP"]   <- paste0('P', vs$personNum, ' Temperature ', vs$visitnum)
+#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="WEIGHT"] <- paste0('P', vs$personNum, ' Weight ', vs$visitnum)
 
 #TESTING TO HERE ------------------------------
+
+# Create the VS result fragment vsorres_Frag
+# vs <- createFragOneColByCat(domainName=vs, dataCol="vsorres", byCol="vstestCat", fragPrefixCol="vstestCat")    
+vs <- createFragOneColByCat(domainName=vs, byCol="vstestCat", dataCol="vsorres", fragPrefixCol="vstestCat")    
+
+# 
+foo <- vs[,c("vstestCat","vsorres", "vsorres_Frag")]
+
+
+
+#------------- OLD CODE BELOW HERE --------------------------------------------------
 
 # Create BloodPressureOutcome_n fragment. 
 #  Blood pressure results come from both SYSBP and DIABP so only these values from 
@@ -155,8 +170,8 @@ vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="WEIGHT"] <- paste0('P', vs
 # fragments that rely on values from more than one type of vstestcd. 
 # Possible solution: createFragOneDomain: add another parameter: valSubset that creates 
 #    the fragment numbering based only a subset of values in the column: eg; SYSBP, DIABP
-vstestcd.subset <- vs[,c("vstestcd", "vsorres")]
-vstestcd.subset.bp <- subset(vstestcd.subset, vstestcd %in% c("SYSBP", "DIABP"))
+#vstestcd.subset <- vs[,c("vstestcd", "vsorres")]
+#vstestcd.subset.bp <- subset(vstestcd.subset, vstestcd %in% c("SYSBP", "DIABP"))
 
 # create the BloodPressureOutcome_(n) fragment
 #!! PROBLEM HERE: The SORT makes for a problem against AO's data - wrong order.

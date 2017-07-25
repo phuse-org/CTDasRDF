@@ -190,67 +190,67 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
 
 #' Title
 #'
-#' @param domainName  - domain dataframe name
-#' @param dataCol     - column containing the data to indexed
-#' @param byCol       - column containing the 'by variable" within with to index
-#' @param fragPrefixCol - column containing the prefix name. 
+#' @param domainName  - domain dataframe 
+#' @param dataCol     - column containing the data to indexed (Eg: vsorres)
+#' @param byCol       - column containing the 'by variable" within with to index (eg vsTestCat)
+#' @param fragPrefixCol - column containing the prefix name. Often the same as the byCol
 #'                     Eg:  vstestCat = BloodPressureOutcome, PulseHROutcome
-#' @param numSort  - TRUE/FALSE to sort the data prior to indexing it.
+#' @param numSort  - TRUE/FALSE to sort the data prior to indexing it. ** NOT CURRENTLY IMPLEMENTED
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#'    crreateFragOneColByCat(domainName=vs, dataCol=vsorres, byCol=vsTestCat, fragPrefixCol=vsTestCat, numSort=TRUE)
-#'    
-createFragOneColByCat<-function(domainName, dataCol, byCol, fragPrefixCol, numSort=FALSE)
+#'    createFragOneColByCat(domainName=vs, dataCol=vsorres, byCol=vsTestCat, fragPrefixCol=vsTestCat, numSort=TRUE)
+#'    vsTest <- createFragOneColByCat(domainName=vsTest, dataCol="vsorres", byCol="vstestCat", fragPrefixCol="vstestCat")    
+createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSort=TRUE)
 {
-  # Combine the multiple columns into one
-  columnData <- domainName[,c(processColumns)] # keep only the requested cols in the df
+  temp <- domainName[,c(byCol, dataCol)]
   
-  sourceVals <- melt(columnData, measure.vars=colnames(columnData),
-          variable.name="source",
-          value.name="value")
   
-  # Keep only the values. Source not important
-  #TW:NOT NEEDED #sourceVals <- sourceVals[ , c("value")]
-  # 
-  uniques <- unique(sourceVals[,"value"])
-  # Remove missing(blank) values by coding to NA, then omit
-  uniques[uniques==""] <- NA
-  uniques <<- na.omit(uniques)
+  temp2 <- temp[!duplicated(temp), ]
+  # sort by category, data column value
+  # temp2 <- temp2[ order(temp2[,1], temp2[,2]), ]
+  # temp2 <- temp2[ order(temp2[,byCol], temp2[,dataCol]), ]
+  # https://stackoverflow.com/questions/26497751/pass-a-vector-of-variable-names-to-arrange-in-dplyr
   
-  # SORT
-  # Sort method depends on whether the values are character or numeric.
-  # Sort by values. Prev code: Use dplyr arrange instead of order/sort to avoid loss of df type
-  uniqueVals <- as.data.frame(uniques)
-  uniqueVals <<- na.omit(uniqueVals)
   
-  # if(is.numeric(uniqueVals[1,1])) {
-  # if (regexpr(uniqueVals[1,1], "\\d", perl=TRUE)){
-  if(numSort){
-    # Numbers. Convert and sort. 
-    # Convert first to character, then to numeric. Otherwise get the order according to the factors.
-    sorted.uniqueVals <<-data.frame( uniqueVals[order(as.numeric(as.character(uniqueVals$uniques))), ])
-  } else {
-    # Characters
-    sorted.uniqueVals <<- data.frame(uniqueVals[order(as.character(uniqueVals$uniques)), ])
-  }
-  colnames(sorted.uniqueVals) <- "keyVal" 
-  sorted.uniqueVals <-na.omit(sorted.uniqueVals)
-  # Create the coded value for each unique value as <value_n> 
-  sorted.uniqueVals$valFrag <- paste0(fragPrefix,"_", 1:nrow(sorted.uniqueVals))   # Generate a list of ID numbers
+  # Coerce the dataCol to numeric
+  #TW temp2[,2] <- as.numeric(as.character(temp2[,2]))
   
-  valDict <<- sorted.uniqueVals[,c("keyVal", "valFrag")]
   
-  # Merge in the keyVals value to created a coded version of the value field, naming
-  #  the column with a _Frag suffix.
-  for (i in processColumns) {
-    domainName <- merge(x = valDict, y = domainName, by.x="keyVal", by.y=i, all.y = TRUE)
-    # Rename the merged-in key value to the original column name to preserve original data
-    names(domainName)[names(domainName)=="keyVal"] <-  i
-    # Rename valFrag value to coded value using processColumn +  _Frag suffix
-    names(domainName)[names(domainName)=="valFrag"] <- paste0(i, "_Frag")
-  } 
-   return(domainName)
+  temp2 <- temp2[ order(temp2[,1], temp2[,2]), ]
+  
+  
+  # showMe <<- temp2[, c(byCol, dataCol)]
+  # Ordering the df does not change the row number so create a new index for use
+  #   in the later mutate statement.
+  temp2$rowID <- 1:nrow(temp2)
+  
+  # temp2 <- temp2 %>% arrange_(.dots = c(byCol, dataCol)) # Try this: arrange_(.dots=c("var1","var3"))
+  
+  # temp2 <- arrange_(temp2, byCol, -dataCol)
+  # temp2 <- temp2[ order(temp2[, !!byCol], temp2[, !!dataCol]), ]
+  # Create the new column named based on the input column name by appending
+  #  "_Frag" to the value of the the dataCol parameter
+  varname <- paste0(dataCol, "_Frag")
+
+  # Note use of !! to resolve the value of varname created above and assign
+  #   a value to it using :=
+  #TESTING HERE
+  #  WARNING/TODO: replace hard codeing of vstestCat here!!!
+  temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCat))%>% 
+    mutate( !!varname := paste0(vstestCat,"_", id)) 
+  
+  
+  # This gives ROW NUMBER and not correct numbering within a category
+  #temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = rowID)%>% 
+  #  mutate( !!varname := paste0(vstestCat,"_", id)) 
+  
+  # Remove the ID variable. It is now part of the fragment value in each row
+  temp2 <- temp2[,!(names(temp2) %in% "id")]
+  
+  # Merge the fragment value back into the original data
+  withFrag <<- merge(domainName, temp2, by = c(byCol, dataCol), all.x=TRUE)
+
 }

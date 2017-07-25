@@ -151,14 +151,15 @@ ddply(vs, .(personNum, vsseq), function(vs)
       paste0(prefix.STUDY,"anatomicLocation" ),
       paste0(prefix.SDTMTERM, vs$vslocSDTMCode)
     )
+#TW out for troubleshooting 2017-07-25    
     #AOQUESTION: Possible data fabrication issue. email to AO 2017-05-26
-    if (! as.character(vs$vsblfl) == "") {
-      add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"baselineFlag" ),
-        paste0(vs$vsblfl), type="string"
-      )
-    }
+#    if (! as.character(vs$vsblfl) == "") {
+#      add.data.triple(cdiscpilot01,
+#        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+#        paste0(prefix.STUDY,"baselineFlag" ),
+#        paste0(vs$vsblfl), type="string"
+#      )
+#    }
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
       paste0(prefix.STUDY,"bodyPosition" ),

@@ -27,6 +27,7 @@ createFragOneColByCat<-function(domainName, dataCol, byCol, fragPrefixCol, numSo
   temp2 <- temp[!duplicated(temp), ]
   # sort by category, data column value
   temp2 <- temp2[ order(temp2[,1], temp2[,2]), ]
+  debug <<- temp2[, c(byCol, dataCol)]
   
   # Create the new column named based on the input column name by appending
   #  "_Frag" to the value of the the dataCol parameter
