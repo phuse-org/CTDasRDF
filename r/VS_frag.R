@@ -139,53 +139,17 @@ vs$vstestOutcomeType_Label <- recode(vs$vstest,
                             'Weight'                   = 'Weight mass outcome'" )
 
 
-#ERRORS BELOW HERE
-
-# TODO: Move these to after the Result creation and script them using a Regex to crate the value?
 # Create label strings for the various tests. NA values not allowed in the source column!
-#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="SYSBP"]  <- paste0('P', vs$personNum, ' SBP ', vs$visitnum)
-#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="DIABP"]  <- paste0('P', vs$personNum, ' DBP ', vs$visitnum)
-#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="HEIGHT"] <- paste0('P', vs$personNum, ' Height ', vs$visitnum)
-#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="PULSE"]  <- paste0('P', vs$personNum, ' Pulse ', vs$visitnum)
-#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="TEMP"]   <- paste0('P', vs$personNum, ' Temperature ', vs$visitnum)
-#vs$vstestcd_Label[!is.na(vs$vstestcd) & vs$vstestcd=="WEIGHT"] <- paste0('P', vs$personNum, ' Weight ', vs$visitnum)
-
-#TESTING TO HERE ------------------------------
+vs$vstestcd_Label <- paste0('P', vs$personNum, " ", vs$vstestcd, " ", vs$testNumber)
 
 # Create the VS result fragment vsorres_Frag
 # vs <- createFragOneColByCat(domainName=vs, dataCol="vsorres", byCol="vstestCat", fragPrefixCol="vstestCat")    
 vs <- createFragOneColByCat(domainName=vs, byCol="vstestCat", dataCol="vsorres", fragPrefixCol="vstestCat")    
 
-# 
-foo <- vs[,c("vstestCat","vsorres", "vsorres_Frag")]
-
-
-
-#------------- OLD CODE BELOW HERE --------------------------------------------------
-
-# Create BloodPressureOutcome_n fragment. 
-#  Blood pressure results come from both SYSBP and DIABP so only these values from 
-#    vstestcd / vsorres must be coded to BloodPressureOutcome
-#TODO Later this becomes a function to allow creation of similar 
-# fragments that rely on values from more than one type of vstestcd. 
-# Possible solution: createFragOneDomain: add another parameter: valSubset that creates 
-#    the fragment numbering based only a subset of values in the column: eg; SYSBP, DIABP
-#vstestcd.subset <- vs[,c("vstestcd", "vsorres")]
-#vstestcd.subset.bp <- subset(vstestcd.subset, vstestcd %in% c("SYSBP", "DIABP"))
-
-# create the BloodPressureOutcome_(n) fragment
-#!! PROBLEM HERE: The SORT makes for a problem against AO's data - wrong order.
-#TODO Possible solution is to create fragment using  row number from original dataset instead of 
-#   numbering based on order within test result category.
-vstestcd.frag  <- createFragOneDomain(domainName=vstestcd.subset.bp, 
-       processColumns=c("vsorres"), fragPrefix="BloodPressureOutcome", numSort = TRUE)
-
-# Merge the vsorres_Frag created in the steps above back into the VS domain.
-vs <- merge(x = vs, y = vstestcd.frag, by.x=c("vstestcd","vsorres"), by.y=c("vstestcd","vsorres"), all.x = TRUE)
-
-
-
 # Pick off the number after the _  from vsorres_Frag and make it part of the label
+# TODO: Need new approach. The number should relate to the person and the result for that type of test
+#   within that person+test.  P1 SBP 2 is the second SBP for Person 1!
+
 vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extract(vs$vsorres_Frag, "\\d+$"))
 
 # Visit Fragments

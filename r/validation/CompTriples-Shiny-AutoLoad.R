@@ -18,84 +18,69 @@ library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!
 library(reshape) #  melt
 library(rrdf)
 library(shiny)
-setwd("C:/_gitHub/CTDasRDF/data/rdf")
+
+# setwd("C:/_gitHub/CTDasRDF/data/rdf")
+setwd("C:/_github/CTDasRDF")
+allPrefix <- "data/config/prefixes.csv"  # List of prefixes
+
+# Read list of prefixes from the config file ----
+prefixes <- as.data.frame( read.csv(allPrefix,
+  header=T,
+  sep=',' ,
+  strip.white=TRUE))
+# Create individual PREFIX statements
+prefixes$prefixDef <- paste0("PREFIX ", prefixes$prefix, ": <", prefixes$namespace,">")
+ 
 server <- function(input, output) {
-    output$contents <- renderTable({ 
-        #inFileR <<- input$fileR
-        #inFileOnt <<- input$fileOnt
-        # Do not do anything until both FileR and FileOnt have been specified.
-        #if(is.null(inFileR) | is.null(inFileOnt) )
-        #    return(NULL)
-    
-        #TODO Confirm these two steps
-        #file.rename(inFileR$datapath,
-        #    paste(inFileR$datapath, ".ttl", sep=""))
-        #file.rename(inFileOnt$datapath,
-        #    paste(inFileOnt$datapath, ".ttl", sep=""))
+  output$contents <- renderTable({ 
+    query = paste0(paste(prefixes$prefixDef, collapse=""),
+      "SELECT ?s ?p ?o
+        WHERE {", input$qnam, " ?p ?o . 
+        BIND(\"", input$qnam, "\" as ?s) }
+        ORDER BY ?p ?o")
 
-        query = paste0("PREFIX cd01p: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p#>
-PREFIX cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#>
-PREFIX code:  <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#>
-PREFIX country: <http://psi.oasis-open.org/iso/3166/#>
-PREFIX custom: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#>
-prefix owl:   <http://www.w3.org/2002/07/owl#>
-PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX sdtm: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#>
-PREFIX sdtm-terminology: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#> 
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX sp: <http://spinrdf.org/sp#> 
-PREFIX spin: <http://spinrdf.org/spin#> 
-PREFIX study:  <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study#>
-PREFIX time:  <http://www.w3.org/2006/time#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
-SELECT ?s ?p ?o
-WHERE {", input$qnam, " ?p ?o . 
-  BIND(\"", input$qnam, "\" as ?s) } ")
-
-       # sourceR = load.rdf(paste(inFileR$datapath,".ttl",sep=""), format="N3")
-       sourceR = load.rdf("C:/_gitHub/CTDasRDF/data/rdf/cdiscpilot01-R.TTL", format="N3")
-       # Global assign for trouble shooting
-       triplesR <<- as.data.frame(sparql.rdf(sourceR, query))
+    # sourceR = load.rdf(paste(inFileR$datapath,".ttl",sep=""), format="N3")
+    sourceR = load.rdf("data/rdf/cdiscpilot01-R.TTL", format="N3")
+    # Global assign for trouble shooting
+    triplesR <<- as.data.frame(sparql.rdf(sourceR, query))
        
-       # sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
-       sourceOnt = load.rdf("C:/_gitHub/CTDasRDF/data/rdf/cdiscpilot01.TTL", format="N3")
-       triplesOnt <- as.data.frame(sparql.rdf(sourceOnt, query))
+    # sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
+    sourceOnt = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
+    triplesOnt <- as.data.frame(sparql.rdf(sourceOnt, query))
     
-       # Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
-       triplesOnt <-triplesOnt[!(triplesOnt$o==""),]
-       triplesOnt <<- triplesOnt[complete.cases(triplesOnt), ]
-       if (input$comp=='inRNotOnt') {
-           compResult <<-anti_join(triplesR, triplesOnt)
-       }
-       else if (input$comp=='inOntNotR') {
-           compResult <- anti_join(triplesOnt, triplesR)
-       }
+    # Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
+    triplesOnt <-triplesOnt[!(triplesOnt$o==""),]
+    triplesOnt <<- triplesOnt[complete.cases(triplesOnt), ]
+    if (input$comp=='inRNotOnt') {
+      compResult <<-anti_join(triplesR, triplesOnt)
+    }else if (input$comp=='inOntNotR') {
+      compResult <- anti_join(triplesOnt, triplesR)
+    }
   
-       triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
-       triplesR   <- triplesR[with(triplesR, order(s,p,o)), ]
+    triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
+    triplesR   <- triplesR[with(triplesR, order(s,p,o)), ]
        
-       output$triplesOnt <-renderTable({triplesOnt})    
-       output$triplesR <-renderTable({triplesR})    
-
-       compResult
-    })
-    # sort for visual compare in the interface
     output$triplesOnt <-renderTable({triplesOnt})    
     output$triplesR <-renderTable({triplesR})    
+
+    compResult
+  })
+  # sort for visual compare in the interface
+  output$triplesOnt <- renderTable({triplesOnt})    
+  output$triplesR   <- renderTable({triplesR})    
 }
 
 ui <- fluidPage(
   titlePanel(HTML("<h3>Compare cdiscpilot01.TTL (ont) with cdiscpilot01-R.TTL (from R)</h3>")),
   fluidRow (
-      #column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
-      #column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')
-      #),
-      column(3, textInput('qnam', "Subject QName", value = "cdiscpilot01:Person_1"))
+    #column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
+    #column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')
+    #),
+    column(3, textInput('qnam', "Subject QName", value = "cdiscpilot01:Person_1"))
   ),
   radioButtons("comp", "Compare:",
-                c("In R, not in Ontology" = "inRNotOnt",
-                  "In Ontology, not in R" = "inOntNotR")),    
+    c( "In R, not in Ontology" = "inRNotOnt",
+       "In Ontology, not in R" = "inOntNotR")),    
   h4("Comparison Result:",
     style= "color:#e60000"),
   hr(),    
@@ -106,7 +91,6 @@ ui <- fluidPage(
   h4("R Triples",
     style= "color:#00802b"),
   tableOutput('triplesR')
-    
 )
 shinyApp(ui = ui, server = server)
 

@@ -79,6 +79,37 @@ ddply(prefixes, .(prefix), function(prefixes)
   # assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"], envir=globalenv()))
 })
 
+
+# Build Imports --------------------------------------------------------------
+#   Create the owl:import statements 
+#------------------------------------------------------------------------------
+owlImports <- "data/config/imports.csv"  # List of prefixes
+imports <- as.data.frame( read.csv(owlImports,
+  header=T,
+  sep=',' ,
+  strip.white=TRUE))
+
+add.triple(cdiscpilot01,
+  paste0("https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl"),
+  paste0(prefix.RDF,"type" ),
+  paste0(prefix.OWL, "Ontology")
+)
+ddply(imports, .(o), function(imports)
+{
+  add.triple(cdiscpilot01,
+    paste0(imports$s),
+    paste0(prefix.OWL,"imports"),
+    paste0(imports$o)
+  )
+})
+
+add.data.triple(cdiscpilot01,
+  paste0("https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl"),
+  paste0(prefix.OWL,"versionInfo" ),
+  paste0("Created with R to match TopBraid Composer imports from AO"), type="string"
+)
+
+# Graph Metadata ----
 source('R/graphMeta.R') # Graph Metadata
 
 # Functions for later use -----------------------------------------------------
@@ -115,14 +146,8 @@ source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part
 source('R/DM_process.R')
 source('R/SUPPDM_process.R')
 
-
-
-
-
 # VS Domain ----
 source('R/VS_frag.R')
-
-
 
 
 source('R/VS_process.R')

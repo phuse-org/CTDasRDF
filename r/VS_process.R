@@ -14,6 +14,9 @@
 #  
 ###############################################################################
 
+# Data cleanup from artifact created in Impute? 
+vs <- subset(vs, (!is.na(vs$vstestCat)))
+
 # Create Visit triples that should be created ONLY ONCE: Eg: Triples that describe an 
 # individual visit. Eg: VisitScreening1_1
 u_Visit <- vs[,c("visit_Frag", "visitPerson_Frag","personNum", "visit", 
