@@ -119,6 +119,14 @@ code:ActivityStatus_3
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ND"^^xsd:string ;
 .
+code:ActivityStatus_4
+  rdf:type code:ActivityStatus ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "IC"^^xsd:string ;
+  skos:altLabel "INCOMPLETE"^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "IC"^^xsd:string ;
+.
 code:AdministrativeActivity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;

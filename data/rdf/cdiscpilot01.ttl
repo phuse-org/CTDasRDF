@@ -10,12 +10,11 @@
 @prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
 @prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
 @prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
-@prefix custom: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#> .
+@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdtm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.#> .
-@prefix sdtm-terminology: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#> .
+@prefix sdtmterm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
@@ -611,38 +610,38 @@ cdiscpilot01:Person_3
   study:participatesIn cdiscpilot01:RandomizationBAL3_3 ;
 .
 cdiscpilot01:PopFlagCmpltr16Wk_1
-  rdf:type custom:PopFlagCmpltr16Wk ;
-  study:hasCode custom:PopFlagCmpltr16Wk ;
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr16Wk> ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr16Wk> ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagCmpltr24Wk_1
-  rdf:type custom:PopFlagCmpltr24Wk ;
-  study:hasCode custom:PopFlagCmpltr24Wk ;
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr24Wk> ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr24Wk> ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagCmpltr8Wk_1
-  rdf:type custom:PopFlagCmpltr8Wk ;
-  study:hasCode custom:PopFlagCmpltr8Wk ;
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr8Wk> ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr8Wk> ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagEff_1
-  rdf:type custom:PopFlagEff ;
-  study:hasCode custom:PopFlagEff ;
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagEff> ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagEff> ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagItt_1
-  rdf:type custom:PopFlagItt ;
-  study:hasCode custom:PopFlagItt ;
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagItt> ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagItt> ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagSaf_1
-  rdf:type custom:PopFlagSaf ;
-  study:hasCode custom:PopFlagSaf ;
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagSaf> ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagSaf> ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
@@ -954,13 +953,13 @@ cdiscpilot01:UnscheduledVisit_1
   skos:prefLabel "UNSCHEDULED 3.1"^^xsd:string ;
 .
 cdiscpilot01:VisitScreening1_1
-  rdf:type custom:VisitScreening1 ;
+  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#VisitScreening1> ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "P1 Visit 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SCREENING1"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode custom:VisitScreening1 ;
+  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#VisitScreening1> ;
   study:hasDate cdiscpilot01:Date_19 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_1 ;
   study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_1 ;
@@ -1018,8 +1017,15 @@ code:timepoint-PT_SUPINE
 study:Arm
   owl:equivalentClass [
       rdf:type owl:Restriction ;
-      owl:allValuesFrom custom:Arm ;
+      owl:allValuesFrom <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#Arm> ;
       owl:onProperty study:hasArmCode ;
+    ] ;
+.
+study:PerformedActivity
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:ActivityStatus_1 ;
+      owl:onProperty study:activityStatus ;
     ] ;
 .
 study:hasInformedConsentInterval
