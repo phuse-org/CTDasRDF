@@ -34,6 +34,8 @@ graph TB
 
 
     idPrefixes(prefixes.csv)
+    idImports(imports.csv)
+    idNonInstance(nonInstance.R)
     idMeta(graphMeta.R)
     idMiscF(misc_F.R)
     idFntreadXPT((readXPT))
@@ -48,6 +50,7 @@ graph TB
     idFntaddDateFrag((addDateFrag))
     idFntCreateDateDict((createDateDict))
     idFntcreateFragOneDomain((createFragOneDomain))
+    idFntcreateFragOneColByCat((createFragOneColByCat))
 
     idDMFrag(DM_Frag.R)
     idVSFrag(VS_Frag.R)
@@ -62,7 +65,9 @@ graph TB
     idFin>Fin]
 
     idStart-->idMain1
-    idPrefixes--READ_BY-->idMain1
+    idNonInstance--SOURCED_BY-->idMain1
+    idPrefixes--READ_BY-->idNonInstance
+    idImports--READ_BY-->idNonInstance
     idMain1-->idMain2
     idMeta--SOURCED_BY-->idMain2
     idMiscF--SOURCED_BY-->idMain2
@@ -75,6 +80,7 @@ graph TB
     idMain3-->idMain4
     idFntaddDateFrag--DEFINED_IN-->idCreateFrag
     idFntcreateFragOneDomain--DEFINED_IN-->idCreateFrag
+    idFntcreateFragOneColByCat--DEFINED_IN-->idCreateFrag
     idFntCreateDateDict--DEFINED_IN-->idCreateFrag
     idCreateFrag--SOURCED_BY-->idMain3
 
@@ -131,14 +137,14 @@ graph TB
   
   class idStart, start;
   class idMain1,idMain2,idMain3,idMain4,idMain5,idMain6,idMain7,idMain7,idMain8,idMain9,idMain10,idMain11,idMain12,idMain13,idMain14 main;
-  class idFntreadXPT,idFntaddPersonId,idFntassignDateType,idFntaddDateFrag,idFntcreateFragOneDomain,idFntCreateDateDict fnt;
-  class idMeta,idMiscF,idDMProcess,idPSDM,idVSProcess sourced;
+  class idFntreadXPT,idFntaddPersonId,idFntassignDateType,idFntaddDateFrag,idFntcreateFragOneDomain,idFntcreateFragOneColByCat,idFntCreateDateDict fnt;
+  class idMeta,idNonInstance,idMiscF,idDMProcess,idPSDM,idVSProcess sourced;
   class idDMxpt,idVSxpt xpt;
   class idDMImpute,idVSImpute,idSUPPDMImpute RImpute;
   class idCreateFrag,idDMFrag,idVSFrag RFrag;
   class idDMProcess,idSUPPDMProcess,idVSProcess RProcess;
   class idOutMain outTTL;
-  class idPrefixes csv;
+  class idPrefixes,idImports csv;
   class idRiot validate;
 
 ")
