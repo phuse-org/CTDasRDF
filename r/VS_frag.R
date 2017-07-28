@@ -83,31 +83,30 @@ vs$tempField <- paste0(vs$personNum, vs$visit)
 vs$tempId <- with(rle(as.character(vs$tempField)), rep(seq_along(values), lengths))
 # Note: Missing values in extraction indices will cause error, so use !is.na() 
 #   in these assignments. Ref: https://stackoverflow.com/questions/23396279/when-trying-to-replace-values-missing-values-are-not-allowed-in-subscripted-as
-vs[!is.na(vs$vspos) & vs$vspos == "STANDING", "vspos_Frag"]  <- "AssumeBodyPositionStanding_"
-vs[!is.na(vs$vspos) & vs$vspos == "SUPINE", "vspos_Frag"]    <- "AssumeBodyPositionSupine_"
-vs$vspos_Frag <- paste0(vs$vspos_Frag, vs$tempId)
-# Clean up: remove temp vars
-vs<-vs[, !(names(vs) %in% c("tempId", "tempField"))]
+
+# Create vspos_Frag only when vspos is not misssing or not blank
+# initialize
+# see https://stackoverflow.com/questions/29814912/error-replacement-has-x-rows-data-has-y
 
 # bodyPosition Rules.  
 #-- 1. Create the prefix
 vs$startRuleType_Frag <- recode(vs$vstpt, 
                            "'AFTER STANDING FOR 1 MINUTE'    = 'StartRuleStanding1';
                             'AFTER STANDING FOR 3 MINUTES'   = 'StartRuleStanding3';
-                            'AFTER LYING DOWN FOR 5 MINUTES' = 'StartRuleLying5'" )
-#-- 2. Add the suffix as personNum. 
-#TODO Confirm use of personNum
-vs$startRule_Frag <- paste0(vs$startRuleType_Frag, "_", vs$personNum) 
+                            'AFTER LYING DOWN FOR 5 MINUTES' = 'StartRuleLying5';
+                            ''                               = 'StartRuleNone'" )
 
 # bodyPosition Rules. 
 vs$vsposCode_Frag <- recode(vs$vspos, 
                            "'STANDING' = 'AssumeBodyPositionStanding';
-                            'SUPINE'   = 'AssumeBodyPositionSupine'" )
+                            'SUPINE'   = 'AssumeBodyPositionSupine';
+                            ''         =  NA" )
+
 vs$vspos_Label <- recode(vs$vspos, 
                            "'STANDING' = 'assume standing position';
                             'SUPINE'   = 'assume supine position'" )
-
 # Outcomes  
+#   Recode allows combination of some categories, like SBP and DPB into BloodPressure
 # TODO: REMOVE in preference to vsTestCat
 vs$vstestOutcomeType_Frag <- recode(vs$vstest, 
                            "'Systolic Blood Pressure'  = 'BloodPressureOutcome';
@@ -164,3 +163,56 @@ vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
 #   by vsorres_Frag to match arbitrary coding covention used in above steps.
 vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
 vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
+
+
+
+#TODO: Replace FOR with more efficient code. 
+for (i in 1:nrow(vs)){
+  
+  # vspos_Frag based on vsposCOde_Frag.    
+  if (!is.na(vs[i,"vsposCode_Frag"])){
+    vs[i,"vspos_Frag"] <- paste0(vs[i,"vsposCode_Frag"], "_", vs[i,"tempId"])
+  }
+
+  # StartRule ----
+  if (!is.na(vs[i,"startRuleType_Frag"])){
+    #-- 2. Add the suffix as personNum. 
+    #TODO Confirm use of personNum
+    vs[i,"startRule_Frag"] <- paste0(vs[i,"startRuleType_Frag"], "_", vs[i,"personNum"]) 
+  }else{
+    # Another confirm with AO: is there a SINGLE StartRuleNone, or One per personNum
+    vs[i,"startRule_Frag"] <- paste0("StartRuleNone_", vs[i,"personNum"])
+  }
+
+  #TODO Start Rule Label
+  #  Build startRule_Label here
+  #QUESTION out to AO  <TBD>
+  
+  # SDTM Code TYPE fragment ----
+  #   stringr to remove spaces 
+  #   Example: VisitScreening1SystolicBloodPressure, VisitScreening1PulseRate  
+  vs[i,"vstestSDTMCodeType_Frag"] <- str_replace_all(string=paste0(vs[i,"visit_Frag"], vs[i,"vstest"]),
+                                                     pattern=" ", repl="")    
+  # Result label ----
+  #   Eg: P1 Screening1 Temperature
+  vs[i,"testRes_Label"] <- stri_trans_general(
+                                paste0("P", vs[i,"personNum"], " ", vs[i,"visit"], " ", vs[i,"vstest"]), id="Title")
+  
+  # Result type fragment ----
+  #   Eg: VisitScreening1SystolicBloodPressure
+  #   stringr to remove spaces 
+  vs[i,"sdtmCodeType_Frag"] <- str_replace_all(string=paste0(vs[i,"vist_Frag"], vs[i,"vstest"]),
+                                               pattern=" ", repl="")
+  # Outcome label ----
+  vs[i,"vsorres_Label"] <- paste0(vs[i,"vsorres"], " ", vs[i,"vsorresu"])
+  
+  
+}
+  
+# Clean up: remove temp vars
+vs<-vs[, !(names(vs) %in% c("tempId", "tempField"))]
+
+# Sort column names in the df for quicker referencing
+vs <- vs %>% select(noquote(order(colnames(vs))))
+
+
