@@ -17,7 +17,8 @@
 #       create the date fragment dictionary, then apply it to that specific
 #       domain using addDateFrag
 # TODO: (see individual functions for TODO list) 
-#
+#       Change hard coding of vstestCatOutcome to the value of byCol (the sol
+#            is nonobvious!)
 ###############################################################################
 
 #------------------------------------------------------------------------------
@@ -235,13 +236,25 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSo
   #  "_Frag" to the value of the the dataCol parameter
   varname <- paste0(dataCol, "_Frag")
 
+  
+  byColName <<- byCol
   # Note use of !! to resolve the value of varname created above and assign
   #   a value to it using :=
   #TESTING HERE
-  #  WARNING/TODO: replace hard codeing of vstestCat here!!!
-  temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCat))%>% 
-    mutate( !!varname := paste0(vstestCat,"_", id)) 
   
+  
+  
+  #  WARNING/TODO: replace hard codeing of vstestCat here!!!
+  #temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCat))%>% 
+  #  mutate( !!varname := paste0(vstestCat,"_", id)) 
+  # FOLLOWING WORKS WITH HARD CODING OF vsttestCatOutcome!
+  # TODO: Make this dynamic!!
+  
+  temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCatOutcome))%>% 
+    mutate( !!varname := paste0(vstestCatOutcome,"_", id)) 
+  
+  
+
   
   # This gives ROW NUMBER and not correct numbering within a category
   #temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = rowID)%>% 

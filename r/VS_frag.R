@@ -105,28 +105,32 @@ vs$vsposCode_Frag <- recode(vs$vspos,
 vs$vspos_Label <- recode(vs$vspos, 
                            "'STANDING' = 'assume standing position';
                             'SUPINE'   = 'assume supine position'" )
+
+
+
 # Outcomes  
-#   Recode allows combination of some categories, like SBP and DPB into BloodPressure
-# TODO: REMOVE in preference to vsTestCat
-vs$vstestOutcomeType_Frag <- recode(vs$vstest, 
-                           "'Systolic Blood Pressure'  = 'BloodPressureOutcome';
-                            'Diastolic Blood Pressure' = 'BloodPressureOutcome';
-                            'Height'                   = 'HeightLengthOutcome';
-                            'Pulse Rate'               = 'PulseHROutcome';
-                            'Temperature'              = 'TemperatureOutcome';
-                            'Weight'                   = 'WeightMassOutcome'" )
-
-
 # vsTestCat = categorized tests. Allows for fragment creation using function
 #   createFragOneColByCat by grouping results for indexing WITHIN a category.
 #   Eg: SYSBP, DIABP are indexed together as a BloodPressureOutcome_(n)
 vs$vstestCat <- recode(vs$vstest, 
-                           "'Systolic Blood Pressure'  = 'BloodPressureOutcome';
-                            'Diastolic Blood Pressure' = 'BloodPressureOutcome';
-                            'Height'                   = 'HeightLengthOutcome';
-                            'Pulse Rate'               = 'PulseHROutcome';
-                            'Temperature'              = 'TemperatureOutcome';
-                            'Weight'                   = 'WeightMassOutcome'" )
+                           "'Systolic Blood Pressure'  = 'BloodPressure';
+                            'Diastolic Blood Pressure' = 'BloodPressure';
+                            'Height'                   = 'HeightLength';
+                            'Pulse Rate'               = 'PulseHR';
+                            'Temperature'              = 'Temperature';
+                            'Weight'                   = 'WeightMass'" )
+
+#   Recode allows combination of some categories, like SBP and DPB into BloodPressure
+# TODO: REMOVE in preference to vsTestCat
+#TWvs$vstestOutcomeType_Frag <- recode(vs$vstest, 
+#                           "'Systolic Blood Pressure'  = 'BloodPressureOutcome';
+#                            'Diastolic Blood Pressure' = 'BloodPressureOutcome';
+#                            'Height'                   = 'HeightLengthOutcome';
+#                            'Pulse Rate'               = 'PulseHROutcome';
+#                            'Temperature'              = 'TemperatureOutcome';
+#                            'Weight'                   = 'WeightMassOutcome'" )
+
+
 
 # Outcome labels
 vs$vstestOutcomeType_Label <- recode(vs$vstest, 
@@ -141,15 +145,6 @@ vs$vstestOutcomeType_Label <- recode(vs$vstest,
 # Create label strings for the various tests. NA values not allowed in the source column!
 vs$vstestcd_Label <- paste0('P', vs$personNum, " ", vs$vstestcd, " ", vs$testNumber)
 
-# Create the VS result fragment vsorres_Frag
-# vs <- createFragOneColByCat(domainName=vs, dataCol="vsorres", byCol="vstestCat", fragPrefixCol="vstestCat")    
-vs <- createFragOneColByCat(domainName=vs, byCol="vstestCat", dataCol="vsorres", fragPrefixCol="vstestCat")    
-
-# Pick off the number after the _  from vsorres_Frag and make it part of the label
-# TODO: Need new approach. The number should relate to the person and the result for that type of test
-#   within that person+test.  P1 SBP 2 is the second SBP for Person 1!
-
-vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extract(vs$vsorres_Frag, "\\d+$"))
 
 # Visit Fragments
 vs$visit_Frag <- sapply(vs$visit,function(x) {
@@ -157,12 +152,6 @@ vs$visit_Frag <- sapply(vs$visit,function(x) {
       'SCREENING 1' = 'VisitScreening1',
       as.character(x) ) } )
 vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
-
-# vstestSDTMCode
-# Create a tempId as a counter within the categores of vstestSDTMCode, sorted
-#   by vsorres_Frag to match arbitrary coding covention used in above steps.
-vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
-vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
 
 
 
@@ -203,11 +192,37 @@ for (i in 1:nrow(vs)){
   #   stringr to remove spaces 
   vs[i,"sdtmCodeType_Frag"] <- str_replace_all(string=paste0(vs[i,"vist_Frag"], vs[i,"vstest"]),
                                                pattern=" ", repl="")
+
+  # Form the first part of the vstestCatOutcome by appending Outcome to the vstestCat value.
+  #   this will be used in createFragOneColByCat()
+  # TODO: Resolve redundancy here: use only ONE of these: move to use of vstestOutcomeType_Frag here and in VS_process.R??
+  vs[i,"vstestCatOutcome"] <- paste0(vs[i,"vstestCat"], "Outcome")
+  vs[i,"vstestOutcomeType_Frag"] <- paste0(vs[i,"vstestCat"], "Outcome")
+
   # Outcome label ----
   vs[i,"vsorres_Label"] <- paste0(vs[i,"vsorres"], " ", vs[i,"vsorresu"])
-  
-  
 }
+
+
+#ERROR in call below!!! cannot find vstestCat(?????!)
+# These calls MUST come after the looping.
+# Create the VS result fragment vsorres_Frag
+vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vsorres", fragPrefixCol="vstestCatOutcome")    
+
+
+# vstestSDTMCode
+# Create a tempId as a counter within the categores of vstestSDTMCode, sorted
+#   by vsorres_Frag to match arbitrary coding covention used in above steps.
+vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
+vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
+
+
+# Pick off the number after the _  from vsorres_Frag and make it part of the label
+# TODO: Need new approach. The number should relate to the person and the result for that type of test
+#   within that person+test.  P1 SBP 2 is the second SBP for Person 1!
+
+vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extract(vs$vsorres_Frag, "\\d+$"))
+
   
 # Clean up: remove temp vars
 vs<-vs[, !(names(vs) %in% c("tempId", "tempField"))]
