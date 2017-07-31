@@ -11,7 +11,9 @@
 #   Move all value *creation* into VS_Frag and VS_Impute
 #   Clear all #TODO and questions to AO   
 #   Proof all columns in vs to find their actual usage in this code. REMOTE unused.
-#  
+#   Cross check all Date_nn to ensure they capture each type of thing they 
+#      particiapte in. Eg: ScreeningVisit, Body position within Screening visit??etc. etc.
+# !!! SEE WIP COMMENT for current construction.
 ###############################################################################
 
 # Data cleanup from artifact created in Impute? 
@@ -166,7 +168,7 @@ ddply(vs, .(personNum, vsseq), function(vs)
       paste0(prefix.STUDY,"hasPlannedDate" ),
       paste0(prefix.CDISCPILOT01, vs$vsdtc_Frag)
     )
-#WIP HERE    # StartRule
+    # StartRule
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
       paste0(prefix.STUDY,"hasStartRule" ),
@@ -224,24 +226,41 @@ ddply(vs, .(personNum, vsseq), function(vs)
     #  paste0(prefix.STUDY,"hasSubcategory" ),
     #  paste0(prefix.CD01P, vs$vsscat_Frag)
     #)
+
+#WIP    
+#HERE    
+#EMAIL TO AO for Start Rule Clarification 31JUL17.
       # Start rule ----
+      #TODO: Start rule type is hard coded. May need to change to "Rule Type"
+      #  which could be start rule, stop rule, etc.
       #   Examples: 
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CD01P, vs$startRuleType_Frag)
-      )
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-        paste0(prefix.STUDY,"hasCode" ),
-        paste0(prefix.CD01P, vs$startRuleType_Frag)
-      )
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+      paste0(prefix.CODE,"hasPrequisite" ),
+      paste0(prefix.CDISCPILOT01, vs$vspos_Frag)
+    )
+    # Hard coding here
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+      paste0(prefix.RDF,"type" ),
+      paste0(prefix.CODE, "StartRule")
+    )
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+      paste0(prefix.RDF,"type" ),
+      paste0(prefix.CD01P, vs$startRuleType_Frag)
+    )
+    add.data.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+      paste0(prefix.RDFS,"label" ),
+      paste0(paste0("startrule-", vs$vstestcd_Label))
+    )
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+      paste0(prefix.STUDY,"hasCode" ),
+      paste0(prefix.CD01P, vs$startRuleType_Frag)
+    )
       #TODO  Label to created in VS_FRAG after feedback from AO
-#      add.data.triple(cdiscpilot01,
-#        paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-#        paste0(prefix.RDFS,"label" ),
-#        paste0(paste0("startrule-", vs$vstestcd_Label))
-#      )
       
     
 #TW out for current dev work 2017-07-28        

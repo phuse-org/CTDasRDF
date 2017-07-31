@@ -216,9 +216,8 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSo
   # https://stackoverflow.com/questions/26497751/pass-a-vector-of-variable-names-to-arrange-in-dplyr
   
   
-  # Coerce the dataCol to numeric
-  #TW temp2[,2] <- as.numeric(as.character(temp2[,2]))
-  
+  # Coerce the dataCol to numeric, otherwise sorting will fail.
+  temp2[,2] <- as.numeric(as.character(temp2[,2]))
   
   temp2 <- temp2[ order(temp2[,1], temp2[,2]), ]
   
@@ -243,6 +242,7 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSo
   #TESTING HERE
   
   
+  temp2<<-temp2
   
   #  WARNING/TODO: replace hard codeing of vstestCat here!!!
   #temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCat))%>% 

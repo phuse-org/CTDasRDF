@@ -204,10 +204,16 @@ for (i in 1:nrow(vs)){
 }
 
 
+
+
+
+
+
 #ERROR in call below!!! cannot find vstestCat(?????!)
 # These calls MUST come after the looping.
 # Create the VS result fragment vsorres_Frag
-vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vsorres", fragPrefixCol="vstestCatOutcome")    
+vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vsorres", 
+      fragPrefixCol="vstestCatOutcome", numSort=TRUE)    
 
 
 # vstestSDTMCode

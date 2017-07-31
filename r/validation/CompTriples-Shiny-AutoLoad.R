@@ -52,11 +52,11 @@ server <- function(input, output) {
     if (input$comp=='inRNotOnt') {
       compResult <-anti_join(triplesR, triplesOnt)
       
+      
     }else if (input$comp=='inOntNotR') {
       compResult <- anti_join(triplesOnt, triplesR)
       
     }
-  
     triplesOnt <- triplesOnt[with(triplesOnt, order(p,o)), ]
     triplesR   <- triplesR[with(triplesR, order(p,o)), ]
        
@@ -66,7 +66,7 @@ server <- function(input, output) {
     if(nrow(compResult) == 0){
     compResult <- "100% MATCH"
     }else{
-    compResult      
+      compResult[with(compResult, order(p,o)), ]
     }
 
   })
