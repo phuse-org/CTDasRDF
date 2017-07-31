@@ -28,8 +28,15 @@ library(dplyr)
 library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
 library(reshape2)  # decast and others...
 library(stringr)
+require(stringi)  # Proper casing, etc.
 
 rm(list=ls())  # Clear workspace from prior runs.
+
+
+# Flags and global parameters ----
+# Subset for prototype development. 
+maxPerson = 6 # Used in DM_process.R for subsetting. VS is selects row numbers.
+importsEnabled = FALSE
 
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
@@ -37,8 +44,6 @@ setwd("C:/_github/CTDasRDF")
 # Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
 
-# Subset for prototype development. 
-maxPerson = 6; # Used in DM_process.R for subsetting
 
 # Output filename and location
 outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
@@ -48,37 +53,11 @@ cdiscpilot01  = new.rdf()  # The main datafile. Later change name to 'mainTTL" o
     # custom = new.rdf()  # customterminology-R.ttl  : NOT CURRENTLY IN USE
     # code   = new.rdf()  # code-R.ttl               : NOT CURRENTLY IN USE
 
-# Build Prefixes --------------------------------------------------------------
-#   Add prefixes to files cdiscpilot01-R.TTL, and later to other namespace TTL
-#     files if/when implemented, allowing one source of prefix definitions for
-#     both building the TTL file and for later query and vis. R scripts.
-#------------------------------------------------------------------------------
-allPrefix <- "data/config/prefixes.csv"  # List of prefixes
+# Prefixes and OWL imports ----
+source('R/nonInstance.R') # Graph Metadata
 
-prefixes <- as.data.frame( read.csv(allPrefix,
-  header=T,
-  sep=',' ,
-  strip.white=TRUE))
 
-ddply(prefixes, .(prefix), function(prefixes)
-{
-  add.prefix(cdiscpilot01,
-    prefix=as.character(prefixes$prefix),
-    namespace=as.character(prefixes$namespace)
-  )
-  # Add output to other TTL files as per this example. 
-  # Prefixes to code-R.ttl file
-  #add.prefix(code,
-  #  prefix=as.character(prefixes$prefix),
-  #  namespace=as.character(prefixes$namespace)
-  #)
-
-  # Create uppercase prefix names for use in add() statements in the 
-  #   xx_process.R scripts. 
-  assign(paste0("prefix.",toupper(prefixes$prefix)), prefixes$namespace, envir=globalenv())
-  # assign(paste0("prefix.",toupper(prefixes[i, "prefix"])), prefixes[i, "namespace"], envir=globalenv()))
-})
-
+# Graph Metadata ----
 source('R/graphMeta.R') # Graph Metadata
 
 # Functions for later use -----------------------------------------------------
@@ -119,9 +98,10 @@ source('R/SUPPDM_process.R')
 
 
 
+
+
 # VS Domain ----
 source('R/VS_frag.R')
-
 
 
 

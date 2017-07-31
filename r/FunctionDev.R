@@ -5,8 +5,8 @@ library(dplyr)
 
 vsTest <- read.table(header=T, text='
                vsorres  vstestcd vstestCat              bogusCol
-               65       DIABP    BloodPressureOutcome   A
-               57       DIABP    BloodPressureOutcome   B
+               69       DIABP    BloodPressureOutcome   A
+               77       DIABP    BloodPressureOutcome   B
                61       DIABP    BloodPressureOutcome   C
                61       DIABP    BloodPressureOutcome   C2
                100      SYSBP    BloodPressureOutcome   D
@@ -21,12 +21,16 @@ vsTest <- read.table(header=T, text='
                61       HEIGHT   HeightOutcome          K2
                  ')
 
+
+
+
 createFragOneColByCat<-function(domainName, dataCol, byCol, fragPrefixCol, numSort=FALSE)
 {
   temp <- domainName[,c(byCol, dataCol)]
   temp2 <- temp[!duplicated(temp), ]
   # sort by category, data column value
   temp2 <- temp2[ order(temp2[,1], temp2[,2]), ]
+  debug <<- temp2[, c(byCol, dataCol)]
   
   # Create the new column named based on the input column name by appending
   #  "_Frag" to the value of the the dataCol parameter

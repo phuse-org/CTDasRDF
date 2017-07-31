@@ -386,11 +386,11 @@ ddply(dm, .(subjid), function(dm)
          paste0(prefix.RDF,"type" ),
          paste0(prefix.STUDY, "AgeOutcome")
        )
-       add.data.triple(cdiscpilot01,
-         paste0(prefix.CDISCPILOT01, dm$age_Frag),
-         paste0(prefix.RDFS,"label" ),
-         paste0(dm$age, " ", dm$ageu), type="string"
-       )
+       #DEL  add.data.triple(cdiscpilot01,
+       #   paste0(prefix.CDISCPILOT01, dm$age_Frag),
+       #   paste0(prefix.RDFS,"label" ),
+       #   paste0(dm$age, " ", dm$ageu), type="string"
+       # )
        add.data.triple(cdiscpilot01,
          paste0(prefix.CDISCPILOT01, dm$age_Frag),
          paste0(prefix.SKOS,"prefLabel" ),
