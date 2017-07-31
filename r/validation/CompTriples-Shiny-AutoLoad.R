@@ -31,12 +31,12 @@ prefixes <- as.data.frame( read.csv(allPrefix,
 # Create individual PREFIX statements
 prefixes$prefixDef <- paste0("PREFIX ", prefixes$prefix, ": <", prefixes$namespace,">")
  
+# S not needed, removed from query: BIND(\"", input$qnam, "\" as ?s) }
 server <- function(input, output) {
   output$contents <- renderTable({ 
     query = paste0(paste(prefixes$prefixDef, collapse=""),
-      "SELECT ?s ?p ?o
-        WHERE {", input$qnam, " ?p ?o . 
-        BIND(\"", input$qnam, "\" as ?s) }
+      "SELECT ?p ?o
+        WHERE {", input$qnam, " ?p ?o .} 
         ORDER BY ?p ?o")
 
     # sourceR = load.rdf(paste(inFileR$datapath,".ttl",sep=""), format="N3")
@@ -57,8 +57,8 @@ server <- function(input, output) {
       compResult <- anti_join(triplesOnt, triplesR)
     }
   
-    triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
-    triplesR   <- triplesR[with(triplesR, order(s,p,o)), ]
+    triplesOnt <- triplesOnt[with(triplesOnt, order(p,o)), ]
+    triplesR   <- triplesR[with(triplesR, order(p,o)), ]
        
     output$triplesOnt <-renderTable({triplesOnt})    
     output$triplesR <-renderTable({triplesR})    
@@ -71,7 +71,7 @@ server <- function(input, output) {
 }
 
 ui <- fluidPage(
-  titlePanel(HTML("<h3>Compare cdiscpilot01.TTL (ont) with cdiscpilot01-R.TTL (from R)</h3>")),
+  titlePanel(HTML("<h3>Compare cdiscpilot01.TTL (Ont) with cdiscpilot01-R.TTL (from R)</h3>")),
   fluidRow (
     #column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
     #column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')
@@ -83,14 +83,19 @@ ui <- fluidPage(
        "In Ontology, not in R" = "inOntNotR")),    
   h4("Comparison Result:",
     style= "color:#e60000"),
-  hr(),    
+  hr(),   
   tableOutput('contents'), 
-  h4("Ontology Triples",
-    style= "color:#000099"),
-  tableOutput('triplesOnt'),
-  h4("R Triples",
-    style= "color:#00802b"),
-  tableOutput('triplesR')
+  fluidRow(
+    column(6,
+      h4("Ont Pred,Obj",
+        style= "color:#000099"),
+        # tableOutput('triplesOnt')),
+        div(tableOutput("triplesOnt"), style = "font-size:80%")),
+    column(6,
+      h4("R Pred,Obj",
+      style= "color:#00802b"),
+      div(tableOutput("triplesR"), style = "font-size:80%"))
+      #tableOutput('triplesR'))
+  )
 )
 shinyApp(ui = ui, server = server)
-
