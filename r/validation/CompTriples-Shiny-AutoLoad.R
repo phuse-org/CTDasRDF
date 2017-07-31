@@ -1,17 +1,15 @@
 ###############################################################################
 # FILE: compTriples-Shiny.R
-# DESC: Create a table of triples that differ from an Object node to compare 
-#         one TTL file with aonther.
+# DESC: Create a table of triples that differ for Pred,Obj to compare one 
+#         TTL file with aonther.
 #       Eg Usage: Compare TTL file generated from TopBraid with one created using R
 # SRC : Based on VisClasses-Shiny.R and CompareTTL.R
-# IN  : Browse to two .TTL files for comparison
+# IN  : Hard coded input files to save time during QC
 # OUT : ShinyApp window
 # REQ : rrdf
-# NOTE: Includes display of the triples available from Ont,R, not just the ones
+# NOTE: Side by side display of the triples available from Ont,R, not just the ones
 #         that do not match.
-# TODO: Move prefixes specification to an external file.
-#    ERROR: Display of triplesOnt, triplesR is NOT reactive     
-# 
+# TODO: 
 ###############################################################################
 library(plyr)    #  rename
 library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!
@@ -23,7 +21,7 @@ library(shiny)
 setwd("C:/_github/CTDasRDF")
 allPrefix <- "data/config/prefixes.csv"  # List of prefixes
 
-# Read list of prefixes from the config file ----
+# Prefixes from config file ----
 prefixes <- as.data.frame( read.csv(allPrefix,
   header=T,
   sep=',' ,
@@ -41,8 +39,7 @@ server <- function(input, output) {
 
     # sourceR = load.rdf(paste(inFileR$datapath,".ttl",sep=""), format="N3")
     sourceR = load.rdf("data/rdf/cdiscpilot01-R.TTL", format="N3")
-    # Global assign for trouble shooting
-    triplesR <<- as.data.frame(sparql.rdf(sourceR, query))
+    triplesR <- as.data.frame(sparql.rdf(sourceR, query))
        
     # sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
     sourceOnt = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
@@ -51,10 +48,13 @@ server <- function(input, output) {
     # Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
     triplesOnt <-triplesOnt[!(triplesOnt$o==""),]
     triplesOnt <<- triplesOnt[complete.cases(triplesOnt), ]
+
     if (input$comp=='inRNotOnt') {
-      compResult <<-anti_join(triplesR, triplesOnt)
+      compResult <-anti_join(triplesR, triplesOnt)
+      
     }else if (input$comp=='inOntNotR') {
       compResult <- anti_join(triplesOnt, triplesR)
+      
     }
   
     triplesOnt <- triplesOnt[with(triplesOnt, order(p,o)), ]
@@ -63,7 +63,12 @@ server <- function(input, output) {
     output$triplesOnt <-renderTable({triplesOnt})    
     output$triplesR <-renderTable({triplesR})    
 
-    compResult
+    if(nrow(compResult) == 0){
+    compResult <- "100% MATCH"
+    }else{
+    compResult      
+    }
+
   })
   # sort for visual compare in the interface
   output$triplesOnt <- renderTable({triplesOnt})    
@@ -83,8 +88,8 @@ ui <- fluidPage(
        "In Ontology, not in R" = "inOntNotR")),    
   h4("Comparison Result:",
     style= "color:#e60000"),
-  hr(),   
-  tableOutput('contents'), 
+  hr(),  
+    tableOutput('contents'), 
   fluidRow(
     column(6,
       h4("Ont Pred,Obj",
