@@ -85,49 +85,49 @@ cdiscpilot01:AssumeBodyPositionSupine_1
 cdiscpilot01:BloodPressureOutcome_1
   rdf:type study:BloodPressureOutcome ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Blood pressure outcome 1"^^xsd:string ;
+  skos:prefLabel "64 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 64 ;
 .
 cdiscpilot01:BloodPressureOutcome_2
   rdf:type study:BloodPressureOutcome ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Blood pressure outcome 2"^^xsd:string ;
+  skos:prefLabel "83 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 83 ;
 .
 cdiscpilot01:BloodPressureOutcome_3
   rdf:type study:BloodPressureOutcome ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Blood pressure outcome 3"^^xsd:string ;
+  skos:prefLabel "57 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 57 ;
 .
 cdiscpilot01:BloodPressureOutcome_4
   rdf:type study:BloodPressureOutcome ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Blood pressure outcome 1"^^xsd:string ;
+  skos:prefLabel "131 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 131 ;
 .
 cdiscpilot01:BloodPressureOutcome_5
   rdf:type study:BloodPressureOutcome ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Blood pressure outcome 5"^^xsd:string ;
+  skos:prefLabel "129 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 129 ;
 .
 cdiscpilot01:BloodPressureOutcome_6
   rdf:type study:BloodPressureOutcome ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Blood pressure outcome 6"^^xsd:string ;
+  skos:prefLabel "147 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 147 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25206_1>
   rdf:type cd01p:VisitScreening1Temperature ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
-  rdfs:label "P1 Screening1 Temperature"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Temperature"^^xsd:string ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
@@ -137,7 +137,7 @@ cdiscpilot01:BloodPressureOutcome_6
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25208_1>
   rdf:type cd01p:VisitScreening1Weight ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
-  rdfs:label "P1 Screening1 Weight"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Weight"^^xsd:string ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
@@ -148,7 +148,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type cd01p:VisitScreening1BloodPressure ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "P1 SBP 1"^^xsd:string ;
+  rdfs:label "P1 Screening 1 SBP 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
@@ -163,7 +163,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type cd01p:VisitScreening1BloodPressure ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "P1 SBP 2"^^xsd:string ;
+  rdfs:label "P1 Screening 1 SBP 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
@@ -178,7 +178,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type cd01p:VisitScreening1BloodPressure ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "P1 SBP 3"^^xsd:string ;
+  rdfs:label "P1 Screening 1 SBP 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
@@ -193,7 +193,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type cd01p:VisitScreening1BloodPressure ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "P1 DBP 1"^^xsd:string ;
+  rdfs:label "P1 Screening 1 DBP 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
@@ -216,7 +216,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type cd01p:VisitScreening1BloodPressure ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "P1 DBP 2"^^xsd:string ;
+  rdfs:label "P1 Screening 1 DBP 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
   study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
@@ -236,7 +236,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type cd01p:VisitScreening1BloodPressure ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "P1 DBP 3"^^xsd:string ;
+  rdfs:label "P1 Screening 1 DBP 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
   study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
@@ -254,7 +254,7 @@ cdiscpilot01:BloodPressureOutcome_6
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25347_1>
   rdf:type cd01p:VisitScreening1Height ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
-  rdfs:label "C67153.C25347 1"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Height"^^xsd:string ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
@@ -265,7 +265,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type cd01p:VisitScreening1Pulse ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "P1 Pulse 1"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Pulse 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
@@ -280,7 +280,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type cd01p:VisitScreening1Pulse ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "P1 Pulse 2"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Pulse 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
@@ -295,7 +295,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type cd01p:VisitScreening1Pulse ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "P1 Pulse 3"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Pulse 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
@@ -433,7 +433,7 @@ cdiscpilot01:Date_9
 cdiscpilot01:DemographicDataCollection_1
   rdf:type code:DemographicDataCollection ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Demographic data collection 1"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Demographic data collection"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_1 ;
   study:ethnicity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459> ;
@@ -445,7 +445,7 @@ cdiscpilot01:DemographicDataCollection_1
 cdiscpilot01:DemographicDataCollection_2
   rdf:type code:DemographicDataCollection ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Demographic data collection 2"^^xsd:string ;
+  rdfs:label "P2 Screening 1 Demographic data collection"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_2 ;
   study:ethnicity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459> ;
@@ -457,7 +457,7 @@ cdiscpilot01:DemographicDataCollection_2
 cdiscpilot01:DemographicDataCollection_3
   rdf:type code:DemographicDataCollection ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Demographic data collection 3"^^xsd:string ;
+  rdfs:label "P3 Screening 1 Demographic data collection"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_3 ;
   study:ethnicity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C41222> ;
@@ -468,7 +468,7 @@ cdiscpilot01:DemographicDataCollection_3
 .
 cdiscpilot01:HeightLengthOutcome_1
   rdf:type study:HeightLengthOutcome ;
-  rdfs:label "Height length outcome 1"^^xsd:string ;
+  skos:prefLabel "58 IN"^^xsd:string ;
   code:hasUnit code:Unit_2 ;
   code:hasValue 58 ;
 .
@@ -479,6 +479,7 @@ cdiscpilot01:InformedConsentAdult_1
   skos:definition ""^^xsd:string ;
   study:hasActivityInterval cdiscpilot01:InformedConsentInterval_1 ;
   study:hasCode code:InformedConsentAdult ;
+  study:hasStartRule study:StartRuleDefault_1 ;
   study:outcome code:InformedConsentOutcome_1 ;
 .
 cdiscpilot01:InformedConsentAdult_2
@@ -695,19 +696,19 @@ cdiscpilot01:ProductAdministration_3
 .
 cdiscpilot01:PulseHROutcome_1
   rdf:type study:PulseHROutcome ;
-  rdfs:label "Pulse HROutcome 1"^^xsd:string ;
+  skos:prefLabel "57 BEATS/MIN"^^xsd:string ;
   code:hasUnit code:Unit_4 ;
   code:hasValue 57 ;
 .
 cdiscpilot01:PulseHROutcome_2
   rdf:type study:PulseHROutcome ;
-  rdfs:label "Pulse HROutcome 2"^^xsd:string ;
+  skos:prefLabel "62 BEATS/MIN"^^xsd:string ;
   code:hasUnit code:Unit_4 ;
   code:hasValue 62 ;
 .
 cdiscpilot01:PulseHROutcome_3
   rdf:type study:PulseHROutcome ;
-  rdfs:label "Pulse HROutcome 3"^^xsd:string ;
+  skos:prefLabel "65 BEATS/MIN"^^xsd:string ;
   code:hasUnit code:Unit_4 ;
   code:hasValue 65 ;
 .
@@ -891,7 +892,7 @@ cdiscpilot01:Site_9
 cdiscpilot01:StartRuleLying5_1
   rdf:type code:StartRuleLying5 ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Start Rule Lying 5 P1 Screening1"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Rule Lying 5 Min"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1 ;
   study:hasCode code:StartRuleLying5 ;
@@ -904,7 +905,7 @@ cdiscpilot01:StartRuleNone_1
 cdiscpilot01:StartRuleStanding1_1
   rdf:type code:StartRuleStanding1 ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "startrule-P1BP2"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Rule Standing 1 Min"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 ;
   study:hasCode code:StartRuleStanding1 ;
@@ -912,7 +913,7 @@ cdiscpilot01:StartRuleStanding1_1
 cdiscpilot01:StartRuleStanding3_1
   rdf:type code:StartRuleStanding3 ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "startrule-P1BP3"^^xsd:string ;
+  rdfs:label "P1 Screening 1 Rule Standing 3 Min"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   code:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 ;
   study:hasCode code:StartRuleStanding3 ;
@@ -943,7 +944,7 @@ cdiscpilot01:StudyParticipationInterval_3
 .
 cdiscpilot01:TemperatureOutcome_1
   rdf:type study:TemperatureOutcome ;
-  rdfs:label "96.9 F"^^xsd:string ;
+  skos:prefLabel "96.9 F"^^xsd:string ;
   code:hasUnit code:Unit_6 ;
   code:hasValue "96.9"^^xsd:float ;
 .
@@ -978,59 +979,17 @@ cdiscpilot01:VisitScreening1_1
 .
 cdiscpilot01:WeightMassOutcome_1
   rdf:type study:WeightMassOutcome ;
-  rdfs:label "Weight mass outcome 1"^^xsd:string ;
+  skos:prefLabel "119.0 LB"^^xsd:string ;
   code:hasUnit code:Unit_8 ;
-  code:hasValue 119 ;
+  code:hasValue "119.0"^^xsd:float ;
 .
-code:StartRuleLying5
-  rdfs:subClassOf code:StartRule ;
+code:RuleOutcome_1
+  skos:prefLabel "Rule outcome TRUE"^^xsd:string ;
 .
-code:StartRuleStanding1
-  rdfs:label "Start Rule Standing 1 P1 Screening1"^^xsd:string ;
-  rdfs:subClassOf code:StartRule ;
+code:RuleOutcome_2
+  skos:prefLabel "Rule outcome FALSE"^^xsd:string ;
 .
-code:StartRuleStanding3
-  rdfs:label "Start Rule Standing 3 P1 Screening1"^^xsd:string ;
-  rdfs:subClassOf code:StartRule ;
-.
-code:Unit_3
-  skos:prefLabel "mmHg"^^xsd:string ;
-.
-code:timepoint-PT_SUPINE
-  skos:prefLabel "PATIENT SUPINE"^^xsd:string ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459>
-  rdfs:label "HISPANIC OR LATINO"^^xsd:string ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17998>
-  rdfs:label "UNKNOWN" ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C41222>
-  rdfs:label "NOT HISPANIC OR LATINO" ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C43234>
-  rdfs:label "NOT REPORTED" ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167>
-  skos:prefLabel "SUPINE"^^xsd:string ;
-.
-study:Arm
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#Arm> ;
-      owl:onProperty study:hasArmCode ;
-    ] ;
-.
-study:PerformedActivity
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:hasValue code:ActivityStatus_1 ;
-      owl:onProperty study:activityStatus ;
-    ] ;
-.
-study:hasInformedConsentInterval
-  rdfs:range code:InformedConsentInterval ;
-.
-study:isActivityOfStudy
-  owl:inverseOf study:hasStudyActivity ;
+study:StartRuleInformedConsentGranted
+  skos:definition "Target activity starts after informed consent has been granted. "^^xsd:string ;
+  skos:prefLabel "RULE INFORMED CONSENT GRANTED"^^xsd:string ;
 .

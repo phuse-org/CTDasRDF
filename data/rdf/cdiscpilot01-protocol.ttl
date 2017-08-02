@@ -66,13 +66,6 @@ cd01p:Sponsor_1
   rdf:type study:Sponsor ;
   skos:prefLabel "CLINICAL STUDY SPONSOR"^^xsd:string ;
 .
-cd01p:StartRuleNone
-  rdf:type owl:Class ;
-  rdf:type study:StartRule ;
-  rdfs:label "No Start Rule"^^xsd:string ;
-  rdfs:subClassOf study:StartRule ;
-  skos:altLabel "0"^^xsd:string ;
-.
 cd01p:Study_1
   rdf:type study:Study ;
   rdfs:label "CDISCPILOT01" ;
@@ -105,44 +98,39 @@ cd01p:Subcategory_1
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "SCAT1"^^xsd:string ;
 .
-cd01p:VisitScreening1Activity
-  rdf:type owl:Class ;
-  rdfs:label "Visit screening1Activity"^^xsd:string ;
-  rdfs:subClassOf study:ProtocolSpecifiedActivity ;
-.
 cd01p:VisitScreening1BloodPressure
   rdf:type owl:Class ;
-  rdf:type cd01p:VisitScreening1Activity ;
+  rdf:type custom:VisitScreening1 ;
   rdfs:label "Visit screening1 Blood pressure"^^xsd:string ;
-  rdfs:subClassOf cd01p:VisitScreening1Activity ;
+  rdfs:subClassOf custom:VisitScreening1 ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Height
   rdf:type owl:Class ;
-  rdf:type cd01p:VisitScreening1Activity ;
+  rdf:type custom:VisitScreening1 ;
   rdfs:label "Visit screening1Height"^^xsd:string ;
-  rdfs:subClassOf cd01p:VisitScreening1Activity ;
+  rdfs:subClassOf custom:VisitScreening1 ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Pulse
   rdf:type owl:Class ;
-  rdf:type cd01p:VisitScreening1Activity ;
+  rdf:type custom:VisitScreening1 ;
   rdfs:label "Visit screening 1 Pulse"^^xsd:string ;
-  rdfs:subClassOf cd01p:VisitScreening1Activity ;
+  rdfs:subClassOf custom:VisitScreening1 ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Temperature
   rdf:type owl:Class ;
-  rdf:type cd01p:VisitScreening1Activity ;
+  rdf:type custom:VisitScreening1 ;
   rdfs:label "Visit screening1Temperature"^^xsd:string ;
-  rdfs:subClassOf cd01p:VisitScreening1Activity ;
+  rdfs:subClassOf custom:VisitScreening1 ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Weight
   rdf:type owl:Class ;
-  rdf:type cd01p:VisitScreening1Activity ;
+  rdf:type custom:VisitScreening1 ;
   rdfs:label "Visit screening1Weight"^^xsd:string ;
-  rdfs:subClassOf cd01p:VisitScreening1Activity ;
+  rdfs:subClassOf custom:VisitScreening1 ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 code:AssumeBodyPositionStanding
@@ -164,27 +152,28 @@ code:DemographicDataCollection
 code:InformedConsentAdult
   rdf:type study:InformedConsent ;
   rdfs:subClassOf study:InformedConsent ;
+  study:hasStartRule study:StartRuleDefault ;
 .
 code:RandomizationBAL3
   rdfs:subClassOf study:Randomization ;
 .
 code:StartRuleLying5
-  rdf:type study:StartRule ;
-  rdfs:subClassOf study:StartRule ;
+  rdf:type study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
 .
 code:StartRuleStanding1
-  rdf:type study:StartRule ;
-  rdfs:subClassOf study:StartRule ;
+  rdf:type study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
 .
 code:StartRuleStanding3
-  rdf:type study:StartRule ;
-  rdfs:subClassOf study:StartRule ;
+  rdf:type study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
 .
 code:VisitScreening1Start
   rdf:type owl:Class ;
-  rdf:type study:StartRule ;
+  rdf:type study:StartRulePrereqActivityStart ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf study:StartRule ;
+  rdfs:subClassOf study:StartRulePrereqActivityStart ;
   skos:prefLabel "SCREENING1 VISIT START"^^xsd:string ;
   code:hasPrereqExpectedStatus code:ActivityStatus_3 ;
   code:hasPrerequisite custom:VisitScreening1 ;
@@ -287,7 +276,9 @@ custom:VisitRetrieval
 .
 custom:VisitScreening1
   rdf:type owl:Class ;
+  rdf:type study:ProtocolSpecifiedActivity ;
   rdf:type study:Visit ;
+  rdfs:subClassOf study:ProtocolSpecifiedActivity ;
   rdfs:subClassOf study:Visit ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "SCREENING 1"^^xsd:string ;
@@ -295,11 +286,8 @@ custom:VisitScreening1
   study:hasPSSubactivityGroup cd01p:VisitScreening1Height ;
   study:hasPSSubactivityGroup cd01p:VisitScreening1Pulse ;
   study:hasPSSubactivityGroup cd01p:VisitScreening1Temperature ;
-  study:hasProtocolSpecifiedSubActivity cd01p:VisitScreening1BloodPressure ;
-  study:hasProtocolSpecifiedSubActivity cd01p:VisitScreening1Height ;
-  study:hasProtocolSpecifiedSubActivity cd01p:VisitScreening1Pulse ;
-  study:hasProtocolSpecifiedSubActivity cd01p:VisitScreening1Temperature ;
-  study:hasProtocolSpecifiedSubActivity cd01p:VisitScreening1Weight ;
+  study:hasPSSubactivityGroup cd01p:VisitScreening1Weight ;
+  study:hasStartRule study:StartRuleInformedConsentStart ;
   study:hasSubActivity cd01p:VisitScreening1BloodPressure ;
   study:hasSubActivity cd01p:VisitScreening1Height ;
   study:hasSubActivity cd01p:VisitScreening1Pulse ;

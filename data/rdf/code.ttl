@@ -540,6 +540,19 @@ code:Rule
   rdfs:subClassOf code:Analysis ;
   skos:definition ""^^xsd:string ;
 .
+code:RuleOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Rule outcome"^^xsd:string ;
+  rdfs:subClassOf code:DefinedActivityOutcome ;
+.
+code:RuleOutcome_1
+  rdf:type code:RuleOutcome ;
+  code:hasValue "true"^^xsd:boolean ;
+.
+code:RuleOutcome_2
+  rdf:type code:RuleOutcome ;
+  code:hasValue "false"^^xsd:boolean ;
+.
 code:Sex
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -559,11 +572,10 @@ code:StartRuleLying5
   rdf:type owl:Class ;
   rdf:type code:StartRule ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "startrule-LYING5"^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
   skos:altLabel "815"^^xsd:string ;
-  skos:definition "START AFTER LYING FOR 5 MIN"^^xsd:string ;
-  skos:prefLabel "RULE LYING 5 MIN"^^xsd:string ;
+  skos:definition "Target activity starts after the subject has assumed a supine position for 5 minutes"^^xsd:string ;
+  skos:prefLabel "Rule Lying 5 Min"^^xsd:string ;
   code:hasDelay "PT5M"^^xsd:duration ;
   code:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
   code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
@@ -577,8 +589,8 @@ code:StartRuleStanding1
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
   skos:altLabel "816"^^xsd:string ;
-  skos:definition "RULE STANDING 1 MIN"^^xsd:string ;
-  skos:prefLabel "STANDING1"^^xsd:string ;
+  skos:definition "Target activity starts after the subject has assumed a standing position for 1 minute"^^xsd:string ;
+  skos:prefLabel "Rule Standing 1 Min"^^xsd:string ;
   code:hasDelay "PT1M"^^xsd:duration ;
   code:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
   code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
@@ -592,8 +604,8 @@ code:StartRuleStanding3
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:StartRule ;
   skos:altLabel "817"^^xsd:string ;
-  skos:definition "RULE START AFTER STANDING 3 MIN"^^xsd:string ;
-  skos:prefLabel "STANDING3"^^xsd:string ;
+  skos:definition "Target activity starts after the subject has assumed a standing position for 3 minutes"^^xsd:string ;
+  skos:prefLabel "Rule Standing 3 Min"^^xsd:string ;
   code:hasDelay "PT3M"^^xsd:duration ;
   code:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
   code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
