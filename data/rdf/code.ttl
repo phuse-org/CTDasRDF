@@ -81,12 +81,14 @@ code:ActivityMethod_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "COLLECTED"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "COLLECTED"^^xsd:string ;
 .
 code:ActivityMethod_2
   rdf:type code:ActivityMethod ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "DERIVED"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "DERIVED"^^xsd:string ;
 .
 code:ActivityStatus
   rdf:type owl:Class ;
@@ -221,6 +223,7 @@ code:ConversionFactor_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "in2cm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "in2cm"^^xsd:string ;
   code:hasConversionFactor "2.54"^^xsd:float ;
   code:hasOriginalUnit code:Unit_2 ;
   code:hasStandardUnit code:Unit_1 ;
@@ -230,6 +233,7 @@ code:ConversionFactor_2
   rdfs:comment ""^^xsd:string ;
   rdfs:label "mm hg2mm hg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "mm hg2mm hg"^^xsd:string ;
   code:hasConversionFactor "1"^^xsd:float ;
   code:hasOriginalUnit code:Unit_3 ;
   code:hasStandardUnit code:Unit_3 ;
@@ -239,6 +243,7 @@ code:ConversionFactor_3
   rdfs:comment ""^^xsd:string ;
   rdfs:label "lb2kg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "lb2kg"^^xsd:string ;
   code:hasConversionFactor "0.4545"^^xsd:float ;
   code:hasOriginalUnit code:Unit_8 ;
   code:hasStandardUnit code:Unit_7 ;
@@ -246,6 +251,7 @@ code:ConversionFactor_3
 code:ConversionFactor_4
   rdf:type code:ConversionFactor ;
   rdfs:label "F2C"^^xsd:string ;
+  skos:prefLabel "F2C"^^xsd:string ;
   code:hasOriginalUnit code:Unit_6 ;
   code:hasStandardUnit code:Unit_5 ;
 .
@@ -254,6 +260,7 @@ code:ConversionFactor_5
   rdfs:comment ""^^xsd:string ;
   rdfs:label "bpm2bpm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "bpm2bpm"^^xsd:string ;
   code:hasConversionFactor "1"^^xsd:float ;
   code:hasOriginalUnit code:Unit_4 ;
   code:hasStandardUnit code:Unit_4 ;
@@ -270,6 +277,7 @@ code:Country_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "USA"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "USA"^^xsd:string ;
 .
 code:DefinedActivity
   rdf:type owl:Class ;
@@ -299,6 +307,7 @@ code:DemographicDataCollection
   rdfs:label "DEMOG DATA COLLECTION"^^xsd:string ;
   rdfs:subClassOf code:Observation ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "DEMOG DATA COLLECTION"^^xsd:string ;
 .
 code:Ethnicity
   rdf:type owl:Class ;
@@ -339,18 +348,21 @@ code:InformedConsentOutcome_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "informed consent granted"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "informed consent granted"^^xsd:string ;
 .
 code:InformedConsentOutcome_2
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent not granted"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "Informed consent not granted"^^xsd:string ;
 .
 code:InformedConsentOutcome_3
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent withdrawn"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "Informed consent withdrawn"^^xsd:string ;
 .
 code:Intervention
   rdf:type owl:Class ;
@@ -632,38 +644,46 @@ code:Unit_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "cm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "cm"^^xsd:string ;
 .
 code:Unit_2
   rdf:type code:Unit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "IN"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "IN"^^xsd:string ;
 .
 code:Unit_3
   rdf:type code:Unit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "mmHg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "mmHg"^^xsd:string ;
 .
 code:Unit_4
   rdf:type code:Unit ;
   rdfs:label "BEATS/MIN"^^xsd:string ;
+  skos:prefLabel "BEATS/MIN"^^xsd:string ;
 .
 code:Unit_5
   rdf:type code:Unit ;
   rdfs:label "C"^^xsd:string ;
+  skos:prefLabel "C"^^xsd:string ;
 .
 code:Unit_6
   rdf:type code:Unit ;
   rdfs:label "F"^^xsd:string ;
+  skos:prefLabel "F"^^xsd:string ;
 .
 code:Unit_7
   rdf:type code:Unit ;
   rdfs:label "kg"^^xsd:string ;
+  skos:prefLabel "kg"^^xsd:string ;
 .
 code:Unit_8
   rdf:type code:Unit ;
   rdfs:label "LB"^^xsd:string ;
+  skos:prefLabel "LB"^^xsd:string ;
 .
 code:VitalSign
   rdf:type owl:Class ;

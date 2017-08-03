@@ -881,12 +881,14 @@ study:StartRuleDefault
   rdfs:label "Start rule default"^^xsd:string ;
   rdfs:subClassOf study:StartRule ;
   skos:definition "Activity may start at any time"^^xsd:string ;
+  skos:prefLabel "Start rule default"^^xsd:string ;
   study:outcome code:RuleOutcome_1 ;
 .
 study:StartRuleDefault_1
   rdf:type study:StartRuleDefault ;
   rdfs:label "Start rule default 1"^^xsd:string ;
   skos:definition "Activity may start at any time at the discretion of the Investigator"^^xsd:string ;
+  skos:prefLabel "Start rule default 1"^^xsd:string ;
   study:outcome code:RuleOutcome_1 ;
 .
 study:StartRuleInformedConsentGranted
@@ -907,6 +909,7 @@ study:StartRuleInformedConsentStart
   rdf:type study:StartRulePrereqActivityStart ;
   rdfs:label "Start rule informed consent started"^^xsd:string ;
   rdfs:subClassOf study:StartRulePrereqActivityStart ;
+  skos:prefLabel "Start rule informed consent started"^^xsd:string ;
   code:hasPrereqExpectedStatus code:ActivityStatus_3 ;
   study:hasPrerequisite study:InformedConsent ;
 .

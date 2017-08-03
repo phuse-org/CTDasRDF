@@ -101,36 +101,36 @@ cd01p:Subcategory_1
 cd01p:VisitScreening1BloodPressure
   rdf:type owl:Class ;
   rdf:type custom:VisitScreening1 ;
-  rdfs:label "Visit screening1 Blood pressure"^^xsd:string ;
   rdfs:subClassOf custom:VisitScreening1 ;
+  skos:prefLabel "Visit screening1 Blood pressure"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Height
   rdf:type owl:Class ;
   rdf:type custom:VisitScreening1 ;
-  rdfs:label "Visit screening1Height"^^xsd:string ;
   rdfs:subClassOf custom:VisitScreening1 ;
+  skos:prefLabel "Visit screening1Height"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Pulse
   rdf:type owl:Class ;
   rdf:type custom:VisitScreening1 ;
-  rdfs:label "Visit screening 1 Pulse"^^xsd:string ;
   rdfs:subClassOf custom:VisitScreening1 ;
+  skos:prefLabel "Visit screening 1 Pulse"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Temperature
   rdf:type owl:Class ;
   rdf:type custom:VisitScreening1 ;
-  rdfs:label "Visit screening1Temperature"^^xsd:string ;
   rdfs:subClassOf custom:VisitScreening1 ;
+  skos:prefLabel "Visit screening1Temperature"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Weight
   rdf:type owl:Class ;
   rdf:type custom:VisitScreening1 ;
-  rdfs:label "Visit screening1Weight"^^xsd:string ;
   rdfs:subClassOf custom:VisitScreening1 ;
+  skos:prefLabel "Visit screening1Weight"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 code:AssumeBodyPositionStanding
@@ -182,11 +182,11 @@ code:VisitScreening1Start
 .
 custom:InvestigationalSubstance_1
   rdf:type study:InvestigationalSubstance ;
-  rdfs:label "XANOMELINE" ;
+  skos:prefLabel "XANOMELINE" ;
 .
 custom:PlaceboProduct_1
   rdf:type study:PlaceboProduct ;
-  rdfs:label "XANOMELINE PLACEBO" ;
+  skos:prefLabel "XANOMELINE PLACEBO" ;
 .
 custom:PopFlagCmpltr16Wk
   rdf:type owl:Class ;
@@ -238,12 +238,12 @@ custom:PopFlagSaf
 .
 custom:Product_1
   rdf:type study:InvestigationalProduct ;
-  rdfs:label "XANOMELINE LO" ;
+  skos:prefLabel "XANOMELINE LO" ;
   code:hasIngredient custom:InvestigationalSubstance_1 ;
 .
 custom:Product_2
   rdf:type study:InvestigationalProduct ;
-  rdfs:label "XANOMELINE HI" ;
+  skos:prefLabel "XANOMELINE HI" ;
   code:hasIngredient custom:InvestigationalSubstance_1 ;
 .
 custom:VisitAmbulECGPlace
