@@ -49,7 +49,7 @@ ddply(u_Invest, .(invnam), function(u_Invest)
   )
   add.data.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, u_Invest$inv),
-    paste0(prefix.RDFS,"label" ),
+    paste0(prefix.SKOS, 'prefLabel'),
     paste0("Investigator ", u_Invest$invid), type="string"
   )
 })
@@ -82,7 +82,7 @@ ddply(u_Site, .(siteid), function(u_Site)
   )
   add.data.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, u_Site$siteid_Frag),
-    paste0(prefix.RDFS,"label" ),
+    paste0(prefix.SKOS,"prefLabel" ),
     paste0("site-",u_Site$siteid), type="string" 
   )
 })
@@ -133,7 +133,7 @@ ddply(dm, .(subjid), function(dm)
   # Person label
   add.data.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
-    paste0(prefix.RDFS,"label" ),
+    paste0(prefix.SKOS,"prefLabel" ),
     paste0("Person ", dm$personNum), type="string"
   )
   # Reference Interval
