@@ -207,15 +207,14 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
 createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSort=TRUE)
 {
   temp <- domainName[,c(byCol, dataCol)]
-  
-  
+
   temp2 <- temp[!duplicated(temp), ]
   # sort by category, data column value
   # temp2 <- temp2[ order(temp2[,1], temp2[,2]), ]
   # temp2 <- temp2[ order(temp2[,byCol], temp2[,dataCol]), ]
   # https://stackoverflow.com/questions/26497751/pass-a-vector-of-variable-names-to-arrange-in-dplyr
   
-  
+
   # Coerce the dataCol to numeric, otherwise sorting will fail.
   temp2[,2] <- as.numeric(as.character(temp2[,2]))
   
