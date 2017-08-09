@@ -226,17 +226,16 @@ ddply(vs, .(personNum, vsseq), function(vs)
     #  paste0(prefix.CD01P, vs$vsscat_Frag)
     #)
 
-#WIP HERE    
     # StartRule ----
     add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
         paste0(prefix.RDF,"type" ),
-        paste0(prefix.CD01P, vs$startRuleType_Frag)
+        paste0(prefix.CODE, vs$startRuleType_Frag)
       )
       add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
         paste0(prefix.STUDY,"hasCode" ),
-        paste0(prefix.CD01P, vs$startRuleType_Frag)
+        paste0(prefix.CODE, vs$startRuleType_Frag)
       )
 
     # Special case for start Rule NONE: No prerequisite. Has special label
@@ -298,23 +297,30 @@ ddply(vs, .(personNum, vsseq), function(vs)
 #         paste0(prefix.RDF,"type" ),
 #         paste0(prefix.STUDY, vs$vstestOutcomeType_Frag)
 #       )
+       add.data.triple(cdiscpilot01,
+         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
+         paste0(prefix.SKOS,"prefLabel" ),
+         paste0(vs$vsorres_Label)
+       )
+       add.triple(cdiscpilot01,
+         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
+         paste0(prefix.CODE,"hasUnit" ),
+         paste0(prefix.CODE, vs$vsstresu_Frag)
+       )
+       add.data.triple(cdiscpilot01,
+         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
+         paste0(prefix.CODE,"hasValue" ),
+         paste0(vs$vsorres)
+       )
+       add.triple(cdiscpilot01,
+         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
+         paste0(prefix.RDF,"type" ),
+         paste0(prefix.STUDY, vs$vstestCatOutcome)
+       )
+       
 #WIP HERE           
-#       add.data.triple(cdiscpilot01,
-#         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
-#         paste0(prefix.SKOS,"prefLabel" ),
-#         paste0(vs$vsorres_Label)
-#       )
-#       add.triple(cdiscpilot01,
-#         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
-#         paste0(prefix.CODE,"hasUnit" ),
-#         paste0(prefix.CODE, vs$vsstresu_Frag)
-#       )
-#       add.data.triple(cdiscpilot01,
-#         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
-#         paste0(prefix.CODE,"hasValue" ),
-         #DEL paste0(vs$vsstresc)
-#         paste0(vs$vsorres)
-#       )
+       
+       
 #     if (! is.na(vs$vsreasnd) && ! as.character(vs$vsreasnd)==""){
 #       add.data.triple(cdiscpilot01,
 #         paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),

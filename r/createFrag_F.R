@@ -214,14 +214,16 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSo
   # temp2 <- temp2[ order(temp2[,byCol], temp2[,dataCol]), ]
   # https://stackoverflow.com/questions/26497751/pass-a-vector-of-variable-names-to-arrange-in-dplyr
   
-
+  # Create a numeric version of the dataCol for sorting purposes
+  
   # Coerce the dataCol to numeric, otherwise sorting will fail.
-  temp2[,2] <- as.numeric(as.character(temp2[,2]))
+  # A new variable is used here because if you convert it in place, the merge back into teh original
+  #   dataset will likely fail.
+  #TODO: Make this conditional on numSort==TRUE
+  temp2$dataCol_N <- as.numeric(as.character(temp2[,2]))
   
-  temp2 <- temp2[ order(temp2[,1], temp2[,2]), ]
+  temp2 <- temp2[ order(temp2[,1], temp2[,"dataCol_N"]), ]
   
-  
-  # showMe <<- temp2[, c(byCol, dataCol)]
   # Ordering the df does not change the row number so create a new index for use
   #   in the later mutate statement.
   temp2$rowID <- 1:nrow(temp2)
@@ -236,12 +238,11 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSo
 
   
   byColName <<- byCol
+
   # Note use of !! to resolve the value of varname created above and assign
   #   a value to it using :=
   #TESTING HERE
   
-  
-  temp2<<-temp2
   
   #  WARNING/TODO: replace hard codeing of vstestCat here!!!
   #temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCat))%>% 
@@ -252,15 +253,12 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSo
   temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCatOutcome))%>% 
     mutate( !!varname := paste0(vstestCatOutcome,"_", id)) 
   
-  
-
-  
   # This gives ROW NUMBER and not correct numbering within a category
   #temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = rowID)%>% 
   #  mutate( !!varname := paste0(vstestCat,"_", id)) 
   
-  # Remove the ID variable. It is now part of the fragment value in each row
-  temp2 <- temp2[,!(names(temp2) %in% "id")]
+  # Remove the ID variable and the numeric rep. of the data col. 
+  temp2 <- temp2[,!(names(temp2) %in% c("id", "dataCol_N"))]
   
   # Merge the fragment value back into the original data
   withFrag <<- merge(domainName, temp2, by = c(byCol, dataCol), all.x=TRUE)
