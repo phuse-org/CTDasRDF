@@ -531,7 +531,7 @@ study:Flag
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Flag"^^xsd:string ;
 .
-study:HeightLengthOutcome
+study:HeightOutcome
   rdf:type owl:Class ;
   rdfs:label "Height length outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;
@@ -783,7 +783,7 @@ study:ProtocolSpecifiedActivity
   rdfs:subClassOf study:Activity ;
   skos:definition "An Activity that is specified in the Protocol to occur in the Study. It is associated with a start rule. A protocol specified activity is instantiated for each Subject in the study that is intended to participate in that activity. The instance of a protocol specified activity becomes a Planned Activity. "^^xsd:string ;
 .
-study:PulseHROutcome
+study:PulseOutcome
   rdf:type owl:Class ;
   rdfs:label "Pulse or Heart Rate outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;
@@ -1028,7 +1028,7 @@ study:VitalSignOutcome
   rdfs:label "Vital sign outcome"^^xsd:string ;
   rdfs:subClassOf study:ObservationOutcome ;
 .
-study:WeightMassOutcome
+study:WeightOutcome
   rdf:type owl:Class ;
   rdfs:label "Weight mass outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;

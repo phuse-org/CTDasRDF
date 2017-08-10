@@ -141,7 +141,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
-  study:outcome cdiscpilot01:WeightMassOutcome_1 ;
+  study:outcome cdiscpilot01:WeightOutcome_1 ;
   study:seq "142"^^xsd:float ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_1>
@@ -258,7 +258,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
-  study:outcome cdiscpilot01:HeightLengthOutcome_1 ;
+  study:outcome cdiscpilot01:HeightOutcome_1 ;
   study:seq "43"^^xsd:float ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_1>
@@ -273,7 +273,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
-  study:outcome cdiscpilot01:PulseHROutcome_1 ;
+  study:outcome cdiscpilot01:PulseOutcome_1 ;
   study:seq "44"^^xsd:float ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_2>
@@ -288,7 +288,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
-  study:outcome cdiscpilot01:PulseHROutcome_2 ;
+  study:outcome cdiscpilot01:PulseOutcome_2 ;
   study:seq "45"^^xsd:float ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_3>
@@ -302,7 +302,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
-  study:outcome cdiscpilot01:PulseHROutcome_3 ;
+  study:outcome cdiscpilot01:PulseOutcome_3 ;
   study:seq "46"^^xsd:float ;
 .
 cdiscpilot01:Date_10
@@ -466,11 +466,11 @@ cdiscpilot01:DemographicDataCollection_3
   study:race <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41261> ;
   study:sex <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C20197> ;
 .
-cdiscpilot01:HeightLengthOutcome_1
-  rdf:type study:HeightLengthOutcome ;
-  skos:prefLabel "58 IN"^^xsd:string ;
+cdiscpilot01:HeightOutcome_1
+  rdf:type study:HeightOutcome ;
+  skos:prefLabel "58.0 IN"^^xsd:string ;
   code:hasUnit code:Unit_2 ;
-  code:hasValue 58 ;
+  code:hasValue "58.0"^^xsd:float ;
 .
 cdiscpilot01:InformedConsentAdult_1
   rdf:type code:InformedConsentAdult ;
@@ -694,20 +694,20 @@ cdiscpilot01:ProductAdministration_3
   study:hasActivityInterval cdiscpilot01:ProductAdministrationInterval_3 ;
   study:hasCode study:ProductAdministration ;
 .
-cdiscpilot01:PulseHROutcome_1
-  rdf:type study:PulseHROutcome ;
+cdiscpilot01:PulseOutcome_1
+  rdf:type study:PulseOutcome ;
   skos:prefLabel "57 BEATS/MIN"^^xsd:string ;
   code:hasUnit code:Unit_4 ;
   code:hasValue 57 ;
 .
-cdiscpilot01:PulseHROutcome_2
-  rdf:type study:PulseHROutcome ;
+cdiscpilot01:PulseOutcome_2
+  rdf:type study:PulseOutcome ;
   skos:prefLabel "62 BEATS/MIN"^^xsd:string ;
   code:hasUnit code:Unit_4 ;
   code:hasValue 62 ;
 .
-cdiscpilot01:PulseHROutcome_3
-  rdf:type study:PulseHROutcome ;
+cdiscpilot01:PulseOutcome_3
+  rdf:type study:PulseOutcome ;
   skos:prefLabel "65 BEATS/MIN"^^xsd:string ;
   code:hasUnit code:Unit_4 ;
   code:hasValue 65 ;
@@ -977,8 +977,8 @@ cdiscpilot01:VisitScreening1_1
   study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_2> ;
   study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_3> ;
 .
-cdiscpilot01:WeightMassOutcome_1
-  rdf:type study:WeightMassOutcome ;
+cdiscpilot01:WeightOutcome_1
+  rdf:type study:WeightOutcome ;
   skos:prefLabel "119.0 LB"^^xsd:string ;
   code:hasUnit code:Unit_8 ;
   code:hasValue "119.0"^^xsd:float ;
