@@ -1,0 +1,21 @@
+###############################################################################
+# FILE : /CTDasRDF/SPARQL/PersonTriples.rq
+# DESCR: Obtain triples directly attached to a Person Subject
+#        
+# ENDP : Local Virtuoso
+# GRAPH: http://localhost:8890/CTDasRDF  , http://localhost:8890/CTDasRDF-R
+# OUT  : N/A
+# NOTES: Copy-paste into Virtusos SPARQL or into other APIs.
+#        Keep LIMIT statement, adjust value as needed.
+# TODO : 
+###############################################################################
+PREFIX cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#>
+PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
+PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
+
+SELECT *
+FROM <http://localhost:8890/CTDasRDF-R>
+WHERE{
+cdiscpilot01:Person_1 ?p ?o
+} LIMIT 100
