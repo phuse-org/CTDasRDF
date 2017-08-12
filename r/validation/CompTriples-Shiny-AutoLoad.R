@@ -92,12 +92,12 @@ ui <- fluidPage(
     tableOutput('contents'), 
   fluidRow(
     column(6,
-      h4("Ont Pred,Obj",
+      h4("Ontology",
         style= "color:#000099"),
         # tableOutput('triplesOnt')),
         div(tableOutput("triplesOnt"), style = "font-size:80%")),
     column(6,
-      h4("R Pred,Obj",
+      h4("R Conversion",
       style= "color:#00802b"),
       div(tableOutput("triplesR"), style = "font-size:80%"))
       #tableOutput('triplesR'))

@@ -137,9 +137,10 @@ $(document).ready(function () {
 </ul></li>
 </ul></li>
 <li><a href="#r-scripts">R Scripts</a><ul>
-<li><a href="#r-package">R Package</a></li>
+<li><a href="#r-requirements">R Requirements</a></li>
 <li><a href="#installation-instructions">Installation Instructions</a></li>
 <li><a href="#installation-troubleshooting">Installation Troubleshooting</a></li>
+<li><a href="#notes-on-using-the-rrdf-package">Notes on Using the rrdf Package</a></li>
 <li><a href="#r-script-style-conventions">R Script Style conventions</a></li>
 <li><a href="#file-names-designate-their-function">File names designate their function</a></li>
 </ul></li>
@@ -224,8 +225,8 @@ Later development may include the addition of classes like “Protocol-Specified
 </div>
 <div id="r-scripts" class="section level1">
 <h1>R Scripts</h1>
-<div id="r-package" class="section level2">
-<h2>R Package</h2>
+<div id="r-requirements" class="section level2">
+<h2>R Requirements</h2>
 <p>The project currently uses Egon Willighagen’s R package rrdf <a href="https://github.com/egonw/rrdf" class="uri">https://github.com/egonw/rrdf</a> for creating and querying RDF. The package is not available from CRAN. You are not using the PhUSE cloud server you must install and configure your system using these instructions.</p>
 </div>
 <div id="installation-instructions" class="section level2">
@@ -254,6 +255,15 @@ install_github(&quot;egonw/rrdf&quot;, subdir=&quot;rrdf&quot;, build_vignettes 
 </ul>
 <p>The command: <code>{r ifInstallError, eval=FALSE} install_github(&quot;egonw/rrdf&quot;, subdir=&quot;rrdflibs&quot;)</code> may result in an error for rJava. A likely cause is the fact that the Java download defaults to the ‘bits’ of your web browser application, not the Windows OS itself. Eg: On Windows 10 you likely need 64-bit Java for RStudio, but if your browser is 32 bit, you will get the wrong version of Java! To get the correct (in this case, 64-bit) Java version, go here: <a href="https://www.java.co/en/download/manual.jsp" class="uri">https://www.java.co/en/download/manual.jsp</a> and pick the 64-bit version. Both 32-bit and 64 bit Java should be able to co-exist on the same machine if you need both for other applications.</p>
 </div>
+<div id="notes-on-using-the-rrdf-package" class="section level2">
+<h2>Notes on Using the rrdf Package</h2>
+<p>When using rrdf() to query, the OWL reasoner is turned on by default, as seen here: <a href="https://github.com/egonw/rrdf/blob/master/rrdf/R/new.rdf.R#L16" class="uri">https://github.com/egonw/rrdf/blob/master/rrdf/R/new.rdf.R#L16</a></p>
+<p>You can turn off the OWL reasoning by:</p>
+<pre class="r"><code>model &lt;- new.rdf(ontology=FALSE) </code></pre>
+<ul>
+<li>advice from package creator Egon Willighagen.</li>
+</ul>
+</div>
 <div id="r-script-style-conventions" class="section level2">
 <h2>R Script Style conventions</h2>
 <ul>
@@ -264,14 +274,13 @@ install_github(&quot;egonw/rrdf&quot;, subdir=&quot;rrdf&quot;, build_vignettes 
 <li>Google’s R Style Guide <a href="https://google.github.io/styleguide/Rguide.xml" class="uri">https://google.github.io/styleguide/Rguide.xml</a> [work in progress]<br />
 Notable Exceptions:
 <ul>
-<li>Indent 4 spaces instead of 2 for improved readability.</li>
 <li>Functions use Roxygen comment style. From within a Function, in RStudio: Code | Insert Roxygen Skeleton</li>
 <li>Use RStudio comment style for sections to allow navigation</li>
 </ul></li>
 </ul>
 <pre class="r"><code># &lt;section name&gt; ----</code></pre>
 <ul>
-<li>R Markdown for documentation.<a href="http://rmarkdown.rstudio.com/" class="uri">http://rmarkdown.rstudio.com/</a> Example: This document.</li>
+<li>R Markdown for higher level project documentation.<a href="http://rmarkdown.rstudio.com/" class="uri">http://rmarkdown.rstudio.com/</a> Example: <em>This document.</em></li>
 </ul></li>
 </ul>
 </div>
@@ -302,8 +311,8 @@ Notable Exceptions:
 <div id="r-script-code-flow" class="section level2">
 <h2>R Script Code Flow</h2>
 <p><em>To properly view this diagram you must use Google Chrome. Copy/Paste the URL into Chrome if the file opens by default into IE or another browser.</em></p>
-<div id="htmlwidget-72751efa951407a46ed7" style="width:960px;height:1056px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-72751efa951407a46ed7">{"x":{"diagram":"\ngraph TB\n    idStart>Start]\n    idMain1(1. buildRDF-Driver.R)\n    idMain2(2. buildRDF-Driver.R)\n    idMain3(3. buildRDF-Driver.R)\n    idMain4(4. buildRDF-Driver.R)\n    idMain5(5. buildRDF-Driver.R)\n    idMain6(6. buildRDF-Driver.R)\n    idMain7(7. buildRDF-Driver.R)\n    idMain8(8. buildRDF-Driver.R)\n    idMain9(9. buildRDF-Driver.R)\n    idMain10(10. buildRDF-Driver.R)\n    idMain11(11. buildRDF-Driver.R)\n    idMain12(12. buildRDF-Driver.R)\n    idMain13(13. buildRDF-Driver.R)\n    idMain14(14. buildRDF-Driver.R)\n\n\n    idPrefixes(prefixes.csv)\n    idMeta(graphMeta.R)\n    idMiscF(misc_F.R)\n    idFntreadXPT((readXPT))\n    idFntaddPersonId((addPersonId))\n    idFntassignDateType((assignDateType))\n    idDMxpt((DM.xpt))\n    idDMImpute(DM_impute.R)\n    idVSxpt((VS.xpt))\n    idVSImpute(VS_impute.R)\n\n    idCreateFrag(createFrag_F.R)\n    idFntaddDateFrag((addDateFrag))\n    idFntCreateDateDict((createDateDict))\n    idFntcreateFragOneDomain((createFragOneDomain))\n\n    idDMFrag(DM_Frag.R)\n    idVSFrag(VS_Frag.R)\n\n    idDMProcess(DM_process.R)\n    idSUPPDMProcess(SUPPDM_process.R)\n    idVSProcess(VS_process.R)\n \n    idOutMain(CDISCPILOT01-R.TTL)\n    idRiot(Apache RIOT)\n    idFin>Fin]\n\n    idStart-->idMain1\n    idPrefixes--READ_BY-->idMain1\n    idMain1-->idMain2\n    idMeta--SOURCED_BY-->idMain2\n    idMiscF--SOURCED_BY-->idMain2\n    idFntreadXPT--DEFINED_IN-->idMiscF\n    idFntaddPersonId--DEFINED_IN-->idMiscF\n    idFntassignDateType--DEFINED_IN-->idMiscF\n\n    idMain2-->idMain3\n    \n    idMain3-->idMain4\n    idFntaddDateFrag--DEFINED_IN-->idCreateFrag\n    idFntcreateFragOneDomain--DEFINED_IN-->idCreateFrag\n    idFntCreateDateDict--DEFINED_IN-->idCreateFrag\n    idCreateFrag--SOURCED_BY-->idMain3\n\n    idMain4-->idMain5\n    idDMxpt--READ_BY-->idMain5\n\n    idMain5-->idMain6\n    idDMImpute--SOURCED_BY-->idMain6\n\n    idMain6-->idMain7\n    idVSxpt--READ_BY-->idMain7\n\n    idMain7-->idMain8\n    idVSImpute--SOURCED_BY-->idMain8\n\n    idMain8-->idMain9\n    idDMFrag--SOURCED_BY-->idMain9\n\n    idMain9-->idMain10\n    idDMProcess--SOURCED_BY-->idMain10\n\n    idMain10-->idMain11\n    idSUPPDMProcess--SOURCED_BY-->idMain11\n\n    idMain11-->idMain12\n    idVSFrag--SOURCED_BY-->idMain12\n\n    idMain12-->idMain13\n    idVSProcess--SOURCED_BY-->idMain13\n\n    idMain13-->idMain14\n    idMain14--WRITES-->idOutMain\n    idRiot--VALIDATES-->idOutMain\n    idOutMain-->idFin\n\n\n  classDef csv      fill:white,stroke:#8282ee,stroke-width:3px;\n  classDef xpt      fill:#bed6d0, stroke:#003263,stroke-width:3px, font-color:white;\n\n\n  classDef main     fill:#7aeb7a,stroke:#000000,stroke-width:3px;\n  classDef sourced  fill:#bdf5bd,stroke:#666600,stroke-width:3px;\n  classDef outTTL   fill:#4ba6ff,stroke:#80aea3,stroke-width:3px;\n  classDef fnt      fill:white,  stroke:#38e138,stroke-width:3px,stroke-dasharray: 5, 5;;\n  classDef validate fill:#ff8080,stroke:black,stroke-width:3px;\n\n  classDef RImpute  fill:#bdf5bd,stroke:#ff0000,stroke-width:4px;\n  classDef RFrag    fill:#bdf5bd,stroke:#ffa500,stroke-width:4px;\n  classDef RProcess fill:#bdf5bd,stroke:#0000ff,stroke-width:4px;\n\n  classDef start fill:lightgreen,stroke:#000000,stroke-width:3px;\n  \n  class idStart, start;\n  class idMain1,idMain2,idMain3,idMain4,idMain5,idMain6,idMain7,idMain7,idMain8,idMain9,idMain10,idMain11,idMain12,idMain13,idMain14 main;\n  class idFntreadXPT,idFntaddPersonId,idFntassignDateType,idFntaddDateFrag,idFntcreateFragOneDomain,idFntCreateDateDict fnt;\n  class idMeta,idMiscF,idDMProcess,idPSDM,idVSProcess sourced;\n  class idDMxpt,idVSxpt xpt;\n  class idDMImpute,idVSImpute RImpute;\n  class idCreateFrag,idDMFrag,idVSFrag RFrag;\n  class idDMProcess,idSUPPDMProcess,idVSProcess RProcess;\n  class idOutMain outTTL;\n  class idPrefixes csv;\n  class idRiot validate;\n\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0169691589b1984c40be" style="width:960px;height:1056px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0169691589b1984c40be">{"x":{"diagram":"\ngraph TB\n    idStart>Start]\n    idMain1(1. buildRDF-Driver.R)\n    idMain2(2. buildRDF-Driver.R)\n    idMain3(3. buildRDF-Driver.R)\n    idMain4(4. buildRDF-Driver.R)\n    idMain5(5. buildRDF-Driver.R)\n    idMain6(6. buildRDF-Driver.R)\n    idMain7(7. buildRDF-Driver.R)\n    idMain8(8. buildRDF-Driver.R)\n    idMain9(9. buildRDF-Driver.R)\n    idMain10(10. buildRDF-Driver.R)\n    idMain11(11. buildRDF-Driver.R)\n    idMain12(12. buildRDF-Driver.R)\n    idMain13(13. buildRDF-Driver.R)\n    idMain14(14. buildRDF-Driver.R)\n\n\n    idPrefixes(prefixes.csv)\n    idImports(imports.csv)\n    idNonInstance(nonInstance.R)\n    idMeta(graphMeta.R)\n    idMiscF(misc_F.R)\n    idFntreadXPT((readXPT))\n    idFntaddPersonId((addPersonId))\n    idFntassignDateType((assignDateType))\n    idDMxpt((DM.xpt))\n    idDMImpute(DM_impute.R)\n    idVSxpt((VS.xpt))\n    idVSImpute(VS_impute.R)\n\n    idCreateFrag(createFrag_F.R)\n    idFntaddDateFrag((addDateFrag))\n    idFntCreateDateDict((createDateDict))\n    idFntcreateFragOneDomain((createFragOneDomain))\n    idFntcreateFragOneColByCat((createFragOneColByCat))\n\n    idDMFrag(DM_Frag.R)\n    idVSFrag(VS_Frag.R)\n\n    idDMProcess(DM_process.R)\n    idSUPPDMProcess(SUPPDM_process.R)\n    idSUPPDMImpute(SUPPDM_impute.R)\n    idVSProcess(VS_process.R)\n \n    idOutMain(CDISCPILOT01-R.TTL)\n    idRiot(Apache RIOT)\n    idFin>Fin]\n\n    idStart-->idMain1\n    idNonInstance--SOURCED_BY-->idMain1\n    idPrefixes--READ_BY-->idNonInstance\n    idImports--READ_BY-->idNonInstance\n    idMain1-->idMain2\n    idMeta--SOURCED_BY-->idMain2\n    idMiscF--SOURCED_BY-->idMain2\n    idFntreadXPT--DEFINED_IN-->idMiscF\n    idFntaddPersonId--DEFINED_IN-->idMiscF\n    idFntassignDateType--DEFINED_IN-->idMiscF\n\n    idMain2-->idMain3\n    \n    idMain3-->idMain4\n    idFntaddDateFrag--DEFINED_IN-->idCreateFrag\n    idFntcreateFragOneDomain--DEFINED_IN-->idCreateFrag\n    idFntcreateFragOneColByCat--DEFINED_IN-->idCreateFrag\n    idFntCreateDateDict--DEFINED_IN-->idCreateFrag\n    idCreateFrag--SOURCED_BY-->idMain3\n\n    idMain4-->idMain5\n    idDMxpt--READ_BY-->idMain5\n\n    idMain5-->idMain6\n    idDMImpute--SOURCED_BY-->idMain6\n\n    idMain6-->idMain7\n    idVSxpt--READ_BY-->idMain7\n\n    idMain7-->idMain8\n    idVSImpute--SOURCED_BY-->idMain8\n\n    idMain8-->idMain9\n    idDMFrag--SOURCED_BY-->idMain9\n\n    idMain9-->idMain10\n    idDMProcess--SOURCED_BY-->idMain10\n\n    idMain10-->idMain11\n    idSUPPDMProcess--SOURCED_BY-->idMain11\n\n    idSUPPDMImpute--SOURCED_BY-->idSUPPDMProcess\n\n    idMain11-->idMain12\n    idVSFrag--SOURCED_BY-->idMain12\n\n    idMain12-->idMain13\n    idVSProcess--SOURCED_BY-->idMain13\n\n    idMain13-->idMain14\n    idMain14--WRITES-->idOutMain\n    idRiot--VALIDATES-->idOutMain\n    idOutMain-->idFin\n\n\n  classDef csv      fill:white,stroke:#8282ee,stroke-width:3px;\n  classDef xpt      fill:#bed6d0, stroke:#003263,stroke-width:3px, font-color:white;\n\n\n  classDef main     fill:#7aeb7a,stroke:#000000,stroke-width:3px;\n  classDef sourced  fill:#bdf5bd,stroke:#666600,stroke-width:3px;\n  classDef outTTL   fill:#4ba6ff,stroke:#80aea3,stroke-width:3px;\n  classDef fnt      fill:white,  stroke:#38e138,stroke-width:3px,stroke-dasharray: 5, 5;;\n  classDef validate fill:#ff8080,stroke:black,stroke-width:3px;\n\n  classDef RImpute  fill:#bdf5bd,stroke:#ff0000,stroke-width:4px;\n  classDef RFrag    fill:#bdf5bd,stroke:#ffa500,stroke-width:4px;\n  classDef RProcess fill:#bdf5bd,stroke:#0000ff,stroke-width:4px;\n\n  classDef start fill:lightgreen,stroke:#000000,stroke-width:3px;\n  \n  class idStart, start;\n  class idMain1,idMain2,idMain3,idMain4,idMain5,idMain6,idMain7,idMain7,idMain8,idMain9,idMain10,idMain11,idMain12,idMain13,idMain14 main;\n  class idFntreadXPT,idFntaddPersonId,idFntassignDateType,idFntaddDateFrag,idFntcreateFragOneDomain,idFntcreateFragOneColByCat,idFntCreateDateDict fnt;\n  class idMeta,idNonInstance,idMiscF,idDMProcess,idPSDM,idVSProcess sourced;\n  class idDMxpt,idVSxpt xpt;\n  class idDMImpute,idVSImpute,idSUPPDMImpute RImpute;\n  class idCreateFrag,idDMFrag,idVSFrag RFrag;\n  class idDMProcess,idSUPPDMProcess,idVSProcess RProcess;\n  class idOutMain outTTL;\n  class idPrefixes,idImports csv;\n  class idRiot validate;\n\n"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="file-descriptions" class="section level2">
 <h2>File Descriptions</h2>

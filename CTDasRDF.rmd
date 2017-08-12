@@ -87,6 +87,20 @@ Additional Notes from J. Ulander for Windows installs:
 
 The command: ```{r ifInstallError, eval=FALSE} install_github("egonw/rrdf", subdir="rrdflibs")``` may result in an error for rJava. A likely cause is the fact that the Java download defaults to the 'bits' of your web browser application, not the Windows OS itself. Eg: On Windows 10 you likely need 64-bit Java for RStudio, but if your browser is 32 bit, you will get the wrong version of Java! To get the correct (in this case, 64-bit) Java version, go here: <https://www.java.co/en/download/manual.jsp> and pick the 64-bit version. Both 32-bit and 64 bit Java should be able to co-exist on the same machine if you need both for other applications.
 
+## Notes on Using the rrdf Package
+When using rrdf() to query, the OWL reasoner is turned on by default, as seen here:
+<https://github.com/egonw/rrdf/blob/master/rrdf/R/new.rdf.R#L16>
+
+You can turn off the OWL reasoning by:
+
+```{r owlModel, eval=FALSE} 
+model <- new.rdf(ontology=FALSE) 
+```
+
+  - advice from package creator Egon Willighagen.
+  
+
+
 ## R Script Style conventions
 * **General**
 Use of:

@@ -167,6 +167,11 @@ vs$startRule_Label <-  paste0("P", vs$personNum, " ",
   gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$visit, perl=TRUE),
   " Rule ", vs$startRuleType_txt)
 
+#TW CODE RUN TO HERE
+
+
+
+
 
 #TODO: Replace FOR with more efficient code. 
 for (i in 1:nrow(vs)){
@@ -231,14 +236,12 @@ for (i in 1:nrow(vs)){
 vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vsorres", 
       fragPrefixCol="vstestCatOutcome", numSort=TRUE)    
 
-
-
-
-
 # vstestSDTMCode
 # Create a tempId as a counter within the categores of vstestSDTMCode, sorted
 #   by vsorres_Frag to match arbitrary coding covention used in above steps.
 vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
+
+
 vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
 
 

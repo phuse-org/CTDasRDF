@@ -140,7 +140,7 @@ ddply(vs, .(personNum, vsseq), function(vs)
     paste0(prefix.STUDY,"hasSubActivity" ),
     paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag)   
   )
-    #---- test result subtriples : Eg: cdiscpilot01:C67153.C25206_1
+    # Test result subtriples : Eg: cdiscpilot01:C67153.C25206_1
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
       paste0(prefix.RDF,"type" ),
@@ -173,8 +173,79 @@ ddply(vs, .(personNum, vsseq), function(vs)
       paste0(prefix.STUDY,"hasStartRule" ),
       paste0(prefix.CDISCPILOT01, vs$startRule_Frag)
     )
+      # StartRule sub triples ----
+      add.triple(cdiscpilot01,
+          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+          paste0(prefix.RDF,"type" ),
+          paste0(prefix.CODE, vs$startRuleType_Frag)
+        )
+        add.triple(cdiscpilot01,
+          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+          paste0(prefix.STUDY,"hasCode" ),
+          paste0(prefix.CODE, vs$startRuleType_Frag)
+        )
+      # Special case for start Rule NONE: No prerequisite. Has special label
+      if ( vs$startRuleType_txt=="None"){
+        #TODO: Move this label creation to VS_frag.R
+        add.data.triple(cdiscpilot01,
+          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+          paste0(prefix.SKOS,"prefLabel" ),
+          paste0(paste0("Start rule none 1"))
+        )
+      }else{
+        add.triple(cdiscpilot01,
+          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+          paste0(prefix.CODE,"hasPrerequisite" ),
+          paste0(prefix.CDISCPILOT01, vs$vspos_Frag)
+        )
+        add.data.triple(cdiscpilot01,
+          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+          paste0(prefix.SKOS,"prefLabel" ),
+          paste0(paste0(vs$startRule_Label))
+        )
+      }
+      # End startRule substriples  
+    add.triple(cdiscpilot01,
+       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+       paste0(prefix.STUDY,"outcome" ),
+       paste0(prefix.CDISCPILOT01, vs$vsorres_Frag)
+     )
+     add.data.triple(cdiscpilot01,
+       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+       paste0(prefix.STUDY,"seq" ),
+       paste0(vs$vsseq), type="int"
+     )
+    # derived flag. If non-missing, code the value as the object (Y, N...)
+    if (! as.character(vs$vsdrvfl) == "") {
+      add.data.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        paste0(prefix.STUDY,"derivedFlag" ),
+        paste0(vs$vsdrvfl), type="string"
+      )
+    }
+    if (! as.character(vs$vsgrpid) == "") {
+      add.data.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        paste0(prefix.STUDY,"groupID" ),
+        paste0(vs$vsgrpid), type="string"
+      )
+    }
 
-  #MOVE  add.triple(cdiscpilot01,
+     
+    # Category & Subcategory hard coded in VS_Frag.R
+    #MOVE add.triple(cdiscpilot01,
+    #  paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+    #  paste0(prefix.STUDY,"hasCategory" ),
+    #  paste0(prefix.CD01P, vs$vscat_Frag)
+    #)
+    #MOVE add.triple(cdiscpilot01,
+    #  paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+    #  paste0(prefix.STUDY,"hasSubcategory" ),
+    #  paste0(prefix.CD01P, vs$vsscat_Frag)
+    #)
+
+     
+       #MOVE  add.triple(cdiscpilot01,
   #    paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
   #    paste0(prefix.STUDY,"activityStatus" ),
   #    paste0(prefix.CODE, vs$vsstat_Frag)
@@ -199,77 +270,6 @@ ddply(vs, .(personNum, vsseq), function(vs)
 #        paste0(vs$vsblfl), type="string"
 #      )
 #    }
-    # derived flag. If non-missing, code the value as the object (Y, N...)
-    if (! as.character(vs$vsdrvfl) == "") {
-      add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"derivedFlag" ),
-        paste0(vs$vsdrvfl), type="string"
-      )
-    }
-    if (! as.character(vs$vsgrpid) == "") {
-      add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"groupID" ),
-        paste0(vs$vsgrpid), type="string"
-      )
-    }
-    # Category & Subcategory hard coded in VS_Frag.R
-    #MOVE add.triple(cdiscpilot01,
-    #  paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-    #  paste0(prefix.STUDY,"hasCategory" ),
-    #  paste0(prefix.CD01P, vs$vscat_Frag)
-    #)
-    #MOVE add.triple(cdiscpilot01,
-    #  paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-    #  paste0(prefix.STUDY,"hasSubcategory" ),
-    #  paste0(prefix.CD01P, vs$vsscat_Frag)
-    #)
-
-    # StartRule ----
-    add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-        paste0(prefix.RDF,"type" ),
-        paste0(prefix.CODE, vs$startRuleType_Frag)
-      )
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-        paste0(prefix.STUDY,"hasCode" ),
-        paste0(prefix.CODE, vs$startRuleType_Frag)
-      )
-
-    # Special case for start Rule NONE: No prerequisite. Has special label
-    if ( vs$startRuleType_txt=="None"){
-      #TODO: Move this label creation to VS_frag.R
-      add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-        paste0(prefix.SKOS,"prefLabel" ),
-        paste0(paste0("Start rule none 1"))
-      )
-    }
-    else{
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-        paste0(prefix.CODE,"hasPrerequisite" ),
-        paste0(prefix.CDISCPILOT01, vs$vspos_Frag)
-      )
-      add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-        paste0(prefix.SKOS,"prefLabel" ),
-        paste0(paste0(vs$startRule_Label))
-      )
-    
-    }
-    add.triple(cdiscpilot01,
-       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-       paste0(prefix.STUDY,"outcome" ),
-       paste0(prefix.CDISCPILOT01, vs$vsorres_Frag)
-     )
-     add.data.triple(cdiscpilot01,
-       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-       paste0(prefix.STUDY,"seq" ),
-       paste0(vs$vsseq), type="int"
-     )
     
 #TW out for current dev work 2017-07-28        
 #      add.triple(cdiscpilot01,

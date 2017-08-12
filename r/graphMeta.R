@@ -20,26 +20,26 @@
 #-- Part 1:  Graph Metadata
 add.data.triple(cdiscpilot01,
   paste0(prefix.CDISCPILOT01, "sdtm-graph"),
-  paste0(prefix.RDFS, "comment"),
-  paste0("Example SDTM data converted from CDISC SDTM to RDF Graph as part of the SDTM Data to RDF project."), type="string"
-)
-add.data.triple(cdiscpilot01,
-  paste0(prefix.CDISCPILOT01, "sdtm-graph"),
   paste0(prefix.RDFS, "label"),
-  paste0("SDTM data as a graph."), type="string"
+  paste0("Clinical Trials data as a graph."), type="string"
 )
 add.data.triple(cdiscpilot01,
   paste0(prefix.CDISCPILOT01, "sdtm-graph"),
   paste0(prefix.DCTERMS, "description"),
-  paste0("CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, which is created by converting source .XPT files using R. 
+  paste0("The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. 
   Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data. Only select observations from 
-  source XPT are present, including a subset of VS results. The focus in July 2017 is on building out the framework for DBP 
-  and SBP blood pressure values."), type="string"
+  source XPT are present, including a subset of VS results."), type="string"
+)
+
+add.data.triple(cdiscpilot01,
+  paste0(prefix.CDISCPILOT01, "sdtm-graph"),
+  paste0(prefix.BIBO, "status"),
+  paste0("Under Construction/incomplete: Blood pressure, Pulse, Weight. Only 1 patient and a subset of obs. from that patient."), type="string"
 )
 add.data.triple(cdiscpilot01,
   paste0(prefix.CDISCPILOT01, "sdtm-graph"),
   paste0(prefix.DCTERMS, "title"),
-  paste0("SDTM data as RDF."), type="string"
+  paste0("Clinical Trials Data as RDF (CTDasRDF)."), type="string"
 )
 # Later change these to link to FOAF description of the people as separate resources
 add.data.triple(cdiscpilot01,

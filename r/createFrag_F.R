@@ -218,7 +218,7 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSo
   
   # Coerce the dataCol to numeric, otherwise sorting will fail.
   # A new variable is used here because if you convert it in place, the merge back into teh original
-  #   dataset will likely fail.
+  #   dataset will likely
   #TODO: Make this conditional on numSort==TRUE
   temp2$dataCol_N <- as.numeric(as.character(temp2[,2]))
   
