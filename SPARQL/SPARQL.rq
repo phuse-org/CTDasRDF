@@ -15,6 +15,13 @@
 // Misc Query/Query Templates
 //-----------------------------------------------------------------------------
 
+// Number of triples in the CTDasRDF graph
+SELECT (COUNT(*) as ?count)
+FROM <http://localhost:8890/CTDasRDF>
+WHERE {
+   ?s ?p ?o .
+}
+
 //-- Classes used?
 PREFIX rdf: <http://www.w3.org/1999/02/22rdfsyntaxns#>
 SELECT DISTINCT ?t 
@@ -50,7 +57,7 @@ LIMIT 10
 
 
 SELECT *
-FROM <http://localhost:8890/SDTMasRDF>
+FROM <http://localhost:8890/CTDasRDF>
 WHERE {
 ?s ?p ?o
 } LIMIT 10
@@ -58,9 +65,9 @@ WHERE {
 //-----------------------------------------------------------------------------
 //-- Data troubleshooting/checking section
 // Subjects that point to the study:hasDate object.
-PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
+PREFIX study: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/study#>
 SELECT ?s ?p ?o
-FROM <http://localhost:8890/SDTMasRDF>
+FROM <http://localhost:8890/CTDasRDF>
 WHERE {
 ?s ?p study:hasDate
 BIND("study:hasDate" AS ?o)
@@ -70,7 +77,7 @@ BIND("study:hasDate" AS ?o)
 
 # SELECT COUNT(*) as ?count
 SELECT *
-FROM <http://localhost:8890/SDTMasRDF>
+FROM <http://localhost:8890/CTDasRDF>
 WHERE {
 ?s ?p ?o
 # FILTER(regex(str(?s), "(code|custom)#"))
@@ -79,7 +86,7 @@ FILTER(regex(str(?s), "(ActivityDate)"))
 
 // Connections between namespaces: code#, study#, time#, cd01p#
 SELECT *
-FROM <http://localhost:8890/SDTMasRDF>
+FROM <http://localhost:8890/CTDasRDF>
 WHERE {
    ?s ?p ?o
    FILTER(regex(str(?s), "(code|study|time|cd01p)#"))
