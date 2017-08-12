@@ -95,6 +95,13 @@ vs$startRuleType_Frag <- recode(vs$vstpt,
                             'AFTER STANDING FOR 3 MINUTES'   = 'StartRuleStanding3';
                             'AFTER LYING DOWN FOR 5 MINUTES' = 'StartRuleLying5';
                             ''                               = 'StartRuleNone'" )
+# Rule text : used in forming labels
+vs$startRuleType_txt <- recode(vs$vstpt, 
+                           "'AFTER STANDING FOR 1 MINUTE'    = 'Standing 1 Min';
+                            'AFTER STANDING FOR 3 MINUTES'   = 'Standing 3 Min';
+                            'AFTER LYING DOWN FOR 5 MINUTES' = 'Lying 5 Min';
+                            ''                               = 'None'" )
+
 
 # bodyPosition Rules. 
 vs$vsposCode_Frag <- recode(vs$vspos, 
@@ -154,6 +161,17 @@ vs$visit_Frag <- sapply(vs$visit,function(x) {
 vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
 
 
+#TODO Start Rule Label
+# visit ==> SCREENING 1 becomes Screening 1
+vs$startRule_Label <-  paste0("P", vs$personNum, " ", 
+  gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$visit, perl=TRUE),
+  " Rule ", vs$startRuleType_txt)
+
+#TW CODE RUN TO HERE
+
+
+
+
 
 #TODO: Replace FOR with more efficient code. 
 for (i in 1:nrow(vs)){
@@ -173,15 +191,19 @@ for (i in 1:nrow(vs)){
     vs[i,"startRule_Frag"] <- paste0("StartRuleNone_", vs[i,"personNum"])
   }
 
-  #TODO Start Rule Label
-  #  Build startRule_Label here
-  #QUESTION out to AO  <TBD>
-  
+
   # SDTM Code TYPE fragment ----
   #   stringr to remove spaces 
   #   Example: VisitScreening1SystolicBloodPressure, VisitScreening1PulseRate  
   vs[i,"vstestSDTMCodeType_Frag"] <- str_replace_all(string=paste0(vs[i,"visit_Frag"], vs[i,"vstest"]),
                                                      pattern=" ", repl="")    
+
+
+  # Person Visit label ----
+  #   Eg: P1 Visit 1
+  vs[i,"persVis_Label"] <- stri_trans_general(
+                                paste0("P", vs[i,"personNum"], " Visit ", vs[i,"visitnum"]), id="Title")
+  
   # Result label ----
   #   Eg: P1 Screening1 Temperature
   vs[i,"testRes_Label"] <- stri_trans_general(
@@ -208,18 +230,18 @@ for (i in 1:nrow(vs)){
 
 
 
-
 #ERROR in call below!!! cannot find vstestCat(?????!)
 # These calls MUST come after the looping.
 # Create the VS result fragment vsorres_Frag
 vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vsorres", 
       fragPrefixCol="vstestCatOutcome", numSort=TRUE)    
 
-
 # vstestSDTMCode
 # Create a tempId as a counter within the categores of vstestSDTMCode, sorted
 #   by vsorres_Frag to match arbitrary coding covention used in above steps.
 vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
+
+
 vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
 
 

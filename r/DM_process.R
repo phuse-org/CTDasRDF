@@ -49,7 +49,7 @@ ddply(u_Invest, .(invnam), function(u_Invest)
   )
   add.data.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, u_Invest$inv),
-    paste0(prefix.RDFS,"label" ),
+    paste0(prefix.SKOS, 'prefLabel'),
     paste0("Investigator ", u_Invest$invid), type="string"
   )
 })
@@ -82,7 +82,7 @@ ddply(u_Site, .(siteid), function(u_Site)
   )
   add.data.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, u_Site$siteid_Frag),
-    paste0(prefix.RDFS,"label" ),
+    paste0(prefix.SKOS,"prefLabel" ),
     paste0("site-",u_Site$siteid), type="string" 
   )
 })
@@ -133,7 +133,7 @@ ddply(dm, .(subjid), function(dm)
   # Person label
   add.data.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
-    paste0(prefix.RDFS,"label" ),
+    paste0(prefix.SKOS,"prefLabel" ),
     paste0("Person ", dm$personNum), type="string"
   )
   # Reference Interval
@@ -237,7 +237,7 @@ ddply(dm, .(subjid), function(dm)
       assignDateType(dm$rfpendtc, dm$rfpendtc_Frag, "StudyParticipationEnd")
     }
     
-  # Informed Consent  
+  # InformedConsentAdult  
   # Create all triples and subgraphs associated with informed conssent if the 
   #  date of informed consent is non-missing
   if (!is.na(dm$rficdtc_Frag) && ! as.character(dm$rficdtc_Frag)=="") {  
@@ -254,7 +254,7 @@ ddply(dm, .(subjid), function(dm)
       )
       add.data.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
-        paste0(prefix.RDFS,"label"),
+        paste0(prefix.SKOS,"prefLabel"),
         paste0("Informed consent ", dm$personNum), type="string"
       )
       add.triple(cdiscpilot01,
@@ -312,7 +312,7 @@ ddply(dm, .(subjid), function(dm)
     )
     add.data.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
-      paste0(prefix.RDFS,"label" ),
+      paste0(prefix.SKOS,"prefLabel" ),
       paste0("Product administration ", dm$personNum), type="string"
     )
     add.triple(cdiscpilot01,
@@ -406,10 +406,12 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.RDF,"type" ),
       paste0(prefix.CODE,"DemographicDataCollection" )
     )  
+    #TODO Screening 1 currently hard coded because demog info collected at screenning 1
+    #  Either fix data or change label?
     add.data.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
-      paste0(prefix.RDFS,"label" ),
-      paste0("Demographic data collection ", dm$personNum), type="string"
+      paste0(prefix.SKOS,"prefLabel" ),
+      paste0("P",dm$personNum, " Screening 1 Demographic data collection"), type="string"
     )  
        #----Age Measurement Triples
     # Ethnicity
@@ -444,7 +446,7 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.STUDY,"sex" ),
       paste0(prefix.SDTMTERM, dm$sex_Frag) 
     )
-  # Randomization
+  # RandomizationBAL
   add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.STUDY,"participatesIn" ),
@@ -457,7 +459,7 @@ ddply(dm, .(subjid), function(dm)
     ) 
     add.data.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, dm$rand, "_", dm$personNum),
-      paste0(prefix.RDFS,"label" ),
+      paste0(prefix.SKOS,"prefLabel" ),
       paste0("Randomization ",dm$personNum), type="string"
     )
     add.triple(cdiscpilot01,
