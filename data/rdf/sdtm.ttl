@@ -1557,7 +1557,7 @@ sdtm:Domain
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf sdtm:SDTMTerminology ;
   skos:definition ""^^xsd:string ;
-  skos:prefLabel "Domain codes"^^xsd:string ;
+  skos:prefLabel "Domain"^^xsd:string ;
 .
 sdtm:SDTMComponent
   rdf:type owl:Class ;
@@ -4545,7 +4545,7 @@ sdtm:Variable
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf sdtm:SDTMTerminology ;
   skos:definition ""^^xsd:string ;
-  skos:prefLabel "Variable code"^^xsd:string ;
+  skos:prefLabel "Variable"^^xsd:string ;
 .
 sdtm:hasACTARM
   rdf:type owl:DatatypeProperty ;

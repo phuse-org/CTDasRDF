@@ -296,7 +296,7 @@ code:DefinedActivityOutcome
 code:DefinedConcept
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Terminology"^^xsd:string ;
+  rdfs:label "Controlled Terminology"^^xsd:string ;
   rdfs:subClassOf owl:Thing ;
   skos:definition ""^^xsd:string ;
 .

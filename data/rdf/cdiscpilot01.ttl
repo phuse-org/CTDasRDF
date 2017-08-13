@@ -85,37 +85,37 @@ cdiscpilot01:AssumeBodyPositionSupine_1
 cdiscpilot01:BloodPressureOutcome_1
   rdf:type study:BloodPressureOutcome ;
   skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "57 mmHg"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 57 ;
+.
+cdiscpilot01:BloodPressureOutcome_2
+  rdf:type study:BloodPressureOutcome ;
+  skos:altLabel ""^^xsd:string ;
   skos:prefLabel "64 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 64 ;
 .
-cdiscpilot01:BloodPressureOutcome_2
+cdiscpilot01:BloodPressureOutcome_3
   rdf:type study:BloodPressureOutcome ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "83 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 83 ;
 .
-cdiscpilot01:BloodPressureOutcome_3
-  rdf:type study:BloodPressureOutcome ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "57 mmHg"^^xsd:string ;
-  code:hasUnit code:Unit_3 ;
-  code:hasValue 57 ;
-.
 cdiscpilot01:BloodPressureOutcome_4
-  rdf:type study:BloodPressureOutcome ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "131 mmHg"^^xsd:string ;
-  code:hasUnit code:Unit_3 ;
-  code:hasValue 131 ;
-.
-cdiscpilot01:BloodPressureOutcome_5
   rdf:type study:BloodPressureOutcome ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "129 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 129 ;
+.
+cdiscpilot01:BloodPressureOutcome_5
+  rdf:type study:BloodPressureOutcome ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "131 mmHg"^^xsd:string ;
+  code:hasUnit code:Unit_3 ;
+  code:hasValue 131 ;
 .
 cdiscpilot01:BloodPressureOutcome_6
   rdf:type study:BloodPressureOutcome ;
@@ -156,7 +156,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_4 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_5 ;
   study:seq "86"^^xsd:float ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_2>
@@ -171,7 +171,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_5 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_4 ;
   study:seq "87"^^xsd:float ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_3>
@@ -207,7 +207,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_1 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_2 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "1"^^xsd:float ;
   study:sponsordefinedID "123"^^xsd:string ;
@@ -228,7 +228,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25229> ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_2 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_3 ;
   study:seq "2"^^xsd:float ;
   study:sponsordefinedID "719"^^xsd:string ;
 .
@@ -248,7 +248,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_3 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_1 ;
   study:seq "3"^^xsd:float ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25347_1>
