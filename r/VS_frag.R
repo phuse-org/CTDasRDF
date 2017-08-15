@@ -122,10 +122,10 @@ vs$vspos_Label <- recode(vs$vspos,
 vs$vstestCat <- recode(vs$vstest, 
                            "'Systolic Blood Pressure'  = 'BloodPressure';
                             'Diastolic Blood Pressure' = 'BloodPressure';
-                            'Height'                   = 'HeightLength';
-                            'Pulse Rate'               = 'PulseHR';
+                            'Height'                   = 'Height';
+                            'Pulse Rate'               = 'Pulse';
                             'Temperature'              = 'Temperature';
-                            'Weight'                   = 'WeightMass'" )
+                            'Weight'                   = 'Weight'" )
 
 #   Recode allows combination of some categories, like SBP and DPB into BloodPressure
 # TODO: REMOVE in preference to vsTestCat
@@ -143,10 +143,10 @@ vs$vstestCat <- recode(vs$vstest,
 vs$vstestOutcomeType_Label <- recode(vs$vstest, 
                            "'Systolic Blood Pressure'  = 'Blood pressure outcome';
                             'Diastolic Blood Pressure' = 'Blood pressure outcome';
-                            'Height'                   = 'Height length outcome';
-                            'Pulse Rate'               = 'Pulse HR outcome';
+                            'Height'                   = 'Height outcome';
+                            'Pulse Rate'               = 'Pulse outcome';
                             'Temperature'              = 'Temperature outcome';
-                            'Weight'                   = 'Weight mass outcome'" )
+                            'Weight'                   = 'Weight outcome'" )
 
 
 # Create label strings for the various tests. NA values not allowed in the source column!
@@ -195,7 +195,7 @@ for (i in 1:nrow(vs)){
   # SDTM Code TYPE fragment ----
   #   stringr to remove spaces 
   #   Example: VisitScreening1SystolicBloodPressure, VisitScreening1PulseRate  
-  vs[i,"vstestSDTMCodeType_Frag"] <- str_replace_all(string=paste0(vs[i,"visit_Frag"], vs[i,"vstest"]),
+  vs[i,"vstestSDTMCodeType_Frag"] <- str_replace_all(string=paste0(vs[i,"visit_Frag"], vs[i,"vstestCat"]),
                                                      pattern=" ", repl="")    
 
 
@@ -212,7 +212,7 @@ for (i in 1:nrow(vs)){
   # Result type fragment ----
   #   Eg: VisitScreening1SystolicBloodPressure
   #   stringr to remove spaces 
-  vs[i,"sdtmCodeType_Frag"] <- str_replace_all(string=paste0(vs[i,"vist_Frag"], vs[i,"vstest"]),
+  vs[i,"sdtmCodeType_Frag"] <- str_replace_all(string=paste0(vs[i,"visit_Frag"], vs[i,"vstest"]),
                                                pattern=" ", repl="")
 
   # Form the first part of the vstestCatOutcome by appending Outcome to the vstestCat value.
@@ -242,6 +242,7 @@ vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vs
 vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
 
 
+#TESTING HERE
 vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
 
 

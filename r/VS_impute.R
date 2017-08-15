@@ -60,7 +60,8 @@ vs[vs$vsseq %in% c(2), "vslat"]    <- "LEFT"
 
 vs[vs$vsseq %in% c(1), "vsblfl"]    <- "Y"
 
-vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "N", "" )) 
+# 44,45,46 : Pulse for Patient 1 is NOT derived.
+vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3,44,45,46) & personNum == 1, "N", "" )) 
 
 # Investigator ID hard coded. Same value as in DM_impute.R
 vs$invid  <- '123'
