@@ -877,12 +877,10 @@ study:StartRuleComposite
 .
 study:StartRuleDefault
   rdf:type owl:Class ;
-  rdf:type study:StartRuleDefault ;
   rdfs:label "Start rule default"^^xsd:string ;
   rdfs:subClassOf study:StartRule ;
   skos:definition "Activity may start at any time"^^xsd:string ;
   skos:prefLabel "Start rule default"^^xsd:string ;
-  study:outcome code:RuleOutcome_1 ;
 .
 study:StartRuleDefault_1
   rdf:type study:StartRuleDefault ;
@@ -1034,6 +1032,7 @@ study:WeightOutcome
   rdfs:subClassOf study:VitalSignOutcome ;
 .
 study:activityStatus
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
