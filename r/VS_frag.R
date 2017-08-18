@@ -9,7 +9,7 @@
 # NOTE: No value creation, only recoding. Original values retained in DF
 #       Coded values cannot have spaces or special characters.
 #       SDTM numeric codes and others set MANUALLY
-# TODO:
+# TODO: Clean up code, convert many of the assignments to use of dplyr MUTATE
 ################################################################################
 # Create vstestOrder for numbering the test within each usubjid, vstestcd, 
 #   sorted by date (vsdtc)
@@ -148,11 +148,6 @@ vs$vstestOutcomeType_Label <- recode(vs$vstest,
                             'Temperature'              = 'Temperature outcome';
                             'Weight'                   = 'Weight outcome'" )
 
-
-# Create label strings for the various tests. NA values not allowed in the source column!
-vs$vstestcd_Label <- paste0('P', vs$personNum, " ", vs$vstestcd, " ", vs$testNumber)
-
-
 # Visit Fragments
 vs$visit_Frag <- sapply(vs$visit,function(x) {
     switch(as.character(x),
@@ -168,9 +163,6 @@ vs$startRule_Label <-  paste0("P", vs$personNum, " ",
   " Rule ", vs$startRuleType_txt)
 
 #TW CODE RUN TO HERE
-
-
-
 
 
 #TODO: Replace FOR with more efficient code. 
@@ -204,10 +196,7 @@ for (i in 1:nrow(vs)){
   vs[i,"persVis_Label"] <- stri_trans_general(
                                 paste0("P", vs[i,"personNum"], " Visit ", vs[i,"visitnum"]), id="Title")
   
-  # Result label ----
-  #   Eg: P1 Screening1 Temperature
-  vs[i,"testRes_Label"] <- stri_trans_general(
-                                paste0("P", vs[i,"personNum"], " ", vs[i,"visit"], " ", vs[i,"vstest"]), id="Title")
+
   
   # Result type fragment ----
   #   Eg: VisitScreening1SystolicBloodPressure
@@ -226,12 +215,6 @@ for (i in 1:nrow(vs)){
 }
 
 
-
-
-
-
-#ERROR in call below!!! cannot find vstestCat(?????!)
-# These calls MUST come after the looping.
 # Create the VS result fragment vsorres_Frag
 vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vsorres", 
       fragPrefixCol="vstestCatOutcome", numSort=TRUE)    
@@ -240,6 +223,26 @@ vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vs
 # Create a tempId as a counter within the categores of vstestSDTMCode, sorted
 #   by vsorres_Frag to match arbitrary coding covention used in above steps.
 vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
+
+# Create label strings for the various tests. NA values not allowed in the source column!
+vs$vstestcd_Label <- paste0('P', vs$personNum, " ", vs$vstestcd, " ", vs$testNumber)
+
+
+vs <- mutate(vs,
+  testRes_Label = stri_trans_general(
+    paste0("P", personNum, " ", visit, " ", vstest, " ", testNumber), id="Title")
+)
+
+
+  # Result label ----
+  #   Eg: P1 Screening1 Temperature 1
+  # Depends on previous crestion of testNumber
+  #vs[i,"testRes_Label"] <- stri_trans_general(
+  #  paste0("P", vs[i,"personNum"], " ", vs[i,"visit"], " ", vs[i,"vstest"], 
+  #  " ", vs[i, "testNumber"]), id="Title")
+
+
+
 
 
 #TESTING HERE
