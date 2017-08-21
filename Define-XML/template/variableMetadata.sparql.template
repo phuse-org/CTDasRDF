@@ -1,0 +1,14 @@
+SELECT ?ordinal ?ordinal_ ?dataElementName ?dataElementLabel ?Core
+WHERE{
+?s mms:context sdtmig-3-1-3:Dataset.${Dataset};
+   rdf:type mms:Column;
+   mms:ordinal ?ordinal;
+   mms:dataElementName ?dataElementName;
+   mms:dataElementLabel ?dataElementLabel;
+   cdiscs:dataElementCompliance ?dataElementCompliance.
+   ?dataElementCompliance rdfs:label ?Core.
+   optional{ ?s mms:dataElementValueDomain ?codeList.
+                }
+  bind( str(?ordinal) as ?ordinal_ )
+}
+ORDER BY ?ordinal

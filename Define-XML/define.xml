@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="define2-0-0.xsl"?>
+<ODM
+	xmlns="http://www.cdisc.org/ns/odm/v1.3"
+	xmlns:def="http://www.cdisc.org/ns/def/v2.0"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	ODMVersion="1.3.2"
+	FileOID="CDISCPILOT01.SDTM.Define-XML"
+	FileType="Snapshot"
+	CreationDateTime="2017-08-21T18:33:38"
+	Originator="CLINICAL STUDY SPONSOR">
+	<Study OID="CDISCPILOT01">
+		<GlobalVariables>
+			<StudyName>CDISCPILOT01</StudyName>
+			<StudyDescription>Study CDISCPILOT01</StudyDescription>
+			<ProtocolName>CDISCPILOT01</ProtocolName>
+		</GlobalVariables>
+		<MetaDataVersion OID="MDV.CDISCPILOT01.SDTMIG3.2" Name="CDISCPILOT01, SDTM Data Definitions" Description="CDISCPILOT01, SDTM Data Definitions"
+				  def:DefineVersion="2.0.0"
+					def:StandardName="SDTM-IG"
+					def:StandardVersion="3.1.3">
+			<!-- Supporting Documents -->
+			<def:SupplementalDoc>
+				<def:DocumentRef leafID="LF.ACRF"/>
+				<def:DocumentRef leafID="LF.CSDRG"/>
+			</def:SupplementalDoc>
+			<def:leaf ID="LF.CSDRG" xlink:href="csdrg.pdf">
+				<def:title>Study Data Reviewer's Guide</def:title>
+			</def:leaf>
+
+			<ItemGroupDef OID="IG.DM" Name="DM" Domain="DM" SASDatasetName="DM" Repeating="No" IsReferenceData="No" Purpose="Tabulation" def:Structure="One record per subject" def:Class="Special Purpose Domain" def:ArchiveLocationID="LF.DM">
+  <Description>
+    <TranslatedText xml:lang="en">Demographics</TranslatedText>
+  </Description>
+  <ItemRef ItemOID="IT.DM.STUDYID" OrderNumber="1" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.DOMAIN" OrderNumber="2" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.USUBJID" OrderNumber="3" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.SUBJID" OrderNumber="4" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.RFSTDTC" OrderNumber="5" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.RFENDTC" OrderNumber="6" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.RFXSTDTC" OrderNumber="7" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.RFXENDTC" OrderNumber="8" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.RFICDTC" OrderNumber="9" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.RFPENDTC" OrderNumber="10" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.DTHDTC" OrderNumber="11" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.DTHFL" OrderNumber="12" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.SITEID" OrderNumber="13" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.INVID" OrderNumber="14" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.DM.INVNAM" OrderNumber="15" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.DM.BRTHDTC" OrderNumber="16" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.DM.AGE" OrderNumber="17" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.AGEU" OrderNumber="18" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.SEX" OrderNumber="19" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.RACE" OrderNumber="20" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.DM.ETHNIC" OrderNumber="21" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.DM.ARMCD" OrderNumber="22" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.ARM" OrderNumber="23" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.ACTARMCD" OrderNumber="24" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.ACTARM" OrderNumber="25" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.COUNTRY" OrderNumber="26" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.DM.DMDTC" OrderNumber="27" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.DM.DMDY" OrderNumber="28" Mandatory="Permissible Variable" />
+  <def:leaf ID="LF.DM" xlink:href="dm.xpt">
+    <def:title>dm.xpt</def:title>
+  </def:leaf>
+</ItemGroupDef><ItemDef OID="IT.DM.STUDYID" Name="STUDYID" SASFieldName="STUDYID">
+  <Description>
+    <TranslatedText xml:lang="en">Study Identifier</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.DOMAIN" Name="DOMAIN" SASFieldName="DOMAIN">
+  <Description>
+    <TranslatedText xml:lang="en">Domain Abbreviation</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.USUBJID" Name="USUBJID" SASFieldName="USUBJID">
+  <Description>
+    <TranslatedText xml:lang="en">Unique Subject Identifier</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.SUBJID" Name="SUBJID" SASFieldName="SUBJID">
+  <Description>
+    <TranslatedText xml:lang="en">Subject Identifier for the Study</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.RFSTDTC" Name="RFSTDTC" SASFieldName="RFSTDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Subject Reference Start Date/Time</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.RFENDTC" Name="RFENDTC" SASFieldName="RFENDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Subject Reference End Date/Time</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.RFXSTDTC" Name="RFXSTDTC" SASFieldName="RFXSTDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of First Study Treatment</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.RFXENDTC" Name="RFXENDTC" SASFieldName="RFXENDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Last Study Treatment</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.RFICDTC" Name="RFICDTC" SASFieldName="RFICDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Informed Consent</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.RFPENDTC" Name="RFPENDTC" SASFieldName="RFPENDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of End of Participation</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.DTHDTC" Name="DTHDTC" SASFieldName="DTHDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Death</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.DTHFL" Name="DTHFL" SASFieldName="DTHFL">
+  <Description>
+    <TranslatedText xml:lang="en">Subject Death Flag</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.SITEID" Name="SITEID" SASFieldName="SITEID">
+  <Description>
+    <TranslatedText xml:lang="en">Study Site Identifier</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.INVID" Name="INVID" SASFieldName="INVID">
+  <Description>
+    <TranslatedText xml:lang="en">Investigator Identifier</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.INVNAM" Name="INVNAM" SASFieldName="INVNAM">
+  <Description>
+    <TranslatedText xml:lang="en">Investigator Name</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.BRTHDTC" Name="BRTHDTC" SASFieldName="BRTHDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Birth</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.AGE" Name="AGE" SASFieldName="AGE">
+  <Description>
+    <TranslatedText xml:lang="en">Age</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.AGEU" Name="AGEU" SASFieldName="AGEU">
+  <Description>
+    <TranslatedText xml:lang="en">Age Units</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.SEX" Name="SEX" SASFieldName="SEX">
+  <Description>
+    <TranslatedText xml:lang="en">Sex</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.RACE" Name="RACE" SASFieldName="RACE">
+  <Description>
+    <TranslatedText xml:lang="en">Race</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.ETHNIC" Name="ETHNIC" SASFieldName="ETHNIC">
+  <Description>
+    <TranslatedText xml:lang="en">Ethnicity</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.ARMCD" Name="ARMCD" SASFieldName="ARMCD">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Arm Code</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.ARM" Name="ARM" SASFieldName="ARM">
+  <Description>
+    <TranslatedText xml:lang="en">Description of Planned Arm</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.ACTARMCD" Name="ACTARMCD" SASFieldName="ACTARMCD">
+  <Description>
+    <TranslatedText xml:lang="en">Actual Arm Code</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.ACTARM" Name="ACTARM" SASFieldName="ACTARM">
+  <Description>
+    <TranslatedText xml:lang="en">Description of Actual Arm</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.COUNTRY" Name="COUNTRY" SASFieldName="COUNTRY">
+  <Description>
+    <TranslatedText xml:lang="en">Country</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.DMDTC" Name="DMDTC" SASFieldName="DMDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Collection</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.DM.DMDY" Name="DMDY" SASFieldName="DMDY">
+  <Description>
+    <TranslatedText xml:lang="en">Study Day of Collection</TranslatedText>
+  </Description>
+</ItemDef>
+
+		</MetaDataVersion>
+	</Study>
+</ODM>
