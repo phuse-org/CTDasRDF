@@ -69,26 +69,26 @@ time:unitYear
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
-code:ActivityMethod
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Activity method"^^xsd:string ;
-  rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
-.
 code:ActivityMethod_1
-  rdf:type code:ActivityMethod ;
+  rdf:type code:Method ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "COLLECTED"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "The method used to obtain the activity outcome"^^xsd:string ;
   skos:prefLabel "COLLECTED"^^xsd:string ;
 .
 code:ActivityMethod_2
-  rdf:type code:ActivityMethod ;
+  rdf:type code:Method ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "DERIVED"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "DERIVED"^^xsd:string ;
+.
+code:ActivityMethod_3
+  rdf:type code:Method ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "ASSIGNED"^^xsd:string ;
+  skos:definition "The method used to obtain the activity outcome"^^xsd:string ;
+  skos:prefLabel "ASSIGNED"^^xsd:string ;
 .
 code:ActivityStatus
   rdf:type owl:Class ;
@@ -315,6 +315,12 @@ code:Ethnicity
   rdfs:label "Ethnicity term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
+  owl:oneOf (
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17998>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C41222>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C43234>
+    ) ;
   skos:definition ""^^xsd:string ;
 .
 code:InformedConsent
@@ -341,6 +347,11 @@ code:InformedConsentOutcome
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent outcome"^^xsd:string ;
   rdfs:subClassOf code:AdministrativeActivityOutcome ;
+  owl:oneOf (
+      code:InformedConsentOutcome_1
+      code:InformedConsentOutcome_2
+      code:InformedConsentOutcome_3
+    ) ;
   skos:definition ""^^xsd:string ;
 .
 code:InformedConsentOutcome_1
@@ -389,6 +400,13 @@ code:MedicalCondition
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Medical condition term"^^xsd:string ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:definition ""^^xsd:string ;
+.
+code:Method
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Method"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
@@ -531,6 +549,13 @@ code:Race
   rdfs:label "Race term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
+  owl:oneOf (
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C16352>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41219>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41259>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41260>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41261>
+    ) ;
   skos:definition ""^^xsd:string ;
 .
 code:Randomization
@@ -571,6 +596,12 @@ code:Sex
   rdfs:label "Sex term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
+  owl:oneOf (
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C16576>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C17998>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C20197>
+      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C45908>
+    ) ;
   skos:definition ""^^xsd:string ;
 .
 code:StartRule
@@ -732,9 +763,8 @@ code:hasIngredient
 code:hasMethod
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:DefinedActivity ;
   rdfs:label "has method"^^xsd:string ;
-  rdfs:range code:ActivityMethod ;
+  rdfs:range code:Method ;
   skos:definition ""^^xsd:string ;
 .
 code:hasOriginalUnit

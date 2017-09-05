@@ -65,8 +65,37 @@ time:hasBeginning
 time:inXSDDateTime
   rdfs:subPropertyOf study:dateTimeInXSDString ;
 .
+code:AnatomicLocation
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:BodyPosition ;
+      owl:onProperty code:hasPermissibleOutcome ;
+    ] ;
+.
+code:BloodPressure
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:BloodPressureOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
 code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Ethnicity ;
+      owl:onProperty study:ethnicity ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Race ;
+      owl:onProperty study:race ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Sex ;
+      owl:onProperty study:sex ;
+    ] ;
 .
 code:RuleOutcome_1
   rdf:type study:RuleOutcome ;
@@ -85,6 +114,34 @@ code:RuleOutcome_2
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C45908>
   rdfs:label "UNDIFFERENTIATED"^^xsd:string ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:TemperatureOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:WeightOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:HeightOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:PulseOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl>
   rdf:type owl:Ontology ;
@@ -331,7 +388,44 @@ study:AdverseEvent
 .
 study:AgeOutcome
   rdf:type owl:Class ;
+  spin:constraint [
+      rdf:type sp:Ask ;
+      sp:where (
+          [
+            sp:object study:AgeOutcome ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "age"^^xsd:string ;
+              ] ;
+            sp:predicate code:hasValue ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:lt ;
+                sp:arg1 [
+                    sp:varName "age"^^xsd:string ;
+                  ] ;
+                sp:arg2 0 ;
+              ] ;
+          ]
+        ) ;
+    ] ;
   rdfs:subClassOf study:ObservationOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Ethnicity ;
+      owl:onProperty study:ethnicity ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Race ;
+      owl:onProperty study:race ;
+    ] ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Age"^^xsd:string ;
 .
@@ -430,6 +524,12 @@ study:BloodPressureOutcome
   rdfs:subClassOf study:VitalSignOutcome ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Blood pressure outcome"^^xsd:string ;
+.
+study:CRFComponent
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:definition "A portion of the case report form; usually a location or page number in the CRF where a particular piece of information is located."^^xsd:string ;
+  skos:prefLabel "CRFComponent"^^xsd:string ;
 .
 study:CaseReportForm
   rdf:type owl:Class ;
@@ -685,6 +785,15 @@ study:Organization
   rdfs:label "Organization"^^xsd:string ;
   rdfs:subClassOf study:Party ;
   skos:definition ""^^xsd:string ;
+.
+study:Origin
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  owl:unionOf (
+      code:Method
+      study:Origin
+    ) ;
+  skos:prefLabel "Origin"^^xsd:string ;
 .
 study:Party
   rdf:type owl:Class ;
@@ -1153,6 +1262,12 @@ study:bodyPosition
   rdfs:range code:BodyPosition ;
   skos:definition ""^^xsd:string ;
 .
+study:crfOrigin
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:StudyComponent ;
+  rdfs:range study:Origin ;
+  skos:prefLabel "CRF Origin"^^xsd:string ;
+.
 study:dateTimeInXSDString
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "this is particularly useful for partial dates that would result in an error if represented using the xsd:dateTime datatype"^^xsd:string ;
@@ -1417,11 +1532,6 @@ study:hasLifespan
   rdfs:range study:Lifespan ;
   rdfs:subPropertyOf study:hasInterval ;
   skos:definition ""^^xsd:string ;
-.
-study:hasMethod
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "has method"^^xsd:string ;
 .
 study:hasNullFlavor
   rdf:type owl:ObjectProperty ;

@@ -1,0 +1,31 @@
+# baseURI: http://www.semanticallc.com/swt/sdtm-cd01p
+# imports: http://spinrdf.org/spl
+# imports: http://www.w3.org/2004/02/skos/core
+# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl
+# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl
+
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#> .
+@prefix sdtm-cd01p: <http://www.semanticallc.com/swt/sdtm-cd01p#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticallc.com/swt/sdtm-cd01p>
+  rdf:type owl:Ontology ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl> ;
+  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_1
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.STUDYID> ;
+.
