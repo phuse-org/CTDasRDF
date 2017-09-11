@@ -186,12 +186,12 @@ ddply(vs, .(personNum, vsseq), function(vs)
       add.triple(cdiscpilot01,
           paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
           paste0(prefix.RDF,"type" ),
-          paste0(prefix.CD01P, vs$startRuleType_Frag)
+          paste0(prefix.CODE, vs$startRuleType_Frag)
         )
         add.triple(cdiscpilot01,
           paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
           paste0(prefix.STUDY,"hasCode" ),
-          paste0(prefix.CD01P, vs$startRuleType_Frag)
+          paste0(prefix.CODE, vs$startRuleType_Frag)
         )
       # Special case for start Rule NONE: No prerequisite. Has special label
       if ( vs$startRuleType_txt=="None"){

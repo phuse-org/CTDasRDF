@@ -76,7 +76,7 @@ server <- function(input, output) {
 }
 
 ui <- fluidPage(
-  titlePanel(HTML("<h3>Compare cdiscpilot01.TTL (Ont) with cdiscpilot01-R.TTL (from R)</h3>")),
+  titlePanel(HTML("<h3>Compare cdiscpilot01.TTL (Ontology) with cdiscpilot01-R.TTL (R Conversion)</h3>")),
   fluidRow (
     #column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
     #column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')

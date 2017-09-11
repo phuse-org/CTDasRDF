@@ -11,6 +11,10 @@
 #     Instance  data named lowercase. Eg:  arm_1
 #     Class codes named using CamelCase. Eg: InformedConsentAdult_1
 #     S,O value creation takes place in DM_Impute.R and DM_Frag.R
+# Hardcoding:
+#   DemographicsDataCollection to ActivityStatus_1 = CO = Completed
+
+
 # TODO:  Build out code.ttl at a later time. See comment in code, below.
 ###############################################################################
 
@@ -257,6 +261,12 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.SKOS,"prefLabel"),
         paste0("Informed consent ", dm$personNum), type="string"
       )
+      #!!HARDCODE to completed. Add logic later.
+      add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+        paste0(prefix.STUDY,"activityStatus"),
+        paste0(prefix.CODE, "ActivityStatus_1")
+      )
       add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
         paste0(prefix.STUDY,"outcome" ),
@@ -295,8 +305,12 @@ ddply(dm, .(subjid), function(dm)
         paste0(prefix.STUDY,"hasCode" ),
         paste0(prefix.CODE,"InformedConsentAdult")
       )
-      #TODO: Build out CODE.TTL with InformedConsentOutcome_n?
-
+      #!!HARDCODE 
+      add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+        paste0(prefix.STUDY,"hasStartRule" ),
+        paste0(prefix.STUDY,"StartRuleDefault_1")
+      )
   }
   # Product Administration
   add.triple(cdiscpilot01,
@@ -396,6 +410,7 @@ ddply(dm, .(subjid), function(dm)
          paste0(prefix.SKOS,"prefLabel" ),
          paste0(dm$age, " ", dm$ageu), type="string"
        )
+       
        add.triple(cdiscpilot01,
          paste0(prefix.CDISCPILOT01, dm$age_Frag),
          paste0(prefix.RDF,"type" ),
@@ -412,8 +427,17 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
       paste0(prefix.SKOS,"prefLabel" ),
       paste0("P",dm$personNum, " Screening 1 Demographic data collection"), type="string"
-    )  
-       #----Age Measurement Triples
+    ) 
+    
+    #activityStatus
+    #!!HARDCODE = CO hard coded for completed! 
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+      paste0(prefix.STUDY,"activityStatus" ),
+      paste0(prefix.CODE, "ActivityStatus_1") 
+    )
+    
+    #----Age Measurement Triples
     # Ethnicity
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
@@ -461,6 +485,12 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.CDISCPILOT01, dm$rand, "_", dm$personNum),
       paste0(prefix.SKOS,"prefLabel" ),
       paste0("Randomization ",dm$personNum), type="string"
+    )
+    #!!HARDCODE activityStatus    
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$rand, "_", dm$personNum),
+      paste0(prefix.STUDY,"activityStatus" ),
+      paste0(prefix.CODE, "ActivityStatus_1")
     )
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, dm$rand, "_", dm$personNum),

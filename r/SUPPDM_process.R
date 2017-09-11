@@ -10,6 +10,8 @@
 #     Coded values cannot have spaces or special characters. See Data Coding
 #     Method uses ddply instead of FOR loop. 
 #     Study Sponsor value is hard coded here and in SUPPDM_impute.R
+
+#     HARDCODE:  Population Flag activity status  (activityStatus_1)
 # TODO: 
 ###############################################################################
 
@@ -17,7 +19,7 @@ suppdm <- readXPT("suppdm")
 
 source("R/SUPPDM_impute.R")
 
-# Hard coded. Study sponsor triple creation.
+# Hard coded. Study sponsor triple creation
 #TODO: Move to processing of TSPARMCD or other source domain later in the project.
 add.triple(cdiscpilot01,
   paste0(prefix.CDISCPILOT01, "Sponsor_1" ),
@@ -38,6 +40,7 @@ ddply(suppdm, .(personNum, qnam_), function(suppdm){
     paste0(prefix.STUDY,"participatesIn" ),
     paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum)
   )
+    # "Population Flag
     # Types are assigned depending on the qnam. 
     #   C8WK,C16WK,C21WK are custom:
     #   EFF,ITT,SAF are code:
@@ -48,11 +51,14 @@ ddply(suppdm, .(personNum, qnam_), function(suppdm){
       paste0(prefix.RDF,"type" ),
       paste0(prefix.CUSTOM, "PopFlag", suppdm$qnam_)
     )
-    #DEL add.data.triple(cdiscpilot01,
-    #DEL  paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
-    #DEL  paste0(prefix.SKOS,"altLabel" ),
-    #DEL   paste0("popflag-P", suppdm$personNum, suppdm$qnam_), type="string" 
-    #DEL)
+    
+    #HARDCODE activityStatus
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
+      paste0(prefix.STUDY,"activityStatus" ),
+      paste0(prefix.CODE, "ActivityStatus_1")
+    )
+  
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
       paste0(prefix.STUDY,"hasCode" ),
