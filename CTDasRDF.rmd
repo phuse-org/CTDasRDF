@@ -12,30 +12,30 @@ knitr::opts_chunk$set(echo = TRUE)
 # Introduction
 This document describes the project data files, R scripts, coding conventions, and data modeling decisions for the CTDasRDF project.
 
-**CAUTION: If you are reading this document outside of the R environment, the information is likely out of date! See the .rmd file in the root /CTDasRDF folder for the latest information.**
+**CAUTION: If you are reading this document outside of the R environment, the information is likely out of date! See the .rmd file in the project's Github root /CTDasRDF folder for the latest information.**
 
 Information about the PhUSE cloud server environment is contained in separate documentation.
 
 
 # Data Files
 ## SDTM Data Sources
-Source from the PhUSE CDISCPILOT01 study SDTM files here: https://github.com/phuse-org/phuse-scripts/blob/master/data/sdtm/cdiscpilot01/
+SDTM XPT data files were obtained from the PhUSE CDISCPILOT01 study, here: https://github.com/phuse-org/phuse-scripts/blob/master/data/sdtm/cdiscpilot01/
 
-Data augmentation for development and testing occurs in files named with xxxx_impute.R, so data created during conversion will not be an exact match with the original .XPT source files.
+Data augmentation for development and testing occurs in files named with \<domain name\>_impute.R. As a result, data files created during conversion will not be an exact match with the original .XPT source files.
 
 **DM**, **SUPPDM**,  and **VS** are the initial domains used in the project. This may expand if the project timeline permits.
 
 ### Configuration Files
 * **prefixes.csv**
-    - List of prefixes either currently in use or planned. Includes the prefix name, namespace, and description. Any commas in the description field must have the entire text in quotes.
-
+    - List of prefixes either currently in use or planned. Includes the prefix name, namespace, and description. Any commas in the description field must have the entire text in quotes. So in other words, avoiding commas in the description field is a good idea.
+ 
 ### RDF Files
 * **cdiscpilot01.ttl**
-    - Data file containing clinical study results for a subset of patients. As of July 2017, this is the only file created by the R Script conversion of the SDTM domains. 
+    - Data file containing clinical study results for a subset of patients. Instance data is manually added to the .ttl file as needed for testing and development. The file **cdiscpilot01-R.ttl** is created by converting XPT source data. THe two files are comared to ensure the ontology instances match those created by the data conversion process in R. As of July 2017, cdiscpilot01-R.ttl is the only file created by the R Script conversio n of the SDTM domains. 
 
 * **cdiscpilot01-protocol.ttl**
     - Protocol information for the pilot study. Includes arm resources and custom analyses. Protocol-specific items are added to the cdiscpilot01-protocol.ttl file which is customized for each study.  
-Later development may include the addition of classes like "Protocol-Specified Activity", "Planned Activity", "Scheduled Activity", "Performed Activity", etc.. They are not currently needed for this project and can be derived as owl:Restriction(s) based on the properties of the Activity. For example, a Protocol Specified Activity is any Defined Activity that is associated with a Start Rule; A Planned Activity, is an instance of a Protocol Specified Activity that is associated with a Subject, ....etc. [Note: This items are also of importance to the PhUSE "Protocol as RDF" project.
+Later development may include the addition of classes like "Protocol-Specified Activity", "Planned Activity", "Scheduled Activity", "Performed Activity", etc.. They are not currently needed for this project and can be derived as owl:Restriction(s) based on the properties of the Activity. For example, a Protocol Specified Activity is any Defined Activity that is associated with a Start Rule; A Planned Activity, is an instance of a Protocol Specified Activity that is associated with a Subject, ....etc. [Note: These items are also of importance to the PhUSE "Protocol as RDF" project.
 
 * **code.ttl**
     - All standard terms needed for pilot study
@@ -44,10 +44,10 @@ Later development may include the addition of classes like "Protocol-Specified A
     - Mini study ontology in RDF/OWL. Used to generate the SDTM domains in the prototype (currently DM DMSUPP and VS data)
 
 * **study.ttl**
-    - Generic study schema, not associated with any particular protocol.study.ttl is the starting point for each new study and contains the items needed to derive the blank case report form and the DEFINE file.
+    - Generic study schema, not associated with any particular protocol. study.ttl is the starting point for each new study and contains the items needed to derive the blank case report form and the DEFINE file.
 
 * **sdtm-cdisc01.ttl**
-    - Links cdiscpilot01local.ttl with study.ttl for round-tripping the data back to the SDTM standard.
+    - Links cdiscpilot01.ttl with study.ttl for round-tripping the data back to the SDTM standard.
 
 # R Scripts
 

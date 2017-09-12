@@ -9,7 +9,7 @@
 # NOTE: No value creation, only recoding. Original values retained in DF
 #       Coded values cannot have spaces or special characters.
 #       SDTM numeric codes and others set MANUALLY
-# TODO: Clean up code, convert many of the assignments to use of dplyr MUTATE
+# TODO: Clean up code, convert many of th assignments to use of dplyr MUTATE
 ################################################################################
 # Create vstestOrder for numbering the test within each usubjid, vstestcd, 
 #   sorted by date (vsdtc)
@@ -214,10 +214,20 @@ for (i in 1:nrow(vs)){
   vs[i,"vsorres_Label"] <- paste0(vs[i,"vsorres"], " ", vs[i,"vsorresu"])
 }
 
-
-# Create the VS result fragment vsorres_Frag
+# vsorres_Frag
+#   Note how both dataCol and fragPrefix are same value here, but not in next fnt call.
 vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vsorres", 
-      fragPrefixCol="vstestCatOutcome", numSort=TRUE)    
+      fragPrefixName="vsorres", numSort=TRUE)    
+
+#vs$vstestSDTMCode_Frag 
+#  Frag number is based on the original order in the source file, not on the sorted result
+#  values. So xxxx.C25298_1 is the first systolic BP value in the source file, not the
+#  lowest SYSBP value. This is unlike BloodPressureOutcome_n, which uses SORTED values to 
+#  create the outcome URIs.
+
+vs <-vs[with(vs, order(vsseq)), ]  # return to original df order. TODO: build this into the function as a sort option!
+vs <- createFragOneColByCat(domainName=vs, byCol="vstestSDTMCode", dataCol="vsorres",
+       fragPrefixName="vstestSDTMCode", numSort=FALSE)    
 
 # vstestSDTMCode
 # Create a tempId as a counter within the categores of vstestSDTMCode, sorted
@@ -242,17 +252,9 @@ vs <- mutate(vs,
   #  " ", vs[i, "testNumber"]), id="Title")
 
 
-
-
-
-#TESTING HERE
-vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
-
-
 # Pick off the number after the _  from vsorres_Frag and make it part of the label
 # TODO: Need new approach. The number should relate to the person and the result for that type of test
 #   within that person+test.  P1 SBP 2 is the second SBP for Person 1!
-
 vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extract(vs$vsorres_Frag, "\\d+$"))
 
   
