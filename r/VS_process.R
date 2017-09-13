@@ -147,10 +147,6 @@ ddply(vs, .(personNum, vsseq), function(vs)
       paste0(prefix.RDF,"type" ),
       paste0(prefix.CD01P, vs$vstestSDTMCodeType_Frag)
     )
-    
-    
-    
-    
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
       paste0(prefix.RDF,"type" ),
@@ -161,16 +157,20 @@ ddply(vs, .(personNum, vsseq), function(vs)
       paste0(prefix.SKOS,"prefLabel" ),
       paste0(vs$testRes_Label)
     )
-    
-    
-    
-    
-    
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
       paste0(prefix.STUDY,"hasCode" ),
       paste0(prefix.SDTMTERM, vs$vstestSDTMCode)
     )
+    add.data.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+      paste0(prefix.STUDY,"derivedFlag" ),
+      paste0(vs$vsdrvfl)
+    )
+    
+    
+    
+    
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
       paste0(prefix.STUDY,"hasPlannedDate" ),

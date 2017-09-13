@@ -240,7 +240,8 @@ vs$vstestcd_Label <- paste0('P', vs$personNum, " ", vs$vstestcd, " ", vs$testNum
 
 vs <- mutate(vs,
   testRes_Label = stri_trans_general(
-    paste0("P", personNum, " ", visit, " ", vstest, " ", testNumber), id="Title")
+    #DEL paste0("P", personNum, " ", visit, " ", vstest, " ", testNumber), id="Title")
+    paste0("P", personNum, " ", visit, " ", vstest, " ", vstestOrder), id="Title")
 )
 
 
