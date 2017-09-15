@@ -28,6 +28,10 @@
 code:timepoint-PT_STANDING
   skos:prefLabel "PATIENT STANDING"^^xsd:string ;
 .
+cdiscs:dataElementRole
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "data element type"^^xsd:string ;
+.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C100130.C73428>
   skos:prefLabel "TWIN, DIZYGOTIC"^^xsd:string ;
 .
@@ -1577,6 +1581,104 @@ sdtm:SDTMComponent
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SDTMComponent"^^xsd:string ;
 .
+sdtm:SDTMDefineDomain
+  rdf:type owl:Class ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:orderBy (
+          [
+            rdf:type sp:Asc ;
+            sp:expression [
+                sp:varName "ordinal"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:resultVariables (
+          [
+            sp:varName "VARIABLE"^^xsd:string ;
+          ]
+          [
+            sp:varName "LABEL"^^xsd:string ;
+          ]
+          [
+            sp:varName "TYPE"^^xsd:string ;
+          ]
+          [
+            sp:varName "ROLE"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMDefineRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFVariable ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "VARIABLE"^^xsd:string ;
+              ] ;
+            sp:predicate mms:dataElementName ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "LABEL"^^xsd:string ;
+              ] ;
+            sp:predicate mms:dataElementLabel ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TYPE"^^xsd:string ;
+              ] ;
+            sp:predicate mms:dataElementType ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ordinal"^^xsd:string ;
+              ] ;
+            sp:predicate mms:ordinal ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "rl"^^xsd:string ;
+              ] ;
+            sp:predicate cdiscs:dataElementRole ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ROLE"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "rl"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "SDTMDefine domain"^^xsd:string ;
+  rdfs:subClassOf sdtm:DefineComponent ;
+.
 sdtm:SDTMDefineRecord
   rdf:type owl:Class ;
   spin:rule [
@@ -1662,15 +1764,24 @@ sdtm:SDTMDefineRecord
           ]
           [
             sp:object [
-                sp:varName "ROLE"^^xsd:string ;
+                sp:varName "rl"^^xsd:string ;
               ] ;
             sp:predicate cdiscs:dataElementRole ;
             sp:subject [
                 sp:varName "var"^^xsd:string ;
               ] ;
           ]
+          [
+            sp:object [
+                sp:varName "ROLE"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "rl"^^xsd:string ;
+              ] ;
+          ]
         ) ;
-      rdfs:comment "generates a Define record"^^xsd:string ;
+      rdfs:comment "generates a Define record (in development)"^^xsd:string ;
     ] ;
   rdfs:subClassOf sdtm:DefineComponent ;
   skos:altLabel ""^^xsd:string ;
@@ -4565,27 +4676,6 @@ sdtm:SUPPDM_Domain
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SUPPDM Domain"^^xsd:string ;
 .
-sdtm:Type
-  rdf:type owl:Class ;
-  rdfs:label "Type"^^xsd:string ;
-  rdfs:subClassOf sdtm:DefineTerminology ;
-.
-sdtm:Type_Integer
-  rdf:type sdtm:Type ;
-  skos:prefLabel "integer"^^xsd:string ;
-.
-sdtm:Type_date
-  rdf:type sdtm:Type ;
-  skos:prefLabel "date"^^xsd:string ;
-.
-sdtm:Type_datetime
-  rdf:type sdtm:Type ;
-  skos:prefLabel "datetime"^^xsd:string ;
-.
-sdtm:Type_text
-  rdf:type sdtm:Type ;
-  skos:prefLabel "text"^^xsd:string ;
-.
 sdtm:VS_Domain
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -4749,7 +4839,6 @@ sdtm:hasDFSequence
 sdtm:hasDFType
   rdf:type owl:ObjectProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
-  rdfs:range sdtm:Type ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Type"^^xsd:string ;
 .

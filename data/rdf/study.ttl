@@ -72,6 +72,13 @@ code:AnatomicLocation
       owl:onProperty code:hasPermissibleOutcome ;
     ] ;
 .
+code:AssumeBodyPosition
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:BodyPosition ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
 code:BloodPressure
   owl:equivalentClass [
       rdf:type owl:Restriction ;
@@ -83,18 +90,30 @@ code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:allValuesFrom code:Ethnicity ;
+      owl:allValuesFrom study:AgeOutcome ;
+      owl:onProperty code:hasAge ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:EthnicOutcome ;
       owl:onProperty study:ethnicity ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:allValuesFrom code:Race ;
+      owl:allValuesFrom study:RaceOutcome ;
       owl:onProperty study:race ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:allValuesFrom code:Sex ;
+      owl:allValuesFrom study:SexOutcome ;
       owl:onProperty study:sex ;
+    ] ;
+.
+code:Rule
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:RuleOutcome ;
+      owl:onProperty study:outcome ;
     ] ;
 .
 code:RuleOutcome_1
@@ -103,45 +122,99 @@ code:RuleOutcome_1
 code:RuleOutcome_2
   rdf:type study:RuleOutcome ;
 .
+code:RuleOutcome_3
+  rdf:type study:RuleOutcome ;
+.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C16576>
+  rdf:type study:SexOutcome ;
   rdfs:label "F"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C17998>
+  rdf:type study:SexOutcome ;
   rdfs:label "U"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C20197>
+  rdf:type study:SexOutcome ;
   rdfs:label "M"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C45908>
+  rdf:type study:SexOutcome ;
   rdfs:label "UNDIFFERENTIATED"^^xsd:string ;
 .
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459>
+  rdf:type study:EthnicOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17998>
+  rdf:type study:EthnicOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C41222>
+  rdf:type study:EthnicOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C43234>
+  rdf:type study:EthnicOutcome ;
+.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206>
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:TemperatureOutcome ;
       owl:onProperty study:outcome ;
     ] ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208>
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:WeightOutcome ;
       owl:onProperty study:outcome ;
     ] ;
 .
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298>
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:BloodPressureOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299>
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:BloodPressureOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347>
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:HeightOutcome ;
       owl:onProperty study:outcome ;
     ] ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676>
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:PulseOutcome ;
       owl:onProperty study:outcome ;
     ] ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166>
+  rdf:type study:BodyPosition ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167>
+  rdf:type study:BodyPosition ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C16352>
+  rdf:type study:RaceOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41219>
+  rdf:type study:RaceOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41259>
+  rdf:type study:RaceOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41260>
+  rdf:type study:RaceOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41261>
+  rdf:type study:RaceOutcome ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl>
   rdf:type owl:Ontology ;
@@ -497,6 +570,11 @@ study:AssumeBodyPosition
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Assume a specific body position"^^xsd:string ;
   rdfs:subClassOf study:Intervention ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:BodyPosition ;
+      owl:onProperty study:outcome ;
+    ] ;
   skos:definition "An Intervention whose intent is to observe the Person s body position and change it to the desired body position, usually in preparation for another intervention."^^xsd:string ;
 .
 study:BeginInstant
@@ -524,6 +602,11 @@ study:BloodPressureOutcome
   rdfs:subClassOf study:VitalSignOutcome ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Blood pressure outcome"^^xsd:string ;
+.
+study:BodyPosition
+  rdf:type owl:Class ;
+  rdfs:label "Body position"^^xsd:string ;
+  rdfs:subClassOf study:InterventionOutcome ;
 .
 study:CRFComponent
   rdf:type owl:Class ;
@@ -618,6 +701,11 @@ study:Entity
   rdfs:subClassOf study:StudyComponent ;
   skos:definition ""^^xsd:string ;
 .
+study:EthnicOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Ethnic outcome"^^xsd:string ;
+  rdfs:subClassOf study:ObservationOutcome ;
+.
 study:Event
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -666,6 +754,11 @@ study:Indication
 study:InformedConsent
   rdf:type owl:Class ;
   rdfs:subClassOf study:AdministrativeActivity ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:InformedConsentOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Informed consent"^^xsd:string ;
 .
@@ -897,11 +990,21 @@ study:PulseOutcome
   rdfs:label "Pulse or Heart Rate outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;
 .
+study:RaceOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Race outcome"^^xsd:string ;
+  rdfs:subClassOf study:ObservationOutcome ;
+.
 study:Randomization
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Randomization"^^xsd:string ;
   rdfs:subClassOf study:Allocation ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:RandomizationOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
   skos:definition ""^^xsd:string ;
 .
 study:RandomizationOutcome
@@ -944,6 +1047,11 @@ study:Rule
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Rule"^^xsd:string ;
   rdfs:subClassOf study:Analysis ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:RuleOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
   skos:definition ""^^xsd:string ;
 .
 study:RuleOutcome
@@ -957,6 +1065,11 @@ study:ScheduledActivity
   rdfs:label "Scheduled activity"^^xsd:string ;
   rdfs:subClassOf study:Activity ;
   skos:definition "An activity that is or was scheduled to occur on a Subject at a specific date/time"^^xsd:string ;
+.
+study:SexOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Sex outcome"^^xsd:string ;
+  rdfs:subClassOf study:ObservationOutcome ;
 .
 study:Site
   rdf:type owl:Class ;
@@ -1262,7 +1375,7 @@ study:bodyPosition
   rdfs:range code:BodyPosition ;
   skos:definition ""^^xsd:string ;
 .
-study:crfOrigin
+study:crfLocation
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:StudyComponent ;
   rdfs:range study:Origin ;
@@ -1420,6 +1533,7 @@ study:engagesIn
   skos:definition "relates an Party with  an Activity with which the Entity is involved, either actively or passively"^^xsd:string ;
 .
 study:ethnicity
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:domain code:DemographicDataCollection ;
   rdfs:range code:Ethnicity ;
@@ -1733,6 +1847,7 @@ study:laterality
   skos:definition ""^^xsd:string ;
 .
 study:outcome
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:Activity ;
   rdfs:range study:ActivityOutcome ;
@@ -1795,6 +1910,7 @@ study:seq
   skos:definition "relates a resource to a sequence number used for sorting similar resources"^^xsd:string ;
 .
 study:sex
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:domain code:DemographicDataCollection ;
   rdfs:range code:Sex ;

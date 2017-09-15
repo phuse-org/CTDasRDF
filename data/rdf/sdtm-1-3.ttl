@@ -88,8 +88,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ACN"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "24"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -101,8 +101,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ACNOTH"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "25"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -114,8 +114,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--BDSYCD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:positiveInteger"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "18"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--BODSYS> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -128,8 +128,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--BODSYS"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "17"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -141,8 +141,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--CAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "11"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.GroupingQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -154,8 +154,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--CONTRT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "38"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -167,8 +167,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DECOD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "5"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.SynonymQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--TERM> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -181,8 +181,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--HLGT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "9"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--TERM> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -195,8 +195,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--HLGTCD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:positiveInteger"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "10"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--HLGT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -209,8 +209,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--HLT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "7"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--TERM> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -223,8 +223,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--HLTCD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:positiveInteger"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "8"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--HLT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -237,8 +237,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LLT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "3"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--TERM> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -251,8 +251,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LLTCD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:positiveInteger"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "4"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--LLT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -265,8 +265,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LOC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "21"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -278,8 +278,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--MODIFY"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "2"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.SynonymQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--TERM> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -292,8 +292,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--OCCUR"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "14"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -305,8 +305,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--OUT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "29"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -318,8 +318,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--PATT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "28"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -331,8 +331,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--PRESP"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "13"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--TERM> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -345,8 +345,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--PTCD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:positiveInteger"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "6"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--DECOD> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -359,8 +359,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--REASND"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "16"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -372,8 +372,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--REL"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "26"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -385,8 +385,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--RELNST"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "27"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -398,8 +398,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SCAN"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "30"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -411,8 +411,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SCAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "12"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.GroupingQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -424,8 +424,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SCONG"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "31"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -437,8 +437,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SDISAB"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "32"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -450,8 +450,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SDTH"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "33"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -463,8 +463,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SER"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "23"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -476,8 +476,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SEV"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "22"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -489,8 +489,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SHOSP"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "34"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -502,8 +502,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SLIFE"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "35"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -515,8 +515,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SMIE"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "37"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -528,8 +528,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SOC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "19"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--TERM> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -542,8 +542,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SOCCD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:positiveInteger"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "20"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--SOC> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -556,8 +556,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SOD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "36"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -569,8 +569,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "15"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -582,8 +582,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TERM"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "1"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TopicVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -595,8 +595,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TOX"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "39"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Event.--TOXGR> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -609,8 +609,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TOXGR"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "40"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -622,8 +622,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ACPTFL"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "41"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -635,8 +635,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ANTREG"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "26"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--SPEC> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -649,8 +649,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--BLFL"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "36"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -662,8 +662,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--BODSYS"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "7"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -675,8 +675,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--CAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "4"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.GroupingQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -688,8 +688,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--CSTATE"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "35"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -701,8 +701,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DIR"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "31"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--LOC> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -715,8 +715,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DRVFL"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "38"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -728,8 +728,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DTHREL"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "45"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "false"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -741,8 +741,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--EVAL"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "39"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -754,8 +754,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--EVALID"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "40"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--EVAL> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -768,8 +768,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--EXCLFL"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "47"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "false"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -781,8 +781,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--FAST"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "37"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -794,8 +794,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "30"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--LOC> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -808,8 +808,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LEAD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "34"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -821,8 +821,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LLOQ"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "46"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESC> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESN> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
@@ -836,8 +836,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LOC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "29"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -849,8 +849,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LOINC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "24"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.SynonymQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--TESTCD> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -863,8 +863,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--METHOD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "33"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -876,8 +876,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--MODIFY"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "3"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.SynonymQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--ORRES> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -890,8 +890,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--NAM"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "23"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -903,8 +903,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--NRIND"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "18"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--ORRES> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -917,8 +917,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ORNRHI"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "11"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--ORRES> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -931,8 +931,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ORNRLO"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "10"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--ORRES> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -945,8 +945,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ORRES"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "8"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ResultQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -958,8 +958,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ORRESU"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "9"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--ORRES> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -972,8 +972,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--PORTOT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "32"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--LOC> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -986,8 +986,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--POS"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "6"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -999,8 +999,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--REASEX"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "48"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "false"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1012,8 +1012,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--REASND"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "21"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1025,8 +1025,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--RESCAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "19"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--ORRES> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1039,8 +1039,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SCAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "5"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.GroupingQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1052,8 +1052,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SEV"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "44"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1065,8 +1065,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SPCCND"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "27"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1078,8 +1078,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SPCUFL"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "28"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1091,8 +1091,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SPEC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "25"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1104,8 +1104,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "20"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1117,8 +1117,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STNRC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "17"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESC> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESN> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
@@ -1132,8 +1132,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STNRHI"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "16"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESC> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESN> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
@@ -1147,8 +1147,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STNRLO"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "15"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESC> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESN> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
@@ -1162,8 +1162,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STRESC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "12"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ResultQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1175,8 +1175,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STRESN"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "13"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ResultQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1188,8 +1188,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STRESU"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "14"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESC> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESN> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
@@ -1203,8 +1203,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TEST"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "2"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.SynonymQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--TESTCD> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1217,8 +1217,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TESTCD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "1"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TopicVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1230,8 +1230,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TOX"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "42"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--TOXGR> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1244,8 +1244,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TOXGR"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "43"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Finding.--STRESC> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1258,8 +1258,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--XFN"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "22"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1271,8 +1271,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--OBJ"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "1"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "false"^^xsd:boolean ;
 .
@@ -1284,8 +1284,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--GRPID"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "6"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1297,8 +1297,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LNKGRP"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "10"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1310,8 +1310,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LNKID"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "9"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1323,8 +1323,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--REFID"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "7"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1336,8 +1336,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SEQ"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "5"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1349,8 +1349,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SPID"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "8"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1362,8 +1362,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "DOMAIN"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "2"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1375,8 +1375,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "POOLID"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "4"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1388,8 +1388,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "STUDYID"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "1"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1401,8 +1401,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "USUBJID"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "3"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1414,8 +1414,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ADJ"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "26"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1427,8 +1427,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--CAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "4"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.GroupingQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1440,8 +1440,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--CLAS"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "11"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--TRT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1454,8 +1454,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--CLASCD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "12"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--TRT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1468,8 +1468,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DECOD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "3"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.SynonymQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--TRT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1482,8 +1482,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DOSE"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "13"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1495,8 +1495,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DOSFRM"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "16"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSE> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSTOT> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSTXT> ;
@@ -1511,8 +1511,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DOSFRQ"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "17"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSE> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSTOT> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSTXT> ;
@@ -1527,8 +1527,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DOSRGM"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "19"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSE> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSTOT> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSTXT> ;
@@ -1543,8 +1543,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DOSTOT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "18"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1556,8 +1556,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DOSTXT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "14"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1569,8 +1569,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DOSU"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "15"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSE> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSTOT> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--DOSTXT> ;
@@ -1585,8 +1585,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--INDC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "10"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1598,8 +1598,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LOC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "22"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1611,8 +1611,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--LOT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "21"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1624,8 +1624,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--MODIFY"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "2"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.SynonymQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--TRT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1638,8 +1638,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--OCCUR"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "7"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1651,8 +1651,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--PRESP"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "6"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--TRT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1665,8 +1665,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--REASND"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "9"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1678,8 +1678,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ROUTE"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "20"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--TRT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1692,8 +1692,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--SCAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "5"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.GroupingQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1705,8 +1705,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STAT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "8"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1718,8 +1718,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TRT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "1"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TopicVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1731,8 +1731,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TRTV"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "23"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1744,8 +1744,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--VAMT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "24"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1757,8 +1757,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--VAMTU"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "25"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:qualifies <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#DataElement.Intervention.--VAMT> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
@@ -1771,8 +1771,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DETECT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "35"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "false"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1784,8 +1784,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DTC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:dateTime"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "16"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1797,8 +1797,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DUR"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:duration"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "22"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1810,8 +1810,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--DY"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:integer"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "19"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1823,8 +1823,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ELTM"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:duration"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "25"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1836,8 +1836,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ENDTC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:dateTime"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "18"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1849,8 +1849,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ENDY"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:integer"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "21"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1862,8 +1862,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ENRF"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "29"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1875,8 +1875,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ENRTPT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "33"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1888,8 +1888,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--ENTPT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "34"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1901,8 +1901,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--EVLINT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:duration"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "30"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1914,8 +1914,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--RFTDTC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:dateTime"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "27"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1927,8 +1927,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STDTC"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:dateTime"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "17"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1940,8 +1940,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STDY"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:integer"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "20"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1953,8 +1953,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STRF"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "28"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1966,8 +1966,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STRTPT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "31"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1979,8 +1979,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--STTPT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "32"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -1992,8 +1992,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TPT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "23"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -2005,8 +2005,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TPTNUM"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "24"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -2018,8 +2018,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "--TPTREF"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "26"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -2031,8 +2031,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "EPOCH"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "15"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -2044,8 +2044,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "TAETORD"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "14"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -2057,8 +2057,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "VISIT"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:string"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "12"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -2070,8 +2070,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "VISITDY"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:integer"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "13"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .
@@ -2083,8 +2083,8 @@
   <http://rdf.cdisc.org/mms#dataElementName> "VISITNUM"^^xsd:string ;
   <http://rdf.cdisc.org/mms#dataElementType> "xsd:decimal"^^xsd:anySimpleType ;
   <http://rdf.cdisc.org/mms#ordinal> "11"^^xsd:positiveInteger ;
+  cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
-  cdiscs:dataElementType <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Numeric> ;
   cdiscs:supportedBySDTMIG "true"^^xsd:boolean ;
   cdiscs:supportedBySEND "true"^^xsd:boolean ;
 .

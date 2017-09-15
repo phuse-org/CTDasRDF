@@ -14,6 +14,7 @@
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
+@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://www.semanticallc.com/swt/sdtm-cd01p>
@@ -28,4 +29,145 @@ sdtm-cd01p:SDTMDefineRecord_DM_1
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.STUDYID> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_10
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFPENDTC> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_11
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHDTC> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_12
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHFL> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_13
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SITEID> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_14
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.STUDYID> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_15
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGE> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_16
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGEU> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_17
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SEX> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_18
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RACE> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_19
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ETHNIC> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_2
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM "^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DOMAIN> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_20
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARMCD> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_21
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARM> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_22
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARMCD> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_23
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARM> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_24
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.COUNTRY> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_25
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DMDTC> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_26
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DMDY> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_3
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM "^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.USUBJID> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_4
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SUBJID> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_5
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFSTDTC> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_6
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFENDTC> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_7
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXSTDTC> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_8
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXENDTC> ;
+.
+sdtm-cd01p:SDTMDefineRecord_DM_9
+  rdf:type sdtm:SDTMDefineRecord_DM ;
+  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFICDTC> ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#InformedConsentOutcome_1>
+  rdf:type study:InformedConsentOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#InformedConsentOutcome_2>
+  rdf:type study:InformedConsentOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#InformedConsentOutcome_3>
+  rdf:type study:InformedConsentOutcome ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#RandomizationBAL3>
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:RandomizationOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
 .

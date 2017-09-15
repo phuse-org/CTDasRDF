@@ -155,7 +155,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:activityStatus code:ActivityStatus_1 ;
   study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
   study:derivedFlag "N"^^xsd:string ;
-  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
   study:outcome cdiscpilot01:BloodPressureOutcome_5 ;
@@ -168,9 +168,9 @@ cdiscpilot01:BloodPressureOutcome_6
   skos:definition ""^^xsd:string ;
   skos:prefLabel "P1 Screening 1 Systolic Blood Pressure 2"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
-  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
   study:outcome cdiscpilot01:BloodPressureOutcome_4 ;
@@ -183,13 +183,13 @@ cdiscpilot01:BloodPressureOutcome_6
   skos:definition ""^^xsd:string ;
   skos:prefLabel "P1 Screening 1 Systolic Blood Pressure 3"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
+  study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
-  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+  study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
   study:outcome cdiscpilot01:BloodPressureOutcome_6 ;
-  study:seq "87"^^xsd:float ;
+  study:seq "88"^^xsd:float ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_1>
   rdf:type cd01p:VisitScreening1BloodPressure ;

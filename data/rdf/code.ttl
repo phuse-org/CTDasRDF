@@ -590,6 +590,10 @@ code:RuleOutcome_2
   rdf:type code:RuleOutcome ;
   code:hasValue "false"^^xsd:boolean ;
 .
+code:RuleOutcome_3
+  rdf:type code:RuleOutcome ;
+  code:hasValue "NOT-APPLICABLE"^^xsd:string ;
+.
 code:Sex
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
