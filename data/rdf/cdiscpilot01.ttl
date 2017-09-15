@@ -25,6 +25,9 @@
 <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm#hasEntity>
   rdfs:range study:HumanStudySubject ;
 .
+cd01p:Site_1
+  study:hasInvestigator cdiscpilot01:Investigator_1 ;
+.
 cd01p:Study_1
   study:hasStudyParticipant cdiscpilot01:Person_1 ;
   study:hasStudyParticipant cdiscpilot01:Person_2 ;
@@ -572,7 +575,7 @@ cdiscpilot01:Person_1
   study:deathFlag "Y"^^xsd:string ;
   study:hasLifespan cdiscpilot01:Lifespan_1 ;
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_1 ;
-  study:hasSite cdiscpilot01:Site_1 ;
+  study:hasSite cd01p:Site_1 ;
   study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_1 ;
   study:hasSubjectID "1015"^^xsd:string ;
   study:hasUniqueSubjectID "01-701-1015"^^xsd:string ;
@@ -596,7 +599,7 @@ cdiscpilot01:Person_2
   study:actualArm cd01p:ArmPlacebo ;
   study:hasLifespan cdiscpilot01:Lifespan_2 ;
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_2 ;
-  study:hasSite cdiscpilot01:Site_1 ;
+  study:hasSite cd01p:Site_1 ;
   study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_2 ;
   study:hasSubjectID "1023"^^xsd:string ;
   study:hasUniqueSubjectID "01-701-1023"^^xsd:string ;
@@ -613,7 +616,7 @@ cdiscpilot01:Person_3
   study:actualArm cd01p:ArmXanomelineHigh ;
   study:hasLifespan cdiscpilot01:Lifespan_3 ;
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_3 ;
-  study:hasSite cdiscpilot01:Site_1 ;
+  study:hasSite cd01p:Site_1 ;
   study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_3 ;
   study:hasSubjectID "1028"^^xsd:string ;
   study:hasUniqueSubjectID "01-701-1028"^^xsd:string ;
@@ -781,135 +784,6 @@ cdiscpilot01:ReferenceInterval_3
   time:hasBeginning cdiscpilot01:Date_17 ;
   time:hasEnd cdiscpilot01:Date_21 ;
 .
-cdiscpilot01:Site_1
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-701"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasInvestigator cdiscpilot01:Investigator_1 ;
-  study:hasSiteID "701"^^xsd:string ;
-.
-cdiscpilot01:Site_10
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-710"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "710"^^xsd:string ;
-.
-cdiscpilot01:Site_11
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-711"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "711"^^xsd:string ;
-.
-cdiscpilot01:Site_12
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-712"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "712"^^xsd:string ;
-.
-cdiscpilot01:Site_13
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-713"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "713"^^xsd:string ;
-.
-cdiscpilot01:Site_14
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-714"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "714"^^xsd:string ;
-.
-cdiscpilot01:Site_15
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-715"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "715"^^xsd:string ;
-.
-cdiscpilot01:Site_16
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-716"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "716"^^xsd:string ;
-.
-cdiscpilot01:Site_2
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-702"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "702"^^xsd:string ;
-.
-cdiscpilot01:Site_3
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-703"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "703"^^xsd:string ;
-.
-cdiscpilot01:Site_4
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-704"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "704"^^xsd:string ;
-.
-cdiscpilot01:Site_5
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-705"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "705"^^xsd:string ;
-.
-cdiscpilot01:Site_6
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-706"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "706"^^xsd:string ;
-.
-cdiscpilot01:Site_7
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-707"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "707"^^xsd:string ;
-.
-cdiscpilot01:Site_8
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-708"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "708"^^xsd:string ;
-.
-cdiscpilot01:Site_9
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-709"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID "709"^^xsd:string ;
-.
 cdiscpilot01:StartRuleLying5_1
   rdf:type code:StartRuleLying5 ;
   rdfs:comment ""^^xsd:string ;
@@ -917,11 +791,6 @@ cdiscpilot01:StartRuleLying5_1
   skos:prefLabel "P1 Screening 1 Rule Lying 5 Min"^^xsd:string ;
   code:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1 ;
   study:hasCode code:StartRuleLying5 ;
-.
-cdiscpilot01:StartRuleNone_1
-  rdf:type cd01p:StartRuleNone ;
-  skos:prefLabel "Start rule none 1"^^xsd:string ;
-  study:hasCode cd01p:StartRuleNone ;
 .
 cdiscpilot01:StartRuleStanding1_1
   rdf:type code:StartRuleStanding1 ;
@@ -1003,17 +872,4 @@ cdiscpilot01:WeightOutcome_1
   skos:prefLabel "119.0 LB"^^xsd:string ;
   code:hasUnit code:Unit_8 ;
   code:hasValue "119.0"^^xsd:float ;
-.
-code:RuleOutcome_1
-  skos:prefLabel "Rule outcome TRUE"^^xsd:string ;
-.
-code:RuleOutcome_2
-  skos:prefLabel "Rule outcome FALSE"^^xsd:string ;
-.
-study:StartRuleDefault_1
-  study:activityStatus code:ActivityStatus_1 ;
-.
-study:StartRuleInformedConsentGranted
-  skos:definition "Target activity starts after informed consent has been granted. "^^xsd:string ;
-  skos:prefLabel "RULE INFORMED CONSENT GRANTED"^^xsd:string ;
 .

@@ -1109,6 +1109,7 @@ study:StartRuleDefault_1
   rdfs:label "Start rule default 1"^^xsd:string ;
   skos:definition "Activity may start at any time at the discretion of the Investigator"^^xsd:string ;
   skos:prefLabel "Start rule default 1"^^xsd:string ;
+  study:activityStatus code:ActivityStatus_1 ;
   study:outcome code:RuleOutcome_1 ;
 .
 study:StartRuleInformedConsentGranted
@@ -1120,6 +1121,8 @@ study:StartRuleInformedConsentGranted
       owl:hasValue code:InformedConsentOutcome_1 ;
       owl:onProperty code:hasPrereqExpectedOutcome ;
     ] ;
+  skos:definition "Target activity starts after informed consent has been granted. "^^xsd:string ;
+  skos:prefLabel "RULE INFORMED CONSENT GRANTED"^^xsd:string ;
   code:hasPrereqExpectedOutcome code:InformedConsentOutcome_1 ;
   code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   study:hasPrerequisite study:InformedConsent ;
@@ -1658,6 +1661,7 @@ study:hasPSActivityGroup
   rdfs:domain study:Study ;
   rdfs:label "has protocol specified activity"^^xsd:string ;
   rdfs:range study:ProtocolSpecifiedActivity ;
+  rdfs:subPropertyOf study:hasSubActivity ;
   skos:definition "relates a study with a group of protocol specified activities, such as Glucose test at the Screening visit. The glucose test is performed multiple times, once for each Subject"^^xsd:string ;
 .
 study:hasPSSubactivityGroup

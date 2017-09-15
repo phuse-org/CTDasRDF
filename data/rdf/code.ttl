@@ -584,10 +584,12 @@ code:RuleOutcome
 .
 code:RuleOutcome_1
   rdf:type code:RuleOutcome ;
+  skos:prefLabel "Rule outcome TRUE"^^xsd:string ;
   code:hasValue "true"^^xsd:boolean ;
 .
 code:RuleOutcome_2
   rdf:type code:RuleOutcome ;
+  skos:prefLabel "Rule outcome FALSE"^^xsd:string ;
   code:hasValue "false"^^xsd:boolean ;
 .
 code:RuleOutcome_3
