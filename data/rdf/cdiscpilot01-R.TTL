@@ -72,12 +72,12 @@ cdiscpilot01:InformedConsentAdult_4
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_4 ;
         study:hasCode              code:InformedConsentAdult ;
         study:hasStartRule         study:StartRuleDefault_1 ;
-        study:outcome              code:InformedConsentOutcome_4 .
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_4
         a                           study:EnrolledSubject ;
         skos:prefLabel              "Person 4"^^xsd:string ;
-        study:actualArm             cd01p:ArmXanomelin_Lo ;
+        study:actualArm             cd01p:ArmXanomelineLow ;
         study:deathFlag             ""^^xsd:string ;
         study:hasLifespan           cdiscpilot01:Lifespan_4 ;
         study:hasReferenceInterval  cdiscpilot01:ReferenceInterval_4 ;
@@ -244,7 +244,7 @@ cdiscpilot01:RandomizationBAL3_4
         skos:prefLabel        "Randomization 4"^^xsd:string ;
         study:activityStatus  code:ActivityStatus_1 ;
         study:hasCode         code:RandomizationBAL3 ;
-        study:outcome         cd01p:ArmXanomelin_Lo .
+        study:outcome         cd01p:ArmXanomelinLow .
 
 cdiscpilot01:Lifespan_6
         a                  study:Lifespan ;
@@ -340,7 +340,7 @@ cdiscpilot01:InformedConsentAdult_2
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_2 ;
         study:hasCode              code:InformedConsentAdult ;
         study:hasStartRule         study:StartRuleDefault_1 ;
-        study:outcome              code:InformedConsentOutcome_2 .
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_2
         a                           study:EnrolledSubject ;
@@ -495,12 +495,12 @@ cdiscpilot01:InformedConsentAdult_5
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_5 ;
         study:hasCode              code:InformedConsentAdult ;
         study:hasStartRule         study:StartRuleDefault_1 ;
-        study:outcome              code:InformedConsentOutcome_5 .
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_5
         a                           study:EnrolledSubject ;
         skos:prefLabel              "Person 5"^^xsd:string ;
-        study:actualArm             cd01p:ArmXanomelin_Hi ;
+        study:actualArm             cd01p:ArmXanomelineHigh ;
         study:deathFlag             ""^^xsd:string ;
         study:hasLifespan           cdiscpilot01:Lifespan_5 ;
         study:hasReferenceInterval  cdiscpilot01:ReferenceInterval_5 ;
@@ -641,7 +641,7 @@ cdiscpilot01:RandomizationBAL3_5
         skos:prefLabel        "Randomization 5"^^xsd:string ;
         study:activityStatus  code:ActivityStatus_1 ;
         study:hasCode         code:RandomizationBAL3 ;
-        study:outcome         cd01p:ArmXanomelin_Hi .
+        study:outcome         cd01p:ArmXanomelineHigh .
 
 cdiscpilot01:ProductAdministrationInterval_5
         a                  study:ProductAdministrationInterval ;
@@ -670,7 +670,7 @@ cdiscpilot01:sdtm-graph
         dcterms:description  "The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. \n  Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data. Only select observations from \n  source XPT are present, including a subset of VS results."^^xsd:string ;
         dcterms:title        "Clinical Trials Data as RDF (CTDasRDF)."^^xsd:string ;
         bibo:status          "Under Construction/incomplete: Blood pressure, Pulse, Weight. Only 1 patient and a subset of obs. from that patient."^^xsd:string ;
-        pav:createdOn        "2017-09-13T10:55:58-04:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-09-15T10:39:55-04:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.3 Platform:x86_64-w64-mingw32 with scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "data/rdf/cdiscpilot01-R.TTL" .
@@ -733,12 +733,12 @@ cdiscpilot01:InformedConsentAdult_3
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_3 ;
         study:hasCode              code:InformedConsentAdult ;
         study:hasStartRule         study:StartRuleDefault_1 ;
-        study:outcome              code:InformedConsentOutcome_3 .
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_3
         a                           study:EnrolledSubject ;
         skos:prefLabel              "Person 3"^^xsd:string ;
-        study:actualArm             cd01p:ArmXanomelin_Hi ;
+        study:actualArm             cd01p:ArmXanomelineHigh ;
         study:deathFlag             ""^^xsd:string ;
         study:hasLifespan           cdiscpilot01:Lifespan_3 ;
         study:hasReferenceInterval  cdiscpilot01:ReferenceInterval_3 ;
@@ -904,7 +904,7 @@ cdiscpilot01:InformedConsentAdult_6
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_6 ;
         study:hasCode              code:InformedConsentAdult ;
         study:hasStartRule         study:StartRuleDefault_1 ;
-        study:outcome              code:InformedConsentOutcome_6 .
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_6
         a                           study:EnrolledSubject ;
@@ -947,7 +947,7 @@ cdiscpilot01:RandomizationBAL3_3
         skos:prefLabel        "Randomization 3"^^xsd:string ;
         study:activityStatus  code:ActivityStatus_1 ;
         study:hasCode         code:RandomizationBAL3 ;
-        study:outcome         cd01p:ArmXanomelin_Hi .
+        study:outcome         cd01p:ArmXanomelineHigh .
 
 cdiscpilot01:Lifespan_5
         a                  study:Lifespan ;

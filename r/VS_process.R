@@ -167,10 +167,7 @@ ddply(vs, .(personNum, vsseq), function(vs)
       paste0(prefix.STUDY,"derivedFlag" ),
       paste0(vs$vsdrvfl)
     )
-    
-    
-    
-    
+  
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
       paste0(prefix.STUDY,"hasPlannedDate" ),

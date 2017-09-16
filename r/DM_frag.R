@@ -22,16 +22,16 @@ dm$ageu_Frag <- sapply(dm$ageu,function(x) {
 dm$armcd_Frag <- sapply(dm$armcd,function(x) {
     switch(as.character(x),
         'Pbo'      = 'ArmPlacebo',
-        'Xan_Hi'   = 'ArmXanomelin_Hi',
-        'Xan_Lo'   = 'ArmXanomelin_Lo',
+        'Xan_Hi'   = 'ArmXanomelineHigh',
+        'Xan_Lo'   = 'ArmXanomelinLow',
         'Scrnfail' = 'ArmScreenFailure',
         as.character(x) ) } )
 
 dm$actarmcd_Frag <- sapply(dm$actarmcd,function(x) {
     switch(as.character(x),
         'Pbo'      = 'ArmPlacebo',
-        'Xan_Hi'   = 'ArmXanomelin_Hi',
-        'Xan_Lo'   = 'ArmXanomelin_Lo',
+        'Xan_Hi'   = 'ArmXanomelineHigh',
+        'Xan_Lo'   = 'ArmXanomelineLow',
         'Scrnfail' = 'ArmScreenFailure',
         as.character(x) ) } )
 #------------------------------------------------------------------------------
@@ -71,6 +71,12 @@ dm$race_Frag  <- sapply(dm$race,function(x) {
         'NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER' = 'C74457.C41219',
         'WHITE'                                     = 'C74457.C41261',
         as.character(x) ) } )
+
+
+#--Informed Consent Outcome
+# code: InformedConsentOutcome_2  : Informed Consent not granted:  informed consent date MISSING
+# code: InformedConsentOutcome_1  : Informed Consent granted:  date value
+dm$informedConsentOut_Frag <- with(dm, ifelse(is.na(rficdtc), "InformedConsentOutcome_2", "InformedConsentOutcome_1" )) 
 
 #  Fragment Creation by function call ------------------------------------------
 dm <- addDateFrag(dm, "rfstdtc")  
