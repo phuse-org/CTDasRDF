@@ -744,6 +744,11 @@ study:HumanSubject
   skos:definition """A Person of interest for participation in a Study. 45 CFR 46 defines a human subject as “a living individual about whom an investigator...conducting research obtains:
 Data through intervention or interaction with the individual, or Identifiable private information.”"""^^xsd:string ;
 .
+study:Identifier
+  rdf:type owl:Class ;
+  rdfs:label "Identifier"^^xsd:string ;
+  rdfs:subClassOf study:Entity ;
+.
 study:Indication
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -828,6 +833,11 @@ study:Investigator
   rdfs:label "Investigator"^^xsd:string ;
   rdfs:subClassOf study:ResearchStaff ;
   skos:definition ""^^xsd:string ;
+.
+study:InvestigatorIdentifier
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Identifier ;
+  skos:prefLabel "Investigator identifier"^^xsd:string ;
 .
 study:LaboratoryObservation
   rdf:type owl:Class ;
@@ -1078,6 +1088,11 @@ study:Site
   rdfs:subClassOf study:Organization ;
   skos:definition ""^^xsd:string ;
 .
+study:SiteIdentifier
+  rdf:type owl:Class ;
+  rdfs:label "Site identifier"^^xsd:string ;
+  rdfs:subClassOf study:Identifier ;
+.
 study:Sponsor
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -1181,6 +1196,11 @@ study:StudyComponent
   rdfs:label "Study component"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
+study:StudyIdentifier
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Identifier ;
+  skos:prefLabel "Study identifier"^^xsd:string ;
+.
 study:StudyParticipationBegin
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -1208,6 +1228,11 @@ study:Subcategory
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Subcategory"^^xsd:string ;
 .
+study:SubjectIdentifier
+  rdf:type owl:Class ;
+  rdfs:label "Subject identifier"^^xsd:string ;
+  rdfs:subClassOf study:Identifier ;
+.
 study:Substance
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
@@ -1218,6 +1243,11 @@ study:TemperatureOutcome
   rdf:type owl:Class ;
   rdfs:label "Temperature outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;
+.
+study:UniqueSubjectIdentifier
+  rdf:type owl:Class ;
+  rdfs:label "Unique subject identifier"^^xsd:string ;
+  rdfs:subClassOf study:Identifier ;
 .
 study:UnscheduledVisit
   rdf:type owl:Class ;
@@ -1625,11 +1655,11 @@ study:hasInvestigator
   skos:definition ""^^xsd:string ;
 .
 study:hasInvestigatorID
-  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Investigator ;
   rdfs:label "has investigator ID"^^xsd:string ;
-  rdfs:range xsd:string ;
+  rdfs:range study:InvestigatorIdentifier ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1730,11 +1760,11 @@ study:hasSite
   skos:definition "The organization (e.g. hospital, clinic) where a Human Study Subject goes to participate in many Study Activities."^^xsd:string ;
 .
 study:hasSiteID
-  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Site ;
   rdfs:label "has site ID"^^xsd:string ;
-  rdfs:range xsd:string ;
+  rdfs:range study:SiteIdentifier ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1761,11 +1791,11 @@ study:hasStudyActivity
   skos:definition "Relates a Study with an Activity conducted as part of that Study"^^xsd:string ;
 .
 study:hasStudyID
-  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Study ;
   rdfs:label "has study ID"^^xsd:string ;
-  rdfs:range xsd:string ;
+  rdfs:range study:StudyIdentifier ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1807,20 +1837,20 @@ study:hasSubcategory
   skos:definition ""^^xsd:string ;
 .
 study:hasSubjectID
-  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has unique subject ID"^^xsd:string ;
-  rdfs:range xsd:string ;
+  rdfs:range study:SubjectIdentifier ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
 study:hasUniqueSubjectID
-  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
   rdfs:label "has unique subject ID"^^xsd:string ;
-  rdfs:range xsd:string ;
+  rdfs:range study:UniqueSubjectIdentifier ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .

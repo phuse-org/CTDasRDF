@@ -1952,11 +1952,20 @@ sdtm:SDTMRecord
           ]
           [
             sp:object [
-                sp:varName "STUDYID"^^xsd:string ;
+                sp:varName "stuid"^^xsd:string ;
               ] ;
             sp:predicate study:hasStudyID ;
             sp:subject [
                 sp:varName "study"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "STUDYID"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "stuid"^^xsd:string ;
               ] ;
           ]
         ) ;
@@ -2001,7 +2010,7 @@ sdtm:SDTMSubjectLevelRecord
           ]
           [
             sp:object [
-                sp:varName "SUBJID"^^xsd:string ;
+                sp:varName "sid"^^xsd:string ;
               ] ;
             sp:predicate study:hasSubjectID ;
             sp:subject [
@@ -2010,11 +2019,29 @@ sdtm:SDTMSubjectLevelRecord
           ]
           [
             sp:object [
-                sp:varName "USUBJID"^^xsd:string ;
+                sp:varName "SUBJID"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "sid"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "usid"^^xsd:string ;
               ] ;
             sp:predicate study:hasUniqueSubjectID ;
             sp:subject [
                 sp:varName "subject"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "USUBJID"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "usid"^^xsd:string ;
               ] ;
           ]
         ) ;
@@ -2606,11 +2633,20 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "INVID"^^xsd:string ;
+                sp:varName "iid"^^xsd:string ;
               ] ;
             sp:predicate study:hasInvestigatorID ;
             sp:subject [
                 sp:varName "inv"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "INVID"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "iid"^^xsd:string ;
               ] ;
           ]
         ) ;
@@ -3074,11 +3110,20 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "SITEID"^^xsd:string ;
+                sp:varName "stid"^^xsd:string ;
               ] ;
             sp:predicate study:hasSiteID ;
             sp:subject [
                 sp:varName "site"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "SITEID"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "stid"^^xsd:string ;
               ] ;
           ]
         ) ;

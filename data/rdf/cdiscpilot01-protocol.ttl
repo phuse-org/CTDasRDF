@@ -62,13 +62,85 @@ cd01p:Category_1
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "CAT1"^^xsd:string ;
 .
+cd01p:SiteIdentifier_1
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "701"^^xsd:string ;
+.
+cd01p:SiteIdentifier_10
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "710"^^xsd:string ;
+.
+cd01p:SiteIdentifier_11
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "711"^^xsd:string ;
+.
+cd01p:SiteIdentifier_12
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "712"^^xsd:string ;
+.
+cd01p:SiteIdentifier_13
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "713"^^xsd:string ;
+.
+cd01p:SiteIdentifier_14
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "714"^^xsd:string ;
+.
+cd01p:SiteIdentifier_15
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "715"^^xsd:string ;
+.
+cd01p:SiteIdentifier_16
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "716"^^xsd:string ;
+.
+cd01p:SiteIdentifier_17
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "717"^^xsd:string ;
+.
+cd01p:SiteIdentifier_18
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "718"^^xsd:string ;
+.
+cd01p:SiteIdentifier_2
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "702"^^xsd:string ;
+.
+cd01p:SiteIdentifier_3
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "703"^^xsd:string ;
+.
+cd01p:SiteIdentifier_4
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "704"^^xsd:string ;
+.
+cd01p:SiteIdentifier_5
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "705"^^xsd:string ;
+.
+cd01p:SiteIdentifier_6
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "706"^^xsd:string ;
+.
+cd01p:SiteIdentifier_7
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "707"^^xsd:string ;
+.
+cd01p:SiteIdentifier_8
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "708"^^xsd:string ;
+.
+cd01p:SiteIdentifier_9
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "709"^^xsd:string ;
+.
 cd01p:Site_1
   rdf:type study:Site ;
   rdfs:comment ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-701"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "701"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_1 ;
 .
 cd01p:Site_10
   rdf:type study:Site ;
@@ -76,7 +148,7 @@ cd01p:Site_10
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-710"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "710"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_10 ;
 .
 cd01p:Site_11
   rdf:type study:Site ;
@@ -84,7 +156,7 @@ cd01p:Site_11
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-711"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "711"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_11 ;
 .
 cd01p:Site_12
   rdf:type study:Site ;
@@ -92,7 +164,7 @@ cd01p:Site_12
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-712"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "712"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_12 ;
 .
 cd01p:Site_13
   rdf:type study:Site ;
@@ -100,7 +172,7 @@ cd01p:Site_13
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-713"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "713"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_13 ;
 .
 cd01p:Site_14
   rdf:type study:Site ;
@@ -108,7 +180,7 @@ cd01p:Site_14
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-714"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "714"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_14 ;
 .
 cd01p:Site_15
   rdf:type study:Site ;
@@ -116,7 +188,7 @@ cd01p:Site_15
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-715"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "715"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_15 ;
 .
 cd01p:Site_16
   rdf:type study:Site ;
@@ -124,7 +196,17 @@ cd01p:Site_16
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-716"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "716"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_16 ;
+.
+cd01p:Site_17
+  rdf:type study:Site ;
+  skos:prefLabel "Site 17"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_17 ;
+.
+cd01p:Site_18
+  rdf:type study:Site ;
+  skos:prefLabel "Site 18"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_18 ;
 .
 cd01p:Site_2
   rdf:type study:Site ;
@@ -132,7 +214,7 @@ cd01p:Site_2
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-702"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "702"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_2 ;
 .
 cd01p:Site_3
   rdf:type study:Site ;
@@ -140,7 +222,7 @@ cd01p:Site_3
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-703"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "703"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_3 ;
 .
 cd01p:Site_4
   rdf:type study:Site ;
@@ -148,7 +230,7 @@ cd01p:Site_4
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-704"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "704"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_4 ;
 .
 cd01p:Site_5
   rdf:type study:Site ;
@@ -156,7 +238,7 @@ cd01p:Site_5
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-705"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "705"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_5 ;
 .
 cd01p:Site_6
   rdf:type study:Site ;
@@ -164,7 +246,7 @@ cd01p:Site_6
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-706"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "706"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_6 ;
 .
 cd01p:Site_7
   rdf:type study:Site ;
@@ -172,7 +254,7 @@ cd01p:Site_7
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-707"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "707"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_7 ;
 .
 cd01p:Site_8
   rdf:type study:Site ;
@@ -180,7 +262,7 @@ cd01p:Site_8
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-708"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "708"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_8 ;
 .
 cd01p:Site_9
   rdf:type study:Site ;
@@ -188,11 +270,15 @@ cd01p:Site_9
   skos:definition ""^^xsd:string ;
   skos:prefLabel "site-709"^^xsd:string ;
   study:hasCountry code:Country_1 ;
-  study:hasSiteID "709"^^xsd:string ;
+  study:hasSiteID cd01p:SiteIdentifier_9 ;
 .
 cd01p:Sponsor_1
   rdf:type study:Sponsor ;
   skos:prefLabel "CLINICAL STUDY SPONSOR"^^xsd:string ;
+.
+cd01p:StudyIdentifier_1
+  rdf:type study:StudyIdentifier ;
+  skos:prefLabel "CDISCPILOT01"^^xsd:string ;
 .
 cd01p:Study_1
   rdf:type study:Study ;
@@ -219,7 +305,7 @@ cd01p:Study_1
   study:hasPSActivityGroup custom:VisitWk4 ;
   study:hasPSActivityGroup custom:VisitWk6 ;
   study:hasPSActivityGroup custom:VisitWk8 ;
-  study:hasStudyID "CDISCPILOT01"^^xsd:string ;
+  study:hasStudyID cd01p:StudyIdentifier_1 ;
 .
 cd01p:Subcategory_1
   rdf:type study:Subcategory ;

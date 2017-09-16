@@ -536,12 +536,16 @@ cdiscpilot01:InformedConsentInterval_3
   skos:definition ""^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_16 ;
 .
+cdiscpilot01:InvestigatorIdentifier_1
+  rdf:type study:InvestigatorIdentifier ;
+  skos:prefLabel "123"^^xsd:string ;
+.
 cdiscpilot01:Investigator_1
   rdf:type study:Investigator ;
   rdfs:comment ""^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "Investigator 123"^^xsd:string ;
-  study:hasInvestigatorID "123"^^xsd:string ;
+  study:hasInvestigatorID cdiscpilot01:InvestigatorIdentifier_1 ;
   study:hasLastName "Jones"^^xsd:string ;
 .
 cdiscpilot01:Lifespan_1
@@ -577,8 +581,8 @@ cdiscpilot01:Person_1
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_1 ;
   study:hasSite cd01p:Site_1 ;
   study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_1 ;
-  study:hasSubjectID "1015"^^xsd:string ;
-  study:hasUniqueSubjectID "01-701-1015"^^xsd:string ;
+  study:hasSubjectID cdiscpilot01:SubjectIdentifier_1 ;
+  study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_1 ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_1 ;
   study:participatesIn cdiscpilot01:InformedConsentAdult_1 ;
   study:participatesIn cdiscpilot01:PopFlagCmpltr16Wk_1 ;
@@ -601,8 +605,8 @@ cdiscpilot01:Person_2
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_2 ;
   study:hasSite cd01p:Site_1 ;
   study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_2 ;
-  study:hasSubjectID "1023"^^xsd:string ;
-  study:hasUniqueSubjectID "01-701-1023"^^xsd:string ;
+  study:hasSubjectID cdiscpilot01:SubjectIdentifier_2 ;
+  study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_2 ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_2 ;
   study:participatesIn cdiscpilot01:InformedConsentAdult_2 ;
   study:participatesIn cdiscpilot01:ProductAdministration_2 ;
@@ -618,8 +622,8 @@ cdiscpilot01:Person_3
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_3 ;
   study:hasSite cd01p:Site_1 ;
   study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_3 ;
-  study:hasSubjectID "1028"^^xsd:string ;
-  study:hasUniqueSubjectID "01-701-1028"^^xsd:string ;
+  study:hasSubjectID cdiscpilot01:SubjectIdentifier_3 ;
+  study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_3 ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_3 ;
   study:participatesIn cdiscpilot01:InformedConsentAdult_3 ;
   study:participatesIn cdiscpilot01:ProductAdministration_3 ;
@@ -832,11 +836,35 @@ cdiscpilot01:StudyParticipationInterval_3
   time:hasBeginning cdiscpilot01:Date_16 ;
   time:hasEnd cdiscpilot01:Date_22 ;
 .
+cdiscpilot01:SubjectIdentifier_1
+  rdf:type study:SubjectIdentifier ;
+  skos:prefLabel "1015"^^xsd:string ;
+.
+cdiscpilot01:SubjectIdentifier_2
+  rdf:type study:SubjectIdentifier ;
+  skos:prefLabel "1023"^^xsd:string ;
+.
+cdiscpilot01:SubjectIdentifier_3
+  rdf:type study:SubjectIdentifier ;
+  skos:prefLabel "1028"^^xsd:string ;
+.
 cdiscpilot01:TemperatureOutcome_1
   rdf:type study:TemperatureOutcome ;
   skos:prefLabel "96.9 F"^^xsd:string ;
   code:hasUnit code:Unit_6 ;
   code:hasValue "96.9"^^xsd:float ;
+.
+cdiscpilot01:UniqueSubjectIdentifier_1
+  rdf:type study:UniqueSubjectIdentifier ;
+  skos:prefLabel "01-701-1015"^^xsd:string ;
+.
+cdiscpilot01:UniqueSubjectIdentifier_2
+  rdf:type study:UniqueSubjectIdentifier ;
+  skos:prefLabel "01-701-1023"^^xsd:string ;
+.
+cdiscpilot01:UniqueSubjectIdentifier_3
+  rdf:type study:UniqueSubjectIdentifier ;
+  skos:prefLabel "01-701-1028"^^xsd:string ;
 .
 cdiscpilot01:UnscheduledVisit_1
   rdf:type study:UnscheduledVisit ;
