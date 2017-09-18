@@ -404,7 +404,6 @@ custom:PlaceboProduct_1
 .
 custom:PopFlagCmpltr16Wk
   rdf:type owl:Class ;
-  rdf:type study:PopulationFlag ;
   rdfs:subClassOf study:PopulationFlag ;
   skos:altLabel "Completers of Week 16 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT16"^^xsd:string ;
@@ -412,7 +411,6 @@ custom:PopFlagCmpltr16Wk
 .
 custom:PopFlagCmpltr24Wk
   rdf:type owl:Class ;
-  rdf:type study:PopulationFlag ;
   rdfs:subClassOf study:PopulationFlag ;
   skos:altLabel "Completers of Week 24 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT24"^^xsd:string ;
@@ -420,7 +418,6 @@ custom:PopFlagCmpltr24Wk
 .
 custom:PopFlagCmpltr8Wk
   rdf:type owl:Class ;
-  rdf:type study:PopulationFlag ;
   rdfs:subClassOf study:PopulationFlag ;
   skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT8"^^xsd:string ;
@@ -428,7 +425,6 @@ custom:PopFlagCmpltr8Wk
 .
 custom:PopFlagEff
   rdf:type owl:Class ;
-  rdf:type study:PopulationFlag ;
   rdfs:subClassOf study:PopulationFlag ;
   skos:altLabel "Eficacy Population Flag"^^xsd:string ;
   skos:prefLabel "EFFICACY"^^xsd:string ;
@@ -436,7 +432,6 @@ custom:PopFlagEff
 .
 custom:PopFlagItt
   rdf:type owl:Class ;
-  rdf:type study:PopulationFlag ;
   rdfs:subClassOf study:PopulationFlag ;
   skos:altLabel "Intent To Treat Population Flag"^^xsd:string ;
   skos:prefLabel "ITT"^^xsd:string ;
@@ -444,7 +439,6 @@ custom:PopFlagItt
 .
 custom:PopFlagSaf
   rdf:type owl:Class ;
-  rdf:type study:PopulationFlag ;
   rdfs:subClassOf study:PopulationFlag ;
   skos:altLabel "Safety Population Flag"^^xsd:string ;
   skos:prefLabel "SAFETY"^^xsd:string ;

@@ -627,44 +627,44 @@ cdiscpilot01:Person_3
   study:participatesIn cdiscpilot01:RandomizationBAL3_3 ;
 .
 cdiscpilot01:PopFlagCmpltr16Wk_1
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr16Wk> ;
+  rdf:type custom:PopFlagCmpltr16Wk ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr16Wk> ;
+  study:hasCode custom:PopFlagCmpltr16Wk ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagCmpltr24Wk_1
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr24Wk> ;
+  rdf:type custom:PopFlagCmpltr24Wk ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr24Wk> ;
+  study:hasCode custom:PopFlagCmpltr24Wk ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagCmpltr8Wk_1
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr8Wk> ;
+  rdf:type custom:PopFlagCmpltr8Wk ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagCmpltr8Wk> ;
+  study:hasCode custom:PopFlagCmpltr8Wk ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagEff_1
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagEff> ;
+  rdf:type custom:PopFlagEff ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagEff> ;
+  study:hasCode custom:PopFlagEff ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagItt_1
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagItt> ;
+  rdf:type custom:PopFlagItt ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagItt> ;
+  study:hasCode custom:PopFlagItt ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagSaf_1
-  rdf:type <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagSaf> ;
+  rdf:type custom:PopFlagSaf ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#PopFlagSaf> ;
+  study:hasCode custom:PopFlagSaf ;
   study:hasPerformer cd01p:Sponsor_1 ;
   study:outcome "true"^^xsd:boolean ;
 .
