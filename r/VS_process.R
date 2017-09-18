@@ -162,12 +162,15 @@ ddply(vs, .(personNum, vsseq), function(vs)
       paste0(prefix.STUDY,"hasCode" ),
       paste0(prefix.SDTMTERM, vs$vstestSDTMCode)
     )
-    add.data.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-      paste0(prefix.STUDY,"derivedFlag" ),
-      paste0(vs$vsdrvfl)
-    )
-  
+ 
+# APPEARS IN LATER CODE??       
+#    if (! as.character(vs$vsdrvfl) == "") {
+#      add.data.triple(cdiscpilot01,
+#        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+#        paste0(prefix.STUDY,"derivedFlag" ),
+#        paste0(vs$vsdrvfl)
+#      )
+#    }  
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
       paste0(prefix.STUDY,"hasPlannedDate" ),

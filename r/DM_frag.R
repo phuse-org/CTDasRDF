@@ -89,6 +89,10 @@ dm <- addDateFrag(dm, "dthdtc")
 dm <- addDateFrag(dm, "dmdtc")  
 dm <- addDateFrag(dm, "brthdate") 
 
+#NEW 18OCT
+dm <- createFragOneDomain(domainName=dm, processColumns="subjid",  fragPrefix="SubjectIdentifier" )
+dm <- createFragOneDomain(domainName=dm, processColumns="usubjid",  fragPrefix="UniqueSubjectIdentifier" )
+
 dm <- createFragOneDomain(domainName=dm, processColumns="siteid",  fragPrefix="Site" )
 dm <- createFragOneDomain(domainName=dm, processColumns="invid",   fragPrefix="Investigator" )
 dm <- createFragOneDomain(domainName=dm, processColumns="age",     fragPrefix="AgeOutcome"  ) 

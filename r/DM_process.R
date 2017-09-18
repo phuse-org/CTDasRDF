@@ -93,29 +93,51 @@ rm(u_Site) # Clean up
 
 # Process each row of domain ----
 #   Triples created from each row, for each Person_<n>
-# Loop through each row, creating triples for each Person_<n>
 ddply(dm, .(subjid), function(dm)
 {
   # ** Person_(n) ----
-  # Create var to shorten code during repeats in following lines
-  person <-  paste0("Person_", dm$personNum)
+  person <- paste0("Person_", dm$personNum)
 
   add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.RDF,"type" ),
     paste0(prefix.STUDY, "EnrolledSubject")
   )
+
+##TW WIP 18SEP  
+  ## Need to build out subtriples for each
   # SubjectID
-  add.data.triple(cdiscpilot01,
+  add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.STUDY,"hasSubjectID" ),
-    paste0(dm$subjid), type="string"
+    paste0(prefix.CDISCPILOT01, dm$subjid_Frag)
   )
-  add.data.triple(cdiscpilot01,
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$subjid_Frag),
+      paste0(prefix.RDF,"type" ),
+      paste0(prefix.STUDY, "SubjectIdentifier")
+    )
+    add.data.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$subjid_Frag),
+      paste0(prefix.SKOS,"prefLabel" ),
+      paste0(dm$subjid)
+    )
+  #Unique Subject ID  
+  add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.STUDY,"hasUniqueSubjectID" ),
-    paste0(dm$usubjid), type="string"
+    paste0(prefix.CDISCPILOT01, dm$usubjid_Frag)
   )
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$usubjid_Frag),
+      paste0(prefix.RDF,"type" ),
+      paste0(prefix.STUDY, "UniqueSubjectIdentifier")
+    )
+    add.data.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$usubjid_Frag),
+      paste0(prefix.SKOS,"prefLabel" ),
+      paste0(dm$usubjid)
+    )
   # Treatment arm 
   add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
@@ -132,7 +154,7 @@ ddply(dm, .(subjid), function(dm)
   add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.STUDY,"hasSite" ),
-    paste0(prefix.CDISCPILOT01, dm$siteid_Frag) 
+    paste0(prefix.CD01P, dm$siteid_Frag) 
   )
   # Person label
   add.data.triple(cdiscpilot01,
@@ -162,7 +184,7 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.TIME,"hasBeginning" ),
       paste0(prefix.CDISCPILOT01, dm$rfstdtc_Frag)
     )
-    #---- Assign Date Type
+    # Type to Date triples
     assignDateType(dm$rfstdtc, dm$rfstdtc_Frag, "ReferenceBegin")
 
     add.triple(cdiscpilot01,
@@ -170,7 +192,7 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.TIME,"hasEnd" ),
       paste0(prefix.CDISCPILOT01, dm$rfendtc_Frag)
     )
-    #---- Assign Date Type
+    # Type to Date triples
     assignDateType(dm$rfendtc, dm$rfendtc_Frag, "ReferenceEnd")
 
   # Lifespan Interval
