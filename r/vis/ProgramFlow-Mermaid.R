@@ -14,8 +14,8 @@
 ## @knitr processFlow
 library(DiagrammeR)
 # Example submitted on Github as issue: Flag nodes not receiving styles.
-mermaid("
-graph TB
+# mermaid("
+DiagrammeR(diagram =" graph TB
     idStart>Start]
     idMain1(1. buildRDF-Driver.R)
     idMain2(2. buildRDF-Driver.R)
@@ -35,7 +35,7 @@ graph TB
 
     idPrefixes(prefixes.csv)
     idImports(imports.csv)
-    idNonInstance(nonInstance.R)
+    idNonInstance(prefixesAndImports.R)
     idMeta(graphMeta.R)
     idMiscF(misc_F.R)
     idFntreadXPT((readXPT))
@@ -55,7 +55,9 @@ graph TB
     idDMFrag(DM_Frag.R)
     idVSFrag(VS_Frag.R)
 
+
     idDMProcess(DM_process.R)
+    idSUPPDMxpt((SUPPDM.xpt))
     idSUPPDMProcess(SUPPDM_process.R)
     idSUPPDMImpute(SUPPDM_impute.R)
     idVSProcess(VS_process.R)
@@ -105,6 +107,7 @@ graph TB
     idMain10-->idMain11
     idSUPPDMProcess--SOURCED_BY-->idMain11
 
+    idSUPPDMxpt--READ_BY-->idSUPPDMProcess
     idSUPPDMImpute--SOURCED_BY-->idSUPPDMProcess
 
     idMain11-->idMain12
@@ -117,7 +120,6 @@ graph TB
     idMain14--WRITES-->idOutMain
     idRiot--VALIDATES-->idOutMain
     idOutMain-->idFin
-
 
   classDef csv      fill:white,stroke:#8282ee,stroke-width:3px;
   classDef xpt      fill:#bed6d0, stroke:#003263,stroke-width:3px, font-color:white;
@@ -139,13 +141,22 @@ graph TB
   class idMain1,idMain2,idMain3,idMain4,idMain5,idMain6,idMain7,idMain7,idMain8,idMain9,idMain10,idMain11,idMain12,idMain13,idMain14 main;
   class idFntreadXPT,idFntaddPersonId,idFntassignDateType,idFntaddDateFrag,idFntcreateFragOneDomain,idFntcreateFragOneColByCat,idFntCreateDateDict fnt;
   class idMeta,idNonInstance,idMiscF,idDMProcess,idPSDM,idVSProcess sourced;
-  class idDMxpt,idVSxpt xpt;
+  class idDMxpt,idVSxpt,idSUPPDMxpt xpt;
   class idDMImpute,idVSImpute,idSUPPDMImpute RImpute;
   class idCreateFrag,idDMFrag,idVSFrag RFrag;
   class idDMProcess,idSUPPDMProcess,idVSProcess RProcess;
   class idOutMain outTTL;
   class idPrefixes,idImports csv;
-  class idRiot validate;
+  class idRiot validate;",
+  type = "mermaid"
+  )
 
-")
+
+
+#graph %>%
+#  export_graph(
+#    file_name = "C:/temp/Test.svg",
+#    file_type = "SVG"
+#  )
+    
 
