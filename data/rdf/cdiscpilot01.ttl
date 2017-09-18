@@ -134,7 +134,6 @@ cdiscpilot01:BloodPressureOutcome_6
   study:activityStatus code:ActivityStatus_1 ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
-  study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
   study:outcome cdiscpilot01:TemperatureOutcome_1 ;
   study:seq "128"^^xsd:float ;
 .
@@ -145,7 +144,6 @@ cdiscpilot01:BloodPressureOutcome_6
   study:activityStatus code:ActivityStatus_1 ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
-  study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
   study:outcome cdiscpilot01:WeightOutcome_1 ;
   study:seq "142"^^xsd:float ;
 .
@@ -265,7 +263,6 @@ cdiscpilot01:BloodPressureOutcome_6
   study:activityStatus code:ActivityStatus_1 ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
-  study:hasStartRule cdiscpilot01:StartRuleNone_1 ;
   study:outcome cdiscpilot01:HeightOutcome_1 ;
   study:seq "43"^^xsd:float ;
 .
