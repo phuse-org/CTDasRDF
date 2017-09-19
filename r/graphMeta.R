@@ -1,23 +1,18 @@
-#########################################################################
-# NAME  : graphMeta.R 
-# AUTH  : Tim W.
-# DESCR : Create the RDF Triples for graph metadata 
-#       
-# NOTES : 
-# IN    : Input of raw data with minor massaging occurs in buildRDF-Driver.R
-# OUT   : 
-# REQ   : 
-# TODO  : Clean up the code so dates are only written to the file when the value
+#______________________________________________________________________________
+# FILE : graphMeta.R 
+# DESC: Create the RDF Triples for graph metadata 
+# REQ :
+# SRC :
+# IN  : Input of raw data with minor massaging occurs in buildRDF-Driver.R
+# OUT : 
+# NOTE: 
+# TODO: Clean up the code so dates are only written to the file when the value
 #      is non-missing. Now writes N/A, which is only really good for 
 #      debugging little else.
-###############################################################################
+#      Move the studyID triples from here to DM or elsewhere. See "Part 2"
+#_____________________________________________________________________________
 
-#------------------------------------------------------------------------------
-# Create triples 
-#   TODO: add is as "a" Study when creating the code list!
-#----------------------- Data -------------------------------------------------
-
-#-- Part 1:  Graph Metadata
+# Graph Metadata ----
 add.data.triple(cdiscpilot01,
   paste0(prefix.CDISCPILOT01, "sdtm-graph"),
   paste0(prefix.RDFS, "label"),
@@ -80,8 +75,8 @@ add.data.triple(cdiscpilot01,
 #  paste0(inFilename)
 #)
 
-#-- Part 2: For values created only once:
-#TODO: MOVE THIS TO THE CODELIST R SCRIPT.
+# Study ID and label 
+#   TODO: Move to DM or elswhere?
 #  Value is hard coded here. Make it data driven.
 add.triple(cdiscpilot01,
   paste0(prefix.CDISCPILOT01, "study-CDISCPILOT01"),

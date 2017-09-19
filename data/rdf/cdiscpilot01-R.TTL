@@ -31,13 +31,11 @@ cdiscpilot01:PopFlagEff_6
         study:outcome         "true" .
 
 cdiscpilot01:C67153.C25208_1
-        a                     cd01p:VisitScreening1Weight , sdtmterm:C67153.C25208 ;
+        a                     sdtmterm:C67153.C25208 , cd01p:VisitScreening1Weight ;
         skos:prefLabel        "P1 Screening 1 Weight 1" ;
         study:activityStatus  code:ActivityStatus_1 ;
-        study:derivedFlag     "N"^^xsd:string ;
         study:hasCode         sdtmterm:C67153.C25208 ;
         study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleNone_1 ;
         study:outcome         cdiscpilot01:WeightOutcome_1 ;
         study:seq             "142"^^xsd:int .
 
@@ -52,7 +50,6 @@ cdiscpilot01:C67153.C49676_2
         skos:prefLabel        "P1 Screening 1 Pulse Rate 2" ;
         study:activityStatus  code:ActivityStatus_1 ;
         study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
         study:hasCode         sdtmterm:C67153.C49676 ;
         study:hasPlannedDate  cdiscpilot01:Date_19 ;
         study:hasStartRule    cdiscpilot01:StartRuleStanding1_1 ;
@@ -154,16 +151,24 @@ cdiscpilot01:UniqueSubjectIdentifier_3
         skos:prefLabel  "01-701-1028" .
 
 cdiscpilot01:C67153.C25298_3
-        a                     sdtmterm:C67153.C25298 , cd01p:VisitScreening1BloodPressure ;
-        skos:prefLabel        "P1 Screening 1 Systolic Blood Pressure 3" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25298 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding3_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_6 ;
-        study:seq             "88"^^xsd:int .
+        a                       sdtmterm:C67153.C25298 , cd01p:VisitScreening1BloodPressure ;
+        skos:prefLabel          "P1 Screening 1 Systolic Blood Pressure 3" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25298 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding3_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_6 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "88"^^xsd:int ;
+        study:sponsordefinedID  "236"^^xsd:string .
 
 cdiscpilot01:PopFlagEff_1
         a                     custom:PopFlagEff ;
@@ -194,17 +199,24 @@ cdiscpilot01:StartRuleLying5_1
         study:hasCode         code:StartRuleLying5 .
 
 cdiscpilot01:C67153.C25299_3
-        a                     cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
-        skos:prefLabel        "P1 Screening 1 Diastolic Blood Pressure 3" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:groupID         "GRPID1"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25299 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding3_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_1 ;
-        study:seq             "3"^^xsd:int .
+        a                       cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
+        skos:prefLabel          "P1 Screening 1 Diastolic Blood Pressure 3" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25299 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding3_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_1 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "3"^^xsd:int ;
+        study:sponsordefinedID  "235"^^xsd:string .
 
 cdiscpilot01:StudyParticipationInterval_2
         a                  study:StudyParticipationInterval ;
@@ -411,11 +423,6 @@ cdiscpilot01:StartRuleStanding3_1
         code:hasPrerequisite  cdiscpilot01:AssumeBodyPositionStanding_1 ;
         study:hasCode         code:StartRuleStanding3 .
 
-cdiscpilot01:StartRuleNone_1
-        a               code:StartRuleNone ;
-        skos:prefLabel  "Start rule none 1" ;
-        study:hasCode   code:StartRuleNone .
-
 cdiscpilot01:ProductAdministration_3
         a                          study:ProductAdministration ;
         skos:prefLabel             "Product administration 3"^^xsd:string ;
@@ -445,16 +452,24 @@ cdiscpilot01:UniqueSubjectIdentifier_1
         skos:prefLabel  "01-701-1015" .
 
 cdiscpilot01:C67153.C25298_1
-        a                     sdtmterm:C67153.C25298 , cd01p:VisitScreening1BloodPressure ;
-        skos:prefLabel        "P1 Screening 1 Systolic Blood Pressure 1" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62167 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25298 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleLying5_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_5 ;
-        study:seq             "86"^^xsd:int .
+        a                       sdtmterm:C67153.C25298 , cd01p:VisitScreening1BloodPressure ;
+        skos:prefLabel          "P1 Screening 1 Systolic Blood Pressure 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62167 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25298 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleLying5_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_5 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "86"^^xsd:int ;
+        study:sponsordefinedID  "124"^^xsd:string .
 
 cdiscpilot01:DemographicDataCollection_4
         a                     code:DemographicDataCollection ;
@@ -472,17 +487,24 @@ cdiscpilot01:Date_5  a             study:Birthdate ;
         study:dateTimeInXSDString  "1948-08-05"^^xsd:string .
 
 cdiscpilot01:C67153.C25299_1
-        a                     cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
-        skos:prefLabel        "P1 Screening 1 Diastolic Blood Pressure 1" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62167 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:groupID         "GRPID1"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25299 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleLying5_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_2 ;
-        study:seq             "1"^^xsd:int .
+        a                       cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
+        skos:prefLabel          "P1 Screening 1 Diastolic Blood Pressure 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62167 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25299 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleLying5_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_2 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "1"^^xsd:int ;
+        study:sponsordefinedID  "123"^^xsd:string .
 
 cdiscpilot01:Date_13  a            study:StudyParticipationEnd ;
         rdfs:label                 "2013-02-18"^^xsd:string ;
@@ -499,7 +521,6 @@ cdiscpilot01:C67153.C49676_3
         skos:prefLabel        "P1 Screening 1 Pulse Rate 3" ;
         study:activityStatus  code:ActivityStatus_1 ;
         study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
         study:hasCode         sdtmterm:C67153.C49676 ;
         study:hasPlannedDate  cdiscpilot01:Date_19 ;
         study:hasStartRule    cdiscpilot01:StartRuleStanding3_1 ;
@@ -702,7 +723,7 @@ cdiscpilot01:sdtm-graph
         dcterms:description  "The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. \n  Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data. Only select observations from \n  source XPT are present, including a subset of VS results."^^xsd:string ;
         dcterms:title        "Clinical Trials Data as RDF (CTDasRDF)."^^xsd:string ;
         bibo:status          "Under Construction/incomplete: Blood pressure, Pulse, Weight. Only 1 patient and a subset of obs. from that patient."^^xsd:string ;
-        pav:createdOn        "2017-09-18T10:01:37-04:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-09-19T16:14:15-04:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.3 Platform:x86_64-w64-mingw32 with scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "data/rdf/cdiscpilot01-R.TTL" .
@@ -745,7 +766,6 @@ cdiscpilot01:C67153.C49676_1
         skos:prefLabel        "P1 Screening 1 Pulse Rate 1" ;
         study:activityStatus  code:ActivityStatus_1 ;
         study:bodyPosition    sdtmterm:C71148.C62167 ;
-        study:derivedFlag     "N"^^xsd:string ;
         study:hasCode         sdtmterm:C67153.C49676 ;
         study:hasPlannedDate  cdiscpilot01:Date_19 ;
         study:hasStartRule    cdiscpilot01:StartRuleLying5_1 ;
@@ -865,16 +885,24 @@ cdiscpilot01:Site_1  a         study:Site ;
         study:hasSiteID        "701"^^xsd:string .
 
 cdiscpilot01:C67153.C25298_2
-        a                     cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25298 ;
-        skos:prefLabel        "P1 Screening 1 Systolic Blood Pressure 2" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25298 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding1_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_4 ;
-        study:seq             "87"^^xsd:int .
+        a                       cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25298 ;
+        skos:prefLabel          "P1 Screening 1 Systolic Blood Pressure 2" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25298 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding1_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25229 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_4 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "87"^^xsd:int ;
+        study:sponsordefinedID  "720"^^xsd:string .
 
 cdiscpilot01:DemographicDataCollection_5
         a                     code:DemographicDataCollection ;
@@ -898,17 +926,24 @@ cdiscpilot01:WeightOutcome_1
         code:hasValue   "119.0" .
 
 cdiscpilot01:C67153.C25299_2
-        a                     cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
-        skos:prefLabel        "P1 Screening 1 Diastolic Blood Pressure 2" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:groupID         "GRPID1"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25299 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding1_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_3 ;
-        study:seq             "2"^^xsd:int .
+        a                       cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
+        skos:prefLabel          "P1 Screening 1 Diastolic Blood Pressure 2" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25299 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding1_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25229 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_3 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "2"^^xsd:int ;
+        study:sponsordefinedID  "719"^^xsd:string .
 
 cdiscpilot01:StudyParticipationInterval_1
         a                  study:StudyParticipationInterval ;
@@ -917,13 +952,11 @@ cdiscpilot01:StudyParticipationInterval_1
         time:hasEnd        cdiscpilot01:Date_30 .
 
 cdiscpilot01:C67153.C25347_1
-        a                     cd01p:VisitScreening1Height , sdtmterm:C67153.C25347 ;
+        a                     sdtmterm:C67153.C25347 , cd01p:VisitScreening1Height ;
         skos:prefLabel        "P1 Screening 1 Height 1" ;
         study:activityStatus  code:ActivityStatus_1 ;
-        study:derivedFlag     "N"^^xsd:string ;
         study:hasCode         sdtmterm:C67153.C25347 ;
         study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleNone_1 ;
         study:outcome         cdiscpilot01:HeightOutcome_1 ;
         study:seq             "43"^^xsd:int .
 
@@ -1100,7 +1133,10 @@ cdiscpilot01:ProductAdministration_2
         study:hasActivityInterval  cdiscpilot01:ProductAdministrationInterval_2 ;
         study:hasCode              study:ProductAdministration .
 
-cdiscpilot01:NA  study:activityStatus  code:ActivityStatus_1 ;
+cdiscpilot01:NA  a            code:NA ;
+        skos:prefLabel        "P1 Screening 1 Rule NA" ;
+        code:hasPrerequisite  cdiscpilot01:NA ;
+        study:activityStatus  code:ActivityStatus_1 ;
         study:hasCode         code:NA ;
         study:hasDate         cdiscpilot01:Date_19 ;
         study:outcome         sdtmterm: .
@@ -1151,15 +1187,14 @@ cdiscpilot01:ProductAdministrationInterval_6
         time:hasEnd        cdiscpilot01:Date_14 .
 
 cdiscpilot01:C67153.C25206_1
-        a                     cd01p:VisitScreening1Temperature , sdtmterm:C67153.C25206 ;
-        skos:prefLabel        "P1 Screening 1 Temperature 1" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25206 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleNone_1 ;
-        study:outcome         cdiscpilot01:TemperatureOutcome_1 ;
-        study:seq             "128"^^xsd:int .
+        a                       sdtmterm:C67153.C25206 , cd01p:VisitScreening1Temperature ;
+        skos:prefLabel          "P1 Screening 1 Temperature 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.CC12421 ;
+        study:hasCode           sdtmterm:C67153.C25206 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:outcome           cdiscpilot01:TemperatureOutcome_1 ;
+        study:seq               "128"^^xsd:int .
 
 cdiscpilot01:PopFlagCmpltr16Wk_5
         a                     custom:PopFlagCmpltr16Wk ;

@@ -1,4 +1,4 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: DM_frag.R
 # DESC: Data recoding and URI fragment creation for values that exist in the 
 #       DM dataframe
@@ -10,7 +10,7 @@
 #       Coded values cannot have spaces or special characters.
 #       SDTM numeric codes, Country, Arm codes are set MANUALLY
 # TODO:
-################################################################################
+#______________________________________________________________________________
 
 # Other units to be added based on the data
 dm$ageu_Frag <- sapply(dm$ageu,function(x) {
@@ -34,9 +34,9 @@ dm$actarmcd_Frag <- sapply(dm$actarmcd,function(x) {
         'Xan_Lo'   = 'ArmXanomelineLow',
         'Scrnfail' = 'ArmScreenFailure',
         as.character(x) ) } )
-#------------------------------------------------------------------------------
-#  SDTM code values 
-#------------------------------------------------------------------------------
+
+#  SDTM code values ----
+
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
 # Example: Sex is coded to the SDTM Terminology graph by translating the value 
@@ -78,7 +78,7 @@ dm$race_Frag  <- sapply(dm$race,function(x) {
 # code: InformedConsentOutcome_1  : Informed Consent granted:  date value
 dm$informedConsentOut_Frag <- with(dm, ifelse(is.na(rficdtc), "InformedConsentOutcome_2", "InformedConsentOutcome_1" )) 
 
-#  Fragment Creation by function call ------------------------------------------
+#  Fragment Creation by function call ----
 dm <- addDateFrag(dm, "rfstdtc")  
 dm <- addDateFrag(dm, "rfendtc")  
 dm <- addDateFrag(dm, "rfxstdtc")  
@@ -89,10 +89,8 @@ dm <- addDateFrag(dm, "dthdtc")
 dm <- addDateFrag(dm, "dmdtc")  
 dm <- addDateFrag(dm, "brthdate") 
 
-#NEW 18OCT
 dm <- createFragOneDomain(domainName=dm, processColumns="subjid",  fragPrefix="SubjectIdentifier" )
-dm <- createFragOneDomain(domainName=dm, processColumns="usubjid",  fragPrefix="UniqueSubjectIdentifier" )
-
+dm <- createFragOneDomain(domainName=dm, processColumns="usubjid", fragPrefix="UniqueSubjectIdentifier" )
 dm <- createFragOneDomain(domainName=dm, processColumns="siteid",  fragPrefix="Site" )
 dm <- createFragOneDomain(domainName=dm, processColumns="invid",   fragPrefix="Investigator" )
 dm <- createFragOneDomain(domainName=dm, processColumns="age",     fragPrefix="AgeOutcome"  ) 

@@ -31,12 +31,12 @@ vs$vsscat   <- with(vs, ifelse(vsseq %in% c(1,2,3,86,87,88) & personNum == 1, "S
 vs$vsreasnd <- with(vs, ifelse(vsseq %in% c(1,2,3,4,5,6,86,87,88) & personNum == 1, "not applicable", "" )) 
 
 # vsspid
-vs[vs$vsseq %in% c(1), "vsspid"]  <- "123"
-vs[vs$vsseq %in% c(2), "vsspid"]  <- "719"
-vs[vs$vsseq %in% c(3), "vsspid"]  <- "235"
-vs[vs$vsseq %in% c(3), "vsspid"]  <- "124"
-vs[vs$vsseq %in% c(3), "vsspid"]  <- "720"
-vs[vs$vsseq %in% c(3), "vsspid"]  <- "236"
+vs[vs$vsseq %in% c(1),  "vsspid"]  <- "123"
+vs[vs$vsseq %in% c(2),  "vsspid"]  <- "719"
+vs[vs$vsseq %in% c(3),  "vsspid"]  <- "235"
+vs[vs$vsseq %in% c(86), "vsspid"]  <- "124"
+vs[vs$vsseq %in% c(87), "vsspid"]  <- "720"
+vs[vs$vsseq %in% c(88), "vsspid"]  <- "236"
 
 
 # vs[1:3,grep("vsstat", colnames(vs))] <- "CO"  (complete)
@@ -55,7 +55,9 @@ vs[,"vsstat"] <- "CO"
 #---- vsloc  for DIABP, SYSBP all assigned as 'ARM' for development purposes.
 # Unfactorize the  column to allow entry of a bogus data
 vs$vsloc <- as.character(vs$vsloc)
-vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
+vs$vsloc[grepl('DIABP|SYSBP', vs$vstestcd)] <- 'ARM'      
+
+
 
 # vslat
 vs[vs$vsseq %in% c(1,3,86,88), "vslat"]  <- "RIGHT"

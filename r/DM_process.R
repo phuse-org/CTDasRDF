@@ -103,9 +103,6 @@ ddply(dm, .(subjid), function(dm)
     paste0(prefix.RDF,"type" ),
     paste0(prefix.STUDY, "EnrolledSubject")
   )
-
-##TW WIP 18SEP  
-  ## Need to build out subtriples for each
   # SubjectID
   add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),

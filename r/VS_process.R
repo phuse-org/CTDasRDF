@@ -1,4 +1,4 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE : VS_process.R
 # DESC: Create VS domain triples
 # REQ : 
@@ -14,7 +14,7 @@
 #   Cross check all Date_nn to ensure they capture each type of thing they 
 #      particiapte in. Eg: ScreeningVisit, Body position within Screening visit??etc. etc.
 # !!! SEE WIP COMMENT for current construction.
-###############################################################################
+#______________________________________________________________________________
 
 # Data cleanup from artifact created in Impute? 
 vs <- subset(vs, (!is.na(vs$vstestCat)))
@@ -162,26 +162,42 @@ ddply(vs, .(personNum, vsseq), function(vs)
       paste0(prefix.STUDY,"hasCode" ),
       paste0(prefix.SDTMTERM, vs$vstestSDTMCode)
     )
- 
-# APPEARS IN LATER CODE??       
-#    if (! as.character(vs$vsdrvfl) == "") {
-#      add.data.triple(cdiscpilot01,
-#        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-#        paste0(prefix.STUDY,"derivedFlag" ),
-#        paste0(vs$vsdrvfl)
-#      )
-#    }  
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
       paste0(prefix.STUDY,"hasPlannedDate" ),
       paste0(prefix.CDISCPILOT01, vs$vsdtc_Frag)
     )
+    # Category & Subcategory hard coded in VS_Frag.R
+    if (! is.na(vs$vscat_Frag)){
+      add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        paste0(prefix.STUDY,"hasCategory" ),
+        paste0(prefix.CD01P, vs$vscat_Frag)
+      )
+    }
+    if (! is.na(vs$vsscat_Frag)){
+      add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        paste0(prefix.STUDY,"hasSubcategory" ),
+        paste0(prefix.CD01P, vs$vsscat_Frag)
+      )
+    }
+    if (! is.na(vs$vslatSDTMCode)){
+      add.triple(cdiscpilot01,
+         paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+         paste0(prefix.STUDY,"laterality" ),
+         paste0(prefix.SDTMTERM, vs$vslatSDTMCode)
+      )
+    }
+
     # StartRule ----
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-      paste0(prefix.STUDY,"hasStartRule" ),
-      paste0(prefix.CDISCPILOT01, vs$startRule_Frag)
-    )
+      if (! is.na(vs$startRule_Frag)){
+        add.triple(cdiscpilot01,
+          paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          paste0(prefix.STUDY,"hasStartRule" ),
+          paste0(prefix.CDISCPILOT01, vs$startRule_Frag)
+        )
+      }
       # StartRule sub triples ----
       add.triple(cdiscpilot01,
           paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
@@ -193,15 +209,16 @@ ddply(vs, .(personNum, vsseq), function(vs)
           paste0(prefix.STUDY,"hasCode" ),
           paste0(prefix.CODE, vs$startRuleType_Frag)
         )
-      # Special case for start Rule NONE: No prerequisite. Has special label
-      if ( vs$startRuleType_txt=="None"){
-        #TODO: Move this label creation to VS_frag.R
-        add.data.triple(cdiscpilot01,
-          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-          paste0(prefix.SKOS,"prefLabel" ),
-          paste0(paste0("Start rule none 1"))
-        )
-      }else{
+#WIP         
+#      # Special case for start Rule NONE: No prerequisite. Has special label
+#      if ( vs$startRuleType_txt=="None"){
+#        #TODO: Move this label creation to VS_frag.R
+#        add.data.triple(cdiscpilot01,
+#          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
+#          paste0(prefix.SKOS,"prefLabel" ),
+#          paste0(paste0("Start rule none 1"))
+#        )
+#      }else{
         add.triple(cdiscpilot01,
           paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
           paste0(prefix.CODE,"hasPrerequisite" ),
@@ -212,7 +229,7 @@ ddply(vs, .(personNum, vsseq), function(vs)
           paste0(prefix.SKOS,"prefLabel" ),
           paste0(paste0(vs$startRule_Label))
         )
-      }
+ #     }
       # End startRule substriples  
     add.triple(cdiscpilot01,
        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
@@ -225,7 +242,7 @@ ddply(vs, .(personNum, vsseq), function(vs)
        paste0(vs$vsseq), type="int"
      )
     # derived flag. If non-missing, code the value as the object (Y, N...)
-    if (! as.character(vs$vsdrvfl) == "") {
+    if (! is.na(vs$vsdrvfl)) {
       add.data.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
         paste0(prefix.STUDY,"derivedFlag" ),
@@ -253,34 +270,23 @@ ddply(vs, .(personNum, vsseq), function(vs)
         paste0(prefix.CODE, vs$vsstat_Frag)
       )
     }
-    # Category & Subcategory hard coded in VS_Frag.R
-    #MOVE add.triple(cdiscpilot01,
-    #  paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-    #  paste0(prefix.STUDY,"hasCategory" ),
-    #  paste0(prefix.CD01P, vs$vscat_Frag)
-    #)
-    #MOVE add.triple(cdiscpilot01,
-    #  paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-    #  paste0(prefix.STUDY,"hasSubcategory" ),
-    #  paste0(prefix.CD01P, vs$vsscat_Frag)
-    #)
+    if (! as.character(vs$vslocSDTMCode) == "") {
+      add.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        paste0(prefix.STUDY,"anatomicLocation" ),
+        paste0(prefix.SDTMTERM, vs$vslocSDTMCode)
+      )
+    }
+    if (! as.character(vs$vsblfl) == "") {
+      add.data.triple(cdiscpilot01,
+        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        paste0(prefix.STUDY,"baselineFlag" ),
+        paste0(vs$vsblfl), type="string"
+      )
+    }
 
-     
-  #MOVE   add.triple(cdiscpilot01,
-  #    paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-  #    paste0(prefix.STUDY,"anatomicLocation" ),
-  #    paste0(prefix.SDTMTERM, vs$vslocSDTMCode)
-  #  )
-    
 #TW out for troubleshooting 2017-07-25    
     #AOQUESTION: Possible data fabrication issue. email to AO 2017-05-26
-#    if (! as.character(vs$vsblfl) == "") {
-#      add.data.triple(cdiscpilot01,
-#        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-#        paste0(prefix.STUDY,"baselineFlag" ),
-#        paste0(vs$vsblfl), type="string"
-#      )
-#    }
     
 #TW out for current dev work 2017-07-28        
 #      add.triple(cdiscpilot01,
@@ -293,13 +299,6 @@ ddply(vs, .(personNum, vsseq), function(vs)
 #        paste0(prefix.CODE,"hasPrerequisite" ),
 #        paste0(prefix.CDISCPILOT01, vs$vspos_Frag)
 #      )
-#    if (! is.na(vs$vslatSDTMCode)){
-#       add.triple(cdiscpilot01,
-#         paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-#         paste0(prefix.STUDY,"laterality" ),
-#         paste0(prefix.SDTMTERM, vs$vslatSDTMCode)
-#        )
-#     }
      
  
        # Build out the result triples
@@ -328,19 +327,18 @@ ddply(vs, .(personNum, vsseq), function(vs)
          paste0(prefix.RDF,"type" ),
          paste0(prefix.STUDY, vs$vstestCatOutcome)
        )
-       
-
-       
-#     if (! is.na(vs$vsreasnd) && ! as.character(vs$vsreasnd)==""){
-#       add.data.triple(cdiscpilot01,
-#         paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-#         paste0(prefix.STUDY,"reasonNotDone" ),
-#         paste0(vs$vsreasnd), type="string"
-#       )
-#     }
-#    #MOVE add.data.triple(cdiscpilot01,
-    #   paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-    #   paste0(prefix.STUDY,"sponsordefinedID" ),
-    #   paste0(vs$invid), type="string"
-    # )
+     if (! is.na(vs$vsreasnd) && ! as.character(vs$vsreasnd)==""){
+       add.data.triple(cdiscpilot01,
+         paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+         paste0(prefix.STUDY,"reasonNotDone" ),
+         paste0(vs$vsreasnd), type="string"
+       )
+     }
+     if (! is.na(vs$vsspid)){       
+       add.data.triple(cdiscpilot01,
+         paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
+         paste0(prefix.STUDY,"sponsordefinedID" ),
+         paste0(vs$vsspid), type="string"
+       )
+     }
 })

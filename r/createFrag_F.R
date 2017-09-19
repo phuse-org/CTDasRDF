@@ -1,4 +1,4 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: createFrag_F.R
 # DESC: Functions and the calls that create URI fragments for Dates, Ages and 
 #     other fields that are shared in common between various resources. 
@@ -19,16 +19,15 @@
 # TODO: (see individual functions for TODO list) 
 #       Change hard coding of vstestCatOutcome to the value of byCol (the sol
 #            is nonobvious!)
-###############################################################################
+#______________________________________________________________________________
 
-#------------------------------------------------------------------------------
-# createDateDict()
+
+# createDateDict() ----
 #   Create a translation table of dates to date fragments
 #  All dates from across both DM and VS domains. 
 #  TODO: 
 #    Add additional domains as project scope expands. Make function flexible
 #    to accept these as arguments instead of hard coded.
-#------------------------------------------------------------------------------
 #' Title
 #'
 #' @return
@@ -106,8 +105,8 @@ addDateFrag<-function(domainName, colName)
   # withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")]  #DEL - no longer needed
   return(withFrag)
 }
-#------------------------------------------------------------------------------
-#  createFragOneDomain()
+
+#  createFragOneDomain() ----
 #  Create URI fragments for coded values in a single or mutliple column. 
 #    - If more than one column, combine values into a single column to process
 #    - Create numeric index the unique values
@@ -124,7 +123,6 @@ addDateFrag<-function(domainName, colName)
 #    Examples: column: actarm_frag, has values: actarm_1, actarm_3...
 #  Note: original source data has columns actarmcd, armcd. The 'cd'  
 #     is not needed in the RDF context, so drop that part of the name
-#------------------------------------------------------------------------------
 #' Title
 #'
 #' @param domainName 

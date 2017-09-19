@@ -1,8 +1,8 @@
 #______________________________________________________________________________
-# FILE : /SDTMasRDF/vis/r/NamespaceRelations-FNGraph.R
-# DESCR: Create JSON file consumed by NamespaceRelations-FNGraph.html for display of 
-#        relations between the namespaces in the SDTMasRDF named graph
-# REQ  : TTL data uploaded to Virtuoso named graph SDTMasRDF running on localhost
+# FILE : /CTDasRDF/vis/r/Person-FNGRAPH.R
+# DESC: Create JSON file of the CDISCPILOT01.TTL for consumption by CDISCPILOT01-FNGraph.html
+#         fpr vis. representation of the data.  
+# REQ  : TTL data file 
 # NOTES: visNetwork docs and examples: http://dataknowledge.github.io/visNetwork/
 #        For D3js, node ID must start at 0 and progress from there.
 #        Node and Edge Types are coded as Upppercase for consistent implmentation 
@@ -21,7 +21,6 @@ library(reshape)  # melt
 library(plyr)     # various goodies
 library(jsonlite) # Nice, clean JSON creation
 
-
 setwd("C:/_github/CTDasRDF")
 
 #-- Local endpoint
@@ -37,70 +36,117 @@ prefixes <- as.data.frame( read.csv(allPrefix,
 # Create individual PREFIX statements
 prefixes$prefixDef <- paste0("PREFIX ", prefixes$prefix, ": <", prefixes$namespace,">")
  
+
+
 ## Set a limit for the queries during development or "" for all triples
 limit = ""
 # limit = "limit 1000"
 
 # Currently only looking at code, study, time, protocol namespaces
-nameSpaceQuery = '
-SELECT *
-FROM <http://localhost:8890/CTDasRDF>
+query =' 
+PREFIX x: <http://foo.foo.org/x>
+SELECT ?s ?p ?o 
 WHERE {
-   ?s ?p ?o
-{FILTER(regex(str(?s), "(code#|study|time|cd01p)")) } 
-UNION
-  { FILTER(regex(str(?o), "(code#|study|time|cd01p)"))}
-} '
+    cdiscpilot01:Person_1 (x:foo|!x:bar)* ?s . 
+    ?s ?p ?o . 
+}'
+query<-paste0(paste(prefixes$prefixDef, collapse=""),query, limit)
 
-# TEST QUERY FOR DEV
-#nameSpaceQuery = '
-#PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
-#SELECT ?s ?p ?o
-#FROM <http://localhost:8890/SDTMasRDF>
-#WHERE {
-#?s ?p study:hasDate
-#BIND("study:hasDate" AS ?o)
-#}'
-
-query<-paste0(paste(prefixes$prefixDef, collapse=""),nameSpaceQuery, limit)
-triples = as.data.frame(sparql.remote(endpoint, query))
+sourceTTL <- load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
+triples = as.data.frame(sparql.rdf(sourceTTL, query))
 
 
+
+    #FOR virtuoso triples = as.data.frame(sparql.remote(endpoint, query))
+# Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
+triples <-triples[!(triples$o==""),]
 
 # subject node type set manually, post-query
-triples$srcType <- 'NA'  # Default unassigned
-triples$srcType[grepl('code:', triples$s)] <- 'code' 
-triples$srcType[grepl('study:', triples$s)] <- 'study'      
-triples$srcType[grepl('time:', triples$s)] <- 'time'      
+#triples$srcType <- 'NA'  # Default unassigned
+#triples$srcType[grepl('code:', triples$s)] <- 'code' 
+#triples$srcType[grepl('study:', triples$s)] <- 'study'      
+#triples$srcType[grepl('time:', triples$s)] <- 'time' 
+#triples$srcType[grepl('Person_', triples$s)] <- 'person' 
 
 # NODES -----------------------------------------------------------------------
 # Get the unique list of nodes as needed by the JSON file:
 # Combine Subject and Object into a single column
 # "id.vars" is the list of columns to keep untouched. The unamed ones are 
 # melted into the "value" column.
-nodeList <- melt(triples, id.vars=c("p", "srcType" ))   # subject, object into 1 column.
+nodeList <- melt(triples, id.vars=c("p" ))   # subject, object into 1 column.
 
-# A node can be both a Subject and a Predicate so ensure a unique list of node names
+# A node can be both a Subject and an Object so ensure a unique list of node names
 #  by dropping duplicate values.
 nodeList <- nodeList[!duplicated(nodeList$value),]
 
-# Rename column value to name for use in nodes list for JSON
-# TODO: DROP ones not needed!
-colnames(nodeList)<-c("p", "srcType", "var", "name")  # column name should be name, not value.
+# Rename column value to 'name' for use in nodes list for JSON
+colnames(nodeList)<-c("p", "var", "name")  # column name should be name, not value.
 nodeList <-arrange(nodeList,name)  # sort prior to adding ID value. (not necessary, of course)
 
 # Create the node ID values starting at 0 (as req. by D3JS)
 id<-0:(nrow(nodeList)-1) 
 nodeList<-data.frame(id, nodeList)  
 
-nodeList$type <- toupper(nodeList$srcType)
+
+
+
 # nodeCategory used for grouping in the FN graph. Assign grouping based on type
 #   Make this smarter later: sort on unique type and assign index value.
 #   Must now be updated manually when a new node type appears. Boo. Bad code.Bad!
+nodeList$nodeCategory <- '0'      
 nodeList$nodeCategory[grepl('CODE',  nodeList$type)] <- '1'      
 nodeList$nodeCategory[grepl('STUDY', nodeList$type)] <- '2'      
 nodeList$nodeCategory[grepl('TIME',  nodeList$type)] <- '3'      
 head(nodeList)
+
+
+
+# TODO : CHANGE TO A recode/switch here
+# subject node type set manually, post-query
+nodeList$type <- 'NA'  # Default unassigned
+nodeList$type[grepl('code:', nodeList$name)] <- 'code' 
+
+# Study.  Not that Time is coded to STUDY because it is used for events within the study timeframe
+nodeList$type[grepl('study:|custom:Visit|time:', nodeList$name)] <- 'study'      
+nodeList$type[grepl('study:has|study:outcome|time:has|study:groupID|study:actualArm', nodeList$p)] <- 'study'      
+
+nodeList$type[grepl('rdfs:', nodeList$name)] <- 'rdfs' 
+
+nodeList$type[grepl('Person_', nodeList$name)] <- 'person' 
+nodeList$type[grepl('sdtmterm:', nodeList$name)] <- 'sdtm' 
+# Measurements and outcomes
+nodeList$type[grepl('cdiscpilot01:C67153|Blood|Weight|Temperature|Height|Pulse', nodeList$name)] <- 'measure' 
+
+nodeList$type[grepl('Rule', nodeList$name)] <- 'rule' 
+
+# Literals. Not Clustered. Appear before assign of measure as measure grep re-assigns some of these later
+nodeList$type[grepl(':label|:prefLabel|:date|study:seq|study:reasonNotDone|sponsordefinedID', nodeList$p)] <- 'literal'
+nodeList$type[grepl('true', nodeList$name)] <- 'literal'   # Not clustered
+
+
+nodeList$type[grepl('code:hasValue', nodeList$p)] <- 'measure' 
+
+# different types of flags 
+nodeList$type[grepl('Flag', nodeList$p)] <- 'flag'      # Not clustered
+nodeList$type[grepl('Flag|RandomizationBAL', nodeList$name)] <- 'flag'  # Not clustered
+
+
+# nodeCategory used for grouping in the FN graph. Assign grouping based on type
+#   Make this smarter later: sort on unique type and assign index value.
+#   Must now be updated manually when a new node type appears. Boo. Bad code.Bad!
+# Types that are NOT clustered: literal
+nodeList$nodeCategory <- '0'      
+nodeList$nodeCategory[grepl('study',   nodeList$type)] <- '1'      
+nodeList$nodeCategory[grepl('sdtm',    nodeList$type)] <- '2'      
+nodeList$nodeCategory[grepl('measure', nodeList$type)] <- '3'      
+nodeList$nodeCategory[grepl('rule',    nodeList$type)] <- '4'      
+
+#head(nodeList)
+
+
+
+
+
 nodes<-data.frame(id=nodeList$id,
                   type=nodeList$type,
                   label=nodeList$name,
@@ -127,10 +173,8 @@ edgesList<-rename(edgesList, c("id"="objectID", "p"="value"))
 edgesList<-edgesList[c("s", "subjectID", "predicate", "o", "objectID")] #TW NEW
 
 # Construct edgeType: remove prefix, convert to upper case for use in CSS 
-edgesList$edgeType<-toupper(sub("(\\w+):","",edgesList$predicate))
-
-# Later can be set based on number of obs, etc.
-#nodes$nodesize=4  #
+ edgesList$edgeType<-tolower(sub(":(\\w+)","",edgesList$predicate))
+# edgesList$edgeType<-"type"  # Default to see all edges at the start.
 
 # 2. make the EDGES dataframe that contains: subject, predicate, value columns
 #   subject, predicate,
@@ -144,6 +188,6 @@ edges<- as.data.frame(edgesList[c("source", "target", "value", "edgeType")])
 all <- list(nodes=nodes,
             edges=edges)
 # Write out to JSON
-fileConn<-file("./vis/d3/data/NameSpaceRelations-FROMR.JSON")
+fileConn<-file("./vis/d3/data/Person-FNGraph.JSON")
 writeLines(toJSON(all, pretty=TRUE), fileConn)
 close(fileConn)

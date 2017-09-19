@@ -1,4 +1,4 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: buildRDF-Driver.R
 # DESC: Master program for building the TTL file for the SDTM domains from 
 #        the CDISCPILOT01 example data.
@@ -8,18 +8,15 @@
 #          create the individual triples.  
 #       Calls functions for unique URI creation (eg: Dates)
 #       Writes out TTL.
-# REQ : Apache Jena 3.+0.1: For riot, installed and avail at system path if 
-#           valdiation called
+# REQ : Apache Jena 3.+0.1: For riot, installed and avail at system path  
 # SRC : N/A
 # IN  :  prefixes.csv - prefixes and their namespaces
 #        Calls to other scripts for code, functions, data import.
 # OUT : data/rdf/cdiscpilot01-R.TTL
-#       data/rdf/customterminology-R.TTL 
-#       data/rdf/code-R.TTL 
 # NOTE: Validation of the resulting TTL files with Apache Jenna riot
-#        Later cross check with CompareTTL.R
+#        Later cross programmatically with scripts in the /validation folder
 # TODO: 
-###############################################################################
+#______________________________________________________________________________
 # Configuration and initial setup ---------------------------------------------
 library(rrdf)
 library(Hmisc)
@@ -32,8 +29,7 @@ require(stringi)  # Proper casing, etc.
 
 rm(list=ls())  # Clear workspace from prior runs.
 
-
-# Flags and global parameters ----
+#** Flags and global parameters ----
 # Subset for prototype development. 
 maxPerson = 6 # Used in DM_process.R for subsetting. VS is selects row numbers.
 importsEnabled = FALSE
@@ -44,7 +40,6 @@ setwd("C:/_github/CTDasRDF")
 # Version of COde/output. Triple created in graphMeta.R
 version <- "0.0.1"
 
-
 # Output filename and location
 outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
 
@@ -53,14 +48,13 @@ cdiscpilot01  = new.rdf()  # The main datafile. Later change name to 'mainTTL" o
     # custom = new.rdf()  # customterminology-R.ttl  : NOT CURRENTLY IN USE
     # code   = new.rdf()  # code-R.ttl               : NOT CURRENTLY IN USE
 
-# Prefixes and OWL imports ----
-source('R/nonInstance.R') # Graph Metadata
-
+#** Prefixes and OWL imports ----
+source('R/prefixesAndImports.R') # Prefixes and OWL imports
 
 # Graph Metadata ----
 source('R/graphMeta.R') # Graph Metadata
 
-# Functions for later use -----------------------------------------------------
+# External Functions ----
 source('R/misc_F.R')  # Data import, personID, etc.
 source('R/createFrag_F.R') # URI fragement Creation. Eg. Date_1, AgeMeasurement_3
 
@@ -71,7 +65,6 @@ source('R/DM_impute.R')     # Create values needed for testing.
 
 # Import and Impute VS --------------------------------------------------------
 vs <- readXPT("vs")
-
 source('R/VS_impute.R') 
 
 # Import and Impute other domains ---- : to be added later----------------------
@@ -82,21 +75,20 @@ dateDict<-createDateDict()
 
 # Create fragment dictionaries that cross domains
 #   Called after all contributing  domains available, since some fragment values 
-#      eg: dates, cross multiple domains.
+#      (eg: dates), cross multiple domains.
 source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part 
                        #   of DateDict/dateFrag creation
 
 # Domain Processing -----------------------------------------------------------
-#------------------------------------------------------------------------------
 # DM DOMAIN ----
 #    DM MUST be processed first: Creates data required in later steps, 
 #      including personNum. 
 source('R/DM_process.R')
 source('R/SUPPDM_process.R')
 
-
 # VS Domain ----
 source('R/VS_frag.R')
+
 
 source('R/VS_process.R')
 

@@ -1,6 +1,7 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: VS_frag.R
-# DESC: Data recoding and URI fragment creation from existing domain values
+# DESC: 1) Data recoding 
+#       2) URI fragment creation from existing domain values
 #       Creates vsWide format of the vs DF for processing by test result type.
 # REQ : 
 # SRC : 
@@ -10,7 +11,8 @@
 #       Coded values cannot have spaces or special characters.
 #       SDTM numeric codes and others set MANUALLY
 # TODO: Clean up code, convert many of th assignments to use of dplyr MUTATE
-################################################################################
+#______________________________________________________________________________
+
 # Create vstestOrder for numbering the test within each usubjid, vstestcd, 
 #   sorted by date (vsdtc)
 #   to allow creation of number triples within that category.    
@@ -20,10 +22,8 @@ vs <- vs[with(vs, order(usubjid, vstestcd, vsdtc_ymd)), ]
 # Add ID numbers within categories, excluding date (used for sorting, not for cat number)
 vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
 
-# Category and Subcategory hard coding.  See AO email 2071-05
-vs$vscat_Frag  <- 'Category_1'
-vs$vsscat_Frag <- 'Subcategory_1'
 
+# 1) Recoding -----------------------------------------------------------------
 vs$vsstresu_Frag <- recode(vs$vsorresu, 
                            "'cm'        = 'Unit_1';
                             'IN'        = 'Unit_2';
@@ -32,7 +32,7 @@ vs$vsstresu_Frag <- recode(vs$vsorresu,
                             'F'         = 'Unit_6';
                             'LB'        = 'Unit_8'")
 
-#  SDTM code values -----------------------------------------------------------
+#  SDTM code values ----
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
 # Example: vsloc  is coded to the SDTM Terminology graph by translating the value 
@@ -69,9 +69,13 @@ vs$vsposSDTM_Frag <- recode(vs$vspos,
                             'SUPINE'   = 'C71148.C62167'" )
 
 
-# Fragment  -------------------------------------------------------------------
+# 2) Fragment  Creation -------------------------------------------------------
 vs <- addDateFrag(vs, "vsdtc")  
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="ActivityStatus")
+
+# Category and Subcategory hard coding.  See AO email 2071-05
+vs <- createFragOneDomain(domainName=vs, processColumns="vscat", fragPrefix="Category")
+vs <- createFragOneDomain(domainName=vs, processColumns="vsscat", fragPrefix="Subcategory")
 
 # vspos_Frag
 #   Create fragment for creating hasSubActivity AssumeBodyPositionXXXX_n, where n
@@ -94,14 +98,17 @@ vs$startRuleType_Frag <- recode(vs$vstpt,
                            "'AFTER STANDING FOR 1 MINUTE'    = 'StartRuleStanding1';
                             'AFTER STANDING FOR 3 MINUTES'   = 'StartRuleStanding3';
                             'AFTER LYING DOWN FOR 5 MINUTES' = 'StartRuleLying5';
-                            ''                               = 'StartRuleNone'" )
+                             ''                               = NA " )
+
+# previously was: ''                               = 'StartRuleNone'" # but now not using StartRuleNone_1, etc.
 # Rule text : used in forming labels
 vs$startRuleType_txt <- recode(vs$vstpt, 
                            "'AFTER STANDING FOR 1 MINUTE'    = 'Standing 1 Min';
                             'AFTER STANDING FOR 3 MINUTES'   = 'Standing 3 Min';
                             'AFTER LYING DOWN FOR 5 MINUTES' = 'Lying 5 Min';
-                            ''                               = 'None'" )
-
+                            ''                               = NA " )
+                            
+# previously was: ''                               = 'None'" )  # but now not using StartRuleNone_1, etc.
 
 # bodyPosition Rules. 
 vs$vsposCode_Frag <- recode(vs$vspos, 
@@ -112,7 +119,6 @@ vs$vsposCode_Frag <- recode(vs$vspos,
 vs$vspos_Label <- recode(vs$vspos, 
                            "'STANDING' = 'assume standing position';
                             'SUPINE'   = 'assume supine position'" )
-
 
 
 # Outcomes  
@@ -172,14 +178,16 @@ for (i in 1:nrow(vs)){
   }
 
   # StartRule ----
-  if (!is.na(vs[i,"startRuleType_Frag"])){
+  if (! is.na(vs[i,"startRuleType_Frag"])){
     #-- 2. Add the suffix as personNum. 
     #TODO Confirm use of personNum
     vs[i,"startRule_Frag"] <- paste0(vs[i,"startRuleType_Frag"], "_", vs[i,"personNum"]) 
-  }else{
-    # Another confirm with AO: is there a SINGLE StartRuleNone, or One per personNum
-    vs[i,"startRule_Frag"] <- paste0("StartRuleNone_", vs[i,"personNum"])
   }
+# StartRuleNone_n is removed after ontology rework in Sept.  
+#DELelse{
+#DEL    # Another confirm with AO: is there a SINGLE StartRuleNone, or One per personNum
+#DEL    vs[i,"startRule_Frag"] <- paste0("StartRuleNone_", vs[i,"personNum"])
+#DEL  }
 
   # SDTM Code TYPE fragment ----
   #   stringr to remove spaces 
