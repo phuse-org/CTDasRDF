@@ -1,4 +1,4 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: VS_impute.R
 # DESC: Impute data required for prototyping. 
 # REQ : Prior import of the VS domain by driver script.
@@ -7,7 +7,7 @@
 # OUT : modified vs dataframe 
 # NOTE: 
 # TODO: 
-###############################################################################
+#______________________________________________________________________________
 
 # Subset VS data for Dev purposes
 # SUBSET THE DATA DOWN TO A SINGLE PATIENT AND SUBSET OF TESTS FOR DEVELOPMENT PURPOSES
@@ -23,18 +23,21 @@ vs <- vs[c(1:3, 86:88, 43, 44:46, 128, 142), ]
   # vs <- addPersonId(vs)  # add back in when > 1 person!
 vs$personNum <- 1
 
-#-- Data Imputation for Prototype Testing ---------------------------------------
 # More imputations for the first 3 records to match data created by AO : 2016-01-19
 #   These are new COLUMNS and values not present in original source!
-vs$vsgrpid  <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "GRPID1", "" )) 
-vs$vscat    <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "CAT1", "" )) 
-vs$vsscat   <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "SCAT1", "" )) 
-vs$vsreasnd <- with(vs, ifelse(vsseq %in% c(1,2,3,4,5,6) & personNum == 1, "not applicable", "" )) 
+vs$vsgrpid  <- with(vs, ifelse(vsseq %in% c(1,2,3,86,87,88) & personNum == 1, "GRPID1", "" )) 
+vs$vscat    <- with(vs, ifelse(vsseq %in% c(1,2,3,86,87,88) & personNum == 1, "CAT1", "" )) 
+vs$vsscat   <- with(vs, ifelse(vsseq %in% c(1,2,3,86,87,88) & personNum == 1, "SCAT1", "" )) 
+vs$vsreasnd <- with(vs, ifelse(vsseq %in% c(1,2,3,4,5,6,86,87,88) & personNum == 1, "not applicable", "" )) 
 
 # vsspid
 vs[vs$vsseq %in% c(1), "vsspid"]  <- "123"
 vs[vs$vsseq %in% c(2), "vsspid"]  <- "719"
 vs[vs$vsseq %in% c(3), "vsspid"]  <- "235"
+vs[vs$vsseq %in% c(3), "vsspid"]  <- "124"
+vs[vs$vsseq %in% c(3), "vsspid"]  <- "720"
+vs[vs$vsseq %in% c(3), "vsspid"]  <- "236"
+
 
 # vs[1:3,grep("vsstat", colnames(vs))] <- "CO"  (complete)
 # Unfactorize the  column to allow entry of a bogus data
@@ -55,14 +58,14 @@ vs$vsloc <- as.character(vs$vsloc)
 vs$vsloc <- vs$vsloc[vs$testcd %in% c("DIABP", "SYSBP") ] <- "ARM"
 
 # vslat
-vs[vs$vsseq %in% c(1,3), "vslat"]  <- "RIGHT"
-vs[vs$vsseq %in% c(2), "vslat"]    <- "LEFT"
+vs[vs$vsseq %in% c(1,3,86,88), "vslat"]  <- "RIGHT"
+vs[vs$vsseq %in% c(2,87), "vslat"]    <- "LEFT"
 
-vs[vs$vsseq %in% c(1), "vsblfl"]    <- "Y"
+vs[vs$vsseq %in% c(1,2,3,86,87,88), "vsblfl"]    <- "Y"
+vs[vs$vsseq %in% c(1,2,3,86,87,88), "vsdrvfl"]    <- "N"
 
-# 44,45,46 : Pulse for Patient 1 is NOT derived. Neither is BP, Height, etc. 
-#TODO Set all to N for this dataset, not select rows?
-vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & personNum == 1, "N", "" )) 
+
+# vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & personNum == 1, "N", "" )) 
 
 # Investigator ID hard coded. Same value as in DM_impute.R
 vs$invid  <- '123'
@@ -70,10 +73,10 @@ vs$invid  <- '123'
 # Assign 1st 3 obs as COMPLETE to match AO ontology
 vs$vsstat <- as.character(vs$vsstat) # Unfactorize to all allow assignment 
 
-vs$vsrftdtc <- with(vs, ifelse(vsseq %in% c(1,2,3) & personNum == 1, "2013-12-16", "" )) 
+vs$vsrftdtc <- with(vs, ifelse(vsseq %in% c(1,2,3,86,87,88) & personNum == 1, "2013-12-16", "" )) 
 
-# -- Additional Value creation
-# Create ND value not in original data ----------------------------------------
+
+# Create ND value not in original data
 # Create an extra row of data that is used to create values not present in the orignal
 #   subset of data. The row is used to create codelists, etc. dynamically during the script run
 #   as an alternative to hard coding, since these values are not associated within any one subject
