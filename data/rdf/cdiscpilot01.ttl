@@ -132,6 +132,7 @@ cdiscpilot01:BloodPressureOutcome_6
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
   skos:prefLabel "P1 Screening 1 Temperature 1"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
+  study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C12421> ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
   study:outcome cdiscpilot01:TemperatureOutcome_1 ;
