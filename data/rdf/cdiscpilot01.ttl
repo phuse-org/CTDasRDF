@@ -144,7 +144,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:outcome cdiscpilot01:WeightOutcome_1 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "142"^^xsd:float ;
-  study:sponsordefinedID "3000"^^xsd:string ;
+  study:sponsordefinedID "5000"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_1>
   rdf:type cd01p:VisitScreening1BloodPressure ;
@@ -286,7 +286,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:outcome cdiscpilot01:HeightOutcome_1 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
-  study:seq "86"^^xsd:float ;
+  study:seq "43"^^xsd:float ;
   study:sponsordefinedID "1000"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_1>
