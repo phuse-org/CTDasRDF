@@ -50,6 +50,7 @@ cdiscpilot01:C67153.C49676_2
         skos:prefLabel        "P1 Screening 1 Pulse Rate 2" ;
         study:activityStatus  code:ActivityStatus_1 ;
         study:bodyPosition    sdtmterm:C71148.C62166 ;
+        study:derivedFlag     "N"^^xsd:string ;
         study:hasCode         sdtmterm:C67153.C49676 ;
         study:hasPlannedDate  cdiscpilot01:Date_19 ;
         study:hasStartRule    cdiscpilot01:StartRuleStanding1_1 ;
@@ -244,6 +245,10 @@ cdiscpilot01:ReferenceInterval_6
         rdfs:label         "Reference Interval 6"^^xsd:string ;
         time:hasBeginning  cdiscpilot01:Date_12 ;
         time:hasEnd        cdiscpilot01:Date_15 .
+
+cdiscpilot01:InvestigatorIdentifier_1
+        a               study:InvestigatorIdentifier ;
+        skos:prefLabel  "123" .
 
 cdiscpilot01:PopFlagCmpltr24Wk_5
         a                     custom:PopFlagCmpltr24Wk ;
@@ -521,6 +526,7 @@ cdiscpilot01:C67153.C49676_3
         skos:prefLabel        "P1 Screening 1 Pulse Rate 3" ;
         study:activityStatus  code:ActivityStatus_1 ;
         study:bodyPosition    sdtmterm:C71148.C62166 ;
+        study:derivedFlag     "N"^^xsd:string ;
         study:hasCode         sdtmterm:C67153.C49676 ;
         study:hasPlannedDate  cdiscpilot01:Date_19 ;
         study:hasStartRule    cdiscpilot01:StartRuleStanding3_1 ;
@@ -634,7 +640,7 @@ cdiscpilot01:TemperatureOutcome_1
 cdiscpilot01:Investigator_1
         a                        study:Investigator ;
         skos:prefLabel           "Investigator 123"^^xsd:string ;
-        study:hasInvestigatorID  "123"^^xsd:string ;
+        study:hasInvestigatorID  cdiscpilot01:InvestigatorIdentifier_1 ;
         study:hasLastName        "Jones"^^xsd:string .
 
 cdiscpilot01:UniqueSubjectIdentifier_4
@@ -723,7 +729,7 @@ cdiscpilot01:sdtm-graph
         dcterms:description  "The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. \n  Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data. Only select observations from \n  source XPT are present, including a subset of VS results."^^xsd:string ;
         dcterms:title        "Clinical Trials Data as RDF (CTDasRDF)."^^xsd:string ;
         bibo:status          "Under Construction/incomplete: Blood pressure, Pulse, Weight. Only 1 patient and a subset of obs. from that patient."^^xsd:string ;
-        pav:createdOn        "2017-09-19T16:14:15-04:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-09-20T13:34:45-04:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.3 Platform:x86_64-w64-mingw32 with scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "data/rdf/cdiscpilot01-R.TTL" .
@@ -766,6 +772,7 @@ cdiscpilot01:C67153.C49676_1
         skos:prefLabel        "P1 Screening 1 Pulse Rate 1" ;
         study:activityStatus  code:ActivityStatus_1 ;
         study:bodyPosition    sdtmterm:C71148.C62167 ;
+        study:derivedFlag     "N"^^xsd:string ;
         study:hasCode         sdtmterm:C67153.C49676 ;
         study:hasPlannedDate  cdiscpilot01:Date_19 ;
         study:hasStartRule    cdiscpilot01:StartRuleLying5_1 ;
@@ -1190,7 +1197,7 @@ cdiscpilot01:C67153.C25206_1
         a                       sdtmterm:C67153.C25206 , cd01p:VisitScreening1Temperature ;
         skos:prefLabel          "P1 Screening 1 Temperature 1" ;
         study:activityStatus    code:ActivityStatus_1 ;
-        study:anatomicLocation  sdtmterm:C74456.CC12421 ;
+        study:anatomicLocation  sdtmterm:C74456.C12421 ;
         study:hasCode           sdtmterm:C67153.C25206 ;
         study:hasPlannedDate    cdiscpilot01:Date_19 ;
         study:outcome           cdiscpilot01:TemperatureOutcome_1 ;

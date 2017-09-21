@@ -31,7 +31,7 @@ ddply(u_Person, .(personNum), function(u_Person)
 rm(u_Person) # Clean up
 
 # Investigators ----
-investigators <- dm[,c("invnam", "invid", "inv")]
+investigators <- dm[,c("invnam", "invid", "inv", "invid_Frag")]
 u_Invest <- investigators[!duplicated(investigators),]  # Unique investigator ID 
 ddply(u_Invest, .(invnam), function(u_Invest)
 {
@@ -42,19 +42,33 @@ ddply(u_Invest, .(invnam), function(u_Invest)
   )
   add.data.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, u_Invest$inv),
-    paste0(prefix.STUDY,"hasInvestigatorID" ),
-    paste0(u_Invest$invid), type="string"
-  )
-  add.data.triple(cdiscpilot01,
-    paste0(prefix.CDISCPILOT01, u_Invest$inv),
-    paste0(prefix.STUDY,"hasLastName" ),
-    paste0(u_Invest$invnam), type="string"
-  )
-  add.data.triple(cdiscpilot01,
-    paste0(prefix.CDISCPILOT01, u_Invest$inv),
     paste0(prefix.SKOS, 'prefLabel'),
     paste0("Investigator ", u_Invest$invid), type="string"
   )
+  add.triple(cdiscpilot01,
+    paste0(prefix.CDISCPILOT01, u_Invest$inv),
+    paste0(prefix.STUDY,"hasInvestigatorID" ),
+    paste0(prefix.CDISCPILOT01, u_Invest$invid_Frag)
+  )
+    # Investigator identifier is further broken down
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, u_Invest$invid_Frag),
+      paste0(prefix.RDF,"type" ),
+      paste0(prefix.STUDY, "InvestigatorIdentifier")
+    )
+    add.data.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, u_Invest$invid_Frag),
+      paste0(prefix.SKOS,"prefLabel" ),
+      paste0(u_Invest$invid)
+    )
+  add.data.triple(cdiscpilot01,
+    paste0(prefix.CDISCPILOT01, u_Invest$inv),
+    paste0(prefix.STUDY, 'hasLastName'),
+    paste0(u_Invest$invnam), type="string"
+  )
+    
+    
+
 })
 rm(u_Invest) # Clean up
 

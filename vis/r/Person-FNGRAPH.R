@@ -87,65 +87,50 @@ nodeList <-arrange(nodeList,name)  # sort prior to adding ID value. (not necessa
 id<-0:(nrow(nodeList)-1) 
 nodeList<-data.frame(id, nodeList)  
 
-
-
-
 # nodeCategory used for grouping in the FN graph. Assign grouping based on type
 #   Make this smarter later: sort on unique type and assign index value.
 #   Must now be updated manually when a new node type appears. Boo. Bad code.Bad!
-nodeList$nodeCategory <- '0'      
-nodeList$nodeCategory[grepl('CODE',  nodeList$type)] <- '1'      
-nodeList$nodeCategory[grepl('STUDY', nodeList$type)] <- '2'      
-nodeList$nodeCategory[grepl('TIME',  nodeList$type)] <- '3'      
-head(nodeList)
 
+# Node Type ----
+#   Set default as literal then recode everything away from that default value
+nodeList$type <- 'literal'  # Default unassigned
 
+# person
+nodeList$type[grepl('cdiscpilot01:Person_', nodeList$name, perl=TRUE)] <- 'person'
 
-# TODO : CHANGE TO A recode/switch here
-# subject node type set manually, post-query
-nodeList$type <- 'NA'  # Default unassigned
-nodeList$type[grepl('code:', nodeList$name)] <- 'code' 
+# rule
+nodeList$type[grepl('\\S+:\\S*(Rule)', nodeList$name, perl=TRUE)] <- 'rule'
 
-# Study.  Not that Time is coded to STUDY because it is used for events within the study timeframe
-nodeList$type[grepl('study:|custom:Visit|time:', nodeList$name)] <- 'study'      
-nodeList$type[grepl('study:has|study:outcome|time:has|study:groupID|study:actualArm', nodeList$p)] <- 'study'      
+# demogr
+nodeList$type[grepl('\\S+:\\S*(Age|Birth|Lifespan|Death)', nodeList$name, perl=TRUE)] <- 'demog' 
 
-nodeList$type[grepl('rdfs:', nodeList$name)] <- 'rdfs' 
+# vitals
+nodeList$type[grepl('\\S+:\\S*(Blood|Height|Pulse|Temp|Weight|Assume|Demog)', nodeList$name, perl=TRUE)] <- 'vitals' 
 
-nodeList$type[grepl('Person_', nodeList$name)] <- 'person' 
-nodeList$type[grepl('sdtmterm:', nodeList$name)] <- 'sdtm' 
-# Measurements and outcomes
-nodeList$type[grepl('cdiscpilot01:C67153|Blood|Weight|Temperature|Height|Pulse', nodeList$name)] <- 'measure' 
+# SDTM Codes
+nodeList$type[grepl('sdtmterm:C|cdiscpilot01:C', nodeList$name, perl=TRUE)] <- 'sdtm' 
 
-nodeList$type[grepl('Rule', nodeList$name)] <- 'rule' 
+# Study : Site, Investigators, etc.
+nodeList$type[grepl('\\S+:\\S*(Site|Study|Product|Reference|Investigator|Subject|Random|Visit|Flag|Informed|Enrolled|Date_)', nodeList$name, perl=TRUE)] <- 'study' 
+nodeList$type[grepl('\\S+:\\S*(ArmPlac|Category|Subcateg|Activity|Sponsor)', nodeList$name, perl=TRUE)] <- 'study' 
 
-# Literals. Not Clustered. Appear before assign of measure as measure grep re-assigns some of these later
-nodeList$type[grepl(':label|:prefLabel|:date|study:seq|study:reasonNotDone|sponsordefinedID', nodeList$p)] <- 'literal'
-nodeList$type[grepl('true', nodeList$name)] <- 'literal'   # Not clustered
+# Misc: RDFS, Time:, units  etc.
+nodeList$type[grepl('(time:|rdfs:|\\S+:\\S*(Unit_))', nodeList$name, perl=TRUE)] <- 'misc' 
 
-
-nodeList$type[grepl('code:hasValue', nodeList$p)] <- 'measure' 
-
-# different types of flags 
-nodeList$type[grepl('Flag', nodeList$p)] <- 'flag'      # Not clustered
-nodeList$type[grepl('Flag|RandomizationBAL', nodeList$name)] <- 'flag'  # Not clustered
 
 
 # nodeCategory used for grouping in the FN graph. Assign grouping based on type
 #   Make this smarter later: sort on unique type and assign index value.
 #   Must now be updated manually when a new node type appears. Boo. Bad code.Bad!
 # Types that are NOT clustered: literal
-nodeList$nodeCategory <- '0'      
-nodeList$nodeCategory[grepl('study',   nodeList$type)] <- '1'      
-nodeList$nodeCategory[grepl('sdtm',    nodeList$type)] <- '2'      
-nodeList$nodeCategory[grepl('measure', nodeList$type)] <- '3'      
-nodeList$nodeCategory[grepl('rule',    nodeList$type)] <- '4'      
-
-#head(nodeList)
-
-
-
-
+nodeList$nodeCategory <- '3'     # Person goes to demog category by default
+nodeList$nodeCategory[grepl('literal', nodeList$type)]  <- '1'      
+nodeList$nodeCategory[grepl('rule',    nodeList$type)]  <- '2'
+nodeList$nodeCategory[grepl('demog',   nodeList$type)]  <- '3'      
+nodeList$nodeCategory[grepl('vitals',  nodeList$type)]  <- '4'
+nodeList$nodeCategory[grepl('sdtm',    nodeList$type)]  <- '5'      
+nodeList$nodeCategory[grepl('study',   nodeList$type)]  <- '6'
+nodeList$nodeCategory[grepl('misc',    nodeList$type)]  <- '7'      
 
 nodes<-data.frame(id=nodeList$id,
                   type=nodeList$type,
@@ -156,24 +141,44 @@ nodes<-data.frame(id=nodeList$id,
 #DEL nodeID=nodeList$id,
 #DEL name=nodeList$name,
 
-# EDGES -----------------------------------------------------------------------
+# 2) Edges -----
 # Now assign the node ID numbers to the Subject and Object nodes
 #-- Subject Nodes, ID becomes the subject ID node
 #   Assign node ID values to the Subject nodes
 edgesList <- merge (triples, nodeList, by.x="s", by.y="name")
+
+
 # id becomes the subject node id
 edgesList<-rename(edgesList, c("id" = "subjectID", "p.x" = "predicate"))
-edgesList<-edgesList[c("s", "subjectID", "predicate", "o")] #TW NEW
 
-#-- Object Nodes
+
+edgesList<-edgesList[c("s", "subjectID", "predicate", "o")] 
+
+
 #   Assign node ID values to the Object nodes
 edgesList <- merge (edgesList, nodeList, by.x="o", by.y="name")
 # p is renamed to "value" for use in LINKS dataframe. "value" is needed above here.
 edgesList<-rename(edgesList, c("id"="objectID", "p"="value"))
-edgesList<-edgesList[c("s", "subjectID", "predicate", "o", "objectID")] #TW NEW
+edgesList<-edgesList[c("s", "subjectID", "predicate", "o", "objectID")] 
+
+
+# ** Edge type ----
+#   Set default as literal then recode everything away from that default value
+edgesList$edgeType <- 'default'  # Default unassigned
+
+# time
+edgesList$edgeType[grepl('time:', edgesList$predicate, perl=TRUE)] <- 'time'
+
+# sdtm terminology
+edgesList$edgeType[grepl('study:outcome|study:anatomic|study:laterality', edgesList$predicate, perl=TRUE)] <- 'sdtmterm'
+
+
+# rdf:type
+edgesList$edgeType[grepl('rdf:type', edgesList$predicate, perl=TRUE)] <- 'typeof'
+
 
 # Construct edgeType: remove prefix, convert to upper case for use in CSS 
- edgesList$edgeType<-tolower(sub(":(\\w+)","",edgesList$predicate))
+#  edgesList$edgeType<-tolower(sub(":(\\w+)","",edgesList$predicate))
 # edgesList$edgeType<-"type"  # Default to see all edges at the start.
 
 # 2. make the EDGES dataframe that contains: subject, predicate, value columns
@@ -188,6 +193,8 @@ edges<- as.data.frame(edgesList[c("source", "target", "value", "edgeType")])
 all <- list(nodes=nodes,
             edges=edges)
 # Write out to JSON
-fileConn<-file("./vis/d3/data/Person-FNGraph.JSON")
+# fileConn<-file("./vis/d3/data/Person-FNGraph.JSON") # for CTDasRDF Project
+fileConn<-file("C:/_sandbox/PhUSE/Annual/2017/paper/presentation/d3/Person-FNGraph.JSON") # for CTDasRDF Project
+
 writeLines(toJSON(all, pretty=TRUE), fileConn)
 close(fileConn)

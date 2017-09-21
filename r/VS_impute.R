@@ -43,7 +43,7 @@ vs[vs$vsseq %in% c(88), "vsspid"]  <- "236"
 # Unfactorize the  column to allow entry of a bogus data
 vs$vsstat <- as.character(vs$vsstat)
 # vs[1,grep("vsstat", colnames(vs))] <- "CO"
-#  Set all to a status of completed. TODO: Add other values for testing purposes.
+#  Set all to a status of completed.
 vs[,"vsstat"] <- "CO"
 
 # fragment for coded value. Links from CDISCPILOT01 to CODE namespace
@@ -64,7 +64,9 @@ vs[vs$vsseq %in% c(1,3,86,88), "vslat"]  <- "RIGHT"
 vs[vs$vsseq %in% c(2,87), "vslat"]    <- "LEFT"
 
 vs[vs$vsseq %in% c(1,2,3,86,87,88), "vsblfl"]    <- "Y"
-vs[vs$vsseq %in% c(1,2,3,86,87,88), "vsdrvfl"]    <- "N"
+
+# Derived Flag Y/N ----
+vs[vs$vsseq %in% c(1,2,3,44,45,46,86,87,88), "vsdrvfl"]    <- "N"
 
 
 # vs$vsdrvfl <- with(vs, ifelse(vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & personNum == 1, "N", "" )) 
@@ -95,4 +97,3 @@ vs <- rbind(vs,newrow)
 
 # now populate the values in the last row of the data
 vs[nrow(vs),"vsstat"]   <- 'ND'  # add the ND value for creating activitystatus_2. Found later in the orginal data
-#TODO: Need personNum and other data here??
