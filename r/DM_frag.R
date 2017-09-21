@@ -93,6 +93,10 @@ dm <- createFragOneDomain(domainName=dm, processColumns="subjid",  fragPrefix="S
 dm <- createFragOneDomain(domainName=dm, processColumns="usubjid", fragPrefix="UniqueSubjectIdentifier" )
 dm <- createFragOneDomain(domainName=dm, processColumns="siteid",  fragPrefix="Site" )
 dm <- createFragOneDomain(domainName=dm, processColumns="invid",   fragPrefix="InvestigatorIdentifier" )
+# Create Investigator_n  from I
+dm$investigator <- dm$invid
+dm <- createFragOneDomain(domainName=dm, processColumns="investigator",   fragPrefix="Investigator" )
+
 dm <- createFragOneDomain(domainName=dm, processColumns="age",     fragPrefix="AgeOutcome"  ) 
 dm <- createFragOneDomain(domainName=dm, processColumns="age",     fragPrefix="AgeOutcome"  ) 
 dm <- createFragOneDomain(domainName=dm, processColumns="country", fragPrefix="Country"  )

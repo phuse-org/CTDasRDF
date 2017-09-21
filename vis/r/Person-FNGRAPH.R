@@ -164,17 +164,31 @@ edgesList<-edgesList[c("s", "subjectID", "predicate", "o", "objectID")]
 
 # ** Edge type ----
 #   Set default as literal then recode everything away from that default value
-edgesList$edgeType <- 'default'  # Default unassigned
-
-# time
-edgesList$edgeType[grepl('time:', edgesList$predicate, perl=TRUE)] <- 'time'
-
-# sdtm terminology
-edgesList$edgeType[grepl('study:outcome|study:anatomic|study:laterality', edgesList$predicate, perl=TRUE)] <- 'sdtmterm'
+edgesList$edgeType <- 'other'  # Default/unassigned as Other
 
 
-# rdf:type
-edgesList$edgeType[grepl('rdf:type', edgesList$predicate, perl=TRUE)] <- 'typeof'
+# class
+edgesList$edgeType[grepl('rdf:type|rdfs:subClassOf|study:hasCategory|study:hasSubCategory', edgesList$predicate, perl=TRUE)] <- 'class'
+
+# code
+edgesList$edgeType[grepl('study:hasCode:', edgesList$predicate, perl=TRUE)] <- 'code'
+
+# flag
+edgesList$edgeType[grepl(':baselineFlag|:derivedFlag', edgesList$predicate, perl=TRUE)] <- 'flag'
+
+# label
+edgesList$edgeType[grepl('rdfs:label|skos:prefLabel', edgesList$predicate, perl=TRUE)] <- 'label'
+
+# status
+edgesList$edgeType[grepl(':activityStatus|:reasonNotDone', edgesList$predicate, perl=TRUE)] <- 'status'
+
+# timing
+edgesList$edgeType[grepl(':hasActivityInt|:hasRef|:hasBeg|:hasPlan|:hasStudyPart|study:seq|:hasEnd|:hasDate|:hasLife|:hasSTart|:hasPrereq', edgesList$predicate, perl=TRUE)] <- 'timing'
+
+# value
+edgesList$edgeType[grepl(':outcome|:hasValue', edgesList$predicate, perl=TRUE)] <- 'value'
+
+
 
 
 # Construct edgeType: remove prefix, convert to upper case for use in CSS 

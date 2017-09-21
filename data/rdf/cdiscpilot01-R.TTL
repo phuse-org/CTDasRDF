@@ -5,7 +5,7 @@
 @prefix pav:   <http://purl.org/pav> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
-@prefix custom: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#> .
+@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix sdtmterm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#> .
 @prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
@@ -31,13 +31,20 @@ cdiscpilot01:PopFlagEff_6
         study:outcome         "true" .
 
 cdiscpilot01:C67153.C25208_1
-        a                     sdtmterm:C67153.C25208 , cd01p:VisitScreening1Weight ;
-        skos:prefLabel        "P1 Screening 1 Weight 1" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:hasCode         sdtmterm:C67153.C25208 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:outcome         cdiscpilot01:WeightOutcome_1 ;
-        study:seq             "142"^^xsd:int .
+        a                       cd01p:VisitScreening1Weight , sdtmterm:C67153.C25208 ;
+        skos:prefLabel          "P1 Screening 1 Weight 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25208 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:outcome           cdiscpilot01:WeightOutcome_1 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "142"^^xsd:int ;
+        study:sponsordefinedID  "5000"^^xsd:string .
 
 cdiscpilot01:BloodPressureOutcome_5
         a               study:BloodPressureOutcome ;
@@ -46,16 +53,24 @@ cdiscpilot01:BloodPressureOutcome_5
         code:hasValue   "131" .
 
 cdiscpilot01:C67153.C49676_2
-        a                     cd01p:VisitScreening1Pulse , sdtmterm:C67153.C49676 ;
-        skos:prefLabel        "P1 Screening 1 Pulse Rate 2" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C49676 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding1_1 ;
-        study:outcome         cdiscpilot01:PulseOutcome_2 ;
-        study:seq             "45"^^xsd:int .
+        a                       cd01p:VisitScreening1Pulse , sdtmterm:C67153.C49676 ;
+        skos:prefLabel          "P1 Screening 1 Pulse Rate 2" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C49676 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding1_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25229 ;
+        study:outcome           cdiscpilot01:PulseOutcome_2 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "45"^^xsd:int ;
+        study:sponsordefinedID  "721"^^xsd:string .
 
 cdiscpilot01:ReferenceInterval_3
         a                  study:ReferenceInterval ;
@@ -231,6 +246,8 @@ cdiscpilot01:PopFlagItt_1
         study:hasCode         custom:PopFlagItt ;
         study:hasPerformer    cd01p:Sponsor_1 ;
         study:outcome         "true" .
+
+cd01p:Site_1  study:hasInvestigator  cdiscpilot01:Investigator_1 .
 
 cdiscpilot01:SubjectIdentifier_1
         a               study:SubjectIdentifier ;
@@ -522,16 +539,24 @@ cdiscpilot01:BloodPressureOutcome_6
         code:hasValue   "147" .
 
 cdiscpilot01:C67153.C49676_3
-        a                     cd01p:VisitScreening1Pulse , sdtmterm:C67153.C49676 ;
-        skos:prefLabel        "P1 Screening 1 Pulse Rate 3" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C49676 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding3_1 ;
-        study:outcome         cdiscpilot01:PulseOutcome_3 ;
-        study:seq             "46"^^xsd:int .
+        a                       cd01p:VisitScreening1Pulse , sdtmterm:C67153.C49676 ;
+        skos:prefLabel          "P1 Screening 1 Pulse Rate 3" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C49676 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding3_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:PulseOutcome_3 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "46"^^xsd:int ;
+        study:sponsordefinedID  "237"^^xsd:string .
 
 cdiscpilot01:ReferenceInterval_4
         a                  study:ReferenceInterval ;
@@ -729,7 +754,7 @@ cdiscpilot01:sdtm-graph
         dcterms:description  "The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. \n  Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data. Only select observations from \n  source XPT are present, including a subset of VS results."^^xsd:string ;
         dcterms:title        "Clinical Trials Data as RDF (CTDasRDF)."^^xsd:string ;
         bibo:status          "Under Construction/incomplete: Blood pressure, Pulse, Weight. Only 1 patient and a subset of obs. from that patient."^^xsd:string ;
-        pav:createdOn        "2017-09-20T13:34:45-04:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-09-21T16:00:35-04:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.3 Platform:x86_64-w64-mingw32 with scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "data/rdf/cdiscpilot01-R.TTL" .
@@ -768,16 +793,24 @@ cdiscpilot01:BloodPressureOutcome_4
         code:hasValue   "129" .
 
 cdiscpilot01:C67153.C49676_1
-        a                     sdtmterm:C67153.C49676 , cd01p:VisitScreening1Pulse ;
-        skos:prefLabel        "P1 Screening 1 Pulse Rate 1" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62167 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C49676 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleLying5_1 ;
-        study:outcome         cdiscpilot01:PulseOutcome_1 ;
-        study:seq             "44"^^xsd:int .
+        a                       sdtmterm:C67153.C49676 , cd01p:VisitScreening1Pulse ;
+        skos:prefLabel          "P1 Screening 1 Pulse Rate 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62167 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C49676 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleLying5_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:PulseOutcome_1 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "44"^^xsd:int ;
+        study:sponsordefinedID  "125"^^xsd:string .
 
 cdiscpilot01:ReferenceInterval_2
         a                  study:ReferenceInterval ;
@@ -959,13 +992,20 @@ cdiscpilot01:StudyParticipationInterval_1
         time:hasEnd        cdiscpilot01:Date_30 .
 
 cdiscpilot01:C67153.C25347_1
-        a                     sdtmterm:C67153.C25347 , cd01p:VisitScreening1Height ;
-        skos:prefLabel        "P1 Screening 1 Height 1" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:hasCode         sdtmterm:C67153.C25347 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:outcome         cdiscpilot01:HeightOutcome_1 ;
-        study:seq             "43"^^xsd:int .
+        a                       cd01p:VisitScreening1Height , sdtmterm:C67153.C25347 ;
+        skos:prefLabel          "P1 Screening 1 Height 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25347 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:outcome           cdiscpilot01:HeightOutcome_1 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "43"^^xsd:int ;
+        study:sponsordefinedID  "1000"^^xsd:string .
 
 cdiscpilot01:Date_14  a            study:ProductAdministrationEnd ;
         rdfs:label                 "2013-03-09"^^xsd:string ;
@@ -1194,14 +1234,21 @@ cdiscpilot01:ProductAdministrationInterval_6
         time:hasEnd        cdiscpilot01:Date_14 .
 
 cdiscpilot01:C67153.C25206_1
-        a                       sdtmterm:C67153.C25206 , cd01p:VisitScreening1Temperature ;
+        a                       cd01p:VisitScreening1Temperature , sdtmterm:C67153.C25206 ;
         skos:prefLabel          "P1 Screening 1 Temperature 1" ;
         study:activityStatus    code:ActivityStatus_1 ;
         study:anatomicLocation  sdtmterm:C74456.C12421 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25206 ;
         study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
         study:outcome           cdiscpilot01:TemperatureOutcome_1 ;
-        study:seq               "128"^^xsd:int .
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "128"^^xsd:int ;
+        study:sponsordefinedID  "3000"^^xsd:string .
 
 cdiscpilot01:PopFlagCmpltr16Wk_5
         a                     custom:PopFlagCmpltr16Wk ;

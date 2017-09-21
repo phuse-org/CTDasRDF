@@ -30,6 +30,19 @@ ddply(u_Person, .(personNum), function(u_Person)
 })
 rm(u_Person) # Clean up
 
+# Sites ----
+sites <- dm[,c("siteid_Frag", "investigator_Frag")]
+u_sites <- sites[!duplicated(sites$siteid_Frag),]  # Unique site IDs
+
+ddply(u_sites, .(siteid_Frag), function(u_sites)
+{
+  add.triple(cdiscpilot01,
+    paste0(prefix.CD01P, u_sites$siteid_Frag),
+    paste0(prefix.STUDY,"hasInvestigator" ),
+    paste0(prefix.CDISCPILOT01, u_sites$investigator_Frag)
+  )
+})
+
 # Investigators ----
 investigators <- dm[,c("invnam", "invid", "inv", "invid_Frag")]
 u_Invest <- investigators[!duplicated(investigators),]  # Unique investigator ID 
