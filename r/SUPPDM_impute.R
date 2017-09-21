@@ -1,4 +1,4 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: SUPPDM_impute.R
 # DESC: Impute data needed for development purposes.
 # REQ : 
@@ -9,14 +9,13 @@
 #       
 #       
 # TODO: move code at end to DM_frag.R?? OR delete if not used.
-###############################################################################
+#______________________________________________________________________________
 
 # Add personID for merge with DM dataset
 suppdm <- addPersonId(suppdm)
 
-#-- End Data Creation ---------------------------------------------------------
 
-#-- Data COding ---------------------------------------------------------------
+# Data Coding ----
 #   Used in formation of URIs where the original data can/should not be used
 qnamCode <- function(x) {
     switch(as.character(x),

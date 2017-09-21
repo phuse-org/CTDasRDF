@@ -5,7 +5,7 @@
 @prefix pav:   <http://purl.org/pav> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
-@prefix custom: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#> .
+@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix sdtmterm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#> .
 @prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
@@ -24,20 +24,27 @@
 @prefix sdtm:  <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#> .
 
 cdiscpilot01:PopFlagEff_6
-        a                   custom:PopFlagEff ;
-        study:hasCode       custom:PopFlagEff ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagEff ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagEff ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:C67153.C25208_1
-        a                     sdtmterm:C67153.C25208 , cd01p:VisitScreening1Weight ;
-        skos:prefLabel        "P1 Screening 1 Weight" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:hasCode         sdtmterm:C67153.C25208 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleNone_1 ;
-        study:outcome         cdiscpilot01:WeightOutcome_1 ;
-        study:seq             "142"^^xsd:int .
+        a                       cd01p:VisitScreening1Weight , sdtmterm:C67153.C25208 ;
+        skos:prefLabel          "P1 Screening 1 Weight 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25208 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:outcome           cdiscpilot01:WeightOutcome_1 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "142"^^xsd:int ;
+        study:sponsordefinedID  "5000"^^xsd:string .
 
 cdiscpilot01:BloodPressureOutcome_5
         a               study:BloodPressureOutcome ;
@@ -46,16 +53,24 @@ cdiscpilot01:BloodPressureOutcome_5
         code:hasValue   "131" .
 
 cdiscpilot01:C67153.C49676_2
-        a                     cd01p:VisitScreening1Pulse , sdtmterm:C67153.C49676 ;
-        skos:prefLabel        "P1 Screening 1 Pulse Rate" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C49676 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding1_1 ;
-        study:outcome         cdiscpilot01:PulseOutcome_2 ;
-        study:seq             "45"^^xsd:int .
+        a                       cd01p:VisitScreening1Pulse , sdtmterm:C67153.C49676 ;
+        skos:prefLabel          "P1 Screening 1 Pulse Rate 2" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C49676 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding1_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25229 ;
+        study:outcome           cdiscpilot01:PulseOutcome_2 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "45"^^xsd:int ;
+        study:sponsordefinedID  "721"^^xsd:string .
 
 cdiscpilot01:ReferenceInterval_3
         a                  study:ReferenceInterval ;
@@ -66,22 +81,24 @@ cdiscpilot01:ReferenceInterval_3
 cdiscpilot01:InformedConsentAdult_4
         a                          code:InformedConsentAdult ;
         skos:prefLabel             "Informed consent 4"^^xsd:string ;
+        study:activityStatus       code:ActivityStatus_1 ;
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_4 ;
         study:hasCode              code:InformedConsentAdult ;
-        study:outcome              code:InformedConsentOutcome_4 .
+        study:hasStartRule         study:StartRuleDefault_1 ;
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_4
         a                           study:EnrolledSubject ;
         skos:prefLabel              "Person 4"^^xsd:string ;
-        study:actualArm             cd01p:ArmXanomelin_Lo ;
+        study:actualArm             cd01p:ArmXanomelineLow ;
         study:deathFlag             ""^^xsd:string ;
         study:hasLifespan           cdiscpilot01:Lifespan_4 ;
         study:hasReferenceInterval  cdiscpilot01:ReferenceInterval_4 ;
-        study:hasSite               cdiscpilot01:Site_1 ;
+        study:hasSite               cd01p:Site_1 ;
         study:hasStudyParticipationInterval
                 cdiscpilot01:StudyParticipationInterval_4 ;
-        study:hasSubjectID          "1033"^^xsd:string ;
-        study:hasUniqueSubjectID    "01-701-1033"^^xsd:string ;
+        study:hasSubjectID          cdiscpilot01:SubjectIdentifier_4 ;
+        study:hasUniqueSubjectID    cdiscpilot01:UniqueSubjectIdentifier_4 ;
         study:participatesIn        cdiscpilot01:InformedConsentAdult_4 , cdiscpilot01:RandomizationBAL3_4 , cdiscpilot01:PopFlagItt_4 , cdiscpilot01:DemographicDataCollection_4 , cdiscpilot01:PopFlagEff_4 , cdiscpilot01:PopFlagSaf_4 , cdiscpilot01:ProductAdministration_4 .
 
 cdiscpilot01:AgeOutcome_4
@@ -91,20 +108,26 @@ cdiscpilot01:AgeOutcome_4
         code:hasValue   "74"^^xsd:int .
 
 cdiscpilot01:PopFlagItt_6
-        a                   custom:PopFlagItt ;
-        study:hasCode       custom:PopFlagItt ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagItt ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagItt ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
+
+cdiscpilot01:SubjectIdentifier_6
+        a               study:SubjectIdentifier ;
+        skos:prefLabel  "1047" .
 
 cdiscpilot01:Date_20  a            study:ProductAdministrationBegin , study:ReferenceBegin ;
         rdfs:label                 "2014-01-02"^^xsd:string ;
         study:dateTimeInXSDString  "2014-01-02"^^xsd:string .
 
 cdiscpilot01:RandomizationBAL3_1
-        a               code:RandomizationBAL3 ;
-        skos:prefLabel  "Randomization 1"^^xsd:string ;
-        study:hasCode   code:RandomizationBAL3 ;
-        study:outcome   cd01p:ArmPlacebo .
+        a                     code:RandomizationBAL3 ;
+        skos:prefLabel        "Randomization 1"^^xsd:string ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         code:RandomizationBAL3 ;
+        study:outcome         cd01p:ArmPlacebo .
 
 cdiscpilot01:Lifespan_3
         a                  study:Lifespan ;
@@ -129,64 +152,87 @@ cdiscpilot01:ProductAdministration_5
         study:hasCode              study:ProductAdministration .
 
 cdiscpilot01:PopFlagSaf_1
-        a                   custom:PopFlagSaf ;
-        study:hasCode       custom:PopFlagSaf ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagSaf ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagSaf ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:Date_28  a            study:ProductAdministrationBegin , study:ReferenceBegin ;
         rdfs:label                 "2014-07-01"^^xsd:string ;
         study:dateTimeInXSDString  "2014-07-01"^^xsd:string .
 
+cdiscpilot01:UniqueSubjectIdentifier_3
+        a               study:UniqueSubjectIdentifier ;
+        skos:prefLabel  "01-701-1028" .
+
 cdiscpilot01:C67153.C25298_3
-        a                     sdtmterm:C67153.C25298 , cd01p:VisitScreening1BloodPressure ;
-        skos:prefLabel        "P1 Screening 1 Systolic Blood Pressure" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:hasCode         sdtmterm:C67153.C25298 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding3_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_6 ;
-        study:seq             "88"^^xsd:int .
+        a                       sdtmterm:C67153.C25298 , cd01p:VisitScreening1BloodPressure ;
+        skos:prefLabel          "P1 Screening 1 Systolic Blood Pressure 3" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25298 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding3_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_6 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "88"^^xsd:int ;
+        study:sponsordefinedID  "236"^^xsd:string .
 
 cdiscpilot01:PopFlagEff_1
-        a                   custom:PopFlagEff ;
-        study:hasCode       custom:PopFlagEff ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagEff ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagEff ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:DemographicDataCollection_6
-        a                code:DemographicDataCollection ;
-        skos:prefLabel   "P6 Screening 1 Demographic data collection"^^xsd:string ;
-        code:hasAge      cdiscpilot01:AgeOutcome_6 ;
-        study:ethnicity  sdtmterm:C66790.C41222 ;
-        study:hasCode    code:DemographicDataCollection ;
-        study:hasDate    cdiscpilot01:Date_11 ;
-        study:race       sdtmterm:C74457.C41261 ;
-        study:sex        sdtmterm:C66731.C16576 .
+        a                     code:DemographicDataCollection ;
+        skos:prefLabel        "P6 Screening 1 Demographic data collection"^^xsd:string ;
+        code:hasAge           cdiscpilot01:AgeOutcome_6 ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:ethnicity       sdtmterm:C66790.C41222 ;
+        study:hasCode         code:DemographicDataCollection ;
+        study:hasDate         cdiscpilot01:Date_11 ;
+        study:race            sdtmterm:C74457.C41261 ;
+        study:sex             sdtmterm:C66731.C16576 .
 
 cdiscpilot01:Date_7  a             study:DemogDataCollectionDate , study:StudyParticipationBegin , study:InformedConsentBegin ;
         rdfs:label                 "2012-07-22"^^xsd:string ;
         study:dateTimeInXSDString  "2012-07-22"^^xsd:string .
 
 cdiscpilot01:StartRuleLying5_1
-        a                     cd01p:StartRuleLying5 ;
+        a                     code:StartRuleLying5 ;
         skos:prefLabel        "P1 Screening 1 Rule Lying 5 Min" ;
         code:hasPrerequisite  cdiscpilot01:AssumeBodyPositionSupine_1 ;
-        study:hasCode         cd01p:StartRuleLying5 .
+        study:hasCode         code:StartRuleLying5 .
 
 cdiscpilot01:C67153.C25299_3
-        a                     cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
-        skos:prefLabel        "P1 Screening 1 Diastolic Blood Pressure" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:groupID         "GRPID1"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25299 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding1_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_3 ;
-        study:seq             "2"^^xsd:int .
+        a                       cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
+        skos:prefLabel          "P1 Screening 1 Diastolic Blood Pressure 3" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25299 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding3_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_1 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "3"^^xsd:int ;
+        study:sponsordefinedID  "235"^^xsd:string .
 
 cdiscpilot01:StudyParticipationInterval_2
         a                  study:StudyParticipationInterval ;
@@ -195,10 +241,17 @@ cdiscpilot01:StudyParticipationInterval_2
         time:hasEnd        cdiscpilot01:Date_13 .
 
 cdiscpilot01:PopFlagItt_1
-        a                   custom:PopFlagItt ;
-        study:hasCode       custom:PopFlagItt ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagItt ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagItt ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
+
+cd01p:Site_1  study:hasInvestigator  cdiscpilot01:Investigator_1 .
+
+cdiscpilot01:SubjectIdentifier_1
+        a               study:SubjectIdentifier ;
+        skos:prefLabel  "1015" .
 
 cdiscpilot01:Date_15  a            study:ReferenceEnd ;
         rdfs:label                 "2013-03-29"^^xsd:string ;
@@ -210,27 +263,34 @@ cdiscpilot01:ReferenceInterval_6
         time:hasBeginning  cdiscpilot01:Date_12 ;
         time:hasEnd        cdiscpilot01:Date_15 .
 
+cdiscpilot01:InvestigatorIdentifier_1
+        a               study:InvestigatorIdentifier ;
+        skos:prefLabel  "123" .
+
 cdiscpilot01:PopFlagCmpltr24Wk_5
-        a                   custom:PopFlagCmpltr24Wk ;
-        study:hasCode       custom:PopFlagCmpltr24Wk ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagCmpltr24Wk ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagCmpltr24Wk ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:Date_23  a            study:DemogDataCollectionDate , study:StudyParticipationBegin , study:InformedConsentBegin ;
         rdfs:label                 "2014-03-10"^^xsd:string ;
         study:dateTimeInXSDString  "2014-03-10"^^xsd:string .
 
 cdiscpilot01:PopFlagCmpltr8Wk_1
-        a                   custom:PopFlagCmpltr8Wk ;
-        study:hasCode       custom:PopFlagCmpltr8Wk ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagCmpltr8Wk ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagCmpltr8Wk ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:RandomizationBAL3_4
-        a               code:RandomizationBAL3 ;
-        skos:prefLabel  "Randomization 4"^^xsd:string ;
-        study:hasCode   code:RandomizationBAL3 ;
-        study:outcome   cd01p:ArmXanomelin_Lo .
+        a                     code:RandomizationBAL3 ;
+        skos:prefLabel        "Randomization 4"^^xsd:string ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         code:RandomizationBAL3 ;
+        study:outcome         cd01p:ArmXanomelinLow .
 
 cdiscpilot01:Lifespan_6
         a                  study:Lifespan ;
@@ -244,14 +304,15 @@ cdiscpilot01:ProductAdministrationInterval_4
         time:hasEnd        cdiscpilot01:Date_25 .
 
 cdiscpilot01:DemographicDataCollection_1
-        a                code:DemographicDataCollection ;
-        skos:prefLabel   "P1 Screening 1 Demographic data collection"^^xsd:string ;
-        code:hasAge      cdiscpilot01:AgeOutcome_1 ;
-        study:ethnicity  sdtmterm:C66790.C17459 ;
-        study:hasCode    code:DemographicDataCollection ;
-        study:hasDate    cdiscpilot01:Date_19 ;
-        study:race       sdtmterm:C74457.C41261 ;
-        study:sex        sdtmterm:C66731.C16576 .
+        a                     code:DemographicDataCollection ;
+        skos:prefLabel        "P1 Screening 1 Demographic data collection"^^xsd:string ;
+        code:hasAge           cdiscpilot01:AgeOutcome_1 ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:ethnicity       sdtmterm:C66790.C17459 ;
+        study:hasCode         code:DemographicDataCollection ;
+        study:hasDate         cdiscpilot01:Date_19 ;
+        study:race            sdtmterm:C74457.C41261 ;
+        study:sex             sdtmterm:C66731.C16576 .
 
 cdiscpilot01:Date_2  a             study:Birthdate ;
         rdfs:label                 "1937-06-30"^^xsd:string ;
@@ -272,16 +333,18 @@ cdiscpilot01:InformedConsentInterval_5
         time:hasBeginning  cdiscpilot01:Date_27 .
 
 cdiscpilot01:PopFlagCmpltr16Wk_3
-        a                   custom:PopFlagCmpltr16Wk ;
-        study:hasCode       custom:PopFlagCmpltr16Wk ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagCmpltr16Wk ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagCmpltr16Wk ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:PopFlagSaf_4
-        a                   custom:PopFlagSaf ;
-        study:hasCode       custom:PopFlagSaf ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagSaf ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagSaf ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:Date_31  a            study:StudyParticipationEnd ;
         rdfs:label                 "2014-09-15"^^xsd:string ;
@@ -291,11 +354,16 @@ cdiscpilot01:Date_10  a            study:ReferenceEnd ;
         rdfs:label                 "2012-09-02"^^xsd:string ;
         study:dateTimeInXSDString  "2012-09-02"^^xsd:string .
 
+cdiscpilot01:UniqueSubjectIdentifier_6
+        a               study:UniqueSubjectIdentifier ;
+        skos:prefLabel  "01-701-1047" .
+
 cdiscpilot01:PopFlagEff_4
-        a                   custom:PopFlagEff ;
-        study:hasCode       custom:PopFlagEff ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagEff ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagEff ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:BloodPressureOutcome_3
         a               study:BloodPressureOutcome ;
@@ -304,10 +372,10 @@ cdiscpilot01:BloodPressureOutcome_3
         code:hasValue   "83" .
 
 cdiscpilot01:StartRuleStanding1_1
-        a                     cd01p:StartRuleStanding1 ;
+        a                     code:StartRuleStanding1 ;
         skos:prefLabel        "P1 Screening 1 Rule Standing 1 Min" ;
         code:hasPrerequisite  cdiscpilot01:AssumeBodyPositionStanding_1 ;
-        study:hasCode         cd01p:StartRuleStanding1 .
+        study:hasCode         code:StartRuleStanding1 .
 
 cdiscpilot01:ReferenceInterval_1
         a                  study:ReferenceInterval ;
@@ -318,9 +386,11 @@ cdiscpilot01:ReferenceInterval_1
 cdiscpilot01:InformedConsentAdult_2
         a                          code:InformedConsentAdult ;
         skos:prefLabel             "Informed consent 2"^^xsd:string ;
+        study:activityStatus       code:ActivityStatus_1 ;
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_2 ;
         study:hasCode              code:InformedConsentAdult ;
-        study:outcome              code:InformedConsentOutcome_2 .
+        study:hasStartRule         study:StartRuleDefault_1 ;
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_2
         a                           study:EnrolledSubject ;
@@ -329,11 +399,11 @@ cdiscpilot01:Person_2
         study:deathFlag             ""^^xsd:string ;
         study:hasLifespan           cdiscpilot01:Lifespan_2 ;
         study:hasReferenceInterval  cdiscpilot01:ReferenceInterval_2 ;
-        study:hasSite               cdiscpilot01:Site_1 ;
+        study:hasSite               cd01p:Site_1 ;
         study:hasStudyParticipationInterval
                 cdiscpilot01:StudyParticipationInterval_2 ;
-        study:hasSubjectID          "1023"^^xsd:string ;
-        study:hasUniqueSubjectID    "01-701-1023"^^xsd:string ;
+        study:hasSubjectID          cdiscpilot01:SubjectIdentifier_2 ;
+        study:hasUniqueSubjectID    cdiscpilot01:UniqueSubjectIdentifier_2 ;
         study:participatesIn        cdiscpilot01:InformedConsentAdult_2 , cdiscpilot01:DemographicDataCollection_2 , cdiscpilot01:PopFlagItt_2 , cdiscpilot01:PopFlagEff_2 , cdiscpilot01:RandomizationBAL3_2 , cdiscpilot01:ProductAdministration_2 , cdiscpilot01:PopFlagSaf_2 .
 
 cdiscpilot01:AgeOutcome_2
@@ -343,16 +413,21 @@ cdiscpilot01:AgeOutcome_2
         code:hasValue   "64"^^xsd:int .
 
 cdiscpilot01:PopFlagItt_4
-        a                   custom:PopFlagItt ;
-        study:hasCode       custom:PopFlagItt ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagItt ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagItt ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:StudyParticipationInterval_5
         a                  study:StudyParticipationInterval ;
         rdfs:label         "Study Participation Interval 5"^^xsd:string ;
         time:hasBeginning  cdiscpilot01:Date_27 ;
         time:hasEnd        cdiscpilot01:Date_33 .
+
+cdiscpilot01:SubjectIdentifier_4
+        a               study:SubjectIdentifier ;
+        skos:prefLabel  "1033" .
 
 cdiscpilot01:Date_18  a            study:StudyParticipationEnd ;
         rdfs:label                 "2013-07-28"^^xsd:string ;
@@ -365,15 +440,10 @@ cdiscpilot01:Lifespan_1
         time:hasEnd        cdiscpilot01:Date_19 .
 
 cdiscpilot01:StartRuleStanding3_1
-        a                     cd01p:StartRuleStanding3 ;
+        a                     code:StartRuleStanding3 ;
         skos:prefLabel        "P1 Screening 1 Rule Standing 3 Min" ;
         code:hasPrerequisite  cdiscpilot01:AssumeBodyPositionStanding_1 ;
-        study:hasCode         cd01p:StartRuleStanding3 .
-
-cdiscpilot01:StartRuleNone_1
-        a               cd01p:StartRuleNone ;
-        skos:prefLabel  "Start rule none 1" ;
-        study:hasCode   cd01p:StartRuleNone .
+        study:hasCode         code:StartRuleStanding3 .
 
 cdiscpilot01:ProductAdministration_3
         a                          study:ProductAdministration ;
@@ -399,43 +469,64 @@ cdiscpilot01:PulseOutcome_2
         code:hasUnit    code:Unit_4 ;
         code:hasValue   "62" .
 
+cdiscpilot01:UniqueSubjectIdentifier_1
+        a               study:UniqueSubjectIdentifier ;
+        skos:prefLabel  "01-701-1015" .
+
 cdiscpilot01:C67153.C25298_1
-        a                     sdtmterm:C67153.C25298 , cd01p:VisitScreening1BloodPressure ;
-        skos:prefLabel        "P1 Screening 1 Systolic Blood Pressure" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:hasCode         sdtmterm:C67153.C25298 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding1_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_4 ;
-        study:seq             "87"^^xsd:int .
+        a                       sdtmterm:C67153.C25298 , cd01p:VisitScreening1BloodPressure ;
+        skos:prefLabel          "P1 Screening 1 Systolic Blood Pressure 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62167 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25298 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleLying5_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_5 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "86"^^xsd:int ;
+        study:sponsordefinedID  "124"^^xsd:string .
 
 cdiscpilot01:DemographicDataCollection_4
-        a                code:DemographicDataCollection ;
-        skos:prefLabel   "P4 Screening 1 Demographic data collection"^^xsd:string ;
-        code:hasAge      cdiscpilot01:AgeOutcome_4 ;
-        study:ethnicity  sdtmterm:C66790.C41222 ;
-        study:hasCode    code:DemographicDataCollection ;
-        study:hasDate    cdiscpilot01:Date_23 ;
-        study:race       sdtmterm:C74457.C41261 ;
-        study:sex        sdtmterm:C66731.C20197 .
+        a                     code:DemographicDataCollection ;
+        skos:prefLabel        "P4 Screening 1 Demographic data collection"^^xsd:string ;
+        code:hasAge           cdiscpilot01:AgeOutcome_4 ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:ethnicity       sdtmterm:C66790.C41222 ;
+        study:hasCode         code:DemographicDataCollection ;
+        study:hasDate         cdiscpilot01:Date_23 ;
+        study:race            sdtmterm:C74457.C41261 ;
+        study:sex             sdtmterm:C66731.C20197 .
 
 cdiscpilot01:Date_5  a             study:Birthdate ;
         rdfs:label                 "1948-08-05"^^xsd:string ;
         study:dateTimeInXSDString  "1948-08-05"^^xsd:string .
 
 cdiscpilot01:C67153.C25299_1
-        a                     cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
-        skos:prefLabel        "P1 Screening 1 Diastolic Blood Pressure" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:groupID         "GRPID1"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25299 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding3_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_1 ;
-        study:seq             "3"^^xsd:int .
+        a                       cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
+        skos:prefLabel          "P1 Screening 1 Diastolic Blood Pressure 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62167 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25299 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleLying5_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_2 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "1"^^xsd:int ;
+        study:sponsordefinedID  "123"^^xsd:string .
 
 cdiscpilot01:Date_13  a            study:StudyParticipationEnd ;
         rdfs:label                 "2013-02-18"^^xsd:string ;
@@ -448,16 +539,24 @@ cdiscpilot01:BloodPressureOutcome_6
         code:hasValue   "147" .
 
 cdiscpilot01:C67153.C49676_3
-        a                     cd01p:VisitScreening1Pulse , sdtmterm:C67153.C49676 ;
-        skos:prefLabel        "P1 Screening 1 Pulse Rate" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62166 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C49676 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleStanding3_1 ;
-        study:outcome         cdiscpilot01:PulseOutcome_3 ;
-        study:seq             "46"^^xsd:int .
+        a                       cd01p:VisitScreening1Pulse , sdtmterm:C67153.C49676 ;
+        skos:prefLabel          "P1 Screening 1 Pulse Rate 3" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C49676 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding3_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:PulseOutcome_3 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "46"^^xsd:int ;
+        study:sponsordefinedID  "237"^^xsd:string .
 
 cdiscpilot01:ReferenceInterval_4
         a                  study:ReferenceInterval ;
@@ -468,22 +567,24 @@ cdiscpilot01:ReferenceInterval_4
 cdiscpilot01:InformedConsentAdult_5
         a                          code:InformedConsentAdult ;
         skos:prefLabel             "Informed consent 5"^^xsd:string ;
+        study:activityStatus       code:ActivityStatus_1 ;
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_5 ;
         study:hasCode              code:InformedConsentAdult ;
-        study:outcome              code:InformedConsentOutcome_5 .
+        study:hasStartRule         study:StartRuleDefault_1 ;
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_5
         a                           study:EnrolledSubject ;
         skos:prefLabel              "Person 5"^^xsd:string ;
-        study:actualArm             cd01p:ArmXanomelin_Hi ;
+        study:actualArm             cd01p:ArmXanomelineHigh ;
         study:deathFlag             ""^^xsd:string ;
         study:hasLifespan           cdiscpilot01:Lifespan_5 ;
         study:hasReferenceInterval  cdiscpilot01:ReferenceInterval_5 ;
-        study:hasSite               cdiscpilot01:Site_1 ;
+        study:hasSite               cd01p:Site_1 ;
         study:hasStudyParticipationInterval
                 cdiscpilot01:StudyParticipationInterval_5 ;
-        study:hasSubjectID          "1034"^^xsd:string ;
-        study:hasUniqueSubjectID    "01-701-1034"^^xsd:string ;
+        study:hasSubjectID          cdiscpilot01:SubjectIdentifier_5 ;
+        study:hasUniqueSubjectID    cdiscpilot01:UniqueSubjectIdentifier_5 ;
         study:participatesIn        cdiscpilot01:InformedConsentAdult_5 , cdiscpilot01:RandomizationBAL3_5 , cdiscpilot01:PopFlagSaf_5 , cdiscpilot01:PopFlagEff_5 , cdiscpilot01:PopFlagCmpltr16Wk_5 , cdiscpilot01:PopFlagCmpltr8Wk_5 , cdiscpilot01:PopFlagCmpltr24Wk_5 , cdiscpilot01:DemographicDataCollection_5 , cdiscpilot01:PopFlagItt_5 , cdiscpilot01:ProductAdministration_5 .
 
 cdiscpilot01:AgeOutcome_5
@@ -493,20 +594,22 @@ cdiscpilot01:AgeOutcome_5
         code:hasValue   "77"^^xsd:int .
 
 cdiscpilot01:PopFlagCmpltr24Wk_3
-        a                   custom:PopFlagCmpltr24Wk ;
-        study:hasCode       custom:PopFlagCmpltr24Wk ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagCmpltr24Wk ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagCmpltr24Wk ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:Date_21  a            study:ProductAdministrationEnd , study:ReferenceEnd ;
         rdfs:label                 "2014-01-14"^^xsd:string ;
         study:dateTimeInXSDString  "2014-01-14"^^xsd:string .
 
 cdiscpilot01:RandomizationBAL3_2
-        a               code:RandomizationBAL3 ;
-        skos:prefLabel  "Randomization 2"^^xsd:string ;
-        study:hasCode   code:RandomizationBAL3 ;
-        study:outcome   cd01p:ArmPlacebo .
+        a                     code:RandomizationBAL3 ;
+        skos:prefLabel        "Randomization 2"^^xsd:string ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         code:RandomizationBAL3 ;
+        study:outcome         cd01p:ArmPlacebo .
 
 cdiscpilot01:Lifespan_4
         a                  study:Lifespan ;
@@ -536,16 +639,18 @@ cdiscpilot01:ProductAdministration_6
         study:hasCode              study:ProductAdministration .
 
 cdiscpilot01:PopFlagCmpltr16Wk_1
-        a                   custom:PopFlagCmpltr16Wk ;
-        study:hasCode       custom:PopFlagCmpltr16Wk ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagCmpltr16Wk ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagCmpltr16Wk ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:PopFlagSaf_2
-        a                   custom:PopFlagSaf ;
-        study:hasCode       custom:PopFlagSaf ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagSaf ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagSaf ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:Date_29  a            study:ProductAdministrationEnd , study:ReferenceEnd ;
         rdfs:label                 "2014-07-02"^^xsd:string ;
@@ -560,14 +665,19 @@ cdiscpilot01:TemperatureOutcome_1
 cdiscpilot01:Investigator_1
         a                        study:Investigator ;
         skos:prefLabel           "Investigator 123"^^xsd:string ;
-        study:hasInvestigatorID  "123"^^xsd:string ;
+        study:hasInvestigatorID  cdiscpilot01:InvestigatorIdentifier_1 ;
         study:hasLastName        "Jones"^^xsd:string .
 
+cdiscpilot01:UniqueSubjectIdentifier_4
+        a               study:UniqueSubjectIdentifier ;
+        skos:prefLabel  "01-701-1033" .
+
 cdiscpilot01:PopFlagEff_2
-        a                   custom:PopFlagEff ;
-        study:hasCode       custom:PopFlagEff ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagEff ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagEff ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:Date_8  a             study:ProductAdministrationBegin , study:ReferenceBegin ;
         rdfs:label                 "2012-08-05"^^xsd:string ;
@@ -580,16 +690,21 @@ cdiscpilot01:BloodPressureOutcome_1
         code:hasValue   "57" .
 
 cdiscpilot01:PopFlagItt_2
-        a                   custom:PopFlagItt ;
-        study:hasCode       custom:PopFlagItt ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagItt ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagItt ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:StudyParticipationInterval_3
         a                  study:StudyParticipationInterval ;
         rdfs:label         "Study Participation Interval 3"^^xsd:string ;
         time:hasBeginning  cdiscpilot01:Date_16 ;
         time:hasEnd        cdiscpilot01:Date_22 .
+
+cdiscpilot01:SubjectIdentifier_2
+        a               study:SubjectIdentifier ;
+        skos:prefLabel  "1023" .
 
 cdiscpilot01:Date_16  a            study:DemogDataCollectionDate , study:StudyParticipationBegin , study:InformedConsentBegin ;
         rdfs:label                 "2013-07-11"^^xsd:string ;
@@ -606,10 +721,11 @@ cdiscpilot01:Date_24  a            study:ProductAdministrationBegin , study:Refe
         study:dateTimeInXSDString  "2014-03-18"^^xsd:string .
 
 cdiscpilot01:RandomizationBAL3_5
-        a               code:RandomizationBAL3 ;
-        skos:prefLabel  "Randomization 5"^^xsd:string ;
-        study:hasCode   code:RandomizationBAL3 ;
-        study:outcome   cd01p:ArmXanomelin_Hi .
+        a                     code:RandomizationBAL3 ;
+        skos:prefLabel        "Randomization 5"^^xsd:string ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         code:RandomizationBAL3 ;
+        study:outcome         cd01p:ArmXanomelineHigh .
 
 cdiscpilot01:ProductAdministrationInterval_5
         a                  study:ProductAdministrationInterval ;
@@ -618,14 +734,15 @@ cdiscpilot01:ProductAdministrationInterval_5
         time:hasEnd        cdiscpilot01:Date_32 .
 
 cdiscpilot01:DemographicDataCollection_2
-        a                code:DemographicDataCollection ;
-        skos:prefLabel   "P2 Screening 1 Demographic data collection"^^xsd:string ;
-        code:hasAge      cdiscpilot01:AgeOutcome_2 ;
-        study:ethnicity  sdtmterm:C66790.C17459 ;
-        study:hasCode    code:DemographicDataCollection ;
-        study:hasDate    cdiscpilot01:Date_7 ;
-        study:race       sdtmterm:C74457.C41261 ;
-        study:sex        sdtmterm:C66731.C20197 .
+        a                     code:DemographicDataCollection ;
+        skos:prefLabel        "P2 Screening 1 Demographic data collection"^^xsd:string ;
+        code:hasAge           cdiscpilot01:AgeOutcome_2 ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:ethnicity       sdtmterm:C66790.C17459 ;
+        study:hasCode         code:DemographicDataCollection ;
+        study:hasDate         cdiscpilot01:Date_7 ;
+        study:race            sdtmterm:C74457.C41261 ;
+        study:sex             sdtmterm:C66731.C20197 .
 
 cdiscpilot01:Date_3  a             study:Birthdate ;
         rdfs:label                 "1940-03-17"^^xsd:string ;
@@ -637,7 +754,7 @@ cdiscpilot01:sdtm-graph
         dcterms:description  "The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. \n  Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data. Only select observations from \n  source XPT are present, including a subset of VS results."^^xsd:string ;
         dcterms:title        "Clinical Trials Data as RDF (CTDasRDF)."^^xsd:string ;
         bibo:status          "Under Construction/incomplete: Blood pressure, Pulse, Weight. Only 1 patient and a subset of obs. from that patient."^^xsd:string ;
-        pav:createdOn        "2017-08-14T13:22:47-04:00"^^xsd:dateTime ;
+        pav:createdOn        "2017-09-21T16:00:35-04:00"^^xsd:dateTime ;
         pav:createdWith      "R Version 3.3.3 Platform:x86_64-w64-mingw32 with scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "data/rdf/cdiscpilot01-R.TTL" .
@@ -648,10 +765,11 @@ cdiscpilot01:InformedConsentInterval_6
         time:hasBeginning  cdiscpilot01:Date_11 .
 
 cdiscpilot01:PopFlagSaf_5
-        a                   custom:PopFlagSaf ;
-        study:hasCode       custom:PopFlagSaf ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagSaf ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagSaf ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:Date_32  a            study:ProductAdministrationEnd , study:ReferenceEnd ;
         rdfs:label                 "2014-12-30"^^xsd:string ;
@@ -662,10 +780,11 @@ cdiscpilot01:Date_11  a            study:DemogDataCollectionDate , study:StudyPa
         study:dateTimeInXSDString  "2013-01-22"^^xsd:string .
 
 cdiscpilot01:PopFlagEff_5
-        a                   custom:PopFlagEff ;
-        study:hasCode       custom:PopFlagEff ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagEff ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagEff ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:BloodPressureOutcome_4
         a               study:BloodPressureOutcome ;
@@ -674,16 +793,24 @@ cdiscpilot01:BloodPressureOutcome_4
         code:hasValue   "129" .
 
 cdiscpilot01:C67153.C49676_1
-        a                     sdtmterm:C67153.C49676 , cd01p:VisitScreening1Pulse ;
-        skos:prefLabel        "P1 Screening 1 Pulse Rate" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62167 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C49676 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleLying5_1 ;
-        study:outcome         cdiscpilot01:PulseOutcome_1 ;
-        study:seq             "44"^^xsd:int .
+        a                       sdtmterm:C67153.C49676 , cd01p:VisitScreening1Pulse ;
+        skos:prefLabel          "P1 Screening 1 Pulse Rate 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62167 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C49676 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleLying5_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25228 ;
+        study:outcome           cdiscpilot01:PulseOutcome_1 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "44"^^xsd:int ;
+        study:sponsordefinedID  "125"^^xsd:string .
 
 cdiscpilot01:ReferenceInterval_2
         a                  study:ReferenceInterval ;
@@ -694,22 +821,24 @@ cdiscpilot01:ReferenceInterval_2
 cdiscpilot01:InformedConsentAdult_3
         a                          code:InformedConsentAdult ;
         skos:prefLabel             "Informed consent 3"^^xsd:string ;
+        study:activityStatus       code:ActivityStatus_1 ;
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_3 ;
         study:hasCode              code:InformedConsentAdult ;
-        study:outcome              code:InformedConsentOutcome_3 .
+        study:hasStartRule         study:StartRuleDefault_1 ;
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_3
         a                           study:EnrolledSubject ;
         skos:prefLabel              "Person 3"^^xsd:string ;
-        study:actualArm             cd01p:ArmXanomelin_Hi ;
+        study:actualArm             cd01p:ArmXanomelineHigh ;
         study:deathFlag             ""^^xsd:string ;
         study:hasLifespan           cdiscpilot01:Lifespan_3 ;
         study:hasReferenceInterval  cdiscpilot01:ReferenceInterval_3 ;
-        study:hasSite               cdiscpilot01:Site_1 ;
+        study:hasSite               cd01p:Site_1 ;
         study:hasStudyParticipationInterval
                 cdiscpilot01:StudyParticipationInterval_3 ;
-        study:hasSubjectID          "1028"^^xsd:string ;
-        study:hasUniqueSubjectID    "01-701-1028"^^xsd:string ;
+        study:hasSubjectID          cdiscpilot01:SubjectIdentifier_3 ;
+        study:hasUniqueSubjectID    cdiscpilot01:UniqueSubjectIdentifier_3 ;
         study:participatesIn        cdiscpilot01:PopFlagItt_3 , cdiscpilot01:RandomizationBAL3_3 , cdiscpilot01:PopFlagCmpltr8Wk_3 , cdiscpilot01:PopFlagEff_3 , cdiscpilot01:PopFlagSaf_3 , cdiscpilot01:DemographicDataCollection_3 , cdiscpilot01:PopFlagCmpltr16Wk_3 , cdiscpilot01:InformedConsentAdult_3 , cdiscpilot01:ProductAdministration_3 , cdiscpilot01:PopFlagCmpltr24Wk_3 .
 
 cdiscpilot01:AgeOutcome_3
@@ -719,22 +848,28 @@ cdiscpilot01:AgeOutcome_3
         code:hasValue   "71"^^xsd:int .
 
 cdiscpilot01:PopFlagCmpltr24Wk_1
-        a                   custom:PopFlagCmpltr24Wk ;
-        study:hasCode       custom:PopFlagCmpltr24Wk ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagCmpltr24Wk ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagCmpltr24Wk ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:PopFlagItt_5
-        a                   custom:PopFlagItt ;
-        study:hasCode       custom:PopFlagItt ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagItt ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagItt ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:StudyParticipationInterval_6
         a                  study:StudyParticipationInterval ;
         rdfs:label         "Study Participation Interval 6"^^xsd:string ;
         time:hasBeginning  cdiscpilot01:Date_11 ;
         time:hasEnd        cdiscpilot01:Date_18 .
+
+cdiscpilot01:SubjectIdentifier_5
+        a               study:SubjectIdentifier ;
+        skos:prefLabel  "1034" .
 
 cdiscpilot01:Date_19  a            study:VisitDate , study:DemogDataCollectionDate , study:StudyParticipationBegin , study:InformedConsentBegin , study:Deathdate ;
         rdfs:label                 "2013-12-26"^^xsd:string ;
@@ -767,16 +902,21 @@ cdiscpilot01:Date_27  a            study:DemogDataCollectionDate , study:StudyPa
         study:dateTimeInXSDString  "2014-06-24"^^xsd:string .
 
 cdiscpilot01:PopFlagCmpltr8Wk_5
-        a                   custom:PopFlagCmpltr8Wk ;
-        study:hasCode       custom:PopFlagCmpltr8Wk ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagCmpltr8Wk ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagCmpltr8Wk ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:PulseOutcome_3
         a               study:PulseOutcome ;
         skos:prefLabel  "65 BEATS/MIN" ;
         code:hasUnit    code:Unit_4 ;
         code:hasValue   "65" .
+
+cdiscpilot01:UniqueSubjectIdentifier_2
+        a               study:UniqueSubjectIdentifier ;
+        skos:prefLabel  "01-701-1023" .
 
 cdiscpilot01:Site_1  a         study:Site ;
         skos:prefLabel         "site-701"^^xsd:string ;
@@ -785,25 +925,35 @@ cdiscpilot01:Site_1  a         study:Site ;
         study:hasSiteID        "701"^^xsd:string .
 
 cdiscpilot01:C67153.C25298_2
-        a                     cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25298 ;
-        skos:prefLabel        "P1 Screening 1 Systolic Blood Pressure" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62167 ;
-        study:hasCode         sdtmterm:C67153.C25298 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleLying5_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_5 ;
-        study:seq             "86"^^xsd:int .
+        a                       cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25298 ;
+        skos:prefLabel          "P1 Screening 1 Systolic Blood Pressure 2" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25298 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding1_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25229 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_4 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "87"^^xsd:int ;
+        study:sponsordefinedID  "720"^^xsd:string .
 
 cdiscpilot01:DemographicDataCollection_5
-        a                code:DemographicDataCollection ;
-        skos:prefLabel   "P5 Screening 1 Demographic data collection"^^xsd:string ;
-        code:hasAge      cdiscpilot01:AgeOutcome_5 ;
-        study:ethnicity  sdtmterm:C66790.C41222 ;
-        study:hasCode    code:DemographicDataCollection ;
-        study:hasDate    cdiscpilot01:Date_27 ;
-        study:race       sdtmterm:C74457.C41261 ;
-        study:sex        sdtmterm:C66731.C16576 .
+        a                     code:DemographicDataCollection ;
+        skos:prefLabel        "P5 Screening 1 Demographic data collection"^^xsd:string ;
+        code:hasAge           cdiscpilot01:AgeOutcome_5 ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:ethnicity       sdtmterm:C66790.C41222 ;
+        study:hasCode         code:DemographicDataCollection ;
+        study:hasDate         cdiscpilot01:Date_27 ;
+        study:race            sdtmterm:C74457.C41261 ;
+        study:sex             sdtmterm:C66731.C16576 .
 
 cdiscpilot01:Date_6  a             study:Birthdate ;
         rdfs:label                 "1951-01-02"^^xsd:string ;
@@ -816,17 +966,24 @@ cdiscpilot01:WeightOutcome_1
         code:hasValue   "119.0" .
 
 cdiscpilot01:C67153.C25299_2
-        a                     cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
-        skos:prefLabel        "P1 Screening 1 Diastolic Blood Pressure" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:bodyPosition    sdtmterm:C71148.C62167 ;
-        study:derivedFlag     "N"^^xsd:string ;
-        study:groupID         "GRPID1"^^xsd:string ;
-        study:hasCode         sdtmterm:C67153.C25299 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleLying5_1 ;
-        study:outcome         cdiscpilot01:BloodPressureOutcome_2 ;
-        study:seq             "1"^^xsd:int .
+        a                       cd01p:VisitScreening1BloodPressure , sdtmterm:C67153.C25299 ;
+        skos:prefLabel          "P1 Screening 1 Diastolic Blood Pressure 2" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C32141 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:bodyPosition      sdtmterm:C71148.C62166 ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25299 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasStartRule      cdiscpilot01:StartRuleStanding1_1 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:laterality        sdtmterm:C99073.C25229 ;
+        study:outcome           cdiscpilot01:BloodPressureOutcome_3 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "2"^^xsd:int ;
+        study:sponsordefinedID  "719"^^xsd:string .
 
 cdiscpilot01:StudyParticipationInterval_1
         a                  study:StudyParticipationInterval ;
@@ -835,14 +992,20 @@ cdiscpilot01:StudyParticipationInterval_1
         time:hasEnd        cdiscpilot01:Date_30 .
 
 cdiscpilot01:C67153.C25347_1
-        a                     sdtmterm:C67153.C25347 , cd01p:VisitScreening1Height ;
-        skos:prefLabel        "P1 Screening 1 Height" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:hasCode         sdtmterm:C67153.C25347 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleNone_1 ;
-        study:outcome         cdiscpilot01:HeightOutcome_1 ;
-        study:seq             "43"^^xsd:int .
+        a                       cd01p:VisitScreening1Height , sdtmterm:C67153.C25347 ;
+        skos:prefLabel          "P1 Screening 1 Height 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25347 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:outcome           cdiscpilot01:HeightOutcome_1 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "43"^^xsd:int ;
+        study:sponsordefinedID  "1000"^^xsd:string .
 
 cdiscpilot01:Date_14  a            study:ProductAdministrationEnd ;
         rdfs:label                 "2013-03-09"^^xsd:string ;
@@ -857,9 +1020,11 @@ cdiscpilot01:ReferenceInterval_5
 cdiscpilot01:InformedConsentAdult_6
         a                          code:InformedConsentAdult ;
         skos:prefLabel             "Informed consent 6"^^xsd:string ;
+        study:activityStatus       code:ActivityStatus_1 ;
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_6 ;
         study:hasCode              code:InformedConsentAdult ;
-        study:outcome              code:InformedConsentOutcome_6 .
+        study:hasStartRule         study:StartRuleDefault_1 ;
+        study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_6
         a                           study:EnrolledSubject ;
@@ -868,11 +1033,11 @@ cdiscpilot01:Person_6
         study:deathFlag             ""^^xsd:string ;
         study:hasLifespan           cdiscpilot01:Lifespan_6 ;
         study:hasReferenceInterval  cdiscpilot01:ReferenceInterval_6 ;
-        study:hasSite               cdiscpilot01:Site_1 ;
+        study:hasSite               cd01p:Site_1 ;
         study:hasStudyParticipationInterval
                 cdiscpilot01:StudyParticipationInterval_6 ;
-        study:hasSubjectID          "1047"^^xsd:string ;
-        study:hasUniqueSubjectID    "01-701-1047"^^xsd:string ;
+        study:hasSubjectID          cdiscpilot01:SubjectIdentifier_6 ;
+        study:hasUniqueSubjectID    cdiscpilot01:UniqueSubjectIdentifier_6 ;
         study:participatesIn        cdiscpilot01:PopFlagSaf_6 , cdiscpilot01:InformedConsentAdult_6 , cdiscpilot01:PopFlagItt_6 , cdiscpilot01:RandomizationBAL3_6 , cdiscpilot01:DemographicDataCollection_6 , cdiscpilot01:PopFlagEff_6 , cdiscpilot01:ProductAdministration_6 .
 
 cdiscpilot01:AgeOutcome_6
@@ -898,10 +1063,11 @@ cdiscpilot01:Sponsor_1
         rdfs:label  "CLINICAL STUDY SPONSOR"^^xsd:string .
 
 cdiscpilot01:RandomizationBAL3_3
-        a               code:RandomizationBAL3 ;
-        skos:prefLabel  "Randomization 3"^^xsd:string ;
-        study:hasCode   code:RandomizationBAL3 ;
-        study:outcome   cd01p:ArmXanomelin_Hi .
+        a                     code:RandomizationBAL3 ;
+        skos:prefLabel        "Randomization 3"^^xsd:string ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         code:RandomizationBAL3 ;
+        study:outcome         cd01p:ArmXanomelineHigh .
 
 cdiscpilot01:Lifespan_5
         a                  study:Lifespan ;
@@ -931,16 +1097,22 @@ cdiscpilot01:Date_30  a            study:StudyParticipationEnd ;
         study:dateTimeInXSDString  "2014-07-02T11:45"^^xsd:string .
 
 cdiscpilot01:PopFlagSaf_3
-        a                   custom:PopFlagSaf ;
-        study:hasCode       custom:PopFlagSaf ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagSaf ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagSaf ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
+
+cdiscpilot01:UniqueSubjectIdentifier_5
+        a               study:UniqueSubjectIdentifier ;
+        skos:prefLabel  "01-701-1034" .
 
 cdiscpilot01:PopFlagEff_3
-        a                   custom:PopFlagEff ;
-        study:hasCode       custom:PopFlagEff ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagEff ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagEff ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:Date_9  a             study:ProductAdministrationEnd ;
         rdfs:label                 "2012-09-01"^^xsd:string ;
@@ -955,8 +1127,10 @@ cdiscpilot01:BloodPressureOutcome_2
 cdiscpilot01:InformedConsentAdult_1
         a                          code:InformedConsentAdult ;
         skos:prefLabel             "Informed consent 1"^^xsd:string ;
+        study:activityStatus       code:ActivityStatus_1 ;
         study:hasActivityInterval  cdiscpilot01:InformedConsentInterval_1 ;
         study:hasCode              code:InformedConsentAdult ;
+        study:hasStartRule         study:StartRuleDefault_1 ;
         study:outcome              code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Person_1
@@ -966,11 +1140,11 @@ cdiscpilot01:Person_1
         study:deathFlag             "Y"^^xsd:string ;
         study:hasLifespan           cdiscpilot01:Lifespan_1 ;
         study:hasReferenceInterval  cdiscpilot01:ReferenceInterval_1 ;
-        study:hasSite               cdiscpilot01:Site_1 ;
+        study:hasSite               cd01p:Site_1 ;
         study:hasStudyParticipationInterval
                 cdiscpilot01:StudyParticipationInterval_1 ;
-        study:hasSubjectID          "1015"^^xsd:string ;
-        study:hasUniqueSubjectID    "01-701-1015"^^xsd:string ;
+        study:hasSubjectID          cdiscpilot01:SubjectIdentifier_1 ;
+        study:hasUniqueSubjectID    cdiscpilot01:UniqueSubjectIdentifier_1 ;
         study:participatesIn        cdiscpilot01:RandomizationBAL3_1 , cdiscpilot01:PopFlagEff_1 , cdiscpilot01:PopFlagCmpltr24Wk_1 , cdiscpilot01:VisitScreening1_1 , cdiscpilot01:ProductAdministration_1 , cdiscpilot01:PopFlagCmpltr8Wk_1 , cdiscpilot01:InformedConsentAdult_1 , cdiscpilot01:PopFlagSaf_1 , cdiscpilot01:PopFlagItt_1 , cdiscpilot01:PopFlagCmpltr16Wk_1 , cdiscpilot01:DemographicDataCollection_1 .
 
 cdiscpilot01:AgeOutcome_1
@@ -980,16 +1154,21 @@ cdiscpilot01:AgeOutcome_1
         code:hasValue   "63"^^xsd:int .
 
 cdiscpilot01:PopFlagItt_3
-        a                   custom:PopFlagItt ;
-        study:hasCode       custom:PopFlagItt ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagItt ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagItt ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:StudyParticipationInterval_4
         a                  study:StudyParticipationInterval ;
         rdfs:label         "Study Participation Interval 4"^^xsd:string ;
         time:hasBeginning  cdiscpilot01:Date_23 ;
         time:hasEnd        cdiscpilot01:Date_31 .
+
+cdiscpilot01:SubjectIdentifier_3
+        a               study:SubjectIdentifier ;
+        skos:prefLabel  "1028" .
 
 cdiscpilot01:Date_17  a            study:ProductAdministrationBegin , study:ReferenceBegin ;
         rdfs:label                 "2013-07-19"^^xsd:string ;
@@ -1001,7 +1180,10 @@ cdiscpilot01:ProductAdministration_2
         study:hasActivityInterval  cdiscpilot01:ProductAdministrationInterval_2 ;
         study:hasCode              study:ProductAdministration .
 
-cdiscpilot01:NA  study:activityStatus  code:ActivityStatus_1 ;
+cdiscpilot01:NA  a            code:NA ;
+        skos:prefLabel        "P1 Screening 1 Rule NA" ;
+        code:hasPrerequisite  cdiscpilot01:NA ;
+        study:activityStatus  code:ActivityStatus_1 ;
         study:hasCode         code:NA ;
         study:hasDate         cdiscpilot01:Date_19 ;
         study:outcome         sdtmterm: .
@@ -1011,16 +1193,18 @@ cdiscpilot01:Date_25  a            study:ProductAdministrationEnd ;
         study:dateTimeInXSDString  "2014-03-31"^^xsd:string .
 
 cdiscpilot01:PopFlagCmpltr8Wk_3
-        a                   custom:PopFlagCmpltr8Wk ;
-        study:hasCode       custom:PopFlagCmpltr8Wk ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagCmpltr8Wk ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagCmpltr8Wk ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:RandomizationBAL3_6
-        a               code:RandomizationBAL3 ;
-        skos:prefLabel  "Randomization 6"^^xsd:string ;
-        study:hasCode   code:RandomizationBAL3 ;
-        study:outcome   cd01p:ArmPlacebo .
+        a                     code:RandomizationBAL3 ;
+        skos:prefLabel        "Randomization 6"^^xsd:string ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         code:RandomizationBAL3 ;
+        study:outcome         cd01p:ArmPlacebo .
 
 cdiscpilot01:PulseOutcome_1
         a               study:PulseOutcome ;
@@ -1029,14 +1213,15 @@ cdiscpilot01:PulseOutcome_1
         code:hasValue   "57" .
 
 cdiscpilot01:DemographicDataCollection_3
-        a                code:DemographicDataCollection ;
-        skos:prefLabel   "P3 Screening 1 Demographic data collection"^^xsd:string ;
-        code:hasAge      cdiscpilot01:AgeOutcome_3 ;
-        study:ethnicity  sdtmterm:C66790.C41222 ;
-        study:hasCode    code:DemographicDataCollection ;
-        study:hasDate    cdiscpilot01:Date_16 ;
-        study:race       sdtmterm:C74457.C41261 ;
-        study:sex        sdtmterm:C66731.C20197 .
+        a                     code:DemographicDataCollection ;
+        skos:prefLabel        "P3 Screening 1 Demographic data collection"^^xsd:string ;
+        code:hasAge           cdiscpilot01:AgeOutcome_3 ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:ethnicity       sdtmterm:C66790.C41222 ;
+        study:hasCode         code:DemographicDataCollection ;
+        study:hasDate         cdiscpilot01:Date_16 ;
+        study:race            sdtmterm:C74457.C41261 ;
+        study:sex             sdtmterm:C66731.C20197 .
 
 cdiscpilot01:Date_4  a             study:Birthdate ;
         rdfs:label                 "1942-07-19"^^xsd:string ;
@@ -1049,26 +1234,35 @@ cdiscpilot01:ProductAdministrationInterval_6
         time:hasEnd        cdiscpilot01:Date_14 .
 
 cdiscpilot01:C67153.C25206_1
-        a                     sdtmterm:C67153.C25206 , cd01p:VisitScreening1Temperature ;
-        skos:prefLabel        "P1 Screening 1 Temperature" ;
-        study:activityStatus  code:ActivityStatus_1 ;
-        study:hasCode         sdtmterm:C67153.C25206 ;
-        study:hasPlannedDate  cdiscpilot01:Date_19 ;
-        study:hasStartRule    cdiscpilot01:StartRuleNone_1 ;
-        study:outcome         cdiscpilot01:TemperatureOutcome_1 ;
-        study:seq             "128"^^xsd:int .
+        a                       cd01p:VisitScreening1Temperature , sdtmterm:C67153.C25206 ;
+        skos:prefLabel          "P1 Screening 1 Temperature 1" ;
+        study:activityStatus    code:ActivityStatus_1 ;
+        study:anatomicLocation  sdtmterm:C74456.C12421 ;
+        study:baselineFlag      "Y"^^xsd:string ;
+        study:derivedFlag       "N"^^xsd:string ;
+        study:groupID           "GRPID1"^^xsd:string ;
+        study:hasCategory       cd01p:Category_1 ;
+        study:hasCode           sdtmterm:C67153.C25206 ;
+        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasSubcategory    cd01p:Subcategory_1 ;
+        study:outcome           cdiscpilot01:TemperatureOutcome_1 ;
+        study:reasonNotDone     "not applicable"^^xsd:string ;
+        study:seq               "128"^^xsd:int ;
+        study:sponsordefinedID  "3000"^^xsd:string .
 
 cdiscpilot01:PopFlagCmpltr16Wk_5
-        a                   custom:PopFlagCmpltr16Wk ;
-        study:hasCode       custom:PopFlagCmpltr16Wk ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagCmpltr16Wk ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagCmpltr16Wk ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:PopFlagSaf_6
-        a                   custom:PopFlagSaf ;
-        study:hasCode       custom:PopFlagSaf ;
-        study:hasPerformer  cd01p:Sponsor_1 ;
-        study:outcome       "true" .
+        a                     custom:PopFlagSaf ;
+        study:activityStatus  code:ActivityStatus_1 ;
+        study:hasCode         custom:PopFlagSaf ;
+        study:hasPerformer    cd01p:Sponsor_1 ;
+        study:outcome         "true" .
 
 cdiscpilot01:Date_33  a            study:StudyParticipationEnd ;
         rdfs:label                 "2014-12-30T09:50"^^xsd:string ;

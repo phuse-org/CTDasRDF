@@ -1,4 +1,4 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: createFrag_F.R
 # DESC: Functions and the calls that create URI fragments for Dates, Ages and 
 #     other fields that are shared in common between various resources. 
@@ -19,16 +19,15 @@
 # TODO: (see individual functions for TODO list) 
 #       Change hard coding of vstestCatOutcome to the value of byCol (the sol
 #            is nonobvious!)
-###############################################################################
+#______________________________________________________________________________
 
-#------------------------------------------------------------------------------
-# createDateDict()
+
+# createDateDict() ----
 #   Create a translation table of dates to date fragments
 #  All dates from across both DM and VS domains. 
 #  TODO: 
 #    Add additional domains as project scope expands. Make function flexible
 #    to accept these as arguments instead of hard coded.
-#------------------------------------------------------------------------------
 #' Title
 #'
 #' @return
@@ -106,8 +105,8 @@ addDateFrag<-function(domainName, colName)
   # withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")]  #DEL - no longer needed
   return(withFrag)
 }
-#------------------------------------------------------------------------------
-#  createFragOneDomain()
+
+#  createFragOneDomain() ----
 #  Create URI fragments for coded values in a single or mutliple column. 
 #    - If more than one column, combine values into a single column to process
 #    - Create numeric index the unique values
@@ -124,7 +123,6 @@ addDateFrag<-function(domainName, colName)
 #    Examples: column: actarm_frag, has values: actarm_1, actarm_3...
 #  Note: original source data has columns actarmcd, armcd. The 'cd'  
 #     is not needed in the RDF context, so drop that part of the name
-#------------------------------------------------------------------------------
 #' Title
 #'
 #' @param domainName 
@@ -194,7 +192,7 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
 #' @param domainName  - domain dataframe 
 #' @param dataCol     - column containing the data to indexed (Eg: vsorres)
 #' @param byCol       - column containing the 'by variable" within with to index (eg vsTestCat)
-#' @param fragPrefixCol - column containing the prefix name. Often the same as the byCol
+#' @param fragPrefixName - prefix used to name the output column for the fragmant values created in this fnt
 #'                     Eg:  vstestCat = BloodPressureOutcome, PulseHROutcome
 #' @param numSort  - TRUE/FALSE to sort the data prior to indexing it. ** NOT CURRENTLY IMPLEMENTED
 #'
@@ -202,9 +200,13 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
 #' @export
 #'
 #' @examples
-#'    createFragOneColByCat(domainName=vs, dataCol=vsorres, byCol=vsTestCat, fragPrefixCol=vsTestCat, numSort=TRUE)
-#'    vsTest <- createFragOneColByCat(domainName=vsTest, dataCol="vsorres", byCol="vstestCat", fragPrefixCol="vstestCat")    
-createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSort=TRUE)
+#'    createFragOneColByCat(domainName=vs, dataCol=vsorres, byCol=vsTestCat, fragPrefixName=vsTestCat, numSort=TRUE)
+#'    vsTest <- createFragOneColByCat(domainName=vsTest, dataCol="vsorres", byCol="vstestCat", fragPrefixName="vstestCat")    
+#'    
+#' PROBLEM:Only works for vsorres_Frag and one SDTM frag due to hard coding in the function.
+#           TODO: fix this with some grown up, big boy code.
+
+createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numSort=TRUE)
 {
   temp <- domainName[,c(byCol, dataCol)]
 
@@ -220,10 +222,10 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSo
   # A new variable is used here because if you convert it in place, the merge back into teh original
   #   dataset will likely
   #TODO: Make this conditional on numSort==TRUE
-  temp2$dataCol_N <- as.numeric(as.character(temp2[,2]))
-  
-  temp2 <- temp2[ order(temp2[,1], temp2[,"dataCol_N"]), ]
-  
+  if (numSort == TRUE){
+    temp2$dataCol_N <- as.numeric(as.character(temp2[,2]))
+    temp2 <- temp2[ order(temp2[,1], temp2[,"dataCol_N"]), ]
+  }
   # Ordering the df does not change the row number so create a new index for use
   #   in the later mutate statement.
   temp2$rowID <- 1:nrow(temp2)
@@ -234,25 +236,22 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixCol, numSo
   # temp2 <- temp2[ order(temp2[, !!byCol], temp2[, !!dataCol]), ]
   # Create the new column named based on the input column name by appending
   #  "_Frag" to the value of the the dataCol parameter
-  varname <- paste0(dataCol, "_Frag")
+  varname <- paste0(fragPrefixName, "_Frag")
 
-  
   byColName <<- byCol
 
   # Note use of !! to resolve the value of varname created above and assign
   #   a value to it using :=
-  #TESTING HERE
-  
-  
-  #  WARNING/TODO: replace hard codeing of vstestCat here!!!
-  #temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCat))%>% 
-  #  mutate( !!varname := paste0(vstestCat,"_", id)) 
-  # FOLLOWING WORKS WITH HARD CODING OF vsttestCatOutcome!
-  # TODO: Make this dynamic!!
-  
-  temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCatOutcome))%>% 
-    mutate( !!varname := paste0(vstestCatOutcome,"_", id)) 
-  
+  # Kludge due to inability to resolve the byCol value within seq_along and mutate.
+  #     Need someone with R Expertise to make this resolved correctly!
+    if (byCol=="vstestCatOutcome"){
+    temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCatOutcome))%>% 
+      mutate( !!varname := paste0(vstestCatOutcome,"_", id)) 
+  }
+  else if (byCol=="vstestSDTMCode"){
+    temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestSDTMCode))%>% 
+      mutate( !!varname := paste0(vstestSDTMCode,"_", id)) 
+  }
   # This gives ROW NUMBER and not correct numbering within a category
   #temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = rowID)%>% 
   #  mutate( !!varname := paste0(vstestCat,"_", id)) 

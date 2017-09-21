@@ -11,11 +11,14 @@
 #     Instance  data named lowercase. Eg:  arm_1
 #     Class codes named using CamelCase. Eg: InformedConsentAdult_1
 #     S,O value creation takes place in DM_Impute.R and DM_Frag.R
+# Hardcoding:
+#   DemographicsDataCollection to ActivityStatus_1 = CO = Completed
 # TODO:  Build out code.ttl at a later time. See comment in code, below.
-###############################################################################
+#______________________________________________________________________________ 
 
-# Study --> Persons
-# List of study participants: Persons assigned to the Study
+# Person ----
+# ** hasStudyParticipant ----
+# List of persons assigned to study
 u_Person <- dm[!duplicated(dm$personNum),]
 ddply(u_Person, .(personNum), function(u_Person)
 {
@@ -27,8 +30,21 @@ ddply(u_Person, .(personNum), function(u_Person)
 })
 rm(u_Person) # Clean up
 
-#-- Investigators 
-investigators <- dm[,c("invnam", "invid", "inv")]
+# Sites ----
+sites <- dm[,c("siteid_Frag", "investigator_Frag")]
+u_sites <- sites[!duplicated(sites$siteid_Frag),]  # Unique site IDs
+
+ddply(u_sites, .(siteid_Frag), function(u_sites)
+{
+  add.triple(cdiscpilot01,
+    paste0(prefix.CD01P, u_sites$siteid_Frag),
+    paste0(prefix.STUDY,"hasInvestigator" ),
+    paste0(prefix.CDISCPILOT01, u_sites$investigator_Frag)
+  )
+})
+
+# Investigators ----
+investigators <- dm[,c("invnam", "invid", "inv", "invid_Frag")]
 u_Invest <- investigators[!duplicated(investigators),]  # Unique investigator ID 
 ddply(u_Invest, .(invnam), function(u_Invest)
 {
@@ -39,23 +55,37 @@ ddply(u_Invest, .(invnam), function(u_Invest)
   )
   add.data.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, u_Invest$inv),
-    paste0(prefix.STUDY,"hasInvestigatorID" ),
-    paste0(u_Invest$invid), type="string"
-  )
-  add.data.triple(cdiscpilot01,
-    paste0(prefix.CDISCPILOT01, u_Invest$inv),
-    paste0(prefix.STUDY,"hasLastName" ),
-    paste0(u_Invest$invnam), type="string"
-  )
-  add.data.triple(cdiscpilot01,
-    paste0(prefix.CDISCPILOT01, u_Invest$inv),
     paste0(prefix.SKOS, 'prefLabel'),
     paste0("Investigator ", u_Invest$invid), type="string"
   )
+  add.triple(cdiscpilot01,
+    paste0(prefix.CDISCPILOT01, u_Invest$inv),
+    paste0(prefix.STUDY,"hasInvestigatorID" ),
+    paste0(prefix.CDISCPILOT01, u_Invest$invid_Frag)
+  )
+    # Investigator identifier is further broken down
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, u_Invest$invid_Frag),
+      paste0(prefix.RDF,"type" ),
+      paste0(prefix.STUDY, "InvestigatorIdentifier")
+    )
+    add.data.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, u_Invest$invid_Frag),
+      paste0(prefix.SKOS,"prefLabel" ),
+      paste0(u_Invest$invid)
+    )
+  add.data.triple(cdiscpilot01,
+    paste0(prefix.CDISCPILOT01, u_Invest$inv),
+    paste0(prefix.STUDY, 'hasLastName'),
+    paste0(u_Invest$invnam), type="string"
+  )
+    
+    
+
 })
 rm(u_Invest) # Clean up
 
-#-- Sites 
+# Sites ----
 sites <- dm[,c("siteid", "siteid_Frag", "inv", "country", "country_Frag" )]
 u_Site <- sites[!duplicated(sites), ]
 ddply(u_Site, .(siteid), function(u_Site)
@@ -88,31 +118,51 @@ ddply(u_Site, .(siteid), function(u_Site)
 })
 rm(u_Site) # Clean up
 
-#------------------------------------------------------------------------------
-# Triples from each row in the source domain
-# Loop through each row, creating triples for each Person_<n>
-#------------------------------------------------------------------------------
+# Process each row of domain ----
+#   Triples created from each row, for each Person_<n>
 ddply(dm, .(subjid), function(dm)
 {
-  # Create var to shorten code during repeats in following lines
-  person <-  paste0("Person_", dm$personNum)
+  # ** Person_(n) ----
+  person <- paste0("Person_", dm$personNum)
 
   add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.RDF,"type" ),
     paste0(prefix.STUDY, "EnrolledSubject")
   )
-  add.data.triple(cdiscpilot01,
+  # SubjectID
+  add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.STUDY,"hasSubjectID" ),
-    paste0(dm$subjid), type="string"
+    paste0(prefix.CDISCPILOT01, dm$subjid_Frag)
   )
-  add.data.triple(cdiscpilot01,
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$subjid_Frag),
+      paste0(prefix.RDF,"type" ),
+      paste0(prefix.STUDY, "SubjectIdentifier")
+    )
+    add.data.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$subjid_Frag),
+      paste0(prefix.SKOS,"prefLabel" ),
+      paste0(dm$subjid)
+    )
+  #Unique Subject ID  
+  add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.STUDY,"hasUniqueSubjectID" ),
-    paste0(dm$usubjid), type="string"
+    paste0(prefix.CDISCPILOT01, dm$usubjid_Frag)
   )
-  # Treated Arm
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$usubjid_Frag),
+      paste0(prefix.RDF,"type" ),
+      paste0(prefix.STUDY, "UniqueSubjectIdentifier")
+    )
+    add.data.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$usubjid_Frag),
+      paste0(prefix.SKOS,"prefLabel" ),
+      paste0(dm$usubjid)
+    )
+  # Treatment arm 
   add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.STUDY,"actualArm"),
@@ -128,7 +178,7 @@ ddply(dm, .(subjid), function(dm)
   add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.STUDY,"hasSite" ),
-    paste0(prefix.CDISCPILOT01, dm$siteid_Frag) 
+    paste0(prefix.CD01P, dm$siteid_Frag) 
   )
   # Person label
   add.data.triple(cdiscpilot01,
@@ -142,7 +192,7 @@ ddply(dm, .(subjid), function(dm)
     paste0(prefix.STUDY,"hasReferenceInterval" ),
     paste0(prefix.CDISCPILOT01, "ReferenceInterval_", dm$personNum)
   )
-    #----Reference Interval triples
+    # **** Reference Interval ----
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "ReferenceInterval_", dm$personNum),
       paste0(prefix.RDF,"type" ),
@@ -158,7 +208,7 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.TIME,"hasBeginning" ),
       paste0(prefix.CDISCPILOT01, dm$rfstdtc_Frag)
     )
-    #---- Assign Date Type
+    # Type to Date triples
     assignDateType(dm$rfstdtc, dm$rfstdtc_Frag, "ReferenceBegin")
 
     add.triple(cdiscpilot01,
@@ -166,7 +216,7 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.TIME,"hasEnd" ),
       paste0(prefix.CDISCPILOT01, dm$rfendtc_Frag)
     )
-    #---- Assign Date Type
+    # Type to Date triples
     assignDateType(dm$rfendtc, dm$rfendtc_Frag, "ReferenceEnd")
 
   # Lifespan Interval
@@ -175,7 +225,7 @@ ddply(dm, .(subjid), function(dm)
     paste0(prefix.STUDY,"hasLifespan" ),
     paste0(prefix.CDISCPILOT01, "Lifespan_", dm$personNum)
   )
-    #----Lifespan Interval triples
+    # **** Lifespan Interval ----
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "Lifespan_", dm$personNum),
       paste0(prefix.RDF,"type" ),
@@ -210,7 +260,7 @@ ddply(dm, .(subjid), function(dm)
     paste0(prefix.STUDY,"hasStudyParticipationInterval" ),
     paste0(prefix.CDISCPILOT01, "StudyParticipationInterval_", dm$personNum)
   )
-    #---- Study Participation Interval triples
+    # **** Study Participation Interval ----
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "StudyParticipationInterval_", dm$personNum),
       paste0(prefix.RDF,"type" ),
@@ -246,65 +296,77 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.STUDY,"participatesIn" ),
       paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum)
     )
-      # InformedConsentAdult_(n)
+      # **** Informed Consent Adult ----
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+      paste0(prefix.RDF,"type" ),
+      paste0(prefix.CODE,"InformedConsentAdult")
+    )
+    add.data.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+      paste0(prefix.SKOS,"prefLabel"),
+      paste0("Informed consent ", dm$personNum), type="string"
+    )
+    #HARDCODE to completed. Add logic later.
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+      paste0(prefix.STUDY,"activityStatus"),
+      paste0(prefix.CODE, "ActivityStatus_1")
+    )
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+      paste0(prefix.STUDY,"outcome" ),
+      paste0(prefix.CODE, dm$informedConsentOut_Frag)
+    )
+    # Key triple to link to Interval for Informed consent
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+      paste0(prefix.STUDY,"hasActivityInterval" ),
+      paste0(prefix.CDISCPILOT01,"InformedConsentInterval_", dm$personNum)
+    )
+      #InformedConsentInterval_<n>
       add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+        paste0(prefix.CDISCPILOT01,"InformedConsentInterval_", dm$personNum),
         paste0(prefix.RDF,"type" ),
-        paste0(prefix.CODE,"InformedConsentAdult")
+        paste0(prefix.STUDY,"InformedConsentInterval" )
       )
       add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
-        paste0(prefix.SKOS,"prefLabel"),
-        paste0("Informed consent ", dm$personNum), type="string"
-      )
+        paste0(prefix.CDISCPILOT01,"InformedConsentInterval_", dm$personNum),
+        paste0(prefix.RDFS,"label"),
+        paste0("Informed Consent Interval ", dm$personNum), type="string"
+      )      
       add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
-        paste0(prefix.STUDY,"outcome" ),
-        paste0(prefix.CODE,"InformedConsentOutcome_", dm$personNum)
+        paste0(prefix.CDISCPILOT01,"InformedConsentInterval_", dm$personNum),
+        paste0(prefix.TIME,"hasBeginning" ),
+        paste0(prefix.CDISCPILOT01, dm$rficdtc_Frag )
       )
-      # Key triple to link to Interval for Informed consent
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
-        paste0(prefix.STUDY,"hasActivityInterval" ),
-        paste0(prefix.CDISCPILOT01,"InformedConsentInterval_", dm$personNum)
-      )
-        #InformedConsentInterval_<n>
-        add.triple(cdiscpilot01,
-          paste0(prefix.CDISCPILOT01,"InformedConsentInterval_", dm$personNum),
-          paste0(prefix.RDF,"type" ),
-          paste0(prefix.STUDY,"InformedConsentInterval" )
-        )
-        add.data.triple(cdiscpilot01,
-          paste0(prefix.CDISCPILOT01,"InformedConsentInterval_", dm$personNum),
-          paste0(prefix.RDFS,"label"),
-          paste0("Informed Consent Interval ", dm$personNum), type="string"
-        )      
-        add.triple(cdiscpilot01,
-          paste0(prefix.CDISCPILOT01,"InformedConsentInterval_", dm$personNum),
-          paste0(prefix.TIME,"hasBeginning" ),
-          paste0(prefix.CDISCPILOT01, dm$rficdtc_Frag )
-        )
-        # Create triples for specific date type assignments. 
-        # StudyParticipationBegin set as date of informed consent as per 
-        #   email from AO 2071-02-16
-        assignDateType(dm$rficdtc, dm$rficdtc_Frag, "InformedConsentBegin")
-        assignDateType(dm$rficdtc, dm$rficdtc_Frag, "StudyParticipationBegin")
-        #Note: There is no informedConsentEnd in the source data
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
-        paste0(prefix.STUDY,"hasCode" ),
-        paste0(prefix.CODE,"InformedConsentAdult")
-      )
-      #TODO: Build out CODE.TTL with InformedConsentOutcome_n?
-
-  }
+      # Create triples for specific date type assignments. 
+      # StudyParticipationBegin set as date of informed consent as per 
+      # mail from AO 2071-02-16
+      assignDateType(dm$rficdtc, dm$rficdtc_Frag, "InformedConsentBegin")
+      assignDateType(dm$rficdtc, dm$rficdtc_Frag, "StudyParticipationBegin")
+      #Note: There is no informedConsentEnd in the source data
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+      paste0(prefix.STUDY,"hasCode" ),
+      paste0(prefix.CODE,"InformedConsentAdult")
+    )
+    #HARDCODE 
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "InformedConsentAdult_", dm$personNum),
+      paste0(prefix.STUDY,"hasStartRule" ),
+      paste0(prefix.STUDY,"StartRuleDefault_1")
+    )
+ } # end informed consent adult
+    
   # Product Administration
   add.triple(cdiscpilot01,
     paste0(prefix.CDISCPILOT01, person),
     paste0(prefix.STUDY,"participatesIn" ),
     paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum)
   )
-    #ProductAdministration_(n)
+    
+    # **** Product Administration ---- 
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "ProductAdministration_", dm$personNum),
       paste0(prefix.RDF,"type" ),
@@ -325,7 +387,7 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.STUDY,"hasActivityInterval" ),
       paste0(prefix.CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum)
     )
-      # Interval_PA(n)
+      # ****** Product Adminstration Interval ----
       add.triple(cdiscpilot01,
         paste0(prefix.CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum),
         paste0(prefix.RDF,"type" ),
@@ -354,7 +416,7 @@ ddply(dm, .(subjid), function(dm)
       #---- Assign Date Type
       assignDateType(dm$rfxendtc, dm$rfxendtc_Frag, "ProductAdministrationEnd")
 
-  # DemographicDataCollection
+  # Demographic Data Collection ----
   #  Age, Ethnicity, Race, Sex, etc. are all part of the Demographic Data collection
   #  triples for a specific person. Person_<n> -->  DemographicDataCollection_<n>     
   add.triple(cdiscpilot01,
@@ -362,7 +424,7 @@ ddply(dm, .(subjid), function(dm)
     paste0(prefix.STUDY,"participatesIn" ),
     paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum)
   )
-    # Age
+    # ** Age ----
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
       paste0(prefix.CODE,"hasAge" ),
@@ -386,11 +448,6 @@ ddply(dm, .(subjid), function(dm)
          paste0(prefix.RDF,"type" ),
          paste0(prefix.STUDY, "AgeOutcome")
        )
-       #DEL  add.data.triple(cdiscpilot01,
-       #   paste0(prefix.CDISCPILOT01, dm$age_Frag),
-       #   paste0(prefix.RDFS,"label" ),
-       #   paste0(dm$age, " ", dm$ageu), type="string"
-       # )
        add.data.triple(cdiscpilot01,
          paste0(prefix.CDISCPILOT01, dm$age_Frag),
          paste0(prefix.SKOS,"prefLabel" ),
@@ -406,14 +463,22 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.RDF,"type" ),
       paste0(prefix.CODE,"DemographicDataCollection" )
     )  
-    #TODO Screening 1 currently hard coded because demog info collected at screenning 1
+    #TODO Screening 1 currently hard coded because demog info collected at screening 1
     #  Either fix data or change label?
     add.data.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
       paste0(prefix.SKOS,"prefLabel" ),
       paste0("P",dm$personNum, " Screening 1 Demographic data collection"), type="string"
-    )  
-       #----Age Measurement Triples
+    ) 
+    
+    #activityStatus
+    #!!HARDCODE = CO hard coded for completed! 
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
+      paste0(prefix.STUDY,"activityStatus" ),
+      paste0(prefix.CODE, "ActivityStatus_1") 
+    )
+    
     # Ethnicity
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, "DemographicDataCollection_", dm$personNum),
@@ -452,6 +517,7 @@ ddply(dm, .(subjid), function(dm)
     paste0(prefix.STUDY,"participatesIn" ),
     paste0(prefix.CDISCPILOT01, dm$rand, "_", dm$personNum)
   )
+    # ** Randomization ----
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, dm$rand, "_", dm$personNum),
       paste0(prefix.RDF,"type" ),
@@ -461,6 +527,12 @@ ddply(dm, .(subjid), function(dm)
       paste0(prefix.CDISCPILOT01, dm$rand, "_", dm$personNum),
       paste0(prefix.SKOS,"prefLabel" ),
       paste0("Randomization ",dm$personNum), type="string"
+    )
+    #!!HARDCODE activityStatus    
+    add.triple(cdiscpilot01,
+      paste0(prefix.CDISCPILOT01, dm$rand, "_", dm$personNum),
+      paste0(prefix.STUDY,"activityStatus" ),
+      paste0(prefix.CODE, "ActivityStatus_1")
     )
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01, dm$rand, "_", dm$personNum),

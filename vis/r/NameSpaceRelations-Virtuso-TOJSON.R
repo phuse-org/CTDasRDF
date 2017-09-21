@@ -1,5 +1,4 @@
-###############################################################################
-# -----------------------------------------------------------------------------
+#______________________________________________________________________________
 # FILE : /SDTMasRDF/vis/r/NamespaceRelations-FNGraph.R
 # DESCR: Create JSON file consumed by NamespaceRelations-FNGraph.html for display of 
 #        relations between the namespaces in the SDTMasRDF named graph
@@ -16,54 +15,41 @@
 #        
 # TODO : !! ERROR:  Predicates not merged to nodes properly.
 #
-###############################################################################
+#______________________________________________________________________________
 library(rrdf)     # Read / Create RDF
 library(reshape)  # melt
 library(plyr)     # various goodies
 library(jsonlite) # Nice, clean JSON creation
 
-setwd("C:/_gitHub/SDTMasRDF")
+
+setwd("C:/_github/CTDasRDF")
 
 #-- Local endpoint
 endpoint = "http://localhost:8890/sparql"
 
-# Note how back slashes must be DOUBLE escaped when writing the SPARQL query string
-#   within R
-#  TODO: Review prefixes from removal: EG:
-prefixes = '
-PREFIX arg: <http://spinrdf.org/arg#>
-PREFIX BRIDG_4.1.1.owl: <file:/Users/Frederik/Downloads/BRIDG_4.1.1.owl.xml>
-PREFIX code: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/code#> 
-prefix custom: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/custom#>
-PREFIX EG:    <http://www.example.org/cdiscpilot01#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
+allPrefix <- "data/config/prefixes.csv"  # List of prefixes
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX schema: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/ct/schema#>
-PREFIX sdtm-terminology: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm-terminology#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX smf: <http://topbraid.org/sparqlmotionfunctions#>
-PREFIX sp: <http://spinrdf.org/sp#>
-PREFIX spin: <http://spinrdf.org/spin#>
-PREFIX spl: <http://spinrdf.org/spl#>
-PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
-PREFIX time: <http://www.w3.org/2006/time#>
-prefix xhtm: <http://www.w3.org/1999/xhtml>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-'
-# Set a limit for the queries during development
+# Prefixes from config file ----
+prefixes <- as.data.frame( read.csv(allPrefix,
+  header=T,
+  sep=',' ,
+  strip.white=TRUE))
+# Create individual PREFIX statements
+prefixes$prefixDef <- paste0("PREFIX ", prefixes$prefix, ": <", prefixes$namespace,">")
+ 
+## Set a limit for the queries during development or "" for all triples
 limit = ""
 # limit = "limit 1000"
 
 # Currently only looking at code, study, time, protocol namespaces
 nameSpaceQuery = '
 SELECT *
-FROM <http://localhost:8890/SDTMasRDF>
+FROM <http://localhost:8890/CTDasRDF>
 WHERE {
    ?s ?p ?o
-   FILTER(regex(str(?s), "(code|study|time|cd01p)#"))
-   FILTER(regex(str(?o), "(code|study|time|cd01p)#"))
+{FILTER(regex(str(?s), "(code#|study|time|cd01p)")) } 
+UNION
+  { FILTER(regex(str(?o), "(code#|study|time|cd01p)"))}
 } '
 
 # TEST QUERY FOR DEV
@@ -76,11 +62,10 @@ WHERE {
 #BIND("study:hasDate" AS ?o)
 #}'
 
-
-
-
-query<-paste0(prefixes, nameSpaceQuery, limit)
+query<-paste0(paste(prefixes$prefixDef, collapse=""),nameSpaceQuery, limit)
 triples = as.data.frame(sparql.remote(endpoint, query))
+
+
 
 # subject node type set manually, post-query
 triples$srcType <- 'NA'  # Default unassigned

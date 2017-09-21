@@ -1,10 +1,7 @@
 /*----------------  All Slides ----------------------------------------------*/
-/* @import url(../../lib/font/league-gothic/league-gothic.css);  from original reveal.js*/
-/* Need to import the League-Gothic font */
-@import "/SDTMasRDF/vis/d3/d3/font/league-gothic/league-gothic.css";
 
 body {
-    background-color: "#002b36";
+  background-color: #002b36; /* RevealJS moon theme */
 }
 
 h1,
@@ -15,7 +12,7 @@ h5,
 h6 {
   margin: 0 0 20px 0;
   color: #eee8d5;att
-  font-family: "League Gothic", sans-serif;
+  font-family: sans-serif;
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: normal;
@@ -35,10 +32,6 @@ h3 {
 h4 {
   font-size: 1em; }
 
-body {
-  background: #919191;
-  background-color: #919191; 
-}
 
 /*---- LEGEND ---------------------------------------------------------------*/
 .legendTitle, .explainText, labelBarchart {
@@ -73,48 +66,78 @@ text.monoLG {
 }
 /*-- Nodes */
 /* Stroke is 3 levels darker than fill on https://www.w3schools.com/colors/colors_picker.asp */
-.STUDY{
-    fill: #482C79;
-    stroke: #38225e;
-    stroke-width: 1.5;
+.node{
+ stroke-width: 1;
 }
-.CODE{
-    fill: #870922;
-    stroke: #600618;
-    stroke-width: 1.5;
+.code{
+  fill: #870922;
+  stroke: #600618;
 }
-.TIME{
-    fill: #1C5B64;
-    stroke: #164850;
-    stroke-width: 1.5;
+.flag{
+  fill: #00ff00;
+  stroke: #600618;
 }
-/*-- Edges */
-.SUBCLASSOF{ 
-	  stroke:  #5c5c8a;
+.literal{
+  fill: white;
+  stroke: #38225e;
 }
-.EQUIVALENTCLASS{ 
+.measure{
+  fill: red;
+  stroke: #38225e;
+}
+.person{
+  fill: #ffff00;
+  stroke: #38225e;
+}
+.rdfs{
+  fill: grey;
+  stroke: #38225e;
+}
+.rule{
+  fill: pink;
+  stroke: #38225e;
+}
+.sdtm{
+  fill: orange;
+  stroke: #164850;
+}
+.study{
+  fill: #482C79;
+  stroke: #38225e;
+}
 
-	  stroke: green;
+.skos{
+  fill: blue;
+  stroke: #164850;
 }
-.DOMAIN{ 
-	  stroke: #005c99;
-}
-.RANGE{ 
-	  stroke: #0099e6;
-}
-.TYPE{ 
-
-	  stroke: purple;
-}
-.SUBPROPERTYOF{ 
-
-	  stroke: #e68a00;
+.time{
+  fill: #1C5B64;
+  stroke: #164850;
 }
 
-.INVERSEOF{ 
-
-	  stroke: red;
+/*---- Edges ----------------------------------------------------------------*/
+.edge {
+stroke-width: 5;
 }
+.code{ 
+  stroke: #005c99;
+}
+.skos{ 
+  stroke:  purple;
+}
+.study{ 
+  stroke: green;
+}
+.rdfs{ 
+  stroke: #0099e6;
+}
+.type{ 
+  stroke: grey;
+}
+.time{ 
+  stroke: #e68a00;
+}
+
 
 .tooltipLegend{
     position: absolute;

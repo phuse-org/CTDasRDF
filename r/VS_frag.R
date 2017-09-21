@@ -1,6 +1,7 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: VS_frag.R
-# DESC: Data recoding and URI fragment creation from existing domain values
+# DESC: 1) Data recoding 
+#       2) URI fragment creation from existing domain values
 #       Creates vsWide format of the vs DF for processing by test result type.
 # REQ : 
 # SRC : 
@@ -9,48 +10,49 @@
 # NOTE: No value creation, only recoding. Original values retained in DF
 #       Coded values cannot have spaces or special characters.
 #       SDTM numeric codes and others set MANUALLY
-# TODO: Clean up code, convert many of the assignments to use of dplyr MUTATE
-################################################################################
-# Create vstestOrder for numbering the test within each usubjid, vstestcd, 
-#   sorted by date (vsdtc)
-#   to allow creation of number triples within that category.    
+# TODO: 
+#   Clean up code, convert many of th assignments to use of dplyr MUTATE
+#   Move recoding of SDTM codes to a function and/or config file that 
+#     queries their external graphs instead of manual coding in this script
+#     for SDTM and CDISC terminology 
+#   Replace FOR loop with dplyr mutate? 
+
+#______________________________________________________________________________
+
+# Create vstestOrder for numbering the test within each usubjid, vstestcd, sorted
+#   by date (vsdtc) to allow creation of number triples within that category.    
 vs$vsdtc_ymd = as.Date(vs$vsdtc, "%Y-%m-%d") # Convert for proper sorting 
 # Sort by the categories, including the date
 vs <- vs[with(vs, order(usubjid, vstestcd, vsdtc_ymd)), ]
 # Add ID numbers within categories, excluding date (used for sorting, not for cat number)
 vs <- ddply(vs, .(usubjid, vstestcd), mutate, vstestOrder = order(vsdtc_ymd))
 
-# Category and Subcategory hard coding.  See AO email 2071-05
-vs$vscat_Frag  <- 'Category_1'
-vs$vsscat_Frag <- 'Subcategory_1'
 
+# 1) Recoding -----------------------------------------------------------------
 vs$vsstresu_Frag <- recode(vs$vsorresu, 
-                           "'cm'        = 'Unit_1';
-                            'IN'        = 'Unit_2';
-                            'mmHg'      = 'Unit_3';
-                            'BEATS/MIN' = 'Unit_4';
-                            'F'         = 'Unit_6';
-                            'LB'        = 'Unit_8'")
+  "'cm'       = 'Unit_1';
+   'IN'        = 'Unit_2';
+   'mmHg'      = 'Unit_3';
+   'BEATS/MIN' = 'Unit_4';
+   'F'         = 'Unit_6';
+   'LB'        = 'Unit_8'")
 
-#  SDTM code values -----------------------------------------------------------
+#  SDTM code values ----
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
 # Example: vsloc  is coded to the SDTM Terminology graph by translating the value 
 #  in the VS domain to its corresponding URI code in the SDTM terminology graph.
-# TODO: This type of recoding to external graphs will be moved to a function
-#        and driven by a config file and/or separate SPARQL query against the graph
-#        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
-# vsloc ----
+# Location ----
 vs$vslocSDTMCode <- recode(vs$vsloc, 
                          "'ARM'         = 'C74456.C32141';
                           'EAR'         = 'C74456.C12394';                           
-                          'ORAL CAVITY' = 'C74456.CC12421'" )
-# bodyPosition ----
+                          'ORAL CAVITY' = 'C74456.C12421'" )
+# Body Position ----
 vs$posSDTMCode <- recode(vs$vspos, 
                            "'STANDING' = 'C71148.C62166';
                             'SUPINE'   = 'C71148.C62167'" )
 
-# vstest ----
+# Test Codes ----
 vs$vstestSDTMCode <- recode(vs$vstest, 
                           "'Systolic Blood Pressure'  = 'C67153.C25298';
                            'Diastolic Blood Pressure' = 'C67153.C25299';
@@ -59,19 +61,23 @@ vs$vstestSDTMCode <- recode(vs$vstest,
                            'Temperature'              = 'C67153.C25206';
                            'Weight'                   = 'C67153.C25208';
   " )
-# laterality
+# Laterality ----
 vs$vslatSDTMCode <- recode(vs$vslat, 
                           "'RIGHT' = 'C99073.C25228';
                            'LEFT'  = 'C99073.C25229'" )
-# body position
+# Body position ----
 vs$vsposSDTM_Frag <- recode(vs$vspos, 
                            "'STANDING' = 'C71148.C62166';
                             'SUPINE'   = 'C71148.C62167'" )
 
 
-# Fragment  -------------------------------------------------------------------
+# 2) Fragment  Creation -------------------------------------------------------
 vs <- addDateFrag(vs, "vsdtc")  
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="ActivityStatus")
+
+# Category and Subcategory hard coding.  See AO email 2071-05
+vs <- createFragOneDomain(domainName=vs, processColumns="vscat", fragPrefix="Category")
+vs <- createFragOneDomain(domainName=vs, processColumns="vsscat", fragPrefix="Subcategory")
 
 # vspos_Frag
 #   Create fragment for creating hasSubActivity AssumeBodyPositionXXXX_n, where n
@@ -88,34 +94,30 @@ vs$tempId <- with(rle(as.character(vs$tempField)), rep(seq_along(values), length
 # initialize
 # see https://stackoverflow.com/questions/29814912/error-replacement-has-x-rows-data-has-y
 
-# bodyPosition Rules.  
-#-- 1. Create the prefix
+# bodyPosition Rules ----
+# ** Rule Type ----
 vs$startRuleType_Frag <- recode(vs$vstpt, 
                            "'AFTER STANDING FOR 1 MINUTE'    = 'StartRuleStanding1';
                             'AFTER STANDING FOR 3 MINUTES'   = 'StartRuleStanding3';
                             'AFTER LYING DOWN FOR 5 MINUTES' = 'StartRuleLying5';
-                            ''                               = 'StartRuleNone'" )
-# Rule text : used in forming labels
+                             ''                               = NA " )
+# Text for Rule Type 
 vs$startRuleType_txt <- recode(vs$vstpt, 
                            "'AFTER STANDING FOR 1 MINUTE'    = 'Standing 1 Min';
                             'AFTER STANDING FOR 3 MINUTES'   = 'Standing 3 Min';
                             'AFTER LYING DOWN FOR 5 MINUTES' = 'Lying 5 Min';
-                            ''                               = 'None'" )
-
-
-# bodyPosition Rules. 
+                            ''                               = NA " )
+# body position ---- 
 vs$vsposCode_Frag <- recode(vs$vspos, 
                            "'STANDING' = 'AssumeBodyPositionStanding';
                             'SUPINE'   = 'AssumeBodyPositionSupine';
                             ''         =  NA" )
-
+# Position code label
 vs$vspos_Label <- recode(vs$vspos, 
                            "'STANDING' = 'assume standing position';
                             'SUPINE'   = 'assume supine position'" )
 
-
-
-# Outcomes  
+# Outcomes  ----
 # vsTestCat = categorized tests. Allows for fragment creation using function
 #   createFragOneColByCat by grouping results for indexing WITHIN a category.
 #   Eg: SYSBP, DIABP are indexed together as a BloodPressureOutcome_(n)
@@ -126,19 +128,6 @@ vs$vstestCat <- recode(vs$vstest,
                             'Pulse Rate'               = 'Pulse';
                             'Temperature'              = 'Temperature';
                             'Weight'                   = 'Weight'" )
-
-#   Recode allows combination of some categories, like SBP and DPB into BloodPressure
-# TODO: REMOVE in preference to vsTestCat
-#TWvs$vstestOutcomeType_Frag <- recode(vs$vstest, 
-#                           "'Systolic Blood Pressure'  = 'BloodPressureOutcome';
-#                            'Diastolic Blood Pressure' = 'BloodPressureOutcome';
-#                            'Height'                   = 'HeightLengthOutcome';
-#                            'Pulse Rate'               = 'PulseHROutcome';
-#                            'Temperature'              = 'TemperatureOutcome';
-#                            'Weight'                   = 'WeightMassOutcome'" )
-
-
-
 # Outcome labels
 vs$vstestOutcomeType_Label <- recode(vs$vstest, 
                            "'Systolic Blood Pressure'  = 'Blood pressure outcome';
@@ -148,55 +137,39 @@ vs$vstestOutcomeType_Label <- recode(vs$vstest,
                             'Temperature'              = 'Temperature outcome';
                             'Weight'                   = 'Weight outcome'" )
 
-# Visit Fragments
+# Visit ----
 vs$visit_Frag <- sapply(vs$visit,function(x) {
     switch(as.character(x),
       'SCREENING 1' = 'VisitScreening1',
       as.character(x) ) } )
 vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
 
-
-#TODO Start Rule Label
 # visit ==> SCREENING 1 becomes Screening 1
 vs$startRule_Label <-  paste0("P", vs$personNum, " ", 
   gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$visit, perl=TRUE),
   " Rule ", vs$startRuleType_txt)
 
-#TW CODE RUN TO HERE
-
-
-#TODO: Replace FOR with more efficient code. 
 for (i in 1:nrow(vs)){
-  
   # vspos_Frag based on vsposCOde_Frag.    
   if (!is.na(vs[i,"vsposCode_Frag"])){
     vs[i,"vspos_Frag"] <- paste0(vs[i,"vsposCode_Frag"], "_", vs[i,"tempId"])
   }
 
   # StartRule ----
-  if (!is.na(vs[i,"startRuleType_Frag"])){
+  if (! is.na(vs[i,"startRuleType_Frag"])){
     #-- 2. Add the suffix as personNum. 
     #TODO Confirm use of personNum
     vs[i,"startRule_Frag"] <- paste0(vs[i,"startRuleType_Frag"], "_", vs[i,"personNum"]) 
-  }else{
-    # Another confirm with AO: is there a SINGLE StartRuleNone, or One per personNum
-    vs[i,"startRule_Frag"] <- paste0("StartRuleNone_", vs[i,"personNum"])
   }
-
-
   # SDTM Code TYPE fragment ----
   #   stringr to remove spaces 
   #   Example: VisitScreening1SystolicBloodPressure, VisitScreening1PulseRate  
   vs[i,"vstestSDTMCodeType_Frag"] <- str_replace_all(string=paste0(vs[i,"visit_Frag"], vs[i,"vstestCat"]),
                                                      pattern=" ", repl="")    
-
-
   # Person Visit label ----
   #   Eg: P1 Visit 1
   vs[i,"persVis_Label"] <- stri_trans_general(
                                 paste0("P", vs[i,"personNum"], " Visit ", vs[i,"visitnum"]), id="Title")
-  
-
   
   # Result type fragment ----
   #   Eg: VisitScreening1SystolicBloodPressure
@@ -214,10 +187,20 @@ for (i in 1:nrow(vs)){
   vs[i,"vsorres_Label"] <- paste0(vs[i,"vsorres"], " ", vs[i,"vsorresu"])
 }
 
-
-# Create the VS result fragment vsorres_Frag
+# vsorres_Frag
+#   Note how both dataCol and fragPrefix are same value here, but not in next fnt call.
 vs <- createFragOneColByCat(domainName=vs, byCol="vstestCatOutcome", dataCol="vsorres", 
-      fragPrefixCol="vstestCatOutcome", numSort=TRUE)    
+      fragPrefixName="vsorres", numSort=TRUE)    
+
+#vs$vstestSDTMCode_Frag 
+#  Frag number is based on the original order in the source file, not on the sorted result
+#  values. So xxxx.C25298_1 is the first systolic BP value in the source file, not the
+#  lowest SYSBP value. This is unlike BloodPressureOutcome_n, which uses SORTED values to 
+#  create the outcome URIs.
+
+vs <-vs[with(vs, order(vsseq)), ]  # return to original df order. TODO: build this into the function as a sort option!
+vs <- createFragOneColByCat(domainName=vs, byCol="vstestSDTMCode", dataCol="vsorres",
+       fragPrefixName="vstestSDTMCode", numSort=FALSE)    
 
 # vstestSDTMCode
 # Create a tempId as a counter within the categores of vstestSDTMCode, sorted
@@ -227,39 +210,19 @@ vs<-ddply(vs, .(vstestSDTMCode), mutate, testNumber = order(vsorres_Frag))
 # Create label strings for the various tests. NA values not allowed in the source column!
 vs$vstestcd_Label <- paste0('P', vs$personNum, " ", vs$vstestcd, " ", vs$testNumber)
 
-
 vs <- mutate(vs,
   testRes_Label = stri_trans_general(
-    paste0("P", personNum, " ", visit, " ", vstest, " ", testNumber), id="Title")
+    #DEL paste0("P", personNum, " ", visit, " ", vstest, " ", testNumber), id="Title")
+    paste0("P", personNum, " ", visit, " ", vstest, " ", vstestOrder), id="Title")
 )
-
-
-  # Result label ----
-  #   Eg: P1 Screening1 Temperature 1
-  # Depends on previous crestion of testNumber
-  #vs[i,"testRes_Label"] <- stri_trans_general(
-  #  paste0("P", vs[i,"personNum"], " ", vs[i,"visit"], " ", vs[i,"vstest"], 
-  #  " ", vs[i, "testNumber"]), id="Title")
-
-
-
-
-
-#TESTING HERE
-vs$vstestSDTMCode_Frag <- paste0(vs$vstestSDTMCode, "_", vs$testNumber)
-
-
+# OUtcome label ----
 # Pick off the number after the _  from vsorres_Frag and make it part of the label
 # TODO: Need new approach. The number should relate to the person and the result for that type of test
 #   within that person+test.  P1 SBP 2 is the second SBP for Person 1!
-
 vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extract(vs$vsorres_Frag, "\\d+$"))
 
-  
 # Clean up: remove temp vars
 vs<-vs[, !(names(vs) %in% c("tempId", "tempField"))]
 
 # Sort column names in the df for quicker referencing
 vs <- vs %>% select(noquote(order(colnames(vs))))
-
-

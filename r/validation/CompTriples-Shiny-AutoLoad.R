@@ -76,12 +76,12 @@ server <- function(input, output) {
 }
 
 ui <- fluidPage(
-  titlePanel(HTML("<h3>Compare cdiscpilot01.TTL (Ont) with cdiscpilot01-R.TTL (from R)</h3>")),
+  titlePanel(HTML("<h3>Compare cdiscpilot01.TTL (Ontology) with cdiscpilot01-R.TTL (R Conversion)</h3>")),
   fluidRow (
     #column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
     #column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')
     #),
-    column(3, textInput('qnam', "Subject QName", value = "cdiscpilot01:Person_1"))
+    column(3, textInput('qnam', "Subject QName", width='300px', value = "cdiscpilot01:Person_1"))
   ),
   radioButtons("comp", "Compare:",
     c( "In R, not in Ontology" = "inRNotOnt",

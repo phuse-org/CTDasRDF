@@ -1,4 +1,4 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: misc_F.R
 # DESC: Miscellaneous functions including: 
 #     readXPT() - read the requestd XPT file
@@ -10,10 +10,9 @@
 # OUT : 
 # NOTE: 
 # TODO:  
-###############################################################################
+#______________________________________________________________________________
 
-#------------------------------------------------------------------------------
-# readXPT()
+# readXPT() ----
 # Read the requested domains into dataframes for processing.
 #' Title
 #'
@@ -30,8 +29,7 @@ readXPT<-function(domain)
   result  # return the dataframe
 }
 
-#------------------------------------------------------------------------------
-# addpersonId()
+# addpersonId() ----
 # Creates the numeric personNum:index variable for each person in the
 #   DM domain, used when iterating through and across domains when building 
 #   the triples for each person.
@@ -50,8 +48,8 @@ addPersonId <- function(domainName)
   return(withIndex)
 }
 
-#------------------------------------------------------------------------------
-# assignDateType()
+
+# assignDateType() ----
 #   Add 'Date Type Triple" to an existing  Date_(n) to describe a specific date URI
 #   Identifies that various types of things attached to a date. A single date 
 #     can be attached to many types: InformedConsentBegin, a DPB Measure,
@@ -61,7 +59,7 @@ addPersonId <- function(domainName)
 #       date URI fragments are used to create date object URI
 #   dateType - the class type for that date. Eg: Birthdate.  Must correspond
 #       to class names in the ontology.
-#------------------------------------------------------------------------------
+
 #' Assign Date Types to Date Value
 #'
 #' Each date Object value 

@@ -5,7 +5,7 @@ DSCR: Network graph of Data Relations in the SDTM Data as RDF Project
 SRC :   Based on: (svn) /Phuse/Anual/2016/d3/Attendees-FNGraph.html
 INPUT:  /data/DataRelations-FNGraph-test.JSON  - for development
         /data/Attendees-FNGraph-R.JSON , from R,   [TODO!!!]
-VIEW  :  http://localhost:8000/SDTMasRDF/vis/d3/NameSpaceRelations-FNGraph.html
+VIEW  :  http://localhost:8000/ctdasRDF/vis/d3/NameSpaceRelations-FNGraph.html
 REQ  : DataRelations-FNGraph.js, SDTMasRDF.css
 NOTES: 
 TODO: : Create the R code based on the original from the Annual conference, but with
@@ -16,11 +16,11 @@ TODO: : Create the R code based on the original from the Annual conference, but 
 <head>
     <meta charset="utf-8">
     <title>SDTMasRDF Namespace Relations</title>
-    <script type="text/javascript" src="/SDTMasRDF/vis/d3/d3/d3.v3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/SDTMasRDF/vis/d3/CTDasRDF.css">
+    <script type="text/javascript" src="/ctdasRDF/vis/d3/d3/d3.v3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/ctdasRDF/vis/d3/css/CTDasRDF.css">
 </head>
 <body>
-<h3>SDTM Data as RDF: Namespace Relations</h3>
+<h3>CTD Data as RDF: Namespace Relations</h3>
 <script type="text/javascript">
 var w = 1300;  
 var h = 900;  
@@ -209,9 +209,10 @@ var nodeScale = d3.scale.linear()
 
 //---- LEGEND END -------------------------------------------------------------
 
-// d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-test.JSON", function(dataset) {
- d3.json("/SDTMasRDF/vis/d3/data/NamespaceRelations-FROMR.JSON", function(dataset) {
-// d3.json("/SDTMasRDF/vis/d3/data/DataRelations-FNGraph-R.JSON", function(dataset) {
+ //d3.json("/ctdasRDF/vis/d3/data/DataRelations-FNGraph-test.JSON", function(dataset) {
+ d3.json("/ctdasRDF/vis/d3/data/NamespaceRelations-FROMR.JSON", function(dataset) {
+
+// d3.json("/CTDasRDF/vis/d3/data/DataRelations-FNGraph-R.JSON", function(dataset) {
     var force = d3.layout.force()
         .nodes(dataset.nodes)
         .links(dataset.edges)
