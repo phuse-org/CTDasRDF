@@ -1577,6 +1577,7 @@ study:ethnicity
 study:groupID
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Activity ;
   rdfs:label "group ID"^^xsd:string ;
   rdfs:range xsd:string ;
   rdfs:subPropertyOf study:hasIdentifier ;
@@ -1604,7 +1605,7 @@ study:hasCategory
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has category"^^xsd:string ;
-  rdfs:range code:Category ;
+  rdfs:range study:Category ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .
@@ -1832,7 +1833,7 @@ study:hasSubcategory
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "has subcategory"^^xsd:string ;
-  rdfs:range code:Subcategory ;
+  rdfs:range study:Subcategory ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
 .

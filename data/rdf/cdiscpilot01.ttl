@@ -133,20 +133,34 @@ cdiscpilot01:BloodPressureOutcome_6
   skos:prefLabel "P1 Screening 1 Temperature 1"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C12421> ;
+  study:baselineFlag "Y"^^xsd:string ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:groupID "GRPID1"^^xsd:string ;
+  study:hasCategory cd01p:Category_1 ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasSubcategory cd01p:Subcategory_1 ;
   study:outcome cdiscpilot01:TemperatureOutcome_1 ;
+  study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "128"^^xsd:float ;
+  study:sponsordefinedID "3000"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25208_1>
   rdf:type cd01p:VisitScreening1Weight ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
   skos:prefLabel "P1 Screening 1 Weight 1"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
+  study:baselineFlag "Y"^^xsd:string ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:groupID "GRPID1"^^xsd:string ;
+  study:hasCategory cd01p:Category_1 ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasSubcategory cd01p:Subcategory_1 ;
   study:outcome cdiscpilot01:WeightOutcome_1 ;
+  study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "142"^^xsd:float ;
+  study:sponsordefinedID "3000"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_1>
   rdf:type cd01p:VisitScreening1BloodPressure ;
@@ -284,16 +298,24 @@ cdiscpilot01:BloodPressureOutcome_6
   study:outcome cdiscpilot01:BloodPressureOutcome_1 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "3"^^xsd:float ;
+  study:sponsordefinedID "235"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25347_1>
   rdf:type cd01p:VisitScreening1Height ;
   rdf:type <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
   skos:prefLabel "P1 Screening 1 Height 1"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
+  study:baselineFlag "Y"^^xsd:string ;
+  study:derivedFlag "N"^^xsd:string ;
+  study:groupID "GRPID1"^^xsd:string ;
+  study:hasCategory cd01p:Category_1 ;
   study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
   study:hasPlannedDate cdiscpilot01:Date_19 ;
+  study:hasSubcategory cd01p:Subcategory_1 ;
   study:outcome cdiscpilot01:HeightOutcome_1 ;
-  study:seq "43"^^xsd:float ;
+  study:reasonNotDone "not applicable"^^xsd:string ;
+  study:seq "86"^^xsd:float ;
+  study:sponsordefinedID "1000"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_1>
   rdf:type cd01p:VisitScreening1Pulse ;
