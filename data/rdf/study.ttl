@@ -270,13 +270,6 @@ study:Activity
           ]
           [
             sp:object [
-                sp:varName "pldate"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasPlannedDate ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
             sp:predicate study:hasIdentifier ;
@@ -364,7 +357,7 @@ study:Activity
               ] ;
           ]
         ) ;
-      rdfs:comment "derive planned start date based on a start rule **in progress**"^^xsd:string ;
+      rdfs:comment "derive scheduled start date based on a start rule **in progress**"^^xsd:string ;
     ] ;
   spin:rule [
       rdf:type sp:Construct ;
@@ -1718,15 +1711,6 @@ study:hasPerformer
   rdfs:range study:Party ;
   skos:definition ""^^xsd:string ;
 .
-study:hasPlannedDate
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:PlannedActivity ;
-  rdfs:label "has planned date"^^xsd:string ;
-  rdfs:range time:Instant ;
-  rdfs:subPropertyOf study:hasDate ;
-  skos:definition ""^^xsd:string ;
-.
 study:hasPrerequisite
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -1746,9 +1730,9 @@ study:hasReferenceInterval
 study:hasScheduledDate
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:domain study:ScheduledActivity ;
-  rdfs:label "has scheduled date"^^xsd:string ;
-  rdfs:range study:ActivityDate ;
+  rdfs:domain study:PlannedActivity ;
+  rdfs:label "has planned date"^^xsd:string ;
+  rdfs:range time:Instant ;
   rdfs:subPropertyOf study:hasDate ;
   skos:definition ""^^xsd:string ;
 .
