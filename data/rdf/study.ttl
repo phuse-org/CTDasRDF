@@ -529,8 +529,8 @@ study:AnnotatedCaseReportForm
 study:Arm
   rdf:type owl:Class ;
   rdfs:subClassOf study:StudyActivity ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Arm"^^xsd:string ;
+  skos:altLabel "ARMCD"^^xsd:string ;
+  skos:prefLabel "ARM"^^xsd:string ;
 .
 study:Assessment
   rdf:type owl:Class ;
@@ -601,7 +601,7 @@ study:BodyPosition
   rdfs:label "Body position"^^xsd:string ;
   rdfs:subClassOf study:InterventionOutcome ;
 .
-study:CRFComponent
+study:CRFLocation
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
   skos:definition "A portion of the case report form; usually a location or page number in the CRF where a particular piece of information is located."^^xsd:string ;
@@ -632,6 +632,12 @@ study:Date
   rdfs:label "Date"^^xsd:string ;
   rdfs:subClassOf time:Instant ;
   skos:definition "The date and time when something occurs or begins"^^xsd:string ;
+.
+study:DeathFlag
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Flag ;
+  skos:prefLabel "Death flag"^^xsd:string ;
+  code:hasMethod code:ActivityMethod_2 ;
 .
 study:Deathdate
   rdf:type owl:Class ;
@@ -882,15 +888,6 @@ study:Organization
   rdfs:subClassOf study:Party ;
   skos:definition ""^^xsd:string ;
 .
-study:Origin
-  rdf:type owl:Class ;
-  rdfs:subClassOf study:Entity ;
-  owl:unionOf (
-      code:Method
-      study:Origin
-    ) ;
-  skos:prefLabel "Origin"^^xsd:string ;
-.
 study:Party
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -1085,6 +1082,7 @@ study:SiteIdentifier
   rdf:type owl:Class ;
   rdfs:label "Site identifier"^^xsd:string ;
   rdfs:subClassOf study:Identifier ;
+  code:hasMethod code:ActivityMethod_3 ;
 .
 study:Sponsor
   rdf:type owl:Class ;
@@ -1404,7 +1402,7 @@ study:bodyPosition
 study:crfLocation
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:StudyComponent ;
-  rdfs:range study:Origin ;
+  rdfs:range study:CRFLocation ;
   skos:prefLabel "CRF Origin"^^xsd:string ;
 .
 study:dateTimeInXSDString

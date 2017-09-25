@@ -4445,7 +4445,6 @@ PREVIRP|Irradiated then Subsequent Progression|Indication of documented progress
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARM>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "*"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RequiredVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.SynonymQualifier> ;
@@ -4459,7 +4458,6 @@ PREVIRP|Irradiated then Subsequent Progression|Indication of documented progress
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARMCD>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "*"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RequiredVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4500,7 +4498,6 @@ ACTARMCD is limited to 20 characters and does not have special character restric
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARM>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "*"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RequiredVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.SynonymQualifier> ;
@@ -4514,7 +4511,6 @@ ACTARMCD is limited to 20 characters and does not have special character restric
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARMCD>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "*"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RequiredVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;

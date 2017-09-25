@@ -25,8 +25,15 @@
 @prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+code:Method
+  code:hasMethod code:ActivityMethod_3 ;
+.
 code:timepoint-PT_STANDING
   skos:prefLabel "PATIENT STANDING"^^xsd:string ;
+.
+cdiscs:controlledTermsOrFormat
+  rdf:type rdf:Property ;
+  skos:prefLabel "controlled terms or format"^^xsd:string ;
 .
 cdiscs:dataElementRole
   rdf:type owl:ObjectProperty ;
@@ -1604,6 +1611,15 @@ sdtm:SDTMDefineDomain
             sp:varName "TYPE"^^xsd:string ;
           ]
           [
+            sp:varName "CONTROLLED_TERM"^^xsd:string ;
+          ]
+          [
+            sp:varName "ORIGIN"^^xsd:string ;
+          ]
+          [
+            sp:varName "LOC"^^xsd:string ;
+          ]
+          [
             sp:varName "ROLE"^^xsd:string ;
           ]
         ) ;
@@ -1646,6 +1662,66 @@ sdtm:SDTMDefineDomain
             sp:subject [
                 sp:varName "var"^^xsd:string ;
               ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "method"^^xsd:string ;
+                    ] ;
+                  sp:predicate code:hasMethod ;
+                  sp:subject [
+                      sp:varName "var"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "ORIGIN"^^xsd:string ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "method"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "locat"^^xsd:string ;
+                    ] ;
+                  sp:predicate study:crfLocation ;
+                  sp:subject [
+                      sp:varName "var"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "LOC"^^xsd:string ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "locat"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "CONTROLLED_TERM"^^xsd:string ;
+                    ] ;
+                  sp:predicate cdiscs:controlledTermsOrFormat ;
+                  sp:subject [
+                      sp:varName "var"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
           ]
           [
             sp:object [
@@ -1703,6 +1779,13 @@ sdtm:SDTMDefineRecord
                 sp:varName "TYPE"^^xsd:string ;
               ] ;
             sp:predicate sdtm:hasDFType ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "CONTROLLED_TERM"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFControlledTerm ;
             sp:subject spin:_this ;
           ]
           [
@@ -1779,6 +1862,20 @@ sdtm:SDTMDefineRecord
             sp:subject [
                 sp:varName "rl"^^xsd:string ;
               ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "CONTROLLED_TERM"^^xsd:string ;
+                    ] ;
+                  sp:predicate cdiscs:controlledTermsOrFormat ;
+                  sp:subject [
+                      sp:varName "var"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
           ]
         ) ;
       rdfs:comment "generates a Define record (in development)"^^xsd:string ;
@@ -4841,7 +4938,7 @@ sdtm:hasDEATHFL
 .
 sdtm:hasDFComment
   rdf:type owl:DatatypeProperty ;
-  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:domain sdtm:Variable ;
   rdfs:range xsd:string ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Comment"^^xsd:string ;
@@ -5375,9 +5472,11 @@ sdtm:hasVSTPTREF
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARM>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat study:Arm ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARMCD>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat study:Arm ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGE>
   rdf:type sdtm:Variable ;
@@ -5387,9 +5486,11 @@ sdtm:hasVSTPTREF
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARM>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat study:Arm ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARMCD>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat study:Arm ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.BRTHDTC>
   rdf:type sdtm:Variable ;
@@ -5426,21 +5527,26 @@ sdtm:hasVSTPTREF
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFENDTC>
   rdf:type sdtm:Variable ;
+  code:hasMethod code:ActivityMethod_2 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFICDTC>
   rdf:type sdtm:Variable ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFPENDTC>
   rdf:type sdtm:Variable ;
+  code:hasMethod code:ActivityMethod_2 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFSTDTC>
   rdf:type sdtm:Variable ;
+  code:hasMethod code:ActivityMethod_2 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXENDTC>
   rdf:type sdtm:Variable ;
+  code:hasMethod code:ActivityMethod_2 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXSTDTC>
   rdf:type sdtm:Variable ;
+  code:hasMethod code:ActivityMethod_2 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SEX>
   rdf:type sdtm:Variable ;

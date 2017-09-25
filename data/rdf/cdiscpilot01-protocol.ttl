@@ -57,6 +57,10 @@ cd01p:ArmXanomelineLow
   skos:prefLabel "Xanomeline Low"^^xsd:string ;
   study:hasCode study:Arm ;
 .
+cd01p:CRFLocation_1
+  rdf:type study:CRFLocation ;
+  skos:prefLabel "CRF Page 7"^^xsd:string ;
+.
 cd01p:Category_1
   rdf:type study:Category ;
   skos:altLabel ""^^xsd:string ;
@@ -279,6 +283,7 @@ cd01p:Sponsor_1
 cd01p:StudyIdentifier_1
   rdf:type study:StudyIdentifier ;
   skos:prefLabel "CDISCPILOT01"^^xsd:string ;
+  code:hasMethod code:ActivityMethod_3 ;
 .
 cd01p:Study_1
   rdf:type study:Study ;
@@ -347,6 +352,9 @@ cd01p:VisitScreening1Weight
   skos:prefLabel "Visit screening1Weight"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
+code:AgeUnit
+  code:hasMethod code:ActivityMethod_3 ;
+.
 code:AssumeBodyPositionStanding
   rdf:type study:AssumeBodyPosition ;
   rdf:type study:PrerequisiteActivity ;
@@ -359,17 +367,32 @@ code:AssumeBodyPositionSupine
   rdfs:subClassOf study:AssumeBodyPosition ;
   rdfs:subClassOf study:PrerequisiteActivity ;
 .
+code:Country
+  code:hasMethod code:ActivityMethod_2 ;
+.
 code:DemographicDataCollection
   rdf:type study:Observation ;
   rdfs:subClassOf study:Observation ;
+.
+code:Ethnicity
+  code:hasMethod code:ActivityMethod_1 ;
+  study:crfLocation cd01p:CRFLocation_1 ;
 .
 code:InformedConsentAdult
   rdf:type study:InformedConsent ;
   rdfs:subClassOf study:InformedConsent ;
   study:hasStartRule study:StartRuleDefault ;
 .
+code:Race
+  code:hasMethod code:ActivityMethod_1 ;
+  study:crfLocation cd01p:CRFLocation_1 ;
+.
 code:RandomizationBAL3
   rdfs:subClassOf study:Randomization ;
+.
+code:Sex
+  code:hasMethod code:ActivityMethod_1 ;
+  study:crfLocation cd01p:CRFLocation_1 ;
 .
 code:StartRuleLying5
   rdf:type study:StartRulePrereqActivityComplete ;
@@ -595,4 +618,17 @@ custom:VisitWk8
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676>
   rdf:type study:VitalSign ;
   rdfs:subClassOf study:VitalSign ;
+.
+study:AgeOutcome
+  code:hasMethod code:ActivityMethod_2 ;
+.
+study:Arm
+  code:hasMethod code:ActivityMethod_3 ;
+.
+study:SubjectIdentifier
+  code:hasMethod code:ActivityMethod_3 ;
+  study:crfLocation cd01p:CRFLocation_1 ;
+.
+study:UniqueSubjectIdentifier
+  code:hasMethod code:ActivityMethod_2 ;
 .
