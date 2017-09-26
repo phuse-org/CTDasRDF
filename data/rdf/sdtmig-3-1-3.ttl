@@ -4484,7 +4484,6 @@ ACTARMCD is limited to 20 characters and does not have special character restric
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGEU>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "(AGEU)"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.VariableQualifier> ;
@@ -4524,7 +4523,6 @@ ACTARMCD is limited to 20 characters and does not have special character restric
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.BRTHDTC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "ISO 8601"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.PermissibleVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4538,8 +4536,6 @@ ACTARMCD is limited to 20 characters and does not have special character restric
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.COUNTRY>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat """(COUNTRY)
-ISO 3166"""^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RequiredVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4553,7 +4549,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DMDTC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "ISO 8601"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.PermissibleVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.TimingVariable> ;
@@ -4582,7 +4577,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DOMAIN>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "DM"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RequiredVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.IdentifierVariable> ;
@@ -4597,7 +4591,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHDTC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "ISO 8601"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4611,7 +4604,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHFL>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "(NY)"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4625,7 +4617,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ETHNIC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "(ETHNIC)"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.PermissibleVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4663,7 +4654,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RACE>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "(RACE)"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4677,7 +4667,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFENDTC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "ISO 8601"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4691,7 +4680,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFICDTC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "ISO 8601"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4705,7 +4693,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFPENDTC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "ISO 8601"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4719,7 +4706,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFSTDTC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "ISO 8601"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4733,7 +4719,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXENDTC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "ISO 8601"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4747,7 +4732,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXSTDTC>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "ISO 8601"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.ExpectedVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;
@@ -4761,7 +4745,6 @@ ISO 3166"""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SEX>
   rdf:type mms:Column ;
-  cdiscs:controlledTermsOrFormat "(SEX)"^^xsd:string ;
   cdiscs:dataElementCompliance <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RequiredVariable> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#Classifier.Character> ;
   cdiscs:dataElementRole <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-1-3.ttl#Classifier.RecordQualifier> ;

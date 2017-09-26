@@ -32,7 +32,7 @@ code:timepoint-PT_STANDING
   skos:prefLabel "PATIENT STANDING"^^xsd:string ;
 .
 cdiscs:controlledTermsOrFormat
-  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
   skos:prefLabel "controlled terms or format"^^xsd:string ;
 .
 cdiscs:dataElementRole
@@ -1592,6 +1592,7 @@ sdtm:SDTMDefineDomain
   rdf:type owl:Class ;
   spin:query [
       rdf:type sp:Select ;
+      sp:distinct "true"^^xsd:boolean ;
       sp:orderBy (
           [
             rdf:type sp:Asc ;
@@ -1621,6 +1622,9 @@ sdtm:SDTMDefineDomain
           ]
           [
             sp:varName "ROLE"^^xsd:string ;
+          ]
+          [
+            sp:varName "COMMENT"^^xsd:string ;
           ]
         ) ;
       sp:where (
@@ -1714,9 +1718,101 @@ sdtm:SDTMDefineDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "CONTROLLED_TERM"^^xsd:string ;
+                      sp:varName "ct"^^xsd:string ;
                     ] ;
                   sp:predicate cdiscs:controlledTermsOrFormat ;
+                  sp:subject [
+                      sp:varName "var"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "ctrm"^^xsd:string ;
+                    ] ;
+                  sp:predicate rdfs:label ;
+                  sp:subject [
+                      sp:varName "ct"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "armctrm"^^xsd:string ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject study:Arm ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "armcdctrm"^^xsd:string ;
+                    ] ;
+                  sp:predicate skos:altLabel ;
+                  sp:subject study:Arm ;
+                ]
+                [
+                  rdf:type sp:Bind ;
+                  sp:expression [
+                      rdf:type sp:if ;
+                      sp:arg1 [
+                          rdf:type sp:or ;
+                          sp:arg1 [
+                              rdf:type sp:eq ;
+                              sp:arg1 [
+                                  sp:varName "var"^^xsd:string ;
+                                ] ;
+                              sp:arg2 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARM> ;
+                            ] ;
+                          sp:arg2 [
+                              rdf:type sp:eq ;
+                              sp:arg1 [
+                                  sp:varName "var"^^xsd:string ;
+                                ] ;
+                              sp:arg2 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARM> ;
+                            ] ;
+                        ] ;
+                      sp:arg2 [
+                          sp:varName "armctrm"^^xsd:string ;
+                        ] ;
+                      sp:arg3 [
+                          rdf:type sp:if ;
+                          sp:arg1 [
+                              rdf:type sp:or ;
+                              sp:arg1 [
+                                  rdf:type sp:eq ;
+                                  sp:arg1 [
+                                      sp:varName "var"^^xsd:string ;
+                                    ] ;
+                                  sp:arg2 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARMCD> ;
+                                ] ;
+                              sp:arg2 [
+                                  rdf:type sp:eq ;
+                                  sp:arg1 [
+                                      sp:varName "var"^^xsd:string ;
+                                    ] ;
+                                  sp:arg2 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARMCD> ;
+                                ] ;
+                            ] ;
+                          sp:arg2 [
+                              sp:varName "armcdctrm"^^xsd:string ;
+                            ] ;
+                          sp:arg3 [
+                              sp:varName "ctrm"^^xsd:string ;
+                            ] ;
+                        ] ;
+                    ] ;
+                  sp:variable [
+                      sp:varName "CONTROLLED_TERM"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "COMMENT"^^xsd:string ;
+                    ] ;
+                  sp:predicate sdtm:hasDFComment ;
                   sp:subject [
                       sp:varName "var"^^xsd:string ;
                     ] ;
@@ -1751,6 +1847,7 @@ sdtm:SDTMDefineDomain
               ] ;
           ]
         ) ;
+      rdfs:comment "generates define.xml table"^^xsd:string ;
     ] ;
   rdfs:label "SDTMDefine domain"^^xsd:string ;
   rdfs:subClassOf sdtm:DefineComponent ;
@@ -5483,6 +5580,7 @@ sdtm:hasVSTPTREF
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGEU>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66781> ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARM>
   rdf:type sdtm:Variable ;
@@ -5494,27 +5592,34 @@ sdtm:hasVSTPTREF
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.BRTHDTC>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.COUNTRY>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat code:Country ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DMDTC>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DMDY>
   rdf:type sdtm:Variable ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DOMAIN>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Dataset.DM> ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHDTC>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHFL>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66742> ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ETHNIC>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790> ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.INVID>
   rdf:type sdtm:Variable ;
@@ -5524,32 +5629,40 @@ sdtm:hasVSTPTREF
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RACE>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457> ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFENDTC>
   rdf:type sdtm:Variable ;
   code:hasMethod code:ActivityMethod_2 ;
+  cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFICDTC>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFPENDTC>
   rdf:type sdtm:Variable ;
   code:hasMethod code:ActivityMethod_2 ;
+  cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFSTDTC>
   rdf:type sdtm:Variable ;
   code:hasMethod code:ActivityMethod_2 ;
+  cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXENDTC>
   rdf:type sdtm:Variable ;
   code:hasMethod code:ActivityMethod_2 ;
+  cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXSTDTC>
   rdf:type sdtm:Variable ;
   code:hasMethod code:ActivityMethod_2 ;
+  cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SEX>
   rdf:type sdtm:Variable ;
+  cdiscs:controlledTermsOrFormat <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731> ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SITEID>
   rdf:type sdtm:Variable ;
