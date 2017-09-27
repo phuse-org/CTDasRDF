@@ -39,7 +39,7 @@ cdiscpilot01:C67153.C25208_1
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25208 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:outcome           cdiscpilot01:WeightOutcome_1 ;
         study:reasonNotDone     "not applicable"^^xsd:string ;
@@ -63,7 +63,7 @@ cdiscpilot01:C67153.C49676_2
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C49676 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasStartRule      cdiscpilot01:StartRuleStanding1_1 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:laterality        sdtmterm:C99073.C25229 ;
@@ -177,7 +177,7 @@ cdiscpilot01:C67153.C25298_3
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25298 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasStartRule      cdiscpilot01:StartRuleStanding3_1 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:laterality        sdtmterm:C99073.C25228 ;
@@ -225,7 +225,7 @@ cdiscpilot01:C67153.C25299_3
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25299 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasStartRule      cdiscpilot01:StartRuleStanding3_1 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:laterality        sdtmterm:C99073.C25228 ;
@@ -484,7 +484,7 @@ cdiscpilot01:C67153.C25298_1
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25298 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasStartRule      cdiscpilot01:StartRuleLying5_1 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:laterality        sdtmterm:C99073.C25228 ;
@@ -519,7 +519,7 @@ cdiscpilot01:C67153.C25299_1
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25299 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasStartRule      cdiscpilot01:StartRuleLying5_1 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:laterality        sdtmterm:C99073.C25228 ;
@@ -549,7 +549,7 @@ cdiscpilot01:C67153.C49676_3
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C49676 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasStartRule      cdiscpilot01:StartRuleStanding3_1 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:laterality        sdtmterm:C99073.C25228 ;
@@ -754,8 +754,8 @@ cdiscpilot01:sdtm-graph
         dcterms:description  "The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. \n  Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data. Only select observations from \n  source XPT are present, including a subset of VS results."^^xsd:string ;
         dcterms:title        "Clinical Trials Data as RDF (CTDasRDF)."^^xsd:string ;
         bibo:status          "Under Construction/incomplete: Blood pressure, Pulse, Weight. Only 1 patient and a subset of obs. from that patient."^^xsd:string ;
-        pav:createdOn        "2017-09-21T16:00:35-04:00"^^xsd:dateTime ;
-        pav:createdWith      "R Version 3.3.3 Platform:x86_64-w64-mingw32 with scripts from SDTM Data to RDF Working group"^^xsd:string ;
+        pav:createdOn        "2017-09-27T09:29:30-04:00"^^xsd:dateTime ;
+        pav:createdWith      "R Version 3.4.1 Platform:x86_64-w64-mingw32 with scripts from SDTM Data to RDF Working group"^^xsd:string ;
         pav:version          "0.0.1"^^xsd:string ;
         dcat:distribution    "data/rdf/cdiscpilot01-R.TTL" .
 
@@ -803,7 +803,7 @@ cdiscpilot01:C67153.C49676_1
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C49676 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasStartRule      cdiscpilot01:StartRuleLying5_1 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:laterality        sdtmterm:C99073.C25228 ;
@@ -935,7 +935,7 @@ cdiscpilot01:C67153.C25298_2
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25298 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasStartRule      cdiscpilot01:StartRuleStanding1_1 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:laterality        sdtmterm:C99073.C25229 ;
@@ -976,7 +976,7 @@ cdiscpilot01:C67153.C25299_2
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25299 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasStartRule      cdiscpilot01:StartRuleStanding1_1 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:laterality        sdtmterm:C99073.C25229 ;
@@ -1000,7 +1000,7 @@ cdiscpilot01:C67153.C25347_1
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25347 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:outcome           cdiscpilot01:HeightOutcome_1 ;
         study:reasonNotDone     "not applicable"^^xsd:string ;
@@ -1243,7 +1243,7 @@ cdiscpilot01:C67153.C25206_1
         study:groupID           "GRPID1"^^xsd:string ;
         study:hasCategory       cd01p:Category_1 ;
         study:hasCode           sdtmterm:C67153.C25206 ;
-        study:hasPlannedDate    cdiscpilot01:Date_19 ;
+        study:hasScheduledDate  cdiscpilot01:Date_19 ;
         study:hasSubcategory    cd01p:Subcategory_1 ;
         study:outcome           cdiscpilot01:TemperatureOutcome_1 ;
         study:reasonNotDone     "not applicable"^^xsd:string ;

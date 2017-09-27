@@ -145,7 +145,7 @@ ddply(vs, .(personNum, vsseq), function(vs)
     )
     add.triple(cdiscpilot01,
       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-      paste0(prefix.STUDY,"hasPlannedDate" ),
+      paste0(prefix.STUDY,"hasScheduledDate" ),
       paste0(prefix.CDISCPILOT01, vs$vsdtc_Frag)
     )
     # Category & Subcategory hard coded in VS_Frag.R

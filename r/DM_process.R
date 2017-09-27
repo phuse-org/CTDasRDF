@@ -122,7 +122,7 @@ rm(u_Site) # Clean up
 #   Triples created from each row, for each Person_<n>
 ddply(dm, .(subjid), function(dm)
 {
-  # ** Person_(n) ----
+  # Person_(n) ----
   person <- paste0("Person_", dm$personNum)
 
   add.triple(cdiscpilot01,
