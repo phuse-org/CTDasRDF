@@ -34,10 +34,10 @@ prefixes$prefixDef <- paste0("PREFIX ", prefixes$prefix, ": <", prefixes$namespa
 query = paste0(paste(prefixes$prefixDef, collapse=""),
   "PREFIX x: <http://example.org/bogus>
   SELECT ?s ?p ?o 
-  FROM <http://localhost:8890/SDTMTORDF>
+  FROM <http://localhost:8890/CTDasRDF>
   WHERE { cdiscpilot01:Person_1 (x:foo|!x:bar)* ?s . 
     ?s ?p ?o . 
-  }")
+  } LIMIT 20")
 
 
 # Two options: Can use either a SPARQL endpoint (Triplestore) or TTL file.

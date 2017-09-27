@@ -35,7 +35,7 @@ server <- function(input, output) {
    BIND ("hasSubClass" AS ?relation)
    FILTER (?parent != rdfs:Resource)
    FILTER (?parent != ?child)
-   }'
+   } LIMIT 20'
    rdfSource = load.rdf(paste(inFile$datapath,".ttl",sep=""), format="N3")
    OntTriples = as.data.frame(sparql.rdf(rdfSource, query))
    
@@ -69,7 +69,7 @@ server <- function(input, output) {
     BIND ("hasChild" AS ?relation)
     FILTER (?parent != rdfs:Resource)
     FILTER (?parent != ?child)
-    }'
+    } LIMIT 20'
     rdfSource = load.rdf(paste(inFile$datapath,".ttl",sep=""), format="N3")
     OntTriples = as.data.frame(sparql.rdf(rdfSource, query))
     nodeList <- melt(OntTriples, id.vars=c("relation" ))
