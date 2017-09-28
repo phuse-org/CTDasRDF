@@ -319,35 +319,30 @@ cd01p:Subcategory_1
 .
 cd01p:VisitScreening1BloodPressure
   rdf:type owl:Class ;
-  rdf:type custom:VisitScreening1 ;
   rdfs:subClassOf custom:VisitScreening1 ;
   skos:prefLabel "Visit screening1 Blood pressure"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Height
   rdf:type owl:Class ;
-  rdf:type custom:VisitScreening1 ;
   rdfs:subClassOf custom:VisitScreening1 ;
   skos:prefLabel "Visit screening1Height"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Pulse
   rdf:type owl:Class ;
-  rdf:type custom:VisitScreening1 ;
   rdfs:subClassOf custom:VisitScreening1 ;
   skos:prefLabel "Visit screening 1 Pulse"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Temperature
   rdf:type owl:Class ;
-  rdf:type custom:VisitScreening1 ;
   rdfs:subClassOf custom:VisitScreening1 ;
   skos:prefLabel "Visit screening1Temperature"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Weight
   rdf:type owl:Class ;
-  rdf:type custom:VisitScreening1 ;
   rdfs:subClassOf custom:VisitScreening1 ;
   skos:prefLabel "Visit screening1Weight"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
@@ -624,6 +619,13 @@ study:AgeOutcome
 .
 study:Arm
   code:hasMethod code:ActivityMethod_3 ;
+.
+study:InvestigatorIdentifier
+  code:hasMethod code:ActivityMethod_3 ;
+.
+study:StudyIdentifier
+  code:hasMethod code:ActivityMethod_3 ;
+  study:crfLocation cd01p:CRFLocation_1 ;
 .
 study:SubjectIdentifier
   code:hasMethod code:ActivityMethod_3 ;
