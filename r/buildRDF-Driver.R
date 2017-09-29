@@ -96,8 +96,9 @@ source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part
 #    DM MUST be processed first: Creates data required in later steps, 
 #      including personNum. 
 
+source('R/DM_process.R')
 
-#TW source('R/DM_process.R')
+
 #TW source('R/SUPPDM_process.R')
 
 # VS Domain ----
