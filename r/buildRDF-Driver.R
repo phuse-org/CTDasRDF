@@ -126,6 +126,6 @@ status <- serializeToFile(serializer, world, cdiscpilot01, outFileMain)
 
 # Validate --------------------------------------------------------------------
 #   Always a good idea to validate, friendo.
-system(paste('riot --validate ', outFileMain),
-  show.output.on.console = TRUE)
-
+#system(paste('riot --validate ', outFileMain),
+#  show.output.on.console = TRUE)
+warnings()
