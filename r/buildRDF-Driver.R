@@ -68,30 +68,27 @@ source('R/prefixesAndImports.R') # Prefixes and OWL imports
 source('R/graphMeta.R') # Graph Metadata
 
 # External Functions ----
-#TW source('R/misc_F.R')  # Data import, personID, etc.
-#TW source('R/createFrag_F.R') # URI fragement Creation. Eg. Date_1, AgeMeasurement_3
+source('R/misc_F.R')  # Data import, personID, etc.
+source('R/createFrag_F.R') # URI fragement Creation. Eg. Date_1, AgeMeasurement_3
 
 # Import and Impute DM --------------------------------------------------------
-#TW dm <- readXPT("dm")
-#TW dm <- head(dm, maxPerson)  # Keep only first maxPerson obs for development
-#TW source('R/DM_impute.R')     # Create values needed for testing. 
+dm <- readXPT("dm")
+dm <- head(dm, maxPerson)  # Keep only first maxPerson obs for development
+source('R/DM_impute.R')     # Create values needed for testing. 
 
 # Import and Impute VS --------------------------------------------------------
-#TW vs <- readXPT("vs")
-
-
-#TW source('R/VS_impute.R') 
+vs <- readXPT("vs")
+source('R/VS_impute.R') 
 
 # Import and Impute other domains ---- : to be added later----------------------
-
 # Create the date translation table from all dates across domains
 #   Needed by both xx_impute and xx_process scripts.
-#TW dateDict<-createDateDict()    
+dateDict<-createDateDict()    
 
 # Create fragment dictionaries that cross domains
 #   Called after all contributing  domains available, since some fragment values 
 #      (eg: dates), cross multiple domains.
-#TW source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part 
+source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part 
                        #   of DateDict/dateFrag creation
 
 # Domain Processing -----------------------------------------------------------

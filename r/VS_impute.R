@@ -100,5 +100,3 @@ vs <- rbind(vs,newrow)
 # vs[nrow(vs),"vsstat"]   <- 'ND'  # add the ND value for creating activitystatus_2. Found later in the orginal data
 # vsstat
 # vs[vs$vsseq %in% c(n,n,n,n,n) & personNum == 1, "vsstat"] <- "ND"
-
-
