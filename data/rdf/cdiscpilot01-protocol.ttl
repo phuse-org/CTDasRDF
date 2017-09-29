@@ -317,6 +317,30 @@ cd01p:Subcategory_1
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "SCAT1"^^xsd:string ;
 .
+cd01p:SubstanceQuantity_1
+  rdf:type code:SubstanceQuantity ;
+  rdf:type study:SubstanceQuantity ;
+  skos:prefLabel "Substance quantity 1"^^xsd:string ;
+  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasUnit code:Unit_9 ;
+  code:hasValue 0 ;
+.
+cd01p:SubstanceQuantity_2
+  rdf:type code:SubstanceQuantity ;
+  rdf:type study:SubstanceQuantity ;
+  skos:prefLabel "Substance quantity 2"^^xsd:string ;
+  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasUnit code:Unit_9 ;
+  code:hasValue 54 ;
+.
+cd01p:SubstanceQuantity_3
+  rdf:type code:SubstanceQuantity ;
+  rdf:type study:SubstanceQuantity ;
+  skos:prefLabel "Substance quantity 3"^^xsd:string ;
+  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasUnit code:Unit_9 ;
+  code:hasValue 81 ;
+.
 cd01p:VisitScreening1BloodPressure
   rdf:type owl:Class ;
   rdfs:subClassOf custom:VisitScreening1 ;
@@ -413,12 +437,16 @@ code:VisitScreening1Start
   code:ruleDescriptionLong "Activity takes place after Screening1 Visit Starts"^^xsd:string ;
 .
 custom:InvestigationalSubstance_1
+  rdf:type code:ActiveSubstance ;
   rdf:type study:InvestigationalSubstance ;
   skos:prefLabel "XANOMELINE" ;
 .
 custom:PlaceboProduct_1
+  rdf:type code:DrugProduct ;
   rdf:type study:PlaceboProduct ;
-  skos:prefLabel "XANOMELINE PLACEBO" ;
+  skos:prefLabel "PLACEBO"^^xsd:string ;
+  code:hasDosageForm <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66726.C42968> ;
+  code:hasIngredientQuantity cd01p:SubstanceQuantity_1 ;
 .
 custom:PopFlagCmpltr16Wk
   rdf:type owl:Class ;
@@ -463,14 +491,18 @@ custom:PopFlagSaf
   code:hasMethod code:ActivityMethod_2 ;
 .
 custom:Product_1
+  rdf:type code:DrugProduct ;
   rdf:type study:InvestigationalProduct ;
   skos:prefLabel "XANOMELINE LO" ;
-  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasDosageForm <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66726.C42968> ;
+  code:hasIngredientQuantity cd01p:SubstanceQuantity_2 ;
 .
 custom:Product_2
+  rdf:type code:DrugProduct ;
   rdf:type study:InvestigationalProduct ;
   skos:prefLabel "XANOMELINE HI" ;
-  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasDosageForm <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66726.C42968> ;
+  code:hasIngredientQuantity cd01p:SubstanceQuantity_3 ;
 .
 custom:VisitAmbulECGPlace
   rdf:type owl:Class ;

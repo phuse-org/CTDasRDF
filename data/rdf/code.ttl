@@ -72,6 +72,11 @@ time:unitYear
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
+code:ActiveSubstance
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Substance ;
+  skos:prefLabel "Active substance"^^xsd:string ;
+.
 code:ActivityMethod_1
   rdf:type code:Method ;
   rdfs:comment ""^^xsd:string ;
@@ -317,6 +322,21 @@ code:DemographicDataCollection
   skos:definition ""^^xsd:string ;
   skos:prefLabel "DEMOG DATA COLLECTION"^^xsd:string ;
 .
+code:DosageForm
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Dosage form"^^xsd:string ;
+.
+code:DosageFrequency
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Dosage frequency"^^xsd:string ;
+.
+code:DrugProduct
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Product ;
+  skos:prefLabel "Drug product"^^xsd:string ;
+.
 code:Ethnicity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -556,6 +576,11 @@ code:ObservationOutcome
   rdfs:subClassOf code:InterventionOutcome ;
   skos:definition ""^^xsd:string ;
 .
+code:Product
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Product"^^xsd:string ;
+.
 code:Race
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -582,6 +607,11 @@ code:RandomizationBAL3
   rdfs:subClassOf code:Randomization ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Randomization BAL3"^^xsd:string ;
+.
+code:RouteOfAdministration
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Route of administration"^^xsd:string ;
 .
 code:Rule
   rdf:type owl:Class ;
@@ -687,6 +717,12 @@ code:Substance
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
+code:SubstanceQuantity
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:definition "Describes the name of the substance and the amount of the substance used in a unit dosage form (e.g. tablet, patch) of the product"^^xsd:string ;
+  skos:prefLabel "Substance quantity"^^xsd:string ;
+.
 code:Unit
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -740,6 +776,10 @@ code:Unit_8
   rdfs:label "LB"^^xsd:string ;
   skos:prefLabel "LB"^^xsd:string ;
 .
+code:Unit_9
+  rdf:type code:Unit ;
+  skos:prefLabel "mg"^^xsd:string ;
+.
 code:VitalSign
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -769,6 +809,12 @@ code:hasDelay
   rdfs:range xsd:duration ;
   skos:definition ""^^xsd:string ;
 .
+code:hasDosageForm
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DrugProduct ;
+  rdfs:range code:DosageForm ;
+  skos:prefLabel "has dosage form"^^xsd:string ;
+.
 code:hasIdentifier
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -780,9 +826,16 @@ code:hasIdentifier
 code:hasIngredient
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
+  rdfs:domain code:SubstanceQuantity ;
   rdfs:label "has ingredient"^^xsd:string ;
   rdfs:range code:Substance ;
   skos:definition ""^^xsd:string ;
+.
+code:hasIngredientQuantity
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:Product ;
+  rdfs:range code:SubstanceQuantity ;
+  skos:prefLabel "has ingredient quantity"^^xsd:string ;
 .
 code:hasMethod
   rdf:type owl:ObjectProperty ;
@@ -1085,6 +1138,15 @@ code:unitNormalized
   rdfs:label "unit normalized"^^xsd:string ;
   rdfs:subClassOf spin:Functions ;
 .
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66726.C42968>
+  rdf:type code:DosageForm ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38288>
+  rdf:type code:RouteOfAdministration ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305>
+  rdf:type code:RouteOfAdministration ;
+.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C16576>
   rdf:type code:Sex ;
 .
@@ -1138,6 +1200,9 @@ code:unitNormalized
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473>
+  rdf:type code:DosageFrequency ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166>
   rdf:type code:BodyPosition ;

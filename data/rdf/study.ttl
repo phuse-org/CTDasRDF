@@ -404,6 +404,11 @@ study:Activity
   owl:equivalentClass <http://www.bridgmodel.org/owl#Activity> ;
   skos:definition "see definition for bridg:Activity"^^xsd:string ;
 .
+study:ActivityBegin
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:BeginInstant ;
+  skos:prefLabel "Activity begin"^^xsd:string ;
+.
 study:ActivityDate
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -665,6 +670,162 @@ study:Document
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Document"^^xsd:string ;
 .
+study:DrugAdministration
+  rdf:type owl:Class ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:groupBy (
+          [
+            sp:varName "s"^^xsd:string ;
+          ]
+        ) ;
+      sp:resultVariables (
+          [
+            sp:varName "s"^^xsd:string ;
+          ]
+          [
+            sp:expression [
+                rdf:type sp:Min ;
+                sp:expression [
+                    sp:varName "startdate"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:varName "RFXSTDTC"^^xsd:string ;
+          ]
+          [
+            sp:expression [
+                rdf:type sp:Max ;
+                sp:expression [
+                    sp:varName "enddate"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:varName "RFXENDTC"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "visit"^^xsd:string ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject [
+                sp:varName "s"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:Visit ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "visit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "act"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasSubActivity ;
+            sp:subject [
+                sp:varName "visit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:DrugAdministration ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "act"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "acti"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasInterval ;
+            sp:subject [
+                sp:varName "act"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:FixedDoseInterval ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "acti"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "start"^^xsd:string ;
+              ] ;
+            sp:predicate time:hasBeginning ;
+            sp:subject [
+                sp:varName "acti"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "end"^^xsd:string ;
+              ] ;
+            sp:predicate time:hasEnd ;
+            sp:subject [
+                sp:varName "acti"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "startstring"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "start"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type study:dateiso ;
+                arg:datestring [
+                    sp:varName "startstring"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "startdate"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "endstring"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "end"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type study:dateiso ;
+                arg:datestring [
+                    sp:varName "endstring"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "enddate"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Calculate Reference Exposre Start and End dates from exposure data"^^xsd:string ;
+    ] ;
+  rdfs:subClassOf study:Intervention ;
+  skos:prefLabel "Drug administration"^^xsd:string ;
+.
+study:DrugAdministrationComplete
+  rdf:type study:DrugAdministrationOutcome ;
+  skos:prefLabel "Drug administration complete"^^xsd:string ;
+.
+study:DrugAdministrationOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityOutcome ;
+  skos:prefLabel "Drug administration outcome"^^xsd:string ;
+.
 study:EligibilityCriteria
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -711,6 +872,22 @@ study:Event
   rdfs:label "Event"^^xsd:string ;
   rdfs:subClassOf study:Entity ;
   skos:definition "An occurrence that persists in time. "^^xsd:string ;
+.
+study:FixedDoseInterval
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityInterval ;
+  skos:definition "Provides the start and end dates for a fixed dosing interval, i.e. during which the dose administered did not change"^^xsd:string ;
+  skos:prefLabel "Fixed dose interval"^^xsd:string ;
+.
+study:FixedDoseIntervalBegin
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityBegin ;
+  skos:prefLabel "Fixed dose interval begin"^^xsd:string ;
+.
+study:FixedDoseIntervalEnd
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityEnd ;
+  skos:prefLabel "Fixed dose interval end"^^xsd:string ;
 .
 study:Flag
   rdf:type owl:Class ;
@@ -770,7 +947,7 @@ study:InformedConsentBegin
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Informed consent begin"^^xsd:string ;
-  rdfs:subClassOf study:BeginInstant ;
+  rdfs:subClassOf study:ActivityBegin ;
   skos:definition ""^^xsd:string ;
 .
 study:InformedConsentEnd
@@ -804,7 +981,7 @@ study:InterventionDate
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Intervention date"^^xsd:string ;
-  rdfs:subClassOf study:Date ;
+  rdfs:subClassOf study:ActivityDate ;
   skos:definition ""^^xsd:string ;
 .
 study:InterventionOutcome
@@ -956,7 +1133,7 @@ study:ProductAdministrationBegin
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product administration begin"^^xsd:string ;
-  rdfs:subClassOf study:BeginInstant ;
+  rdfs:subClassOf study:ActivityBegin ;
   skos:definition ""^^xsd:string ;
 .
 study:ProductAdministrationEnd
@@ -1230,6 +1407,11 @@ study:Substance
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Substance"^^xsd:string ;
 .
+study:SubstanceQuantity
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:prefLabel "Substance quantity"^^xsd:string ;
+.
 study:TemperatureOutcome
   rdf:type owl:Class ;
   rdfs:label "Temperature outcome"^^xsd:string ;
@@ -1293,6 +1475,12 @@ study:actualArm
   rdfs:label "actual arm"^^xsd:string ;
   rdfs:range study:Arm ;
   skos:definition ""^^xsd:string ;
+.
+study:administeredProduct
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:DrugAdministration ;
+  rdfs:range study:Product ;
+  skos:prefLabel "has route of administration"^^xsd:string ;
 .
 study:agecalc
   rdf:type spin:Function ;
@@ -1627,6 +1815,12 @@ study:hasDocument
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "has document"^^xsd:string ;
 .
+study:hasDosageFrequency
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:DrugAdministration ;
+  rdfs:range code:DosageFrequency ;
+  skos:prefLabel "has dosage frequency"^^xsd:string ;
+.
 study:hasIdentifier
   rdf:type rdf:Property ;
 .
@@ -1724,6 +1918,12 @@ study:hasReferenceInterval
   rdfs:range study:ReferenceInterval ;
   rdfs:subPropertyOf study:hasInterval ;
   skos:definition ""^^xsd:string ;
+.
+study:hasRouteOfAdministration
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:DrugAdministration ;
+  rdfs:range code:RouteOfAdministration ;
+  skos:prefLabel "has route of administration"^^xsd:string ;
 .
 study:hasScheduledDate
   rdf:type owl:ObjectProperty ;
