@@ -29,43 +29,50 @@ ddply(u_Visit, .(visitPerson_Frag), function(u_Visit)
   # Person_(n) ---> visit (visitPerson_Frag)
   # Add visit to Person. Eg: Person_1 participatesIn visitScreening1_1
   # VisitScreening
-  add.triple(cdiscpilot01,
-    paste0(prefix.CDISCPILOT01, person),
-    paste0(prefix.STUDY,"participatesIn" ),
-    paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag)
-  )
-     add.triple(cdiscpilot01,
-       paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
-       paste0(prefix.RDF,"type" ),
-       paste0(prefix.CUSTOM,u_Visit$visit_Frag)
-     )
-     add.data.triple(cdiscpilot01,
-       paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
-       paste0(prefix.RDFS,"label" ),
-       paste0(u_Visit$persVis_Label)
-     )
-     add.data.triple(cdiscpilot01,
-       paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
-       paste0(prefix.SKOS,"prefLabel" ),
-       paste0(gsub(" ", "", u_Visit$visit)), type="string"
-     )
-     if (! is.na(u_Visit$vsstat_Frag)){
-       add.triple(cdiscpilot01,
-         paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
-         paste0(prefix.STUDY,"activityStatus" ),
-         paste0(prefix.CODE, u_Visit$vsstat_Frag)   
-       )
-     } 
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
-      paste0(prefix.STUDY,"hasCode" ),
-      paste0(prefix.CUSTOM,u_Visit$visit_Frag)
-    )
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, u_Visit$visitPerson_Frag),
-      paste0(prefix.STUDY,"hasDate" ),
-      paste0(prefix.CDISCPILOT01,u_Visit$vsdtc_Frag)   
-    )
+  addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, person),
+      predicate = paste0(STUDY,"participatesIn"),
+      object    = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag)))
+
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+         subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+         predicate = paste0(RDF,"type"),
+         object    = paste0(CUSTOM,u_Visit$visit_Frag)))
+
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+        predicate = paste0(RDFS,"label"),
+        object    = paste0(u_Visit$persVis_Label),
+          objectType = "literal", datatype_uri = paste0(XSD,"string")))
+
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+        predicate = paste0(SKOS,"prefLabel"),
+        object    = paste0(gsub(" ", "", u_Visit$visit)),
+          objectType = "literal", datatype_uri = paste0(XSD,"string")))
+
+    if (! is.na(u_Visit$vsstat_Frag)){
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+           subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+           predicate = paste0(STUDY,"activityStatus"),
+           object    = paste0(CODE, u_Visit$vsstat_Frag)))
+    } 
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+        predicate = paste0(STUDY,"hasCode"),
+        object    = paste0(CUSTOM,u_Visit$visit_Frag)))
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+        predicate = paste0(STUDY,"hasDate"),
+        object    = paste0(CDISCPILOT01,u_Visit$vsdtc_Frag)))
+
     # This date is a Visit Date (Date_<n> is a study:VisitDate)
     assignDateType(u_Visit$vsdtc, u_Visit$vsdtc_Frag, "VisitDate")
 })
@@ -77,215 +84,229 @@ ddply(vs, .(personNum, vsseq), function(vs)
   # Create vs body position triples only if vspos_Frag has a value
   if (!is.na(vs$vspos_Frag) && ! as.character(vs$vspos_Frag)=="") {
     # Body Positions
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, vs$visitPerson_Frag),
-      paste0(prefix.STUDY,"hasSubActivity" ),
-      paste0(prefix.CDISCPILOT01,vs$vspos_Frag)   
-    )
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
+        predicate = paste0(STUDY,"hasSubActivity"),
+        object    = paste0(CDISCPILOT01,vs$vspos_Frag)))
+
     #---- AsssumeBodyPosition sub-triples....  
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, vs$vspos_Frag),
-      paste0(prefix.RDF,"type" ),
-      paste0(prefix.CODE, vs$vsposCode_Frag)   
-    )
-    add.data.triple(cdiscpilot01,
-     paste0(prefix.CDISCPILOT01, vs$vspos_Frag),
-     paste0(prefix.SKOS,"prefLabel" ),
-     paste0(vs$vspos_Label)   
-    )
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+       subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+       predicate = paste0(RDF,"type"),
+       object    = paste0(CODE, vs$vsposCode_Frag)))
+
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+       subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+       predicate = paste0(SKOS,"prefLabel"),
+       object    = paste0(vs$vspos_Label),
+         objectType = "literal", datatype_uri = paste0(XSD,"string")))
   }
   if (! is.na(vs$vsstat_Frag)) {
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, vs$vspos_Frag),
-      paste0(prefix.STUDY,"activityStatus" ),
-      paste0(prefix.CODE, vs$vsstat_Frag)   
-    )
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+        predicate = paste0(STUDY,"activityStatus"),
+        object    = paste0(CODE, vs$vsstat_Frag)))
   }
-  add.triple(cdiscpilot01,
-   paste0(prefix.CDISCPILOT01, vs$vspos_Frag),
-   paste0(prefix.STUDY,"hasCode" ),
-   paste0(prefix.CODE, vs$vsposCode_Frag)   
-  )
-  add.triple(cdiscpilot01,
-   paste0(prefix.CDISCPILOT01, vs$vspos_Frag),
-   paste0(prefix.STUDY, "hasDate" ),
-   paste0(prefix.CDISCPILOT01, vs$vsdtc_Frag)   
-  )
+  addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+      predicate = paste0(STUDY,"hasCode"),
+      object    = paste0(CODE, vs$vsposCode_Frag)))
+  addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+      predicate = paste0(STUDY, "hasDate"),
+      object    = paste0(CDISCPILOT01, vs$vsdtc_Frag)))
+
   # Link to SDTM terminology "upright position" 
-  add.triple(cdiscpilot01,
-   paste0(prefix.CDISCPILOT01, vs$vspos_Frag),
-   paste0(prefix.STUDY, "outcome" ),
-   paste0(prefix.SDTMTERM, vs$vsposSDTM_Frag)   
-  )
-  add.triple(cdiscpilot01,
-    paste0(prefix.CDISCPILOT01, vs$visitPerson_Frag),
-    paste0(prefix.STUDY,"hasSubActivity" ),
-    paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag)   
-  )
+  addStatement(cdiscpilot01,
+    new("Statement", world=world,
+     subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+     predicate = paste0(STUDY, "outcome"),
+     object    = paste0(SDTMTERM, vs$vsposSDTM_Frag)))
+  addStatement(cdiscpilot01,
+  new("Statement", world=world,
+    subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
+    predicate = paste0(STUDY,"hasSubActivity"),
+    object    = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag)))
     # Test result subtriples : Eg: cdiscpilot01:C67153.C25206_1
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-      paste0(prefix.RDF,"type" ),
-      paste0(prefix.CD01P, vs$vstestSDTMCodeType_Frag)
-    )
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-      paste0(prefix.RDF,"type" ),
-      paste0(prefix.SDTMTERM, vs$vstestSDTMCode)
-    )
-    add.data.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-      paste0(prefix.SKOS,"prefLabel" ),
-      paste0(vs$testRes_Label)
-    )
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-      paste0(prefix.STUDY,"hasCode" ),
-      paste0(prefix.SDTMTERM, vs$vstestSDTMCode)
-    )
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-      paste0(prefix.STUDY,"hasScheduledDate" ),
-      paste0(prefix.CDISCPILOT01, vs$vsdtc_Frag)
-    )
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        predicate = paste0(RDF,"type"),
+        object    = paste0(CD01P, vs$vstestSDTMCodeType_Frag)))
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        predicate = paste0(RDF,"type"),
+        object    = paste0(SDTMTERM, vs$vstestSDTMCode)))
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        predicate = paste0(SKOS,"prefLabel"),
+        object    = paste0(vs$testRes_Label),
+          objectType = "literal", datatype_uri = paste0(XSD,"string")))
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        predicate = paste0(STUDY,"hasCode"),
+        object    = paste0(SDTMTERM, vs$vstestSDTMCode)))
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        predicate = paste0(STUDY,"hasScheduledDate"),
+        object    = paste0(CDISCPILOT01, vs$vsdtc_Frag)))
     # Category & Subcategory hard coded in VS_Frag.R
     if (! is.na(vs$vscat_Frag)){
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"hasCategory" ),
-        paste0(prefix.CD01P, vs$vscat_Frag)
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"hasCategory"),
+          object    = paste0(CD01P, vs$vscat_Frag)))
     }
     if (! is.na(vs$vsscat_Frag)){
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"hasSubcategory" ),
-        paste0(prefix.CD01P, vs$vsscat_Frag)
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"hasSubcategory"),
+          object    = paste0(CD01P, vs$vsscat_Frag)))
     }
     if (! is.na(vs$vslatSDTMCode)){
-      add.triple(cdiscpilot01,
-         paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-         paste0(prefix.STUDY,"laterality" ),
-         paste0(prefix.SDTMTERM, vs$vslatSDTMCode)
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"laterality"),
+          object    = paste0(SDTMTERM, vs$vslatSDTMCode)))
     }
-
     # StartRule ----
       if (! is.na(vs$startRule_Frag)){
-        add.triple(cdiscpilot01,
-          paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-          paste0(prefix.STUDY,"hasStartRule" ),
-          paste0(prefix.CDISCPILOT01, vs$startRule_Frag)
-        )
+        addStatement(cdiscpilot01,
+          new("Statement", world=world,
+            subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+            predicate = paste0(STUDY,"hasStartRule"),
+            object    = paste0(CDISCPILOT01, vs$startRule_Frag)))
       }
       # StartRule sub triples ----
-      add.triple(cdiscpilot01,
-          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-          paste0(prefix.RDF,"type" ),
-          paste0(prefix.CODE, vs$startRuleType_Frag)
-        )
-        add.triple(cdiscpilot01,
-          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-          paste0(prefix.STUDY,"hasCode" ),
-          paste0(prefix.CODE, vs$startRuleType_Frag)
-        )
-        add.triple(cdiscpilot01,
-          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-          paste0(prefix.CODE,"hasPrerequisite" ),
-          paste0(prefix.CDISCPILOT01, vs$vspos_Frag)
-        )
-        add.data.triple(cdiscpilot01,
-          paste0(prefix.CDISCPILOT01, vs$startRule_Frag),
-          paste0(prefix.SKOS,"prefLabel" ),
-          paste0(paste0(vs$startRule_Label))
-        )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01, vs$startRule_Frag),
+          predicate = paste0(RDF,"type"),
+          object    = paste0(CODE, vs$startRuleType_Frag)))
+        addStatement(cdiscpilot01,
+          new("Statement", world=world,
+            subject   = paste0(CDISCPILOT01, vs$startRule_Frag),
+            predicate = paste0(STUDY,"hasCode"),
+            object    = paste0(CODE, vs$startRuleType_Frag)))
+        addStatement(cdiscpilot01,
+          new("Statement", world=world,
+            subject   = paste0(CDISCPILOT01, vs$startRule_Frag),
+            predicate = paste0(CODE,"hasPrerequisite"),
+            object    = paste0(CDISCPILOT01, vs$vspos_Frag)))
+        addStatement(cdiscpilot01,
+          new("Statement", world=world,
+            subject   = paste0(CDISCPILOT01, vs$startRule_Frag),
+            predicate = paste0(SKOS,"prefLabel"),
+            object    = paste0(vs$startRule_Label),
+              objectType = "literal", datatype_uri = paste0(XSD,"string")))
     # End startRule substriples  
-    add.triple(cdiscpilot01,
-       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-       paste0(prefix.STUDY,"outcome" ),
-       paste0(prefix.CDISCPILOT01, vs$vsorres_Frag)
-     )
-     add.data.triple(cdiscpilot01,
-       paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-       paste0(prefix.STUDY,"seq" ),
-       paste0(vs$vsseq), type="int"
-     )
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+        predicate = paste0(STUDY,"outcome"),
+        object    = paste0(CDISCPILOT01, vs$vsorres_Frag)))
+     addStatement(cdiscpilot01,
+       new("Statement", world=world,
+         subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+         predicate = paste0(STUDY,"seq"),
+         object    = paste0(vs$vsseq),
+           objectType = "literal", datatype_uri = paste0(XSD,"int")))
+
     # derived flag. If non-missing, code the value as the object (Y, N...)
     if (! is.na(vs$vsdrvfl)) {
-      add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"derivedFlag" ),
-        paste0(vs$vsdrvfl), type="string"
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"derivedFlag"),
+          object    = paste0(vs$vsdrvfl),
+            objectType = "literal", datatype_uri = paste0(XSD,"string")))
     }
     if (! as.character(vs$vsgrpid) == "") {
-      add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"groupID" ),
-        paste0(vs$vsgrpid), type="string"
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"groupID"),
+          object    = paste0(vs$vsgrpid),
+            objectType = "literal", datatype_uri = paste0(XSD,"string")))
     }
     if (! as.character(vs$posSDTMCode) == "") {
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"bodyPosition" ),
-        paste0(prefix.SDTMTERM, vs$posSDTMCode)
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"bodyPosition"),
+          object    = paste0(SDTMTERM, vs$posSDTMCode)))
     }
     if (! as.character(vs$vsstat_Frag) == "") {
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"activityStatus" ),
-        paste0(prefix.CODE, vs$vsstat_Frag)
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"activityStatus"),
+          object    = paste0(CODE, vs$vsstat_Frag)))
     }
     if (! as.character(vs$vslocSDTMCode) == "") {
-      add.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"anatomicLocation" ),
-        paste0(prefix.SDTMTERM, vs$vslocSDTMCode)
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"anatomicLocation"),
+          object    = paste0(SDTMTERM, vs$vslocSDTMCode)))
     }
     if (! as.character(vs$vsblfl) == "") {
-      add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"baselineFlag" ),
-        paste0(vs$vsblfl), type="string"
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"baselineFlag"),
+          object    = paste0(vs$vsblfl),
+            objectType = "literal", datatype_uri = paste0(XSD,"string")))
     }
-    add.data.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
-      paste0(prefix.SKOS,"prefLabel" ),
-      paste0(vs$vsorres_Label)
-    )
-    add.triple(cdiscpilot01,
-         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
-         paste0(prefix.CODE,"hasUnit" ),
-         paste0(prefix.CODE, vs$vsstresu_Frag)
-    )
-    add.data.triple(cdiscpilot01,
-         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
-         paste0(prefix.CODE,"hasValue" ),
-         paste0(vs$vsorres)
-    )
-    add.triple(cdiscpilot01,
-         paste0(prefix.CDISCPILOT01, vs$vsorres_Frag),
-         paste0(prefix.RDF,"type" ),
-         paste0(prefix.STUDY, vs$vstestCatOutcome)
-    )
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, vs$vsorres_Frag),
+        predicate = paste0(SKOS,"prefLabel"),
+        object    = paste0(vs$vsorres_Label),
+          objectType = "literal", datatype_uri = paste0(XSD,"string")))
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, vs$vsorres_Frag),
+        predicate = paste0(CODE,"hasUnit"),
+        object    = paste0(CODE, vs$vsstresu_Frag)))
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, vs$vsorres_Frag),
+        predicate = paste0(CODE,"hasValue"),
+        object    = paste0(vs$vsorres),
+          objectType = "literal", datatype_uri = paste0(XSD,"string")))
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+       subject   = paste0(CDISCPILOT01, vs$vsorres_Frag),
+       predicate = paste0(RDF,"type"),
+       object    = paste0(STUDY, vs$vstestCatOutcome)))
     if (! is.na(vs$vsreasnd) && ! as.character(vs$vsreasnd)==""){
-       add.data.triple(cdiscpilot01,
-         paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-         paste0(prefix.STUDY,"reasonNotDone" ),
-         paste0(vs$vsreasnd), type="string"
-       )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"reasonNotDone"),
+          object    = paste0(vs$vsreasnd),
+            objectType = "literal", datatype_uri = paste0(XSD,"string")))
     }
     if (! is.na(vs$vsspid)){       
-      add.data.triple(cdiscpilot01,
-        paste0(prefix.CDISCPILOT01,vs$vstestSDTMCode_Frag),
-        paste0(prefix.STUDY,"sponsordefinedID" ),
-        paste0(vs$vsspid), type="string"
-      )
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"sponsordefinedID"),
+          object    = paste0(vs$vsspid),
+            objectType = "literal", datatype_uri = paste0(XSD,"string")))
     }
 })

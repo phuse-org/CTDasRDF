@@ -18,7 +18,6 @@
 # TODO: 
 #______________________________________________________________________________
 # Configuration and initial setup ---------------------------------------------
-library(rrdf) # to be depreciated in favor of redland
 library(redland)
 library(Hmisc)
 library(plyr)   # plyr must load prior to dplyr
@@ -100,10 +99,10 @@ source('R/DM_process.R')
 source('R/SUPPDM_process.R')
 
 # VS Domain ----
-#TW source('R/VS_frag.R')
+source('R/VS_frag.R')
 
 
-#TW source('R/VS_process.R')
+source('R/VS_process.R')
 
 # XX Domain (to be added) ---- 
 
@@ -121,9 +120,7 @@ ddply(prefixes, .(prefix), function(prefixes)
 # Serialize to the file
 status <- serializeToFile(serializer, world, cdiscpilot01, outFileMain)
 
-
 # Validate --------------------------------------------------------------------
 #   Always a good idea to validate, friendo.
-#system(paste('riot --validate ', outFileMain),
-#  show.output.on.console = TRUE)
-warnings()
+system(paste('riot --validate ', outFileMain),
+  show.output.on.console = TRUE)
