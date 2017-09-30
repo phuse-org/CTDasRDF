@@ -3,7 +3,7 @@
 # DESC: Miscellaneous functions including: 
 #     readXPT() - read the requestd XPT file
 #     addPersonId() - adds the ID created from DM data to domain being processed
-#     assignDateType()
+#     assignDateType() - adds the type of study event date to the DATE value
 # REQ : 
 # SRC : 
 # IN  : 
@@ -73,11 +73,10 @@ addPersonId <- function(domainName)
 #' @examples
 assignDateType <- function(dateVal, dateFrag, dateType)
 {
-  #---- Date triples
-  add.triple(cdiscpilot01,
-    paste0(prefix.CDISCPILOT01, dateFrag),
-    paste0(prefix.RDF,"type" ),
-    paste0(prefix.STUDY, dateType)
-  )
- 
+#---- Date triples
+  addStatement(cdiscpilot01, 
+    new("Statement", world=world, 
+      subject   = paste0(CDISCPILOT01, dateFrag),
+      predicate = paste0(RDF,"type" ),
+      object    = paste0(STUDY, dateType)))
 }  

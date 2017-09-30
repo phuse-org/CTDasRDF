@@ -70,16 +70,19 @@ createDateDict <- function()
   #   Both the label and the string representation of the date are the same.
   ddply(dateDict, .(dateKey), function(dateDict)
   {
-    add.data.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
-      paste0(prefix.STUDY, "dateTimeInXSDString" ),
-      paste0(dateDict$dateKey), type="string"
-    )
-    add.data.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, dateDict$dateFrag),
-      paste0(prefix.RDFS,"label" ),
-      paste0(dateDict$dateKey), type="string"
-    )
+    addStatement(cdiscpilot01, 
+      new("Statement", world=world, 
+        subject   = paste0(CDISCPILOT01, dateDict$dateFrag),
+        predicate = paste0(STUDY, "dateTimeInXSDString" ),
+        object    = paste0(dateDict$dateKey),
+          objectType = "literal", datatype_uri = paste0(XSD,"string")))
+
+    addStatement(cdiscpilot01, 
+      new("Statement", world=world, 
+        subject   = paste0(CDISCPILOT01, dateDict$dateFrag),
+        predicate = paste0(RDFS,"label" ),
+        object    = paste0(dateDict$dateKey),
+          objectType = "literal", datatype_uri = paste0(XSD,"string")))
   })
   return(dateDict)
 }
@@ -185,7 +188,6 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
   } 
    return(domainName)
 }
-
 
 #' Title
 #'

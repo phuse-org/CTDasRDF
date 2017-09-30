@@ -14,7 +14,10 @@
 # OUT  : /SDTMasRDF/vis/d3/data/DataRelations-FNGraph.JSON  
 #        
 # TODO : !! ERROR:  Predicates not merged to nodes properly.
-#
+#  CONVERT to use of SPARQL package to query Virtuoso
+#  Change to queriest to obtain:
+#    - Number of triples for each namespace
+#    - Number of linkes between namespaces
 #______________________________________________________________________________
 library(rrdf)     # Read / Create RDF
 library(reshape)  # melt

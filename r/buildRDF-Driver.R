@@ -18,7 +18,7 @@
 # TODO: 
 #______________________________________________________________________________
 # Configuration and initial setup ---------------------------------------------
-library(rrdf)
+library(redland)
 library(Hmisc)
 library(plyr)   # plyr must load prior to dplyr
 library(dplyr)  
@@ -43,12 +43,24 @@ version <- "0.0.1"
 # Output filename and location
 outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
 
+#TODO: Replace with redlands initiation
 # Initialize. Includes OWL, XSD, RDF by default.
 cdiscpilot01  = new.rdf()  # The main datafile. Later change name to 'mainTTL" or similar
     # custom = new.rdf()  # customterminology-R.ttl  : NOT CURRENTLY IN USE
     # code   = new.rdf()  # code-R.ttl               : NOT CURRENTLY IN USE
 
-#** Prefixes and OWL imports ----
+
+# new redlands declarations
+# World is the redland mechanism for scoping models
+world <- new("World")
+
+# Storage provides a mechanism to store models; in-memory hashes are convenient for small models
+storage <- new("Storage", world, "hashes", name="", options="hash-type='memory'")
+
+# A model is a set of Statements, and is associated with a particular Storage instance
+cdiscpilot01 <- new("Model", world=world, storage, options="")
+
+#** Prefix Declarations and [optional] OWL imports ----
 source('R/prefixesAndImports.R') # Prefixes and OWL imports
 
 # Graph Metadata ----
@@ -65,12 +77,9 @@ source('R/DM_impute.R')     # Create values needed for testing.
 
 # Import and Impute VS --------------------------------------------------------
 vs <- readXPT("vs")
-
-
 source('R/VS_impute.R') 
 
 # Import and Impute other domains ---- : to be added later----------------------
-
 # Create the date translation table from all dates across domains
 #   Needed by both xx_impute and xx_process scripts.
 dateDict<-createDateDict()    
@@ -86,7 +95,6 @@ source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part
 #    DM MUST be processed first: Creates data required in later steps, 
 #      including personNum. 
 
-
 source('R/DM_process.R')
 source('R/SUPPDM_process.R')
 
@@ -99,10 +107,20 @@ source('R/VS_process.R')
 # XX Domain (to be added) ---- 
 
 # Write out to TTL ------------------------------------------------------------
-cdiscpilot01 = save.rdf(cdiscpilot01,  filename=outFileMain,   format="TURTLE")   
+# Serialize the model to a TTL file
+serializer <- new("Serializer", world, name="turtle", mimeType="text/turtle")
+
+# Create the prefixes as a last step prior to serialization
+ddply(prefixes, .(prefix), function(prefixes)
+{
+  status <- setNameSpace(serializer, world, 
+    namespace=as.character(prefixes$namespace), prefix=as.character(prefixes$prefix))  
+})
+  
+# Serialize to the file
+status <- serializeToFile(serializer, world, cdiscpilot01, outFileMain)
 
 # Validate --------------------------------------------------------------------
 #   Always a good idea to validate, friendo.
 system(paste('riot --validate ', outFileMain),
   show.output.on.console = TRUE)
-

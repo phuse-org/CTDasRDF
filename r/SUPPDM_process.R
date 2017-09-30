@@ -21,59 +21,63 @@ source("R/SUPPDM_impute.R")
 
 # Hard coded. Study sponsor triple creation
 #TODO: Move to processing of TSPARMCD or other source domain later in the project.
-add.triple(cdiscpilot01,
-  paste0(prefix.CDISCPILOT01, "Sponsor_1" ),
-  paste0(prefix.RDF,"type" ),
-  paste0(prefix.STUDY, "Sponsor")
-)
-add.data.triple(cdiscpilot01,
-  paste0(prefix.CDISCPILOT01, "Sponsor_1" ),
-  paste0(prefix.RDFS,"label" ),
-  "CLINICAL STUDY SPONSOR", type="string" 
-)
+addStatement(cdiscpilot01,      
+  new("Statement", world=world, 
+    subject   = paste0(CDISCPILOT01, "Sponsor_1" ),
+    predicate = paste0(RDF,"type" ),
+    object    = paste0(STUDY, "Sponsor")))
+
+addStatement(cdiscpilot01,
+  new("Statement", world=world, 
+    subject   = paste0(CDISCPILOT01, "Sponsor_1" ),
+    predicate = paste0(RDFS,"label" ),
+    object    = "CLINICAL STUDY SPONSOR",
+      objectType = "literal", datatype_uri = paste0(XSD,"string")))
 
 # Create triple attached to Person_, tnen second level descriptor triples
 ddply(suppdm, .(personNum, qnam_), function(suppdm){
   #-- First level triples attached to Person_(n)  
-  add.triple(cdiscpilot01,
-    paste0(prefix.CDISCPILOT01, "Person_", suppdm$personNum ),
-    paste0(prefix.STUDY,"participatesIn" ),
-    paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum)
-  )
+  addStatement(cdiscpilot01,
+    new("Statement", world=world, 
+      subject   = paste0(CDISCPILOT01, "Person_", suppdm$personNum ),
+      predicate = paste0(STUDY,"participatesIn" ),
+      object    = paste0(CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum)))
+
     # "Population Flag
     # Types are assigned depending on the qnam. 
     #   C8WK,C16WK,C21WK are custom:
     #   EFF,ITT,SAF are code:
     #   May to need add more conditions when default of CODE: not appropriate.
     # note use of lowercase for custom: class
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
-      paste0(prefix.RDF,"type" ),
-      paste0(prefix.CUSTOM, "PopFlag", suppdm$qnam_)
-    )
-    
+    addStatement(cdiscpilot01,  
+      new("Statement", world=world, 
+        subject   = paste0(CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
+        predicate = paste0(RDF,"type" ),
+        object    = paste0(CUSTOM, "PopFlag", suppdm$qnam_)))
+
     #HARDCODE activityStatus
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
-      paste0(prefix.STUDY,"activityStatus" ),
-      paste0(prefix.CODE, "ActivityStatus_1")
-    )
+    addStatement(cdiscpilot01,
+      new("Statement", world=world, 
+        subject   = paste0(CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
+        predicate = paste0(STUDY,"activityStatus" ),
+        object    = paste0(CODE, "ActivityStatus_1")))
   
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
-      paste0(prefix.STUDY,"hasCode" ),
-      # paste0(prefix.CD01P, "PopulationFlag", suppdm$qnamClass_)
-      paste0(prefix.CUSTOM, "PopFlag", suppdm$qnam_)
-    )
-    add.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
-      paste0(prefix.STUDY,"hasPerformer" ),
-      paste0(prefix.CD01P, suppdm$sponsor_Frag)
-    )
-    add.data.triple(cdiscpilot01,
-      paste0(prefix.CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
-      paste0(prefix.STUDY,"outcome" ),
-      paste0(suppdm$qval_Frag)
-    )
-  }
-)
+    addStatement(cdiscpilot01,
+      new("Statement", world=world, 
+        subject   = paste0(CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
+        predicate = paste0(STUDY,"hasCode" ),
+        object    = paste0(CUSTOM, "PopFlag", suppdm$qnam_)))
+
+    addStatement(cdiscpilot01,
+      new("Statement", world=world, 
+        subject   = paste0(CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
+        predicate = paste0(STUDY,"hasPerformer" ),
+        object    = paste0(CD01P, suppdm$sponsor_Frag)))
+
+    addStatement(cdiscpilot01,
+      new("Statement", world=world, 
+        subject   = paste0(CDISCPILOT01, "PopFlag", suppdm$qnam_,"_",suppdm$personNum),
+        predicate = paste0(STUDY,"outcome" ),
+        object    = paste0(suppdm$qval_Frag), 
+          objectType = "literal", datatype_uri = paste0(XSD,"string")))
+})

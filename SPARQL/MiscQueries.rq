@@ -73,7 +73,30 @@ BIND("study:hasDate" AS ?o)
 }
 
 
+// Counts of Subject triples in each namespace
+SELECT count(?study) AS ?Study 
+       count(?protocol) AS ?Protocol
+       count(?custom) AS ?custom
 
+FROM <http://localhost:8890/CTDasRDF>
+WHERE {
+  {
+
+    ?protocol ?p ?o
+    {FILTER(regex(str(?protocol), "(protocol.ttl#)")) } 
+  }
+  UNION
+  {
+    ?study ?p ?o
+    {FILTER(regex(str(?study), "(study.ttl)")) } 
+  }
+  UNION
+  {
+    ?custom ?p ?o
+    {FILTER(regex(str(?study), "(custom#)")) } 
+  }
+
+}
 # SELECT COUNT(*) as ?count
 SELECT *
 FROM <http://localhost:8890/CTDasRDF>
