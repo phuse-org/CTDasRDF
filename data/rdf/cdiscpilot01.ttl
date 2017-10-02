@@ -445,7 +445,7 @@ cdiscpilot01:Date_40
   rdf:type study:FixedDoseIntervalEnd ;
   rdfs:label "2014-08-01" ;
   skos:prefLabel "2014-08-01"^^xsd:string ;
-  study:dateTimeInXSDString "2014-08-01"^^xsd:string ;
+  study:dateTimeInXSDString "2013-08-01"^^xsd:string ;
 .
 cdiscpilot01:Date_41
   rdf:type study:FixedDoseIntervalEnd ;
@@ -813,20 +813,14 @@ cdiscpilot01:PopFlagSaf_1
 cdiscpilot01:ProductAdministrationInterval_1
   rdf:type study:ProductAdministrationInterval ;
   rdfs:label "Product Administration Interval 1"^^xsd:string ;
-  time:hasBeginning cdiscpilot01:Date_20 ;
-  time:hasEnd cdiscpilot01:Date_29 ;
 .
 cdiscpilot01:ProductAdministrationInterval_2
   rdf:type study:ProductAdministrationInterval ;
   rdfs:label "Product Administration Interval 2"^^xsd:string ;
-  time:hasBeginning cdiscpilot01:Date_8 ;
-  time:hasEnd cdiscpilot01:Date_9 ;
 .
 cdiscpilot01:ProductAdministrationInterval_3
   rdf:type study:ProductAdministrationInterval ;
   rdfs:label "Product Administration Interval 3"^^xsd:string ;
-  time:hasBeginning cdiscpilot01:Date_17 ;
-  time:hasEnd cdiscpilot01:Date_21 ;
 .
 cdiscpilot01:ProductAdministration_1
   rdf:type study:ProductAdministration ;

@@ -672,149 +672,7 @@ study:Document
 .
 study:DrugAdministration
   rdf:type owl:Class ;
-  spin:query [
-      rdf:type sp:Select ;
-      sp:groupBy (
-          [
-            sp:varName "s"^^xsd:string ;
-          ]
-        ) ;
-      sp:resultVariables (
-          [
-            sp:varName "s"^^xsd:string ;
-          ]
-          [
-            sp:expression [
-                rdf:type sp:Min ;
-                sp:expression [
-                    sp:varName "startdate"^^xsd:string ;
-                  ] ;
-              ] ;
-            sp:varName "RFXSTDTC"^^xsd:string ;
-          ]
-          [
-            sp:expression [
-                rdf:type sp:Max ;
-                sp:expression [
-                    sp:varName "enddate"^^xsd:string ;
-                  ] ;
-              ] ;
-            sp:varName "RFXENDTC"^^xsd:string ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object [
-                sp:varName "visit"^^xsd:string ;
-              ] ;
-            sp:predicate study:participatesIn ;
-            sp:subject [
-                sp:varName "s"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object study:Visit ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "visit"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "act"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasSubActivity ;
-            sp:subject [
-                sp:varName "visit"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object study:DrugAdministration ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "act"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "acti"^^xsd:string ;
-              ] ;
-            sp:predicate study:hasInterval ;
-            sp:subject [
-                sp:varName "act"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object study:FixedDoseInterval ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "acti"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "start"^^xsd:string ;
-              ] ;
-            sp:predicate time:hasBeginning ;
-            sp:subject [
-                sp:varName "acti"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "end"^^xsd:string ;
-              ] ;
-            sp:predicate time:hasEnd ;
-            sp:subject [
-                sp:varName "acti"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "startstring"^^xsd:string ;
-              ] ;
-            sp:predicate study:dateTimeInXSDString ;
-            sp:subject [
-                sp:varName "start"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type study:dateiso ;
-                arg:datestring [
-                    sp:varName "startstring"^^xsd:string ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "startdate"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "endstring"^^xsd:string ;
-              ] ;
-            sp:predicate study:dateTimeInXSDString ;
-            sp:subject [
-                sp:varName "end"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type study:dateiso ;
-                arg:datestring [
-                    sp:varName "endstring"^^xsd:string ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "enddate"^^xsd:string ;
-              ] ;
-          ]
-        ) ;
-      rdfs:comment "Calculate Reference Exposre Start and End dates from exposure data"^^xsd:string ;
-    ] ;
-  rdfs:subClassOf study:Intervention ;
+  rdfs:subClassOf study:ProductAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
 .
 study:DrugAdministrationComplete
@@ -1145,6 +1003,242 @@ study:ProductAdministrationEnd
 .
 study:ProductAdministrationInterval
   rdf:type owl:Class ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "d1"^^xsd:string ;
+              ] ;
+            sp:predicate time:hasBeginning ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "d2"^^xsd:string ;
+              ] ;
+            sp:predicate time:hasEnd ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:SubQuery ;
+            sp:query [
+                rdf:type sp:Select ;
+                sp:groupBy (
+                    [
+                      sp:varName "s"^^xsd:string ;
+                    ]
+                  ) ;
+                sp:resultVariables (
+                    [
+                      sp:varName "s"^^xsd:string ;
+                    ]
+                    [
+                      sp:expression [
+                          rdf:type sp:Min ;
+                          sp:expression [
+                              sp:varName "startdate"^^xsd:string ;
+                            ] ;
+                        ] ;
+                      sp:varName "refstartdate"^^xsd:string ;
+                    ]
+                    [
+                      sp:expression [
+                          rdf:type sp:Max ;
+                          sp:expression [
+                              sp:varName "enddate"^^xsd:string ;
+                            ] ;
+                        ] ;
+                      sp:varName "refenddate"^^xsd:string ;
+                    ]
+                  ) ;
+                sp:where (
+                    [
+                      sp:object [
+                          sp:varName "visit"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:participatesIn ;
+                      sp:subject [
+                          sp:varName "s"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object study:Visit ;
+                      sp:predicate rdf:type ;
+                      sp:subject [
+                          sp:varName "visit"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "act"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:hasSubActivity ;
+                      sp:subject [
+                          sp:varName "visit"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object study:DrugAdministration ;
+                      sp:predicate rdf:type ;
+                      sp:subject [
+                          sp:varName "act"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "acti"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:hasInterval ;
+                      sp:subject [
+                          sp:varName "act"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object study:FixedDoseInterval ;
+                      sp:predicate rdf:type ;
+                      sp:subject [
+                          sp:varName "acti"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "start"^^xsd:string ;
+                        ] ;
+                      sp:predicate time:hasBeginning ;
+                      sp:subject [
+                          sp:varName "acti"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "end"^^xsd:string ;
+                        ] ;
+                      sp:predicate time:hasEnd ;
+                      sp:subject [
+                          sp:varName "acti"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "startstring"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:dateTimeInXSDString ;
+                      sp:subject [
+                          sp:varName "start"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      rdf:type sp:Bind ;
+                      sp:expression [
+                          rdf:type study:dateiso ;
+                          arg:datestring [
+                              sp:varName "startstring"^^xsd:string ;
+                            ] ;
+                        ] ;
+                      sp:variable [
+                          sp:varName "startdate"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "endstring"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:dateTimeInXSDString ;
+                      sp:subject [
+                          sp:varName "end"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      rdf:type sp:Bind ;
+                      sp:expression [
+                          rdf:type study:dateiso ;
+                          arg:datestring [
+                              sp:varName "endstring"^^xsd:string ;
+                            ] ;
+                        ] ;
+                      sp:variable [
+                          sp:varName "enddate"^^xsd:string ;
+                        ] ;
+                    ]
+                  ) ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "padmin"^^xsd:string ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject [
+                sp:varName "s"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:ProductAdministration ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "padmin"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate study:hasInterval ;
+            sp:subject [
+                sp:varName "padmin"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:ProductAdministrationInterval ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:string ;
+                sp:arg1 [
+                    sp:varName "refstartdate"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "refstartdatestring"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:string ;
+                sp:arg1 [
+                    sp:varName "refenddate"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "refenddatestring"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "refstartdatestring"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "d1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "refenddatestring"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "d2"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Calculate Product Administration Start and End dates from individual exposure data"^^xsd:string ;
+    ] ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product administration interval"^^xsd:string ;
   rdfs:subClassOf study:ActivityInterval ;
@@ -1385,6 +1479,242 @@ study:StudyParticipationEnd
 .
 study:StudyParticipationInterval
   rdf:type owl:Class ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "d1"^^xsd:string ;
+              ] ;
+            sp:predicate time:hasBeginning ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "d2"^^xsd:string ;
+              ] ;
+            sp:predicate time:hasEnd ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:SubQuery ;
+            sp:query [
+                rdf:type sp:Select ;
+                sp:groupBy (
+                    [
+                      sp:varName "s"^^xsd:string ;
+                    ]
+                  ) ;
+                sp:resultVariables (
+                    [
+                      sp:varName "s"^^xsd:string ;
+                    ]
+                    [
+                      sp:expression [
+                          rdf:type sp:Min ;
+                          sp:expression [
+                              sp:varName "startdate"^^xsd:string ;
+                            ] ;
+                        ] ;
+                      sp:varName "refstartdate"^^xsd:string ;
+                    ]
+                    [
+                      sp:expression [
+                          rdf:type sp:Max ;
+                          sp:expression [
+                              sp:varName "enddate"^^xsd:string ;
+                            ] ;
+                        ] ;
+                      sp:varName "refenddate"^^xsd:string ;
+                    ]
+                  ) ;
+                sp:where (
+                    [
+                      sp:object [
+                          sp:varName "visit"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:participatesIn ;
+                      sp:subject [
+                          sp:varName "s"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object study:Visit ;
+                      sp:predicate rdf:type ;
+                      sp:subject [
+                          sp:varName "visit"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "act"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:hasSubActivity ;
+                      sp:subject [
+                          sp:varName "visit"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object study:DrugAdministration ;
+                      sp:predicate rdf:type ;
+                      sp:subject [
+                          sp:varName "act"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "acti"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:hasInterval ;
+                      sp:subject [
+                          sp:varName "act"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object study:FixedDoseInterval ;
+                      sp:predicate rdf:type ;
+                      sp:subject [
+                          sp:varName "acti"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "start"^^xsd:string ;
+                        ] ;
+                      sp:predicate time:hasBeginning ;
+                      sp:subject [
+                          sp:varName "acti"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "end"^^xsd:string ;
+                        ] ;
+                      sp:predicate time:hasEnd ;
+                      sp:subject [
+                          sp:varName "acti"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "startstring"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:dateTimeInXSDString ;
+                      sp:subject [
+                          sp:varName "start"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      rdf:type sp:Bind ;
+                      sp:expression [
+                          rdf:type study:dateiso ;
+                          arg:datestring [
+                              sp:varName "startstring"^^xsd:string ;
+                            ] ;
+                        ] ;
+                      sp:variable [
+                          sp:varName "startdate"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "endstring"^^xsd:string ;
+                        ] ;
+                      sp:predicate study:dateTimeInXSDString ;
+                      sp:subject [
+                          sp:varName "end"^^xsd:string ;
+                        ] ;
+                    ]
+                    [
+                      rdf:type sp:Bind ;
+                      sp:expression [
+                          rdf:type study:dateiso ;
+                          arg:datestring [
+                              sp:varName "endstring"^^xsd:string ;
+                            ] ;
+                        ] ;
+                      sp:variable [
+                          sp:varName "enddate"^^xsd:string ;
+                        ] ;
+                    ]
+                  ) ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "padmin"^^xsd:string ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject [
+                sp:varName "s"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:ProductAdministration ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "padmin"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate study:hasInterval ;
+            sp:subject [
+                sp:varName "padmin"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object study:ProductAdministrationInterval ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:string ;
+                sp:arg1 [
+                    sp:varName "refstartdate"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "refstartdatestring"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type xsd:string ;
+                sp:arg1 [
+                    sp:varName "refenddate"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "refenddatestring"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "refstartdatestring"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "d1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "refenddatestring"^^xsd:string ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "d2"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Calculate Reference Exposre Start and End dates from exposure data"^^xsd:string ;
+    ] ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Study participation interval"^^xsd:string ;
   rdfs:subClassOf time:Interval ;
@@ -1469,6 +1799,7 @@ study:activityStatus
   skos:definition ""^^xsd:string ;
 .
 study:actualArm
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:EnrolledSubject ;
@@ -1737,7 +2068,6 @@ study:durationiso
 .
 study:engagesIn
   rdf:type owl:ObjectProperty ;
-  rdf:type owl:TransitiveProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Party ;
   rdfs:label "has activity"^^xsd:string ;
@@ -1858,6 +2188,7 @@ study:hasLastName
   skos:definition ""^^xsd:string ;
 .
 study:hasLifespan
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
@@ -1911,6 +2242,7 @@ study:hasPrerequisite
   skos:definition ""^^xsd:string ;
 .
 study:hasReferenceInterval
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:HumanStudySubject ;
@@ -1952,6 +2284,7 @@ study:hasSiteID
   skos:definition ""^^xsd:string ;
 .
 study:hasStartRule
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
@@ -1992,6 +2325,7 @@ study:hasStudyParticipant
   skos:definition ""^^xsd:string ;
 .
 study:hasStudyParticipationInterval
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:HumanStudySubject ;
@@ -2029,6 +2363,7 @@ study:hasSubjectID
   skos:definition ""^^xsd:string ;
 .
 study:hasUniqueSubjectID
+  rdf:type owl:InverseFunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Person ;
@@ -2056,6 +2391,7 @@ study:isSubActivityOf
   skos:definition "relates an Activity with Another Activity of which it is a part"^^xsd:string ;
 .
 study:laterality
+  rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
