@@ -10,18 +10,20 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Introduction
-This document describes the project data files, R scripts, coding conventions, and data modeling decisions for the CTDasRDF project.
+This document describes the project data files, R scripts, coding conventions, and data modeling decisions for the project.
 
-**CAUTION: If you are reading this document outside of the R environment, the information is likely out of date! See the .rmd file in the project's Github root /CTDasRDF folder for the latest information.**
+**CAUTION: If you are reading this document outside of the R environment, the information is likely out of date! 
+See the .rmd file in the project's Github root /CTDasRDF folder for the latest information.**
 
 Information about the PhUSE cloud server environment is contained in separate documentation.
 
 
 # Data Files
 ## SDTM Data Sources
-SDTM XPT data files were obtained from the PhUSE CDISCPILOT01 study, here: https://github.com/phuse-org/phuse-scripts/blob/master/data/sdtm/cdiscpilot01/
+SDTM XPT data files were obtained from the PhUSE CDISCPILOT01 study: https://github.com/phuse-org/phuse-scripts/blob/master/data/sdtm/cdiscpilot01/
 
-Data augmentation for development and testing occurs in files named with \<domain name\>_impute.R. As a result, data files created during conversion will not be an exact match with the original .XPT source files.
+Data augmentation for development and testing occurs in files named with \<domain name\>_impute.R. 
+As a result, data files created during conversion will not be an exact match with the original .XPT source files.
 
 **DM**, **SUPPDM**,  and **VS** are the initial domains used in the project. This may expand if the project timeline permits.
 
@@ -52,54 +54,8 @@ Later development may include the addition of classes like "Protocol-Specified A
 # R Scripts
 
 ## R Requirements
-The project currently uses Egon Willighagen's R package rrdf <https://github.com/egonw/rrdf> for creating and querying RDF. The package is not available from CRAN. You are not using the PhUSE cloud server you must install and configure your system using these instructions.
-
-## Installation Instructions
-Run the following commands from RStudio console
-
-```{r install, eval=FALSE}
-install.packages("rJava") # if not present already
-
-install.packages("devtools") # if not present already
-
-library(devtools)
-```
-If an error occurs, the following additional steps may be needed on some systems:
-
-```{r ifInstallError, eval=FALSE}
-library(httr)
-
-set_config(config(ssl_verifypeer = 0L))
-
-install_github("egonw/rrdf", subdir="rrdflibs")
-
-install_github("egonw/rrdf", subdir="rrdf", build_vignettes = FALSE)
-```
-
-The package is now available for use from R.
-
-
-## Installation Troubleshooting
-
-- If the installation fails during installation of rJava, try re-installing your Java JRE.
-- Ensure your Java versions match your OS: java -version should display "32-bit" for 32 bit OS, "64-bit" for 64 bit OS.
-Additional Notes from J. Ulander for Windows installs:
-
-The command: ```{r ifInstallError, eval=FALSE} install_github("egonw/rrdf", subdir="rrdflibs")``` may result in an error for rJava. A likely cause is the fact that the Java download defaults to the 'bits' of your web browser application, not the Windows OS itself. Eg: On Windows 10 you likely need 64-bit Java for RStudio, but if your browser is 32 bit, you will get the wrong version of Java! To get the correct (in this case, 64-bit) Java version, go here: <https://www.java.co/en/download/manual.jsp> and pick the 64-bit version. Both 32-bit and 64 bit Java should be able to co-exist on the same machine if you need both for other applications.
-
-## Notes on Using the rrdf Package
-When using rrdf() to query, the OWL reasoner is turned on by default, as seen here:
-<https://github.com/egonw/rrdf/blob/master/rrdf/R/new.rdf.R#L16>
-
-You can turn off the OWL reasoning by:
-
-```{r owlModel, eval=FALSE} 
-model <- new.rdf(ontology=FALSE) 
-```
-
-  - advice from package creator Egon Willighagen.
-  
-
+In September 2017 the project switched from use of  Egon Willighagen's R package rrdf <https://github.com/egonw/rrdf> to the redland package <https://cran.r-project.org/web/packages/redland/> .
+This change removes dependencies on rJava and provides a data conversion mechanism that relies on a package available from CRAN.
 
 ## R Script Style conventions
 * **General**
