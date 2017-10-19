@@ -440,6 +440,9 @@ ddply(dm, .(subjid), function(dm)
         predicate = paste0(STUDY,"hasActivityInterval" ),
         object    = paste0(CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum)))
 
+    
+    
+    
       # ****** Product Adminstration Interval ----
       addStatement(cdiscpilot01,
         new("Statement", world=world, 
@@ -454,23 +457,26 @@ ddply(dm, .(subjid), function(dm)
           object    = paste0("Product Administration Interval ", dm$personNum), 
             objectType = "literal", datatype_uri = paste0(XSD,"string")))
 
-      # Product Administration Begin
-      addStatement(cdiscpilot01,
-        new("Statement", world=world, 
-          subject   = paste0(CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum),
-          predicate = paste0(TIME,"hasBeginning" ),
-          object    = paste0(CDISCPILOT01, dm$rfxstdtc_Frag)))
+      
+      
+      
+      #TW Product Administration Begin
+      #addStatement(cdiscpilot01,
+      #  new("Statement", world=world, 
+      #    subject   = paste0(CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum),
+      #    predicate = paste0(TIME,"hasBeginning" ),
+      #    object    = paste0(CDISCPILOT01, dm$rfxstdtc_Frag)))
 
       #---- Assign Date Type
       assignDateType(dm$rfxstdtc, dm$rfxstdtc_Frag, "ProductAdministrationBegin")
-
-      # Product Administration End
-      addStatement(cdiscpilot01,
-        new("Statement", world=world, 
-          subject   = paste0(CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum),
-          predicate = paste0(TIME,"hasEnd" ),
-          object    = paste0(CDISCPILOT01, dm$rfxendtc_Frag)))
+      assignDateType(dm$rfxstdtc, dm$rfxstdtc_Frag, "FixedDoseIntervalBegin")
+#TW addStatement(cdiscpilot01,
+#        new("Statement", world=world, 
+#          subject   = paste0(CDISCPILOT01, "ProductAdministrationInterval_", dm$personNum),
+#          predicate = paste0(TIME,"hasEnd" ),
+#          object    = paste0(CDISCPILOT01, dm$rfxendtc_Frag)))
       #---- Assign Date Type
+      assignDateType(dm$rfxendtc, dm$rfxendtc_Frag, "FixedDoseIntervalEnd")
       assignDateType(dm$rfxendtc, dm$rfxendtc_Frag, "ProductAdministrationEnd")
 
   # Demographic Data Collection ----

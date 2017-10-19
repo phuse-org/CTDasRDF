@@ -31,24 +31,22 @@ vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142),  "personNum"]  <- 1
 #   These are new COLUMNS and values not present in original source!
 # vs$vsgrpid  <- with(vs, ifelse(vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & personNum == 1, "GRPID1", "" )) 
 
-vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$personNum == 1,  "vsgrpid"]  <- "GRPID1"
+#TW removeed 44,45,46 on 19Oct17 to match new data from AO
+vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1,  "vsgrpid"]  <- "GRPID1"
 # vscat
-vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$personNum == 1,  "vscat"]  <- "CAT1"
+vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1,  "vscat"]  <- "CAT1"
 
 # vsscat
-vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$personNum == 1,  "vsscat"]  <- "SCAT1"
-
-# vsreasnd
-vs[vs$vsseq %in% c(1,2,3,4,5,6,86,87,88) & vs$personNum == 1,  "vsreasnd"]  <- "not applicable"
+vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1,  "vsscat"]  <- "SCAT1"
 
 # vsspid
 vs[vs$vsseq %in% c(1)   & vs$personNum == 1, "vsspid"]  <- "123"
 vs[vs$vsseq %in% c(2)   & vs$personNum == 1, "vsspid"]  <- "719"
 vs[vs$vsseq %in% c(3)   & vs$personNum == 1, "vsspid"]  <- "235"
 vs[vs$vsseq %in% c(43)  & vs$personNum == 1, "vsspid"]  <- "1000"
-vs[vs$vsseq %in% c(44)  & vs$personNum == 1, "vsspid"]  <- "125"
-vs[vs$vsseq %in% c(45)  & vs$personNum == 1, "vsspid"]  <- "721"
-vs[vs$vsseq %in% c(46)  & vs$personNum == 1, "vsspid"]  <- "237"
+#TW vs[vs$vsseq %in% c(44)  & vs$personNum == 1, "vsspid"]  <- "125"
+#TW vs[vs$vsseq %in% c(45)  & vs$personNum == 1, "vsspid"]  <- "721"
+#TW vs[vs$vsseq %in% c(46)  & vs$personNum == 1, "vsspid"]  <- "237"
 vs[vs$vsseq %in% c(86)  & vs$personNum == 1, "vsspid"]  <- "124"
 vs[vs$vsseq %in% c(87)  & vs$personNum == 1, "vsspid"]  <- "720"
 vs[vs$vsseq %in% c(88)  & vs$personNum == 1, "vsspid"]  <- "236"
@@ -60,17 +58,18 @@ vs$vsstat <- as.character(vs$vsstat) # factor correction
 vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$personNum == 1, "vsstat"] <- "CO"
 
 # vsreasnd
-vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$personNum == 1, "vsreasnd"]  <- "not applicable"
+vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1, "vsreasnd"]  <- "not applicable"
 
 # vsloc
 vs$vsloc <- as.character(vs$vsloc)  # factor correction
-vs[vs$vsseq %in% c(1,2,3,44,45,46,86,87,88) & vs$personNum == 1, "vsloc"]  <- "ARM"
+vs[vs$vsseq %in% c(1,2,3,86,87,88) & vs$personNum == 1, "vsloc"]  <- "ARM"
 
 # vslat
-vs[vs$vsseq %in% c(1,3,44,46,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
-vs[vs$vsseq %in% c(2,45,87) & vs$personNum == 1, "vslat"]          <- "LEFT"
+vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
+vs[vs$vsseq %in% c(2,87) & vs$personNum == 1, "vslat"]          <- "LEFT"
 
-vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$personNum == 1, "vsblfl"]  <- "Y"
+#TW removed 44,45,46 to match new data from AO 19Oct17
+vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1, "vsblfl"]  <- "Y"
 
 # Derived Flag Y/N ----
 vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$personNum == 1, "vsdrvfl"] <- "N"

@@ -234,7 +234,8 @@ ddply(vs, .(personNum, vsseq), function(vs)
           object    = paste0(vs$vsdrvfl),
             objectType = "literal", datatype_uri = paste0(XSD,"string")))
     }
-    if (! as.character(vs$vsgrpid) == "") {
+     
+    if (! is.na(vs$vsgrpid)) {
       addStatement(cdiscpilot01,
         new("Statement", world=world,
           subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
@@ -242,6 +243,16 @@ ddply(vs, .(personNum, vsseq), function(vs)
           object    = paste0(vs$vsgrpid),
             objectType = "literal", datatype_uri = paste0(XSD,"string")))
     }
+    # Missing vsblfl is "", not NA 
+    if (! as.character(vs$vsblfl) =="") {
+      addStatement(cdiscpilot01,
+        new("Statement", world=world,
+          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
+          predicate = paste0(STUDY,"baselineFlag"),
+          object    = paste0(vs$vsblfl),
+            objectType = "literal", datatype_uri = paste0(XSD,"string")))
+      }
+
     if (! as.character(vs$posSDTMCode) == "") {
       addStatement(cdiscpilot01,
         new("Statement", world=world,
@@ -263,15 +274,8 @@ ddply(vs, .(personNum, vsseq), function(vs)
           predicate = paste0(STUDY,"anatomicLocation"),
           object    = paste0(SDTMTERM, vs$vslocSDTMCode)))
     }
-    if (! as.character(vs$vsblfl) == "") {
-      addStatement(cdiscpilot01,
-        new("Statement", world=world,
-          subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
-          predicate = paste0(STUDY,"baselineFlag"),
-          object    = paste0(vs$vsblfl),
-            objectType = "literal", datatype_uri = paste0(XSD,"string")))
-    }
-    addStatement(cdiscpilot01,
+     
+     addStatement(cdiscpilot01,
       new("Statement", world=world,
         subject   = paste0(CDISCPILOT01, vs$vsorres_Frag),
         predicate = paste0(SKOS,"prefLabel"),

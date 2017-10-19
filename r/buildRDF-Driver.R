@@ -45,10 +45,6 @@ outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
 
 #TODO: Replace with redlands initiation
 # Initialize. Includes OWL, XSD, RDF by default.
-cdiscpilot01  = new.rdf()  # The main datafile. Later change name to 'mainTTL" or similar
-    # custom = new.rdf()  # customterminology-R.ttl  : NOT CURRENTLY IN USE
-    # code   = new.rdf()  # code-R.ttl               : NOT CURRENTLY IN USE
-
 
 # new redlands declarations
 # World is the redland mechanism for scoping models
