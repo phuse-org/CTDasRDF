@@ -39,16 +39,19 @@ sdtm-cd01p:SDTMDefineRecord_DM_1
 sdtm-cd01p:SDTMDefineRecord_DM_10
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "RFPENDTC"^^xsd:string ;
+  sdtm:hasDFComment "DSSTDTC of last disposition event "^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFPENDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_11
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "DTHDTC"^^xsd:string ;
+  sdtm:hasDFComment "If DS record exists with DSDECOD=\"DEATH\" then DTHDTC=AEENDTC."^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_12
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "DTHFL"^^xsd:string ;
+  sdtm:hasDFComment "If DS record exists with DSDECOD=\"DEATH\" then DEATHFL=Y."^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHFL> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_13
@@ -59,111 +62,126 @@ sdtm-cd01p:SDTMDefineRecord_DM_13
 sdtm-cd01p:SDTMDefineRecord_DM_14
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "AGE"^^xsd:string ;
+  sdtm:hasDFComment "Subject's Age at start of study drug (RFSTDTC). "^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGE> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_15
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "AGEU"^^xsd:string ;
+  sdtm:hasDFComment "AGEU=\"YEARS\" "^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGEU> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_16
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "SEX"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SEX> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_17
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "RACE"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RACE> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_18
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "ETHNIC"^^xsd:string ;
+  sdtm:hasDFComment "Derived from Origin entered on CRF: ETHINC=\"HISPANIC OR LATINO\" if Origin=\"Hispanic\". Otherwise ETHNIC=\"NOT HISPANIC OR LATINO\""^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ETHNIC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_2
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM "^^xsd:string ;
+  skos:prefLabel "DOMAIN"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DOMAIN> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_20
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "ARMCD"^^xsd:string ;
+  sdtm:hasDFComment "According to randomization list"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARMCD> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_21
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "ARM"^^xsd:string ;
+  sdtm:hasDFComment "According to randomization list"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARM> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_22
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "ACTARMCD"^^xsd:string ;
+  sdtm:hasDFComment "Derived from EX"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARMCD> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_23
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "ACTARM"^^xsd:string ;
+  sdtm:hasDFComment "Derived from EX"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARM> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_24
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "COUNTRY"^^xsd:string ;
+  sdtm:hasDFComment "Derived from site information"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.COUNTRY> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_25
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "DMDTC"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DMDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_26
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "DMDY"^^xsd:string ;
+  sdtm:hasDFComment "See Computational Method: COMPMETHOD.STUDY_DAY"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DMDY> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_27
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 27"^^xsd:string ;
+  skos:prefLabel "BRTHDTC"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.BRTHDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_28
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 28"^^xsd:string ;
+  skos:prefLabel "INVID"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.INVID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_3
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM "^^xsd:string ;
+  skos:prefLabel "USUBJID"^^xsd:string ;
+  sdtm:hasDFComment "Concatenation of STUDYID, DM.SITEID and DM.SUBJID "^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.USUBJID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_4
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM"^^xsd:string ;
+  skos:prefLabel "SUBJID"^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SUBJID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_5
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM"^^xsd:string ;
+  skos:prefLabel "RFSTDTC"^^xsd:string ;
+  sdtm:hasDFComment "Date/time of first study drug treatment derived from EX "^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFSTDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_6
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "RFENDTC"^^xsd:string ;
+  sdtm:hasDFComment "Date/time of last study drug treatment derived from EX "^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFENDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_7
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "RFXSTDC"^^xsd:string ;
+  sdtm:hasDFComment "RFXSTDTC=RFSTDTC "^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXSTDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_8
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "RFXENDTC"^^xsd:string ;
+  sdtm:hasDFComment "RFXENDTC=RFENDTC "^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXENDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_9
   rdf:type sdtm:SDTMDefineRecord_DM ;
-  skos:prefLabel "SDTMDefine record DM 1"^^xsd:string ;
+  skos:prefLabel "RFICDTC"^^xsd:string ;
+  sdtm:hasDFComment "Date of informed consent was not entered in database (see annotated CRF) "^^xsd:string ;
   sdtm:hasDFVariable <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFICDTC> ;
 .
 code:InformedConsentOutcome_1
@@ -187,80 +205,48 @@ code:hasValueSet
   skos:prefLabel "has value set"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARM>
-  skos:note "Derived from EX"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:hasDFComment "Derived from EX"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARMCD>
-  skos:note "Derived from EX"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:hasDFComment "Derived from EX"^^xsd:string ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGE>
-  skos:note "Subject's Age at start of study drug (RFSTDTC). "^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGEU>
-  skos:note "AGEU=\"YEARS\""^^xsd:string ;
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:hasDFComment "AGEU=\"YEARS\" "^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARM>
-  skos:note "According to Randomization list"^^xsd:string ;
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:hasDFComment "According to randomization list "^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ARMCD>
-  skos:note "According to Randomization list"^^xsd:string ;
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:hasDFComment "According to randomization list "^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.COUNTRY>
-  skos:note "Derived from site information"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:hasDFComment "Derived from site information "^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DMDTC>
   code:hasMethod code:ActivityMethod_1 ;
   study:crfLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#CRFLocation_1> ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DMDY>
-  skos:note "See Computational Method: COMPMETHOD.STUDY_DAY"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:hasDFComment "See Computational Method: COMPMETHOD.STUDY_DAY"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DOMAIN>
   code:hasMethod code:ActivityMethod_3 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHDTC>
-  skos:note "If DS record exists with DSDECOD=\"DEATH\" then DTHDTC=AEENDTC."^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.DTHFL>
-  skos:note "If DS record exists with DSDECOD=\"DEATH\" then DEATHFL=Y. "^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:hasDFComment "If DS record exists with DSDECOD=\"DEATH\" then DEATHFL=Y."^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ETHNIC>
-  skos:note "Derived from Origin entered on CRF: ETHINC=\"HISPANIC OR LATINO\" if Origin=\"Hispanic\". Otherwise ETHNIC=\"NOT HISPANIC OR LATINO\" "^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:hasDFComment "Derived from Origin entered on CRF: ETHINC=\"HISPANIC OR LATINO\" if Origin=\"Hispanic\". Otherwise ETHNIC=\"NOT HISPANIC OR LATINO\""^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RACE>
   code:hasMethod code:ActivityMethod_1 ;
   study:crfLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#CRFLocation_1> ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFICDTC>
-  skos:note "Date of informed consent was not entered in database (see annotated CRF)"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFPENDTC>
-  skos:note "DSSTDTC of last disposition event "^^xsd:string ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXENDTC>
-  skos:note "RFXENDTC=RFENDTC "^^xsd:string ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFXSTDTC>
-  skos:note "RFXSTDTC=RFSTDTC "^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SEX>
   code:hasMethod code:ActivityMethod_1 ;
@@ -269,10 +255,10 @@ code:hasValueSet
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SITEID>
   code:hasMethod code:ActivityMethod_3 ;
 .
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.STUDYID>
+  code:hasMethod code:ActivityMethod_3 ;
+.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SUBJID>
   code:hasMethod code:ActivityMethod_3 ;
   study:crfLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#CRFLocation_1> ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.USUBJID>
-  skos:note "Concatenation of STUDYID, DM.SITEID and DM.SUBJID "^^xsd:string ;
 .

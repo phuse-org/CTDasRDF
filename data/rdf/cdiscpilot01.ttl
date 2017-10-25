@@ -60,18 +60,19 @@ cdiscpilot01:AgeOutcome_3
   code:hasValue 71 ;
 .
 cdiscpilot01:AssumeBodyPositionStanding_1
-  rdf:type code:AssumeBodyPositionStanding ;
+  rdf:type custom:AssumeBodyPositionStanding ;
   skos:prefLabel "assume standing position"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode code:AssumeBodyPositionStanding ;
+  study:hasCode custom:AssumeBodyPositionStanding ;
   study:hasDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
   study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
 .
 cdiscpilot01:AssumeBodyPositionSupine_1
-  rdf:type code:AssumeBodyPositionSupine ;
+  rdf:type custom:AssumeBodyPositionSupine ;
   skos:prefLabel "assume supine position"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:hasCode code:AssumeBodyPositionSupine ;
+  study:hasCode custom:AssumeBodyPositionSupine ;
   study:hasDate cdiscpilot01:Date_19 ;
   study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
 .
@@ -516,7 +517,7 @@ cdiscpilot01:DemographicDataCollection_3
   study:sex <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C20197> ;
 .
 cdiscpilot01:DrugAdministration_1
-  rdf:type study:DrugAdministration ;
+  rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:administeredProduct custom:PlaceboProduct_1 ;
   study:hasActivityInterval cdiscpilot01:FixedDoseInterval_1 ;
@@ -525,7 +526,7 @@ cdiscpilot01:DrugAdministration_1
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_2
-  rdf:type study:DrugAdministration ;
+  rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:administeredProduct custom:PlaceboProduct_1 ;
   study:hasActivityInterval cdiscpilot01:FixedDoseInterval_2 ;
@@ -534,7 +535,7 @@ cdiscpilot01:DrugAdministration_2
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_3
-  rdf:type study:DrugAdministration ;
+  rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:administeredProduct custom:PlaceboProduct_1 ;
   study:hasActivityInterval cdiscpilot01:FixedDoseInterval_3 ;
@@ -543,7 +544,7 @@ cdiscpilot01:DrugAdministration_3
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_4
-  rdf:type study:DrugAdministration ;
+  rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:administeredProduct custom:PlaceboProduct_1 ;
   study:hasActivityInterval cdiscpilot01:FixedDoseInterval_4 ;
@@ -552,7 +553,7 @@ cdiscpilot01:DrugAdministration_4
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_5
-  rdf:type study:DrugAdministration ;
+  rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:administeredProduct custom:PlaceboProduct_1 ;
   study:hasActivityInterval cdiscpilot01:FixedDoseInterval_5 ;
@@ -561,7 +562,7 @@ cdiscpilot01:DrugAdministration_5
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_6
-  rdf:type study:DrugAdministration ;
+  rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:administeredProduct custom:Product_1 ;
   study:hasActivityInterval cdiscpilot01:FixedDoseInterval_6 ;
@@ -570,7 +571,7 @@ cdiscpilot01:DrugAdministration_6
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_7
-  rdf:type study:DrugAdministration ;
+  rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:administeredProduct custom:Product_2 ;
   study:hasActivityInterval cdiscpilot01:FixedDoseInterval_7 ;
@@ -579,7 +580,7 @@ cdiscpilot01:DrugAdministration_7
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_8
-  rdf:type study:DrugAdministration ;
+  rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:administeredProduct custom:Product_1 ;
   study:hasActivityInterval cdiscpilot01:FixedDoseInterval_8 ;
@@ -898,22 +899,22 @@ cdiscpilot01:ReferenceInterval_3
   time:hasEnd cdiscpilot01:Date_21 ;
 .
 cdiscpilot01:StartRuleLying5_1
-  rdf:type code:StartRuleLying5 ;
+  rdf:type cd01p:StartRuleLying5 ;
   skos:prefLabel "P1 Screening 1 Rule Lying 5 Min"^^xsd:string ;
-  code:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1 ;
-  study:hasCode code:StartRuleLying5 ;
+  study:hasCode cd01p:StartRuleLying5 ;
+  study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1 ;
 .
 cdiscpilot01:StartRuleStanding1_1
-  rdf:type code:StartRuleStanding1 ;
+  rdf:type cd01p:StartRuleStanding1 ;
   skos:prefLabel "P1 Screening 1 Rule Standing 1 Min"^^xsd:string ;
-  code:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 ;
-  study:hasCode code:StartRuleStanding1 ;
+  study:hasCode cd01p:StartRuleStanding1 ;
+  study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 ;
 .
 cdiscpilot01:StartRuleStanding3_1
-  rdf:type code:StartRuleStanding3 ;
+  rdf:type cd01p:StartRuleStanding3 ;
   skos:prefLabel "P1 Screening 1 Rule Standing 3 Min"^^xsd:string ;
-  code:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 ;
-  study:hasCode code:StartRuleStanding3 ;
+  study:hasCode cd01p:StartRuleStanding3 ;
+  study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 ;
 .
 cdiscpilot01:StudyParticipationInterval_1
   rdf:type study:StudyParticipationInterval ;

@@ -4636,7 +4636,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "VSELTM"^^xsd:string ;
               ] ;
-            sp:predicate code:hasDelay ;
+            sp:predicate study:hasDelay ;
             sp:subject [
                 sp:varName "strtruletype"^^xsd:string ;
               ] ;
@@ -4645,7 +4645,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "anchr"^^xsd:string ;
               ] ;
-            sp:predicate code:hasPrerequisite ;
+            sp:predicate study:hasPrerequisite ;
             sp:subject [
                 sp:varName "strtrule"^^xsd:string ;
               ] ;
@@ -5407,7 +5407,7 @@ sdtm:SDTM_VS_Record
                   sp:object [
                       sp:varName "VSTPT"^^xsd:string ;
                     ] ;
-                  sp:predicate code:ruleDescription ;
+                  sp:predicate study:ruleDescription ;
                   sp:subject [
                       sp:varName "strtruleclass"^^xsd:string ;
                     ] ;
@@ -6161,7 +6161,6 @@ sdtm:hasVSTPTREF
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFENDTC>
   rdf:type sdtm:Variable ;
-  skos:note "Date/time of last study drug treatment derived from EX"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
   cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .

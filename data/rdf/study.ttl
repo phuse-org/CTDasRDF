@@ -281,7 +281,7 @@ study:Activity
             sp:object [
                 sp:varName "anchoroutcometerm"^^xsd:string ;
               ] ;
-            sp:predicate code:hasPrereqExpectedOutcome ;
+            sp:predicate study:hasPrereqExpectedOutcome ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
@@ -290,7 +290,7 @@ study:Activity
             sp:object [
                 sp:varName "strtdelay"^^xsd:string ;
               ] ;
-            sp:predicate code:hasDelay ;
+            sp:predicate study:hasDelay ;
             sp:subject [
                 sp:varName "strtrulecode"^^xsd:string ;
               ] ;
@@ -299,7 +299,7 @@ study:Activity
             sp:object [
                 sp:varName "anchor"^^xsd:string ;
               ] ;
-            sp:predicate code:hasPrerequisite ;
+            sp:predicate study:hasPrerequisite ;
             sp:subject spin:_this ;
           ]
           [
@@ -401,7 +401,6 @@ study:Activity
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Activity"^^xsd:string ;
   rdfs:subClassOf study:StudyComponent ;
-  owl:equivalentClass <http://www.bridgmodel.org/owl#Activity> ;
   skos:definition "see definition for bridg:Activity"^^xsd:string ;
 .
 study:ActivityBegin
@@ -628,7 +627,7 @@ study:ClinicalIntervention
   rdf:type owl:Class ;
   rdfs:subClassOf study:Intervention ;
   skos:altLabel ""^^xsd:string ;
-  skos:definition "An Intervention whose intent is to have an effect on (e.g. treat, prevent) a Medical Condition"^^xsd:string ;
+  skos:definition "An Intervention whose intent is to have a clinical effect on (e.g. treat, prevent) a Medical Condition"^^xsd:string ;
   skos:prefLabel "Clinical intervention"^^xsd:string ;
 .
 study:Date
@@ -669,11 +668,6 @@ study:Document
   rdfs:subClassOf study:Entity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Document"^^xsd:string ;
-.
-study:DrugAdministration
-  rdf:type owl:Class ;
-  rdfs:subClassOf study:ProductAdministration ;
-  skos:prefLabel "Drug administration"^^xsd:string ;
 .
 study:DrugAdministrationComplete
   rdf:type study:DrugAdministrationOutcome ;
@@ -730,6 +724,11 @@ study:Event
   rdfs:label "Event"^^xsd:string ;
   rdfs:subClassOf study:Entity ;
   skos:definition "An occurrence that persists in time. "^^xsd:string ;
+.
+study:FixedDoseDrugAdministration
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ClinicalIntervention ;
+  skos:prefLabel "Fixed Dose Drug administration"^^xsd:string ;
 .
 study:FixedDoseInterval
   rdf:type owl:Class ;
@@ -985,7 +984,7 @@ study:ProductAdministration
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product administration"^^xsd:string ;
   rdfs:subClassOf study:ClinicalIntervention ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "The act of administering/taking a Product over time; there may be breaks or the dose may change  over time"^^xsd:string ;
 .
 study:ProductAdministrationBegin
   rdf:type owl:Class ;
@@ -1081,7 +1080,7 @@ study:ProductAdministrationInterval
                         ] ;
                     ]
                     [
-                      sp:object study:DrugAdministration ;
+                      sp:object study:FixedDoseDrugAdministration ;
                       sp:predicate rdf:type ;
                       sp:subject [
                           sp:varName "act"^^xsd:string ;
@@ -1391,27 +1390,23 @@ study:StartRuleDefault_1
 .
 study:StartRuleInformedConsentGranted
   rdf:type owl:Class ;
-  rdf:type study:StartRulePrereqActivityComplete ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityOutcome ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:hasValue code:InformedConsentOutcome_1 ;
-      owl:onProperty code:hasPrereqExpectedOutcome ;
+      owl:onProperty study:hasPrereqExpectedOutcome ;
     ] ;
   skos:definition "Target activity starts after informed consent has been granted. "^^xsd:string ;
   skos:prefLabel "RULE INFORMED CONSENT GRANTED"^^xsd:string ;
-  code:hasPrereqExpectedOutcome code:InformedConsentOutcome_1 ;
-  code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
-  study:hasPrerequisite study:InformedConsent ;
+  study:hasPrereqExpectedOutcome code:InformedConsentOutcome_1 ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
 .
 study:StartRuleInformedConsentStart
   rdf:type owl:Class ;
-  rdf:type study:StartRulePrereqActivityStart ;
   rdfs:label "Start rule informed consent started"^^xsd:string ;
   rdfs:subClassOf study:StartRulePrereqActivityStart ;
   skos:prefLabel "Start rule informed consent started"^^xsd:string ;
-  code:hasPrereqExpectedStatus code:ActivityStatus_3 ;
-  study:hasPrerequisite study:InformedConsent ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_3 ;
 .
 study:StartRulePrereqActivityComplete
   rdf:type owl:Class ;
@@ -1420,9 +1415,15 @@ study:StartRulePrereqActivityComplete
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:hasValue code:ActivityStatus_1 ;
-      owl:onProperty code:hasPrereqExpectedStatus ;
+      owl:onProperty study:hasPrereqExpectedStatus ;
     ] ;
-  skos:definition "A collection of Start Rules that trigger, i.e. evaluate to TRUE, when the Prerequisite Activity is completed and optionally has a certain outcome. "^^xsd:string ;
+  skos:definition "A collection of Start Rules that trigger, i.e. evaluate to TRUE, when the Prerequisite Activity is completed and optionally has a certain expected outcome. "^^xsd:string ;
+.
+study:StartRulePrereqActivityOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  skos:definition "A collection of Start Rules that trigger, i.e. evaluate to TRUE, when the Prerequisite Activity is completed and has a certain expected outcome. "^^xsd:string ;
+  skos:prefLabel "Start rule prereq activity outcome"^^xsd:string ;
 .
 study:StartRulePrereqActivityStart
   rdf:type owl:Class ;
@@ -1431,7 +1432,7 @@ study:StartRulePrereqActivityStart
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:hasValue code:ActivityStatus_3 ;
-      owl:onProperty code:hasPrereqExpectedStatus ;
+      owl:onProperty study:hasPrereqExpectedStatus ;
     ] ;
   skos:definition "A collection of Start Rules that resolve to TRUE when the prespecified Prerequisite activity starts. e.g. Screening Visit starts when Informed Consent starts. "^^xsd:string ;
 .
@@ -1557,7 +1558,7 @@ study:StudyParticipationInterval
                         ] ;
                     ]
                     [
-                      sp:object study:DrugAdministration ;
+                      sp:object study:FixedDoseDrugAdministration ;
                       sp:predicate rdf:type ;
                       sp:subject [
                           sp:varName "act"^^xsd:string ;
@@ -1809,7 +1810,7 @@ study:actualArm
 .
 study:administeredProduct
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:DrugAdministration ;
+  rdfs:domain study:FixedDoseDrugAdministration ;
   rdfs:range study:Product ;
   skos:prefLabel "has route of administration"^^xsd:string ;
 .
@@ -2139,6 +2140,14 @@ study:hasDate
   rdfs:range time:Instant ;
   skos:definition ""^^xsd:string ;
 .
+study:hasDelay
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Rule ;
+  rdfs:label "has delay"^^xsd:string ;
+  rdfs:range xsd:duration ;
+  skos:definition ""^^xsd:string ;
+.
 study:hasDocument
   rdf:type owl:ObjectProperty ;
   rdfs:range study:Document ;
@@ -2147,7 +2156,7 @@ study:hasDocument
 .
 study:hasDosageFrequency
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:DrugAdministration ;
+  rdfs:domain study:FixedDoseDrugAdministration ;
   rdfs:range code:DosageFrequency ;
   skos:prefLabel "has dosage frequency"^^xsd:string ;
 .
@@ -2234,12 +2243,27 @@ study:hasPerformer
   rdfs:range study:Party ;
   skos:definition ""^^xsd:string ;
 .
+study:hasPrereqExpectedOutcome
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Rule ;
+  rdfs:label "has anchor outcome"^^xsd:string ;
+  rdfs:range study:ActivityOutcome ;
+  skos:definition ""^^xsd:string ;
+.
+study:hasPrereqExpectedStatus
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Rule ;
+  rdfs:label "has prereq expected status"^^xsd:string ;
+  rdfs:range code:ActivityStatus ;
+.
 study:hasPrerequisite
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "has anchor"^^xsd:string ;
-  rdfs:range study:PrerequisiteActivity ;
-  skos:definition ""^^xsd:string ;
+  rdfs:domain study:Rule ;
+  rdfs:label "has Prerequisite"^^xsd:string ;
+  rdfs:range study:Activity ;
+  skos:definition "links the start of an activity relative to another activity known as a Prerequisite. "^^xsd:string ;
 .
 study:hasReferenceInterval
   rdf:type owl:FunctionalProperty ;
@@ -2253,7 +2277,7 @@ study:hasReferenceInterval
 .
 study:hasRouteOfAdministration
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:DrugAdministration ;
+  rdfs:domain study:FixedDoseDrugAdministration ;
   rdfs:range code:RouteOfAdministration ;
   skos:prefLabel "has route of administration"^^xsd:string ;
 .
@@ -2452,6 +2476,22 @@ study:reasonNotDone
   rdfs:comment ""^^xsd:string ;
   rdfs:domain study:Activity ;
   rdfs:label "reason not done"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:definition ""^^xsd:string ;
+.
+study:ruleDescription
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Rule ;
+  rdfs:label "rule description"^^xsd:string ;
+  rdfs:range xsd:string ;
+  skos:definition ""^^xsd:string ;
+.
+study:ruleDescriptionLong
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:Rule ;
+  rdfs:label "rule description long"^^xsd:string ;
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
 .

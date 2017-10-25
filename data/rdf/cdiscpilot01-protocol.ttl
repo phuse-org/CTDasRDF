@@ -280,6 +280,48 @@ cd01p:Sponsor_1
   rdf:type study:Sponsor ;
   skos:prefLabel "CLINICAL STUDY SPONSOR"^^xsd:string ;
 .
+cd01p:StartRuleLying5
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  skos:altLabel "815"^^xsd:string ;
+  skos:definition "Target activity starts after the subject has assumed a supine position for 5 minutes"^^xsd:string ;
+  skos:prefLabel "Rule Lying 5 Min"^^xsd:string ;
+  study:hasDelay "PT5M"^^xsd:duration ;
+  study:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
+  study:hasPrerequisite custom:AssumeBodyPositionSupine ;
+  study:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
+  study:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
+.
+cd01p:StartRuleStanding1
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  skos:altLabel "816"^^xsd:string ;
+  skos:definition "Target activity starts after the subject has assumed a standing position for 1 minute"^^xsd:string ;
+  skos:prefLabel "Rule Standing 1 Min"^^xsd:string ;
+  study:hasDelay "PT1M"^^xsd:duration ;
+  study:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
+  study:hasPrerequisite custom:AssumeBodyPositionStanding ;
+  study:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
+  study:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
+.
+cd01p:StartRuleStanding3
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  skos:altLabel "817"^^xsd:string ;
+  skos:definition "Target activity starts after the subject has assumed a standing position for 3 minutes"^^xsd:string ;
+  skos:prefLabel "Rule Standing 3 Min"^^xsd:string ;
+  study:hasDelay "PT3M"^^xsd:duration ;
+  study:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
+  study:hasPrerequisite custom:AssumeBodyPositionStanding ;
+  study:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
+  study:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
+.
 cd01p:StudyIdentifier_1
   rdf:type study:StudyIdentifier ;
   skos:prefLabel "CDISCPILOT01"^^xsd:string ;
@@ -374,18 +416,6 @@ cd01p:VisitScreening1Weight
 code:AgeUnit
   code:hasMethod code:ActivityMethod_3 ;
 .
-code:AssumeBodyPositionStanding
-  rdf:type study:AssumeBodyPosition ;
-  rdf:type study:PrerequisiteActivity ;
-  rdfs:subClassOf study:AssumeBodyPosition ;
-  rdfs:subClassOf study:PrerequisiteActivity ;
-.
-code:AssumeBodyPositionSupine
-  rdf:type study:AssumeBodyPosition ;
-  rdf:type study:PrerequisiteActivity ;
-  rdfs:subClassOf study:AssumeBodyPosition ;
-  rdfs:subClassOf study:PrerequisiteActivity ;
-.
 code:Country
   code:hasMethod code:ActivityMethod_2 ;
 .
@@ -413,28 +443,32 @@ code:Sex
   code:hasMethod code:ActivityMethod_1 ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
-code:StartRuleLying5
-  rdf:type study:StartRulePrereqActivityComplete ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
-.
-code:StartRuleStanding1
-  rdf:type study:StartRulePrereqActivityComplete ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
-.
-code:StartRuleStanding3
-  rdf:type study:StartRulePrereqActivityComplete ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
-.
 code:VisitScreening1Start
   rdf:type owl:Class ;
   rdf:type study:StartRulePrereqActivityStart ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf study:StartRulePrereqActivityStart ;
   skos:prefLabel "SCREENING1 VISIT START"^^xsd:string ;
-  code:hasPrereqExpectedStatus code:ActivityStatus_3 ;
-  code:hasPrerequisite custom:VisitScreening1 ;
-  code:ruleDescription "AFTER SCREENING1 VISIT STARTS"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place after Screening1 Visit Starts"^^xsd:string ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_3 ;
+  study:hasPrerequisite custom:VisitScreening1 ;
+  study:ruleDescription "AFTER SCREENING1 VISIT STARTS"^^xsd:string ;
+  study:ruleDescriptionLong "Activity takes place after Screening1 Visit Starts"^^xsd:string ;
+.
+custom:AssumeBodyPositionStanding
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:subClassOf study:AssumeBodyPosition ;
+  rdfs:subClassOf study:PrerequisiteActivity ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "ASSUME BODY POSITION STANDING"^^xsd:string ;
+.
+custom:AssumeBodyPositionSupine
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:subClassOf study:AssumeBodyPosition ;
+  rdfs:subClassOf study:PrerequisiteActivity ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "ASSUME BODY POSITION SUPINE"^^xsd:string ;
 .
 custom:InvestigationalSubstance_1
   rdf:type code:ActiveSubstance ;
