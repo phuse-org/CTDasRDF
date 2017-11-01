@@ -630,6 +630,11 @@ study:ClinicalIntervention
   skos:definition "An Intervention whose intent is to have a clinical effect on (e.g. treat, prevent) a Medical Condition"^^xsd:string ;
   skos:prefLabel "Clinical intervention"^^xsd:string ;
 .
+study:Country
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:prefLabel "Country"^^xsd:string ;
+.
 study:Date
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;

@@ -419,9 +419,13 @@ code:AgeUnit
 code:Country
   code:hasMethod code:ActivityMethod_2 ;
 .
+code:Country_1
+  rdf:type study:Country ;
+.
 code:DemographicDataCollection
   rdf:type study:Observation ;
   rdfs:subClassOf study:Observation ;
+  study:crfLocation cd01p:CRFLocation_1 ;
 .
 code:Ethnicity
   code:hasMethod code:ActivityMethod_1 ;
@@ -686,8 +690,32 @@ study:AgeOutcome
 study:Arm
   code:hasMethod code:ActivityMethod_3 ;
 .
+study:Country
+  code:hasMethod code:ActivityMethod_2 ;
+.
+study:Deathdate
+  code:hasMethod code:ActivityMethod_2 ;
+.
+study:DemogDataCollectionDate
+  code:hasMethod code:ActivityMethod_1 ;
+  study:crfLocation cd01p:CRFLocation_1 ;
+.
+study:EthnicOutcome
+  code:hasMethod code:ActivityMethod_2 ;
+.
+study:InformedConsentBegin
+  code:hasMethod code:ActivityMethod_2 ;
+.
 study:InvestigatorIdentifier
   code:hasMethod code:ActivityMethod_3 ;
+.
+study:RaceOutcome
+  code:hasMethod code:ActivityMethod_1 ;
+  study:crfLocation cd01p:CRFLocation_1 ;
+.
+study:SexOutcome
+  code:hasMethod code:ActivityMethod_1 ;
+  study:crfLocation cd01p:CRFLocation_1 ;
 .
 study:StudyIdentifier
   code:hasMethod code:ActivityMethod_3 ;

@@ -1592,39 +1592,32 @@ sdtm:SDTMDefineDomain
   rdf:type owl:Class ;
   spin:query [
       rdf:type sp:Select ;
-      sp:distinct "true"^^xsd:boolean ;
       sp:orderBy (
           [
             rdf:type sp:Asc ;
             sp:expression [
-                sp:varName "ordinal"^^xsd:string ;
+                sp:varName "num"^^xsd:string ;
               ] ;
           ]
         ) ;
       sp:resultVariables (
           [
-            sp:varName "VARIABLE"^^xsd:string ;
+            sp:varName "Variable"^^xsd:string ;
           ]
           [
-            sp:varName "LABEL"^^xsd:string ;
+            sp:varName "Label"^^xsd:string ;
           ]
           [
-            sp:varName "TYPE"^^xsd:string ;
+            sp:varName "Type"^^xsd:string ;
           ]
           [
-            sp:varName "CONTROLLED_TERM"^^xsd:string ;
+            sp:varName "Controlled_Terminology"^^xsd:string ;
           ]
           [
-            sp:varName "ORIGIN"^^xsd:string ;
+            sp:varName "Role"^^xsd:string ;
           ]
           [
-            sp:varName "LOC"^^xsd:string ;
-          ]
-          [
-            sp:varName "ROLE"^^xsd:string ;
-          ]
-          [
-            sp:varName "COMMENT"^^xsd:string ;
+            sp:varName "Comment"^^xsd:string ;
           ]
         ) ;
       sp:where (
@@ -1642,7 +1635,16 @@ sdtm:SDTMDefineDomain
           ]
           [
             sp:object [
-                sp:varName "VARIABLE"^^xsd:string ;
+                sp:varName "num"^^xsd:string ;
+              ] ;
+            sp:predicate mms:ordinal ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "Variable"^^xsd:string ;
               ] ;
             sp:predicate mms:dataElementName ;
             sp:subject [
@@ -1651,7 +1653,298 @@ sdtm:SDTMDefineDomain
           ]
           [
             sp:object [
-                sp:varName "LABEL"^^xsd:string ;
+                sp:varName "Label"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFLabel ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "Type"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFType ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "Controlled_Terminology"^^xsd:string ;
+                    ] ;
+                  sp:predicate sdtm:hasDFControlledTerm ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            sp:object [
+                sp:varName "Origin"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFOrigin ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "Role"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFRole ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "Comment"^^xsd:string ;
+                    ] ;
+                  sp:predicate sdtm:hasDFComment ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "generates a tabular display of define.xml content"^^xsd:string ;
+    ] ;
+  rdfs:label "SDTMDefine domain"^^xsd:string ;
+  rdfs:subClassOf sdtm:DefineComponent ;
+.
+sdtm:SDTMDefineRecord
+  rdf:type owl:Class ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "ORIGIN"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFOrigin ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMDefineRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "method"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFMethod ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "location"^^xsd:string ;
+                    ] ;
+                  sp:predicate sdtm:hasDFLocation ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:concat ;
+                sp:arg1 " / " ;
+                sp:arg2 [
+                    sp:varName "location"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "location2"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:concat ;
+                sp:arg1 [
+                    sp:varName "method"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "location2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "origin2"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    rdf:type sp:not ;
+                    sp:arg1 [
+                        rdf:type sp:bound ;
+                        sp:arg1 [
+                            sp:varName "location"^^xsd:string ;
+                          ] ;
+                      ] ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "method"^^xsd:string ;
+                  ] ;
+                sp:arg3 [
+                    sp:varName "origin2"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "ORIGIN"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Constructs ORIGIN column as concatenation of Method and Location"^^xsd:string ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "method"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFMethod ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "location"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFLocation ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMDefineRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFVariable ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "am"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:additionalMetadata ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "met"^^xsd:string ;
+              ] ;
+            sp:predicate code:hasMethod ;
+            sp:subject [
+                sp:varName "am"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "method"^^xsd:string ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "met"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "loc"^^xsd:string ;
+                    ] ;
+                  sp:predicate study:crfLocation ;
+                  sp:subject [
+                      sp:varName "am"^^xsd:string ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "location"^^xsd:string ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "loc"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Method and Location search"^^xsd:string ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "varname"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFVariableName ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "varlabel"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFLabel ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "vartype"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFType ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "varrole"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFRole ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ctrlterm"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFControlledTerm ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFVariable ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "varname"^^xsd:string ;
+              ] ;
+            sp:predicate mms:dataElementName ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "varlabel"^^xsd:string ;
               ] ;
             sp:predicate mms:dataElementLabel ;
             sp:subject [
@@ -1660,7 +1953,7 @@ sdtm:SDTMDefineDomain
           ]
           [
             sp:object [
-                sp:varName "TYPE"^^xsd:string ;
+                sp:varName "vartype"^^xsd:string ;
               ] ;
             sp:predicate mms:dataElementType ;
             sp:subject [
@@ -1668,50 +1961,22 @@ sdtm:SDTMDefineDomain
               ] ;
           ]
           [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "method"^^xsd:string ;
-                    ] ;
-                  sp:predicate code:hasMethod ;
-                  sp:subject [
-                      sp:varName "var"^^xsd:string ;
-                    ] ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "ORIGIN"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:prefLabel ;
-                  sp:subject [
-                      sp:varName "method"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
+            sp:object [
+                sp:varName "rl"^^xsd:string ;
+              ] ;
+            sp:predicate cdiscs:dataElementRole ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
           ]
           [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "locat"^^xsd:string ;
-                    ] ;
-                  sp:predicate study:crfLocation ;
-                  sp:subject [
-                      sp:varName "var"^^xsd:string ;
-                    ] ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "LOC"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:prefLabel ;
-                  sp:subject [
-                      sp:varName "locat"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
+            sp:object [
+                sp:varName "varrole"^^xsd:string ;
+              ] ;
+            sp:predicate rdfs:label ;
+            sp:subject [
+                sp:varName "rl"^^xsd:string ;
+              ] ;
           ]
           [
             rdf:type sp:Optional ;
@@ -1800,760 +2065,13 @@ sdtm:SDTMDefineDomain
                         ] ;
                     ] ;
                   sp:variable [
-                      sp:varName "CONTROLLED_TERM"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "COMMENT"^^xsd:string ;
-                    ] ;
-                  sp:predicate sdtm:hasDFComment ;
-                  sp:subject [
-                      sp:varName "var"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
-          ]
-          [
-            sp:object [
-                sp:varName "ordinal"^^xsd:string ;
-              ] ;
-            sp:predicate mms:ordinal ;
-            sp:subject [
-                sp:varName "var"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "rl"^^xsd:string ;
-              ] ;
-            sp:predicate cdiscs:dataElementRole ;
-            sp:subject [
-                sp:varName "var"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "ROLE"^^xsd:string ;
-              ] ;
-            sp:predicate rdfs:label ;
-            sp:subject [
-                sp:varName "rl"^^xsd:string ;
-              ] ;
-          ]
-        ) ;
-      rdfs:comment "generates define.xml table"^^xsd:string ;
-    ] ;
-  rdfs:label "SDTMDefine domain"^^xsd:string ;
-  rdfs:subClassOf sdtm:DefineComponent ;
-.
-sdtm:SDTMDefineRecord
-  rdf:type owl:Class ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFOrigin ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "LOCATION"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFLocation ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object sdtm:SDTMDefineRecord ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.STUDYID> ;
-            sp:predicate sdtm:hasDFVariable ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasMethod ;
-            sp:subject study:StudyIdentifier ;
-          ]
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                  sp:predicate study:crfLocation ;
-                  sp:subject study:StudyIdentifier ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "LOCATION"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:prefLabel ;
-                  sp:subject [
-                      sp:varName "loc"^^xsd:string ;
+                      sp:varName "ctrlterm"^^xsd:string ;
                     ] ;
                 ]
               ) ;
           ]
         ) ;
-      rdfs:comment "STUDYID metadata search"^^xsd:string ;
-    ] ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFOrigin ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "LOCATION"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFLocation ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "comment"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFComment ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object sdtm:SDTMDefineRecord ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGE> ;
-            sp:predicate sdtm:hasDFVariable ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasMethod ;
-            sp:subject study:AgeOutcome ;
-          ]
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                  sp:predicate study:crfLocation ;
-                  sp:subject study:AgeOutcome ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "LOCATION"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:prefLabel ;
-                  sp:subject [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "comment"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.AGE> ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "comment"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject study:AgeOutcome ;
-                ]
-              ) ;
-          ]
-        ) ;
-      rdfs:comment "AGE metadata search"^^xsd:string ;
-    ] ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFOrigin ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "LOCATION"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFLocation ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "comment"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFComment ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object sdtm:SDTMDefineRecord ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.INVID> ;
-            sp:predicate sdtm:hasDFVariable ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasMethod ;
-            sp:subject study:InvestigatorIdentifier ;
-          ]
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                  sp:predicate study:crfLocation ;
-                  sp:subject study:InvestigatorIdentifier ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "LOCATION"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:prefLabel ;
-                  sp:subject [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "comment"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.INVID> ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "comment"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject study:InvestigatorIdentifier ;
-                ]
-              ) ;
-          ]
-        ) ;
-      rdfs:comment "INVID metadata search"^^xsd:string ;
-    ] ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFOrigin ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "LOCATION"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFLocation ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "comment"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFComment ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object sdtm:SDTMDefineRecord ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SITEID> ;
-            sp:predicate sdtm:hasDFVariable ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasMethod ;
-            sp:subject study:SiteIdentifier ;
-          ]
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                  sp:predicate study:crfLocation ;
-                  sp:subject study:SiteIdentifier ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "LOCATION"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:prefLabel ;
-                  sp:subject [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "comment"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SITEID> ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "comment"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject study:SiteIdentifier ;
-                ]
-              ) ;
-          ]
-        ) ;
-      rdfs:comment "SITEID metadata search"^^xsd:string ;
-    ] ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFOrigin ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "LOCATION"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFLocation ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "comment"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFComment ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object sdtm:SDTMDefineRecord ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SUBJID> ;
-            sp:predicate sdtm:hasDFVariable ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasMethod ;
-            sp:subject study:SubjectIdentifier ;
-          ]
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                  sp:predicate study:crfLocation ;
-                  sp:subject study:SubjectIdentifier ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "LOCATION"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:prefLabel ;
-                  sp:subject [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "comment"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.SUBJID> ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "comment"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject study:SubjectIdentifier ;
-                ]
-              ) ;
-          ]
-        ) ;
-      rdfs:comment "SUBJID metadata search"^^xsd:string ;
-    ] ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFOrigin ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "LOCATION"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFLocation ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "comment"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFComment ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object sdtm:SDTMDefineRecord ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.USUBJID> ;
-            sp:predicate sdtm:hasDFVariable ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-            sp:predicate code:hasMethod ;
-            sp:subject study:UniqueSubjectIdentifier ;
-          ]
-          [
-            sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "met"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                  sp:predicate study:crfLocation ;
-                  sp:subject study:UniqueSubjectIdentifier ;
-                ]
-                [
-                  sp:object [
-                      sp:varName "LOCATION"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:prefLabel ;
-                  sp:subject [
-                      sp:varName "loc"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "comment"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.USUBJID> ;
-                ]
-              ) ;
-          ]
-        ) ;
-      rdfs:comment "USUBJID metadata search"^^xsd:string ;
-    ] ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "VARIABLE"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFVariableName ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "LABEL"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFLabel ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "TYPE"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFType ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "CONTROLLED_TERM"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFControlledTerm ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "ROLE"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFRole ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "COMMENT"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFComment ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object sdtm:SDTMDefineRecord ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "var"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasDFVariable ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "VARIABLE"^^xsd:string ;
-              ] ;
-            sp:predicate mms:dataElementName ;
-            sp:subject [
-                sp:varName "var"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "LABEL"^^xsd:string ;
-              ] ;
-            sp:predicate mms:dataElementLabel ;
-            sp:subject [
-                sp:varName "var"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "TYPE"^^xsd:string ;
-              ] ;
-            sp:predicate mms:dataElementType ;
-            sp:subject [
-                sp:varName "var"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "ordinal"^^xsd:string ;
-              ] ;
-            sp:predicate mms:ordinal ;
-            sp:subject [
-                sp:varName "var"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "rl"^^xsd:string ;
-              ] ;
-            sp:predicate cdiscs:dataElementRole ;
-            sp:subject [
-                sp:varName "var"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "ROLE"^^xsd:string ;
-              ] ;
-            sp:predicate rdfs:label ;
-            sp:subject [
-                sp:varName "rl"^^xsd:string ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "CONTROLLED_TERM"^^xsd:string ;
-                    ] ;
-                  sp:predicate cdiscs:controlledTermsOrFormat ;
-                  sp:subject [
-                      sp:varName "var"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
-          ]
-          [
-            rdf:type sp:Optional ;
-            sp:elements (
-                [
-                  sp:object [
-                      sp:varName "COMMENT"^^xsd:string ;
-                    ] ;
-                  sp:predicate skos:note ;
-                  sp:subject [
-                      sp:varName "var"^^xsd:string ;
-                    ] ;
-                ]
-              ) ;
-          ]
-        ) ;
-      rdfs:comment "generates a Define record (in development)"^^xsd:string ;
+      rdfs:comment "constructs Variable, Label, Type, Role, Controlled Terms columns"^^xsd:string ;
     ] ;
   rdfs:subClassOf sdtm:DefineComponent ;
   skos:altLabel ""^^xsd:string ;
@@ -5461,6 +4979,13 @@ sdtm:Variable
   skos:definition ""^^xsd:string ;
   skos:prefLabel "Variable"^^xsd:string ;
 .
+sdtm:additionalMetadata
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain sdtm:Variable ;
+  rdfs:range owl:Thing ;
+  skos:definition "links an SDTM variable with the resource in the study ontology that contains Method and Location information. This is different for each SDTM variable and may vary by protocol. "^^xsd:string ;
+  skos:prefLabel "additional metadata"^^xsd:string ;
+.
 sdtm:hasACTARM
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
@@ -5587,6 +5112,13 @@ sdtm:hasDFLocation
   rdfs:range xsd:string ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Origin"^^xsd:string ;
+.
+sdtm:hasDFMethod
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:string ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "Method"^^xsd:string ;
 .
 sdtm:hasDFOrigin
   rdf:type owl:DatatypeProperty ;
@@ -6094,6 +5626,13 @@ sdtm:hasVSTPTREF
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
 .
+sdtm:variableComment
+  rdf:type owl:AnnotationProperty ;
+  rdfs:domain sdtm:Variable ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf skos:note ;
+  skos:prefLabel "variable comment"^^xsd:string ;
+.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.ACTARM>
   rdf:type sdtm:Variable ;
   cdiscs:controlledTermsOrFormat study:Arm ;
@@ -6119,7 +5658,6 @@ sdtm:hasVSTPTREF
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.BRTHDTC>
   rdf:type sdtm:Variable ;
-  code:hasMethod code:ActivityMethod_1 ;
   cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.COUNTRY>
@@ -6175,7 +5713,6 @@ sdtm:hasVSTPTREF
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtmig-3-1-3.ttl#Column.DM.RFSTDTC>
   rdf:type sdtm:Variable ;
-  skos:note "Date/time of first study drug treatment derived from EX "^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
   cdiscs:controlledTermsOrFormat code:ISO8601 ;
 .
