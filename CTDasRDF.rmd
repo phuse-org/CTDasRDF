@@ -31,6 +31,7 @@ As a result, data files created during conversion will not be an exact match wit
 * **prefixes.csv**
     - List of prefixes either currently in use or planned. Includes the prefix name, namespace, and description. Any commas in the description field must have the entire text in quotes. So in other words, avoiding commas in the description field is a good idea.
  
+ 
 ### RDF Files
 * **cdiscpilot01.ttl**
     - Data file containing clinical study results for a subset of patients. Instance data is manually added to the .ttl file as needed for testing and development. The file **cdiscpilot01-R.ttl** is created by converting XPT source data. THe two files are comared to ensure the ontology instances match those created by the data conversion process in R. As of July 2017, cdiscpilot01-R.ttl is the only file created by the R Script conversio n of the SDTM domains. 
@@ -59,6 +60,7 @@ This change removes dependencies on rJava and provides a data conversion mechani
 
 ## R Script Style conventions
 * **General**
+
 Use of:
     * dplyr aproaches for code readability and compactness.[CONVERSION IN PROGRESS]. Examples: use of mutate() instead of fooDF$var <- value .
     * apply() functions instead of FOR loops (where practical)
@@ -142,12 +144,11 @@ Create DM values not in the original source data for testing and development pur
 
 ## Validation
 * **CompTriples-Shiny.R**
-    * R Shiny App to facilitate c of .TTL file created by TW's R script with the ontology instances created by AO using TopBraid or Protege.
+    * R Shiny App to facilitate comparison of the .TTL file created by TW's R script with the ontology instances created by AO using TopBraid or Protege.
 
 ## Visualization
 * **Person-MultLevel-VisNetwork-ForceNetwork.R**
     * Triples attached to Person_1 in cdiscpilot01.TTL as a force network graph using visNetwork. Functionality includes: selection by node or group, node selection by mouse click, mouseover of relations.
-
 
 # Coding Conventions
 ## Variable naming
@@ -155,8 +156,8 @@ Create DM values not in the original source data for testing and development pur
 * CamelCase_(n) for instances of classes.
 
 ## RDF Namespaces and Prefixes
-Prior to import into a triplestore, several of the namespaces correspond to the .TTl files generated from the onotology editor or R scripts. 
-**[UNDER DEVELOPMENT]**  
+Prior to import into a triplestore, several of the namespaces correspond to the .TTL files generated from the onotology editor or R scripts. 
+**[SECTION UNDER DEVELOPMENT]**  
 * **cd01p** 
 
 * **cdiscpilot01**
@@ -189,11 +190,15 @@ Prior to import into a triplestore, several of the namespaces correspond to the 
 
 
 ## Data Types
-### Dates
+### Dates and Date Processing
 Date values are evaluated during the conversion to RDF.
 
 * Date values (as represented in fields like rfstdtc, rfendtc, rfxendtc, etc.) with complete and valid year, month, and data values are typed as xsd:date.
-* Incomplete date values or values that have incomplete dateTime values (missing seconds, for example) are typed as xsd:string, since xsd:dateTime would be semantically incorrect. See discussion at: <http://stackoverflow.com/questions/25165456/is-this-a-valid-xsddatetime-if-so-why> At a later time, incomplete date values may be coded to their corresponding components (year,day,hour..) using the TIME ontology. Not currently implemented.
+* Incomplete date values or values that have incomplete dateTime values (missing seconds, for example) are typed as xsd:string, since xsd:dateTime would be semantically incorrect. See discussion at: <http://stackoverflow.com/questions/25165456/is-this-a-valid-xsddatetime-if-so-why> At a later time, incomplete date values may be coded to their corresponding components (year,day,hour..) using the TIME ontology (not currently implemented).
+
+Dates are assigned a URI by first combining all dates (during dev, only a subset!) from the domains being processed (DM, SUPPDM, VS, EX) into a single column, sorting by date, then assigning a number. This is accomplished in the function createDateDict() within createFrag_F.R. It is called from buildRDF-Driver.R after the domains have been imported from the XPT. To add new domains and date columns you must edit createDateDict().
+
+After the list of all dates and their URIs is created, the date URI's must be merged back into the individual domains. This is accomplished using addDateFrag(), called from <domain>_Frag.R , one call for each date column. TODO: Make the assignments back to the respective domains within createDateDic(), removing the need to call addDateFrag.
 
 
 
@@ -219,9 +224,22 @@ In stark contrast to the SDTM Model, the RDF Model defines Findings as a type of
 All Findings are Interventions in the sense that "someone has to do something" (that one wouldn't ordinarily do in the course of the subject's daily routine, i.e. to intervene) to make and record the Finding. This is true for simple measures like temperature through to more complex tests like a biopsy. It is often important to document the more complex procedures. For example, to record collection of a biospecimen collection and its processing, and/or the use of a medical device.
 
 ### Events
-The RDF model defines certain Events like Adverse Events not as Observations, but as Medical Conditions that are identified as an AsessmentOutcome. The SDTM model does not capture the Assessment information that led to the Outcome. In SDTM, assessment information is usually either 1) lumped together with observation data, 2) saved in SUPPQUAL, or 3) relegated to custom domains. The RDF model fixes this modeling problem **[ADD PRECISELY HOW]** while making it challenging to recreate SDTM datasets that perpetuate the modeling error. Automation across submissions may also prove difficult. **[ADD MORE HERE ABOUT THE AUTOMATION ISSUE]**
+The RDF model defines certain Events like Adverse Events not as Observations, but as Medical Conditions that are identified as an AsessmentOutcome. The SDTM model does not capture the Assessment information that led to the Outcome. In SDTM, assessment information is usually either 1) lumped together with observation data, 2) saved in SUPPQUAL, or 3) relegated to custom domains. The RDF model fixes this modeling problem **[TODO: ADD PRECISELY HOW]** while making it challenging to recreate SDTM datasets that perpetuate the modeling error. Automation across submissions may also prove difficult. **[TODO: ADD MORE HERE ABOUT THE AUTOMATION ISSUE]**
+
+### VS : Body Position and test sequence [2017-10-24]
+Each subject has two AssumeBodyPosition activities, 1 lying and 1 standing
+
+Sequence:
+
+1. After lying 5 minutes:        SBP1, DBP1, Pulse1
+2. Stand. After standing 1 min:  SBP2, DBP2, Pulse2
+3. Still standing: after 3 min:  SBP3, DBP3, Pulse3
+ 
+Both standing activities are associated with the same standing "event" : AssumeBodyPositionStanding_(n).  The person stands (assumes standing position), then the two start rules come into play: StartRuleStanding1_(n)  (1 minute stand rule),  followed later by StartRuleStanding3_(n)  (3 minute standing rule).
+
+This sequence is not explicit in the SDTM data. It is derived by a combination of the USUBJID, VISIT, and VSPTNUM fields during triple creation.
 
 ### Miscellaneous
-SDTM variables --CAT and --SCAT have no consistent meaning across submissions and so cannot be modeled consistently in the RDF ontology. This is also true for the entire RELREC domain which relates records with each other **[ADD MORE DETAIL ON CURRENT USE]. In the semantically consistent the RDF model the concept of a record disappears where concepts and data values are related by design.
+SDTM variables --CAT and --SCAT have no consistent meaning across submissions and so cannot be modeled consistently in the RDF ontology. This is also true for the entire RELREC domain which relates records with each other **[TODO:ADD MORE DETAIL ON CURRENT USE]**. In the semantically consistent the RDF model the concept of a record disappears where concepts and data values are related by design.
 
         

@@ -117,6 +117,10 @@ legend.append("text")
       .nodes(graph.nodes)
       .links(graph.links)
       .start();
+ var rScale = d3.scale.linear()
+   .domain([0, 200000])
+   .range([10,80]);
+
 
   var link = svg.selectAll(".link")
       .data(graph.links)
@@ -124,14 +128,15 @@ legend.append("text")
       .attr("class", "link")
       .style("stroke-width", function(d) { return Math.sqrt(d.freq); });
 
-  var node = svg.selectAll(".node")
+ var node = svg.selectAll("circle")
       .data(graph.nodes)
     .enter().append("circle")
       .attr("class", "node")
       .attr("class", function(d) { return d.type; })
-      .attr("r", 15)
-      // .style("fill", function(d) { return color(d.group); })
-      .style("fill", "blue")
+      //.attr("r", 15)
+      .attr("r", function(d) { return rScale(d.tripleCount); })  // radius using scale
+      // .style("fill", function(d) { return color(d.type); })
+      //.style("fill", "blue")
       .call(force.drag);
 
   node.append("title")

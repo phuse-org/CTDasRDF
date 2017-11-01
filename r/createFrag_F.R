@@ -39,15 +39,19 @@ createDateDict <- function()
   # dm dates
   dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
   # vs dates
-  vsDates <- data.frame(vs[,"vsdtc"])
+  vsDates <- data.frame(vs[,"vsdtc"])  # only one column so must assign data.frame
+  # ex dates
+  exDates <- ex[,c("exstdtc", "exendtc")]
   
   # Combined the date dataframes from all sources
-  allDates <- merge(dmDates,vsDates)
+  #   For >2 dataframes, create list of the dataframes to merge and use Reduce 
+  #   Ref: https://stackoverflow.com/questions/14096814/merging-a-lot-of-data-frames
+  allDates<-Reduce(function(x, y) merge(x, y, all=TRUE), list(dmDates, vsDates, exDates))
   
   # Melt all the dates into a single column of values
   dateList <- melt(allDates, measure.vars=colnames(allDates),
-    variable.name="source",
-    value.name="dateKey")
+    variable.name = "source",
+    value.name    = "dateKey")
   # Remove duplicates
   dateList <- dateList[!duplicated(dateList$date), ]
   
@@ -108,8 +112,6 @@ addDateFrag<-function(domainName, colName)
   # withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")]  #DEL - no longer needed
   return(withFrag)
 }
-
-
 
 #  createFragOneDomain() ----
 #  Create URI fragments for coded values in a single or mutliple column. 

@@ -21,7 +21,7 @@ readXPTDomain <- function (domainName){
    ## dataSubset   <- head(domainValues, 300)    
 }
 
-domainVals <- readXPTDomain("vs")
+domainVals <- readXPTDomain("ex")
 
 
 domainVals <- domainVals[domainVals$usubjid=='01-701-1015',]

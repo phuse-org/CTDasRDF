@@ -42,7 +42,7 @@ vs <- vs[vsSubset, ]
 # vs[vs$usubjid  %in% c("01-701-1015"),  "personNum"]  <- 1
 #DEL vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142,
 #DEL   7,13,37),  "personNum"]  <- 1
-
+#HARDCODING
 vs[vs$vsseq %in% vsSubset,  "personNum"]  <- 1
 
 

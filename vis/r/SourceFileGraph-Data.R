@@ -14,8 +14,8 @@
 library(redland)
 library(stringr)
 library(plyr)
+library(jsonlite)
 setwd("C:/_github/CTDasRDF")
-       
 
 sourceFiles <- read.table(header=T, text='
 file                       label          type        source
@@ -73,4 +73,6 @@ for (i in 1:nrow(sourceFiles))
 
 }
 # JSON output ----
-
+fileConn<-file("./vis/d3/data/SourceFileGraph.JSON")
+writeLines(toJSON(sourceFiles, pretty = TRUE), fileConn)
+close(fileConn)

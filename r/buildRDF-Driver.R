@@ -50,17 +50,14 @@ outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
 #TODO: Replace with redlands initiation
 # Initialize. Includes OWL, XSD, RDF by default.
 
-# new redlands declarations
-# World is the redland mechanism for scoping models
-world <- new("World")
-
+# redland declarations ----
+world <- new("World") # Model scope
 # Storage provides a mechanism to store models; in-memory hashes are convenient for small models
 storage <- new("Storage", world, "hashes", name="", options="hash-type='memory'")
-
 # A model is a set of Statements, and is associated with a particular Storage instance
 cdiscpilot01 <- new("Model", world=world, storage, options="")
 
-#** Prefix Declarations and [optional] OWL imports ----
+# Prefix Declarations and [optional] OWL imports ----
 source('R/prefixesAndImports.R') # Prefixes and OWL imports
 
 # Graph Metadata ----
@@ -70,14 +67,18 @@ source('R/graphMeta.R') # Graph Metadata
 source('R/misc_F.R')  # Data import, personID, etc.
 source('R/createFrag_F.R') # URI fragement Creation. Eg. Date_1, AgeMeasurement_3
 
-# Import and Impute DM --------------------------------------------------------
+# DM: Import and Impute ----
 dm <- readXPT("dm")
 dm <- head(dm, maxPerson)  # Keep only first maxPerson obs for development
 source('R/DM_impute.R')     # Create values needed for testing. 
 
-# Import and Impute VS --------------------------------------------------------
+# VS: Import and Impute ----
 vs <- readXPT("vs")
 source('R/VS_impute.R') 
+
+# EX: Import and Impute ----
+ex <- readXPT("ex")
+source('R/EX_impute.R') 
 
 # Import and Impute other domains ---- : to be added later----------------------
 # Create the date translation table from all dates across domains
@@ -90,19 +91,20 @@ dateDict<-createDateDict()
 source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part 
                        #   of DateDict/dateFrag creation
 
-# Domain Processing -----------------------------------------------------------
-# DM DOMAIN ----
+# Domain Processing ----
+# DM: Process ----
 #    DM MUST be processed first: Creates data required in later steps, 
 #      including personNum. 
-
 source('R/DM_process.R')
 source('R/SUPPDM_process.R')
 
-# VS Domain ----
-source('R/VS_frag.R')
+# VS: Process ----
+#TW source('R/VS_frag.R')
+#TW source('R/VS_process.R')
 
-
-source('R/VS_process.R')
+# EX: Process ----
+source('R/EX_frag.R')
+source('R/EX_process.R')
 
 # XX Domain (to be added) ---- 
 
