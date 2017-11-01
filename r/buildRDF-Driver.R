@@ -15,17 +15,21 @@
 # OUT : data/rdf/cdiscpilot01-R.TTL
 # NOTE: Validation of the resulting TTL files with Apache Jenna riot
 #        Later cross programmatically with scripts in the /validation folder
-# TODO: 
+# TODO: Selection of rows for imputation are manually coded, with later values like personNum
+#       used in conditional imputations later in the code. These dependencies should 
+#       be changed to other coding when the entire file is processed.
+#       
 #______________________________________________________________________________
 # Configuration and initial setup ---------------------------------------------
-library(redland)
+library(data.table)  # Index categories in createFrag_F.R
+library(redland)     # Create TTL
 library(Hmisc)
-library(plyr)   # plyr must load prior to dplyr
+library(plyr)        # Must load prior to dplyr
 library(dplyr)  
-library(car)   # Recoding of values for SDTM codes, etc. Order of lib is imp here.
-library(reshape2)  # decast and others...
+library(car)         # Recode values for SDTM codes, etc. Order of lib is imp.
+library(reshape2)    # Recast and others...
 library(stringr)
-require(stringi)  # Proper casing, etc.
+require(stringi)     # Proper casing, etc.
 
 rm(list=ls())  # Clear workspace from prior runs.
 

@@ -19,19 +19,38 @@
 # 44:46   Pulse
 # 128     Temp
 # 142     Wt
-vs <- vs[c(1:3, 86:88, 43, 44:46, 128, 142), ]
+
+# Person 1 Baseline
+#  7
+
+# Person 1 Week 2
+# 13
+
+# Person 1 Week 24
+# 37
+
+vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37)
+
+# vs <- vs[c(1:3, 86:88, 43, 44:46, 128, 142, 7), ]
+vs <- vs[vsSubset, ]
+#DEL vs <- vs[c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37), ]
   # vs <- addPersonId(vs)  # add back in when > 1 person!
 
 # personNum
 # TODO: Add a later count/merge with DM.
+#  Must be present for later imputations.
 # vs[vs$usubjid  %in% c("01-701-1015"),  "personNum"]  <- 1
-vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142),  "personNum"]  <- 1
+#DEL vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142,
+#DEL   7,13,37),  "personNum"]  <- 1
+
+vs[vs$vsseq %in% vsSubset,  "personNum"]  <- 1
+
 
 # More imputations for the first 3 records to match data created by AO : 2016-01-19
 #   These are new COLUMNS and values not present in original source!
 # vs$vsgrpid  <- with(vs, ifelse(vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & personNum == 1, "GRPID1", "" )) 
 
-#TW removeed 44,45,46 on 19Oct17 to match new data from AO
+#Note: Not full susbset: removed 44,45,46 on 19Oct17 to match new data from AO
 vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1,  "vsgrpid"]  <- "GRPID1"
 # vscat
 vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1,  "vscat"]  <- "CAT1"
@@ -55,9 +74,12 @@ vs[vs$vsseq %in% c(142) & vs$personNum == 1, "vsspid"]  <- "5000"
 
 #vsstat
 vs$vsstat <- as.character(vs$vsstat) # factor correction
-vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$personNum == 1, "vsstat"] <- "CO"
+#DEL vs[vs$vsseq %in% c(1, 2, 3, 43, 44, 45, 46, 86, 87, 88, 128, 142,
+#DEL   7, 13, 37) & vs$personNum == 1, "vsstat"] <- "CO"
+vs[vs$vsseq %in% vsSubset & vs$personNum == 1, "vsstat"] <- "CO"
 
 # vsreasnd
+# Not full subset!
 vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1, "vsreasnd"]  <- "not applicable"
 
 # vsloc

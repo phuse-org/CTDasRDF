@@ -15,6 +15,8 @@
 # Data cleanup - from artifact created in Impute? 
 vs <- subset(vs, (!is.na(vs$vstestCat)))
 
+# Individual Visit Subtriples ----
+#  eg: Triples for VisitScreening1_1, VisitBaseline_1, VisitWk2_1, VisitWk24_1
 # Create Visit triples that should be created ONLY ONCE: Eg: Triples that describe an 
 # individual visit. Eg: VisitScreening1_1
 u_Visit <- vs[,c("visit_Frag", "visitPerson_Frag","personNum", "persVis_Label", "visit", 
@@ -27,20 +29,22 @@ ddply(u_Visit, .(visitPerson_Frag), function(u_Visit)
   person <-  paste0("Person_", u_Visit$personNum)
 
   # Person_(n) ---> visit (visitPerson_Frag)
-  # Add visit to Person. Eg: Person_1 participatesIn visitScreening1_1
-  # VisitScreening
+  # Assign person to visit: Eg: Person_1 participatesIn visitScreening1_1
   addStatement(cdiscpilot01,
     new("Statement", world=world,
       subject   = paste0(CDISCPILOT01, person),
       predicate = paste0(STUDY,"participatesIn"),
       object    = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag)))
 
+    # Subtriples for each visit ----    
+    # Y
     addStatement(cdiscpilot01,
       new("Statement", world=world,
          subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
          predicate = paste0(RDF,"type"),
          object    = paste0(CUSTOM,u_Visit$visit_Frag)))
 
+  
     addStatement(cdiscpilot01,
       new("Statement", world=world,
         subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
@@ -77,33 +81,45 @@ ddply(u_Visit, .(visitPerson_Frag), function(u_Visit)
     assignDateType(u_Visit$vsdtc, u_Visit$vsdtc_Frag, "VisitDate")
 })
 
-# -- visit -- hasSubActivity --> x
+
+
+# visit -- hasSubActivity --> x ----
 # Loop through vs to add the subActivites to each visit.
 ddply(vs, .(personNum, vsseq), function(vs)
 {
-  # Create vs body position triples only if vspos_Frag has a value
-  if (!is.na(vs$vspos_Frag) && ! as.character(vs$vspos_Frag)=="") {
-    # Body Positions
+  #TW Now using vsposCode_Frag instead o f vspos_Frag
+  # Create vs body position triples only if vsposCode_Frag has a value
+  # if (!is.na(vs$vspos_Frag) && ! as.character(vs$vspos_Frag)=="") {
+  if (!is.na(vs$vsposCode_Frag)) {
+
+    
+    #  VisitScreening1_1 -x->
     addStatement(cdiscpilot01,
       new("Statement", world=world,
         subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
         predicate = paste0(STUDY,"hasSubActivity"),
-        object    = paste0(CDISCPILOT01,vs$vspos_Frag)))
+        object    = paste0(CDISCPILOT01,vs$vsposCode_Frag)))
 
+    # Body Positions
     #---- AsssumeBodyPosition sub-triples....  
     addStatement(cdiscpilot01,
       new("Statement", world=world,
-       subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+       subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
        predicate = paste0(RDF,"type"),
        object    = paste0(CODE, vs$vsposCode_Frag)))
 
+
     addStatement(cdiscpilot01,
       new("Statement", world=world,
-       subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+       subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
        predicate = paste0(SKOS,"prefLabel"),
        object    = paste0(vs$vspos_Label),
          objectType = "literal", datatype_uri = paste0(XSD,"string")))
   }
+  
+  
+  
+  
   if (! is.na(vs$vsstat_Frag)) {
     addStatement(cdiscpilot01,
       new("Statement", world=world,
@@ -122,17 +138,19 @@ ddply(vs, .(personNum, vsseq), function(vs)
       predicate = paste0(STUDY, "hasDate"),
       object    = paste0(CDISCPILOT01, vs$vsdtc_Frag)))
 
-  # Link to SDTM terminology "upright position" 
+  # SDTM terminology: Position ----
   addStatement(cdiscpilot01,
     new("Statement", world=world,
      subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
      predicate = paste0(STUDY, "outcome"),
      object    = paste0(SDTMTERM, vs$vsposSDTM_Frag)))
+  
   addStatement(cdiscpilot01,
   new("Statement", world=world,
     subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
     predicate = paste0(STUDY,"hasSubActivity"),
     object    = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag)))
+  
     # Test result subtriples : Eg: cdiscpilot01:C67153.C25206_1
     addStatement(cdiscpilot01,
       new("Statement", world=world,
