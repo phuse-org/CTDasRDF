@@ -102,13 +102,14 @@ ddply(vs, .(personNum, vsseq), function(vs)
 
     # Body Positions
     #---- AsssumeBodyPosition sub-triples....  
+# Y
     addStatement(cdiscpilot01,
       new("Statement", world=world,
        subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
        predicate = paste0(RDF,"type"),
-       object    = paste0(CODE, vs$vsposCode_Frag)))
+       object    = paste0(CUSTOM, vs$vsposCode)))
 
-
+# Y    
     addStatement(cdiscpilot01,
       new("Statement", world=world,
        subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
@@ -117,27 +118,43 @@ ddply(vs, .(personNum, vsseq), function(vs)
          objectType = "literal", datatype_uri = paste0(XSD,"string")))
   }
   
-  
-  
-  
   if (! is.na(vs$vsstat_Frag)) {
     addStatement(cdiscpilot01,
       new("Statement", world=world,
-        subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+        subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
         predicate = paste0(STUDY,"activityStatus"),
         object    = paste0(CODE, vs$vsstat_Frag)))
   }
+  
   addStatement(cdiscpilot01,
     new("Statement", world=world,
-      subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+      subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
       predicate = paste0(STUDY,"hasCode"),
-      object    = paste0(CODE, vs$vsposCode_Frag)))
+      object    = paste0(CUSTOM, vs$vsposCode)))
+
   addStatement(cdiscpilot01,
     new("Statement", world=world,
-      subject   = paste0(CDISCPILOT01, vs$vspos_Frag),
+      subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
       predicate = paste0(STUDY, "hasDate"),
       object    = paste0(CDISCPILOT01, vs$vsdtc_Frag)))
 
+# !!START WORK!! ----     
+
+  addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
+      predicate = paste0(STUDY, "hasStartRule"),
+      object    = paste0(CDISCPILOT01, vs$startRule_Frag)))
+  
+  addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
+      predicate = paste0(STUDY, "outcome"),
+      object    = paste0(SDTMTERM, vs$posSDTMCode)))
+  # !!END WORK!! ----     
+
+  
+  
   # SDTM terminology: Position ----
   addStatement(cdiscpilot01,
     new("Statement", world=world,
