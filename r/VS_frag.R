@@ -257,6 +257,16 @@ vs <-createFragWithinCat(domainName=vs,
   fragValsCol="vsposCode")
 
 
+# !!HERE!! ----
+# vsposCodeStartRule_Frag
+# Only AssumeBodyPositionStanding_1 has a start rule.  It must be preceded by StartRuleLying5_1
+# if vsposCode_Frag is AssumeBodyPositionStanding_1, then assign vsposCodeSTartRule_Frag as StartRuleLying5_1
+#    all other cases are NA (no start rule for that AssumeBodyPos. See email from AO 2017-11-02)
+# Rcall that  _(n) , n=PersonNum. Rules apply on a per-person basis.
+vs <- vs %>%
+  mutate(vsposCodeStartRule_Frag = 
+      ifelse(vsposCode_Frag=='AssumeBodyPositionStanding_1', 
+        paste0("StartRuleLying5_", personNum), NA))
 
 # Sort column names in the df for quicker referencing
 vs <- vs %>% select(noquote(order(colnames(vs))))

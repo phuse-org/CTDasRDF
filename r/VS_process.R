@@ -101,7 +101,7 @@ ddply(vs, .(personNum, vsseq), function(vs)
         object    = paste0(CDISCPILOT01,vs$vsposCode_Frag)))
 
     # Body Positions
-    #---- AsssumeBodyPosition sub-triples....  
+    # AsssumeBodyPosition sub-triples ----
 # Y
     addStatement(cdiscpilot01,
       new("Statement", world=world,
@@ -138,13 +138,18 @@ ddply(vs, .(personNum, vsseq), function(vs)
       predicate = paste0(STUDY, "hasDate"),
       object    = paste0(CDISCPILOT01, vs$vsdtc_Frag)))
 
-# !!START WORK!! ----     
-
-  addStatement(cdiscpilot01,
-    new("Statement", world=world,
-      subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
-      predicate = paste0(STUDY, "hasStartRule"),
-      object    = paste0(CDISCPILOT01, vs$startRule_Frag)))
+  # StartRule : AssumeBodyPositionStanding_1 ----     
+  # AssumeBodyPositionStanding_1 has a start rule, as assigned to vsposCodeStartRule_Frag
+  #   in VS_Frag.R. See email from AO 2017-11-02.  
+  # TODO: Make more efficient with loop through only !duplicated vsposCode_Frag + vsposCodeStartRule_Frag
+  if (! is.na(vs$vsposCodeStartRule_Frag)){
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
+        predicate = paste0(STUDY, "hasStartRule"),
+        object    = paste0(CDISCPILOT01, vs$vsposCodeStartRule_Frag)))
+  }
+  
   
   addStatement(cdiscpilot01,
     new("Statement", world=world,

@@ -99,12 +99,12 @@ source('R/DM_process.R')
 source('R/SUPPDM_process.R')
 
 # VS: Process ----
-#TW source('R/VS_frag.R')
-#TW source('R/VS_process.R')
+source('R/VS_frag.R')
+source('R/VS_process.R')
 
 # EX: Process ----
-source('R/EX_frag.R')
-source('R/EX_process.R')
+#source('R/EX_frag.R')
+#source('R/EX_process.R')
 
 # XX Domain (to be added) ---- 
 
