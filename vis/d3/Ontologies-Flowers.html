@@ -27,7 +27,7 @@ var size = d3.scale.sqrt()
   .domain([0, 1])
   .range([0, halfRadius]);
 
-var myPetalData = [
+var extOntData = [
  {id:0, name:"BRIDG4-1-1",  src:"CDISC",  size:63263,  sizeLabel:"63263"  },
  {id:1, name:"SDTMIG3-1-3", src:"CDISC",  size:12266,  sizeLabel:"12266"  },
  {id:2, name:"SDTM-Term",   src:"CDISC",  size:198598, sizeLabel:"198598" },
@@ -42,15 +42,14 @@ var myPetalData = [
  {id:11, name:"WHO-Drug",    src:"Future", size:50000,  sizeLabel:"TBD"  }
 ]
 
-// var petalScale = d3.scale.linear()
-var petalScale = d3.scale.log()
+var extOntScale = d3.scale.log()
   .domain([400,200000])
   .range([1,2]);
 
 var pie = d3.layout.pie()
   .sort(null)
  //  .value(function(d) { return d.size; });
-   .value(function(d) { return petalScale(d.size); });
+   .value(function(d) { return extOntScale(d.size); });
 
 //KLUDGES: Change to nested CSS Layouts
 // div for title
@@ -64,10 +63,8 @@ var spacediv = d3.select("body").append("div")
   .text(" ");
 // Define the div for the petal tooltip
 var div = d3.select("body").append("div")
-  .attr("class", "petalTooltip")
+  .attr("class", "extOntPetalTooltip")
   .style("opacity", 0);
-
-
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -80,18 +77,15 @@ var svg = d3.select("body").append("svg")
 /* Important: Note use of d.data.src to get class name, as explained here:
   https://stackoverflow.com/questions/34821449/adding-class-names-to-arcs-from-data-in-d3-layout-pie
 */
-var petal = svg.selectAll(".petal")
-  .data(pie(myPetalData))
+var extOntPetal = svg.selectAll(".extOntPetal")
+  .data(pie(extOntData))
   .enter().append("path")
-    .attr("class", "petal")
+    .attr("class", "extOntPetal")
     .attr("transform", function(d) { return r((d.startAngle + d.endAngle) / 2); })
-    .attr("d", petalPath)
-    //.style("stroke", petalStroke)
-    //.attr("class", "petal")
-    .attr('class', function(d) {return ("petal " + d.data.src); })
-    //.style("fill", petalFill)
+    .attr("d", extOntPetalPath)
+    .attr('class', function(d) {return ("extOntPetal " + d.data.src); })
     .on('mouseover', function(d){
-      var petalSelection = d3.select(this).style({opacity:'0.8'});
+      var extOntPetalSelection = d3.select(this).style({opacity:'0.8'});
         // d3.selectAll(".link").style("stroke","red").style("stroke-width",4);
       div.transition()
        .duration(200)
@@ -104,18 +98,18 @@ var petal = svg.selectAll(".petal")
     })
     //Mouseout Node  - bring node back to full colour
     .on('mouseout', function(d){
-      var petalSelection= d3.select(this).style({opacity:'1.0',})
+      var extOntPetalSelection= d3.select(this).style({opacity:'1.0',})
       div.transition()
         .duration(500)
         .style("opacity", 0);
      });
 
-function petalPath(d) {
+function extOntPetalPath(d) {
   var angle = (d.endAngle - d.startAngle) / 2,
       s = polarToCartesian(-angle, halfRadius),
       e = polarToCartesian(angle, halfRadius),
       // r = size(d.data.size),  // new here
-      r = size(petalScale(d.data.size)),  // new here
+      r = size(extOntScale(d.data.size)),  // new here
       m = {x: halfRadius + r, y: 0},
       c1 = {x: halfRadius + r / 2, y: s.y},
       c2 = {x: halfRadius + r / 2, y: e.y};
