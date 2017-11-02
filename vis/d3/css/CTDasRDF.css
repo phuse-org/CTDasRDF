@@ -39,6 +39,20 @@ h4 {
   fill: #eee8d5;
   font-size: 12pt;
 }
+
+.smTitle{
+  margin: 0 0 20px 0;
+  color:#eee8d5;
+  font-size: 1.2em;
+  font-family: sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  text-shadow: none;
+  word-wrap: break-word;
+  text-align: center;
+}
 .legendBox{
     fill: #999999;
     stroke: #808080;
@@ -50,7 +64,7 @@ text.monoLG {
     font-size: 12pt;
     font-family: Consolas, courier;
     fill: #eee8d5;
-    
+
     /*fill: #aaa;*/
 }
 .nodetext{
@@ -115,26 +129,39 @@ text.monoLG {
   stroke: #164850;
 }
 
+/* File relationships */
+.data
+{
+  fill: #1C5B64;
+  stroke: #164850;
+}
+.ontology{
+  fill: orange;
+  stroke: #164850;
+}
+
+
+
 /*---- Edges ----------------------------------------------------------------*/
 .edge {
 stroke-width: 5;
 }
-.code{ 
+.code{
   stroke: #005c99;
 }
-.skos{ 
+.skos{
   stroke:  purple;
 }
-.study{ 
+.study{
   stroke: green;
 }
-.rdfs{ 
+.rdfs{
   stroke: #0099e6;
 }
-.type{ 
+.type{
   stroke: grey;
 }
-.time{ 
+.time{
   stroke: #e68a00;
 }
 
@@ -151,33 +178,33 @@ stroke-width: 5;
 }
 .legendText{
 	  fill: #eee8d5;
-    font-size: 12px;  
-    font-weight:bold; 
+    font-size: 12px;
+    font-weight:bold;
 }
-.legendNodeText{       
+.legendNodeText{
     /* fill: #eee8d5; */
     fill:#e1d7b7;  /* a little darker than the titles, etc.*/
-    font-size: 12px;  
-    font-weight:bold; 
+    font-size: 12px;
+    font-weight:bold;
 }
 
 .nodeText{
     fill:#000000;
     font-family: Serif, Georgia;
-    font-size: 24px;   
+    font-size: 24px;
     font-weight: bold;
 }
 .node {
     fill: black;
-    font-size: 13px;  
-    font-weight:bold; 
+    font-size: 13px;
+    font-weight:bold;
 }
 
 /* Special Edge colours based on type of linkage*/
 #Default-edge{
   stroke: #808080;
   stroke-width: 4;
-}    
+}
 
 #Reference-edge{
   stroke: gray;
@@ -201,7 +228,7 @@ stroke-width: 5;
 .edgeLabel{
     fill:#eee8d5;
     font-family: Serif, Georgia;
-    font-size: 18pt;   
+    font-size: 18pt;
     font-weight: bold;
 }
 
@@ -217,4 +244,37 @@ stroke-width: 5;
     /*border-color: #006680; */
     border-color: #003d4d;
     pointer-events: none;
+}
+
+div.extOntPetalTooltip {
+    /* position: absolute; */
+    left: 10px;
+    top : 10px;
+    text-align: left;
+    width: 140px;
+    height: 55px;
+    padding: 4px;
+    font: 14px sans-serif;
+    background: lightsteelblue;
+    border: 2px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.extOntPetal{
+  stroke-width: 4;
+}
+/* Ontology Flower Fills */
+.CDISC {
+  fill:   #2784BB ;
+  stroke: #1e6691;  /* darker */
+}
+.W3C {
+  fill:   #FFB00A;
+  stroke: #d69100;  /* darker */
+}
+.Future {
+  fill:   #C0C0C0;
+  stroke: #a7a7a7;  /* darker */
+  stroke-dasharray: 5,5; /* dashed to show not yet in use */
 }

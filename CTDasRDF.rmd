@@ -10,24 +10,27 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Introduction
-This document describes the project data files, R scripts, coding conventions, and data modeling decisions for the CTDasRDF project.
+This document describes the project data files, R scripts, coding conventions, and data modeling decisions for the project.
 
-**CAUTION: If you are reading this document outside of the R environment, the information is likely out of date! See the .rmd file in the project's Github root /CTDasRDF folder for the latest information.**
+**CAUTION: If you are reading this document outside of the R environment, the information is likely out of date! 
+Knit the .rmd file in the project's Github root /CTDasRDF folder for the latest information.**
 
 Information about the PhUSE cloud server environment is contained in separate documentation.
 
 
 # Data Files
 ## SDTM Data Sources
-SDTM XPT data files were obtained from the PhUSE CDISCPILOT01 study, here: https://github.com/phuse-org/phuse-scripts/blob/master/data/sdtm/cdiscpilot01/
+SDTM XPT data files were obtained from the PhUSE CDISCPILOT01 study: https://github.com/phuse-org/phuse-scripts/blob/master/data/sdtm/cdiscpilot01/
 
-Data augmentation for development and testing occurs in files named with \<domain name\>_impute.R. As a result, data files created during conversion will not be an exact match with the original .XPT source files.
+Data augmentation for development and testing occurs in files named with \<domain name\>_impute.R. 
+As a result, data files created during conversion will not be an exact match with the original .XPT source files.
 
 **DM**, **SUPPDM**,  and **VS** are the initial domains used in the project. This may expand if the project timeline permits.
 
 ### Configuration Files
 * **prefixes.csv**
     - List of prefixes either currently in use or planned. Includes the prefix name, namespace, and description. Any commas in the description field must have the entire text in quotes. So in other words, avoiding commas in the description field is a good idea.
+ 
  
 ### RDF Files
 * **cdiscpilot01.ttl**
@@ -52,57 +55,12 @@ Later development may include the addition of classes like "Protocol-Specified A
 # R Scripts
 
 ## R Requirements
-The project currently uses Egon Willighagen's R package rrdf <https://github.com/egonw/rrdf> for creating and querying RDF. The package is not available from CRAN. You are not using the PhUSE cloud server you must install and configure your system using these instructions.
-
-## Installation Instructions
-Run the following commands from RStudio console
-
-```{r install, eval=FALSE}
-install.packages("rJava") # if not present already
-
-install.packages("devtools") # if not present already
-
-library(devtools)
-```
-If an error occurs, the following additional steps may be needed on some systems:
-
-```{r ifInstallError, eval=FALSE}
-library(httr)
-
-set_config(config(ssl_verifypeer = 0L))
-
-install_github("egonw/rrdf", subdir="rrdflibs")
-
-install_github("egonw/rrdf", subdir="rrdf", build_vignettes = FALSE)
-```
-
-The package is now available for use from R.
-
-
-## Installation Troubleshooting
-
-- If the installation fails during installation of rJava, try re-installing your Java JRE.
-- Ensure your Java versions match your OS: java -version should display "32-bit" for 32 bit OS, "64-bit" for 64 bit OS.
-Additional Notes from J. Ulander for Windows installs:
-
-The command: ```{r ifInstallError, eval=FALSE} install_github("egonw/rrdf", subdir="rrdflibs")``` may result in an error for rJava. A likely cause is the fact that the Java download defaults to the 'bits' of your web browser application, not the Windows OS itself. Eg: On Windows 10 you likely need 64-bit Java for RStudio, but if your browser is 32 bit, you will get the wrong version of Java! To get the correct (in this case, 64-bit) Java version, go here: <https://www.java.co/en/download/manual.jsp> and pick the 64-bit version. Both 32-bit and 64 bit Java should be able to co-exist on the same machine if you need both for other applications.
-
-## Notes on Using the rrdf Package
-When using rrdf() to query, the OWL reasoner is turned on by default, as seen here:
-<https://github.com/egonw/rrdf/blob/master/rrdf/R/new.rdf.R#L16>
-
-You can turn off the OWL reasoning by:
-
-```{r owlModel, eval=FALSE} 
-model <- new.rdf(ontology=FALSE) 
-```
-
-  - advice from package creator Egon Willighagen.
-  
-
+In September 2017 the project switched from use of  Egon Willighagen's R package rrdf <https://github.com/egonw/rrdf> to the redland package <https://cran.r-project.org/web/packages/redland/> .
+This change removes dependencies on rJava and provides a data conversion mechanism that relies on a package available from CRAN.
 
 ## R Script Style conventions
 * **General**
+
 Use of:
     * dplyr aproaches for code readability and compactness.[CONVERSION IN PROGRESS]. Examples: use of mutate() instead of fooDF$var <- value .
     * apply() functions instead of FOR loops (where practical)
@@ -186,12 +144,11 @@ Create DM values not in the original source data for testing and development pur
 
 ## Validation
 * **CompTriples-Shiny.R**
-    * R Shiny App to facilitate c of .TTL file created by TW's R script with the ontology instances created by AO using TopBraid or Protege.
+    * R Shiny App to facilitate comparison of the .TTL file created by TW's R script with the ontology instances created by AO using TopBraid or Protege.
 
 ## Visualization
 * **Person-MultLevel-VisNetwork-ForceNetwork.R**
     * Triples attached to Person_1 in cdiscpilot01.TTL as a force network graph using visNetwork. Functionality includes: selection by node or group, node selection by mouse click, mouseover of relations.
-
 
 # Coding Conventions
 ## Variable naming
@@ -199,8 +156,8 @@ Create DM values not in the original source data for testing and development pur
 * CamelCase_(n) for instances of classes.
 
 ## RDF Namespaces and Prefixes
-Prior to import into a triplestore, several of the namespaces correspond to the .TTl files generated from the onotology editor or R scripts. 
-**[UNDER DEVELOPMENT]**  
+Prior to import into a triplestore, several of the namespaces correspond to the .TTL files generated from the onotology editor or R scripts. 
+**[SECTION UNDER DEVELOPMENT]**  
 * **cd01p** 
 
 * **cdiscpilot01**
@@ -233,11 +190,15 @@ Prior to import into a triplestore, several of the namespaces correspond to the 
 
 
 ## Data Types
-### Dates
+### Dates and Date Processing
 Date values are evaluated during the conversion to RDF.
 
 * Date values (as represented in fields like rfstdtc, rfendtc, rfxendtc, etc.) with complete and valid year, month, and data values are typed as xsd:date.
-* Incomplete date values or values that have incomplete dateTime values (missing seconds, for example) are typed as xsd:string, since xsd:dateTime would be semantically incorrect. See discussion at: <http://stackoverflow.com/questions/25165456/is-this-a-valid-xsddatetime-if-so-why> At a later time, incomplete date values may be coded to their corresponding components (year,day,hour..) using the TIME ontology. Not currently implemented.
+* Incomplete date values or values that have incomplete dateTime values (missing seconds, for example) are typed as xsd:string, since xsd:dateTime would be semantically incorrect. See discussion at: <http://stackoverflow.com/questions/25165456/is-this-a-valid-xsddatetime-if-so-why> At a later time, incomplete date values may be coded to their corresponding components (year,day,hour..) using the TIME ontology (not currently implemented).
+
+Dates are assigned a URI by first combining all dates (during dev, only a subset!) from the domains being processed (DM, SUPPDM, VS, EX) into a single column, sorting by date, then assigning a number. This is accomplished in the function createDateDict() within createFrag_F.R. It is called from buildRDF-Driver.R after the domains have been imported from the XPT. To add new domains and date columns you must edit createDateDict().
+
+After the list of all dates and their URIs is created, the date URI's must be merged back into the individual domains. This is accomplished using addDateFrag(), called from <domain>_Frag.R , one call for each date column. TODO: Make the assignments back to the respective domains within createDateDic(), removing the need to call addDateFrag.
 
 
 
@@ -263,9 +224,44 @@ In stark contrast to the SDTM Model, the RDF Model defines Findings as a type of
 All Findings are Interventions in the sense that "someone has to do something" (that one wouldn't ordinarily do in the course of the subject's daily routine, i.e. to intervene) to make and record the Finding. This is true for simple measures like temperature through to more complex tests like a biopsy. It is often important to document the more complex procedures. For example, to record collection of a biospecimen collection and its processing, and/or the use of a medical device.
 
 ### Events
-The RDF model defines certain Events like Adverse Events not as Observations, but as Medical Conditions that are identified as an AsessmentOutcome. The SDTM model does not capture the Assessment information that led to the Outcome. In SDTM, assessment information is usually either 1) lumped together with observation data, 2) saved in SUPPQUAL, or 3) relegated to custom domains. The RDF model fixes this modeling problem **[ADD PRECISELY HOW]** while making it challenging to recreate SDTM datasets that perpetuate the modeling error. Automation across submissions may also prove difficult. **[ADD MORE HERE ABOUT THE AUTOMATION ISSUE]**
+The RDF model defines certain Events like Adverse Events not as Observations, but as Medical Conditions that are identified as an AsessmentOutcome. The SDTM model does not capture the Assessment information that led to the Outcome. In SDTM, assessment information is usually either 1) lumped together with observation data, 2) saved in SUPPQUAL, or 3) relegated to custom domains. The RDF model fixes this modeling problem **[TODO: ADD PRECISELY HOW]** while making it challenging to recreate SDTM datasets that perpetuate the modeling error. Automation across submissions may also prove difficult. **[TODO: ADD MORE HERE ABOUT THE AUTOMATION ISSUE]**
+
+### Activities [2017-11-02]
+Measurement activites like Blood Pressure, Pulse, etc. are considered subActivities of a visit, that occur during a visit.  BP, Pulse are a subClass of Visit Activity, as shown in the hierarchy:
+
+ Activity --> Study Activity -- Visit Activity
+
+The predicate study:subActivity makes this link.
+
+
+### VS : Body Position, Start Rules, Test sequence [updated 2017-11-02]
+Each subject has two AssumeBodyPosition activities, 1 lying and 1 standing
+
+Sequence:
+
+1. After lying 5 minutes:        SBP1, DBP1, Pulse1
+2. Stand. After standing 1 min:  SBP2, DBP2, Pulse2
+3. Still standing: after 3 min:  SBP3, DBP3, Pulse3
+ 
+Both standing activities are associated with the same standing "event" : AssumeBodyPositionStanding_(n).  The person stands (assumes standing position), then the two start rules come into play: StartRuleStanding1_(n)  (1 minute stand rule),  followed later by StartRuleStanding3_(n)  (3 minute standing rule).
+
+This sequence is not explicit in the SDTM data. For data conversion purposes, it is derived by a combination of the USUBJID, VISIT, and VSPTNUM fields during triple creation.
+
+Start Rules indicate the pre-requisite activities. The measurements conducted in the standing position are preceded by lying down, then the subject stands for 1 min and measurements are conducted. Then the 3min measurements are conducted. This means that the **AssumeBodyPositionStanding_1** triples have a prequisite **StartRuleLying5_1** , as illustrated in the following set of triples:
+
+
+```
+cdiscpilot01:AssumeBodyPositionStanding_1 ;
+  rdf:type custom:AssumeBodyPositionStanding ;
+  skos:prefLabel "assume standing position"^^xsd:string ;
+  study:activityStatus code:ActivityStatus_1 ;
+  study:hasCode custom:AssumeBodyPositionStanding ;
+  study:hasDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+  study:outcome sdtmterm:#C71148.C62166 . 
+```
 
 ### Miscellaneous
-SDTM variables --CAT and --SCAT have no consistent meaning across submissions and so cannot be modeled consistently in the RDF ontology. This is also true for the entire RELREC domain which relates records with each other **[ADD MORE DETAIL ON CURRENT USE]. In the semantically consistent the RDF model the concept of a record disappears where concepts and data values are related by design.
+SDTM variables --CAT and --SCAT have no consistent meaning across submissions and so cannot be modeled consistently in the RDF ontology. This is also true for the entire RELREC domain which relates records with each other **[TODO:ADD MORE DETAIL ON CURRENT USE]**. In the semantically consistent the RDF model the concept of a record disappears where concepts and data values are related by design.
 
         

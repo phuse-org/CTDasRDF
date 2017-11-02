@@ -5,12 +5,13 @@
 #       Eg Usage: Compare TTL file generated from TopBraid with one created using R
 # SRC : Based on VisClasses-Shiny.R and CompareTTL.R
 # IN  : Hard coded input files to save time during QC
-# OUT : ShinyApp window
+# OUT : datatable
 # REQ : rrdf
 # NOTE: Side by side display of the triples available from Ont,R, not just the ones
 #         that do not match.
 # TODO: Add "exceptions" dataframe to remove artifacts from either source in the
 #        in the comparison.
+#       Convert to use of redland pkg
 ###############################################################################
 library(plyr)    #  rename
 library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!

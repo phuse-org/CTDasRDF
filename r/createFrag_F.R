@@ -24,7 +24,7 @@
 
 # createDateDict() ----
 #   Create a translation table of dates to date fragments
-#  All dates from across both DM and VS domains. 
+#   All dates from across both DM and VS domains. 
 #  TODO: 
 #    Add additional domains as project scope expands. Make function flexible
 #    to accept these as arguments instead of hard coded.
@@ -39,15 +39,19 @@ createDateDict <- function()
   # dm dates
   dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
   # vs dates
-  vsDates <- data.frame(vs[,"vsdtc"])
+  vsDates <- data.frame(vs[,"vsdtc"])  # only one column so must assign data.frame
+  # ex dates
+  exDates <- ex[,c("exstdtc", "exendtc")]
   
   # Combined the date dataframes from all sources
-  allDates <- merge(dmDates,vsDates)
+  #   For >2 dataframes, create list of the dataframes to merge and use Reduce 
+  #   Ref: https://stackoverflow.com/questions/14096814/merging-a-lot-of-data-frames
+  allDates<-Reduce(function(x, y) merge(x, y, all=TRUE), list(dmDates, vsDates, exDates))
   
   # Melt all the dates into a single column of values
   dateList <- melt(allDates, measure.vars=colnames(allDates),
-    variable.name="source",
-    value.name="dateKey")
+    variable.name = "source",
+    value.name    = "dateKey")
   # Remove duplicates
   dateList <- dateList[!duplicated(dateList$date), ]
   
@@ -112,7 +116,7 @@ addDateFrag<-function(domainName, colName)
 #  createFragOneDomain() ----
 #  Create URI fragments for coded values in a single or mutliple column. 
 #    - If more than one column, combine values into a single column to process
-#    - Create numeric index the unique values
+#    - Create numeric index of the unique values in the "processColumns"
 #    - Create a coded value that includes that index number (_<n>)
 #    - Merge indexed IRI fragment back into the source data column(s)
 #    - Use the fragment in the process<DOMAIN>.R scripts to construct IRIs
@@ -137,7 +141,7 @@ addDateFrag<-function(domainName, colName)
 #' @export
 #'
 #' @examples
-createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FALSE)
+createFragOneDomain<-function(domainName, processColumns, fragPrefix, sortMe=TRUE, numSort=FALSE)
 {
   # Combine the multiple columns into one
   columnData <- domainName[,c(processColumns)] # keep only the requested cols in the df
@@ -159,23 +163,31 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
   # Sort by values. Prev code: Use dplyr arrange instead of order/sort to avoid loss of df type
   uniqueVals <- as.data.frame(uniques)
   uniqueVals <<- na.omit(uniqueVals)
-  
-  # if(is.numeric(uniqueVals[1,1])) {
-  # if (regexpr(uniqueVals[1,1], "\\d", perl=TRUE)){
-  if(numSort){
-    # Numbers. Convert and sort. 
-    # Convert first to character, then to numeric. Otherwise get the order according to the factors.
-    sorted.uniqueVals <<-data.frame( uniqueVals[order(as.numeric(as.character(uniqueVals$uniques))), ])
-  } else {
-    # Characters
-    sorted.uniqueVals <<- data.frame(uniqueVals[order(as.character(uniqueVals$uniques)), ])
+
+  # Some fragment creation, lke for FixedDoseInterval, relies on original order of the df (sortMe=FALSE)
+  #   The default is to sort.
+  if (sortMe==TRUE)
+  {  
+    if(numSort){
+      # Numbers. Convert and sort. 
+      # Convert first to character, then to numeric. Otherwise get the order according to the factors.
+      current.vals <<-data.frame( uniqueVals[order(as.numeric(as.character(uniqueVals$uniques))), ])
+    } else {
+      # Characters
+      current.vals <<- data.frame(uniqueVals[order(as.character(uniqueVals$uniques)), ])
+    }
   }
-  colnames(sorted.uniqueVals) <- "keyVal" 
-  sorted.uniqueVals <-na.omit(sorted.uniqueVals)
+  # Unsorted (original order). Silly code here. 
+  else{
+    current.vals <<- data.frame(uniqueVals$uniques)
+  }
+
+  colnames(current.vals) <- "keyVal" 
+  current.vals <-na.omit(current.vals)
   # Create the coded value for each unique value as <value_n> 
-  sorted.uniqueVals$valFrag <- paste0(fragPrefix,"_", 1:nrow(sorted.uniqueVals))   # Generate a list of ID numbers
+  current.vals$valFrag <- paste0(fragPrefix,"_", 1:nrow(current.vals))   # Generate a list of ID numbers
   
-  valDict <<- sorted.uniqueVals[,c("keyVal", "valFrag")]
+  valDict <<- current.vals[,c("keyVal", "valFrag")]
   
   # Merge in the keyVals value to created a coded version of the value field, naming
   #  the column with a _Frag suffix.
@@ -192,11 +204,13 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
 #' Title
 #'
 #' @param domainName  - domain dataframe 
-#' @param dataCol     - column containing the data to indexed (Eg: vsorres)
+#' @param dataCol     - column containing the data to indexed (Eg: vsorres). It does not become part of the fragment.
+#'                      these are the "unique values" that are assigned to each fragment created in this function.
 #' @param byCol       - column containing the 'by variable" within with to index (eg vsTestCat)
-#' @param fragPrefixName - prefix used to name the output column for the fragmant values created in this fnt
+#' @param fragPrefixName - prefix used to name the output column for the fragment values created in this fnt
+#'                    eg: fragPrefixName = vsorres  results in new column named vsorres_Frag
 #'                     Eg:  vstestCat = BloodPressureOutcome, PulseHROutcome
-#' @param numSort  - TRUE/FALSE to sort the data prior to indexing it. ** NOT CURRENTLY IMPLEMENTED
+#' @param numSort  - TRUE/FALSE to sort the data prior to indexing it. 
 #'
 #' @return
 #' @export
@@ -221,7 +235,7 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numS
   # Create a numeric version of the dataCol for sorting purposes
   
   # Coerce the dataCol to numeric, otherwise sorting will fail.
-  # A new variable is used here because if you convert it in place, the merge back into teh original
+  # A new variable is used here because if you convert it in place, the merge back into the original
   #   dataset will likely
   #TODO: Make this conditional on numSort==TRUE
   if (numSort == TRUE){
@@ -246,7 +260,7 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numS
   #   a value to it using :=
   # Kludge due to inability to resolve the byCol value within seq_along and mutate.
   #     Need someone with R Expertise to make this resolved correctly!
-    if (byCol=="vstestCatOutcome"){
+  if (byCol=="vstestCatOutcome"){
     temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestCatOutcome))%>% 
       mutate( !!varname := paste0(vstestCatOutcome,"_", id)) 
   }
@@ -254,6 +268,11 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numS
     temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(vstestSDTMCode))%>% 
       mutate( !!varname := paste0(vstestSDTMCode,"_", id)) 
   }
+  else if (byCol=="tempvsposCat"){
+    temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = seq_along(tempvsposCat))%>% 
+      mutate( !!varname := paste0(tempvsposCat,"_", id)) 
+  }
+  
   # This gives ROW NUMBER and not correct numbering within a category
   #temp2 <- temp2 %>% group_by_(byCol) %>% mutate(id = rowID)%>% 
   #  mutate( !!varname := paste0(vstestCat,"_", id)) 
@@ -264,4 +283,79 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numS
   # Merge the fragment value back into the original data
   withFrag <<- merge(domainName, temp2, by = c(byCol, dataCol), all.x=TRUE)
 
+}
+
+
+
+#' Title
+#'  Create a fragment for the same value within the sortCols subset.
+#'    Note subtle differences compared to createFragOneColByCat
+#'  New column for the created fragment is value of fragValsCol with suffix _Frag
+#'      vsposCode --> vsposCode_Frag = new column with the fragment values.
+#'  Eg: AssumeBodyPositionStanding_1 is created for the first person, first visit, first
+#'      standing event. Multiple measures(tests) occur during that event: BP 1min, BP 3min
+#'      The subcategory for AssumeBodyPositionStanding_1 is created by sorting on personNum, visitnum,
+#'      vstptnum  (visit time point, numeric)
+#' @param domainName - dataframe holding the domain data (vs, dm...)
+#' @param sortCols  - list of one or more columns by which to sort the data. 
+#'   Order is important to form the sub categories correctly!
+#'   these are form the categorization of the fragment: 
+#'   Example: To create fragment within patient, visit, visit time point, use
+#'   sortCols=c("personNum", "visitnum", "vstptnum")  
+#' @param fragValsCol - column that contains the root name of the fragment values that will be created. 
+#'   Values like AssumeBodyPositionStanding,  AssumeBodyPositionSupine will become 
+#'   AssumeBodyPositionStanding_(n), AssumeBodyPositionSupine(n)
+#'
+#' @return
+#' @export
+#'
+#' @examples 1. Create fragments within personNum, Visitnum vsposCode resulting in 
+#'    values of vsposCode_Frag :  AssumeBodyPositionStanding_1, AssumeBodyPositionSupine_4 etc.
+#'     foo <-createFragWithinCat(domainName=test, 
+#'                      sortCols=c("personNum", "visitnum", "vsposCode"),
+#'                      fragValsCol="vsposCode")
+#' 
+createFragWithinCat<-function(domainName, sortCols, fragValsCol)
+{
+  # Sort the dataframe by the sortCols
+  # do.call ref: https://stackoverflow.com/questions/16441952/sort-a-data-frame-by-multiple-columns-whose-names-are-contained-in-a-single-obje
+  temp <<- domainName[do.call("order", domainName[sortCols]), ]
+  
+  varname <- paste0(fragValsCol,"_Frag")  # column to hold the new fragments
+
+
+  #REF https://stackoverflow.com/questions/27341775/combine-data-frame-columns-to-new-columns-by-vector-of-names
+  # kludgy but functional....
+  temp$tempID <- do.call(paste0, temp[sortCols])
+  
+  # Create a new dataframe with the unique tempID to be used in creating 
+  #  the index numbers for the fragments. Dataframe to index is the cobination
+  #  of the column named in fragValsCol and the new tempID column. 
+  #  Eg: columns:  vsposCode, tempID 
+  indexMe <<- as.data.frame(temp[,c(paste(fragValsCol),"tempID")])  # This code works
+  
+  # Remove duplicates
+  indexMe <<- indexMe[!duplicated(indexMe$tempID), ]
+  
+  # Create index number on the unique values
+  # REF: https://stackoverflow.com/questions/12925063/numbering-rows-within-groups-in-a-data-frame
+  DT <- data.table(indexMe)
+  DT[, id := seq_len(.N), by = fragValsCol]  # resolution of param works here, but not for rowid() below.
+  
+  #TODO: Remove this kludge!
+  # KLUDGE FOLLOWS. Change to resolution of the value in parameter fragValsCol to enable use in 
+  #   >1 use case!
+  if (fragValsCol=="vsposCode"){
+    DT[, id := rowid(vsposCode)]
+    DT<-DT[, c("tempID", "id")]  # drop vsposCode.tempID for merge, id is the desired value from this operation.
+    
+    # Merge index back into the source dataframe
+    withFrag <<- merge(x = temp, y = DT, by="tempID", all.x = TRUE)
+    # Create the new new fragment only when the fragValsCol is not blank or missing
+   
+    withFrag$vsposCode_Frag <- ifelse(is.na(withFrag$vsposCode), NA, paste0(withFrag$vsposCode, "_", withFrag$id))
+   
+    # remove temporary vars used for indexing before returning the result
+    test<-subset(withFrag, select=-c(id, tempID))
+  }
 }

@@ -18,11 +18,18 @@ setwd("C:/_github/CTDasRDF/data/source")
 
 readXPTDomain <- function (domainName){
    domainValues <- sasxport.get(paste0(domainName, ".xpt"))
-   dataSubset   <- head(domainValues, 200)    
+   ## dataSubset   <- head(domainValues, 300)    
 }
 
-domainVals <- readXPTDomain("vs")
+domainVals <- readXPTDomain("ex")
 
+
+domainVals <- domainVals[domainVals$usubjid=='01-701-1015',]
+
+domainVals <- domainVals[domainVals$visit=='SCREENING 1',]
+
+# Sort
+domainVals <- domainVals[with(domainVals, order(vstptnum)), ]
 
 # TEST BED
 # Testing scripts on the raw data that may be used in other parts of the programs.
