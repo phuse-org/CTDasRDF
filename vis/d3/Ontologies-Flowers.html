@@ -16,7 +16,6 @@ TODO: :
 ------------------------------------------------------------------------------>
 <meta charset="utf-8">
 <body>
-<h3 align=left>External Ontologies</h3>
 <script type="text/javascript" src="/ctdasRDF/vis/d3/d3/d3.v3.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/ctdasRDF/vis/d3/css/CTDasRDF.css">
 <script>
@@ -34,7 +33,7 @@ var myPetalData = [
  {id:2, name:"SDTM-Term",   src:"CDISC",  size:198598, sizeLabel:"198598" },
  {id:3, name:"SDTM1-3",     src:"CDISC",  size:1778,   sizeLabel:"1778"   },
  {id:4, name:"OWL",         src:"W3C",    size:450,    sizeLabel:"450"   },
- {id:5, name:"RDF",        src:"W3C",     size:577,    sizeLabel:"102"    },
+ {id:5, name:"RDF",         src:"W3C",    size:577,    sizeLabel:"102"    },
  {id:6, name:"RDFS",        src:"W3C",    size:577,    sizeLabel:"87"    },
  {id:7, name:"SKOS",        src:"W3C",    size:577,    sizeLabel:"252"    },
  {id:8, name:"Time",        src:"W3C",    size:577,    sizeLabel:"577"    },
@@ -53,17 +52,30 @@ var pie = d3.layout.pie()
  //  .value(function(d) { return d.size; });
    .value(function(d) { return petalScale(d.size); });
 
-   // Define the div for the petal tooltip
-   var div = d3.select("body").append("div")
-       .attr("class", "petalTooltip")
-       .style("opacity", 0);
+//KLUDGES: Change to nested CSS Layouts
+// div for title
+var titlediv = d3.select("body").append("div")
+  .append("text")
+  .text("External Ontologies")
+  .attr("class", 'smTitle');
+
+var spacediv = d3.select("body").append("div")
+  .append("text")
+  .text(" ");
+// Define the div for the petal tooltip
+var div = d3.select("body").append("div")
+  .attr("class", "petalTooltip")
+  .style("opacity", 0);
+
 
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height)
   .append("g")
-    .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
+    .attr("transform", "translate(" + width/2 + "," + height/2 + ")")
+    ;
+
 
 /* Important: Note use of d.data.src to get class name, as explained here:
   https://stackoverflow.com/questions/34821449/adding-class-names-to-arcs-from-data-in-d3-layout-pie
@@ -85,18 +97,17 @@ var petal = svg.selectAll(".petal")
        .duration(200)
        .style("opacity", .9);
       div	.html("<b>"+d.data.name+"</b>"+ "<br/>" +
+           "Source: " + d.data.src+"<br/>" +
            "Size (triples): "+ d.data.sizeLabel)
        .style("left", (d3.event.pageX) + "px")
        .style("top", (d3.event.pageY - 28) + "px");
-   })
-
-
-      //Mouseout Node  - bring node back to full colour
+    })
+    //Mouseout Node  - bring node back to full colour
     .on('mouseout', function(d){
       var petalSelection= d3.select(this).style({opacity:'1.0',})
       div.transition()
-               .duration(500)
-               .style("opacity", 0);
+        .duration(500)
+        .style("opacity", 0);
      });
 
 function petalPath(d) {
@@ -111,14 +122,6 @@ function petalPath(d) {
   return "M0,0L" + s.x + "," + s.y + "Q" + c1.x + "," + c1.y + " " + m.x + "," + m.y + "L" + m.x + "," + m.y + "Q" + c2.x + "," + c2.y + " " + e.x + "," + e.y + "Z";
 };
 
-function petalFill(d, i) {
-  return d3.hcl(i / myPetalData.length * 360, 60, 70);
-};
-
-function petalStroke(d, i) {
-  return d3.hcl(i / myPetalData.length * 360, 60, 40);
-};
-
 function r(angle) {
   return "rotate(" + (angle / Math.PI * 180) + ")";
 }
@@ -129,5 +132,8 @@ function polarToCartesian(angle, radius) {
     y: Math.sin(angle) * radius
   };
 };
+
+
+
 
 </script>
