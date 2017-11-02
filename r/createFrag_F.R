@@ -141,7 +141,7 @@ addDateFrag<-function(domainName, colName)
 #' @export
 #'
 #' @examples
-createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FALSE)
+createFragOneDomain<-function(domainName, processColumns, fragPrefix, sortMe=TRUE, numSort=FALSE)
 {
   # Combine the multiple columns into one
   columnData <- domainName[,c(processColumns)] # keep only the requested cols in the df
@@ -163,23 +163,31 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, numSort=FA
   # Sort by values. Prev code: Use dplyr arrange instead of order/sort to avoid loss of df type
   uniqueVals <- as.data.frame(uniques)
   uniqueVals <<- na.omit(uniqueVals)
-  
-  # if(is.numeric(uniqueVals[1,1])) {
-  # if (regexpr(uniqueVals[1,1], "\\d", perl=TRUE)){
-  if(numSort){
-    # Numbers. Convert and sort. 
-    # Convert first to character, then to numeric. Otherwise get the order according to the factors.
-    sorted.uniqueVals <<-data.frame( uniqueVals[order(as.numeric(as.character(uniqueVals$uniques))), ])
-  } else {
-    # Characters
-    sorted.uniqueVals <<- data.frame(uniqueVals[order(as.character(uniqueVals$uniques)), ])
+
+  # Some fragment creation, lke for FixedDoseInterval, relies on original order of the df (sortMe=FALSE)
+  #   The default is to sort.
+  if (sortMe==TRUE)
+  {  
+    if(numSort){
+      # Numbers. Convert and sort. 
+      # Convert first to character, then to numeric. Otherwise get the order according to the factors.
+      current.vals <<-data.frame( uniqueVals[order(as.numeric(as.character(uniqueVals$uniques))), ])
+    } else {
+      # Characters
+      current.vals <<- data.frame(uniqueVals[order(as.character(uniqueVals$uniques)), ])
+    }
   }
-  colnames(sorted.uniqueVals) <- "keyVal" 
-  sorted.uniqueVals <-na.omit(sorted.uniqueVals)
+  # Unsorted (original order). Silly code here. 
+  else{
+    current.vals <<- data.frame(uniqueVals$uniques)
+  }
+
+  colnames(current.vals) <- "keyVal" 
+  current.vals <-na.omit(current.vals)
   # Create the coded value for each unique value as <value_n> 
-  sorted.uniqueVals$valFrag <- paste0(fragPrefix,"_", 1:nrow(sorted.uniqueVals))   # Generate a list of ID numbers
+  current.vals$valFrag <- paste0(fragPrefix,"_", 1:nrow(current.vals))   # Generate a list of ID numbers
   
-  valDict <<- sorted.uniqueVals[,c("keyVal", "valFrag")]
+  valDict <<- current.vals[,c("keyVal", "valFrag")]
   
   # Merge in the keyVals value to created a coded version of the value field, naming
   #  the column with a _Frag suffix.

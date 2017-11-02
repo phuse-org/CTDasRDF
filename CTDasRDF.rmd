@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 This document describes the project data files, R scripts, coding conventions, and data modeling decisions for the project.
 
 **CAUTION: If you are reading this document outside of the R environment, the information is likely out of date! 
-See the .rmd file in the project's Github root /CTDasRDF folder for the latest information.**
+Knit the .rmd file in the project's Github root /CTDasRDF folder for the latest information.**
 
 Information about the PhUSE cloud server environment is contained in separate documentation.
 
@@ -226,7 +226,15 @@ All Findings are Interventions in the sense that "someone has to do something" (
 ### Events
 The RDF model defines certain Events like Adverse Events not as Observations, but as Medical Conditions that are identified as an AsessmentOutcome. The SDTM model does not capture the Assessment information that led to the Outcome. In SDTM, assessment information is usually either 1) lumped together with observation data, 2) saved in SUPPQUAL, or 3) relegated to custom domains. The RDF model fixes this modeling problem **[TODO: ADD PRECISELY HOW]** while making it challenging to recreate SDTM datasets that perpetuate the modeling error. Automation across submissions may also prove difficult. **[TODO: ADD MORE HERE ABOUT THE AUTOMATION ISSUE]**
 
-### VS : Body Position and test sequence [2017-10-24]
+### Activities [2017-11-02]
+Measurement activites like Blood Pressure, Pulse, etc. are considered subActivities of a visit, that occur during a visit.  BP, Pulse are a subClass of Visit Activity, as shown in the hierarchy:
+
+ Activity --> Study Activity -- Visit Activity
+
+The predicate study:subActivity makes this link.
+
+
+### VS : Body Position, Start Rules, Test sequence [updated 2017-11-02]
 Each subject has two AssumeBodyPosition activities, 1 lying and 1 standing
 
 Sequence:
@@ -237,7 +245,21 @@ Sequence:
  
 Both standing activities are associated with the same standing "event" : AssumeBodyPositionStanding_(n).  The person stands (assumes standing position), then the two start rules come into play: StartRuleStanding1_(n)  (1 minute stand rule),  followed later by StartRuleStanding3_(n)  (3 minute standing rule).
 
-This sequence is not explicit in the SDTM data. It is derived by a combination of the USUBJID, VISIT, and VSPTNUM fields during triple creation.
+This sequence is not explicit in the SDTM data. For data conversion purposes, it is derived by a combination of the USUBJID, VISIT, and VSPTNUM fields during triple creation.
+
+Start Rules indicate the pre-requisite activities. The measurements conducted in the standing position are preceded by lying down, then the subject stands for 1 min and measurements are conducted. Then the 3min measurements are conducted. This means that the **AssumeBodyPositionStanding_1** triples have a prequisite **StartRuleLying5_1** , as illustrated in the following set of triples:
+
+
+```
+cdiscpilot01:AssumeBodyPositionStanding_1 ;
+  rdf:type custom:AssumeBodyPositionStanding ;
+  skos:prefLabel "assume standing position"^^xsd:string ;
+  study:activityStatus code:ActivityStatus_1 ;
+  study:hasCode custom:AssumeBodyPositionStanding ;
+  study:hasDate cdiscpilot01:Date_19 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+  study:outcome sdtmterm:#C71148.C62166 . 
+```
 
 ### Miscellaneous
 SDTM variables --CAT and --SCAT have no consistent meaning across submissions and so cannot be modeled consistently in the RDF ontology. This is also true for the entire RELREC domain which relates records with each other **[TODO:ADD MORE DETAIL ON CURRENT USE]**. In the semantically consistent the RDF model the concept of a record disappears where concepts and data values are related by design.

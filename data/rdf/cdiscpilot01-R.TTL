@@ -341,6 +341,7 @@ cdiscpilot01:DrugAdministration_1
     a study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
     study:administeredProduct custom:PlaceboProduct_1 ;
+    study:hasActivityInterval cdiscpilot01:FixedDoseInterval_1 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
     study:hasRouteOfAdministration <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305> ;
     study:outcome study:DrugAdministrationComplete .
@@ -349,6 +350,7 @@ cdiscpilot01:DrugAdministration_2
     a study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
     study:administeredProduct custom:PlaceboProduct_1 ;
+    study:hasActivityInterval cdiscpilot01:FixedDoseInterval_2 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
     study:hasRouteOfAdministration <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305> ;
     study:outcome study:DrugAdministrationComplete .
@@ -357,6 +359,7 @@ cdiscpilot01:DrugAdministration_3
     a study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
     study:administeredProduct custom:PlaceboProduct_1 ;
+    study:hasActivityInterval cdiscpilot01:FixedDoseInterval_3 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
     study:hasRouteOfAdministration <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305> ;
     study:outcome study:DrugAdministrationComplete .
@@ -365,6 +368,7 @@ cdiscpilot01:DrugAdministration_4
     a study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
     study:administeredProduct custom:PlaceboProduct_1 ;
+    study:hasActivityInterval cdiscpilot01:FixedDoseInterval_4 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
     study:hasRouteOfAdministration <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305> ;
     study:outcome study:DrugAdministrationComplete .
@@ -373,6 +377,7 @@ cdiscpilot01:DrugAdministration_5
     a study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
     study:administeredProduct custom:PlaceboProduct_1 ;
+    study:hasActivityInterval cdiscpilot01:FixedDoseInterval_5 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
     study:hasRouteOfAdministration <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305> ;
     study:outcome study:DrugAdministrationComplete .
@@ -381,6 +386,7 @@ cdiscpilot01:DrugAdministration_6
     a study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
     study:administeredProduct custom:Product_1 ;
+    study:hasActivityInterval cdiscpilot01:FixedDoseInterval_6 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
     study:hasRouteOfAdministration <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305> ;
     study:outcome study:DrugAdministrationComplete .
@@ -389,6 +395,7 @@ cdiscpilot01:DrugAdministration_7
     a study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
     study:administeredProduct custom:Product_2 ;
+    study:hasActivityInterval cdiscpilot01:FixedDoseInterval_7 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
     study:hasRouteOfAdministration <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305> ;
     study:outcome study:DrugAdministrationComplete .
@@ -397,9 +404,58 @@ cdiscpilot01:DrugAdministration_8
     a study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
     study:administeredProduct custom:Product_1 ;
+    study:hasActivityInterval cdiscpilot01:FixedDoseInterval_8 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
     study:hasRouteOfAdministration <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305> ;
     study:outcome study:DrugAdministrationComplete .
+
+cdiscpilot01:FixedDoseInterval_1
+    a study:FixedDoseInterval ;
+    skos:prefLabel "Fixed dose interval 1"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_24 ;
+    time:hasEnd cdiscpilot01:Date_29 .
+
+cdiscpilot01:FixedDoseInterval_2
+    a study:FixedDoseInterval ;
+    skos:prefLabel "Fixed dose interval 2"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_30 ;
+    time:hasEnd cdiscpilot01:Date_35 .
+
+cdiscpilot01:FixedDoseInterval_3
+    a study:FixedDoseInterval ;
+    skos:prefLabel "Fixed dose interval 3"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_36 ;
+    time:hasEnd cdiscpilot01:Date_39 .
+
+cdiscpilot01:FixedDoseInterval_4
+    a study:FixedDoseInterval ;
+    skos:prefLabel "Fixed dose interval 4"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_8 ;
+    time:hasEnd cdiscpilot01:Date_9 .
+
+cdiscpilot01:FixedDoseInterval_5
+    a study:FixedDoseInterval ;
+    skos:prefLabel "Fixed dose interval 5"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_10 ;
+    time:hasEnd cdiscpilot01:Date_11 .
+
+cdiscpilot01:FixedDoseInterval_6
+    a study:FixedDoseInterval ;
+    skos:prefLabel "Fixed dose interval 6"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_19 ;
+    time:hasEnd cdiscpilot01:Date_21 .
+
+cdiscpilot01:FixedDoseInterval_7
+    a study:FixedDoseInterval ;
+    skos:prefLabel "Fixed dose interval 7"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_22 ;
+    time:hasEnd cdiscpilot01:Date_25 .
+
+cdiscpilot01:FixedDoseInterval_8
+    a study:FixedDoseInterval ;
+    skos:prefLabel "Fixed dose interval 8"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_26 ;
+    time:hasEnd cdiscpilot01:Date_27 .
 
 cdiscpilot01:InformedConsentAdult_1
     a code:InformedConsentAdult ;
@@ -1026,7 +1082,7 @@ cdiscpilot01:sdtm-graph
     dcterms:description "Clinical Trials data as an RDF graph."^^xsd:string ;
     dcterms:title "PhUSE Project: Clinical Trials Data as RDF"^^xsd:string ;
     bibo:status "Under Construction/incomplete: Blood pressure, Pulse, Weight.  Only 1 patient and a subset of obs. from that patient."^^xsd:string ;
-    pav:createdOn "2017-11-01T19:32:33-04:00"^^xsd:dateTime ;
+    pav:createdOn "2017-11-02T13:33:10-04:00"^^xsd:dateTime ;
     pav:createdWith "R Version 3.4.1 Platform:x86_64-w64-mingw32 with scripts from project: Clinical Trials Data as RDF"^^xsd:string ;
     pav:version "0.0.1"^^xsd:string ;
     rdfs:label "The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data.  Only select observations from source XPT are present, including a subset of VS results."^^xsd:string ;

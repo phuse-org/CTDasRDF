@@ -43,5 +43,23 @@ ex$exdosfrqSDTMCode <- recode(ex$exdosfrq,
 ex$exrouteSDTMCode <- recode(ex$exroute, 
                            "'TRANSDERMAL' = 'C66729.C38305'" ) # only 1 route in study
 
-# Sort column names in the df for quicker referencing
+# FixedDoseInterval ----
+# Create a unique ID for the dose interval
+
+
+ex$FixedDoseInterval <- paste0(ex$exstdtc, "-TO-", ex$exendtc)
+
+# sort by rowID to match original order from AO prior to callign createFragOneDomain
+ex <- ex[order(ex$rowID),] 
+
+# Fragments will be created in the order in which they occured in the dataset, 
+#   dupes removed, unsorted.
+ex<- createFragOneDomain(domainName=ex, processColumns="FixedDoseInterval",
+     fragPrefix="FixedDoseInterval", sortMe=FALSE, numSort=FALSE)
+
+
+# Drop temp columns ----
+ex<-ex[, !(names(ex) %in% c("FixedDoseInterval"))]
+
+# Sort by Col names ----
 ex <- ex %>% select(noquote(order(colnames(ex))))
