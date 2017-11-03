@@ -245,6 +245,50 @@ stroke-width: 5;
     border-color: #003d4d;
     pointer-events: none;
 }
+/* ONTOLOGY FLOWER GRAPHS */
+
+/* Grid layout  */
+* {
+  box-sizing: border-box;
+}
+.grid{
+  display: grid;
+  grid-template-areas:
+  "headL..... headR"
+  "visL...... visR"
+  "visL visTip visR"
+  "visL...... visR";
+  grid-template-columns: 1fr[leftCol] 150px[midCol] 1fr[rightCol];
+  grid-template-rows: 30px[header] 300px[topVis] 150px[midVis] 300px[botVis];
+
+}
+.grid div {
+  border: 1px solid rgb(0,95,107);
+  border-radius: 3px;
+  background-color: rgba(0,95,107,0.8);
+  padding: 0.2em;
+  color: #fff;
+
+}
+
+headerLeft{
+  grid-area: headL;
+}
+headerRight{
+  grid-area: headR;
+}
+
+visLeft{
+  grid-area: visL;
+}
+visRight{
+  grid-area: visR;
+}
+
+visTip{
+  grid-area:visTip;
+}
+
 
 div.extOntPetalTooltip {
     /* position: absolute; */

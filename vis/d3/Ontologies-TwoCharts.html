@@ -5,21 +5,25 @@
  $Date: 2017-10-27 19:07:03 -0400 (Fri, 27 Oct 2017) $
  $Author: U041939 $
  -----------------------------------------------------------------------------
- DESCR: Hacking the original animated flowers
- SAUCE: http://bl.ocks.org/herrstucki/6199768/23f51b97bd942f6b1b7cf0b9ba76ada4cb6d1cc7
- VIEW : http://localhost:8000/d3/Examples/flowers/FlowersHacking.html
+DESC:  Two Flower Charts using CSS Grid
+VIEW : http://localhost:8000/CTDasRDF/vis/d3/Ontologies-TwoCharts.html
  INPUT:
  OUT  :
- NOTES:
+ NOTES: !! MUST use d3.min.js, not d3.v3.min.js or the grid layout will FAIL!!!
 TODO: :
 
 ------------------------------------------------------------------------------>
 <meta charset="utf-8">
 <head>
-  <script type="text/javascript" src="/ctdasRDF/vis/d3/d3/d3.v3.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/ctdasRDF/vis/d3/css/CTDasRDF.css">
-</head>  
+  <!--
+  <link rel="stylesheet" type="text/css" href="/ctdasRDF/vis/d3/css/GridExample1.css">
+-->
+<link rel="stylesheet" type="text/css" href="/ctdasRDF/vis/d3/css/CTDasRDF.css">
+</head>
+<title>CSS Grid Testing</title>
+<html>
 <body>
+<script type="text/javascript" src="/ctdasRDF/vis/d3/d3/d3.min.js"></script>
 <script>
 var width = 500,
     height = 500,
@@ -43,59 +47,54 @@ var extOntData = [
  {id:10, name:"MedDRA",      src:"Future", size:50000,  sizeLabel:"TBD"  },
  {id:11, name:"WHO-Drug",    src:"Future", size:50000,  sizeLabel:"TBD"  }
 ]
-// NEW
-var intOntData = [
- {id:0, name:"cdiscpilot01", src:"CDISC",  size:63263,  sizeLabel:"63263"  },
- {id:1, name:"study",        src:"CDISC",  size:12266,  sizeLabel:"12266"  },
- {id:2, name:"code",         src:"CDISC",  size:198598, sizeLabel:"198598" },
- {id:3, name:"protocol",     src:"CDISC",  size:1778,   sizeLabel:"1778"   }
-]
-
 var extOntScale = d3.scale.log()
   .domain([400,200000])
   .range([1,2]);
-
-var intOntScale = d3.scale.log()
-    .domain([400,200000])
-    .range([1,2]);
 
 var pie = d3.layout.pie()
   .sort(null)
   .value(function(d) { return extOntScale(d.size); });
 
-//KLUDGES: Change to nested CSS Layouts
-// div for title
-var titlediv = d3.select("body").append("div")
-  .append("text")
-  .text("External Ontologies")
-  .attr("class", 'smTitle');
+var grid = d3.select("body").append("div") // this creates the question divs
+    .attr("class", "grid");
 
-var spacediv = d3.select("body").append("div")
-  .append("text")
-  .text(" ");
-// Define the div for the petal tooltip
-var div = d3.select("body").append("div")
-  .attr("class", "extOntPetalTooltip")
-  .style("opacity", 0);
+// Now define the content that will appear in each area.
+var headerLeft = grid.append("headerLeft");
+headerLeft.text("External Ontologies")
+  .attr("class", "smTitle")
+  ;
 
+var headerRight = grid.append("headerRight");
+headerRight.text("Project Files")
+  .attr("class", "smTitle")
+  ;
+
+var visLeft = grid.append("visLeft");
+
+var svg = d3.select("visLeft").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width/2 + "," + height/2 + ")")
+  ;
+var visRight = grid.append("visRight");
+visRight.text("Right Visualization Area");
+
+var visTip = grid.append("visTip");
+visTip.text("Tool tip text will go here");
+
+/*TW
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height)
   .append("g")
     .attr("transform", "translate(" + width/2 + "," + height/2 + ")")
     ;
-
-var svg2 = d3.select("body").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-      .append("g")
-        .attr("transform", "translate(" + width/2 + "," + height/2 + ")")
-        ;
-
-
-/* Important: Note use of d.data.src to get class name, as explained here:
-  https://stackoverflow.com/questions/34821449/adding-class-names-to-arcs-from-data-in-d3-layout-pie
 */
+
+// Important: Note use of d.data.src to get class name, as explained here:
+//  https://stackoverflow.com/questions/34821449/adding-class-names-to-arcs-from-data-in-d3-layout-pie
+//
 var extOntPetal = svg.selectAll(".extOntPetal")
   .data(pie(extOntData))
   .enter().append("path")
@@ -123,7 +122,39 @@ var extOntPetal = svg.selectAll(".extOntPetal")
         .style("opacity", 0);
      });
 
-// Second Chart : Internal (int) files
+     function extOntPetalPath(d) {
+       var angle = (d.endAngle - d.startAngle) / 2,
+           s = polarToCartesian(-angle, halfRadius),
+           e = polarToCartesian(angle, halfRadius),
+           // r = size(d.data.size),  // new here
+           r = size(extOntScale(d.data.size)),  // new here
+           m = {x: halfRadius + r, y: 0}, // increase from 0 to curve edges. Cool effect.
+           c1 = {x: halfRadius + r / 2, y: s.y},
+           c2 = {x: halfRadius + r / 2, y: e.y};
+       //return "M0,0L" + s.x + "," + s.y + "Q" + c1.x + "," + c1.y + " " + m.x + "," + m.y + "L" + m.x + "," + m.y + "Q" + c2.x + "," + c2.y + " " + e.x + "," + e.y + "Z";
+       return "M0,0L" + s.x + "," + s.y + "Q" + c1.x + "," + c1.y + " " + m.x + "," + m.y + "L" + m.x + "," + m.y + "Q" + c2.x + "," + c2.y + " " + e.x + "," + e.y + "Z";
+     };
+
+// ----------------------- Second Chart : Internal (int) files
+/*
+var intOntData = [
+ {id:0, name:"cdiscpilot01", src:"CDISC",  size:63263,  sizeLabel:"63263"  },
+ {id:1, name:"study",        src:"CDISC",  size:12266,  sizeLabel:"12266"  },
+ {id:2, name:"code",         src:"CDISC",  size:198598, sizeLabel:"198598" },
+ {id:3, name:"protocol",     src:"CDISC",  size:1778,   sizeLabel:"1778"   }
+]
+
+var intOntScale = d3.scale.log()
+    .domain([400,200000])
+    .range([1,2]);
+
+var svg2 = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width/2 + "," + height/2 + ")")
+        ;
+
 var pie2 = d3.layout.pie()
   .sort(null)
   .value(function(d) { return intOntScale(d.size); });
@@ -154,20 +185,6 @@ var intOntPetal = svg.selectAll(".intOntPetal")
          .duration(500)
          .style("opacity", 0);
     });
-
-function extOntPetalPath(d) {
-  var angle = (d.endAngle - d.startAngle) / 2,
-      s = polarToCartesian(-angle, halfRadius),
-      e = polarToCartesian(angle, halfRadius),
-      // r = size(d.data.size),  // new here
-      r = size(extOntScale(d.data.size)),  // new here
-      m = {x: halfRadius + r, y: 0}, // increase from 0 to curve edges. Cool effect.
-      c1 = {x: halfRadius + r / 2, y: s.y},
-      c2 = {x: halfRadius + r / 2, y: e.y};
-  //return "M0,0L" + s.x + "," + s.y + "Q" + c1.x + "," + c1.y + " " + m.x + "," + m.y + "L" + m.x + "," + m.y + "Q" + c2.x + "," + c2.y + " " + e.x + "," + e.y + "Z";
-  return "M0,0L" + s.x + "," + s.y + "Q" + c1.x + "," + c1.y + " " + m.x + "," + m.y + "L" + m.x + "," + m.y + "Q" + c2.x + "," + c2.y + " " + e.x + "," + e.y + "Z";
-};
-
 function intOntPetalPath(d) {
   var angle = (d.endAngle - d.startAngle) / 2,
       s = polarToCartesian(-angle, halfRadius),
@@ -179,9 +196,10 @@ function intOntPetalPath(d) {
       c2 = {x: halfRadius + r / 2, y: e.y};
   return "M0,0L" + s.x + "," + s.y + "Q" + c1.x + "," + c1.y + " " + m.x + "," + m.y + "L" + m.x + "," + m.y + "Q" + c2.x + "," + c2.y + " " + e.x + "," + e.y + "Z";
 };
+*/
+//------------- END SECOND CHART ------------------------------
 
-
-
+// Common Functions -----------------------------------
 function r(angle) {
   return "rotate(" + (angle / Math.PI * 180) + ")";
 }
@@ -192,5 +210,6 @@ function polarToCartesian(angle, radius) {
     y: Math.sin(angle) * radius
   };
 };
-
 </script>
+</body>
+</html>
