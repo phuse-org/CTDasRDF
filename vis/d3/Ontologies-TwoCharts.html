@@ -105,10 +105,11 @@ var extOntPetal = svg.selectAll(".extOntPetal")
     .on('mouseover', function(d){
       var extOntPetalSelection = d3.select(this).style({opacity:'0.8'});
         // d3.selectAll(".link").style("stroke","red").style("stroke-width",4);
-      div.transition()
+      // Append the info value to the visTip area on the screen.
+      visTip.transition()
        .duration(200)
        .style("opacity", .9);
-      div	.html("<b>"+d.data.name+"</b>"+ "<br/>" +
+      visTip	.html("<b>"+d.data.name+"</b>"+ "<br/>" +
            "Source: " + d.data.src+"<br/>" +
            "Size (triples): "+ d.data.sizeLabel)
        .style("left", (d3.event.pageX) + "px")
@@ -117,7 +118,7 @@ var extOntPetal = svg.selectAll(".extOntPetal")
     //Mouseout Node  - bring node back to full colour
     .on('mouseout', function(d){
       var extOntPetalSelection= d3.select(this).style({opacity:'1.0',})
-      div.transition()
+      visTip.transition()
         .duration(500)
         .style("opacity", 0);
      });
