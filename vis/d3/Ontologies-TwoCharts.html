@@ -65,7 +65,7 @@ headerLeft.text("External Ontologies")
   ;
 
 var headerRight = grid.append("headerRight");
-headerRight.text("Project Files")
+headerRight.text("Project Ontologies & Instance Data")
   .attr("class", "smTitle")
   ;
 
@@ -81,7 +81,8 @@ var visRight = grid.append("visRight");
 visRight.text("Right Visualization Area");
 
 var visTip = grid.append("visTip");
-visTip.text("Tool tip text will go here");
+visTip.attr("class", "petalTooltip")
+  .style("opacity", 0); /* Do not show on load */
 
 /*TW
 var svg = d3.select("body").append("svg")

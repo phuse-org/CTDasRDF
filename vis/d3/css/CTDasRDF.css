@@ -292,7 +292,7 @@ visTip{
 /* Tooltip Container */
 /* new from: https://www.w3schools.com/css/css_tooltip.asp */
 .petalTooltip {
-    position: relative;
+    position: absolulte;
     display: inline-block;
     /* position: absolute; */
     /*
@@ -303,7 +303,10 @@ visTip{
     height: 55px;
     padding: 4px;
     font: 14px sans-serif;
+    */
     background: lightsteelblue;
+    background-color: lightsteelblue;
+    /*
     border: 2px;
     border-radius: 8px;
     pointer-events: none;'
@@ -312,23 +315,22 @@ visTip{
 /* Tooltip text */
 .petalTooltip .petalTooltiptext{
   visibility: hidden;
-  width: 140px;
+  /* width: 140px; */
   background: lightsteelblue;
+  /* background-color: lightsteelblue; */
+  font: 30px sans-serif;
   text-align: left;
   padding: 4px;
   border: 2px;
   border-radius: 8px;
-  position: absolute;
+  left: 10px;
+  top : 10px;
   z-index: 1;
 }
 
 .petalTooltip:hover .petalTooltiptext{
   visibility: visible;
 }
-
-
-
-.petalTooltip:hover .
 
 .extOntPetal{
   stroke-width: 4;

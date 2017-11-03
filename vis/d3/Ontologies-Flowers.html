@@ -93,8 +93,8 @@ var extOntPetal = svg.selectAll(".extOntPetal")
       div	.html("<b>"+d.data.name+"</b>"+ "<br/>" +
            "Source: " + d.data.src+"<br/>" +
            "Size (triples): "+ d.data.sizeLabel)
-       .style("left", (d3.event.pageX) + "px")
-       .style("top", (d3.event.pageY - 28) + "px");
+       .style("left", (d3.event.pageX ) + "px")
+       .style("top", (d3.event.pageY -20) + "px");
     })
     //Mouseout Node  - bring node back to full colour
     .on('mouseout', function(d){
