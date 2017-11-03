@@ -1069,7 +1069,7 @@ study:ProductAdministrationInterval
                         ] ;
                     ]
                     [
-                      sp:object study:Visit ;
+                      sp:object study:VisitActivity ;
                       sp:predicate rdf:type ;
                       sp:subject [
                           sp:varName "visit"^^xsd:string ;
@@ -1547,7 +1547,7 @@ study:StudyParticipationInterval
                         ] ;
                     ]
                     [
-                      sp:object study:Visit ;
+                      sp:object study:VisitActivity ;
                       sp:predicate rdf:type ;
                       sp:subject [
                           sp:varName "visit"^^xsd:string ;
@@ -1760,11 +1760,11 @@ study:UniqueSubjectIdentifier
 .
 study:UnscheduledVisit
   rdf:type owl:Class ;
-  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Unscheduled visit"^^xsd:string ;
 .
-study:Visit
+study:VisitActivity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Visit"^^xsd:string ;

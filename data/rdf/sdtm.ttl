@@ -3599,7 +3599,7 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            sp:object study:Visit ;
+            sp:object study:VisitActivity ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "vsvisit"^^xsd:string ;
@@ -3684,7 +3684,7 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            sp:object study:Visit ;
+            sp:object study:VisitActivity ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "vsvisit"^^xsd:string ;
