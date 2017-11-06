@@ -7,7 +7,7 @@
 	ODMVersion="1.3.2"
 	FileOID="CDISCPILOT01.SDTM.Define-XML"
 	FileType="Snapshot"
-	CreationDateTime="2017-08-21T18:33:38"
+	CreationDateTime="2017-09-13T18:39:31"
 	Originator="CLINICAL STUDY SPONSOR">
 	<Study OID="CDISCPILOT01">
 		<GlobalVariables>
@@ -62,6 +62,61 @@
   <ItemRef ItemOID="IT.DM.DMDY" OrderNumber="28" Mandatory="Permissible Variable" />
   <def:leaf ID="LF.DM" xlink:href="dm.xpt">
     <def:title>dm.xpt</def:title>
+  </def:leaf>
+</ItemGroupDef><ItemGroupDef OID="IG.SUPPDM" Name="SUPPDM" Domain="SUPPDM" SASDatasetName="SUPPDM" Repeating="No" IsReferenceData="No" Purpose="Tabulation" def:Structure="One record per IDVAR, IDVARVAL, and QNAM value per subject" def:Class="Relationship Dataset" def:ArchiveLocationID="LF.SUPPDM">
+  <Description>
+    <TranslatedText xml:lang="en">Supplemental Qualifiers for SUPPDM</TranslatedText>
+  </Description>
+  <ItemRef ItemOID="IT.SUPPDM.STUDYID" OrderNumber="1" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.SUPPDM.RDOMAIN" OrderNumber="2" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.SUPPDM.USUBJID" OrderNumber="3" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.SUPPDM.IDVAR" OrderNumber="4" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.SUPPDM.IDVARVAL" OrderNumber="5" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.SUPPDM.QNAM" OrderNumber="6" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.SUPPDM.QLABEL" OrderNumber="7" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.SUPPDM.QVAL" OrderNumber="8" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.SUPPDM.QORIG" OrderNumber="9" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.SUPPDM.QEVAL" OrderNumber="10" Mandatory="Expected Variable" />
+  <def:leaf ID="LF.SUPPDM" xlink:href="suppdm.xpt">
+    <def:title>suppdm.xpt</def:title>
+  </def:leaf>
+</ItemGroupDef><ItemGroupDef OID="IG.VS" Name="VS" Domain="VS" SASDatasetName="VS" Repeating="No" IsReferenceData="No" Purpose="Tabulation" def:Structure="One record per vital sign measurement per time point per visit per subject" def:Class="Findings Observation Class" def:ArchiveLocationID="LF.VS">
+  <Description>
+    <TranslatedText xml:lang="en">Vital Signs</TranslatedText>
+  </Description>
+  <ItemRef ItemOID="IT.VS.STUDYID" OrderNumber="1" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.VS.DOMAIN" OrderNumber="2" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.VS.USUBJID" OrderNumber="3" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.VS.VSSEQ" OrderNumber="4" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.VS.VSGRPID" OrderNumber="5" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSSPID" OrderNumber="6" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSTESTCD" OrderNumber="7" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.VS.VSTEST" OrderNumber="8" Mandatory="Required Variable" />
+  <ItemRef ItemOID="IT.VS.VSCAT" OrderNumber="9" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSSCAT" OrderNumber="10" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSPOS" OrderNumber="11" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSORRES" OrderNumber="12" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.VS.VSORRESU" OrderNumber="13" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.VS.VSSTRESC" OrderNumber="14" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.VS.VSSTRESN" OrderNumber="15" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.VS.VSSTRESU" OrderNumber="16" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.VS.VSSTAT" OrderNumber="17" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSREASND" OrderNumber="18" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSLOC" OrderNumber="19" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSBLFL" OrderNumber="20" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.VS.VSDRVFL" OrderNumber="21" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VISITNUM" OrderNumber="22" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.VS.VISIT" OrderNumber="23" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VISITDY" OrderNumber="24" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSDTC" OrderNumber="25" Mandatory="Expected Variable" />
+  <ItemRef ItemOID="IT.VS.VSDY" OrderNumber="26" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSTPT" OrderNumber="27" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSTPTNUM" OrderNumber="28" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSELTM" OrderNumber="29" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSTPTREF" OrderNumber="30" Mandatory="Permissible Variable" />
+  <ItemRef ItemOID="IT.VS.VSRFTDTC" OrderNumber="31" Mandatory="Permissible Variable" />
+  <def:leaf ID="LF.VS" xlink:href="vs.xpt">
+    <def:title>vs.xpt</def:title>
   </def:leaf>
 </ItemGroupDef><ItemDef OID="IT.DM.STUDYID" Name="STUDYID" SASFieldName="STUDYID">
   <Description>
@@ -201,6 +256,209 @@
 <ItemDef OID="IT.DM.DMDY" Name="DMDY" SASFieldName="DMDY">
   <Description>
     <TranslatedText xml:lang="en">Study Day of Collection</TranslatedText>
+  </Description>
+</ItemDef><ItemDef OID="IT.SUPPDM.STUDYID" Name="STUDYID" SASFieldName="STUDYID">
+  <Description>
+    <TranslatedText xml:lang="en">Study Identifier</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.SUPPDM.RDOMAIN" Name="RDOMAIN" SASFieldName="RDOMAIN">
+  <Description>
+    <TranslatedText xml:lang="en">Related Domain Abbreviation</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.SUPPDM.USUBJID" Name="USUBJID" SASFieldName="USUBJID">
+  <Description>
+    <TranslatedText xml:lang="en">Unique Subject Identifier</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.SUPPDM.IDVAR" Name="IDVAR" SASFieldName="IDVAR">
+  <Description>
+    <TranslatedText xml:lang="en">Identifying Variable</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.SUPPDM.IDVARVAL" Name="IDVARVAL" SASFieldName="IDVARVAL">
+  <Description>
+    <TranslatedText xml:lang="en">Identifying Variable Value</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.SUPPDM.QNAM" Name="QNAM" SASFieldName="QNAM">
+  <Description>
+    <TranslatedText xml:lang="en">Qualifier Variable Name</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.SUPPDM.QLABEL" Name="QLABEL" SASFieldName="QLABEL">
+  <Description>
+    <TranslatedText xml:lang="en">Qualifier Variable Label</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.SUPPDM.QVAL" Name="QVAL" SASFieldName="QVAL">
+  <Description>
+    <TranslatedText xml:lang="en">Data Value</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.SUPPDM.QORIG" Name="QORIG" SASFieldName="QORIG">
+  <Description>
+    <TranslatedText xml:lang="en">Origin</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.SUPPDM.QEVAL" Name="QEVAL" SASFieldName="QEVAL">
+  <Description>
+    <TranslatedText xml:lang="en">Evaluator</TranslatedText>
+  </Description>
+</ItemDef><ItemDef OID="IT.VS.STUDYID" Name="STUDYID" SASFieldName="STUDYID">
+  <Description>
+    <TranslatedText xml:lang="en">Study Identifier</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.DOMAIN" Name="DOMAIN" SASFieldName="DOMAIN">
+  <Description>
+    <TranslatedText xml:lang="en">Domain Abbreviation</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.USUBJID" Name="USUBJID" SASFieldName="USUBJID">
+  <Description>
+    <TranslatedText xml:lang="en">Unique Subject Identifier</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSSEQ" Name="VSSEQ" SASFieldName="VSSEQ">
+  <Description>
+    <TranslatedText xml:lang="en">Sequence Number</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSGRPID" Name="VSGRPID" SASFieldName="VSGRPID">
+  <Description>
+    <TranslatedText xml:lang="en">Group ID</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSSPID" Name="VSSPID" SASFieldName="VSSPID">
+  <Description>
+    <TranslatedText xml:lang="en">Sponsor-Defined Identifier</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSTESTCD" Name="VSTESTCD" SASFieldName="VSTESTCD">
+  <Description>
+    <TranslatedText xml:lang="en">Vital Signs Test Short Name</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSTEST" Name="VSTEST" SASFieldName="VSTEST">
+  <Description>
+    <TranslatedText xml:lang="en">Vital Signs Test Name</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSCAT" Name="VSCAT" SASFieldName="VSCAT">
+  <Description>
+    <TranslatedText xml:lang="en">Category for Vital Signs</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSSCAT" Name="VSSCAT" SASFieldName="VSSCAT">
+  <Description>
+    <TranslatedText xml:lang="en">Subcategory for Vital Signs</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSPOS" Name="VSPOS" SASFieldName="VSPOS">
+  <Description>
+    <TranslatedText xml:lang="en">Vital Signs Position of Subject</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSORRES" Name="VSORRES" SASFieldName="VSORRES">
+  <Description>
+    <TranslatedText xml:lang="en">Result or Finding in Original Units</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSORRESU" Name="VSORRESU" SASFieldName="VSORRESU">
+  <Description>
+    <TranslatedText xml:lang="en">Original Units</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSSTRESC" Name="VSSTRESC" SASFieldName="VSSTRESC">
+  <Description>
+    <TranslatedText xml:lang="en">Character Result/Finding in Std Format</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSSTRESN" Name="VSSTRESN" SASFieldName="VSSTRESN">
+  <Description>
+    <TranslatedText xml:lang="en">Numeric Result/Finding in Standard Units</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSSTRESU" Name="VSSTRESU" SASFieldName="VSSTRESU">
+  <Description>
+    <TranslatedText xml:lang="en">Standard Units</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSSTAT" Name="VSSTAT" SASFieldName="VSSTAT">
+  <Description>
+    <TranslatedText xml:lang="en">Completion Status</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSREASND" Name="VSREASND" SASFieldName="VSREASND">
+  <Description>
+    <TranslatedText xml:lang="en">Reason Not Performed</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSLOC" Name="VSLOC" SASFieldName="VSLOC">
+  <Description>
+    <TranslatedText xml:lang="en">Location of Vital Signs Measurement</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSBLFL" Name="VSBLFL" SASFieldName="VSBLFL">
+  <Description>
+    <TranslatedText xml:lang="en">Baseline Flag</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSDRVFL" Name="VSDRVFL" SASFieldName="VSDRVFL">
+  <Description>
+    <TranslatedText xml:lang="en">Derived Flag</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VISITNUM" Name="VISITNUM" SASFieldName="VISITNUM">
+  <Description>
+    <TranslatedText xml:lang="en">Visit Number</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VISIT" Name="VISIT" SASFieldName="VISIT">
+  <Description>
+    <TranslatedText xml:lang="en">Visit Name</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VISITDY" Name="VISITDY" SASFieldName="VISITDY">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Study Day of Visit</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSDTC" Name="VSDTC" SASFieldName="VSDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Measurements</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSDY" Name="VSDY" SASFieldName="VSDY">
+  <Description>
+    <TranslatedText xml:lang="en">Study Day of Vital Signs</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSTPT" Name="VSTPT" SASFieldName="VSTPT">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Time Point Name</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSTPTNUM" Name="VSTPTNUM" SASFieldName="VSTPTNUM">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Time Point Number</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSELTM" Name="VSELTM" SASFieldName="VSELTM">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Elapsed Time from Time Point Ref</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSTPTREF" Name="VSTPTREF" SASFieldName="VSTPTREF">
+  <Description>
+    <TranslatedText xml:lang="en">Time Point Reference</TranslatedText>
+  </Description>
+</ItemDef>
+<ItemDef OID="IT.VS.VSRFTDTC" Name="VSRFTDTC" SASFieldName="VSRFTDTC">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Reference Time Point</TranslatedText>
   </Description>
 </ItemDef>
 

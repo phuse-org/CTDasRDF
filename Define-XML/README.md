@@ -7,6 +7,7 @@ Groovy script engine is distributed on [groovy website](http://groovy-lang.org/d
 This define.xml generator retrieves metadata from Sparql Endpoint through Sparql query. Therefore the Sparql Endpoint have to include following RDFs.
 * sdtm-1-3.ttl  
 * sdtmig-3-1-3.ttl  
+* sdtm.ttl  
 * study.ttl  
 * cdiscpilot01-protocol.ttl  
 * meta-model-schema.rdf  
