@@ -19,7 +19,7 @@ vs <- subset(vs, (!is.na(vs$vstestCat)))
 #  eg: Triples for VisitScreening1_1, VisitBaseline_1, VisitWk2_1, VisitWk24_1
 # Create Visit triples that should be created ONLY ONCE: Eg: Triples that describe an 
 # individual visit. Eg: VisitScreening1_1
-u_Visit <- vs[,c("visit_Frag", "visitPerson_Frag","personNum", "persVis_Label", "visit", 
+u_Visit <- vs[,c("visit_Frag", "visitPerson_Frag","visitPerson_Label", "personNum", "persVis_Label", "visit", 
   "visitnum", "vsdtc_Frag", "vsstat_Frag", "vsreasnd", "testRes_Label")]
 
 u_Visit <- u_Visit[!duplicated(u_Visit$visitPerson_Frag),] # remove duplicates
@@ -37,48 +37,62 @@ ddply(u_Visit, .(visitPerson_Frag), function(u_Visit)
       object    = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag)))
 
     # Subtriples for each visit ----    
-    # Y
+    # 
+
+#TW  removing triples to match ONT
+#TW working on VisitBaseline_1 for matching and construction
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+         subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+         predicate = paste0(RDFS,"subClassOf"),
+         object    = paste0(CUSTOM,u_Visit$visit_Frag)))
+
     addStatement(cdiscpilot01,
       new("Statement", world=world,
          subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
          predicate = paste0(RDF,"type"),
-         object    = paste0(CUSTOM,u_Visit$visit_Frag)))
+         object    = paste0(OWL,"Class")))
 
-  
-    addStatement(cdiscpilot01,
-      new("Statement", world=world,
-        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
-        predicate = paste0(RDFS,"label"),
-        object    = paste0(u_Visit$persVis_Label),
-          objectType = "literal", datatype_uri = paste0(XSD,"string")))
-
+    # NOTE: use of paste, not paste0 for label!
     addStatement(cdiscpilot01,
       new("Statement", world=world,
         subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
         predicate = paste0(SKOS,"prefLabel"),
-        object    = paste0(gsub(" ", "", u_Visit$visit)),
+        object    = paste(u_Visit$visitPerson_Label),
           objectType = "literal", datatype_uri = paste0(XSD,"string")))
 
-    if (! is.na(u_Visit$vsstat_Frag)){
-      addStatement(cdiscpilot01,
-        new("Statement", world=world,
-           subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
-           predicate = paste0(STUDY,"activityStatus"),
-           object    = paste0(CODE, u_Visit$vsstat_Frag)))
-    } 
-    addStatement(cdiscpilot01,
-      new("Statement", world=world,
-        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
-        predicate = paste0(STUDY,"hasCode"),
-        object    = paste0(CUSTOM,u_Visit$visit_Frag)))
-    addStatement(cdiscpilot01,
-      new("Statement", world=world,
-        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
-        predicate = paste0(STUDY,"hasDate"),
-        object    = paste0(CDISCPILOT01,u_Visit$vsdtc_Frag)))
+    
+      
+#
+#  
+#    addStatement(cdiscpilot01,
+#      new("Statement", world=world,
+#        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+#        predicate = paste0(RDFS,"label"),
+#        object    = paste0(u_Visit$persVis_Label),
+#          objectType = "literal", datatype_uri = paste0(XSD,"string")))
 
-    # This date is a Visit Date (Date_<n> is a study:VisitDate)
-    assignDateType(u_Visit$vsdtc, u_Visit$vsdtc_Frag, "VisitDate")
+#
+#    if (! is.na(u_Visit$vsstat_Frag)){
+#      addStatement(cdiscpilot01,
+#        new("Statement", world=world,
+#           subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+#           predicate = paste0(STUDY,"activityStatus"),
+#           object    = paste0(CODE, u_Visit$vsstat_Frag)))
+#    } 
+#    addStatement(cdiscpilot01,
+#      new("Statement", world=world,
+#        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+#        predicate = paste0(STUDY,"hasCode"),
+#        object    = paste0(CUSTOM,u_Visit$visit_Frag)))
+#    addStatement(cdiscpilot01,
+#      new("Statement", world=world,
+#        subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
+#        predicate = paste0(STUDY,"hasDate"),
+#        object    = paste0(CDISCPILOT01,u_Visit$vsdtc_Frag)))
+#
+#    # This date is a Visit Date (Date_<n> is a study:VisitDate)
+#    assignDateType(u_Visit$vsdtc, u_Visit$vsdtc_Frag, "VisitDate")
 })
 
 
@@ -94,12 +108,13 @@ ddply(vs, .(personNum, vsseq), function(vs)
 
     
     #  VisitScreening1_1 -x->
-    addStatement(cdiscpilot01,
-      new("Statement", world=world,
-        subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
-        predicate = paste0(STUDY,"hasSubActivity"),
-        object    = paste0(CDISCPILOT01,vs$vsposCode_Frag)))
-
+#TW
+#    addStatement(cdiscpilot01,
+#      new("Statement", world=world,
+#        subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
+#        predicate = paste0(STUDY,"hasSubActivity"),
+#        object    = paste0(CDISCPILOT01,vs$vsposCode_Frag)))
+#
     # Body Positions
     # AsssumeBodyPosition sub-triples ----
 # Y
@@ -167,11 +182,12 @@ ddply(vs, .(personNum, vsseq), function(vs)
      predicate = paste0(STUDY, "outcome"),
      object    = paste0(SDTMTERM, vs$vsposSDTM_Frag)))
   
-  addStatement(cdiscpilot01,
-  new("Statement", world=world,
-    subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
-    predicate = paste0(STUDY,"hasSubActivity"),
-    object    = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag)))
+#TW
+#  addStatement(cdiscpilot01,
+#  new("Statement", world=world,
+#    subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
+#    predicate = paste0(STUDY,"hasSubActivity"),
+#    object    = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag)))
   
     # Test result subtriples : Eg: cdiscpilot01:C67153.C25206_1
     addStatement(cdiscpilot01,

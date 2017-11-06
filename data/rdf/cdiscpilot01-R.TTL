@@ -30,6 +30,9 @@ cd01p:Site_1
 cd01p:Study_1
     study:hasStudyParticipant cdiscpilot01:Person_1, cdiscpilot01:Person_2, cdiscpilot01:Person_3, cdiscpilot01:Person_4, cdiscpilot01:Person_5, cdiscpilot01:Person_6 .
 
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+    study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#>, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166>, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> .
+
 cdiscpilot01:AgeOutcome_1
     a study:AgeOutcome ;
     skos:prefLabel "63 YEARS"^^xsd:string ;
@@ -65,6 +68,323 @@ cdiscpilot01:AgeOutcome_6
     skos:prefLabel "85 YEARS"^^xsd:string ;
     code:hasUnit time:unitYear ;
     code:hasValue "85"^^xsd:int .
+
+cdiscpilot01:AssumeBodyPositionStanding_1
+    a custom:AssumeBodyPositionStanding ;
+    skos:prefLabel "assume standing position"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode custom:AssumeBodyPositionStanding ;
+    study:hasDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+    study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> .
+
+cdiscpilot01:AssumeBodyPositionSupine_1
+    a custom:AssumeBodyPositionSupine ;
+    skos:prefLabel "assume supine position"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode custom:AssumeBodyPositionSupine ;
+    study:hasDate cdiscpilot01:Date_23 ;
+    study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> .
+
+cdiscpilot01:AssumeBodyPositionSupine_2
+    a custom:AssumeBodyPositionSupine ;
+    skos:prefLabel "assume supine position"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode custom:AssumeBodyPositionSupine ;
+    study:hasDate cdiscpilot01:Date_24 ;
+    study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> .
+
+cdiscpilot01:AssumeBodyPositionSupine_3
+    a custom:AssumeBodyPositionSupine ;
+    skos:prefLabel "assume supine position"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode custom:AssumeBodyPositionSupine ;
+    study:hasDate cdiscpilot01:Date_29 ;
+    study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> .
+
+cdiscpilot01:AssumeBodyPositionSupine_4
+    a custom:AssumeBodyPositionSupine ;
+    skos:prefLabel "assume supine position"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode custom:AssumeBodyPositionSupine ;
+    study:hasDate cdiscpilot01:Date_35 ;
+    study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> .
+
+cdiscpilot01:BloodPressureOutcome_1
+    a study:BloodPressureOutcome ;
+    skos:prefLabel "56 mmHg"^^xsd:string ;
+    code:hasUnit code:Unit_3 ;
+    code:hasValue "56"^^xsd:string .
+
+cdiscpilot01:BloodPressureOutcome_2
+    a study:BloodPressureOutcome ;
+    skos:prefLabel "57 mmHg"^^xsd:string ;
+    code:hasUnit code:Unit_3 ;
+    code:hasValue "57"^^xsd:string .
+
+cdiscpilot01:BloodPressureOutcome_3
+    a study:BloodPressureOutcome ;
+    skos:prefLabel "63 mmHg"^^xsd:string ;
+    code:hasUnit code:Unit_3 ;
+    code:hasValue "63"^^xsd:string .
+
+cdiscpilot01:BloodPressureOutcome_4
+    a study:BloodPressureOutcome ;
+    skos:prefLabel "64 mmHg"^^xsd:string ;
+    code:hasUnit code:Unit_3 ;
+    code:hasValue "64"^^xsd:string .
+
+cdiscpilot01:BloodPressureOutcome_5
+    a study:BloodPressureOutcome ;
+    skos:prefLabel "83 mmHg"^^xsd:string ;
+    code:hasUnit code:Unit_3 ;
+    code:hasValue "83"^^xsd:string .
+
+cdiscpilot01:BloodPressureOutcome_6
+    a study:BloodPressureOutcome ;
+    skos:prefLabel "129 mmHg"^^xsd:string ;
+    code:hasUnit code:Unit_3 ;
+    code:hasValue "129"^^xsd:string .
+
+cdiscpilot01:BloodPressureOutcome_7
+    a study:BloodPressureOutcome ;
+    skos:prefLabel "131 mmHg"^^xsd:string ;
+    code:hasUnit code:Unit_3 ;
+    code:hasValue "131"^^xsd:string .
+
+cdiscpilot01:BloodPressureOutcome_8
+    a study:BloodPressureOutcome ;
+    skos:prefLabel "147 mmHg"^^xsd:string ;
+    code:hasUnit code:Unit_3 ;
+    code:hasValue "147"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25206_1>
+    a cd01p:VisitScreening1Temperature, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
+    skos:prefLabel "P1 Screening 1 Temperature 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C12421> ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:groupID "GRPID1"^^xsd:string ;
+    study:hasCategory cd01p:Category_1 ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasSubcategory cd01p:Subcategory_1 ;
+    study:outcome cdiscpilot01:TemperatureOutcome_1 ;
+    study:reasonNotDone "not applicable"^^xsd:string ;
+    study:seq "128"^^xsd:int ;
+    study:sponsordefinedID "3000"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25208_1>
+    a cd01p:VisitScreening1Weight, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
+    skos:prefLabel "P1 Screening 1 Weight 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:groupID "GRPID1"^^xsd:string ;
+    study:hasCategory cd01p:Category_1 ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasSubcategory cd01p:Subcategory_1 ;
+    study:outcome cdiscpilot01:WeightOutcome_1 ;
+    study:reasonNotDone "not applicable"^^xsd:string ;
+    study:seq "142"^^xsd:int ;
+    study:sponsordefinedID "5000"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_1>
+    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
+    skos:prefLabel "P1 Screening 1 Systolic Blood Pressure 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:groupID "GRPID1"^^xsd:string ;
+    study:hasCategory cd01p:Category_1 ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+    study:hasSubcategory cd01p:Subcategory_1 ;
+    study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
+    study:outcome cdiscpilot01:BloodPressureOutcome_7 ;
+    study:reasonNotDone "not applicable"^^xsd:string ;
+    study:seq "86"^^xsd:int ;
+    study:sponsordefinedID "124"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_2>
+    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
+    skos:prefLabel "P1 Screening 1 Systolic Blood Pressure 2"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:groupID "GRPID1"^^xsd:string ;
+    study:hasCategory cd01p:Category_1 ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
+    study:hasSubcategory cd01p:Subcategory_1 ;
+    study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25229> ;
+    study:outcome cdiscpilot01:BloodPressureOutcome_6 ;
+    study:reasonNotDone "not applicable"^^xsd:string ;
+    study:seq "87"^^xsd:int ;
+    study:sponsordefinedID "720"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_3>
+    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
+    skos:prefLabel "P1 Screening 1 Systolic Blood Pressure 3"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:groupID "GRPID1"^^xsd:string ;
+    study:hasCategory cd01p:Category_1 ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
+    study:hasSubcategory cd01p:Subcategory_1 ;
+    study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
+    study:outcome cdiscpilot01:BloodPressureOutcome_8 ;
+    study:reasonNotDone "not applicable"^^xsd:string ;
+    study:seq "88"^^xsd:int ;
+    study:sponsordefinedID "236"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_1>
+    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    skos:prefLabel "P1 Screening 1 Diastolic Blood Pressure 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:groupID "GRPID1"^^xsd:string ;
+    study:hasCategory cd01p:Category_1 ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+    study:hasSubcategory cd01p:Subcategory_1 ;
+    study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
+    study:outcome cdiscpilot01:BloodPressureOutcome_4 ;
+    study:reasonNotDone "not applicable"^^xsd:string ;
+    study:seq "1"^^xsd:int ;
+    study:sponsordefinedID "123"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_2>
+    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    skos:prefLabel "P1 Screening 1 Diastolic Blood Pressure 2"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:groupID "GRPID1"^^xsd:string ;
+    study:hasCategory cd01p:Category_1 ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
+    study:hasSubcategory cd01p:Subcategory_1 ;
+    study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25229> ;
+    study:outcome cdiscpilot01:BloodPressureOutcome_5 ;
+    study:reasonNotDone "not applicable"^^xsd:string ;
+    study:seq "2"^^xsd:int ;
+    study:sponsordefinedID "719"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_3>
+    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    skos:prefLabel "P1 Screening 1 Diastolic Blood Pressure 3"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:groupID "GRPID1"^^xsd:string ;
+    study:hasCategory cd01p:Category_1 ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
+    study:hasSubcategory cd01p:Subcategory_1 ;
+    study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
+    study:outcome cdiscpilot01:BloodPressureOutcome_2 ;
+    study:reasonNotDone "not applicable"^^xsd:string ;
+    study:seq "3"^^xsd:int ;
+    study:sponsordefinedID "235"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_4>
+    a cd01p:VisitBaselineBloodPressure, cd01p:VisitWk2BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    skos:prefLabel "P1 Baseline Diastolic Blood Pressure 4"^^xsd:string, "P1 Week 2 Diastolic Blood Pressure 5"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    study:hasScheduledDate cdiscpilot01:Date_24, cdiscpilot01:Date_29 ;
+    study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+    study:outcome cdiscpilot01:BloodPressureOutcome_1 ;
+    study:seq "13"^^xsd:int, "7"^^xsd:int .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_5>
+    a cd01p:VisitWk24BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    skos:prefLabel "P1 Week 24 Diastolic Blood Pressure 6"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    study:hasScheduledDate cdiscpilot01:Date_35 ;
+    study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+    study:outcome cdiscpilot01:BloodPressureOutcome_3 ;
+    study:seq "37"^^xsd:int .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25347_1>
+    a cd01p:VisitScreening1Height, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
+    skos:prefLabel "P1 Screening 1 Height 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:baselineFlag "Y"^^xsd:string ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:groupID "GRPID1"^^xsd:string ;
+    study:hasCategory cd01p:Category_1 ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasSubcategory cd01p:Subcategory_1 ;
+    study:outcome cdiscpilot01:HeightOutcome_1 ;
+    study:reasonNotDone "not applicable"^^xsd:string ;
+    study:seq "43"^^xsd:int ;
+    study:sponsordefinedID "1000"^^xsd:string .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_1>
+    a cd01p:VisitScreening1Pulse, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
+    skos:prefLabel "P1 Screening 1 Pulse Rate 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+    study:outcome cdiscpilot01:PulseOutcome_1 ;
+    study:seq "44"^^xsd:int .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_2>
+    a cd01p:VisitScreening1Pulse, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
+    skos:prefLabel "P1 Screening 1 Pulse Rate 2"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
+    study:outcome cdiscpilot01:PulseOutcome_2 ;
+    study:seq "45"^^xsd:int .
+
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_3>
+    a cd01p:VisitScreening1Pulse, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
+    skos:prefLabel "P1 Screening 1 Pulse Rate 3"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+    study:derivedFlag "N"^^xsd:string ;
+    study:hasCode <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
+    study:hasScheduledDate cdiscpilot01:Date_23 ;
+    study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
+    study:outcome cdiscpilot01:PulseOutcome_3 ;
+    study:seq "46"^^xsd:int .
 
 cdiscpilot01:Date_1
     a study:Birthdate ;
@@ -338,8 +658,9 @@ cdiscpilot01:DemographicDataCollection_6
     study:sex <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C16576> .
 
 cdiscpilot01:DrugAdministration_1
-    a study:FixedDoseDrugAdministration ;
+    a cdiscpilot01:VisitBaseline_1, custom:VisitBaseline, study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:administeredProduct custom:PlaceboProduct_1 ;
     study:hasActivityInterval cdiscpilot01:FixedDoseInterval_1 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
@@ -347,8 +668,9 @@ cdiscpilot01:DrugAdministration_1
     study:outcome study:DrugAdministrationComplete .
 
 cdiscpilot01:DrugAdministration_2
-    a study:FixedDoseDrugAdministration ;
+    a cdiscpilot01:VisitWk2_1, custom:VisitWk2, study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:administeredProduct custom:PlaceboProduct_1 ;
     study:hasActivityInterval cdiscpilot01:FixedDoseInterval_2 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
@@ -356,8 +678,9 @@ cdiscpilot01:DrugAdministration_2
     study:outcome study:DrugAdministrationComplete .
 
 cdiscpilot01:DrugAdministration_3
-    a study:FixedDoseDrugAdministration ;
+    a cdiscpilot01:VisitWk24_1, custom:VisitWk24, study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:administeredProduct custom:PlaceboProduct_1 ;
     study:hasActivityInterval cdiscpilot01:FixedDoseInterval_3 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
@@ -365,8 +688,9 @@ cdiscpilot01:DrugAdministration_3
     study:outcome study:DrugAdministrationComplete .
 
 cdiscpilot01:DrugAdministration_4
-    a study:FixedDoseDrugAdministration ;
+    a cdiscpilot01:VisitBaseline_2, custom:VisitBaseline, study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:administeredProduct custom:PlaceboProduct_1 ;
     study:hasActivityInterval cdiscpilot01:FixedDoseInterval_4 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
@@ -374,8 +698,9 @@ cdiscpilot01:DrugAdministration_4
     study:outcome study:DrugAdministrationComplete .
 
 cdiscpilot01:DrugAdministration_5
-    a study:FixedDoseDrugAdministration ;
+    a cdiscpilot01:VisitWk2_2, custom:VisitWk2, study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:administeredProduct custom:PlaceboProduct_1 ;
     study:hasActivityInterval cdiscpilot01:FixedDoseInterval_5 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
@@ -383,8 +708,9 @@ cdiscpilot01:DrugAdministration_5
     study:outcome study:DrugAdministrationComplete .
 
 cdiscpilot01:DrugAdministration_6
-    a study:FixedDoseDrugAdministration ;
+    a cdiscpilot01:VisitBaseline_3, custom:VisitBaseline, study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:administeredProduct custom:Product_1 ;
     study:hasActivityInterval cdiscpilot01:FixedDoseInterval_6 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
@@ -392,8 +718,9 @@ cdiscpilot01:DrugAdministration_6
     study:outcome study:DrugAdministrationComplete .
 
 cdiscpilot01:DrugAdministration_7
-    a study:FixedDoseDrugAdministration ;
+    a cdiscpilot01:VisitWk2_3, custom:VisitWk2, study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:administeredProduct custom:Product_2 ;
     study:hasActivityInterval cdiscpilot01:FixedDoseInterval_7 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
@@ -401,8 +728,9 @@ cdiscpilot01:DrugAdministration_7
     study:outcome study:DrugAdministrationComplete .
 
 cdiscpilot01:DrugAdministration_8
-    a study:FixedDoseDrugAdministration ;
+    a cdiscpilot01:VisitWk24_3, custom:VisitWk24, study:FixedDoseDrugAdministration ;
     skos:prefLabel "Drug administration"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:administeredProduct custom:Product_1 ;
     study:hasActivityInterval cdiscpilot01:FixedDoseInterval_8 ;
     study:hasDosageFrequency <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473> ;
@@ -456,6 +784,12 @@ cdiscpilot01:FixedDoseInterval_8
     skos:prefLabel "Fixed dose interval 8"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_26 ;
     time:hasEnd cdiscpilot01:Date_27 .
+
+cdiscpilot01:HeightOutcome_1
+    a study:HeightOutcome ;
+    skos:prefLabel "58.0 IN"^^xsd:string ;
+    code:hasUnit code:Unit_2 ;
+    code:hasValue "58.0"^^xsd:string .
 
 cdiscpilot01:InformedConsentAdult_1
     a code:InformedConsentAdult ;
@@ -582,6 +916,15 @@ cdiscpilot01:Lifespan_6
     rdfs:label "Lifespan Interval 6"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_1 .
 
+cdiscpilot01:NA
+    a code:NA ;
+    skos:prefLabel "P1 Screening 1 Rule NA"^^xsd:string ;
+    code:hasPrerequisite <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode code:NA, custom:NA ;
+    study:hasDate cdiscpilot01:Date_23 ;
+    study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#> .
+
 cdiscpilot01:Person_1
     a study:EnrolledSubject ;
     skos:prefLabel "Person 1"^^xsd:string ;
@@ -593,7 +936,7 @@ cdiscpilot01:Person_1
     study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_1 ;
     study:hasSubjectID cdiscpilot01:SubjectIdentifier_1 ;
     study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_1 ;
-    study:participatesIn cdiscpilot01:DemographicDataCollection_1, cdiscpilot01:InformedConsentAdult_1, cdiscpilot01:PopFlagCmpltr16Wk_1, cdiscpilot01:PopFlagCmpltr24Wk_1, cdiscpilot01:PopFlagCmpltr8Wk_1, cdiscpilot01:PopFlagEff_1, cdiscpilot01:PopFlagItt_1, cdiscpilot01:PopFlagSaf_1, cdiscpilot01:ProductAdministration_1, cdiscpilot01:RandomizationBAL3_1 .
+    study:participatesIn cdiscpilot01:DemographicDataCollection_1, cdiscpilot01:InformedConsentAdult_1, cdiscpilot01:PopFlagCmpltr16Wk_1, cdiscpilot01:PopFlagCmpltr24Wk_1, cdiscpilot01:PopFlagCmpltr8Wk_1, cdiscpilot01:PopFlagEff_1, cdiscpilot01:PopFlagItt_1, cdiscpilot01:PopFlagSaf_1, cdiscpilot01:ProductAdministration_1, cdiscpilot01:RandomizationBAL3_1, cdiscpilot01:VisitBaseline_1, cdiscpilot01:VisitScreening1_1, cdiscpilot01:VisitWk24_1, cdiscpilot01:VisitWk2_1 .
 
 cdiscpilot01:Person_2
     a study:EnrolledSubject ;
@@ -605,7 +948,7 @@ cdiscpilot01:Person_2
     study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_2 ;
     study:hasSubjectID cdiscpilot01:SubjectIdentifier_2 ;
     study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_2 ;
-    study:participatesIn cdiscpilot01:DemographicDataCollection_2, cdiscpilot01:InformedConsentAdult_2, cdiscpilot01:PopFlagEff_2, cdiscpilot01:PopFlagItt_2, cdiscpilot01:PopFlagSaf_2, cdiscpilot01:ProductAdministration_2, cdiscpilot01:RandomizationBAL3_2 .
+    study:participatesIn cdiscpilot01:DemographicDataCollection_2, cdiscpilot01:InformedConsentAdult_2, cdiscpilot01:ProductAdministration_2, cdiscpilot01:RandomizationBAL3_2 .
 
 cdiscpilot01:Person_3
     a study:EnrolledSubject ;
@@ -617,7 +960,7 @@ cdiscpilot01:Person_3
     study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_3 ;
     study:hasSubjectID cdiscpilot01:SubjectIdentifier_3 ;
     study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_3 ;
-    study:participatesIn cdiscpilot01:DemographicDataCollection_3, cdiscpilot01:InformedConsentAdult_3, cdiscpilot01:PopFlagCmpltr16Wk_3, cdiscpilot01:PopFlagCmpltr24Wk_3, cdiscpilot01:PopFlagCmpltr8Wk_3, cdiscpilot01:PopFlagEff_3, cdiscpilot01:PopFlagItt_3, cdiscpilot01:PopFlagSaf_3, cdiscpilot01:ProductAdministration_3, cdiscpilot01:RandomizationBAL3_3 .
+    study:participatesIn cdiscpilot01:DemographicDataCollection_3, cdiscpilot01:InformedConsentAdult_3, cdiscpilot01:ProductAdministration_3, cdiscpilot01:RandomizationBAL3_3 .
 
 cdiscpilot01:Person_4
     a study:EnrolledSubject ;
@@ -629,7 +972,7 @@ cdiscpilot01:Person_4
     study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_4 ;
     study:hasSubjectID cdiscpilot01:SubjectIdentifier_4 ;
     study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_4 ;
-    study:participatesIn cdiscpilot01:DemographicDataCollection_4, cdiscpilot01:InformedConsentAdult_4, cdiscpilot01:PopFlagEff_4, cdiscpilot01:PopFlagItt_4, cdiscpilot01:PopFlagSaf_4, cdiscpilot01:ProductAdministration_4, cdiscpilot01:RandomizationBAL3_4 .
+    study:participatesIn cdiscpilot01:DemographicDataCollection_4, cdiscpilot01:InformedConsentAdult_4, cdiscpilot01:ProductAdministration_4, cdiscpilot01:RandomizationBAL3_4 .
 
 cdiscpilot01:Person_5
     a study:EnrolledSubject ;
@@ -641,7 +984,7 @@ cdiscpilot01:Person_5
     study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_5 ;
     study:hasSubjectID cdiscpilot01:SubjectIdentifier_5 ;
     study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_5 ;
-    study:participatesIn cdiscpilot01:DemographicDataCollection_5, cdiscpilot01:InformedConsentAdult_5, cdiscpilot01:PopFlagCmpltr16Wk_5, cdiscpilot01:PopFlagCmpltr24Wk_5, cdiscpilot01:PopFlagCmpltr8Wk_5, cdiscpilot01:PopFlagEff_5, cdiscpilot01:PopFlagItt_5, cdiscpilot01:PopFlagSaf_5, cdiscpilot01:ProductAdministration_5, cdiscpilot01:RandomizationBAL3_5 .
+    study:participatesIn cdiscpilot01:DemographicDataCollection_5, cdiscpilot01:InformedConsentAdult_5, cdiscpilot01:ProductAdministration_5, cdiscpilot01:RandomizationBAL3_5 .
 
 cdiscpilot01:Person_6
     a study:EnrolledSubject ;
@@ -653,23 +996,9 @@ cdiscpilot01:Person_6
     study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_6 ;
     study:hasSubjectID cdiscpilot01:SubjectIdentifier_6 ;
     study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_6 ;
-    study:participatesIn cdiscpilot01:DemographicDataCollection_6, cdiscpilot01:InformedConsentAdult_6, cdiscpilot01:PopFlagEff_6, cdiscpilot01:PopFlagItt_6, cdiscpilot01:PopFlagSaf_6, cdiscpilot01:ProductAdministration_6, cdiscpilot01:RandomizationBAL3_6 .
+    study:participatesIn cdiscpilot01:DemographicDataCollection_6, cdiscpilot01:InformedConsentAdult_6, cdiscpilot01:ProductAdministration_6, cdiscpilot01:RandomizationBAL3_6 .
 
 cdiscpilot01:PopFlagCmpltr16Wk_1
-    a custom:PopFlagCmpltr16Wk ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagCmpltr16Wk ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagCmpltr16Wk_3
-    a custom:PopFlagCmpltr16Wk ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagCmpltr16Wk ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagCmpltr16Wk_5
     a custom:PopFlagCmpltr16Wk ;
     study:activityStatus code:ActivityStatus_1 ;
     study:hasCode custom:PopFlagCmpltr16Wk ;
@@ -683,35 +1012,7 @@ cdiscpilot01:PopFlagCmpltr24Wk_1
     study:hasPerformer cd01p:Sponsor_1 ;
     study:outcome "true"^^xsd:string .
 
-cdiscpilot01:PopFlagCmpltr24Wk_3
-    a custom:PopFlagCmpltr24Wk ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagCmpltr24Wk ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagCmpltr24Wk_5
-    a custom:PopFlagCmpltr24Wk ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagCmpltr24Wk ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
 cdiscpilot01:PopFlagCmpltr8Wk_1
-    a custom:PopFlagCmpltr8Wk ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagCmpltr8Wk ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagCmpltr8Wk_3
-    a custom:PopFlagCmpltr8Wk ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagCmpltr8Wk ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagCmpltr8Wk_5
     a custom:PopFlagCmpltr8Wk ;
     study:activityStatus code:ActivityStatus_1 ;
     study:hasCode custom:PopFlagCmpltr8Wk ;
@@ -725,41 +1026,6 @@ cdiscpilot01:PopFlagEff_1
     study:hasPerformer cd01p:Sponsor_1 ;
     study:outcome "true"^^xsd:string .
 
-cdiscpilot01:PopFlagEff_2
-    a custom:PopFlagEff ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagEff ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagEff_3
-    a custom:PopFlagEff ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagEff ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagEff_4
-    a custom:PopFlagEff ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagEff ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagEff_5
-    a custom:PopFlagEff ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagEff ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagEff_6
-    a custom:PopFlagEff ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagEff ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
 cdiscpilot01:PopFlagItt_1
     a custom:PopFlagItt ;
     study:activityStatus code:ActivityStatus_1 ;
@@ -767,77 +1033,7 @@ cdiscpilot01:PopFlagItt_1
     study:hasPerformer cd01p:Sponsor_1 ;
     study:outcome "true"^^xsd:string .
 
-cdiscpilot01:PopFlagItt_2
-    a custom:PopFlagItt ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagItt ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagItt_3
-    a custom:PopFlagItt ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagItt ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagItt_4
-    a custom:PopFlagItt ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagItt ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagItt_5
-    a custom:PopFlagItt ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagItt ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagItt_6
-    a custom:PopFlagItt ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagItt ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
 cdiscpilot01:PopFlagSaf_1
-    a custom:PopFlagSaf ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagSaf ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagSaf_2
-    a custom:PopFlagSaf ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagSaf ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagSaf_3
-    a custom:PopFlagSaf ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagSaf ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagSaf_4
-    a custom:PopFlagSaf ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagSaf ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagSaf_5
-    a custom:PopFlagSaf ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode custom:PopFlagSaf ;
-    study:hasPerformer cd01p:Sponsor_1 ;
-    study:outcome "true"^^xsd:string .
-
-cdiscpilot01:PopFlagSaf_6
     a custom:PopFlagSaf ;
     study:activityStatus code:ActivityStatus_1 ;
     study:hasCode custom:PopFlagSaf ;
@@ -871,20 +1067,26 @@ cdiscpilot01:ProductAdministrationInterval_6
 cdiscpilot01:ProductAdministration_1
     a study:ProductAdministration ;
     skos:prefLabel "Product administration 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:hasActivityInterval cdiscpilot01:ProductAdministrationInterval_1 ;
-    study:hasCode study:ProductAdministration .
+    study:hasCode study:ProductAdministration ;
+    study:hasSubActivity cdiscpilot01:DrugAdministration_1, cdiscpilot01:DrugAdministration_2, cdiscpilot01:DrugAdministration_3 .
 
 cdiscpilot01:ProductAdministration_2
     a study:ProductAdministration ;
     skos:prefLabel "Product administration 2"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:hasActivityInterval cdiscpilot01:ProductAdministrationInterval_2 ;
-    study:hasCode study:ProductAdministration .
+    study:hasCode study:ProductAdministration ;
+    study:hasSubActivity cdiscpilot01:DrugAdministration_4, cdiscpilot01:DrugAdministration_5 .
 
 cdiscpilot01:ProductAdministration_3
     a study:ProductAdministration ;
     skos:prefLabel "Product administration 3"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
     study:hasActivityInterval cdiscpilot01:ProductAdministrationInterval_3 ;
-    study:hasCode study:ProductAdministration .
+    study:hasCode study:ProductAdministration ;
+    study:hasSubActivity cdiscpilot01:DrugAdministration_6, cdiscpilot01:DrugAdministration_7, cdiscpilot01:DrugAdministration_8 .
 
 cdiscpilot01:ProductAdministration_4
     a study:ProductAdministration ;
@@ -903,6 +1105,24 @@ cdiscpilot01:ProductAdministration_6
     skos:prefLabel "Product administration 6"^^xsd:string ;
     study:hasActivityInterval cdiscpilot01:ProductAdministrationInterval_6 ;
     study:hasCode study:ProductAdministration .
+
+cdiscpilot01:PulseOutcome_1
+    a study:PulseOutcome ;
+    skos:prefLabel "57 BEATS/MIN"^^xsd:string ;
+    code:hasUnit code:Unit_4 ;
+    code:hasValue "57"^^xsd:string .
+
+cdiscpilot01:PulseOutcome_2
+    a study:PulseOutcome ;
+    skos:prefLabel "62 BEATS/MIN"^^xsd:string ;
+    code:hasUnit code:Unit_4 ;
+    code:hasValue "62"^^xsd:string .
+
+cdiscpilot01:PulseOutcome_3
+    a study:PulseOutcome ;
+    skos:prefLabel "65 BEATS/MIN"^^xsd:string ;
+    code:hasUnit code:Unit_4 ;
+    code:hasValue "65"^^xsd:string .
 
 cdiscpilot01:RandomizationBAL3_1
     a code:RandomizationBAL3 ;
@@ -993,6 +1213,24 @@ cdiscpilot01:Sponsor_1
     a study:Sponsor ;
     rdfs:label "CLINICAL STUDY SPONSOR"^^xsd:string .
 
+cdiscpilot01:StartRuleLying5_1
+    a code:StartRuleLying5 ;
+    skos:prefLabel "P1 Baseline Rule Lying 5 Min"^^xsd:string, "P1 Screening 1 Rule Lying 5 Min"^^xsd:string, "P1 Week 2 Rule Lying 5 Min"^^xsd:string, "P1 Week 24 Rule Lying 5 Min"^^xsd:string ;
+    code:hasPrerequisite <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> ;
+    study:hasCode code:StartRuleLying5 .
+
+cdiscpilot01:StartRuleStanding1_1
+    a code:StartRuleStanding1 ;
+    skos:prefLabel "P1 Screening 1 Rule Standing 1 Min"^^xsd:string ;
+    code:hasPrerequisite <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> ;
+    study:hasCode code:StartRuleStanding1 .
+
+cdiscpilot01:StartRuleStanding3_1
+    a code:StartRuleStanding3 ;
+    skos:prefLabel "P1 Screening 1 Rule Standing 3 Min"^^xsd:string ;
+    code:hasPrerequisite <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> ;
+    study:hasCode code:StartRuleStanding3 .
+
 cdiscpilot01:StudyParticipationInterval_1
     a study:StudyParticipationInterval ;
     rdfs:label "Study Participation Interval 1"^^xsd:string ;
@@ -1053,6 +1291,12 @@ cdiscpilot01:SubjectIdentifier_6
     a study:SubjectIdentifier ;
     skos:prefLabel "1047"^^xsd:string .
 
+cdiscpilot01:TemperatureOutcome_1
+    a study:TemperatureOutcome ;
+    skos:prefLabel "96.9 F"^^xsd:string ;
+    code:hasUnit code:Unit_6 ;
+    code:hasValue "96.9"^^xsd:string .
+
 cdiscpilot01:UniqueSubjectIdentifier_1
     a study:UniqueSubjectIdentifier ;
     skos:prefLabel "01-701-1015" .
@@ -1077,12 +1321,38 @@ cdiscpilot01:UniqueSubjectIdentifier_6
     a study:UniqueSubjectIdentifier ;
     skos:prefLabel "01-701-1047" .
 
+cdiscpilot01:VisitBaseline_1
+    a owl:Class ;
+    rdfs:subClassOf custom:VisitBaseline ;
+    skos:prefLabel "Visit Baseline Person 1"^^xsd:string .
+
+cdiscpilot01:VisitScreening1_1
+    a owl:Class ;
+    rdfs:subClassOf custom:VisitScreening1 ;
+    skos:prefLabel "Visit Screening 1 Person 1"^^xsd:string .
+
+cdiscpilot01:VisitWk24_1
+    a owl:Class ;
+    rdfs:subClassOf custom:VisitWk24 ;
+    skos:prefLabel "Visit Week 24 Person 1"^^xsd:string .
+
+cdiscpilot01:VisitWk2_1
+    a owl:Class ;
+    rdfs:subClassOf custom:VisitWk2 ;
+    skos:prefLabel "Visit Week 2 Person 1"^^xsd:string .
+
+cdiscpilot01:WeightOutcome_1
+    a study:WeightOutcome ;
+    skos:prefLabel "119.0 LB"^^xsd:string ;
+    code:hasUnit code:Unit_8 ;
+    code:hasValue "119.0"^^xsd:string .
+
 cdiscpilot01:sdtm-graph
     dcterms:contributor "Armando Oliva"^^xsd:string, "Tim Williams"^^xsd:string ;
     dcterms:description "Clinical Trials data as an RDF graph."^^xsd:string ;
     dcterms:title "PhUSE Project: Clinical Trials Data as RDF"^^xsd:string ;
     bibo:status "Under Construction/incomplete: Blood pressure, Pulse, Weight.  Only 1 patient and a subset of obs. from that patient."^^xsd:string ;
-    pav:createdOn "2017-11-02T13:33:10-04:00"^^xsd:dateTime ;
+    pav:createdOn "2017-11-06T16:05:25-05:00"^^xsd:dateTime ;
     pav:createdWith "R Version 3.4.1 Platform:x86_64-w64-mingw32 with scripts from project: Clinical Trials Data as RDF"^^xsd:string ;
     pav:version "0.0.1"^^xsd:string ;
     rdfs:label "The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data.  Only select observations from source XPT are present, including a subset of VS results."^^xsd:string ;

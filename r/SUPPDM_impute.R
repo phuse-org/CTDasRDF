@@ -11,22 +11,25 @@
 # TODO: move code at end to DM_frag.R?? OR delete if not used.
 #______________________________________________________________________________
 
+
+suppdmSubset <-c(1:6)  # only first patient for dev testing
+suppdm <- suppdm[suppdmSubset, ]
+
 # Add personID for merge with DM dataset
 suppdm <- addPersonId(suppdm)
-
 
 # Data Coding ----
 #   Used in formation of URIs where the original data can/should not be used
 qnamCode <- function(x) {
-    switch(as.character(x),
-        'COMPLT8'  = 'Cmpltr8Wk',
-        'COMPLT16' = 'Cmpltr16Wk',
-        'COMPLT24' = 'Cmpltr24Wk',
-        'EFFICACY' = 'Eff',
-        'SAFETY'   = 'Saf',
-        'ITT'      = 'Itt',
-        as.character(x)
-    )
+  switch(as.character(x),
+    'COMPLT8'  = 'Cmpltr8Wk',
+    'COMPLT16' = 'Cmpltr16Wk',
+    'COMPLT24' = 'Cmpltr24Wk',
+    'EFFICACY' = 'Eff',
+    'SAFETY'   = 'Saf',
+    'ITT'      = 'Itt',
+    as.character(x)
+  )
 }
 
 # Class codes are camel case in custom: , in contrast to their corresponding

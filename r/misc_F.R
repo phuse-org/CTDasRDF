@@ -44,7 +44,7 @@ readXPT<-function(domain)
 #' @examples
 addPersonId <- function(domainName)
 {
-  withIndex <- merge(x = personId, y = domainName, by="usubjid", all.x = TRUE)
+  withIndex <- merge(x = personId, y = domainName, by="usubjid", all.y = TRUE)
   return(withIndex)
 }
 

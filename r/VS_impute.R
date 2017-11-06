@@ -34,7 +34,7 @@ vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37)
 # vs <- vs[c(1:3, 86:88, 43, 44:46, 128, 142, 7), ]
 vs <- vs[vsSubset, ]
 #DEL vs <- vs[c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37), ]
-  # vs <- addPersonId(vs)  # add back in when > 1 person!
+vs <- addPersonId(vs)  # Add personNum for merge across domains, triple creation
 
 # personNum
 # TODO: Add a later count/merge with DM.
@@ -42,9 +42,6 @@ vs <- vs[vsSubset, ]
 # vs[vs$usubjid  %in% c("01-701-1015"),  "personNum"]  <- 1
 #DEL vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142,
 #DEL   7,13,37),  "personNum"]  <- 1
-#HARDCODING
-vs[vs$vsseq %in% vsSubset,  "personNum"]  <- 1
-
 
 # More imputations for the first 3 records to match data created by AO : 2016-01-19
 #   These are new COLUMNS and values not present in original source!

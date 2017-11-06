@@ -154,27 +154,32 @@ vs$vstestOutcomeType_Label <- recode(vs$vstest,
 # Visit ----
 #  Manual recode from known visit values to fragment representation
 #   data-dependent manual recoding!
-vs$visit_Frag <- sapply(vs$visit,function(x) {
-    switch(as.character(x),
-      "AMBUL ECG PLACEMENT" = "VisitAmbulECGPlacement",
-      "AMBUL ECG REMOVAL"   = "VisitAmbulECGRemoval",
-      "BASELINE"            = "VisitBaseline",
-      "RETRIEVAL"           = "VisitRetrieval",
-      "SCREENING 1"         = "VisitScreening1",
-      "SCREENING 2"         = "VisitScreening2",
-      "UNSCHEDULED 3.1"     = "VisitUnsched3-1",
-      "WEEK 2"              = "VisitWk2",
-      "WEEK 4"              = "VisitWk4",
-      "WEEK 6"              = "VisitWk6",
-      "WEEK 8"              = "VisitWk8",
-      "WEEK 12"             = "VisitWk12",
-      "WEEK 16"             = "VisitW168",
-      "WEEK 20"             = "VisitWk20",
-      "WEEK 24"             = "VisitWk24",
-      "WEEK 26"             = "VisitW26",
-      as.character(x) ) } )
-vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
+# TODO: Change to call: createVisitFrag() function in createFrag_F
+#   
 
+vs<-createFragVisit(vs)  # this replaces the following TW# code 
+
+#TW vs$visit_Frag <- sapply(vs$visit,function(x) {
+#TW     switch(as.character(x),
+#TW       "AMBUL ECG PLACEMENT" = "VisitAmbulECGPlacement",
+#TW       "AMBUL ECG REMOVAL"   = "VisitAmbulECGRemoval",
+#TW       "BASELINE"            = "VisitBaseline",
+#TW       "RETRIEVAL"           = "VisitRetrieval",
+#TW       "SCREENING 1"         = "VisitScreening1",
+#TW       "SCREENING 2"         = "VisitScreening2",
+#TW       "UNSCHEDULED 3.1"     = "VisitUnsched3-1",
+#TW       "WEEK 2"              = "VisitWk2",
+#TW       "WEEK 4"              = "VisitWk4",
+#TW       "WEEK 6"              = "VisitWk6",
+#TW       "WEEK 8"              = "VisitWk8",
+#TW       "WEEK 12"             = "VisitWk12",
+#TW       "WEEK 16"             = "VisitW168",
+#TW       "WEEK 20"             = "VisitWk20",
+#TW       "WEEK 24"             = "VisitWk24",
+#TW       "WEEK 26"             = "VisitW26",
+#TW       as.character(x) ) } )
+#TW vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
+#TW 
 # visit ==> SCREENING 1 becomes Screening 1
 vs$startRule_Label <-  paste0("P", vs$personNum, " ", 
   gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$visit, perl=TRUE),

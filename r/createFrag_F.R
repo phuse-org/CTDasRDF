@@ -113,6 +113,28 @@ addDateFrag<-function(domainName, colName)
   return(withFrag)
 }
 
+#------------------------------------------------------------------------------
+# Add personNum to a domain to facilitate merging and triple creation
+#  Personnum is created in DM_impute.R. It is used to create the Person_(n) 
+#  triples across all domains, so the identifier must be merged into all domains.
+#' Title
+#'
+#' @param domainName 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+addPersonNum<-function(domainName)
+{
+  withPersonNum <- merge(x = dateDict, y = domainName, by.x="dateKey", by.y=colName, all.y = TRUE)
+  # Rename the merged-in key value to the original column name to preserve original data
+  names(withPersonNum)[names(withPersonNum)=="dateKey"] <-  colName
+  # Rename dateFrag value to coded value using colname +  _Frag suffix
+  names(withPersonNum)[names(withPersonNum)=="dateFrag"] <- paste0(colName, "_Frag")
+  # withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")]  #DEL - no longer needed
+  return(withPersonNum)   # Return the domain with PersonNum now as a column.
+}
 #  createFragOneDomain() ----
 #  Create URI fragments for coded values in a single or mutliple column. 
 #    - If more than one column, combine values into a single column to process
@@ -281,7 +303,7 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numS
   temp2 <- temp2[,!(names(temp2) %in% c("id", "dataCol_N"))]
   
   # Merge the fragment value back into the original data
-  withFrag <<- merge(domainName, temp2, by = c(byCol, dataCol), all.x=TRUE)
+  withFrag <- merge(domainName, temp2, by = c(byCol, dataCol), all.x=TRUE)
 
 }
 
@@ -358,4 +380,45 @@ createFragWithinCat<-function(domainName, sortCols, fragValsCol)
     # remove temporary vars used for indexing before returning the result
     test<-subset(withFrag, select=-c(id, tempID))
   }
+}
+
+
+#' Title
+#' Creates fragments for visits: Both visit_frag, visitPerson_Frag , visitPerson_Label
+#' input dataframe MUST have columns:
+#'  1. visit: "BASELINE", "WEEK 2" etc.
+#'  2. personNum: person number field, created by addPersonId()
+#' @param domainName  - domain dataframe 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'    
+createFragVisit<-function(domainName)
+{
+  temp<<-domainName
+  
+  temp$visit_Frag <- sapply(domainName$visit,function(x) {
+    switch(as.character(x),
+      "AMBUL ECG PLACEMENT" = "VisitAmbulECGPlacement",
+      "AMBUL ECG REMOVAL"   = "VisitAmbulECGRemoval",
+      "BASELINE"            = "VisitBaseline",
+      "RETRIEVAL"           = "VisitRetrieval",
+      "SCREENING 1"         = "VisitScreening1",
+      "SCREENING 2"         = "VisitScreening2",
+      "UNSCHEDULED 3.1"     = "VisitUnsched3-1",
+      "WEEK 2"              = "VisitWk2",
+      "WEEK 4"              = "VisitWk4",
+      "WEEK 6"              = "VisitWk6",
+      "WEEK 8"              = "VisitWk8",
+      "WEEK 12"             = "VisitWk12",
+      "WEEK 16"             = "VisitW168",
+      "WEEK 20"             = "VisitWk20",
+      "WEEK 24"             = "VisitWk24",
+      "WEEK 26"             = "VisitW26",
+      as.character(x) ) } )
+  temp$visitPerson_Frag <- paste0(temp$visit_Frag,"_",temp$personNum)
+  temp$visitPerson_Label <- paste0("Visit ", str_to_title(temp$visit), " Person ", temp$personNum)
+  return(temp)
 }
