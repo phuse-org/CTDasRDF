@@ -5045,7 +5045,7 @@ sdtm:hasActivity
   rdfs:comment ""^^xsd:string ;
   rdfs:domain sdtm:SDTMRecord ;
   rdfs:label "has activity"^^xsd:string ;
-  rdfs:range study:Activity ;
+  rdfs:range study:StudyActivity ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "has activity"^^xsd:string ;
 .

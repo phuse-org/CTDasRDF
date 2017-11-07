@@ -578,11 +578,6 @@ custom:VisitScreening1
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "SCREENING 1"^^xsd:string ;
-  study:hasPSSubactivityGroup cd01p:VisitScreening1BloodPressure ;
-  study:hasPSSubactivityGroup cd01p:VisitScreening1Height ;
-  study:hasPSSubactivityGroup cd01p:VisitScreening1Pulse ;
-  study:hasPSSubactivityGroup cd01p:VisitScreening1Temperature ;
-  study:hasPSSubactivityGroup cd01p:VisitScreening1Weight ;
   study:hasStartRule study:StartRuleInformedConsentStart ;
   study:hasSubActivity cd01p:VisitScreening1BloodPressure ;
   study:hasSubActivity cd01p:VisitScreening1Height ;
