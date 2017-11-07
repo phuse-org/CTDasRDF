@@ -70,7 +70,7 @@ cdiscpilot01:AgeOutcome_6
     code:hasValue "85"^^xsd:int .
 
 cdiscpilot01:AssumeBodyPositionStanding_1
-    a custom:AssumeBodyPositionStanding ;
+    a cdiscpilot01:VisitScreening1_1, custom:AssumeBodyPositionStanding, custom:VisitScreening1 ;
     skos:prefLabel "assume standing position"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:hasCode custom:AssumeBodyPositionStanding ;
@@ -79,7 +79,7 @@ cdiscpilot01:AssumeBodyPositionStanding_1
     study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> .
 
 cdiscpilot01:AssumeBodyPositionSupine_1
-    a custom:AssumeBodyPositionSupine ;
+    a cdiscpilot01:VisitScreening1_1, custom:AssumeBodyPositionSupine, custom:VisitScreening1 ;
     skos:prefLabel "assume supine position"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:hasCode custom:AssumeBodyPositionSupine ;
@@ -87,7 +87,7 @@ cdiscpilot01:AssumeBodyPositionSupine_1
     study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> .
 
 cdiscpilot01:AssumeBodyPositionSupine_2
-    a custom:AssumeBodyPositionSupine ;
+    a cdiscpilot01:VisitBaseline_1, custom:AssumeBodyPositionSupine, custom:VisitBaseline ;
     skos:prefLabel "assume supine position"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:hasCode custom:AssumeBodyPositionSupine ;
@@ -95,7 +95,7 @@ cdiscpilot01:AssumeBodyPositionSupine_2
     study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> .
 
 cdiscpilot01:AssumeBodyPositionSupine_3
-    a custom:AssumeBodyPositionSupine ;
+    a cdiscpilot01:VisitWk2_1, custom:AssumeBodyPositionSupine, custom:VisitWk2 ;
     skos:prefLabel "assume supine position"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:hasCode custom:AssumeBodyPositionSupine ;
@@ -103,7 +103,7 @@ cdiscpilot01:AssumeBodyPositionSupine_3
     study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> .
 
 cdiscpilot01:AssumeBodyPositionSupine_4
-    a custom:AssumeBodyPositionSupine ;
+    a cdiscpilot01:VisitWk24_1, custom:AssumeBodyPositionSupine, custom:VisitWk24 ;
     skos:prefLabel "assume supine position"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:hasCode custom:AssumeBodyPositionSupine ;
@@ -159,7 +159,7 @@ cdiscpilot01:BloodPressureOutcome_8
     code:hasValue "147"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25206_1>
-    a cd01p:VisitScreening1Temperature, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
+    a cd01p:VisitScreening1Temperature, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206> ;
     skos:prefLabel "P1 Screening 1 Temperature 1"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C12421> ;
@@ -176,7 +176,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:sponsordefinedID "3000"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25208_1>
-    a cd01p:VisitScreening1Weight, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
+    a cd01p:VisitScreening1Weight, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208> ;
     skos:prefLabel "P1 Screening 1 Weight 1"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:baselineFlag "Y"^^xsd:string ;
@@ -192,7 +192,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:sponsordefinedID "5000"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_1>
-    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
+    a cd01p:VisitScreening1BloodPressure, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
     skos:prefLabel "P1 Screening 1 Systolic Blood Pressure 1"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
@@ -212,7 +212,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:sponsordefinedID "124"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_2>
-    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
+    a cd01p:VisitScreening1BloodPressure, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
     skos:prefLabel "P1 Screening 1 Systolic Blood Pressure 2"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
@@ -232,7 +232,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:sponsordefinedID "720"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_3>
-    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
+    a cd01p:VisitScreening1BloodPressure, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298> ;
     skos:prefLabel "P1 Screening 1 Systolic Blood Pressure 3"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
@@ -252,7 +252,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:sponsordefinedID "236"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_1>
-    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    a cd01p:VisitScreening1BloodPressure, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
     skos:prefLabel "P1 Screening 1 Diastolic Blood Pressure 1"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
@@ -272,7 +272,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:sponsordefinedID "123"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_2>
-    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    a cd01p:VisitScreening1BloodPressure, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
     skos:prefLabel "P1 Screening 1 Diastolic Blood Pressure 2"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
@@ -292,7 +292,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:sponsordefinedID "719"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_3>
-    a cd01p:VisitScreening1BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    a cd01p:VisitScreening1BloodPressure, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
     skos:prefLabel "P1 Screening 1 Diastolic Blood Pressure 3"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:anatomicLocation <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141> ;
@@ -312,7 +312,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:sponsordefinedID "235"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_4>
-    a cd01p:VisitBaselineBloodPressure, cd01p:VisitWk2BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    a cd01p:VisitBaselineBloodPressure, cd01p:VisitWk2BloodPressure, cdiscpilot01:VisitBaseline_1, cdiscpilot01:VisitWk2_1, custom:VisitBaseline, custom:VisitWk2, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
     skos:prefLabel "P1 Baseline Diastolic Blood Pressure 4"^^xsd:string, "P1 Week 2 Diastolic Blood Pressure 5"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:baselineFlag "Y"^^xsd:string ;
@@ -324,7 +324,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:seq "13"^^xsd:int, "7"^^xsd:int .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_5>
-    a cd01p:VisitWk24BloodPressure, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
+    a cd01p:VisitWk24BloodPressure, cdiscpilot01:VisitWk24_1, custom:VisitWk24, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299> ;
     skos:prefLabel "P1 Week 24 Diastolic Blood Pressure 6"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
@@ -335,7 +335,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:seq "37"^^xsd:int .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25347_1>
-    a cd01p:VisitScreening1Height, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
+    a cd01p:VisitScreening1Height, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347> ;
     skos:prefLabel "P1 Screening 1 Height 1"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:baselineFlag "Y"^^xsd:string ;
@@ -351,7 +351,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:sponsordefinedID "1000"^^xsd:string .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_1>
-    a cd01p:VisitScreening1Pulse, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
+    a cd01p:VisitScreening1Pulse, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
     skos:prefLabel "P1 Screening 1 Pulse Rate 1"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
@@ -363,7 +363,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:seq "44"^^xsd:int .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_2>
-    a cd01p:VisitScreening1Pulse, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
+    a cd01p:VisitScreening1Pulse, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
     skos:prefLabel "P1 Screening 1 Pulse Rate 2"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
@@ -375,7 +375,7 @@ cdiscpilot01:BloodPressureOutcome_8
     study:seq "45"^^xsd:int .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_3>
-    a cd01p:VisitScreening1Pulse, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
+    a cd01p:VisitScreening1Pulse, cdiscpilot01:VisitScreening1_1, custom:VisitScreening1, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676> ;
     skos:prefLabel "P1 Screening 1 Pulse Rate 3"^^xsd:string ;
     study:activityStatus code:ActivityStatus_1 ;
     study:bodyPosition <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
@@ -917,12 +917,12 @@ cdiscpilot01:Lifespan_6
     time:hasBeginning cdiscpilot01:Date_1 .
 
 cdiscpilot01:NA
-    a code:NA ;
+    a cd01p:NA ;
     skos:prefLabel "P1 Screening 1 Rule NA"^^xsd:string ;
-    code:hasPrerequisite <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> ;
     study:activityStatus code:ActivityStatus_1 ;
-    study:hasCode code:NA, custom:NA ;
+    study:hasCode cd01p:NA, custom:NA ;
     study:hasDate cdiscpilot01:Date_23 ;
+    study:hasPrerequisite cdiscpilot01:NA ;
     study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#> .
 
 cdiscpilot01:Person_1
@@ -1214,22 +1214,22 @@ cdiscpilot01:Sponsor_1
     rdfs:label "CLINICAL STUDY SPONSOR"^^xsd:string .
 
 cdiscpilot01:StartRuleLying5_1
-    a code:StartRuleLying5 ;
+    a cd01p:StartRuleLying5 ;
     skos:prefLabel "P1 Baseline Rule Lying 5 Min"^^xsd:string, "P1 Screening 1 Rule Lying 5 Min"^^xsd:string, "P1 Week 2 Rule Lying 5 Min"^^xsd:string, "P1 Week 24 Rule Lying 5 Min"^^xsd:string ;
-    code:hasPrerequisite <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> ;
-    study:hasCode code:StartRuleLying5 .
+    study:hasCode cd01p:StartRuleLying5 ;
+    study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1, cdiscpilot01:AssumeBodyPositionSupine_2, cdiscpilot01:AssumeBodyPositionSupine_3, cdiscpilot01:AssumeBodyPositionSupine_4 .
 
 cdiscpilot01:StartRuleStanding1_1
-    a code:StartRuleStanding1 ;
+    a cd01p:StartRuleStanding1 ;
     skos:prefLabel "P1 Screening 1 Rule Standing 1 Min"^^xsd:string ;
-    code:hasPrerequisite <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> ;
-    study:hasCode code:StartRuleStanding1 .
+    study:hasCode cd01p:StartRuleStanding1 ;
+    study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 .
 
 cdiscpilot01:StartRuleStanding3_1
-    a code:StartRuleStanding3 ;
+    a cd01p:StartRuleStanding3 ;
     skos:prefLabel "P1 Screening 1 Rule Standing 3 Min"^^xsd:string ;
-    code:hasPrerequisite <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> ;
-    study:hasCode code:StartRuleStanding3 .
+    study:hasCode cd01p:StartRuleStanding3 ;
+    study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_1 .
 
 cdiscpilot01:StudyParticipationInterval_1
     a study:StudyParticipationInterval ;
@@ -1324,22 +1324,34 @@ cdiscpilot01:UniqueSubjectIdentifier_6
 cdiscpilot01:VisitBaseline_1
     a owl:Class ;
     rdfs:subClassOf custom:VisitBaseline ;
-    skos:prefLabel "Visit Baseline Person 1"^^xsd:string .
+    skos:prefLabel "Visit Baseline Person 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode custom:VisitBaseline ;
+    study:hasDate cdiscpilot01:Date_24 .
 
 cdiscpilot01:VisitScreening1_1
     a owl:Class ;
     rdfs:subClassOf custom:VisitScreening1 ;
-    skos:prefLabel "Visit Screening 1 Person 1"^^xsd:string .
+    skos:prefLabel "Visit Screening 1 Person 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode custom:VisitScreening1 ;
+    study:hasDate cdiscpilot01:Date_23 .
 
 cdiscpilot01:VisitWk24_1
     a owl:Class ;
     rdfs:subClassOf custom:VisitWk24 ;
-    skos:prefLabel "Visit Week 24 Person 1"^^xsd:string .
+    skos:prefLabel "Visit Week 24 Person 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode custom:VisitWk24 ;
+    study:hasDate cdiscpilot01:Date_35 .
 
 cdiscpilot01:VisitWk2_1
     a owl:Class ;
     rdfs:subClassOf custom:VisitWk2 ;
-    skos:prefLabel "Visit Week 2 Person 1"^^xsd:string .
+    skos:prefLabel "Visit Week 2 Person 1"^^xsd:string ;
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasCode custom:VisitWk2 ;
+    study:hasDate cdiscpilot01:Date_29 .
 
 cdiscpilot01:WeightOutcome_1
     a study:WeightOutcome ;
@@ -1352,7 +1364,7 @@ cdiscpilot01:sdtm-graph
     dcterms:description "Clinical Trials data as an RDF graph."^^xsd:string ;
     dcterms:title "PhUSE Project: Clinical Trials Data as RDF"^^xsd:string ;
     bibo:status "Under Construction/incomplete: Blood pressure, Pulse, Weight.  Only 1 patient and a subset of obs. from that patient."^^xsd:string ;
-    pav:createdOn "2017-11-06T16:05:25-05:00"^^xsd:dateTime ;
+    pav:createdOn "2017-11-07T11:13:05-05:00"^^xsd:dateTime ;
     pav:createdWith "R Version 3.4.1 Platform:x86_64-w64-mingw32 with scripts from project: Clinical Trials Data as RDF"^^xsd:string ;
     pav:version "0.0.1"^^xsd:string ;
     rdfs:label "The CDISCPILOT01 namespace is populated from CDISCPILOT01-R.TTL, created by conversion of CDISCPILOT01 .XPT files using R. Triples will NOT be an exact match with CDISCPILOT01.TTL created from Protege/Topbraid instance data.  Only select observations from source XPT are present, including a subset of VS results."^^xsd:string ;
