@@ -174,6 +174,12 @@ def genItemGroupDef(QueryExecution datasetMetadataQE, QueryExecution variableMet
   				'def:CommentOID': ""
   				) {
   					'Description'({'TranslatedText'('xml:lang':"en",  solVarItem.dataElementLabel )})
+                    if (_OriginDescription!=""){
+						'def:Origin'(Type:_OriginType, {'Description'({'TranslatedText'('xml:lang':"en",  _OriginDescription )})})
+					}
+					if (_ValueListOID!=""){
+						'def:ValueListRef'('ValueListOID':_ValueListOID)
+					}
   				}
             }
 
