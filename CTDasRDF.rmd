@@ -37,20 +37,28 @@ As a result, data files created during conversion will not be an exact match wit
     - Data file containing clinical study results for a subset of patients. Instance data is manually added to the .ttl file as needed for testing and development. The file **cdiscpilot01-R.ttl** is created by converting XPT source data. THe two files are comared to ensure the ontology instances match those created by the data conversion process in R. As of July 2017, cdiscpilot01-R.ttl is the only file created by the R Script conversio n of the SDTM domains. 
 
 * **cdiscpilot01-protocol.ttl**
-    - Protocol information for the pilot study. Includes arm resources and custom analyses. Protocol-specific items are added to the cdiscpilot01-protocol.ttl file which is customized for each study.  
-Later development may include the addition of classes like "Protocol-Specified Activity", "Planned Activity", "Scheduled Activity", "Performed Activity", etc.. They are not currently needed for this project and can be derived as owl:Restriction(s) based on the properties of the Activity. For example, a Protocol Specified Activity is any Defined Activity that is associated with a Start Rule; A Planned Activity, is an instance of a Protocol Specified Activity that is associated with a Subject, ....etc. [Note: These items are also of importance to the PhUSE "Protocol as RDF" project.
+    - Protocol information for the pilot study. Includes arm resources and custom analyses. Protocol-specific items are added to the cdiscpilot01-protocol.ttl file which is customized for each study. Also used in DEFINE XML generation.
+Later development may include the addition of classes like "Protocol-Specified Activity", "Planned Activity", "Scheduled Activity", "Performed Activity", etc.. They are not currently needed for this project and can be derived as owl:Restriction(s) based on the properties of the Activity. For example, a Protocol Specified Activity is any Defined Activity that is associated with a Start Rule; A Planned Activity, is an instance of a Protocol Specified Activity that is associated with a Subject, ....etc. [Note: These items are also of importance to the PhUSE "Protocol as RDF" project. May include information like the location of information on the CRF.
 
 * **code.ttl**
     - All standard terms needed for pilot study
 
 * **sdtm.ttl**
-    - Mini study ontology in RDF/OWL. Used to generate the SDTM domains in the prototype (currently DM DMSUPP and VS data)
+    - Mini study ontology in RDF/OWL. Variable Name, Label, Role. Used to generate: 1.  SDTM domains in the prototype 2. DEFINE XML . 
+
+* **sdtmig-3-1-3.ttl**
+    - SDTM IG version 3.1.3.  Used to generate: 1.  SDTM domains in the prototype 2. DEFINE XML 
+
+* **sdtm-cdisc01.ttl**
+    - Links cdiscpilot01.ttl with study.ttl for round-tripping the data back to the SDTM standard.
+    
+* **sdtm-cd01p.ttl**
+    - Specific to implmentation of a specific protocol. Used where  SDTM provides flexibiity in implementation. Example: Comment for USUBJID: "Concatenation of STUDYID, DM.SITEID and DM.SUBJID" .  This is the "protocol-specific SDTM implemntation file." Used in generation of DEFINE XML.
+
 
 * **study.ttl**
     - Generic study schema, not associated with any particular protocol. study.ttl is the starting point for each new study and contains the items needed to derive the blank case report form and the DEFINE file.
 
-* **sdtm-cdisc01.ttl**
-    - Links cdiscpilot01.ttl with study.ttl for round-tripping the data back to the SDTM standard.
 
 # R Scripts
 

@@ -21,3 +21,6 @@ ex <- ex %>%
   mutate(rowID = 1:n(),
          DrugAdminOutcome_ = "Complete"
     )
+
+# Add personNum for merge across domains, triple creation
+ex <- addPersonId(ex)  

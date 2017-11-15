@@ -76,6 +76,7 @@ source('R/DM_impute.R')     # Create values needed for testing.
 vs <- readXPT("vs")
 source('R/VS_impute.R') 
 
+
 # EX: Import and Impute ----
 ex <- readXPT("ex")
 source('R/EX_impute.R') 
@@ -96,11 +97,15 @@ source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part
 #    DM MUST be processed first: Creates data required in later steps, 
 #      including personNum. 
 source('R/DM_process.R')
+
+
+suppdm <- readXPT("suppdm")
+source("R/SUPPDM_impute.R")
 source('R/SUPPDM_process.R')
 
 # VS: Process ----
-#TW source('R/VS_frag.R')
-#TW source('R/VS_process.R')
+source('R/VS_frag.R')
+source('R/VS_process.R')
 
 # EX: Process ----
 source('R/EX_frag.R')

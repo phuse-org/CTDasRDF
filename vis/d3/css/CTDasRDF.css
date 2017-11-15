@@ -43,7 +43,7 @@ h4 {
 .smTitle{
   margin: 0 0 20px 0;
   color:#eee8d5;
-  font-size: 1.2em;
+  font-size: 2em;
   font-family: sans-serif;
   font-weight: normal;
   line-height: 1.2;
@@ -173,6 +173,7 @@ stroke-width: 5;
     padding: 4px;
     font: 12px sans-serif;
     background: #00ccff;
+
     border: 0px;
     pointer-events: none;
 }
@@ -245,25 +246,94 @@ stroke-width: 5;
     border-color: #003d4d;
     pointer-events: none;
 }
+/* ONTOLOGY FLOWER GRAPHS */
 
-div.extOntPetalTooltip {
-    /* position: absolute; */
-    left: 10px;
-    top : 10px;
+/* Grid layout  */
+* {
+  box-sizing: border-box;
+}
+.grid{
+  display: grid;
+  grid-template-areas:
+  "headL..... headR"
+  "visL...... visR"
+  "visL visTip visR"
+  "visL...... visR";
+  grid-template-columns: 400px[leftCol] 120px[midCol]350px[rightCol];
+  grid-template-rows: 30px[header] 300px[topVis] 120px[midVis] 300px[botVis];
+
+}
+.grid div {
+  border: 1px solid rgb(0,95,107);
+  border-radius: 3px;
+  background-color: rgba(0,95,107,0.8);
+  padding: 0.2em;
+  color: #fff;
+
+}
+
+headerLeft{
+  grid-area: headL;
+}
+headerRight{
+  grid-area: headR;
+}
+
+visLeft{
+  grid-area: visL;
+}
+visRight{
+  grid-area: visR;
+}
+
+visTip{
+  grid-area:visTip;
+}
+
+/* Tooltip Container */
+/* new from: https://www.w3schools.com/css/css_tooltip.asp */
+.petalTooltip {
+    padding: 4px;
+    width: 160px;
+
+    /*
     text-align: left;
-    width: 140px;
     height: 55px;
     padding: 4px;
     font: 14px sans-serif;
-    background: lightsteelblue;
+    */
+    background: #EEE8D5;
     border: 2px;
     border-radius: 8px;
-    pointer-events: none;
+}
+/* Tooltip text */
+.petalTooltip .petalTooltiptext{
+  visibility: hidden;
+  /* width: 140px; */
+  background: lightsteelblue;
+  /* background-color: lightsteelblue; */
+  font: 30px sans-serif;
+  text-align: left;
+  padding: 10px;
+  border: 2px;
+  border-radius: 8px;
+  left: 10px;
+  top : 10px;
+  z-index: 1;
+}
+
+.petalTooltip:hover .petalTooltiptext{
+  visibility: visible;
 }
 
 .extOntPetal{
   stroke-width: 4;
 }
+
+.intOntPetal{
+  stroke-width: 4;
+}
+
 /* Ontology Flower Fills */
 .CDISC {
   fill:   #2784BB ;
@@ -277,4 +347,25 @@ div.extOntPetalTooltip {
   fill:   #C0C0C0;
   stroke: #a7a7a7;  /* darker */
   stroke-dasharray: 5,5; /* dashed to show not yet in use */
+}
+.Protocol {
+  fill:   #FFB00A;
+  stroke: #d69100;  /* darker */
+}
+.Results {
+  fill:   #D60045;  /* red  */
+  stroke: #A30035;  /* darker */
+}
+.SDTM {
+  fill:   #0045D6;  /* blue  */
+  stroke: #0035A3;  /* darker */
+}
+
+.Study {
+  fill:   #9100D6;  /* purple  */
+  stroke: #6E00A3;  /* darker */
+}
+.Coding {
+  fill:   #00D691;  /* green  */
+  stroke: #00A36E;  /* darker */
 }

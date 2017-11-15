@@ -14,11 +14,19 @@
 #
 #______________________________________________________________________________
 
+
+#  Notes for frag construction
 # Drug administration fragment. Each row in the data gets a unique ID.
+#   Each product admin. activity status (prodAdminActStat_Frag) has a value
+#   of 1 (complete) by virtue of it being listed in EX. There are no 
+#   unsuccess. admins in EX for this study.
 ex <- mutate(ex,
-   DrugAdminID_Frag   = paste0("DrugAdministration_",rowID),
-   DrugAdminType_Frag = "FixedDoseDrugAdministration", 
-   product_Frag        = paste0(extrt, exdose)  # Recoded, below
+   DrugAdminID_Frag    = paste0("DrugAdministration_",rowID),
+   DrugAdminType_Frag  = "FixedDoseDrugAdministration", 
+   product_Frag        = paste0(extrt, exdose), 
+   productAdmin_Frag   = paste0("ProductAdministration_",personNum),
+   productAdminActStat_Frag = "ActivityStatus_1"
+  
   ) 
 
 # Recode product_Frag to the values required
@@ -63,3 +71,6 @@ ex<-ex[, !(names(ex) %in% c("FixedDoseInterval"))]
 
 # Sort by Col names ----
 ex <- ex %>% select(noquote(order(colnames(ex))))
+
+# Create visit_Frag and visitPerson_Frag triples
+ex<-createFragVisit(ex)
