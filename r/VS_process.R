@@ -9,7 +9,7 @@
 #    vstestOrder = sequence number created to facilitate triple creation/identification
 # TODO: 
 #   Move all value *creation* into VS_Frag and VS_Impute
-#   Proof all columns in vs to find their actual usage in this code.
+#   Proof all columns in vs to find their actual inclusion in resulting triples.
 #______________________________________________________________________________
 
 # Data cleanup - from artifact created in Impute? 
@@ -37,10 +37,6 @@ ddply(u_Visit, .(visitPerson_Frag), function(u_Visit)
       object    = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag)))
 
     # Subtriples for each visit ----    
-    # 
-
-#TW  removing triples to match ONT
-#TW working on VisitBaseline_1 for matching and construction
     addStatement(cdiscpilot01,
       new("Statement", world=world,
          subject   = paste0(CDISCPILOT01, u_Visit$visitPerson_Frag),
@@ -61,7 +57,6 @@ ddply(u_Visit, .(visitPerson_Frag), function(u_Visit)
         object    = paste(u_Visit$visitPerson_Label),
           objectType = "literal", datatype_uri = paste0(XSD,"string")))
 
-    
     # The next 3 triples are originally only in the ontology instance data for 
     #   VisitScreening1_1 because that is as far as AO has created the data.
     #   ALL other visit triples should get this data when the data for the
@@ -100,55 +95,33 @@ ddply(vs, .(personNum, vsseq), function(vs)
   # Create vs body position triples only if vsposCode_Frag has a value
   # if (!is.na(vs$vspos_Frag) && ! as.character(vs$vspos_Frag)=="") {
   if (!is.na(vs$vsposCode_Frag)) {
-
-    
-    #  VisitScreening1_1 -x->
-#TW
-#    addStatement(cdiscpilot01,
-#      new("Statement", world=world,
-#        subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
-#        predicate = paste0(STUDY,"hasSubActivity"),
-#        object    = paste0(CDISCPILOT01,vs$vsposCode_Frag)))
-#
     # Body Positions
     # AsssumeBodyPosition sub-triples ----
 
-  addStatement(cdiscpilot01,
-    new("Statement", world=world,
-       subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
-       predicate = paste0(RDF,"type"),
-       object    = paste0(CUSTOM, vs$visit_Frag)))
-
-  addStatement(cdiscpilot01,
-    new("Statement", world=world,
-      subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
-      predicate = paste0(RDF,"type"),
-      object    = paste0(CUSTOM, vs$vsposCode)))
-
-  addStatement(cdiscpilot01,
-    new("Statement", world=world,
-      subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
-      predicate = paste0(RDF,"type"),
-      object    = paste0(CDISCPILOT01, vs$visitPerson_Frag)))
-
-#  addStatement(cdiscpilot01,
-#    new("Statement", world=world,
-#      subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
-#      predicate = paste0(RDF,"type"),
-#      object    = paste0(CDISCPILOT01, vs$visit_Frag)))
-  
-#  addStatement(cdiscpilot01,
-#    new("Statement", world=world,
-#      subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
-#      predicate = paste0(RDF,"type"),
-#      object    = paste0(CUSTOM, vs$visitPerson_Frag)))
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
+        predicate = paste0(RDF,"type"),
+        object    = paste0(CUSTOM, vs$visit_Frag)))
 
     addStatement(cdiscpilot01,
       new("Statement", world=world,
-       subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
-       predicate = paste0(SKOS,"prefLabel"),
-       object    = paste0(vs$vspos_Label),
-         objectType = "literal", datatype_uri = paste0(XSD,"string")))
+        subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
+        predicate = paste0(RDF,"type"),
+        object    = paste0(CUSTOM, vs$vsposCode)))
+
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
+        predicate = paste0(RDF,"type"),
+        object    = paste0(CDISCPILOT01, vs$visitPerson_Frag)))
+  
+    addStatement(cdiscpilot01,
+      new("Statement", world=world,
+        subject   = paste0(CDISCPILOT01, vs$vsposCode_Frag),
+        predicate = paste0(SKOS,"prefLabel"),
+        object    = paste0(vs$vspos_Label),
+          objectType = "literal", datatype_uri = paste0(XSD,"string")))
   }
   
   if (! is.na(vs$vsstat_Frag)) {
@@ -198,13 +171,6 @@ ddply(vs, .(personNum, vsseq), function(vs)
      predicate = paste0(STUDY, "outcome"),
      object    = paste0(SDTMTERM, vs$vsposSDTM_Frag)))
   
-#TW
-#  addStatement(cdiscpilot01,
-#  new("Statement", world=world,
-#    subject   = paste0(CDISCPILOT01, vs$visitPerson_Frag),
-#    predicate = paste0(STUDY,"hasSubActivity"),
-#    object    = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag)))
-  
     # Test result subtriples : Eg: cdiscpilot01:C67153.C25206_1
     addStatement(cdiscpilot01,
       new("Statement", world=world,
@@ -212,7 +178,6 @@ ddply(vs, .(personNum, vsseq), function(vs)
         predicate = paste0(RDF,"type"),
         object    = paste0(CD01P, vs$vstestSDTMCodeType_Frag)))
 
-  # ADDTIONAL TYPEs needed added here!!
   addStatement(cdiscpilot01,
     new("Statement", world=world,
     subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
@@ -230,10 +195,7 @@ ddply(vs, .(personNum, vsseq), function(vs)
       subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
       predicate = paste0(RDF,"type"),
       object    = paste0(SDTMTERM, vs$vstestSDTMCode)))
-  
-    
-#----------    
-    
+
     addStatement(cdiscpilot01,
       new("Statement", world=world,
         subject   = paste0(CDISCPILOT01,vs$vstestSDTMCode_Frag),
@@ -330,7 +292,6 @@ ddply(vs, .(personNum, vsseq), function(vs)
             objectType = "literal", datatype_uri = paste0(XSD,"string")))
       }
 
-     
     # derived flag. If non-missing, code the value as the object (Y, N...)
     if (! is.na(vs$vsdrvfl)) {
       addStatement(cdiscpilot01,
@@ -366,8 +327,7 @@ ddply(vs, .(personNum, vsseq), function(vs)
         predicate = paste0(SKOS,"prefLabel"),
         object    = paste0(vs$vsorres_Label),
           objectType = "literal", datatype_uri = paste0(XSD,"string")))
-        
-     
+  
     if (! as.character(vs$vsstat_Frag) == "") {
       addStatement(cdiscpilot01,
         new("Statement", world=world,

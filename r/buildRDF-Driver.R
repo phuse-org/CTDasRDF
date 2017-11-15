@@ -34,9 +34,14 @@ require(stringi)     # Proper casing, etc.
 rm(list=ls())  # Clear workspace from prior runs.
 
 #** Flags and global parameters ----
-# Subset for prototype development. 
-maxPerson = 6 # Used in DM_process.R for subsetting. VS is selects row numbers.
-importsEnabled = FALSE
+
+# Subsetting to allow incremental dev
+pntSubset<-c('01-701-1015') # List of usubjid's to process.
+
+    # Subset for prototype development. Original ontology matching for DM
+    # maxPerson = 6 # Original Ontology matching Used in DM_process.R for subsetting. VS is selects row numbers.
+
+importsEnabled = FALSE  # Allow import when load OWL files
 
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
@@ -69,16 +74,25 @@ source('R/createFrag_F.R') # URI fragement Creation. Eg. Date_1, AgeMeasurement_
 
 # DM: Import and Impute ----
 dm <- readXPT("dm")
-dm <- head(dm, maxPerson)  # Keep only first maxPerson obs for development
+dm <- dm[dm$usubjid %in% pntSubset,]  # Keep subset of usubjid for deve
+
+    # Original for Ontology Instance matching.
+    # dm <- head(dm, maxPerson)   Keep only first maxPerson obs for development
+
 source('R/DM_impute.R')     # Create values needed for testing. 
 
 # VS: Import and Impute ----
 vs <- readXPT("vs")
+
 source('R/VS_impute.R') 
 
+#TODO Move subset above imput AFTER confirmations from AO.
+vs <- vs[vs$usubjid %in% pntSubset,]  # Keep subset of usubjid for dev
 
 # EX: Import and Impute ----
 ex <- readXPT("ex")
+ex <- ex[ex$usubjid %in% pntSubset,]  # Keep subset of usubjid for dev
+
 source('R/EX_impute.R') 
 
 # Import and Impute other domains ---- : to be added later----------------------
@@ -100,6 +114,9 @@ source('R/DM_process.R')
 
 
 suppdm <- readXPT("suppdm")
+suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  # Keep subset of usubjid for dev
+
+
 source("R/SUPPDM_impute.R")
 source('R/SUPPDM_process.R')
 

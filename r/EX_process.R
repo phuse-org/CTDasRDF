@@ -16,7 +16,6 @@
 #  Link in to the rest of the graph (person/visit etc.)
 #______________________________________________________________________________
 
-
 # DrugAdministration_(n) ----
 ddply(ex, .(rowID), function(ex)
 {
@@ -116,9 +115,6 @@ ddply(ex, .(rowID), function(ex)
       predicate = paste0(STUDY, "outcome"),
       object    = paste0(STUDY, paste0("DrugAdministration",ex$DrugAdminOutcome_ ))))
 })
-
-
-
 
 # Loop through ex to create the DrugAdministration triples for each
 #  ProductAdministration_(n), where (n) = presonNum

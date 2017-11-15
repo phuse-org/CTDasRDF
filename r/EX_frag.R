@@ -41,7 +41,6 @@ ex$product_Frag <- sapply(ex$product_Frag,function(x) {
 ex <- addDateFrag(ex, "exstdtc")  
 ex <- addDateFrag(ex, "exendtc")  
 
-
 #  SDTM code values ----
 # Translate values in the domain to their corresponding codelist code
 # DosageFrequency ----
@@ -50,11 +49,8 @@ ex$exdosfrqSDTMCode <- recode(ex$exdosfrq,
 # Route of Admin ----
 ex$exrouteSDTMCode <- recode(ex$exroute, 
                            "'TRANSDERMAL' = 'C66729.C38305'" ) # only 1 route in study
-
 # FixedDoseInterval ----
 # Create a unique ID for the dose interval
-
-
 ex$FixedDoseInterval <- paste0(ex$exstdtc, "-TO-", ex$exendtc)
 
 # sort by rowID to match original order from AO prior to callign createFragOneDomain
@@ -64,7 +60,6 @@ ex <- ex[order(ex$rowID),]
 #   dupes removed, unsorted.
 ex<- createFragOneDomain(domainName=ex, processColumns="FixedDoseInterval",
      fragPrefix="FixedDoseInterval", sortMe=FALSE, numSort=FALSE)
-
 
 # Drop temp columns ----
 ex<-ex[, !(names(ex) %in% c("FixedDoseInterval"))]
