@@ -72,10 +72,6 @@ dm <- readXPT("dm")
 dm <- head(dm, maxPerson)  # Keep only first maxPerson obs for development
 source('R/DM_impute.R')     # Create values needed for testing. 
 
-
-
-
-
 # VS: Import and Impute ----
 vs <- readXPT("vs")
 source('R/VS_impute.R') 

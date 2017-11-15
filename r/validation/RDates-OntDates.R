@@ -11,50 +11,94 @@
 # NOTE: Used during building of TTL files from R
 # TODO: 
 ###############################################################################
-library(rrdf)
-library(plyr)  # rename
-library(reshape)   # melt
-# For use with local TTL file:
-setwd("C:/_gitHub/CTDasRDF")
-
-rSource = load.rdf("data/rdf/cdiscpilot01-R.TTL", format="N3")
-ontSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
-
-
-query = 'prefix cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/cdiscpilot01#>
-prefix study: <https://github.com/phuse-org/CTDasRDF/blob/master/data/rdf/study#>
-
-SELECT  ?dateURI ?dateVal
-WHERE { ?dateURI study:dateTimeInXSDString  ?dateVal .}
-'
-
-ontTriples = as.data.frame(sparql.rdf(ontSource, query))
-ontTriples <-ontTriples[!duplicated(ontTriples), ]  # remove dupes
-
-rTriples = as.data.frame(sparql.rdf(rSource, query))
-rTriples <- rTriples[!duplicated(rTriples), ]  # remove dupes
-
-dateComp <- merge(rTriples, ontTriples, by.x="dateVal", by.y="dateVal", all.x=TRUE, all.y=TRUE)
-
-dateComp <- rename(dateComp, c(dateURI.x = "R", dateURI.y = "Ontology"))
+library(redland)
+setwd("C:/_github/CTDasRDF")
+       
+# Setup the file read
+world <- new("World")
+storage <- new("Storage", world, "hashes", name="", options="hash-type='memory'")
+model <- new("Model", world=world, storage, options="")
+parser <- new("Parser", world, name = 'turtle', mimeType = 'text/turtle')
 
 
-library(xlsx)
-write.xlsx(dateComp, "data/validation/DateComp.xlsx")
+# Query
+queryString <- '
+PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
+SELECT ?dateFrag ?dateVal
+WHERE { ?date study:dateTimeInXSDString ?dateVal .
+BIND (strafter(str(?date), ".ttl#" ) AS ?dateFrag) 
+# BIND (STRBEFORE(?dateString, "http" ) AS ?dateVal) .
+} ORDER BY ?dateVal '
+query <- new("Query", world, queryString, base_uri=NULL, query_language="sparql", query_uri=NULL)
+queryResult <- executeQuery(query, model)
 
-# OLD SHITE BELOW HERE
 
-#classes <- melt(ontTriples, measure.vars = c("class", "subclass"))
+# Ontology Dates ----
+redland::parseFileIntoModel(parser, world, "data/rdf/cdiscpilot01.ttl", model)
+query <- new("Query", world, queryString, base_uri=NULL, query_language="sparql", query_uri=NULL)
+queryResult <- executeQuery(query, model)
 
-#classes <- data.frame(classes[,"value"])
-# remote dupes
-#classes <- data.frame(classes[!duplicated(classes), ])  # is DF here.
+# Need to wrap the getNextResult into a loop that runs until NULL is returned.
+# Posted this example to https://github.com/ropensci/redland-bindings/issues/55  asking for clarification
+#   if this is the way to do it or not.  29Sep17
+queryResults = NULL;
+repeat{
+  nextResult <- getNextResult(queryResult)
+  queryResults <- rbind(queryResults, data.frame(nextResult))
+  if(is.null(nextResult)){
+    break
+  }
+}
+ontDates <- queryResults
+# Post processing
+ontDates$dateFrag<-gsub('"', '', ontDates$dateFrag)
+ontDates$dateVal<-gsub('"', '', ontDates$dateVal)
+ontDates$dateVal<-gsub("\\^+.*", "", ontDates$dateVal, perl=TRUE)
 
-# Rename column
-#names(classes)[names(classes) == 'classes..duplicated.classes....'] <- 'class'
 
-# Get list of those that are created from rdf frags in the data. custom: prefix with
-#   '_' 
-# These are the ones you need to create in R,  others are created in Protege/TopBraid.
-# keep the custom: classes
-#classes <- subset(classes, grepl("custom:\\S+_\\S+", class, perl=TRUE))
+# R Dates ----
+redland::parseFileIntoModel(parser, world, "data/rdf/cdiscpilot01-R.ttl", model)
+query <- new("Query", world, queryString, base_uri=NULL, query_language="sparql", query_uri=NULL)
+queryResult <- executeQuery(query, model)
+
+# Need to wrap the getNextResult into a loop that runs until NULL is returned.
+# Posted this example to https://github.com/ropensci/redland-bindings/issues/55  asking for clarification
+#   if this is the way to do it or not.  29Sep17
+queryResults = NULL;
+repeat{
+  nextResult <- getNextResult(queryResult)
+  queryResults <- rbind(queryResults, data.frame(nextResult))
+  if(is.null(nextResult)){
+    break
+  }
+}
+rDates <- queryResults
+# Post processing
+rDates$dateFrag<-gsub('"', '', rDates$dateFrag)
+rDates$dateVal<-gsub('"', '', rDates$dateVal)
+rDates$dateVal<-gsub("\\^+.*", "", rDates$dateVal, perl=TRUE)
+
+
+
+
+rOntDates <- merge(rDates, ontDates, by.x="dateVal", by.y="dateVal", all.x=TRUE, all.y=TRUE)
+
+
+rOntDates <- rename(rOntDates, c(dateFrag.x = "R", dateFrag.y = "Ont"))
+
+# Old comparison here.
+#ontTriples = as.data.frame(sparql.rdf(ontSource, query))
+#ontTriples <-ontTriples[!duplicated(ontTriples), ]  # remove dupes
+
+#rTriples = as.data.frame(sparql.rdf(rSource, query))
+#rTriples <- rTriples[!duplicated(rTriples), ]  # remove dupes
+
+#dateComp <- merge(rTriples, ontTriples, by.x="dateVal", by.y="dateVal", all.x=TRUE, all.y=TRUE)
+
+#dateComp <- rename(dateComp, c(dateURI.x = "R", dateURI.y = "Ontology"))
+
+
+#library(xlsx)
+#write.xlsx(dateComp, "data/validation/DateComp.xlsx")
+

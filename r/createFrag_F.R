@@ -52,21 +52,27 @@ createDateDict <- function()
   dateList <- melt(allDates, measure.vars=colnames(allDates),
     variable.name = "source",
     value.name    = "dateKey")
+  
   # Remove duplicates
-  dateList <- dateList[!duplicated(dateList$date), ]
+  #TW dateList <- dateList[!duplicated(dateList$date), ]  ## ERROR WAS HERE!! 
+  dateList <- dateList[!duplicated(dateList$value), ]
+  
+  
   
   # Remove missing(blank) dates by coding to NA and then omitting
   dateList[dateList==""] <- NA
   dateList <- na.omit(dateList)
   
   # Sort by date
-  dateList <- dateList[with(dateList, order(dateKey)),]
+  #TW dateList <- dateList[with(dateList, order(dateKey)),]
+  dateList <- dateList[with(dateList, order(value)),]
   
   # Create the coded value for each date as Date_n 
   dateList$dateFrag <- paste0("Date_", 1:nrow(dateList))   # Generate a list of ID numbers
   
   #  dateKey - used to merge back into a column
   #  dateFrag - the fragment that will become part of a URI for a date col
+  dateList$dateKey <- dateList$value
   dateDict <- dateList[,c("dateKey", "dateFrag")]
   
   # Create the label and dateTimeInXSDString triples for each new date _Frag to avoid 

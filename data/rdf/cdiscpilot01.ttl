@@ -1,5 +1,3 @@
-# baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl
-
 @prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
 @prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
 @prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
@@ -60,37 +58,37 @@ cdiscpilot01:AssumeBodyPositionSupine_1
   study:hasDate cdiscpilot01:Date_19 ;
   study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
 .
-cdiscpilot01:BloodPressureOutcome_1
+cdiscpilot01:BloodPressureOutcome_2
   rdf:type study:BloodPressureOutcome ;
   skos:prefLabel "57 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 57 ;
 .
-cdiscpilot01:BloodPressureOutcome_2
+cdiscpilot01:BloodPressureOutcome_4
   rdf:type study:BloodPressureOutcome ;
   skos:prefLabel "64 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 64 ;
 .
-cdiscpilot01:BloodPressureOutcome_3
+cdiscpilot01:BloodPressureOutcome_5
   rdf:type study:BloodPressureOutcome ;
   skos:prefLabel "83 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 83 ;
 .
-cdiscpilot01:BloodPressureOutcome_4
+cdiscpilot01:BloodPressureOutcome_6
   rdf:type study:BloodPressureOutcome ;
   skos:prefLabel "129 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 129 ;
 .
-cdiscpilot01:BloodPressureOutcome_5
+cdiscpilot01:BloodPressureOutcome_7
   rdf:type study:BloodPressureOutcome ;
   skos:prefLabel "131 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
   code:hasValue 131 ;
 .
-cdiscpilot01:BloodPressureOutcome_6
+cdiscpilot01:BloodPressureOutcome_8
   rdf:type study:BloodPressureOutcome ;
   skos:prefLabel "147 mmHg"^^xsd:string ;
   code:hasUnit code:Unit_3 ;
@@ -150,7 +148,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_5 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_7 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "86"^^xsd:float ;
   study:sponsordefinedID "124"^^xsd:string ;
@@ -172,7 +170,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25229> ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_4 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_6 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "87"^^xsd:float ;
   study:sponsordefinedID "720"^^xsd:string ;
@@ -194,7 +192,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_6 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_8 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "88"^^xsd:float ;
   study:sponsordefinedID "236"^^xsd:string ;
@@ -216,7 +214,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_2 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_4 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "1"^^xsd:float ;
   study:sponsordefinedID "123"^^xsd:string ;
@@ -238,7 +236,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25229> ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_3 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_5 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "2"^^xsd:float ;
   study:sponsordefinedID "719"^^xsd:string ;
@@ -260,7 +258,7 @@ cdiscpilot01:BloodPressureOutcome_6
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228> ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_1 ;
+  study:outcome cdiscpilot01:BloodPressureOutcome_2 ;
   study:reasonNotDone "not applicable"^^xsd:string ;
   study:seq "3"^^xsd:float ;
   study:sponsordefinedID "235"^^xsd:string ;
