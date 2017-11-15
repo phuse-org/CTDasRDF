@@ -27,7 +27,9 @@
 #   All dates from across both DM and VS domains. 
 #  TODO: 
 #    Add additional domains as project scope expands. Make function flexible
-#    to accept these as arguments instead of hard coded.
+#      to accept these as arguments instead of hard coded.
+#    Move to processing date lists instead of all the useless data.frame conversions which
+#      are a hold-over from earlier versions of the function.
 #' Title
 #'
 #' @return
@@ -37,43 +39,39 @@
 createDateDict <- function()
 {
   # dm dates
-  dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
-  # vs dates
+  dmDateFields <- dm[,c("personNum","rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
+  dmDates <- melt(dmDateFields, id.var='personNum',variable.name='DMDates')
+  dmDates <- data.frame(dmDates[,"value"])
+  names(dmDates)[1] <- "dateVal"
+  
+  # vs date s
   vsDates <- data.frame(vs[,"vsdtc"])  # only one column so must assign data.frame
+  names(vsDates)[1] <- "dateVal"
+
   # ex dates
-  exDates <- ex[,c("exstdtc", "exendtc")]
+  exDateFields <- ex[,c("personNum", "exstdtc", "exendtc")]
+  exDates <- melt(exDateFields, id.var='personNum',variable.name='EXDates')
+  exDates <- data.frame(exDates[,"value"])
+  names(exDates)[1] <- "dateVal"
   
-  # Combined the date dataframes from all sources
-  #   For >2 dataframes, create list of the dataframes to merge and use Reduce 
-  #   Ref: https://stackoverflow.com/questions/14096814/merging-a-lot-of-data-frames
-  allDates<-Reduce(function(x, y) merge(x, y, all=TRUE), list(dmDates, vsDates, exDates))
-  
-  # Melt all the dates into a single column of values
-  dateList <- melt(allDates, measure.vars=colnames(allDates),
-    variable.name = "source",
-    value.name    = "dateKey")
-  
+  # Combine into single dataframe. Change this to list processing.
+  dateDict <- data.frame(do.call("rbind", list(dmDates, vsDates, exDates)))
+    
   # Remove duplicates
-  #TW dateList <- dateList[!duplicated(dateList$date), ]  ## ERROR WAS HERE!! 
-  dateList <- dateList[!duplicated(dateList$value), ]
-  
-  
+  dateDict <- data.frame(dateDict[!duplicated(dateDict$dateVal), ])
+  # dateDict <- dateDict[!duplicated(dateDict$dateKey), ]
   
   # Remove missing(blank) dates by coding to NA and then omitting
-  dateList[dateList==""] <- NA
-  dateList <- na.omit(dateList)
-  
+  dateDict[dateDict==""] <- NA
+  dateDict <- na.omit(dateDict)
+  names(dateDict)[1] <- "dateVal"
   # Sort by date
-  #TW dateList <- dateList[with(dateList, order(dateKey)),]
-  dateList <- dateList[with(dateList, order(value)),]
+  dateDict <- data.frame(dateDict[with(dateDict, order(dateVal)),])
   
   # Create the coded value for each date as Date_n 
-  dateList$dateFrag <- paste0("Date_", 1:nrow(dateList))   # Generate a list of ID numbers
+  dateDict$dateFrag <- paste0("Date_", 1:nrow(dateDict))   # Generate a list of ID numbers
   
-  #  dateKey - used to merge back into a column
-  #  dateFrag - the fragment that will become part of a URI for a date col
-  dateList$dateKey <- dateList$value
-  dateDict <- dateList[,c("dateKey", "dateFrag")]
+  names(dateDict)[1] <- "dateKey"
   
   # Create the label and dateTimeInXSDString triples for each new date _Frag to avoid 
   #   repeating the same values when createDateTriples is called

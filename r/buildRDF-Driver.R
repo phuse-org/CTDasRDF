@@ -33,7 +33,7 @@ require(stringi)     # Proper casing, etc.
 
 rm(list=ls())  # Clear workspace from prior runs.
 
-#** Flags and global parameters ----
+# Flags and global parameters ----
 
 # Subsetting to allow incremental dev
 pntSubset<-c('01-701-1015') # List of usubjid's to process.
@@ -46,16 +46,13 @@ importsEnabled = FALSE  # Allow import when load OWL files
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
 
-# Version of COde/output. Triple created in graphMeta.R
+# Version of Code/output. Triple created in graphMeta.R
 version <- "0.0.1"
 
 # Output filename and location
 outFileMain   = "data/rdf/cdiscpilot01-R.TTL"
 
-#TODO: Replace with redlands initiation
-# Initialize. Includes OWL, XSD, RDF by default.
-
-# redland declarations ----
+# Redland declarations ----
 world <- new("World") # Model scope
 # Storage provides a mechanism to store models; in-memory hashes are convenient for small models
 storage <- new("Storage", world, "hashes", name="", options="hash-type='memory'")
@@ -72,63 +69,52 @@ source('R/graphMeta.R') # Graph Metadata
 source('R/misc_F.R')  # Data import, personID, etc.
 source('R/createFrag_F.R') # URI fragement Creation. Eg. Date_1, AgeMeasurement_3
 
-# DM: Import and Impute ----
-dm <- readXPT("dm")
-dm <- dm[dm$usubjid %in% pntSubset,]  # Keep subset of usubjid for deve
+# XPT Imports ----
+dm     <- readXPT("dm")
+suppdm <- readXPT("suppdm")
+vs     <- readXPT("vs")
+ex     <- readXPT("ex")
 
-    # Original for Ontology Instance matching.
-    # dm <- head(dm, maxPerson)   Keep only first maxPerson obs for development
-
-source('R/DM_impute.R')     # Create values needed for testing. 
-
-# VS: Import and Impute ----
-vs <- readXPT("vs")
-
+# Imputation ----
+# Create values needed for testing. 
+source('R/DM_impute.R')     
+source("R/SUPPDM_impute.R")
 source('R/VS_impute.R') 
-
-#TODO Move subset above imput AFTER confirmations from AO.
-vs <- vs[vs$usubjid %in% pntSubset,]  # Keep subset of usubjid for dev
-
-# EX: Import and Impute ----
-ex <- readXPT("ex")
-ex <- ex[ex$usubjid %in% pntSubset,]  # Keep subset of usubjid for dev
-
 source('R/EX_impute.R') 
 
-# Import and Impute other domains ---- : to be added later----------------------
+# Date Lookup
 # Create the date translation table from all dates across domains
+#   Created on ALL date values in source domains, prior to subsetting
+#     for dev purposes.
+#   Some dates are imputed, so must call AFTER all _impute.R
 #   Needed by both xx_impute and xx_process scripts.
 dateDict<-createDateDict()    
+
+
+
+# Subset domains ----
+# Keep subset of usubjid for dev
+#TODO: Change into loop
+dm     <- dm[dm$usubjid %in% pntSubset,]  
+suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  
+vs     <- vs[vs$usubjid %in% pntSubset,]  
+ex     <- ex[ex$usubjid %in% pntSubset,]  
+
+
+# Fragment Creation ----
+source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part 
+                       #   of DateDict/dateFrag creation
+source('R/VS_frag.R')
+source('R/EX_frag.R')
 
 # Create fragment dictionaries that cross domains
 #   Called after all contributing  domains available, since some fragment values 
 #      (eg: dates), cross multiple domains.
-source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part 
-                       #   of DateDict/dateFrag creation
-
-# Domain Processing ----
-# DM: Process ----
-#    DM MUST be processed first: Creates data required in later steps, 
-#      including personNum. 
+# Process Domains
 source('R/DM_process.R')
-
-
-suppdm <- readXPT("suppdm")
-suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  # Keep subset of usubjid for dev
-
-
-source("R/SUPPDM_impute.R")
 source('R/SUPPDM_process.R')
-
-# VS: Process ----
-source('R/VS_frag.R')
 source('R/VS_process.R')
-
-# EX: Process ----
-source('R/EX_frag.R')
 source('R/EX_process.R')
-
-# XX Domain (to be added) ---- 
 
 # Write out to TTL ------------------------------------------------------------
 # Serialize the model to a TTL file

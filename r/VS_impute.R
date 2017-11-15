@@ -30,8 +30,8 @@
     # Person 1 Week 24
     # row 37
      #TODO: REMOVE THIS    
-     vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37)
-     vs <- vs[vsSubset, ]
+     #vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37)
+     #vs <- vs[vsSubset, ]
 
 vs <- addPersonId(vs)  # Add personNum for merge across domains, triple creation
 
