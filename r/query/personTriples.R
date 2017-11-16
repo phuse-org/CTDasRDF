@@ -12,8 +12,8 @@
 ###############################################################################
 library(rrdf)
 
-# Example 1: Query Virtuoso Triple Store --------------------------------------
-
+# Example: Query Virtuoso Triple Store ----
+#  Assumes triplestore running on localhost on port 8890
 endpoint = "http://localhost:8890/sparql"
 
 query = 'PREFIX cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#>
@@ -30,7 +30,26 @@ BIND ("cdiscpilot01:Person_1" as ?s)
 
 personTriples_Virt <- as.data.frame(sparql.remote(endpoint, query))
 
-# Example 2: Query TTL file CDISCPILOT01-R.TTL --------------------------------
+
+# Example: Query StardogTriple Store ----
+#  Assumes triplestore running on localhost on port 8890
+endpoint = "http://localhost:5820/CTDasRDF-R/query"
+
+query = 'PREFIX cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#>
+PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
+PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
+
+SELECT *
+WHERE{
+ ?s ?p ?o
+} LIMIT 100'
+
+personTriples_Virt <- as.data.frame(sparql.remote(endpoint, query))
+
+
+
+# Example: Query TTL file CDISCPILOT01-R.TTL ----
 #   Change directory if used outside of the C:/_gitHubShared/CTDasRDF workarea
 #   The only difference in the query is removal of the FROM statement.
 
