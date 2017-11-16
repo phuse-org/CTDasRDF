@@ -90,8 +90,6 @@ source('R/EX_impute.R')
 #   Needed by both xx_impute and xx_process scripts.
 dateDict<-createDateDict()    
 
-
-
 # Subset domains ----
 # Keep subset of usubjid for dev
 #TODO: Change into loop
@@ -100,17 +98,12 @@ suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]
 vs     <- vs[vs$usubjid %in% pntSubset,]  
 ex     <- ex[ex$usubjid %in% pntSubset,]  
 
-
 # Fragment Creation ----
-source('R/DM_frag.R')  # Requires prev. import of VS for VS dates used as part 
-                       #   of DateDict/dateFrag creation
+source('R/DM_frag.R')  
 source('R/VS_frag.R')
 source('R/EX_frag.R')
 
-# Create fragment dictionaries that cross domains
-#   Called after all contributing  domains available, since some fragment values 
-#      (eg: dates), cross multiple domains.
-# Process Domains
+# Process Domains ----
 source('R/DM_process.R')
 source('R/SUPPDM_process.R')
 source('R/VS_process.R')
