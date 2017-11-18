@@ -1,19 +1,18 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: misc_F.R
 # DESC: Miscellaneous functions including: 
 #     readXPT() - read the requestd XPT file
 #     addPersonId() - adds the ID created from DM data to domain being processed
-#     assignDateType()
+#     assignDateType() - adds the type of study event date to the DATE value
 # REQ : 
 # SRC : 
 # IN  : 
 # OUT : 
 # NOTE: 
 # TODO:  
-###############################################################################
+#______________________________________________________________________________
 
-#------------------------------------------------------------------------------
-# readXPT()
+# readXPT() ----
 # Read the requested domains into dataframes for processing.
 #' Title
 #'
@@ -30,8 +29,7 @@ readXPT<-function(domain)
   result  # return the dataframe
 }
 
-#------------------------------------------------------------------------------
-# addpersonId()
+# addpersonId() ----
 # Creates the numeric personNum:index variable for each person in the
 #   DM domain, used when iterating through and across domains when building 
 #   the triples for each person.
@@ -46,12 +44,12 @@ readXPT<-function(domain)
 #' @examples
 addPersonId <- function(domainName)
 {
-  withIndex <- merge(x = personId, y = domainName, by="usubjid", all.x = TRUE)
+  withIndex <- merge(x = personId, y = domainName, by="usubjid", all.y = TRUE)
   return(withIndex)
 }
 
-#------------------------------------------------------------------------------
-# assignDateType()
+
+# assignDateType() ----
 #   Add 'Date Type Triple" to an existing  Date_(n) to describe a specific date URI
 #   Identifies that various types of things attached to a date. A single date 
 #     can be attached to many types: InformedConsentBegin, a DPB Measure,
@@ -61,7 +59,7 @@ addPersonId <- function(domainName)
 #       date URI fragments are used to create date object URI
 #   dateType - the class type for that date. Eg: Birthdate.  Must correspond
 #       to class names in the ontology.
-#------------------------------------------------------------------------------
+
 #' Assign Date Types to Date Value
 #'
 #' Each date Object value 
@@ -75,11 +73,10 @@ addPersonId <- function(domainName)
 #' @examples
 assignDateType <- function(dateVal, dateFrag, dateType)
 {
-  #---- Date triples
-  add.triple(cdiscpilot01,
-    paste0(prefix.CDISCPILOT01, dateFrag),
-    paste0(prefix.RDF,"type" ),
-    paste0(prefix.STUDY, dateType)
-  )
- 
+#---- Date triples
+  addStatement(cdiscpilot01, 
+    new("Statement", world=world, 
+      subject   = paste0(CDISCPILOT01, dateFrag),
+      predicate = paste0(RDF,"type" ),
+      object    = paste0(STUDY, dateType)))
 }  

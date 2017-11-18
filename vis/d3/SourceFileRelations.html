@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-----------------------------------------------------------------------------
+ $HeadURL: file:///C:/SVNLocalRepos/PhUSE/Annual/2017/paper/presentation/d3/WebStudyData.html $
+ $Rev: 297 $
+ $Date: 2017-09-20 20:02:00 -0400 (Wed, 20 Sep 2017) $
+ $Author: U041939 $
+ -----------------------------------------------------------------------------
+ CATEG:  Phuse 2017 Annual
+ DESCR:  Force network graph of clinical trial concepts with highlight of neighbors
+      :  during mouseover by fading the rest of the graph.
+ VIEW :  http://localhost:8000/CTDasRDF/vis/d3/SourceFileRelations.html
+ INPUT:  OntLego.JSON
+ OUT  :  screen
+ NOTES:   -TW JSON file manually edited to create a nested NODES parent. Late will have nodes
+         and links in the same file.  
+      :  Source code C:\_sandbox\d3\Examples\forceLayout\FNStraightEdges.html
+
+TODO: : Add highlight of node neighbors on mouseover, as per OntConcepts-Clusters.html
+           C:\_sandbox\d3\ForceLayouts\FN-HighlightNeighbors.html
+------------------------------------------------------------------------------>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WebOfStudyData</title>
+<script type="text/javascript" src="/ctdasRDF/vis/d3/d3/d3.v3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/ctdasRDF/vis/d3/css/CTDasRDF.css">
+
+<!-- OLD CSS -->
+<!--
+<link rel="stylesheet" href="/PhUSE/Annual/2017/paper/presentation/d3/PhUSE2017D3JS.css">
+-->
+<!-- NEW CSS -->
+<!-- NEED TO refer to new CSS under github folders
+<link rel="stylesheet" href="http://localhost:8000/PhUSE/Annual/2017/paper/presentation/css/theme/moonTW.css"> 
+<link rel="stylesheet" href="http://localhost:8000/PhUSE/Annual/2017/paper/presentation/css/PhUSE2017.css"> 
+--->
+</head>
+
+<body margin="0"; padding="0"width="100%"; height="100%">
+<h3 align=left>CTDasRDF File Relations</h3>
+<script type="text/javascript">
+//Width and height for SVG area
+var w = 1200,
+  h = 800;
+
+
+var svg = d3.select("body").append("svg")
+  .attr("width", w)
+  .attr("height", h);
+
+var force = d3.layout.force().charge(-120).linkDistance(30).size([w, h]);
+
+
+/*
+//---- LEGEND  ----------------------------------------------------------------
+var categories = ["Entity", "Activity", "Med.Cond.", "Identifier", "Temporal", "External"];
+var legendBrick = ["blue",  "red",     "purple",      "yellow",     "green",     "orange"];
+// Create the color scale of categories to colors
+var catScale = d3.scale.ordinal()
+  .domain(categories)
+  .range(legendBrick);
+
+// node size scale
+var nodeScale = d3.scale.linear()
+  .domain([0,180])
+  .range([3,20]);
+// Indent from left margin
+var legendIndent=20;
+
+// Title 
+svg.append("text")
+  .text("Legend")
+  .attr("x",legendIndent+20)
+  .attr("y",25)
+  .attr("class", 'legendTitle'); 
+
+// Box to surround the legend
+svg.append("rect")
+  .attr("x",legendIndent-15)
+  .attr("y",35)
+  .attr("rx", 2) // Round corner
+  .attr("ry", 2) // Round corner
+  .attr("height", 192)
+  .attr("width", 145)
+  .attr("class", "legendBox");
+
+var legend = svg.selectAll(".legend")
+  .data(catScale.domain())
+  .enter()
+  .append("g")
+  .attr("class", "legend");
+
+// Bricks in the legend
+legend.append("image")
+  .attr("circle",
+#TODO Add here for circle, radius etc.
+  })
+  .attr("height", 20)
+  .attr("width", 60)
+  .attr("x", legendIndent -18)  // +n = spacing in from left side of legend box
+  .attr("y", function(d, i) { return (32 * i) +42; }); // 32* = spacing, +nn to center on node
+legend.append("text")
+  .attr("class", "monoLG")
+  .text(function(d, i) { 
+    return categories[i];
+  })
+  .attr("x", legendIndent + 35)  // +n = spacing in from left side of legend box
+  .attr("y", function(d, i) { return (32 * i) +55; }); // 32* = spacing, +nn to center on node
+*/
+//---- LEGEND END -------------------------------------------------------------
+
+// Read in the data
+ d3.json("/CTDasRDF/vis/d3/data/SourceFileGraph-TW.JSON", function(error, graph) {
+  if (error) throw error;
+
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+ var rScale = d3.scale.linear()
+   .domain([0, 200000])
+   .range([10,80]);
+
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.freq); });
+
+ var node = svg.selectAll("circle")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("class", function(d) { return d.type; })
+      //.attr("r", 15)
+      .attr("r", function(d) { return rScale(d.tripleCount); })  // radius using scale
+      // .style("fill", function(d) { return color(d.type); })
+      //.style("fill", "blue")
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+});
+// Double click to 'unfix' the node and have forces start to act on it again.
+function dblclick(d) {
+  d3.select(this).classed("fixed", d.fixed = false);
+}
+// Set the "fixed" property of the dragged node to TRUE when a dragstart event is initiated,
+//   - removes "forces" from acting on that node and changing its position.
+function dragstart(d) {
+  d3.select(this).classed("fixed", d.fixed = true);
+}
+</script>
+</body>
+</html>

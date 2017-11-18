@@ -43,15 +43,18 @@ time:unitMinute
   rdfs:label "UNITMONTH" ;
 .
 time:unitMonth
+  rdf:type code:AgeUnit ;
   rdfs:label "MONTH" ;
 .
 time:unitSecond
   rdfs:label "SECOND" ;
 .
 time:unitWeek
+  rdf:type code:AgeUnit ;
   rdfs:label "WEEK" ;
 .
 time:unitYear
+  rdf:type code:AgeUnit ;
   rdfs:label "YEAR"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl>
@@ -68,6 +71,11 @@ time:unitYear
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/meta-model-schema.rdf> ;
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+code:ActiveSubstance
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Substance ;
+  skos:prefLabel "Active substance"^^xsd:string ;
 .
 code:ActivityMethod_1
   rdf:type code:Method ;
@@ -143,6 +151,11 @@ code:AdministrativeActivityOutcome
   rdfs:subClassOf code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
+code:AgeUnit
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Unit ;
+  skos:prefLabel "AGEU"^^xsd:string ;
+.
 code:Analysis
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -175,24 +188,6 @@ code:AssumeBodyPosition
       owl:onProperty code:hasPermissibleOutcome ;
     ] ;
   skos:definition ""^^xsd:string ;
-.
-code:AssumeBodyPositionStanding
-  rdf:type owl:Class ;
-  rdf:type code:AssumeBodyPosition ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:AssumeBodyPosition ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ASSUME BODY POSITION STANDING"^^xsd:string ;
-  code:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
-.
-code:AssumeBodyPositionSupine
-  rdf:type owl:Class ;
-  rdf:type code:AssumeBodyPosition ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:AssumeBodyPosition ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ASSUME BODY POSITION SUPINE"^^xsd:string ;
-  code:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
 .
 code:BloodPressure
   rdf:type owl:Class ;
@@ -268,9 +263,9 @@ code:ConversionFactor_5
 code:Country
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Country term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "COUNTRY"^^xsd:string ;
 .
 code:Country_1
   rdf:type code:Country ;
@@ -309,10 +304,24 @@ code:DemographicDataCollection
   skos:definition ""^^xsd:string ;
   skos:prefLabel "DEMOG DATA COLLECTION"^^xsd:string ;
 .
+code:DosageForm
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Dosage form"^^xsd:string ;
+.
+code:DosageFrequency
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Dosage frequency"^^xsd:string ;
+.
+code:DrugProduct
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Product ;
+  skos:prefLabel "Drug product"^^xsd:string ;
+.
 code:Ethnicity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Ethnicity term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
   owl:oneOf (
@@ -322,6 +331,12 @@ code:Ethnicity
       <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C43234>
     ) ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "ETHNIC"^^xsd:string ;
+.
+code:ISO8601
+  rdf:type code:StandardFormat ;
+  skos:definition "International Standard for representing date and time information"^^xsd:string ;
+  skos:prefLabel "ISO8601"^^xsd:string ;
 .
 code:InformedConsent
   rdf:type owl:Class ;
@@ -543,10 +558,14 @@ code:ObservationOutcome
   rdfs:subClassOf code:InterventionOutcome ;
   skos:definition ""^^xsd:string ;
 .
+code:Product
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Product"^^xsd:string ;
+.
 code:Race
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Race term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
   owl:oneOf (
@@ -557,6 +576,7 @@ code:Race
       <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41261>
     ) ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "RACE"^^xsd:string ;
 .
 code:Randomization
   rdf:type owl:Class ;
@@ -570,12 +590,10 @@ code:RandomizationBAL3
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Randomization BAL3"^^xsd:string ;
 .
-code:Rule
+code:RouteOfAdministration
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Rule term"^^xsd:string ;
-  rdfs:subClassOf code:Analysis ;
-  skos:definition ""^^xsd:string ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Route of administration"^^xsd:string ;
 .
 code:RuleOutcome
   rdf:type owl:Class ;
@@ -584,16 +602,21 @@ code:RuleOutcome
 .
 code:RuleOutcome_1
   rdf:type code:RuleOutcome ;
+  skos:prefLabel "Rule outcome TRUE"^^xsd:string ;
   code:hasValue "true"^^xsd:boolean ;
 .
 code:RuleOutcome_2
   rdf:type code:RuleOutcome ;
+  skos:prefLabel "Rule outcome FALSE"^^xsd:string ;
   code:hasValue "false"^^xsd:boolean ;
+.
+code:RuleOutcome_3
+  rdf:type code:RuleOutcome ;
+  code:hasValue "NOT-APPLICABLE"^^xsd:string ;
 .
 code:Sex
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Sex term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
   owl:oneOf (
@@ -603,58 +626,12 @@ code:Sex
       <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C45908>
     ) ;
   skos:definition ""^^xsd:string ;
+  skos:prefLabel "SEX"^^xsd:string ;
 .
-code:StartRule
+code:StandardFormat
   rdf:type owl:Class ;
-  rdfs:comment "To evaluate the rule, one must know what is the Prerequisite Activity (e.g. assume lying position for Person_1), a successful outcome (e.g. lying down) and the time the Anchor activity took place. The outcome of the Rule is the planned start time for the Activity. "^^xsd:string ;
-  rdfs:label "Start rule term"^^xsd:string ;
-  rdfs:subClassOf code:Rule ;
-  skos:definition "describes when an activity should take place (planned date) based relative to the outcome of another Activity, the Anchor. "^^xsd:string ;
-.
-code:StartRuleLying5
-  rdf:type owl:Class ;
-  rdf:type code:StartRule ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:StartRule ;
-  skos:altLabel "815"^^xsd:string ;
-  skos:definition "Target activity starts after the subject has assumed a supine position for 5 minutes"^^xsd:string ;
-  skos:prefLabel "Rule Lying 5 Min"^^xsd:string ;
-  code:hasDelay "PT5M"^^xsd:duration ;
-  code:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
-  code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
-  code:hasPrerequisite code:AssumeBodyPositionSupine ;
-  code:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
-.
-code:StartRuleStanding1
-  rdf:type owl:Class ;
-  rdf:type code:StartRule ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:StartRule ;
-  skos:altLabel "816"^^xsd:string ;
-  skos:definition "Target activity starts after the subject has assumed a standing position for 1 minute"^^xsd:string ;
-  skos:prefLabel "Rule Standing 1 Min"^^xsd:string ;
-  code:hasDelay "PT1M"^^xsd:duration ;
-  code:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
-  code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
-  code:hasPrerequisite code:AssumeBodyPositionStanding ;
-  code:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
-.
-code:StartRuleStanding3
-  rdf:type owl:Class ;
-  rdf:type code:StartRule ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf code:StartRule ;
-  skos:altLabel "817"^^xsd:string ;
-  skos:definition "Target activity starts after the subject has assumed a standing position for 3 minutes"^^xsd:string ;
-  skos:prefLabel "Rule Standing 3 Min"^^xsd:string ;
-  code:hasDelay "PT3M"^^xsd:duration ;
-  code:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
-  code:hasPrereqExpectedStatus code:ActivityStatus_1 ;
-  code:hasPrerequisite code:AssumeBodyPositionStanding ;
-  code:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
-  code:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Standard format"^^xsd:string ;
 .
 code:Substance
   rdf:type owl:Class ;
@@ -662,6 +639,12 @@ code:Substance
   rdfs:label "Substance term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
+.
+code:SubstanceQuantity
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:definition "Describes the name of the substance and the amount of the substance used in a unit dosage form (e.g. tablet, patch) of the product"^^xsd:string ;
+  skos:prefLabel "Substance quantity"^^xsd:string ;
 .
 code:Unit
   rdf:type owl:Class ;
@@ -716,6 +699,10 @@ code:Unit_8
   rdfs:label "LB"^^xsd:string ;
   skos:prefLabel "LB"^^xsd:string ;
 .
+code:Unit_9
+  rdf:type code:Unit ;
+  skos:prefLabel "mg"^^xsd:string ;
+.
 code:VitalSign
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
@@ -737,13 +724,11 @@ code:hasConversionFactor
   rdfs:range xsd:float ;
   skos:definition ""^^xsd:string ;
 .
-code:hasDelay
-  rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:StartRule ;
-  rdfs:label "has delay"^^xsd:string ;
-  rdfs:range xsd:duration ;
-  skos:definition ""^^xsd:string ;
+code:hasDosageForm
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DrugProduct ;
+  rdfs:range code:DosageForm ;
+  skos:prefLabel "has dosage form"^^xsd:string ;
 .
 code:hasIdentifier
   rdf:type owl:DatatypeProperty ;
@@ -756,9 +741,16 @@ code:hasIdentifier
 code:hasIngredient
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
+  rdfs:domain code:SubstanceQuantity ;
   rdfs:label "has ingredient"^^xsd:string ;
   rdfs:range code:Substance ;
   skos:definition ""^^xsd:string ;
+.
+code:hasIngredientQuantity
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:Product ;
+  rdfs:range code:SubstanceQuantity ;
+  skos:prefLabel "has ingredient quantity"^^xsd:string ;
 .
 code:hasMethod
   rdf:type owl:ObjectProperty ;
@@ -782,27 +774,6 @@ code:hasPermissibleOutcome
   rdfs:domain code:DefinedActivity ;
   rdfs:label "permissible outcome"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-.
-code:hasPrereqExpectedOutcome
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:DefinedActivity ;
-  rdfs:label "has anchor outcome"^^xsd:string ;
-  rdfs:range code:DefinedActivityOutcome ;
-  skos:definition ""^^xsd:string ;
-.
-code:hasPrereqExpectedStatus
-  rdf:type owl:ObjectProperty ;
-  rdfs:label "has prereq expected status"^^xsd:string ;
-  rdfs:range code:ActivityStatus ;
-.
-code:hasPrerequisite
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:StartRule ;
-  rdfs:label "has Prerequisite"^^xsd:string ;
-  rdfs:range code:DefinedActivity ;
-  skos:definition "links the start of an activity relative to another activity known as a Prerequisite. "^^xsd:string ;
 .
 code:hasStandardUnit
   rdf:type owl:ObjectProperty ;
@@ -835,22 +806,6 @@ code:randomizationQuotient
   rdfs:range xsd:float ;
   skos:definition ""^^xsd:string ;
   code:randomizationQuotient "0.67"^^xsd:float ;
-.
-code:ruleDescription
-  rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:StartRule ;
-  rdfs:label "rule description"^^xsd:string ;
-  rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-.
-code:ruleDescriptionLong
-  rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:domain code:StartRule ;
-  rdfs:label "rule description long"^^xsd:string ;
-  rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
 .
 code:unitConversion
   rdf:type spin:Function ;
@@ -1061,6 +1016,15 @@ code:unitNormalized
   rdfs:label "unit normalized"^^xsd:string ;
   rdfs:subClassOf spin:Functions ;
 .
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66726.C42968>
+  rdf:type code:DosageForm ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38288>
+  rdf:type code:RouteOfAdministration ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305>
+  rdf:type code:RouteOfAdministration ;
+.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C16576>
   rdf:type code:Sex ;
 .
@@ -1114,6 +1078,9 @@ code:unitNormalized
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473>
+  rdf:type code:DosageFrequency ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166>
   rdf:type code:BodyPosition ;

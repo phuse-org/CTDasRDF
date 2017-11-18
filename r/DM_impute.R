@@ -1,4 +1,4 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: DM_impute.R
 # DESC: Impute data required for prototyping. Creates data values. 
 # REQ : Prior import of the DM domain by driver script.
@@ -11,7 +11,7 @@
 #                      - are stored in variables with under suffix _ while 
 #                          originals are retained.
 # TODO: 
-###############################################################################
+#______________________________________________________________________________
 # Create the Person ID (Person_(n)) in the DM dataset for looping through the data by Person  
 #     across domains when creating triples
 id<-1:(nrow(dm))   # Generate a list of ID numbers
@@ -20,17 +20,15 @@ dm$personNum<- id
 # Create an merge Index file for the other domains.
 personId <- dm[,c("personNum", "usubjid")]
 
-#---- Investigator name and ID not present in original source data
+# Values not in original source data ----
+# ** Create ----
 dm$invnam <- 'Jones'
 dm$invid  <- '123'
+dm$inv    <- 'Investigator_1'
+dm$rand   <- 'RandomizationBAL3'
+dm$study  <- "Study_1"  # Must change when >1 study in triplstore!
 
-dm$inv  <- 'Investigator_1'
-dm$rand <- 'RandomizationBAL3'
-
-# Method of assigning Study_(n) must change
-#    when more than one study to be managed in the triplestore!
-dm$study <- "Study_1"
-
+# ** Impute ----
 #---- Birthdate : asbsent in source data
 # NOTE: Date calculations based on SECONDS so you must convert the age in Years to seconds
 #      Change to character to avoid later ddply problem in DM_process.R
@@ -39,7 +37,9 @@ dm$brthdate <- as.character(strptime(strptime(dm$rfstdtc, "%Y-%m-%d") - (strtoi(
 #---- Informed Consent  (column present with missing values in DM source).  
 dm$rficdtc <- dm$dmdtc
 
+# Death Date and Flag set for Person 1 for testing purposes only. 
+#   Will not match original source data! (no deaths)
 # Unfactorize the dthdtc column to allow entry of a bogus date
 dm$dthdtc <- as.character(dm$dthdtc)
 dm$dthdtc[dm$personNum == 1 ] <- "2013-12-26"  # Death Date
-dm$dthfl[dm$personNum == 1 ] <- "Y" # Set a Death flag  for Person_1
+dm$dthfl[dm$personNum == 1 ]  <- "Y" # Set a Death flag  for Person_1

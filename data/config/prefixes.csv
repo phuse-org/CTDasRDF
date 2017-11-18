@@ -6,9 +6,10 @@ cdiscpilot01,https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rd
 code,https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#,Controlled terminology from authoritative sources. May later be replaced by links to resources published by those organizations.
 country,http://psi.oasis-open.org/iso/3166/#,Country codes graph
 cts,http://rdf.cdisc.org/ct/schema#,NOT IN USE 6DEC16
-custom,https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#,Codes defined locally by the sponsor reused across multiple studies.
+custom,https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#,Codes defined locally by the sponsor reused across multiple studies.
 dcat,http://www.w3.org/ns/dcat#,Distribution data
 dcterms,http://purl.org/dc/terms/,Common terminology like descriptions  etc.
+mms,https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/meta-model-schema.rdf,meta model schema
 owl,http://www.w3.org/2002/07/owl#,OWL
 pav,http://purl.org/pav,Creation and authorship. Graph metadata
 prov,http://www.w3.org/ns/prov#,Data provenance

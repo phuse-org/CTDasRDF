@@ -1,10 +1,7 @@
 /*----------------  All Slides ----------------------------------------------*/
-/* @import url(../../lib/font/league-gothic/league-gothic.css);  from original reveal.js*/
-/* Need to import the League-Gothic font */
-@import "/SDTMasRDF/vis/d3/d3/font/league-gothic/league-gothic.css";
 
 body {
-    background-color: "#002b36";
+  background-color: #002b36; /* RevealJS moon theme */
 }
 
 h1,
@@ -15,7 +12,7 @@ h5,
 h6 {
   margin: 0 0 20px 0;
   color: #eee8d5;att
-  font-family: "League Gothic", sans-serif;
+  font-family: sans-serif;
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: normal;
@@ -35,16 +32,26 @@ h3 {
 h4 {
   font-size: 1em; }
 
-body {
-  background: #919191;
-  background-color: #919191; 
-}
 
 /*---- LEGEND ---------------------------------------------------------------*/
 .legendTitle, .explainText, labelBarchart {
   /* stroke: #eee8d5; */
   fill: #eee8d5;
   font-size: 12pt;
+}
+
+.smTitle{
+  margin: 0 0 20px 0;
+  color:#eee8d5;
+  font-size: 2em;
+  font-family: sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  text-shadow: none;
+  word-wrap: break-word;
+  text-align: center;
 }
 .legendBox{
     fill: #999999;
@@ -57,7 +64,7 @@ text.monoLG {
     font-size: 12pt;
     font-family: Consolas, courier;
     fill: #eee8d5;
-    
+
     /*fill: #aaa;*/
 }
 .nodetext{
@@ -73,48 +80,91 @@ text.monoLG {
 }
 /*-- Nodes */
 /* Stroke is 3 levels darker than fill on https://www.w3schools.com/colors/colors_picker.asp */
-.STUDY{
-    fill: #482C79;
-    stroke: #38225e;
-    stroke-width: 1.5;
+.node{
+ stroke-width: 1;
 }
-.CODE{
-    fill: #870922;
-    stroke: #600618;
-    stroke-width: 1.5;
+.code{
+  fill: #870922;
+  stroke: #600618;
 }
-.TIME{
-    fill: #1C5B64;
-    stroke: #164850;
-    stroke-width: 1.5;
+.flag{
+  fill: #00ff00;
+  stroke: #600618;
 }
-/*-- Edges */
-.SUBCLASSOF{ 
-	  stroke:  #5c5c8a;
+.literal{
+  fill: white;
+  stroke: #38225e;
 }
-.EQUIVALENTCLASS{ 
+.measure{
+  fill: red;
+  stroke: #38225e;
+}
+.person{
+  fill: #ffff00;
+  stroke: #38225e;
+}
+.rdfs{
+  fill: grey;
+  stroke: #38225e;
+}
+.rule{
+  fill: pink;
+  stroke: #38225e;
+}
+.sdtm{
+  fill: orange;
+  stroke: #164850;
+}
+.study{
+  fill: #482C79;
+  stroke: #38225e;
+}
 
-	  stroke: green;
+.skos{
+  fill: blue;
+  stroke: #164850;
 }
-.DOMAIN{ 
-	  stroke: #005c99;
-}
-.RANGE{ 
-	  stroke: #0099e6;
-}
-.TYPE{ 
-
-	  stroke: purple;
-}
-.SUBPROPERTYOF{ 
-
-	  stroke: #e68a00;
+.time{
+  fill: #1C5B64;
+  stroke: #164850;
 }
 
-.INVERSEOF{ 
-
-	  stroke: red;
+/* File relationships */
+.data
+{
+  fill: #1C5B64;
+  stroke: #164850;
 }
+.ontology{
+  fill: orange;
+  stroke: #164850;
+}
+
+
+
+/*---- Edges ----------------------------------------------------------------*/
+.edge {
+stroke-width: 5;
+}
+.code{
+  stroke: #005c99;
+}
+.skos{
+  stroke:  purple;
+}
+.study{
+  stroke: green;
+}
+.rdfs{
+  stroke: #0099e6;
+}
+.type{
+  stroke: grey;
+}
+.time{
+  stroke: #e68a00;
+}
+
 
 .tooltipLegend{
     position: absolute;
@@ -123,38 +173,39 @@ text.monoLG {
     padding: 4px;
     font: 12px sans-serif;
     background: #00ccff;
+
     border: 0px;
     pointer-events: none;
 }
 .legendText{
 	  fill: #eee8d5;
-    font-size: 12px;  
-    font-weight:bold; 
+    font-size: 12px;
+    font-weight:bold;
 }
-.legendNodeText{       
+.legendNodeText{
     /* fill: #eee8d5; */
     fill:#e1d7b7;  /* a little darker than the titles, etc.*/
-    font-size: 12px;  
-    font-weight:bold; 
+    font-size: 12px;
+    font-weight:bold;
 }
 
 .nodeText{
     fill:#000000;
     font-family: Serif, Georgia;
-    font-size: 24px;   
+    font-size: 24px;
     font-weight: bold;
 }
 .node {
     fill: black;
-    font-size: 13px;  
-    font-weight:bold; 
+    font-size: 13px;
+    font-weight:bold;
 }
 
 /* Special Edge colours based on type of linkage*/
 #Default-edge{
   stroke: #808080;
   stroke-width: 4;
-}    
+}
 
 #Reference-edge{
   stroke: gray;
@@ -178,7 +229,7 @@ text.monoLG {
 .edgeLabel{
     fill:#eee8d5;
     font-family: Serif, Georgia;
-    font-size: 18pt;   
+    font-size: 18pt;
     font-weight: bold;
 }
 
@@ -194,4 +245,127 @@ text.monoLG {
     /*border-color: #006680; */
     border-color: #003d4d;
     pointer-events: none;
+}
+/* ONTOLOGY FLOWER GRAPHS */
+
+/* Grid layout  */
+* {
+  box-sizing: border-box;
+}
+.grid{
+  display: grid;
+  grid-template-areas:
+  "headL..... headR"
+  "visL...... visR"
+  "visL visTip visR"
+  "visL...... visR";
+  grid-template-columns: 400px[leftCol] 120px[midCol]350px[rightCol];
+  grid-template-rows: 30px[header] 300px[topVis] 120px[midVis] 300px[botVis];
+
+}
+.grid div {
+  border: 1px solid rgb(0,95,107);
+  border-radius: 3px;
+  background-color: rgba(0,95,107,0.8);
+  padding: 0.2em;
+  color: #fff;
+
+}
+
+headerLeft{
+  grid-area: headL;
+}
+headerRight{
+  grid-area: headR;
+}
+
+visLeft{
+  grid-area: visL;
+}
+visRight{
+  grid-area: visR;
+}
+
+visTip{
+  grid-area:visTip;
+}
+
+/* Tooltip Container */
+/* new from: https://www.w3schools.com/css/css_tooltip.asp */
+.petalTooltip {
+    padding: 4px;
+    width: 160px;
+
+    /*
+    text-align: left;
+    height: 55px;
+    padding: 4px;
+    font: 14px sans-serif;
+    */
+    background: #EEE8D5;
+    border: 2px;
+    border-radius: 8px;
+}
+/* Tooltip text */
+.petalTooltip .petalTooltiptext{
+  visibility: hidden;
+  /* width: 140px; */
+  background: lightsteelblue;
+  /* background-color: lightsteelblue; */
+  font: 30px sans-serif;
+  text-align: left;
+  padding: 10px;
+  border: 2px;
+  border-radius: 8px;
+  left: 10px;
+  top : 10px;
+  z-index: 1;
+}
+
+.petalTooltip:hover .petalTooltiptext{
+  visibility: visible;
+}
+
+.extOntPetal{
+  stroke-width: 4;
+}
+
+.intOntPetal{
+  stroke-width: 4;
+}
+
+/* Ontology Flower Fills */
+.CDISC {
+  fill:   #2784BB ;
+  stroke: #1e6691;  /* darker */
+}
+.W3C {
+  fill:   #FFB00A;
+  stroke: #d69100;  /* darker */
+}
+.Future {
+  fill:   #C0C0C0;
+  stroke: #a7a7a7;  /* darker */
+  stroke-dasharray: 5,5; /* dashed to show not yet in use */
+}
+.Protocol {
+  fill:   #FFB00A;
+  stroke: #d69100;  /* darker */
+}
+.Results {
+  fill:   #D60045;  /* red  */
+  stroke: #A30035;  /* darker */
+}
+.SDTM {
+  fill:   #0045D6;  /* blue  */
+  stroke: #0035A3;  /* darker */
+}
+
+.Study {
+  fill:   #9100D6;  /* purple  */
+  stroke: #6E00A3;  /* darker */
+}
+.Coding {
+  fill:   #00D691;  /* green  */
+  stroke: #00A36E;  /* darker */
 }
