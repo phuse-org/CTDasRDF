@@ -213,12 +213,14 @@ code:DemographicDataCollection
       owl:onProperty study:sex ;
     ] ;
 .
-code:Rule
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:RuleOutcome ;
-      owl:onProperty study:outcome ;
-    ] ;
+code:InformedConsentOutcome_1
+  rdf:type study:InformedConsentOutcome ;
+.
+code:InformedConsentOutcome_2
+  rdf:type study:InformedConsentOutcome ;
+.
+code:InformedConsentOutcome_3
+  rdf:type study:InformedConsentOutcome ;
 .
 code:RuleOutcome_1
   rdf:type study:RuleOutcome ;
@@ -1216,7 +1218,7 @@ study:StartRuleDefault_1
 study:StartRuleInformedConsentGranted
   rdf:type owl:Class ;
   rdfs:subClassOf study:StartRulePrereqActivityOutcome ;
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:hasValue code:InformedConsentOutcome_1 ;
       owl:onProperty study:hasPrereqExpectedOutcome ;
@@ -1230,6 +1232,11 @@ study:StartRuleInformedConsentStart
   rdf:type owl:Class ;
   rdfs:label "Start rule informed consent started"^^xsd:string ;
   rdfs:subClassOf study:StartRulePrereqActivityStart ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:InformedConsent ;
+      owl:onProperty study:hasPrerequisite ;
+    ] ;
   skos:prefLabel "Start rule informed consent started"^^xsd:string ;
   study:hasPrereqExpectedStatus code:ActivityStatus_3 ;
 .
@@ -1237,7 +1244,7 @@ study:StartRulePrereqActivityComplete
   rdf:type owl:Class ;
   rdfs:label "Start rule prereq activity complete"^^xsd:string ;
   rdfs:subClassOf study:StartRule ;
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:hasValue code:ActivityStatus_1 ;
       owl:onProperty study:hasPrereqExpectedStatus ;
@@ -1247,6 +1254,11 @@ study:StartRulePrereqActivityComplete
 study:StartRulePrereqActivityOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:ActivityOutcome ;
+      owl:onProperty study:hasPrereqExpectedOutcome ;
+    ] ;
   skos:definition "A collection of Start Rules that trigger, i.e. evaluate to TRUE, when the Prerequisite Activity is completed and has a certain expected outcome. "^^xsd:string ;
   skos:prefLabel "Start rule prereq activity outcome"^^xsd:string ;
 .
@@ -1254,7 +1266,7 @@ study:StartRulePrereqActivityStart
   rdf:type owl:Class ;
   rdfs:label "Start rule prereq activity start"^^xsd:string ;
   rdfs:subClassOf study:StartRule ;
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:hasValue code:ActivityStatus_3 ;
       owl:onProperty study:hasPrereqExpectedStatus ;

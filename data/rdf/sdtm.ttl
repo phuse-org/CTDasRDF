@@ -4459,6 +4459,13 @@ sdtm:hasVSTPTREF
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
 .
+sdtm:key
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTMDefineRecord ;
+  rdfs:range xsd:integer ;
+  skos:definition "Define.xml 2.0 record sort order"^^xsd:string ;
+  skos:prefLabel "key"^^xsd:string ;
+.
 sdtm:variableComment
   rdf:type owl:AnnotationProperty ;
   rdfs:domain sdtm:Variable ;

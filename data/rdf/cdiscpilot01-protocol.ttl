@@ -14,34 +14,34 @@
 @prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-sdtmterm:C67153.C25206
+<http://rdf.cdisc.org/sdtmterm#C67153.C25206>
   rdf:type study:VitalSign ;
   rdfs:subClassOf study:VitalSign ;
 .
-sdtmterm:C67153.C25208
+<http://rdf.cdisc.org/sdtmterm#C67153.C25208>
   rdf:type study:VitalSign ;
   rdfs:subClassOf study:VitalSign ;
 .
-sdtmterm:C67153.C25298
+<http://rdf.cdisc.org/sdtmterm#C67153.C25298>
   rdf:type study:VitalSign ;
   rdfs:subClassOf study:VitalSign ;
 .
-sdtmterm:C67153.C25299
+<http://rdf.cdisc.org/sdtmterm#C67153.C25299>
   rdf:type study:VitalSign ;
   rdfs:subClassOf study:VitalSign ;
 .
-sdtmterm:C67153.C25347
+<http://rdf.cdisc.org/sdtmterm#C67153.C25347>
   rdf:type study:VitalSign ;
   rdfs:subClassOf study:VitalSign ;
 .
-sdtmterm:C67153.C49676
+<http://rdf.cdisc.org/sdtmterm#C67153.C49676>
   rdf:type study:VitalSign ;
   rdfs:subClassOf study:VitalSign ;
 .
-sdtmterm:C71148.C62166
+<http://rdf.cdisc.org/sdtmterm#C71148.C62166>
   rdf:type cd01p:VitalsSignsBodyPosition ;
 .
-sdtmterm:C71148.C62167
+<http://rdf.cdisc.org/sdtmterm#C71148.C62167>
   rdf:type cd01p:VitalsSignsBodyPosition ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl>
@@ -312,12 +312,52 @@ cd01p:Sponsor_1
 cd01p:StartRuleLying5
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:AssumeBodyPositionSupine ;
+      owl:onProperty study:hasPrerequisite ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <http://rdf.cdisc.org/sdtmterm#C71148.C62167> ;
+      owl:onProperty study:hasPrereqExpectedOutcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "815"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
+      owl:onProperty study:ruleDescription ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
+      owl:onProperty study:ruleDescriptionLong ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "PT5M"^^xsd:duration ;
+      owl:onProperty study:hasDelay ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Rule Lying 5 Min"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Target activity starts after the subject has assumed a supine position for 5 minutes"^^xsd:string ;
+      owl:onProperty skos:definition ;
+    ] ;
   skos:altLabel "815"^^xsd:string ;
   skos:definition "Target activity starts after the subject has assumed a supine position for 5 minutes"^^xsd:string ;
   skos:prefLabel "Rule Lying 5 Min"^^xsd:string ;
   study:hasDelay "PT5M"^^xsd:duration ;
-  study:hasPrereqExpectedOutcome sdtmterm:C71148.C62167 ;
+  study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62167> ;
   study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   study:hasPrerequisite custom:AssumeBodyPositionSupine ;
   study:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
@@ -326,12 +366,52 @@ cd01p:StartRuleLying5
 cd01p:StartRuleStanding1
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:AssumeBodyPositionStanding ;
+      owl:onProperty study:hasPrerequisite ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
+      owl:onProperty study:hasPrereqExpectedOutcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "816"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
+      owl:onProperty study:ruleDescription ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
+      owl:onProperty study:ruleDescriptionLong ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "PT1M"^^xsd:duration ;
+      owl:onProperty study:hasDelay ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Rule Standing 1 Min"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Target activity starts after the subject has assumed a standing position for 1 minute"^^xsd:string ;
+      owl:onProperty skos:definition ;
+    ] ;
   skos:altLabel "816"^^xsd:string ;
   skos:definition "Target activity starts after the subject has assumed a standing position for 1 minute"^^xsd:string ;
   skos:prefLabel "Rule Standing 1 Min"^^xsd:string ;
   study:hasDelay "PT1M"^^xsd:duration ;
-  study:hasPrereqExpectedOutcome sdtmterm:C71148.C62166 ;
+  study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
   study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   study:hasPrerequisite custom:AssumeBodyPositionStanding ;
   study:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
@@ -340,12 +420,52 @@ cd01p:StartRuleStanding1
 cd01p:StartRuleStanding3
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:AssumeBodyPositionStanding ;
+      owl:onProperty study:hasPrerequisite ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
+      owl:onProperty study:hasPrereqExpectedOutcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "817"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
+      owl:onProperty study:ruleDescription ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
+      owl:onProperty study:ruleDescriptionLong ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "PT3M"^^xsd:duration ;
+      owl:onProperty study:hasDelay ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Rule Standing 3 Min"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Target activity starts after the subject has assumed a standing position for 3 minutes"^^xsd:string ;
+      owl:onProperty skos:definition ;
+    ] ;
   skos:altLabel "817"^^xsd:string ;
   skos:definition "Target activity starts after the subject has assumed a standing position for 3 minutes"^^xsd:string ;
   skos:prefLabel "Rule Standing 3 Min"^^xsd:string ;
   study:hasDelay "PT3M"^^xsd:duration ;
-  study:hasPrereqExpectedOutcome sdtmterm:C71148.C62166 ;
+  study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
   study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   study:hasPrerequisite custom:AssumeBodyPositionStanding ;
   study:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
@@ -518,7 +638,7 @@ custom:PlaceboProduct_1
   rdf:type code:DrugProduct ;
   rdf:type study:PlaceboProduct ;
   skos:prefLabel "PLACEBO"^^xsd:string ;
-  code:hasDosageForm sdtmterm:C66726.C42968 ;
+  code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_1 ;
 .
 custom:PopFlagCmpltr16Wk
@@ -567,14 +687,14 @@ custom:Product_1
   rdf:type code:DrugProduct ;
   rdf:type study:InvestigationalProduct ;
   skos:prefLabel "XANOMELINE LO" ;
-  code:hasDosageForm sdtmterm:C66726.C42968 ;
+  code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_2 ;
 .
 custom:Product_2
   rdf:type code:DrugProduct ;
   rdf:type study:InvestigationalProduct ;
   skos:prefLabel "XANOMELINE HI" ;
-  code:hasDosageForm sdtmterm:C66726.C42968 ;
+  code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_3 ;
 .
 custom:VisitAmbulECGPlaceActivity
