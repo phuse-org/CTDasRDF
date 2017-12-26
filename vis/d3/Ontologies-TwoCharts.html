@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!-----------------------------------------------------------------------------
+ $HeadURL: file:///C:/SVNLocalRepos/d3/Examples/flowers/FlowersHacking-FromSO.html $
+ $Rev: 1058 $
+ $Date: 2017-10-27 19:07:03 -0400 (Fri, 27 Oct 2017) $
+ $Author: U041939 $
+ -----------------------------------------------------------------------------
+DESC:  Two Flower Charts using CSS Grid
+VIEW : http://localhost:8000/CTDasRDF/vis/d3/Ontologies-TwoCharts.html
+ INPUT:
+ OUT  :
+ NOTES: !! MUST use d3.min.js, not d3.v3.min.js or the grid layout will FAIL!!!
+TODO: :
+
+------------------------------------------------------------------------------>
+<meta charset="utf-8">
+<head>
+  <!--
+  <link rel="stylesheet" type="text/css" href="/ctdasRDF/vis/d3/css/GridExample1.css">
+-->
+<link rel="stylesheet" type="text/css" href="/ctdasRDF/vis/d3/css/CTDasRDF.css">
+</head>
+<title>CSS Grid Testing</title>
+<html>
+<body>
+<script type="text/javascript" src="/ctdasRDF/vis/d3/d3/d3.min.js"></script>
+<script>
+// was 500, 500, 100
+var width = 350,
+    height = 500,
+    halfRadius = 70;  // length of petal & therefore size of digram overall
+
+var size = d3.scale.sqrt()
+  .domain([0, 1])
+  .range([0, halfRadius]);
+
+// Layout definition
+var grid = d3.select("body").append("div") // this creates the question divs
+    .attr("class", "grid");
+
+// Define content for each grid area
+// Headers Left, Right
+var headerLeft = grid.append("headerLeft");
+headerLeft.text("External Ontologies")
+  .attr("class", "smTitle")
+  ;
+var headerRight = grid.append("headerRight");
+headerRight.text("Study Ontologies & Instance Data")
+  .attr("class", "smTitle")
+  ;
+
+// Left Vis:  External Ontologies
+var visLeft = grid.append("visLeft");
+var chart1 = d3.select("visLeft").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width/2 + "," + height/2 + ")")
+  ;
+
+// Right Vis: Project Ontologies and Files
+var visRight = grid.append("visRight");
+/* visRight.text("Right Visualization Area"); */
+ /* var svg2 = d3.select("visRight").append("svg") */
+ var chart2 = d3.select("visRight").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width/2 + "," + height/2 + ")")
+  ;
+
+// Tool Tip
+var visTip = grid.append("visTip");
+visTip.attr("class", "petalTooltip")
+  .style("opacity", 0); /* Do not show on load */
+
+// ------------  Vis Left -----------------------------------------------------
+  var extOntData = [
+   {id:0, name:"BRIDG4-1-1",  filename:"bridg-4-1-1.ttl",      src:"CDISC",  size:63263,  sizeLabel:"63263"  },
+   {id:1, name:"SDTMIG3-1-3", filename:"sdtmig-3-1-3.ttl",     src:"CDISC",  size:12266,  sizeLabel:"12266"  },
+   {id:2, name:"SDTM-Term",   filename:"sdtm-terminology.rdf", src:"CDISC",  size:198598, sizeLabel:"198598" },
+   {id:3, name:"SDTM1-3",     filename:"sdtm-1-3.ttl",         src:"CDISC",  size:1778,   sizeLabel:"1778"   },
+   {id:4, name:"OWL",         filename:"owl.ttl",              src:"W3C",    size:450,    sizeLabel:"450"    },
+   {id:5, name:"RDF",         filename:"rdf.ttl",              src:"W3C",    size:577,    sizeLabel:"102"    },
+   {id:6, name:"RDFS",        filename:"rdf-schema.tll",       src:"W3C",    size:577,    sizeLabel:"87"     },
+   {id:7, name:"SKOS",        filename:"skos.rdf",             src:"W3C",    size:577,    sizeLabel:"252"    },
+   {id:8, name:"Time",        filename:"time.ttl",             src:"W3C",    size:1047,   sizeLabel:"577"    },
+   {id:9, name:"LOINC",       filename:"TBD",                  src:"Future", size:40000,  sizeLabel:"TBD"    },
+   {id:10, name:"MedDRA",     filename:"TBD",                  src:"Future", size:50000,  sizeLabel:"TBD"    },
+   {id:11, name:"WHO-Drug",   filename:"TBD",                  src:"Future", size:50000,  sizeLabel:"TBD"    }
+  ]
+
+  var extOntScale = d3.scale.log()
+    .domain([400,200000])
+    .range([1,2]);
+
+  var pie = d3.layout.pie()
+    .sort(null)
+    .value(function(d) { return extOntScale(d.size); });
+
+// Important: Note use of d.data.src to get class name, as explained here:
+//  https://stackoverflow.com/questions/34821449/adding-class-names-to-arcs-from-data-in-d3-layout-pie
+var extOntPetal = chart1.selectAll(".extOntPetal")
+  .data(pie(extOntData))
+  .enter().append("path")
+    .attr("class", "extOntPetal")
+    .attr("transform", function(d) { return r((d.startAngle + d.endAngle) / 2); })
+    .attr("d", extOntPetalPath)
+    .attr('class', function(d) {return ("extOntPetal " + d.data.src); })
+    .on('mouseover', function(d){
+      var extOntPetalSelection = d3.select(this).style({opacity:'0.8'});
+        // d3.selectAll(".link").style("stroke","red").style("stroke-width",4);
+      // Append the info value to the visTip area on the screen.
+      visTip.transition()
+       .duration(200)
+       .style("opacity", .9);
+      visTip	.html("<b>"+d.data.name+"</b>"+ "<br/>" +
+           "Type: " + d.data.src+"<br/>" +
+           "File:" + d.data.filename+"<br/>" +
+           "Size (triples): "+ d.data.sizeLabel)
+           /*
+       .style("left", (d3.event.pageX) + "px")
+       .style("top", (d3.event.pageY - 28) + "px")
+       */
+       ;
+    })
+    //Mouseout Node  - bring node back to full colour
+    .on('mouseout', function(d){
+      var extOntPetalSelection= d3.select(this).style({opacity:'1.0',})
+      visTip.transition()
+        .duration(500)
+        .style("opacity", 0);
+     });
+
+     function extOntPetalPath(d) {
+       var angle = (d.endAngle - d.startAngle) / 2,
+           s = polarToCartesian(-angle, halfRadius),
+           e = polarToCartesian(angle, halfRadius),
+           // r = size(d.data.size),  // new here
+           r = size(extOntScale(d.data.size)),  // new here
+           m = {x: halfRadius + r, y: 0}, // increase from 0 to curve edges. Cool effect.
+           c1 = {x: halfRadius + r / 2, y: s.y},
+           c2 = {x: halfRadius + r / 2, y: e.y};
+       //return "M0,0L" + s.x + "," + s.y + "Q" + c1.x + "," + c1.y + " " + m.x + "," + m.y + "L" + m.x + "," + m.y + "Q" + c2.x + "," + c2.y + " " + e.x + "," + e.y + "Z";
+       return "M0,0L" + s.x + "," + s.y + "Q" + c1.x + "," + c1.y + " " + m.x + "," + m.y + "L" + m.x + "," + m.y + "Q" + c2.x + "," + c2.y + " " + e.x + "," + e.y + "Z";
+     };
+// -----------------------------------------------------------------------------
+// ------------  Vis Right -----------------------------------------------------
+
+var intOntData = [
+ {id:0, name:"INSTANCE",  filename:"cdiscpilot01.ttl",          src:"Results",   size:752,  sizeLabel:"752"  },
+ {id:1, name:"STUDY",     filename:"study.ttl",                 src:"Study",     size:1896, sizeLabel:"1896" },
+ {id:2, name:"CODE",      filename:"code.ttl",                  src:"Coding",    size:746,  sizeLabel:"746"  },
+ {id:3, name:"PROTOCOL",  filename:"cdiscpilot01-protocol.ttl", src:"Protocol", size:484,  sizeLabel:"484"  },
+ {id:3, name:"SDTM",      filename:"sdtm-cd01p.ttl",            src:"SDTM",      size:219,  sizeLabel:"219"  }
+]
+
+var intOntScale = d3.scale.linear()
+    .domain([400,20000])
+    .range([.5,3]);
+/* moved to griad area definition
+var svg2 = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width/2 + "," + height/2 + ")")
+        ;
+*/
+
+var pie2 = d3.layout.pie()
+  .sort(null)
+  .value(function(d) { return intOntScale(d.size); });
+
+var intOntPetal = chart2.selectAll(".intOntPetal")
+  .data(pie(intOntData))
+  .enter().append("path")
+    .attr("class", "intOntPetal")
+    .attr("transform", function(d) { return r((d.startAngle + d.endAngle) / 2); })
+    .attr("d", intOntPetalPath)
+    .attr('class', function(d) {return ("intOntPetal " + d.data.src); })
+    .on('mouseover', function(d){
+       var intOntPetalSelection = d3.select(this).style({opacity:'0.8'});
+         // d3.selectAll(".link").style("stroke","red").style("stroke-width",4);
+       visTip.transition()
+        .duration(200)
+        .style("opacity", .9);
+       visTip	.html("<b>"+d.data.name+"</b>"+ "<br/>" +
+            "Type: " + d.data.src+"<br/>" +
+            "File:" + d.data.filename+"<br/>" +
+            "Size (triples): "+ d.data.sizeLabel)
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY - 28) + "px");
+    })
+    //Mouseout Node  - bring node back to full colour
+    .on('mouseout', function(d){
+       var intOntPetalSelection= d3.select(this).style({opacity:'1.0',})
+       visTip.transition()
+         .duration(500)
+         .style("opacity", 0);
+    });
+function intOntPetalPath(d) {
+  var angle = (d.endAngle - d.startAngle) / 2,
+      s = polarToCartesian(-angle, halfRadius),
+      e = polarToCartesian(angle, halfRadius),
+      // r = size(d.data.size),  // new here
+      r = size(intOntScale(d.data.size)),  // new here
+      m = {x: halfRadius + r, y: 0}, //0
+      c1 = {x: halfRadius + r / 2, y: s.y},
+      c2 = {x: halfRadius + r / 2, y: e.y};
+  return "M0,0L" + s.x + "," + s.y + "Q" + c1.x + "," + c1.y + " " + m.x + "," + m.y + "L" + m.x + "," + m.y + "Q" + c2.x + "," + c2.y + " " + e.x + "," + e.y + "Z";
+};
+
+//------------- END SECOND CHART ------------------------------
+
+// Common Functions -----------------------------------
+function r(angle) {
+  return "rotate(" + (angle / Math.PI * 180) + ")";
+}
+
+function polarToCartesian(angle, radius) {
+  return {
+    x: Math.cos(angle) * radius,
+    y: Math.sin(angle) * radius
+  };
+};
+</script>
+</body>
+</html>

@@ -16,10 +16,22 @@
 #  Link in to the rest of the graph (person/visit etc.)
 #______________________________________________________________________________
 
-
 # DrugAdministration_(n) ----
 ddply(ex, .(rowID), function(ex)
 {
+
+ addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, ex$DrugAdminID_Frag),
+      predicate = paste0(RDF, "type"),
+      object    = paste0(CDISCPILOT01, ex$visitPerson_Frag)))
+  
+  addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, ex$DrugAdminID_Frag),
+      predicate = paste0(RDF, "type"),
+      object    = paste0(CUSTOM, ex$visit_Frag)))
+
   addStatement(cdiscpilot01,
     new("Statement", world=world,
       subject   = paste0(CDISCPILOT01, ex$DrugAdminID_Frag),
@@ -33,6 +45,18 @@ ddply(ex, .(rowID), function(ex)
       object    = paste0("Drug administration"),
          objectType = "literal", datatype_uri = paste0(XSD,"string")))
 
+  # Note this fragment applied to the Drug Admin is also assigned to the
+  #   product administration activity but with CODE: instead of STUDY:
+  #   For this test study, this is re-use
+  #   of the same value. For other studies, a sep. fragment needed.
+  addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, ex$DrugAdminID_Frag),
+      predicate = paste0(STUDY, "activityStatus"),
+      object    = paste0(CODE, ex$productAdminActStat_Frag)))
+  
+  
+  
   addStatement(cdiscpilot01,
     new("Statement", world=world,
       subject   = paste0(CDISCPILOT01, ex$DrugAdminID_Frag),
@@ -90,7 +114,26 @@ ddply(ex, .(rowID), function(ex)
       subject   = paste0(CDISCPILOT01, ex$DrugAdminID_Frag),
       predicate = paste0(STUDY, "outcome"),
       object    = paste0(STUDY, paste0("DrugAdministration",ex$DrugAdminOutcome_ ))))
-  
-  
 })
 
+# Loop through ex to create the DrugAdministration triples for each
+#  ProductAdministration_(n), where (n) = presonNum
+#  Note: Additional child triples under productAdmin_Frag are created within
+#    DM_process.
+ddply(ex, .(personNum, visitnum), function(ex)
+{
+  #  DrugAdministration_(n)
+  addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, ex$productAdmin_Frag),
+      predicate = paste0(STUDY,"hasSubActivity"),
+      object    = paste0(CDISCPILOT01,ex$DrugAdminID_Frag)))
+  
+    addStatement(cdiscpilot01,
+    new("Statement", world=world,
+      subject   = paste0(CDISCPILOT01, ex$productAdmin_Frag),
+      predicate = paste0(STUDY, "activityStatus"),
+      object    = paste0(CODE, paste0(ex$productAdminActStat_Frag))))
+
+  
+})

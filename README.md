@@ -1,8 +1,8 @@
 # CTDasRDF
 This repository holds the scripts and data for the PhUSE project "Clinical Trials Data as RDF." All work is very early draft, contains errors, problems with the model, etc. 
 
-The Project Wiki https://github.com/phuse-org/CTDasRDF/wiki will be depreciated in favor of R Markdown in the coming weeks. Installation & configuration instructions, R script descriptions, process flow, and other file descriptions are moving from the Github project Wiki to the R Markdown file in the root folder.  
- 
+Your best source for project documentation is the CTDasRDF.rmd/html file. Clone the repository and view the .html file, or recreate the .html by knitting the rmd file. Chrome is the preferred browser (to enable view of the R Script flowchart created using DiagrammeR).  
+
 # Obtaining project files
 If you are not experienced with Github cloning it will be easiest to obtain a copy of the project files using the Download Zip option:
 Click "Clone or Download" and select "Download Zip"
@@ -12,4 +12,4 @@ Edit the paths where needed to specify your checkout location.  Example:
  ```
  setwd("C:/_github/CTDasRDF-MASTER")
 ```
-Contact the project leads or see the wiki for how to run the R scripts, visualizations, etc.
+Contact the project leads for additional information. 

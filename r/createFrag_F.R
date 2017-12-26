@@ -27,7 +27,9 @@
 #   All dates from across both DM and VS domains. 
 #  TODO: 
 #    Add additional domains as project scope expands. Make function flexible
-#    to accept these as arguments instead of hard coded.
+#      to accept these as arguments instead of hard coded.
+#    Move to processing date lists instead of all the useless data.frame conversions which
+#      are a hold-over from earlier versions of the function.
 #' Title
 #'
 #' @return
@@ -37,37 +39,39 @@
 createDateDict <- function()
 {
   # dm dates
-  dmDates <- dm[,c("rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
-  # vs dates
+  dmDateFields <- dm[,c("personNum","rfstdtc", "rfendtc", "rfxstdtc","rfxendtc", "rficdtc", "rfpendtc", "dthdtc", "dmdtc", "brthdate")]
+  dmDates <- melt(dmDateFields, id.var='personNum',variable.name='DMDates')
+  dmDates <- data.frame(dmDates[,"value"])
+  names(dmDates)[1] <- "dateVal"
+  
+  # vs date s
   vsDates <- data.frame(vs[,"vsdtc"])  # only one column so must assign data.frame
+  names(vsDates)[1] <- "dateVal"
+
   # ex dates
-  exDates <- ex[,c("exstdtc", "exendtc")]
+  exDateFields <- ex[,c("personNum", "exstdtc", "exendtc")]
+  exDates <- melt(exDateFields, id.var='personNum',variable.name='EXDates')
+  exDates <- data.frame(exDates[,"value"])
+  names(exDates)[1] <- "dateVal"
   
-  # Combined the date dataframes from all sources
-  #   For >2 dataframes, create list of the dataframes to merge and use Reduce 
-  #   Ref: https://stackoverflow.com/questions/14096814/merging-a-lot-of-data-frames
-  allDates<-Reduce(function(x, y) merge(x, y, all=TRUE), list(dmDates, vsDates, exDates))
-  
-  # Melt all the dates into a single column of values
-  dateList <- melt(allDates, measure.vars=colnames(allDates),
-    variable.name = "source",
-    value.name    = "dateKey")
+  # Combine into single dataframe. Change this to list processing.
+  dateDict <- data.frame(do.call("rbind", list(dmDates, vsDates, exDates)))
+    
   # Remove duplicates
-  dateList <- dateList[!duplicated(dateList$date), ]
+  dateDict <- data.frame(dateDict[!duplicated(dateDict$dateVal), ])
+  # dateDict <- dateDict[!duplicated(dateDict$dateKey), ]
   
   # Remove missing(blank) dates by coding to NA and then omitting
-  dateList[dateList==""] <- NA
-  dateList <- na.omit(dateList)
-  
+  dateDict[dateDict==""] <- NA
+  dateDict <- na.omit(dateDict)
+  names(dateDict)[1] <- "dateVal"
   # Sort by date
-  dateList <- dateList[with(dateList, order(dateKey)),]
+  dateDict <- data.frame(dateDict[with(dateDict, order(dateVal)),])
   
   # Create the coded value for each date as Date_n 
-  dateList$dateFrag <- paste0("Date_", 1:nrow(dateList))   # Generate a list of ID numbers
+  dateDict$dateFrag <- paste0("Date_", 1:nrow(dateDict))   # Generate a list of ID numbers
   
-  #  dateKey - used to merge back into a column
-  #  dateFrag - the fragment that will become part of a URI for a date col
-  dateDict <- dateList[,c("dateKey", "dateFrag")]
+  names(dateDict)[1] <- "dateKey"
   
   # Create the label and dateTimeInXSDString triples for each new date _Frag to avoid 
   #   repeating the same values when createDateTriples is called
@@ -113,6 +117,28 @@ addDateFrag<-function(domainName, colName)
   return(withFrag)
 }
 
+#------------------------------------------------------------------------------
+# Add personNum to a domain to facilitate merging and triple creation
+#  Personnum is created in DM_impute.R. It is used to create the Person_(n) 
+#  triples across all domains, so the identifier must be merged into all domains.
+#' Title
+#'
+#' @param domainName 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+addPersonNum<-function(domainName)
+{
+  withPersonNum <- merge(x = dateDict, y = domainName, by.x="dateKey", by.y=colName, all.y = TRUE)
+  # Rename the merged-in key value to the original column name to preserve original data
+  names(withPersonNum)[names(withPersonNum)=="dateKey"] <-  colName
+  # Rename dateFrag value to coded value using colname +  _Frag suffix
+  names(withPersonNum)[names(withPersonNum)=="dateFrag"] <- paste0(colName, "_Frag")
+  # withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")]  #DEL - no longer needed
+  return(withPersonNum)   # Return the domain with PersonNum now as a column.
+}
 #  createFragOneDomain() ----
 #  Create URI fragments for coded values in a single or mutliple column. 
 #    - If more than one column, combine values into a single column to process
@@ -281,7 +307,7 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numS
   temp2 <- temp2[,!(names(temp2) %in% c("id", "dataCol_N"))]
   
   # Merge the fragment value back into the original data
-  withFrag <<- merge(domainName, temp2, by = c(byCol, dataCol), all.x=TRUE)
+  withFrag <- merge(domainName, temp2, by = c(byCol, dataCol), all.x=TRUE)
 
 }
 
@@ -358,4 +384,45 @@ createFragWithinCat<-function(domainName, sortCols, fragValsCol)
     # remove temporary vars used for indexing before returning the result
     test<-subset(withFrag, select=-c(id, tempID))
   }
+}
+
+
+#' Title
+#' Creates fragments for visits: Both visit_frag, visitPerson_Frag , visitPerson_Label
+#' input dataframe MUST have columns:
+#'  1. visit: "BASELINE", "WEEK 2" etc.
+#'  2. personNum: person number field, created by addPersonId()
+#' @param domainName  - domain dataframe 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'    
+createFragVisit<-function(domainName)
+{
+  temp<<-domainName
+  
+  temp$visit_Frag <- sapply(domainName$visit,function(x) {
+    switch(as.character(x),
+      "AMBUL ECG PLACEMENT" = "VisitAmbulECGPlacement",
+      "AMBUL ECG REMOVAL"   = "VisitAmbulECGRemoval",
+      "BASELINE"            = "VisitBaseline",
+      "RETRIEVAL"           = "VisitRetrieval",
+      "SCREENING 1"         = "VisitScreening1",
+      "SCREENING 2"         = "VisitScreening2",
+      "UNSCHEDULED 3.1"     = "VisitUnsched3-1",
+      "WEEK 2"              = "VisitWk2",
+      "WEEK 4"              = "VisitWk4",
+      "WEEK 6"              = "VisitWk6",
+      "WEEK 8"              = "VisitWk8",
+      "WEEK 12"             = "VisitWk12",
+      "WEEK 16"             = "VisitW168",
+      "WEEK 20"             = "VisitWk20",
+      "WEEK 24"             = "VisitWk24",
+      "WEEK 26"             = "VisitW26",
+      as.character(x) ) } )
+  temp$visitPerson_Frag <- paste0(temp$visit_Frag,"_",temp$personNum)
+  temp$visitPerson_Label <- paste0("Visit ", str_to_title(temp$visit), " Person ", temp$personNum)
+  return(temp)
 }

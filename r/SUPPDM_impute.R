@@ -11,36 +11,30 @@
 # TODO: move code at end to DM_frag.R?? OR delete if not used.
 #______________________________________________________________________________
 
+#DEL Now subsetting in buildRDF-Driver.R
+#OLDE suppdmSubset <-c(1:6)  # only first patient for dev testing
+#OLDE suppdm <- suppdm[suppdmSubset, ]
+
 # Add personID for merge with DM dataset
 suppdm <- addPersonId(suppdm)
 
+# Hardcoded: Later get Study Sponsor value from  from TSPARMCD domain?
+suppdm$sponsor_Frag <- "Sponsor_1"
 
 # Data Coding ----
 #   Used in formation of URIs where the original data can/should not be used
 qnamCode <- function(x) {
-    switch(as.character(x),
-        'COMPLT8'  = 'Cmpltr8Wk',
-        'COMPLT16' = 'Cmpltr16Wk',
-        'COMPLT24' = 'Cmpltr24Wk',
-        'EFFICACY' = 'Eff',
-        'SAFETY'   = 'Saf',
-        'ITT'      = 'Itt',
-        as.character(x)
-    )
+  switch(as.character(x),
+    'COMPLT8'  = 'Cmpltr8Wk',
+    'COMPLT16' = 'Cmpltr16Wk',
+    'COMPLT24' = 'Cmpltr24Wk',
+    'EFFICACY' = 'Eff',
+    'SAFETY'   = 'Saf',
+    'ITT'      = 'Itt',
+    as.character(x)
+  )
 }
 
-# Class codes are camel case in custom: , in contrast to their corresponding
-#   instance in cdiscpilot01:
-#DEL qnamClassCode <- function(x) {
-#DEL     switch(as.character(x),
-#DEL         'COMPLT8'  = 'C8Wk',
-#DEL         'COMPLT16' = 'C16Wk',
-#DEL         'COMPLT24' = 'C24Wk',
-#DEL         'EFFICACY' = 'Eff',
-#DEL         'SAFETY'   = 'Saf',
-#DEL         as.character(x)
-#DEL     )
-#DEL }
 qvalCode <- function(x) {
     switch(as.character(x),
         'Y' = 'YES',
@@ -48,24 +42,19 @@ qvalCode <- function(x) {
         as.character(x)
     )
 }
+
 qevalCode <- function(x) {
     switch(as.character(x),
         'CLINICAL STUDY SPONSOR' = 'STUDYSPONSOR',
         as.character(x)
     )
 }
-suppdm$qnam_  <- sapply(suppdm$qnam, qnamCode)            # Upper cased for cdiscpiloto1:
-#DEL suppdm$qnamClass_  <- sapply(suppdm$qnam, qnamClassCode)  # Camel cased  for custom:
-
-suppdm$qval_  <- sapply(suppdm$qval, qvalCode)
+suppdm$qnam_  <- sapply(suppdm$qnam,  qnamCode) # Upper cased for cdiscpilot01:
+suppdm$qval_  <- sapply(suppdm$qval,  qvalCode)
 suppdm$qeval_ <- sapply(suppdm$qeval, qevalCode)
 
-
-# Hardcoded: Later get Study Sponsor value from  from TSPARMCD domain?
-suppdm$sponsor_Frag <- "Sponsor_1"
-
-
-#---- qval fragment Creation
+# qval fragment ----
+# Currently no SUPPDM_Frag.R
 #  In other code this is accomplished by createFrag(). 
 #    Matches values in code.ttl
 #    Later convert to use createFrag()

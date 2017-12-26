@@ -13,11 +13,16 @@
 #______________________________________________________________________________
 
 # Subset to only the first 8 obs to match AO ontology work
-exSubset <-c(1:8)
-ex <- ex[exSubset, ]
+# exSubset <-c(1:8)
+# ex <- ex[exSubset, ]
 
-# Add row number that will be used in fragment creation
+# Add personNum for merge across domains, triple creation
+ex <- addPersonId(ex)  
+
+# 1. Add row number that will be used in fragment creation
+# 2. All admin outcomes coded as Complete
 ex <- ex %>%
   mutate(rowID = 1:n(),
          DrugAdminOutcome_ = "Complete"
     )
+

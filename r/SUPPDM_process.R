@@ -5,19 +5,13 @@
 # SRC : 
 # IN  : 
 # OUT : 
-# NOTE: TESTING MODE: Uses only first 6 patients (set for DM migrates across 
-#       all domains)
+# NOTE:
+#      
 #     Coded values cannot have spaces or special characters. See Data Coding
-#     Method uses ddply instead of FOR loop. 
 #     Study Sponsor value is hard coded here and in SUPPDM_impute.R
-
 #     HARDCODE:  Population Flag activity status  (activityStatus_1)
 # TODO: 
 #______________________________________________________________________________
-
-suppdm <- readXPT("suppdm")
-
-source("R/SUPPDM_impute.R")
 
 # Hard coded. Study sponsor triple creation
 #TODO: Move to processing of TSPARMCD or other source domain later in the project.

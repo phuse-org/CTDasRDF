@@ -11,12 +11,10 @@
 #       Coded values cannot have spaces or special characters.
 #       SDTM numeric codes and others set MANUALLY
 # TODO: 
-#   Clean up code, convert many of th assignments to use of dplyr MUTATE
+#   Clean up code, convert many of the assignments to use of dplyr MUTATE
 #   Move recoding of SDTM codes to a function and/or config file that 
 #     queries their external graphs instead of manual coding in this script
 #     for SDTM and CDISC terminology 
-#   Replace FOR loop with dplyr mutate? 
-
 #______________________________________________________________________________
 
 # Create vstestOrder for numbering the test within each usubjid, vstestcd, sorted
@@ -70,7 +68,6 @@ vs$vsposSDTM_Frag <- recode(vs$vspos,
                            "'STANDING' = 'C71148.C62166';
                             'SUPINE'   = 'C71148.C62167'" )
 
-
 # 2) Fragment  Creation -------------------------------------------------------
 vs <- addDateFrag(vs, "vsdtc")  
 vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="ActivityStatus")
@@ -79,14 +76,12 @@ vs <- createFragOneDomain(domainName=vs, processColumns="vsstat", fragPrefix="Ac
 vs <- createFragOneDomain(domainName=vs, processColumns="vscat", fragPrefix="Category")
 vs <- createFragOneDomain(domainName=vs, processColumns="vsscat", fragPrefix="Subcategory")
 
-
-#!!!ERROR!!! in numbering of vspos_Frag. 
 # vspos_Frag
 #   Create fragment for creating hasSubActivity AssumeBodyPositionXXXX_n, where n
 #      is numbered within patient x visit x vstptnum. See emails with AO 2017-07-05, then 2017-10-24 for update
 #      and published in the .rmd file
 
-# body position ---- 
+# Body position ---- 
 vs$vsposCode <- recode(vs$vspos, 
                            "'STANDING' = 'AssumeBodyPositionStanding';
                             'SUPINE'   = 'AssumeBodyPositionSupine';
@@ -94,24 +89,6 @@ vs$vsposCode <- recode(vs$vspos,
 vs <- vs[with(vs, order(personNum, visit, vstptnum)), ]
 # Create a temp field that combines personNum and visit for ease of numbering.
 vs$tempvsposCat <- paste0(vs$personNum,"-v", vs$visitnum,"-", vs$vsposCode)
-
-#!!ERROR HERE 
-#vs <- createFragOneColByCat(domainName=vs, byCol="tempvsposCat", dataCol="tempvsposCat", 
-#      fragPrefixName="vsposCode", numSort=FALSE)    
-
-# This creates the right _(n) but we need the BY VALUES (?) as part of the fragment value...
-#  so must use createFragOneColByCat ??
-# vs <- createFragOneDomain(domainName=vs, processColumns="tempvsposCat", fragPrefix="vsposCode")
-
-
-#DEL  Number the distinct values of the tempField
-#DEL vs$tempId <- with(rle(as.character(vs$tempField)), rep(seq_along(values), lengths))
-# Note: Missing values in extraction indices will cause error, so use !is.na() 
-#   in these assignments. Ref: https://stackoverflow.com/questions/23396279/when-trying-to-replace-values-missing-values-are-not-allowed-in-subscripted-as
-
-# Create vspos_Frag only when vspos is not misssing or not blank
-# initialize
-# see https://stackoverflow.com/questions/29814912/error-replacement-has-x-rows-data-has-y
 
 # bodyPosition Rules ----
 # ** Rule Type ----
@@ -154,26 +131,10 @@ vs$vstestOutcomeType_Label <- recode(vs$vstest,
 # Visit ----
 #  Manual recode from known visit values to fragment representation
 #   data-dependent manual recoding!
-vs$visit_Frag <- sapply(vs$visit,function(x) {
-    switch(as.character(x),
-      "AMBUL ECG PLACEMENT" = "VisitAmbulECGPlacement",
-      "AMBUL ECG REMOVAL"   = "VisitAmbulECGRemoval",
-      "BASELINE"            = "VisitBaseline",
-      "RETRIEVAL"           = "VisitRetrieval",
-      "SCREENING 1"         = "VisitScreening1",
-      "SCREENING 2"         = "VisitScreening2",
-      "UNSCHEDULED 3.1"     = "VisitUnsched3-1",
-      "WEEK 2"              = "VisitWk2",
-      "WEEK 4"              = "VisitWk4",
-      "WEEK 6"              = "VisitWk6",
-      "WEEK 8"              = "VisitWk8",
-      "WEEK 12"             = "VisitWk12",
-      "WEEK 16"             = "VisitW168",
-      "WEEK 20"             = "VisitWk20",
-      "WEEK 24"             = "VisitWk24",
-      "WEEK 26"             = "VisitW26",
-      as.character(x) ) } )
-vs$visitPerson_Frag <- paste0(vs$visit_Frag,"_",vs$personNum)
+# TODO: Change to call: createVisitFrag() function in createFrag_F
+#   
+
+vs<-createFragVisit(vs)  # this replaces the following TW# code 
 
 # visit ==> SCREENING 1 becomes Screening 1
 vs$startRule_Label <-  paste0("P", vs$personNum, " ", 
@@ -241,7 +202,7 @@ vs <- mutate(vs,
     #DEL paste0("P", personNum, " ", visit, " ", vstest, " ", testNumber), id="Title")
     paste0("P", personNum, " ", visit, " ", vstest, " ", vstestOrder), id="Title")
 )
-# OUtcome label ----
+# Outcome label ----
 # Pick off the number after the _  from vsorres_Frag and make it part of the label
 # TODO: Need new approach. The number should relate to the person and the result for that type of test
 #   within that person+test.  P1 SBP 2 is the second SBP for Person 1!
@@ -250,14 +211,11 @@ vs$vstestOutcomeType_Label <- paste0(vs$vstestOutcomeType_Label, " ", str_extrac
 # Clean up: remove temp vars
 #TODO: Reinstate after debug     vs<-vs[, !(names(vs) %in% c("tempId", "tempField"))]
 
-
 # AssumeBodyPosition(a)_(n)
 vs <-createFragWithinCat(domainName=vs, 
   sortCols=c("personNum", "visitnum", "vsposCode"),
   fragValsCol="vsposCode")
 
-
-# !!HERE!! ----
 # vsposCodeStartRule_Frag
 # Only AssumeBodyPositionStanding_1 has a start rule.  It must be preceded by StartRuleLying5_1
 # if vsposCode_Frag is AssumeBodyPositionStanding_1, then assign vsposCodeSTartRule_Frag as StartRuleLying5_1

@@ -12,13 +12,12 @@
 # TODO:
 #______________________________________________________________________________
 
-# Other units to be added based on the data
 dm$ageu_Frag <- sapply(dm$ageu,function(x) {
     switch(as.character(x),
         'YEARS'      = 'unitYear',
         as.character(x) ) } )
 
-# Treatment arms (planned, actual)
+# Treatment arms (planned and actual)
 dm$armcd_Frag <- sapply(dm$armcd,function(x) {
     switch(as.character(x),
         'Pbo'      = 'ArmPlacebo',
@@ -36,7 +35,6 @@ dm$actarmcd_Frag <- sapply(dm$actarmcd,function(x) {
         as.character(x) ) } )
 
 #  SDTM code values ----
-
 # Translate values in the domain to their corresponding codelist code
 # for linkage to the SDTM graph
 # Example: Sex is coded to the SDTM Terminology graph by translating the value 
@@ -46,7 +44,7 @@ dm$actarmcd_Frag <- sapply(dm$actarmcd,function(x) {
 # NOTE: This type of recoding to external graphs should be moved to a function
 #        and driven by a config file and/or separate SPARQL query against the graph
 #        that holds the codes, like SDTMTERM for the CDISC SDTM Terminology.
-#-- Sex
+# Sex
 dm$sex_Frag <- sapply(dm$sex,function(x) {
     switch(as.character(x),
        'M'  = 'C66731.C20197',
@@ -54,7 +52,7 @@ dm$sex_Frag <- sapply(dm$sex,function(x) {
        'U'  = 'C66731.C17998', 
        'UNDIFFERENTIATED' = 'C66731.C45908',
         as.character(x) ) } )
-#-- Ethnicity
+# Ethnicity
 dm$ethnic_Frag <- sapply(dm$ethnic,function(x) {
     switch(as.character(x),
         'HISPANIC OR LATINO'     = 'C66790.C17459',
@@ -62,7 +60,7 @@ dm$ethnic_Frag <- sapply(dm$ethnic,function(x) {
         'NOT REPORTED'           = 'C66790.C43234',
         'UNKNOWN'                = 'C66790.C17998',
         as.character(x) ) } )
-#-- Race
+# Race
 dm$race_Frag  <- sapply(dm$race,function(x) {
     switch(as.character(x),
         'AMERICAN INDIAN OR ALASKA NATIVE'          = 'C74457.C41259',
@@ -72,13 +70,13 @@ dm$race_Frag  <- sapply(dm$race,function(x) {
         'WHITE'                                     = 'C74457.C41261',
         as.character(x) ) } )
 
-
-#--Informed Consent Outcome
+# Informed Consent Outcome ----
 # code: InformedConsentOutcome_2  : Informed Consent not granted:  informed consent date MISSING
 # code: InformedConsentOutcome_1  : Informed Consent granted:  date value
 dm$informedConsentOut_Frag <- with(dm, ifelse(is.na(rficdtc), "InformedConsentOutcome_2", "InformedConsentOutcome_1" )) 
 
 #  Fragment Creation by function call ----
+# Date fragement assigned to date columns
 dm <- addDateFrag(dm, "rfstdtc")  
 dm <- addDateFrag(dm, "rfendtc")  
 dm <- addDateFrag(dm, "rfxstdtc")  
@@ -89,6 +87,7 @@ dm <- addDateFrag(dm, "dthdtc")
 dm <- addDateFrag(dm, "dmdtc")  
 dm <- addDateFrag(dm, "brthdate") 
 
+# Other identifiers
 dm <- createFragOneDomain(domainName=dm, processColumns="subjid",  fragPrefix="SubjectIdentifier" )
 dm <- createFragOneDomain(domainName=dm, processColumns="usubjid", fragPrefix="UniqueSubjectIdentifier" )
 dm <- createFragOneDomain(domainName=dm, processColumns="siteid",  fragPrefix="Site" )
