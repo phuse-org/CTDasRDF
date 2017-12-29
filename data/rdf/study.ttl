@@ -419,11 +419,6 @@ study:AssumeBodyPosition
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Assume a specific body position"^^xsd:string ;
   rdfs:subClassOf study:Intervention ;
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:BodyPosition ;
-      owl:onProperty study:outcome ;
-    ] ;
   skos:definition "An Intervention whose intent is to observe the Person s body position and change it to the desired body position, usually in preparation for another intervention."^^xsd:string ;
 .
 study:BeginInstant
@@ -493,6 +488,20 @@ study:CumulativeProductAdministration
   rdfs:label "Product administration"^^xsd:string ;
   rdfs:subClassOf study:ClinicalIntervention ;
   skos:definition "The act of administering/taking a Product over time; there may be breaks or the dose may change  over time"^^xsd:string ;
+.
+study:CumulativeProductAdministrationBegin
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration begin"^^xsd:string ;
+  rdfs:subClassOf study:ActivityBegin ;
+  skos:definition ""^^xsd:string ;
+.
+study:CumulativeProductAdministrationEnd
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration end"^^xsd:string ;
+  rdfs:subClassOf study:ActivityEnd ;
+  skos:definition ""^^xsd:string ;
 .
 study:CumulativeProductAdministrationInterval
   rdf:type owl:Class ;
@@ -944,7 +953,7 @@ study:LaboratoryObservation
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Laboratory observation"^^xsd:string ;
   rdfs:subClassOf study:Observation ;
-  skos:definition "A Clinical Observation that requires the collection of a biospecimen for submission to a laboratory for analysis. "^^xsd:string ;
+  skos:definition "A Clinical Observation that requires the collection of a biospecimen for submission to a laboratory for further inspection"^^xsd:string ;
 .
 study:Lifespan
   rdf:type owl:Class ;
@@ -1050,20 +1059,6 @@ study:Product
   rdfs:subClassOf study:Entity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Product"^^xsd:string ;
-.
-study:ProductAdministrationBegin
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Product administration begin"^^xsd:string ;
-  rdfs:subClassOf study:ActivityBegin ;
-  skos:definition ""^^xsd:string ;
-.
-study:ProductAdministrationEnd
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Product administration end"^^xsd:string ;
-  rdfs:subClassOf study:ActivityEnd ;
-  skos:definition ""^^xsd:string ;
 .
 study:ProtocolDocument
   rdf:type owl:Class ;
@@ -1756,7 +1751,7 @@ study:UnscheduledVisitActivity
   rdf:type owl:Class ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Unscheduled visit"^^xsd:string ;
+  skos:prefLabel "UNSCHEDULED VISIT ACTIVITY"^^xsd:string ;
 .
 study:Visit
   rdf:type owl:Class ;
@@ -1766,9 +1761,9 @@ study:Visit
 study:VisitActivity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "VISIT"^^xsd:string ;
+  rdfs:label "Visit Activity"^^xsd:string ;
   rdfs:subClassOf study:StudyActivity ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "Any activity associated with an interaction with the investigational staff, usually intended to collect observations. "^^xsd:string ;
 .
 study:VisitDate
   rdf:type owl:Class ;
@@ -1782,6 +1777,11 @@ study:VitalSign
   rdfs:comment ""^^xsd:string ;
   rdfs:label "VitalSign"^^xsd:string ;
   rdfs:subClassOf study:Observation ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:VitalSignOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
   skos:definition ""^^xsd:string ;
 .
 study:VitalSignOutcome
@@ -2121,11 +2121,6 @@ study:hasCategory
   rdfs:range study:Category ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition ""^^xsd:string ;
-.
-study:hasCode
-  rdf:type owl:ObjectProperty ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "has code"^^xsd:string ;
 .
 study:hasCountry
   rdf:type owl:FunctionalProperty ;

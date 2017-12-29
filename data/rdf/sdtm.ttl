@@ -1018,11 +1018,11 @@ sdtm:SDTMRecord
           ]
           [
             sp:object [
-                sp:varName "study"^^xsd:string ;
-              ] ;
-            sp:predicate study:participatesIn ;
-            sp:subject [
                 sp:varName "subject"^^xsd:string ;
+              ] ;
+            sp:predicate study:hasStudyParticipant ;
+            sp:subject [
+                sp:varName "study"^^xsd:string ;
               ] ;
           ]
           [
@@ -2442,7 +2442,7 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            sp:object study:VisitActivity ;
+            sp:object study:Visit ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "vsvisit"^^xsd:string ;
@@ -2527,7 +2527,7 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            sp:object study:VisitActivity ;
+            sp:object study:Visit ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "vsvisit"^^xsd:string ;
@@ -2979,27 +2979,11 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "strtruletype"^^xsd:string ;
-              ] ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "strtrule"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object study:StartRule ;
-            sp:predicate rdfs:subClassOf ;
-            sp:subject [
-                sp:varName "strtruletype"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
                 sp:varName "VSELTM"^^xsd:string ;
               ] ;
             sp:predicate study:hasDelay ;
             sp:subject [
-                sp:varName "strtruletype"^^xsd:string ;
+                sp:varName "strtrule"^^xsd:string ;
               ] ;
           ]
           [
@@ -3656,19 +3640,10 @@ sdtm:SDTM_VS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object [
-                sp:varName "vstype"^^xsd:string ;
-              ] ;
+            sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "vstst"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object study:VitalSign ;
-            sp:predicate rdfs:subClassOf ;
-            sp:subject [
-                sp:varName "vstype"^^xsd:string ;
               ] ;
           ]
           [
@@ -3677,7 +3652,7 @@ sdtm:SDTM_VS_Record
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "vstype"^^xsd:string ;
+                sp:varName "vstst"^^xsd:string ;
               ] ;
           ]
           [
@@ -3686,7 +3661,7 @@ sdtm:SDTM_VS_Record
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "vstype"^^xsd:string ;
+                sp:varName "vstst"^^xsd:string ;
               ] ;
           ]
         ) ;
@@ -3746,19 +3721,10 @@ sdtm:SDTM_VS_Record
               ] ;
           ]
           [
-            sp:object [
-                sp:varName "strtruleclass"^^xsd:string ;
-              ] ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "strtrule"^^xsd:string ;
-              ] ;
-          ]
-          [
             sp:object study:StartRule ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "strtruleclass"^^xsd:string ;
+                sp:varName "strtrule"^^xsd:string ;
               ] ;
           ]
           [
@@ -3770,7 +3736,7 @@ sdtm:SDTM_VS_Record
                     ] ;
                   sp:predicate study:ruleDescription ;
                   sp:subject [
-                      sp:varName "strtruleclass"^^xsd:string ;
+                      sp:varName "strtrule"^^xsd:string ;
                     ] ;
                 ]
               ) ;
@@ -3781,7 +3747,7 @@ sdtm:SDTM_VS_Record
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "strtruleclass"^^xsd:string ;
+                sp:varName "strtrule"^^xsd:string ;
               ] ;
           ]
         ) ;

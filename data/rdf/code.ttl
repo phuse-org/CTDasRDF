@@ -60,31 +60,91 @@
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "TEMP"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Temperature"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
 .
 <http://rdf.cdisc.org/sdtmterm#C67153.C25208>
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEIGHT"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Weight"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
 .
 <http://rdf.cdisc.org/sdtmterm#C67153.C25298>
   rdf:type owl:Class ;
   rdf:type code:BloodPressure ;
   rdfs:subClassOf code:BloodPressure ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "SYSBP"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Systolic Blood Pressure"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
 .
 <http://rdf.cdisc.org/sdtmterm#C67153.C25299>
   rdf:type owl:Class ;
   rdf:type code:BloodPressure ;
   rdfs:subClassOf code:BloodPressure ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "DIABP"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Diastolic Blood Pressure"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
 .
 <http://rdf.cdisc.org/sdtmterm#C67153.C25347>
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "HEIGHT"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Height"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
 .
 <http://rdf.cdisc.org/sdtmterm#C67153.C49676>
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "PULSE"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Pulse Rate"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
 .
 <http://rdf.cdisc.org/sdtmterm#C71113.C25473>
   rdf:type code:DosageFrequency ;
