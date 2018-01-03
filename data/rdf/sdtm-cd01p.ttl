@@ -8,6 +8,7 @@
 @prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
 @prefix cdiscs: <http://rdf.cdisc.org/std/schema#> .
 @prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix mms: <http://rdf.cdisc.org/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -23,260 +24,313 @@
 @prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-sdtmig-3-1-3:Column.DM.ACTARM
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARM>
   code:hasMethod code:ActivityMethod_2 ;
   sdtm:additionalMetadata study:Arm ;
 .
-sdtmig-3-1-3:Column.DM.ACTARMCD
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARMCD>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.ACTARMCD ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARMCD> ;
   sdtm:variableComment "Derived from EX"^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.AGE
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.AGE>
   sdtm:additionalMetadata study:AgeOutcome ;
   sdtm:variableComment "Subject's Age at start of study drug (RFSTDTC). "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.AGEU
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.AGEU>
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.AGEU ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.AGEU> ;
   sdtm:variableComment "AGEU=\"YEARS\" "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.ARM
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ARM>
   code:hasMethod code:ActivityMethod_3 ;
   sdtm:additionalMetadata study:Arm ;
   sdtm:variableComment "According to randomization list"^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.ARMCD
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ARMCD>
   sdtm:additionalMetadata study:Arm ;
   sdtm:variableComment "According to randomization list"^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.BRTHDTC
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.BRTHDTC>
   sdtm:additionalMetadata study:Birthdate ;
 .
-sdtmig-3-1-3:Column.DM.COUNTRY
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.COUNTRY>
   sdtm:additionalMetadata study:Country ;
   sdtm:variableComment "Derived from site information"^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.DMDTC
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDTC>
   sdtm:additionalMetadata study:DemogDataCollectionDate ;
 .
-sdtmig-3-1-3:Column.DM.DMDY
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDY>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.DMDY ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDY> ;
   sdtm:variableComment "See Computational Method: COMPMETHOD.STUDY_DAY"^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.DOMAIN
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DOMAIN>
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.DOMAIN ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DOMAIN> ;
 .
-sdtmig-3-1-3:Column.DM.DTHDTC
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHDTC>
   sdtm:additionalMetadata study:Deathdate ;
   sdtm:variableComment "If DS record exists with DSDECOD=\"DEATH\" then DTHDTC=AEENDTC."^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.DTHFL
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHFL>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.DTHFL ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHFL> ;
   sdtm:variableComment "If DS record exists with DSDECOD=\"DEATH\" then DEATHFL=Y."^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.ETHNIC
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ETHNIC>
   code:hasMethod code:ActivityMethod_2 ;
   sdtm:additionalMetadata study:EthnicOutcome ;
   sdtm:variableComment "Derived from Origin entered on CRF: ETHINC=\"HISPANIC OR LATINO\" if Origin=\"Hispanic\". Otherwise ETHNIC=\"NOT HISPANIC OR LATINO\""^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.INVID
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.INVID>
   sdtm:additionalMetadata study:InvestigatorIdentifier ;
 .
-sdtmig-3-1-3:Column.DM.RACE
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RACE>
   sdtm:additionalMetadata study:RaceOutcome ;
 .
-sdtmig-3-1-3:Column.DM.RFENDTC
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.RFENDTC ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFENDTC>
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFENDTC> ;
   sdtm:variableComment "Date/time of last study drug treatment derived from EX"^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.RFICDTC
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFICDTC>
   sdtm:additionalMetadata study:InformedConsentBegin ;
   sdtm:variableComment "Date of informed consent was not entered in database (see annotated CRF) "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.RFPENDTC
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.RFPENDTC ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFPENDTC>
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFPENDTC> ;
   sdtm:variableComment "DSSTDTC of last disposition event "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.RFSTDTC
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.RFSTDTC ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFSTDTC>
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFSTDTC> ;
   sdtm:variableComment "Date/time of first study drug treatment derived from EX"^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.RFXENDTC
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.RFXENDTC ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXENDTC>
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXENDTC> ;
   sdtm:variableComment "RFXENDTC=RFENDTC "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.RFXSTDTC
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.DM.RFXSTDTC ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXSTDTC>
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXSTDTC> ;
   sdtm:variableComment "RFXSTDTC=RFSTDTC "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.DM.SEX
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SEX>
   sdtm:additionalMetadata study:SexOutcome ;
 .
-sdtmig-3-1-3:Column.DM.SITEID
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SITEID>
   sdtm:additionalMetadata study:SiteIdentifier ;
 .
-sdtmig-3-1-3:Column.DM.STUDYID
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.STUDYID>
   sdtm:additionalMetadata study:StudyIdentifier ;
 .
-sdtmig-3-1-3:Column.DM.SUBJID
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SUBJID>
   sdtm:additionalMetadata study:SubjectIdentifier ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
-sdtmig-3-1-3:Column.DM.USUBJID
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.USUBJID>
   sdtm:additionalMetadata study:UniqueSubjectIdentifier ;
   sdtm:variableComment "Concatenation of STUDYID, DM.SITEID and DM.SUBJID "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.SUPPQUAL.STUDYID
-  sdtm:additionalMetadata study:StudyIdentifier ;
-.
-sdtmig-3-1-3:Column.SUPPQUAL.USUBJID
-  sdtm:additionalMetadata study:UniqueSubjectIdentifier ;
-.
-sdtmig-3-1-3:Column.VS.DOMAIN
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVAR>
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.DOMAIN ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVAR> ;
+  sdtm:variableComment "IDVAR=\" \" "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.STUDYID
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVARVAL>
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
+  code:hasMethod code:ActivityMethod_3 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVARVAL> ;
+  sdtm:variableComment "IDVARVAL=\" \""^^xsd:string ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QEVAL>
+  cdiscs:controlledTermsOrFormat study:Evaluator ;
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.ResultQualifier> ;
+  code:hasMethod code:ActivityMethod_3 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QEVAL> ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QLABEL>
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.SynonymQualifier> ;
+  code:hasMethod code:ActivityMethod_3 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QLABEL> ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QNAM>
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.TopicVariable> ;
+  code:hasMethod code:ActivityMethod_3 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QNAM> ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QORIG>
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.ResultQualifier> ;
+  code:hasMethod code:ActivityMethod_3 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QORIG> ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QVAL>
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.ResultQualifier> ;
+  code:hasMethod code:ActivityMethod_2 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QVAL> ;
+  sdtm:variableComment "see value level metadata"^^xsd:string ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.RDOMAIN>
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
+  code:hasMethod code:ActivityMethod_3 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.RDOMAIN> ;
+  sdtm:variableComment "RDOMAIN=\"DM\""^^xsd:string ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.STUDYID>
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
+  code:hasMethod code:ActivityMethod_3 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.STUDYID> ;
+  sdtm:additionalMetadata study:StudyIdentifier ;
+  study:crfLocation cd01p:CRFLocation_1 ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.USUBJID>
+  cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
+  code:hasMethod code:ActivityMethod_2 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.USUBJID> ;
+  sdtm:additionalMetadata study:UniqueSubjectIdentifier ;
+  sdtm:variableComment "Concatenation of STUDYID, DM.SITEID and DM.SUBJID"^^xsd:string ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.DOMAIN>
+  code:hasMethod code:ActivityMethod_3 ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.DOMAIN> ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.STUDYID>
   sdtm:additionalMetadata study:StudyIdentifier ;
 .
-sdtmig-3-1-3:Column.VS.USUBJID
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.USUBJID>
   sdtm:additionalMetadata study:UniqueSubjectIdentifier ;
   sdtm:hasDFComment "Concatenation of STUDYID, DM.SITEID and DM.SUBJID "^^xsd:string ;
   sdtm:variableComment "Concatenation of STUDYID, DM.SITEID and DM.SUBJID "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.VISIT
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISIT>
   cdiscs:controlledTermsOrFormat study:Visit ;
   code:hasMethod code:ActivityMethod_3 ;
   schema:controlledTermsOrFormat study:VisitActivity ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VISIT ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISIT> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
-sdtmig-3-1-3:Column.VS.VISITDY
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITDY>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VISITDY ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITDY> ;
   sdtm:variableComment "TV.VISITDY "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.VISITNUM
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITNUM>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VISITNUM ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITNUM> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
-sdtmig-3-1-3:Column.VS.VSBLFL
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSBLFL>
   cdiscs:controlledTermsOrFormat sdtmterm:C66742 ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSBLFL ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSBLFL> ;
   sdtm:variableComment "If VISIT=\"BASELINE\" then VSBLFL=\"Y\" "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.VSCAT
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSCAT>
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSCAT ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSCAT> ;
 .
-sdtmig-3-1-3:Column.VS.VSDRVFL
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDRVFL>
   cdiscs:controlledTermsOrFormat sdtmterm:C66742 ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSDRVFL ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDRVFL> ;
 .
-sdtmig-3-1-3:Column.VS.VSDTC
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDTC>
   cdiscs:controlledTermsOrFormat code:ISO8601 ;
   code:hasMethod code:ActivityMethod_1 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSDTC ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDTC> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
-sdtmig-3-1-3:Column.VS.VSDY
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDY>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSDY ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDY> ;
   sdtm:variableComment "See Computational Method: COMPMETHOD.STUDY_DAY "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.VSELTM
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSELTM>
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSELTM ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSELTM> ;
   sdtm:variableComment "VSTPT expressed in the ISO 8601 format for durations "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.VSGRPID
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSGRPID>
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSGRPID ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSGRPID> ;
 .
-sdtmig-3-1-3:Column.VS.VSLOC
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSLOC>
   cdiscs:controlledTermsOrFormat code:VitalSignsLocation ;
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSLOC ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSLOC> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
-sdtmig-3-1-3:Column.VS.VSORRES
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSORRES>
   sdtm:additionalMetadata study:VitalSignOutcome ;
 .
-sdtmig-3-1-3:Column.VS.VSORRESU
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSORRESU>
   cdiscs:controlledTermsOrFormat code:VitalSignsUnit ;
   sdtm:additionalMetadata study:VitalSignOutcome ;
 .
-sdtmig-3-1-3:Column.VS.VSPOS
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSPOS>
   cdiscs:controlledTermsOrFormat cd01p:VitalsSignsBodyPosition ;
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSPOS ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSPOS> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
-sdtmig-3-1-3:Column.VS.VSREASND
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSREASND>
   code:hasMethod code:ActivityMethod_1 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSREASND ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSREASND> ;
 .
-sdtmig-3-1-3:Column.VS.VSSCAT
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSCAT>
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSSCAT ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSCAT> ;
 .
-sdtmig-3-1-3:Column.VS.VSSEQ
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSEQ>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSSEQ ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSEQ> ;
   sdtm:variableComment "Sequential number identifying records within each USUBJID "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.VSSPID
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSPID>
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSSPID ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSPID> ;
 .
-sdtmig-3-1-3:Column.VS.VSSTAT
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTAT>
   cdiscs:controlledTermsOrFormat code:ActivityStatus_2 ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSSTAT ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTAT> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
-sdtmig-3-1-3:Column.VS.VSSTRESC
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESC>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSSTRESC ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESC> ;
   sdtm:variableComment "VSORRES converted to standard unit "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.VSSTRESN
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESN>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSSTRESN ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESN> ;
   sdtm:variableComment "VSSTRESC converted to numeric "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.VSSTRESU
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESU>
   cdiscs:controlledTermsOrFormat code:VitalSignsUnit ;
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSSTRESU ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESU> ;
   sdtm:variableComment "Standard unit defined per parameter for summarizing analysis "^^xsd:string ;
 .
-sdtmig-3-1-3:Column.VS.VSTEST
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTEST>
   sdtm:additionalMetadata study:VitalSign ;
 .
-sdtmig-3-1-3:Column.VS.VSTESTCD
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTESTCD>
   sdtm:additionalMetadata study:VitalSign ;
 .
-sdtmig-3-1-3:Column.VS.VSTPT
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPT>
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSTPT ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPT> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
-sdtmig-3-1-3:Column.VS.VSTPTNUM
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTNUM>
   code:hasMethod code:ActivityMethod_2 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSTPTNUM ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTNUM> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
-sdtmig-3-1-3:Column.VS.VSTPTREF
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTREF>
   code:hasMethod code:ActivityMethod_3 ;
-  sdtm:additionalMetadata sdtmig-3-1-3:Column.VS.VSTPTREF ;
+  sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTREF> ;
 .
 code:InformedConsentOutcome_1
   rdf:type study:InformedConsentOutcome ;
@@ -309,289 +363,329 @@ code:hasValueSet
 sdtm-cd01p:SDTMDefineRecord_DM_1
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "STUDYID"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.STUDYID ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.STUDYID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_10
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "RFPENDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.RFPENDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFPENDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_11
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "DTHDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.DTHDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_12
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "DTHFL"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.DTHFL ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHFL> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_13
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "SITEID"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.SITEID ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SITEID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_14
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "INVID"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.INVID ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.INVID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_15
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "BRTHDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.BRTHDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.BRTHDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_16
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "AGE"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.AGE ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.AGE> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_17
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "AGEU"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.AGEU ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.AGEU> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_18
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "SEX"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.SEX ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SEX> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_19
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "RACE"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.RACE ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RACE> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_2
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "DOMAIN"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.DOMAIN ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DOMAIN> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_20
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "ETHNIC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.ETHNIC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ETHNIC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_21
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "ARMCD"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.ARMCD ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ARMCD> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_22
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "ARM"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.ARM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ARM> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_23
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "ACTARMCD"^^xsd:string ;
   sdtm:hasDFComment "Derived from EX"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.ACTARMCD ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARMCD> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_24
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "ACTARM"^^xsd:string ;
   sdtm:hasDFComment "Derived from EX"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.ACTARM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARM> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_25
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "COUNTRY"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.COUNTRY ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.COUNTRY> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_26
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "DMDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.DMDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_27
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "DMDY"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.DMDY ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDY> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_3
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "USUBJID"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.USUBJID ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.USUBJID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_4
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "SUBJID"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.SUBJID ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SUBJID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_5
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "RFSTDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.RFSTDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFSTDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_6
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "RFENDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.RFENDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFENDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_7
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "RFXSTDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.RFXSTDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXSTDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_8
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "RFXENDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.RFXENDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXENDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_9
   rdf:type sdtm:SDTMDefineRecord_DM ;
   skos:prefLabel "RFICDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.DM.RFICDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFICDTC> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_1
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.STUDYID> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_10
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QEVAL> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_2
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.RDOMAIN> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_3
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.USUBJID> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_4
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVAR> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_5
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVARVAL> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_6
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QNAM> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_7
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QLABEL> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_8
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QVAL> ;
+.
+sdtm-cd01p:SDTMDefineRecord_SUPPDM_9
+  rdf:type sdtm:SDTMDefineRecord_SUPPDM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QORIG> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_1
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "STUDYID"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.STUDYID ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.STUDYID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_10
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSTEST"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSTEST ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTEST> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_11
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSPOS"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSPOS ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSPOS> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_12
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSORRES"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSORRES ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSORRES> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_13
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSORRESU"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSORRESU ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSORRESU> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_14
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSSTRESC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSSTRESC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_15
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSSTRESN"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSSTRESN ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESN> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_16
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSSTRESU"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSSTRESU ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESU> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_17
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSSTAT"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSSTAT ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTAT> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_18
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSREASND"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSREASND ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSREASND> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_19
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSLOC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSLOC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSLOC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_2
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "DOMAIN"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.DOMAIN ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.DOMAIN> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_20
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSBLFL"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSBLFL ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSBLFL> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_21
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSDRVFL"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSDRVFL ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDRVFL> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_22
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VISITNUM"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VISITNUM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITNUM> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_23
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VISIT"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VISIT ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISIT> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_24
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VISITDY"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VISITDY ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITDY> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_25
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSDTC"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSDTC ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDTC> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_26
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSDY"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSDY ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDY> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_27
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSTPT"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSTPT ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPT> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_28
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSTPTNUM"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSTPTNUM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTNUM> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_29
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSELTM"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSELTM ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSELTM> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_3
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "USUBJID"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.USUBJID ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.USUBJID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_30
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSTPTREF"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSTPTREF ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTREF> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_4
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSSEQ"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSSEQ ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSEQ> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_5
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSGRPID"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSGRPID ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSGRPID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_6
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSSPID"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSSPID ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSPID> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_7
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSCAT"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSCAT ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSCAT> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_8
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSSCAT"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSSCAT ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSCAT> ;
 .
 sdtm-cd01p:SDTMDefineRecord_VS_9
   rdf:type sdtm:SDTMDefineRecord_VS ;
   skos:prefLabel "VSTESTCD"^^xsd:string ;
-  sdtm:hasDFVariable sdtmig-3-1-3:Column.VS.VSTESTCD ;
+  sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTESTCD> ;
 .
 sdtm:SDTMDefineRecord
   spin:rule [

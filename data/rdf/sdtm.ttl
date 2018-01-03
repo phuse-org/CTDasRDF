@@ -549,6 +549,120 @@ sdtm:SDTMDefineDomain
         ) ;
       rdfs:comment "generates a tabular display of define.xml content for VS"^^xsd:string ;
     ] ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:orderBy (
+          [
+            sp:varName "num"^^xsd:string ;
+          ]
+        ) ;
+      sp:resultVariables (
+          [
+            sp:varName "Variable"^^xsd:string ;
+          ]
+          [
+            sp:varName "Label"^^xsd:string ;
+          ]
+          [
+            sp:varName "Type"^^xsd:string ;
+          ]
+          [
+            sp:varName "Controlled_Terminology"^^xsd:string ;
+          ]
+          [
+            sp:varName "Origin"^^xsd:string ;
+          ]
+          [
+            sp:varName "Role"^^xsd:string ;
+          ]
+          [
+            sp:varName "Comment"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMDefineRecord_SUPPDM ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFVariable ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "num"^^xsd:string ;
+              ] ;
+            sp:predicate mms:ordinal ;
+            sp:subject [
+                sp:varName "var"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "Variable"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFVariableName ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "Label"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFLabel ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "Type"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFType ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "Origin"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFOrigin ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "Role"^^xsd:string ;
+              ] ;
+            sp:predicate sdtm:hasDFRole ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "Controlled_Terminology"^^xsd:string ;
+                    ] ;
+                  sp:predicate sdtm:hasDFControlledTerm ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "Comment"^^xsd:string ;
+                    ] ;
+                  sp:predicate sdtm:hasDFComment ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "generates a tabular display of define.xml content for SUPPDM"^^xsd:string ;
+    ] ;
   rdfs:label "SDTMDefine domain"^^xsd:string ;
   rdfs:subClassOf sdtm:DefineComponent ;
 .
