@@ -1662,18 +1662,28 @@ sdtm:SDTMDomain
             sp:subject spin:_this ;
           ]
           [
-            sp:object [
-                sp:varName "VSGRPID"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasVSGRPID ;
-            sp:subject spin:_this ;
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "VSGRPID"^^xsd:string ;
+                    ] ;
+                  sp:predicate sdtm:hasVSGRPID ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
           ]
           [
-            sp:object [
-                sp:varName "VSSPID"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasVSSPID ;
-            sp:subject spin:_this ;
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "VSSPID"^^xsd:string ;
+                    ] ;
+                  sp:predicate sdtm:hasVSSPID ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
           ]
           [
             sp:object [
