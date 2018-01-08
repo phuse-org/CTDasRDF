@@ -628,6 +628,16 @@ custom:PlaceboProduct_1
 custom:PopFlagCmpltr16Wk
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "COMPLT16"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Completers of Week 16 Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Completers of Week 16 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT16"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -635,6 +645,16 @@ custom:PopFlagCmpltr16Wk
 custom:PopFlagCmpltr24Wk
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "COMPLT24"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Completers of Week 24 Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Completers of Week 24 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT24"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -642,6 +662,16 @@ custom:PopFlagCmpltr24Wk
 custom:PopFlagCmpltr8Wk
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "COMPLT8"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Completers of Week 8 Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT8"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -649,6 +679,16 @@ custom:PopFlagCmpltr8Wk
 custom:PopFlagEff
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "EFFICACY"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Efficacy Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Eficacy Population Flag"^^xsd:string ;
   skos:prefLabel "EFFICACY"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -656,6 +696,16 @@ custom:PopFlagEff
 custom:PopFlagItt
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "ITT Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "ITT"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
   skos:altLabel "Intent To Treat Population Flag"^^xsd:string ;
   skos:prefLabel "ITT"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -663,6 +713,16 @@ custom:PopFlagItt
 custom:PopFlagSaf
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "SAFETY"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Safety Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Safety Population Flag"^^xsd:string ;
   skos:prefLabel "SAFETY"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;

@@ -364,6 +364,11 @@ study:Analysis
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Analysis"^^xsd:string ;
   rdfs:subClassOf study:StudyActivity ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:ActivityMethod_2 ;
+      owl:onProperty code:hasMethod ;
+    ] ;
   skos:definition "An examination, sometimes via a mathematical manipulation, of one or more observations to obtain a result."^^xsd:string ;
 .
 study:AnalysisOutcome
