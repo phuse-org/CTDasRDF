@@ -1,9 +1,6 @@
 # baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/meta-model-schema.rdf
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf
 # imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
 
 @prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
@@ -12,17 +9,39 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://rdf.cdisc.org/sdtmterm#C67153.C25206>
+  rdfs:subClassOf study:VitalSign ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C25208>
+  rdfs:subClassOf study:VitalSign ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C25298>
+  rdfs:subClassOf study:VitalSign ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C25299>
+  rdfs:subClassOf study:VitalSign ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C25347>
+  rdfs:subClassOf study:VitalSign ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C49676>
+  rdfs:subClassOf study:VitalSign ;
+.
+<http://rdf.cdisc.org/sdtmterm#C71148.C62166>
+  rdf:type cd01p:VitalsSignsBodyPosition ;
+.
+<http://rdf.cdisc.org/sdtmterm#C71148.C62167>
+  rdf:type cd01p:VitalsSignsBodyPosition ;
+.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/meta-model-schema.rdf> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf> ;
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
@@ -32,14 +51,12 @@ cd01p:ArmPlacebo
   rdfs:label "Pbo" ;
   skos:altLabel "Pbo"^^xsd:string ;
   skos:prefLabel "Placebo"^^xsd:string ;
-  study:hasCode study:Arm ;
 .
 cd01p:ArmScreenFailure
   rdf:type study:Arm ;
   rdfs:label "Scrnfail" ;
   skos:altLabel "Scrnfail"^^xsd:string ;
   skos:prefLabel "Screen Failure"^^xsd:string ;
-  study:hasCode study:Arm ;
 .
 cd01p:ArmXanomelineHigh
   rdf:type study:Arm ;
@@ -47,7 +64,6 @@ cd01p:ArmXanomelineHigh
   rdfs:label "Xan_Hi" ;
   skos:altLabel "Xan_Hi"^^xsd:string ;
   skos:prefLabel "Xanomeline High"^^xsd:string ;
-  study:hasCode study:Arm ;
 .
 cd01p:ArmXanomelineLow
   rdf:type study:Arm ;
@@ -55,11 +71,14 @@ cd01p:ArmXanomelineLow
   rdfs:label "Xan_Lo"^^xsd:string ;
   skos:altLabel "Xan_Lo"^^xsd:string ;
   skos:prefLabel "Xanomeline Low"^^xsd:string ;
-  study:hasCode study:Arm ;
 .
 cd01p:CRFLocation_1
   rdf:type study:CRFLocation ;
   skos:prefLabel "CRF Page 7"^^xsd:string ;
+.
+cd01p:CRFLocation_2
+  rdf:type study:CRFLocation ;
+  skos:prefLabel "CRF Pages 16, 17, 22, 23, 30, 33, 39, 45, 50, 55, 64, 70, 79, 85, 96, 102, 114, 135 "^^xsd:string ;
 .
 cd01p:Category_1
   rdf:type study:Category ;
@@ -283,12 +302,51 @@ cd01p:Sponsor_1
 cd01p:StartRuleLying5
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:AssumeBodyPositionSupine ;
+      owl:onProperty study:hasPrerequisite ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <http://rdf.cdisc.org/sdtmterm#C71148.C62167> ;
+      owl:onProperty study:hasPrereqExpectedOutcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "815"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
+      owl:onProperty study:ruleDescription ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
+      owl:onProperty study:ruleDescriptionLong ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "PT5M"^^xsd:duration ;
+      owl:onProperty study:hasDelay ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Rule Lying 5 Min"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Target activity starts after the subject has assumed a supine position for 5 minutes"^^xsd:string ;
+      owl:onProperty skos:definition ;
+    ] ;
   skos:altLabel "815"^^xsd:string ;
   skos:definition "Target activity starts after the subject has assumed a supine position for 5 minutes"^^xsd:string ;
   skos:prefLabel "Rule Lying 5 Min"^^xsd:string ;
-  study:hasDelay "PT5M"^^xsd:duration ;
-  study:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> ;
+  study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62167> ;
   study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   study:hasPrerequisite custom:AssumeBodyPositionSupine ;
   study:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
@@ -297,12 +355,51 @@ cd01p:StartRuleLying5
 cd01p:StartRuleStanding1
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:AssumeBodyPositionStanding ;
+      owl:onProperty study:hasPrerequisite ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
+      owl:onProperty study:hasPrereqExpectedOutcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "816"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
+      owl:onProperty study:ruleDescription ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
+      owl:onProperty study:ruleDescriptionLong ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "PT1M"^^xsd:duration ;
+      owl:onProperty study:hasDelay ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Rule Standing 1 Min"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Target activity starts after the subject has assumed a standing position for 1 minute"^^xsd:string ;
+      owl:onProperty skos:definition ;
+    ] ;
   skos:altLabel "816"^^xsd:string ;
   skos:definition "Target activity starts after the subject has assumed a standing position for 1 minute"^^xsd:string ;
   skos:prefLabel "Rule Standing 1 Min"^^xsd:string ;
-  study:hasDelay "PT1M"^^xsd:duration ;
-  study:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+  study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
   study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   study:hasPrerequisite custom:AssumeBodyPositionStanding ;
   study:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
@@ -311,12 +408,51 @@ cd01p:StartRuleStanding1
 cd01p:StartRuleStanding3
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:subClassOf study:StartRulePrereqActivityComplete ;
+  rdfs:subClassOf study:StartRulePrereqActivityOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:AssumeBodyPositionStanding ;
+      owl:onProperty study:hasPrerequisite ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
+      owl:onProperty study:hasPrereqExpectedOutcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "817"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
+      owl:onProperty study:ruleDescription ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
+      owl:onProperty study:ruleDescriptionLong ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "PT3M"^^xsd:duration ;
+      owl:onProperty study:hasDelay ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Rule Standing 3 Min"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Target activity starts after the subject has assumed a standing position for 3 minutes"^^xsd:string ;
+      owl:onProperty skos:definition ;
+    ] ;
   skos:altLabel "817"^^xsd:string ;
   skos:definition "Target activity starts after the subject has assumed a standing position for 3 minutes"^^xsd:string ;
   skos:prefLabel "Rule Standing 3 Min"^^xsd:string ;
-  study:hasDelay "PT3M"^^xsd:duration ;
-  study:hasPrereqExpectedOutcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166> ;
+  study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
   study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
   study:hasPrerequisite custom:AssumeBodyPositionStanding ;
   study:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
@@ -326,32 +462,32 @@ cd01p:StudyIdentifier_1
   rdf:type study:StudyIdentifier ;
   skos:prefLabel "CDISCPILOT01"^^xsd:string ;
   code:hasMethod code:ActivityMethod_3 ;
+  study:crfLocation cd01p:CRFLocation_1 ;
 .
 cd01p:Study_1
   rdf:type study:Study ;
   rdfs:label "CDISCPILOT01" ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Study CDISCPILOT01"^^xsd:string ;
-  study:hasCode study:Study ;
-  study:hasPSActivityGroup cd01p:ArmPlacebo ;
-  study:hasPSActivityGroup cd01p:ArmScreenFailure ;
-  study:hasPSActivityGroup cd01p:ArmXanomelineHigh ;
-  study:hasPSActivityGroup cd01p:ArmXanomelineLow ;
-  study:hasPSActivityGroup custom:VisitAmbulECGPlace ;
-  study:hasPSActivityGroup custom:VisitAmbulECGRemove ;
-  study:hasPSActivityGroup custom:VisitBaseline ;
-  study:hasPSActivityGroup custom:VisitRetrieval ;
-  study:hasPSActivityGroup custom:VisitScreening1 ;
-  study:hasPSActivityGroup custom:VisitScreening2 ;
-  study:hasPSActivityGroup custom:VisitWk12 ;
-  study:hasPSActivityGroup custom:VisitWk16 ;
-  study:hasPSActivityGroup custom:VisitWk2 ;
-  study:hasPSActivityGroup custom:VisitWk20 ;
-  study:hasPSActivityGroup custom:VisitWk24 ;
-  study:hasPSActivityGroup custom:VisitWk26 ;
-  study:hasPSActivityGroup custom:VisitWk4 ;
-  study:hasPSActivityGroup custom:VisitWk6 ;
-  study:hasPSActivityGroup custom:VisitWk8 ;
+  study:hasProtocolSpecifiedActivity cd01p:ArmPlacebo ;
+  study:hasProtocolSpecifiedActivity cd01p:ArmScreenFailure ;
+  study:hasProtocolSpecifiedActivity cd01p:ArmXanomelineHigh ;
+  study:hasProtocolSpecifiedActivity cd01p:ArmXanomelineLow ;
+  study:hasProtocolSpecifiedActivity custom:VisitAmbulECGPlaceActivity ;
+  study:hasProtocolSpecifiedActivity custom:VisitAmbulECGRemoveActivity ;
+  study:hasProtocolSpecifiedActivity custom:VisitBaselineActivity ;
+  study:hasProtocolSpecifiedActivity custom:VisitRetrievalActivity ;
+  study:hasProtocolSpecifiedActivity custom:VisitScreening1Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitScreening2Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitWk12Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitWk16Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitWk20Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitWk24Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitWk26Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitWk2Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitWk4Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitWk6Activity ;
+  study:hasProtocolSpecifiedActivity custom:VisitWk8Activity ;
   study:hasStudyID cd01p:StudyIdentifier_1 ;
 .
 cd01p:Subcategory_1
@@ -385,33 +521,38 @@ cd01p:SubstanceQuantity_3
 .
 cd01p:VisitScreening1BloodPressure
   rdf:type owl:Class ;
-  rdfs:subClassOf custom:VisitScreening1 ;
+  rdfs:subClassOf custom:VisitScreening1Activity ;
   skos:prefLabel "Visit Screening 1 Blood Pressure"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Height
   rdf:type owl:Class ;
-  rdfs:subClassOf custom:VisitScreening1 ;
+  rdfs:subClassOf custom:VisitScreening1Activity ;
   skos:prefLabel "Visit Screening 1 Height"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Pulse
   rdf:type owl:Class ;
-  rdfs:subClassOf custom:VisitScreening1 ;
+  rdfs:subClassOf custom:VisitScreening1Activity ;
   skos:prefLabel "Visit Screening 1 Pulse"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Temperature
   rdf:type owl:Class ;
-  rdfs:subClassOf custom:VisitScreening1 ;
+  rdfs:subClassOf custom:VisitScreening1Activity ;
   skos:prefLabel "Visit Screening 1Temperature"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
 cd01p:VisitScreening1Weight
   rdf:type owl:Class ;
-  rdfs:subClassOf custom:VisitScreening1 ;
+  rdfs:subClassOf custom:VisitScreening1Activity ;
   skos:prefLabel "Visit screening1Weight"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
+.
+cd01p:VitalsSignsBodyPosition
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:BodyPosition ;
+  skos:prefLabel "VSPOS"^^xsd:string ;
 .
 code:AgeUnit
   code:hasMethod code:ActivityMethod_3 ;
@@ -423,7 +564,6 @@ code:Country_1
   rdf:type study:Country ;
 .
 code:DemographicDataCollection
-  rdf:type study:Observation ;
   rdfs:subClassOf study:Observation ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
@@ -449,12 +589,11 @@ code:Sex
 .
 code:VisitScreening1Start
   rdf:type owl:Class ;
-  rdf:type study:StartRulePrereqActivityStart ;
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf study:StartRulePrereqActivityStart ;
   skos:prefLabel "SCREENING1 VISIT START"^^xsd:string ;
   study:hasPrereqExpectedStatus code:ActivityStatus_3 ;
-  study:hasPrerequisite custom:VisitScreening1 ;
+  study:hasPrerequisite custom:VisitScreening1Activity ;
   study:ruleDescription "AFTER SCREENING1 VISIT STARTS"^^xsd:string ;
   study:ruleDescriptionLong "Activity takes place after Screening1 Visit Starts"^^xsd:string ;
 .
@@ -483,12 +622,22 @@ custom:PlaceboProduct_1
   rdf:type code:DrugProduct ;
   rdf:type study:PlaceboProduct ;
   skos:prefLabel "PLACEBO"^^xsd:string ;
-  code:hasDosageForm <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66726.C42968> ;
+  code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_1 ;
 .
 custom:PopFlagCmpltr16Wk
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "COMPLT16"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Completers of Week 16 Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Completers of Week 16 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT16"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -496,6 +645,16 @@ custom:PopFlagCmpltr16Wk
 custom:PopFlagCmpltr24Wk
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "COMPLT24"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Completers of Week 24 Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Completers of Week 24 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT24"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -503,6 +662,16 @@ custom:PopFlagCmpltr24Wk
 custom:PopFlagCmpltr8Wk
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "COMPLT8"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Completers of Week 8 Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT8"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -510,6 +679,16 @@ custom:PopFlagCmpltr8Wk
 custom:PopFlagEff
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "EFFICACY"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Efficacy Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Eficacy Population Flag"^^xsd:string ;
   skos:prefLabel "EFFICACY"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -517,6 +696,16 @@ custom:PopFlagEff
 custom:PopFlagItt
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "ITT Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "ITT"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
   skos:altLabel "Intent To Treat Population Flag"^^xsd:string ;
   skos:prefLabel "ITT"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -524,6 +713,16 @@ custom:PopFlagItt
 custom:PopFlagSaf
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "SAFETY"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Safety Population Flag"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
   skos:altLabel "Safety Population Flag"^^xsd:string ;
   skos:prefLabel "SAFETY"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
@@ -532,52 +731,141 @@ custom:Product_1
   rdf:type code:DrugProduct ;
   rdf:type study:InvestigationalProduct ;
   skos:prefLabel "XANOMELINE LO" ;
-  code:hasDosageForm <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66726.C42968> ;
+  code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_2 ;
 .
 custom:Product_2
   rdf:type code:DrugProduct ;
   rdf:type study:InvestigationalProduct ;
   skos:prefLabel "XANOMELINE HI" ;
-  code:hasDosageForm <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66726.C42968> ;
+  code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_3 ;
+.
+custom:UnscheduledVisit
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
 .
 custom:VisitAmbulECGPlace
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
-  rdfs:subClassOf study:VisitActivity ;
-  skos:altLabel ""^^xsd:string ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "3.5"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "AMBUL ECG PLACE"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
   skos:prefLabel "AMBUL ECG PLACE"^^xsd:string ;
+  study:hasSubActivity custom:VisitAmbulECGPlaceActivity ;
 .
-custom:VisitAmbulECGRemove
+custom:VisitAmbulECGPlaceActivity
   rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "AMBUL ECG PLACE ACTIVITY"^^xsd:string ;
+.
+custom:VisitAmbulECGRemoval
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "6"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "AMBUL ECG REMOVAL"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
   skos:prefLabel "AMBUL ECG REMOVAL"^^xsd:string ;
+  study:hasSubActivity custom:VisitAmbulECGRemoveActivity ;
+.
+custom:VisitAmbulECGRemoveActivity
+  rdf:type owl:Class ;
+  rdf:type study:VisitActivity ;
+  rdfs:subClassOf study:VisitActivity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "AMBUL ECG REMOVAL ACTIVITY"^^xsd:string ;
 .
 custom:VisitBaseline
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
-  rdfs:subClassOf study:VisitActivity ;
-  skos:altLabel ""^^xsd:string ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:VisitBaselineActivity ;
+      owl:onProperty study:hasSubActivity ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "3"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "BASELINE"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
   skos:prefLabel "BASELINE"^^xsd:string ;
+  study:hasSubActivity custom:VisitBaselineActivity ;
 .
-custom:VisitRetrieval
+custom:VisitBaselineActivity
   rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "BASELINE ACTIVITY"^^xsd:string ;
+.
+custom:VisitRetrieval
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "RETRIEVAL"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
   skos:prefLabel "RETRIEVAL"^^xsd:string ;
+  study:hasSubActivity custom:VisitRetrievalActivity ;
+.
+custom:VisitRetrievalActivity
+  rdf:type owl:Class ;
+  rdf:type study:VisitActivity ;
+  rdfs:subClassOf study:VisitActivity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "RETRIEVAL ACTIVITY"^^xsd:string ;
 .
 custom:VisitScreening1
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:VisitScreening1Activity ;
+      owl:onProperty study:hasSubActivity ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "1"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "SCREENING 1"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  skos:prefLabel "SCREENING 1"^^xsd:string ;
+  study:hasSubActivity custom:VisitScreening1Activity ;
+.
+custom:VisitScreening1Activity
   rdf:type owl:Class ;
   rdf:type study:ProtocolSpecifiedActivity ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:ProtocolSpecifiedActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "SCREENING 1"^^xsd:string ;
+  skos:prefLabel "SCREENING 1 ACTIVITY"^^xsd:string ;
   study:hasStartRule study:StartRuleInformedConsentStart ;
   study:hasSubActivity cd01p:VisitScreening1BloodPressure ;
   study:hasSubActivity cd01p:VisitScreening1Height ;
@@ -587,103 +875,259 @@ custom:VisitScreening1
 .
 custom:VisitScreening2
   rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "2"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "SCREENING 2"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  skos:prefLabel "SCREENING 2"^^xsd:string ;
+  study:hasSubActivity custom:VisitScreening2Activity ;
+.
+custom:VisitScreening2Activity
+  rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "SCREENING 2"^^xsd:string ;
+  skos:prefLabel "SCREENING 2 ACTIVITY"^^xsd:string ;
 .
 custom:VisitWk12
   rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "9"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEEK 12"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  skos:prefLabel "WEEK 12"^^xsd:string ;
+  study:hasSubActivity custom:VisitWk12Activity ;
+.
+custom:VisitWk12Activity
+  rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "WEEK 12"^^xsd:string ;
+  skos:prefLabel "WEEK 12 ACTIVITY"^^xsd:string ;
 .
 custom:VisitWk16
   rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "10"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEEK 16"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  skos:prefLabel "WEEK 16"^^xsd:string ;
+  study:hasSubActivity custom:VisitWk16Activity ;
+.
+custom:VisitWk16Activity
+  rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "WEEK 16"^^xsd:string ;
+  skos:prefLabel "WEEK 16 ACTIVITY"^^xsd:string ;
 .
 custom:VisitWk2
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
-  rdfs:subClassOf study:VisitActivity ;
-  skos:altLabel ""^^xsd:string ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:VisitWk2Activity ;
+      owl:onProperty study:hasSubActivity ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "4"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEEK 2"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
   skos:prefLabel "WEEK 2"^^xsd:string ;
+  study:hasSubActivity custom:VisitWk2Activity ;
 .
 custom:VisitWk20
   rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "11"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEEK 20"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  skos:prefLabel "WEEK 20"^^xsd:string ;
+  study:hasSubActivity custom:VisitWk20Activity ;
+.
+custom:VisitWk20Activity
+  rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "WEEK 20"^^xsd:string ;
+  skos:prefLabel "WEEK 20 ACTIVITY"^^xsd:string ;
 .
 custom:VisitWk24
   rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "12"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEEK 24"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  skos:prefLabel "WEEK 24"^^xsd:string ;
+  study:hasSubActivity custom:VisitWk24Activity ;
+.
+custom:VisitWk24Activity
+  rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "WEEK 24"^^xsd:string ;
+  skos:prefLabel "WEEK 24 ACTIVITY"^^xsd:string ;
 .
 custom:VisitWk26
   rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom custom:VisitWk26Activity ;
+      owl:onProperty study:hasSubActivity ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "13"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEEK 26"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  skos:prefLabel "WEEK 26"^^xsd:string ;
+  study:hasSubActivity custom:VisitWk26Activity ;
+.
+custom:VisitWk26Activity
+  rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "WEEK 26"^^xsd:string ;
+  skos:prefLabel "WEEK 26 ACTIVITY"^^xsd:string ;
+.
+custom:VisitWk2Activity
+  rdf:type owl:Class ;
+  rdf:type study:VisitActivity ;
+  rdfs:subClassOf study:VisitActivity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 2 ACTIVITY"^^xsd:string ;
 .
 custom:VisitWk4
   rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "5"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEEK 4"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  skos:prefLabel "WEEK 4"^^xsd:string ;
+  study:hasSubActivity custom:VisitWk4Activity ;
+.
+custom:VisitWk4Activity
+  rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "WEEK 4"^^xsd:string ;
+  skos:prefLabel "WEEK 4 ACTIVITY"^^xsd:string ;
 .
 custom:VisitWk6
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
-  rdfs:subClassOf study:VisitActivity ;
-  skos:altLabel ""^^xsd:string ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "7"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEEK 6"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
   skos:prefLabel "WEEK 6"^^xsd:string ;
+  study:hasSubActivity custom:VisitWk6Activity ;
 .
-custom:VisitWk8
+custom:VisitWk6Activity
   rdf:type owl:Class ;
   rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 6 ACTIVITY"^^xsd:string ;
+.
+custom:VisitWk8
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Visit ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "8"^^xsd:string ;
+      owl:onProperty study:seq ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEEK 8"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
   skos:prefLabel "WEEK 8"^^xsd:string ;
+  study:hasSubActivity custom:VisitWk8Activity ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206>
-  rdf:type study:VitalSign ;
-  rdfs:subClassOf study:VitalSign ;
+custom:VisitWk8Activity
+  rdf:type owl:Class ;
+  rdf:type study:VisitActivity ;
+  rdfs:subClassOf study:VisitActivity ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WEEK 8 ACTIVITY"^^xsd:string ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208>
-  rdf:type study:VitalSign ;
-  rdfs:subClassOf study:VitalSign ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298>
-  rdf:type study:VitalSign ;
-  rdfs:subClassOf study:VitalSign ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299>
-  rdf:type study:VitalSign ;
-  rdfs:subClassOf study:VitalSign ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347>
-  rdf:type study:VitalSign ;
-  rdfs:subClassOf study:VitalSign ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676>
-  rdf:type study:VitalSign ;
-  rdfs:subClassOf study:VitalSign ;
+study:ActivityStatus
+  code:hasMethod code:ActivityMethod_1 ;
 .
 study:AgeOutcome
   code:hasMethod code:ActivityMethod_2 ;
 .
 study:Arm
   code:hasMethod code:ActivityMethod_3 ;
+.
+study:AssumeBodyPosition
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:BodyPosition ;
+      owl:onProperty study:outcome ;
+    ] ;
 .
 study:Country
   code:hasMethod code:ActivityMethod_2 ;
@@ -722,4 +1166,12 @@ study:SubjectIdentifier
 .
 study:UniqueSubjectIdentifier
   code:hasMethod code:ActivityMethod_2 ;
+.
+study:VitalSign
+  code:hasMethod code:ActivityMethod_1 ;
+  study:crfLocation cd01p:CRFLocation_2 ;
+.
+study:VitalSignOutcome
+  code:hasMethod code:ActivityMethod_1 ;
+  study:crfLocation cd01p:CRFLocation_2 ;
 .

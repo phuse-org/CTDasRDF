@@ -1309,19 +1309,7 @@ DBPedia provides a set of resources corresponding to the IANA timezones, with a 
 :unitYear
   rdf:type :TemporalUnit ;
   rdfs:label "Year (unit of temporal duration)"@en ;
-  skos:prefLabel "1 년"@kr ;
-  skos:prefLabel "1年"@jp ;
-  skos:prefLabel "Jahr"@de ;
-  skos:prefLabel "Rok"@pl ;
-  skos:prefLabel "an"@fr ;
-  skos:prefLabel "anno"@it ;
-  skos:prefLabel "ano"@pt ;
-  skos:prefLabel "jaar"@nl ;
-  skos:prefLabel "un año"@es ;
-  skos:prefLabel "year"@en ;
-  skos:prefLabel "один год"@ru ;
-  skos:prefLabel "سنة واحدة"@ar ;
-  skos:prefLabel "一年"@zh ;
+  skos:prefLabel "YEAR"^^xsd:string ;
   :days "0"^^xsd:decimal ;
   :hours "0"^^xsd:decimal ;
   :minutes "0"^^xsd:decimal ;

@@ -1,19 +1,19 @@
 # baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
+# imports: http://rdf.cdisc.org/ct/schema
+# imports: http://rdf.cdisc.org/mms
+# imports: http://rdf.cdisc.org/sdtmterm
 # imports: http://spinrdf.org/spin
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/2006/time
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/meta-model-schema.rdf
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#> .
-@prefix sdtm-terminology: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#> .
+@prefix schema: <http://rdf.cdisc.org/ct/schema#> .
+@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spif: <http://spinrdf.org/spif#> .
@@ -23,6 +23,168 @@
 @prefix xhtm: <http://www.w3.org/1999/xhtml> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://rdf.cdisc.org/sdtmterm#C66726.C42968>
+  rdf:type code:DosageForm ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66729.C38288>
+  rdf:type code:RouteOfAdministration ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66729.C38305>
+  rdf:type code:RouteOfAdministration ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66731.C16576>
+  rdf:type code:Sex ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66731.C17998>
+  rdf:type code:Sex ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66731.C20197>
+  rdf:type code:Sex ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66731.C45908>
+  rdf:type code:Sex ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66790.C17459>
+  rdf:type code:Ethnicity ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66790.C17998>
+  rdf:type code:Ethnicity ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66790.C41222>
+  rdf:type code:Ethnicity ;
+.
+<http://rdf.cdisc.org/sdtmterm#C66790.C43234>
+  rdf:type code:Ethnicity ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C25206>
+  rdf:type owl:Class ;
+  rdf:type code:VitalSign ;
+  rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "TEMP"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Temperature"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C25208>
+  rdf:type owl:Class ;
+  rdf:type code:VitalSign ;
+  rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEIGHT"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Weight"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C25298>
+  rdf:type owl:Class ;
+  rdf:type code:BloodPressure ;
+  rdfs:subClassOf code:BloodPressure ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "SYSBP"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Systolic Blood Pressure"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C25299>
+  rdf:type owl:Class ;
+  rdf:type code:BloodPressure ;
+  rdfs:subClassOf code:BloodPressure ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "DIABP"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Diastolic Blood Pressure"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C25347>
+  rdf:type owl:Class ;
+  rdf:type code:VitalSign ;
+  rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "HEIGHT"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Height"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+.
+<http://rdf.cdisc.org/sdtmterm#C67153.C49676>
+  rdf:type owl:Class ;
+  rdf:type code:VitalSign ;
+  rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "PULSE"^^xsd:string ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Pulse Rate"^^xsd:string ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+.
+<http://rdf.cdisc.org/sdtmterm#C71113.C25473>
+  rdf:type code:DosageFrequency ;
+.
+<http://rdf.cdisc.org/sdtmterm#C71148.C62166>
+  rdf:type code:BodyPosition ;
+  skos:altLabel "PATIENT STANDING"^^xsd:string ;
+.
+<http://rdf.cdisc.org/sdtmterm#C71148.C62167>
+  rdf:type code:BodyPosition ;
+  skos:altLabel "PATIENT SUPINE"^^xsd:string ;
+.
+<http://rdf.cdisc.org/sdtmterm#C74456.C12421>
+  rdf:type code:AnatomicLocation ;
+.
+<http://rdf.cdisc.org/sdtmterm#C74456.C32141>
+  rdf:type code:AnatomicLocation ;
+  rdf:type code:VitalSignsLocation ;
+.
+<http://rdf.cdisc.org/sdtmterm#C74457.C16352>
+  rdf:type code:Race ;
+.
+<http://rdf.cdisc.org/sdtmterm#C74457.C41219>
+  rdf:type code:Race ;
+.
+<http://rdf.cdisc.org/sdtmterm#C74457.C41259>
+  rdf:type code:Race ;
+.
+<http://rdf.cdisc.org/sdtmterm#C74457.C41260>
+  rdf:type code:Race ;
+.
+<http://rdf.cdisc.org/sdtmterm#C74457.C41261>
+  rdf:type code:Race ;
+.
+<http://rdf.cdisc.org/sdtmterm#C99073.C25228>
+  rdf:type code:Laterality ;
+.
+<http://rdf.cdisc.org/sdtmterm#C99073.C25229>
+  rdf:type code:Laterality ;
+.
 arg:origResult
   rdf:type rdf:Property ;
   rdfs:subPropertyOf sp:arg ;
@@ -63,13 +225,13 @@ time:unitYear
   spin:imports <http://topbraid.org/spin/rdfsplus> ;
   spin:imports <http://topbraid.org/spin/skosspin> ;
   spin:imports <http://topbraid.org/spin/spinowl> ;
+  owl:imports <http://rdf.cdisc.org/ct/schema> ;
+  owl:imports <http://rdf.cdisc.org/mms> ;
+  owl:imports <http://rdf.cdisc.org/sdtmterm> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/2006/time> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/meta-model-schema.rdf> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
 code:ActiveSubstance
@@ -324,12 +486,6 @@ code:Ethnicity
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
-  owl:oneOf (
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17998>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C41222>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C43234>
-    ) ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ETHNIC"^^xsd:string ;
 .
@@ -568,13 +724,6 @@ code:Race
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
-  owl:oneOf (
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C16352>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41219>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41259>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41260>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41261>
-    ) ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "RACE"^^xsd:string ;
 .
@@ -619,12 +768,6 @@ code:Sex
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
-  owl:oneOf (
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C16576>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C17998>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C20197>
-      <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C45908>
-    ) ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SEX"^^xsd:string ;
 .
@@ -655,6 +798,7 @@ code:Unit
 .
 code:Unit_1
   rdf:type code:Unit ;
+  rdf:type code:VitalSignsUnit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "cm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
@@ -662,6 +806,7 @@ code:Unit_1
 .
 code:Unit_2
   rdf:type code:Unit ;
+  rdf:type code:VitalSignsUnit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "IN"^^xsd:string ;
   skos:definition ""^^xsd:string ;
@@ -669,6 +814,7 @@ code:Unit_2
 .
 code:Unit_3
   rdf:type code:Unit ;
+  rdf:type code:VitalSignsUnit ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "mmHg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
@@ -676,31 +822,37 @@ code:Unit_3
 .
 code:Unit_4
   rdf:type code:Unit ;
+  rdf:type code:VitalSignsUnit ;
   rdfs:label "BEATS/MIN"^^xsd:string ;
   skos:prefLabel "BEATS/MIN"^^xsd:string ;
 .
 code:Unit_5
   rdf:type code:Unit ;
+  rdf:type code:VitalSignsUnit ;
   rdfs:label "C"^^xsd:string ;
   skos:prefLabel "C"^^xsd:string ;
 .
 code:Unit_6
   rdf:type code:Unit ;
+  rdf:type code:VitalSignsUnit ;
   rdfs:label "F"^^xsd:string ;
   skos:prefLabel "F"^^xsd:string ;
 .
 code:Unit_7
   rdf:type code:Unit ;
+  rdf:type code:VitalSignsUnit ;
   rdfs:label "kg"^^xsd:string ;
   skos:prefLabel "kg"^^xsd:string ;
 .
 code:Unit_8
   rdf:type code:Unit ;
+  rdf:type code:VitalSignsUnit ;
   rdfs:label "LB"^^xsd:string ;
   skos:prefLabel "LB"^^xsd:string ;
 .
 code:Unit_9
   rdf:type code:Unit ;
+  rdfs:label "mg"^^xsd:string ;
   skos:prefLabel "mg"^^xsd:string ;
 .
 code:VitalSign
@@ -709,6 +861,16 @@ code:VitalSign
   rdfs:label "Vital signs test name"^^xsd:string ;
   rdfs:subClassOf code:Observation ;
   skos:definition ""^^xsd:string ;
+.
+code:VitalSignsLocation
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:AnatomicLocation ;
+  skos:prefLabel "VSLOC"^^xsd:string ;
+.
+code:VitalSignsUnit
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Unit ;
+  skos:prefLabel "VSUNIT"^^xsd:string ;
 .
 code:hasAge
   rdf:type owl:ObjectProperty ;
@@ -1015,103 +1177,4 @@ code:unitNormalized
     ] ;
   rdfs:label "unit normalized"^^xsd:string ;
   rdfs:subClassOf spin:Functions ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66726.C42968>
-  rdf:type code:DosageForm ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38288>
-  rdf:type code:RouteOfAdministration ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66729.C38305>
-  rdf:type code:RouteOfAdministration ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C16576>
-  rdf:type code:Sex ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C17998>
-  rdf:type code:Sex ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C20197>
-  rdf:type code:Sex ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66731.C45908>
-  rdf:type code:Sex ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17459>
-  rdf:type code:Ethnicity ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C17998>
-  rdf:type code:Ethnicity ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C41222>
-  rdf:type code:Ethnicity ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C66790.C43234>
-  rdf:type code:Ethnicity ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25206>
-  rdf:type owl:Class ;
-  rdf:type code:VitalSign ;
-  rdfs:subClassOf code:VitalSign ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25208>
-  rdf:type owl:Class ;
-  rdf:type code:VitalSign ;
-  rdfs:subClassOf code:VitalSign ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25298>
-  rdf:type owl:Class ;
-  rdf:type code:BloodPressure ;
-  rdfs:subClassOf code:BloodPressure ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25299>
-  rdf:type owl:Class ;
-  rdf:type code:BloodPressure ;
-  rdfs:subClassOf code:BloodPressure ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C25347>
-  rdf:type owl:Class ;
-  rdf:type code:VitalSign ;
-  rdfs:subClassOf code:VitalSign ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C67153.C49676>
-  rdf:type owl:Class ;
-  rdf:type code:VitalSign ;
-  rdfs:subClassOf code:VitalSign ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71113.C25473>
-  rdf:type code:DosageFrequency ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166>
-  rdf:type code:BodyPosition ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167>
-  rdf:type code:BodyPosition ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C12421>
-  rdf:type code:AnatomicLocation ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74456.C32141>
-  rdf:type code:AnatomicLocation ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C16352>
-  rdf:type code:Race ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41219>
-  rdf:type code:Race ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41259>
-  rdf:type code:Race ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41260>
-  rdf:type code:Race ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C74457.C41261>
-  rdf:type code:Race ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25228>
-  rdf:type code:Laterality ;
-.
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C99073.C25229>
-  rdf:type code:Laterality ;
 .
