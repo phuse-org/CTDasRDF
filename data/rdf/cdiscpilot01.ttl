@@ -282,10 +282,14 @@ cdiscpilot01:BloodPressureOutcome_8
   study:activityStatus code:ActivityStatus_1 ;
   study:bodyPosition <http://rdf.cdisc.org/sdtmterm#C71148.C62167> ;
   study:derivedFlag "N"^^xsd:string ;
+  study:groupID "GRPID1"^^xsd:string ;
+  study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
+  study:hasSubcategory cd01p:Subcategory_1 ;
   study:outcome cdiscpilot01:PulseOutcome_1 ;
   study:seq "44"^^xsd:float ;
+  study:sponsordefinedID "125"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_2>
   rdf:type <http://rdf.cdisc.org/sdtmterm#C67153.C49676> ;
@@ -294,10 +298,14 @@ cdiscpilot01:BloodPressureOutcome_8
   study:activityStatus code:ActivityStatus_1 ;
   study:bodyPosition <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
+  study:groupID "GRPID1"^^xsd:string ;
+  study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding1_1 ;
+  study:hasSubcategory cd01p:Subcategory_1 ;
   study:outcome cdiscpilot01:PulseOutcome_2 ;
   study:seq "45"^^xsd:float ;
+  study:sponsordefinedID "721"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_3>
   rdf:type <http://rdf.cdisc.org/sdtmterm#C67153.C49676> ;
@@ -306,10 +314,14 @@ cdiscpilot01:BloodPressureOutcome_8
   study:activityStatus code:ActivityStatus_1 ;
   study:bodyPosition <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
   study:derivedFlag "N"^^xsd:string ;
+  study:groupID "GRPID1"^^xsd:string ;
+  study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_19 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding3_1 ;
+  study:hasSubcategory cd01p:Subcategory_1 ;
   study:outcome cdiscpilot01:PulseOutcome_3 ;
   study:seq "46"^^xsd:float ;
+  study:sponsordefinedID "237"^^xsd:string ;
 .
 cdiscpilot01:CumulativeProductAdministrationInterval_1
   rdf:type study:CumulativeProductAdministrationInterval ;

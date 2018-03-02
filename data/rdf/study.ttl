@@ -364,6 +364,11 @@ study:Analysis
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Analysis"^^xsd:string ;
   rdfs:subClassOf study:StudyActivity ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:ActivityMethod_2 ;
+      owl:onProperty code:hasMethod ;
+    ] ;
   skos:definition "An examination, sometimes via a mathematical manipulation, of one or more observations to obtain a result."^^xsd:string ;
 .
 study:AnalysisOutcome
@@ -412,7 +417,7 @@ study:Assessor
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Assessor"^^xsd:string ;
   rdfs:subClassOf study:Party ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "A Party that performs an Assessment (See study:Assessment) "^^xsd:string ;
 .
 study:AssumeBodyPosition
   rdf:type owl:Class ;
@@ -793,6 +798,13 @@ study:EthnicOutcome
   rdf:type owl:Class ;
   rdfs:label "Ethnic outcome"^^xsd:string ;
   rdfs:subClassOf study:ObservationOutcome ;
+.
+study:Evaluator
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Party ;
+  skos:definition "<need definition to distinguish from study:Assessor>"^^xsd:string ;
+  skos:note "Evaluator is used in CDISC. Need to find CDISC definition. "^^xsd:string ;
+  skos:prefLabel "QEVAL"^^xsd:string ;
 .
 study:Event
   rdf:type owl:Class ;
