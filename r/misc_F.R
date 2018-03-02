@@ -73,7 +73,7 @@ addPersonId <- function(domainName)
 #' @examples
 assignDateType <- function(dateVal, dateFrag, dateType)
 {
-#---- Date triples
+  #---- Date triples
   addStatement(cdiscpilot01, 
     new("Statement", world=world, 
       subject   = paste0(CDISCPILOT01, dateFrag),

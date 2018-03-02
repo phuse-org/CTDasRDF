@@ -14,9 +14,9 @@
 #        Calls to other scripts for code, functions, data import.
 # OUT : data/rdf/cdiscpilot01-R.TTL
 # NOTE: Validation of the resulting TTL files with Apache Jenna riot
-#        Later cross programmatically with scripts in the /validation folder
-# TODO: Selection of rows for imputation are manually coded, with later values like personNum
-#       used in conditional imputations later in the code. These dependencies should 
+#        Later check programmatically with scripts in the /validation folder
+# TODO: Selection of rows for imputation are manually coded, with values like personNum
+#       used in conditional logic later in the code. These dependencies should 
 #       be changed to other coding when the entire file is processed.
 #       
 #______________________________________________________________________________
@@ -41,7 +41,7 @@ pntSubset<-c('01-701-1015') # List of usubjid's to process.
     # Subset for prototype development. Original ontology matching for DM
     # maxPerson = 6 # Original Ontology matching Used in DM_process.R for subsetting. VS is selects row numbers.
 
-importsEnabled = FALSE  # Allow import when load OWL files
+importsEnabled = FALSE  # Allow import when load OWL files. Flag used in prefixesAndImports.R
 
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
@@ -59,15 +59,21 @@ storage <- new("Storage", world, "hashes", name="", options="hash-type='memory'"
 # A model is a set of Statements, and is associated with a particular Storage instance
 cdiscpilot01 <- new("Model", world=world, storage, options="")
 
-# Prefix Declarations and [optional] OWL imports ----
+# PrefixesAndImports.R ---- 
+# Prefix Declarations and [optional] OWL imports
 source('R/prefixesAndImports.R') # Prefixes and OWL imports
 
-# Graph Metadata ----
+# graphMeta.R ----
+# Graph Metadata 
 source('R/graphMeta.R') # Graph Metadata
 
-# External Functions ----
-source('R/misc_F.R')  # Data import, personID, etc.
-source('R/createFrag_F.R') # URI fragement Creation. Eg. Date_1, AgeMeasurement_3
+# misc_F.R ----
+# External Functions: Data import, personID, etc.
+source('R/misc_F.R')  
+
+# createFrag_F.R ----
+# External Functions: URI fragement Creation. Eg. Date_1, AgeMeasurement_3
+source('R/createFrag_F.R') 
 
 # XPT Imports ----
 dm     <- readXPT("dm")
