@@ -25,6 +25,7 @@ class genDefineXMLFile {
 	def queryString = prefixed + studyMetadata
 	def comentCollection = []
 	def methodCollection = []
+	def codelistCollection = []
 	def datasetList = ["DM","SUPPDM","VS"]
 
 	// Construct Other Metadata
@@ -164,7 +165,8 @@ class genDefineXMLFile {
   				'Description'({'TranslatedText'('xml:lang':"en",  dslabel )})
                     for (ResultSet variableResultset = variableMetadataQE.execSelect(); variableResultset.hasNext() ; ) {
                         QuerySolution sol2 = variableResultset.nextSolution()
-  						'ItemRef'(ItemOID: "IT.${datasetName}.${sol2.dataElementName}", OrderNumber: sol2.ordinal_, Mandatory: sol2.Core, KeySequence: "", MethodOID: "")
+  						'ItemRef'(ItemOID: "IT.${datasetName}.${sol2.dataElementName}",
+							 OrderNumber: sol2.ordinal_, Mandatory: (sol2.Core.toString() == "Required" ? "Yes" : "No"), KeySequence: "", MethodOID: "")
   					}
   					'def:leaf'('ID':"LF.${dsname}", 'xlink:href':"${dsname}.xpt".toLowerCase(), {'def:title'("${dsname}.xpt".toLowerCase())}
   					)
@@ -178,7 +180,7 @@ class genDefineXMLFile {
       	def writer = new StringWriter()
       	def xml = new MarkupBuilder(writer)
       	xml.setOmitNullAttributes(true)
-		xml.setOmitEmptyAttributes(true)
+				xml.setOmitEmptyAttributes(true)
     		xml.setDoubleQuotes(true)
     		xml.setEscapeAttributes(true)
 
@@ -190,6 +192,9 @@ class genDefineXMLFile {
                 comentCollection << comMap
                 comOID = "COM."+solVarItem.dataElementName
             }
+						if (solVarItem.codeListName != null){
+								codelistCollection << solVarItem.codeListName
+						}
            xml.'ItemDef'(
 			    'OID': "IT.${datasetName}.${solVarItem.dataElementName}",
 			    'Name': solVarItem.dataElementName,
@@ -204,8 +209,8 @@ class genDefineXMLFile {
                  if (solVarItem.Origin != null){
 				                  'def:Origin'(Type:solVarItem.Origin, {'Description'({'TranslatedText'('xml:lang':"en",  solVarItem.Origin )})})
                  }
-				           if (solVarItem.codeList != ""){
-					         'CodeListRef'('CodeListOID': solVarItem.codeList )
+				           if (solVarItem.codeListName != null){
+					         'CodeListRef'('CodeListOID': "CL.${solVarItem.codeListName}" )
 				           }
 			      }
         }
@@ -216,31 +221,28 @@ class genDefineXMLFile {
 
 
     def String genComment( ){
-		println("Call genComment Method")
-		def writer = new StringWriter()
-		def xml = new MarkupBuilder(writer)
+				def writer = new StringWriter()
+				def xml = new MarkupBuilder(writer)
 
-		xml.setOmitNullAttributes(true)
-		xml.setOmitEmptyAttributes(true)
-		xml.setDoubleQuotes(true)
-		xml.setEscapeAttributes(true)
+				xml.setOmitNullAttributes(true)
+				xml.setOmitEmptyAttributes(true)
+				xml.setDoubleQuotes(true)
+				xml.setEscapeAttributes(true)
 
-		for (comind in comentCollection){
-			def ckey = comind.keySet()[0]
-			def cval = comind.get(ckey)
-			println( ckey + ":" + cval)
-        		xml.'def:CommentDef'( 'OID': ckey ){
+				for (comind in comentCollection){
+						def ckey = comind.keySet()[0]
+						def cval = comind.get(ckey)
+			  		xml.'def:CommentDef'( 'OID': ckey ){
           		'Description'({ 'TranslatedText'('xml:lang':"en",  comind.get( ckey )) })
         		}
       	}
-	  return(writer)
- 	}
+	  		return(writer)
+		}
 
     def setCommet(String comOID, String comDescription){
 
     }
 }
-
 
 
 define_generator = new genDefineXMLFile()

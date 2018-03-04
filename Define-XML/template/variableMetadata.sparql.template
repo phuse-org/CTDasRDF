@@ -14,9 +14,9 @@ WHERE{
 
     ?dataElementCompliance rdfs:label ?Core_.
 
- 		optional{ ?varEntity mms:dataElementValueDomain ?codeList.}
-    optional{ ?codeList cts:codelistName ?codeListName.}
-  	optional{ ?varEntity sdtm:variableComment ?comment.}
+ 		optional{ ?varEntity mms:dataElementValueDomain ?codeList.
+              ?codeList cts:codelistName ?codeListName.}
+    optional{ ?varEntity sdtm:variableComment ?comment.}
 
   bind( str(?ordinal) as ?ordinal_ )
   bind(replace(?Core_, " Variable", "") as ?Core)
