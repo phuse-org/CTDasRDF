@@ -54,9 +54,12 @@ DiagrammeR(diagram =" graph TB
 
   idCreateFrag(createFrag_F.R)
   idFntaddDateFrag((addDateFrag))
+  idFntaddPersonNum((addPersonNum))
   idFntCreateDateDict((createDateDict))
-  idFntcreateFragOneDomain((createFragOneDomain))
   idFntcreateFragOneColByCat((createFragOneColByCat))
+  idFntcreateFragOneDomain((createFragOneDomain))
+  idFntcreateFragVisit((createFragVisit))
+  idFntcreateFragWithinCat((createFragWithinCat))
 
   idDMFrag(DM_Frag.R)
   idVSFrag(VS_Frag.R)
@@ -87,9 +90,12 @@ DiagrammeR(diagram =" graph TB
   
   idMain3-->idMain4
   idFntaddDateFrag--DEFINED_IN-->idCreateFrag
-  idFntcreateFragOneDomain--DEFINED_IN-->idCreateFrag
-  idFntcreateFragOneColByCat--DEFINED_IN-->idCreateFrag
+  idFntaddPersonNum--DEFINED_IN-->idCreateFrag
   idFntCreateDateDict--DEFINED_IN-->idCreateFrag
+  idFntcreateFragOneColByCat--DEFINED_IN-->idCreateFrag
+  idFntcreateFragOneDomain--DEFINED_IN-->idCreateFrag
+  idFntcreateFragVisit--DEFINED_IN-->idCreateFrag
+  idFntcreateFragWithinCat--DEFINED_IN-->idCreateFrag
   idCreateFrag--SOURCED_BY-->idMain3
 
   idMain4-->idMain5
@@ -145,7 +151,10 @@ DiagrammeR(diagram =" graph TB
   
   class idStart, start;
   class idMain1,idMain2,idMain3,idMain4,idMain5,idMain6,idMain7,idMain7,idMain8,idMain9,idMain10,idMain11,idMain12,idMain13,idMain14 main;
-  class idFntreadXPT,idFntaddPersonId,idFntassignDateType,idFntaddDateFrag,idFntcreateFragOneDomain,idFntcreateFragOneColByCat,idFntCreateDateDict fnt;
+  class idFntreadXPT,idFntaddPersonId,idFntassignDateType,idFntaddDateFrag,idFntaddPersonNum,idFntcreateFragOneDomain,idFntcreateFragOneColByCat,idFntCreateDateDict,idFntcreateFragVisit,idFntcreateFragWithinCat fnt;
+
+
+
   class idMeta,idNonInstance,idMiscF,idDMProcess,idPSDM,idVSProcess sourced;
   class idDMxpt,idVSxpt,idSUPPDMxpt xpt;
   class idDMImpute,idVSImpute,idSUPPDMImpute RImpute;

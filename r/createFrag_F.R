@@ -22,7 +22,6 @@
 #______________________________________________________________________________
 
 
-# createDateDict() ----
 #   Create a translation table of dates to date fragments
 #   All dates from across both DM and VS domains. 
 #  TODO: 
@@ -30,7 +29,7 @@
 #      to accept these as arguments instead of hard coded.
 #    Move to processing date lists instead of all the useless data.frame conversions which
 #      are a hold-over from earlier versions of the function.
-#' Title
+#' createDateDict
 #'
 #' @return
 #' @export
@@ -47,7 +46,7 @@ createDateDict <- function()
   # vs date s
   vsDates <- data.frame(vs[,"vsdtc"])  # only one column so must assign data.frame
   names(vsDates)[1] <- "dateVal"
-
+  
   # ex dates
   exDateFields <- ex[,c("personNum", "exstdtc", "exendtc")]
   exDates <- melt(exDateFields, id.var='personNum',variable.name='EXDates')
@@ -56,7 +55,7 @@ createDateDict <- function()
   
   # Combine into single dataframe. Change this to list processing.
   dateDict <- data.frame(do.call("rbind", list(dmDates, vsDates, exDates)))
-    
+  
   # Remove duplicates
   dateDict <- data.frame(dateDict[!duplicated(dateDict$dateVal), ])
   # dateDict <- dateDict[!duplicated(dateDict$dateKey), ]
@@ -83,21 +82,21 @@ createDateDict <- function()
         subject   = paste0(CDISCPILOT01, dateDict$dateFrag),
         predicate = paste0(STUDY, "dateTimeInXSDString" ),
         object    = paste0(dateDict$dateKey),
-          objectType = "literal", datatype_uri = paste0(XSD,"string")))
-
+        objectType = "literal", datatype_uri = paste0(XSD,"string")))
+    
     addStatement(cdiscpilot01, 
       new("Statement", world=world, 
         subject   = paste0(CDISCPILOT01, dateDict$dateFrag),
         predicate = paste0(RDFS,"label" ),
         object    = paste0(dateDict$dateKey),
-          objectType = "literal", datatype_uri = paste0(XSD,"string")))
+        objectType = "literal", datatype_uri = paste0(XSD,"string")))
   })
   return(dateDict)
 }
 
 # Merge in the dateKey value to created a coded version of the date field, naming
 #  the column with a _Frag suffix.
-#' Title
+#' addDateFrag
 #'
 #' @param domainName 
 #' @param colName 
@@ -117,11 +116,10 @@ addDateFrag<-function(domainName, colName)
   return(withFrag)
 }
 
-#------------------------------------------------------------------------------
 # Add personNum to a domain to facilitate merging and triple creation
 #  Personnum is created in DM_impute.R. It is used to create the Person_(n) 
 #  triples across all domains, so the identifier must be merged into all domains.
-#' Title
+#' addPersonNum
 #'
 #' @param domainName 
 #'
@@ -139,7 +137,7 @@ addPersonNum<-function(domainName)
   # withFrag <- withFrag[ , !names(withFrag) %in% c("dateKey")]  #DEL - no longer needed
   return(withPersonNum)   # Return the domain with PersonNum now as a column.
 }
-#  createFragOneDomain() ----
+
 #  Create URI fragments for coded values in a single or mutliple column. 
 #    - If more than one column, combine values into a single column to process
 #    - Create numeric index of the unique values in the "processColumns"
@@ -156,7 +154,7 @@ addPersonNum<-function(domainName)
 #    Examples: column: actarm_frag, has values: actarm_1, actarm_3...
 #  Note: original source data has columns actarmcd, armcd. The 'cd'  
 #     is not needed in the RDF context, so drop that part of the name
-#' Title
+#' createFragOneDomain
 #'
 #' @param domainName 
 #' @param processColumns 
@@ -173,8 +171,8 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, sortMe=TRU
   columnData <- domainName[,c(processColumns)] # keep only the requested cols in the df
   
   sourceVals <- melt(columnData, measure.vars=colnames(columnData),
-          variable.name="source",
-          value.name="value")
+    variable.name="source",
+    value.name="value")
   
   # Keep only the values. Source not important
   #TW:NOT NEEDED #sourceVals <- sourceVals[ , c("value")]
@@ -189,7 +187,7 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, sortMe=TRU
   # Sort by values. Prev code: Use dplyr arrange instead of order/sort to avoid loss of df type
   uniqueVals <- as.data.frame(uniques)
   uniqueVals <<- na.omit(uniqueVals)
-
+  
   # Some fragment creation, lke for FixedDoseInterval, relies on original order of the df (sortMe=FALSE)
   #   The default is to sort.
   if (sortMe==TRUE)
@@ -207,7 +205,7 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, sortMe=TRU
   else{
     current.vals <<- data.frame(uniqueVals$uniques)
   }
-
+  
   colnames(current.vals) <- "keyVal" 
   current.vals <-na.omit(current.vals)
   # Create the coded value for each unique value as <value_n> 
@@ -224,10 +222,10 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, sortMe=TRU
     # Rename valFrag value to coded value using processColumn +  _Frag suffix
     names(domainName)[names(domainName)=="valFrag"] <- paste0(i, "_Frag")
   } 
-   return(domainName)
+  return(domainName)
 }
 
-#' Title
+#' createFragOneColByCat
 #'
 #' @param domainName  - domain dataframe 
 #' @param dataCol     - column containing the data to indexed (Eg: vsorres). It does not become part of the fragment.
@@ -251,7 +249,7 @@ createFragOneDomain<-function(domainName, processColumns, fragPrefix, sortMe=TRU
 createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numSort=TRUE)
 {
   temp <- domainName[,c(byCol, dataCol)]
-
+  
   temp2 <- temp[!duplicated(temp), ]
   # sort by category, data column value
   # temp2 <- temp2[ order(temp2[,1], temp2[,2]), ]
@@ -279,9 +277,9 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numS
   # Create the new column named based on the input column name by appending
   #  "_Frag" to the value of the the dataCol parameter
   varname <- paste0(fragPrefixName, "_Frag")
-
+  
   byColName <<- byCol
-
+  
   # Note use of !! to resolve the value of varname created above and assign
   #   a value to it using :=
   # Kludge due to inability to resolve the byCol value within seq_along and mutate.
@@ -308,12 +306,11 @@ createFragOneColByCat<-function(domainName, byCol, dataCol, fragPrefixName, numS
   
   # Merge the fragment value back into the original data
   withFrag <- merge(domainName, temp2, by = c(byCol, dataCol), all.x=TRUE)
-
+  
 }
 
 
-
-#' Title
+#' createFragWithinCat
 #'  Create a fragment for the same value within the sortCols subset.
 #'    Note subtle differences compared to createFragOneColByCat
 #'  New column for the created fragment is value of fragValsCol with suffix _Frag
@@ -348,8 +345,8 @@ createFragWithinCat<-function(domainName, sortCols, fragValsCol)
   temp <<- domainName[do.call("order", domainName[sortCols]), ]
   
   varname <- paste0(fragValsCol,"_Frag")  # column to hold the new fragments
-
-
+  
+  
   #REF https://stackoverflow.com/questions/27341775/combine-data-frame-columns-to-new-columns-by-vector-of-names
   # kludgy but functional....
   temp$tempID <- do.call(paste0, temp[sortCols])
@@ -378,16 +375,16 @@ createFragWithinCat<-function(domainName, sortCols, fragValsCol)
     # Merge index back into the source dataframe
     withFrag <<- merge(x = temp, y = DT, by="tempID", all.x = TRUE)
     # Create the new new fragment only when the fragValsCol is not blank or missing
-   
+    
     withFrag$vsposCode_Frag <- ifelse(is.na(withFrag$vsposCode), NA, paste0(withFrag$vsposCode, "_", withFrag$id))
-   
+    
     # remove temporary vars used for indexing before returning the result
     test<-subset(withFrag, select=-c(id, tempID))
   }
 }
 
 
-#' Title
+#' createFragVisit
 #' Creates fragments for visits: Both visit_frag, visitPerson_Frag , visitPerson_Label
 #' input dataframe MUST have columns:
 #'  1. visit: "BASELINE", "WEEK 2" etc.
