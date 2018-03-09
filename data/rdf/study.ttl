@@ -245,6 +245,10 @@ study:ActiveProduct
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Active product"^^xsd:string ;
 .
+study:Activity
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:StudyComponent ;
+.
 study:ActivityBegin
   rdf:type owl:Class ;
   rdfs:subClassOf study:BeginInstant ;
@@ -276,11 +280,12 @@ study:ActivityOutcome
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Activity outcome"^^xsd:string ;
   rdfs:subClassOf study:Entity ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "An Entity that is the outcome of a Study Activity. For an Observation, this is the result of the observation. "^^xsd:string ;
 .
 study:ActivityStatus
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
+  skos:definition "The Status or state of a StudyActivity. For example, Completed, Started, Not Done, Incomplete."^^xsd:string ;
   skos:prefLabel "Activity status"^^xsd:string ;
 .
 study:AdministrativeActivity
@@ -288,7 +293,7 @@ study:AdministrativeActivity
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Administrative activity"^^xsd:string ;
   rdfs:subClassOf study:StudyActivity ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "A StudyActivity that is performed primarily to facilitate administrative execution of a study. These are activities that are not routinely performed during ordinary patient care outside of a study setting. "^^xsd:string ;
 .
 study:AdministrativeActivityOutcome
   rdf:type owl:Class ;
@@ -370,6 +375,7 @@ study:Analysis
       owl:onProperty code:hasMethod ;
     ] ;
   skos:definition "An examination, sometimes via a mathematical manipulation, of one or more observations to obtain a result."^^xsd:string ;
+  skos:note "The important point here is that data already exist as input to an analysis. No additional data collection on the HumanStudySubject is needed. "^^xsd:string ;
 .
 study:AnalysisOutcome
   rdf:type owl:Class ;
@@ -379,6 +385,7 @@ study:AnalysisOutcome
 study:AnatomicLocation
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
+  skos:definition "The location on the body where an activity/process occurs or an entity is located. "^^xsd:string ;
   skos:prefLabel "Anatomic location"^^xsd:string ;
 .
 study:AnnotatedCaseReportForm
@@ -391,6 +398,7 @@ study:Arm
   rdf:type owl:Class ;
   rdfs:subClassOf study:StudyActivity ;
   skos:altLabel "ARMCD"^^xsd:string ;
+  skos:definition "A path though the study which describes what activities the study subject or experimental unit will be involved in as they pass through the study (BRIDG 5.0)"^^xsd:string ;
   skos:prefLabel "ARM"^^xsd:string ;
 .
 study:Assessment
@@ -398,10 +406,15 @@ study:Assessment
   rdfs:comment "when formalized in a protocol, this is often called an Adjudication process. "^^xsd:string ;
   rdfs:label "Assessment"^^xsd:string ;
   rdfs:subClassOf study:Analysis ;
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:Assessor ;
       owl:onProperty study:hasPerformer ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:MedicalCondition ;
+      owl:onProperty study:outcome ;
     ] ;
   skos:definition "An examination of one or more clinical observations to identify and/or characterize a Medical Condition."^^xsd:string ;
 .
@@ -417,6 +430,11 @@ study:Assessor
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Assessor"^^xsd:string ;
   rdfs:subClassOf study:Party ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty study:performsActivity ;
+      owl:someValuesFrom study:Assessment ;
+    ] ;
   skos:definition "A Party that performs an Assessment (See study:Assessment) "^^xsd:string ;
 .
 study:AssumeBodyPosition
@@ -424,7 +442,7 @@ study:AssumeBodyPosition
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Assume a specific body position"^^xsd:string ;
   rdfs:subClassOf study:Intervention ;
-  skos:definition "An Intervention whose intent is to observe the Person s body position and change it to the desired body position, usually in preparation for another intervention."^^xsd:string ;
+  skos:definition "An Intervention whose intent is to observe the Person's body position and change it to the desired body position, usually in preparation for another intervention."^^xsd:string ;
 .
 study:BeginInstant
   rdf:type owl:Class ;
@@ -475,13 +493,6 @@ study:Category
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Category"^^xsd:string ;
 .
-study:ClinicalIntervention
-  rdf:type owl:Class ;
-  rdfs:subClassOf study:Intervention ;
-  skos:altLabel ""^^xsd:string ;
-  skos:definition "An Intervention whose intent is to have a clinical effect on (e.g. treat, prevent) a Medical Condition"^^xsd:string ;
-  skos:prefLabel "Clinical intervention"^^xsd:string ;
-.
 study:Country
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
@@ -491,7 +502,7 @@ study:CumulativeProductAdministration
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product administration"^^xsd:string ;
-  rdfs:subClassOf study:ClinicalIntervention ;
+  rdfs:subClassOf study:TherapeuticIntervention ;
   skos:definition "The act of administering/taking a Product over time; there may be breaks or the dose may change  over time"^^xsd:string ;
 .
 study:CumulativeProductAdministrationBegin
@@ -742,6 +753,8 @@ study:Derivation
   rdf:type owl:Class ;
   rdfs:subClassOf study:Analysis ;
   skos:altLabel ""^^xsd:string ;
+  skos:definition "An Analysis that examines one or more observations for a HumanStudySubject and obtains a result that is also specific for that HumanStudySubject. "^^xsd:string ;
+  skos:note "The key is that the result (e.g. derived variable) belongs to the HumanStudySubject. In contrast the result of an efficacy or safety analysis is specific for the study population, not the individual subject. "^^xsd:string ;
   skos:prefLabel "Derivation"^^xsd:string ;
 .
 study:Document
@@ -811,11 +824,12 @@ study:Event
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Event"^^xsd:string ;
   rdfs:subClassOf study:Entity ;
-  skos:definition "An occurrence that persists in time. "^^xsd:string ;
+  skos:definition "An occurrence; something that happens. An event persists in time. "^^xsd:string ;
 .
 study:FixedDoseDrugAdministration
   rdf:type owl:Class ;
-  rdfs:subClassOf study:ClinicalIntervention ;
+  rdfs:subClassOf study:TherapeuticIntervention ;
+  skos:definition "A ClinicalIntervention where a fixed dosed of a drug product is administered over a documented interval of time. "^^xsd:string ;
   skos:prefLabel "Fixed Dose Drug administration"^^xsd:string ;
 .
 study:FixedDoseInterval
@@ -838,6 +852,7 @@ study:Flag
   rdf:type owl:Class ;
   rdfs:subClassOf study:Derivation ;
   skos:altLabel ""^^xsd:string ;
+  skos:definition "A Derivation where the result (outcome) is binary e.g. Y/N. "^^xsd:string ;
   skos:prefLabel "Flag"^^xsd:string ;
 .
 study:HeightOutcome
@@ -859,11 +874,10 @@ study:HumanStudySubject
 .
 study:HumanSubject
   rdf:type owl:Class ;
-  rdfs:comment "typically a Human Subject is the target of some recruitment activity or voluntarily inquires about participating in a Study. a human subject need not paraticipate in a study, but allows the collection of data or identifiable private information for the purpose of research. "^^xsd:string ;
   rdfs:label "Human subject"^^xsd:string ;
   rdfs:subClassOf study:Person ;
-  skos:definition """A Person of interest for participation in a Study. 45 CFR 46 defines a human subject as “a living individual about whom an investigator...conducting research obtains:
-Data through intervention or interaction with the individual, or Identifiable private information.”"""^^xsd:string ;
+  skos:definition "A Person of interest for participation in a Study. 45 CFR 46 defines a human subject as “a living individual about whom an investigator...conducting research obtains: Data through intervention or interaction with the individual, or Identifiable private information.”"^^xsd:string ;
+  skos:note "typically a Human Subject is the target of some recruitment activity or voluntarily inquires about participating in a Study. a human subject need not paraticipate in a study, but allows the collection of data or identifiable private information for the purpose of research. "^^xsd:string ;
 .
 study:Identifier
   rdf:type owl:Class ;
@@ -976,18 +990,18 @@ study:Lifespan
 .
 study:MedicalCondition
   rdf:type owl:Class ;
-  rdfs:comment "Medical conditions are the target of medical interventions.  Medical conditions explain the presence of clinical observations.  Most clinicians will agree that pregnancy is a medical condition because it benefits from medical intervention (e.g. prenatal care) to minimize complications to the mother and unborn child"^^xsd:string ;
   rdfs:label "Medical condition"^^xsd:string ;
   rdfs:subClassOf study:Event ;
-  skos:definition """a disease, injury, disorder, or transient physiologic state that interferes or may interfere with well-being. A medical condition persists in time. 
+  skos:definition """An event that is a disease, injury, disorder, or transient physiologic state that interferes or may interfere with well-being. A medical condition persists in time. 
 """^^xsd:string ;
+  skos:note "Medical conditions are the target of medical interventions.  Medical conditions explain the presence of clinical observations.  Most clinicians will agree that pregnancy is a medical condition because it benefits from medical intervention (e.g. prenatal care) to minimize complications to the mother and unborn child"^^xsd:string ;
 .
 study:Observation
   rdf:type owl:Class ;
   rdfs:label "Observation"^^xsd:string ;
   rdfs:subClassOf study:Intervention ;
-  skos:definition " An Intervention whose intent is to measure of the physical, physiological, or psychological state of a Person."^^xsd:string ;
-  skos:note """A (Clinical) Observation is ideally observed by a qualified individual, following a standard process, but without implying a cause. Many clinical observations simply reflect a normal physiological state. e.g. BP 120/80 mmHg. The classification of an Observation as a subclass of Intervention deviates from BRIDG and other models in that it recognizes that an observation requires intervening in the Person's normal routine and that intervention method may impact the observation result. 
+  skos:definition " An Intervention whose intent is to measure the physical, physiological, or psychological state of a Person."^^xsd:string ;
+  skos:note """An observation is ideally observed by a qualified individual, following a standard process, but without implying a cause. Many clinical observations simply reflect a normal physiological state. e.g. BP 120/80 mmHg. The classification of an Observation as a subclass of Intervention deviates from BRIDG and other models in that it recognizes that an observation requires intervening in the Person's normal routine and that intervention method may impact the observation result. Synonyms: clinical observation, biomedical concept. 
 """^^xsd:string ;
 .
 study:ObservationEndDate
@@ -1026,7 +1040,7 @@ study:PerformedActivity
       owl:hasValue code:ActivityStatus_1 ;
       owl:onProperty study:activityStatus ;
     ] ;
-  skos:definition "An Activity that was performed on a specific date/time. It has activity status as COMPLETE"^^xsd:string ;
+  skos:definition "An Activity that was performed on a specific time interval or instant. It has activity status as COMPLETE"^^xsd:string ;
 .
 study:PerformedActivityDate
   rdf:type owl:Class ;
@@ -1051,6 +1065,16 @@ study:PlannedActivity
   rdfs:comment "a planned activity can also be a completed activity if it has a protocol specified start rule. "^^xsd:string ;
   rdfs:label "Planned activity"^^xsd:string ;
   rdfs:subClassOf study:StudyActivity ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:HumanStudySubject ;
+      owl:onProperty study:hasParticipant ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:StartRule ;
+      owl:onProperty study:hasStartRule ;
+    ] ;
   skos:definition "An Activity that is or was intended to occur. It is associated with a performer and/or a participant and is associated with a start rule that is described in the protocol. "^^xsd:string ;
 .
 study:PopulationFlag
@@ -1061,10 +1085,10 @@ study:PopulationFlag
 .
 study:PrerequisiteActivity
   rdf:type owl:Class ;
-  rdfs:comment "For example: An activity to assume a supine body position can be an anchor for a BP measurement 5 minutes later. An activity outcome could be a medical condition, e.g. the ActivityOutcome can be a migraine headache, which triggers another activity: drug administration. "^^xsd:string ;
   rdfs:label "Anchor / Time Point Reference"^^xsd:string ;
   rdfs:subClassOf study:StudyActivity ;
-  skos:definition "An activity whose Date functions as a time point reference for other activities. "^^xsd:string ;
+  skos:definition "A StudyActivity whose Date functions as a time point reference for other activities. "^^xsd:string ;
+  skos:note "For example: An activity to assume a supine body position can be a prerequisite activity for a BP measurement 5 minutes later. An activity outcome could be a medical condition, e.g. the ActivityOutcome can be a migraine headache, which triggers another activity: drug administration. "^^xsd:string ;
 .
 study:Product
   rdf:type owl:Class ;
@@ -1082,7 +1106,7 @@ study:ProtocolSpecifiedActivity
   rdf:type owl:Class ;
   rdfs:label "Protocol specified activity"^^xsd:string ;
   rdfs:subClassOf study:StudyActivity ;
-  skos:definition "An Activity that is specified in the Protocol to occur in the Study. It is associated with a start rule but not necesarily with a subject. A protocol specified activity is instantiated for each Subject in the study. The instance of a protocol specified activity becomes a Planned Activity. "^^xsd:string ;
+  skos:definition "A StudyActivity that is specified in the Protocol to occur in the Study. It is associated with a start rule but not necessarily with a subject. A protocol specified activity is instantiated for each Subject in the study. The instance of a protocol specified activity becomes a Planned Activity. "^^xsd:string ;
 .
 study:PulseOutcome
   rdf:type owl:Class ;
@@ -1151,7 +1175,8 @@ study:Rule
       owl:allValuesFrom study:RuleOutcome ;
       owl:onProperty study:outcome ;
     ] ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "An Analysis that examines whether one or more observations or derivations meet certain pre-defined target(s). If the target is met, then the rule outcome is set to true, otherwise it is set to false if the target is not met "^^xsd:string ;
+  skos:example "1.  Age >= 18  or 2. Sex = Female"^^xsd:string ;
 .
 study:RuleOutcome
   rdf:type owl:Class ;
@@ -1163,7 +1188,12 @@ study:ScheduledActivity
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Scheduled activity"^^xsd:string ;
   rdfs:subClassOf study:StudyActivity ;
-  skos:definition "An activity that is or was scheduled to occur on a Subject at a specific date/time"^^xsd:string ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:Date ;
+      owl:onProperty study:hasScheduledDate ;
+    ] ;
+  skos:definition "An activity that is or was scheduled to occur on a HumanStudySubject at a specific date/time"^^xsd:string ;
 .
 study:ScheduledActivityDate
   rdf:type owl:Class ;
@@ -1205,6 +1235,16 @@ study:StartRuleComposite
   rdf:type owl:Class ;
   rdfs:label "Start rule composite"^^xsd:string ;
   rdfs:subClassOf study:StartRule ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:StartRule ;
+      owl:onProperty study:hasSubRule ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "2"^^xsd:nonNegativeInteger ;
+      owl:onProperty study:hasSubRule ;
+    ] ;
   skos:definition "A collection of start rules, each of which has two or more sub-rules. Each sub-rule must evaluate to TRUE for the composite start rule to be TRUE. "^^xsd:string ;
 .
 study:StartRuleDefault
@@ -1225,6 +1265,11 @@ study:StartRuleDefault_1
 study:StartRuleInformedConsentGranted
   rdf:type owl:Class ;
   rdfs:subClassOf study:StartRulePrereqActivityOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:InformedConsent ;
+      owl:onProperty study:hasPrerequisite ;
+    ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:hasValue code:InformedConsentOutcome_1 ;
@@ -1250,7 +1295,7 @@ study:StartRuleInformedConsentStart
 study:StartRulePrereqActivityComplete
   rdf:type owl:Class ;
   rdfs:label "Start rule prereq activity complete"^^xsd:string ;
-  rdfs:subClassOf study:StartRule ;
+  rdfs:subClassOf study:StartRulePrerequisiteActivity ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:hasValue code:ActivityStatus_1 ;
@@ -1272,7 +1317,7 @@ study:StartRulePrereqActivityOutcome
 study:StartRulePrereqActivityStart
   rdf:type owl:Class ;
   rdfs:label "Start rule prereq activity start"^^xsd:string ;
-  rdfs:subClassOf study:StartRule ;
+  rdfs:subClassOf study:StartRulePrerequisiteActivity ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:hasValue code:ActivityStatus_3 ;
@@ -1280,13 +1325,24 @@ study:StartRulePrereqActivityStart
     ] ;
   skos:definition "A collection of Start Rules that resolve to TRUE when the prespecified Prerequisite activity starts. e.g. Screening Visit starts when Informed Consent starts. "^^xsd:string ;
 .
+study:StartRulePrerequisiteActivity
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:StartRule ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:PrerequisiteActivity ;
+      owl:onProperty study:hasPrerequisite ;
+    ] ;
+  skos:definition "A start rule that relies on the conduct of a Prerequisite Activity"^^xsd:string ;
+.
 study:Study
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Study"^^xsd:string ;
-  rdfs:subClassOf study:StudyActivity ;
+  rdfs:subClassOf study:Activity ;
   skos:broader <http://www.bridgmodel.org/owl#Study> ;
-  skos:definition ""^^xsd:string ;
+  skos:definition """A research project conducted on HumanStudySubjects whose objectives are to test or confirm hypotheses concerning the utility, impact, pharmacological, physiological, and/or psychological effects of a particular treatment, procedure, drug, device, biologic, food product,
+cosmetic, care plan, or subject characteristic."""^^xsd:string ;
   skos:note "The BRIDG concept Study is broader in that it includes nonclinical studies whereas this ontology is limited to human studies"^^xsd:string ;
 .
 study:StudyActivity
@@ -1456,7 +1512,7 @@ study:StudyActivity
     ] ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Activity"^^xsd:string ;
-  rdfs:subClassOf study:StudyComponent ;
+  rdfs:subClassOf study:Activity ;
   skos:definition "Any activity associated with the planning, conduct, analysis, and interpretation of a Study"^^xsd:string ;
 .
 study:StudyComponent
@@ -1754,6 +1810,13 @@ study:TemperatureOutcome
   rdfs:label "Temperature outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;
 .
+study:TherapeuticIntervention
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Intervention ;
+  skos:altLabel ""^^xsd:string ;
+  skos:definition "An Intervention whose intent is to have a clinical effect on (e.g. treat, prevent) a Medical Condition"^^xsd:string ;
+  skos:prefLabel "Clinical intervention"^^xsd:string ;
+.
 study:UniqueSubjectIdentifier
   rdf:type owl:Class ;
   rdfs:label "Unique subject identifier"^^xsd:string ;
@@ -1767,7 +1830,9 @@ study:UnscheduledVisitActivity
 .
 study:Visit
   rdf:type owl:Class ;
-  rdfs:subClassOf study:VisitActivity ;
+  rdfs:subClassOf study:StudyActivity ;
+  skos:definition "Any StudyActivity whose main focus is an interaction with the investigational staff, usually intended to collect and/or assess observations. "^^xsd:string ;
+  skos:note "A Visit may be virtual (phone, teleconference etc.)"^^xsd:string ;
   skos:prefLabel "VISIT"^^xsd:string ;
 .
 study:VisitActivity
@@ -1775,7 +1840,8 @@ study:VisitActivity
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Visit Activity"^^xsd:string ;
   rdfs:subClassOf study:StudyActivity ;
-  skos:definition "Any activity associated with an interaction with the investigational staff, usually intended to collect observations. "^^xsd:string ;
+  skos:definition "A study activity that takes place or begins during a visit"^^xsd:string ;
+  skos:note "A drug administration activity may begin during the visit and may continue past the visit end date."^^xsd:string ;
 .
 study:VisitDate
   rdf:type owl:Class ;
@@ -2222,6 +2288,15 @@ study:hasNullFlavor
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "has null flavor"^^xsd:string ;
 .
+study:hasParticipant
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:domain study:StudyActivity ;
+  rdfs:label "has study participant"^^xsd:string ;
+  rdfs:range study:HumanStudySubject ;
+  owl:inverseOf study:participatesIn ;
+  skos:definition ""^^xsd:string ;
+.
 study:hasPerformedDate
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:PerformedActivity ;
@@ -2235,6 +2310,7 @@ study:hasPerformer
   rdfs:domain study:StudyActivity ;
   rdfs:label "has performer"^^xsd:string ;
   rdfs:range study:Party ;
+  owl:inverseOf study:performsActivity ;
   skos:definition ""^^xsd:string ;
 .
 study:hasPrereqExpectedOutcome
@@ -2369,6 +2445,10 @@ study:hasSubActivity
   rdfs:range study:StudyActivity ;
   owl:inverseOf study:isSubActivityOf ;
   skos:definition "Relates an Activity with a Sub-activity"^^xsd:string ;
+.
+study:hasSubRule
+  rdf:type owl:ObjectProperty ;
+  rdfs:subPropertyOf study:hasSubActivity ;
 .
 study:hasSubcategory
   rdf:type owl:ObjectProperty ;

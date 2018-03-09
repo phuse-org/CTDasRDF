@@ -536,6 +536,8 @@ cdiscpilot01:Date_9
   study:dateTimeInXSDString "2012-09-01"^^xsd:string ;
 .
 cdiscpilot01:DemographicDataCollection_1
+  rdf:type cd01p:VisitScreening1DemogDataColl ;
+  rdf:type cdiscpilot01:VisitScreening1Activity_1 ;
   rdf:type code:DemographicDataCollection ;
   skos:prefLabel "P1 Screening 1 Demographic data collection"^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_1 ;
@@ -546,6 +548,8 @@ cdiscpilot01:DemographicDataCollection_1
   study:sex <http://rdf.cdisc.org/sdtmterm#C66731.C16576> ;
 .
 cdiscpilot01:DemographicDataCollection_2
+  rdf:type cd01p:VisitScreening1DemogDataColl ;
+  rdf:type cdiscpilot01:VisitScreening1Activity_2 ;
   rdf:type code:DemographicDataCollection ;
   skos:prefLabel "P2 Screening 1 Demographic data collection"^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_2 ;
@@ -556,6 +560,8 @@ cdiscpilot01:DemographicDataCollection_2
   study:sex <http://rdf.cdisc.org/sdtmterm#C66731.C20197> ;
 .
 cdiscpilot01:DemographicDataCollection_3
+  rdf:type cd01p:VisitScreening1DemogDataColl ;
+  rdf:type cdiscpilot01:VisitScreening1Activity_3 ;
   rdf:type code:DemographicDataCollection ;
   skos:prefLabel "P3 Screening 1 Demographic data collection"^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_3 ;
@@ -1029,6 +1035,14 @@ cdiscpilot01:VisitScreening1Activity_1
   rdf:type owl:Class ;
   rdfs:subClassOf custom:VisitScreening1Activity ;
   skos:prefLabel "Visit Screening 1 Person 1"^^xsd:string ;
+.
+cdiscpilot01:VisitScreening1Activity_2
+  rdf:type owl:Class ;
+  rdfs:subClassOf custom:VisitScreening1Activity ;
+.
+cdiscpilot01:VisitScreening1Activity_3
+  rdf:type owl:Class ;
+  rdfs:subClassOf custom:VisitScreening1Activity ;
 .
 cdiscpilot01:VisitScreening1_1
   rdf:type custom:VisitScreening1 ;

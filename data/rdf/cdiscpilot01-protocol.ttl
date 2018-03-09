@@ -525,6 +525,10 @@ cd01p:VisitScreening1BloodPressure
   skos:prefLabel "Visit Screening 1 Blood Pressure"^^xsd:string ;
   study:hasStartRule code:VisitScreening1Start ;
 .
+cd01p:VisitScreening1DemogDataColl
+  rdf:type owl:Class ;
+  rdfs:subClassOf custom:VisitScreening1Activity ;
+.
 cd01p:VisitScreening1Height
   rdf:type owl:Class ;
   rdfs:subClassOf custom:VisitScreening1Activity ;
@@ -763,7 +767,6 @@ custom:VisitAmbulECGPlace
 .
 custom:VisitAmbulECGPlaceActivity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "AMBUL ECG PLACE ACTIVITY"^^xsd:string ;
@@ -786,7 +789,6 @@ custom:VisitAmbulECGRemoval
 .
 custom:VisitAmbulECGRemoveActivity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "AMBUL ECG REMOVAL ACTIVITY"^^xsd:string ;
@@ -814,7 +816,6 @@ custom:VisitBaseline
 .
 custom:VisitBaselineActivity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "BASELINE ACTIVITY"^^xsd:string ;
@@ -832,7 +833,6 @@ custom:VisitRetrieval
 .
 custom:VisitRetrievalActivity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "RETRIEVAL ACTIVITY"^^xsd:string ;
@@ -856,22 +856,13 @@ custom:VisitScreening1
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "SCREENING 1"^^xsd:string ;
-  study:hasSubActivity custom:VisitScreening1Activity ;
 .
 custom:VisitScreening1Activity
   rdf:type owl:Class ;
-  rdf:type study:ProtocolSpecifiedActivity ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:ProtocolSpecifiedActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "SCREENING 1 ACTIVITY"^^xsd:string ;
-  study:hasStartRule study:StartRuleInformedConsentStart ;
-  study:hasSubActivity cd01p:VisitScreening1BloodPressure ;
-  study:hasSubActivity cd01p:VisitScreening1Height ;
-  study:hasSubActivity cd01p:VisitScreening1Pulse ;
-  study:hasSubActivity cd01p:VisitScreening1Temperature ;
-  study:hasSubActivity cd01p:VisitScreening1Weight ;
 .
 custom:VisitScreening2
   rdf:type owl:Class ;
@@ -891,7 +882,6 @@ custom:VisitScreening2
 .
 custom:VisitScreening2Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "SCREENING 2 ACTIVITY"^^xsd:string ;
@@ -914,7 +904,6 @@ custom:VisitWk12
 .
 custom:VisitWk12Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "WEEK 12 ACTIVITY"^^xsd:string ;
@@ -937,7 +926,6 @@ custom:VisitWk16
 .
 custom:VisitWk16Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "WEEK 16 ACTIVITY"^^xsd:string ;
@@ -981,7 +969,6 @@ custom:VisitWk20
 .
 custom:VisitWk20Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "WEEK 20 ACTIVITY"^^xsd:string ;
@@ -1004,7 +991,6 @@ custom:VisitWk24
 .
 custom:VisitWk24Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "WEEK 24 ACTIVITY"^^xsd:string ;
@@ -1032,14 +1018,12 @@ custom:VisitWk26
 .
 custom:VisitWk26Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "WEEK 26 ACTIVITY"^^xsd:string ;
 .
 custom:VisitWk2Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "WEEK 2 ACTIVITY"^^xsd:string ;
@@ -1062,7 +1046,6 @@ custom:VisitWk4
 .
 custom:VisitWk4Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "WEEK 4 ACTIVITY"^^xsd:string ;
@@ -1085,7 +1068,6 @@ custom:VisitWk6
 .
 custom:VisitWk6Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "WEEK 6 ACTIVITY"^^xsd:string ;
@@ -1108,7 +1090,6 @@ custom:VisitWk8
 .
 custom:VisitWk8Activity
   rdf:type owl:Class ;
-  rdf:type study:VisitActivity ;
   rdfs:subClassOf study:VisitActivity ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "WEEK 8 ACTIVITY"^^xsd:string ;
