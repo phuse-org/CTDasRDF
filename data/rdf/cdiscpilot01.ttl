@@ -336,7 +336,7 @@ cdiscpilot01:CumulativeProductAdministrationInterval_3
   rdfs:label "Cumulative Product Administration Interval 3"^^xsd:string ;
 .
 cdiscpilot01:CumulativeProductAdministration_1
-  rdf:type study:CumulativeProductAdministration ;
+  rdf:type study:CumulativeDrugAdministration ;
   skos:prefLabel "Product administration 1"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_1 ;
@@ -345,7 +345,7 @@ cdiscpilot01:CumulativeProductAdministration_1
   study:hasSubActivity cdiscpilot01:DrugAdministration_3 ;
 .
 cdiscpilot01:CumulativeProductAdministration_2
-  rdf:type study:CumulativeProductAdministration ;
+  rdf:type study:CumulativeDrugAdministration ;
   skos:prefLabel "Product administration 2"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_2 ;
@@ -353,7 +353,7 @@ cdiscpilot01:CumulativeProductAdministration_2
   study:hasSubActivity cdiscpilot01:DrugAdministration_5 ;
 .
 cdiscpilot01:CumulativeProductAdministration_3
-  rdf:type study:CumulativeProductAdministration ;
+  rdf:type study:CumulativeDrugAdministration ;
   skos:prefLabel "Product administration 3"^^xsd:string ;
   study:activityStatus code:ActivityStatus_1 ;
   study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_3 ;
@@ -380,7 +380,7 @@ cdiscpilot01:Date_16
   study:dateTimeInXSDString "2013-07-11"^^xsd:string ;
 .
 cdiscpilot01:Date_17
-  rdf:type study:CumulativeProductAdministrationBegin ;
+  rdf:type study:CumulativeDrugAdministrationBegin ;
   rdf:type study:FixedDoseIntervalBegin ;
   rdf:type study:ReferenceBegin ;
   rdfs:label "2013-07-19"^^xsd:string ;
@@ -396,7 +396,7 @@ cdiscpilot01:Date_19
   study:dateTimeInXSDString "2013-12-26"^^xsd:string ;
 .
 cdiscpilot01:Date_20
-  rdf:type study:CumulativeProductAdministrationBegin ;
+  rdf:type study:CumulativeDrugAdministrationBegin ;
   rdf:type study:FixedDoseIntervalBegin ;
   rdf:type study:ReferenceBegin ;
   rdfs:label "2014-01-02"^^xsd:string ;
@@ -523,7 +523,7 @@ cdiscpilot01:Date_7
   study:dateTimeInXSDString "2012-07-22"^^xsd:string ;
 .
 cdiscpilot01:Date_8
-  rdf:type study:CumulativeProductAdministrationBegin ;
+  rdf:type study:CumulativeDrugAdministrationBegin ;
   rdf:type study:FixedDoseIntervalBegin ;
   rdf:type study:ReferenceBegin ;
   rdfs:label "2012-08-05"^^xsd:string ;

@@ -568,6 +568,7 @@ code:Country_1
   rdf:type study:Country ;
 .
 code:DemographicDataCollection
+  rdfs:subClassOf custom:VisitScreening1Activity ;
   rdfs:subClassOf study:Observation ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .

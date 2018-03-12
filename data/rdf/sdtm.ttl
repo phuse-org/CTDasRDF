@@ -3031,7 +3031,7 @@ sdtm:SDTM_DM_Record
               ] ;
           ]
           [
-            sp:object study:CumulativeProductAdministration ;
+            sp:object study:CumulativeDrugAdministration ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "padmin"^^xsd:string ;

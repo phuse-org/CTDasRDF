@@ -498,14 +498,14 @@ study:Country
   rdfs:subClassOf study:Entity ;
   skos:prefLabel "Country"^^xsd:string ;
 .
-study:CumulativeProductAdministration
+study:CumulativeDrugAdministration
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product administration"^^xsd:string ;
-  rdfs:subClassOf study:TherapeuticIntervention ;
-  skos:definition "The act of administering/taking a Product over time; there may be breaks or the dose may change  over time"^^xsd:string ;
+  rdfs:subClassOf study:Intervention ;
+  skos:definition "The act of administering/taking a Drug Product over time; there may be breaks or the dose may change  over time"^^xsd:string ;
 .
-study:CumulativeProductAdministrationBegin
+study:CumulativeDrugAdministrationBegin
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product administration begin"^^xsd:string ;
@@ -678,7 +678,7 @@ study:CumulativeProductAdministrationInterval
               ] ;
           ]
           [
-            sp:object study:CumulativeProductAdministration ;
+            sp:object study:CumulativeDrugAdministration ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "padmin"^^xsd:string ;
@@ -828,7 +828,7 @@ study:Event
 .
 study:FixedDoseDrugAdministration
   rdf:type owl:Class ;
-  rdfs:subClassOf study:TherapeuticIntervention ;
+  rdfs:subClassOf study:Intervention ;
   skos:definition "A ClinicalIntervention where a fixed dosed of a drug product is administered over a documented interval of time. "^^xsd:string ;
   skos:prefLabel "Fixed Dose Drug administration"^^xsd:string ;
 .
@@ -1237,7 +1237,7 @@ study:StartRuleComposite
   rdfs:subClassOf study:StartRule ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:allValuesFrom study:StartRule ;
+      owl:allValuesFrom study:StartRuleSimple ;
       owl:onProperty study:hasSubRule ;
     ] ;
   rdfs:subClassOf [
@@ -1250,7 +1250,7 @@ study:StartRuleComposite
 study:StartRuleDefault
   rdf:type owl:Class ;
   rdfs:label "Start rule default"^^xsd:string ;
-  rdfs:subClassOf study:StartRule ;
+  rdfs:subClassOf study:StartRuleSimple ;
   skos:definition "Activity may start at any time"^^xsd:string ;
   skos:prefLabel "Start rule default"^^xsd:string ;
 .
@@ -1327,13 +1327,18 @@ study:StartRulePrereqActivityStart
 .
 study:StartRulePrerequisiteActivity
   rdf:type owl:Class ;
-  rdfs:subClassOf study:StartRule ;
+  rdfs:subClassOf study:StartRuleSimple ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:PrerequisiteActivity ;
       owl:onProperty study:hasPrerequisite ;
     ] ;
   skos:definition "A start rule that relies on the conduct of a Prerequisite Activity"^^xsd:string ;
+.
+study:StartRuleSimple
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:StartRule ;
+  skos:definition "A start rule that is based on the evaluation of a single true/false condition, e.g. an outcome of an activity being present. Simple start rules can be combined together using an AND expression to create composite rules, such as eligibility criteria. "^^xsd:string ;
 .
 study:Study
   rdf:type owl:Class ;
@@ -1715,7 +1720,7 @@ study:StudyParticipationInterval
               ] ;
           ]
           [
-            sp:object study:CumulativeProductAdministration ;
+            sp:object study:CumulativeDrugAdministration ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "padmin"^^xsd:string ;
@@ -1809,13 +1814,6 @@ study:TemperatureOutcome
   rdf:type owl:Class ;
   rdfs:label "Temperature outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;
-.
-study:TherapeuticIntervention
-  rdf:type owl:Class ;
-  rdfs:subClassOf study:Intervention ;
-  skos:altLabel ""^^xsd:string ;
-  skos:definition "An Intervention whose intent is to have a clinical effect on (e.g. treat, prevent) a Medical Condition"^^xsd:string ;
-  skos:prefLabel "Clinical intervention"^^xsd:string ;
 .
 study:UniqueSubjectIdentifier
   rdf:type owl:Class ;
