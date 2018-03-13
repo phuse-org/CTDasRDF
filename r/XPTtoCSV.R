@@ -6,10 +6,10 @@
 # OUT : 
 # REQ : 
 # SRC : 
-# NOTE: 
+# NOTE: Some imputed values to match ontology development requirements.
 # TODO: 
 ###############################################################################
-
+library(Hmisc)
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
 
@@ -21,6 +21,9 @@ readXPT<-function(domain)
 }
 
 # XPT Import ----
-dm     <- readXPT("dm")
+dm     <- head(readXPT("dm"),1)  # first row only for initial testing.
 
+source('R/DM_impute.R')
 
+write.csv(dm, file="data/source/DM-1obs.csv", 
+  row.names = F)

@@ -1,7 +1,13 @@
-# DM_mappings.ttl
-# Template file for mapping DM to graph.  
-# Source: CSV converted from DM.XPT. First row only
-
+###############################################################################
+# FILE: DM_mappings.ttl
+# DESC: Stardog SMS Template file for mapping DM to graph.  
+# REQ : 
+# SRC : 
+# IN  : CSV converted from DM.XPT. First row only
+# OUT : 
+# NOTE: stardog-admin virtual import CTDasRDF DM_mappings.TTL DM-1obs.csv
+# TODO: 
+###############################################################################
 
 @prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
 @prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
@@ -15,11 +21,67 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # Hash of the USUBJID is used to create unique IRI for each person in the study
-cdiscpilot01:Peron_{#usubjid} a study:EnrolledSubject;
-    skos:preflabel "Person_{#usubjid}"^^xsd:string .
+cdiscpilot01:Person_{#usubjid} 
+    a study:EnrolledSubject;
+    skos:preflabel "Person {_ROW_}"^^xsd:string ;
+    study:actualArm cd01p:Arm{actarm} ;
+    study:deathFlag "{dthfl}"^^xsd:string ;
+    study:hasLifespan cdiscpilot01:Lifespan_{#brthdate}_{#rficdtc} ;
+    study:hasReferenceInterval cdiscpilot01:ReferenceInterval_{#rfstdtc}_{#rfendtc} ;
+    study:hasSite cd01p:Site_{#siteid} ;
+    study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_{#dmdtc}_{#rfpendtc} ;
+    study:hasSubjectID cdiscpilot01:SubjectIdentifier_{#subjid} ;
+    study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_{#usubjid} ;
+    study:participatesIn cdiscpilot01:DemographicDataCollection_{#usubjid};
+.
+
+# Lifespan: concat of birthdate and rficdtc hashes.
+cdiscpilot01:Lifespan_{#brthdate}_{#rficdtc} 
+   a study:Lifespan ;
+   rdfs:label "Lifespan Interval {_ROW_}"^^xsd:string ;
+   time:hasBeginning cdiscpilot01:Date_{#brthdate} ;
+   time:hasEnd cdiscpilot01:Date_{#rficdtc} .
+   
+# ReferenceInterval
+cdiscpilot01:ReferenceInterval_{#rfstdtc}_{#rfendtc} 
+    a study:ReferenceInterval ;
+    rdfs:label "Reference Interval {_ROW_}"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_{#rfstdtc} ;
+    time:hasEnd cdiscpilot01:Date_{#rfendtc} .
+
+# StudyParticipationInterval
+cdiscpilot01:StudyParticipationInterval_{#dmdtc}_{#rfpendtc} 
+    rdf:type study:StudyParticipationInterval ;
+    rdfs:label "Study Participation Interval {_ROW_}"^^xsd:string ;
+    time:hasBeginning cdiscpilot01:Date_{#dmdtc} ;
+    time:hasEnd cdiscpilot01:Date_{#rfpendtc} .
+
+# SubjectIdentifier
+cdiscpilot01:SubjectIdentifier_{#subjid} 
+    rdf:type study:SubjectIdentifier ;
+    skos:prefLabel "{subjid}"^^xsd:string .
+
+# UniqueSubjectIdentifier
+cdiscpilot01:UniqueSubjectIdentifier_{#usubjid} 
+    rdf:type study:UniqueSubjectIdentifier ;
+    skos:prefLabel "{usubjid}"^^xsd:string .
+
+# DemographicDataCollection 
+#   !! Hard code: VisitScreening1DemogDataColl because DEMOG info was 
+#      collected at Screening 1 for this study !!
+# WIP: WORK IN PROGRESS AT THIS STEP
+cdiscpilot01:DemographicDataCollection_{#usubjid}
+    rdf:type cd01p:VisitScreening1DemogDataColl ;
+    rdf:type cdiscpilot01:VisitScreening1Activity_{#usubjid} .
+
+cdiscpilot01:VisitScreening1Activity_{#usubjid}
+    rdf:type owl:Class ;
+    rdfs:subClassOf custom:VisitScreening1Activity ;
+    skos:prefLabel "Visit Screening 1 Person {_ROW_}"^^xsd:string .
 
 # Age Outcome Hash of age used for IRI
-cdiscpilot01:AgeOutcome_{#age} rdf:type study:AgeOutcome;
+cdiscpilot01:AgeOutcome_{#age} 
+    rdf:type study:AgeOutcome;
     skos:prefLabel "{age} {ageu}"^^xsd:string;
     code:hasUnit time:unitYear;
     code:hasValue "{age}"^^xsd:int .
