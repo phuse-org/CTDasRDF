@@ -1,0 +1,12 @@
+PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> 
+SELECT ?s ?p ?o
+WHERE
+{
+    # cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb  ?p ?o .
+    # cdiscpilot01:ReferenceInterval_8v92vil0roc4ceo0b14jj7i633hiui9g_35vav5nu799ueqq90kuvhd6o487fkisl ?p ?o .
+    # cdiscpilot01:StudyParticipationInterval_prshbja29v1mj7t24e6hhfg6ar6tno4i_k78l4og87v61q51vabbketftn59735lb ?p ?o .
+    # cdiscpilot01:SubjectIdentifier_dasu7n9q16a5m9e4lc2ae2627c47vpv6  ?p ?o .
+      cdiscpilot01:UniqueSubjectIdentifier_v29eedorsh9a5vr65uc1iob3mvn9blbb ?p ?o .
+    BIND("FOO" AS ?s)
+} ORDER BY ?p ?o

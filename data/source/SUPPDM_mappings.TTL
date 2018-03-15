@@ -1,0 +1,24 @@
+###############################################################################
+# FILE: SUPPDM_mappings.ttl
+# DESC: Stardog SMS Template file for mapping SUPPDM to graph.  
+# REQ : 
+# SRC : 
+# IN  : CSV converted from SUPPDM.XPT, Subject 1015 only
+# OUT : 
+# NOTE: stardog-admin virtual import CTDasRDF SUPPDM_mappings.TTL SUPPDM-Subj1015.csv
+# TODO: 
+###############################################################################
+
+@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
+@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
+@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+# COMMENCE MAP
