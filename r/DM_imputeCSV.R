@@ -16,11 +16,11 @@
 #______________________________________________________________________________
 # Values not in original source data ----
 # ** Create ----
-dm$invnam <- 'Jones'
-dm$invid  <- '123'
-dm$inv    <- 'Investigator_1'
-dm$rand   <- 'RandomizationBAL3'
-dm$study  <- "Study_1"  # Must change when >1 study in triplstore!
+#dm$invnam <- 'Jones'
+#dm$invid  <- '123'
+#dm$inv    <- 'Investigator_1'
+#dm$rand   <- 'RandomizationBAL3'
+#dm$study  <- "Study_1"  # Must change when >1 study in triplstore!
 
 # ** Impute ----
 #---- Birthdate : asbsent in source data

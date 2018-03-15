@@ -1,0 +1,5 @@
+StarDogCommandLine.txt
+Stardog commands executed from the command line
+
+# Export a graph to a TTL file
+stardog data export --format TURTLE CTDasRDF C:/temp/CTDasRDF_Persons.TTL

@@ -1,0 +1,47 @@
+@prefix : <http://api.stardog.com/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix stardog: <tag:stardog:api:> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
+@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
+@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+
+cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb skos:preflabel "Person 1" ;
+	a study:EnrolledSubject ;
+	study:actualArm cd01p:Arm_36vldeasimjvu7rbvu7gfg3ci1n7a0he ;
+	study:hasLifespan cdiscpilot01:Lifespan_udj4rptja2ij6a5lmb3meemc3mca7ip3_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_s6rc8otorv5ukcpag29jggn8m8h5127t_cpkmsvqhc92dn75siimpl3fj20mmtdei ;
+	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_n6l0u58r7lrhic8l4b1e4u7k8182j6fq_k78l4og87v61q51vabbketftn59735lb ;
+	study:hasSite cd01p:Site_i5o9g7apq3sd7s03ts7ih4skrrba01km ;
+	study:participatesIn cdiscpilot01:DemographicDataCollection_v29eedorsh9a5vr65uc1iob3mvn9blbb ;
+	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_v29eedorsh9a5vr65uc1iob3mvn9blbb ;
+	study:hasSubjectID cdiscpilot01::SubjectIdentifier_dasu7n9q16a5m9e4lc2ae2627c47vpv6 .
+
+cdiscpilot01:Person_r7eaj4b0htedsk2rpkca1uifatm9ggc7 skos:preflabel "Person 2" ;
+	a study:EnrolledSubject ;
+	study:actualArm cd01p:Arm_36vldeasimjvu7rbvu7gfg3ci1n7a0he ;
+	study:hasLifespan cdiscpilot01:Lifespan_pt2m6avt4r1v33ksdu1m4ggqjgec0q9f_m9eproucjuhbto78r3ij902mqsklh6so ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_raera9petjq92qs0n7n40o3mgoi28a9a_klq2ru8npk1e4cv1ieg1mbgn0a7avofp ;
+	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_m9eproucjuhbto78r3ij902mqsklh6so_u5v40r1hbrajblo04oev36pkvko16osp ;
+	study:hasSite cd01p:Site_i5o9g7apq3sd7s03ts7ih4skrrba01km ;
+	study:participatesIn cdiscpilot01:DemographicDataCollection_r7eaj4b0htedsk2rpkca1uifatm9ggc7 ;
+	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_r7eaj4b0htedsk2rpkca1uifatm9ggc7 ;
+	study:hasSubjectID cdiscpilot01::SubjectIdentifier_2e42brcf86ctcvsskg0bf5dmbvm12m5c .
+
+cdiscpilot01:Person_96a7dgg790jqe63r9h6gpgc0puq8gbvo skos:preflabel "Person 3" ;
+	a study:EnrolledSubject ;
+	study:actualArm cd01p:Arm_redbiklltg92n77ecf02tlm56s9i15lk ;
+	study:hasLifespan cdiscpilot01:Lifespan_pchqlo9qpfvfhmafgr5h41cm65vqihc9_uaafn1aabjqjqnmg13lo4h3372g6eq0f ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_16suu2uqgfo2fc05o08sr6g1t58bj215_r57tfni8fttfflf1aq83vrr7cps2e81k ;
+	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_uaafn1aabjqjqnmg13lo4h3372g6eq0f_6iajojaqva7oil29dh2cerk7f0040an4 ;
+	study:hasSite cd01p:Site_i5o9g7apq3sd7s03ts7ih4skrrba01km ;
+	study:participatesIn cdiscpilot01:DemographicDataCollection_96a7dgg790jqe63r9h6gpgc0puq8gbvo ;
+	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_96a7dgg790jqe63r9h6gpgc0puq8gbvo ;
+	study:hasSubjectID cdiscpilot01::SubjectIdentifier_r69lt15teoud9e5u2j5ngofh4pnmb7ph .

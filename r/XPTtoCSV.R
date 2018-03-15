@@ -10,6 +10,8 @@
 # TODO: 
 ###############################################################################
 library(Hmisc)
+
+dm_n=3;  # The first n patients from the DM domain.
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
 
@@ -21,9 +23,9 @@ readXPT<-function(domain)
 }
 
 # XPT Import ----
-dm     <- head(readXPT("dm"),1)  # first row only for initial testing.
+dm     <- head(readXPT("dm"), dm_n)  # first row only for initial testing.
 
-source('R/DM_impute.R')
+source('R/DM_imputeCSV.R')
 
-write.csv(dm, file="data/source/DM-1obs.csv", 
+write.csv(dm, file="data/source/DM_subset.csv", 
   row.names = F)
