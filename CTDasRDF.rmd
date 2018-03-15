@@ -10,10 +10,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Introduction
-This document describes the project data files, R scripts, coding conventions, and data modeling decisions for the project.
+This document describes the project data files, scripts, coding conventions, and data modeling decisions for the project.
 
 **CAUTION: If you are reading this document outside of the R environment, the information is likely out of date! 
-Knit the .rmd file in the project's Github root /CTDasRDF folder for the latest information.**
+Knit the .rmd file in the project's Github root /CTDasRDF folder for the latest information. Even then, what you are reading is likely still out of date, but less so.**
 
 Information about the PhUSE cloud server environment is contained in separate documentation.
 
@@ -22,18 +22,11 @@ Information about the PhUSE cloud server environment is contained in separate do
 ## SDTM Data Sources
 SDTM XPT data files were obtained from the PhUSE CDISCPILOT01 study: https://github.com/phuse-org/phuse-scripts/blob/master/data/sdtm/cdiscpilot01/
 
-Data augmentation for development and testing occurs in files named with \<domain name\>_impute.R. 
-As a result, data files created during conversion will not be an exact match with the original .XPT source files.
+Some data augmentation was necessary to test the ontology, so recreated data will not be an exact match to the original .XPT. Discrepancies will be noted at a later time.  
 
-**DM**, **SUPPDM**,  and **VS** are the initial domains used in the project. This may expand if the project timeline permits.
+**DM**, **SUPPDM**, **VS** , and some of **EX** are the initial domains used in the project. This may expand if the project timeline permits.
 
-### Configuration Files
-* **prefixes.csv**
-    - List of prefixes either currently in use or planned. Includes the prefix name, namespace, and description. Any commas in the description field must have the entire text in quotes. So in other words, avoiding commas in the description field is a good idea.
- 
- 
 ### RDF Files
-
 
 ![Figure: RDF Files and Relations.  Source: /rdf subfolder](/_github/CTDasRDF/doc/images/OntologyRoadmap.png)
 
@@ -46,18 +39,17 @@ As a result, data files created during conversion will not be an exact match wit
 
 3.	**cdiscpilot01-protocol.ttl** imports the study.ttl file and contains protocol-specified activities and rules.  Whereas study.ttl describes generic activities and observations in a study, this file describes the specific observations for a particular study and the rules for when to perform them. cdiscpilot01-protocol.ttl includes treatment arm resources and custom analyses. Later development may include the addition of classes like "Protocol-Specified Activity", "Planned Activity", "Scheduled Activity", "Performed Activity", etc.. They are not currently needed for this project and can be derived as owl:Restriction(s) based on the properties of the Activity. For example, a Protocol Specified Activity is any Defined Activity that is associated with a Start Rule; A Planned Activity, is an instance of a Protocol Specified Activity that is associated with a Subject, ....etc. [Note: These items are also of importance to the PhUSE "Protocol as RDF" project. May include information like the location of information on the CRF.
 
-4.	**cdiscpilot01.ttl** imports the protocol file above (#3) and adds instance data for the first 3 subjects in the pilot study. Instance data is manually added to the .ttl file as needed for testing and development. The file **cdiscpilot01-R.ttl** is created by converting XPT source data. The two files are compared to ensure the ontology instances match those created by the data conversion process in R. As of July 2017, cdiscpilot01-R.ttl is the only file created by the R Script conversion of the SDTM domains. 
+4.	**cdiscpilot01.ttl** imports the protocol file above (#3) and adds instance data for the first 3 subjects in the pilot study. Instance data is manually added to the .ttl file as needed for testing and development. The file **cdiscpilot01-R.ttl** is from first attempts to convert XPT source data using R. It will be replaced with a file from the SMS process: **cdiscpilot01-SMS.ttl** (mapped using SMS, uploaded to Stardog, exported to TTL). The two files are compared to ensure the original hard-coded ontology instance data matches those created by the data conversion process. 
 
 
-5.	To get the data out in a format that we want (e.g. SDTM) we need to link all this information to an SDTM ontology. this is accomplished at the protocol level via the **sdtm-cd01p.ttl** file, from which one can automate the creation of define.xml and eventually the blank case report form
+5.	To get the data out in a format that we want (e.g. SDTM) we need to link all this information to an SDTM ontology. this is accomplished at the protocol level via the **sdtm-cd01p.ttl** file, from which one can automate the creation of define.xml and eventually the blank case report form.
 
 
 6.	At the instance level, we take the instance data (cdiscpilot01.ttl) and link it to the sdtm ontology (see sdtm-cdisc01.ttl). This file is used  to generate high quality, highly standardized SDTM domains (DM, VS, and SUPPDM) using embedded SPARQL queries (i.e. spin: rules). Note that the instance data file also contains limited exposure information needed to derived certain DM variables (RFXSTDTC and RFXENDTC) although representing full exposure data to generate the EX domain is currently out of scope. 
 
 
 
-<<Old text to be integrated>>
-
+#### Additional Files
 
 * **sdtm.ttl**
     - Mini study ontology in RDF/OWL. Variable Name, Label, Role. Used to generate: 1.  SDTM domains in the prototype 2. DEFINE XML . 
@@ -71,148 +63,43 @@ As a result, data files created during conversion will not be an exact match wit
 * **sdtm-cd01p.ttl**
     - Specific to implmentation of a specific protocol. Used where  SDTM provides flexibiity in implementation. Example: Comment for USUBJID: "Concatenation of STUDYID, DM.SITEID and DM.SUBJID" .  This is the "protocol-specific SDTM implemntation file." Used in generation of DEFINE XML.
 
-<<END old text to be integrated>>
+# Data Conversion
+
+## Background
+Data conversion from XPT to graph was originally used R script. In September 2017 the project switched from use of  Egon Willighagen's R package rrdf <https://github.com/egonw/rrdf> to the redland package <https://cran.r-project.org/web/packages/redland/>. This change removes dependencies on rJava and provides a data conversion mechanism that relies on a package available from CRAN.
+
+Following discussions at the PhUSE CSS in March 2018, data conversion is moving from R to use of Stardog Mapping Syntax (SMS). SMS can be converted back to R2RML, the open source W3C standard.
+
+Additional details about the SMS mapping will be placed in this document in the coming weeks. R content was removed 14Mar18.
+
 
 
 # R Scripts
+To be added: A description of the various R scripts used for processing and visualizing the data. 
 
-## R Requirements
-In September 2017 the project switched from use of  Egon Willighagen's R package rrdf <https://github.com/egonw/rrdf> to the redland package <https://cran.r-project.org/web/packages/redland/> .
-This change removes dependencies on rJava and provides a data conversion mechanism that relies on a package available from CRAN.
-
-## R Script Style conventions
-* **General**
-
-Use of:
-    * dplyr aproaches for code readability and compactness.[CONVERSION IN PROGRESS]. Examples: use of mutate() instead of fooDF$var <- value .
-    * apply() functions instead of FOR loops (where practical)
-    * Google's R Style Guide <https://google.github.io/styleguide/Rguide.xml> [work in progress]    
-      Notable Exceptions:    
-          * Functions use Roxygen comment style. From within a Function, in RStudio: Code | Insert Roxygen
-          Skeleton
-          * Use RStudio comment style for sections to allow navigation
-    ```{r sectionComment, eval = F, echo = T}
-    # <section name> ----
-    ```
-
-    * R Markdown for higher level project documentation.<http://rmarkdown.rstudio.com/> Example: *This document.*
-    
-## File names designate their function
-* **xx_F.R**
-    * Functions called by various other scripts. Not run when sourced.
-
-* **xx_impute.R**
-    * Create values for the named domain used for development purposes and rule 
-    testing. Results in values not present in original source (XPT) data.
-
-* **xx_frag.R**
-    * URI fragment creation for the named domain.
-    
-* **xx_process.R**
-    * Triple creation for the named domain. 
-
-# TTL File Creation
-## R Script Code Flow
-*To properly view this diagram you must use Google Chrome. Copy/Paste the URL into Chrome if the file opens by default into IE or another browser.*
-
-```{r path, eval = T, echo = F}
-library(knitr)
-read_chunk("r/vis/ProgramFlow-Mermaid.R")
-```
-
-```{r processFlow, eval=T, echo = F, fig.height=11, fig.width=10}
-```
-
-## File Descriptions  
-
-* **BuildRDF-Driver.R**  
-    - Main/Driver program for building the TTL file for the SDTM domains from the CDISCPILOT01 example data. Loads all libraries, sources all .R scripts, writes out TTL.
- 
-* **graphMeta.R**  
-    - Create the RDF Triples for metadata (when triples created, software used, etc.)
-
-* **prefixes.csv**
-    - List of namespace prefixes.
-
-* **misc_F.R**
-    * Miscellaneous functions include **readXPT()**, **addPersonID()**, **assignDateType()**
-
-* **createFrag_F.R**
-    * Functions that create URI "fragments" used to create URIs when building the triples. Includes functions like **createDateDict()**, **addDateFrag()**, **createFragOneDomain()**.
-
-* **DM_impute.R**
-Create DM values not in the original source data for testing and development purposes.
-
-* **VS_impute.R**
-    * Create VS values not in the original source data for testing and development purposes.
-
-* **DM_frag.R**
-    * Create DM fragment values
-
-* **DM_process.R**
-    * Create DM triples
-
-* **SUPPDM_impute.R**
-    * Create SUPPDM values not in the original source data for testing and development purposes.
-
-* **SUPPDM_process.R**
-    * Create SUPPDM triples
-
-* **VS_frag.R**
-    * Create VS fragment values
-
-* **VS_process.R**
-    * Create VS triples
+## Data Preparation
+* **DM_imputeCSV.R**
+  * Converts the source DM.XPT to CSV and imputes values needed to test the model. Example: Setting the death flag and date for Subject 1. Based on the original DM_impute.R.
 
 ## Validation
 * **CompTriples-Shiny.R**
-    * R Shiny App to facilitate comparison of the .TTL file created by TW's R script with the ontology instances created by AO using TopBraid or Protege.
+    * R Shiny App to facilitate comparison of the .TTL file created by the SMS process with the ontology instance data created by AO using TopBraid.
 
 ## Visualization
 * **Person-MultLevel-VisNetwork-ForceNetwork.R**
     * Triples attached to Person_1 in cdiscpilot01.TTL as a force network graph using visNetwork. Functionality includes: selection by node or group, node selection by mouse click, mouseover of relations.
+    NOTE: OUTDATED: Must be updated to use new IRI specifications based on hashes.
 
 # Coding Conventions
 ## Variable naming
 * CamelCase for classes
 * CamelCase_(n) for instances of classes.
 
-## RDF Namespaces and Prefixes
-Prior to import into a triplestore, several of the namespaces correspond to the .TTL files generated from the onotology editor or R scripts. 
-**[SECTION UNDER DEVELOPMENT]**  
-* **cd01p** 
-
-* **cdiscpilot01**
-
-* **code**
-
-* **custom**
-
-* **owl**
-
-* **rdf**
-
-* **rdfs**
-
-* **sdtm**
-
-* **sdtm-terminology**
-
-* **skos**
-
-* **sp**
-
-* **spin**
-
-* **study**
-
-* **time**
-
-* **xsd**
-
 
 ## Data Types
 ### Dates and Date Processing
+NOTE: This section will be updated after implications of SMS conversion process become apparent.
+
 Date values are evaluated during the conversion to RDF.
 
 * Date values (as represented in fields like rfstdtc, rfendtc, rfxendtc, etc.) with complete and valid year, month, and data values are typed as xsd:date.
@@ -221,7 +108,6 @@ Date values are evaluated during the conversion to RDF.
 Dates are assigned a URI by first combining all dates (during dev, only a subset!) from the domains being processed (DM, SUPPDM, VS, EX) into a single column, sorting by date, then assigning a number. This is accomplished in the function createDateDict() within createFrag_F.R. It is called from buildRDF-Driver.R after the domains have been imported from the XPT. To add new domains and date columns you must edit createDateDict().
 
 After the list of all dates and their URIs is created, the date URI's must be merged back into the individual domains. This is accomplished using addDateFrag(), called from <domain>_Frag.R , one call for each date column. TODO: Make the assignments back to the respective domains within createDateDic(), removing the need to call addDateFrag.
-
 
 
 # Data Modeling Decisions    
@@ -271,6 +157,7 @@ This sequence is not explicit in the SDTM data. For data conversion purposes, it
 
 Start Rules indicate the pre-requisite activities. The measurements conducted in the standing position are preceded by lying down, then the subject stands for 1 min and measurements are conducted. Then the 3min measurements are conducted. This means that the **AssumeBodyPositionStanding_1** triples have a prequisite **StartRuleLying5_1** , as illustrated in the following set of triples:
 
+THE FOLLOWING TRIPLES ARE OUTDATED AS OF 14MAR18:
 
 ```
 cdiscpilot01:AssumeBodyPositionStanding_1 ;
