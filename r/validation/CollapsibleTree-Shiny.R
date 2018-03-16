@@ -11,27 +11,81 @@
 #       https://www.rdocumentation.org/packages/collapsibleTree/versions/0.1.5/topics/collapsibleTree-shiny
 # TODO: 
 ###############################################################################
-
+library(SPARQL)
 library(shiny)
 library(collapsibleTree)
 library(DT)
 
-org <- data.frame(
-    Manager = c(
-        NA, "Ana", "Ana", "Bill", "Bill", "Bill", "Claudette", "Claudette", "Danny",
-        "Fred", "Fred", "Grace", "Larry", "Larry", "Nicholas", "Nicholas"
-    ),
-    Employee = c(
-        "Ana", "Bill", "Larry", "Claudette", "Danny", "Erika", "Fred", "Grace",
-        "Henri", "Ida", "Joaquin", "Kate", "Mindy", "Nicholas", "Odette", "Peter"
-    ),
-    Title = c(
-        "President", "VP Operations", "VP Finance", "Director", "Director", "Scientist",
-        "Manager", "Manager", "Jr Scientist", "Operator", "Operator", "Associate",
-        "Analyst", "Director", "Accountant", "Accountant"
-    )
+# Endpoints
+epDer = "http://localhost:5820/CTDasRDF/query"
+epOnt = "http://localhost:5820/CTDasRDFOnt/query"
+
+# Define the namespaces
+namespaces <- c('cd01p', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#>',
+'cdiscpilot01', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>',
+'code', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#>',
+'custom', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#>',
+'sdtmterm', '<http://rdf.cdisc.org/sdtmterm#>',
+'skos', '<http://www.w3.org/2004/02/skos/core#>',
+'study', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>',  
+'time', '<http://www.w3.org/2006/time#>',  
+'rdf', '<http://www.w3.org/1999/02/22-rdf-syntax-ns#>',
+'rdfs', '<http://www.w3.org/2000/01/rdf-schema#>',
+'xsd', '<http://www.w3.org/2001/XMLSchema#>'
 )
 
+derRootNode <- ""
+
+# Form the queries ---- 
+queryDer = '
+SELECT ?s ?p ?o
+WHERE 
+{
+   cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb ?p ?o
+   BIND ( cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb AS ?s)
+}ORDER BY ?o'
+
+# errors if PREFIX not included here for the Ont query. Is ok without it in the
+#  ..Der query!
+queryOnt = '
+PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
+SELECT ?s ?p ?o
+WHERE 
+{
+   cdiscpilot01:Person_1 ?p ?o .
+   BIND ("cdiscpilot01:Person_1" AS ?s)
+} ORDER BY ?o'
+
+# Query results dfs ----  
+qrOnt <- SPARQL(url=epOnt, query=queryOnt, ns=namespaces)
+triplesOnt <- as.data.frame(qrOnt$results, stringsAsFactors=FALSE)
+  
+
+
+qrDer <- SPARQL(url=epDer, query=queryDer, ns=namespaces)
+triplesDer <- as.data.frame(qrDer$results, stringsAsFactors=FALSE)
+
+
+# Create root nodes and append to start of dataframes
+rootNodeOnt <- data.frame(s=NA,p="foo", o="cdiscpilot01:Person_1",
+  stringsAsFactors=FALSE)
+triplesOnt <- rbind(rootNodeOnt, triplesOnt)
+
+rootNodeDer <- data.frame(s=NA,p="foo", o="cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb",
+  stringsAsFactors=FALSE)
+triplesDer <- rbind(rootNodeDer, triplesDer)
+
+
+# Assign titles ----
+triplesOnt$Title <- triplesOnt$o
+triplesOnt[1,"Title"] <- "Person_1" # THis will come from the drop down selector
+# Re-order dataframe. The s,o must be the first two columns.
+triplesOnt<-triplesOnt[c("s", "o", "p", "Title")]
+
+triplesDer$Title <- triplesDer$o
+triplesDer[1,"Title"] <- "Person_1" # THis will come from the drop down selector
+# Re-order dataframe. The s,o must be the first two columns.
+triplesDer<-triplesDer[c("s", "o", "p", "Title")]
 
 ui <- fluidPage(
   # Select start node row
@@ -55,12 +109,12 @@ ui <- fluidPage(
   fluidRow(
     column(6, 
       wellPanel(
-        collapsibleTreeOutput("tree1", width="100%", height="200px")
+        collapsibleTreeOutput("tree1", width="100%", height="500px")
       )
     ),
     column(6, 
       wellPanel(
-        collapsibleTreeOutput("tree2" , width="100%", height="200px")
+        collapsibleTreeOutput("tree2" , width="100%", height="500px")
       )
     )
   ),
@@ -68,10 +122,10 @@ ui <- fluidPage(
   # Data tables row
   fluidRow(
     column(6, 
-      DT::dataTableOutput("ontData")
+      div(DT::dataTableOutput("ontData"), style = "font-size:50%")
     ),
     column(6, 
-      DT::dataTableOutput("derData")
+      div(DT::dataTableOutput("derData"), style = "font-size:50%")
     )
   )
 )
@@ -80,22 +134,26 @@ server <- function(input, output, session) {
 
   output$tree1 <- renderCollapsibleTree({
     collapsibleTreeNetwork(
-      org,
-      c("Manager", "Employee"),
+      triplesOnt,
+      c("s", "o"),
+      tooltipHtml="p",
       width = "100%"
     )
   })
   output$tree2 <- renderCollapsibleTree({
     collapsibleTreeNetwork(
-      org,
-      c("Manager", "Employee"),
+      triplesDer,
+      c("s", "o"),
+      tooltipHtml="p",
       width = "100%"
     )
   })
-  output$ontData = DT::renderDataTable({org})
+  output$ontData = DT::renderDataTable({triplesOnt[, c("s", "p","o")]})
   
-  output$derData = DT::renderDataTable({org})
+  output$derData = DT::renderDataTable({triplesDer[, c("s", "p","o")]})
 
+  
+  
 }
 
 shinyApp(ui = ui, server = server)
