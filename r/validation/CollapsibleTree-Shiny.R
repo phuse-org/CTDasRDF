@@ -34,28 +34,45 @@ namespaces <- c('cd01p', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/
 'xsd', '<http://www.w3.org/2001/XMLSchema#>'
 )
 
-derRootNode <- ""
+#TODO: These will be selected in the drop down
+#rootNodeDer <- "cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb"
+#rootNodeOnt <- "cdiscpilot01:Person_1"
+
+# rootNodeDer <-"cdiscpilot01:Lifespan_udj4rptja2ij6a5lmb3meemc3mca7ip3_n6l0u58r7lrhic8l4b1e4u7k8182j6fq"
+# rootNodeOnt <- "cdiscpilot01:Lifespan_1"
+
+#rootNodeDer <- "cdiscpilot01:DemographicDataCollection_v29eedorsh9a5vr65uc1iob3mvn9blbb"
+#rootNodeOnt <- "cdiscpilot01:DemographicDataCollection_1"
+
+
+#rootNodeDer <- "cdiscpilot01:VisitScreening1Activity_v29eedorsh9a5vr65uc1iob3mvn9blbb"
+#rootNodeOnt <- "cdiscpilot01:VisitScreening1Activity_1"
+
+
+
+rootNodeDer <- "cdiscpilot01:AgeOutcome_k5ql986im5d6cj0eee80312k9scue0h7"
+rootNodeOnt <- "cdiscpilot01:AgeOutcome_1"
 
 # Form the queries ---- 
-queryDer = '
+# PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
+queryDer = paste0("
 SELECT ?s ?p ?o
-WHERE 
-{
-   cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb ?p ?o
-   BIND ( cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb AS ?s)
-}ORDER BY ?o'
+WHERE{", rootNodeDer," ?p ?o
+   BIND(\"",rootNodeDer,"\" AS ?s)
+} ORDER BY ?p ?o")
 
-# errors if PREFIX not included here for the Ont query. Is ok without it in the
-#  ..Der query!
-queryOnt = '
+queryDer
+
+# errors if PREFIX not included here for the Ont query. Is ok without it in the Der query. WHY?
+#  See if the prefixes assigned differently WITHIN Stardog DB.
+queryOnt = paste0("
 PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
 SELECT ?s ?p ?o
-WHERE 
-{
-   cdiscpilot01:Person_1 ?p ?o .
-   BIND ("cdiscpilot01:Person_1" AS ?s)
-} ORDER BY ?o'
+WHERE{", rootNodeOnt," ?p ?o
+   BIND(\"",rootNodeOnt,"\" AS ?s)
+} ORDER BY ?p ?o")
 
+  
 # Query results dfs ----  
 qrOnt <- SPARQL(url=epOnt, query=queryOnt, ns=namespaces)
 triplesOnt <- as.data.frame(qrOnt$results, stringsAsFactors=FALSE)
