@@ -6,9 +6,10 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#>
 PREFIX sdtms-1-3: <http://rdf.cdisc.org/sdtm-1-3/schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX cdiscs: <http://rdf.cdisc.org/std/schema#> 
+PREFIX cdiscs: <http://rdf.cdisc.org/std/schema#>
 PREFIX cts: <http://rdf.cdisc.org/ct/schema#>
 PREFIX cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#>
 PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
 PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
 prefix sdtm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#>
+PREFIX code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#>

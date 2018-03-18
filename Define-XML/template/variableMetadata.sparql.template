@@ -1,16 +1,19 @@
-SELECT ?ordinal ?dataElementName ?dataElementLabel ?Core ?codeList ?codeListName ?Origin ?dataElementCompliance ?Role ?comment
+SELECT ?ordinal ?dataElementName ?dataElementLabel ?dataType ?Core ?codeList ?codeListName ?Origin ?dataElementCompliance ?Role ?comment
 WHERE{
-    ?s rdf:type sdtm:SDTMDefineRecord_${Dataset};
-	       sdtm:hasDFVariable ?varEntity.
-    optional{ ?s sdtm:hasDFOrigin ?Origin.}
-    ?varEntity  rdf:type  mms:Column;
-           mms:ordinal ?ordinal;
-           mms:dataElementName ?dataElementName;
-           mms:dataElementLabel ?dataElementLabel;
-           cdiscs:dataElementCompliance ?dataElementCompliance;
-  		   cdiscs:dataElementRole ?Role_.
-    ?Role_ rdf:type cdiscs:DataElementRole;
-    		   rdfs:label ?Role.
+    ?s                  rdf:type                          sdtm:SDTMDefineRecord_${Dataset};
+                        sdtm:hasDFVariable                ?varEntity.
+    ?varEntity          sdtm:additionalMetadata           ?adMetadata.
+    ?adMetadata         code:hasMethod                    ?activity.
+    ?activity           rdfs:label                        ?Origin.
+    ?varEntity          rdf:type                          mms:Column;
+                        mms:ordinal                       ?ordinal;
+                        mms:dataElementName               ?dataElementName;
+                        mms:dataElementLabel              ?dataElementLabel;
+                        mms:dataElementType               ?dataType;
+                        cdiscs:dataElementCompliance      ?dataElementCompliance;
+  		                  cdiscs:dataElementRole            ?Role_.
+    ?Role_              rdf:type                          cdiscs:DataElementRole;
+    		                rdfs:label                        ?Role.
 
     ?dataElementCompliance rdfs:label ?Core_.
 
