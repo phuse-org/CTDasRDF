@@ -11,7 +11,7 @@
 #         that do not match.
 # TODO: Move prefixes specification to an external file.
 #    ERROR: Display of triplesOnt, triplesR is NOT reactive     
-# 
+#    Create new version used to query Stardog for both Ont and Der graphs.
 ###############################################################################
 library(plyr)    #  rename
 library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!
@@ -19,6 +19,30 @@ library(reshape) #  melt
 library(rrdf)
 library(shiny)
 setwd("C:/_gitHub/CTDasRDF/data/rdf")
+ui <- fluidPage(
+  titlePanel("Compare TTLs from R and Ontology "),
+  fluidRow (
+      column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
+      column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')
+      ),
+      column(3, textInput('qnam', "Subject QName", value = "cdiscpilot01:Person_1"))
+  ),
+  radioButtons("comp", "Compare:",
+                c("In R, not in Ontology" = "inRNotOnt",
+                  "In Ontology, not in R" = "inOntNotR")),    
+  h4("Comparison Result:",
+    style= "color:#e60000"),
+  hr(),    
+  tableOutput('contents'), 
+  h4("Ontology Triples",
+    style= "color:#000099"),
+  tableOutput('triplesOnt'),
+  h4("R Triples",
+    style= "color:#00802b"),
+  tableOutput('triplesR')
+    
+)
+
 server <- function(input, output) {
     output$contents <- renderTable({ 
         inFileR <<- input$fileR
@@ -83,28 +107,6 @@ WHERE {", input$qnam, " ?p ?o .
     output$triplesR <-renderTable({triplesR})    
 }
 
-ui <- fluidPage(
-  titlePanel("Compare TTLs from R and Ontology "),
-  fluidRow (
-      column(4, fileInput('fileOnt', 'TTL from Ont <filename>.TTL')),
-      column(4, fileInput('fileR',   'TTL from R   <filename>-R.TTL')
-      ),
-      column(3, textInput('qnam', "Subject QName", value = "cdiscpilot01:Person_1"))
-  ),
-  radioButtons("comp", "Compare:",
-                c("In R, not in Ontology" = "inRNotOnt",
-                  "In Ontology, not in R" = "inOntNotR")),    
-  h4("Comparison Result:",
-    style= "color:#e60000"),
-  hr(),    
-  tableOutput('contents'), 
-  h4("Ontology Triples",
-    style= "color:#000099"),
-  tableOutput('triplesOnt'),
-  h4("R Triples",
-    style= "color:#00802b"),
-  tableOutput('triplesR')
-    
-)
+
 shinyApp(ui = ui, server = server)
 

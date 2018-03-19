@@ -63,56 +63,29 @@ WHERE{", rootNodeDer," ?p ?o
 
 queryDer
 
-# errors if PREFIX not included here for the Ont query. Is ok without it in the Der query. WHY?
-#  See if the prefixes assigned differently WITHIN Stardog DB.
-queryOnt = paste0("
-PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
-SELECT ?s ?p ?o
-WHERE{", rootNodeOnt," ?p ?o
-   BIND(\"",rootNodeOnt,"\" AS ?s)
-} ORDER BY ?p ?o")
-
-  
-# Query results dfs ----  
-qrOnt <- SPARQL(url=epOnt, query=queryOnt, ns=namespaces)
-triplesOnt <- as.data.frame(qrOnt$results, stringsAsFactors=FALSE)
-  
-
-
 qrDer <- SPARQL(url=epDer, query=queryDer, ns=namespaces)
 triplesDer <- as.data.frame(qrDer$results, stringsAsFactors=FALSE)
-
-
-# Create root nodes and append to start of dataframes
-rootNodeOnt <- data.frame(s=NA,p="foo", o="cdiscpilot01:Person_1",
-  stringsAsFactors=FALSE)
-triplesOnt <- rbind(rootNodeOnt, triplesOnt)
 
 rootNodeDer <- data.frame(s=NA,p="foo", o="cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb",
   stringsAsFactors=FALSE)
 triplesDer <- rbind(rootNodeDer, triplesDer)
-
-
-# Assign titles ----
-triplesOnt$Title <- triplesOnt$o
-triplesOnt[1,"Title"] <- "Person_1" # THis will come from the drop down selector
-# Re-order dataframe. The s,o must be the first two columns.
-triplesOnt<-triplesOnt[c("s", "o", "p", "Title")]
 
 triplesDer$Title <- triplesDer$o
 triplesDer[1,"Title"] <- "Person_1" # THis will come from the drop down selector
 # Re-order dataframe. The s,o must be the first two columns.
 triplesDer<-triplesDer[c("s", "o", "p", "Title")]
 
+#---- UI ----------------------------------------------------------------------
 ui <- fluidPage(
   # Select start node row
   fluidRow(
     column(6, 
       h4("Ontology"),
-      selectInput("ontRoot", "RootNode:",
-              c("Person_1" = "Person_datdasfasdfasdsd",
-                "RefInterval" = "RefInterval_xxxxx_xxxx",
-                "DemogColl" = "DemographicDataCollecion_Xxxxxxx"))
+      textInput('rootNodeOnt', "Subject QName", value = "cdiscpilot01:Person_1")
+      #selectInput("ontRoot", "RootNode:",
+      #        c("Person_1" = "Person_datdasfasdfasdsd",
+      #          "RefInterval" = "RefInterval_xxxxx_xxxx",
+      #          "DemogColl" = "DemographicDataCollecion_Xxxxxxx"))
     ),
     column(6, 
       h4("Derive"),
@@ -147,11 +120,45 @@ ui <- fluidPage(
   )
 )
 
+#---- Server ------------------------------------------------------------------
+
 server <- function(input, output, session) {
 
+#-- START NEW
+  
+  triplesOnt <- reactive({
+  
+    # Errors if PREFIX not included here for the Ont query. Is ok without it in the Der query. WHY?
+    #   See if the prefixes assigned differently WITHIN Stardog DB.
+    queryOnt = paste0("
+    PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
+    SELECT ?s ?p ?o
+    WHERE{", input$rootNodeOnt," ?p ?o
+       BIND(\"", input$rootNodeOnt,"\" AS ?s)
+    } ORDER BY ?p ?o")
+    
+      
+    # Query results dfs ----  
+    qrOnt <- SPARQL(url=epOnt, query=queryOnt, ns=namespaces)
+    triplesOnt <- as.data.frame(qrOnt$results, stringsAsFactors=FALSE)
+    # Create root nodes and append to start of dataframes
+    rootNodeOntTriple <- data.frame(s=NA,p="foo", o=input$rootNodeOnt,
+      stringsAsFactors=FALSE)
+    triplesOnt <- rbind(rootNodeOntTriple, triplesOnt)
+    
+    # Assign titles ----
+    triplesOnt$Title <- triplesOnt$o
+    triplesOnt[1,"Title"] <- "Person_1" # THis will come from the drop down selector
+    # Re-order dataframe. The s,o must be the first two columns.
+    triplesOnt<-triplesOnt[c("s", "o", "p", "Title")]
+ })
+  
+  
+#-----  END NEW
+  
   output$tree1 <- renderCollapsibleTree({
     collapsibleTreeNetwork(
-      triplesOnt,
+      triplesOnt(),
       c("s", "o"),
       tooltipHtml="p",
       width = "100%"
@@ -165,7 +172,7 @@ server <- function(input, output, session) {
       width = "100%"
     )
   })
-  output$ontData = DT::renderDataTable({triplesOnt[, c("s", "p","o")]})
+  output$ontData = DT::renderDataTable({triplesOnt()[, c("s", "p","o")]})
   
   output$derData = DT::renderDataTable({triplesDer[, c("s", "p","o")]})
 
