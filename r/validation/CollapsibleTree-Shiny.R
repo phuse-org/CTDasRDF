@@ -34,68 +34,25 @@ namespaces <- c('cd01p', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/
 'xsd', '<http://www.w3.org/2001/XMLSchema#>'
 )
 
-#TODO: These will be selected in the drop down
-#rootNodeDer <- "cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb"
-#rootNodeOnt <- "cdiscpilot01:Person_1"
 
-# rootNodeDer <-"cdiscpilot01:Lifespan_udj4rptja2ij6a5lmb3meemc3mca7ip3_n6l0u58r7lrhic8l4b1e4u7k8182j6fq"
-# rootNodeOnt <- "cdiscpilot01:Lifespan_1"
+#rootNodeDer <- "cdiscpilot01:AgeOutcome_k5ql986im5d6cj0eee80312k9scue0h7"
+#rootNodeOnt <- "cdiscpilot01:AgeOutcome_1"
 
-#rootNodeDer <- "cdiscpilot01:DemographicDataCollection_v29eedorsh9a5vr65uc1iob3mvn9blbb"
-#rootNodeOnt <- "cdiscpilot01:DemographicDataCollection_1"
-
-
-#rootNodeDer <- "cdiscpilot01:VisitScreening1Activity_v29eedorsh9a5vr65uc1iob3mvn9blbb"
-#rootNodeOnt <- "cdiscpilot01:VisitScreening1Activity_1"
-
-
-
-rootNodeDer <- "cdiscpilot01:AgeOutcome_k5ql986im5d6cj0eee80312k9scue0h7"
-rootNodeOnt <- "cdiscpilot01:AgeOutcome_1"
-
-# Form the queries ---- 
-# PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
-queryDer = paste0("
-SELECT ?s ?p ?o
-WHERE{", rootNodeDer," ?p ?o
-   BIND(\"",rootNodeDer,"\" AS ?s)
-} ORDER BY ?p ?o")
-
-queryDer
-
-qrDer <- SPARQL(url=epDer, query=queryDer, ns=namespaces)
-triplesDer <- as.data.frame(qrDer$results, stringsAsFactors=FALSE)
-
-rootNodeDer <- data.frame(s=NA,p="foo", o="cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb",
-  stringsAsFactors=FALSE)
-triplesDer <- rbind(rootNodeDer, triplesDer)
-
-triplesDer$Title <- triplesDer$o
-triplesDer[1,"Title"] <- "Person_1" # THis will come from the drop down selector
-# Re-order dataframe. The s,o must be the first two columns.
-triplesDer<-triplesDer[c("s", "o", "p", "Title")]
 
 #---- UI ----------------------------------------------------------------------
 ui <- fluidPage(
-  # Select start node row
+  # Selection
   fluidRow(
     column(6, 
       h4("Ontology"),
       textInput('rootNodeOnt', "Subject QName", value = "cdiscpilot01:Person_1")
-      #selectInput("ontRoot", "RootNode:",
-      #        c("Person_1" = "Person_datdasfasdfasdsd",
-      #          "RefInterval" = "RefInterval_xxxxx_xxxx",
-      #          "DemogColl" = "DemographicDataCollecion_Xxxxxxx"))
     ),
     column(6, 
       h4("Derive"),
-      selectInput("ontRoot", "RootNode:",
-              c("Person_1" = "Person_datdasfasdfasdsd",
-                "RefInterval" = "RefInterval_xxxxx_xxxx",
-                "DemogColl" = "DemographicDataCollecion_Xxxxxxx"))
+           textInput('rootNodeDer', "Subject QName", value = "cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb")
     )
   ),
-  # Diagram row
+  # Diagrams
   fluidRow(
     column(6, 
       wellPanel(
@@ -108,8 +65,7 @@ ui <- fluidPage(
       )
     )
   ),
-
-  # Data tables row
+  # Data tables
   fluidRow(
     column(6, 
       div(DT::dataTableOutput("ontData"), style = "font-size:50%")
@@ -124,8 +80,6 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
 
-#-- START NEW
-  
   triplesOnt <- reactive({
   
     # Errors if PREFIX not included here for the Ont query. Is ok without it in the Der query. WHY?
@@ -137,7 +91,6 @@ server <- function(input, output, session) {
        BIND(\"", input$rootNodeOnt,"\" AS ?s)
     } ORDER BY ?p ?o")
     
-      
     # Query results dfs ----  
     qrOnt <- SPARQL(url=epOnt, query=queryOnt, ns=namespaces)
     triplesOnt <- as.data.frame(qrOnt$results, stringsAsFactors=FALSE)
@@ -148,14 +101,35 @@ server <- function(input, output, session) {
     
     # Assign titles ----
     triplesOnt$Title <- triplesOnt$o
-    triplesOnt[1,"Title"] <- "Person_1" # THis will come from the drop down selector
+    triplesOnt[1,"Title"] <- input$rootNodeOnt  
     # Re-order dataframe. The s,o must be the first two columns.
     triplesOnt<-triplesOnt[c("s", "o", "p", "Title")]
- })
+  })
   
   
-#-----  END NEW
-  
+#---- NEW 
+  triplesDer <- reactive({
+
+    queryDer = paste0("
+      SELECT ?s ?p ?o
+      WHERE{", input$rootNodeDer," ?p ?o
+      BIND(\"", input$rootNodeDer,"\" AS ?s)
+      } ORDER BY ?p ?o")
+
+    qrDer <- SPARQL(url=epDer, query=queryDer, ns=namespaces)
+    triplesDer <- as.data.frame(qrDer$results, stringsAsFactors=FALSE)
+
+    rootNodeDer <- data.frame(s=NA,p="foo", o="cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb",
+    stringsAsFactors=FALSE)
+    triplesDer <- rbind(rootNodeDer, triplesDer)
+
+    triplesDer$Title <- triplesDer$o
+    triplesDer[1,"Title"] <- input$rootNodeDer # THis will come from the drop down selector
+    # Re-order dataframe. The s,o must be the first two columns.
+    triplesDer<-triplesDer[c("s", "o", "p", "Title")]
+
+  })  
+
   output$tree1 <- renderCollapsibleTree({
     collapsibleTreeNetwork(
       triplesOnt(),
@@ -166,7 +140,7 @@ server <- function(input, output, session) {
   })
   output$tree2 <- renderCollapsibleTree({
     collapsibleTreeNetwork(
-      triplesDer,
+      triplesDer(),
       c("s", "o"),
       tooltipHtml="p",
       width = "100%"
@@ -174,7 +148,7 @@ server <- function(input, output, session) {
   })
   output$ontData = DT::renderDataTable({triplesOnt()[, c("s", "p","o")]})
   
-  output$derData = DT::renderDataTable({triplesDer[, c("s", "p","o")]})
+  output$derData = DT::renderDataTable({triplesDer()[, c("s", "p","o")]})
 
   
   

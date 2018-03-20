@@ -12,6 +12,11 @@
 library(Hmisc)
 
 dm_n=3;  # The first n patients from the DM domain.
+
+# Subsetting to allow incremental dev
+pntSubset<-c('01-701-1015') # List of usubjid's to process.
+
+
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
 
@@ -22,10 +27,33 @@ readXPT<-function(domain)
   result  # return the dataframe
 }
 
-# XPT Import ----
-dm     <- head(readXPT("dm"), dm_n)  # first row only for initial testing.
+# ---- XPT Import -------------------------------------------------------------
+# DM
+#dm  <- head(readXPT("dm"), dm_n)
+#source('R/DM_imputeCSV.R')  # Creates birthdate. 
+#write.csv(dm, file="data/source/DM_subset.csv", 
+#  row.names = F)
 
-source('R/DM_imputeCSV.R')
 
-write.csv(dm, file="data/source/DM_subset.csv", 
+# SUPPDM ----
+suppdm  <- readXPT("suppdm")
+
+#subset for development
+suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  
+write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
+row.names = F)
+
+
+
+
+
+# TS
+#ts  <- readXPT("ts")  # first row only for initial testing.
+#write.csv(ts, file="data/source/ts_subset.csv", 
+#  row.names = F)
+
+
+# VS
+vs  <- readXPT("vs")  # first row only for initial testing.
+write.csv(vs, file="data/source/vs_new.csv", 
   row.names = F)

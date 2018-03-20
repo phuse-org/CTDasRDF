@@ -35,7 +35,7 @@ dm$study  <- "Study_1"  # Must change when >1 study in triplstore!
 #      Dates reflect their original mixed format of DATE or DATETIME in same col.
 dm$brthdate <- as.character(strptime(strptime(dm$rfstdtc, "%Y-%m-%d") - (strtoi(dm$age) * 365.25 * 24 * 60 * 60), "%Y-%m-%d"))
 #---- Informed Consent  (column present with missing values in DM source).  
-dm$rficdtc <- dm$dmdtc
+dm$rficdtc <- dm$dmdtc   # Is present in revised "New" file from Test Data Factory.
 
 # Death Date and Flag set for Person 1 for testing purposes only. 
 #   Will not match original source data! (no deaths)
