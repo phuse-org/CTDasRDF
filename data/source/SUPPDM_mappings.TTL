@@ -5,7 +5,8 @@
 # SRC : 
 # IN  : CSV converted from SUPPDM.XPT, Subject 1015 only
 # OUT : 
-# NOTE: stardog-admin virtual import CTDasRDF SUPPDM_mappings.TTL SUPPDM-Subj1015.csv
+# NOTE: stardog-admin virtual import CTDasRDF SUPPDM_mappings.TTL SUPPDM_subset.csv
+#  Export to TTL: stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
 # TODO: 
 ###############################################################################
 
@@ -20,5 +21,16 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-
 # COMMENCE MAP
+# PopFlag ----
+#   Hardcode: hasPerformer, outcome
+cdiscpilot01:Person_{usubjid} 
+  study:participatesIn cdiscpilot01:PopFlag{qnam}_{usubjid} ;
+.
+
+cdiscpilot01:PopFlag{qnam}_{usubjid}
+  rdf:type custom:PopFlag{qnam} ;
+  study:activityStatus code:ActivityStatus_1 ;
+  study:hasPerformer cd01p:Sponsor_1 ;
+  study:outcome "true"^^xsd:boolean ;
+.
