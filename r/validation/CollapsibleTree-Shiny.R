@@ -49,7 +49,7 @@ ui <- fluidPage(
     ),
     column(6, 
       h4("Derive"),
-           textInput('rootNodeDer', "Subject QName", value = "cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb")
+           textInput('rootNodeDer', "Subject QName", value = "cdiscpilot01:Person_01-701-1015")
     )
   ),
   # Diagrams
@@ -84,13 +84,14 @@ server <- function(input, output, session) {
   
     # Errors if PREFIX not included here for the Ont query. Is ok without it in the Der query. WHY?
     #   See if the prefixes assigned differently WITHIN Stardog DB.
+
     queryOnt = paste0("
     PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
     SELECT ?s ?p ?o
     WHERE{", input$rootNodeOnt," ?p ?o
        BIND(\"", input$rootNodeOnt,"\" AS ?s)
-    } ORDER BY ?p ?o")
-    
+    } ORDER BY ?o")
+   
     # Query results dfs ----  
     qrOnt <- SPARQL(url=epOnt, query=queryOnt, ns=namespaces)
     triplesOnt <- as.data.frame(qrOnt$results, stringsAsFactors=FALSE)
@@ -114,7 +115,7 @@ server <- function(input, output, session) {
       SELECT ?s ?p ?o
       WHERE{", input$rootNodeDer," ?p ?o
       BIND(\"", input$rootNodeDer,"\" AS ?s)
-      } ORDER BY ?p ?o")
+      } ORDER BY ?o")
 
     qrDer <- SPARQL(url=epDer, query=queryDer, ns=namespaces)
     triplesDer <- as.data.frame(qrDer$results, stringsAsFactors=FALSE)

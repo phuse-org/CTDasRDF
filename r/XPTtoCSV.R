@@ -29,10 +29,12 @@ readXPT<-function(domain)
 
 # ---- XPT Import -------------------------------------------------------------
 # DM
-#dm  <- head(readXPT("dm"), dm_n)
-#source('R/DM_imputeCSV.R')  # Creates birthdate. 
-#write.csv(dm, file="data/source/DM_subset.csv", 
-#  row.names = F)
+dm  <- head(readXPT("dm"), dm_n)
+
+
+source('R/DM_imputeCSV.R')  # Creates birthdate. 
+write.csv(dm, file="data/source/DM_subset.csv", 
+  row.names = F)
 
 
 # SUPPDM ----
