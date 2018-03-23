@@ -1,0 +1,65 @@
+#______________________________________________________________________________
+# FILE: VS_imputeCSV.R
+# DESC: Creates data values required for prototyping and ontoloty develeopment
+# REQ : Prior import of the VS domain by driver script.
+# SRC : N/A
+# IN  : vs dataframe 
+# OUT : modified vs dataframe 
+# NOTE: 
+# TODO: 
+#______________________________________________________________________________
+
+# ** Impute ----
+
+#------------- ORIGINAL IMPUTATIONS FOLLOW ------------------------------------
+#TW # All Subjects ----
+#TW # Imputations for all patients in the VS domain.  Many of these were initially 
+#TW #   applied only to the first patient (1015). Expanded to all patients 16Nov17.
+#TW # Regress to commit prior to 16Nov17 to obtain original assignment code.
+#TW # vsloc
+#TW vs$vsloc <- as.character(vs$vsloc)  # factor correction
+#TW vs[vs$vstestcd %in% c('DIABP', 'SYSBP'), "vsloc"]  <- "ARM"
+#TW 
+#TW #vsstat
+#TW vs$vsstat <- as.character(vs$vsstat) # Factor correction
+#TW vs$vsstat <- "CO"  # all results hard coded to Complete.
+#TW 
+#TW # vsreasnd
+#TW # Change make dependent on presence/absence of a result value.
+#TW vs$vsreasnd <- "not applicable"  # All Reason Not Done coded to not applicable.
+#TW 
+#TW # Derived Flag Y/N 
+#TW vs$vsdrvfl <- "N"  # None of the measurements here are derived: BP,HT,WT,TEMP...
+#TW 
+#TW vs[vs$visit %in% c('SCREENING 1', 'BASELINE'), "vsblfl"]  <- "Y"
+#TW 
+#TW # invid set to same value as hard coded for DM in DM_impute.R
+#TW vs$invid <- "123"  # Later change to base on set of subjid or site or...?
+#TW 
+#TW # vsrftdtc
+#TW vs$vsrftdtc <- vs$vsdtc 
+#TW 
+#TW #______________________________________________________________________________
+#TW # Person 1 ----
+#TW # Created to illustrate round-tripping back to values in the ontology instance data. 
+#TW #  Hard coded for specific vsseq numbers for the first patient (1015). 
+#TW vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1,  "vsgrpid"]  <- "GRPID1"
+#TW # vscat
+#TW vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1,  "vscat"]  <- "CAT1"
+#TW # vsscat
+#TW vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1,  "vsscat"]  <- "SCAT1"
+#TW 
+#TW # vsspid
+#TW vs[vs$vsseq %in% c(1)   & vs$personNum == 1, "vsspid"]  <- "123"
+#TW vs[vs$vsseq %in% c(2)   & vs$personNum == 1, "vsspid"]  <- "719"
+#TW vs[vs$vsseq %in% c(3)   & vs$personNum == 1, "vsspid"]  <- "235"
+#TW vs[vs$vsseq %in% c(43)  & vs$personNum == 1, "vsspid"]  <- "1000"
+#TW vs[vs$vsseq %in% c(86)  & vs$personNum == 1, "vsspid"]  <- "124"
+#TW vs[vs$vsseq %in% c(87)  & vs$personNum == 1, "vsspid"]  <- "720"
+#TW vs[vs$vsseq %in% c(88)  & vs$personNum == 1, "vsspid"]  <- "236"
+#TW vs[vs$vsseq %in% c(128) & vs$personNum == 1, "vsspid"]  <- "3000"
+#TW vs[vs$vsseq %in% c(142) & vs$personNum == 1, "vsspid"]  <- "5000"
+#TW 
+#TW # vslat
+#TW vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
+#TW vs[vs$vsseq %in% c(2,87) & vs$personNum == 1, "vslat"]       <- "LEFT"

@@ -1,15 +1,11 @@
 #______________________________________________________________________________
-# FILE: DM_impute.R
-# DESC: Impute data required for prototyping. Creates data values. 
+# FILE: DM_imputeCSV.R
+# DESC: Creates data values required for prototyping and ontoloty develeopment
 # REQ : Prior import of the DM domain by driver script.
 # SRC : N/A
 # IN  : dm dataframe 
 # OUT : modified dm dataframe 
 # NOTE: 
-#       URI fragments are created in DM_frag.R
-#       Coded values:  - cannot have spaces or special characters.
-#                      - are stored in variables with under suffix _ while 
-#                          originals are retained.
 # TODO: 
 #______________________________________________________________________________
 
