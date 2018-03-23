@@ -13,7 +13,7 @@
 #       paths instead of SPARQL.
 ###############################################################################
 library(SPARQL)
-
+library(collapsibleTree)
 # Query StardogTriple Store ----
 endpoint <- "http://localhost:5820/CTDasRDFOnt/query"
 
@@ -51,8 +51,12 @@ triplesDF <- unique(triplesDF)  # Remove dupes
 
 
 # Create a function for this:
+# Subjects
 triplesDF$s <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#", 
   "cdiscpilot01:", triplesDF$s)
+triplesDF$s <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl", 
+  "cd01p:", triplesDF$s)
+
 
 # Predicates 
 triplesDF$p <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#", 
@@ -99,11 +103,33 @@ triplesDF$p <- gsub(">", "", triplesDF$p)
 triplesDF$o <- gsub(">", "", triplesDF$o)
 
 
-rootNodeDer <- data.frame(s=NA,p="foo", o="cdiscpilot01:Person_1",
+rootNodeDF <- data.frame(s=NA,p="Person 1", o="cdiscpilot01:Person_1",
   stringsAsFactors=FALSE)
-triplesDF <- rbind(rootNodeDer, triplesDF)
+triplesDF <- rbind(rootNodeDF, triplesDF)
 
-head(triplesDF)
-
+# Code for plotting as collapsible nodes
 # Re-order as needed by collapsibleNodes pkg.
+triplesDF$Title <- triplesDF$o
+triplesDF[1,"Title"] <- "cdiscpilot01:Person_1" # THis will come from the drop down selector
+# Re-order dataframe. The s,o must be the first two columns.
+triplesDF<-triplesDF[c("s", "o", "p", "Title")]
+
+
+# 25 is to the end of Person_!
+# foo<-head(triplesDF, 35)
+foo<-triplesDF
+
+collapsibleTreeNetwork(
+  foo,
+  c("s", "o"),
+  tooltipHtml="p",
+  width = "100%"
+)
+
+
+
+
+
+
+
 

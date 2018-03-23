@@ -28,10 +28,9 @@ readXPT<-function(domain)
 }
 
 # ---- XPT Import -------------------------------------------------------------
-# DM
+# DM ----
 dm  <- head(readXPT("dm"), dm_n)
-
-
+# Impute values needed for testing
 source('R/DM_imputeCSV.R')  # Creates birthdate. 
 write.csv(dm, file="data/source/DM_subset.csv", 
   row.names = F)
@@ -39,23 +38,26 @@ write.csv(dm, file="data/source/DM_subset.csv",
 
 # SUPPDM ----
 suppdm  <- readXPT("suppdm")
-
-#subset for development
+# subset for development
 suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  
 write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
 row.names = F)
 
-
-
-
-
-# TS
+# TS ----
 #ts  <- readXPT("ts")  # first row only for initial testing.
 #write.csv(ts, file="data/source/ts_subset.csv", 
 #  row.names = F)
 
 
-# VS
+# VS ----
 vs  <- readXPT("vs")  # first row only for initial testing.
-write.csv(vs, file="data/source/vs_new.csv", 
+
+# Subset for development
+vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
+
+# Impute values needed for testing
+source('R/DM_imputeCSV.R')  # Creates birthdate. 
+
+
+write.csv(vs, file="data/source/vs_subset.csv", 
   row.names = F)
