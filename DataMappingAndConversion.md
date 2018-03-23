@@ -52,7 +52,7 @@ Other data is imputed as needed:
 #### Investigator and Site
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
-|invest_imputed.csv | Data imputation | Investigator and assignment of investigator to a site Consent 
+|invest_imputed.csv | Data imputation | Investigator and assignment of investigator to a site 
 |invest_mappings.TTL | SMS Map        | Upload of imputed data |
 
 
