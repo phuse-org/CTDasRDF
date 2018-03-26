@@ -38,9 +38,9 @@ dm$dthfl[dm$usubjid == '01-701-1015' ]  <- "Y" # Set a Death flag  for Person_1
 #    and IRI that could match another IRI used for an interval that has a 
 #    different meaning.
 
-dm$im_lifeSpan     <- paste("lifeSpan",dm$brthdate, dm$dthdtc)
-dm$im_refInt       <- paste("refInt",dm$rfstdtc, dm$rfendtc)
-dm$im_studyPartInt <- paste("refInt",dm$dmdtc, dm$rfpendtc)
+dm$im_lifeSpan     <- paste("lifeSpan", dm$brthdate, dm$dthdtc)
+dm$im_refInt       <- paste("refInt",   dm$rfstdtc,  dm$rfendtc)
+dm$im_studyPartInt <- paste("refInt",   dm$dmdtc,    dm$rfpendtc)
 
 #---- Values to link to codelists, etc.
 

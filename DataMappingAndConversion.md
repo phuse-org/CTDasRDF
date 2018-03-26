@@ -22,7 +22,7 @@ Domains under construction include: DM, SUPPM, VS. SUPPVS and EX are pending.
 TS will follow.
 
 
-### Process
+## Process
 1. Run ./r/*XPTtoCSV.R*
   * Convert from XPT
   * Impute values
@@ -32,8 +32,8 @@ TS will follow.
   a. execute /data/source/*StarDogUpload.bat*
 
 
-### General Rules
-#### Hashing
+## General Rules
+### Hashing
 Hashed values are used to create IRIs from source values that may contain spaces or other special characters that may interfere with IRI creation. Stardog uses the SHA-1 hash over a UTF-8 encoded string represented in base 32 encoding with padding omitted.
 
 * All dates are hashed
@@ -47,25 +47,40 @@ Creation of all interval IRIS (Lifespan, reference interval, study partcipation 
 
 These imputations occur in the R program code unique to each domain (`DMImpute_CSV.R`, `VSImput_CSV.R`, etc.).
 
+Then in the mapping file the imputed column is used to create the Lifespan IRI:
 
-### Graph Metadata
+    cdiscpilot01:Lifespan_{#im_lifeSpan} 
+
+### Links to SDTM Terminology and Other External Codelists
+Values are created during the imputation step allow linkage to external terminlogy files. 
+TODO: Add Example for how SYSBP is coded to the proper Cxxx.Cxxx termin. 
+
+
+### Links Rules 
+Values that enable creation of IRIs for rules are also created within the imputation steps.
+TODO: Add example of STANDING rule for blood pressure.
+
+
+## Graph Metadata
 **PENDING**: 
 *Creation of graph metadata (graph creation date, version, etc.) has not yet migrated from the R to the SMS process. When it does, it will be documented here.*
 
 
-### Additional Data 
+## Additional Data 
 Some data required by the ontology is not in the original source. When it is associated with a domain that is being converted, it will be closely tied to the conversion step for that domain. Eg: See DM_imputeCSV.R under the DM domain.
 
 Other data is imputed as needed:
 
-#### Investigator and Site
+### Investigator and Site
+
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
 |invest_imputed.csv | Data imputation | Investigator and assignment of investigator to a site 
 |invest_mappings.TTL | SMS Map        | Upload of imputed data |
 
 
-### DM
+## DM
+
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
 |DM_imputeCSV.R | Data imputation | Creation of *birthdate* <br/>Assignment of Informed Consent Date<br/>Subject 01-701-1015: Death Date and Flag created.|
@@ -74,7 +89,7 @@ Other data is imputed as needed:
 | DM_mappings.TTL | SMS Map |   See SMS Details |
  
 
-#### SMS details
+### SMS details
 
 All study:participatesIn relations use *usubjid* in the IRIs because these are unique to that subject. Examples: *InformedConsentAdult_{usubjid}* , *DemographicDataCollection_{usubjid}*  All labels for intervals and labels that reference the Person now also use *usubjid* instead of the row order number.
 
@@ -93,7 +108,7 @@ The following values are created in the mapping:
 
 
 
-### SUPPDM
+## SUPPDM
 
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
@@ -101,7 +116,7 @@ The following values are created in the mapping:
 | SUPPDM_subset.csv | Subset for dev  |  First 3 patients (subject to change) |
 | SUPPDM_mappings.TTL | SMS Map |   See SMS Details |
 
-#### SMS details
+### SMS details
 
 The following values are created in the mapping. 
  `study:activityStatus code:ActivityStatus_1;`
@@ -115,7 +130,7 @@ The following values are created in the mapping.
 | Population Flags  | `PopFlag{qnam}_{usubjid}`  | Unique to each Person,  a combination of the qnam and subjid |
 
 
-### VS
+## VS
 
 | Entity    | SMS                      | Description 
 | --------- | ------------------------ | ---------------------------------------------
