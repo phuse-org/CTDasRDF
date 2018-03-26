@@ -37,7 +37,16 @@ TS will follow.
 Hashed values are used to create IRIs from source values that may contain spaces or other special characters that may interfere with IRI creation. Stardog uses the SHA-1 hash over a UTF-8 encoded string represented in base 32 encoding with padding omitted.
 
 * All dates are hashed
-* All *interval* IRIs are constructed with hashed dates using the startDate_stopDate pattern.  Examples: *Lifespan_{#brthdate}_{#dthdtc}* , *StudyParticipationInterval_{#dmdtc}_{#rfpendtc}* 
+
+#### Interval IRIs - Special Hashing
+In many cases, either the start or end date of an interval may be missing in the source data. This could lead to the creatoin of incorrect IRI values. Example: Lifespan should not be coded as: *Lifespan_{#brthdate}_{#dthdtc}* , because in most instances the death date would be missing and this could lead to two people being assigned the same Lifespan if they were born on the same date and have not yet died.
+
+Creation of all interval IRIS (Lifespan, reference interval, study partcipation interval, etc.) are created from an imputed column creating during the conversion from XPT to CSV. The data is prefixed with the type of interval being constructed, once again to ensure the IRI is unique to the data being represented. A lifespan IRI should be unique from an study participation IRI, even if the start and end dates are identical.
+
+    dm$im_lifeSpan     <- paste("lifeSpan",dm$brthdate, dm$dthdtc)
+
+These imputations occur in the R program code unique to each domain (`DMImpute_CSV.R`, `VSImput_CSV.R`, etc.).
+
 
 ### Graph Metadata
 **PENDING**: 
