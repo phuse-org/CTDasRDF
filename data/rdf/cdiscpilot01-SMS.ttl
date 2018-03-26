@@ -18,54 +18,9 @@ cdiscpilot01:AgeOutcome_k5ql986im5d6cj0eee80312k9scue0h7 a study:AgeOutcome ;
 	code:hasUnit time:unitYear ;
 	code:hasValue 63 .
 
-cdiscpilot01:Lifespan_udj4rptja2ij6a5lmb3meemc3mca7ip3_n6l0u58r7lrhic8l4b1e4u7k8182j6fq a study:Lifespan ;
-	time:hasBeginning cdiscpilot01:Date_udj4rptja2ij6a5lmb3meemc3mca7ip3 ;
-	time:hasEnd cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	rdfs:label "Lifespan Interval 1" .
-
 cdiscpilot01:Date_k78l4og87v61q51vabbketftn59735lb a study:StudyParticipationEnd ;
 	rdfs:label "2014-07-02T11:45" ;
 	study:dateTimeInXSDString "2014-07-02T11:45" .
-
-cdiscpilot01:StudyParticipationInterval_uaafn1aabjqjqnmg13lo4h3372g6eq0f_6iajojaqva7oil29dh2cerk7f0040an4 a study:StudyParticipationInterval ;
-	time:hasBeginning cdiscpilot01:Date_uaafn1aabjqjqnmg13lo4h3372g6eq0f ;
-	time:hasEnd cdiscpilot01:Date_6iajojaqva7oil29dh2cerk7f0040an4 ;
-	rdfs:label "Study Participation Interval 3" .
-
-cdiscpilot01:Lifespan_pchqlo9qpfvfhmafgr5h41cm65vqihc9_uaafn1aabjqjqnmg13lo4h3372g6eq0f a study:Lifespan ;
-	time:hasBeginning cdiscpilot01:Date_pchqlo9qpfvfhmafgr5h41cm65vqihc9 ;
-	time:hasEnd cdiscpilot01:Date_uaafn1aabjqjqnmg13lo4h3372g6eq0f ;
-	rdfs:label "Lifespan Interval 3" .
-
-cdiscpilot01:StudyParticipationInterval_m9eproucjuhbto78r3ij902mqsklh6so_u5v40r1hbrajblo04oev36pkvko16osp a study:StudyParticipationInterval ;
-	time:hasBeginning cdiscpilot01:Date_m9eproucjuhbto78r3ij902mqsklh6so ;
-	time:hasEnd cdiscpilot01:Date_u5v40r1hbrajblo04oev36pkvko16osp ;
-	rdfs:label "Study Participation Interval 2" .
-
-cdiscpilot01:Lifespan_pt2m6avt4r1v33ksdu1m4ggqjgec0q9f_m9eproucjuhbto78r3ij902mqsklh6so a study:Lifespan ;
-	time:hasBeginning cdiscpilot01:Date_pt2m6avt4r1v33ksdu1m4ggqjgec0q9f ;
-	time:hasEnd cdiscpilot01:Date_m9eproucjuhbto78r3ij902mqsklh6so ;
-	rdfs:label "Lifespan Interval 2" .
-
-cdiscpilot01:ReferenceInterval_16suu2uqgfo2fc05o08sr6g1t58bj215_r57tfni8fttfflf1aq83vrr7cps2e81k a study:ReferenceInterval ;
-	time:hasBeginning cdiscpilot01:Date_16suu2uqgfo2fc05o08sr6g1t58bj215 ;
-	time:hasEnd cdiscpilot01:Date_r57tfni8fttfflf1aq83vrr7cps2e81k ;
-	rdfs:label "Reference Interval 3" .
-
-cdiscpilot01:ReferenceInterval_raera9petjq92qs0n7n40o3mgoi28a9a_klq2ru8npk1e4cv1ieg1mbgn0a7avofp a study:ReferenceInterval ;
-	time:hasBeginning cdiscpilot01:Date_raera9petjq92qs0n7n40o3mgoi28a9a ;
-	time:hasEnd cdiscpilot01:Date_klq2ru8npk1e4cv1ieg1mbgn0a7avofp ;
-	rdfs:label "Reference Interval 2" .
-
-cdiscpilot01:ReferenceInterval_s6rc8otorv5ukcpag29jggn8m8h5127t_cpkmsvqhc92dn75siimpl3fj20mmtdei a study:ReferenceInterval ;
-	time:hasBeginning cdiscpilot01:Date_s6rc8otorv5ukcpag29jggn8m8h5127t ;
-	time:hasEnd cdiscpilot01:Date_cpkmsvqhc92dn75siimpl3fj20mmtdei ;
-	rdfs:label "Reference Interval 1" .
-
-cdiscpilot01:StudyParticipationInterval_n6l0u58r7lrhic8l4b1e4u7k8182j6fq_k78l4og87v61q51vabbketftn59735lb a study:StudyParticipationInterval ;
-	time:hasBeginning cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	time:hasEnd cdiscpilot01:Date_k78l4og87v61q51vabbketftn59735lb ;
-	rdfs:label "Study Participation Interval 1" .
 
 cdiscpilot01:AgeOutcome_opm6a5qvtj1h0eprb1tujddi6249p1h8 a study:AgeOutcome ;
 	skos:prefLabel "64 YEARS" ;
@@ -78,7 +33,7 @@ cdiscpilot01:Date_s6rc8otorv5ukcpag29jggn8m8h5127t a study:ReferenceBegin ;
 
 cdiscpilot01:Date_pt2m6avt4r1v33ksdu1m4ggqjgec0q9f a study:Birthdate ;
 	rdfs:label "1948-08-05" ;
-	study:dateTimeInXSDString "1948-08-05" .
+	study:dateTimeInXSDString "Birth date 1948-08-05" .
 
 cdiscpilot01:Date_u5v40r1hbrajblo04oev36pkvko16osp a study:StudyParticipationEnd ;
 	rdfs:label "2013-02-18" ;
@@ -111,15 +66,15 @@ cdiscpilot01:Date_16suu2uqgfo2fc05o08sr6g1t58bj215 a study:ReferenceBegin ;
 
 cdiscpilot01:Date_udj4rptja2ij6a5lmb3meemc3mca7ip3 a study:Birthdate ;
 	rdfs:label "1951-01-02" ;
-	study:dateTimeInXSDString "1951-01-02" .
+	study:dateTimeInXSDString "Birth date 1951-01-02" .
 
 cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq a study:StudyParticipationBegin , study:DemogDataCollectionDate , study:Deathdate , study:InformedConsentBegin ;
-	rdfs:label "2013-12-26" ;
+	rdfs:label "2013-12-26" , "Death date 2013-12-26" ;
 	study:dateTimeInXSDString "2013-12-26" .
 
 cdiscpilot01:Date_pchqlo9qpfvfhmafgr5h41cm65vqihc9 a study:Birthdate ;
 	rdfs:label "1942-07-19" ;
-	study:dateTimeInXSDString "1942-07-19" .
+	study:dateTimeInXSDString "Birth date 1942-07-19" .
 
 cdiscpilot01:Date_6iajojaqva7oil29dh2cerk7f0040an4 a study:StudyParticipationEnd ;
 	rdfs:label "2014-01-14T11:10" ;
@@ -134,7 +89,7 @@ cdiscpilot01:Date_cpkmsvqhc92dn75siimpl3fj20mmtdei a study:ReferenceEnd ;
 	study:dateTimeInXSDString "2014-07-02" .
 
 cdiscpilot01:DemographicDataCollection_01-701-1023 a cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1023 ;
-	skos:prefLabel "Person 2 Screening 1 Demographic data collection" ;
+	skos:prefLabel "Person 01-701-1023 Screening 1 Demographic data collection" ;
 	study:sex code:Sex_M ;
 	study:hasDate cdiscpilot01:Date_m9eproucjuhbto78r3ij902mqsklh6so ;
 	study:activityStatus code:ActivityStatus_1 ;
@@ -143,27 +98,31 @@ cdiscpilot01:DemographicDataCollection_01-701-1023 a cd01p:VisitScreening1DemogD
 	study:ethnicity code:Enthnicity_gnja37oohiiipittns2ro9rma4k5q8i5 .
 
 cdiscpilot01:RandomizationBAL3_01-701-1015 a code:RandomizationBAL3 ;
-	skos:prefLabel "Randomization Person 1" ;
+	skos:prefLabel "Randomization Person 01-701-1015" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:outcome cd01p:Arm_Pbo .
 
-cdiscpilot01:Person_01-701-1028 skos:preflabel "Person 3" ;
+cdiscpilot01:Person_01-701-1028 skos:preflabel "Person 01-701-1028" ;
 	a study:EnrolledSubject ;
 	study:actualArm cd01p:Arm_Xan_Hi ;
-	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_16suu2uqgfo2fc05o08sr6g1t58bj215_r57tfni8fttfflf1aq83vrr7cps2e81k ;
-	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_uaafn1aabjqjqnmg13lo4h3372g6eq0f_6iajojaqva7oil29dh2cerk7f0040an4 ;
+	study:hasLifespan cdiscpilot01:Lifespan_9n99dlulvb7qi018sjfkv73k59ofeppf ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_5r43avnp7iark6optgis84lfenfbpdgq ;
+	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_g4cak70s0vt0rai0c1ojc85no05gekvd ;
 	study:hasSite cd01p:Site_701 ;
-	study:participatesIn cdiscpilot01:RandomizationBAL3_01-701-1028 , cdiscpilot01:DemographicDataCollection_01-701-1028 , cdiscpilot01:CumulativeProductAdministration_01-701-1028 , cdiscpilot01:InformedConsentAdult_01-701-1028 ;
+	study:participatesIn cdiscpilot01:RandomizationBAL3_01-701-1028 , 
+  cdiscpilot01:DemographicDataCollection_01-701-1028 , 
+  cdiscpilot01:CumulativeProductAdministration_01-701-1028 , 
+  cdiscpilot01:InformedConsentAdult_01-701-1028 ;
 	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 ;
 	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1028 .
 
 cdiscpilot01:RandomizationBAL3_01-701-1028 a code:RandomizationBAL3 ;
-	skos:prefLabel "Randomization Person 3" ;
+	skos:prefLabel "Randomization Person 01-701-1028" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:outcome cd01p:Arm_Xan_Hi .
 
 cdiscpilot01:DemographicDataCollection_01-701-1028 a cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1028 ;
-	skos:prefLabel "Person 3 Screening 1 Demographic data collection" ;
+	skos:prefLabel "Person 01-701-1028 Screening 1 Demographic data collection" ;
 	study:sex code:Sex_M ;
 	study:hasDate cdiscpilot01:Date_uaafn1aabjqjqnmg13lo4h3372g6eq0f ;
 	study:activityStatus code:ActivityStatus_1 ;
@@ -171,18 +130,19 @@ cdiscpilot01:DemographicDataCollection_01-701-1028 a cd01p:VisitScreening1DemogD
 	code:hasAge cdiscpilot01:AgeOutcome_q0im1nctfmq4cth7ehdtcs0ug2fvp9n3 ;
 	study:ethnicity code:Enthnicity_j6df4va0bc0gqgc4movdocc72ukinvhm .
 
-cdiscpilot01:Person_01-701-1023 skos:preflabel "Person 2" ;
+cdiscpilot01:Person_01-701-1023 skos:preflabel "Person 01-701-1023" ;
 	a study:EnrolledSubject ;
 	study:actualArm cd01p:Arm_Pbo ;
-	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_raera9petjq92qs0n7n40o3mgoi28a9a_klq2ru8npk1e4cv1ieg1mbgn0a7avofp ;
-	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_m9eproucjuhbto78r3ij902mqsklh6so_u5v40r1hbrajblo04oev36pkvko16osp ;
+	study:hasLifespan cdiscpilot01:Lifespan_dv7it5dtak5qsoavmfdso0gb140n73eu ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_q9lgesjucdc47jbh5fkef74pgnot2uup ;
+	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_oudfnrp9gt2j8nhvchk7b9g077kfd93s ;
 	study:hasSite cd01p:Site_701 ;
 	study:participatesIn cdiscpilot01:DemographicDataCollection_01-701-1023 , cdiscpilot01:CumulativeProductAdministration_01-701-1023 , cdiscpilot01:RandomizationBAL3_01-701-1023 , cdiscpilot01:InformedConsentAdult_01-701-1023 ;
 	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1023 ;
 	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1023 .
 
 cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1015 a study:CumulativeProductAdministrationInterval ;
-	rdfs:label "Cumulative Product Administration Interval 1" .
+	rdfs:label "Cumulative Product Administration Interval 01-701-1015" .
 
 cdiscpilot01:UniqueSubjectIdentifier_01-701-1023 a study:UniqueSubjectIdentifier ;
 	skos:prefLabel "01-701-1023" .
@@ -198,19 +158,19 @@ cdiscpilot01:SubjectIdentifier_1023 a study:SubjectIdentifier ;
 cd01p:Site_701 study:hasInvestigator cdiscpilot01:Investigator_123 .
 
 cdiscpilot01:CumulativeProductAdministration_01-701-1028 a study:CumulativeDrugAdministration ;
-	skos:prefLabel "Product administration 3" ;
+	skos:prefLabel "Product administration 01-701-1028" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1028 .
 
-cdiscpilot01:Person_01-701-1015 skos:preflabel "Person 1" ;
+cdiscpilot01:Person_01-701-1015 skos:preflabel "Person 01-701-1015" ;
 	a study:EnrolledSubject ;
 	study:actualArm cd01p:Arm_Pbo ;
 	study:deathFlag "Y" ;
-	study:hasLifespan cdiscpilot01:Lifespan_udj4rptja2ij6a5lmb3meemc3mca7ip3_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_s6rc8otorv5ukcpag29jggn8m8h5127t_cpkmsvqhc92dn75siimpl3fj20mmtdei ;
-	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_n6l0u58r7lrhic8l4b1e4u7k8182j6fq_k78l4og87v61q51vabbketftn59735lb ;
+	study:hasLifespan cdiscpilot01:Lifespan_o34nd6pt490t63isv0mibg5t0ot1k422 ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_9v3vjafvhv4fg506bjrb8hfdbbjqvrr3 ;
+	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_pnaa4g66icg1nlqitje1ere3hlsk0p8c ;
 	study:hasSite cd01p:Site_701 ;
-	study:participatesIn cdiscpilot01:RandomizationBAL3_01-701-1015 , cdiscpilot01:DemographicDataCollection_01-701-1015 , cdiscpilot01:InformedConsentAdult_01-701-1015 , cdiscpilot01:CumulativeProductAdministration_01-701-1015 , cdiscpilot01:PopFlagCOMPLT24_01-701-1015 , cdiscpilot01:PopFlagEFFICACY_01-701-1015 , cdiscpilot01:PopFlagCOMPLT16_01-701-1015 , cdiscpilot01:PopFlagCOMPLT8_01-701-1015 , cdiscpilot01:PopFlagSAFETY_01-701-1015 , cdiscpilot01:PopFlagITT_01-701-1015 ;
+	study:participatesIn cdiscpilot01:RandomizationBAL3_01-701-1015 , cdiscpilot01:DemographicDataCollection_01-701-1015 , cdiscpilot01:InformedConsentAdult_01-701-1015 , cdiscpilot01:CumulativeProductAdministration_01-701-1015 , cdiscpilot01:PopFlagCOMPLT24_01-701-1015 , cdiscpilot01:PopFlagEFFICACY_01-701-1015 , cdiscpilot01:PopFlagCOMPLT16_01-701-1015 , cdiscpilot01:PopFlagCOMPLT8_01-701-1015 , cdiscpilot01:PopFlagSAFETY_01-701-1015 , cdiscpilot01:PopFlagITT_01-701-1015 , cdiscpilot01:Visit_322gd94hll289c3odo4856v784jffrem_01-701-1015 , cdiscpilot01:Visit_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 , cdiscpilot01:Visit_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 , cdiscpilot01:Visit_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 ;
 	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 ;
 	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1015 .
 
@@ -218,17 +178,17 @@ cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 a study:UniqueSubjectIdentifier
 	skos:prefLabel "01-701-1015" .
 
 cdiscpilot01:CumulativeProductAdministration_01-701-1023 a study:CumulativeDrugAdministration ;
-	skos:prefLabel "Product administration 2" ;
+	skos:prefLabel "Product administration 01-701-1023" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1023 .
 
 cdiscpilot01:RandomizationBAL3_01-701-1023 a code:RandomizationBAL3 ;
-	skos:prefLabel "Randomization Person 2" ;
+	skos:prefLabel "Randomization Person 01-701-1023" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:outcome cd01p:Arm_Pbo .
 
 cdiscpilot01:DemographicDataCollection_01-701-1015 a cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
-	skos:prefLabel "Person 1 Screening 1 Demographic data collection" ;
+	skos:prefLabel "Person 01-701-1015 Screening 1 Demographic data collection" ;
 	study:sex code:Sex_F ;
 	study:hasDate cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
 	study:activityStatus code:ActivityStatus_1 ;
@@ -237,50 +197,50 @@ cdiscpilot01:DemographicDataCollection_01-701-1015 a cd01p:VisitScreening1DemogD
 	study:ethnicity code:Enthnicity_gnja37oohiiipittns2ro9rma4k5q8i5 .
 
 cdiscpilot01:InformedConsentAdult_01-701-1015 a code:InformedConsentAdult ;
-	skos:prefLabel "Informed consent Person 1" ;
+	skos:prefLabel "Informed consent Person 01-701-1015" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:hasActivityInterval cdiscpilot01:InformedConsentInterval_01-701-1015 ;
 	study:outcome code:InformedConsentOutcome_1 ;
 	study:hasStartRule study:StartRuleDefault_1 .
 
 cdiscpilot01:VisitScreening1Activity_01-701-1023 a owl:Class ;
-	skos:prefLabel "Visit Screening 1 Person 2" ;
+	skos:prefLabel "Visit Screening 1 Person 01-701-1023" ;
 	rdfs:subClassOf custom:VisitScreening1Activity .
 
 cdiscpilot01:CumulativeProductAdministration_01-701-1015 a study:CumulativeDrugAdministration ;
-	skos:prefLabel "Product administration 1" ;
+	skos:prefLabel "Product administration 01-701-1015" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1015 .
 
 cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1028 a study:CumulativeProductAdministrationInterval ;
-	rdfs:label "Cumulative Product Administration Interval 3" .
+	rdfs:label "Cumulative Product Administration Interval 01-701-1028" .
 
 cdiscpilot01:VisitScreening1Activity_01-701-1028 a owl:Class ;
-	skos:prefLabel "Visit Screening 1 Person 3" ;
+	skos:prefLabel "Visit Screening 1 Person 01-701-1028" ;
 	rdfs:subClassOf custom:VisitScreening1Activity .
 
 cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 a study:UniqueSubjectIdentifier ;
 	skos:prefLabel "01-701-1028" .
 
 cdiscpilot01:VisitScreening1Activity_01-701-1015 a owl:Class ;
-	skos:prefLabel "Visit Screening 1 Person 1" ;
+	skos:prefLabel "Visit Screening 1 Person 01-701-1015" ;
 	rdfs:subClassOf custom:VisitScreening1Activity .
 
 cdiscpilot01:SubjectIdentifier_1015 a study:SubjectIdentifier ;
 	skos:prefLabel "1015" .
 
 cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1023 a study:CumulativeProductAdministrationInterval ;
-	rdfs:label "Cumulative Product Administration Interval 2" .
+	rdfs:label "Cumulative Product Administration Interval 01-701-1023" .
 
 cdiscpilot01:InformedConsentAdult_01-701-1028 a code:InformedConsentAdult ;
-	skos:prefLabel "Informed consent Person 3" ;
+	skos:prefLabel "Informed consent Person 01-701-1028" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:hasActivityInterval cdiscpilot01:InformedConsentInterval_01-701-1028 ;
 	study:outcome code:InformedConsentOutcome_1 ;
 	study:hasStartRule study:StartRuleDefault_1 .
 
 cdiscpilot01:InformedConsentAdult_01-701-1023 a code:InformedConsentAdult ;
-	skos:prefLabel "Informed consent Person 2" ;
+	skos:prefLabel "Informed consent Person 01-701-1023" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:hasActivityInterval cdiscpilot01:InformedConsentInterval_01-701-1023 ;
 	study:outcome code:InformedConsentOutcome_1 ;
@@ -326,12 +286,97 @@ cdiscpilot01:PopFlagITT_01-701-1015 a custom:PopFlagITT ;
 
 cdiscpilot01:InformedConsentInterval_01-701-1015 a study:InformedConsentInterval ;
 	time:hasBeginning cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	rdfs:label "Informed Consent Interval 1" .
+	rdfs:label "Informed Consent Interval 01-701-1015" .
 
 cdiscpilot01:InformedConsentInterval_01-701-1023 a study:InformedConsentInterval ;
 	time:hasBeginning cdiscpilot01:Date_m9eproucjuhbto78r3ij902mqsklh6so ;
-	rdfs:label "Informed Consent Interval 2" .
+	rdfs:label "Informed Consent Interval 01-701-1023" .
 
 cdiscpilot01:InformedConsentInterval_01-701-1028 a study:InformedConsentInterval ;
 	time:hasBeginning cdiscpilot01:Date_uaafn1aabjqjqnmg13lo4h3372g6eq0f ;
-	rdfs:label "Informed Consent Interval 3" .
+	rdfs:label "Informed Consent Interval 01-701-1028" .
+
+cdiscpilot01:Visit_322gd94hll289c3odo4856v784jffrem_01-701-1015 a custom:Visit_322gd94hll289c3odo4856v784jffrem ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:hasSubActivity cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 , cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 , cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca ;
+	study:hasPerformedDate cdiscpilot01:Date_s6rc8otorv5ukcpag29jggn8m8h5127t .
+
+cdiscpilot01:Visit_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 a custom:Visit_fork7odhki16tqhtec07d1gto1239dpa ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:hasSubActivity cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 , cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 , cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca ;
+	study:hasPerformedDate cdiscpilot01:Date_6ll6usd2v9ng33aadecgkg0417u3kf3i .
+
+cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 a cdiscpilot01:VisitActivity_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 , cdiscpilot01:VisitActivity_322gd94hll289c3odo4856v784jffrem_01-701-1015 , cdiscpilot01:VisitActivity_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 , cdiscpilot01:VisitActivity_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 .
+
+cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 a cdiscpilot01:VisitActivity_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 , cdiscpilot01:VisitActivity_322gd94hll289c3odo4856v784jffrem_01-701-1015 , cdiscpilot01:VisitActivity_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 , cdiscpilot01:VisitActivity_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 .
+
+cdiscpilot01:VisitActivity_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 a owl:Class ;
+	skos:prefLabel "Visit WEEK 24 Person 01-701-1015" ;
+	rdfs:subClassOf custom:VisitActivityfork7odhki16tqhtec07d1gto1239dpa .
+
+cdiscpilot01:Visit_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 a custom:Visit_5e2mhqp09bitcbn7j45gak11gsqq2a0r ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:hasSubActivity cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 , cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 , cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca ;
+	study:hasPerformedDate cdiscpilot01:Date_7us618p15nshr6i76otlnd2e65hhbo1c .
+
+cdiscpilot01:Visit_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 a custom:Visit_1e1uak4vs9dpl4d263rl3b9a1pongqrl ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:hasSubActivity cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 , cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 , cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca ;
+	study:hasPerformedDate cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq .
+
+cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca a cdiscpilot01:VisitActivity_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 , cdiscpilot01:VisitActivity_322gd94hll289c3odo4856v784jffrem_01-701-1015 , cdiscpilot01:VisitActivity_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 , cdiscpilot01:VisitActivity_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 .
+
+cdiscpilot01:VisitActivity_322gd94hll289c3odo4856v784jffrem_01-701-1015 a owl:Class ;
+	skos:prefLabel "Visit BASELINE Person 01-701-1015" ;
+	rdfs:subClassOf custom:VisitActivity322gd94hll289c3odo4856v784jffrem .
+
+cdiscpilot01:VisitActivity_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 a owl:Class ;
+	skos:prefLabel "Visit WEEK 2 Person 01-701-1015" ;
+	rdfs:subClassOf custom:VisitActivity5e2mhqp09bitcbn7j45gak11gsqq2a0r .
+
+cdiscpilot01:VisitActivity_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 a owl:Class ;
+	skos:prefLabel "Visit SCREENING 1 Person 01-701-1015" ;
+	rdfs:subClassOf custom:VisitActivity1e1uak4vs9dpl4d263rl3b9a1pongqrl .
+
+cdiscpilot01:Lifespan_9n99dlulvb7qi018sjfkv73k59ofeppf a study:Lifespan ;
+	time:hasBeginning cdiscpilot01:Date_pchqlo9qpfvfhmafgr5h41cm65vqihc9 ;
+	rdfs:label "Lifespan Interval" .
+
+cdiscpilot01:ReferenceInterval_q9lgesjucdc47jbh5fkef74pgnot2uup a study:ReferenceInterval ;
+	time:hasBeginning cdiscpilot01:Date_raera9petjq92qs0n7n40o3mgoi28a9a ;
+	time:hasEnd cdiscpilot01:Date_klq2ru8npk1e4cv1ieg1mbgn0a7avofp ;
+	rdfs:label "Reference Interval 01-701-1023" .
+
+cdiscpilot01:Lifespan_o34nd6pt490t63isv0mibg5t0ot1k422 a study:Lifespan ;
+	time:hasBeginning cdiscpilot01:Date_udj4rptja2ij6a5lmb3meemc3mca7ip3 ;
+	time:hasEnd cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
+	rdfs:label "Lifespan Interval" .
+
+cdiscpilot01:ReferenceInterval_5r43avnp7iark6optgis84lfenfbpdgq a study:ReferenceInterval ;
+	time:hasBeginning cdiscpilot01:Date_16suu2uqgfo2fc05o08sr6g1t58bj215 ;
+	time:hasEnd cdiscpilot01:Date_r57tfni8fttfflf1aq83vrr7cps2e81k ;
+	rdfs:label "Reference Interval 01-701-1028" .
+
+cdiscpilot01:StudyParticipationInterval_g4cak70s0vt0rai0c1ojc85no05gekvd a study:StudyParticipationInterval ;
+	time:hasBeginning cdiscpilot01:Date_uaafn1aabjqjqnmg13lo4h3372g6eq0f ;
+	time:hasEnd cdiscpilot01:Date_6iajojaqva7oil29dh2cerk7f0040an4 ;
+	rdfs:label "Study Participation Interval 01-701-1028" .
+
+cdiscpilot01:StudyParticipationInterval_oudfnrp9gt2j8nhvchk7b9g077kfd93s a study:StudyParticipationInterval ;
+	time:hasBeginning cdiscpilot01:Date_m9eproucjuhbto78r3ij902mqsklh6so ;
+	time:hasEnd cdiscpilot01:Date_u5v40r1hbrajblo04oev36pkvko16osp ;
+	rdfs:label "Study Participation Interval 01-701-1023" .
+
+cdiscpilot01:Lifespan_dv7it5dtak5qsoavmfdso0gb140n73eu a study:Lifespan ;
+	time:hasBeginning cdiscpilot01:Date_pt2m6avt4r1v33ksdu1m4ggqjgec0q9f ;
+	rdfs:label "Lifespan Interval" .
+
+cdiscpilot01:ReferenceInterval_9v3vjafvhv4fg506bjrb8hfdbbjqvrr3 a study:ReferenceInterval ;
+	time:hasBeginning cdiscpilot01:Date_s6rc8otorv5ukcpag29jggn8m8h5127t ;
+	time:hasEnd cdiscpilot01:Date_cpkmsvqhc92dn75siimpl3fj20mmtdei ;
+	rdfs:label "Reference Interval 01-701-1015" .
+
+cdiscpilot01:StudyParticipationInterval_pnaa4g66icg1nlqitje1ere3hlsk0p8c a study:StudyParticipationInterval ;
+	time:hasBeginning cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
+	time:hasEnd cdiscpilot01:Date_k78l4og87v61q51vabbketftn59735lb ;
+	rdfs:label "Study Participation Interval 01-701-1015" .

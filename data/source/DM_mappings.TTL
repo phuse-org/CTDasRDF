@@ -39,10 +39,10 @@ cdiscpilot01:Person_{usubjid}
   skos:preflabel "Person {usubjid}"^^xsd:string ;
   study:actualArm cd01p:Arm_{actarmcd} ;
   study:deathFlag "{dthfl}"^^xsd:string ;
-  study:hasLifespan cdiscpilot01:Lifespan_{#brthdate}_{#dthdtc} ;
-  study:hasReferenceInterval cdiscpilot01:ReferenceInterval_{#rfstdtc}_{#rfendtc} ;
+  study:hasLifespan cdiscpilot01:Lifespan_{#im_lifeSpan};
+  study:hasReferenceInterval cdiscpilot01:ReferenceInterval_{#im_refInt} ;
   study:hasSite cd01p:Site_{siteid} ;
-  study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_{#dmdtc}_{#rfpendtc} ;
+  study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_{#im_studyPartInt};
   study:hasSubjectID cdiscpilot01:SubjectIdentifier_{subjid} ;
   study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_{usubjid} ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_{usubjid};
@@ -53,11 +53,11 @@ cdiscpilot01:Person_{usubjid}
 
   # Lifespan ----
   #  concat of birthdate and rficdtc hashes.
-  cdiscpilot01:Lifespan_{#brthdate}_{#rficdtc} 
+  cdiscpilot01:Lifespan_{#im_lifeSpan} 
     a study:Lifespan ;
-    rdfs:label "Lifespan Interval {usubjid}"^^xsd:string ;
+    rdfs:label "Lifespan Interval"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{#brthdate} ;
-    time:hasEnd cdiscpilot01:Date_{#rficdtc} 
+    time:hasEnd cdiscpilot01:Date_{#dthdtc} 
   .
      
     # Lifespan Dates
@@ -65,17 +65,17 @@ cdiscpilot01:Person_{usubjid}
     cdiscpilot01:Date_{#brthdate}
       rdf:type study:Birthdate ;
       rdfs:label "{brthdate}"^^xsd:string ;
-      study:dateTimeInXSDString "{brthdate}"^^xsd:string 
+      study:dateTimeInXSDString "Birth date {brthdate}"^^xsd:string 
     .
     # b) deathdate
     cdiscpilot01:Date_{#dthdtc}
       rdf:type study:Deathdate ;
-      rdfs:label "{dthdtc}"^^xsd:string ;
+      rdfs:label "Death date {dthdtc}"^^xsd:string ;
       study:dateTimeInXSDString "{dthdtc}"^^xsd:string 
     .
   
   # ReferenceInterval ----
-  cdiscpilot01:ReferenceInterval_{#rfstdtc}_{#rfendtc} 
+  cdiscpilot01:ReferenceInterval_{#im_refInt} 
     a study:ReferenceInterval ;
     rdfs:label "Reference Interval {usubjid}"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{#rfstdtc} ;
@@ -96,7 +96,7 @@ cdiscpilot01:Person_{usubjid}
     .
 
   # StudyParticipationInterval
-  cdiscpilot01:StudyParticipationInterval_{#dmdtc}_{#rfpendtc} 
+  cdiscpilot01:StudyParticipationInterval_{#im_studyPartInt} 
     rdf:type study:StudyParticipationInterval ;
     rdfs:label "Study Participation Interval {usubjid}"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{#dmdtc} ;

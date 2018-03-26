@@ -5,7 +5,10 @@
 # SRC : N/A
 # IN  : dm dataframe 
 # OUT : modified dm dataframe 
-# NOTE: 
+# NOTE: Columns that created that are not usually in SDTM are prefixed with im_
+#       Eg: im_lifespan  - for lifespan IRI creation
+#           im_sdtmterm  - to link to SDTM terminlology
+#           brthdate  - no im_ prefix because this is often collected in SDTM.
 # TODO: 
 #______________________________________________________________________________
 
@@ -25,3 +28,22 @@ dm$rficdtc <- dm$dmdtc   # Confirm this is not in the new Test Data factory vers
 dm$dthdtc <- as.character(dm$dthdtc)
 dm$dthdtc[dm$usubjid == '01-701-1015' ] <- "2013-12-26"  # Death Date
 dm$dthfl[dm$usubjid == '01-701-1015' ]  <- "Y" # Set a Death flag  for Person_1
+
+
+#------------------------------------------------------------------------------
+#---- Interval fields to create IRI hashes 
+#  Start and end dates are concatenated together so missing values do not 
+#    prevent IRI creation. Example Lifespan with no death date specified.
+#    A string must be added to the value so a missing value will not create
+#    and IRI that could match another IRI used for an interval that has a 
+#    different meaning.
+
+dm$im_lifeSpan     <- paste("lifeSpan",dm$brthdate, dm$dthdtc)
+dm$im_refInt       <- paste("refInt",dm$rfstdtc, dm$rfendtc)
+dm$im_studyPartInt <- paste("refInt",dm$dmdtc, dm$rfpendtc)
+
+#---- Values to link to codelists, etc.
+
+
+
+
