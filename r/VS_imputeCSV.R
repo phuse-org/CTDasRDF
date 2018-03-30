@@ -10,6 +10,53 @@
 #______________________________________________________________________________
 
 # ** Impute ----
+# StartRules based on vstpt 
+vs$im_StartRule <- recode (vs$vstpt,
+  " 'AFTER LYING DOWN FOR 5 MINUTES'  = 'StartRuleLying5' ;
+    'AFTER STANDING FOR 1 MINUTE'     = 'StartRuleStanding1' ;
+    'AFTER STANDING FOR 3 MINUTES'    = 'StartRuleStanding3'"
+)
+
+# visit in Camel Case Short form for reacing IRIs to ont
+vs$im_visit_CCaseSh <- recode (vs$visit,
+  " 'SCREENING 1'          =  'Screening1' ;
+    'SCREENING 2'          =  'Screening2' ;
+    'BASELINE'             =  'Baseline' ;
+    'AMBUL ECG PLACEMENT'  =  'AmbulECGPlacement' ;
+    'AMBUL ECG REMOVAL'    =  'AmbulECGRemoval' ;
+    'WEEK 2'               =  'Wk2' ;
+    'WEEK 4'               =  'Wk4' ;
+    'WEEK 6'               =  'Wk6' ;
+    'WEEK 8'               =  'Wk8' ;
+    'WEEK 12'              =  'Wk12' ;
+    'WEEK 16'              =  'Wk16' ;
+    'WEEK 20'              =  'Wk20' ;
+    'WEEK 24'              =  'Wk24' ;
+    'WEEK 26'              =  'Wk26' ;
+    'RETRIEVAL'            =  'Retrieval' ;
+    'UNSCHEDULED 3.1'      =  'Unscheduled31' "
+)
+
+
+vs$im_vspos_CCase <- recode (vs$vspos,
+  " 'STANDING'  = 'Standing' ;
+    'SUPINE'    = 'Supine'"
+)
+
+
+# vslat
+vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
+vs[vs$vsseq %in% c(2,87)       & vs$personNum == 1, "vslat"] <- "LEFT"
+
+
+vs$im_vslat_CCase <- recode (vs$vslat,
+  " 'LEFT'  = 'Left' ;
+    'RIGHT'    = 'Right'"
+)
+
+
+
+
 
 #------------- ORIGINAL IMPUTATIONS FOLLOW ------------------------------------
 #TW # All Subjects ----
@@ -60,6 +107,3 @@
 #TW vs[vs$vsseq %in% c(128) & vs$personNum == 1, "vsspid"]  <- "3000"
 #TW vs[vs$vsseq %in% c(142) & vs$personNum == 1, "vsspid"]  <- "5000"
 #TW 
-#TW # vslat
-#TW vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
-#TW vs[vs$vsseq %in% c(2,87) & vs$personNum == 1, "vslat"]       <- "LEFT"

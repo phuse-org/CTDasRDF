@@ -70,7 +70,7 @@ cdiscpilot01:Person_{usubjid}
     # b) deathdate
     cdiscpilot01:Date_{#dthdtc}
       rdf:type study:Deathdate ;
-      rdfs:label "Death date {dthdtc}"^^xsd:string ;
+      rdfs:label "{dthdtc}"^^xsd:string ;
       study:dateTimeInXSDString "{dthdtc}"^^xsd:string 
     .
   

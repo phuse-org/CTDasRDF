@@ -10,6 +10,7 @@
 # TODO: 
 ###############################################################################
 library(Hmisc)
+library(car)   # recode
 
 dm_n=3;  # The first n patients from the DM domain.
 
@@ -58,7 +59,7 @@ vs  <- readXPT("vs")  # first row only for initial testing.
 vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
 
 # Impute values needed for testing
-source('R/DM_imputeCSV.R')  # Creates birthdate. 
+source('R/VS_imputeCSV.R')  # Creates birthdate. 
 
 
 write.csv(vs, file="data/source/vs_subset.csv", 

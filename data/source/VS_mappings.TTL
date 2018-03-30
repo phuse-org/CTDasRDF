@@ -31,7 +31,7 @@
 #      
 # -----------------------------------------------------------------------------
 cdiscpilot01:Person_{usubjid} 
-  study:participatesIn cdiscpilot01:Visit_{#visit}_{usubjid} ;
+  study:participatesIn cdiscpilot01:Visit_{im_visit_CCaseSh}_{usubjid} ;
 .
 
   # Visit ----
@@ -41,24 +41,36 @@ cdiscpilot01:Person_{usubjid}
   #                     etc.
   # Hardcoding:  ActivityStatus_1 = CO(Complete)
    
-  cdiscpilot01:Visit_{#visit}_{usubjid}
-    rdf:type custom:Visit_{#visit} ;
-    study:activityStatus code:ActivityStatus_1 ;
+  cdiscpilot01:Visit_{im_visit_CCaseSh}_{usubjid}
+    rdf:type               custom:Visit{im_visit_CCaseSh} ;
+    study:activityStatus   code:ActivityStatus_1 ;
+    study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{im_vspos_CCase}_{usubjid} ;
+    study:hasSubActivity   cdiscpilot01:Test_{vstestcd}_{#vsorres} ;
     study:hasPerformedDate cdiscpilot01:Date_{#vsdtc} ;
-    # study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_1 ;
-    study:hasSubActivity cdiscpilot01:AssumeBodyPosition_{#vspos}_{#vstpt} ;
   .
 
-# NEW TRIPLES
   # AssumeBodyPosition
-  cdiscpilot01:AssumeBodyPosition_{#vspos}_{#vstpt}
-    rdf:type cdiscpilot01:VisitActivity_{#visit}_{usubjid} ;
+  cdiscpilot01:AssumeBodyPosition{im_vspos_CCase}_{usubjid} 
+    rdf:type           cdiscpilot01:Visit_{#visit}_Activity_{usubjid};
+    rdf:type           custom:AssumeBodyPosition{im_vspos_CCase} ;
+    skos:prefLabel     "Assume {im_vspos_CCase} position"^^xsd:string ;
+    study:outcome  code:Vspos_{vspos};
   .
-  cdiscpilot01:VisitActivity_{#visit}_{usubjid}
-    rdf:type owl:Class ;
-   rdfs:subClassOf custom:VisitActivity{#visit};
-   skos:prefLabel "Visit {visit} Person {usubjid}"^^xsd:string ;
-  .
+
+    cdiscpilot01:Visit_{#visit}_Activity_{usubjid}
+      rdf:type        owl:Class ;
+      skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
+      rdfs:subClassOf custom:Visit{im_visit_CCaseSh}Activity;
+   .
+
+
+
+# TO HERE
+# study:hasStartRule cdiscpilot01:StartRule{im_StartRule}_{usubjid} ;
+#  cdiscpilot01:StartRule{im_StartRule}_{usubjid}
+#    rdf:type       cd01p:{im_StartRule} ;
+#    skos:prefLabel "{usubjid} {visit} Start Rule {vstpt} "^^xsd:string ;
+#  .
 
 # ORIGINAL TRIPLES FOR SCREENING1_1
 #cdiscpilot01:VisitScreening1_1

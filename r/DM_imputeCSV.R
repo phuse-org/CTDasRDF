@@ -42,8 +42,3 @@ dm$im_lifeSpan     <- paste("lifeSpan", dm$brthdate, dm$dthdtc)
 dm$im_refInt       <- paste("refInt",   dm$rfstdtc,  dm$rfendtc)
 dm$im_studyPartInt <- paste("refInt",   dm$dmdtc,    dm$rfpendtc)
 
-#---- Values to link to codelists, etc.
-
-
-
-
