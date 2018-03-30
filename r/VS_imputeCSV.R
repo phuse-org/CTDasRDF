@@ -44,6 +44,7 @@ vs$im_vspos_CCase <- recode (vs$vspos,
 )
 
 
+
 # vslat
 vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
 vs[vs$vsseq %in% c(2,87)       & vs$personNum == 1, "vslat"] <- "LEFT"

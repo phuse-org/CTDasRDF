@@ -140,6 +140,9 @@ cdiscpilot01:Person_{usubjid}
 # race: <http://rdf.cdisc.org/sdtmterm#C74457.C41261> ;
 # sex <http://rdf.cdisc.org/sdtmterm#C66731.C16576>
 # Date_19 changed.
+# 
+# VisitScreening1Activity_{usubjid}  is further defined in VS_Mappings.TTL as 
+#     cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid}
 # -----------------------------------------------------------------------------
 cdiscpilot01:DemographicDataCollection_{usubjid}
   rdf:type cd01p:VisitScreening1DemogDataColl ;
@@ -156,10 +159,10 @@ cdiscpilot01:DemographicDataCollection_{usubjid}
 
   # DemographicDataCollection subtriples
   # VisitScreening1Activity
-  cdiscpilot01:VisitScreening1Activity_{usubjid}
-    rdf:type owl:Class ;
-    rdfs:subClassOf custom:VisitScreening1Activity ;
-    skos:prefLabel "Visit Screening 1 Person {usubjid}"^^xsd:string ;
+ # cdiscpilot01:VisitScreening1Activity_{usubjid}
+ #   rdf:type owl:Class ;
+ #   rdfs:subClassOf custom:VisitScreening1Activity ;
+ #   skos:prefLabel "Visit Screening 1 Person {usubjid}"^^xsd:string ;
   .
 
  # WIP validate these triples and the age unit 

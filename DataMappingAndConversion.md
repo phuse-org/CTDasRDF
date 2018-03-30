@@ -131,9 +131,27 @@ The following values are created in the mapping.
 
 
 ## VS
+### Sequence of events in VS
+The sequence of data collection from each patient is important to how the data in VS is represented. The patient is told to lie down. After 5 min supine, blood pressures and temp are recorded. The patient then stands up. After 1 min standng the same tests are performed, and then again after 3 min standing time.
+The data is modeled to the graph using this pattern:
 
+| #  | Event                     | Coded as                                       |
+| -- | ------------------------- | -----------------------------------------------|
+| 1  | Lie Down | `AssumeBodyPositionSupine_{usubjid}` |
+| 2  | After lying 5 min | `StartRuleLying5_{usubjid}` |
+| 3  | Perform tests | vstested=DIABP, SYSBP, TEMP |
+| 4  | Stand up | `AssumeBodyPositionStanding_{usubjid}` |
+| 5  | After standing for 1 min | `StartRuleStanding1_{usubjid}` |
+| 6  | Perform tests | vstestcd=DIABP, SYSBP, TEMP |
+| 7  | After standing for 3 min | `StartRuleStanding3_{usubjid}` |
+| 8  | Perform tests | `vstestcd=DIABP, SYSBP, TEMP |
+
+
+### SMS details
 | Entity    | SMS                      | Description 
 | --------- | ------------------------ | ---------------------------------------------
-| Visit     | Visit_{#visit}_{usubjid} | Unique to each visit x person. visit has spaces and must be hashed. 
-| AssumeBodyPosition | AssumeBodyPosition_{vspos}_{#vstpt} | Combination of the *vspos* (SUPINE or STANDING) and *vstpt* (After standing for X, after lying for X) 
+| Visit     | Visit_{im_visit_CCaseSh}_{usubjid} | Unique to each visit x person. im_visit_CCaseSh is Camel-cased `visit` shortned, no spaces. 
+| AssumeBodyPosition | AssumeBodyPosition{im_vspos_CCase}_{usubjid} | im_vspos_CCase = Camel-cased `vspos` (=Supine or Standing) specific to each patient.  Patient 1 Standing, Patient 2 standing, etc.
+
+**More to be added.
 

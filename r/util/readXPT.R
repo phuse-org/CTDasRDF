@@ -23,8 +23,11 @@ readXPTDomain <- function (domainName){
 
 domainVals <- readXPTDomain("vs")
 
+foo<-data.frame(domainVals$vsseq)
 
-foo<-as.data.frame(unique(domainVals$visit))
+
+
+foo<-as.data.frame(unique(domainVals$vsorres))
 
 
 

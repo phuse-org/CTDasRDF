@@ -51,19 +51,20 @@ cdiscpilot01:Person_{usubjid}
 
   # AssumeBodyPosition
   cdiscpilot01:AssumeBodyPosition{im_vspos_CCase}_{usubjid} 
-    rdf:type           cdiscpilot01:Visit_{#visit}_Activity_{usubjid};
-    rdf:type           custom:AssumeBodyPosition{im_vspos_CCase} ;
-    skos:prefLabel     "Assume {im_vspos_CCase} position"^^xsd:string ;
-    study:outcome  code:Vspos_{vspos};
+    rdf:type             cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid};
+    rdf:type             custom:AssumeBodyPosition{im_vspos_CCase} ;
+    skos:prefLabel       "Assume {im_vspos_CCase} position"^^xsd:string ;   
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
+    study:hasStartRule   cdiscpilot01:StartRule{im_StartRule}_{usubjid} ;
+    study:outcome        code:Vspos_{vspos} ;
   .
 
-    cdiscpilot01:Visit_{#visit}_Activity_{usubjid}
+    cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid}
       rdf:type        owl:Class ;
       skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
       rdfs:subClassOf custom:Visit{im_visit_CCaseSh}Activity;
    .
-
-
 
 # TO HERE
 # study:hasStartRule cdiscpilot01:StartRule{im_StartRule}_{usubjid} ;
