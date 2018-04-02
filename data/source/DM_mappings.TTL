@@ -33,16 +33,17 @@ cd01p:Study_{studyid}
 # Person_
 # TODO: CumulativeProductAdministration_{usubjid}: Sets up the parent triples 
 #         for those to be built from EX domain.
+# ORIGINAL 
 # -----------------------------------------------------------------------------
 cdiscpilot01:Person_{usubjid} 
   a study:EnrolledSubject;
   skos:preflabel "Person {usubjid}"^^xsd:string ;
   study:actualArm cd01p:Arm_{actarmcd} ;
   study:deathFlag "{dthfl}"^^xsd:string ;
-  study:hasLifespan cdiscpilot01:Lifespan_{#im_lifeSpan};
-  study:hasReferenceInterval cdiscpilot01:ReferenceInterval_{#im_refInt} ;
+  study:hasLifespan cdiscpilot01:Lifespan_{en_brthdate}_{en_dthdtc};
+  study:hasReferenceInterval cdiscpilot01:ReferenceInterval_{en_rfstdtc}_{en_rfendtc} ;
   study:hasSite cd01p:Site_{siteid} ;
-  study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_{#im_studyPartInt};
+  study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_{en_dmdtc}_{en_rfpendtc} ;
   study:hasSubjectID cdiscpilot01:SubjectIdentifier_{subjid} ;
   study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_{usubjid} ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_{usubjid};
@@ -52,65 +53,65 @@ cdiscpilot01:Person_{usubjid}
 .
 
   # Lifespan ----
-  #  concat of birthdate and rficdtc hashes.
-  cdiscpilot01:Lifespan_{#im_lifeSpan} 
+  #  concat of encoded birthdate and rficdtc dates [this is line 33]
+  cdiscpilot01:Lifespan_{en_brthdate}_{en_dthdtc}
     a study:Lifespan ;
     rdfs:label "Lifespan Interval"^^xsd:string ;
-    time:hasBeginning cdiscpilot01:Date_{#brthdate} ;
-    time:hasEnd cdiscpilot01:Date_{#dthdtc} 
+    time:hasBeginning cdiscpilot01:Date_{en_brthdate} ;
+    time:hasEnd cdiscpilot01:Date_{en_dthdtc} 
   .
      
     # Lifespan Dates
     #  a) birthdate
-    cdiscpilot01:Date_{#brthdate}
+    cdiscpilot01:Date_{en_brthdate}
       rdf:type study:Birthdate ;
       rdfs:label "{brthdate}"^^xsd:string ;
       study:dateTimeInXSDString "Birth date {brthdate}"^^xsd:string 
     .
     # b) deathdate
-    cdiscpilot01:Date_{#dthdtc}
+    cdiscpilot01:Date_{en_dthdtc}
       rdf:type study:Deathdate ;
       rdfs:label "{dthdtc}"^^xsd:string ;
       study:dateTimeInXSDString "{dthdtc}"^^xsd:string 
     .
   
   # ReferenceInterval ----
-  cdiscpilot01:ReferenceInterval_{#im_refInt} 
+  cdiscpilot01:ReferenceInterval_{en_rfstdtc}_{en_rfendtc}
     a study:ReferenceInterval ;
     rdfs:label "Reference Interval {usubjid}"^^xsd:string ;
-    time:hasBeginning cdiscpilot01:Date_{#rfstdtc} ;
-    time:hasEnd cdiscpilot01:Date_{#rfendtc} 
+    time:hasBeginning cdiscpilot01:Date_{en_rfstdtc} ;
+    time:hasEnd cdiscpilot01:Date_{en_rfendtc} 
   .
     # ReferenceInterval Dates
     #  Assign date type (begin)
-    cdiscpilot01:Date_{#rfstdtc}
+    cdiscpilot01:Date_{en_rfstdtc}
       rdf:type study:ReferenceBegin ;
       rdfs:label "{rfstdtc}"^^xsd:string ;
       study:dateTimeInXSDString "{rfstdtc}"^^xsd:string 
     .
     #  Assign date type (end)
-    cdiscpilot01:Date_{#rfendtc}
+    cdiscpilot01:Date_{en_rfendtc}
       rdf:type study:ReferenceEnd ;
       rdfs:label "{rfendtc}"^^xsd:string ;
       study:dateTimeInXSDString "{rfendtc}"^^xsd:string 
     .
 
   # StudyParticipationInterval
-  cdiscpilot01:StudyParticipationInterval_{#im_studyPartInt} 
+  cdiscpilot01:StudyParticipationInterval_{en_dmdtc}_{en_rfpendtc}
     rdf:type study:StudyParticipationInterval ;
     rdfs:label "Study Participation Interval {usubjid}"^^xsd:string ;
-    time:hasBeginning cdiscpilot01:Date_{#dmdtc} ;
-    time:hasEnd cdiscpilot01:Date_{#rfpendtc} 
+    time:hasBeginning cdiscpilot01:Date_{en_dmdtc} ;
+    time:hasEnd cdiscpilot01:Date_{en_rfpendtc} 
   .
     # StudyParticipationInterval Dates
     #  a) Begin
-    cdiscpilot01:Date_{#dmdtc} 
+    cdiscpilot01:Date_{en_dmdtc} 
       rdf:type study:StudyParticipationBegin ;
       rdfs:label "{dmdtc}"^^xsd:string ;
       study:dateTimeInXSDString "{dmdtc}"^^xsd:string 
     .
     #  b) End
-    cdiscpilot01:Date_{#rfpendtc} 
+    cdiscpilot01:Date_{en_rfpendtc} 
       rdf:type study:StudyParticipationEnd ;
       rdfs:label "{rfpendtc}"^^xsd:string ;
       study:dateTimeInXSDString "{rfpendtc}"^^xsd:string 
@@ -141,101 +142,101 @@ cdiscpilot01:Person_{usubjid}
 # sex <http://rdf.cdisc.org/sdtmterm#C66731.C16576>
 # Date_19 changed.
 # 
-# VisitScreening1Activity_{usubjid}  is further defined in VS_Mappings.TTL as 
-#     cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid}
+# VisitScreening1Activity  is further defined in VS_Mappings.TTL 
+#     
 # -----------------------------------------------------------------------------
-cdiscpilot01:DemographicDataCollection_{usubjid}
-  rdf:type cd01p:VisitScreening1DemogDataColl ;
-  rdf:type cdiscpilot01:VisitScreening1Activity_{usubjid} ;
-  rdf:type code:DemographicDataCollection ;
-  skos:prefLabel "Person {usubjid} Screening 1 Demographic data collection"^^xsd:string ;
-  code:hasAge cdiscpilot01:AgeOutcome_{#age} ;
-  study:activityStatus code:ActivityStatus_1 ;
-  study:ethnicity code:Enthnicity_{#ethnic}  ;
-  study:hasDate cdiscpilot01:Date_{#dmdtc} ;
-  study:race code:Race_{#race} ;
-  study:sex code:Sex_{sex} ;
-.
-
-  # DemographicDataCollection subtriples
-  # VisitScreening1Activity
- # cdiscpilot01:VisitScreening1Activity_{usubjid}
- #   rdf:type owl:Class ;
- #   rdfs:subClassOf custom:VisitScreening1Activity ;
- #   skos:prefLabel "Visit Screening 1 Person {usubjid}"^^xsd:string ;
-  .
-
- # WIP validate these triples and the age unit 
-  # AgeOutcome
-  # Previous wascode:hasUnit time:unitYear ;
-  cdiscpilot01:AgeOutcome_{#age} 
-    rdf:type study:AgeOutcome;
-    skos:prefLabel "{age} {ageu}"^^xsd:string ;
-    code:hasUnit time:unitYear ;
-    code:hasValue "{age}"^^xsd:int ;
-  .
-
-  # DemographicDataCollection Date
-  cdiscpilot01:Date_{#dmdtc} 
-    rdf:type study:DemogDataCollectionDate 
-  .
-
-# -----------------------------------------------------------------------------
-# InformedConsent 
-#   There is not "informed consent end" in the source data.
-#   Hardcoded: ActivityStatus_1, StartRuleDefault_1, InformedConsentOutcome_1
-# -----------------------------------------------------------------------------
-  #InformedConsentAdult
-  cdiscpilot01:InformedConsentAdult_{usubjid}
-    rdf:type code:InformedConsentAdult ;
-    skos:prefLabel "Informed consent Person {usubjid}"^^xsd:string ;
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasActivityInterval cdiscpilot01:InformedConsentInterval_{usubjid} ;
-    study:hasStartRule study:StartRuleDefault_1 ;
-    study:outcome code:InformedConsentOutcome_1 ;
-  .
-    #InformedConsentInterval
-    cdiscpilot01:InformedConsentInterval_{usubjid}
-      rdf:type study:InformedConsentInterval ;
-      rdfs:label "Informed Consent Interval {usubjid}"^^xsd:string ;
-      time:hasBeginning cdiscpilot01:Date_{#rficdtc} ;
-    .
-   
-    # Date type  
-    # Informed consent begin is the same time as StudyParticipationBegin
-    cdiscpilot01:Date_{#rficdtc} rdf:type study:InformedConsentBegin
-    .
-# -----------------------------------------------------------------------------
-# CumulativeProductAdministration
-#   Adminstration start and stop are stored in DM. Start to build the parent
-#     triples for the triples later added from EX.
-#  ActivityStatus is hard coded to complete for this data (=xxxx_1)
-# These triples will be created in EX mapping
-#		#  study:hasSubActivity cdiscpilot01:DrugAdministration_1 ;
-#		#  study:hasSubActivity cdiscpilot01:DrugAdministration_2 ;
-#		#  study:hasSubActivity cdiscpilot01:DrugAdministration_3 ;
-# 
-# -----------------------------------------------------------------------------
-cdiscpilot01:CumulativeProductAdministration_{usubjid}
-  rdf:type study:CumulativeDrugAdministration ;
-  skos:prefLabel "Product administration {usubjid}"^^xsd:string ;
-  study:activityStatus code:ActivityStatus_1 ;
-  study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_{usubjid} ;
-.
-
-cdiscpilot01:CumulativeProductAdministrationInterval_{usubjid}
-  rdf:type study:CumulativeProductAdministrationInterval ;
-  rdfs:label "Cumulative Product Administration Interval {usubjid}"^^xsd:string ;
-.
-
-# -----------------------------------------------------------------------------
-# RandomizationBAL3
-#  Randomization type is hard coded.
-#  Activity status hard coded to ActivityStatus_1 complete (CO) 
-#  cd01p:ArmPlacebo changed to Arm_{armcd}
-cdiscpilot01:RandomizationBAL3_{usubjid}
-  rdf:type code:RandomizationBAL3 ;
-  skos:prefLabel "Randomization Person {usubjid}"^^xsd:string ;
-  study:activityStatus code:ActivityStatus_1 ;
-  study:outcome cd01p:Arm_{armcd} ; 
-.
+ cdiscpilot01:DemographicDataCollection_{usubjid}
+   rdf:type cd01p:VisitScreening1DemogDataColl ;
+   rdf:type cdiscpilot01:VisitScreening1Activity_{usubjid} ;
+   rdf:type code:DemographicDataCollection ;
+   skos:prefLabel "Person {usubjid} Screening 1 Demographic data collection"^^xsd:string ;
+   code:hasAge cdiscpilot01:AgeOutcome_{en_age} ;
+   study:activityStatus code:ActivityStatus_1 ;
+   study:ethnicity code:Enthnicity_{en_ethnic}  ;
+   study:hasDate cdiscpilot01:Date_{en_dmdtc} ;
+   study:race code:Race_{en_race} ;
+   study:sex code:Sex_{sex} ;
+ .
+ 
+   # DemographicDataCollection subtriples
+   # VisitScreening1Activity
+   cdiscpilot01:VisitScreening1Activity_{usubjid}
+     rdf:type owl:Class ;
+     rdfs:subClassOf custom:VisitScreening1Activity ;
+     skos:prefLabel "Visit Screening 1 Person {usubjid}"^^xsd:string ;
+   .
+ 
+  # WIP validate these triples and the age unit 
+   # AgeOutcome
+   # Previous wascode:hasUnit time:unitYear ;
+   cdiscpilot01:AgeOutcome_{en_age} 
+     rdf:type study:AgeOutcome;
+     skos:prefLabel "{age} {ageu}"^^xsd:string ;
+     code:hasUnit time:unitYear ;
+     code:hasValue "{age}"^^xsd:int ;
+   .
+ 
+   # DemographicDataCollection Date
+   cdiscpilot01:Date_{en_dmdtc} 
+     rdf:type study:DemogDataCollectionDate 
+   .
+ 
+ # -----------------------------------------------------------------------------
+ # InformedConsent 
+ #   There is not "informed consent end" in the source data.
+ #   Hardcoded: ActivityStatus_1, StartRuleDefault_1, InformedConsentOutcome_1
+ # -----------------------------------------------------------------------------
+   #InformedConsentAdult
+   cdiscpilot01:InformedConsentAdult_{usubjid}
+     rdf:type code:InformedConsentAdult ;
+     skos:prefLabel "Informed consent Person {usubjid}"^^xsd:string ;
+     study:activityStatus code:ActivityStatus_1 ;
+     study:hasActivityInterval cdiscpilot01:InformedConsentInterval_{usubjid} ;
+     study:hasStartRule study:StartRuleDefault_1 ;
+     study:outcome code:InformedConsentOutcome_1 ;
+   .
+     #InformedConsentInterval
+     cdiscpilot01:InformedConsentInterval_{usubjid}
+       rdf:type study:InformedConsentInterval ;
+       rdfs:label "Informed Consent Interval {usubjid}"^^xsd:string ;
+       time:hasBeginning cdiscpilot01:Date_{en_rficdtc} ;
+     .
+    
+     # Date type  
+     # Informed consent begin is the same time as StudyParticipationBegin
+     cdiscpilot01:Date_{en_rficdtc} rdf:type study:InformedConsentBegin
+     .
+ # -----------------------------------------------------------------------------
+ # CumulativeProductAdministration
+ #   Adminstration start and stop are stored in DM. Start to build the parent
+ #     triples for the triples later added from EX.
+ #  ActivityStatus is hard coded to complete for this data (=xxxx_1)
+ # These triples will be created in EX mapping
+ #		#  study:hasSubActivity cdiscpilot01:DrugAdministration_1 ;
+ #		#  study:hasSubActivity cdiscpilot01:DrugAdministration_2 ;
+ #		#  study:hasSubActivity cdiscpilot01:DrugAdministration_3 ;
+ # 
+ # -----------------------------------------------------------------------------
+ cdiscpilot01:CumulativeProductAdministration_{usubjid}
+   rdf:type study:CumulativeDrugAdministration ;
+   skos:prefLabel "Product administration {usubjid}"^^xsd:string ;
+   study:activityStatus code:ActivityStatus_1 ;
+   study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_{usubjid} ;
+ .
+ 
+ cdiscpilot01:CumulativeProductAdministrationInterval_{usubjid}
+   rdf:type study:CumulativeProductAdministrationInterval ;
+   rdfs:label "Cumulative Product Administration Interval {usubjid}"^^xsd:string ;
+ .
+ 
+ # -----------------------------------------------------------------------------
+ # RandomizationBAL3
+ #  Randomization type is hard coded.
+ #  Activity status hard coded to ActivityStatus_1 complete (CO) 
+ #  cd01p:ArmPlacebo changed to Arm_{armcd}
+ cdiscpilot01:RandomizationBAL3_{usubjid}
+   rdf:type code:RandomizationBAL3 ;
+   skos:prefLabel "Randomization Person {usubjid}"^^xsd:string ;
+   study:activityStatus code:ActivityStatus_1 ;
+   study:outcome cd01p:Arm_{armcd} ; 
+ .
