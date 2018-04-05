@@ -5,73 +5,89 @@ This document describes the conversion of data from the source XPT files to RDF.
 **CAUTION**: It is almost certain this document is out of date. It is definitely
 incomplete.
 
-Pre-processing and creation of new data not in the original sources is mimizied wherever possible. Data imputation is used for values typically seen in SDTM source data but absent from the study used to develop the prototype. See the discussion below on birth date as an example. 
+Pre-processing and creation of new data not in the original sources is minimized wherever possible. Data imputation is used for values typically seen in SDTM source data but absent from the study used to develop the prototype. See the discussion below on birth date as an example. 
 
 
 ## General Notes
-Stardog Mapping Syntax (SMS) is employed in the conversion process. Mapping files are named
-using the convention *domainname*_mappings.TTL and are located in the /data/source
-folder. The mapping files rely on previous conversion of the source .XPT to .CVS
-using the R script **XPTtoCSV.R**.
+XPT files are converted to CSV using R. The conversion process then relies on Stardog Mapping Syntax (SMS) to convert CSV files to the graph. Mapping files are named using the convention *domainname*_mappings.TTL and are located in the /data/source folder.
 
 ## Data Files
 Source data comes from the PhUSE "Test Data Factory" CDISCPILOT01 study,
-SDTM 3.2 version. The files are available within this project at:  
-./data/source/updated_cdiscpilot
-Domains under construction include: DM, SUPPM, VS. SUPPVS and EX are pending.
+SDTM version 3.2. The files are available within this project at:  
+./data/source/updated_cdiscpilot . Domains under construction include: DM, SUPPM, VS. SUPPVS and EX are pending.
 TS will follow.
 
 
-## Process
-1. Run ./r/*XPTtoCSV.R*
-  * Convert from XPT
+## Process Overview
+1. Run ./r/**XPTtoCSV.R**
+  * Convert sources from XPT
   * Impute values
   * Subset as needed for testing
   * Create .CSV for each domain
 2. Upload to Stardog using SMS mapping
   a. execute /data/source/*StarDogUpload.bat*
 
+### R Programs
+| Order  | File                 | Description                                  |
+| ------ | -------------------- | ---------------------------------------------|
+| 1.     | XPTtoCSV.R           | Main driver program data conversion using R |
+| 2.     | Functions.R          | Functions called during conversion process |
+| 3.     | DM_imputeCSV.R       | DM imputation, encoding. No SUPPDM impute script needed as of 02APR18 |
+| 4.     | VS_imputeCSV.R       | OUTDATED: Needs update to latest SMS mapping methods 02APR18 |
+| 5.     |  ||
+| 6.     |  ||
+
+### Stardog .BAT files
+| Order  | File                 | Description                                  |
+| ------ | -------------------- | ---------------------------------------------|
+| NA     | StarDogUpload.BAT    | Calls the various mapping files to upload domains to the triplestore. |
+| NA     | StarDogExportTTL.BAT | Export the entire CTDasRDF graph to TTL. (outdated: use SPARQL CONSTRUCT instead) |
+
+
 
 ## General Rules
-### Hashing
-Hashed values are used to create IRIs from source values that may contain spaces or other special characters that may interfere with IRI creation. Stardog uses the SHA-1 hash over a UTF-8 encoded string represented in base 32 encoding with padding omitted.
 
-* All dates are hashed
+### Data Creation
+Some data required for developing and testing the model was not present in the orginal source. Examples include Investigator and Site. Each .CSV data source of this type is prefixed with the name `ctdasrdf_` to indicate it is supplemental data created for the project and each has a corresponding `_mappings.TTL` file.
 
-#### Interval IRIs - Special Hashing
-In many cases, either the start or end date of an interval may be missing in the source data. This could lead to the creatoin of incorrect IRI values. Example: Lifespan should not be coded as: *Lifespan_{#brthdate}_{#dthdtc}* , because in most instances the death date would be missing and this could lead to two people being assigned the same Lifespan if they were born on the same date and have not yet died.
+| File                   | Description                       |
+| ---------------------- | ----------------------------------|
+| ctdasrdf_invest.csv    | Site and Investigator |
+| ctdasrdf_graphMeta.csv | Graph Metadata: NOT YET PRESENT. Will be created from R. |
 
-Creation of all interval IRIS (Lifespan, reference interval, study partcipation interval, etc.) are created from an imputed column creating during the conversion from XPT to CSV. The data is prefixed with the type of interval being constructed, once again to ensure the IRI is unique to the data being represented. A lifespan IRI should be unique from an study participation IRI, even if the start and end dates are identical.
 
-    dm$im_lifeSpan     <- paste("lifeSpan",dm$brthdate, dm$dthdtc)
+### Data Creation: Adding Rules
+Values that enable creation of IRIs for rules are also created within the imputation steps.
 
-These imputations occur in the R program code unique to each domain (`DMImpute_CSV.R`, `VSImput_CSV.R`, etc.).
+*TODO: ADD DETAILS, EXAMPLES OF STANDING RULE FOR BLOOD PRESSURE AND HOW IT IS THEN USED IN VS.*
 
-Then in the mapping file the imputed column is used to create the Lifespan IRI:
+#### Interval IRIs - Special Imputation
+In many cases, either the start or end date of an interval may be missing in the source data. Missing values within an SMS entity result in that entity not being created. We still want to capture the start of an interval even if that interval is not yet completed (eg: Lifespan). For this reason, interval IRI source values are computed during the XPT to CSV conversion process for intervals like: life span (`lifespan_im`), reference interval (`refInt_im`), study participation interval (`studyPartInt_im`)  by combining their start and end dates. These values are then URL encoded, resulting in new columns: `lifespan_im_en`, `refInt_im_en`, `studyPartInt_im_en` .
 
-    cdiscpilot01:Lifespan_{#im_lifeSpan} 
+During creation of the IRIs in the mapping files, these imputed dates have an additional prefix added so life span IRIs are differentated from Study Participation IRIs, even when the date ranges are identical. Examples:
+
+    cdiscpilot01:Lifespan_{lifeSpan_im_en}
+    cdiscpilot01:StudyParticipationInterval_{studyPartInt_im_en} 
+    cdiscpilot01:ReferenceInterval_{refInt_im_en} 
+
+### Encoding
+URL encoding is used for values that must become IRIs but contain spaces or special characters.A new column is created by calling the encoding function as shown for this example for the column `ethnic` which results in the encoded column `ethnic_en`
+
+    encodeCol(data=dm, col="ethnic")
+
+Imputed columns may also be encoded, resulting in variable names like `varname_im_en` , with the _im and _en identifying hte column as both imputed *and* encoded.
+
+#### Hashing
+Hashing of values is not currently in use. It may be employed if URL encoding found to be insufficient. Stardog uses the SHA-1 hash over a UTF-8 encoded string represented in base 32 encoding with padding omitted. Hashing was used prior to switching over to URL encoding on 02APR18. 
+
 
 ### Links to SDTM Terminology and Other External Codelists
-Values are created during the imputation step allow linkage to external terminlogy files. 
-TODO: Add Example for how SYSBP is coded to the proper Cxxx.Cxxx termin. 
+TODO: ADD DESCRIPTION OF HOW ENCODED VALUES ARE LINKED TO TERMINOLOGY. Add Example for how SYSBP is coded to the proper Cxxx.Cxxx termin. 
 
 
-### Links Rules 
-Values that enable creation of IRIs for rules are also created within the imputation steps.
-TODO: Add example of STANDING rule for blood pressure.
+# Data Files and Mapping Detail
 
-
-## Graph Metadata
-**PENDING**: 
-*Creation of graph metadata (graph creation date, version, etc.) has not yet migrated from the R to the SMS process. When it does, it will be documented here.*
-
-
-## Additional Data 
-Some data required by the ontology is not in the original source. When it is associated with a domain that is being converted, it will be closely tied to the conversion step for that domain. Eg: See DM_imputeCSV.R under the DM domain.
-
-Other data is imputed as needed:
-
-### Investigator and Site
+## Investigator and Site
 
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
@@ -105,7 +121,6 @@ The following values are created in the mapping:
 | --------- | ------------------------ | --------------------------------------------- |
 | Person    | `Person_{usubjid}`       | |
 | Person Label | `Person {usubjid}`  | Previous conversion process used a number based on row order. Where applicable, all labels follow this new approach |
-
 
 
 ## SUPPDM
@@ -154,4 +169,3 @@ The data is modeled to the graph using this pattern:
 | AssumeBodyPosition | AssumeBodyPosition{im_vspos_CCase}_{usubjid} | im_vspos_CCase = Camel-cased `vspos` (=Supine or Standing) specific to each patient.  Patient 1 Standing, Patient 2 standing, etc.
 
 **More to be added.
-

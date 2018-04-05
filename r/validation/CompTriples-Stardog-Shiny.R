@@ -14,7 +14,7 @@
 #     of different Subject nodes using their qnam and not full IRI  when 
 #     validating different parts of the graph.
 # TODO: 
-#   
+#    Implement identifcation of "in one graph and not in the other "
 ###############################################################################
 library(plyr)    #  rename
 library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!
@@ -39,15 +39,13 @@ prefixList$prefix_ <- paste0("PREFIX ",prefixList$prefix, " ", prefixList$iri)
 prefixBlock <- paste(prefixList$prefix_, collapse = "\n")
 
 ui <- fluidPage(
-  titlePanel("Compare TTLs from R and Ontology "),
+  titlePanel("Instance Data: Ontology vs SMS Derived"),
   fluidRow (
-      column(5, textInput('rootNodeOnt', "Ontology Subject", value = "cdiscpilot01:Person_1")),
-      column(5, textInput('rootNodeDer', "Derived Subject", value = "cdiscpilot01:Person_01-701-1015"))
+      column(6, textInput('rootNodeOnt', "Ontology Subject", value = "cdiscpilot01:Person_1")),
+      column(6, textInput('rootNodeDer', "Derived Subject", value = "cdiscpilot01:Person_01-701-1015"))
   ),
-#  fluidRow (
-#      column(12, textInput('rootNodeDer', "Subject QName", value = "cdiscpilot01:Person_01-701-1015"))
-#  ),
-  
+
+# Section for identifying triples in one graph and not the other.   
 #  radioButtons("comp", "Compare:",
 #                c("In Der, not in Ont" = "inDerNotOnt",
 #                  "In Ont, not in Der" = "inOntNotDer")),    
@@ -62,29 +60,22 @@ ui <- fluidPage(
     #),
   
     fluidRow(
-      column(dataTableOutput('triplesTable'), width=6)
-      #,
-      # column(textOutput("queryCheckOnt"), width=6)
+      column(dataTableOutput('triplesTableOnt'), width=6)
+      ,
+      column(dataTableOutput('triplesTableDer'), width=6)
       )
-  
-
-  #  ,
-#  h4("R Triples",
-#    style= "color:#00802b"),
-#  tableOutput('triplesR')
-    
 )
 
 server <- function(input, output) {
 
   # Ontology Triples ----------------------------------------------------------   
-  # QC of the query as a text render
-    #output$queryCheckOnt <- renderText({
-    #  paste0(prefixBlock, queryStart, "
-    # WHERE {", input$rootNodeOnt," ?p ?o . } ORDER BY ?p ?o "
-    # )      
-    # })
-  
+      # QC of the query as a text render
+        #output$queryCheckOnt <- renderText({
+        #  paste0(prefixBlock, queryStart, "
+        # WHERE {", input$rootNodeOnt," ?p ?o . } ORDER BY ?p ?o "
+        # )      
+        # })
+    
   triplesOnt <- reactive({ 
     queryOnt = paste0(prefixBlock, queryStart, "
       WHERE {", input$rootNodeOnt," ?p ?o . } ORDER BY ?p ?o "
@@ -100,9 +91,8 @@ server <- function(input, output) {
     triplesOnt<-triplesOnt[with(triplesOnt, order(p, o)), ]
   })
   
-  #  
-  output$triplesTable <-renderDataTable({triplesOnt()}, 
-    options = list(scrollX = TRUE))    
+  output$triplesTableOnt <-renderDataTable({triplesOnt()}, 
+    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
   
   # Derived Triples -----------------------------------------------------------
   triplesDer <- reactive({ 
@@ -120,11 +110,9 @@ server <- function(input, output) {
     triplesDer<-triplesDer[with(triplesDer, order(p, o)), ]
   })
   
-  output$triplesTable <-renderDataTable({triplesDer()}, 
-    options = list(scrollX = TRUE))    
+  output$triplesTableDer <-renderDataTable({triplesDer()}, 
+    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
 
 } # End of server portion
-
-
 
 shinyApp(ui = ui, server = server)

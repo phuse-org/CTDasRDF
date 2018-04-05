@@ -30,15 +30,35 @@ dm$dthdtc[dm$usubjid == '01-701-1015' ] <- "2013-12-26"  # Death Date
 dm$dthfl[dm$usubjid == '01-701-1015' ]  <- "Y" # Set a Death flag  for Person_1
 
 
-#------------------------------------------------------------------------------
-#---- Interval fields to create IRI hashes 
-#  Start and end dates are concatenated together so missing values do not 
-#    prevent IRI creation. Example Lifespan with no death date specified.
-#    A string must be added to the value so a missing value will not create
-#    and IRI that could match another IRI used for an interval that has a 
-#    different meaning.
 
-dm$im_lifeSpan     <- paste("lifeSpan", dm$brthdate, dm$dthdtc)
-dm$im_refInt       <- paste("refInt",   dm$rfstdtc,  dm$rfendtc)
-dm$im_studyPartInt <- paste("refInt",   dm$dmdtc,    dm$rfpendtc)
+
+dm$lifeSpan_im     <- paste0(dm$brthdate, "_", dm$dthdtc)
+dm$refInt_im       <- paste0(dm$rfstdtc,  "_", dm$rfendtc)
+dm$studyPartInt_im <- paste0(dm$dmdtc,    "_", dm$rfpendtc)
+
+
+#------------------------------------------------------------------------------
+# URL encoding
+#   Encode fields  that may potentially have values that violate valid IRI format
+#   Function is in Functions.R
+# TODO: Change function to loop over a list of variables instead of 1 call per each 
+#
+dm <- encodeCol(data=dm, col="age")
+dm <- encodeCol(data=dm, col="brthdate")
+dm <- encodeCol(data=dm, col="dmdtc")
+dm <- encodeCol(data=dm, col="dthdtc")
+dm <- encodeCol(data=dm, col="ethnic")
+dm <- encodeCol(data=dm, col="race")
+dm <- encodeCol(data=dm, col="rfendtc")
+dm <- encodeCol(data=dm, col="rficdtc")
+dm <- encodeCol(data=dm, col="rfpendtc")
+dm <- encodeCol(data=dm, col="rfstdtc")
+
+dm <- encodeCol(data=dm, col="lifeSpan_im")
+dm <- encodeCol(data=dm, col="refInt_im")    
+dm <- encodeCol(data=dm, col="studyPartInt_im")
+
+# Sort column names in the df for quicker referencing
+dm <- dm %>% select(noquote(order(colnames(dm))))
+
 

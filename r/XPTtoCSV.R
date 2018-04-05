@@ -11,33 +11,28 @@
 ###############################################################################
 library(Hmisc)
 library(car)   # recode
+library(utils)  # for URLencode - no longer used. DELETE
+library(RCurl)  # to encode URL values
 
 dm_n=3;  # The first n patients from the DM domain.
 
 # Subsetting to allow incremental dev
 pntSubset<-c('01-701-1015') # List of usubjid's to process.
 
-
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
 
-readXPT<-function(domain)
-{
-  sourceFile <- paste0("data/source/", domain, ".XPT")
-  result <- sasxport.get(sourceFile)
-  result  # return the dataframe
-}
+source('R/Functions.R')  # Functions: readXPT(), encodeCol(), etc.
 
 # ---- XPT Import -------------------------------------------------------------
 # DM ----
 dm  <- head(readXPT("dm"), dm_n)
+
 # Impute values needed for testing
 source('R/DM_imputeCSV.R')  # Creates birthdate. 
 
-
 write.csv(dm, file="data/source/DM_subset.csv", 
   row.names = F)
-
 
 # SUPPDM ----
 suppdm  <- readXPT("suppdm")
@@ -53,14 +48,14 @@ row.names = F)
 
 
 # VS ----
-vs  <- readXPT("vs")  # first row only for initial testing.
+#vs  <- readXPT("vs")  # first row only for initial testing.
 
 # Subset for development
-vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
+#vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
 
 # Impute values needed for testing
-source('R/VS_imputeCSV.R')  # Creates birthdate. 
+#source('R/VS_imputeCSV.R')  # Creates birthdate. 
 
 
-write.csv(vs, file="data/source/vs_subset.csv", 
-  row.names = F)
+#write.csv(vs, file="data/source/vs_subset.csv", 
+#  row.names = F)
