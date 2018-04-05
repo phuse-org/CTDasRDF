@@ -6,7 +6,7 @@
 # IN  : invest_imputed.CSV : values not in the orignal data, used for testing
 #       the model.
 # OUT : 
-# NOTE: stardog-admin virtual import CTDasRDF invest_mappings.TTL invest_imputed.csv
+# NOTE: stardog-admin virtual import CTDasRDF ctdasrdf_invest_mappings.TTL ctdasrdf_invtest.csv
 #  Export to TTL: stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
 #  
 #  
