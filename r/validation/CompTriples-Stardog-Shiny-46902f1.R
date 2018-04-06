@@ -14,14 +14,7 @@
 #     of different Subject nodes using their qnam and not full IRI  when 
 #     validating different parts of the graph.
 # TODO: 
-#    Implement identifcation of "in one graph and not in the other "
-# ERROR:
-#  This query works fine in Stardog but not from the RShiny with this Subject node:
-#  prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
-#  SELECT *
-#  WHERE{
-#    cdiscpilot01:StudyParticipationInterval_2013-12-26_2014-07-02T11%3A45  ?p ?o
-#  } 
+#   
 ###############################################################################
 library(plyr)    #  rename
 library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!
@@ -45,44 +38,53 @@ prefixList$prefix_ <- paste0("PREFIX ",prefixList$prefix, " ", prefixList$iri)
 # Collapse into a single string
 prefixBlock <- paste(prefixList$prefix_, collapse = "\n")
 
-queryStart <- "SELECT ?p ?o "
-
 ui <- fluidPage(
-  titlePanel("Instance Data: Ontology vs SMS Derived"),
+  titlePanel("Compare TTLs from R and Ontology "),
   fluidRow (
-    column(6, textInput('rootNodeOnt', "Ontology Subject", value = "cdiscpilot01:Person_1")),
-    column(6, textInput('rootNodeDer', "Derived Subject", value = "cdiscpilot01:Person_01-701-1015"))
+      column(5, textInput('rootNodeOnt', "Ontology Subject", value = "cdiscpilot01:Person_1")),
+      column(5, textInput('rootNodeDer', "Derived Subject", value = "cdiscpilot01:Person_01-701-1015"))
   ),
-  fluidRow(
-    column(dataTableOutput('triplesTableOnt'), width=6)
-    ,
-    column(dataTableOutput('triplesTableDer'), width=6)
-  ),
-  # Section for identifying triples in one graph and not the other.   
-  fluidRow(
-    column(radioButtons("comp", "Compare:",
-                c("In Ont, not in Der" = "inOntNotDer",
-                  "In Der, not in Ont" = "inDerNotOnt")), width=4)
-  ),
-  fluidRow(
-    column(h4("Comparison Result:",
-    style= "color:#e60000"), width=5)
-  ),
-  fluidRow(
-    column(dataTableOutput('triplesMiss'), width=6)
-  )  
+#  fluidRow (
+#      column(12, textInput('rootNodeDer', "Subject QName", value = "cdiscpilot01:Person_01-701-1015"))
+#  ),
+  
+#  radioButtons("comp", "Compare:",
+#                c("In Der, not in Ont" = "inDerNotOnt",
+#                  "In Ont, not in Der" = "inOntNotDer")),    
+#  h4("Comparison Result:",
+#    style= "color:#e60000"),
+#  hr(),    
+#  tableOutput('contents')
+#  , 
+    # QC CHECK of the query
+    #fluidRow (
+    #  column(12, textOutput("queryCheckOnt"))
+    #),
+  
+    fluidRow(
+      column(dataTableOutput('triplesTable'), width=6)
+      #,
+      # column(textOutput("queryCheckOnt"), width=6)
+      )
+  
+
+  #  ,
+#  h4("R Triples",
+#    style= "color:#00802b"),
+#  tableOutput('triplesR')
+    
 )
 
 server <- function(input, output) {
 
   # Ontology Triples ----------------------------------------------------------   
-      # QC of the query as a text render
-        #output$queryCheckOnt <- renderText({
-        #  paste0(prefixBlock, queryStart, "
-        # WHERE {", input$rootNodeOnt," ?p ?o . } ORDER BY ?p ?o "
-        # )      
-        # })
-    
+  # QC of the query as a text render
+    #output$queryCheckOnt <- renderText({
+    #  paste0(prefixBlock, queryStart, "
+    # WHERE {", input$rootNodeOnt," ?p ?o . } ORDER BY ?p ?o "
+    # )      
+    # })
+  
   triplesOnt <- reactive({ 
     queryOnt = paste0(prefixBlock, queryStart, "
       WHERE {", input$rootNodeOnt," ?p ?o . } ORDER BY ?p ?o "
@@ -98,12 +100,12 @@ server <- function(input, output) {
     triplesOnt<-triplesOnt[with(triplesOnt, order(p, o)), ]
   })
   
-  output$triplesTableOnt <-renderDataTable({triplesOnt()}, 
-    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
+  #  
+  output$triplesTable <-renderDataTable({triplesOnt()}, 
+    options = list(scrollX = TRUE))    
   
   # Derived Triples -----------------------------------------------------------
   triplesDer <- reactive({ 
-    # print(input$rootNodeDer)
     queryDer = paste0(prefixBlock, queryStart, "
       WHERE {", input$rootNodeDer," ?p ?o . } ORDER BY ?p ?o "
     )
@@ -118,23 +120,11 @@ server <- function(input, output) {
     triplesDer<-triplesDer[with(triplesDer, order(p, o)), ]
   })
   
-  output$triplesTableDer <-renderDataTable({triplesDer()}, 
-    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
+  output$triplesTable <-renderDataTable({triplesDer()}, 
+    options = list(scrollX = TRUE))    
 
- # Comparsion to find in one graph and not in the other
-  compResult <- reactive({
-    if (input$comp=='inDerNotOnt') {
-      compResult <-anti_join(triplesDer(), triplesOnt())
-    }
-    else if (input$comp=='inOntNotDer') {
-        compResult <- anti_join(triplesOnt(), triplesDer())
-    }
-  })
-  
-  output$triplesMiss <- renderDataTable({compResult()},
-    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
-
-  
 } # End of server portion
+
+
 
 shinyApp(ui = ui, server = server)
