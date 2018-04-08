@@ -21,9 +21,10 @@ readXPTDomain <- function (domainName){
    ## dataSubset   <- head(domainValues, 300)    
 }
 
-domainVals <- readXPTDomain("vs")
+domainVals <- readXPTDomain("ex")
 
 foo<-data.frame(domainVals$vsseq)
+
 
 
 

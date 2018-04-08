@@ -43,7 +43,7 @@ cdiscpilot01:Person_{usubjid}
   study:hasLifespan cdiscpilot01:Lifespan_{lifeSpan_im_en};
   study:hasReferenceInterval cdiscpilot01:ReferenceInterval_{refInt_im_en} ;
   study:hasSite cd01p:Site_{siteid} ;
-  study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_{studyPartInt_im_en} ;
+  study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_{studyPartInt_im_en} ;
   study:hasSubjectID cdiscpilot01:SubjectIdentifier_{subjid} ;
   study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_{usubjid} ;
   study:participatesIn cdiscpilot01:DemographicDataCollection_{usubjid};
@@ -66,7 +66,7 @@ cdiscpilot01:Person_{usubjid}
     cdiscpilot01:Date_{brthdate_en}
       rdf:type study:Birthdate ;
       rdfs:label "{brthdate}"^^xsd:string ;
-      study:dateTimeInXSDString "Birth date {brthdate}"^^xsd:string
+      study:dateTimeInXSDString "{brthdate}"^^xsd:string
     .
     # b) deathdate
     cdiscpilot01:Date_{dthdtc_en}
@@ -153,7 +153,7 @@ cdiscpilot01:Person_{usubjid}
    code:hasAge cdiscpilot01:AgeOutcome_{age_en} ;
    study:activityStatus code:ActivityStatus_1 ;
    study:ethnicity code:Enthnicity_{ethnic_en}  ;
-   study:hasDate cdiscpilot01:Date_{dmdtc}_en ;
+   study:hasDate cdiscpilot01:Date_{dmdtc_en} ;
    study:race code:Race_{race_en} ;
    study:sex code:Sex_{sex} ;
  .

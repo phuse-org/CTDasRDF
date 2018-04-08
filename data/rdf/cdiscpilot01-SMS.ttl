@@ -1,382 +1,327 @@
-@prefix : <http://api.stardog.com/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix stardog: <tag:stardog:api:> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
-@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
-@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
-@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
-@prefix time: <http://www.w3.org/2006/time#> .
+@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
+@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
 @prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix sp: <http://spinrdf.org/sp#> .
 
-cdiscpilot01:AgeOutcome_k5ql986im5d6cj0eee80312k9scue0h7 a study:AgeOutcome ;
+cd01p:Study_CDISCPILOT01 study:hasStudyParticipant cdiscpilot01:Person_01-701-1023 , cdiscpilot01:Person_01-701-1015 , cdiscpilot01:Person_01-701-1028 .
+
+cdiscpilot01:AgeOutcome_63 a study:AgeOutcome ;
 	skos:prefLabel "63 YEARS" ;
 	code:hasUnit time:unitYear ;
 	code:hasValue 63 .
 
-cdiscpilot01:Date_k78l4og87v61q51vabbketftn59735lb a study:StudyParticipationEnd ;
-	rdfs:label "2014-07-02T11:45" ;
-	study:dateTimeInXSDString "2014-07-02T11:45" .
-
-cdiscpilot01:AgeOutcome_opm6a5qvtj1h0eprb1tujddi6249p1h8 a study:AgeOutcome ;
+cdiscpilot01:AgeOutcome_64 a study:AgeOutcome ;
 	skos:prefLabel "64 YEARS" ;
 	code:hasUnit time:unitYear ;
 	code:hasValue 64 .
 
-cdiscpilot01:Date_s6rc8otorv5ukcpag29jggn8m8h5127t a study:ReferenceBegin ;
-	rdfs:label "2014-01-02" ;
-	study:dateTimeInXSDString "2014-01-02" .
-
-cdiscpilot01:Date_pt2m6avt4r1v33ksdu1m4ggqjgec0q9f a study:Birthdate ;
-	rdfs:label "1948-08-05" ;
-	study:dateTimeInXSDString "Birth date 1948-08-05" .
-
-cdiscpilot01:Date_u5v40r1hbrajblo04oev36pkvko16osp a study:StudyParticipationEnd ;
-	rdfs:label "2013-02-18" ;
-	study:dateTimeInXSDString "2013-02-18" .
-
-cdiscpilot01:AgeOutcome_q0im1nctfmq4cth7ehdtcs0ug2fvp9n3 a study:AgeOutcome ;
+cdiscpilot01:AgeOutcome_71 a study:AgeOutcome ;
 	skos:prefLabel "71 YEARS" ;
 	code:hasUnit time:unitYear ;
 	code:hasValue 71 .
 
-cdiscpilot01:Date_m9eproucjuhbto78r3ij902mqsklh6so a study:StudyParticipationBegin , study:DemogDataCollectionDate , study:InformedConsentBegin ;
-	rdfs:label "2012-07-22" ;
-	study:dateTimeInXSDString "2012-07-22" .
-
-cdiscpilot01:Date_raera9petjq92qs0n7n40o3mgoi28a9a a study:ReferenceBegin ;
-	rdfs:label "2012-08-05" ;
-	study:dateTimeInXSDString "2012-08-05" .
-
-cdiscpilot01:Date_uaafn1aabjqjqnmg13lo4h3372g6eq0f a study:StudyParticipationBegin , study:DemogDataCollectionDate , study:InformedConsentBegin ;
-	rdfs:label "2013-07-11" ;
-	study:dateTimeInXSDString "2013-07-11" .
-
-cdiscpilot01:Date_klq2ru8npk1e4cv1ieg1mbgn0a7avofp a study:ReferenceEnd ;
-	rdfs:label "2012-09-02" ;
-	study:dateTimeInXSDString "2012-09-02" .
-
-cdiscpilot01:Date_16suu2uqgfo2fc05o08sr6g1t58bj215 a study:ReferenceBegin ;
-	rdfs:label "2013-07-19" ;
-	study:dateTimeInXSDString "2013-07-19" .
-
-cdiscpilot01:Date_udj4rptja2ij6a5lmb3meemc3mca7ip3 a study:Birthdate ;
-	rdfs:label "1951-01-02" ;
-	study:dateTimeInXSDString "Birth date 1951-01-02" .
-
-cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq a study:StudyParticipationBegin , study:DemogDataCollectionDate , study:Deathdate , study:InformedConsentBegin ;
-	rdfs:label "2013-12-26" , "Death date 2013-12-26" ;
-	study:dateTimeInXSDString "2013-12-26" .
-
-cdiscpilot01:Date_pchqlo9qpfvfhmafgr5h41cm65vqihc9 a study:Birthdate ;
-	rdfs:label "1942-07-19" ;
-	study:dateTimeInXSDString "Birth date 1942-07-19" .
-
-cdiscpilot01:Date_6iajojaqva7oil29dh2cerk7f0040an4 a study:StudyParticipationEnd ;
-	rdfs:label "2014-01-14T11:10" ;
-	study:dateTimeInXSDString "2014-01-14T11:10" .
-
-cdiscpilot01:Date_r57tfni8fttfflf1aq83vrr7cps2e81k a study:ReferenceEnd ;
-	rdfs:label "2014-01-14" ;
-	study:dateTimeInXSDString "2014-01-14" .
-
-cdiscpilot01:Date_cpkmsvqhc92dn75siimpl3fj20mmtdei a study:ReferenceEnd ;
-	rdfs:label "2014-07-02" ;
-	study:dateTimeInXSDString "2014-07-02" .
-
-cdiscpilot01:DemographicDataCollection_01-701-1023 a cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1023 ;
-	skos:prefLabel "Person 01-701-1023 Screening 1 Demographic data collection" ;
-	study:sex code:Sex_M ;
-	study:hasDate cdiscpilot01:Date_m9eproucjuhbto78r3ij902mqsklh6so ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:race code:Race_8393uepqv42l9mmuen518i9178bnc8sv ;
-	code:hasAge cdiscpilot01:AgeOutcome_opm6a5qvtj1h0eprb1tujddi6249p1h8 ;
-	study:ethnicity code:Enthnicity_gnja37oohiiipittns2ro9rma4k5q8i5 .
-
-cdiscpilot01:RandomizationBAL3_01-701-1015 a code:RandomizationBAL3 ;
-	skos:prefLabel "Randomization Person 01-701-1015" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:outcome cd01p:Arm_Pbo .
-
-cdiscpilot01:Person_01-701-1028 skos:preflabel "Person 01-701-1028" ;
-	a study:EnrolledSubject ;
-	study:actualArm cd01p:Arm_Xan_Hi ;
-	study:hasLifespan cdiscpilot01:Lifespan_9n99dlulvb7qi018sjfkv73k59ofeppf ;
-	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_5r43avnp7iark6optgis84lfenfbpdgq ;
-	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_g4cak70s0vt0rai0c1ojc85no05gekvd ;
-	study:hasSite cd01p:Site_701 ;
-	study:participatesIn cdiscpilot01:RandomizationBAL3_01-701-1028 , 
-  cdiscpilot01:DemographicDataCollection_01-701-1028 , 
-  cdiscpilot01:CumulativeProductAdministration_01-701-1028 , 
-  cdiscpilot01:InformedConsentAdult_01-701-1028 ;
-	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 ;
-	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1028 .
-
-cdiscpilot01:RandomizationBAL3_01-701-1028 a code:RandomizationBAL3 ;
-	skos:prefLabel "Randomization Person 01-701-1028" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:outcome cd01p:Arm_Xan_Hi .
-
-cdiscpilot01:DemographicDataCollection_01-701-1028 a cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1028 ;
-	skos:prefLabel "Person 01-701-1028 Screening 1 Demographic data collection" ;
-	study:sex code:Sex_M ;
-	study:hasDate cdiscpilot01:Date_uaafn1aabjqjqnmg13lo4h3372g6eq0f ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:race code:Race_8393uepqv42l9mmuen518i9178bnc8sv ;
-	code:hasAge cdiscpilot01:AgeOutcome_q0im1nctfmq4cth7ehdtcs0ug2fvp9n3 ;
-	study:ethnicity code:Enthnicity_j6df4va0bc0gqgc4movdocc72ukinvhm .
-
-cdiscpilot01:Person_01-701-1023 skos:preflabel "Person 01-701-1023" ;
-	a study:EnrolledSubject ;
-	study:actualArm cd01p:Arm_Pbo ;
-	study:hasLifespan cdiscpilot01:Lifespan_dv7it5dtak5qsoavmfdso0gb140n73eu ;
-	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_q9lgesjucdc47jbh5fkef74pgnot2uup ;
-	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_oudfnrp9gt2j8nhvchk7b9g077kfd93s ;
-	study:hasSite cd01p:Site_701 ;
-	study:participatesIn cdiscpilot01:DemographicDataCollection_01-701-1023 , cdiscpilot01:CumulativeProductAdministration_01-701-1023 , cdiscpilot01:RandomizationBAL3_01-701-1023 , cdiscpilot01:InformedConsentAdult_01-701-1023 ;
-	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1023 ;
-	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1023 .
-
 cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1015 a study:CumulativeProductAdministrationInterval ;
 	rdfs:label "Cumulative Product Administration Interval 01-701-1015" .
 
-cdiscpilot01:UniqueSubjectIdentifier_01-701-1023 a study:UniqueSubjectIdentifier ;
-	skos:prefLabel "01-701-1023" .
+cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1023 a study:CumulativeProductAdministrationInterval ;
+	rdfs:label "Cumulative Product Administration Interval 01-701-1023" .
 
-cd01p:Study_CDISCPILOT01 study:hasStudyParticipant cdiscpilot01:Person_01-701-1028 , cdiscpilot01:Person_01-701-1023 , cdiscpilot01:Person_01-701-1015 .
-
-cdiscpilot01:SubjectIdentifier_1028 a study:SubjectIdentifier ;
-	skos:prefLabel "1028" .
-
-cdiscpilot01:SubjectIdentifier_1023 a study:SubjectIdentifier ;
-	skos:prefLabel "1023" .
-
-cd01p:Site_701 study:hasInvestigator cdiscpilot01:Investigator_123 .
-
-cdiscpilot01:CumulativeProductAdministration_01-701-1028 a study:CumulativeDrugAdministration ;
-	skos:prefLabel "Product administration 01-701-1028" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1028 .
-
-cdiscpilot01:Person_01-701-1015 skos:preflabel "Person 01-701-1015" ;
-	a study:EnrolledSubject ;
-	study:actualArm cd01p:Arm_Pbo ;
-	study:deathFlag "Y" ;
-	study:hasLifespan cdiscpilot01:Lifespan_o34nd6pt490t63isv0mibg5t0ot1k422 ;
-	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_9v3vjafvhv4fg506bjrb8hfdbbjqvrr3 ;
-	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_pnaa4g66icg1nlqitje1ere3hlsk0p8c ;
-	study:hasSite cd01p:Site_701 ;
-	study:participatesIn cdiscpilot01:RandomizationBAL3_01-701-1015 , cdiscpilot01:DemographicDataCollection_01-701-1015 , cdiscpilot01:InformedConsentAdult_01-701-1015 , cdiscpilot01:CumulativeProductAdministration_01-701-1015 , cdiscpilot01:PopFlagCOMPLT24_01-701-1015 , cdiscpilot01:PopFlagEFFICACY_01-701-1015 , cdiscpilot01:PopFlagCOMPLT16_01-701-1015 , cdiscpilot01:PopFlagCOMPLT8_01-701-1015 , cdiscpilot01:PopFlagSAFETY_01-701-1015 , cdiscpilot01:PopFlagITT_01-701-1015 , cdiscpilot01:Visit_322gd94hll289c3odo4856v784jffrem_01-701-1015 , cdiscpilot01:Visit_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 , cdiscpilot01:Visit_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 , cdiscpilot01:Visit_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 ;
-	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 ;
-	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1015 .
-
-cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 a study:UniqueSubjectIdentifier ;
-	skos:prefLabel "01-701-1015" .
-
-cdiscpilot01:CumulativeProductAdministration_01-701-1023 a study:CumulativeDrugAdministration ;
-	skos:prefLabel "Product administration 01-701-1023" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1023 .
-
-cdiscpilot01:RandomizationBAL3_01-701-1023 a code:RandomizationBAL3 ;
-	skos:prefLabel "Randomization Person 01-701-1023" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:outcome cd01p:Arm_Pbo .
-
-cdiscpilot01:DemographicDataCollection_01-701-1015 a cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
-	skos:prefLabel "Person 01-701-1015 Screening 1 Demographic data collection" ;
-	study:sex code:Sex_F ;
-	study:hasDate cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:race code:Race_8393uepqv42l9mmuen518i9178bnc8sv ;
-	code:hasAge cdiscpilot01:AgeOutcome_k5ql986im5d6cj0eee80312k9scue0h7 ;
-	study:ethnicity code:Enthnicity_gnja37oohiiipittns2ro9rma4k5q8i5 .
-
-cdiscpilot01:InformedConsentAdult_01-701-1015 a code:InformedConsentAdult ;
-	skos:prefLabel "Informed consent Person 01-701-1015" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:hasActivityInterval cdiscpilot01:InformedConsentInterval_01-701-1015 ;
-	study:outcome code:InformedConsentOutcome_1 ;
-	study:hasStartRule study:StartRuleDefault_1 .
-
-cdiscpilot01:VisitScreening1Activity_01-701-1023 a owl:Class ;
-	skos:prefLabel "Visit Screening 1 Person 01-701-1023" ;
-	rdfs:subClassOf custom:VisitScreening1Activity .
+cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1028 a study:CumulativeProductAdministrationInterval ;
+	rdfs:label "Cumulative Product Administration Interval 01-701-1028" .
 
 cdiscpilot01:CumulativeProductAdministration_01-701-1015 a study:CumulativeDrugAdministration ;
 	skos:prefLabel "Product administration 01-701-1015" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1015 .
 
-cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1028 a study:CumulativeProductAdministrationInterval ;
-	rdfs:label "Cumulative Product Administration Interval 01-701-1028" .
-
-cdiscpilot01:VisitScreening1Activity_01-701-1028 a owl:Class ;
-	skos:prefLabel "Visit Screening 1 Person 01-701-1028" ;
-	rdfs:subClassOf custom:VisitScreening1Activity .
-
-cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 a study:UniqueSubjectIdentifier ;
-	skos:prefLabel "01-701-1028" .
-
-cdiscpilot01:VisitScreening1Activity_01-701-1015 a owl:Class ;
-	skos:prefLabel "Visit Screening 1 Person 01-701-1015" ;
-	rdfs:subClassOf custom:VisitScreening1Activity .
-
-cdiscpilot01:SubjectIdentifier_1015 a study:SubjectIdentifier ;
-	skos:prefLabel "1015" .
-
-cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1023 a study:CumulativeProductAdministrationInterval ;
-	rdfs:label "Cumulative Product Administration Interval 01-701-1023" .
-
-cdiscpilot01:InformedConsentAdult_01-701-1028 a code:InformedConsentAdult ;
-	skos:prefLabel "Informed consent Person 01-701-1028" ;
+cdiscpilot01:CumulativeProductAdministration_01-701-1023 a study:CumulativeDrugAdministration ;
+	skos:prefLabel "Product administration 01-701-1023" ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:hasActivityInterval cdiscpilot01:InformedConsentInterval_01-701-1028 ;
-	study:outcome code:InformedConsentOutcome_1 ;
-	study:hasStartRule study:StartRuleDefault_1 .
+	study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1023 .
+
+cdiscpilot01:CumulativeProductAdministration_01-701-1028 a study:CumulativeDrugAdministration ;
+	skos:prefLabel "Product administration 01-701-1028" ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1028 .
+
+cdiscpilot01:Date_1942-07-19 a study:Birthdate ;
+	rdfs:label "1942-07-19" ;
+	study:dateTimeInXSDString "1942-07-19" .
+
+cdiscpilot01:Date_1948-08-05 a study:Birthdate ;
+	rdfs:label "1948-08-05" ;
+	study:dateTimeInXSDString "1948-08-05" .
+
+cdiscpilot01:Date_1951-01-02 a study:Birthdate ;
+	rdfs:label "1951-01-02" ;
+	study:dateTimeInXSDString "1951-01-02" .
+
+cdiscpilot01:Date_2012-07-22 a study:DemogDataCollectionDate , study:InformedConsentBegin , study:StudyParticipationBegin ;
+	rdfs:label "2012-07-22" ;
+	study:dateTimeInXSDString "2012-07-22" .
+
+cdiscpilot01:Date_2012-08-05 a study:ReferenceBegin ;
+	rdfs:label "2012-08-05" ;
+	study:dateTimeInXSDString "2012-08-05" .
+
+cdiscpilot01:Date_2012-09-02 a study:ReferenceEnd ;
+	rdfs:label "2012-09-02" ;
+	study:dateTimeInXSDString "2012-09-02" .
+
+cdiscpilot01:Date_2013-02-18 a study:StudyParticipationEnd ;
+	rdfs:label "2013-02-18" ;
+	study:dateTimeInXSDString "2013-02-18" .
+
+cdiscpilot01:Date_2013-07-11 a study:InformedConsentBegin , study:StudyParticipationBegin , study:DemogDataCollectionDate ;
+	rdfs:label "2013-07-11" ;
+	study:dateTimeInXSDString "2013-07-11" .
+
+cdiscpilot01:Date_2013-07-19 a study:ReferenceBegin ;
+	rdfs:label "2013-07-19" ;
+	study:dateTimeInXSDString "2013-07-19" .
+
+cdiscpilot01:Date_2013-12-26 a study:InformedConsentBegin , study:DemogDataCollectionDate , study:Deathdate , study:StudyParticipationBegin ;
+	rdfs:label "2013-12-26" ;
+	study:dateTimeInXSDString "2013-12-26" .
+
+cdiscpilot01:Date_2014-01-02 a study:ReferenceBegin ;
+	rdfs:label "2014-01-02" ;
+	study:dateTimeInXSDString "2014-01-02" .
+
+cdiscpilot01:Date_2014-01-14 a study:ReferenceEnd ;
+	rdfs:label "2014-01-14" ;
+	study:dateTimeInXSDString "2014-01-14" .
+
+cdiscpilot01:Date_2014-01-14T11%3A10 a study:StudyParticipationEnd ;
+	rdfs:label "2014-01-14T11:10" ;
+	study:dateTimeInXSDString "2014-01-14T11%3A10" .
+
+cdiscpilot01:Date_2014-07-02 a study:ReferenceEnd ;
+	rdfs:label "2014-07-02" ;
+	study:dateTimeInXSDString "2014-07-02" .
+
+cdiscpilot01:Date_2014-07-02T11%3A45 a study:StudyParticipationEnd ;
+	rdfs:label "2014-07-02T11:45" ;
+	study:dateTimeInXSDString "2014-07-02T11%3A45" .
+
+cdiscpilot01:DemographicDataCollection_01-701-1015 a code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1015 , cd01p:VisitScreening1DemogDataColl ;
+	skos:prefLabel "Person 01-701-1015 Screening 1 Demographic data collection" ;
+	code:hasAge cdiscpilot01:AgeOutcome_63 ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:ethnicity code:Enthnicity_HISPANIC%20OR%20LATINO ;
+	study:hasDate cdiscpilot01:Date_2013-12-26 ;
+	study:race code:Race_WHITE ;
+	study:sex code:Sex_F .
+
+cdiscpilot01:DemographicDataCollection_01-701-1023 a cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1023 ;
+	skos:prefLabel "Person 01-701-1023 Screening 1 Demographic data collection" ;
+	code:hasAge cdiscpilot01:AgeOutcome_64 ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:ethnicity code:Enthnicity_HISPANIC%20OR%20LATINO ;
+	study:hasDate cdiscpilot01:Date_2012-07-22 ;
+	study:race code:Race_WHITE ;
+	study:sex code:Sex_M .
+
+cdiscpilot01:DemographicDataCollection_01-701-1028 a cdiscpilot01:VisitScreening1Activity_01-701-1028 , code:DemographicDataCollection , cd01p:VisitScreening1DemogDataColl ;
+	skos:prefLabel "Person 01-701-1028 Screening 1 Demographic data collection" ;
+	code:hasAge cdiscpilot01:AgeOutcome_71 ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:ethnicity code:Enthnicity_NOT%20HISPANIC%20OR%20LATINO ;
+	study:hasDate cdiscpilot01:Date_2013-07-11 ;
+	study:race code:Race_WHITE ;
+	study:sex code:Sex_M .
+
+cdiscpilot01:InformedConsentAdult_01-701-1015 a code:InformedConsentAdult ;
+	skos:prefLabel "Informed consent Person 01-701-1015" ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:hasActivityInterval cdiscpilot01:InformedConsentInterval_01-701-1015 ;
+	study:hasStartRule study:StartRuleDefault_1 ;
+	study:outcome code:InformedConsentOutcome_1 .
 
 cdiscpilot01:InformedConsentAdult_01-701-1023 a code:InformedConsentAdult ;
 	skos:prefLabel "Informed consent Person 01-701-1023" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:hasActivityInterval cdiscpilot01:InformedConsentInterval_01-701-1023 ;
-	study:outcome code:InformedConsentOutcome_1 ;
-	study:hasStartRule study:StartRuleDefault_1 .
+	study:hasStartRule study:StartRuleDefault_1 ;
+	study:outcome code:InformedConsentOutcome_1 .
 
-cdiscpilot01:Investigator_123 a study:Investigator ;
-	skos:prefLabel "Investigator 123" ;
-	study:hasLastName "Jones" ;
-	study:hasInvestigatorID cdiscpilot01:InvestigatorIdentifier_123 .
-
-cdiscpilot01:InvestigatorIdentifier_123 a study:InvestigatorIdentifier ;
-	skos:prefLabel "123" .
-
-cdiscpilot01:PopFlagCOMPLT24_01-701-1015 a custom:PopFlagCOMPLT24 ;
+cdiscpilot01:InformedConsentAdult_01-701-1028 a code:InformedConsentAdult ;
+	skos:prefLabel "Informed consent Person 01-701-1028" ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:outcome true ;
-	study:hasPerformer cd01p:Sponsor_1 .
+	study:hasActivityInterval cdiscpilot01:InformedConsentInterval_01-701-1028 ;
+	study:hasStartRule study:StartRuleDefault_1 ;
+	study:outcome code:InformedConsentOutcome_1 .
 
-cdiscpilot01:PopFlagEFFICACY_01-701-1015 a custom:PopFlagEFFICACY ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:outcome true ;
-	study:hasPerformer cd01p:Sponsor_1 .
+cdiscpilot01:InformedConsentInterval_01-701-1015 a study:InformedConsentInterval ;
+	rdfs:label "Informed Consent Interval 01-701-1015" ;
+	time:hasBeginning cdiscpilot01:Date_2013-12-26 .
+
+cdiscpilot01:InformedConsentInterval_01-701-1023 a study:InformedConsentInterval ;
+	rdfs:label "Informed Consent Interval 01-701-1023" ;
+	time:hasBeginning cdiscpilot01:Date_2012-07-22 .
+
+cdiscpilot01:InformedConsentInterval_01-701-1028 a study:InformedConsentInterval ;
+	rdfs:label "Informed Consent Interval 01-701-1028" ;
+	time:hasBeginning cdiscpilot01:Date_2013-07-11 .
+
+cdiscpilot01:Lifespan_1942-07-19_ a study:Lifespan ;
+	rdfs:label "Lifespan Interval" ;
+	time:hasBeginning cdiscpilot01:Date_1942-07-19 .
+
+cdiscpilot01:Lifespan_1948-08-05_ a study:Lifespan ;
+	rdfs:label "Lifespan Interval" ;
+	time:hasBeginning cdiscpilot01:Date_1948-08-05 .
+
+cdiscpilot01:Lifespan_1951-01-02_2013-12-26 a study:Lifespan ;
+	rdfs:label "Lifespan Interval" ;
+	time:hasBeginning cdiscpilot01:Date_1951-01-02 ;
+	time:hasEnd cdiscpilot01:Date_2013-12-26 .
+
+cdiscpilot01:Person_01-701-1015 a study:EnrolledSubject ;
+	skos:preflabel "Person 01-701-1015" ;
+	study:actualArm cd01p:Arm_Pbo ;
+	study:deathFlag "Y" ;
+	study:hasLifespan cdiscpilot01:Lifespan_1951-01-02_2013-12-26 ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_2014-01-02_2014-07-02 ;
+	study:hasSite cd01p:Site_701 ;
+	study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_2013-12-26_2014-07-02T11%3A45 ;
+	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1015 ;
+	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 ;
+	study:participatesIn cdiscpilot01:CumulativeProductAdministration_01-701-1015 , cdiscpilot01:InformedConsentAdult_01-701-1015 , cdiscpilot01:PopFlagCOMPLT24_01-701-1015 , cdiscpilot01:RandomizationBAL3_01-701-1015 , cdiscpilot01:DemographicDataCollection_01-701-1015 , cdiscpilot01:PopFlagSAFETY_01-701-1015 , cdiscpilot01:PopFlagCOMPLT8_01-701-1015 , cdiscpilot01:PopFlagITT_01-701-1015 , cdiscpilot01:PopFlagEFFICACY_01-701-1015 , cdiscpilot01:PopFlagCOMPLT16_01-701-1015 .
+
+cdiscpilot01:Person_01-701-1023 a study:EnrolledSubject ;
+	skos:preflabel "Person 01-701-1023" ;
+	study:actualArm cd01p:Arm_Pbo ;
+	study:hasLifespan cdiscpilot01:Lifespan_1948-08-05_ ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_2012-08-05_2012-09-02 ;
+	study:hasSite cd01p:Site_701 ;
+	study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_2012-07-22_2013-02-18 ;
+	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1023 ;
+	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1023 ;
+	study:participatesIn cdiscpilot01:InformedConsentAdult_01-701-1023 , cdiscpilot01:CumulativeProductAdministration_01-701-1023 , cdiscpilot01:DemographicDataCollection_01-701-1023 , cdiscpilot01:RandomizationBAL3_01-701-1023 .
+
+cdiscpilot01:Person_01-701-1028 a study:EnrolledSubject ;
+	skos:preflabel "Person 01-701-1028" ;
+	study:actualArm cd01p:Arm_Xan_Hi ;
+	study:hasLifespan cdiscpilot01:Lifespan_1942-07-19_ ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_2013-07-19_2014-01-14 ;
+	study:hasSite cd01p:Site_701 ;
+	study:hasStudyParticipationInterval cdiscpilot01:StudyParticipationInterval_2013-07-11_2014-01-14T11%3A10 ;
+	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1028 ;
+	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 ;
+	study:participatesIn cdiscpilot01:CumulativeProductAdministration_01-701-1028 , cdiscpilot01:InformedConsentAdult_01-701-1028 , cdiscpilot01:RandomizationBAL3_01-701-1028 , cdiscpilot01:DemographicDataCollection_01-701-1028 .
 
 cdiscpilot01:PopFlagCOMPLT16_01-701-1015 a custom:PopFlagCOMPLT16 ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:outcome true ;
-	study:hasPerformer cd01p:Sponsor_1 .
+	study:hasPerformer cd01p:Sponsor_1 ;
+	study:outcome true .
+
+cdiscpilot01:PopFlagCOMPLT24_01-701-1015 a custom:PopFlagCOMPLT24 ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:hasPerformer cd01p:Sponsor_1 ;
+	study:outcome true .
 
 cdiscpilot01:PopFlagCOMPLT8_01-701-1015 a custom:PopFlagCOMPLT8 ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:outcome true ;
-	study:hasPerformer cd01p:Sponsor_1 .
+	study:hasPerformer cd01p:Sponsor_1 ;
+	study:outcome true .
 
-cdiscpilot01:PopFlagSAFETY_01-701-1015 a custom:PopFlagSAFETY ;
+cdiscpilot01:PopFlagEFFICACY_01-701-1015 a custom:PopFlagEFFICACY ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:outcome true ;
-	study:hasPerformer cd01p:Sponsor_1 .
+	study:hasPerformer cd01p:Sponsor_1 ;
+	study:outcome true .
 
 cdiscpilot01:PopFlagITT_01-701-1015 a custom:PopFlagITT ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:outcome true ;
-	study:hasPerformer cd01p:Sponsor_1 .
+	study:hasPerformer cd01p:Sponsor_1 ;
+	study:outcome true .
 
-cdiscpilot01:InformedConsentInterval_01-701-1015 a study:InformedConsentInterval ;
-	time:hasBeginning cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	rdfs:label "Informed Consent Interval 01-701-1015" .
-
-cdiscpilot01:InformedConsentInterval_01-701-1023 a study:InformedConsentInterval ;
-	time:hasBeginning cdiscpilot01:Date_m9eproucjuhbto78r3ij902mqsklh6so ;
-	rdfs:label "Informed Consent Interval 01-701-1023" .
-
-cdiscpilot01:InformedConsentInterval_01-701-1028 a study:InformedConsentInterval ;
-	time:hasBeginning cdiscpilot01:Date_uaafn1aabjqjqnmg13lo4h3372g6eq0f ;
-	rdfs:label "Informed Consent Interval 01-701-1028" .
-
-cdiscpilot01:Visit_322gd94hll289c3odo4856v784jffrem_01-701-1015 a custom:Visit_322gd94hll289c3odo4856v784jffrem ;
+cdiscpilot01:PopFlagSAFETY_01-701-1015 a custom:PopFlagSAFETY ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:hasSubActivity cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 , cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 , cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca ;
-	study:hasPerformedDate cdiscpilot01:Date_s6rc8otorv5ukcpag29jggn8m8h5127t .
+	study:hasPerformer cd01p:Sponsor_1 ;
+	study:outcome true .
 
-cdiscpilot01:Visit_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 a custom:Visit_fork7odhki16tqhtec07d1gto1239dpa ;
+cdiscpilot01:RandomizationBAL3_01-701-1015 a code:RandomizationBAL3 ;
+	skos:prefLabel "Randomization Person 01-701-1015" ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:hasSubActivity cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 , cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 , cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca ;
-	study:hasPerformedDate cdiscpilot01:Date_6ll6usd2v9ng33aadecgkg0417u3kf3i .
+	study:outcome cd01p:Arm_Pbo .
 
-cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 a cdiscpilot01:VisitActivity_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 , cdiscpilot01:VisitActivity_322gd94hll289c3odo4856v784jffrem_01-701-1015 , cdiscpilot01:VisitActivity_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 , cdiscpilot01:VisitActivity_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 .
-
-cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 a cdiscpilot01:VisitActivity_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 , cdiscpilot01:VisitActivity_322gd94hll289c3odo4856v784jffrem_01-701-1015 , cdiscpilot01:VisitActivity_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 , cdiscpilot01:VisitActivity_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 .
-
-cdiscpilot01:VisitActivity_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 a owl:Class ;
-	skos:prefLabel "Visit WEEK 24 Person 01-701-1015" ;
-	rdfs:subClassOf custom:VisitActivityfork7odhki16tqhtec07d1gto1239dpa .
-
-cdiscpilot01:Visit_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 a custom:Visit_5e2mhqp09bitcbn7j45gak11gsqq2a0r ;
+cdiscpilot01:RandomizationBAL3_01-701-1023 a code:RandomizationBAL3 ;
+	skos:prefLabel "Randomization Person 01-701-1023" ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:hasSubActivity cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 , cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 , cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca ;
-	study:hasPerformedDate cdiscpilot01:Date_7us618p15nshr6i76otlnd2e65hhbo1c .
+	study:outcome cd01p:Arm_Pbo .
 
-cdiscpilot01:Visit_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 a custom:Visit_1e1uak4vs9dpl4d263rl3b9a1pongqrl ;
+cdiscpilot01:RandomizationBAL3_01-701-1028 a code:RandomizationBAL3 ;
+	skos:prefLabel "Randomization Person 01-701-1028" ;
 	study:activityStatus code:ActivityStatus_1 ;
-	study:hasSubActivity cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_r1shms5khc13f5r07pe0bfk1kspcn6j7 , cdiscpilot01:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104_dfl9s05t73oiujkhca2enve8knls1qf8 , cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca ;
-	study:hasPerformedDate cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq .
+	study:outcome cd01p:Arm_Xan_Hi .
 
-cdiscpilot01:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra_1jdbk23hd8kpmms4rutcvb5a9aai2lca a cdiscpilot01:VisitActivity_fork7odhki16tqhtec07d1gto1239dpa_01-701-1015 , cdiscpilot01:VisitActivity_322gd94hll289c3odo4856v784jffrem_01-701-1015 , cdiscpilot01:VisitActivity_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 , cdiscpilot01:VisitActivity_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 .
+cdiscpilot01:ReferenceInterval_2012-08-05_2012-09-02 a study:ReferenceInterval ;
+	rdfs:label "Reference Interval 01-701-1023" ;
+	time:hasBeginning cdiscpilot01:Date_2012-08-05 ;
+	time:hasEnd cdiscpilot01:Date_2012-09-02 .
 
-cdiscpilot01:VisitActivity_322gd94hll289c3odo4856v784jffrem_01-701-1015 a owl:Class ;
-	skos:prefLabel "Visit BASELINE Person 01-701-1015" ;
-	rdfs:subClassOf custom:VisitActivity322gd94hll289c3odo4856v784jffrem .
+cdiscpilot01:ReferenceInterval_2013-07-19_2014-01-14 a study:ReferenceInterval ;
+	rdfs:label "Reference Interval 01-701-1028" ;
+	time:hasBeginning cdiscpilot01:Date_2013-07-19 ;
+	time:hasEnd cdiscpilot01:Date_2014-01-14 .
 
-cdiscpilot01:VisitActivity_5e2mhqp09bitcbn7j45gak11gsqq2a0r_01-701-1015 a owl:Class ;
-	skos:prefLabel "Visit WEEK 2 Person 01-701-1015" ;
-	rdfs:subClassOf custom:VisitActivity5e2mhqp09bitcbn7j45gak11gsqq2a0r .
+cdiscpilot01:ReferenceInterval_2014-01-02_2014-07-02 a study:ReferenceInterval ;
+	rdfs:label "Reference Interval 01-701-1015" ;
+	time:hasBeginning cdiscpilot01:Date_2014-01-02 ;
+	time:hasEnd cdiscpilot01:Date_2014-07-02 .
 
-cdiscpilot01:VisitActivity_1e1uak4vs9dpl4d263rl3b9a1pongqrl_01-701-1015 a owl:Class ;
-	skos:prefLabel "Visit SCREENING 1 Person 01-701-1015" ;
-	rdfs:subClassOf custom:VisitActivity1e1uak4vs9dpl4d263rl3b9a1pongqrl .
+cdiscpilot01:StudyParticipationInterval_2012-07-22_2013-02-18 a study:StudyParticipationInterval ;
+	rdfs:label "Study Participation Interval 01-701-1023" ;
+	time:hasBeginning cdiscpilot01:Date_2012-07-22 ;
+	time:hasEnd cdiscpilot01:Date_2013-02-18 .
 
-cdiscpilot01:Lifespan_9n99dlulvb7qi018sjfkv73k59ofeppf a study:Lifespan ;
-	time:hasBeginning cdiscpilot01:Date_pchqlo9qpfvfhmafgr5h41cm65vqihc9 ;
-	rdfs:label "Lifespan Interval" .
+cdiscpilot01:StudyParticipationInterval_2013-07-11_2014-01-14T11%3A10 a study:StudyParticipationInterval ;
+	rdfs:label "Study Participation Interval 01-701-1028" ;
+	time:hasBeginning cdiscpilot01:Date_2013-07-11 ;
+	time:hasEnd cdiscpilot01:Date_2014-01-14T11%3A10 .
 
-cdiscpilot01:ReferenceInterval_q9lgesjucdc47jbh5fkef74pgnot2uup a study:ReferenceInterval ;
-	time:hasBeginning cdiscpilot01:Date_raera9petjq92qs0n7n40o3mgoi28a9a ;
-	time:hasEnd cdiscpilot01:Date_klq2ru8npk1e4cv1ieg1mbgn0a7avofp ;
-	rdfs:label "Reference Interval 01-701-1023" .
+cdiscpilot01:StudyParticipationInterval_2013-12-26_2014-07-02T11%3A45 a study:StudyParticipationInterval ;
+	rdfs:label "Study Participation Interval 01-701-1015" ;
+	time:hasBeginning cdiscpilot01:Date_2013-12-26 ;
+	time:hasEnd cdiscpilot01:Date_2014-07-02T11%3A45 .
 
-cdiscpilot01:Lifespan_o34nd6pt490t63isv0mibg5t0ot1k422 a study:Lifespan ;
-	time:hasBeginning cdiscpilot01:Date_udj4rptja2ij6a5lmb3meemc3mca7ip3 ;
-	time:hasEnd cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	rdfs:label "Lifespan Interval" .
+cdiscpilot01:SubjectIdentifier_1015 a study:SubjectIdentifier ;
+	skos:prefLabel "1015" .
 
-cdiscpilot01:ReferenceInterval_5r43avnp7iark6optgis84lfenfbpdgq a study:ReferenceInterval ;
-	time:hasBeginning cdiscpilot01:Date_16suu2uqgfo2fc05o08sr6g1t58bj215 ;
-	time:hasEnd cdiscpilot01:Date_r57tfni8fttfflf1aq83vrr7cps2e81k ;
-	rdfs:label "Reference Interval 01-701-1028" .
+cdiscpilot01:SubjectIdentifier_1023 a study:SubjectIdentifier ;
+	skos:prefLabel "1023" .
 
-cdiscpilot01:StudyParticipationInterval_g4cak70s0vt0rai0c1ojc85no05gekvd a study:StudyParticipationInterval ;
-	time:hasBeginning cdiscpilot01:Date_uaafn1aabjqjqnmg13lo4h3372g6eq0f ;
-	time:hasEnd cdiscpilot01:Date_6iajojaqva7oil29dh2cerk7f0040an4 ;
-	rdfs:label "Study Participation Interval 01-701-1028" .
+cdiscpilot01:SubjectIdentifier_1028 a study:SubjectIdentifier ;
+	skos:prefLabel "1028" .
 
-cdiscpilot01:StudyParticipationInterval_oudfnrp9gt2j8nhvchk7b9g077kfd93s a study:StudyParticipationInterval ;
-	time:hasBeginning cdiscpilot01:Date_m9eproucjuhbto78r3ij902mqsklh6so ;
-	time:hasEnd cdiscpilot01:Date_u5v40r1hbrajblo04oev36pkvko16osp ;
-	rdfs:label "Study Participation Interval 01-701-1023" .
+cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 a study:UniqueSubjectIdentifier ;
+	skos:prefLabel "01-701-1015" .
 
-cdiscpilot01:Lifespan_dv7it5dtak5qsoavmfdso0gb140n73eu a study:Lifespan ;
-	time:hasBeginning cdiscpilot01:Date_pt2m6avt4r1v33ksdu1m4ggqjgec0q9f ;
-	rdfs:label "Lifespan Interval" .
+cdiscpilot01:UniqueSubjectIdentifier_01-701-1023 a study:UniqueSubjectIdentifier ;
+	skos:prefLabel "01-701-1023" .
 
-cdiscpilot01:ReferenceInterval_9v3vjafvhv4fg506bjrb8hfdbbjqvrr3 a study:ReferenceInterval ;
-	time:hasBeginning cdiscpilot01:Date_s6rc8otorv5ukcpag29jggn8m8h5127t ;
-	time:hasEnd cdiscpilot01:Date_cpkmsvqhc92dn75siimpl3fj20mmtdei ;
-	rdfs:label "Reference Interval 01-701-1015" .
+cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 a study:UniqueSubjectIdentifier ;
+	skos:prefLabel "01-701-1028" .
 
-cdiscpilot01:StudyParticipationInterval_pnaa4g66icg1nlqitje1ere3hlsk0p8c a study:StudyParticipationInterval ;
-	time:hasBeginning cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	time:hasEnd cdiscpilot01:Date_k78l4og87v61q51vabbketftn59735lb ;
-	rdfs:label "Study Participation Interval 01-701-1015" .
+cdiscpilot01:VisitScreening1Activity_01-701-1015 a owl:Class ;
+	rdfs:subClassOf custom:VisitScreening1Activity ;
+	skos:prefLabel "Visit Screening 1 Person 01-701-1015" .
+
+cdiscpilot01:VisitScreening1Activity_01-701-1023 a owl:Class ;
+	rdfs:subClassOf custom:VisitScreening1Activity ;
+	skos:prefLabel "Visit Screening 1 Person 01-701-1023" .
+
+cdiscpilot01:VisitScreening1Activity_01-701-1028 a owl:Class ;
+	rdfs:subClassOf custom:VisitScreening1Activity ;
+	skos:prefLabel "Visit Screening 1 Person 01-701-1028" .

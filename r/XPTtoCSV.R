@@ -41,6 +41,22 @@ suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]
 write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
 row.names = F)
 
+
+# EX ----
+ex  <- readXPT("ex")
+# subset for development
+ex <- ex[ex$usubjid %in% pntSubset,]  
+
+# Impute values needed for testing
+source('R/EX_imputeCSV.R')
+
+
+write.csv(ex, file="data/source/EX_subset.csv", 
+row.names = F)
+
+
+
+
 # TS ----
 #ts  <- readXPT("ts")  # first row only for initial testing.
 #write.csv(ts, file="data/source/ts_subset.csv", 

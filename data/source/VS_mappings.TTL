@@ -30,9 +30,9 @@
 # TODO: WIP
 #      
 # -----------------------------------------------------------------------------
-cdiscpilot01:Person_{usubjid} 
-  study:participatesIn cdiscpilot01:Visit_{im_visit_CCaseSh}_{usubjid} ;
-.
+#cdiscpilot01:Person_{usubjid} 
+#  study:participatesIn cdiscpilot01:Visit_{im_visit_CCaseSh}_{usubjid} ;
+#.
 
   # Visit ----
   # AssumeBodyPosition is a combination of the position and the prerequisite time
@@ -41,30 +41,32 @@ cdiscpilot01:Person_{usubjid}
   #                     etc.
   # Hardcoding:  ActivityStatus_1 = CO(Complete)
    
-  cdiscpilot01:Visit_{im_visit_CCaseSh}_{usubjid}
-    rdf:type               custom:Visit{im_visit_CCaseSh} ;
-    study:activityStatus   code:ActivityStatus_1 ;
-    study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{im_vspos_CCase}_{usubjid} ;
-    study:hasSubActivity   cdiscpilot01:Test_{vstestcd}_{#vsorres} ;
-    study:hasPerformedDate cdiscpilot01:Date_{#vsdtc} ;
+#  cdiscpilot01:Visit_{im_visit_CCaseSh}_{usubjid}
+#    rdf:type               custom:Visit{im_visit_CCaseSh} ;
+#    study:hasPerformedDate cdiscpilot01:Date_{#vsdtc} ;
+
+#    study:activityStatus   code:ActivityStatus_1 ;
+#    study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{im_vspos_CCase}_{usubjid} ;
+#    study:hasSubActivity   cdiscpilot01:Test_{vstestcd}_{#vsorres} ;
+
   .
 
-  # AssumeBodyPosition
-  cdiscpilot01:AssumeBodyPosition{im_vspos_CCase}_{usubjid} 
-    rdf:type             cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid};
-    rdf:type             custom:AssumeBodyPosition{im_vspos_CCase} ;
-    skos:prefLabel       "Assume {im_vspos_CCase} position"^^xsd:string ;   
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
-    study:hasStartRule   cdiscpilot01:StartRule{im_StartRule}_{usubjid} ;
-    study:outcome        code:Vspos_{vspos} ;
-  .
+   # AssumeBodyPosition
+ # cdiscpilot01:AssumeBodyPosition{im_vspos_CCase}_{usubjid} 
+ #   rdf:type             cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid};
+ #   rdf:type             custom:AssumeBodyPosition{im_vspos_CCase} ;
+ #   skos:prefLabel       "Assume {im_vspos_CCase} position"^^xsd:string ;   
+ #   study:activityStatus code:ActivityStatus_1 ;
+ #   study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
+ #   study:hasStartRule   cdiscpilot01:StartRule{im_StartRule}_{usubjid} ;
+ #   study:outcome        code:Vspos_{vspos} ;
+ # .
 
-    cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid}
-      rdf:type        owl:Class ;
-      skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
-      rdfs:subClassOf custom:Visit{im_visit_CCaseSh}Activity;
-   .
+ #   cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid}
+ #     rdf:type        owl:Class ;
+ #     skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
+ #     rdfs:subClassOf custom:Visit{im_visit_CCaseSh}Activity;
+ #  .
 
 # TO HERE
 # study:hasStartRule cdiscpilot01:StartRule{im_StartRule}_{usubjid} ;

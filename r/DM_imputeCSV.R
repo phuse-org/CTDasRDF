@@ -1,7 +1,7 @@
 #______________________________________________________________________________
 # FILE: DM_imputeCSV.R
-# DESC: Creates data values required for prototyping and ontoloty develeopment
-# REQ : Prior import of the DM domain by driver script.
+# DESC: Creates data values required for prototyping and ontology develeopment
+# REQ : Prior import of the DM domain by driver script XPTtoCSV.R
 # SRC : N/A
 # IN  : dm dataframe 
 # OUT : modified dm dataframe 
@@ -12,7 +12,7 @@
 # TODO: 
 #______________________________________________________________________________
 
-# ** Impute ----
+# Imputations ----
 #---- Birthdate : asbsent in source data
 # NOTE: Date calculations based on SECONDS so you must convert the age in Years to seconds
 #      Change to character to avoid later ddply problem in DM_process.R
