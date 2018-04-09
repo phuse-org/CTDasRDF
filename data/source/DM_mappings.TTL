@@ -56,7 +56,7 @@ cdiscpilot01:Person_{usubjid}
   #  concat of encoded birthdate and rficdtc dates [this is line 33]
   cdiscpilot01:Interval_{lifeSpan_im_en}
     a study:Lifespan ;
-    rdfs:label "Lifespan Interval"^^xsd:string ;
+    rdfs:label "Lifespan Interval {lifeSpan_im}"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{brthdate_en} ;
     time:hasEnd cdiscpilot01:Date_{dthdtc_en}
   .
@@ -191,14 +191,14 @@ cdiscpilot01:Person_{usubjid}
      rdf:type code:InformedConsentAdult ;
      skos:prefLabel "Informed consent Person {usubjid}"^^xsd:string ;
      study:activityStatus code:ActivityStatus_1 ;
-     study:hasActivityInterval cdiscpilot01:Interval_{usubjid} ;
+     study:hasActivityInterval cdiscpilot01:Interval_{infConsInt_im_en} ;
      study:hasStartRule study:StartRuleDefault_1 ;
      study:outcome code:InformedConsentOutcome_1 ;
    .
      #InformedConsentInterval
-     cdiscpilot01:Interval_{usubjid}
+     cdiscpilot01:Interval_{infConsInt_im_en} 
        rdf:type study:InformedConsentInterval ;
-       rdfs:label "Informed Consent Interval"^^xsd:string ;
+       rdfs:label "Informed Consent Interval {infConsInt_im}"^^xsd:string ;
        time:hasBeginning cdiscpilot01:Date_{rficdtc_en} ;
      .
 
@@ -219,7 +219,7 @@ cdiscpilot01:Person_{usubjid}
  # -----------------------------------------------------------------------------
  cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im_en}
    rdf:type study:CumulativeDrugAdministration ;
-   skos:prefLabel "Drug administration {usubjid}"^^xsd:string ;
+   skos:prefLabel "Drug administration period {rfxstdtc} - {rfxendtc} "^^xsd:string ;
    study:activityStatus code:ActivityStatus_1 ;
    study:hasActivityInterval cdiscpilot01:Interval_{cumuDrugAdmin_im_en} ;
  .

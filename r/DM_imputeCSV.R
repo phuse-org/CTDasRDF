@@ -35,6 +35,7 @@ dm$dthfl[dm$usubjid == '01-701-1015' ]  <- "Y" # Set a Death flag  for Person_1
 dm$lifeSpan_im      <- paste0(dm$brthdate, "_", dm$dthdtc)
 dm$refInt_im        <- paste0(dm$rfstdtc,  "_", dm$rfendtc)
 dm$studyPartInt_im  <- paste0(dm$dmdtc,    "_", dm$rfpendtc)
+dm$infConsInt_im    <- paste0(dm$rficdtc,  "_")  # No end date to informed consent interval so end in _
 dm$cumuDrugAdmin_im <- paste0(dm$rfxstdtc,    "_", dm$rfxendtc)
 
 #------------------------------------------------------------------------------
@@ -57,6 +58,7 @@ dm <- encodeCol(data=dm, col="rfstdtc")
 
 dm <- encodeCol(data=dm, col="lifeSpan_im")
 dm <- encodeCol(data=dm, col="refInt_im")    
+dm <- encodeCol(data=dm, col="infConsInt_im")
 dm <- encodeCol(data=dm, col="studyPartInt_im")
 dm <- encodeCol(data=dm, col="cumuDrugAdmin_im")
 
