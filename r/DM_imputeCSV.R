@@ -32,10 +32,10 @@ dm$dthfl[dm$usubjid == '01-701-1015' ]  <- "Y" # Set a Death flag  for Person_1
 
 
 
-dm$lifeSpan_im     <- paste0(dm$brthdate, "_", dm$dthdtc)
-dm$refInt_im       <- paste0(dm$rfstdtc,  "_", dm$rfendtc)
-dm$studyPartInt_im <- paste0(dm$dmdtc,    "_", dm$rfpendtc)
-
+dm$lifeSpan_im      <- paste0(dm$brthdate, "_", dm$dthdtc)
+dm$refInt_im        <- paste0(dm$rfstdtc,  "_", dm$rfendtc)
+dm$studyPartInt_im  <- paste0(dm$dmdtc,    "_", dm$rfpendtc)
+dm$cumuDrugAdmin_im <- paste0(dm$rfxstdtc,    "_", dm$rfxendtc)
 
 #------------------------------------------------------------------------------
 # URL encoding
@@ -43,6 +43,7 @@ dm$studyPartInt_im <- paste0(dm$dmdtc,    "_", dm$rfpendtc)
 #   Function is in Functions.R
 # TODO: Change function to loop over a list of variables instead of 1 call per each 
 #
+# dm$age_en <- URLencode(paste(dm$age))
 dm <- encodeCol(data=dm, col="age")
 dm <- encodeCol(data=dm, col="brthdate")
 dm <- encodeCol(data=dm, col="dmdtc")
@@ -57,8 +58,7 @@ dm <- encodeCol(data=dm, col="rfstdtc")
 dm <- encodeCol(data=dm, col="lifeSpan_im")
 dm <- encodeCol(data=dm, col="refInt_im")    
 dm <- encodeCol(data=dm, col="studyPartInt_im")
+dm <- encodeCol(data=dm, col="cumuDrugAdmin_im")
 
 # Sort column names in the df for quicker referencing
 dm <- dm %>% select(noquote(order(colnames(dm))))
-
-
