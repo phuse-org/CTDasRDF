@@ -37,35 +37,35 @@ cd01p:Study_{studyid}
 # -----------------------------------------------------------------------------
 cdiscpilot01:Person_{usubjid}
   a study:EnrolledSubject;
-  skos:preflabel "Person {usubjid}"^^xsd:string ;
-  study:actualArm cd01p:Arm_{actarmcd} ;
-  study:deathFlag "{dthfl}"^^xsd:string ;
-  study:hasLifespan cdiscpilot01:Interval_{lifeSpan_im_en};
-  study:hasReferenceInterval cdiscpilot01:Interval_{refInt_im_en} ;
-  study:hasSite cd01p:Site_{siteid} ;
+  skos:preflabel                      "Person {usubjid}"^^xsd:string ;
+  study:actualArm                     cd01p:Arm_{actarmcd} ;
+  study:deathFlag                     "{dthfl}"^^xsd:string ;
+  study:hasLifespan                   cdiscpilot01:Interval_{lifeSpan_im_en};
+  study:hasReferenceInterval          cdiscpilot01:Interval_{refInt_im_en} ;
+  study:hasSite                       cd01p:Site_{siteid} ;
   study:hasStudyParticipationInterval cdiscpilot01:Interval_{studyPartInt_im_en} ;
-  study:hasSubjectID cdiscpilot01:SubjectIdentifier_{subjid} ;
-  study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_{usubjid} ;
-  study:participatesIn cdiscpilot01:DemographicDataCollection_{usubjid};
-  study:participatesIn cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im_en} ;
-  study:participatesIn cdiscpilot01:InformedConsentAdult_{usubjid} ;
-  study:participatesIn cdiscpilot01:RandomizationBAL3_{usubjid} ;
+  study:hasSubjectID                  cdiscpilot01:SubjectIdentifier_{subjid} ;
+  study:hasUniqueSubjectID            cdiscpilot01:UniqueSubjectIdentifier_{usubjid} ;
+  study:participatesIn                cdiscpilot01:DemographicDataCollection_{usubjid};
+  study:participatesIn                cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im_en} ;
+  study:participatesIn                cdiscpilot01:InformedConsentAdult_{usubjid} ;
+  study:participatesIn                cdiscpilot01:RandomizationBAL3_{usubjid} ;
 .
 
   # Lifespan ----
   #  concat of encoded birthdate and rficdtc dates [this is line 33]
   cdiscpilot01:Interval_{lifeSpan_im_en}
     a study:Lifespan ;
-    rdfs:label "Interval {lifeSpan_im}"^^xsd:string ;
+    rdfs:label        "Interval {lifeSpan_im}"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{brthdate_en} ;
-    time:hasEnd cdiscpilot01:Date_{dthdtc_en}
+    time:hasEnd       cdiscpilot01:Date_{dthdtc_en}
   .
 
     # Lifespan Dates
     #  a) birthdate
     cdiscpilot01:Date_{brthdate_en}
-      rdf:type study:Birthdate ;
-      rdfs:label "{brthdate}"^^xsd:string ;
+      rdf:type                  study:Birthdate ;
+      rdfs:label                "{brthdate}"^^xsd:string ;
       study:dateTimeInXSDString "{brthdate}"^^xsd:string
     .
     # b) deathdate
@@ -99,7 +99,7 @@ cdiscpilot01:Person_{usubjid}
   # StudyParticipationInterval
   cdiscpilot01:Interval_{studyPartInt_im_en}
     rdf:type study:StudyParticipationInterval ;
-    rdfs:label "Interval studyPartInt_im"^^xsd:string ;
+    rdfs:label "Interval {studyPartInt_im}"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{dmdtc_en} ;
     time:hasEnd cdiscpilot01:Date_{rfpendtc_en}
   .
@@ -225,9 +225,13 @@ cdiscpilot01:Person_{usubjid}
  .
 
  cdiscpilot01:Interval_{cumuDrugAdmin_im_en}
-   rdf:type study:CumulativeDrugAdministrationInterval ;
-   rdfs:label "Interval {cumuDrugAdmin_im}"^^xsd:string ;
+   rdf:type           study:CumulativeDrugAdministrationInterval ;
+   rdfs:label         "Interval {cumuDrugAdmin_im}"^^xsd:string ;
+   time:hasBeginning  cdiscpilot01:Date_{rfxstdtc_en} ;
+   time:hasEnd        cdiscpilot01:Date_{rfxendtc_en} ;
  .
+
+#TODO: add the dates are beginingn and end of admin intervals?
 
  # -----------------------------------------------------------------------------
  # RandomizationBAL3

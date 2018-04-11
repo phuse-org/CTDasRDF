@@ -113,7 +113,7 @@ cdiscpilot01:Date_2014-07-02T11:45 a study:StudyParticipationEnd ;
 	rdfs:label "2014-07-02T11:45" ;
 	study:dateTimeInXSDString "2014-07-02T11:45" .
 
-cdiscpilot01:DemographicDataCollection_01-701-1015 a code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1015 , cd01p:VisitScreening1DemogDataColl ;
+cdiscpilot01:DemographicDataCollection_01-701-1015 a cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
 	skos:prefLabel "Person 01-701-1015 Screening 1 Demographic data collection" ;
 	code:hasAge cdiscpilot01:AgeOutcome_63 ;
 	study:activityStatus code:ActivityStatus_1 ;
@@ -122,7 +122,7 @@ cdiscpilot01:DemographicDataCollection_01-701-1015 a code:DemographicDataCollect
 	study:race code:Race_WHITE ;
 	study:sex code:Sex_F .
 
-cdiscpilot01:DemographicDataCollection_01-701-1023 a cdiscpilot01:VisitScreening1Activity_01-701-1023 , cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection ;
+cdiscpilot01:DemographicDataCollection_01-701-1023 a code:DemographicDataCollection , cd01p:VisitScreening1DemogDataColl , cdiscpilot01:VisitScreening1Activity_01-701-1023 ;
 	skos:prefLabel "Person 01-701-1023 Screening 1 Demographic data collection" ;
 	code:hasAge cdiscpilot01:AgeOutcome_64 ;
 	study:activityStatus code:ActivityStatus_1 ;
@@ -131,7 +131,7 @@ cdiscpilot01:DemographicDataCollection_01-701-1023 a cdiscpilot01:VisitScreening
 	study:race code:Race_WHITE ;
 	study:sex code:Sex_M .
 
-cdiscpilot01:DemographicDataCollection_01-701-1028 a code:DemographicDataCollection , cd01p:VisitScreening1DemogDataColl , cdiscpilot01:VisitScreening1Activity_01-701-1028 ;
+cdiscpilot01:DemographicDataCollection_01-701-1028 a code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1028 , cd01p:VisitScreening1DemogDataColl ;
 	skos:prefLabel "Person 01-701-1028 Screening 1 Demographic data collection" ;
 	code:hasAge cdiscpilot01:AgeOutcome_71 ;
 	study:activityStatus code:ActivityStatus_1 ;
@@ -140,7 +140,7 @@ cdiscpilot01:DemographicDataCollection_01-701-1028 a code:DemographicDataCollect
 	study:race code:Race_WHITE ;
 	study:sex code:Sex_M .
 
-cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 a cdiscpilot01:VisitBASELINEActivity_01-701-1015 , study:FixedDoseAdministration ;
+cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 a study:FixedDoseAdministration , cdiscpilot01:VisitBASELINEActivity_01-701-1015 ;
 	skos:prefLabel "Drug administration" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:administeredDrug custom:PlaceboDrug_1 ;
@@ -149,7 +149,7 @@ cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 a cdiscpilot01
 	study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
 	study:outcome study:DrugAdministrationComplete .
 
-cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 a study:FixedDoseAdministration , cdiscpilot01:VisitWEEK%202Activity_01-701-1015 ;
+cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 a cdiscpilot01:VisitWEEK%202Activity_01-701-1015 , study:FixedDoseAdministration ;
 	skos:prefLabel "Drug administration" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:administeredDrug custom:PlaceboDrug_1 ;
@@ -158,7 +158,7 @@ cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 a study:FixedD
 	study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
 	study:outcome study:DrugAdministrationComplete .
 
-cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 a cdiscpilot01:VisitWEEK%2024Activity_01-701-1015 , study:FixedDoseAdministration ;
+cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 a study:FixedDoseAdministration , cdiscpilot01:VisitWEEK%2024Activity_01-701-1015 ;
 	skos:prefLabel "Drug administration" ;
 	study:activityStatus code:ActivityStatus_1 ;
 	study:administeredDrug custom:PlaceboDrug_1 ;
@@ -189,55 +189,57 @@ cdiscpilot01:InformedConsentAdult_01-701-1028 a code:InformedConsentAdult ;
 	study:outcome code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Interval_1942-07-19_ a study:Lifespan ;
-	rdfs:label "Lifespan Interval 1942-07-19_" ;
+	rdfs:label "Interval 1942-07-19_" ;
 	time:hasBeginning cdiscpilot01:Date_1942-07-19 .
 
 cdiscpilot01:Interval_1948-08-05_ a study:Lifespan ;
-	rdfs:label "Lifespan Interval 1948-08-05_" ;
+	rdfs:label "Interval 1948-08-05_" ;
 	time:hasBeginning cdiscpilot01:Date_1948-08-05 .
 
 cdiscpilot01:Interval_1951-01-02_2013-12-26 a study:Lifespan ;
-	rdfs:label "Lifespan Interval 1951-01-02_2013-12-26" ;
+	rdfs:label "Interval 1951-01-02_2013-12-26" ;
 	time:hasBeginning cdiscpilot01:Date_1951-01-02 ;
 	time:hasEnd cdiscpilot01:Date_2013-12-26 .
 
 cdiscpilot01:Interval_2012-07-22_ a study:InformedConsentInterval ;
-	rdfs:label "Informed Consent Interval 2012-07-22_" ;
+	rdfs:label "Interval 2012-07-22_" ;
 	time:hasBeginning cdiscpilot01:Date_2012-07-22 .
 
 cdiscpilot01:Interval_2012-07-22_2013-02-18 a study:StudyParticipationInterval ;
-	rdfs:label "Study Participation Interval 01-701-1023" ;
+	rdfs:label "Interval 2012-07-22_2013-02-18" ;
 	time:hasBeginning cdiscpilot01:Date_2012-07-22 ;
 	time:hasEnd cdiscpilot01:Date_2013-02-18 .
 
 cdiscpilot01:Interval_2012-08-05_2012-09-01 a study:CumulativeDrugAdministrationInterval ;
-	rdfs:label "Cumulative Drug Administration Interval 2012-08-05_2012-09-01" .
+	rdfs:label "Interval 2012-08-05_2012-09-01" ;
+	time:hasBeginning cdiscpilot01:Date_2012-08-05 ;
+	time:hasEnd cdiscpilot01:Date_2012-09-01 .
 
 cdiscpilot01:Interval_2012-08-05_2012-09-02 a study:ReferenceInterval ;
-	rdfs:label "Reference Interval 01-701-1023" ;
+	rdfs:label "Interval 2012-08-05_2012-09-02" ;
 	time:hasBeginning cdiscpilot01:Date_2012-08-05 ;
 	time:hasEnd cdiscpilot01:Date_2012-09-02 .
 
 cdiscpilot01:Interval_2013-07-11_ a study:InformedConsentInterval ;
-	rdfs:label "Informed Consent Interval 2013-07-11_" ;
+	rdfs:label "Interval 2013-07-11_" ;
 	time:hasBeginning cdiscpilot01:Date_2013-07-11 .
 
 cdiscpilot01:Interval_2013-07-11_2014-01-14T11:10 a study:StudyParticipationInterval ;
-	rdfs:label "Study Participation Interval 01-701-1028" ;
+	rdfs:label "Interval 2013-07-11_2014-01-14T11:10" ;
 	time:hasBeginning cdiscpilot01:Date_2013-07-11 ;
 	time:hasEnd cdiscpilot01:Date_2014-01-14T11:10 .
 
-cdiscpilot01:Interval_2013-07-19_2014-01-14 a study:CumulativeDrugAdministrationInterval , study:ReferenceInterval ;
-	rdfs:label "Cumulative Drug Administration Interval 2013-07-19_2014-01-14" , "Reference Interval 01-701-1028" ;
+cdiscpilot01:Interval_2013-07-19_2014-01-14 a study:ReferenceInterval , study:CumulativeDrugAdministrationInterval ;
+	rdfs:label "Interval 2013-07-19_2014-01-14" ;
 	time:hasBeginning cdiscpilot01:Date_2013-07-19 ;
 	time:hasEnd cdiscpilot01:Date_2014-01-14 .
 
 cdiscpilot01:Interval_2013-12-26_ a study:InformedConsentInterval ;
-	rdfs:label "Informed Consent Interval 2013-12-26_" ;
+	rdfs:label "Interval 2013-12-26_" ;
 	time:hasBeginning cdiscpilot01:Date_2013-12-26 .
 
 cdiscpilot01:Interval_2013-12-26_2014-07-02T11:45 a study:StudyParticipationInterval ;
-	rdfs:label "Study Participation Interval 01-701-1015" ;
+	rdfs:label "Interval 2013-12-26_2014-07-02T11:45" ;
 	time:hasBeginning cdiscpilot01:Date_2013-12-26 ;
 	time:hasEnd cdiscpilot01:Date_2014-07-02T11:45 .
 
@@ -247,7 +249,7 @@ cdiscpilot01:Interval_2014-01-02_2014-01-16 a study:FixedDoseInterval ;
 	time:hasEnd cdiscpilot01:Date_2014-01-16 .
 
 cdiscpilot01:Interval_2014-01-02_2014-07-02 a study:CumulativeDrugAdministrationInterval , study:ReferenceInterval ;
-	rdfs:label "Cumulative Drug Administration Interval 2014-01-02_2014-07-02" , "Reference Interval 01-701-1015" ;
+	rdfs:label "Interval 2014-01-02_2014-07-02" ;
 	time:hasBeginning cdiscpilot01:Date_2014-01-02 ;
 	time:hasEnd cdiscpilot01:Date_2014-07-02 .
 

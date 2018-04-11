@@ -55,6 +55,8 @@ dm <- encodeCol(data=dm, col="rfendtc")
 dm <- encodeCol(data=dm, col="rficdtc")
 dm <- encodeCol(data=dm, col="rfpendtc")
 dm <- encodeCol(data=dm, col="rfstdtc")
+dm <- encodeCol(data=dm, col="rfxstdtc")
+dm <- encodeCol(data=dm, col="rfxendtc")
 
 dm <- encodeCol(data=dm, col="lifeSpan_im")
 dm <- encodeCol(data=dm, col="refInt_im")    
