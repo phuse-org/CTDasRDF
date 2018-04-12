@@ -52,69 +52,69 @@ sdtm-cdisc01:SDTM_DM_Record_1
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM DM Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_DM_Record_2
   rdf:type sdtm:SDTM_DM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM DM Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_2> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1023> ;
 .
 sdtm-cdisc01:SDTM_DM_Record_3
   rdf:type sdtm:SDTM_DM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM DM Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_3> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1028> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_1
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagCmpltr16Wk_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagCOMPLT16_01-701-1015> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_2
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagCmpltr24Wk_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagCOMPLT24_01-701-1015> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_3
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagCmpltr8Wk_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagCOMPLT8_01-701-1015> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_4
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 4"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagEff_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagEFFICACY_01-701-1015> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_5
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 5"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagItt_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagITT_01-701-1015> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_SUPPDM_Record_6
   rdf:type sdtm:SDTM_SUPPDM_Record ;
   rdfs:comment ""^^xsd:string ;
   rdfs:label "SDTM SUPPDM Record 6"^^xsd:string ;
   skos:definition ""^^xsd:string ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagSaf_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#PopFlagSAFETY_01-701-1015> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_1
   rdf:type sdtm:SDTM_VS_Record ;
@@ -122,19 +122,19 @@ sdtm-cdisc01:SDTM_VS_Record_1
   rdfs:label "SDTM VS Record 1"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_128
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 128"^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25206_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_142
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 142"^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25208_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_2
   rdf:type sdtm:SDTM_VS_Record ;
@@ -142,7 +142,7 @@ sdtm-cdisc01:SDTM_VS_Record_2
   rdfs:label "SDTM VS Record 2"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_2> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_3
   rdf:type sdtm:SDTM_VS_Record ;
@@ -150,47 +150,47 @@ sdtm-cdisc01:SDTM_VS_Record_3
   rdfs:label "SDTM VS Record 3"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25299_3> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_43
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 43"^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25347_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_44
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 44"^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_45
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 45"^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_2> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_46
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 46"^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_3> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_86
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 86"^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_1> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_87
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 87"^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_2> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_88
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 88"^^xsd:string ;
   sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C25298_3> ;
-  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_1> ;
+  sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .

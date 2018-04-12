@@ -464,7 +464,7 @@ cd01p:StudyIdentifier_1
   code:hasMethod code:ActivityMethod_3 ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
-cd01p:Study_1
+cd01p:Study_CDISCPILOT01
   rdf:type study:Study ;
   rdfs:label "CDISCPILOT01" ;
   skos:altLabel ""^^xsd:string ;
@@ -630,7 +630,7 @@ custom:PlaceboProduct_1
   code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_1 ;
 .
-custom:PopFlagCmpltr16Wk
+custom:PopFlagCOMPLT16
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
   rdfs:subClassOf [
@@ -647,7 +647,7 @@ custom:PopFlagCmpltr16Wk
   skos:prefLabel "COMPLT16"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
 .
-custom:PopFlagCmpltr24Wk
+custom:PopFlagCOMPLT24
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
   rdfs:subClassOf [
@@ -664,7 +664,7 @@ custom:PopFlagCmpltr24Wk
   skos:prefLabel "COMPLT24"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
 .
-custom:PopFlagCmpltr8Wk
+custom:PopFlagCOMPLT8
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
   rdfs:subClassOf [
@@ -681,7 +681,7 @@ custom:PopFlagCmpltr8Wk
   skos:prefLabel "COMPLT8"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
 .
-custom:PopFlagEff
+custom:PopFlagEFFICACY
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
   rdfs:subClassOf [
@@ -698,7 +698,7 @@ custom:PopFlagEff
   skos:prefLabel "EFFICACY"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
 .
-custom:PopFlagItt
+custom:PopFlagITT
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
   rdfs:subClassOf [
@@ -715,7 +715,7 @@ custom:PopFlagItt
   skos:prefLabel "ITT"^^xsd:string ;
   code:hasMethod code:ActivityMethod_2 ;
 .
-custom:PopFlagSaf
+custom:PopFlagSAFETY
   rdf:type owl:Class ;
   rdfs:subClassOf study:PopulationFlag ;
   rdfs:subClassOf [

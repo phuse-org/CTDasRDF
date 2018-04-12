@@ -512,14 +512,7 @@ study:CumulativeDrugAdministrationBegin
   rdfs:subClassOf study:ActivityBegin ;
   skos:definition ""^^xsd:string ;
 .
-study:CumulativeProductAdministrationEnd
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Product administration end"^^xsd:string ;
-  rdfs:subClassOf study:ActivityEnd ;
-  skos:definition ""^^xsd:string ;
-.
-study:CumulativeProductAdministrationInterval
+study:CumulativeDrugAdministrationInterval
   rdf:type owl:Class ;
   spin:rule [
       rdf:type sp:Construct ;
@@ -692,7 +685,7 @@ study:CumulativeProductAdministrationInterval
               ] ;
           ]
           [
-            sp:object study:CumulativeProductAdministrationInterval ;
+            sp:object study:CumulativeDrugAdministrationInterval ;
             sp:predicate rdf:type ;
             sp:subject spin:_this ;
           ]
@@ -720,6 +713,13 @@ study:CumulativeProductAdministrationInterval
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product administration interval"^^xsd:string ;
   rdfs:subClassOf study:ActivityInterval ;
+  skos:definition ""^^xsd:string ;
+.
+study:CumulativeProductAdministrationEnd
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration end"^^xsd:string ;
+  rdfs:subClassOf study:ActivityEnd ;
   skos:definition ""^^xsd:string ;
 .
 study:Date
@@ -1734,7 +1734,7 @@ study:StudyParticipationInterval
               ] ;
           ]
           [
-            sp:object study:CumulativeProductAdministrationInterval ;
+            sp:object study:CumulativeDrugAdministrationInterval ;
             sp:predicate rdf:type ;
             sp:subject spin:_this ;
           ]
