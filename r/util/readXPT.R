@@ -23,7 +23,7 @@ readXPTDomain <- function (domainName){
 
 domainVals <- readXPTDomain("ex")
 
-foo<-data.frame(domainVals$vsseq)
+foo<-data.frame(domainVals$extrt)
 
 
 

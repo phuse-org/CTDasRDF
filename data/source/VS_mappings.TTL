@@ -8,6 +8,12 @@
 # NOTE: stardog-admin virtual import CTDasRDF VS_mappings.TTL VS_subset.csv
 #  Export to TTL: stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
 #
+#  Conventions:  
+#    Visit IRIs: 
+#      a) cdiscpilot01 : compressed form of original value in visit field: visit_im_comp
+#          Closer match to actual source data.
+#      b) custom: and other externa ont files: CamelCaseShortened: visit_im_CCaseSh to match 
+#          naming conventions in ontologies for classes, etc.
 # TODO: 
 ###############################################################################
 
@@ -30,9 +36,9 @@
 # TODO: WIP
 #      
 # -----------------------------------------------------------------------------
-#cdiscpilot01:Person_{usubjid} 
-#  study:participatesIn cdiscpilot01:Visit_{im_visit_CCaseSh}_{usubjid} ;
-#.
+cdiscpilot01:Person_{usubjid} 
+  study:participatesIn cdiscpilot01:Visit{visit_im_comp}_{usubjid} ;
+.
 
   # Visit ----
   # AssumeBodyPosition is a combination of the position and the prerequisite time
@@ -41,37 +47,35 @@
   #                     etc.
   # Hardcoding:  ActivityStatus_1 = CO(Complete)
    
-#  cdiscpilot01:Visit_{im_visit_CCaseSh}_{usubjid}
-#    rdf:type               custom:Visit{im_visit_CCaseSh} ;
-#    study:hasPerformedDate cdiscpilot01:Date_{#vsdtc} ;
-
-#    study:activityStatus   code:ActivityStatus_1 ;
-#    study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{im_vspos_CCase}_{usubjid} ;
-#    study:hasSubActivity   cdiscpilot01:Test_{vstestcd}_{#vsorres} ;
-
+  cdiscpilot01:Visit{visit_im_comp}_{usubjid}
+    rdf:type               custom:Visit{visit_im_CCaseSh} ;
+    study:hasPerformedDate cdiscpilot01:Date_{#vsdtc} ;
+    study:activityStatus   code:ActivityStatus_1 ;
+    study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid} ;
+    study:hasSubActivity   cdiscpilot01:Test_{vstestcd}_{#vsorres} ;
   .
 
    # AssumeBodyPosition
- # cdiscpilot01:AssumeBodyPosition{im_vspos_CCase}_{usubjid} 
- #   rdf:type             cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid};
- #   rdf:type             custom:AssumeBodyPosition{im_vspos_CCase} ;
- #   skos:prefLabel       "Assume {im_vspos_CCase} position"^^xsd:string ;   
- #   study:activityStatus code:ActivityStatus_1 ;
- #   study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
- #   study:hasStartRule   cdiscpilot01:StartRule{im_StartRule}_{usubjid} ;
- #   study:outcome        code:Vspos_{vspos} ;
- # .
+  cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid} 
+    rdf:type             cdiscpilot01:Visit{visit_im_comp}Activity_{usubjid};
+    rdf:type             custom:AssumeBodyPosition{vspos_im_CCase} ;
+    skos:prefLabel       "Assume {vspos_im_CCase} position"^^xsd:string ;   
+    study:activityStatus code:ActivityStatus_1 ;
+    study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
+    study:hasStartRule   cdiscpilot01:StartRule{startRule_im}_{usubjid} ;
+    study:outcome        code:Vspos_{vspos} ;
+  .
 
- #   cdiscpilot01:Visit{im_visit_CCaseSh}Activity_{usubjid}
- #     rdf:type        owl:Class ;
- #     skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
- #     rdfs:subClassOf custom:Visit{im_visit_CCaseSh}Activity;
- #  .
+    cdiscpilot01:Visit{visit_im_comp}Activity_{usubjid}
+      rdf:type        owl:Class ;
+      skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
+      rdfs:subClassOf custom:Visit{visit_im_CCaseSh}Activity;
+   .
 
 # TO HERE
-# study:hasStartRule cdiscpilot01:StartRule{im_StartRule}_{usubjid} ;
-#  cdiscpilot01:StartRule{im_StartRule}_{usubjid}
-#    rdf:type       cd01p:{im_StartRule} ;
+# study:hasStartRule cdiscpilot01:StartRule{startRule_im}_{usubjid} ;
+#  cdiscpilot01:StartRule{startRule_im}_{usubjid}
+#    rdf:type       cd01p:{startRule_im} ;
 #    skos:prefLabel "{usubjid} {visit} Start Rule {vstpt} "^^xsd:string ;
 #  .
 

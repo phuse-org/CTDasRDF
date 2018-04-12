@@ -11,14 +11,19 @@
 
 # ** Impute ----
 # StartRules based on vstpt 
-vs$im_StartRule <- recode (vs$vstpt,
+vs$startRule_im <- recode (vs$vstpt,
   " 'AFTER LYING DOWN FOR 5 MINUTES'  = 'StartRuleLying5' ;
     'AFTER STANDING FOR 1 MINUTE'     = 'StartRuleStanding1' ;
     'AFTER STANDING FOR 3 MINUTES'    = 'StartRuleStanding3'"
 )
 
-# visit in Camel Case Short form for reacing IRIs to ont
-vs$im_visit_CCaseSh <- recode (vs$visit,
+# Without spaces, for use in forming IRIs (that do not long to ontology as per use of
+#   visit_im_CCaseSh )
+vs$visit_im_comp <- gsub(" ", "", vs$visit )
+
+# Change following to function. Used in other domains!
+# visit in Camel Case Short form for linking  IRIs to ont. Ont uses camel case
+vs$visit_im_CCaseSh <- recode (vs$visit,
   " 'SCREENING 1'          =  'Screening1' ;
     'SCREENING 2'          =  'Screening2' ;
     'BASELINE'             =  'Baseline' ;
@@ -38,7 +43,7 @@ vs$im_visit_CCaseSh <- recode (vs$visit,
 )
 
 
-vs$im_vspos_CCase <- recode (vs$vspos,
+vs$vspos_im_CCase <- recode (vs$vspos,
   " 'STANDING'  = 'Standing' ;
     'SUPINE'    = 'Supine'"
 )
@@ -50,13 +55,13 @@ vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
 vs[vs$vsseq %in% c(2,87)       & vs$personNum == 1, "vslat"] <- "LEFT"
 
 
-vs$im_vslat_CCase <- recode (vs$vslat,
+vs$vslat_im_CCase <- recode (vs$vslat,
   " 'LEFT'  = 'Left' ;
     'RIGHT'    = 'Right'"
 )
 
-
-
+# Sort column names in the df for quicker referencing
+vs <- vs %>% select(noquote(order(colnames(vs))))
 
 
 #------------- ORIGINAL IMPUTATIONS FOLLOW ------------------------------------

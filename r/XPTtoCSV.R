@@ -56,23 +56,21 @@ write.csv(ex, file="data/source/EX_subset.csv",
 row.names = F)
 
 
+# VS ----
+vs  <- readXPT("vs")  # first row only for initial testing.
+
+# Subset for development
+vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
+
+# Impute values needed for testing
+source('R/VS_imputeCSV.R')  # Creates birthdate. 
+
+
+write.csv(vs, file="data/source/vs_subset.csv", 
+  row.names = F)
 
 
 # TS ----
 #ts  <- readXPT("ts")  # first row only for initial testing.
 #write.csv(ts, file="data/source/ts_subset.csv", 
-#  row.names = F)
-
-
-# VS ----
-#vs  <- readXPT("vs")  # first row only for initial testing.
-
-# Subset for development
-#vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
-
-# Impute values needed for testing
-#source('R/VS_imputeCSV.R')  # Creates birthdate. 
-
-
-#write.csv(vs, file="data/source/vs_subset.csv", 
 #  row.names = F)

@@ -19,7 +19,7 @@ call stardog-admin virtual import CTDasRDF SUPPDM_mappings.TTL SUPPDM_subset.csv
 call stardog-admin virtual import CTDasRDF EX_mappings.TTL EX_subset.csv
 
 
-REM @echo Importing VS 
-REM call stardog-admin virtual import CTDasRDF VS_mappings.TTL VS_subset.csv
+@echo Importing VS 
+call stardog-admin virtual import CTDasRDF VS_mappings.TTL VS_subset.csv
 
 @pause
