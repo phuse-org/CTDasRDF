@@ -41,6 +41,9 @@ cdiscpilot01:Person_{usubjid}
 .
 
   # Visit ----
+  # Example Objects: 
+  #   VisitSCREENING1_01-701-1015
+
   # AssumeBodyPosition is a combination of the position and the prerequisite time
   #   in that position: STANDING+ After Standing for 1 minute
   #                     STANDING+ After Standing for 3 minutes
@@ -49,28 +52,43 @@ cdiscpilot01:Person_{usubjid}
    
   cdiscpilot01:Visit{visit_im_comp}_{usubjid}
     rdf:type               custom:Visit{visit_im_CCaseSh} ;
-    study:hasPerformedDate cdiscpilot01:Date_{#vsdtc} ;
+    study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
     study:activityStatus   code:ActivityStatus_1 ;
-    study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid} ;
-    study:hasSubActivity   cdiscpilot01:Test_{vstestcd}_{#vsorres} ;
+#    study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid} ;
+    study:hasSubActivity   cdiscpilot01:{vstestcd_im_titleC}Outcome_{vsorres_en} ;
   .
 
-   # AssumeBodyPosition
-  cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid} 
-    rdf:type             cdiscpilot01:Visit{visit_im_comp}Activity_{usubjid};
-    rdf:type             custom:AssumeBodyPosition{vspos_im_CCase} ;
-    skos:prefLabel       "Assume {vspos_im_CCase} position"^^xsd:string ;   
-    study:activityStatus code:ActivityStatus_1 ;
-    study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
-    study:hasStartRule   cdiscpilot01:StartRule{startRule_im}_{usubjid} ;
-    study:outcome        code:Vspos_{vspos} ;
-  .
+#   # AssumeBodyPosition
+#  cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid} 
+#    rdf:type             cdiscpilot01:Visit{visit_im_comp}Activity_{usubjid};
+#    rdf:type             custom:AssumeBodyPosition{vspos_im_CCase} ;
+#    skos:prefLabel       "Assume {vspos_im_CCase} position"^^xsd:string ;   
+#    study:activityStatus code:ActivityStatus_1 ;
+#    study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
+#    study:hasStartRule   cdiscpilot01:StartRule{startRule_im}_{usubjid} ;
+#    study:outcome        code:Vspos_{vspos} ;
+#  .
 
-    cdiscpilot01:Visit{visit_im_comp}Activity_{usubjid}
-      rdf:type        owl:Class ;
-      skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
-      rdfs:subClassOf custom:Visit{visit_im_CCaseSh}Activity;
-   .
+    cdiscpilot01:{vstestcd_im_titleC}Outcome_{vsorres_en} 
+      code:hasUnit code:Unit_{vsorresu} ;
+      code:hasValue "{vsorres}"^^xsd:float;
+      rdf:type study:{vstestcd_im_titleC}Outcome ;
+       skos:prefLabel "{vsorres} {vsorresu}"^^xsd:string ;
+    .
+                #GUIDE
+                #cdiscpilot01:WeightOutcome_1
+                #  rdf:type study:WeightOutcome ;
+                #  skos:prefLabel "119.0 LB"^^xsd:string ;
+                #  code:hasUnit code:Unit_8 ; 
+                #  code:hasValue "119.0"^^xsd:float ; #!! UNABLE TO ASSIGN TYPE!!
+
+
+
+#    cdiscpilot01:Visit{visit_im_comp}Activity_{usubjid}
+#      rdf:type        owl:Class ;
+#      skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
+#      rdfs:subClassOf custom:Visit{visit_im_CCaseSh}Activity;
+#   .
 
 # TO HERE
 # study:hasStartRule cdiscpilot01:StartRule{startRule_im}_{usubjid} ;

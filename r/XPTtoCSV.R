@@ -25,6 +25,19 @@ setwd("C:/_github/CTDasRDF")
 
 source('R/Functions.R')  # Functions: readXPT(), encodeCol(), etc.
 
+
+# ---- Graph Metadata ---------------------------------------------------------
+# Read in the source CSV, insert time stamp, and write it back out
+#  Source file needed UTF-8 spec to import first column correctly. Could be articfact
+#    that needs later replacement.
+graphMeta <- read.csv2("data/source/ctdasrdf_graphmeta.csv",
+   fileEncoding="UTF-8-BOM" , header=TRUE, sep=",");
+
+graphMeta$createdOn<-gsub("(\\d\\d)$", ":\\1",strftime(Sys.time(),"%Y-%m-%dT%H:%M:%S%z"))
+
+write.csv(graphMeta, file="data/source/ctdasrdf_graphmeta.csv",
+  row.names = F)
+
 # ---- XPT Import -------------------------------------------------------------
 # DM ----
 dm  <- head(readXPT("dm"), dm_n)
@@ -42,7 +55,6 @@ suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]
 write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
 row.names = F)
 
-
 # EX ----
 ex  <- readXPT("ex")
 # subset for development
@@ -51,10 +63,8 @@ ex <- ex[ex$usubjid %in% pntSubset,]
 # Impute values needed for testing
 source('R/EX_imputeCSV.R')
 
-
 write.csv(ex, file="data/source/EX_subset.csv", 
 row.names = F)
-
 
 # VS ----
 vs  <- readXPT("vs")  # first row only for initial testing.
@@ -64,7 +74,6 @@ vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid
 
 # Impute values needed for testing
 source('R/VS_imputeCSV.R')  # Creates birthdate. 
-
 
 write.csv(vs, file="data/source/vs_subset.csv", 
   row.names = F)

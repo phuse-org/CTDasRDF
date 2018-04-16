@@ -1,21 +1,20 @@
-
 # Data Mapping and Conversion
+_Last updated 16 APR 2018 _
+
 ## Introduction
 This document describes the conversion of data from the source XPT files to RDF.
 **CAUTION**: It is almost certain this document is out of date. It is definitely
 incomplete.
 
-Pre-processing and creation of new data not in the original sources is minimized wherever possible. Data imputation is used for values typically seen in SDTM source data but absent from the study used to develop the prototype. See the discussion below on birth date as an example. 
+Pre-processing and creation of new data not in the original sources is minimized wherever possible. Data imputation is used for values typically seen in SDTM source data but absent from the study used to develop the prototype. The value for birth date is an example described later in this document.
 
 
 ## General Notes
-XPT files are converted to CSV using R. The conversion process then relies on Stardog Mapping Syntax (SMS) to convert CSV files to the graph. Mapping files are named using the convention *domainname*_mappings.TTL and are located in the /data/source folder.
+XPT files are converted to CSV using R. The conversion process then relies on Stardog Mapping Syntax (SMS) to convert CSV files to the graph. Mapping files are named using the convention *domainname*_mappings.TTL and are located in the same /data/source folder as the CSV files.
 
 ## Data Files
 Source data comes from the PhUSE "Test Data Factory" CDISCPILOT01 study,
-SDTM version 3.2. The files are available within this project at:  
-./data/source/updated_cdiscpilot . Domains under construction include: DM, SUPPM, VS. SUPPVS and EX are pending.
-TS will follow.
+SDTM version 3.2. The files are available within this project at: ./data/source/updated_cdiscpilot Domains under construction include: DM, SUPPM, EX, and VS. SUPPVS is pending and the projet is likely to extent to TS in the near future.
 
 
 ## Process Overview
@@ -25,30 +24,33 @@ TS will follow.
   * Subset as needed for testing
   * Create .CSV for each domain
 2. Upload to Stardog using SMS mapping
-  a. execute /data/source/*StarDogUpload.bat*
+  * Execute /data/source/*StarDogUpload.bat*
 
 ### R Programs
 | Order  | File                 | Description                                  |
 | ------ | -------------------- | ---------------------------------------------|
 | 1.     | XPTtoCSV.R           | Main driver program data conversion using R |
 | 2.     | Functions.R          | Functions called during conversion process |
-| 3.     | DM_imputeCSV.R       | DM imputation, encoding. No SUPPDM impute script needed as of 02APR18 |
-| 4.     | VS_imputeCSV.R       | OUTDATED: Needs update to latest SMS mapping methods 02APR18 |
-| 5.     |  ||
-| 6.     |  ||
+| 3.     | DM_imputeCSV.R       | DM imputation, encoding. |
+|        | XPTtoCVS:SUPPDM      | No imputation for SUPPMD. XPTtoCVS.R processes SUPPDM |
+| 4.     | EX_imputeCSV.R       | EX imputation, encoding. 
+| 5.     | VS_imputeCSV.R       | **_UNDER CONSTRUCTION APRIL 2018_** |
+| 6.     | _TS_impute.CVS_      | **_planned_** |
+| 7.     | _TBD_                | _TBD_ |
 
 ### Stardog .BAT files
 | Order  | File                 | Description                                  |
 | ------ | -------------------- | ---------------------------------------------|
-| NA     | StarDogUpload.BAT    | Calls the various mapping files to upload domains to the triplestore. |
-| NA     | StarDogExportTTL.BAT | Export the entire CTDasRDF graph to TTL. (outdated: use SPARQL CONSTRUCT instead) |
+| NA     | StarDogUpload.BAT    | Calls the individual mapping files to upload domains to the triplestore. |
+
+| NA     | StarDogExportTTL.BAT | Export the entire CTDasRDF graph to TTL. Not in use: SPARQL CONSTRUCT used to create sorted TTL export) |
 
 
 
 ## General Rules
 
 ### Data Creation
-Some data required for developing and testing the model was not present in the orginal source. Examples include Investigator and Site. Each .CSV data source of this type is prefixed with the name `ctdasrdf_` to indicate it is supplemental data created for the project and each has a corresponding `_mappings.TTL` file.
+Some data required for developing and testing the model is not present in the source XPT files. Examples include `Investigator` and `InvestigatorID`. Values were created by the team and stored in CSV files prefixed with the name `ctdasrdf_` to indicate it is supplemental data created for the project. Each CSV file has a corresponding `_mappings.TTL` file. The metadata file ctdasrdf_graphMeta.csv is created programmatically (as source call from XPTtoCVS.R) because it generates timestamp information. The other CSV files are created and maintained manually.
 
 | File                   | Description                       |
 | ---------------------- | ----------------------------------|
@@ -57,9 +59,8 @@ Some data required for developing and testing the model was not present in the o
 
 
 ### Data Creation: Adding Rules
-Values that enable creation of IRIs for rules are also created within the imputation steps.
+_Creation of rules in the RDF data is currently under development. OWL 2 is being invesitaged as a way to infer the assigned rules instead of creating them during the import process._
 
-*TODO: ADD DETAILS, EXAMPLES OF STANDING RULE FOR BLOOD PRESSURE AND HOW IT IS THEN USED IN VS.*
 
 #### Interval IRIs - Special Imputation
 In many cases, either the start or end date of an interval may be missing in the source data. Missing values within an SMS entity result in that entity not being created. We still want to capture the start of an interval even if that interval is not yet completed (eg: Lifespan). For this reason, interval IRI source values are computed during the XPT to CSV conversion process for intervals like: life span (`lifespan_im`), reference interval (`refInt_im`), study participation interval (`studyPartInt_im`)  by combining their start and end dates. These values are then URL encoded, resulting in new columns: `lifespan_im_en`, `refInt_im_en`, `studyPartInt_im_en` .
@@ -146,6 +147,11 @@ The following values are created in the mapping.
 
 
 ## VS
+
+### Visit Activity
+A **visit activity** is defined as one that is _scheduled_ to begin during a Visit but may extend _beyond_ the visit. The actual performed date may be different from the scheduled date. For example, you have doctor's appointment on a Monday; he prescribes a medicine, tells you to start taking it the same day, but you wait and take it on Tuesday. The visit was Monday. The scheduled exposure was Monday, but the actual exposure was Tuesday. Three dates are needed to represent this information: 1. Actual Visit date (`vsdtc`)  2. scheduled Exposure date  3. Actual exposure date (`exstdtc`). SDTM only collects 1. and 3. These dates are often not the same as shown in the Week 2 visit for subject usubjid=01-701-1015:  vsdtc= 1/16/2014 , exstdtc= 1/**17**/2014  
+[AO- 15APR18]
+
 ### Sequence of events in VS
 The sequence of data collection from each patient is important to how the data in VS is represented. The patient is told to lie down. After 5 min supine, blood pressures and temp are recorded. The patient then stands up. After 1 min standng the same tests are performed, and then again after 3 min standing time.
 The data is modeled to the graph using this pattern:
@@ -160,6 +166,9 @@ The data is modeled to the graph using this pattern:
 | 6  | Perform tests | vstestcd=DIABP, SYSBP, TEMP |
 | 7  | After standing for 3 min | `StartRuleStanding3_{usubjid}` |
 | 8  | Perform tests | `vstestcd=DIABP, SYSBP, TEMP |
+
+### Inferencing of Protocol Rules using OWL 2
+_[Approach being implemented April 2018 with documentation to follow]_
 
 
 ### SMS details

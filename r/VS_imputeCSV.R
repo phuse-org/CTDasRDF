@@ -42,23 +42,26 @@ vs$visit_im_CCaseSh <- recode (vs$visit,
     'UNSCHEDULED 3.1'      =  'Unscheduled31' "
 )
 
-
 vs$vspos_im_CCase <- recode (vs$vspos,
   " 'STANDING'  = 'Standing' ;
     'SUPINE'    = 'Supine'"
 )
 
-
-
 # vslat
 vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
 vs[vs$vsseq %in% c(2,87)       & vs$personNum == 1, "vslat"] <- "LEFT"
 
+# Title Case (titleC) Conversions
+vs$vslat_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vslat,    perl=TRUE)
+vs$vstestcd_im_titleC <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vstestcd, perl=TRUE)
 
-vs$vslat_im_CCase <- recode (vs$vslat,
-  " 'LEFT'  = 'Left' ;
-    'RIGHT'    = 'Right'"
-)
+#------------------------------------------------------------------------------
+# URL encoding
+#   Encode fields  that may potentially have values that violate valid IRI format
+#   Function is in Functions.R
+vs <- encodeCol(data=vs, col="vsdtc")
+vs <- encodeCol(data=vs, col="vsorres")
+
 
 # Sort column names in the df for quicker referencing
 vs <- vs %>% select(noquote(order(colnames(vs))))
