@@ -30,5 +30,5 @@ cdiscpilot01:stdm-graph
   dcterms:title       "{title}"^^xsd:string ;
   bibo:status         "{status}"^^xsd:string ; 
   pav:createdOn       "{createdon}"^^xsd:dateTime ; 
-  pav:version         "{version}"^^xsd:dateTime ; 
+  pav:version         "{version}"^^xsd:string ; 
 .

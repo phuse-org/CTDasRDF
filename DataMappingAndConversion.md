@@ -29,7 +29,7 @@ SDTM version 3.2. The files are available within this project at: ./data/source/
 ### R Programs
 | Order  | File                 | Description                                  |
 | ------ | -------------------- | ---------------------------------------------|
-| 1.     | XPTtoCSV.R           | Main driver program data conversion using R |
+| 1.     | XPTtoCSV.R           | Main driver program data conversion using R. Metadata import and timestamp. |
 | 2.     | Functions.R          | Functions called during conversion process |
 | 3.     | DM_imputeCSV.R       | DM imputation, encoding. |
 |        | XPTtoCVS:SUPPDM      | No imputation for SUPPMD. XPTtoCVS.R processes SUPPDM |
@@ -87,6 +87,16 @@ TODO: ADD DESCRIPTION OF HOW ENCODED VALUES ARE LINKED TO TERMINOLOGY. Add Examp
 
 
 # Data Files and Mapping Detail
+
+## Graph Metadata 
+Graph metadata is stored in the .CSV file. During the data conversion process, XPTtoCSV.R reads in the CSV file, updates the timestamp value, and over writes the CSV file with the new information. The CSV file is mapped to the graph using the SMS process.
+
+| File      | Role                     | Description                                  |
+| --------- | ------------------------ | ---------------------------------------------|
+|ctdasrdf_graphmeta_mappings.CSV | Basic graph metadata | Description of graph content, status, version, and timestamp information.
+|ctdasrdf_graphmeta_mappings.TTL|Map for CVS to graph| Import of metadata triples.|
+
+
 
 ## Investigator and Site
 

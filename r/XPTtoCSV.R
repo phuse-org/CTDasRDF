@@ -11,6 +11,7 @@
 ###############################################################################
 library(Hmisc)
 library(car)   # recode
+# library(plyr)
 library(utils)  # for URLencode - no longer used. DELETE
 library(dplyr)  # mutate with pipe in Functions.R
 # library(RCurl)  # to encode URL values  REMOVED 2018-04-09
@@ -61,7 +62,7 @@ ex  <- readXPT("ex")
 ex <- ex[ex$usubjid %in% pntSubset,]  
 
 # Impute values needed for testing
-source('R/EX_imputeCSV.R')
+source('R/EX_imputeCSV.R')#
 
 write.csv(ex, file="data/source/EX_subset.csv", 
 row.names = F)
