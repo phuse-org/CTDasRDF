@@ -177,14 +177,34 @@ The data is modeled to the graph using this pattern:
 | 7  | After standing for 3 min | `StartRuleStanding3_{usubjid}` |
 | 8  | Perform tests | `vstestcd=DIABP, SYSBP, TEMP |
 
+
+
+| File      | Role                     | Description                                  |
+| --------- | ------------------------ | ---------------------------------------------|
+| VX.XPT    | Orginal XPT              |  From pilot data |
+| VS_subset.csv | Subset for dev       |  All VS obs. for patient 1015. this is more data than Ont Instances. |
+| VS_mappings.TTL | SMS Map | See SMS Details |
+
+
 ### Inferencing of Protocol Rules using OWL 2
 _[Approach being implemented April 2018 with documentation to follow]_
 
-
 ### SMS details
+
 | Entity    | SMS                      | Description 
 | --------- | ------------------------ | ---------------------------------------------
 | Visit     | Visit_{im_visit_CCaseSh}_{usubjid} | Unique to each visit x person. im_visit_CCaseSh is Camel-cased `visit` shortned, no spaces. 
 | AssumeBodyPosition | AssumeBodyPosition{im_vspos_CCase}_{usubjid} | im_vspos_CCase = Camel-cased `vspos` (=Supine or Standing) specific to each patient.  Patient 1 Standing, Patient 2 standing, etc.
 
-**More to be added.
+
+## EX
+
+| File      | Role                     | Description                                  |
+| --------- | ------------------------ | ---------------------------------------------|
+| EX.XPT    | Orginal XPT              |  From pilot data |
+| EX_subset.csv | Subset for dev       |  First 3 exposure events for patient 1015    |
+| EX_mappings.TTL | SMS Map |   See SMS Details |
+
+### SMS details
+Date for the visit is extracted from VS, not from EX, because the EX date is sometimes later (not on the same day as the visit date).
+
