@@ -489,6 +489,24 @@ code:Ethnicity
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ETHNIC"^^xsd:string ;
 .
+code:ExDosFrq_QD
+  rdf:type code:DosageFrequency ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
+  skos:altLabel "daily"^^xsd:string ;
+  skos:prefLabel "QD"^^xsd:string ;
+.
+code:ExRoute_ORAL
+  rdf:type code:RouteOfAdministration ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38288> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "ORAL"^^xsd:string ;
+.
+code:ExRoute_TRANSDERMAL
+  rdf:type code:RouteOfAdministration ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "TRANSDERMAL"^^xsd:string ;
+.
 code:ISO8601
   rdf:type code:StandardFormat ;
   skos:definition "International Standard for representing date and time information"^^xsd:string ;
@@ -699,6 +717,10 @@ code:NullFlavor_9
   skos:definition "Information was sought but not found."^^xsd:string ;
   skos:example "Patient was asked but didn't know. "^^xsd:string ;
   skos:prefLabel "ASKU"^^xsd:string ;
+.
+code:NumericOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:ObservationOutcome ;
 .
 code:Observation
   rdf:type owl:Class ;

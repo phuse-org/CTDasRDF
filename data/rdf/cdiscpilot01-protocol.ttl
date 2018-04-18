@@ -45,13 +45,6 @@
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
-cd01p:ArmPlacebo
-  rdf:type study:Arm ;
-  rdf:type study:RandomizationOutcome ;
-  rdfs:label "Pbo" ;
-  skos:altLabel "Pbo"^^xsd:string ;
-  skos:prefLabel "Placebo"^^xsd:string ;
-.
 cd01p:ArmScreenFailure
   rdf:type study:Arm ;
   rdfs:label "Scrnfail" ;
@@ -71,6 +64,13 @@ cd01p:ArmXanomelineLow
   rdfs:label "Xan_Lo"^^xsd:string ;
   skos:altLabel "Xan_Lo"^^xsd:string ;
   skos:prefLabel "Xanomeline Low"^^xsd:string ;
+.
+cd01p:Arm_Pbo
+  rdf:type study:Arm ;
+  rdf:type study:RandomizationOutcome ;
+  rdfs:label "Pbo" ;
+  skos:altLabel "Pbo"^^xsd:string ;
+  skos:prefLabel "Placebo"^^xsd:string ;
 .
 cd01p:CRFLocation_1
   rdf:type study:CRFLocation ;
@@ -156,14 +156,6 @@ cd01p:SiteIdentifier_8
 cd01p:SiteIdentifier_9
   rdf:type study:SiteIdentifier ;
   skos:prefLabel "709"^^xsd:string ;
-.
-cd01p:Site_1
-  rdf:type study:Site ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "site-701"^^xsd:string ;
-  study:hasCountry code:Country_1 ;
-  study:hasSiteID cd01p:SiteIdentifier_1 ;
 .
 cd01p:Site_10
   rdf:type study:Site ;
@@ -278,6 +270,14 @@ cd01p:Site_7
   skos:prefLabel "site-707"^^xsd:string ;
   study:hasCountry code:Country_1 ;
   study:hasSiteID cd01p:SiteIdentifier_7 ;
+.
+cd01p:Site_701
+  rdf:type study:Site ;
+  rdfs:comment ""^^xsd:string ;
+  skos:definition ""^^xsd:string ;
+  skos:prefLabel "site-701"^^xsd:string ;
+  study:hasCountry code:Country_1 ;
+  study:hasSiteID cd01p:SiteIdentifier_1 ;
 .
 cd01p:Site_8
   rdf:type study:Site ;
@@ -469,10 +469,10 @@ cd01p:Study_CDISCPILOT01
   rdfs:label "CDISCPILOT01" ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Study CDISCPILOT01"^^xsd:string ;
-  study:hasProtocolSpecifiedActivity cd01p:ArmPlacebo ;
   study:hasProtocolSpecifiedActivity cd01p:ArmScreenFailure ;
   study:hasProtocolSpecifiedActivity cd01p:ArmXanomelineHigh ;
   study:hasProtocolSpecifiedActivity cd01p:ArmXanomelineLow ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_Pbo ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGPlaceActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGRemoveActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitBaselineActivity ;
@@ -623,7 +623,7 @@ custom:InvestigationalSubstance_1
   rdf:type study:InvestigationalSubstance ;
   skos:prefLabel "XANOMELINE" ;
 .
-custom:PlaceboProduct_1
+custom:PlaceboDrug
   rdf:type code:DrugProduct ;
   rdf:type study:PlaceboProduct ;
   skos:prefLabel "PLACEBO"^^xsd:string ;
