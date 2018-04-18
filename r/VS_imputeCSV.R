@@ -23,7 +23,7 @@ vs$visit_im_comp <- gsub(" ", "", vs$visit )
 
 # Change following to function. Used in other domains!
 # visit in Camel Case Short form for linking  IRIs to ont. Ont uses camel case
-vs$visit_im_CCaseSh <- car::recode (vs$visit,
+vs$visit_im_titleCSh <- car::recode (vs$visit,
   " 'SCREENING 1'          =  'Screening1' ;
     'SCREENING 2'          =  'Screening2' ;
     'BASELINE'             =  'Baseline' ;

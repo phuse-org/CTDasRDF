@@ -53,7 +53,12 @@ dm <- encodeCol(data=dm, col="ethnic")
 dm <- encodeCol(data=dm, col="race")
 dm <- encodeCol(data=dm, col="rfendtc")
 dm <- encodeCol(data=dm, col="rficdtc")
-dm <- encodeCol(data=dm, col="rfpendtc")
+
+# Field has some timestamps with colons. Remove colon, then encode
+#   Temporary kludge due to issues in RShiny and Topbraid queries.
+dm$rfpendtc_im  <- gsub(":", "", dm$rfpendtc)
+dm <- encodeCol(data=dm, col="rfpendtc_im")
+
 dm <- encodeCol(data=dm, col="rfstdtc")
 dm <- encodeCol(data=dm, col="rfxstdtc")
 dm <- encodeCol(data=dm, col="rfxendtc")

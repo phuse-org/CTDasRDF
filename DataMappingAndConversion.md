@@ -134,6 +134,10 @@ The following values are created in the mapping:
 | Person Label | `Person {usubjid}`  | Previous conversion process used a number based on row order. Where applicable, all labels follow this new approach |
 
 
+### Exposure in DM
+DM contains the Drug Exposure interval: `rfxstdtc` to `rfxendtc`  and is therefore coded in the SMS file for DM, not from EX as one may expect.
+
+
 ## SUPPDM
 
 | File      | Role                     | Description                                  |
@@ -206,5 +210,6 @@ _[Approach being implemented April 2018 with documentation to follow]_
 | EX_mappings.TTL | SMS Map |   See SMS Details |
 
 ### SMS details
-Date for the visit is extracted from VS, not from EX, because the EX date is sometimes later (not on the same day as the visit date).
+Date for the visit is extracted from VS, not from EX, because the EX date is sometimes later (not on the same day as the visit date). Date of the visit from VS:`vsdtc_en` while the EX exposure date is `exstdtc_en`.
 
+Recall that the Drug Exposure interval is created from data in DM, not EX. See DM details, above.

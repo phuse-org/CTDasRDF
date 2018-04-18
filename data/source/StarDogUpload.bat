@@ -6,7 +6,7 @@ REM ---------------------------------------------------------------------------
 @echo on
 cd C:\_gitHub\CTDasRDF\data\source
 
-@echo Importing  graph metadata
+@echo Importing graph metadata
 call stardog-admin virtual import CTDasRDF ctdasrdf_graphmeta_mappings.TTL ctdasrdf_graphmeta.csv
 
 @echo Importing DM 

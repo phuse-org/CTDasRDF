@@ -21,10 +21,10 @@ readXPTDomain <- function (domainName){
    ## dataSubset   <- head(domainValues, 300)    
 }
 
-domainVals <- readXPTDomain("ex")
+domainVals <- readXPTDomain("vs")
 
-foo<-data.frame(domainVals$extrt)
-
+foo<-data.frame(domainVals$visit)
+summary(foo)
 
 
 

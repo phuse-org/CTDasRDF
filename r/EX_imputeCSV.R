@@ -19,7 +19,7 @@ ex$visit_im_comp <- gsub(" ", "", ex$visit )
 
 # Change following to function. Used in other domains!
 # visit in Camel Case Short form for linking  IRIs to ont. Ont uses camel case
-ex$visit_im_CCaseSh <- car::recode(ex$visit,
+ex$visit_im_titleCSh <- car::recode(ex$visit,
   " 'SCREENING 1'          =  'Screening1' ;
     'SCREENING 2'          =  'Screening2' ;
     'BASELINE'             =  'Baseline' ;
@@ -50,6 +50,10 @@ ex <- encodeCol(data=ex, col="exendtc")
 ex <- encodeCol(data=ex, col="exroute")
 
 ex <- encodeCol(data=ex, col="fixDoseInt_im")
+
+
+# Title case
+ex$extrt_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$extrt, perl=TRUE)
 
 
 # Sort column names in the df for quicker referencing
