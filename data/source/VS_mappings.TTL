@@ -50,17 +50,27 @@ cdiscpilot01:Person_{usubjid}
   #                     etc.
   # Hardcoding:  ActivityStatus_1 = CO(Complete)
    
-  cdiscpilot01:Visit{visit_im_comp}_{usubjid}
-    rdf:type               custom:Visit{visit_im_CCaseSh} ;
+  cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
+    rdf:type               custom:Visit{visit_im_titleCSh} ;
     study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
-    study:activityStatus   code:ActivityStatus_1 ;
-#    study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid} ;
-    study:hasSubActivity   cdiscpilot01:{vstestcd_im_titleC}Outcome_{vsorres_en} ;
   .
+
+    # VisitDate
+    cdiscpilot01:Date_{vsdtc_en} 
+      rdf:type   study:VisitDate ;
+    .
+
+  # Visit Activity 
+  cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
+    rdf:type         owl:Class ;
+    rdfs:subClassOf  custom:Visit{visit_im_titleCSh}Activity ;
+    skos:prefLabel   "Visit {visit} Person {usubjid}"^^xsd:string ;
+  .
+
 
 #   # AssumeBodyPosition
 #  cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid} 
-#    rdf:type             cdiscpilot01:Visit{visit_im_comp}Activity_{usubjid};
+#    rdf:type             cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid};
 #    rdf:type             custom:AssumeBodyPosition{vspos_im_CCase} ;
 #    skos:prefLabel       "Assume {vspos_im_CCase} position"^^xsd:string ;   
 #    study:activityStatus code:ActivityStatus_1 ;
@@ -84,10 +94,10 @@ cdiscpilot01:Person_{usubjid}
 
 
 
-#    cdiscpilot01:Visit{visit_im_comp}Activity_{usubjid}
+#    cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
 #      rdf:type        owl:Class ;
 #      skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
-#      rdfs:subClassOf custom:Visit{visit_im_CCaseSh}Activity;
+#      rdfs:subClassOf custom:Visit{visit_im_titleCSh}Activity;
 #   .
 
 # TO HERE

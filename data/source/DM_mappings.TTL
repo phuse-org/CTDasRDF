@@ -38,7 +38,7 @@ cd01p:Study_{studyid}
 cdiscpilot01:Person_{usubjid}
   a study:EnrolledSubject;
   skos:preflabel                      "Person {usubjid}"^^xsd:string ;
-  study:actualArm                     cd01p:Arm_{actarmcd} ;
+  study:actualArm                     cd01p:Arm{actarmcd} ;
   study:deathFlag                     "{dthfl}"^^xsd:string ;
   study:hasLifespan                   cdiscpilot01:Interval_{lifeSpan_im_en};
   study:hasReferenceInterval          cdiscpilot01:Interval_{refInt_im_en} ;
@@ -101,7 +101,7 @@ cdiscpilot01:Person_{usubjid}
     rdf:type study:StudyParticipationInterval ;
     rdfs:label "Interval {studyPartInt_im}"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{dmdtc_en} ;
-    time:hasEnd cdiscpilot01:Date_{rfpendtc_en}
+    time:hasEnd cdiscpilot01:Date_{rfpendtc_im_en}
   .
     # StudyParticipationInterval Dates
     #  a) Begin
@@ -111,7 +111,7 @@ cdiscpilot01:Person_{usubjid}
       study:dateTimeInXSDString "{dmdtc}"^^xsd:string
     .
     #  b) End
-    cdiscpilot01:Date_{rfpendtc_en}
+    cdiscpilot01:Date_{rfpendtc_im_en}
       rdf:type study:StudyParticipationEnd ;
       rdfs:label "{rfpendtc}"^^xsd:string ;
       study:dateTimeInXSDString "{rfpendtc}"^^xsd:string
@@ -217,9 +217,9 @@ cdiscpilot01:Person_{usubjid}
  #		#  study:hasSubActivity cdiscpilot01:DrugAdministration_3 ;
  #
  # -----------------------------------------------------------------------------
- cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im_en}
+ cdiscpilot01:CumulativeDrugAdministration_{usubjid}
    rdf:type study:CumulativeDrugAdministration ;
-   skos:prefLabel "Drug administration period {rfxstdtc} - {rfxendtc} "^^xsd:string ;
+   skos:prefLabel "Cumulative Drug Administration {rfxstdtc} - {rfxendtc} "^^xsd:string ;
    study:activityStatus code:ActivityStatus_1 ;
    study:hasActivityInterval cdiscpilot01:Interval_{cumuDrugAdmin_im_en} ;
  .
@@ -230,17 +230,21 @@ cdiscpilot01:Person_{usubjid}
    time:hasBeginning  cdiscpilot01:Date_{rfxstdtc_en} ;
    time:hasEnd        cdiscpilot01:Date_{rfxendtc_en} ;
  .
-
-#TODO: add the dates are beginingn and end of admin intervals?
-
+  # Assign Date types
+  cdiscpilot01:Date_{rfxstdtc_en} 
+    rdf:type study:CumulativeDrugAdministrationBegin ;
+  .
+  cdiscpilot01:Date_{rfxendtc_en} 
+     rdf:type study:CumulativeDrugAdministrationEnd ;
+  .
  # -----------------------------------------------------------------------------
  # RandomizationBAL3
  #  Randomization type is hard coded.
  #  Activity status hard coded to ActivityStatus_1 complete (CO)
- #  cd01p:ArmPlacebo changed to Arm_{armcd}
+ #  cd01p:ArmPlacebo changed to Arm{armcd}
  cdiscpilot01:RandomizationBAL3_{usubjid}
    rdf:type code:RandomizationBAL3 ;
    skos:prefLabel "Randomization Person {usubjid}"^^xsd:string ;
    study:activityStatus code:ActivityStatus_1 ;
-   study:outcome cd01p:Arm_{armcd} ;
+   study:outcome cd01p:Arm{armcd} ;
  .

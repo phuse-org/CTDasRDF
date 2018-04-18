@@ -50,8 +50,8 @@ queryStart <- "SELECT ?p ?o "
 ui <- fluidPage(
   titlePanel("Instance Data: Ontology vs SMS Derived"),
   fluidRow (
-    column(6, textInput('rootNodeOnt', "Ontology Subject", value = "cdiscpilot01:Person_1")),
-    column(6, textInput('rootNodeDer', "Derived Subject", value = "cdiscpilot01:Person_01-701-1015"))
+    column(6, textInput('rootNodeOnt', "Ontology Subject", value = "cdiscpilot01:Person_01-701-1015")),
+    column(6, textInput('rootNodeDer', "Derived Subject",  value = "cdiscpilot01:Person_01-701-1015"))
   ),
   fluidRow(
     column(dataTableOutput('triplesTableOnt'), width=6)

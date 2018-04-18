@@ -71,7 +71,12 @@ row.names = F)
 vs  <- readXPT("vs")  # first row only for initial testing.
 
 # Subset for development
-vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
+# Subset to match ontology data. Expand to all of subjid 1015 later.
+vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37)
+vs <- vs[vsSubset, ]
+
+# for later development:
+# vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
 
 # Impute values needed for testing
 source('R/VS_imputeCSV.R')  # Creates birthdate. 

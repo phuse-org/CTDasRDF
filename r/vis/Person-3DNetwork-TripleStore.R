@@ -44,23 +44,26 @@ prefixBlock <- paste(prefixList$prefix_, collapse = "\n")
 query = paste0(prefixBlock,"
   PREFIX x: <http://example.org/bogus>
   SELECT ?s ?p ?o 
-  WHERE { cdiscpilot01:Person_1 (x:foo|!x:bar)* ?s . 
+  WHERE { cdiscpilot01:Date_2013-12-26 (x:foo|!x:bar)* ?s . 
     ?s ?p ?o . 
   }")
+
+
+ # cdiscpilot01:Person_01-701-1015
+
 
 # Query results dfs ----  
 qr <- SPARQL(url=epOnt, query=query)
     
 personTriples <- as.data.frame(qr$results)
 
-# Remove any rows that have a blank Object. 
-personTriples<-personTriples[!(personTriples$o==""),]
-
-# Remove duplicates from the query
-personTriples <- personTriples[!duplicated(personTriples),]
 
 # shorten from IRI to qnam
 triplesDer <- IRItoPrefix(sourceDF=personTriples, colsToParse=c("s", "p", "o"))
+
+
+# Remove duplicates from the query  (Should be done)
+triplesDer <- triplesDer[!duplicated(triplesDer),]
 
 #---- Nodes Construction
 # Unique list of nodes by combine Subject and Object into a single column
@@ -126,7 +129,7 @@ vertices <- data.frame(nodes[,c("id","name", "color")])
 
 # recoding for size and color
 vertices$size <- .1
-vertices$size[vertices$name =="Person_1"] <- .3
+vertices$size[vertices$name =="Person_01-701-1015"] <- .3
 
 edges <- data.frame(edges[,c("source","target")])
 
@@ -134,8 +137,9 @@ network3d(vertices, edges,
           node_outline_black = TRUE,
           max_iterations = 75,
           manybody_strength = 0.5, 
-          background_color = "#002b36",
-          edge_color = "#00e600",
+          background_color = "black",
+          # edge_color = "#94e5ff",
+          edge_color = "white",
           edge_opacity = 1,
           force_explorer = TRUE
           )
