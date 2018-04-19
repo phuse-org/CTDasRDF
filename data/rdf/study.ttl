@@ -213,6 +213,18 @@ code:DemographicDataCollection
       owl:onProperty study:sex ;
     ] ;
 .
+code:Ethnicity_HISPANIC_OR_LATINO
+  rdf:type study:EthnicOutcome ;
+.
+code:Ethnicity_NOT_HISPANIC_OR_LATINO
+  rdf:type study:EthnicOutcome ;
+.
+code:Ethnicity_NOT_REPORTED
+  rdf:type study:EthnicOutcome ;
+.
+code:Ethnicity_UNKNOWN
+  rdf:type study:EthnicOutcome ;
+.
 code:InformedConsentOutcome_1
   rdf:type study:InformedConsentOutcome ;
 .
@@ -222,6 +234,21 @@ code:InformedConsentOutcome_2
 code:InformedConsentOutcome_3
   rdf:type study:InformedConsentOutcome ;
 .
+code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
+  rdf:type study:RaceOutcome ;
+.
+code:Race_ASIAN
+  rdf:type study:RaceOutcome ;
+.
+code:Race_BLACK_OR_AFRICAN_AMERICAN
+  rdf:type study:RaceOutcome ;
+.
+code:Race_NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER
+  rdf:type study:RaceOutcome ;
+.
+code:Race_WHITE
+  rdf:type study:RaceOutcome ;
+.
 code:RuleOutcome_1
   rdf:type study:RuleOutcome ;
 .
@@ -230,6 +257,18 @@ code:RuleOutcome_2
 .
 code:RuleOutcome_3
   rdf:type study:RuleOutcome ;
+.
+code:Sex_F
+  rdf:type study:SexOutcome ;
+.
+code:Sex_M
+  rdf:type study:SexOutcome ;
+.
+code:Sex_U
+  rdf:type study:SexOutcome ;
+.
+code:Sex_UN
+  rdf:type study:SexOutcome ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl>
   rdf:type owl:Ontology ;
@@ -512,6 +551,13 @@ study:CumulativeDrugAdministrationBegin
   rdfs:subClassOf study:ActivityBegin ;
   skos:definition ""^^xsd:string ;
 .
+study:CumulativeDrugAdministrationEnd
+  rdf:type owl:Class ;
+  rdfs:comment ""^^xsd:string ;
+  rdfs:label "Product administration end"^^xsd:string ;
+  rdfs:subClassOf study:ActivityEnd ;
+  skos:definition ""^^xsd:string ;
+.
 study:CumulativeDrugAdministrationInterval
   rdf:type owl:Class ;
   spin:rule [
@@ -713,13 +759,6 @@ study:CumulativeDrugAdministrationInterval
   rdfs:comment ""^^xsd:string ;
   rdfs:label "Product administration interval"^^xsd:string ;
   rdfs:subClassOf study:ActivityInterval ;
-  skos:definition ""^^xsd:string ;
-.
-study:CumulativeProductAdministrationEnd
-  rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  rdfs:label "Product administration end"^^xsd:string ;
-  rdfs:subClassOf study:ActivityEnd ;
   skos:definition ""^^xsd:string ;
 .
 study:Date

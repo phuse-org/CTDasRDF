@@ -393,7 +393,7 @@ cdiscpilot01:Date_2012-08-28
   study:dateTimeInXSDString "2012-08-28"^^xsd:string ;
 .
 cdiscpilot01:Date_2012-09-01
-  rdf:type study:CumulativeProductAdministrationEnd ;
+  rdf:type study:CumulativeDrugAdministrationEnd ;
   rdf:type study:FixedDoseIntervalEnd ;
   rdfs:label "2012-09-01"^^xsd:string ;
   study:dateTimeInXSDString "2012-09-01"^^xsd:string ;
@@ -447,6 +447,7 @@ cdiscpilot01:Date_2014-01-02
   rdf:type study:CumulativeDrugAdministrationBegin ;
   rdf:type study:FixedDoseIntervalBegin ;
   rdf:type study:ReferenceBegin ;
+  rdf:type study:VisitDate ;
   rdfs:label "2014-01-02"^^xsd:string ;
   study:dateTimeInXSDString "2014-01-02"^^xsd:string ;
 .
@@ -463,13 +464,13 @@ cdiscpilot01:Date_2014-01-07
   study:dateTimeInXSDString "2014-01-07"^^xsd:string ;
 .
 cdiscpilot01:Date_2014-01-14
-  rdf:type study:CumulativeProductAdministrationEnd ;
+  rdf:type study:CumulativeDrugAdministrationEnd ;
   rdf:type study:FixedDoseIntervalEnd ;
   rdf:type study:ReferenceEnd ;
   rdfs:label "2014-01-14"^^xsd:string ;
   study:dateTimeInXSDString "2014-01-14"^^xsd:string ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Date_2014-01-14T11:10>
+cdiscpilot01:Date_2014-01-14T11_10
   rdf:type study:StudyParticipationEnd ;
   rdfs:label "2014-01-14T11:10"^^xsd:string ;
   study:dateTimeInXSDString "2014-01-14T11:10"^^xsd:string ;
@@ -503,13 +504,13 @@ cdiscpilot01:Date_2014-06-19
   study:dateTimeInXSDString "2014-06-19"^^xsd:string ;
 .
 cdiscpilot01:Date_2014-07-02
-  rdf:type study:CumulativeProductAdministrationEnd ;
+  rdf:type study:CumulativeDrugAdministrationEnd ;
   rdf:type study:FixedDoseIntervalEnd ;
   rdf:type study:ReferenceEnd ;
   rdfs:label "2014-07-02"^^xsd:string ;
   study:dateTimeInXSDString "2014-07-02"^^xsd:string ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Date_2014-07-02T11:45>
+cdiscpilot01:Date_2014-07-02T11_45
   rdf:type study:StudyParticipationEnd ;
   rdfs:label "2014-07-02T11:45"^^xsd:string ;
   study:dateTimeInXSDString "2014-07-02T11:45"^^xsd:string ;
@@ -524,13 +525,13 @@ cdiscpilot01:DemographicDataCollection_01-701-1015
   rdf:type cd01p:VisitScreening1DemogDataColl ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:DemographicDataCollection ;
-  skos:prefLabel "P1 Screening 1 Demographic data collection"^^xsd:string ;
+  skos:prefLabel "Person 01-701-1015 Screening 1 Demographic data collection"^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_63 ;
   study:activityStatus code:ActivityStatus_1 ;
-  study:ethnicity <http://rdf.cdisc.org/sdtmterm#C66790.C17459> ;
+  study:ethnicity code:Ethnicity_HISPANIC_OR_LATINO ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
-  study:race <http://rdf.cdisc.org/sdtmterm#C74457.C41261> ;
-  study:sex <http://rdf.cdisc.org/sdtmterm#C66731.C16576> ;
+  study:race code:Race_WHITE ;
+  study:sex code:Sex_F ;
 .
 cdiscpilot01:DemographicDataCollection_01-701-1023
   rdf:type cd01p:VisitScreening1DemogDataColl ;
@@ -541,8 +542,8 @@ cdiscpilot01:DemographicDataCollection_01-701-1023
   study:activityStatus code:ActivityStatus_1 ;
   study:ethnicity <http://rdf.cdisc.org/sdtmterm#C66790.C17459> ;
   study:hasDate cdiscpilot01:Date_2012-07-22 ;
-  study:race <http://rdf.cdisc.org/sdtmterm#C74457.C41261> ;
-  study:sex <http://rdf.cdisc.org/sdtmterm#C66731.C20197> ;
+  study:race code:Race_WHITE ;
+  study:sex code:Sex_M ;
 .
 cdiscpilot01:DemographicDataCollection_01-701-1028
   rdf:type cd01p:VisitScreening1DemogDataColl ;
@@ -553,8 +554,8 @@ cdiscpilot01:DemographicDataCollection_01-701-1028
   study:activityStatus code:ActivityStatus_1 ;
   study:ethnicity <http://rdf.cdisc.org/sdtmterm#C66790.C41222> ;
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
-  study:race <http://rdf.cdisc.org/sdtmterm#C74457.C41261> ;
-  study:sex <http://rdf.cdisc.org/sdtmterm#C66731.C20197> ;
+  study:race code:Race_WHITE ;
+  study:sex code:Sex_M ;
 .
 cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16
   rdf:type cdiscpilot01:VisitBaselineActivity_01-701-1015 ;
@@ -684,7 +685,7 @@ cdiscpilot01:Interval_1948-08-05_
 .
 cdiscpilot01:Interval_1951-01-02_2013-12-26
   rdf:type study:Lifespan ;
-  rdfs:label "Interval_1951-01-02_2013-12-26"^^xsd:string ;
+  rdfs:label "Interval_1951-01-02 - 2013-12-26"^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_1951-01-02 ;
   time:hasEnd cdiscpilot01:Date_2013-12-26 ;
 .
@@ -728,11 +729,11 @@ cdiscpilot01:Interval_2013-07-11_
   rdfs:label "Interval 2013-07-11_"^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_2013-07-11 ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Interval_2013-07-11_2014-01-14T11%3A10>
+cdiscpilot01:Interval_2013-07-11_2014-01-14T11_10
   rdf:type study:StudyParticipationInterval ;
   rdfs:label "Interval 01-701-1028"^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_2013-07-11 ;
-  time:hasEnd <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Date_2014-01-14T11:10> ;
+  time:hasEnd cdiscpilot01:Date_2014-01-14T11_10 ;
 .
 cdiscpilot01:Interval_2013-07-19_2014-01-14
   rdf:type study:CumulativeDrugAdministrationInterval ;
@@ -758,11 +759,11 @@ cdiscpilot01:Interval_2013-12-26_
   rdfs:label "Interval 2013-12-26_"^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_2013-12-26 ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Interval_2013-12-26_2014-07-02T11%3A45>
+cdiscpilot01:Interval_2013-12-26_2014-07-02T11_45
   rdf:type study:StudyParticipationInterval ;
   rdfs:label "Interval  01-701-1015"^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_2013-12-26 ;
-  time:hasEnd <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Date_2014-07-02T11:45> ;
+  time:hasEnd cdiscpilot01:Date_2014-07-02T11_45 ;
 .
 cdiscpilot01:Interval_2014-01-02_2014-01-16
   rdf:type study:FixedDoseInterval ;
@@ -813,7 +814,7 @@ cdiscpilot01:Person_01-701-1015
   study:hasLifespan cdiscpilot01:Interval_1951-01-02_2013-12-26 ;
   study:hasReferenceInterval cdiscpilot01:Interval_2014-01-02_2014-07-02 ;
   study:hasSite cd01p:Site_701 ;
-  study:hasStudyParticipationInterval <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Interval_2013-12-26_2014-07-02T11%3A45> ;
+  study:hasStudyParticipationInterval cdiscpilot01:Interval_2013-12-26_2014-07-02T11_45 ;
   study:hasSubjectID cdiscpilot01:SubjectIdentifier_1015 ;
   study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_1015 ;
   study:participatesIn cdiscpilot01:CumulativeDrugAdministration_2014-01-02_2014-07-02 ;
@@ -856,7 +857,7 @@ cdiscpilot01:Person_01-701-1028
   study:hasLifespan cdiscpilot01:Interval_1942-07-19_ ;
   study:hasReferenceInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 ;
   study:hasSite cd01p:Site_701 ;
-  study:hasStudyParticipationInterval <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Interval_2013-07-11_2014-01-14T11%3A10> ;
+  study:hasStudyParticipationInterval cdiscpilot01:Interval_2013-07-11_2014-01-14T11_10 ;
   study:hasSubjectID cdiscpilot01:SubjectIdentifier_1028 ;
   study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_1028 ;
   study:participatesIn cdiscpilot01:CumulativeDrugAdministration_2013-07-19_2014-01-14 ;

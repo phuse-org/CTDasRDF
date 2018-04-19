@@ -489,6 +489,30 @@ code:Ethnicity
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ETHNIC"^^xsd:string ;
 .
+code:Ethnicity_HISPANIC_OR_LATINO
+  rdf:type code:Ethnicity ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66790.C17459> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "HISPANIC OR LATINO"^^xsd:string ;
+.
+code:Ethnicity_NOT_HISPANIC_OR_LATINO
+  rdf:type code:Ethnicity ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66790.C41222> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "NOT HISPANIC OR LATINO"^^xsd:string ;
+.
+code:Ethnicity_NOT_REPORTED
+  rdf:type code:Ethnicity ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66790.C43234> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "NOT REPORTED"^^xsd:string ;
+.
+code:Ethnicity_UNKNOWN
+  rdf:type code:Ethnicity ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66790.C17998> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "UNKNOWN"^^xsd:string ;
+.
 code:ExDosFrq_QD
   rdf:type code:DosageFrequency ;
   owl:sameAs <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
@@ -749,6 +773,36 @@ code:Race
   skos:definition ""^^xsd:string ;
   skos:prefLabel "RACE"^^xsd:string ;
 .
+code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
+  rdf:type code:Race ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C41259> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "AMERICAN INDIAN OR ALASKA NATIVE"^^xsd:string ;
+.
+code:Race_ASIAN
+  rdf:type code:Race ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C41260> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "ASIAN"^^xsd:string ;
+.
+code:Race_BLACK_OR_AFRICAN_AMERICAN
+  rdf:type code:Race ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C16352> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "BLACK OR AFRICAN AMERICAN"^^xsd:string ;
+.
+code:Race_NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER
+  rdf:type code:Race ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C41219> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER"^^xsd:string ;
+.
+code:Race_WHITE
+  rdf:type code:Race ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C41261> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "WHITE"^^xsd:string ;
+.
 code:Randomization
   rdf:type owl:Class ;
   rdfs:subClassOf code:AdministrativeActivity ;
@@ -792,6 +846,29 @@ code:Sex
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "SEX"^^xsd:string ;
+.
+code:Sex_F
+  rdf:type code:Sex ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66731.C16576> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "F"^^xsd:string ;
+.
+code:Sex_M
+  rdf:type code:Sex ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "M"^^xsd:string ;
+.
+code:Sex_U
+  rdf:type code:Sex ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66731.C17998> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "U"^^xsd:string ;
+.
+code:Sex_UN
+  rdf:type code:Sex ;
+  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66731.C45908> ;
+  skos:altLabel ""^^xsd:string ;
+  skos:prefLabel "UN"^^xsd:string ;
 .
 code:StandardFormat
   rdf:type owl:Class ;
