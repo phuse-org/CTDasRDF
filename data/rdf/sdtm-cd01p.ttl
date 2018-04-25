@@ -25,11 +25,11 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARM>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata study:Arm ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARMCD>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARMCD> ;
   sdtm:variableComment "Derived from EX"^^xsd:string ;
 .
@@ -38,12 +38,12 @@
   sdtm:variableComment "Subject's Age at start of study drug (RFSTDTC). "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.AGEU>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.AGEU> ;
   sdtm:variableComment "AGEU=\"YEARS\" "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ARM>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata study:Arm ;
   sdtm:variableComment "According to randomization list"^^xsd:string ;
 .
@@ -62,12 +62,12 @@
   sdtm:additionalMetadata study:DemogDataCollectionDate ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDY>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDY> ;
   sdtm:variableComment "See Computational Method: COMPMETHOD.STUDY_DAY"^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DOMAIN>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DOMAIN> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHDTC>
@@ -75,12 +75,12 @@
   sdtm:variableComment "If DS record exists with DSDECOD=\"DEATH\" then DTHDTC=AEENDTC."^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHFL>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHFL> ;
   sdtm:variableComment "If DS record exists with DSDECOD=\"DEATH\" then DEATHFL=Y."^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ETHNIC>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata study:EthnicOutcome ;
   sdtm:variableComment "Derived from Origin entered on CRF: ETHINC=\"HISPANIC OR LATINO\" if Origin=\"Hispanic\". Otherwise ETHNIC=\"NOT HISPANIC OR LATINO\""^^xsd:string ;
 .
@@ -133,65 +133,65 @@
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVAR>
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVAR> ;
   sdtm:variableComment "IDVAR=\" \" "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVARVAL>
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.IDVARVAL> ;
   sdtm:variableComment "IDVARVAL=\" \""^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QEVAL>
   cdiscs:controlledTermsOrFormat study:Evaluator ;
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.ResultQualifier> ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QEVAL> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QLABEL>
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.SynonymQualifier> ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QLABEL> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QNAM>
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.TopicVariable> ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QNAM> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QORIG>
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.ResultQualifier> ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QORIG> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QVAL>
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.ResultQualifier> ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.QVAL> ;
   sdtm:variableComment "see value level metadata"^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.RDOMAIN>
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.RDOMAIN> ;
   sdtm:variableComment "RDOMAIN=\"DM\""^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.STUDYID>
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.STUDYID> ;
   sdtm:additionalMetadata study:StudyIdentifier ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.USUBJID>
   cdiscs:dataElementRole <http://rdf.cdisc.org/std/sdtm-1-3#Classifier.IdentifierVariable> ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.SUPPQUAL.USUBJID> ;
   sdtm:additionalMetadata study:UniqueSubjectIdentifier ;
   sdtm:variableComment "Concatenation of STUDYID, DM.SITEID and DM.SUBJID"^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.DOMAIN>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.DOMAIN> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.STUDYID>
@@ -204,59 +204,59 @@
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISIT>
   cdiscs:controlledTermsOrFormat study:Visit ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   schema:controlledTermsOrFormat study:VisitActivity ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISIT> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITDY>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITDY> ;
   sdtm:variableComment "TV.VISITDY "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITNUM>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VISITNUM> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSBLFL>
   cdiscs:controlledTermsOrFormat sdtmterm:C66742 ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSBLFL> ;
   sdtm:variableComment "If VISIT=\"BASELINE\" then VSBLFL=\"Y\" "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSCAT>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSCAT> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDRVFL>
   cdiscs:controlledTermsOrFormat sdtmterm:C66742 ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDRVFL> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDTC>
   cdiscs:controlledTermsOrFormat code:ISO8601 ;
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDTC> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDY>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSDY> ;
   sdtm:variableComment "See Computational Method: COMPMETHOD.STUDY_DAY "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSELTM>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSELTM> ;
   sdtm:variableComment "VSTPT expressed in the ISO 8601 format for durations "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSGRPID>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSGRPID> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSLOC>
   cdiscs:controlledTermsOrFormat code:VitalSignsLocation ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSLOC> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
@@ -269,46 +269,46 @@
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSPOS>
   cdiscs:controlledTermsOrFormat cd01p:VitalsSignsBodyPosition ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSPOS> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSREASND>
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSREASND> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSCAT>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSCAT> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSEQ>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSEQ> ;
   sdtm:variableComment "Sequential number identifying records within each USUBJID "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSPID>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSPID> ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTAT>
-  cdiscs:controlledTermsOrFormat code:ActivityStatus_2 ;
-  code:hasMethod code:ActivityMethod_2 ;
+  cdiscs:controlledTermsOrFormat code:ActivityStatus_ND ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTAT> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESC>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESC> ;
   sdtm:variableComment "VSORRES converted to standard unit "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESN>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESN> ;
   sdtm:variableComment "VSSTRESC converted to numeric "^^xsd:string ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESU>
   cdiscs:controlledTermsOrFormat code:VitalSignsUnit ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSSTRESU> ;
   sdtm:variableComment "Standard unit defined per parameter for summarizing analysis "^^xsd:string ;
 .
@@ -319,17 +319,17 @@
   sdtm:additionalMetadata study:VitalSign ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPT>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPT> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTNUM>
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTNUM> ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTREF>
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTREF> ;
 .
 code:InformedConsentOutcome_1
@@ -726,9 +726,9 @@ sdtm:SDTMDefineRecord
     ] ;
 .
 study:AnatomicLocation
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
 study:Birthdate
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
 .

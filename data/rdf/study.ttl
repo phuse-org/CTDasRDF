@@ -157,16 +157,16 @@ time:hasBeginning
 time:inXSDDateTime
   rdfs:subPropertyOf study:dateTimeInXSDString ;
 .
-code:ActivityStatus_1
+code:ActivityStatus_CO
   rdf:type study:ActivityStatus ;
 .
-code:ActivityStatus_2
+code:ActivityStatus_IC
   rdf:type study:ActivityStatus ;
 .
-code:ActivityStatus_3
+code:ActivityStatus_ND
   rdf:type study:ActivityStatus ;
 .
-code:ActivityStatus_4
+code:ActivityStatus_ST
   rdf:type study:ActivityStatus ;
 .
 code:AnatomicLocation
@@ -379,13 +379,8 @@ study:AgeOutcome
   rdfs:subClassOf study:ObservationOutcome ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:allValuesFrom code:Ethnicity ;
-      owl:onProperty study:ethnicity ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom code:Race ;
-      owl:onProperty study:race ;
+      owl:allValuesFrom time:TemporalUnit ;
+      owl:onProperty code:hasUnit ;
     ] ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Age"^^xsd:string ;
@@ -410,7 +405,7 @@ study:Analysis
   rdfs:subClassOf study:StudyActivity ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue code:ActivityMethod_2 ;
+      owl:hasValue code:Method_DERIVED ;
       owl:onProperty code:hasMethod ;
     ] ;
   skos:definition "An examination, sometimes via a mathematical manipulation, of one or more observations to obtain a result."^^xsd:string ;
@@ -506,6 +501,11 @@ study:BlankCaseReportForm
 study:BloodPressureOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf study:VitalSignOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:Unit_mmHG ;
+      owl:onProperty code:hasUnit ;
+    ] ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Blood pressure outcome"^^xsd:string ;
 .
@@ -772,7 +772,7 @@ study:DeathFlag
   rdf:type owl:Class ;
   rdfs:subClassOf study:Flag ;
   skos:prefLabel "Death flag"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 study:Deathdate
   rdf:type owl:Class ;
@@ -898,6 +898,11 @@ study:HeightOutcome
   rdf:type owl:Class ;
   rdfs:label "Height length outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:HeightUnit ;
+      owl:onProperty code:hasUnit ;
+    ] ;
 .
 study:HumanStudySubject
   rdf:type owl:Class ;
@@ -1076,7 +1081,7 @@ study:PerformedActivity
   rdfs:subClassOf study:StudyActivity ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
-      owl:hasValue code:ActivityStatus_1 ;
+      owl:hasValue code:ActivityStatus_CO ;
       owl:onProperty study:activityStatus ;
     ] ;
   skos:definition "An Activity that was performed on a specific time interval or instant. It has activity status as COMPLETE"^^xsd:string ;
@@ -1255,7 +1260,7 @@ study:SiteIdentifier
   rdf:type owl:Class ;
   rdfs:label "Site identifier"^^xsd:string ;
   rdfs:subClassOf study:Identifier ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
 .
 study:Sponsor
   rdf:type owl:Class ;
@@ -1298,7 +1303,7 @@ study:StartRuleDefault_1
   rdfs:label "Start rule default 1"^^xsd:string ;
   skos:definition "Activity may start at any time at the discretion of the Investigator"^^xsd:string ;
   skos:prefLabel "Start rule default 1"^^xsd:string ;
-  study:activityStatus code:ActivityStatus_1 ;
+  study:activityStatus code:ActivityStatus_CO ;
   study:outcome code:RuleOutcome_1 ;
 .
 study:StartRuleInformedConsentGranted
@@ -1317,7 +1322,7 @@ study:StartRuleInformedConsentGranted
   skos:definition "Target activity starts after informed consent has been granted. "^^xsd:string ;
   skos:prefLabel "RULE INFORMED CONSENT GRANTED"^^xsd:string ;
   study:hasPrereqExpectedOutcome code:InformedConsentOutcome_1 ;
-  study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
 .
 study:StartRuleInformedConsentStart
   rdf:type owl:Class ;
@@ -1329,7 +1334,7 @@ study:StartRuleInformedConsentStart
       owl:onProperty study:hasPrerequisite ;
     ] ;
   skos:prefLabel "Start rule informed consent started"^^xsd:string ;
-  study:hasPrereqExpectedStatus code:ActivityStatus_3 ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_ST ;
 .
 study:StartRulePrereqActivityComplete
   rdf:type owl:Class ;
@@ -1337,7 +1342,7 @@ study:StartRulePrereqActivityComplete
   rdfs:subClassOf study:StartRulePrerequisiteActivity ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue code:ActivityStatus_1 ;
+      owl:hasValue code:ActivityStatus_CO ;
       owl:onProperty study:hasPrereqExpectedStatus ;
     ] ;
   skos:definition "A collection of Start Rules that trigger, i.e. evaluate to TRUE, when the Prerequisite Activity is completed and optionally has a certain expected outcome. "^^xsd:string ;
@@ -1359,7 +1364,7 @@ study:StartRulePrereqActivityStart
   rdfs:subClassOf study:StartRulePrerequisiteActivity ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue code:ActivityStatus_3 ;
+      owl:hasValue code:ActivityStatus_ST ;
       owl:onProperty study:hasPrereqExpectedStatus ;
     ] ;
   skos:definition "A collection of Start Rules that resolve to TRUE when the prespecified Prerequisite activity starts. e.g. Screening Visit starts when Informed Consent starts. "^^xsd:string ;
@@ -1544,7 +1549,7 @@ study:StudyActivity
                         sp:varName "outcome"^^xsd:string ;
                       ] ;
                   ] ;
-                sp:arg2 code:ActivityStatus_1 ;
+                sp:arg2 code:ActivityStatus_CO ;
                 sp:arg3 "" ;
               ] ;
             sp:variable [
@@ -1853,6 +1858,11 @@ study:TemperatureOutcome
   rdf:type owl:Class ;
   rdfs:label "Temperature outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:TemperatureUnit ;
+      owl:onProperty code:hasUnit ;
+    ] ;
 .
 study:UniqueSubjectIdentifier
   rdf:type owl:Class ;
@@ -1908,6 +1918,11 @@ study:WeightOutcome
   rdf:type owl:Class ;
   rdfs:label "Weight mass outcome"^^xsd:string ;
   rdfs:subClassOf study:VitalSignOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:WeightUnit ;
+      owl:onProperty code:hasUnit ;
+    ] ;
 .
 study:activityStatus
   rdf:type owl:FunctionalProperty ;

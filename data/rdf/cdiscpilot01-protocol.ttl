@@ -347,7 +347,7 @@ cd01p:StartRuleLying5
   skos:definition "Target activity starts after the subject has assumed a supine position for 5 minutes"^^xsd:string ;
   skos:prefLabel "Rule Lying 5 Min"^^xsd:string ;
   study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62167> ;
-  study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
   study:hasPrerequisite custom:AssumeBodyPositionSupine ;
   study:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES"^^xsd:string ;
   study:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position"^^xsd:string ;
@@ -400,7 +400,7 @@ cd01p:StartRuleStanding1
   skos:definition "Target activity starts after the subject has assumed a standing position for 1 minute"^^xsd:string ;
   skos:prefLabel "Rule Standing 1 Min"^^xsd:string ;
   study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
-  study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
   study:hasPrerequisite custom:AssumeBodyPositionStanding ;
   study:ruleDescription "AFTER STANDING FOR 1 MINUTE"^^xsd:string ;
   study:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position"^^xsd:string ;
@@ -453,7 +453,7 @@ cd01p:StartRuleStanding3
   skos:definition "Target activity starts after the subject has assumed a standing position for 3 minutes"^^xsd:string ;
   skos:prefLabel "Rule Standing 3 Min"^^xsd:string ;
   study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
-  study:hasPrereqExpectedStatus code:ActivityStatus_1 ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
   study:hasPrerequisite custom:AssumeBodyPositionStanding ;
   study:ruleDescription "AFTER STANDING FOR 3 MINUTES"^^xsd:string ;
   study:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. "^^xsd:string ;
@@ -461,7 +461,7 @@ cd01p:StartRuleStanding3
 cd01p:StudyIdentifier_1
   rdf:type study:StudyIdentifier ;
   skos:prefLabel "CDISCPILOT01"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 cd01p:Study_CDISCPILOT01
@@ -500,7 +500,7 @@ cd01p:SubstanceQuantity_1
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 1"^^xsd:string ;
   code:hasIngredient custom:InvestigationalSubstance_1 ;
-  code:hasUnit code:Unit_9 ;
+  code:hasUnit code:Unit_mg ;
   code:hasValue 0 ;
 .
 cd01p:SubstanceQuantity_2
@@ -508,7 +508,7 @@ cd01p:SubstanceQuantity_2
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 2"^^xsd:string ;
   code:hasIngredient custom:InvestigationalSubstance_1 ;
-  code:hasUnit code:Unit_9 ;
+  code:hasUnit code:Unit_mg ;
   code:hasValue 54 ;
 .
 cd01p:SubstanceQuantity_3
@@ -516,7 +516,7 @@ cd01p:SubstanceQuantity_3
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 3"^^xsd:string ;
   code:hasIngredient custom:InvestigationalSubstance_1 ;
-  code:hasUnit code:Unit_9 ;
+  code:hasUnit code:Unit_mg ;
   code:hasValue 81 ;
 .
 cd01p:VisitScreening1BloodPressure
@@ -559,10 +559,10 @@ cd01p:VitalsSignsBodyPosition
   skos:prefLabel "VSPOS"^^xsd:string ;
 .
 code:AgeUnit
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
 .
 code:Country
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 code:Country_1
   rdf:type study:Country ;
@@ -573,23 +573,22 @@ code:DemographicDataCollection
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 code:Ethnicity
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 code:InformedConsentAdult
-  rdf:type study:InformedConsent ;
   rdfs:subClassOf study:InformedConsent ;
   study:hasStartRule study:StartRuleDefault ;
 .
 code:Race
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 code:RandomizationBAL3
   rdfs:subClassOf study:Randomization ;
 .
 code:Sex
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 code:VisitScreening1Start
@@ -597,7 +596,7 @@ code:VisitScreening1Start
   rdfs:comment ""^^xsd:string ;
   rdfs:subClassOf study:StartRulePrereqActivityStart ;
   skos:prefLabel "SCREENING1 VISIT START"^^xsd:string ;
-  study:hasPrereqExpectedStatus code:ActivityStatus_3 ;
+  study:hasPrereqExpectedStatus code:ActivityStatus_ST ;
   study:hasPrerequisite custom:VisitScreening1Activity ;
   study:ruleDescription "AFTER SCREENING1 VISIT STARTS"^^xsd:string ;
   study:ruleDescriptionLong "Activity takes place after Screening1 Visit Starts"^^xsd:string ;
@@ -645,7 +644,7 @@ custom:PopFlagCOMPLT16
     ] ;
   skos:altLabel "Completers of Week 16 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT16"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 custom:PopFlagCOMPLT24
   rdf:type owl:Class ;
@@ -662,7 +661,7 @@ custom:PopFlagCOMPLT24
     ] ;
   skos:altLabel "Completers of Week 24 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT24"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 custom:PopFlagCOMPLT8
   rdf:type owl:Class ;
@@ -679,7 +678,7 @@ custom:PopFlagCOMPLT8
     ] ;
   skos:altLabel "Completers of Week 8 Population Flag"^^xsd:string ;
   skos:prefLabel "COMPLT8"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 custom:PopFlagEFFICACY
   rdf:type owl:Class ;
@@ -696,7 +695,7 @@ custom:PopFlagEFFICACY
     ] ;
   skos:altLabel "Eficacy Population Flag"^^xsd:string ;
   skos:prefLabel "EFFICACY"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 custom:PopFlagITT
   rdf:type owl:Class ;
@@ -713,7 +712,7 @@ custom:PopFlagITT
     ] ;
   skos:altLabel "Intent To Treat Population Flag"^^xsd:string ;
   skos:prefLabel "ITT"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 custom:PopFlagSAFETY
   rdf:type owl:Class ;
@@ -730,7 +729,7 @@ custom:PopFlagSAFETY
     ] ;
   skos:altLabel "Safety Population Flag"^^xsd:string ;
   skos:prefLabel "SAFETY"^^xsd:string ;
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 custom:Product_1
   rdf:type code:DrugProduct ;
@@ -1096,13 +1095,13 @@ custom:VisitWk8Activity
   skos:prefLabel "WEEK 8 ACTIVITY"^^xsd:string ;
 .
 study:ActivityStatus
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
 .
 study:AgeOutcome
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 study:Arm
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
 .
 study:AssumeBodyPosition
   rdfs:subClassOf [
@@ -1112,48 +1111,48 @@ study:AssumeBodyPosition
     ] ;
 .
 study:Country
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 study:Deathdate
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 study:DemogDataCollectionDate
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 study:EthnicOutcome
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 study:InformedConsentBegin
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 study:InvestigatorIdentifier
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
 .
 study:RaceOutcome
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 study:SexOutcome
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 study:StudyIdentifier
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 study:SubjectIdentifier
-  code:hasMethod code:ActivityMethod_3 ;
+  code:hasMethod code:Method_ASSIGNED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 study:UniqueSubjectIdentifier
-  code:hasMethod code:ActivityMethod_2 ;
+  code:hasMethod code:Method_DERIVED ;
 .
 study:VitalSign
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
 study:VitalSignOutcome
-  code:hasMethod code:ActivityMethod_1 ;
+  code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_2 ;
 .
