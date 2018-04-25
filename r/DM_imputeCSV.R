@@ -9,7 +9,7 @@
 #       Eg: im_lifespan  - for lifespan IRI creation
 #           im_sdtmterm  - to link to SDTM terminlology
 #           brthdate  - no im_ prefix because this is often collected in SDTM.
-# TODO: 
+# TODO:   See TODO markers within the script.
 #______________________________________________________________________________
 
 # Imputations ----
@@ -30,14 +30,19 @@ dm$dthdtc[dm$usubjid == '01-701-1015' ] <- "2013-12-26"  # Death Date
 dm$dthfl[dm$usubjid == '01-701-1015' ]  <- "Y" # Set a Death flag  for Person_1
 
 
+# Field has some timestamps with colons. Remove colon, then process
+#   the resulting _im field instead of the original.
+#   Temporary kludge due to issues in RShiny and Topbraid queries.
+dm$rfpendtc_im  <- gsub(":", "", dm$rfpendtc)
 
 
+# TODO: Some of these values likely need to be encoded before use in interval IRIs!
 dm$lifeSpan_im      <- paste0(dm$brthdate, "_", dm$dthdtc)
-dm$refInt_im        <- paste0(dm$rfstdtc,  "_", dm$rfendtc)
-dm$studyPartInt_im  <- paste0(dm$dmdtc,    "_", dm$rfpendtc)
+dm$refInt_im        <- paste0(dm$rfstdtc,  "_", dm$rfendtc) # Colon removed
+
 dm$infConsInt_im    <- paste0(dm$rficdtc,  "_")  # No end date to informed consent interval so end in _
 dm$cumuDrugAdmin_im <- paste0(dm$rfxstdtc,    "_", dm$rfxendtc)
-
+dm$studyPartInt_im  <- paste0(dm$dmdtc,    "_", dm$rfpendtc_im)  # Imputed : no colon.
 #------------------------------------------------------------------------------
 # URL encoding
 #   Encode fields  that may potentially have values that violate valid IRI format
@@ -53,12 +58,7 @@ dm <- encodeCol(data=dm, col="ethnic")
 dm <- encodeCol(data=dm, col="race")
 dm <- encodeCol(data=dm, col="rfendtc")
 dm <- encodeCol(data=dm, col="rficdtc")
-
-# Field has some timestamps with colons. Remove colon, then encode
-#   Temporary kludge due to issues in RShiny and Topbraid queries.
-dm$rfpendtc_im  <- gsub(":", "", dm$rfpendtc)
 dm <- encodeCol(data=dm, col="rfpendtc_im")
-
 dm <- encodeCol(data=dm, col="rfstdtc")
 dm <- encodeCol(data=dm, col="rfxstdtc")
 dm <- encodeCol(data=dm, col="rfxendtc")
