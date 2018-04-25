@@ -14,7 +14,7 @@ library(car)   # recode
 # library(plyr)
 library(utils)  # for URLencode - no longer used. DELETE
 library(dplyr)  # mutate with pipe in Functions.R
-# library(RCurl)  # to encode URL values  REMOVED 2018-04-09
+
 
 dm_n=3;  # The first n patients from the DM domain.
 

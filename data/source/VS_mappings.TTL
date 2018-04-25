@@ -1,20 +1,20 @@
 ###############################################################################
 # FILE: VS_mappings.ttl
-# DESC: Stardog SMS Template file for mapping VS to graph.  
-# REQ : 
-# SRC : 
+# DESC: Stardog SMS Template file for mapping VS to graph.
+# REQ :
+# SRC :
 # IN  : CSV converted from VS.XPT, Subject 1015 only
-# OUT : 
+# OUT :
 # NOTE: stardog-admin virtual import CTDasRDF VS_mappings.TTL VS_subset.csv
 #  Export to TTL: stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
 #
-#  Conventions:  
-#    Visit IRIs: 
-#      a) cdiscpilot01 : compressed form of original value in visit field: visit_im_comp
+#  Conventions:
+#    Visit IRIs:
+#      a) cdiscpilot01 : compressed form of original value in visit field: visit_im_titleCSh
 #          Closer match to actual source data.
-#      b) custom: and other externa ont files: CamelCaseShortened: visit_im_CCaseSh to match 
+#      b) custom: and other externa ont files: CamelCaseShortened: visit_im_CCaseSh to match
 #          naming conventions in ontologies for classes, etc.
-# TODO: 
+# TODO:
 ###############################################################################
 
 @prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
@@ -34,14 +34,14 @@
 # -----------------------------------------------------------------------------
 # Person_
 # TODO: WIP
-#      
+#
 # -----------------------------------------------------------------------------
-cdiscpilot01:Person_{usubjid} 
-  study:participatesIn cdiscpilot01:Visit{visit_im_comp}_{usubjid} ;
+cdiscpilot01:Person_{usubjid}
+  study:participatesIn cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} ;
 .
 
   # Visit ----
-  # Example Objects: 
+  # Example Objects:
   #   VisitSCREENING1_01-701-1015
 
   # AssumeBodyPosition is a combination of the position and the prerequisite time
@@ -49,18 +49,18 @@ cdiscpilot01:Person_{usubjid}
   #                     STANDING+ After Standing for 3 minutes
   #                     etc.
   # Hardcoding:  ActivityStatus_1 = CO(Complete)
-   
+
   cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
     rdf:type               custom:Visit{visit_im_titleCSh} ;
     study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
   .
 
     # VisitDate
-    cdiscpilot01:Date_{vsdtc_en} 
+    cdiscpilot01:Date_{vsdtc_en}
       rdf:type   study:VisitDate ;
     .
 
-  # Visit Activity 
+  # Visit Activity
   cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
     rdf:type         owl:Class ;
     rdfs:subClassOf  custom:Visit{visit_im_titleCSh}Activity ;
@@ -69,17 +69,17 @@ cdiscpilot01:Person_{usubjid}
 
 
 #   # AssumeBodyPosition
-#  cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid} 
+#  cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid}
 #    rdf:type             cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid};
 #    rdf:type             custom:AssumeBodyPosition{vspos_im_CCase} ;
-#    skos:prefLabel       "Assume {vspos_im_CCase} position"^^xsd:string ;   
+#    skos:prefLabel       "Assume {vspos_im_CCase} position"^^xsd:string ;
 #    study:activityStatus code:ActivityStatus_1 ;
 #    study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
 #    study:hasStartRule   cdiscpilot01:StartRule{startRule_im}_{usubjid} ;
 #    study:outcome        code:Vspos_{vspos} ;
 #  .
 
-    cdiscpilot01:{vstestcd_im_titleC}Outcome_{vsorres_en} 
+    cdiscpilot01:{vstestcd_im_titleC}Outcome_{vsorres_en}
       code:hasUnit code:Unit_{vsorresu} ;
       code:hasValue "{vsorres}"^^xsd:float;
       rdf:type study:{vstestcd_im_titleC}Outcome ;
@@ -89,7 +89,7 @@ cdiscpilot01:Person_{usubjid}
                 #cdiscpilot01:WeightOutcome_1
                 #  rdf:type study:WeightOutcome ;
                 #  skos:prefLabel "119.0 LB"^^xsd:string ;
-                #  code:hasUnit code:Unit_8 ; 
+                #  code:hasUnit code:Unit_8 ;
                 #  code:hasValue "119.0"^^xsd:float ; #!! UNABLE TO ASSIGN TYPE!!
 
 
@@ -127,7 +127,7 @@ cdiscpilot01:Person_{usubjid}
 #  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_2> ;
 #  study:hasSubActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#C67153.C49676_3> ;
 #.
-    
+
 
 
 #cdiscpilot01:AssumeBodyPositionStanding_1

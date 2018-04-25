@@ -34,7 +34,9 @@ encodeCol<-function(data, col)
   for (i in 1:nrow(data))
   {
     if (!is.na(data[i,col])){
-      data[i,encoded] <- URLencode(paste(data[i,col]))
+      # data[i,encoded] <- URLencode(paste(data[i,col])) # Percent encoded
+      # data[i,encoded] <- gsub(" ", "&#x20;", data[i,col]) # HTML hex encoded
+      data[i,encoded] <- gsub(" ", "_", data[i,col]) # replace with underbar
     }
   }
   data  

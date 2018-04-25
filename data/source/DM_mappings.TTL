@@ -38,7 +38,7 @@ cd01p:Study_{studyid}
 cdiscpilot01:Person_{usubjid}
   a study:EnrolledSubject;
   skos:preflabel                      "Person {usubjid}"^^xsd:string ;
-  study:actualArm                     cd01p:Arm{actarmcd} ;
+  study:actualArm                     cd01p:Arm_{actarmcd} ;
   study:deathFlag                     "{dthfl}"^^xsd:string ;
   study:hasLifespan                   cdiscpilot01:Interval_{lifeSpan_im_en};
   study:hasReferenceInterval          cdiscpilot01:Interval_{refInt_im_en} ;
@@ -196,7 +196,7 @@ cdiscpilot01:Person_{usubjid}
      study:outcome code:InformedConsentOutcome_1 ;
    .
      #InformedConsentInterval
-     cdiscpilot01:Interval_{infConsInt_im_en} 
+     cdiscpilot01:Interval_{infConsInt_im_en}
        rdf:type study:InformedConsentInterval ;
        rdfs:label "Interval {infConsInt_im}"^^xsd:string ;
        time:hasBeginning cdiscpilot01:Date_{rficdtc_en} ;
@@ -231,20 +231,20 @@ cdiscpilot01:Person_{usubjid}
    time:hasEnd        cdiscpilot01:Date_{rfxendtc_en} ;
  .
   # Assign Date types
-  cdiscpilot01:Date_{rfxstdtc_en} 
+  cdiscpilot01:Date_{rfxstdtc_en}
     rdf:type study:CumulativeDrugAdministrationBegin ;
   .
-  cdiscpilot01:Date_{rfxendtc_en} 
+  cdiscpilot01:Date_{rfxendtc_en}
      rdf:type study:CumulativeDrugAdministrationEnd ;
   .
  # -----------------------------------------------------------------------------
  # RandomizationBAL3
  #  Randomization type is hard coded.
  #  Activity status hard coded to ActivityStatus_1 complete (CO)
- #  cd01p:ArmPlacebo changed to Arm{armcd}
+ #  cd01p:ArmPlacebo changed to Arm_{armcd}
  cdiscpilot01:RandomizationBAL3_{usubjid}
    rdf:type code:RandomizationBAL3 ;
    skos:prefLabel "Randomization Person {usubjid}"^^xsd:string ;
    study:activityStatus code:ActivityStatus_1 ;
-   study:outcome cd01p:Arm{armcd} ;
+   study:outcome cd01p:Arm_{armcd} ;
  .
