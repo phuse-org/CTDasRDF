@@ -562,7 +562,7 @@ cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:administeredProduct custom:PlaceboDrug ;
+  study:administeredDrug custom:PlaceboDrug ;
   study:hasActivityInterval cdiscpilot01:Interval_2014-01-02_2014-01-16 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
@@ -573,10 +573,10 @@ cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:administeredProduct custom:PlaceboDrug ;
-  study:hasActivityInterval cdiscpilot01:Inverval_2014-01-17_2014-06-18 ;
-  study:hasDosageFrequency <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
-  study:hasRouteOfAdministration <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  study:administeredDrug custom:PlaceboDrug ;
+  study:hasActivityInterval cdiscpilot01:Interval_2014-01-17_2014-06-18 ;
+  study:hasDosageFrequency code:ExDosFrq_QD ;
+  study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02
@@ -584,10 +584,10 @@ cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:administeredProduct custom:PlaceboDrug ;
+  study:administeredDrug custom:PlaceboDrug ;
   study:hasActivityInterval cdiscpilot01:Interval_2014-06-19_2014-07-02 ;
-  study:hasDosageFrequency <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
-  study:hasRouteOfAdministration <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  study:hasDosageFrequency code:ExDosFrq_QD ;
+  study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1023_2012-08-05_2012-08-27
@@ -595,10 +595,10 @@ cdiscpilot01:DrugAdministration_01-701-1023_2012-08-05_2012-08-27
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:administeredProduct custom:PlaceboDrug ;
+  study:administeredDrug custom:PlaceboDrug ;
   study:hasActivityInterval cdiscpilot01:Interval_2012-08-05_2012-08-27 ;
-  study:hasDosageFrequency <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
-  study:hasRouteOfAdministration <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  study:hasDosageFrequency code:ExDosFrq_QD ;
+  study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1023_2012-08-28_2012-09-01
@@ -606,10 +606,10 @@ cdiscpilot01:DrugAdministration_01-701-1023_2012-08-28_2012-09-01
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:administeredProduct custom:PlaceboDrug ;
+  study:administeredDrug custom:PlaceboDrug ;
   study:hasActivityInterval cdiscpilot01:Interval_2012-08-28_2012-09-01 ;
-  study:hasDosageFrequency <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
-  study:hasRouteOfAdministration <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  study:hasDosageFrequency code:ExDosFrq_QD ;
+  study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2014-08-01
@@ -617,10 +617,10 @@ cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2014-08-01
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:administeredProduct custom:Product_1 ;
+  study:administeredDrug custom:Product_1 ;
   study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2014-08-01 ;
-  study:hasDosageFrequency <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
-  study:hasRouteOfAdministration <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  study:hasDosageFrequency code:ExDosFrq_QD ;
+  study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06
@@ -628,10 +628,10 @@ cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:administeredProduct custom:Product_2 ;
+  study:administeredDrug custom:Product_2 ;
   study:hasActivityInterval cdiscpilot01:Interval_2013-08-02_2014-01-06 ;
-  study:hasDosageFrequency <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
-  study:hasRouteOfAdministration <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  study:hasDosageFrequency code:ExDosFrq_QD ;
+  study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14
@@ -639,10 +639,10 @@ cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:administeredProduct custom:Product_1 ;
+  study:administeredDrug custom:Product_1 ;
   study:hasActivityInterval cdiscpilot01:Interval_2014-01-07_2014-01-14 ;
   study:hasDosageFrequency <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
-  study:hasRouteOfAdministration <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
   study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:HeightOutcome_1
@@ -784,17 +784,17 @@ cdiscpilot01:Interval_2014-01-07_2014-01-14
   time:hasBeginning cdiscpilot01:Date_2014-01-07 ;
   time:hasEnd cdiscpilot01:Date_2014-01-14 ;
 .
+cdiscpilot01:Interval_2014-01-17_2014-06-18
+  rdf:type study:FixedDoseInterval ;
+  rdfs:label "Interval 2014-01-17 - 2014-06-18"^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_2014-01-17 ;
+  time:hasEnd cdiscpilot01:Date_2014-06-18 ;
+.
 cdiscpilot01:Interval_2014-06-19_2014-07-02
   rdf:type study:FixedDoseInterval ;
   rdfs:label "Interval 2014-06-19 - 2014-07-02"^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_2014-06-19 ;
   time:hasEnd cdiscpilot01:Date_2014-07-02 ;
-.
-cdiscpilot01:Inverval_2014-01-17_2014-06-18
-  rdf:type study:FixedDoseInterval ;
-  rdfs:label "Interval 2014-01-17 - 2014-06-18"^^xsd:string ;
-  time:hasBeginning cdiscpilot01:Date_2014-01-17 ;
-  time:hasEnd cdiscpilot01:Date_2014-06-18 ;
 .
 cdiscpilot01:InvestigatorIdentifier_1
   rdf:type study:InvestigatorIdentifier ;

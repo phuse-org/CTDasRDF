@@ -1942,7 +1942,7 @@ study:actualArm
   rdfs:range study:Arm ;
   skos:definition ""^^xsd:string ;
 .
-study:administeredProduct
+study:administeredDrug
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:FixedDoseDrugAdministration ;
   rdfs:range study:Product ;
