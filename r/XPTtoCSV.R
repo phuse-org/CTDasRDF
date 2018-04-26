@@ -4,7 +4,7 @@
 # SRC :
 # IN  : 
 # OUT : 
-# REQ : 
+# REQ : DM must be imported before EX. EX merges in dm$cumuDrugAdmin_im for the interval
 # SRC : 
 # NOTE: Some imputed values to match ontology development requirements.
 # TODO: 
@@ -46,6 +46,11 @@ dm  <- head(readXPT("dm"), dm_n)
 # Impute values needed for testing
 source('R/DM_imputeCSV.R')  # Creates birthdate. 
 
+
+# Drug admin interval to be used for each usubjid in EX  
+#   rfxstdtc, rfxendtc needed for label in EX
+dmDrugInt <- dm[,c("usubjid", "cumuDrugAdmin_im", "rfxstdtc", "rfxendtc")]
+
 write.csv(dm, file="data/source/DM_subset.csv", 
   row.names = F)
 
@@ -60,6 +65,11 @@ row.names = F)
 ex  <- readXPT("ex")
 # subset for development
 ex <- ex[ex$usubjid %in% pntSubset,]  
+
+# Merge in the Drug Administration interval from DM. Could also have been calculated
+#  from min(exstdtc)_max(exendtc) but would involve more calcs and DM is seen as the
+#  authoritative value (at least for purpose of this prototype)
+ex <- merge(dmDrugInt, ex, by.x = "usubjid", by.y="usubjid")
 
 # Impute values needed for testing
 source('R/EX_imputeCSV.R')#

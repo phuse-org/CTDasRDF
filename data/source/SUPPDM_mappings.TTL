@@ -29,8 +29,8 @@ cdiscpilot01:Person_{usubjid}
 .
 
 cdiscpilot01:PopFlag{qnam}_{usubjid}
-  rdf:type custom:PopFlag{qnam} ;
-  study:activityStatus code:ActivityStatus_1 ;
-  study:hasPerformer cd01p:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
+  rdf:type             custom:PopFlag{qnam} ;
+  study:activityStatus code:ActivityStatus_CO ;
+  study:hasPerformer   cd01p:Sponsor_1 ;
+  study:outcome        "true"^^xsd:boolean ;
 .

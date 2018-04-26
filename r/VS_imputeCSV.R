@@ -42,17 +42,20 @@ vs$visit_im_titleCSh <- car::recode (vs$visit,
     'UNSCHEDULED 3.1'      =  'Unscheduled31' "
 )
 
-vs$vspos_im_CCase <- car::recode(vs$vspos,
-  " 'STANDING'  = 'Standing' ;
-    'SUPINE'    = 'Supine'"
-)
+#DEL : Converted to use im_titleC
+#vs$vspos_im_CCase <- car::recode(vs$vspos,
+#  " 'STANDING'  = 'Standing' ;
+#    'SUPINE'    = 'Supine'"
+#)
 
 # vslat
 vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
 vs[vs$vsseq %in% c(2,87)       & vs$personNum == 1, "vslat"] <- "LEFT"
 
-# Title Case (titleC) Conversions
-vs$vslat_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vslat,    perl=TRUE)
+# Title Case (titleC) Conversions. For RDF Labels.
+vs$visit_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$visit,    perl=TRUE)
+vs$vspos_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vspos,    perl=TRUE)
+vs$vslat_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vslat,    perl=TRUE)
 vs$vstestcd_im_titleC <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vstestcd, perl=TRUE)
 
 #------------------------------------------------------------------------------

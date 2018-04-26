@@ -48,7 +48,7 @@ cdiscpilot01:Person_{usubjid}
   #   in that position: STANDING+ After Standing for 1 minute
   #                     STANDING+ After Standing for 3 minutes
   #                     etc.
-  # Hardcoding:  ActivityStatus_1 = CO(Complete)
+  # Hardcoding:  ActivityStatus_CO = Complete
 
   cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
     rdf:type               custom:Visit{visit_im_titleCSh} ;
@@ -64,20 +64,20 @@ cdiscpilot01:Person_{usubjid}
   cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
     rdf:type         owl:Class ;
     rdfs:subClassOf  custom:Visit{visit_im_titleCSh}Activity ;
-    skos:prefLabel   "Visit {visit} Person {usubjid}"^^xsd:string ;
+    skos:prefLabel   "Visit {visit_im_titleC} Person {usubjid}"^^xsd:string ;
   .
 
 
-#   # AssumeBodyPosition
-#  cdiscpilot01:AssumeBodyPosition{vspos_im_CCase}_{usubjid}
-#    rdf:type             cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid};
-#    rdf:type             custom:AssumeBodyPosition{vspos_im_CCase} ;
-#    skos:prefLabel       "Assume {vspos_im_CCase} position"^^xsd:string ;
-#    study:activityStatus code:ActivityStatus_1 ;
-#    study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
-#    study:hasStartRule   cdiscpilot01:StartRule{startRule_im}_{usubjid} ;
-#    study:outcome        code:Vspos_{vspos} ;
-#  .
+  # AssumeBodyPosition
+    cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid}
+     rdf:type             cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid};
+     rdf:type             custom:AssumeBodyPosition{vspos_im_titleC}_{usubjid} ;
+     skos:prefLabel       "Assume {vspos_im_titleC} position"^^xsd:string ;
+     study:activityStatus code:ActivityStatus_CO ;
+     study:hasDate        cdiscpilot01:Date_{#vsdtc} ;
+     study:hasStartRule   cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid} ;
+     study:outcome        code:Vspos_{vspos} ;
+  .
 
     cdiscpilot01:{vstestcd_im_titleC}Outcome_{vsorres_en}
       code:hasUnit code:Unit_{vsorresu} ;
@@ -96,21 +96,33 @@ cdiscpilot01:Person_{usubjid}
 
 #    cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
 #      rdf:type        owl:Class ;
-#      skos:prefLabel  "Visit {visit} Person {usubjid}"^^xsd:string ;
-#      rdfs:subClassOf custom:Visit{visit_im_titleCSh}Activity;
+#      skos:prefLabel  "Visit {visit_im_titleC} Person {usubjid}"^^xsd:string ;
+#      rdfs:subClassOf custom:Visit{visit_im_titleC}Activity;
 #   .
 
-# TO HERE
-# study:hasStartRule cdiscpilot01:StartRule{startRule_im}_{usubjid} ;
-#  cdiscpilot01:StartRule{startRule_im}_{usubjid}
-#    rdf:type       cd01p:{startRule_im} ;
-#    skos:prefLabel "{usubjid} {visit} Start Rule {vstpt} "^^xsd:string ;
-#  .
+
+cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid} 
+    rdf:type              cd01p:{startRule_im} ;
+    skos:prefLabel        "{usubjid} {visit_im_titleC} Rule {vstpt}"^^xsd:string ;
+    study:hasPrerequisite cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid} ;
+.
+
+       #GUIDE 
+       #GUIDE   cdiscpilot01:StartRuleLying5_1
+       #GUIDE     rdf:type cd01p:StartRuleLying5 ;
+       #GUIDE     skos:prefLabel "P1 Screening 1 Rule Lying 5 Min"^^xsd:string ;
+       #GUIDE     study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_1 ;
+
+                cdiscpilot01:StartRuleStartRuleLying5_SCREENING1_01-701-1015 
+                   a cd01p:StartRuleLying5 ;
+	                 skos:prefLabel "01-701-1015 Screening 1 Rule AFTER LYING DOWN FOR 5 MINUTES " ;
+	                 study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_SCREENING1_01-701-1015 .
+
 
 # ORIGINAL TRIPLES FOR SCREENING1_1
 #cdiscpilot01:VisitScreening1_1
 #  rdf:type custom:VisitScreening1 ;
-#  study:activityStatus code:ActivityStatus_1 ;
+#  study:activityStatus code:ActivityStatus_CO ;
 #  study:hasPerformedDate cdiscpilot01:Date_19 ;
 #  study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_1 ;
 #  study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_1 ;
@@ -134,7 +146,7 @@ cdiscpilot01:Person_{usubjid}
 #  rdf:type cdiscpilot01:VisitScreening1Activity_1 ;
 #  rdf:type custom:AssumeBodyPositionStanding ;
 #  skos:prefLabel "assume standing position"^^xsd:string ;
-#  study:activityStatus code:ActivityStatus_1 ;
+#  study:activityStatus code:ActivityStatus_CO ;
 #  study:hasDate cdiscpilot01:Date_19 ;
 #  study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
 #  study:outcome <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
