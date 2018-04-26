@@ -52,9 +52,9 @@ ex <- encodeCol(data=ex, col="exroute")
 ex <- encodeCol(data=ex, col="fixDoseInt_im")
 
 
-# Title case
+# Title case. For labels.
 ex$extrt_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$extrt, perl=TRUE)
-
+ex$visit_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$visit, perl=TRUE)
 
 # Sort column names in the df for quicker referencing
 ex <- ex %>% select(noquote(order(colnames(ex))))

@@ -27,15 +27,30 @@
 # DrugAdministration_XXX - specific to a Person and that specific administration, so
 #   so the IRI is a combination of the USUBJID and the fixDoseInt.  FixDoseInt is a
 #   sub-triple of DrugAdministration so it makes sense to use that combination.
-#
+# 26APR18: 
+#        cumuDrugAdmin_im, rfxstdtc, rfxendtc are merged in from DM
 # -----------------------------------------------------------------------------
 cdiscpilot01:Person_{usubjid}
   study:participatesIn cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} ;
 .
 
-cdiscpilot01:CumulativeDrugAdministration_{usubjid}
-    study:hasSubActivity   cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en} ;
+cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
+  rdf:type                  study:CumulativeDrugAdministration ;
+  skos:prefLabel            "Drug administration period {rfxstdtc} - {rfxendtc}"^^xsd:string ;
+  study:activityStatus      code:ActivityStatus_CO ;
+  study:hasActivityInterval cdiscpilot01:Interval_{cumuDrugAdmin_im};
+  study:hasSubActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en} ;
 .
+				## GUIDE
+				##cdiscpilot01:CumulativeDrugAdministration_2013-07-19_2014-01-14
+				##  rdf:type study:CumulativeDrugAdministration ;
+				##  skos:prefLabel "Drug administration period 2013-07-19 - 2014-01-14"^^xsd:string ;
+				##  study:activityStatus code:ActivityStatus_CO ;
+				##  study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 ;
+				##  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2014-08-01 ;
+				##  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06 ;
+				##  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
+				##.
 
   # Visit date comes from VS, not from EX, because the EX is sometimes a later date
   #   (not on the same day as the visit date). So date is not here, but the drug admin that is
@@ -46,11 +61,10 @@ cdiscpilot01:CumulativeDrugAdministration_{usubjid}
     # DrugAdministration
     #   Drug admin date exstdtc_en may be a later date than the visit date
     cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en}
-      #DEL study:hasPerformedDate         cdiscpilot01:Date_{exstdtc_en} ;
       rdf:type                       cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} ;
-      rdf:type                       study:FixedDoseAdministration ;
+      rdf:type                       study:FixedDoseDrugAdministration ;
       skos:prefLabel                 "Drug administration"^^xsd:string ;
-      study:activityStatus           code:ActivityStatus_1 ;
+      study:activityStatus           code:ActivityStatus_CO ;
       study:administeredDrug         custom:{extrt_im_titleC}Drug ;
       study:hasActivityInterval      cdiscpilot01:Interval_{fixDoseInt_im_en} ;
       study:hasDosageFrequency       code:ExDosFrq_{exdosfrq} ;
@@ -60,22 +74,22 @@ cdiscpilot01:CumulativeDrugAdministration_{usubjid}
       cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} 
         rdf:type         owl:Class ;
         rdfs:subClassOf  custom:VisitBaselineActivity ;
-        skos:prefLabel   "Visit {visit} Person {usubjid}" ;
+        skos:prefLabel   "Visit {visit_im_titleC} Person {usubjid}" ;
       .
       cdiscpilot01:Interval_{fixDoseInt_im_en}
-        rdf:type         study:FixedDoseInterval ;
-        skos:prefLabel   "Fixed Dose Interval {exstdtc} - {exendtc}"^^xsd:string ;
+        rdf:type          study:FixedDoseInterval ;
+        skos:prefLabel    "Fixed Dose Interval {exstdtc} - {exendtc}"^^xsd:string ;
         time:hasBeginning cdiscpilot01:Date_{exstdtc_en} ;
-        time:hasEnd      cdiscpilot01:Date_{exendtc_en} ;
+        time:hasEnd       cdiscpilot01:Date_{exendtc_en} ;
       .
         # Assign date types
         cdiscpilot01:Date_{exstdtc_en}
-          rdf:type   study:FixedDoseIntervalBegin ;
-          rdfs:label "{exstdtc}"^^xsd:string ;
+          rdf:type                  study:FixedDoseIntervalBegin ;
+          skos:prefLabel            "{exstdtc}"^^xsd:string ;
           study:dateTimeInXSDString "{exstdtc}"^^xsd:string ;
         .
         cdiscpilot01:Date_{exendtc_en}
-          rdf:type   study:FixedDoseIntervalEnd ;
-          rdfs:label "{exendtc}"^^xsd:string ;
+          rdf:type                  study:FixedDoseIntervalEnd ;
+          skos:prefLabel            "{exendtc}"^^xsd:string ;
           study:dateTimeInXSDString "{exendtc}"^^xsd:string ;
         .
