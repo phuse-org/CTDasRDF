@@ -78,7 +78,7 @@ cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
       .
       cdiscpilot01:Interval_{fixDoseInt_im_en}
         rdf:type          study:FixedDoseInterval ;
-        skos:prefLabel    "Fixed Dose Interval {exstdtc} - {exendtc}"^^xsd:string ;
+        skos:prefLabel    "Fixed Dose Interval {fixDoseInt_im}"^^xsd:string ;
         time:hasBeginning cdiscpilot01:Date_{exstdtc_en} ;
         time:hasEnd       cdiscpilot01:Date_{exendtc_en} ;
       .

@@ -46,11 +46,6 @@ dm  <- head(readXPT("dm"), dm_n)
 # Impute values needed for testing
 source('R/DM_imputeCSV.R')  # Creates birthdate. 
 
-
-# Drug admin interval to be used for each usubjid in EX  
-#   rfxstdtc, rfxendtc needed for label in EX
-dmDrugInt <- dm[,c("usubjid", "cumuDrugAdmin_im", "rfxstdtc", "rfxendtc")]
-
 write.csv(dm, file="data/source/DM_subset.csv", 
   row.names = F)
 

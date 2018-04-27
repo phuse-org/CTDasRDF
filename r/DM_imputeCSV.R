@@ -5,6 +5,7 @@
 # SRC : N/A
 # IN  : dm dataframe 
 # OUT : modified dm dataframe 
+#       dmDrugInt  dataframe for use in EX mapping.
 # NOTE: Columns that created that are not usually in SDTM are prefixed with im_
 #       Eg: im_lifespan  - for lifespan IRI creation
 #           im_sdtmterm  - to link to SDTM terminlology
@@ -69,3 +70,8 @@ dm <- encodeCol(data=dm, col="cumuDrugAdmin_im")
 
 # Sort column names in the df for quicker referencing
 dm <- dm %>% select(noquote(order(colnames(dm))))
+
+
+# Drug admin interval to be used for each usubjid in EX  
+#   rfxstdtc, rfxendtc needed for label in EX
+dmDrugInt <- dm[,c("usubjid", "cumuDrugAdmin_im", "rfxstdtc", "rfxendtc")]
