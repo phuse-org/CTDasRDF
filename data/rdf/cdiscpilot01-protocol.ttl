@@ -47,28 +47,24 @@
 .
 cd01p:ArmScreenFailure
   rdf:type study:Arm ;
-  rdfs:label "Scrnfail" ;
   skos:altLabel "Scrnfail"^^xsd:string ;
   skos:prefLabel "Screen Failure"^^xsd:string ;
 .
 cd01p:ArmXanomelineHigh
   rdf:type study:Arm ;
   rdf:type study:RandomizationOutcome ;
-  rdfs:label "Xan_Hi" ;
   skos:altLabel "Xan_Hi"^^xsd:string ;
   skos:prefLabel "Xanomeline High"^^xsd:string ;
 .
 cd01p:ArmXanomelineLow
   rdf:type study:Arm ;
   rdf:type study:RandomizationOutcome ;
-  rdfs:label "Xan_Lo"^^xsd:string ;
   skos:altLabel "Xan_Lo"^^xsd:string ;
   skos:prefLabel "Xanomeline Low"^^xsd:string ;
 .
 cd01p:Arm_Pbo
   rdf:type study:Arm ;
   rdf:type study:RandomizationOutcome ;
-  rdfs:label "Pbo" ;
   skos:altLabel "Pbo"^^xsd:string ;
   skos:prefLabel "Placebo"^^xsd:string ;
 .
@@ -466,7 +462,7 @@ cd01p:StudyIdentifier_1
 .
 cd01p:Study_CDISCPILOT01
   rdf:type study:Study ;
-  rdfs:label "CDISCPILOT01" ;
+  skos:prefLabel "CDISCPILOT01" ;
   skos:altLabel ""^^xsd:string ;
   skos:prefLabel "Study CDISCPILOT01"^^xsd:string ;
   study:hasProtocolSpecifiedActivity cd01p:ArmScreenFailure ;

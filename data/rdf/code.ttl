@@ -196,28 +196,28 @@ time:TemporalUnit
   rdfs:subClassOf code:Unit ;
 .
 time:unitDay
-  rdfs:label "UNITDAY" ;
+  skos:prefLabel "UNITDAY" ;
 .
 time:unitHour
-  rdfs:label "UNITHOUR" ;
+  skos:prefLabel "UNITHOUR" ;
 .
 time:unitMinute
-  rdfs:label "UNITMONTH" ;
+  skos:prefLabel "UNITMONTH" ;
 .
 time:unitMonth
   rdf:type code:AgeUnit ;
-  rdfs:label "MONTH" ;
+  skos:prefLabel "MONTH" ;
 .
 time:unitSecond
-  rdfs:label "SECOND" ;
+  skos:prefLabel "SECOND" ;
 .
 time:unitWeek
   rdf:type code:AgeUnit ;
-  rdfs:label "WEEK" ;
+  skos:prefLabel "WEEK" ;
 .
 time:unitYear
   rdf:type code:AgeUnit ;
-  rdfs:label "YEAR"^^xsd:string ;
+  skos:prefLabel "YEAR"^^xsd:string ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl>
   rdf:type owl:Ontology ;
@@ -242,14 +242,14 @@ code:ActiveSubstance
 code:ActivityStatus
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Activity status"^^xsd:string ;
+  skos:prefLabel "Activity status"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:ActivityStatus_CO
   rdf:type code:ActivityStatus ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "CO"^^xsd:string ;
+  skos:prefLabel "CO"^^xsd:string ;
   skos:altLabel "COMPLETE"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "CO"^^xsd:string ;
@@ -257,7 +257,7 @@ code:ActivityStatus_CO
 code:ActivityStatus_IC
   rdf:type code:ActivityStatus ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "IC"^^xsd:string ;
+  skos:prefLabel "IC"^^xsd:string ;
   skos:altLabel "INCOMPLETE"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "IC"^^xsd:string ;
@@ -265,7 +265,7 @@ code:ActivityStatus_IC
 code:ActivityStatus_ND
   rdf:type code:ActivityStatus ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "ND"^^xsd:string ;
+  skos:prefLabel "ND"^^xsd:string ;
   skos:altLabel "NOT DONE"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ND"^^xsd:string ;
@@ -273,7 +273,7 @@ code:ActivityStatus_ND
 code:ActivityStatus_ST
   rdf:type code:ActivityStatus ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "ST"^^xsd:string ;
+  skos:prefLabel "ST"^^xsd:string ;
   skos:altLabel "STARTED"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "ND"^^xsd:string ;
@@ -281,14 +281,14 @@ code:ActivityStatus_ST
 code:AdministrativeActivity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Administrative activity term"^^xsd:string ;
+  skos:prefLabel "Administrative activity term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivity ;
   skos:definition ""^^xsd:string ;
 .
 code:AdministrativeActivityOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Administrative activity outcome term"^^xsd:string ;
+  skos:prefLabel "Administrative activity outcome term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
@@ -300,28 +300,28 @@ code:AgeUnit
 code:Analysis
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Analysis term"^^xsd:string ;
+  skos:prefLabel "Analysis term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivity ;
   skos:definition ""^^xsd:string ;
 .
 code:AnatomicLocation
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Anatomic location term"^^xsd:string ;
+  skos:prefLabel "Anatomic location term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:Assessment
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Assessment term"^^xsd:string ;
+  skos:prefLabel "Assessment term"^^xsd:string ;
   rdfs:subClassOf code:Analysis ;
   skos:definition ""^^xsd:string ;
 .
 code:AssumeBodyPosition
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Assume body position term"^^xsd:string ;
+  skos:prefLabel "Assume body position term"^^xsd:string ;
   rdfs:subClassOf code:Intervention ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
@@ -337,7 +337,7 @@ code:BloodPressure
 code:BodyPosition
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Body position term"^^xsd:string ;
+  skos:prefLabel "Body position term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:InterventionOutcome ;
   skos:definition ""^^xsd:string ;
@@ -351,13 +351,13 @@ code:ClinicalIntervention
 code:ConversionFactor
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Conversion factor"^^xsd:string ;
+  skos:prefLabel "Conversion factor"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
 code:ConversionFactor_1
   rdf:type code:ConversionFactor ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "in2cm"^^xsd:string ;
+  skos:prefLabel "in2cm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "in2cm"^^xsd:string ;
   code:hasConversionFactor "2.54"^^xsd:float ;
@@ -367,7 +367,7 @@ code:ConversionFactor_1
 code:ConversionFactor_2
   rdf:type code:ConversionFactor ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "mm hg2mm hg"^^xsd:string ;
+  skos:prefLabel "mm hg2mm hg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "mm hg2mm hg"^^xsd:string ;
   code:hasConversionFactor "1"^^xsd:float ;
@@ -377,7 +377,7 @@ code:ConversionFactor_2
 code:ConversionFactor_3
   rdf:type code:ConversionFactor ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "lb2kg"^^xsd:string ;
+  skos:prefLabel "lb2kg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "lb2kg"^^xsd:string ;
   code:hasConversionFactor "0.4545"^^xsd:float ;
@@ -386,7 +386,7 @@ code:ConversionFactor_3
 .
 code:ConversionFactor_4
   rdf:type code:ConversionFactor ;
-  rdfs:label "F2C"^^xsd:string ;
+  skos:prefLabel "F2C"^^xsd:string ;
   skos:prefLabel "F2C"^^xsd:string ;
   code:hasOriginalUnit code:Unit_F ;
   code:hasStandardUnit code:Unit_C ;
@@ -394,7 +394,7 @@ code:ConversionFactor_4
 code:ConversionFactor_5
   rdf:type code:ConversionFactor ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "bpm2bpm"^^xsd:string ;
+  skos:prefLabel "bpm2bpm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "bpm2bpm"^^xsd:string ;
   code:hasConversionFactor "1"^^xsd:float ;
@@ -411,28 +411,28 @@ code:Country
 code:Country_1
   rdf:type code:Country ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "USA"^^xsd:string ;
+  skos:prefLabel "USA"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "USA"^^xsd:string ;
 .
 code:DefinedActivity
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Activity term"^^xsd:string ;
+  skos:prefLabel "Activity term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:DefinedActivityOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Activity outcome term"^^xsd:string ;
+  skos:prefLabel "Activity outcome term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:DefinedConcept
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Controlled Terminology"^^xsd:string ;
+  skos:prefLabel "Controlled Terminology"^^xsd:string ;
   rdfs:subClassOf owl:Thing ;
   skos:definition ""^^xsd:string ;
 .
@@ -440,7 +440,7 @@ code:DemographicDataCollection
   rdf:type owl:Class ;
   rdf:type code:Observation ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "DEMOG DATA COLLECTION"^^xsd:string ;
+  skos:prefLabel "DEMOG DATA COLLECTION"^^xsd:string ;
   rdfs:subClassOf code:Observation ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "DEMOG DATA COLLECTION"^^xsd:string ;
@@ -524,7 +524,7 @@ code:ISO8601
 code:InformedConsent
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Informed consent term"^^xsd:string ;
+  skos:prefLabel "Informed consent term"^^xsd:string ;
   rdfs:subClassOf code:AdministrativeActivity ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
@@ -542,7 +542,7 @@ code:InformedConsentAdult
 code:InformedConsentOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Informed consent outcome"^^xsd:string ;
+  skos:prefLabel "Informed consent outcome"^^xsd:string ;
   rdfs:subClassOf code:AdministrativeActivityOutcome ;
   owl:oneOf (
       code:InformedConsentOutcome_1
@@ -554,77 +554,77 @@ code:InformedConsentOutcome
 code:InformedConsentOutcome_1
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "informed consent granted"^^xsd:string ;
+  skos:prefLabel "informed consent granted"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "informed consent granted"^^xsd:string ;
 .
 code:InformedConsentOutcome_2
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Informed consent not granted"^^xsd:string ;
+  skos:prefLabel "Informed consent not granted"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "Informed consent not granted"^^xsd:string ;
 .
 code:InformedConsentOutcome_3
   rdf:type code:InformedConsentOutcome ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Informed consent withdrawn"^^xsd:string ;
+  skos:prefLabel "Informed consent withdrawn"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "Informed consent withdrawn"^^xsd:string ;
 .
 code:Intervention
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Intervention term"^^xsd:string ;
+  skos:prefLabel "Intervention term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivity ;
   skos:definition ""^^xsd:string ;
 .
 code:InterventionOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Intervention outcome term"^^xsd:string ;
+  skos:prefLabel "Intervention outcome term"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   skos:definition ""^^xsd:string ;
 .
 code:Laterality
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Laterality term"^^xsd:string ;
+  skos:prefLabel "Laterality term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:MedicalCondition
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Medical condition term"^^xsd:string ;
+  skos:prefLabel "Medical condition term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:Method
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Method"^^xsd:string ;
+  skos:prefLabel "Method"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:Method_ASSIGNED
   rdf:type code:Method ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "ASSIGNED"^^xsd:string ;
+  skos:prefLabel "ASSIGNED"^^xsd:string ;
   skos:definition "The method used to obtain the activity outcome"^^xsd:string ;
   skos:prefLabel "ASSIGNED"^^xsd:string ;
 .
 code:Method_COLLECTED
   rdf:type code:Method ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "COLLECTED"^^xsd:string ;
+  skos:prefLabel "COLLECTED"^^xsd:string ;
   skos:definition "The method used to obtain the activity outcome"^^xsd:string ;
   skos:prefLabel "COLLECTED"^^xsd:string ;
 .
 code:Method_DERIVED
   rdf:type code:Method ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "DERIVED"^^xsd:string ;
+  skos:prefLabel "DERIVED"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "DERIVED"^^xsd:string ;
 .
@@ -754,14 +754,14 @@ code:NumericOutcome
 code:Observation
   rdf:type owl:Class ;
   rdfs:comment "could be replaced in the future with a robust terminology for observations such as CDISC terminology or LOINC"^^xsd:string ;
-  rdfs:label "Observation term"^^xsd:string ;
+  skos:prefLabel "Observation term"^^xsd:string ;
   rdfs:subClassOf code:Intervention ;
   skos:definition ""^^xsd:string ;
 .
 code:ObservationOutcome
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Observation outcome term"^^xsd:string ;
+  skos:prefLabel "Observation outcome term"^^xsd:string ;
   rdfs:subClassOf code:InterventionOutcome ;
   skos:definition ""^^xsd:string ;
 .
@@ -827,7 +827,7 @@ code:RouteOfAdministration
 .
 code:RuleOutcome
   rdf:type owl:Class ;
-  rdfs:label "Rule outcome"^^xsd:string ;
+  skos:prefLabel "Rule outcome"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
 .
 code:RuleOutcome_1
@@ -883,7 +883,7 @@ code:StandardFormat
 code:Substance
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Substance term"^^xsd:string ;
+  skos:prefLabel "Substance term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
@@ -902,28 +902,28 @@ code:TemperatureUnit
 code:Unit
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Unit term"^^xsd:string ;
+  skos:prefLabel "Unit term"^^xsd:string ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition ""^^xsd:string ;
 .
 code:Unit_BEATS_MIN
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
-  rdfs:label "BEATS/MIN"^^xsd:string ;
+  skos:prefLabel "BEATS/MIN"^^xsd:string ;
   skos:prefLabel "BEATS/MIN"^^xsd:string ;
 .
 code:Unit_C
   rdf:type code:TemperatureUnit ;
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
-  rdfs:label "C"^^xsd:string ;
+  skos:prefLabel "C"^^xsd:string ;
   skos:prefLabel "C"^^xsd:string ;
 .
 code:Unit_F
   rdf:type code:TemperatureUnit ;
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
-  rdfs:label "F"^^xsd:string ;
+  skos:prefLabel "F"^^xsd:string ;
   skos:prefLabel "F"^^xsd:string ;
 .
 code:Unit_IN
@@ -931,7 +931,7 @@ code:Unit_IN
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "IN"^^xsd:string ;
+  skos:prefLabel "IN"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "IN"^^xsd:string ;
 .
@@ -939,7 +939,7 @@ code:Unit_LB
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
   rdf:type code:WeightUnit ;
-  rdfs:label "LB"^^xsd:string ;
+  skos:prefLabel "LB"^^xsd:string ;
   skos:prefLabel "LB"^^xsd:string ;
 .
 code:Unit_cm
@@ -947,7 +947,7 @@ code:Unit_cm
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "cm"^^xsd:string ;
+  skos:prefLabel "cm"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "cm"^^xsd:string ;
 .
@@ -955,27 +955,27 @@ code:Unit_kg
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
   rdf:type code:WeightUnit ;
-  rdfs:label "kg"^^xsd:string ;
+  skos:prefLabel "kg"^^xsd:string ;
   skos:prefLabel "kg"^^xsd:string ;
 .
 code:Unit_mg
   rdf:type code:Unit ;
   rdf:type code:WeightUnit ;
-  rdfs:label "mg"^^xsd:string ;
+  skos:prefLabel "mg"^^xsd:string ;
   skos:prefLabel "mg"^^xsd:string ;
 .
 code:Unit_mmHG
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "mmHg"^^xsd:string ;
+  skos:prefLabel "mmHg"^^xsd:string ;
   skos:definition ""^^xsd:string ;
   skos:prefLabel "mmHg"^^xsd:string ;
 .
 code:VitalSign
   rdf:type owl:Class ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "Vital signs test name"^^xsd:string ;
+  skos:prefLabel "Vital signs test name"^^xsd:string ;
   rdfs:subClassOf code:Observation ;
   skos:definition ""^^xsd:string ;
 .
@@ -1005,7 +1005,7 @@ code:hasConversionFactor
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:ConversionFactor ;
-  rdfs:label "has conversion factor"^^xsd:string ;
+  skos:prefLabel "has conversion factor"^^xsd:string ;
   rdfs:range xsd:float ;
   skos:definition ""^^xsd:string ;
 .
@@ -1019,7 +1019,7 @@ code:hasIdentifier
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:DefinedConcept ;
-  rdfs:label "has value"^^xsd:string ;
+  skos:prefLabel "has value"^^xsd:string ;
   rdfs:range xsd:string ;
   skos:definition ""^^xsd:string ;
 .
@@ -1027,7 +1027,7 @@ code:hasIngredient
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:SubstanceQuantity ;
-  rdfs:label "has ingredient"^^xsd:string ;
+  skos:prefLabel "has ingredient"^^xsd:string ;
   rdfs:range code:Substance ;
   skos:definition ""^^xsd:string ;
 .
@@ -1040,7 +1040,7 @@ code:hasIngredientQuantity
 code:hasMethod
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "has method"^^xsd:string ;
+  skos:prefLabel "has method"^^xsd:string ;
   rdfs:range code:Method ;
   skos:definition ""^^xsd:string ;
 .
@@ -1048,7 +1048,7 @@ code:hasOriginalUnit
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:ConversionFactor ;
-  rdfs:label "has original unit"^^xsd:string ;
+  skos:prefLabel "has original unit"^^xsd:string ;
   rdfs:range code:Unit ;
   rdfs:subPropertyOf code:hasUnit ;
   skos:definition ""^^xsd:string ;
@@ -1057,14 +1057,14 @@ code:hasPermissibleOutcome
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:DefinedActivity ;
-  rdfs:label "permissible outcome"^^xsd:string ;
+  skos:prefLabel "permissible outcome"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
 code:hasStandardUnit
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:ConversionFactor ;
-  rdfs:label "has normalized unit"^^xsd:string ;
+  skos:prefLabel "has normalized unit"^^xsd:string ;
   rdfs:range code:Unit ;
   rdfs:subPropertyOf code:hasUnit ;
   skos:definition ""^^xsd:string ;
@@ -1074,7 +1074,7 @@ code:hasUnit
   rdf:type owl:ObjectProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:DefinedActivityOutcome ;
-  rdfs:label "has unit"^^xsd:string ;
+  skos:prefLabel "has unit"^^xsd:string ;
   rdfs:range code:Unit ;
   skos:definition ""^^xsd:string ;
 .
@@ -1082,13 +1082,13 @@ code:hasValue
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
   rdfs:domain code:DefinedActivityOutcome ;
-  rdfs:label "has value"^^xsd:string ;
+  skos:prefLabel "has value"^^xsd:string ;
   skos:definition ""^^xsd:string ;
 .
 code:randomizationQuotient
   rdf:type owl:DatatypeProperty ;
   rdfs:comment ""^^xsd:string ;
-  rdfs:label "randomization quotient"^^xsd:string ;
+  skos:prefLabel "randomization quotient"^^xsd:string ;
   rdfs:range xsd:float ;
   skos:definition ""^^xsd:string ;
   code:randomizationQuotient "0.67"^^xsd:float ;
@@ -1199,7 +1199,7 @@ code:unitConversion
       spl:predicate arg:origResult ;
       spl:valueType rdfs:Resource ;
     ] ;
-  rdfs:label "Unit conversion"^^xsd:string ;
+  skos:prefLabel "Unit conversion"^^xsd:string ;
   rdfs:subClassOf spin:Functions ;
 .
 code:unitConversionChar
@@ -1243,7 +1243,7 @@ code:unitConversionChar
       spl:predicate arg:origResult ;
       spl:valueType rdfs:Resource ;
     ] ;
-  rdfs:label "Unit conversion"^^xsd:string ;
+  skos:prefLabel "Unit conversion"^^xsd:string ;
   rdfs:subClassOf spin:Functions ;
 .
 code:unitNormalized
@@ -1287,7 +1287,7 @@ code:unitNormalized
             sp:object [
                 sp:varName "normUnit"^^xsd:string ;
               ] ;
-            sp:predicate rdfs:label ;
+            sp:predicate skos:prefLabel ;
             sp:subject [
                 sp:varName "sresu"^^xsd:string ;
               ] ;
@@ -1299,6 +1299,6 @@ code:unitNormalized
       spl:predicate arg:origResult ;
       spl:valueType rdfs:Resource ;
     ] ;
-  rdfs:label "unit normalized"^^xsd:string ;
+  skos:prefLabel "unit normalized"^^xsd:string ;
   rdfs:subClassOf spin:Functions ;
 .
