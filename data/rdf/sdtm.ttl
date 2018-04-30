@@ -1586,6 +1586,9 @@ sdtm:SDTMDomain
             sp:varName "VSLOC"^^xsd:string ;
           ]
           [
+            sp:varName "VSLAT"^^xsd:string ;
+          ]
+          [
             sp:varName "VSBLFL"^^xsd:string ;
           ]
           [
@@ -1812,6 +1815,18 @@ sdtm:SDTMDomain
                       sp:varName "VSLOC"^^xsd:string ;
                     ] ;
                   sp:predicate sdtm:hasVSLOC ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "VSLAT"^^xsd:string ;
+                    ] ;
+                  sp:predicate sdtm:hasVSLAT ;
                   sp:subject spin:_this ;
                 ]
               ) ;
@@ -2555,7 +2570,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "ETHNIC"^^xsd:string ;
               ] ;
-            sp:predicate <http://rdf.cdisc.org/ct/schema#cdiscSubmissionValue> ;
+            sp:predicate skos:prefLabel ;
             sp:subject [
                 sp:varName "ethn"^^xsd:string ;
               ] ;
@@ -2573,7 +2588,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "RACE"^^xsd:string ;
               ] ;
-            sp:predicate <http://rdf.cdisc.org/ct/schema#cdiscSubmissionValue> ;
+            sp:predicate skos:prefLabel ;
             sp:subject [
                 sp:varName "race"^^xsd:string ;
               ] ;
@@ -2591,7 +2606,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "SEX"^^xsd:string ;
               ] ;
-            sp:predicate <http://rdf.cdisc.org/ct/schema#cdiscSubmissionValue> ;
+            sp:predicate skos:prefLabel ;
             sp:subject [
                 sp:varName "sex"^^xsd:string ;
               ] ;

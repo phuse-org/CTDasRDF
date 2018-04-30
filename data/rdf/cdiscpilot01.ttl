@@ -539,7 +539,7 @@ cdiscpilot01:DemographicDataCollection_01-701-1023
   skos:prefLabel "P2 Screening 1 Demographic data collection"^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_64 ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:ethnicity <http://rdf.cdisc.org/sdtmterm#C66790.C17459> ;
+  study:ethnicity code:Ethnicity_HISPANIC_OR_LATINO ;
   study:hasDate cdiscpilot01:Date_2012-07-22 ;
   study:race code:Race_WHITE ;
   study:sex code:Sex_M ;
@@ -551,7 +551,7 @@ cdiscpilot01:DemographicDataCollection_01-701-1028
   skos:prefLabel "P3 Screening 1 Demographic data collection"^^xsd:string ;
   code:hasAge cdiscpilot01:AgeOutcome_71 ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:ethnicity <http://rdf.cdisc.org/sdtmterm#C66790.C41222> ;
+  study:ethnicity code:Ethnicity_NOT_HISPANIC_OR_LATINO ;
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
   study:race code:Race_WHITE ;
   study:sex code:Sex_M ;
