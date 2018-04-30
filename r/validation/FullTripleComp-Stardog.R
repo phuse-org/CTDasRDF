@@ -69,6 +69,12 @@ query = paste0(paste(prefixBlock, collapse=""),
 #---- Ontology Triples---------------------------------------------------------
 qrOnt <- SPARQL(url=epOnt, query=query)
 triplesOnt <- qrOnt$results
+
+# Remove triples that describe the source TTL file. Artifact from TopBraid.
+triplesOnt <- triplesOnt[ !(triplesOnt$s =='<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl>'), ]
+
+
+
 # Shorten from IRI to qnam
 triplesOnt <- IRItoPrefix(sourceDF=triplesOnt, colsToParse=c("s", "p", "o"))
 

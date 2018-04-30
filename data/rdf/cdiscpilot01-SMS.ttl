@@ -32,312 +32,252 @@ cdiscpilot01:AgeOutcome_71 a study:AgeOutcome ;
 	code:hasUnit time:unitYear ;
 	code:hasValue 71 .
 
-cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 a custom:AssumeBodyPositionStanding_01-701-1015 , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
-	skos:prefLabel "Assume Standing position" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:hasDate cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	study:hasStartRule cdiscpilot01:StartRuleStartRuleStanding3_SCREENING1_01-701-1015 , cdiscpilot01:StartRuleStartRuleStanding1_SCREENING1_01-701-1015 ;
-	study:outcome code:Vspos_STANDING .
-
-cdiscpilot01:AssumeBodyPositionSupine_BASELINE_01-701-1015 a custom:AssumeBodyPositionSupine_01-701-1015 , cdiscpilot01:VisitBaselineActivity_01-701-1015 ;
-	skos:prefLabel "Assume Supine position" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:hasDate cdiscpilot01:Date_s6rc8otorv5ukcpag29jggn8m8h5127t ;
-	study:hasStartRule cdiscpilot01:StartRuleStartRuleLying5_BASELINE_01-701-1015 ;
-	study:outcome code:Vspos_SUPINE .
-
-cdiscpilot01:AssumeBodyPositionSupine_SCREENING1_01-701-1015 a cdiscpilot01:VisitScreening1Activity_01-701-1015 , custom:AssumeBodyPositionSupine_01-701-1015 ;
-	skos:prefLabel "Assume Supine position" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:hasDate cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
-	study:hasStartRule cdiscpilot01:StartRuleStartRuleLying5_SCREENING1_01-701-1015 ;
-	study:outcome code:Vspos_SUPINE .
-
-cdiscpilot01:AssumeBodyPositionSupine_WEEK24_01-701-1015 a cdiscpilot01:VisitWk24Activity_01-701-1015 , custom:AssumeBodyPositionSupine_01-701-1015 ;
-	skos:prefLabel "Assume Supine position" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:hasDate cdiscpilot01:Date_6ll6usd2v9ng33aadecgkg0417u3kf3i ;
-	study:hasStartRule cdiscpilot01:StartRuleStartRuleLying5_WEEK24_01-701-1015 ;
-	study:outcome code:Vspos_SUPINE .
-
-cdiscpilot01:AssumeBodyPositionSupine_WEEK2_01-701-1015 a custom:AssumeBodyPositionSupine_01-701-1015 , cdiscpilot01:VisitWk2Activity_01-701-1015 ;
-	skos:prefLabel "Assume Supine position" ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:hasDate cdiscpilot01:Date_7us618p15nshr6i76otlnd2e65hhbo1c ;
-	study:hasStartRule cdiscpilot01:StartRuleStartRuleLying5_WEEK2_01-701-1015 ;
-	study:outcome code:Vspos_SUPINE .
-
 cdiscpilot01:CumulativeDrugAdministration_01-701-1015 a study:CumulativeDrugAdministration ;
-	skos:prefLabel "Cumulative Drug Administration 2014-01-02 - 2014-07-02 " ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:hasActivityInterval cdiscpilot01:Interval_2014-01-02_2014-07-02 ;
-	study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 , cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 , cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 .
+	skos:prefLabel "Cumulative Drug Administration 2014-01-02_2014-07-02 " ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasActivityInterval cdiscpilot01:Interval_2014-01-02_2014-07-02 .
 
 cdiscpilot01:CumulativeDrugAdministration_01-701-1023 a study:CumulativeDrugAdministration ;
-	skos:prefLabel "Cumulative Drug Administration 2012-08-05 - 2012-09-01 " ;
-	study:activityStatus code:ActivityStatus_1 ;
+	skos:prefLabel "Cumulative Drug Administration 2012-08-05_2012-09-01 " ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasActivityInterval cdiscpilot01:Interval_2012-08-05_2012-09-01 .
 
 cdiscpilot01:CumulativeDrugAdministration_01-701-1028 a study:CumulativeDrugAdministration ;
-	skos:prefLabel "Cumulative Drug Administration 2013-07-19 - 2014-01-14 " ;
-	study:activityStatus code:ActivityStatus_1 ;
+	skos:prefLabel "Cumulative Drug Administration 2013-07-19_2014-01-14 " ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 .
 
+cdiscpilot01:CumulativeDrugAdministration_2014-01-02_2014-07-02 a study:CumulativeDrugAdministration ;
+	skos:prefLabel "Drug administration period 2014-01-02 - 2014-07-02" ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasActivityInterval cdiscpilot01:Interval_2014-01-02_2014-07-02 ;
+	study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 , cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 , cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 .
+
 cdiscpilot01:Date_1942-07-19 a study:Birthdate ;
-	rdfs:label "1942-07-19" ;
+	skos:prefLabel "1942-07-19" ;
 	study:dateTimeInXSDString "1942-07-19" .
 
 cdiscpilot01:Date_1948-08-05 a study:Birthdate ;
-	rdfs:label "1948-08-05" ;
+	skos:prefLabel "1948-08-05" ;
 	study:dateTimeInXSDString "1948-08-05" .
 
 cdiscpilot01:Date_1951-01-02 a study:Birthdate ;
-	rdfs:label "1951-01-02" ;
+	skos:prefLabel "1951-01-02" ;
 	study:dateTimeInXSDString "1951-01-02" .
 
-cdiscpilot01:Date_2012-07-22 a study:StudyParticipationBegin , study:DemogDataCollectionDate , study:InformedConsentBegin ;
-	rdfs:label "2012-07-22" ;
+cdiscpilot01:Date_2012-07-22 a study:DemogDataCollectionDate , study:StudyParticipationBegin , study:InformedConsentBegin ;
+	skos:prefLabel "2012-07-22" ;
 	study:dateTimeInXSDString "2012-07-22" .
 
 cdiscpilot01:Date_2012-08-05 a study:CumulativeDrugAdministrationBegin , study:ReferenceBegin ;
-	rdfs:label "2012-08-05" ;
+	skos:prefLabel "2012-08-05" ;
 	study:dateTimeInXSDString "2012-08-05" .
 
 cdiscpilot01:Date_2012-09-01 a study:CumulativeDrugAdministrationEnd .
 
 cdiscpilot01:Date_2012-09-02 a study:ReferenceEnd ;
-	rdfs:label "2012-09-02" ;
+	skos:prefLabel "2012-09-02" ;
 	study:dateTimeInXSDString "2012-09-02" .
 
 cdiscpilot01:Date_2013-02-18 a study:StudyParticipationEnd ;
-	rdfs:label "2013-02-18" ;
+	skos:prefLabel "2013-02-18" ;
 	study:dateTimeInXSDString "2013-02-18" .
 
 cdiscpilot01:Date_2013-07-11 a study:DemogDataCollectionDate , study:InformedConsentBegin , study:StudyParticipationBegin ;
-	rdfs:label "2013-07-11" ;
+	skos:prefLabel "2013-07-11" ;
 	study:dateTimeInXSDString "2013-07-11" .
 
-cdiscpilot01:Date_2013-07-19 a study:CumulativeDrugAdministrationBegin , study:ReferenceBegin ;
-	rdfs:label "2013-07-19" ;
+cdiscpilot01:Date_2013-07-19 a study:ReferenceBegin , study:CumulativeDrugAdministrationBegin ;
+	skos:prefLabel "2013-07-19" ;
 	study:dateTimeInXSDString "2013-07-19" .
 
-cdiscpilot01:Date_2013-12-26 a study:Deathdate , study:InformedConsentBegin , study:StudyParticipationBegin , study:DemogDataCollectionDate , study:VisitDate ;
-	rdfs:label "2013-12-26" ;
+cdiscpilot01:Date_2013-12-26 a study:DemogDataCollectionDate , study:StudyParticipationBegin , study:InformedConsentBegin , study:VisitDate , study:Deathdate ;
+	skos:prefLabel "2013-12-26" ;
 	study:dateTimeInXSDString "2013-12-26" .
 
-cdiscpilot01:Date_2014-01-02 a study:VisitDate , study:CumulativeDrugAdministrationBegin , study:ReferenceBegin , study:FixedDoseIntervalBegin ;
-	rdfs:label "2014-01-02" ;
+cdiscpilot01:Date_2014-01-02 a study:ReferenceBegin , study:CumulativeDrugAdministrationBegin , study:VisitDate , study:FixedDoseIntervalBegin ;
+	skos:prefLabel "2014-01-02" ;
 	study:dateTimeInXSDString "2014-01-02" .
 
-cdiscpilot01:Date_2014-01-14 a study:CumulativeDrugAdministrationEnd , study:ReferenceEnd ;
-	rdfs:label "2014-01-14" ;
+cdiscpilot01:Date_2014-01-14 a study:ReferenceEnd , study:CumulativeDrugAdministrationEnd ;
+	skos:prefLabel "2014-01-14" ;
 	study:dateTimeInXSDString "2014-01-14" .
 
-cdiscpilot01:Date_2014-01-14T1110 a study:StudyParticipationEnd ;
-	rdfs:label "2014-01-14T11:10" ;
+cdiscpilot01:Date_2014-01-14T11_10 a study:StudyParticipationEnd ;
+	skos:prefLabel "2014-01-14T11:10" ;
 	study:dateTimeInXSDString "2014-01-14T11:10" .
 
-cdiscpilot01:Date_2014-01-16 a study:VisitDate , study:FixedDoseIntervalEnd ;
-	rdfs:label "2014-01-16" ;
+cdiscpilot01:Date_2014-01-16 a study:FixedDoseIntervalEnd , study:VisitDate ;
+	skos:prefLabel "2014-01-16" ;
 	study:dateTimeInXSDString "2014-01-16" .
 
 cdiscpilot01:Date_2014-01-17 a study:FixedDoseIntervalBegin ;
-	rdfs:label "2014-01-17" ;
+	skos:prefLabel "2014-01-17" ;
 	study:dateTimeInXSDString "2014-01-17" .
 
-cdiscpilot01:Date_2014-06-18 a study:FixedDoseIntervalEnd , study:VisitDate ;
-	rdfs:label "2014-06-18" ;
+cdiscpilot01:Date_2014-06-18 a study:VisitDate , study:FixedDoseIntervalEnd ;
+	skos:prefLabel "2014-06-18" ;
 	study:dateTimeInXSDString "2014-06-18" .
 
 cdiscpilot01:Date_2014-06-19 a study:FixedDoseIntervalBegin ;
-	rdfs:label "2014-06-19" ;
+	skos:prefLabel "2014-06-19" ;
 	study:dateTimeInXSDString "2014-06-19" .
 
-cdiscpilot01:Date_2014-07-02 a study:ReferenceEnd , study:FixedDoseIntervalEnd , study:CumulativeDrugAdministrationEnd ;
-	rdfs:label "2014-07-02" ;
+cdiscpilot01:Date_2014-07-02 a study:FixedDoseIntervalEnd , study:CumulativeDrugAdministrationEnd , study:ReferenceEnd ;
+	skos:prefLabel "2014-07-02" ;
 	study:dateTimeInXSDString "2014-07-02" .
 
-cdiscpilot01:Date_2014-07-02T1145 a study:StudyParticipationEnd ;
-	rdfs:label "2014-07-02T11:45" ;
+cdiscpilot01:Date_2014-07-02T11_45 a study:StudyParticipationEnd ;
+	skos:prefLabel "2014-07-02T11:45" ;
 	study:dateTimeInXSDString "2014-07-02T11:45" .
 
-cdiscpilot01:DemographicDataCollection_01-701-1015 a code:DemographicDataCollection , cd01p:VisitScreening1DemogDataColl , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
-	skos:prefLabel "Person 01-701-1015 Screening 1 Demographic data collection" ;
+cdiscpilot01:DemographicDataCollection_01-701-1015 a cd01p:VisitScreening1DemogDataColl , cdiscpilot01:VisitScreening1Activity_01-701-1015 , code:DemographicDataCollection ;
+	skos:prefLabel "Screening 1 Demographic data collection Person 01-701-1015 " ;
 	code:hasAge cdiscpilot01:AgeOutcome_63 ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:ethnicity code:Enthnicity_HISPANIC_OR_LATINO ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:ethnicity code:Ethnicity_HISPANIC_OR_LATINO ;
 	study:hasDate cdiscpilot01:Date_2013-12-26 ;
 	study:race code:Race_WHITE ;
 	study:sex code:Sex_F .
 
-cdiscpilot01:DemographicDataCollection_01-701-1023 a code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1023 , cd01p:VisitScreening1DemogDataColl ;
-	skos:prefLabel "Person 01-701-1023 Screening 1 Demographic data collection" ;
+cdiscpilot01:DemographicDataCollection_01-701-1023 a cd01p:VisitScreening1DemogDataColl , cdiscpilot01:VisitScreening1Activity_01-701-1023 , code:DemographicDataCollection ;
+	skos:prefLabel "Screening 1 Demographic data collection Person 01-701-1023 " ;
 	code:hasAge cdiscpilot01:AgeOutcome_64 ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:ethnicity code:Enthnicity_HISPANIC_OR_LATINO ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:ethnicity code:Ethnicity_HISPANIC_OR_LATINO ;
 	study:hasDate cdiscpilot01:Date_2012-07-22 ;
 	study:race code:Race_WHITE ;
 	study:sex code:Sex_M .
 
-cdiscpilot01:DemographicDataCollection_01-701-1028 a code:DemographicDataCollection , cdiscpilot01:VisitScreening1Activity_01-701-1028 , cd01p:VisitScreening1DemogDataColl ;
-	skos:prefLabel "Person 01-701-1028 Screening 1 Demographic data collection" ;
+cdiscpilot01:DemographicDataCollection_01-701-1028 a code:DemographicDataCollection , cd01p:VisitScreening1DemogDataColl , cdiscpilot01:VisitScreening1Activity_01-701-1028 ;
+	skos:prefLabel "Screening 1 Demographic data collection Person 01-701-1028 " ;
 	code:hasAge cdiscpilot01:AgeOutcome_71 ;
-	study:activityStatus code:ActivityStatus_1 ;
-	study:ethnicity code:Enthnicity_NOT_HISPANIC_OR_LATINO ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:ethnicity code:Ethnicity_NOT_HISPANIC_OR_LATINO ;
 	study:hasDate cdiscpilot01:Date_2013-07-11 ;
 	study:race code:Race_WHITE ;
 	study:sex code:Sex_M .
 
-cdiscpilot01:DiabpOutcome_56 a study:DiabpOutcome ;
-	skos:prefLabel "56 mmHg" ;
-	code:hasUnit code:Unit_mmHg ;
-	code:hasValue "56.0"^^xsd:float .
-
-cdiscpilot01:DiabpOutcome_57 a study:DiabpOutcome ;
-	skos:prefLabel "57 mmHg" ;
-	code:hasUnit code:Unit_mmHg ;
-	code:hasValue "57.0"^^xsd:float .
-
-cdiscpilot01:DiabpOutcome_63 a study:DiabpOutcome ;
-	skos:prefLabel "63 mmHg" ;
-	code:hasUnit code:Unit_mmHg ;
-	code:hasValue "63.0"^^xsd:float .
-
-cdiscpilot01:DiabpOutcome_64 a study:DiabpOutcome ;
-	skos:prefLabel "64 mmHg" ;
-	code:hasUnit code:Unit_mmHg ;
-	code:hasValue "64.0"^^xsd:float .
-
-cdiscpilot01:DiabpOutcome_83 a study:DiabpOutcome ;
-	skos:prefLabel "83 mmHg" ;
-	code:hasUnit code:Unit_mmHg ;
-	code:hasValue "83.0"^^xsd:float .
-
-cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 a study:FixedDoseAdministration , cdiscpilot01:VisitBaselineActivity_01-701-1015 ;
+cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 a cdiscpilot01:VisitBaselineActivity_01-701-1015 , study:FixedDoseDrugAdministration ;
 	skos:prefLabel "Drug administration" ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:administeredDrug custom:PlaceboDrug ;
 	study:hasActivityInterval cdiscpilot01:Interval_2014-01-02_2014-01-16 ;
 	study:hasDosageFrequency code:ExDosFrq_QD ;
 	study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
 	study:outcome study:DrugAdministrationComplete .
 
-cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 a study:FixedDoseAdministration , cdiscpilot01:VisitWk2Activity_01-701-1015 ;
+cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 a study:FixedDoseDrugAdministration , cdiscpilot01:VisitWk2Activity_01-701-1015 ;
 	skos:prefLabel "Drug administration" ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:administeredDrug custom:PlaceboDrug ;
 	study:hasActivityInterval cdiscpilot01:Interval_2014-01-17_2014-06-18 ;
 	study:hasDosageFrequency code:ExDosFrq_QD ;
 	study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
 	study:outcome study:DrugAdministrationComplete .
 
-cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 a cdiscpilot01:VisitWk24Activity_01-701-1015 , study:FixedDoseAdministration ;
+cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 a study:FixedDoseDrugAdministration , cdiscpilot01:VisitWk24Activity_01-701-1015 ;
 	skos:prefLabel "Drug administration" ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:administeredDrug custom:PlaceboDrug ;
 	study:hasActivityInterval cdiscpilot01:Interval_2014-06-19_2014-07-02 ;
 	study:hasDosageFrequency code:ExDosFrq_QD ;
 	study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
 	study:outcome study:DrugAdministrationComplete .
 
-cdiscpilot01:HeightOutcome_58.0 a study:HeightOutcome ;
-	skos:prefLabel "58.0 in" ;
-	code:hasUnit code:Unit_in ;
-	code:hasValue "58.0"^^xsd:float .
-
 cdiscpilot01:InformedConsentAdult_01-701-1015 a code:InformedConsentAdult ;
 	skos:prefLabel "Informed consent Person 01-701-1015" ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasActivityInterval cdiscpilot01:Interval_2013-12-26_ ;
 	study:hasStartRule study:StartRuleDefault_1 ;
 	study:outcome code:InformedConsentOutcome_1 .
 
 cdiscpilot01:InformedConsentAdult_01-701-1023 a code:InformedConsentAdult ;
 	skos:prefLabel "Informed consent Person 01-701-1023" ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasActivityInterval cdiscpilot01:Interval_2012-07-22_ ;
 	study:hasStartRule study:StartRuleDefault_1 ;
 	study:outcome code:InformedConsentOutcome_1 .
 
 cdiscpilot01:InformedConsentAdult_01-701-1028 a code:InformedConsentAdult ;
 	skos:prefLabel "Informed consent Person 01-701-1028" ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasActivityInterval cdiscpilot01:Interval_2013-07-11_ ;
 	study:hasStartRule study:StartRuleDefault_1 ;
 	study:outcome code:InformedConsentOutcome_1 .
 
 cdiscpilot01:Interval_1942-07-19_ a study:Lifespan ;
-	rdfs:label "Interval 1942-07-19_" ;
+	skos:prefLabel "Interval 1942-07-19_" ;
 	time:hasBeginning cdiscpilot01:Date_1942-07-19 .
 
 cdiscpilot01:Interval_1948-08-05_ a study:Lifespan ;
-	rdfs:label "Interval 1948-08-05_" ;
+	skos:prefLabel "Interval 1948-08-05_" ;
 	time:hasBeginning cdiscpilot01:Date_1948-08-05 .
 
 cdiscpilot01:Interval_1951-01-02_2013-12-26 a study:Lifespan ;
-	rdfs:label "Interval 1951-01-02_2013-12-26" ;
+	skos:prefLabel "Interval 1951-01-02_2013-12-26" ;
 	time:hasBeginning cdiscpilot01:Date_1951-01-02 ;
 	time:hasEnd cdiscpilot01:Date_2013-12-26 .
 
 cdiscpilot01:Interval_2012-07-22_ a study:InformedConsentInterval ;
-	rdfs:label "Interval 2012-07-22_" ;
+	skos:prefLabel "Interval 2012-07-22_" ;
 	time:hasBeginning cdiscpilot01:Date_2012-07-22 .
 
 cdiscpilot01:Interval_2012-07-22_2013-02-18 a study:StudyParticipationInterval ;
-	rdfs:label "Interval 2012-07-22_2013-02-18" ;
+	skos:prefLabel "Interval 2012-07-22_2013-02-18" ;
 	time:hasBeginning cdiscpilot01:Date_2012-07-22 ;
 	time:hasEnd cdiscpilot01:Date_2013-02-18 .
 
 cdiscpilot01:Interval_2012-08-05_2012-09-01 a study:CumulativeDrugAdministrationInterval ;
-	rdfs:label "Interval 2012-08-05_2012-09-01" ;
+	skos:prefLabel "Interval 2012-08-05_2012-09-01" ;
 	time:hasBeginning cdiscpilot01:Date_2012-08-05 ;
 	time:hasEnd cdiscpilot01:Date_2012-09-01 .
 
 cdiscpilot01:Interval_2012-08-05_2012-09-02 a study:ReferenceInterval ;
-	rdfs:label "Interval 2012-08-05_2012-09-02" ;
+	skos:prefLabel "Interval 2012-08-05_2012-09-02" ;
 	time:hasBeginning cdiscpilot01:Date_2012-08-05 ;
 	time:hasEnd cdiscpilot01:Date_2012-09-02 .
 
 cdiscpilot01:Interval_2013-07-11_ a study:InformedConsentInterval ;
-	rdfs:label "Interval 2013-07-11_" ;
+	skos:prefLabel "Interval 2013-07-11_" ;
 	time:hasBeginning cdiscpilot01:Date_2013-07-11 .
 
-cdiscpilot01:Interval_2013-07-11_2014-01-14T1110 a study:StudyParticipationInterval ;
-	rdfs:label "Interval 2013-07-11_2014-01-14T1110" ;
+cdiscpilot01:Interval_2013-07-11_2014-01-14T11_10 a study:StudyParticipationInterval ;
+	skos:prefLabel "Interval 2013-07-11_2014-01-14T11_10" ;
 	time:hasBeginning cdiscpilot01:Date_2013-07-11 ;
-	time:hasEnd cdiscpilot01:Date_2014-01-14T1110 .
+	time:hasEnd cdiscpilot01:Date_2014-01-14T11_10 .
 
-cdiscpilot01:Interval_2013-07-19_2014-01-14 a study:ReferenceInterval , study:CumulativeDrugAdministrationInterval ;
-	rdfs:label "Interval 2013-07-19_2014-01-14" ;
+cdiscpilot01:Interval_2013-07-19_2014-01-14 a study:CumulativeDrugAdministrationInterval , study:ReferenceInterval ;
+	skos:prefLabel "Interval 2013-07-19_2014-01-14" ;
 	time:hasBeginning cdiscpilot01:Date_2013-07-19 ;
 	time:hasEnd cdiscpilot01:Date_2014-01-14 .
 
 cdiscpilot01:Interval_2013-12-26_ a study:InformedConsentInterval ;
-	rdfs:label "Interval 2013-12-26_" ;
+	skos:prefLabel "Interval 2013-12-26_" ;
 	time:hasBeginning cdiscpilot01:Date_2013-12-26 .
 
-cdiscpilot01:Interval_2013-12-26_2014-07-02T1145 a study:StudyParticipationInterval ;
-	rdfs:label "Interval 2013-12-26_2014-07-02T1145" ;
+cdiscpilot01:Interval_2013-12-26_2014-07-02T11_45 a study:StudyParticipationInterval ;
+	skos:prefLabel "Interval 2013-12-26_2014-07-02T11_45" ;
 	time:hasBeginning cdiscpilot01:Date_2013-12-26 ;
-	time:hasEnd cdiscpilot01:Date_2014-07-02T1145 .
+	time:hasEnd cdiscpilot01:Date_2014-07-02T11_45 .
 
 cdiscpilot01:Interval_2014-01-02_2014-01-16 a study:FixedDoseInterval ;
-	skos:prefLabel "Fixed Dose Interval 2014-01-02 - 2014-01-16" ;
+	skos:prefLabel "Interval 2014-01-02_2014-01-16" ;
 	time:hasBeginning cdiscpilot01:Date_2014-01-02 ;
 	time:hasEnd cdiscpilot01:Date_2014-01-16 .
 
 cdiscpilot01:Interval_2014-01-02_2014-07-02 a study:ReferenceInterval , study:CumulativeDrugAdministrationInterval ;
-	rdfs:label "Interval 2014-01-02_2014-07-02" ;
+	skos:prefLabel "Interval 2014-01-02_2014-07-02" ;
 	time:hasBeginning cdiscpilot01:Date_2014-01-02 ;
 	time:hasEnd cdiscpilot01:Date_2014-07-02 .
 
 cdiscpilot01:Interval_2014-01-17_2014-06-18 a study:FixedDoseInterval ;
-	skos:prefLabel "Fixed Dose Interval 2014-01-17 - 2014-06-18" ;
+	skos:prefLabel "Interval 2014-01-17_2014-06-18" ;
 	time:hasBeginning cdiscpilot01:Date_2014-01-17 ;
 	time:hasEnd cdiscpilot01:Date_2014-06-18 .
 
 cdiscpilot01:Interval_2014-06-19_2014-07-02 a study:FixedDoseInterval ;
-	skos:prefLabel "Fixed Dose Interval 2014-06-19 - 2014-07-02" ;
+	skos:prefLabel "Interval 2014-06-19_2014-07-02" ;
 	time:hasBeginning cdiscpilot01:Date_2014-06-19 ;
 	time:hasEnd cdiscpilot01:Date_2014-07-02 .
 
@@ -350,19 +290,19 @@ cdiscpilot01:Investigator_123 a study:Investigator ;
 	study:hasLastName "Jones" .
 
 cdiscpilot01:Person_01-701-1015 a study:EnrolledSubject ;
-	skos:preflabel "Person 01-701-1015" ;
+	skos:prefLabel "Person 01-701-1015" ;
 	study:actualArm cd01p:Arm_Pbo ;
 	study:deathFlag "Y" ;
 	study:hasLifespan cdiscpilot01:Interval_1951-01-02_2013-12-26 ;
 	study:hasReferenceInterval cdiscpilot01:Interval_2014-01-02_2014-07-02 ;
 	study:hasSite cd01p:Site_701 ;
-	study:hasStudyParticipationInterval cdiscpilot01:Interval_2013-12-26_2014-07-02T1145 ;
+	study:hasStudyParticipationInterval cdiscpilot01:Interval_2013-12-26_2014-07-02T11_45 ;
 	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1015 ;
 	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 ;
-	study:participatesIn cdiscpilot01:PopFlagEFFICACY_01-701-1015 , cdiscpilot01:PopFlagCOMPLT24_01-701-1015 , cdiscpilot01:PopFlagCOMPLT8_01-701-1015 , cdiscpilot01:PopFlagCOMPLT16_01-701-1015 , cdiscpilot01:DemographicDataCollection_01-701-1015 , cdiscpilot01:RandomizationBAL3_01-701-1015 , cdiscpilot01:InformedConsentAdult_01-701-1015 , cdiscpilot01:VisitWk2_01-701-1015 , cdiscpilot01:VisitWk24_01-701-1015 , cdiscpilot01:CumulativeDrugAdministration_2014-01-02_2014-07-02 , cdiscpilot01:VisitBaseline_01-701-1015 , cdiscpilot01:PopFlagITT_01-701-1015 , cdiscpilot01:PopFlagSAFETY_01-701-1015 , cdiscpilot01:VisitScreening1_01-701-1015 .
+	study:participatesIn cdiscpilot01:VisitWk2_01-701-1015 , cdiscpilot01:VisitWk24_01-701-1015 , cdiscpilot01:PopFlagEFFICACY_01-701-1015 , cdiscpilot01:PopFlagCOMPLT24_01-701-1015 , cdiscpilot01:PopFlagCOMPLT16_01-701-1015 , cdiscpilot01:DemographicDataCollection_01-701-1015 , cdiscpilot01:RandomizationBAL3_01-701-1015 , cdiscpilot01:InformedConsentAdult_01-701-1015 , cdiscpilot01:CumulativeDrugAdministration_2014-01-02_2014-07-02 , cdiscpilot01:VisitScreening1_01-701-1015 , cdiscpilot01:VisitBaseline_01-701-1015 , cdiscpilot01:PopFlagSAFETY_01-701-1015 , cdiscpilot01:PopFlagCOMPLT8_01-701-1015 , cdiscpilot01:PopFlagITT_01-701-1015 .
 
 cdiscpilot01:Person_01-701-1023 a study:EnrolledSubject ;
-	skos:preflabel "Person 01-701-1023" ;
+	skos:prefLabel "Person 01-701-1023" ;
 	study:actualArm cd01p:Arm_Pbo ;
 	study:hasLifespan cdiscpilot01:Interval_1948-08-05_ ;
 	study:hasReferenceInterval cdiscpilot01:Interval_2012-08-05_2012-09-02 ;
@@ -370,102 +310,63 @@ cdiscpilot01:Person_01-701-1023 a study:EnrolledSubject ;
 	study:hasStudyParticipationInterval cdiscpilot01:Interval_2012-07-22_2013-02-18 ;
 	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1023 ;
 	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1023 ;
-	study:participatesIn cdiscpilot01:RandomizationBAL3_01-701-1023 , cdiscpilot01:DemographicDataCollection_01-701-1023 , cdiscpilot01:CumulativeDrugAdministration_2012-08-05_2012-09-01 , cdiscpilot01:InformedConsentAdult_01-701-1023 .
+	study:participatesIn cdiscpilot01:InformedConsentAdult_01-701-1023 , cdiscpilot01:RandomizationBAL3_01-701-1023 , cdiscpilot01:CumulativeDrugAdministration_2012-08-05_2012-09-01 , cdiscpilot01:DemographicDataCollection_01-701-1023 .
 
 cdiscpilot01:Person_01-701-1028 a study:EnrolledSubject ;
-	skos:preflabel "Person 01-701-1028" ;
+	skos:prefLabel "Person 01-701-1028" ;
 	study:actualArm cd01p:Arm_Xan_Hi ;
 	study:hasLifespan cdiscpilot01:Interval_1942-07-19_ ;
 	study:hasReferenceInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 ;
 	study:hasSite cd01p:Site_701 ;
-	study:hasStudyParticipationInterval cdiscpilot01:Interval_2013-07-11_2014-01-14T1110 ;
+	study:hasStudyParticipationInterval cdiscpilot01:Interval_2013-07-11_2014-01-14T11_10 ;
 	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1028 ;
 	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 ;
-	study:participatesIn cdiscpilot01:InformedConsentAdult_01-701-1028 , cdiscpilot01:DemographicDataCollection_01-701-1028 , cdiscpilot01:CumulativeDrugAdministration_2013-07-19_2014-01-14 , cdiscpilot01:RandomizationBAL3_01-701-1028 .
+	study:participatesIn cdiscpilot01:DemographicDataCollection_01-701-1028 , cdiscpilot01:InformedConsentAdult_01-701-1028 , cdiscpilot01:RandomizationBAL3_01-701-1028 , cdiscpilot01:CumulativeDrugAdministration_2013-07-19_2014-01-14 .
 
 cdiscpilot01:PopFlagCOMPLT16_01-701-1015 a custom:PopFlagCOMPLT16 ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasPerformer cd01p:Sponsor_1 ;
 	study:outcome true .
 
 cdiscpilot01:PopFlagCOMPLT24_01-701-1015 a custom:PopFlagCOMPLT24 ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasPerformer cd01p:Sponsor_1 ;
 	study:outcome true .
 
 cdiscpilot01:PopFlagCOMPLT8_01-701-1015 a custom:PopFlagCOMPLT8 ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasPerformer cd01p:Sponsor_1 ;
 	study:outcome true .
 
 cdiscpilot01:PopFlagEFFICACY_01-701-1015 a custom:PopFlagEFFICACY ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasPerformer cd01p:Sponsor_1 ;
 	study:outcome true .
 
 cdiscpilot01:PopFlagITT_01-701-1015 a custom:PopFlagITT ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasPerformer cd01p:Sponsor_1 ;
 	study:outcome true .
 
 cdiscpilot01:PopFlagSAFETY_01-701-1015 a custom:PopFlagSAFETY ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:hasPerformer cd01p:Sponsor_1 ;
 	study:outcome true .
 
-cdiscpilot01:PulseOutcome_57 a study:PulseOutcome ;
-	skos:prefLabel "57 beats/min" ;
-	code:hasUnit <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#Unit_beats/min> ;
-	code:hasValue "57.0"^^xsd:float .
-
-cdiscpilot01:PulseOutcome_62 a study:PulseOutcome ;
-	skos:prefLabel "62 beats/min" ;
-	code:hasUnit <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#Unit_beats/min> ;
-	code:hasValue "62.0"^^xsd:float .
-
-cdiscpilot01:PulseOutcome_65 a study:PulseOutcome ;
-	skos:prefLabel "65 beats/min" ;
-	code:hasUnit <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#Unit_beats/min> ;
-	code:hasValue "65.0"^^xsd:float .
-
 cdiscpilot01:RandomizationBAL3_01-701-1015 a code:RandomizationBAL3 ;
 	skos:prefLabel "Randomization Person 01-701-1015" ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:outcome cd01p:Arm_Pbo .
 
 cdiscpilot01:RandomizationBAL3_01-701-1023 a code:RandomizationBAL3 ;
 	skos:prefLabel "Randomization Person 01-701-1023" ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:outcome cd01p:Arm_Pbo .
 
 cdiscpilot01:RandomizationBAL3_01-701-1028 a code:RandomizationBAL3 ;
 	skos:prefLabel "Randomization Person 01-701-1028" ;
-	study:activityStatus code:ActivityStatus_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
 	study:outcome cd01p:Arm_Xan_Hi .
-
-cdiscpilot01:StartRuleStartRuleLying5_BASELINE_01-701-1015 a cd01p:StartRuleLying5 ;
-	skos:prefLabel "BASELINE 01-701-1015 Rule AFTER LYING DOWN FOR 5 MINUTES " ;
-	study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_BASELINE_01-701-1015 .
-
-cdiscpilot01:StartRuleStartRuleLying5_SCREENING1_01-701-1015 a cd01p:StartRuleLying5 ;
-	skos:prefLabel "SCREENING 1 01-701-1015 Rule AFTER LYING DOWN FOR 5 MINUTES " ;
-	study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_SCREENING1_01-701-1015 .
-
-cdiscpilot01:StartRuleStartRuleLying5_WEEK24_01-701-1015 a cd01p:StartRuleLying5 ;
-	skos:prefLabel "WEEK 24 01-701-1015 Rule AFTER LYING DOWN FOR 5 MINUTES " ;
-	study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_WEEK24_01-701-1015 .
-
-cdiscpilot01:StartRuleStartRuleLying5_WEEK2_01-701-1015 a cd01p:StartRuleLying5 ;
-	skos:prefLabel "WEEK 2 01-701-1015 Rule AFTER LYING DOWN FOR 5 MINUTES " ;
-	study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_WEEK2_01-701-1015 .
-
-cdiscpilot01:StartRuleStartRuleStanding1_SCREENING1_01-701-1015 a cd01p:StartRuleStanding1 ;
-	skos:prefLabel "SCREENING 1 01-701-1015 Rule AFTER STANDING FOR 1 MINUTE " ;
-	study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 .
-
-cdiscpilot01:StartRuleStartRuleStanding3_SCREENING1_01-701-1015 a cd01p:StartRuleStanding3 ;
-	skos:prefLabel "SCREENING 1 01-701-1015 Rule AFTER STANDING FOR 3 MINUTES " ;
-	study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 .
 
 cdiscpilot01:SubjectIdentifier_1015 a study:SubjectIdentifier ;
 	skos:prefLabel "1015" .
@@ -475,26 +376,6 @@ cdiscpilot01:SubjectIdentifier_1023 a study:SubjectIdentifier ;
 
 cdiscpilot01:SubjectIdentifier_1028 a study:SubjectIdentifier ;
 	skos:prefLabel "1028" .
-
-cdiscpilot01:SysbpOutcome_129 a study:SysbpOutcome ;
-	skos:prefLabel "129 mmHg" ;
-	code:hasUnit code:Unit_mmHg ;
-	code:hasValue "129.0"^^xsd:float .
-
-cdiscpilot01:SysbpOutcome_131 a study:SysbpOutcome ;
-	skos:prefLabel "131 mmHg" ;
-	code:hasUnit code:Unit_mmHg ;
-	code:hasValue "131.0"^^xsd:float .
-
-cdiscpilot01:SysbpOutcome_147 a study:SysbpOutcome ;
-	skos:prefLabel "147 mmHg" ;
-	code:hasUnit code:Unit_mmHg ;
-	code:hasValue "147.0"^^xsd:float .
-
-cdiscpilot01:TempOutcome_96.9 a study:TempOutcome ;
-	skos:prefLabel "96.9 F" ;
-	code:hasUnit code:Unit_F ;
-	code:hasValue "96.9"^^xsd:float .
 
 cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 a study:UniqueSubjectIdentifier ;
 	skos:prefLabel "01-701-1015" .
@@ -507,7 +388,7 @@ cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 a study:UniqueSubjectIdentifier
 
 cdiscpilot01:VisitBaselineActivity_01-701-1015 a owl:Class ;
 	rdfs:subClassOf custom:VisitBaselineActivity ;
-	skos:prefLabel "Visit BASELINE Person 01-701-1015" .
+	skos:prefLabel "Visit Baseline Person 01-701-1015" .
 
 cdiscpilot01:VisitBaseline_01-701-1015 a custom:VisitBaseline ;
 	study:hasPerformedDate cdiscpilot01:Date_2014-01-02 ;
@@ -515,7 +396,7 @@ cdiscpilot01:VisitBaseline_01-701-1015 a custom:VisitBaseline ;
 
 cdiscpilot01:VisitScreening1Activity_01-701-1015 a owl:Class ;
 	rdfs:subClassOf custom:VisitScreening1Activity ;
-	skos:prefLabel "Visit Screening 1 Person 01-701-1015" , "Visit SCREENING 1 Person 01-701-1015" .
+	skos:prefLabel "Visit Screening 1 Person 01-701-1015" .
 
 cdiscpilot01:VisitScreening1Activity_01-701-1023 a owl:Class ;
 	rdfs:subClassOf custom:VisitScreening1Activity ;
@@ -529,25 +410,20 @@ cdiscpilot01:VisitScreening1_01-701-1015 a custom:VisitScreening1 ;
 	study:hasPerformedDate cdiscpilot01:Date_2013-12-26 .
 
 cdiscpilot01:VisitWk24Activity_01-701-1015 a owl:Class ;
-	rdfs:subClassOf custom:VisitWk24Activity , custom:VisitBaselineActivity ;
-	skos:prefLabel "Visit WEEK 24 Person 01-701-1015" .
+	rdfs:subClassOf custom:VisitWk24Activity ;
+	skos:prefLabel "Visit Week 24 Person 01-701-1015" .
 
 cdiscpilot01:VisitWk24_01-701-1015 a custom:VisitWk24 ;
 	study:hasPerformedDate cdiscpilot01:Date_2014-06-18 ;
 	study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 .
 
 cdiscpilot01:VisitWk2Activity_01-701-1015 a owl:Class ;
-	rdfs:subClassOf custom:VisitBaselineActivity , custom:VisitWk2Activity ;
-	skos:prefLabel "Visit WEEK 2 Person 01-701-1015" .
+	rdfs:subClassOf custom:VisitWk2Activity ;
+	skos:prefLabel "Visit Week 2 Person 01-701-1015" .
 
 cdiscpilot01:VisitWk2_01-701-1015 a custom:VisitWk2 ;
 	study:hasPerformedDate cdiscpilot01:Date_2014-01-16 ;
 	study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 .
-
-cdiscpilot01:WeightOutcome_119.0 a study:WeightOutcome ;
-	skos:prefLabel "119.0 LB" ;
-	code:hasUnit code:Unit_LB ;
-	code:hasValue "119.0"^^xsd:float .
 
 cdiscpilot01:stdm-graph <http://purl.org/dc/terms/description> " This graph is populated from the CDISCPILOT01 XPT files using the SMS conversion process. Triples are NOT an exact match to source data and may have minor differences with the ontology instance data created from Topbraid. Only select observations from source XPT are present including a subset of VS results." ;
 	<http://purl.org/dc/terms/title> " PhUSE Project: Clinical Trials Data as RDF." ;

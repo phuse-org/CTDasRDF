@@ -19,7 +19,7 @@ library(dplyr)  # mutate with pipe in Functions.R
 dm_n=3;  # The first n patients from the DM domain.
 
 # Subsetting to allow incremental dev
-pntSubset<-c('01-701-1015') # List of usubjid's to process.
+pntSubset<-c('01-701-1015', '01-701-1023', '01-701-1028') # List of usubjid's to process.
 
 # Set working directory to the root of the work area
 setwd("C:/_github/CTDasRDF")
@@ -39,7 +39,9 @@ graphMeta$createdOn<-gsub("(\\d\\d)$", ":\\1",strftime(Sys.time(),"%Y-%m-%dT%H:%
 write.csv(graphMeta, file="data/source/ctdasrdf_graphmeta.csv",
   row.names = F)
 
+# -----------------------------------------------------------------------------
 # ---- XPT Import -------------------------------------------------------------
+
 # DM ----
 dm  <- head(readXPT("dm"), dm_n)
 
@@ -77,8 +79,10 @@ vs  <- readXPT("vs")  # first row only for initial testing.
 
 # Subset for development
 # Subset to match ontology data. Expand to all of subjid 1015 later.
-vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37)
-vs <- vs[vsSubset, ]
+# vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37)
+# vs <- vs[vsSubset, ]
+vs <- vs[vs$usubjid %in% pntSubset,]  
+
 
 # for later development:
 # vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
