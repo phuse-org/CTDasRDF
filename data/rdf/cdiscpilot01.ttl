@@ -21,7 +21,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 cd01p:Site_701
-  study:hasInvestigator cdiscpilot01:Investigator_1 ;
+  study:hasInvestigator cdiscpilot01:Investigator_123 ;
 .
 cd01p:Study_CDISCPILOT01
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1015 ;
@@ -338,7 +338,7 @@ cdiscpilot01:CumulativeDrugAdministration_2013-07-19_2014-01-14
   skos:prefLabel "Drug administration period 2013-07-19 - 2014-01-14"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2014-08-01 ;
+  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2013-08-01 ;
   study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06 ;
   study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
 .
@@ -425,6 +425,7 @@ cdiscpilot01:Date_2013-07-19
 .
 cdiscpilot01:Date_2013-08-01
   rdf:type time:Instant ;
+  rdf:type study:FixedDoseIntervalEnd ;
   rdf:type study:VisitDate ;
   skos:prefLabel "2013-08-01" ;
   study:dateTimeInXSDString "2013-08-01"^^xsd:string ;
@@ -513,12 +514,6 @@ cdiscpilot01:Date_2014-07-02T11_45
   rdf:type study:StudyParticipationEnd ;
   skos:prefLabel "2014-07-02T11:45"^^xsd:string ;
   study:dateTimeInXSDString "2014-07-02T11:45"^^xsd:string ;
-.
-cdiscpilot01:Date_2014-08-01
-  rdf:type study:FixedDoseIntervalEnd ;
-  skos:prefLabel "2014-08-01" ;
-  skos:prefLabel "2014-08-01"^^xsd:string ;
-  study:dateTimeInXSDString "2013-08-01"^^xsd:string ;
 .
 cdiscpilot01:DemographicDataCollection_01-701-1015
   rdf:type cd01p:VisitScreening1DemogDataColl ;
@@ -611,13 +606,13 @@ cdiscpilot01:DrugAdministration_01-701-1023_2012-08-28_2012-09-01
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
   study:outcome study:DrugAdministrationComplete ;
 .
-cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2014-08-01
+cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2013-08-01
   rdf:type cdiscpilot01:VisitBaselineActivity_01-701-1028 ;
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
   study:administeredDrug custom:Product_1 ;
-  study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2014-08-01 ;
+  study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2013-08-01 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
   study:outcome study:DrugAdministrationComplete ;
@@ -734,18 +729,18 @@ cdiscpilot01:Interval_2013-07-11_2014-01-14T11_10
   time:hasBeginning cdiscpilot01:Date_2013-07-11 ;
   time:hasEnd cdiscpilot01:Date_2014-01-14T11_10 ;
 .
+cdiscpilot01:Interval_2013-07-19_2013-08-01
+  rdf:type study:FixedDoseInterval ;
+  skos:prefLabel "Interval 2013-07-19_2013-08-01"^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_2013-07-19 ;
+  time:hasEnd cdiscpilot01:Date_2013-08-01 ;
+.
 cdiscpilot01:Interval_2013-07-19_2014-01-14
   rdf:type study:CumulativeDrugAdministrationInterval ;
   rdf:type study:ReferenceInterval ;
   skos:prefLabel "Interval 2013-07-19_2014-01-14"^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_2013-07-19 ;
   time:hasEnd cdiscpilot01:Date_2014-01-14 ;
-.
-cdiscpilot01:Interval_2013-07-19_2014-08-01
-  rdf:type study:FixedDoseInterval ;
-  skos:prefLabel "Interval 2013-07-19_2014-08-01"^^xsd:string ;
-  time:hasBeginning cdiscpilot01:Date_2013-07-19 ;
-  time:hasEnd cdiscpilot01:Date_2014-08-01 ;
 .
 cdiscpilot01:Interval_2013-08-02_2014-01-06
   rdf:type study:FixedDoseInterval ;
@@ -766,7 +761,7 @@ cdiscpilot01:Interval_2013-12-26_2014-07-02T11_45
 .
 cdiscpilot01:Interval_2014-01-02_2014-01-16
   rdf:type study:FixedDoseInterval ;
-  skos:prefLabel "Interval 2014-01-12_2014-01-16"^^xsd:string ;
+  skos:prefLabel "Interval 2014-01-02_2014-01-16"^^xsd:string ;
   time:hasBeginning cdiscpilot01:Date_2014-01-02 ;
   time:hasEnd cdiscpilot01:Date_2014-01-16 ;
 .
@@ -795,14 +790,14 @@ cdiscpilot01:Interval_2014-06-19_2014-07-02
   time:hasBeginning cdiscpilot01:Date_2014-06-19 ;
   time:hasEnd cdiscpilot01:Date_2014-07-02 ;
 .
-cdiscpilot01:InvestigatorIdentifier_1
+cdiscpilot01:InvestigatorIdentifier_123
   rdf:type study:InvestigatorIdentifier ;
   skos:prefLabel "123"^^xsd:string ;
 .
-cdiscpilot01:Investigator_1
+cdiscpilot01:Investigator_123
   rdf:type study:Investigator ;
   skos:prefLabel "Investigator 123"^^xsd:string ;
-  study:hasInvestigatorID cdiscpilot01:InvestigatorIdentifier_1 ;
+  study:hasInvestigatorID cdiscpilot01:InvestigatorIdentifier_123 ;
   study:hasLastName "Jones"^^xsd:string ;
 .
 cdiscpilot01:Person_01-701-1015
@@ -1022,7 +1017,7 @@ cdiscpilot01:VisitBaseline_01-701-1023
 cdiscpilot01:VisitBaseline_01-701-1028
   rdf:type custom:VisitBaseline ;
   study:hasPerformedDate cdiscpilot01:Date_2013-07-19 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2014-08-01 ;
+  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2013-08-01 ;
 .
 cdiscpilot01:VisitScreening1Activity_01-701-1015
   rdf:type owl:Class ;
