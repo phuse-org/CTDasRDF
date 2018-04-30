@@ -37,7 +37,7 @@ cd01p:Study_{studyid}
 # -----------------------------------------------------------------------------
 cdiscpilot01:Person_{usubjid}
   a study:EnrolledSubject;
-  skos:preflabel                      "Person {usubjid}"^^xsd:string ;
+  skos:prefLabel                      "Person {usubjid}"^^xsd:string ;
   study:actualArm                     cd01p:Arm_{actarmcd} ;
   study:deathFlag                     "{dthfl}"^^xsd:string ;
   study:hasLifespan                   cdiscpilot01:Interval_{lifeSpan_im_en};
@@ -155,7 +155,7 @@ cdiscpilot01:Person_{usubjid}
    skos:prefLabel       "Screening 1 Demographic data collection Person {usubjid} "^^xsd:string ;  # Note PErson comes last to to match other labels. DO NOT CHANGE
    code:hasAge          cdiscpilot01:AgeOutcome_{age_en} ;
    study:activityStatus code:ActivityStatus_CO ;
-   study:ethnicity      code:Enthnicity_{ethnic_en}  ;
+   study:ethnicity      code:Ethnicity_{ethnic_en}  ;
    study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
    study:race           code:Race_{race_en} ;
    study:sex            code:Sex_{sex} ;

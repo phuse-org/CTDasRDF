@@ -76,17 +76,20 @@ cdiscpilot01:Person_{usubjid}
 
   cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
     rdf:type               custom:Visit{visit_im_titleCSh} ;
-    study:activityStatus code:ActivityStatus_CO ;
+#TW30APR    study:activityStatus code:ActivityStatus_CO ;
     study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
-    study:hasSubActivity cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{usubjid} ;
-    study:hasSubActivity cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} ;
+#TW30APR    study:hasSubActivity cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{usubjid} ;
+#TW30APR    study:hasSubActivity cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} ;
   .
 
-##    # VisitDate
-##    cdiscpilot01:Date_{vsdtc_en}
-##      rdf:type   study:VisitDate ;
-##    .
-##
+  # VisitDate
+  cdiscpilot01:Date_{vsdtc_en}
+    rdf:type   study:VisitDate ;
+  .
+
+
+
+
 ##  # Visit Activity
 ##  cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
 ##    rdf:type         owl:Class ;
