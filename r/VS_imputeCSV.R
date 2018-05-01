@@ -46,8 +46,12 @@ vs$visit_im_titleCSh <- car::recode (vs$visit,
 # Derived Flag Y/N 
 vs$vsdrvfl_im <- "N"  # None of the measurements here are derived: BP,HT,WT,TEMP...
 
-
+# Reason not done
 vs$vsreasnotdone_im <- "not applicable"
+
+#Activity Status
+vs$vsactstatus_im <- "CO"
+
 
 
 # vsspid : Sponsor Defined ID

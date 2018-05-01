@@ -77,14 +77,14 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
             skos:prefLabel        "{usubjid} {visit_im_titleC} Rule {vstpt}"^^xsd:string ;
             study:hasPrerequisite cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid} ;
         .
-    # Each vstestcd. vsseq used to show relative sequence.
+##    # Each vstestcd.  vsseq used to show relative sequence.
     cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} 
-      study:vstestcd         code:Vtestcd_{vstestcd} ;
+      study:vstestcd         code:Vtestcd_{vstestcd} ;     
       rdf:type               cd01p:Visit{visit_im_titleCSh}{vstest_testtype_im} ;
       rdf:type               cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} ;
       study:activityStatus   code:ActivityStatus_{vsactstatus_im} ;
       study:anatomicLocation code:Vsloc_{vsloc_im} ;
-      study:baselineFlag     {vsblfl}^^xsd:string ;
+      study:baselineFlag     "{vsblfl}"^^xsd:string ;
       study:bodyPosition     code:Vspos_{vspos} ;
       study:derivedFlag      "{vsdrvfl_im}"^^xsd:string ;
       study:groupID          "{vsgrpid_im}"^^xsd:string ;
@@ -98,11 +98,11 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
       study:seq              "{vsseq}"^^xsd:float ;
       study:sponsordefinedID "{vsspid_im}"^^xsd:string ;
     .
-        # Test Outcome
+      # Test Outcome
         # cannot assign type (float/int etc) due to varying types in source column
         cdiscpilot01:{vstestcd_im_titleC}Outcome_{vsorres_en}
           code:hasUnit    code:Unit_{vsorresu} ;
-          code:hasValue   "{vsorres}";
+          code:hasValue   "{vsorres}"^^xsd:string ;
           rdf:type        study:{vstestcd_im_titleC}Outcome ;
-           skos:prefLabel "{vsorres} {vsorresu}"^^xsd:string ;
+          skos:prefLabel "{vsorres} {vsorresu}"^^xsd:string ;
         .
