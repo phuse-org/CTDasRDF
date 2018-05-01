@@ -42,6 +42,35 @@ vs$visit_im_titleCSh <- car::recode (vs$visit,
     'UNSCHEDULED 3.1'      =  'Unscheduled31' "
 )
 
+
+# Derived Flag Y/N 
+vs$vsdrvfl_im <- "N"  # None of the measurements here are derived: BP,HT,WT,TEMP...
+
+
+vs$vsreasnotdone_im <- "not applicable"
+
+
+# vsspid : Sponsor Defined ID
+vs[vs$vsseq %in% c(1)   & vs$personNum == 1, "vsspid_im"]  <- "123"
+vs[vs$vsseq %in% c(2)   & vs$personNum == 1, "vsspid_im"]  <- "719"
+vs[vs$vsseq %in% c(3)   & vs$personNum == 1, "vsspid_im"]  <- "235"
+vs[vs$vsseq %in% c(43)  & vs$personNum == 1, "vsspid_im"]  <- "1000"
+vs[vs$vsseq %in% c(86)  & vs$personNum == 1, "vsspid_im"]  <- "124"
+vs[vs$vsseq %in% c(87)  & vs$personNum == 1, "vsspid_im"]  <- "720"
+vs[vs$vsseq %in% c(88)  & vs$personNum == 1, "vsspid_im"]  <- "236"
+vs[vs$vsseq %in% c(128) & vs$personNum == 1, "vsspid_im"]  <- "3000"
+vs[vs$vsseq %in% c(142) & vs$personNum == 1, "vsspid_im"]  <- "5000"
+
+
+
+# Category and Subcategory for tests (vstestcd)
+vs$vscat_im    <- "Category_1"  
+vs$vssubcat_im <- "Subcategory_1"
+
+# Group ID assignement
+vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsgrpid_im"]  <- "GRPID1"
+
+
 #DEL : Converted to use im_titleC
 #vs$vspos_im_CCase <- car::recode(vs$vspos,
 #  " 'STANDING'  = 'Standing' ;
@@ -49,8 +78,20 @@ vs$visit_im_titleCSh <- car::recode (vs$visit,
 #)
 
 # vslat
-vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat"] <- "RIGHT"
-vs[vs$vsseq %in% c(2,87)       & vs$personNum == 1, "vslat"] <- "LEFT"
+vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat_im"] <- "RIGHT"
+vs[vs$vsseq %in% c(2,87)       & vs$personNum == 1, "vslat_im"] <- "LEFT"
+
+
+# vstestcd location. Add value for ARM, recode ORAL CAVITY to allow use in IRI
+vs[vs$vstestcd %in% c('DIABP', 'SYSBP'), "vsloc_im"]  <- "ARM"
+vs[vs$vsloc %in% c('ORAL CAVITY'), "vsloc_im"]  <- "ORALCAVITY"
+
+
+vs[vs$vstestcd %in% c("DIABP", "SYSBP"), "vstest_testtype_im"] <- "BloodPressure"
+vs[vs$vstestcd %in% c("HEIGHT"), "vstest_testtype_im"]         <- "Height"
+vs[vs$vstestcd %in% c("PULSE"), "vstest_testtype_im"]          <- "Pulse"
+vs[vs$vstestcd %in% c("TEMP"), "vstest_testtype_im"]           <- "Temperature"
+vs[vs$vstestcd %in% c("WEIGHT"), "vstest_testtype_im"]         <- "Weight"
 
 # Title Case (titleC) Conversions. For RDF Labels.
 vs$visit_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$visit,    perl=TRUE)

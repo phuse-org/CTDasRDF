@@ -30,7 +30,6 @@ namespaces <- c('cd01p', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/
 'study', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>',  
 'time', '<http://www.w3.org/2006/time#>',  
 'rdf', '<http://www.w3.org/1999/02/22-rdf-syntax-ns#>',
-'rdfs', '<http://www.w3.org/2000/01/rdf-schema#>',
 'xsd', '<http://www.w3.org/2001/XMLSchema#>'
 )
 
@@ -43,7 +42,7 @@ ui <- fluidPage(
   fluidRow(
     column(12, 
       h4("Ontology"),
-      textInput('rootNodeOnt', "Subject QName", value = "cdiscpilot01:Person_1")
+      textInput('rootNodeOnt', "Subject QName", value = "cdiscpilot01:Person_01-701-1015")
     )
   ),
   # Diagram
