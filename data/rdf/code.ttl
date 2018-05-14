@@ -6,6 +6,7 @@
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/2006/time
+# prefix: code
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
@@ -32,42 +33,18 @@
 <http://rdf.cdisc.org/sdtmterm#C66729.C38305>
   rdf:type code:RouteOfAdministration ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66731.C16576>
-  rdf:type code:Sex ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66731.C17998>
-  rdf:type code:Sex ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66731.C20197>
-  rdf:type code:Sex ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66731.C45908>
-  rdf:type code:Sex ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66790.C17459>
-  rdf:type code:Ethnicity ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66790.C17998>
-  rdf:type code:Ethnicity ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66790.C41222>
-  rdf:type code:Ethnicity ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66790.C43234>
-  rdf:type code:Ethnicity ;
-.
 <http://rdf.cdisc.org/sdtmterm#C67153.C25206>
   rdf:type owl:Class ;
   rdf:type code:VitalSign ;
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "TEMP"^^xsd:string ;
+      owl:hasValue "TEMP" ;
       owl:onProperty skos:prefLabel ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "Temperature"^^xsd:string ;
+      owl:hasValue "Temperature" ;
       owl:onProperty skos:altLabel ;
     ] ;
 .
@@ -77,12 +54,12 @@
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "WEIGHT"^^xsd:string ;
+      owl:hasValue "WEIGHT" ;
       owl:onProperty skos:prefLabel ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "Weight"^^xsd:string ;
+      owl:hasValue "Weight" ;
       owl:onProperty skos:altLabel ;
     ] ;
 .
@@ -92,12 +69,12 @@
   rdfs:subClassOf code:BloodPressure ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "SYSBP"^^xsd:string ;
+      owl:hasValue "SYSBP" ;
       owl:onProperty skos:prefLabel ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "Systolic Blood Pressure"^^xsd:string ;
+      owl:hasValue "Systolic Blood Pressure" ;
       owl:onProperty skos:altLabel ;
     ] ;
 .
@@ -107,12 +84,12 @@
   rdfs:subClassOf code:BloodPressure ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "DIABP"^^xsd:string ;
+      owl:hasValue "DIABP" ;
       owl:onProperty skos:prefLabel ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "Diastolic Blood Pressure"^^xsd:string ;
+      owl:hasValue "Diastolic Blood Pressure" ;
       owl:onProperty skos:altLabel ;
     ] ;
 .
@@ -122,12 +99,12 @@
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "HEIGHT"^^xsd:string ;
+      owl:hasValue "HEIGHT" ;
       owl:onProperty skos:prefLabel ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "Height"^^xsd:string ;
+      owl:hasValue "Height" ;
       owl:onProperty skos:altLabel ;
     ] ;
 .
@@ -137,12 +114,12 @@
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "PULSE"^^xsd:string ;
+      owl:hasValue "PULSE" ;
       owl:onProperty skos:prefLabel ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "Pulse Rate"^^xsd:string ;
+      owl:hasValue "Pulse Rate" ;
       owl:onProperty skos:altLabel ;
     ] ;
 .
@@ -151,11 +128,11 @@
 .
 <http://rdf.cdisc.org/sdtmterm#C71148.C62166>
   rdf:type code:BodyPosition ;
-  skos:altLabel "PATIENT STANDING"^^xsd:string ;
+  skos:altLabel "PATIENT STANDING" ;
 .
 <http://rdf.cdisc.org/sdtmterm#C71148.C62167>
   rdf:type code:BodyPosition ;
-  skos:altLabel "PATIENT SUPINE"^^xsd:string ;
+  skos:altLabel "PATIENT SUPINE" ;
 .
 <http://rdf.cdisc.org/sdtmterm#C74456.C12421>
   rdf:type code:AnatomicLocation ;
@@ -163,21 +140,6 @@
 <http://rdf.cdisc.org/sdtmterm#C74456.C32141>
   rdf:type code:AnatomicLocation ;
   rdf:type code:VitalSignsLocation ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C16352>
-  rdf:type code:Race ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C41219>
-  rdf:type code:Race ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C41259>
-  rdf:type code:Race ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C41260>
-  rdf:type code:Race ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C41261>
-  rdf:type code:Race ;
 .
 <http://rdf.cdisc.org/sdtmterm#C99073.C25228>
   rdf:type code:Laterality ;
@@ -190,7 +152,7 @@ arg:origResult
   rdfs:subPropertyOf sp:arg ;
 .
 <http://topbraid.org/countries#US>
-  skos:prefLabel "USA"^^xsd:string ;
+  skos:prefLabel "USA" ;
 .
 time:TemporalUnit
   rdfs:subClassOf code:Unit ;
@@ -217,7 +179,7 @@ time:unitWeek
 .
 time:unitYear
   rdf:type code:AgeUnit ;
-  skos:prefLabel "YEAR"^^xsd:string ;
+  skos:prefLabel "YEAR" ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl>
   rdf:type owl:Ontology ;
@@ -232,103 +194,108 @@ time:unitYear
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/2006/time> ;
-  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+  owl:versionInfo "Created with TopBraid Composer" ;
 .
 code:ActiveSubstance
   rdf:type owl:Class ;
   rdfs:subClassOf code:Substance ;
-  skos:prefLabel "Active substance"^^xsd:string ;
+  skos:prefLabel "Active substance" ;
 .
 code:ActivityStatus
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Activity status"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Activity status" ;
 .
 code:ActivityStatus_CO
   rdf:type code:ActivityStatus ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "CO"^^xsd:string ;
-  skos:altLabel "COMPLETE"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "CO"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:altLabel "COMPLETE" ;
+  skos:definition "" ;
+  skos:prefLabel "CO" ;
 .
 code:ActivityStatus_IC
   rdf:type code:ActivityStatus ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "IC"^^xsd:string ;
-  skos:altLabel "INCOMPLETE"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "IC"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:altLabel "INCOMPLETE" ;
+  skos:definition "" ;
+  skos:prefLabel "IC" ;
 .
 code:ActivityStatus_ND
   rdf:type code:ActivityStatus ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "ND"^^xsd:string ;
-  skos:altLabel "NOT DONE"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ND"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:altLabel "NOT DONE" ;
+  skos:definition "" ;
+  skos:prefLabel "ND" ;
 .
 code:ActivityStatus_ST
   rdf:type code:ActivityStatus ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "ST"^^xsd:string ;
-  skos:altLabel "STARTED"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ND"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:altLabel "STARTED" ;
+  skos:definition "" ;
+  skos:prefLabel "ND" ;
+  skos:prefLabel "ST" ;
 .
 code:AdministrativeActivity
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Administrative activity term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedActivity ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Administrative activity term" ;
 .
 code:AdministrativeActivityOutcome
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Administrative activity outcome term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Administrative activity outcome term" ;
+.
+code:Age
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:NumericOutcome ;
+.
+code:AgeDataCollection
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Observation ;
 .
 code:AgeUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
-  skos:prefLabel "AGEU"^^xsd:string ;
+  skos:prefLabel "AGEU" ;
 .
 code:Analysis
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Analysis term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedActivity ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Analysis term" ;
 .
 code:AnatomicLocation
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Anatomic location term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Anatomic location term" ;
 .
 code:Assessment
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Assessment term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:Analysis ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Assessment term" ;
 .
 code:AssumeBodyPosition
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Assume body position term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:Intervention ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:BodyPosition ;
       owl:onProperty code:hasPermissibleOutcome ;
     ] ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Assume body position term" ;
 .
 code:BloodPressure
   rdf:type owl:Class ;
@@ -336,346 +303,341 @@ code:BloodPressure
 .
 code:BodyPosition
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Body position term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:InterventionOutcome ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Body position term" ;
+.
+code:CategoricalOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:ObservationOutcome ;
 .
 code:ClinicalIntervention
   rdf:type owl:Class ;
   rdfs:subClassOf code:Intervention ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Clinical intervention"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Clinical intervention" ;
 .
 code:ConversionFactor
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Conversion factor"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "Conversion factor" ;
 .
 code:ConversionFactor_1
   rdf:type code:ConversionFactor ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "in2cm"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "in2cm"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "in2cm" ;
   code:hasConversionFactor "2.54"^^xsd:float ;
   code:hasOriginalUnit code:Unit_IN ;
   code:hasStandardUnit code:Unit_cm ;
 .
 code:ConversionFactor_2
   rdf:type code:ConversionFactor ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "mm hg2mm hg"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "mm hg2mm hg"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "mm hg2mm hg" ;
   code:hasConversionFactor "1"^^xsd:float ;
   code:hasOriginalUnit code:Unit_mmHG ;
   code:hasStandardUnit code:Unit_mmHG ;
 .
 code:ConversionFactor_3
   rdf:type code:ConversionFactor ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "lb2kg"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "lb2kg"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "lb2kg" ;
   code:hasConversionFactor "0.4545"^^xsd:float ;
   code:hasOriginalUnit code:Unit_LB ;
   code:hasStandardUnit code:Unit_kg ;
 .
 code:ConversionFactor_4
   rdf:type code:ConversionFactor ;
-  skos:prefLabel "F2C"^^xsd:string ;
-  skos:prefLabel "F2C"^^xsd:string ;
+  skos:prefLabel "F2C" ;
   code:hasOriginalUnit code:Unit_F ;
   code:hasStandardUnit code:Unit_C ;
 .
 code:ConversionFactor_5
   rdf:type code:ConversionFactor ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "bpm2bpm"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "bpm2bpm"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "bpm2bpm" ;
   code:hasConversionFactor "1"^^xsd:float ;
   code:hasOriginalUnit code:Unit_BEATS_MIN ;
   code:hasStandardUnit code:Unit_BEATS_MIN ;
 .
 code:Country
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "COUNTRY"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "COUNTRY" ;
 .
 code:Country_1
   rdf:type code:Country ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "USA"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "USA"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "USA" ;
 .
 code:DefinedActivity
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Activity term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Activity term" ;
 .
 code:DefinedActivityOutcome
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Activity outcome term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Activity outcome term" ;
 .
 code:DefinedConcept
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Controlled Terminology"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf owl:Thing ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Controlled Terminology" ;
 .
 code:DemographicDataCollection
   rdf:type owl:Class ;
   rdf:type code:Observation ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "DEMOG DATA COLLECTION"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:Observation ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "DEMOG DATA COLLECTION"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "DEMOG DATA COLLECTION" ;
 .
 code:DosageForm
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:prefLabel "Dosage form"^^xsd:string ;
+  skos:prefLabel "Dosage form" ;
 .
 code:DosageFrequency
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:prefLabel "Dosage frequency"^^xsd:string ;
+  skos:prefLabel "Dosage frequency" ;
 .
 code:DrugProduct
   rdf:type owl:Class ;
   rdfs:subClassOf code:Product ;
-  skos:prefLabel "Drug product"^^xsd:string ;
+  skos:prefLabel "Drug product" ;
 .
 code:Ethnicity
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
+  rdfs:subClassOf code:CategoricalOutcome ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
-  rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ETHNIC"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "ETHNIC" ;
+.
+code:EthnicityDataCollection
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Observation ;
 .
 code:Ethnicity_HISPANIC_OR_LATINO
   rdf:type code:Ethnicity ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66790.C17459> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "HISPANIC OR LATINO"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "HISPANIC OR LATINO" ;
 .
 code:Ethnicity_NOT_HISPANIC_OR_LATINO
   rdf:type code:Ethnicity ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66790.C41222> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "NOT HISPANIC OR LATINO"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "NOT HISPANIC OR LATINO" ;
 .
 code:Ethnicity_NOT_REPORTED
   rdf:type code:Ethnicity ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66790.C43234> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "NOT REPORTED"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "NOT REPORTED" ;
 .
 code:Ethnicity_UNKNOWN
   rdf:type code:Ethnicity ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66790.C17998> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "UNKNOWN"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "UNKNOWN" ;
 .
 code:ExDosFrq_QD
   rdf:type code:DosageFrequency ;
   owl:sameAs <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
-  skos:altLabel "daily"^^xsd:string ;
-  skos:prefLabel "QD"^^xsd:string ;
+  skos:altLabel "daily" ;
+  skos:prefLabel "QD" ;
 .
 code:ExRoute_ORAL
   rdf:type code:RouteOfAdministration ;
   owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38288> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "ORAL"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "ORAL" ;
 .
 code:ExRoute_TRANSDERMAL
   rdf:type code:RouteOfAdministration ;
   owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "TRANSDERMAL"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "TRANSDERMAL" ;
+.
+code:GenericOutcome
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:CategoricalOutcome ;
 .
 code:HeightUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Height unit"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Height unit" ;
 .
 code:ISO8601
   rdf:type code:StandardFormat ;
-  skos:definition "International Standard for representing date and time information"^^xsd:string ;
-  skos:prefLabel "ISO8601"^^xsd:string ;
+  skos:definition "International Standard for representing date and time information" ;
+  skos:prefLabel "ISO8601" ;
 .
 code:InformedConsent
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Informed consent term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:AdministrativeActivity ;
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:InformedConsentOutcome ;
       owl:onProperty code:hasPermissibleOutcome ;
     ] ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Informed consent term" ;
 .
 code:InformedConsentAdult
   rdf:type owl:Class ;
   rdfs:subClassOf code:InformedConsent ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "informedconsent ADULT"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "informedconsent ADULT" ;
 .
 code:InformedConsentOutcome
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Informed consent outcome"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:AdministrativeActivityOutcome ;
   owl:oneOf (
       code:InformedConsentOutcome_1
       code:InformedConsentOutcome_2
       code:InformedConsentOutcome_3
     ) ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Informed consent outcome" ;
 .
 code:InformedConsentOutcome_1
   rdf:type code:InformedConsentOutcome ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "informed consent granted"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "informed consent granted"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "informed consent granted" ;
 .
 code:InformedConsentOutcome_2
   rdf:type code:InformedConsentOutcome ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Informed consent not granted"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Informed consent not granted"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "Informed consent not granted" ;
 .
 code:InformedConsentOutcome_3
   rdf:type code:InformedConsentOutcome ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Informed consent withdrawn"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Informed consent withdrawn"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "Informed consent withdrawn" ;
 .
 code:Intervention
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Intervention term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedActivity ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Intervention term" ;
 .
 code:InterventionOutcome
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Intervention outcome term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Intervention outcome term" ;
 .
 code:Laterality
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Laterality term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Laterality term" ;
 .
 code:MedicalCondition
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Medical condition term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Medical condition term" ;
 .
 code:Method
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Method"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Method" ;
 .
 code:Method_ASSIGNED
   rdf:type code:Method ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "ASSIGNED"^^xsd:string ;
-  skos:definition "The method used to obtain the activity outcome"^^xsd:string ;
-  skos:prefLabel "ASSIGNED"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "The method used to obtain the activity outcome" ;
+  skos:prefLabel "ASSIGNED" ;
 .
 code:Method_COLLECTED
   rdf:type code:Method ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "COLLECTED"^^xsd:string ;
-  skos:definition "The method used to obtain the activity outcome"^^xsd:string ;
-  skos:prefLabel "COLLECTED"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "The method used to obtain the activity outcome" ;
+  skos:prefLabel "COLLECTED" ;
 .
 code:Method_DERIVED
   rdf:type code:Method ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "DERIVED"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "DERIVED"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "DERIVED" ;
 .
 code:NullFlavor
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:altLabel ""^^xsd:string ;
-  skos:definition "Provides an attribute to describe why a value/data point is missing"^^xsd:string ;
-  skos:prefLabel "Null flavor"^^xsd:string ;
-  code:hasIdentifier "2.16.840.1.113883.5.1008"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:definition "Provides an attribute to describe why a value/data point is missing" ;
+  skos:prefLabel "Null flavor" ;
+  code:hasIdentifier "2.16.840.1.113883.5.1008" ;
 .
 code:NullFlavor_1
   rdf:type code:NullFlavor ;
-  skos:altLabel "No Information"^^xsd:string ;
+  skos:altLabel "No Information" ;
   skos:definition """The value is exceptional (missing, omitted, incomplete, improper). No
 information as to the reason for being an exceptional value is provided. This is
-the most general exceptional value. It is also the default exceptional value."""^^xsd:string ;
-  skos:prefLabel "NI"^^xsd:string ;
+the most general exceptional value. It is also the default exceptional value.""" ;
+  skos:prefLabel "NI" ;
 .
 code:NullFlavor_10
   rdf:type code:NullFlavor ;
-  skos:altLabel "Temporarily unavailable"^^xsd:string ;
+  skos:altLabel "Temporarily unavailable" ;
   skos:definition """Information is not available at this time, but it is expected that it will be
-available later."""^^xsd:string ;
-  skos:prefLabel "NAV"^^xsd:string ;
+available later.""" ;
+  skos:prefLabel "NAV" ;
 .
 code:NullFlavor_11
   rdf:type code:NullFlavor ;
-  skos:altLabel "Not Asked"^^xsd:string ;
-  skos:definition "This information has not been sought"^^xsd:string ;
-  skos:example "Patient was not asked"^^xsd:string ;
-  skos:prefLabel "NASK"^^xsd:string ;
+  skos:altLabel "Not Asked" ;
+  skos:definition "This information has not been sought" ;
+  skos:example "Patient was not asked" ;
+  skos:prefLabel "NASK" ;
 .
 code:NullFlavor_12
   rdf:type code:NullFlavor ;
-  skos:altLabel "Quantity sufficient"^^xsd:string ;
+  skos:altLabel "Quantity sufficient" ;
   skos:definition """The specific quantity is not known, but is known to be non-zero and is not
 specified because it makes up the bulk of the material. 'Add 10 mg of
 ingredient X, 50 mg of ingredient Y, and sufficient quantity of water to 100 ml.'
-The null flavor would be used to express the quantity of water"""^^xsd:string ;
-  skos:prefLabel "QS"^^xsd:string ;
+The null flavor would be used to express the quantity of water""" ;
+  skos:prefLabel "QS" ;
 .
 code:NullFlavor_13
   rdf:type code:NullFlavor ;
-  skos:altLabel "Trace"^^xsd:string ;
-  skos:definition "The content is greater than zero, but too small to be quantified."^^xsd:string ;
-  skos:prefLabel "TRC"^^xsd:string ;
+  skos:altLabel "Trace" ;
+  skos:definition "The content is greater than zero, but too small to be quantified." ;
+  skos:prefLabel "TRC" ;
 .
 code:NullFlavor_14
   rdf:type code:NullFlavor ;
-  skos:altLabel "Masked"^^xsd:string ;
+  skos:altLabel "Masked" ;
   skos:definition """There is information on this item available, but it has not been provided by the
 sender due to security, privacy or other reasons. There may be an alternate
 mechanism for gaining access to this information.
@@ -683,69 +645,69 @@ WARNING — Use of this null flavor does provide information that may be
 a breach of confidentiality, even though no detailed data are provided. Its
 primary purpose is for those circumstances where it is necessary to
 inform the receiver that the information does exist without providing any
-detail."""^^xsd:string ;
-  skos:prefLabel "MSK"^^xsd:string ;
+detail.""" ;
+  skos:prefLabel "MSK" ;
 .
 code:NullFlavor_15
   rdf:type code:NullFlavor ;
-  skos:altLabel "Not applicable"^^xsd:string ;
-  skos:definition "No proper value is applicable in this context.	"^^xsd:string ;
-  skos:example "Last menstrual period for a male. "^^xsd:string ;
-  skos:prefLabel "NA"^^xsd:string ;
+  skos:altLabel "Not applicable" ;
+  skos:definition "No proper value is applicable in this context.	" ;
+  skos:example "Last menstrual period for a male. " ;
+  skos:prefLabel "NA" ;
 .
 code:NullFlavor_2
   rdf:type code:NullFlavor ;
-  skos:altLabel "Invalid"^^xsd:string ;
+  skos:altLabel "Invalid" ;
   skos:definition """The value as represented in the instance is not a member of the set of
-permitted data values in the constrained value domain of a variable."""^^xsd:string ;
-  skos:prefLabel "INV"^^xsd:string ;
+permitted data values in the constrained value domain of a variable.""" ;
+  skos:prefLabel "INV" ;
 .
 code:NullFlavor_3
   rdf:type code:NullFlavor ;
-  skos:altLabel "Other"^^xsd:string ;
+  skos:altLabel "Other" ;
   skos:definition """The actual value is not a member of the set of permitted data values in the
 constrained value domain of a variable (e.g. concept not provided by required
-code system)."""^^xsd:string ;
-  skos:prefLabel "OTH"^^xsd:string ;
+code system).""" ;
+  skos:prefLabel "OTH" ;
 .
 code:NullFlavor_4
   rdf:type code:NullFlavor ;
-  skos:altLabel "Positive infinity"^^xsd:string ;
-  skos:definition "Positive infinity of numbers"^^xsd:string ;
-  skos:prefLabel "PINF"^^xsd:string ;
+  skos:altLabel "Positive infinity" ;
+  skos:definition "Positive infinity of numbers" ;
+  skos:prefLabel "PINF" ;
 .
 code:NullFlavor_5
   rdf:type code:NullFlavor ;
-  skos:altLabel "Negative infinity"^^xsd:string ;
-  skos:definition "Negative Infinity of numbers"^^xsd:string ;
-  skos:prefLabel "NINF"^^xsd:string ;
+  skos:altLabel "Negative infinity" ;
+  skos:definition "Negative Infinity of numbers" ;
+  skos:prefLabel "NINF" ;
 .
 code:NullFlavor_6
   rdf:type code:NullFlavor ;
-  skos:altLabel "Unencoded"^^xsd:string ;
+  skos:altLabel "Unencoded" ;
   skos:definition """No attempt has been made to encode the information correctly but the raw
-source information is represented (usually in originalText)."""^^xsd:string ;
-  skos:prefLabel "UNC"^^xsd:string ;
+source information is represented (usually in originalText).""" ;
+  skos:prefLabel "UNC" ;
 .
 code:NullFlavor_7
   rdf:type code:NullFlavor ;
-  skos:altLabel "Derived"^^xsd:string ;
+  skos:altLabel "Derived" ;
   skos:definition """An actual value may exist, but it must be derived from the information provided
-(usually an expression is provided directly)."""^^xsd:string ;
-  skos:prefLabel "DER"^^xsd:string ;
+(usually an expression is provided directly).""" ;
+  skos:prefLabel "DER" ;
 .
 code:NullFlavor_8
   rdf:type code:NullFlavor ;
-  skos:altLabel "Unknown"^^xsd:string ;
-  skos:definition "A proper value is applicable, but not known."^^xsd:string ;
-  skos:prefLabel "UNK"^^xsd:string ;
+  skos:altLabel "Unknown" ;
+  skos:definition "A proper value is applicable, but not known." ;
+  skos:prefLabel "UNK" ;
 .
 code:NullFlavor_9
   rdf:type code:NullFlavor ;
-  skos:altLabel "Asked but unknown"^^xsd:string ;
-  skos:definition "Information was sought but not found."^^xsd:string ;
-  skos:example "Patient was asked but didn't know. "^^xsd:string ;
-  skos:prefLabel "ASKU"^^xsd:string ;
+  skos:altLabel "Asked but unknown" ;
+  skos:definition "Information was sought but not found." ;
+  skos:example "Patient was asked but didn't know. " ;
+  skos:prefLabel "ASKU" ;
 .
 code:NumericOutcome
   rdf:type owl:Class ;
@@ -753,344 +715,344 @@ code:NumericOutcome
 .
 code:Observation
   rdf:type owl:Class ;
-  rdfs:comment "could be replaced in the future with a robust terminology for observations such as CDISC terminology or LOINC"^^xsd:string ;
-  skos:prefLabel "Observation term"^^xsd:string ;
+  rdfs:comment "could be replaced in the future with a robust terminology for observations such as CDISC terminology or LOINC" ;
   rdfs:subClassOf code:Intervention ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Observation term" ;
 .
 code:ObservationOutcome
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Observation outcome term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:InterventionOutcome ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Observation outcome term" ;
 .
 code:Product
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:prefLabel "Product"^^xsd:string ;
+  skos:prefLabel "Product" ;
+.
+code:PulseUnit
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Unit ;
 .
 code:Race
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
+  rdfs:subClassOf code:CategoricalOutcome ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
-  rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "RACE"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "RACE" ;
+.
+code:RaceDataCollection
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Observation ;
 .
 code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
   rdf:type code:Race ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C41259> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "AMERICAN INDIAN OR ALASKA NATIVE"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "AMERICAN INDIAN OR ALASKA NATIVE" ;
 .
 code:Race_ASIAN
   rdf:type code:Race ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C41260> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "ASIAN"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "ASIAN" ;
 .
 code:Race_BLACK_OR_AFRICAN_AMERICAN
   rdf:type code:Race ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C16352> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "BLACK OR AFRICAN AMERICAN"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "BLACK OR AFRICAN AMERICAN" ;
 .
 code:Race_NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER
   rdf:type code:Race ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C41219> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER" ;
 .
 code:Race_WHITE
   rdf:type code:Race ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C74457.C41261> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "WHITE"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "WHITE" ;
 .
 code:Randomization
   rdf:type owl:Class ;
   rdfs:subClassOf code:AdministrativeActivity ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Randomization"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Randomization" ;
 .
 code:RandomizationBAL3
   rdf:type owl:Class ;
   rdfs:subClassOf code:Randomization ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Randomization BAL3"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Randomization BAL3" ;
 .
 code:RouteOfAdministration
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:prefLabel "Route of administration"^^xsd:string ;
+  skos:prefLabel "Route of administration" ;
 .
 code:RuleOutcome
   rdf:type owl:Class ;
-  skos:prefLabel "Rule outcome"^^xsd:string ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
+  skos:prefLabel "Rule outcome" ;
 .
 code:RuleOutcome_1
   rdf:type code:RuleOutcome ;
-  skos:prefLabel "Rule outcome TRUE"^^xsd:string ;
+  skos:prefLabel "Rule outcome TRUE" ;
   code:hasValue "true"^^xsd:boolean ;
 .
 code:RuleOutcome_2
   rdf:type code:RuleOutcome ;
-  skos:prefLabel "Rule outcome FALSE"^^xsd:string ;
+  skos:prefLabel "Rule outcome FALSE" ;
   code:hasValue "false"^^xsd:boolean ;
 .
 code:RuleOutcome_3
   rdf:type code:RuleOutcome ;
-  code:hasValue "NOT-APPLICABLE"^^xsd:string ;
+  code:hasValue "NOT-APPLICABLE" ;
 .
 code:Sex
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
+  rdfs:subClassOf code:CategoricalOutcome ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
-  rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SEX"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SEX" ;
+.
+code:SexDataCollection
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Observation ;
 .
 code:Sex_F
   rdf:type code:Sex ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66731.C16576> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "F"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "F" ;
 .
 code:Sex_M
   rdf:type code:Sex ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "M"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "M" ;
 .
 code:Sex_U
   rdf:type code:Sex ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66731.C17998> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "U"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "U" ;
 .
 code:Sex_UN
   rdf:type code:Sex ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66731.C45908> ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "UN"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "UN" ;
 .
 code:StandardFormat
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:prefLabel "Standard format"^^xsd:string ;
+  skos:prefLabel "Standard format" ;
 .
 code:Substance
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Substance term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Substance term" ;
 .
 code:SubstanceQuantity
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition "Describes the name of the substance and the amount of the substance used in a unit dosage form (e.g. tablet, patch) of the product"^^xsd:string ;
-  skos:prefLabel "Substance quantity"^^xsd:string ;
+  skos:definition "Describes the name of the substance and the amount of the substance used in a unit dosage form (e.g. tablet, patch) of the product" ;
+  skos:prefLabel "Substance quantity" ;
+.
+code:Successfully_Completed
+  rdf:type code:GenericOutcome ;
+  skos:prefLabel "Successfully Completed" ;
 .
 code:TemperatureUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Temperature unit"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Temperature unit" ;
 .
 code:Unit
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Unit term"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Unit term" ;
 .
 code:Unit_BEATS_MIN
+  rdf:type code:PulseUnit ;
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
-  skos:prefLabel "BEATS/MIN"^^xsd:string ;
-  skos:prefLabel "BEATS/MIN"^^xsd:string ;
+  skos:prefLabel "BEATS/MIN" ;
 .
 code:Unit_C
   rdf:type code:TemperatureUnit ;
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
-  skos:prefLabel "C"^^xsd:string ;
-  skos:prefLabel "C"^^xsd:string ;
+  skos:prefLabel "C" ;
 .
 code:Unit_F
   rdf:type code:TemperatureUnit ;
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
-  skos:prefLabel "F"^^xsd:string ;
-  skos:prefLabel "F"^^xsd:string ;
+  skos:prefLabel "F" ;
 .
 code:Unit_IN
   rdf:type code:HeightUnit ;
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "IN"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "IN"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "IN" ;
 .
 code:Unit_LB
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
   rdf:type code:WeightUnit ;
-  skos:prefLabel "LB"^^xsd:string ;
-  skos:prefLabel "LB"^^xsd:string ;
+  skos:prefLabel "LB" ;
 .
 code:Unit_cm
   rdf:type code:HeightUnit ;
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "cm"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "cm"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "cm" ;
 .
 code:Unit_kg
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
   rdf:type code:WeightUnit ;
-  skos:prefLabel "kg"^^xsd:string ;
-  skos:prefLabel "kg"^^xsd:string ;
+  skos:prefLabel "kg" ;
 .
 code:Unit_mg
   rdf:type code:Unit ;
   rdf:type code:WeightUnit ;
-  skos:prefLabel "mg"^^xsd:string ;
-  skos:prefLabel "mg"^^xsd:string ;
+  skos:prefLabel "mg" ;
 .
 code:Unit_mmHG
   rdf:type code:Unit ;
   rdf:type code:VitalSignsUnit ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "mmHg"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "mmHg"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "mmHg" ;
 .
 code:VitalSign
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "Vital signs test name"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf code:Observation ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Vital signs test name" ;
 .
 code:VitalSignsLocation
   rdf:type owl:Class ;
   rdfs:subClassOf code:AnatomicLocation ;
-  skos:prefLabel "VSLOC"^^xsd:string ;
+  skos:prefLabel "VSLOC" ;
 .
 code:VitalSignsUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
-  skos:prefLabel "VSUNIT"^^xsd:string ;
+  skos:prefLabel "VSUNIT" ;
 .
 code:WeightUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Weight unit"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Weight unit" ;
 .
 code:hasAge
   rdf:type owl:ObjectProperty ;
-  rdfs:domain code:DemographicDataCollection ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "has age"^^xsd:string ;
+  rdfs:domain <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#Person> ;
+  skos:altLabel "" ;
+  skos:prefLabel "has age" ;
 .
 code:hasConversionFactor
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain code:ConversionFactor ;
-  skos:prefLabel "has conversion factor"^^xsd:string ;
   rdfs:range xsd:float ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has conversion factor" ;
 .
 code:hasDosageForm
   rdf:type owl:ObjectProperty ;
   rdfs:domain code:DrugProduct ;
   rdfs:range code:DosageForm ;
-  skos:prefLabel "has dosage form"^^xsd:string ;
+  skos:prefLabel "has dosage form" ;
 .
 code:hasIdentifier
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain code:DefinedConcept ;
-  skos:prefLabel "has value"^^xsd:string ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has value" ;
 .
 code:hasIngredient
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain code:SubstanceQuantity ;
-  skos:prefLabel "has ingredient"^^xsd:string ;
   rdfs:range code:Substance ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has ingredient" ;
 .
 code:hasIngredientQuantity
   rdf:type owl:ObjectProperty ;
   rdfs:domain code:Product ;
   rdfs:range code:SubstanceQuantity ;
-  skos:prefLabel "has ingredient quantity"^^xsd:string ;
+  skos:prefLabel "has ingredient quantity" ;
 .
 code:hasMethod
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "has method"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:range code:Method ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has method" ;
 .
 code:hasOriginalUnit
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain code:ConversionFactor ;
-  skos:prefLabel "has original unit"^^xsd:string ;
   rdfs:range code:Unit ;
   rdfs:subPropertyOf code:hasUnit ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has original unit" ;
 .
 code:hasPermissibleOutcome
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain code:DefinedActivity ;
-  skos:prefLabel "permissible outcome"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "permissible outcome" ;
 .
 code:hasStandardUnit
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain code:ConversionFactor ;
-  skos:prefLabel "has normalized unit"^^xsd:string ;
   rdfs:range code:Unit ;
   rdfs:subPropertyOf code:hasUnit ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has normalized unit" ;
 .
 code:hasUnit
   rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain code:DefinedActivityOutcome ;
-  skos:prefLabel "has unit"^^xsd:string ;
   rdfs:range code:Unit ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has unit" ;
 .
 code:hasValue
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain code:DefinedActivityOutcome ;
-  skos:prefLabel "has value"^^xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has value" ;
 .
 code:randomizationQuotient
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
-  skos:prefLabel "randomization quotient"^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:range xsd:float ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "randomization quotient" ;
   code:randomizationQuotient "0.67"^^xsd:float ;
 .
 code:unitConversion
@@ -1099,35 +1061,35 @@ code:unitConversion
       rdf:type sp:Select ;
       sp:resultVariables (
           [
-            sp:varName "normResult"^^xsd:string ;
+            sp:varName "normResult" ;
           ]
         ) ;
       sp:where (
           [
             sp:object [
-                sp:varName "orresu"^^xsd:string ;
+                sp:varName "orresu" ;
               ] ;
             sp:predicate code:hasUnit ;
             sp:subject [
-                sp:varName "origResult"^^xsd:string ;
+                sp:varName "origResult" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "orres"^^xsd:string ;
+                sp:varName "orres" ;
               ] ;
             sp:predicate code:hasValue ;
             sp:subject [
-                sp:varName "origResult"^^xsd:string ;
+                sp:varName "origResult" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "orresu"^^xsd:string ;
+                sp:varName "orresu" ;
               ] ;
             sp:predicate code:hasOriginalUnit ;
             sp:subject [
-                sp:varName "convfactor"^^xsd:string ;
+                sp:varName "convfactor" ;
               ] ;
           ]
           [
@@ -1135,11 +1097,11 @@ code:unitConversion
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "cfn"^^xsd:string ;
+                      sp:varName "cfn" ;
                     ] ;
                   sp:predicate code:hasConversionFactor ;
                   sp:subject [
-                      sp:varName "convfactor"^^xsd:string ;
+                      sp:varName "convfactor" ;
                     ] ;
                 ]
               ) ;
@@ -1151,7 +1113,7 @@ code:unitConversion
                 sp:arg1 [
                     rdf:type sp:eq ;
                     sp:arg1 [
-                        sp:varName "orresu"^^xsd:string ;
+                        sp:varName "orresu" ;
                       ] ;
                     sp:arg2 code:Unit_F ;
                   ] ;
@@ -1162,7 +1124,7 @@ code:unitConversion
                         sp:arg1 [
                             rdf:type sp:sub ;
                             sp:arg1 [
-                                sp:varName "orres"^^xsd:string ;
+                                sp:varName "orres" ;
                               ] ;
                             sp:arg2 32 ;
                           ] ;
@@ -1179,17 +1141,17 @@ code:unitConversion
                     sp:arg1 [
                         rdf:type sp:mul ;
                         sp:arg1 [
-                            sp:varName "orres"^^xsd:string ;
+                            sp:varName "orres" ;
                           ] ;
                         sp:arg2 [
-                            sp:varName "cfn"^^xsd:string ;
+                            sp:varName "cfn" ;
                           ] ;
                       ] ;
                     sp:arg2 "#" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "normResult"^^xsd:string ;
+                sp:varName "normResult" ;
               ] ;
           ]
         ) ;
@@ -1199,8 +1161,8 @@ code:unitConversion
       spl:predicate arg:origResult ;
       spl:valueType rdfs:Resource ;
     ] ;
-  skos:prefLabel "Unit conversion"^^xsd:string ;
   rdfs:subClassOf spin:Functions ;
+  skos:prefLabel "Unit conversion" ;
 .
 code:unitConversionChar
   rdf:type spin:Function ;
@@ -1208,7 +1170,7 @@ code:unitConversionChar
       rdf:type sp:Select ;
       sp:resultVariables (
           [
-            sp:varName "normResultChar"^^xsd:string ;
+            sp:varName "normResultChar" ;
           ]
         ) ;
       sp:where (
@@ -1217,11 +1179,11 @@ code:unitConversionChar
             sp:expression [
                 rdf:type code:unitConversion ;
                 arg:origResult [
-                    sp:varName "origResult"^^xsd:string ;
+                    sp:varName "origResult" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "normResult"^^xsd:string ;
+                sp:varName "normResult" ;
               ] ;
           ]
           [
@@ -1229,11 +1191,11 @@ code:unitConversionChar
             sp:expression [
                 rdf:type xsd:string ;
                 sp:arg1 [
-                    sp:varName "normResult"^^xsd:string ;
+                    sp:varName "normResult" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "normResultChar"^^xsd:string ;
+                sp:varName "normResultChar" ;
               ] ;
           ]
         ) ;
@@ -1243,8 +1205,8 @@ code:unitConversionChar
       spl:predicate arg:origResult ;
       spl:valueType rdfs:Resource ;
     ] ;
-  skos:prefLabel "Unit conversion"^^xsd:string ;
   rdfs:subClassOf spin:Functions ;
+  skos:prefLabel "Unit conversion" ;
 .
 code:unitNormalized
   rdf:type spin:Function ;
@@ -1252,44 +1214,44 @@ code:unitNormalized
       rdf:type sp:Select ;
       sp:resultVariables (
           [
-            sp:varName "normUnit"^^xsd:string ;
+            sp:varName "normUnit" ;
           ]
         ) ;
       sp:where (
           [
             sp:object [
-                sp:varName "orresu"^^xsd:string ;
+                sp:varName "orresu" ;
               ] ;
             sp:predicate code:hasUnit ;
             sp:subject [
-                sp:varName "origResult"^^xsd:string ;
+                sp:varName "origResult" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "orresu"^^xsd:string ;
+                sp:varName "orresu" ;
               ] ;
             sp:predicate code:hasOriginalUnit ;
             sp:subject [
-                sp:varName "convfactor"^^xsd:string ;
+                sp:varName "convfactor" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "sresu"^^xsd:string ;
+                sp:varName "sresu" ;
               ] ;
             sp:predicate code:hasStandardUnit ;
             sp:subject [
-                sp:varName "convfactor"^^xsd:string ;
+                sp:varName "convfactor" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "normUnit"^^xsd:string ;
+                sp:varName "normUnit" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "sresu"^^xsd:string ;
+                sp:varName "sresu" ;
               ] ;
           ]
         ) ;
@@ -1299,6 +1261,6 @@ code:unitNormalized
       spl:predicate arg:origResult ;
       spl:valueType rdfs:Resource ;
     ] ;
-  skos:prefLabel "unit normalized"^^xsd:string ;
   rdfs:subClassOf spin:Functions ;
+  skos:prefLabel "unit normalized" ;
 .

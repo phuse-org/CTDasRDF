@@ -5,6 +5,7 @@
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
 # imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
+# prefix: sdtm
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix cdiscs: <http://rdf.cdisc.org/std/schema#> .
@@ -273,7 +274,7 @@
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl> ;
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
-  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+  owl:versionInfo "Created with TopBraid Composer" ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#Dataset.SUPPDM>
   rdf:type sdtm:Domain ;
@@ -281,26 +282,26 @@
 .
 sdtm:DefineComponent
   rdf:type owl:Class ;
-  rdfs:label "Define component"^^xsd:string ;
+  rdfs:label "Define component" ;
 .
 sdtm:DefineTerminology
   rdf:type owl:Class ;
-  rdfs:label "Define terminology"^^xsd:string ;
+  rdfs:label "Define terminology" ;
   rdfs:subClassOf sdtm:DefineComponent ;
 .
 sdtm:Domain
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf sdtm:SDTMTerminology ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Domain"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Domain" ;
 .
 sdtm:SDTMComponent
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf owl:Thing ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTMComponent"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SDTMComponent" ;
 .
 sdtm:SDTMDefineDomain
   rdf:type owl:Class ;
@@ -310,31 +311,31 @@ sdtm:SDTMDefineDomain
           [
             rdf:type sp:Asc ;
             sp:expression [
-                sp:varName "num"^^xsd:string ;
+                sp:varName "num" ;
               ] ;
           ]
         ) ;
       sp:resultVariables (
           [
-            sp:varName "Variable"^^xsd:string ;
+            sp:varName "Variable" ;
           ]
           [
-            sp:varName "Label"^^xsd:string ;
+            sp:varName "Label" ;
           ]
           [
-            sp:varName "Type"^^xsd:string ;
+            sp:varName "Type" ;
           ]
           [
-            sp:varName "Controlled_Terminology"^^xsd:string ;
+            sp:varName "Controlled_Terminology" ;
           ]
           [
-            sp:varName "Origin"^^xsd:string ;
+            sp:varName "Origin" ;
           ]
           [
-            sp:varName "Role"^^xsd:string ;
+            sp:varName "Role" ;
           ]
           [
-            sp:varName "Comment"^^xsd:string ;
+            sp:varName "Comment" ;
           ]
         ) ;
       sp:where (
@@ -345,39 +346,39 @@ sdtm:SDTMDefineDomain
           ]
           [
             sp:object [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
             sp:predicate sdtm:hasDFVariable ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "num"^^xsd:string ;
+                sp:varName "num" ;
               ] ;
             sp:predicate mms:ordinal ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "Variable"^^xsd:string ;
+                sp:varName "Variable" ;
               ] ;
             sp:predicate mms:dataElementName ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "Label"^^xsd:string ;
+                sp:varName "Label" ;
               ] ;
             sp:predicate sdtm:hasDFLabel ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "Type"^^xsd:string ;
+                sp:varName "Type" ;
               ] ;
             sp:predicate sdtm:hasDFType ;
             sp:subject spin:_this ;
@@ -387,7 +388,7 @@ sdtm:SDTMDefineDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "Controlled_Terminology"^^xsd:string ;
+                      sp:varName "Controlled_Terminology" ;
                     ] ;
                   sp:predicate sdtm:hasDFControlledTerm ;
                   sp:subject spin:_this ;
@@ -396,14 +397,14 @@ sdtm:SDTMDefineDomain
           ]
           [
             sp:object [
-                sp:varName "Origin"^^xsd:string ;
+                sp:varName "Origin" ;
               ] ;
             sp:predicate sdtm:hasDFOrigin ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "Role"^^xsd:string ;
+                sp:varName "Role" ;
               ] ;
             sp:predicate sdtm:hasDFRole ;
             sp:subject spin:_this ;
@@ -413,7 +414,7 @@ sdtm:SDTMDefineDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "Comment"^^xsd:string ;
+                      sp:varName "Comment" ;
                     ] ;
                   sp:predicate sdtm:hasDFComment ;
                   sp:subject spin:_this ;
@@ -421,7 +422,7 @@ sdtm:SDTMDefineDomain
               ) ;
           ]
         ) ;
-      rdfs:comment "generates a tabular display of define.xml content for DM"^^xsd:string ;
+      rdfs:comment "generates a tabular display of define.xml content for DM" ;
     ] ;
   spin:query [
       rdf:type sp:Select ;
@@ -429,31 +430,31 @@ sdtm:SDTMDefineDomain
           [
             rdf:type sp:Asc ;
             sp:expression [
-                sp:varName "num"^^xsd:string ;
+                sp:varName "num" ;
               ] ;
           ]
         ) ;
       sp:resultVariables (
           [
-            sp:varName "Variable"^^xsd:string ;
+            sp:varName "Variable" ;
           ]
           [
-            sp:varName "Label"^^xsd:string ;
+            sp:varName "Label" ;
           ]
           [
-            sp:varName "Type"^^xsd:string ;
+            sp:varName "Type" ;
           ]
           [
-            sp:varName "Controlled_Terminology"^^xsd:string ;
+            sp:varName "Controlled_Terminology" ;
           ]
           [
-            sp:varName "Origin"^^xsd:string ;
+            sp:varName "Origin" ;
           ]
           [
-            sp:varName "Role"^^xsd:string ;
+            sp:varName "Role" ;
           ]
           [
-            sp:varName "Comment"^^xsd:string ;
+            sp:varName "Comment" ;
           ]
         ) ;
       sp:where (
@@ -464,39 +465,39 @@ sdtm:SDTMDefineDomain
           ]
           [
             sp:object [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
             sp:predicate sdtm:hasDFVariable ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "num"^^xsd:string ;
+                sp:varName "num" ;
               ] ;
             sp:predicate mms:ordinal ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "Variable"^^xsd:string ;
+                sp:varName "Variable" ;
               ] ;
             sp:predicate mms:dataElementName ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "Label"^^xsd:string ;
+                sp:varName "Label" ;
               ] ;
             sp:predicate sdtm:hasDFLabel ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "Type"^^xsd:string ;
+                sp:varName "Type" ;
               ] ;
             sp:predicate sdtm:hasDFType ;
             sp:subject spin:_this ;
@@ -506,7 +507,7 @@ sdtm:SDTMDefineDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "Controlled_Terminology"^^xsd:string ;
+                      sp:varName "Controlled_Terminology" ;
                     ] ;
                   sp:predicate sdtm:hasDFControlledTerm ;
                   sp:subject spin:_this ;
@@ -515,14 +516,14 @@ sdtm:SDTMDefineDomain
           ]
           [
             sp:object [
-                sp:varName "Origin"^^xsd:string ;
+                sp:varName "Origin" ;
               ] ;
             sp:predicate sdtm:hasDFOrigin ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "Role"^^xsd:string ;
+                sp:varName "Role" ;
               ] ;
             sp:predicate sdtm:hasDFRole ;
             sp:subject spin:_this ;
@@ -532,7 +533,7 @@ sdtm:SDTMDefineDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "Comment"^^xsd:string ;
+                      sp:varName "Comment" ;
                     ] ;
                   sp:predicate sdtm:hasDFComment ;
                   sp:subject spin:_this ;
@@ -540,36 +541,36 @@ sdtm:SDTMDefineDomain
               ) ;
           ]
         ) ;
-      rdfs:comment "generates a tabular display of define.xml content for VS"^^xsd:string ;
+      rdfs:comment "generates a tabular display of define.xml content for VS" ;
     ] ;
   spin:query [
       rdf:type sp:Select ;
       sp:orderBy (
           [
-            sp:varName "num"^^xsd:string ;
+            sp:varName "num" ;
           ]
         ) ;
       sp:resultVariables (
           [
-            sp:varName "Variable"^^xsd:string ;
+            sp:varName "Variable" ;
           ]
           [
-            sp:varName "Label"^^xsd:string ;
+            sp:varName "Label" ;
           ]
           [
-            sp:varName "Type"^^xsd:string ;
+            sp:varName "Type" ;
           ]
           [
-            sp:varName "Controlled_Terminology"^^xsd:string ;
+            sp:varName "Controlled_Terminology" ;
           ]
           [
-            sp:varName "Origin"^^xsd:string ;
+            sp:varName "Origin" ;
           ]
           [
-            sp:varName "Role"^^xsd:string ;
+            sp:varName "Role" ;
           ]
           [
-            sp:varName "Comment"^^xsd:string ;
+            sp:varName "Comment" ;
           ]
         ) ;
       sp:where (
@@ -580,51 +581,51 @@ sdtm:SDTMDefineDomain
           ]
           [
             sp:object [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
             sp:predicate sdtm:hasDFVariable ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "num"^^xsd:string ;
+                sp:varName "num" ;
               ] ;
             sp:predicate mms:ordinal ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "Variable"^^xsd:string ;
+                sp:varName "Variable" ;
               ] ;
             sp:predicate sdtm:hasDFVariableName ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "Label"^^xsd:string ;
+                sp:varName "Label" ;
               ] ;
             sp:predicate sdtm:hasDFLabel ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "Type"^^xsd:string ;
+                sp:varName "Type" ;
               ] ;
             sp:predicate sdtm:hasDFType ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "Origin"^^xsd:string ;
+                sp:varName "Origin" ;
               ] ;
             sp:predicate sdtm:hasDFOrigin ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "Role"^^xsd:string ;
+                sp:varName "Role" ;
               ] ;
             sp:predicate sdtm:hasDFRole ;
             sp:subject spin:_this ;
@@ -634,7 +635,7 @@ sdtm:SDTMDefineDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "Controlled_Terminology"^^xsd:string ;
+                      sp:varName "Controlled_Terminology" ;
                     ] ;
                   sp:predicate sdtm:hasDFControlledTerm ;
                   sp:subject spin:_this ;
@@ -646,7 +647,7 @@ sdtm:SDTMDefineDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "Comment"^^xsd:string ;
+                      sp:varName "Comment" ;
                     ] ;
                   sp:predicate sdtm:hasDFComment ;
                   sp:subject spin:_this ;
@@ -654,9 +655,9 @@ sdtm:SDTMDefineDomain
               ) ;
           ]
         ) ;
-      rdfs:comment "generates a tabular display of define.xml content for SUPPDM"^^xsd:string ;
+      rdfs:comment "generates a tabular display of define.xml content for SUPPDM" ;
     ] ;
-  rdfs:label "SDTMDefine domain"^^xsd:string ;
+  rdfs:label "SDTMDefine domain" ;
   rdfs:subClassOf sdtm:DefineComponent ;
 .
 sdtm:SDTMDefineRecord
@@ -666,7 +667,7 @@ sdtm:SDTMDefineRecord
       sp:templates (
           [
             sp:object [
-                sp:varName "ORIGIN"^^xsd:string ;
+                sp:varName "ORIGIN" ;
               ] ;
             sp:predicate sdtm:hasDFOrigin ;
             sp:subject spin:_this ;
@@ -680,7 +681,7 @@ sdtm:SDTMDefineRecord
           ]
           [
             sp:object [
-                sp:varName "method"^^xsd:string ;
+                sp:varName "method" ;
               ] ;
             sp:predicate sdtm:hasDFMethod ;
             sp:subject spin:_this ;
@@ -690,7 +691,7 @@ sdtm:SDTMDefineRecord
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "location"^^xsd:string ;
+                      sp:varName "location" ;
                     ] ;
                   sp:predicate sdtm:hasDFLocation ;
                   sp:subject spin:_this ;
@@ -703,11 +704,11 @@ sdtm:SDTMDefineRecord
                 rdf:type sp:concat ;
                 sp:arg1 " / " ;
                 sp:arg2 [
-                    sp:varName "location"^^xsd:string ;
+                    sp:varName "location" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "location2"^^xsd:string ;
+                sp:varName "location2" ;
               ] ;
           ]
           [
@@ -715,14 +716,14 @@ sdtm:SDTMDefineRecord
             sp:expression [
                 rdf:type sp:concat ;
                 sp:arg1 [
-                    sp:varName "method"^^xsd:string ;
+                    sp:varName "method" ;
                   ] ;
                 sp:arg2 [
-                    sp:varName "location2"^^xsd:string ;
+                    sp:varName "location2" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "origin2"^^xsd:string ;
+                sp:varName "origin2" ;
               ] ;
           ]
           [
@@ -734,37 +735,37 @@ sdtm:SDTMDefineRecord
                     sp:arg1 [
                         rdf:type sp:bound ;
                         sp:arg1 [
-                            sp:varName "location"^^xsd:string ;
+                            sp:varName "location" ;
                           ] ;
                       ] ;
                   ] ;
                 sp:arg2 [
-                    sp:varName "method"^^xsd:string ;
+                    sp:varName "method" ;
                   ] ;
                 sp:arg3 [
-                    sp:varName "origin2"^^xsd:string ;
+                    sp:varName "origin2" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "ORIGIN"^^xsd:string ;
+                sp:varName "ORIGIN" ;
               ] ;
           ]
         ) ;
-      rdfs:comment "Constructs ORIGIN column as concatenation of Method and Location"^^xsd:string ;
+      rdfs:comment "Constructs ORIGIN column as concatenation of Method and Location" ;
     ] ;
   spin:rule [
       rdf:type sp:Construct ;
       sp:templates (
           [
             sp:object [
-                sp:varName "method"^^xsd:string ;
+                sp:varName "method" ;
               ] ;
             sp:predicate sdtm:hasDFMethod ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "location"^^xsd:string ;
+                sp:varName "location" ;
               ] ;
             sp:predicate sdtm:hasDFLocation ;
             sp:subject spin:_this ;
@@ -778,36 +779,36 @@ sdtm:SDTMDefineRecord
           ]
           [
             sp:object [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
             sp:predicate sdtm:hasDFVariable ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "am"^^xsd:string ;
+                sp:varName "am" ;
               ] ;
             sp:predicate sdtm:additionalMetadata ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "met"^^xsd:string ;
+                sp:varName "met" ;
               ] ;
             sp:predicate code:hasMethod ;
             sp:subject [
-                sp:varName "am"^^xsd:string ;
+                sp:varName "am" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "method"^^xsd:string ;
+                sp:varName "method" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "met"^^xsd:string ;
+                sp:varName "met" ;
               ] ;
           ]
           [
@@ -815,61 +816,61 @@ sdtm:SDTMDefineRecord
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "loc"^^xsd:string ;
+                      sp:varName "loc" ;
                     ] ;
                   sp:predicate study:crfLocation ;
                   sp:subject [
-                      sp:varName "am"^^xsd:string ;
+                      sp:varName "am" ;
                     ] ;
                 ]
                 [
                   sp:object [
-                      sp:varName "location"^^xsd:string ;
+                      sp:varName "location" ;
                     ] ;
                   sp:predicate skos:prefLabel ;
                   sp:subject [
-                      sp:varName "loc"^^xsd:string ;
+                      sp:varName "loc" ;
                     ] ;
                 ]
               ) ;
           ]
         ) ;
-      rdfs:comment "Method and Location search"^^xsd:string ;
+      rdfs:comment "Method and Location search" ;
     ] ;
   spin:rule [
       rdf:type sp:Construct ;
       sp:templates (
           [
             sp:object [
-                sp:varName "varname"^^xsd:string ;
+                sp:varName "varname" ;
               ] ;
             sp:predicate sdtm:hasDFVariableName ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "varlabel"^^xsd:string ;
+                sp:varName "varlabel" ;
               ] ;
             sp:predicate sdtm:hasDFLabel ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vartype"^^xsd:string ;
+                sp:varName "vartype" ;
               ] ;
             sp:predicate sdtm:hasDFType ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "varrole"^^xsd:string ;
+                sp:varName "varrole" ;
               ] ;
             sp:predicate sdtm:hasDFRole ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "ctrlterm"^^xsd:string ;
+                sp:varName "ctrlterm" ;
               ] ;
             sp:predicate sdtm:hasDFControlledTerm ;
             sp:subject spin:_this ;
@@ -878,54 +879,54 @@ sdtm:SDTMDefineRecord
       sp:where (
           [
             sp:object [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
             sp:predicate sdtm:hasDFVariable ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "varname"^^xsd:string ;
+                sp:varName "varname" ;
               ] ;
             sp:predicate mms:dataElementName ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "varlabel"^^xsd:string ;
+                sp:varName "varlabel" ;
               ] ;
             sp:predicate mms:dataElementLabel ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "vartype"^^xsd:string ;
+                sp:varName "vartype" ;
               ] ;
             sp:predicate mms:dataElementType ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "rl"^^xsd:string ;
+                sp:varName "rl" ;
               ] ;
             sp:predicate cdiscs:dataElementRole ;
             sp:subject [
-                sp:varName "var"^^xsd:string ;
+                sp:varName "var" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "varrole"^^xsd:string ;
+                sp:varName "varrole" ;
               ] ;
             sp:predicate rdfs:label ;
             sp:subject [
-                sp:varName "rl"^^xsd:string ;
+                sp:varName "rl" ;
               ] ;
           ]
           [
@@ -933,32 +934,32 @@ sdtm:SDTMDefineRecord
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "ct"^^xsd:string ;
+                      sp:varName "ct" ;
                     ] ;
                   sp:predicate cdiscs:controlledTermsOrFormat ;
                   sp:subject [
-                      sp:varName "var"^^xsd:string ;
+                      sp:varName "var" ;
                     ] ;
                 ]
                 [
                   sp:object [
-                      sp:varName "ctrm"^^xsd:string ;
+                      sp:varName "ctrm" ;
                     ] ;
                   sp:predicate skos:prefLabel ;
                   sp:subject [
-                      sp:varName "ct"^^xsd:string ;
+                      sp:varName "ct" ;
                     ] ;
                 ]
                 [
                   sp:object [
-                      sp:varName "armctrm"^^xsd:string ;
+                      sp:varName "armctrm" ;
                     ] ;
                   sp:predicate skos:prefLabel ;
                   sp:subject study:Arm ;
                 ]
                 [
                   sp:object [
-                      sp:varName "armcdctrm"^^xsd:string ;
+                      sp:varName "armcdctrm" ;
                     ] ;
                   sp:predicate skos:altLabel ;
                   sp:subject study:Arm ;
@@ -972,20 +973,20 @@ sdtm:SDTMDefineRecord
                           sp:arg1 [
                               rdf:type sp:eq ;
                               sp:arg1 [
-                                  sp:varName "var"^^xsd:string ;
+                                  sp:varName "var" ;
                                 ] ;
                               sp:arg2 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ARM> ;
                             ] ;
                           sp:arg2 [
                               rdf:type sp:eq ;
                               sp:arg1 [
-                                  sp:varName "var"^^xsd:string ;
+                                  sp:varName "var" ;
                                 ] ;
                               sp:arg2 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARM> ;
                             ] ;
                         ] ;
                       sp:arg2 [
-                          sp:varName "armctrm"^^xsd:string ;
+                          sp:varName "armctrm" ;
                         ] ;
                       sp:arg3 [
                           rdf:type sp:if ;
@@ -994,57 +995,57 @@ sdtm:SDTMDefineRecord
                               sp:arg1 [
                                   rdf:type sp:eq ;
                                   sp:arg1 [
-                                      sp:varName "var"^^xsd:string ;
+                                      sp:varName "var" ;
                                     ] ;
                                   sp:arg2 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ARMCD> ;
                                 ] ;
                               sp:arg2 [
                                   rdf:type sp:eq ;
                                   sp:arg1 [
-                                      sp:varName "var"^^xsd:string ;
+                                      sp:varName "var" ;
                                     ] ;
                                   sp:arg2 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARMCD> ;
                                 ] ;
                             ] ;
                           sp:arg2 [
-                              sp:varName "armcdctrm"^^xsd:string ;
+                              sp:varName "armcdctrm" ;
                             ] ;
                           sp:arg3 [
-                              sp:varName "ctrm"^^xsd:string ;
+                              sp:varName "ctrm" ;
                             ] ;
                         ] ;
                     ] ;
                   sp:variable [
-                      sp:varName "ctrlterm"^^xsd:string ;
+                      sp:varName "ctrlterm" ;
                     ] ;
                 ]
               ) ;
           ]
         ) ;
-      rdfs:comment "constructs Variable, Label, Type, Role, Controlled Terms columns"^^xsd:string ;
+      rdfs:comment "constructs Variable, Label, Type, Role, Controlled Terms columns" ;
     ] ;
   rdfs:subClassOf sdtm:DefineComponent ;
-  skos:altLabel ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTMDefine record"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:definition "" ;
+  skos:prefLabel "SDTMDefine record" ;
 .
 sdtm:SDTMDefineRecord_DM
   rdf:type owl:Class ;
   rdfs:subClassOf sdtm:SDTMDefineRecord ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "SDTMDefine record DM"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "SDTMDefine record DM" ;
 .
 sdtm:SDTMDefineRecord_SUPPDM
   rdf:type owl:Class ;
   rdfs:subClassOf sdtm:SDTMDefineRecord ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "SDTMDefine record SUPPDM"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "SDTMDefine record SUPPDM" ;
 .
 sdtm:SDTMDefineRecord_VS
   rdf:type owl:Class ;
   rdfs:subClassOf sdtm:SDTMDefineRecord ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "SDTMDefine record VS"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "SDTMDefine record VS" ;
 .
 sdtm:SDTMDomain
   rdf:type owl:Class ;
@@ -1054,94 +1055,94 @@ sdtm:SDTMDomain
           [
             rdf:type sp:Asc ;
             sp:expression [
-                sp:varName "USUBJID"^^xsd:string ;
+                sp:varName "USUBJID" ;
               ] ;
           ]
         ) ;
       sp:resultVariables (
           [
-            sp:varName "STUDYID"^^xsd:string ;
+            sp:varName "STUDYID" ;
           ]
           [
-            sp:varName "DOMAIN"^^xsd:string ;
+            sp:varName "DOMAIN" ;
           ]
           [
-            sp:varName "USUBJID"^^xsd:string ;
+            sp:varName "USUBJID" ;
           ]
           [
-            sp:varName "SUBJID"^^xsd:string ;
+            sp:varName "SUBJID" ;
           ]
           [
-            sp:varName "RFSTDTC"^^xsd:string ;
+            sp:varName "RFSTDTC" ;
           ]
           [
-            sp:varName "RFENDTC"^^xsd:string ;
+            sp:varName "RFENDTC" ;
           ]
           [
-            sp:varName "RFXSTDTC"^^xsd:string ;
+            sp:varName "RFXSTDTC" ;
           ]
           [
-            sp:varName "RFXENDTC"^^xsd:string ;
+            sp:varName "RFXENDTC" ;
           ]
           [
-            sp:varName "RFICDTC"^^xsd:string ;
+            sp:varName "RFICDTC" ;
           ]
           [
-            sp:varName "RFPENDTC"^^xsd:string ;
+            sp:varName "RFPENDTC" ;
           ]
           [
-            sp:varName "BRTHDTC"^^xsd:string ;
+            sp:varName "BRTHDTC" ;
           ]
           [
-            sp:varName "DTHDTC"^^xsd:string ;
+            sp:varName "DTHDTC" ;
           ]
           [
-            sp:varName "DTHFL"^^xsd:string ;
+            sp:varName "DTHFL" ;
           ]
           [
-            sp:varName "SITEID"^^xsd:string ;
+            sp:varName "SITEID" ;
           ]
           [
-            sp:varName "INVNAM"^^xsd:string ;
+            sp:varName "INVNAM" ;
           ]
           [
-            sp:varName "INVID"^^xsd:string ;
+            sp:varName "INVID" ;
           ]
           [
-            sp:varName "AGE"^^xsd:string ;
+            sp:varName "AGE" ;
           ]
           [
-            sp:varName "AGEU"^^xsd:string ;
+            sp:varName "AGEU" ;
           ]
           [
-            sp:varName "SEX"^^xsd:string ;
+            sp:varName "SEX" ;
           ]
           [
-            sp:varName "RACE"^^xsd:string ;
+            sp:varName "RACE" ;
           ]
           [
-            sp:varName "ETHNIC"^^xsd:string ;
+            sp:varName "ETHNIC" ;
           ]
           [
-            sp:varName "ARMCD"^^xsd:string ;
+            sp:varName "ARMCD" ;
           ]
           [
-            sp:varName "ARM"^^xsd:string ;
+            sp:varName "ARM" ;
           ]
           [
-            sp:varName "ACTARMCD"^^xsd:string ;
+            sp:varName "ACTARMCD" ;
           ]
           [
-            sp:varName "ACTARM"^^xsd:string ;
+            sp:varName "ACTARM" ;
           ]
           [
-            sp:varName "COUNTRY"^^xsd:string ;
+            sp:varName "COUNTRY" ;
           ]
           [
-            sp:varName "DMDTC"^^xsd:string ;
+            sp:varName "DMDTC" ;
           ]
           [
-            sp:varName "DMDY"^^xsd:string ;
+            sp:varName "DMDY" ;
           ]
         ) ;
       sp:where (
@@ -1152,77 +1153,77 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "STUDYID"^^xsd:string ;
+                sp:varName "STUDYID" ;
               ] ;
             sp:predicate sdtm:hasSTUDYID ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "DOMAIN"^^xsd:string ;
+                sp:varName "DOMAIN" ;
               ] ;
             sp:predicate sdtm:hasDOMAIN ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "USUBJID"^^xsd:string ;
+                sp:varName "USUBJID" ;
               ] ;
             sp:predicate sdtm:hasUSUBJID ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "SUBJID"^^xsd:string ;
+                sp:varName "SUBJID" ;
               ] ;
             sp:predicate sdtm:hasSUBJID ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RFSTDTC"^^xsd:string ;
+                sp:varName "RFSTDTC" ;
               ] ;
             sp:predicate sdtm:hasRFSTDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RFENDTC"^^xsd:string ;
+                sp:varName "RFENDTC" ;
               ] ;
             sp:predicate sdtm:hasRFENDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RFXSTDTC"^^xsd:string ;
+                sp:varName "RFXSTDTC" ;
               ] ;
             sp:predicate sdtm:hasRFXSTDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RFXENDTC"^^xsd:string ;
+                sp:varName "RFXENDTC" ;
               ] ;
             sp:predicate sdtm:hasRFXENDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RFICDTC"^^xsd:string ;
+                sp:varName "RFICDTC" ;
               ] ;
             sp:predicate sdtm:hasRFICDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RFPENDTC"^^xsd:string ;
+                sp:varName "RFPENDTC" ;
               ] ;
             sp:predicate sdtm:hasRFPENDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "BRTHDTC"^^xsd:string ;
+                sp:varName "BRTHDTC" ;
               ] ;
             sp:predicate sdtm:hasBRTHDTC ;
             sp:subject spin:_this ;
@@ -1232,7 +1233,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "DTHDTC"^^xsd:string ;
+                      sp:varName "DTHDTC" ;
                     ] ;
                   sp:predicate sdtm:hasDTHDTC ;
                   sp:subject spin:_this ;
@@ -1244,7 +1245,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "DTHFL"^^xsd:string ;
+                      sp:varName "DTHFL" ;
                     ] ;
                   sp:predicate sdtm:hasDTHFL ;
                   sp:subject spin:_this ;
@@ -1253,7 +1254,7 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "SITEID"^^xsd:string ;
+                sp:varName "SITEID" ;
               ] ;
             sp:predicate sdtm:hasSITEID ;
             sp:subject spin:_this ;
@@ -1263,7 +1264,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "INVNAM"^^xsd:string ;
+                      sp:varName "INVNAM" ;
                     ] ;
                   sp:predicate sdtm:hasINVNAM ;
                   sp:subject spin:_this ;
@@ -1275,7 +1276,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "INVID"^^xsd:string ;
+                      sp:varName "INVID" ;
                     ] ;
                   sp:predicate sdtm:hasINVID ;
                   sp:subject spin:_this ;
@@ -1284,90 +1285,90 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "AGE"^^xsd:string ;
+                sp:varName "AGE" ;
               ] ;
             sp:predicate sdtm:hasAGE ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "AGEU"^^xsd:string ;
+                sp:varName "AGEU" ;
               ] ;
             sp:predicate sdtm:hasAGEU ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "SEX"^^xsd:string ;
+                sp:varName "SEX" ;
               ] ;
             sp:predicate sdtm:hasSEX ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RACE"^^xsd:string ;
+                sp:varName "RACE" ;
               ] ;
             sp:predicate sdtm:hasRACE ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "ETHNIC"^^xsd:string ;
+                sp:varName "ETHNIC" ;
               ] ;
             sp:predicate sdtm:hasETHNIC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "ARMCD"^^xsd:string ;
+                sp:varName "ARMCD" ;
               ] ;
             sp:predicate sdtm:hasARMCD ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "ARM"^^xsd:string ;
+                sp:varName "ARM" ;
               ] ;
             sp:predicate sdtm:hasARM ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "ACTARMCD"^^xsd:string ;
+                sp:varName "ACTARMCD" ;
               ] ;
             sp:predicate sdtm:hasACTARMCD ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "ACTARM"^^xsd:string ;
+                sp:varName "ACTARM" ;
               ] ;
             sp:predicate sdtm:hasACTARM ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "COUNTRY"^^xsd:string ;
+                sp:varName "COUNTRY" ;
               ] ;
             sp:predicate sdtm:hasCOUNTRY ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "DMDTC"^^xsd:string ;
+                sp:varName "DMDTC" ;
               ] ;
             sp:predicate sdtm:hasDMDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "DMDY"^^xsd:string ;
+                sp:varName "DMDY" ;
               ] ;
             sp:predicate sdtm:hasDMDY ;
             sp:subject spin:_this ;
           ]
         ) ;
-      rdfs:comment "DM domain query"^^xsd:string ;
+      rdfs:comment "DM domain query" ;
     ] ;
   spin:query [
       rdf:type sp:Select ;
@@ -1375,40 +1376,40 @@ sdtm:SDTMDomain
           [
             rdf:type sp:Asc ;
             sp:expression [
-                sp:varName "USUBJID"^^xsd:string ;
+                sp:varName "USUBJID" ;
               ] ;
           ]
         ) ;
       sp:resultVariables (
           [
-            sp:varName "STUDYID"^^xsd:string ;
+            sp:varName "STUDYID" ;
           ]
           [
-            sp:varName "RDOMAIN"^^xsd:string ;
+            sp:varName "RDOMAIN" ;
           ]
           [
-            sp:varName "USUBJID"^^xsd:string ;
+            sp:varName "USUBJID" ;
           ]
           [
-            sp:varName "IDVAR"^^xsd:string ;
+            sp:varName "IDVAR" ;
           ]
           [
-            sp:varName "IDVARVAL"^^xsd:string ;
+            sp:varName "IDVARVAL" ;
           ]
           [
-            sp:varName "QNAM"^^xsd:string ;
+            sp:varName "QNAM" ;
           ]
           [
-            sp:varName "QLABEL"^^xsd:string ;
+            sp:varName "QLABEL" ;
           ]
           [
-            sp:varName "QVAL"^^xsd:string ;
+            sp:varName "QVAL" ;
           ]
           [
-            sp:varName "QORIG"^^xsd:string ;
+            sp:varName "QORIG" ;
           ]
           [
-            sp:varName "QEVAL"^^xsd:string ;
+            sp:varName "QEVAL" ;
           ]
         ) ;
       sp:where (
@@ -1419,35 +1420,35 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "person"^^xsd:string ;
+                sp:varName "person" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "STUDYID"^^xsd:string ;
+                sp:varName "STUDYID" ;
               ] ;
             sp:predicate sdtm:hasSTUDYID ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "USUBJID"^^xsd:string ;
+                sp:varName "USUBJID" ;
               ] ;
             sp:predicate sdtm:hasUSUBJID ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RDOMAIN"^^xsd:string ;
+                sp:varName "RDOMAIN" ;
               ] ;
             sp:predicate sdtm:hasRDOMAIN ;
             sp:subject spin:_this ;
@@ -1457,7 +1458,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "IDVAR"^^xsd:string ;
+                      sp:varName "IDVAR" ;
                     ] ;
                   sp:predicate sdtm:hasIDVAR ;
                   sp:subject spin:_this ;
@@ -1469,7 +1470,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "IDVARVAL"^^xsd:string ;
+                      sp:varName "IDVARVAL" ;
                     ] ;
                   sp:predicate sdtm:hasIDVARVAL ;
                   sp:subject spin:_this ;
@@ -1478,41 +1479,41 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "QNAM"^^xsd:string ;
+                sp:varName "QNAM" ;
               ] ;
             sp:predicate sdtm:hasQNAM ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QLABEL"^^xsd:string ;
+                sp:varName "QLABEL" ;
               ] ;
             sp:predicate sdtm:hasQLABEL ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QVAL"^^xsd:string ;
+                sp:varName "QVAL" ;
               ] ;
             sp:predicate sdtm:hasQVAL ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QORIG"^^xsd:string ;
+                sp:varName "QORIG" ;
               ] ;
             sp:predicate sdtm:hasQORIG ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QEVAL"^^xsd:string ;
+                sp:varName "QEVAL" ;
               ] ;
             sp:predicate sdtm:hasQEVAL ;
             sp:subject spin:_this ;
           ]
         ) ;
-      rdfs:comment "SUPPDM domain query"^^xsd:string ;
+      rdfs:comment "SUPPDM domain query" ;
     ] ;
   spin:query [
       rdf:type sp:Select ;
@@ -1520,100 +1521,100 @@ sdtm:SDTMDomain
           [
             rdf:type sp:Asc ;
             sp:expression [
-                sp:varName "USUBJID"^^xsd:string ;
+                sp:varName "USUBJID" ;
               ] ;
           ]
           [
-            sp:varName "VSSEQ"^^xsd:string ;
+            sp:varName "VSSEQ" ;
           ]
         ) ;
       sp:resultVariables (
           [
-            sp:varName "STUDYID"^^xsd:string ;
+            sp:varName "STUDYID" ;
           ]
           [
-            sp:varName "DOMAIN"^^xsd:string ;
+            sp:varName "DOMAIN" ;
           ]
           [
-            sp:varName "USUBJID"^^xsd:string ;
+            sp:varName "USUBJID" ;
           ]
           [
-            sp:varName "VSSEQ"^^xsd:string ;
+            sp:varName "VSSEQ" ;
           ]
           [
-            sp:varName "VSGRPID"^^xsd:string ;
+            sp:varName "VSGRPID" ;
           ]
           [
-            sp:varName "VSSPID"^^xsd:string ;
+            sp:varName "VSSPID" ;
           ]
           [
-            sp:varName "VSTESTCD"^^xsd:string ;
+            sp:varName "VSTESTCD" ;
           ]
           [
-            sp:varName "VSTEST"^^xsd:string ;
+            sp:varName "VSTEST" ;
           ]
           [
-            sp:varName "VSCAT"^^xsd:string ;
+            sp:varName "VSCAT" ;
           ]
           [
-            sp:varName "VSSCAT"^^xsd:string ;
+            sp:varName "VSSCAT" ;
           ]
           [
-            sp:varName "VSPOS"^^xsd:string ;
+            sp:varName "VSPOS" ;
           ]
           [
-            sp:varName "VSORRES"^^xsd:string ;
+            sp:varName "VSORRES" ;
           ]
           [
-            sp:varName "VSORRESU"^^xsd:string ;
+            sp:varName "VSORRESU" ;
           ]
           [
-            sp:varName "VSSTRESC"^^xsd:string ;
+            sp:varName "VSSTRESC" ;
           ]
           [
-            sp:varName "VSSTRESN"^^xsd:string ;
+            sp:varName "VSSTRESN" ;
           ]
           [
-            sp:varName "VSSTRESU"^^xsd:string ;
+            sp:varName "VSSTRESU" ;
           ]
           [
-            sp:varName "VSSTAT"^^xsd:string ;
+            sp:varName "VSSTAT" ;
           ]
           [
-            sp:varName "VSRSND"^^xsd:string ;
+            sp:varName "VSRSND" ;
           ]
           [
-            sp:varName "VSLOC"^^xsd:string ;
+            sp:varName "VSLOC" ;
           ]
           [
-            sp:varName "VSLAT"^^xsd:string ;
+            sp:varName "VSLAT" ;
           ]
           [
-            sp:varName "VSBLFL"^^xsd:string ;
+            sp:varName "VSBLFL" ;
           ]
           [
-            sp:varName "VISITNUM"^^xsd:string ;
+            sp:varName "VISITNUM" ;
           ]
           [
-            sp:varName "VISIT"^^xsd:string ;
+            sp:varName "VISIT" ;
           ]
           [
-            sp:varName "VISITDY"^^xsd:string ;
+            sp:varName "VISITDY" ;
           ]
           [
-            sp:varName "VSTPT"^^xsd:string ;
+            sp:varName "VSTPT" ;
           ]
           [
-            sp:varName "VSTPTNUM"^^xsd:string ;
+            sp:varName "VSTPTNUM" ;
           ]
           [
-            sp:varName "VSELTM"^^xsd:string ;
+            sp:varName "VSELTM" ;
           ]
           [
-            sp:varName "VSTPTREF"^^xsd:string ;
+            sp:varName "VSTPTREF" ;
           ]
           [
-            sp:varName "VSRFTDTC"^^xsd:string ;
+            sp:varName "VSRFTDTC" ;
           ]
         ) ;
       sp:where (
@@ -1624,42 +1625,42 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "vsact"^^xsd:string ;
+                sp:varName "vsact" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "person"^^xsd:string ;
+                sp:varName "person" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "STUDYID"^^xsd:string ;
+                sp:varName "STUDYID" ;
               ] ;
             sp:predicate sdtm:hasSTUDYID ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "USUBJID"^^xsd:string ;
+                sp:varName "USUBJID" ;
               ] ;
             sp:predicate sdtm:hasUSUBJID ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "DOMAIN"^^xsd:string ;
+                sp:varName "DOMAIN" ;
               ] ;
             sp:predicate sdtm:hasDOMAIN ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSSEQ"^^xsd:string ;
+                sp:varName "VSSEQ" ;
               ] ;
             sp:predicate sdtm:hasVSSEQ ;
             sp:subject spin:_this ;
@@ -1669,7 +1670,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSGRPID"^^xsd:string ;
+                      sp:varName "VSGRPID" ;
                     ] ;
                   sp:predicate sdtm:hasVSGRPID ;
                   sp:subject spin:_this ;
@@ -1681,7 +1682,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSSPID"^^xsd:string ;
+                      sp:varName "VSSPID" ;
                     ] ;
                   sp:predicate sdtm:hasVSSPID ;
                   sp:subject spin:_this ;
@@ -1690,14 +1691,14 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "VSTESTCD"^^xsd:string ;
+                sp:varName "VSTESTCD" ;
               ] ;
             sp:predicate sdtm:hasVSTESTCD ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSTEST"^^xsd:string ;
+                sp:varName "VSTEST" ;
               ] ;
             sp:predicate sdtm:hasVSTEST ;
             sp:subject spin:_this ;
@@ -1707,7 +1708,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSCAT"^^xsd:string ;
+                      sp:varName "VSCAT" ;
                     ] ;
                   sp:predicate sdtm:hasVSCAT ;
                   sp:subject spin:_this ;
@@ -1719,7 +1720,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSSCAT"^^xsd:string ;
+                      sp:varName "VSSCAT" ;
                     ] ;
                   sp:predicate sdtm:hasVSSCAT ;
                   sp:subject spin:_this ;
@@ -1731,7 +1732,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSPOS"^^xsd:string ;
+                      sp:varName "VSPOS" ;
                     ] ;
                   sp:predicate sdtm:hasVSPOS ;
                   sp:subject spin:_this ;
@@ -1740,7 +1741,7 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "VSORRES"^^xsd:string ;
+                sp:varName "VSORRES" ;
               ] ;
             sp:predicate sdtm:hasVSORRES ;
             sp:subject spin:_this ;
@@ -1750,7 +1751,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSORRESU"^^xsd:string ;
+                      sp:varName "VSORRESU" ;
                     ] ;
                   sp:predicate sdtm:hasVSORRESU ;
                   sp:subject spin:_this ;
@@ -1759,14 +1760,14 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "VSSTRESC"^^xsd:string ;
+                sp:varName "VSSTRESC" ;
               ] ;
             sp:predicate sdtm:hasVSSTRESC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSSTRESN"^^xsd:string ;
+                sp:varName "VSSTRESN" ;
               ] ;
             sp:predicate sdtm:hasVSSTRESN ;
             sp:subject spin:_this ;
@@ -1776,7 +1777,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSSTRESU"^^xsd:string ;
+                      sp:varName "VSSTRESU" ;
                     ] ;
                   sp:predicate sdtm:hasVSSTRESU ;
                   sp:subject spin:_this ;
@@ -1788,7 +1789,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSRSND"^^xsd:string ;
+                      sp:varName "VSRSND" ;
                     ] ;
                   sp:predicate sdtm:hasVSRSND ;
                   sp:subject spin:_this ;
@@ -1800,7 +1801,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSSTAT"^^xsd:string ;
+                      sp:varName "VSSTAT" ;
                     ] ;
                   sp:predicate sdtm:hasVSSTAT ;
                   sp:subject spin:_this ;
@@ -1812,7 +1813,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSLOC"^^xsd:string ;
+                      sp:varName "VSLOC" ;
                     ] ;
                   sp:predicate sdtm:hasVSLOC ;
                   sp:subject spin:_this ;
@@ -1824,7 +1825,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSLAT"^^xsd:string ;
+                      sp:varName "VSLAT" ;
                     ] ;
                   sp:predicate sdtm:hasVSLAT ;
                   sp:subject spin:_this ;
@@ -1836,7 +1837,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSBLFL"^^xsd:string ;
+                      sp:varName "VSBLFL" ;
                     ] ;
                   sp:predicate sdtm:hasVSBLFL ;
                   sp:subject spin:_this ;
@@ -1845,21 +1846,21 @@ sdtm:SDTMDomain
           ]
           [
             sp:object [
-                sp:varName "VISITNUM"^^xsd:string ;
+                sp:varName "VISITNUM" ;
               ] ;
             sp:predicate sdtm:hasVISITNUM ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VISIT"^^xsd:string ;
+                sp:varName "VISIT" ;
               ] ;
             sp:predicate sdtm:hasVISIT ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VISITDY"^^xsd:string ;
+                sp:varName "VISITDY" ;
               ] ;
             sp:predicate sdtm:hasVISITDY ;
             sp:subject spin:_this ;
@@ -1869,7 +1870,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSTPT"^^xsd:string ;
+                      sp:varName "VSTPT" ;
                     ] ;
                   sp:predicate sdtm:hasVSTPT ;
                   sp:subject spin:_this ;
@@ -1881,7 +1882,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSTPTNUM"^^xsd:string ;
+                      sp:varName "VSTPTNUM" ;
                     ] ;
                   sp:predicate sdtm:hasVSTPTNUM ;
                   sp:subject spin:_this ;
@@ -1893,7 +1894,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSELTM"^^xsd:string ;
+                      sp:varName "VSELTM" ;
                     ] ;
                   sp:predicate sdtm:hasVSELTM ;
                   sp:subject spin:_this ;
@@ -1905,7 +1906,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSTPTREF"^^xsd:string ;
+                      sp:varName "VSTPTREF" ;
                     ] ;
                   sp:predicate sdtm:hasVSTPTREF ;
                   sp:subject spin:_this ;
@@ -1917,7 +1918,7 @@ sdtm:SDTMDomain
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSRFTDTC"^^xsd:string ;
+                      sp:varName "VSRFTDTC" ;
                     ] ;
                   sp:predicate sdtm:hasVSRFTDTC ;
                   sp:subject spin:_this ;
@@ -1925,12 +1926,12 @@ sdtm:SDTMDomain
               ) ;
           ]
         ) ;
-      rdfs:comment "VS Domain Query"^^xsd:string ;
+      rdfs:comment "VS Domain Query" ;
     ] ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf sdtm:SDTMComponent ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTMDomain"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SDTMDomain" ;
 .
 sdtm:SDTMRecord
   rdf:type owl:Class ;
@@ -1939,7 +1940,7 @@ sdtm:SDTMRecord
       sp:templates (
           [
             sp:object [
-                sp:varName "STUDYID"^^xsd:string ;
+                sp:varName "STUDYID" ;
               ] ;
             sp:predicate sdtm:hasSTUDYID ;
             sp:subject spin:_this ;
@@ -1953,51 +1954,51 @@ sdtm:SDTMRecord
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate study:hasStudyParticipant ;
             sp:subject [
-                sp:varName "study"^^xsd:string ;
+                sp:varName "study" ;
               ] ;
           ]
           [
             sp:object study:Study ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "study"^^xsd:string ;
+                sp:varName "study" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "stuid"^^xsd:string ;
+                sp:varName "stuid" ;
               ] ;
             sp:predicate study:hasStudyID ;
             sp:subject [
-                sp:varName "study"^^xsd:string ;
+                sp:varName "study" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "STUDYID"^^xsd:string ;
+                sp:varName "STUDYID" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "stuid"^^xsd:string ;
+                sp:varName "stuid" ;
               ] ;
           ]
         ) ;
     ] ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf sdtm:SDTMComponent ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTMRecord"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SDTMRecord" ;
 .
 sdtm:SDTMSubjectLevelRecord
   rdf:type owl:Class ;
@@ -2006,14 +2007,14 @@ sdtm:SDTMSubjectLevelRecord
       sp:templates (
           [
             sp:object [
-                sp:varName "SUBJID"^^xsd:string ;
+                sp:varName "SUBJID" ;
               ] ;
             sp:predicate sdtm:hasSUBJID ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "USUBJID"^^xsd:string ;
+                sp:varName "USUBJID" ;
               ] ;
             sp:predicate sdtm:hasUSUBJID ;
             sp:subject spin:_this ;
@@ -2027,59 +2028,59 @@ sdtm:SDTMSubjectLevelRecord
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "sid"^^xsd:string ;
+                sp:varName "sid" ;
               ] ;
             sp:predicate study:hasSubjectID ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "SUBJID"^^xsd:string ;
+                sp:varName "SUBJID" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "sid"^^xsd:string ;
+                sp:varName "sid" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "usid"^^xsd:string ;
+                sp:varName "usid" ;
               ] ;
             sp:predicate study:hasUniqueSubjectID ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "USUBJID"^^xsd:string ;
+                sp:varName "USUBJID" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "usid"^^xsd:string ;
+                sp:varName "usid" ;
               ] ;
           ]
         ) ;
     ] ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf sdtm:SDTMRecord ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTMSubject level record"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SDTMSubject level record" ;
 .
 sdtm:SDTMTerminology
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTMTerminology"^^xsd:string ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "SDTMTerminology" ;
 .
 sdtm:SDTM_DM_Record
   rdf:type owl:Class ;
@@ -2088,7 +2089,7 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "ACTARM"^^xsd:string ;
+                sp:varName "ACTARM" ;
               ] ;
             sp:predicate sdtm:hasACTARM ;
             sp:subject spin:_this ;
@@ -2102,27 +2103,27 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "actualarm"^^xsd:string ;
+                sp:varName "actualarm" ;
               ] ;
             sp:predicate study:actualArm ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "ACTARM"^^xsd:string ;
+                sp:varName "ACTARM" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "actualarm"^^xsd:string ;
+                sp:varName "actualarm" ;
               ] ;
           ]
         ) ;
@@ -2132,7 +2133,7 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "ACTARMCD"^^xsd:string ;
+                sp:varName "ACTARMCD" ;
               ] ;
             sp:predicate sdtm:hasACTARMCD ;
             sp:subject spin:_this ;
@@ -2146,27 +2147,27 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "actualarm"^^xsd:string ;
+                sp:varName "actualarm" ;
               ] ;
             sp:predicate study:actualArm ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "ACTARMCD"^^xsd:string ;
+                sp:varName "ACTARMCD" ;
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "actualarm"^^xsd:string ;
+                sp:varName "actualarm" ;
               ] ;
           ]
         ) ;
@@ -2176,14 +2177,14 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "AGE"^^xsd:string ;
+                sp:varName "AGE" ;
               ] ;
             sp:predicate sdtm:hasAGE ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "AGEU"^^xsd:string ;
+                sp:varName "AGEU" ;
               ] ;
             sp:predicate sdtm:hasAGEU ;
             sp:subject spin:_this ;
@@ -2197,54 +2198,45 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "demogcoll"^^xsd:string ;
-              ] ;
-            sp:predicate study:participatesIn ;
-            sp:subject [
-                sp:varName "subject"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "ageoutcome"^^xsd:string ;
+                sp:varName "ageoutcome" ;
               ] ;
             sp:predicate code:hasAge ;
             sp:subject [
-                sp:varName "demogcoll"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "AGE"^^xsd:string ;
+                sp:varName "AGE" ;
               ] ;
             sp:predicate code:hasValue ;
             sp:subject [
-                sp:varName "ageoutcome"^^xsd:string ;
+                sp:varName "ageoutcome" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "ageunit"^^xsd:string ;
+                sp:varName "ageunit" ;
               ] ;
             sp:predicate code:hasUnit ;
             sp:subject [
-                sp:varName "ageoutcome"^^xsd:string ;
+                sp:varName "ageoutcome" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "AGEU"^^xsd:string ;
+                sp:varName "AGEU" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "ageunit"^^xsd:string ;
+                sp:varName "ageunit" ;
               ] ;
           ]
         ) ;
@@ -2254,14 +2246,14 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "ARM"^^xsd:string ;
+                sp:varName "ARM" ;
               ] ;
             sp:predicate sdtm:hasARM ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "ARMCD"^^xsd:string ;
+                sp:varName "ARMCD" ;
               ] ;
             sp:predicate sdtm:hasARMCD ;
             sp:subject spin:_this ;
@@ -2275,59 +2267,59 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "rndmact"^^xsd:string ;
+                sp:varName "rndmact" ;
               ] ;
             sp:predicate study:participatesIn ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object study:Randomization ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "rndmact"^^xsd:string ;
+                sp:varName "rndmact" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "plannedarm"^^xsd:string ;
+                sp:varName "plannedarm" ;
               ] ;
             sp:predicate study:outcome ;
             sp:subject [
-                sp:varName "rndmact"^^xsd:string ;
+                sp:varName "rndmact" ;
               ] ;
           ]
           [
             sp:object study:RandomizationOutcome ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "plannedarm"^^xsd:string ;
+                sp:varName "plannedarm" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "ARM"^^xsd:string ;
+                sp:varName "ARM" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "plannedarm"^^xsd:string ;
+                sp:varName "plannedarm" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "ARMCD"^^xsd:string ;
+                sp:varName "ARMCD" ;
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "plannedarm"^^xsd:string ;
+                sp:varName "plannedarm" ;
               ] ;
           ]
         ) ;
@@ -2337,14 +2329,14 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "BRTHDTC"^^xsd:string ;
+                sp:varName "BRTHDTC" ;
               ] ;
             sp:predicate sdtm:hasBRTHDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "DTHDTC"^^xsd:string ;
+                sp:varName "DTHDTC" ;
               ] ;
             sp:predicate sdtm:hasDTHDTC ;
             sp:subject spin:_this ;
@@ -2358,36 +2350,36 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "lfspn"^^xsd:string ;
+                sp:varName "lfspn" ;
               ] ;
             sp:predicate study:hasLifespan ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "brthd"^^xsd:string ;
+                sp:varName "brthd" ;
               ] ;
             sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
             sp:subject [
-                sp:varName "lfspn"^^xsd:string ;
+                sp:varName "lfspn" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "BRTHDTC"^^xsd:string ;
+                sp:varName "BRTHDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "brthd"^^xsd:string ;
+                sp:varName "brthd" ;
               ] ;
           ]
           [
@@ -2395,20 +2387,20 @@ sdtm:SDTM_DM_Record
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "dthdate"^^xsd:string ;
+                      sp:varName "dthdate" ;
                     ] ;
                   sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
                   sp:subject [
-                      sp:varName "lfspn"^^xsd:string ;
+                      sp:varName "lfspn" ;
                     ] ;
                 ]
                 [
                   sp:object [
-                      sp:varName "DTHDTC"^^xsd:string ;
+                      sp:varName "DTHDTC" ;
                     ] ;
                   sp:predicate study:dateTimeInXSDString ;
                   sp:subject [
-                      sp:varName "dthdate"^^xsd:string ;
+                      sp:varName "dthdate" ;
                     ] ;
                 ]
               ) ;
@@ -2420,7 +2412,7 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "COUNTRY"^^xsd:string ;
+                sp:varName "COUNTRY" ;
               ] ;
             sp:predicate sdtm:hasCOUNTRY ;
             sp:subject spin:_this ;
@@ -2434,36 +2426,36 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "site"^^xsd:string ;
+                sp:varName "site" ;
               ] ;
             sp:predicate study:hasSite ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "ctry"^^xsd:string ;
+                sp:varName "ctry" ;
               ] ;
             sp:predicate study:hasCountry ;
             sp:subject [
-                sp:varName "site"^^xsd:string ;
+                sp:varName "site" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "COUNTRY"^^xsd:string ;
+                sp:varName "COUNTRY" ;
               ] ;
             sp:predicate rdfs:label ;
             sp:subject [
-                sp:varName "ctry"^^xsd:string ;
+                sp:varName "ctry" ;
               ] ;
           ]
         ) ;
@@ -2473,7 +2465,7 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "DTHFL"^^xsd:string ;
+                sp:varName "DTHFL" ;
               ] ;
             sp:predicate sdtm:hasDTHFL ;
             sp:subject spin:_this ;
@@ -2487,18 +2479,18 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "DTHFL"^^xsd:string ;
+                sp:varName "DTHFL" ;
               ] ;
             sp:predicate study:deathFlag ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
         ) ;
@@ -2508,107 +2500,57 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "ETHNIC"^^xsd:string ;
+                sp:varName "ETHNIC" ;
               ] ;
             sp:predicate sdtm:hasETHNIC ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "RACE"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasRACE ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "SEX"^^xsd:string ;
-              ] ;
-            sp:predicate sdtm:hasSEX ;
             sp:subject spin:_this ;
           ]
         ) ;
       sp:where (
           [
-            sp:object sdtm:SDTMRecord ;
+            sp:object sdtm:SDTM_DM_Record ;
             sp:predicate rdf:type ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "demogcoll"^^xsd:string ;
+                sp:varName "ethn" ;
               ] ;
             sp:predicate study:participatesIn ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
-            sp:object code:DemographicDataCollection ;
+            sp:object code:EthnicityDataCollection ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "demogcoll"^^xsd:string ;
+                sp:varName "ethn" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "ethn"^^xsd:string ;
+                sp:varName "ethnout" ;
               ] ;
-            sp:predicate study:ethnicity ;
+            sp:predicate study:outcome ;
             sp:subject [
-                sp:varName "demogcoll"^^xsd:string ;
+                sp:varName "ethn" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "ETHNIC"^^xsd:string ;
+                sp:varName "ETHNIC" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "ethn"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "race"^^xsd:string ;
-              ] ;
-            sp:predicate study:race ;
-            sp:subject [
-                sp:varName "demogcoll"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "RACE"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "race"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "sex"^^xsd:string ;
-              ] ;
-            sp:predicate study:sex ;
-            sp:subject [
-                sp:varName "demogcoll"^^xsd:string ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "SEX"^^xsd:string ;
-              ] ;
-            sp:predicate skos:prefLabel ;
-            sp:subject [
-                sp:varName "sex"^^xsd:string ;
+                sp:varName "ethnout" ;
               ] ;
           ]
         ) ;
@@ -2618,7 +2560,7 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "INVID"^^xsd:string ;
+                sp:varName "INVID" ;
               ] ;
             sp:predicate sdtm:hasINVID ;
             sp:subject spin:_this ;
@@ -2632,45 +2574,45 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "site"^^xsd:string ;
+                sp:varName "site" ;
               ] ;
             sp:predicate study:hasSite ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "inv"^^xsd:string ;
+                sp:varName "inv" ;
               ] ;
             sp:predicate study:hasInvestigator ;
             sp:subject [
-                sp:varName "site"^^xsd:string ;
+                sp:varName "site" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "iid"^^xsd:string ;
+                sp:varName "iid" ;
               ] ;
             sp:predicate study:hasInvestigatorID ;
             sp:subject [
-                sp:varName "inv"^^xsd:string ;
+                sp:varName "inv" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "INVID"^^xsd:string ;
+                sp:varName "INVID" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "iid"^^xsd:string ;
+                sp:varName "iid" ;
               ] ;
           ]
         ) ;
@@ -2680,7 +2622,7 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "INVNAM"^^xsd:string ;
+                sp:varName "INVNAM" ;
               ] ;
             sp:predicate sdtm:hasINVNAM ;
             sp:subject spin:_this ;
@@ -2694,36 +2636,36 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "site"^^xsd:string ;
+                sp:varName "site" ;
               ] ;
             sp:predicate study:hasSite ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "inv"^^xsd:string ;
+                sp:varName "inv" ;
               ] ;
             sp:predicate study:hasInvestigator ;
             sp:subject [
-                sp:varName "site"^^xsd:string ;
+                sp:varName "site" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "INVNAM"^^xsd:string ;
+                sp:varName "INVNAM" ;
               ] ;
             sp:predicate study:hasLastName ;
             sp:subject [
-                sp:varName "inv"^^xsd:string ;
+                sp:varName "inv" ;
               ] ;
           ]
         ) ;
@@ -2733,7 +2675,67 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "RFICDTC"^^xsd:string ;
+                sp:varName "RACE" ;
+              ] ;
+            sp:predicate sdtm:hasRACE ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_DM_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "rce" ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object code:RaceDataCollection ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "rce" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "raceout" ;
+              ] ;
+            sp:predicate study:outcome ;
+            sp:subject [
+                sp:varName "rce" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RACE" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "raceout" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "RFICDTC" ;
               ] ;
             sp:predicate sdtm:hasRFICDTC ;
             sp:subject spin:_this ;
@@ -2747,59 +2749,59 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "informedconsent"^^xsd:string ;
+                sp:varName "informedconsent" ;
               ] ;
             sp:predicate study:participatesIn ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object code:InformedConsentOutcome_1 ;
             sp:predicate study:outcome ;
             sp:subject [
-                sp:varName "informedconsent"^^xsd:string ;
+                sp:varName "informedconsent" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "icinterval"^^xsd:string ;
+                sp:varName "icinterval" ;
               ] ;
             sp:predicate study:hasActivityInterval ;
             sp:subject [
-                sp:varName "informedconsent"^^xsd:string ;
+                sp:varName "informedconsent" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "icbegin"^^xsd:string ;
+                sp:varName "icbegin" ;
               ] ;
             sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
             sp:subject [
-                sp:varName "icinterval"^^xsd:string ;
+                sp:varName "icinterval" ;
               ] ;
           ]
           [
             sp:object study:InformedConsentBegin ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "icbegin"^^xsd:string ;
+                sp:varName "icbegin" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "RFICDTC"^^xsd:string ;
+                sp:varName "RFICDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "icbegin"^^xsd:string ;
+                sp:varName "icbegin" ;
               ] ;
           ]
         ) ;
@@ -2809,7 +2811,7 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "RFPENDTC"^^xsd:string ;
+                sp:varName "RFPENDTC" ;
               ] ;
             sp:predicate sdtm:hasRFPENDTC ;
             sp:subject spin:_this ;
@@ -2823,36 +2825,36 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "spi"^^xsd:string ;
+                sp:varName "spi" ;
               ] ;
             sp:predicate study:hasStudyParticipationInterval ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "rfpend"^^xsd:string ;
+                sp:varName "rfpend" ;
               ] ;
             sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
             sp:subject [
-                sp:varName "spi"^^xsd:string ;
+                sp:varName "spi" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "RFPENDTC"^^xsd:string ;
+                sp:varName "RFPENDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "rfpend"^^xsd:string ;
+                sp:varName "rfpend" ;
               ] ;
           ]
         ) ;
@@ -2862,28 +2864,28 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "RFSTDTC"^^xsd:string ;
+                sp:varName "RFSTDTC" ;
               ] ;
             sp:predicate sdtm:hasRFSTDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RFENDTC"^^xsd:string ;
+                sp:varName "RFENDTC" ;
               ] ;
             sp:predicate sdtm:hasRFENDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "DMDTC"^^xsd:string ;
+                sp:varName "DMDTC" ;
               ] ;
             sp:predicate sdtm:hasDMDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "DMDY"^^xsd:string ;
+                sp:varName "DMDY" ;
               ] ;
             sp:predicate sdtm:hasDMDY ;
             sp:subject spin:_this ;
@@ -2897,95 +2899,95 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "refintrvl"^^xsd:string ;
+                sp:varName "refintrvl" ;
               ] ;
             sp:predicate study:hasReferenceInterval ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "refstrt"^^xsd:string ;
+                sp:varName "refstrt" ;
               ] ;
             sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
             sp:subject [
-                sp:varName "refintrvl"^^xsd:string ;
+                sp:varName "refintrvl" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "RFSTDTC"^^xsd:string ;
+                sp:varName "RFSTDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "refstrt"^^xsd:string ;
+                sp:varName "refstrt" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "refend"^^xsd:string ;
+                sp:varName "refend" ;
               ] ;
             sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
             sp:subject [
-                sp:varName "refintrvl"^^xsd:string ;
+                sp:varName "refintrvl" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "RFENDTC"^^xsd:string ;
+                sp:varName "RFENDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "refend"^^xsd:string ;
+                sp:varName "refend" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "dmdatacoll"^^xsd:string ;
+                sp:varName "dmdatacoll" ;
               ] ;
             sp:predicate study:participatesIn ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object code:DemographicDataCollection ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "dmdatacoll"^^xsd:string ;
+                sp:varName "dmdatacoll" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "dmdatacolldate"^^xsd:string ;
+                sp:varName "dmdatacolldate" ;
               ] ;
             sp:predicate study:hasDate ;
             sp:subject [
-                sp:varName "dmdatacoll"^^xsd:string ;
+                sp:varName "dmdatacoll" ;
               ] ;
           ]
           [
             sp:object study:DemogDataCollectionDate ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "dmdatacolldate"^^xsd:string ;
+                sp:varName "dmdatacolldate" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "DMDTC"^^xsd:string ;
+                sp:varName "DMDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "dmdatacolldate"^^xsd:string ;
+                sp:varName "dmdatacolldate" ;
               ] ;
           ]
           [
@@ -2993,14 +2995,14 @@ sdtm:SDTM_DM_Record
             sp:expression [
                 rdf:type study:studyday ;
                 arg:activityDate [
-                    sp:varName "DMDTC"^^xsd:string ;
+                    sp:varName "DMDTC" ;
                   ] ;
                 arg:refDate [
-                    sp:varName "RFSTDTC"^^xsd:string ;
+                    sp:varName "RFSTDTC" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "DMDY"^^xsd:string ;
+                sp:varName "DMDY" ;
               ] ;
           ]
         ) ;
@@ -3010,14 +3012,14 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "RFXSTDTC"^^xsd:string ;
+                sp:varName "RFXSTDTC" ;
               ] ;
             sp:predicate sdtm:hasRFXSTDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "RFXENDTC"^^xsd:string ;
+                sp:varName "RFXENDTC" ;
               ] ;
             sp:predicate sdtm:hasRFXENDTC ;
             sp:subject spin:_this ;
@@ -3031,70 +3033,70 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "padmin"^^xsd:string ;
+                sp:varName "padmin" ;
               ] ;
             sp:predicate study:participatesIn ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object study:CumulativeDrugAdministration ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "padmin"^^xsd:string ;
+                sp:varName "padmin" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "paintrvl"^^xsd:string ;
+                sp:varName "paintrvl" ;
               ] ;
             sp:predicate study:hasActivityInterval ;
             sp:subject [
-                sp:varName "padmin"^^xsd:string ;
+                sp:varName "padmin" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "padminstart"^^xsd:string ;
+                sp:varName "padminstart" ;
               ] ;
             sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
             sp:subject [
-                sp:varName "paintrvl"^^xsd:string ;
+                sp:varName "paintrvl" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "RFXSTDTC"^^xsd:string ;
+                sp:varName "RFXSTDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "padminstart"^^xsd:string ;
+                sp:varName "padminstart" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "padminend"^^xsd:string ;
+                sp:varName "padminend" ;
               ] ;
             sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
             sp:subject [
-                sp:varName "paintrvl"^^xsd:string ;
+                sp:varName "paintrvl" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "RFXENDTC"^^xsd:string ;
+                sp:varName "RFXENDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "padminend"^^xsd:string ;
+                sp:varName "padminend" ;
               ] ;
           ]
         ) ;
@@ -3104,7 +3106,67 @@ sdtm:SDTM_DM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "SITEID"^^xsd:string ;
+                sp:varName "SEX" ;
+              ] ;
+            sp:predicate sdtm:hasSEX ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_DM_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sx" ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object code:SexDataCollection ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "sx" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sexout" ;
+              ] ;
+            sp:predicate study:outcome ;
+            sp:subject [
+                sp:varName "sx" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "SEX" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "sexout" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "SITEID" ;
               ] ;
             sp:predicate sdtm:hasSITEID ;
             sp:subject spin:_this ;
@@ -3118,49 +3180,49 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "site"^^xsd:string ;
+                sp:varName "site" ;
               ] ;
             sp:predicate study:hasSite ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "stid"^^xsd:string ;
+                sp:varName "stid" ;
               ] ;
             sp:predicate study:hasSiteID ;
             sp:subject [
-                sp:varName "site"^^xsd:string ;
+                sp:varName "site" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "SITEID"^^xsd:string ;
+                sp:varName "SITEID" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "stid"^^xsd:string ;
+                sp:varName "stid" ;
               ] ;
           ]
         ) ;
     ] ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf sdtm:SDTMSubjectLevelRecord ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "DM"^^xsd:string ;
+      owl:hasValue "DM" ;
       owl:onProperty sdtm:hasDOMAIN ;
     ] ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTM DM Record"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SDTM DM Record" ;
 .
 sdtm:SDTM_SUPPDM_Record
   rdf:type owl:Class ;
@@ -3169,35 +3231,35 @@ sdtm:SDTM_SUPPDM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "QNAM"^^xsd:string ;
+                sp:varName "QNAM" ;
               ] ;
             sp:predicate sdtm:hasQNAM ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QLABEL"^^xsd:string ;
+                sp:varName "QLABEL" ;
               ] ;
             sp:predicate sdtm:hasQLABEL ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QVAL"^^xsd:string ;
+                sp:varName "QVAL" ;
               ] ;
             sp:predicate sdtm:hasQVAL ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QORIG"^^xsd:string ;
+                sp:varName "QORIG" ;
               ] ;
             sp:predicate sdtm:hasQORIG ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QEVAL"^^xsd:string ;
+                sp:varName "QEVAL" ;
               ] ;
             sp:predicate sdtm:hasQEVAL ;
             sp:subject spin:_this ;
@@ -3206,59 +3268,59 @@ sdtm:SDTM_SUPPDM_Record
       sp:where (
           [
             sp:object [
-                sp:varName "subj"^^xsd:string ;
+                sp:varName "subj" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "activity"^^xsd:string ;
+                sp:varName "activity" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "cde"^^xsd:string ;
+                sp:varName "cde" ;
               ] ;
             sp:predicate study:hasCode ;
             sp:subject [
-                sp:varName "activity"^^xsd:string ;
+                sp:varName "activity" ;
               ] ;
           ]
           [
             sp:object study:PopulationFlag ;
             sp:predicate rdfs:subClassOf ;
             sp:subject [
-                sp:varName "cde"^^xsd:string ;
+                sp:varName "cde" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "QNAM"^^xsd:string ;
+                sp:varName "QNAM" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "cde"^^xsd:string ;
+                sp:varName "cde" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "QLABEL"^^xsd:string ;
+                sp:varName "QLABEL" ;
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "cde"^^xsd:string ;
+                sp:varName "cde" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "qvalbin"^^xsd:string ;
+                sp:varName "qvalbin" ;
               ] ;
             sp:predicate study:outcome ;
             sp:subject [
-                sp:varName "activity"^^xsd:string ;
+                sp:varName "activity" ;
               ] ;
           ]
           [
@@ -3266,49 +3328,49 @@ sdtm:SDTM_SUPPDM_Record
             sp:expression [
                 rdf:type sp:if ;
                 sp:arg1 [
-                    sp:varName "qvalbin"^^xsd:string ;
+                    sp:varName "qvalbin" ;
                   ] ;
                 sp:arg2 "Y" ;
                 sp:arg3 " " ;
               ] ;
             sp:variable [
-                sp:varName "QVAL"^^xsd:string ;
+                sp:varName "QVAL" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "method"^^xsd:string ;
+                sp:varName "method" ;
               ] ;
             sp:predicate code:hasMethod ;
             sp:subject [
-                sp:varName "cde"^^xsd:string ;
+                sp:varName "cde" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "QORIG"^^xsd:string ;
+                sp:varName "QORIG" ;
               ] ;
             sp:predicate rdfs:label ;
             sp:subject [
-                sp:varName "method"^^xsd:string ;
+                sp:varName "method" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "performer"^^xsd:string ;
+                sp:varName "performer" ;
               ] ;
             sp:predicate study:hasPerformer ;
             sp:subject [
-                sp:varName "activity"^^xsd:string ;
+                sp:varName "activity" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "QEVAL"^^xsd:string ;
+                sp:varName "QEVAL" ;
               ] ;
             sp:predicate rdfs:label ;
             sp:subject [
-                sp:varName "performer"^^xsd:string ;
+                sp:varName "performer" ;
               ] ;
           ]
         ) ;
@@ -3318,7 +3380,7 @@ sdtm:SDTM_SUPPDM_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "dcode"^^xsd:string ;
+                sp:varName "dcode" ;
               ] ;
             sp:predicate sdtm:hasRDOMAIN ;
             sp:subject spin:_this ;
@@ -3327,17 +3389,17 @@ sdtm:SDTM_SUPPDM_Record
       sp:where (
           [
             sp:object [
-                sp:varName "dcode"^^xsd:string ;
+                sp:varName "dcode" ;
               ] ;
             sp:predicate cdiscs:datasetCode ;
             sp:subject <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.DM> ;
           ]
         ) ;
     ] ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf sdtm:SDTM_SupplementalRecord ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTM SUPPDM Record"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SDTM SUPPDM Record" ;
 .
 sdtm:SDTM_SupplementalRecord
   rdf:type owl:Class ;
@@ -3346,7 +3408,7 @@ sdtm:SDTM_SupplementalRecord
       sp:templates (
           [
             sp:object [
-                sp:varName "QEVAL"^^xsd:string ;
+                sp:varName "QEVAL" ;
               ] ;
             sp:predicate sdtm:hasQEVAL ;
             sp:subject spin:_this ;
@@ -3360,45 +3422,45 @@ sdtm:SDTM_SupplementalRecord
           ]
           [
             sp:object [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "perf"^^xsd:string ;
+                sp:varName "perf" ;
               ] ;
             sp:predicate study:hasPerformer ;
             sp:subject [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "QEVAL"^^xsd:string ;
+                sp:varName "QEVAL" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "perf"^^xsd:string ;
+                sp:varName "perf" ;
               ] ;
           ]
         ) ;
-      rdfs:comment "Query for QEVAL"^^xsd:string ;
+      rdfs:comment "Query for QEVAL" ;
     ] ;
   spin:rule [
       rdf:type sp:Construct ;
       sp:templates (
           [
             sp:object [
-                sp:varName "QNAM"^^xsd:string ;
+                sp:varName "QNAM" ;
               ] ;
             sp:predicate sdtm:hasQNAM ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QLABEL"^^xsd:string ;
+                sp:varName "QLABEL" ;
               ] ;
             sp:predicate sdtm:hasQLABEL ;
             sp:subject spin:_this ;
@@ -3412,38 +3474,38 @@ sdtm:SDTM_SupplementalRecord
           ]
           [
             sp:object [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "QNAM"^^xsd:string ;
+                sp:varName "QNAM" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "QLABEL"^^xsd:string ;
+                sp:varName "QLABEL" ;
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
           ]
         ) ;
-      rdfs:comment "Query for QNAM and QLABEL"^^xsd:string ;
+      rdfs:comment "Query for QNAM and QLABEL" ;
     ] ;
   spin:rule [
       rdf:type sp:Construct ;
       sp:templates (
           [
             sp:object [
-                sp:varName "QORIG"^^xsd:string ;
+                sp:varName "QORIG" ;
               ] ;
             sp:predicate sdtm:hasQORIG ;
             sp:subject spin:_this ;
@@ -3457,38 +3519,38 @@ sdtm:SDTM_SupplementalRecord
           ]
           [
             sp:object [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "method"^^xsd:string ;
+                sp:varName "method" ;
               ] ;
             sp:predicate code:hasMethod ;
             sp:subject [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "QORIG"^^xsd:string ;
+                sp:varName "QORIG" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "method"^^xsd:string ;
+                sp:varName "method" ;
               ] ;
           ]
         ) ;
-      rdfs:comment "Query for QORIG"^^xsd:string ;
+      rdfs:comment "Query for QORIG" ;
     ] ;
   spin:rule [
       rdf:type sp:Construct ;
       sp:templates (
           [
             sp:object [
-                sp:varName "QVAL"^^xsd:string ;
+                sp:varName "QVAL" ;
               ] ;
             sp:predicate sdtm:hasQVAL ;
             sp:subject spin:_this ;
@@ -3502,18 +3564,18 @@ sdtm:SDTM_SupplementalRecord
           ]
           [
             sp:object [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "outcome"^^xsd:string ;
+                sp:varName "outcome" ;
               ] ;
             sp:predicate study:outcome ;
             sp:subject [
-                sp:varName "suppact"^^xsd:string ;
+                sp:varName "suppact" ;
               ] ;
           ]
           [
@@ -3523,7 +3585,7 @@ sdtm:SDTM_SupplementalRecord
                 sp:arg1 [
                     rdf:type sp:eq ;
                     sp:arg1 [
-                        sp:varName "outcome"^^xsd:string ;
+                        sp:varName "outcome" ;
                       ] ;
                     sp:arg2 "true"^^xsd:boolean ;
                   ] ;
@@ -3531,16 +3593,16 @@ sdtm:SDTM_SupplementalRecord
                 sp:arg3 "F" ;
               ] ;
             sp:variable [
-                sp:varName "QVAL"^^xsd:string ;
+                sp:varName "QVAL" ;
               ] ;
           ]
         ) ;
-      rdfs:comment "Query for QVAL"^^xsd:string ;
+      rdfs:comment "Query for QVAL" ;
     ] ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf sdtm:SDTMSubjectLevelRecord ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTM Supplemental record"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SDTM Supplemental record" ;
 .
 sdtm:SDTM_VS_Record
   rdf:type owl:Class ;
@@ -3549,7 +3611,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VISIT"^^xsd:string ;
+                sp:varName "VISIT" ;
               ] ;
             sp:predicate sdtm:hasVISIT ;
             sp:subject spin:_this ;
@@ -3563,41 +3625,41 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate study:hasSubActivity ;
             sp:subject [
-                sp:varName "vsvisit"^^xsd:string ;
+                sp:varName "vsvisit" ;
               ] ;
           ]
           [
             sp:object study:Visit ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vsvisit"^^xsd:string ;
+                sp:varName "vsvisit" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VISIT"^^xsd:string ;
+                sp:varName "VISIT" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "vsvisit"^^xsd:string ;
+                sp:varName "vsvisit" ;
               ] ;
           ]
         ) ;
@@ -3607,7 +3669,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VISITDY"^^xsd:string ;
+                sp:varName "VISITDY" ;
               ] ;
             sp:predicate sdtm:hasVISITDY ;
             sp:subject spin:_this ;
@@ -3621,77 +3683,77 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "refintrvl"^^xsd:string ;
+                sp:varName "refintrvl" ;
               ] ;
             sp:predicate study:hasReferenceInterval ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "refstrt"^^xsd:string ;
+                sp:varName "refstrt" ;
               ] ;
             sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
             sp:subject [
-                sp:varName "refintrvl"^^xsd:string ;
+                sp:varName "refintrvl" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "RFSTDTC"^^xsd:string ;
+                sp:varName "RFSTDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "refstrt"^^xsd:string ;
+                sp:varName "refstrt" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate study:hasSubActivity ;
             sp:subject [
-                sp:varName "vsvisit"^^xsd:string ;
+                sp:varName "vsvisit" ;
               ] ;
           ]
           [
             sp:object study:Visit ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vsvisit"^^xsd:string ;
+                sp:varName "vsvisit" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "vsvisitbgn"^^xsd:string ;
+                sp:varName "vsvisitbgn" ;
               ] ;
             sp:predicate study:hasDate ;
             sp:subject [
-                sp:varName "vsvisit"^^xsd:string ;
+                sp:varName "vsvisit" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "vsb"^^xsd:string ;
+                sp:varName "vsb" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "vsvisitbgn"^^xsd:string ;
+                sp:varName "vsvisitbgn" ;
               ] ;
           ]
           [
@@ -3699,14 +3761,14 @@ sdtm:SDTM_VS_Record
             sp:expression [
                 rdf:type study:studyday ;
                 arg:activityDate [
-                    sp:varName "vsb"^^xsd:string ;
+                    sp:varName "vsb" ;
                   ] ;
                 arg:refDate [
-                    sp:varName "RFSTDTC"^^xsd:string ;
+                    sp:varName "RFSTDTC" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "VISITDY"^^xsd:string ;
+                sp:varName "VISITDY" ;
               ] ;
           ]
         ) ;
@@ -3716,7 +3778,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VISITNUM"^^xsd:string ;
+                sp:varName "VISITNUM" ;
               ] ;
             sp:predicate sdtm:hasVISITNUM ;
             sp:subject spin:_this ;
@@ -3730,34 +3792,34 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate study:hasSubActivity ;
             sp:subject [
-                sp:varName "vsvisit"^^xsd:string ;
+                sp:varName "vsvisit" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VISITNUM"^^xsd:string ;
+                sp:varName "VISITNUM" ;
               ] ;
             sp:predicate study:seq ;
             sp:subject [
-                sp:varName "vsvisit"^^xsd:string ;
+                sp:varName "vsvisit" ;
               ] ;
           ]
         ) ;
@@ -3767,7 +3829,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSBLFL"^^xsd:string ;
+                sp:varName "VSBLFL" ;
               ] ;
             sp:predicate sdtm:hasVSBLFL ;
             sp:subject spin:_this ;
@@ -3781,14 +3843,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -3797,16 +3859,16 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstest"^^xsd:string ;
+                sp:varName "vstest" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSBLFL"^^xsd:string ;
+                sp:varName "VSBLFL" ;
               ] ;
             sp:predicate study:baselineFlag ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
         ) ;
@@ -3816,14 +3878,14 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSCAT"^^xsd:string ;
+                sp:varName "VSCAT" ;
               ] ;
             sp:predicate sdtm:hasVSCAT ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSSCAT"^^xsd:string ;
+                sp:varName "VSSCAT" ;
               ] ;
             sp:predicate sdtm:hasVSSCAT ;
             sp:subject spin:_this ;
@@ -3837,14 +3899,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -3853,43 +3915,43 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "vsctg"^^xsd:string ;
+                sp:varName "vsctg" ;
               ] ;
             sp:predicate study:hasCategory ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSCAT"^^xsd:string ;
+                sp:varName "VSCAT" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "vsctg"^^xsd:string ;
+                sp:varName "vsctg" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "vssctg"^^xsd:string ;
+                sp:varName "vssctg" ;
               ] ;
             sp:predicate study:hasSubcategory ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSSCAT"^^xsd:string ;
+                sp:varName "VSSCAT" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "vssctg"^^xsd:string ;
+                sp:varName "vssctg" ;
               ] ;
           ]
         ) ;
@@ -3899,7 +3961,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSDRVFL"^^xsd:string ;
+                sp:varName "VSDRVFL" ;
               ] ;
             sp:predicate sdtm:hasVSDRVFL ;
             sp:subject spin:_this ;
@@ -3913,14 +3975,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -3929,16 +3991,16 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSDRVFL"^^xsd:string ;
+                sp:varName "VSDRVFL" ;
               ] ;
             sp:predicate study:derivedFlag ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
         ) ;
@@ -3948,14 +4010,14 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSDTC"^^xsd:string ;
+                sp:varName "VSDTC" ;
               ] ;
             sp:predicate sdtm:hasVSDTC ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSDY"^^xsd:string ;
+                sp:varName "VSDY" ;
               ] ;
             sp:predicate sdtm:hasVSDY ;
             sp:subject spin:_this ;
@@ -3969,77 +4031,77 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate study:hasSubActivity ;
             sp:subject [
-                sp:varName "vsvisit"^^xsd:string ;
+                sp:varName "vsvisit" ;
               ] ;
           ]
           [
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "vststdt"^^xsd:string ;
+                sp:varName "vststdt" ;
               ] ;
             sp:predicate study:hasDate ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSDTC"^^xsd:string ;
+                sp:varName "VSDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "vststdt"^^xsd:string ;
+                sp:varName "vststdt" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "refintrvl"^^xsd:string ;
+                sp:varName "refintrvl" ;
               ] ;
             sp:predicate study:hasReferenceInterval ;
             sp:subject [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "refstrt"^^xsd:string ;
+                sp:varName "refstrt" ;
               ] ;
             sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
             sp:subject [
-                sp:varName "refintrvl"^^xsd:string ;
+                sp:varName "refintrvl" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "RFSTDTC"^^xsd:string ;
+                sp:varName "RFSTDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "refstrt"^^xsd:string ;
+                sp:varName "refstrt" ;
               ] ;
           ]
           [
@@ -4047,14 +4109,14 @@ sdtm:SDTM_VS_Record
             sp:expression [
                 rdf:type study:studyday ;
                 arg:activityDate [
-                    sp:varName "VSDTC"^^xsd:string ;
+                    sp:varName "VSDTC" ;
                   ] ;
                 arg:refDate [
-                    sp:varName "RFSTDTC"^^xsd:string ;
+                    sp:varName "RFSTDTC" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "VSDY"^^xsd:string ;
+                sp:varName "VSDY" ;
               ] ;
           ]
         ) ;
@@ -4064,21 +4126,21 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSELTM"^^xsd:string ;
+                sp:varName "VSELTM" ;
               ] ;
             sp:predicate sdtm:hasVSELTM ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSTPTREF"^^xsd:string ;
+                sp:varName "VSTPTREF" ;
               ] ;
             sp:predicate sdtm:hasVSTPTREF ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSRFTDTC"^^xsd:string ;
+                sp:varName "VSRFTDTC" ;
               ] ;
             sp:predicate sdtm:hasVSRFTDTC ;
             sp:subject spin:_this ;
@@ -4092,14 +4154,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4108,70 +4170,70 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "strtrule"^^xsd:string ;
+                sp:varName "strtrule" ;
               ] ;
             sp:predicate study:hasStartRule ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSELTM"^^xsd:string ;
+                sp:varName "VSELTM" ;
               ] ;
             sp:predicate study:hasDelay ;
             sp:subject [
-                sp:varName "strtrule"^^xsd:string ;
+                sp:varName "strtrule" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "anchr"^^xsd:string ;
+                sp:varName "anchr" ;
               ] ;
             sp:predicate study:hasPrerequisite ;
             sp:subject [
-                sp:varName "strtrule"^^xsd:string ;
+                sp:varName "strtrule" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "anchroutcome"^^xsd:string ;
+                sp:varName "anchroutcome" ;
               ] ;
             sp:predicate study:outcome ;
             sp:subject [
-                sp:varName "anchr"^^xsd:string ;
+                sp:varName "anchr" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSTPTREF"^^xsd:string ;
+                sp:varName "VSTPTREF" ;
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "anchroutcome"^^xsd:string ;
+                sp:varName "anchroutcome" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "actdate"^^xsd:string ;
+                sp:varName "actdate" ;
               ] ;
             sp:predicate study:hasDate ;
             sp:subject [
-                sp:varName "anchr"^^xsd:string ;
+                sp:varName "anchr" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSRFTDTC"^^xsd:string ;
+                sp:varName "VSRFTDTC" ;
               ] ;
             sp:predicate study:dateTimeInXSDString ;
             sp:subject [
-                sp:varName "actdate"^^xsd:string ;
+                sp:varName "actdate" ;
               ] ;
           ]
         ) ;
@@ -4181,7 +4243,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSGRPID"^^xsd:string ;
+                sp:varName "VSGRPID" ;
               ] ;
             sp:predicate sdtm:hasVSGRPID ;
             sp:subject spin:_this ;
@@ -4195,14 +4257,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4211,16 +4273,16 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSGRPID"^^xsd:string ;
+                sp:varName "VSGRPID" ;
               ] ;
             sp:predicate study:groupID ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
         ) ;
@@ -4230,7 +4292,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSLAT"^^xsd:string ;
+                sp:varName "VSLAT" ;
               ] ;
             sp:predicate sdtm:hasVSLAT ;
             sp:subject spin:_this ;
@@ -4244,14 +4306,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4260,25 +4322,25 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "laterality"^^xsd:string ;
+                sp:varName "laterality" ;
               ] ;
             sp:predicate study:laterality ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSLAT"^^xsd:string ;
+                sp:varName "VSLAT" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "laterality"^^xsd:string ;
+                sp:varName "laterality" ;
               ] ;
           ]
         ) ;
@@ -4288,7 +4350,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSLOC"^^xsd:string ;
+                sp:varName "VSLOC" ;
               ] ;
             sp:predicate sdtm:hasVSLOC ;
             sp:subject spin:_this ;
@@ -4302,14 +4364,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4318,25 +4380,25 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "anatloc"^^xsd:string ;
+                sp:varName "anatloc" ;
               ] ;
             sp:predicate study:anatomicLocation ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSLOC"^^xsd:string ;
+                sp:varName "VSLOC" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "anatloc"^^xsd:string ;
+                sp:varName "anatloc" ;
               ] ;
           ]
         ) ;
@@ -4346,35 +4408,35 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSORRES"^^xsd:string ;
+                sp:varName "VSORRES" ;
               ] ;
             sp:predicate sdtm:hasVSORRES ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSORRESU"^^xsd:string ;
+                sp:varName "VSORRESU" ;
               ] ;
             sp:predicate sdtm:hasVSORRESU ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSSTRESN"^^xsd:string ;
+                sp:varName "VSSTRESN" ;
               ] ;
             sp:predicate sdtm:hasVSSTRESN ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSSTRESU"^^xsd:string ;
+                sp:varName "VSSTRESU" ;
               ] ;
             sp:predicate sdtm:hasVSSTRESU ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSSTRESC"^^xsd:string ;
+                sp:varName "VSSTRESC" ;
               ] ;
             sp:predicate sdtm:hasVSSTRESC ;
             sp:subject spin:_this ;
@@ -4388,14 +4450,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4404,43 +4466,43 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "vstestoutcome"^^xsd:string ;
+                sp:varName "vstestoutcome" ;
               ] ;
             sp:predicate study:outcome ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSORRES"^^xsd:string ;
+                sp:varName "VSORRES" ;
               ] ;
             sp:predicate code:hasValue ;
             sp:subject [
-                sp:varName "vstestoutcome"^^xsd:string ;
+                sp:varName "vstestoutcome" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "orresu"^^xsd:string ;
+                sp:varName "orresu" ;
               ] ;
             sp:predicate code:hasUnit ;
             sp:subject [
-                sp:varName "vstestoutcome"^^xsd:string ;
+                sp:varName "vstestoutcome" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSORRESU"^^xsd:string ;
+                sp:varName "VSORRESU" ;
               ] ;
             sp:predicate rdfs:label ;
             sp:subject [
-                sp:varName "orresu"^^xsd:string ;
+                sp:varName "orresu" ;
               ] ;
           ]
           [
@@ -4448,11 +4510,11 @@ sdtm:SDTM_VS_Record
             sp:expression [
                 rdf:type code:unitConversion ;
                 arg:origResult [
-                    sp:varName "vstestoutcome"^^xsd:string ;
+                    sp:varName "vstestoutcome" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "VSSTRESN"^^xsd:string ;
+                sp:varName "VSSTRESN" ;
               ] ;
           ]
           [
@@ -4460,11 +4522,11 @@ sdtm:SDTM_VS_Record
             sp:expression [
                 rdf:type code:unitNormalized ;
                 arg:origResult [
-                    sp:varName "vstestoutcome"^^xsd:string ;
+                    sp:varName "vstestoutcome" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "VSSTRESU"^^xsd:string ;
+                sp:varName "VSSTRESU" ;
               ] ;
           ]
           [
@@ -4472,11 +4534,11 @@ sdtm:SDTM_VS_Record
             sp:expression [
                 rdf:type code:unitConversionChar ;
                 arg:origResult [
-                    sp:varName "vstestoutcome"^^xsd:string ;
+                    sp:varName "vstestoutcome" ;
                   ] ;
               ] ;
             sp:variable [
-                sp:varName "VSSTRESC"^^xsd:string ;
+                sp:varName "VSSTRESC" ;
               ] ;
           ]
         ) ;
@@ -4486,7 +4548,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSPOS"^^xsd:string ;
+                sp:varName "VSPOS" ;
               ] ;
             sp:predicate sdtm:hasVSPOS ;
             sp:subject spin:_this ;
@@ -4500,14 +4562,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4516,25 +4578,25 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "bodypos"^^xsd:string ;
+                sp:varName "bodypos" ;
               ] ;
             sp:predicate study:bodyPosition ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSPOS"^^xsd:string ;
+                sp:varName "VSPOS" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "bodypos"^^xsd:string ;
+                sp:varName "bodypos" ;
               ] ;
           ]
         ) ;
@@ -4544,7 +4606,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSREASND"^^xsd:string ;
+                sp:varName "VSREASND" ;
               ] ;
             sp:predicate sdtm:hasVSRSND ;
             sp:subject spin:_this ;
@@ -4558,14 +4620,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4574,16 +4636,16 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSREASND"^^xsd:string ;
+                sp:varName "VSREASND" ;
               ] ;
             sp:predicate study:reasonNotDone ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
         ) ;
@@ -4593,7 +4655,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSSEQ"^^xsd:string ;
+                sp:varName "VSSEQ" ;
               ] ;
             sp:predicate sdtm:hasVSSEQ ;
             sp:subject spin:_this ;
@@ -4607,14 +4669,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4623,16 +4685,16 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSSEQ"^^xsd:string ;
+                sp:varName "VSSEQ" ;
               ] ;
             sp:predicate study:seq ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
         ) ;
@@ -4642,7 +4704,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSSPID"^^xsd:string ;
+                sp:varName "VSSPID" ;
               ] ;
             sp:predicate sdtm:hasVSSPID ;
             sp:subject spin:_this ;
@@ -4656,14 +4718,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4672,16 +4734,16 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSSPID"^^xsd:string ;
+                sp:varName "VSSPID" ;
               ] ;
             sp:predicate study:sponsordefinedID ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
         ) ;
@@ -4691,7 +4753,7 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSSTAT"^^xsd:string ;
+                sp:varName "VSSTAT" ;
               ] ;
             sp:predicate sdtm:hasVSSTAT ;
             sp:subject spin:_this ;
@@ -4705,14 +4767,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4721,25 +4783,25 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "astatus"^^xsd:string ;
+                sp:varName "astatus" ;
               ] ;
             sp:predicate study:activityStatus ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSSTAT"^^xsd:string ;
+                sp:varName "VSSTAT" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "astatus"^^xsd:string ;
+                sp:varName "astatus" ;
               ] ;
           ]
         ) ;
@@ -4749,14 +4811,14 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSTEST"^^xsd:string ;
+                sp:varName "VSTEST" ;
               ] ;
             sp:predicate sdtm:hasVSTEST ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSTESTCD"^^xsd:string ;
+                sp:varName "VSTESTCD" ;
               ] ;
             sp:predicate sdtm:hasVSTESTCD ;
             sp:subject spin:_this ;
@@ -4770,14 +4832,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4786,25 +4848,25 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSTEST"^^xsd:string ;
+                sp:varName "VSTEST" ;
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "VSTESTCD"^^xsd:string ;
+                sp:varName "VSTESTCD" ;
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
         ) ;
@@ -4814,14 +4876,14 @@ sdtm:SDTM_VS_Record
       sp:templates (
           [
             sp:object [
-                sp:varName "VSTPT"^^xsd:string ;
+                sp:varName "VSTPT" ;
               ] ;
             sp:predicate sdtm:hasVSTPT ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "VSTPTNUM"^^xsd:string ;
+                sp:varName "VSTPTNUM" ;
               ] ;
             sp:predicate sdtm:hasVSTPTNUM ;
             sp:subject spin:_this ;
@@ -4835,14 +4897,14 @@ sdtm:SDTM_VS_Record
           ]
           [
             sp:object [
-                sp:varName "subject"^^xsd:string ;
+                sp:varName "subject" ;
               ] ;
             sp:predicate sdtm:hasEntity ;
             sp:subject spin:_this ;
           ]
           [
             sp:object [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
             sp:predicate sdtm:hasActivity ;
             sp:subject spin:_this ;
@@ -4851,23 +4913,23 @@ sdtm:SDTM_VS_Record
             sp:object study:VitalSign ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "strtrule"^^xsd:string ;
+                sp:varName "strtrule" ;
               ] ;
             sp:predicate study:hasStartRule ;
             sp:subject [
-                sp:varName "vstst"^^xsd:string ;
+                sp:varName "vstst" ;
               ] ;
           ]
           [
             sp:object study:StartRule ;
             sp:predicate rdf:type ;
             sp:subject [
-                sp:varName "strtrule"^^xsd:string ;
+                sp:varName "strtrule" ;
               ] ;
           ]
           [
@@ -4875,701 +4937,701 @@ sdtm:SDTM_VS_Record
             sp:elements (
                 [
                   sp:object [
-                      sp:varName "VSTPT"^^xsd:string ;
+                      sp:varName "VSTPT" ;
                     ] ;
                   sp:predicate study:ruleDescription ;
                   sp:subject [
-                      sp:varName "strtrule"^^xsd:string ;
+                      sp:varName "strtrule" ;
                     ] ;
                 ]
               ) ;
           ]
           [
             sp:object [
-                sp:varName "VSTPTNUM"^^xsd:string ;
+                sp:varName "VSTPTNUM" ;
               ] ;
             sp:predicate skos:altLabel ;
             sp:subject [
-                sp:varName "strtrule"^^xsd:string ;
+                sp:varName "strtrule" ;
               ] ;
           ]
         ) ;
     ] ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf sdtm:SDTMSubjectLevelRecord ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "VS"^^xsd:string ;
+      owl:hasValue "VS" ;
       owl:onProperty sdtm:hasDOMAIN ;
     ] ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SDTM VS Record"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SDTM VS Record" ;
 .
 sdtm:Variable
   rdf:type owl:Class ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:subClassOf sdtm:SDTMTerminology ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Variable"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Variable" ;
 .
 sdtm:additionalMetadata
   rdf:type owl:ObjectProperty ;
   rdfs:domain sdtm:Variable ;
   rdfs:range owl:Thing ;
-  skos:definition "links an SDTM variable with the resource in the study ontology that contains Method and Location information. This is different for each SDTM variable and may vary by protocol. "^^xsd:string ;
-  skos:prefLabel "additional metadata"^^xsd:string ;
+  skos:definition "links an SDTM variable with the resource in the study ontology that contains Method and Location information. This is different for each SDTM variable and may vary by protocol. " ;
+  skos:prefLabel "additional metadata" ;
 .
 sdtm:hasACTARM
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "ACTARM"^^xsd:string ;
+  rdfs:label "ACTARM" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ACTARM"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "ACTARM" ;
 .
 sdtm:hasACTARMCD
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "ACTARMCD"^^xsd:string ;
+  rdfs:label "ACTARMCD" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ACTARMCD"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "ACTARMCD" ;
 .
 sdtm:hasAGE
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "AGE"^^xsd:string ;
+  rdfs:label "AGE" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "AGE"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "AGE" ;
 .
 sdtm:hasAGEU
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "AGEU"^^xsd:string ;
+  rdfs:label "AGEU" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "AGEU"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "AGEU" ;
 .
 sdtm:hasARM
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "ARM"^^xsd:string ;
+  rdfs:label "ARM" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ARM"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "ARM" ;
 .
 sdtm:hasARMCD
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "ARMCD"^^xsd:string ;
+  rdfs:label "ARMCD" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ARMCD"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "ARMCD" ;
 .
 sdtm:hasActivity
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMRecord ;
-  rdfs:label "has activity"^^xsd:string ;
+  rdfs:label "has activity" ;
   rdfs:range study:StudyActivity ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has activity"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has activity" ;
 .
 sdtm:hasBRTHDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "BRTHDTC	"^^xsd:string ;
+  rdfs:label "BRTHDTC	" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "BRTHDTC	"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "BRTHDTC	" ;
 .
 sdtm:hasCOUNTRY
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "COUNTRY"^^xsd:string ;
+  rdfs:label "COUNTRY" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "COUNTRY"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "COUNTRY" ;
 .
 sdtm:hasCode
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMDomain ;
-  rdfs:label "has code"^^xsd:string ;
+  rdfs:label "has code" ;
   rdfs:range sdtm:Domain ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has code"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has code" ;
 .
 sdtm:hasDFComment
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range xsd:string ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Comment"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Comment" ;
 .
 sdtm:hasDFControlledTerm
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range xsd:string ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "ControlledTerminology"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "ControlledTerminology" ;
 .
 sdtm:hasDFLabel
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range xsd:string ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Label"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Label" ;
 .
 sdtm:hasDFLocation
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range xsd:string ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Origin"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Origin" ;
 .
 sdtm:hasDFMethod
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range xsd:string ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Method"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Method" ;
 .
 sdtm:hasDFOrigin
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range xsd:string ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Origin"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Origin" ;
 .
 sdtm:hasDFRole
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range xsd:string ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Role"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Role" ;
 .
 sdtm:hasDFType
   rdf:type owl:ObjectProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Type"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Type" ;
 .
 sdtm:hasDFVariable
   rdf:type owl:ObjectProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range sdtm:Variable ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Variable"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Variable" ;
 .
 sdtm:hasDFVariableName
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range xsd:string ;
-  skos:altLabel ""^^xsd:string ;
-  skos:prefLabel "Variable"^^xsd:string ;
+  skos:altLabel "" ;
+  skos:prefLabel "Variable" ;
 .
 sdtm:hasDMDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "DMDTC"^^xsd:string ;
+  rdfs:label "DMDTC" ;
   rdfs:range xsd:dateTime ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "DMDTC"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "DMDTC" ;
 .
 sdtm:hasDMDY
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "Datatype property 1"^^xsd:string ;
+  rdfs:label "Datatype property 1" ;
   rdfs:range xsd:integer ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Datatype property 1"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Datatype property 1" ;
 .
 sdtm:hasDOMAIN
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMRecord ;
-  rdfs:label "Domain Abbreviation"^^xsd:string ;
+  rdfs:label "Domain Abbreviation" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Domain Abbreviation"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Domain Abbreviation" ;
 .
 sdtm:hasDTHDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "BRTHDTC	"^^xsd:string ;
+  rdfs:label "BRTHDTC	" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "BRTHDTC	"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "BRTHDTC	" ;
 .
 sdtm:hasDTHFL
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "DEATHFL"^^xsd:string ;
+  rdfs:label "DEATHFL" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "DEATHFL"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "DEATHFL" ;
 .
 sdtm:hasETHNIC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "ETHNIC"^^xsd:string ;
+  rdfs:label "ETHNIC" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "ETHNIC"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "ETHNIC" ;
 .
 sdtm:hasEntity
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMRecord ;
-  rdfs:label "has entity"^^xsd:string ;
+  rdfs:label "has entity" ;
   rdfs:range study:HumanStudySubject ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has entity"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has entity" ;
 .
 sdtm:hasIDVAR
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_SupplementalRecord ;
-  rdfs:label "has IDVAR"^^xsd:string ;
+  rdfs:label "has IDVAR" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has IDVAR"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has IDVAR" ;
 .
 sdtm:hasIDVARVAL
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_SupplementalRecord ;
-  rdfs:label "has IDVAR"^^xsd:string ;
+  rdfs:label "has IDVAR" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has IDVAR"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has IDVAR" ;
 .
 sdtm:hasINVID
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "INVID"^^xsd:string ;
+  rdfs:label "INVID" ;
   rdfs:range xsd:string ;
-  skos:definition "Relates SDTM record with the Investigator Identifier"^^xsd:string ;
-  skos:prefLabel "INVID"^^xsd:string ;
+  skos:definition "Relates SDTM record with the Investigator Identifier" ;
+  skos:prefLabel "INVID" ;
 .
 sdtm:hasINVNAM
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "INVNAM"^^xsd:string ;
+  rdfs:label "INVNAM" ;
   rdfs:range xsd:string ;
-  skos:definition "related SDTM Record with the Investigator Name"^^xsd:string ;
-  skos:prefLabel "INVNAM"^^xsd:string ;
+  skos:definition "related SDTM Record with the Investigator Name" ;
+  skos:prefLabel "INVNAM" ;
 .
 sdtm:hasQEVAL
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_SupplementalRecord ;
-  rdfs:label "has IDVAR"^^xsd:string ;
+  rdfs:label "has IDVAR" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has IDVAR"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has IDVAR" ;
 .
 sdtm:hasQLABEL
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_SupplementalRecord ;
-  rdfs:label "has IDVAR"^^xsd:string ;
+  rdfs:label "has IDVAR" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has IDVAR"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has IDVAR" ;
 .
 sdtm:hasQNAM
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_SupplementalRecord ;
-  rdfs:label "has IDVAR"^^xsd:string ;
+  rdfs:label "has IDVAR" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has IDVAR"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has IDVAR" ;
 .
 sdtm:hasQORIG
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_SupplementalRecord ;
-  rdfs:label "has IDVAR"^^xsd:string ;
+  rdfs:label "has IDVAR" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has IDVAR"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has IDVAR" ;
 .
 sdtm:hasQVAL
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_SupplementalRecord ;
-  rdfs:label "has IDVAR"^^xsd:string ;
+  rdfs:label "has IDVAR" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has IDVAR"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has IDVAR" ;
 .
 sdtm:hasRACE
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "RACE"^^xsd:string ;
+  rdfs:label "RACE" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "RACE"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "RACE" ;
 .
 sdtm:hasRDOMAIN
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_SupplementalRecord ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasRFENDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "Subject Reference End Date/Time"^^xsd:string ;
+  rdfs:label "Subject Reference End Date/Time" ;
   rdfs:range xsd:dateTime ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Subject Reference End Date/Time"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Subject Reference End Date/Time" ;
 .
 sdtm:hasRFICDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "RFICDTC"^^xsd:string ;
+  rdfs:label "RFICDTC" ;
   rdfs:range xsd:dateTime ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "RFICDTC"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "RFICDTC" ;
 .
 sdtm:hasRFPENDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "RFPENDTC"^^xsd:string ;
+  rdfs:label "RFPENDTC" ;
   rdfs:range xsd:dateTime ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "RFPENDTC"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "RFPENDTC" ;
 .
 sdtm:hasRFSTDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "Subject Reference Start Date/Time"^^xsd:string ;
+  rdfs:label "Subject Reference Start Date/Time" ;
   rdfs:range xsd:dateTime ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Subject Reference Start Date/Time"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Subject Reference Start Date/Time" ;
 .
 sdtm:hasRFXENDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "RFXENDTC"^^xsd:string ;
+  rdfs:label "RFXENDTC" ;
   rdfs:range xsd:dateTime ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "RFXENDTC"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "RFXENDTC" ;
 .
 sdtm:hasRFXSTDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "RFSXTDTC"^^xsd:string ;
+  rdfs:label "RFSXTDTC" ;
   rdfs:range xsd:dateTime ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "RFSXTDTC"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "RFSXTDTC" ;
 .
 sdtm:hasRecord
   rdf:type owl:ObjectProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMDomain ;
-  rdfs:label "has record"^^xsd:string ;
+  rdfs:label "has record" ;
   rdfs:range sdtm:SDTMRecord ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "has record"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "has record" ;
 .
 sdtm:hasSEX
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "AGE"^^xsd:string ;
+  rdfs:label "AGE" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "AGE"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "AGE" ;
 .
 sdtm:hasSITEID
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_DM_Record ;
-  rdfs:label "SITEID"^^xsd:string ;
+  rdfs:label "SITEID" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "SITEID"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "SITEID" ;
 .
 sdtm:hasSTUDYID
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMRecord ;
-  rdfs:label "Study Identifier"^^xsd:string ;
+  rdfs:label "Study Identifier" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Study Identifier"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Study Identifier" ;
 .
 sdtm:hasSUBJID
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMRecord ;
-  rdfs:label "Subject Identifier for the Study"^^xsd:string ;
+  rdfs:label "Subject Identifier for the Study" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "Subject Identifier for the Study"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "Subject Identifier for the Study" ;
 .
 sdtm:hasUSUBJID
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMRecord ;
-  rdfs:label "USUBJID"^^xsd:string ;
+  rdfs:label "USUBJID" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "USUBJID"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "USUBJID" ;
 .
 sdtm:hasVISIT
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMSubjectLevelRecord ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVISITDY
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMSubjectLevelRecord ;
   rdfs:range xsd:float ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVISITNUM
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMSubjectLevelRecord ;
   rdfs:range xsd:float ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSBLFL
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
-  rdfs:label "VSBLFL"^^xsd:string ;
+  rdfs:label "VSBLFL" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "VSBLFL"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "VSBLFL" ;
 .
 sdtm:hasVSCAT
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
-  rdfs:label "VSCAT"^^xsd:string ;
+  rdfs:label "VSCAT" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "VSCAT"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "VSCAT" ;
 .
 sdtm:hasVSDRVFL
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
-  rdfs:label "VSBLFL"^^xsd:string ;
+  rdfs:label "VSBLFL" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "VSBLFL"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "VSBLFL" ;
 .
 sdtm:hasVSDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:dateTime ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSDY
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTMSubjectLevelRecord ;
   rdfs:range xsd:float ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSELTM
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSGRPID
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSLAT
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSLOC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSORRES
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:float ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSORRESU
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSPOS
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSRFTDTC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSRSND
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSSCAT
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition "VSSCAT"^^xsd:string ;
+  skos:definition "VSSCAT" ;
 .
 sdtm:hasVSSEQ
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
-  rdfs:label "VSBLFL"^^xsd:string ;
+  rdfs:label "VSBLFL" ;
   rdfs:range xsd:float ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "VSBLFL"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "VSBLFL" ;
 .
 sdtm:hasVSSPID
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:integer ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSSTAT
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSSTRESC
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSSTRESN
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:float ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSSTRESU
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:float ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSTEST
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
-  rdfs:label "VSTEST"^^xsd:string ;
+  rdfs:label "VSTEST" ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
-  skos:prefLabel "VSTEST"^^xsd:string ;
+  skos:definition "" ;
+  skos:prefLabel "VSTEST" ;
 .
 sdtm:hasVSTESTCD
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSTPT
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSTPTNUM
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:integer ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:hasVSTPTREF
   rdf:type owl:DatatypeProperty ;
-  rdfs:comment ""^^xsd:string ;
+  rdfs:comment "" ;
   rdfs:domain sdtm:SDTM_VS_Record ;
   rdfs:range xsd:string ;
-  skos:definition ""^^xsd:string ;
+  skos:definition "" ;
 .
 sdtm:key
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTMDefineRecord ;
   rdfs:range xsd:integer ;
-  skos:definition "Define.xml 2.0 record sort order"^^xsd:string ;
-  skos:prefLabel "key"^^xsd:string ;
+  skos:definition "Define.xml 2.0 record sort order" ;
+  skos:prefLabel "key" ;
 .
 sdtm:variableComment
   rdf:type owl:AnnotationProperty ;
   rdfs:domain sdtm:Variable ;
   rdfs:range xsd:string ;
   rdfs:subPropertyOf skos:note ;
-  skos:prefLabel "variable comment"^^xsd:string ;
+  skos:prefLabel "variable comment" ;
 .
