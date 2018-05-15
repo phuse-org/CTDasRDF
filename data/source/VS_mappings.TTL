@@ -39,12 +39,13 @@ cdiscpilot01:Person_{usubjid}
   study:participatesIn cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} ;
 .
 
-#---- Visit
+#---- Visit  EG: cdiscpilot01:VisitScreening1_01-701-1015 
+#                EG:   study:hasSubActivity   AssumeBodyPositionSupine_SCREENING1_01-701-1015 
 cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
   rdf:type               custom:Visit{visit_im_titleCSh} ;
   study:activityStatus   code:ActivityStatus_{vsactstatus_im} ;
   study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
-  study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{usubjid} ;
+  study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid} ;
   study:hasSubActivity   cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} ;
 .
 
