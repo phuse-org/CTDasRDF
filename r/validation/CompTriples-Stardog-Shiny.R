@@ -34,7 +34,7 @@ source("validation/Functions.R")
 
 # Endpoints
 epOnt = "http://localhost:5820/CTDasRDFOnt/query"
-epDer = "http://localhost:5820/CTDasRDF/query"
+epSMS = "http://localhost:5820/CTDasRDFSMS/query"
 
 # Read in the prefixes
 prefixList <- read.csv(file="prefixList.csv", header=TRUE, sep=",")
@@ -48,21 +48,21 @@ prefixBlock <- paste(prefixList$prefix_, collapse = "\n")
 queryStart <- "SELECT ?p ?o "
 
 ui <- fluidPage(
-  titlePanel("Instance Data: Ontology vs SMS Derived"),
+  titlePanel("Instance Data: Ontology vs SMS Map"),
   fluidRow (
     column(6, textInput('rootNodeOnt', "Ontology Subject", width='500px', value = "cdiscpilot01:Person_01-701-1015")),
-    column(6, textInput('rootNodeDer', "Derived Subject",  width='500px', value = "cdiscpilot01:Person_01-701-1015"))
+    column(6, textInput('rootNodeSMS', "SMS Subject",  width='500px', value = "cdiscpilot01:Person_01-701-1015"))
   ),
   fluidRow(
     column(dataTableOutput('triplesTableOnt'), width=6)
     ,
-    column(dataTableOutput('triplesTableDer'), width=6)
+    column(dataTableOutput('triplesTableSMS'), width=6)
   ),
   # Section for identifying triples in one graph and not the other.   
   fluidRow(
     column(radioButtons("comp", "Compare:",
-                c("In Ont, not in Der" = "inOntNotDer",
-                  "In Der, not in Ont" = "inDerNotOnt")), width=4)
+                c("In Ont, not in SMS" = "inOntNotSMS",
+                  "In SMS, not in Ont" = "inSMSNotOnt")), width=4)
   ),
   fluidRow(
     column(h4("Comparison Result:",
@@ -101,33 +101,33 @@ server <- function(input, output) {
   output$triplesTableOnt <-renderDataTable({triplesOnt()}, 
     options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
   
-  # Derived Triples -----------------------------------------------------------
-  triplesDer <- reactive({ 
-    # print(input$rootNodeDer)
-    queryDer = paste0(prefixBlock, queryStart, "
-      WHERE {", input$rootNodeDer," ?p ?o . } ORDER BY ?p ?o "
+  # SMS Triples -----------------------------------------------------------
+  triplesSMS <- reactive({ 
+    # print(input$rootNodeSMS)
+    querySMS = paste0(prefixBlock, queryStart, "
+      WHERE {", input$rootNodeSMS," ?p ?o . } ORDER BY ?p ?o "
     )
 
     # Query results dfs ----  
-    qrDer <- SPARQL(url=epDer, query=queryDer)
+    qrSMS <- SPARQL(url=epSMS, query=querySMS)
     #--------------------
-    triplesDer <- qrDer$results
+    triplesSMS <- qrSMS$results
     # shorten from IRI to qnam
-    triplesDer <- IRItoPrefix(sourceDF=triplesDer, colsToParse=c("p", "o"))
+    triplesSMS <- IRItoPrefix(sourceDF=triplesSMS, colsToParse=c("p", "o"))
     # Sort the dataframe values for display
-    triplesDer<-triplesDer[with(triplesDer, order(p, o)), ]
+    triplesSMS<-triplesSMS[with(triplesSMS, order(p, o)), ]
   })
   
-  output$triplesTableDer <-renderDataTable({triplesDer()}, 
+  output$triplesTableSMS <-renderDataTable({triplesSMS()}, 
     options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
 
  # Comparsion to find in one graph and not in the other
   compResult <- reactive({
-    if (input$comp=='inDerNotOnt') {
-      compResult <-anti_join(triplesDer(), triplesOnt())
+    if (input$comp=='inSMSNotOnt') {
+      compResult <-anti_join(triplesSMS(), triplesOnt())
     }
-    else if (input$comp=='inOntNotDer') {
-        compResult <- anti_join(triplesOnt(), triplesDer())
+    else if (input$comp=='inOntNotSMS') {
+        compResult <- anti_join(triplesOnt(), triplesSMS())
     }
   })
   

@@ -27,7 +27,7 @@
 # DrugAdministration_XXX - specific to a Person and that specific administration, so
 #   so the IRI is a combination of the USUBJID and the fixDoseInt.  FixDoseInt is a
 #   sub-triple of DrugAdministration so it makes sense to use that combination.
-# 26APR18: 
+# 26APR18:
 #        cumuDrugAdmin_im, rfxstdtc, rfxendtc are merged in from DM
 # -----------------------------------------------------------------------------
 cdiscpilot01:Person_{usubjid}
@@ -52,11 +52,14 @@ cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
 				##  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
 				##.
 
-  # Visit date comes from VS, not from EX, because the EX is sometimes a later date
-  #   (not on the same day as the visit date). So date is not here, but the drug admin that is
+  # Visit date comes from VS, NOT FROM EX, because the EX is sometimes a later date
+  #   (EX not on the same day as the visit date!). So date is not here, but the drug admin that is
   #   associated with that visit is here, even though it may occur on a later date!
+  #   May need to change this back to original coding.
   cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
+    rdf:type	             custom:Visit{visit_im_titleCSh} ;
     study:hasSubActivity   cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en} ;
+    #DEL NO, NOT HERE!!! Date is set in VS.study:hasPerformedDate cdiscpilot01:Date_{exstdtc_en} ;
   .
     # DrugAdministration
     #   Drug admin date exstdtc_en may be a later date than the visit date
@@ -71,7 +74,7 @@ cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
       study:hasRouteOfAdministration code:ExRoute_{exroute_en} ;
       study:outcome                  study:DrugAdministrationComplete ;
     .
-      cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} 
+      cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
         rdf:type         owl:Class ;
         rdfs:subClassOf  custom:Visit{visit_im_titleCSh}Activity ;
         skos:prefLabel   "Visit {visit_im_titleC} Person {usubjid}" ;

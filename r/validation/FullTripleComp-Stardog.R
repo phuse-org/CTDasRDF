@@ -21,7 +21,7 @@ source("validation/Functions.R")
 
 # Endpoints
 epOnt = "http://localhost:5820/CTDasRDFOnt/query"
-epSMS = "http://localhost:5820/CTDasRDF/query"
+epSMS = "http://localhost:5820/CTDasRDFSMS/query"
 
 ## May need this again later.
 ## Subjects in Ontology for testing that are not in the R conversion (yet)

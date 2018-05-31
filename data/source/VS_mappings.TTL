@@ -37,17 +37,21 @@
 
 cdiscpilot01:Person_{usubjid}
   study:participatesIn cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} ;
+
 .
 
-#---- Visit  EG: cdiscpilot01:VisitScreening1_01-701-1015 
-#                EG:   study:hasSubActivity   AssumeBodyPositionSupine_SCREENING1_01-701-1015 
+#---- Visit  EG: cdiscpilot01:VisitScreening1_01-701-1015
+#  The hasPerformedDate is used as the date for the Drug Administration "visit",
+#   even though the actual administration is EX may be a later date!  See the
+#   EX Map for cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} .
 cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
-  rdf:type               custom:Visit{visit_im_titleCSh} ;
-  study:activityStatus   code:ActivityStatus_{vsactstatus_im} ;
   study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
-  study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid} ;
-  study:hasSubActivity   cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} ;
 .
+#DEL   rdf:type               custom:Visit{visit_im_titleCSh} ;
+#DEL   study:hasSubActivity   cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} ;
+#DEL   study:activityStatus   code:ActivityStatus_{vsactstatus_im} ;
+#DEL   study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid} ;
+#DEL .
 
     # VisitDate - designate hasPerformedDate as a VisitDate
     cdiscpilot01:Date_{vsdtc_en}
@@ -64,23 +68,23 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
        study:hasStartRule   cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid} ;
        study:outcome        code:Vspos_{vspos} ;
     .
-    
+
         # Visit Activity
         cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
           rdf:type         owl:Class ;
           rdfs:subClassOf  custom:Visit{visit_im_titleCSh}Activity ;
           skos:prefLabel   "Visit {visit_im_titleC} Person {usubjid}"^^xsd:string ;
         .
-        
+
         # Start Rule
-        cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid} 
+        cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid}
             rdf:type              cd01p:{startRule_im} ;
             skos:prefLabel        "{usubjid} {visit_im_titleC} Rule {vstpt}"^^xsd:string ;
             study:hasPrerequisite cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid} ;
         .
 ##    # Each vstestcd.  vsseq used to show relative sequence.
-    cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} 
-      study:vstestcd         code:Vtestcd_{vstestcd} ;     
+    cdiscpilot01:{vstestcd}_{usubjid}_{vsseq}
+      study:vstestcd         code:Vtestcd_{vstestcd} ;
       rdf:type               cd01p:Visit{visit_im_titleCSh}{vstest_testtype_im} ;
       rdf:type               cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} ;
       study:activityStatus   code:ActivityStatus_{vsactstatus_im} ;
@@ -89,7 +93,7 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
       study:bodyPosition     code:Vspos_{vspos} ;
       study:derivedFlag      "{vsdrvfl_im}"^^xsd:string ;
       study:groupID          "{vsgrpid_im}"^^xsd:string ;
-      study:hasCategory      cd01p:{vscat_im} ; 
+      study:hasCategory      cd01p:{vscat_im} ;
       study:hasScheduledDate cdiscpilot01:Date_{vsdtc_en} ;
       study:hasStartRule     cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid} ;
       study:hasSubcategory   cd01p:{vssubcat_im} ;

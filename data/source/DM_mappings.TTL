@@ -54,8 +54,8 @@ cdiscpilot01:Person_{usubjid}
 
   # Lifespan ----
   #  concat of encoded birthdate and dthdtc
-  #  prefLabel MUST use the _im version of the interval and not individual dates 
-  #    because the end date is usually missing, which would result in no label 
+  #  prefLabel MUST use the _im version of the interval and not individual dates
+  #    because the end date is usually missing, which would result in no label
 #      for that interval.
   cdiscpilot01:Interval_{lifeSpan_im_en}
     a                 study:Lifespan ;
@@ -152,15 +152,15 @@ cdiscpilot01:Person_{usubjid}
    rdf:type             cd01p:VisitScreening1DemogDataColl ;
    rdf:type             cdiscpilot01:VisitScreening1Activity_{usubjid} ;
    rdf:type             code:DemographicDataCollection ;
-   skos:prefLabel       "Screening 1 Demographic data collection Person {usubjid} "^^xsd:string ;  # Note PErson comes last to to match other labels. DO NOT CHANGE
-   code:hasAge          cdiscpilot01:AgeOutcome_{age_en} ;
+   skos:prefLabel       "Screening 1 Demographic data collection Person {usubjid} "^^xsd:string ;  # Note Person comes last to match other labels. DO NOT CHANGE
    study:activityStatus code:ActivityStatus_CO ;
-   study:ethnicity      code:Ethnicity_{ethnic_en}  ;
    study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
-   study:race           code:Race_{race_en} ;
-   study:sex            code:Sex_{sex} ;
+   study:hasSubActivity cdiscpilot01:AgeDataCollection_{usubjid} ;
+   study:hasSubActivity cdiscpilot01:EthnicityDataCollection_{usubjid} ;
+   study:hasSubActivity cdiscpilot01:RaceDataCollection_{usubjid} ;
+   study:hasSubActivity cdiscpilot01:SexDataCollection_{usubjid} ;
+   study:outcome code:Successfully_Completed ;
  .
-
    # DemographicDataCollection subtriples
    # VisitScreening1Activity
    cdiscpilot01:VisitScreening1Activity_{usubjid}
@@ -169,19 +169,59 @@ cdiscpilot01:Person_{usubjid}
      skos:prefLabel  "Visit Screening 1 Person {usubjid}"^^xsd:string ;
    .
 
-  # WIP validate these triples and the age unit
-   # AgeOutcome
-   # Previous wascode:hasUnit time:unitYear ;
-   cdiscpilot01:AgeOutcome_{age_en}
-     rdf:type       study:AgeOutcome;
-     skos:prefLabel "{age} {ageu}"^^xsd:string ;
-     code:hasUnit   time:unitYear ;
-     code:hasValue  "{age}"^^xsd:int ;
+   # AgeDataCollection
+   # Hard codes: Screening 1 not avail in DM
+   #           : Activity status =completed.
+   cdiscpilot01:AgeDataCollection_{usubjid}
+     rdf:type             code:AgeDataCollection ;
+     skos:prefLabel       "Person {usubjid} Screening 1 Age data collection"^^xsd:string ;
+     study:activityStatus code:ActivityStatus_CO ;
+     study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
+     study:outcome        cdiscpilot01:AgeOutcome_{age_en} ;
+   .
+     cdiscpilot01:AgeOutcome_{age_en}
+       rdf:type       study:AgeOutcome ;
+       skos:prefLabel "{age} YEARS" ;
+       code:hasUnit   time:unitYear ;
+       code:hasValue  "{age}"^^xsd:int ;
+     .
+     # DemographicDataCollection Date
+     #   Covers Age, Ethnicity, Race, Sex collection
+     cdiscpilot01:Date_{dmdtc_en}
+       rdf:type study:DemogDataCollectionDate
+     .
+
+   # EthnicityDataCollection
+   # Hard codes: Screening 1 not avail in DM
+   #           : Activity status =completed.
+   cdiscpilot01:EthnicityDataCollection_{usubjid}
+     rdf:type             code:EthnicityDataCollection ;
+     skos:prefLabel       "Person {usubjid} Screening 1 Ethnicity data collection" ;
+     study:activityStatus code:ActivityStatus_CO ;
+     study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
+     study:outcome        code:Ethnicity_{ethnic_en} ;
+   .
+# WIP here
+   # RaceDataCollection
+   # Hard codes: Screening 1 not avail in DM
+   #           : Activity status =completed.
+   cdiscpilot01:RaceDataCollection_{usubjid}
+     rdf:type             code:RaceDataCollection ;
+     skos:prefLabel       "Person {usubjid} Screening 1 Race data collection" ;
+     study:activityStatus code:ActivityStatus_CO ;
+     study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
+     study:outcome        code:Race_{race_en} ;
    .
 
-   # DemographicDataCollection Date
-   cdiscpilot01:Date_{dmdtc_en}
-     rdf:type study:DemogDataCollectionDate
+   # SexDataCollection
+   # Hard codes: Screening 1 not avail in DM
+   #           : Activity status =completed.
+   cdiscpilot01:SexDataCollection_{usubjid}
+     rdf:type             code:SexDataCollection ;
+     skos:prefLabel       "Person {usubjid} Screening 1 Sex data collection" ;
+     study:activityStatus code:ActivityStatus_CO ;
+     study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
+     study:outcome        code:Sex_{sex} ;
    .
 
  # -----------------------------------------------------------------------------
