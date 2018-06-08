@@ -37,7 +37,8 @@ graphMeta <- read.csv2("data/source/ctdasrdf_graphmeta.csv",
 graphMeta$createdOn<-gsub("(\\d\\d)$", ":\\1",strftime(Sys.time(),"%Y-%m-%dT%H:%M:%S%z"))
 
 write.csv(graphMeta, file="data/source/ctdasrdf_graphmeta.csv",
-  row.names = F)
+  row.names = F,
+  na = "")
 
 # -----------------------------------------------------------------------------
 # ---- XPT Import -------------------------------------------------------------
@@ -49,14 +50,16 @@ dm  <- head(readXPT("dm"), dm_n)
 source('R/DM_imputeCSV.R')  # Creates birthdate. 
 
 write.csv(dm, file="data/source/DM_subset.csv", 
-  row.names = F)
+  row.names = F,
+  na = "")
 
 # SUPPDM ----
 suppdm  <- readXPT("suppdm")
 # subset for development
 suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  
 write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
-row.names = F)
+row.names = F,
+  na = "")
 
 # EX ----
 ex  <- readXPT("ex")
@@ -72,7 +75,8 @@ ex <- merge(dmDrugInt, ex, by.x = "usubjid", by.y="usubjid")
 source('R/EX_imputeCSV.R')#
 
 write.csv(ex, file="data/source/EX_subset.csv", 
-row.names = F)
+row.names = F,
+  na = "")
 
 # VS ----
 vs  <- readXPT("vs")  # first row only for initial testing.
@@ -91,10 +95,12 @@ vs <- vs[vsSubset, ]
 source('R/VS_imputeCSV.R')  # Creates birthdate. 
 
 write.csv(vs, file="data/source/vs_subset.csv", 
-  row.names = F)
+  row.names = F,
+  na = "")
 
 
 # TS ----
 #ts  <- readXPT("ts")  # first row only for initial testing.
 #write.csv(ts, file="data/source/ts_subset.csv", 
-#  row.names = F)
+#  row.names = F,
+#  na = "")

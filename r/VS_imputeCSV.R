@@ -97,11 +97,24 @@ vs[vs$vstestcd %in% c("PULSE"), "vstest_testtype_im"]          <- "Pulse"
 vs[vs$vstestcd %in% c("TEMP"), "vstest_testtype_im"]           <- "Temperature"
 vs[vs$vstestcd %in% c("WEIGHT"), "vstest_testtype_im"]         <- "Weight"
 
+
+
+# vsstresc  : replace special characters with '_' to allow use as IRI
+vs$vsstresc_en  <- gsub("\\.", "_", vs$vsstresc, perl=TRUE)
+
 # Title Case (titleC) Conversions. For RDF Labels.
 vs$visit_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$visit,    perl=TRUE)
 vs$vspos_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vspos,    perl=TRUE)
 vs$vslat_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vslat,    perl=TRUE)
 vs$vstestcd_im_titleC <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vstestcd, perl=TRUE)
+
+
+
+# Study protcol has the patient lying for 5 min before standing for 1 min.
+#  The standing 1 min therefore has a previous 5 min start rule.
+vs[vs$vstpt == "AFTER STANDING FOR 1 MINUTE", "vstpt_AssumeBodyPosStartRule_im"] <- "StartRuleLying5"
+
+
 
 #------------------------------------------------------------------------------
 # URL encoding
@@ -113,6 +126,20 @@ vs <- encodeCol(data=vs, col="vsorres")
 
 # Sort column names in the df for quicker referencing
 vs <- vs %>% select(noquote(order(colnames(vs))))
+
+
+
+# vsspid : Sponsor defined ID for various tests. 
+#  TODO: Later change to be based on value of field vstestcd 
+vs[vs$vsseq == 1   & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "123"
+vs[vs$vsseq == 2   & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "719"
+vs[vs$vsseq == 3   & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "235"
+vs[vs$vsseq == 43  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "1000"
+vs[vs$vsseq == 86  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "124"
+vs[vs$vsseq == 87  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "720"
+vs[vs$vsseq == 88  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "236"
+vs[vs$vsseq == 128 & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "3000"
+vs[vs$vsseq == 142 & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "5000"
 
 
 #------------- ORIGINAL IMPUTATIONS FOLLOW ------------------------------------
@@ -153,14 +180,4 @@ vs <- vs %>% select(noquote(order(colnames(vs))))
 #TW # vsscat
 #TW vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$personNum == 1,  "vsscat"]  <- "SCAT1"
 #TW 
-#TW # vsspid
-#TW vs[vs$vsseq %in% c(1)   & vs$personNum == 1, "vsspid"]  <- "123"
-#TW vs[vs$vsseq %in% c(2)   & vs$personNum == 1, "vsspid"]  <- "719"
-#TW vs[vs$vsseq %in% c(3)   & vs$personNum == 1, "vsspid"]  <- "235"
-#TW vs[vs$vsseq %in% c(43)  & vs$personNum == 1, "vsspid"]  <- "1000"
-#TW vs[vs$vsseq %in% c(86)  & vs$personNum == 1, "vsspid"]  <- "124"
-#TW vs[vs$vsseq %in% c(87)  & vs$personNum == 1, "vsspid"]  <- "720"
-#TW vs[vs$vsseq %in% c(88)  & vs$personNum == 1, "vsspid"]  <- "236"
-#TW vs[vs$vsseq %in% c(128) & vs$personNum == 1, "vsspid"]  <- "3000"
-#TW vs[vs$vsseq %in% c(142) & vs$personNum == 1, "vsspid"]  <- "5000"
 #TW 
