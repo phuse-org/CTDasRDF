@@ -17,7 +17,7 @@ library(collapsibleTree)
 library(DT)
 
 # Endpoints
-epDer = "http://localhost:5820/CTDasRDF/query"
+epDer = "http://localhost:5820/CTDasRDFSMS/query"
 epOnt = "http://localhost:5820/CTDasRDFOnt/query"
 
 # Define the namespaces
