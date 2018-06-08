@@ -273,6 +273,7 @@ server <- function(input, output, session) {
     collapsibleTreeNetwork(
       triplesOnt(),
       c("s", "o"),
+      linkLength = 300,
       tooltipHtml="p",
       width = "100%"
     )
