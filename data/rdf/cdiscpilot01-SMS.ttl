@@ -894,10 +894,7 @@ cdiscpilot01:TemperatureOutcome_96_9 a study:TemperatureOutcome ;
 	code:hasUnit code:Unit_F ;
 	code:hasValue "96.9" .
 
-cdiscpilot01:Temperature_SCREENING1_01-701-1015_128 
-  rdf:type code:Temperature ;
-  rdf:type cd01p:VisitScreening1Temperature ;
-  rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 , 
+cdiscpilot01:Temperature_SCREENING1_01-701-1015_128 a cd01p:VisitScreening1Temperature , cdiscpilot01:VisitScreening1Activity_01-701-1015 , code:Temperature ;
 	study:activityStatus code:ActivityStatus_CO ;
 	study:anatomicLocation code:Oral ;
 	study:derivedFlag "N" ;
@@ -909,8 +906,6 @@ cdiscpilot01:Temperature_SCREENING1_01-701-1015_128
 	study:reasonNotDone "not applicable" ;
 	study:seq "128.0"^^xsd:float ;
 	study:sponsordefinedID "3000" .
-
-
 
 cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 a study:UniqueSubjectIdentifier ;
 	skos:prefLabel "01-701-1015" .
