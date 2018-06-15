@@ -20,101 +20,16 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://rdf.cdisc.org/sdtmterm#C66731.C16576>
-  rdf:type study:SexOutcome ;
   skos:prefLabel "F" ;
 .
 <http://rdf.cdisc.org/sdtmterm#C66731.C17998>
-  rdf:type study:SexOutcome ;
   skos:prefLabel "U" ;
 .
 <http://rdf.cdisc.org/sdtmterm#C66731.C20197>
-  rdf:type study:SexOutcome ;
   skos:prefLabel "M" ;
 .
 <http://rdf.cdisc.org/sdtmterm#C66731.C45908>
-  rdf:type study:SexOutcome ;
   skos:prefLabel "UNDIFFERENTIATED" ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66790.C17459>
-  rdf:type study:EthnicOutcome ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66790.C17998>
-  rdf:type study:EthnicOutcome ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66790.C41222>
-  rdf:type study:EthnicOutcome ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66790.C43234>
-  rdf:type study:EthnicOutcome ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25206>
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:TemperatureOutcome ;
-      owl:onProperty study:outcome ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25208>
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:WeightOutcome ;
-      owl:onProperty study:outcome ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25298>
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:BloodPressureOutcome ;
-      owl:onProperty study:outcome ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25299>
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:BloodPressureOutcome ;
-      owl:onProperty study:outcome ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25347>
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:HeightOutcome ;
-      owl:onProperty study:outcome ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C49676>
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:PulseOutcome ;
-      owl:onProperty study:outcome ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C71148.C62166>
-  rdf:type study:BodyPosition ;
-.
-<http://rdf.cdisc.org/sdtmterm#C71148.C62167>
-  rdf:type study:BodyPosition ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74456.C12421>
-  rdf:type study:AnatomicLocation ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74456.C32141>
-  rdf:type study:AnatomicLocation ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C16352>
-  rdf:type study:RaceOutcome ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C41219>
-  rdf:type study:RaceOutcome ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C41259>
-  rdf:type study:RaceOutcome ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C41260>
-  rdf:type study:RaceOutcome ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74457.C41261>
-  rdf:type study:RaceOutcome ;
 .
 arg:activityDate
   rdf:type rdf:Property ;
@@ -185,6 +100,12 @@ code:AnatomicLocation
       owl:onProperty code:hasPermissibleOutcome ;
     ] ;
 .
+code:AnatomicLocation_ARM
+  rdf:type study:AnatomicLocation ;
+.
+code:AnatomicLocation_ORAL_CAVITY
+  rdf:type study:AnatomicLocation ;
+.
 code:AssumeBodyPosition
   owl:equivalentClass [
       rdf:type owl:Restriction ;
@@ -198,6 +119,12 @@ code:BloodPressure
       owl:allValuesFrom study:BloodPressureOutcome ;
       owl:onProperty study:outcome ;
     ] ;
+.
+code:BodyPosition_STANDING
+  rdf:type study:BodyPosition ;
+.
+code:BodyPosition_SUPINE
+  rdf:type study:BodyPosition ;
 .
 code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
@@ -227,6 +154,13 @@ code:DemographicDataCollection
       owl:someValuesFrom code:SexDataCollection ;
     ] ;
 .
+code:DiastolicBP
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:BloodPressureOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
 code:EthnicityDataCollection
   rdfs:subClassOf study:Observation ;
   rdfs:subClassOf [
@@ -250,6 +184,13 @@ code:Ethnicity_UNKNOWN
 code:GenericOutcome
   rdfs:subClassOf study:CategoricalOutcome ;
 .
+code:Height
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:HeightOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
 code:InformedConsentOutcome_1
   rdf:type study:InformedConsentOutcome ;
 .
@@ -258,6 +199,13 @@ code:InformedConsentOutcome_2
 .
 code:InformedConsentOutcome_3
   rdf:type study:InformedConsentOutcome ;
+.
+code:Pulse
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:PulseOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
 .
 code:RaceDataCollection
   rdfs:subClassOf study:Observation ;
@@ -282,13 +230,13 @@ code:Race_NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER
 code:Race_WHITE
   rdf:type study:RaceOutcome ;
 .
-code:RuleOutcome_1
+code:RuleOutcome_FALSE
   rdf:type study:RuleOutcome ;
 .
-code:RuleOutcome_2
+code:RuleOutcome_NA
   rdf:type study:RuleOutcome ;
 .
-code:RuleOutcome_3
+code:RuleOutcome_TRUE
   rdf:type study:RuleOutcome ;
 .
 code:SexDataCollection
@@ -310,6 +258,27 @@ code:Sex_U
 .
 code:Sex_UN
   rdf:type study:SexOutcome ;
+.
+code:SystolicBP
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:BloodPressureOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
+code:Temperature
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:TemperatureOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
+.
+code:Weight
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:WeightOutcome ;
+      owl:onProperty study:outcome ;
+    ] ;
 .
 code:hasAge
   rdfs:range study:AgeOutcome ;
@@ -1512,7 +1481,7 @@ study:StartRuleDefault_1
   skos:definition "Activity may start at any time at the discretion of the Investigator" ;
   skos:prefLabel "Start rule default 1" ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:outcome code:RuleOutcome_1 ;
+  study:outcome code:RuleOutcome_TRUE ;
 .
 study:StartRuleInformedConsentGranted
   rdf:type owl:Class ;
@@ -2473,6 +2442,7 @@ study:hasCountry
 study:hasDate
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
+  rdfs:domain study:Activity ;
   rdfs:range time:Instant ;
   skos:definition "" ;
   skos:prefLabel "has date" ;

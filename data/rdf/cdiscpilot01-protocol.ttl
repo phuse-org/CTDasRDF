@@ -15,30 +15,6 @@
 @prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://rdf.cdisc.org/sdtmterm#C67153.C25206>
-  rdfs:subClassOf study:VitalSign ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25208>
-  rdfs:subClassOf study:VitalSign ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25298>
-  rdfs:subClassOf study:VitalSign ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25299>
-  rdfs:subClassOf study:VitalSign ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25347>
-  rdfs:subClassOf study:VitalSign ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C49676>
-  rdfs:subClassOf study:VitalSign ;
-.
-<http://rdf.cdisc.org/sdtmterm#C71148.C62166>
-  rdf:type cd01p:VitalsSignsBodyPosition ;
-.
-<http://rdf.cdisc.org/sdtmterm#C71148.C62167>
-  rdf:type cd01p:VitalsSignsBodyPosition ;
-.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
@@ -307,7 +283,7 @@ cd01p:StartRuleLying5
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue <http://rdf.cdisc.org/sdtmterm#C71148.C62167> ;
+      owl:hasValue code:BodyPosition_SUPINE ;
       owl:onProperty study:hasPrereqExpectedOutcome ;
     ] ;
   rdfs:subClassOf [
@@ -343,7 +319,7 @@ cd01p:StartRuleLying5
   skos:altLabel "815" ;
   skos:definition "Target activity starts after the subject has assumed a supine position for 5 minutes" ;
   skos:prefLabel "Rule Lying 5 Min" ;
-  study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62167> ;
+  study:hasPrereqExpectedOutcome code:BodyPosition_SUPINE ;
   study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
   study:hasPrerequisite custom:AssumeBodyPositionSupine ;
   study:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES" ;
@@ -360,7 +336,7 @@ cd01p:StartRuleStanding1
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
+      owl:hasValue code:BodyPosition_STANDING ;
       owl:onProperty study:hasPrereqExpectedOutcome ;
     ] ;
   rdfs:subClassOf [
@@ -396,7 +372,7 @@ cd01p:StartRuleStanding1
   skos:altLabel "816" ;
   skos:definition "Target activity starts after the subject has assumed a standing position for 1 minute" ;
   skos:prefLabel "Rule Standing 1 Min" ;
-  study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
+  study:hasPrereqExpectedOutcome code:BodyPosition_STANDING ;
   study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
   study:hasPrerequisite custom:AssumeBodyPositionStanding ;
   study:ruleDescription "AFTER STANDING FOR 1 MINUTE" ;
@@ -413,7 +389,7 @@ cd01p:StartRuleStanding3
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
+      owl:hasValue code:BodyPosition_STANDING ;
       owl:onProperty study:hasPrereqExpectedOutcome ;
     ] ;
   rdfs:subClassOf [
@@ -449,7 +425,7 @@ cd01p:StartRuleStanding3
   skos:altLabel "817" ;
   skos:definition "Target activity starts after the subject has assumed a standing position for 3 minutes" ;
   skos:prefLabel "Rule Standing 3 Min" ;
-  study:hasPrereqExpectedOutcome <http://rdf.cdisc.org/sdtmterm#C71148.C62166> ;
+  study:hasPrereqExpectedOutcome code:BodyPosition_STANDING ;
   study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
   study:hasPrerequisite custom:AssumeBodyPositionStanding ;
   study:ruleDescription "AFTER STANDING FOR 3 MINUTES" ;
@@ -558,6 +534,12 @@ cd01p:VitalsSignsBodyPosition
 code:AgeUnit
   code:hasMethod code:Method_ASSIGNED ;
 .
+code:BodyPosition_STANDING
+  rdf:type cd01p:VitalsSignsBodyPosition ;
+.
+code:BodyPosition_SUPINE
+  rdf:type cd01p:VitalsSignsBodyPosition ;
+.
 code:Country
   code:hasMethod code:Method_DERIVED ;
 .
@@ -569,13 +551,22 @@ code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
+code:DiastolicBP
+  rdfs:subClassOf study:VitalSign ;
+.
 code:Ethnicity
   code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
+code:Height
+  rdfs:subClassOf study:VitalSign ;
+.
 code:InformedConsentAdult
   rdfs:subClassOf study:InformedConsent ;
   study:hasStartRule study:StartRuleDefault ;
+.
+code:Pulse
+  rdfs:subClassOf study:VitalSign ;
 .
 code:Race
   code:hasMethod code:Method_COLLECTED ;
@@ -588,6 +579,12 @@ code:Sex
   code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
+code:SystolicBP
+  rdfs:subClassOf study:VitalSign ;
+.
+code:Temperature
+  rdfs:subClassOf study:VitalSign ;
+.
 code:VisitScreening1Start
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -597,6 +594,9 @@ code:VisitScreening1Start
   study:hasPrerequisite custom:VisitScreening1Activity ;
   study:ruleDescription "AFTER SCREENING1 VISIT STARTS" ;
   study:ruleDescriptionLong "Activity takes place after Screening1 Visit Starts" ;
+.
+code:Weight
+  rdfs:subClassOf study:VitalSign ;
 .
 custom:AssumeBodyPositionStanding
   rdf:type owl:Class ;
@@ -623,7 +623,7 @@ custom:PlaceboDrug
   rdf:type code:DrugProduct ;
   rdf:type study:PlaceboProduct ;
   skos:prefLabel "PLACEBO" ;
-  code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
+  code:hasDosageForm code:DosageForm_PATCH ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_1 ;
 .
 custom:PopFlagCOMPLT16
@@ -732,14 +732,14 @@ custom:Product_1
   rdf:type code:DrugProduct ;
   rdf:type study:InvestigationalProduct ;
   skos:prefLabel "XANOMELINE LO" ;
-  code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
+  code:hasDosageForm code:DosageForm_PATCH ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_2 ;
 .
 custom:Product_2
   rdf:type code:DrugProduct ;
   rdf:type study:InvestigationalProduct ;
   skos:prefLabel "XANOMELINE HI" ;
-  code:hasDosageForm <http://rdf.cdisc.org/sdtmterm#C66726.C42968> ;
+  code:hasDosageForm code:DosageForm_PATCH ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_3 ;
 .
 custom:UnscheduledVisit

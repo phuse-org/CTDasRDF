@@ -10,6 +10,7 @@
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix mms: <http://rdf.cdisc.org/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -24,129 +25,6 @@
 @prefix xhtm: <http://www.w3.org/1999/xhtml> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://rdf.cdisc.org/sdtmterm#C66726.C42968>
-  rdf:type code:DosageForm ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66729.C38288>
-  rdf:type code:RouteOfAdministration ;
-.
-<http://rdf.cdisc.org/sdtmterm#C66729.C38305>
-  rdf:type code:RouteOfAdministration ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25206>
-  rdf:type owl:Class ;
-  rdf:type code:VitalSign ;
-  rdfs:subClassOf code:VitalSign ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "TEMP" ;
-      owl:onProperty skos:prefLabel ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "Temperature" ;
-      owl:onProperty skos:altLabel ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25208>
-  rdf:type owl:Class ;
-  rdf:type code:VitalSign ;
-  rdfs:subClassOf code:VitalSign ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "WEIGHT" ;
-      owl:onProperty skos:prefLabel ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "Weight" ;
-      owl:onProperty skos:altLabel ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25298>
-  rdf:type owl:Class ;
-  rdf:type code:BloodPressure ;
-  rdfs:subClassOf code:BloodPressure ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "SYSBP" ;
-      owl:onProperty skos:prefLabel ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "Systolic Blood Pressure" ;
-      owl:onProperty skos:altLabel ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25299>
-  rdf:type owl:Class ;
-  rdf:type code:BloodPressure ;
-  rdfs:subClassOf code:BloodPressure ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "DIABP" ;
-      owl:onProperty skos:prefLabel ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "Diastolic Blood Pressure" ;
-      owl:onProperty skos:altLabel ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C25347>
-  rdf:type owl:Class ;
-  rdf:type code:VitalSign ;
-  rdfs:subClassOf code:VitalSign ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "HEIGHT" ;
-      owl:onProperty skos:prefLabel ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "Height" ;
-      owl:onProperty skos:altLabel ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C67153.C49676>
-  rdf:type owl:Class ;
-  rdf:type code:VitalSign ;
-  rdfs:subClassOf code:VitalSign ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "PULSE" ;
-      owl:onProperty skos:prefLabel ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "Pulse Rate" ;
-      owl:onProperty skos:altLabel ;
-    ] ;
-.
-<http://rdf.cdisc.org/sdtmterm#C71113.C25473>
-  rdf:type code:DosageFrequency ;
-.
-<http://rdf.cdisc.org/sdtmterm#C71148.C62166>
-  rdf:type code:BodyPosition ;
-  skos:altLabel "PATIENT STANDING" ;
-.
-<http://rdf.cdisc.org/sdtmterm#C71148.C62167>
-  rdf:type code:BodyPosition ;
-  skos:altLabel "PATIENT SUPINE" ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74456.C12421>
-  rdf:type code:AnatomicLocation ;
-.
-<http://rdf.cdisc.org/sdtmterm#C74456.C32141>
-  rdf:type code:AnatomicLocation ;
-  rdf:type code:VitalSignsLocation ;
-.
-<http://rdf.cdisc.org/sdtmterm#C99073.C25228>
-  rdf:type code:Laterality ;
-.
-<http://rdf.cdisc.org/sdtmterm#C99073.C25229>
-  rdf:type code:Laterality ;
-.
 arg:origResult
   rdf:type rdf:Property ;
   rdfs:subPropertyOf sp:arg ;
@@ -278,6 +156,29 @@ code:AnatomicLocation
   skos:definition "" ;
   skos:prefLabel "Anatomic location term" ;
 .
+code:AnatomicLocation_ARM
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:AnatomicLocation ;
+  rdf:type code:VitalSignsLocation ;
+  schema:cdiscDefinition "The portion of the upper extremity between the shoulder and the elbow. For clinical purposes this term is also used to refer to the whole superior limb. (NCI)" ;
+  schema:cdiscSubmissionValue "ARM" ;
+  schema:cdiscSynonyms "Arm" ;
+  schema:nciCode "C32141" ;
+  schema:nciPreferredTerm "Arm" ;
+  mms:inValueDomain sdtmterm:C74456 ;
+  skos:prefLabel "ARM" ;
+.
+code:AnatomicLocation_ORAL_CAVITY
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:AnatomicLocation ;
+  schema:cdiscDefinition "The cavity located at the upper end of the alimentary canal, behind the teeth and gums that is bounded on the outside by the lips, above by the hard and soft palates and below by the tongue. (NCI)" ;
+  schema:cdiscSubmissionValue "ORAL CAVITY" ;
+  schema:cdiscSynonyms "Oral Cavity" ;
+  schema:nciCode "C12421" ;
+  schema:nciPreferredTerm "Oral Cavity" ;
+  mms:inValueDomain sdtmterm:C74456 ;
+  skos:prefLabel "ORAL CAVITY" ;
+.
 code:Assessment
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -309,6 +210,30 @@ code:BodyPosition
   skos:definition "" ;
   skos:prefLabel "Body position term" ;
 .
+code:BodyPosition_STANDING
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:BodyPosition ;
+  schema:cdiscDefinition "The act of assuming or maintaining an erect upright position. (NCI)" ;
+  schema:cdiscSubmissionValue "STANDING" ;
+  schema:cdiscSynonyms "Standing" ;
+  schema:nciCode "C62166" ;
+  schema:nciPreferredTerm "Standing" ;
+  mms:inValueDomain sdtmterm:C71148 ;
+  skos:altLabel "PATIENT STANDING" ;
+  skos:prefLabel "STANDING" ;
+.
+code:BodyPosition_SUPINE
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:BodyPosition ;
+  schema:cdiscDefinition "A posterior recumbent body position whereby the person lies on its back and faces upward. (NCI)" ;
+  schema:cdiscSubmissionValue "SUPINE" ;
+  schema:cdiscSynonyms "Supine" ;
+  schema:nciCode "C62167" ;
+  schema:nciPreferredTerm "Supine Position" ;
+  mms:inValueDomain sdtmterm:C71148 ;
+  skos:altLabel "PATIENT SUPINE" ;
+  skos:prefLabel "SUPINE" ;
+.
 code:CategoricalOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf code:ObservationOutcome ;
@@ -325,7 +250,22 @@ code:ConversionFactor
   skos:definition "" ;
   skos:prefLabel "Conversion factor" ;
 .
-code:ConversionFactor_1
+code:ConversionFactor_FtoC
+  rdf:type code:ConversionFactor ;
+  skos:prefLabel "F2C" ;
+  code:hasOriginalUnit code:Unit_F ;
+  code:hasStandardUnit code:Unit_C ;
+.
+code:ConversionFactor_bpm2bpm
+  rdf:type code:ConversionFactor ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "bpm2bpm" ;
+  code:hasConversionFactor "1"^^xsd:float ;
+  code:hasOriginalUnit code:Unit_BEATS_MIN ;
+  code:hasStandardUnit code:Unit_BEATS_MIN ;
+.
+code:ConversionFactor_in2cm
   rdf:type code:ConversionFactor ;
   rdfs:comment "" ;
   skos:definition "" ;
@@ -334,16 +274,7 @@ code:ConversionFactor_1
   code:hasOriginalUnit code:Unit_IN ;
   code:hasStandardUnit code:Unit_cm ;
 .
-code:ConversionFactor_2
-  rdf:type code:ConversionFactor ;
-  rdfs:comment "" ;
-  skos:definition "" ;
-  skos:prefLabel "mm hg2mm hg" ;
-  code:hasConversionFactor "1"^^xsd:float ;
-  code:hasOriginalUnit code:Unit_mmHG ;
-  code:hasStandardUnit code:Unit_mmHG ;
-.
-code:ConversionFactor_3
+code:ConversionFactor_lb2kg
   rdf:type code:ConversionFactor ;
   rdfs:comment "" ;
   skos:definition "" ;
@@ -352,20 +283,14 @@ code:ConversionFactor_3
   code:hasOriginalUnit code:Unit_LB ;
   code:hasStandardUnit code:Unit_kg ;
 .
-code:ConversionFactor_4
-  rdf:type code:ConversionFactor ;
-  skos:prefLabel "F2C" ;
-  code:hasOriginalUnit code:Unit_F ;
-  code:hasStandardUnit code:Unit_C ;
-.
-code:ConversionFactor_5
+code:ConversionFactor_mmHGtommHG
   rdf:type code:ConversionFactor ;
   rdfs:comment "" ;
   skos:definition "" ;
-  skos:prefLabel "bpm2bpm" ;
+  skos:prefLabel "mm hg2mm hg" ;
   code:hasConversionFactor "1"^^xsd:float ;
-  code:hasOriginalUnit code:Unit_BEATS_MIN ;
-  code:hasStandardUnit code:Unit_BEATS_MIN ;
+  code:hasOriginalUnit code:Unit_mmHG ;
+  code:hasStandardUnit code:Unit_mmHG ;
 .
 code:Country
   rdf:type owl:Class ;
@@ -403,21 +328,63 @@ code:DefinedConcept
 .
 code:DemographicDataCollection
   rdf:type owl:Class ;
-  rdf:type code:Observation ;
   rdfs:comment "" ;
   rdfs:subClassOf code:Observation ;
   skos:definition "" ;
   skos:prefLabel "DEMOG DATA COLLECTION" ;
+.
+code:DiastolicBP
+  rdf:type mms:PermissibleValue ;
+  rdf:type owl:Class ;
+  schema:cdiscDefinition "The blood pressure after the contraction of the heart while the chambers of the heart refill with blood. (NCI)" ;
+  schema:cdiscSubmissionValue "Diastolic Blood Pressure" ;
+  schema:cdiscSynonyms "Diastolic Blood Pressure" ;
+  schema:nciCode "C25299" ;
+  schema:nciPreferredTerm "Diastolic Blood Pressure" ;
+  mms:inValueDomain sdtmterm:C67153 ;
+  rdfs:subClassOf code:BloodPressure ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "DIABP" ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Diastolic Blood Pressure" ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  skos:prefLabel "Diastolic Blood Pressure" ;
 .
 code:DosageForm
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:prefLabel "Dosage form" ;
 .
+code:DosageForm_PATCH
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:DosageForm ;
+  schema:cdiscDefinition "A drug delivery system that often contains an adhesive backing that is usually applied to an external site on the body. Its ingredients either passively diffuse from, or are actively transported from, some portion of the patch. Depending upon the patch, the ingredients are either delivered to the outer surface of the body or into the body. A patch is sometimes synonymous with the terms Extended Release Film and System." ;
+  schema:cdiscSubmissionValue "PATCH" ;
+  schema:nciCode "C42968" ;
+  schema:nciPreferredTerm "Patch Dosage Form" ;
+  mms:inValueDomain sdtmterm:C66726 ;
+  skos:prefLabel "PATCH" ;
+.
 code:DosageFrequency
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:prefLabel "Dosage frequency" ;
+.
+code:DosageFrequency_QD
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:DosageFrequency ;
+  schema:cdiscDefinition "Occurring or done each day. (NCI)" ;
+  schema:cdiscSubmissionValue "QD" ;
+  schema:cdiscSynonyms "Daily; Per Day" ;
+  schema:nciCode "C25473" ;
+  schema:nciPreferredTerm "Daily" ;
+  mms:inValueDomain sdtmterm:C71113 ;
+  skos:prefLabel "QD" ;
 .
 code:DrugProduct
   rdf:type owl:Class ;
@@ -458,7 +425,7 @@ code:Ethnicity_UNKNOWN
 .
 code:ExDosFrq_QD
   rdf:type code:DosageFrequency ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C71113.C25473> ;
+  owl:sameAs code:DosageFrequency_QD ;
   skos:altLabel "daily" ;
   skos:prefLabel "QD" ;
 .
@@ -477,6 +444,28 @@ code:ExRoute_TRANSDERMAL
 code:GenericOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf code:CategoricalOutcome ;
+.
+code:Height
+  rdf:type mms:PermissibleValue ;
+  rdf:type owl:Class ;
+  schema:cdiscDefinition "The vertical measurement or distance from the base to the top of an object; the vertical dimension of extension. (NCI)" ;
+  schema:cdiscSubmissionValue "Height" ;
+  schema:cdiscSynonyms "Height" ;
+  schema:nciCode "C25347" ;
+  schema:nciPreferredTerm "Height" ;
+  mms:inValueDomain sdtmterm:C67153 ;
+  rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "HEIGHT" ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Height" ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  skos:prefLabel "Height" ;
 .
 code:HeightUnit
   rdf:type owl:Class ;
@@ -557,6 +546,26 @@ code:Laterality
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition "" ;
   skos:prefLabel "Laterality term" ;
+.
+code:Laterality_LEFT
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:Laterality ;
+  schema:cdiscDefinition "Being or located on or directed toward the side of the body to the west when facing north." ;
+  schema:cdiscSubmissionValue "LEFT" ;
+  schema:nciCode "C25229" ;
+  schema:nciPreferredTerm "Left" ;
+  mms:inValueDomain sdtmterm:C99073 ;
+  skos:prefLabel "LEFT" ;
+.
+code:Laterality_RIGHT
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:Laterality ;
+  schema:cdiscDefinition "Being or located on or directed toward the side of the body to the east when facing north." ;
+  schema:cdiscSubmissionValue "RIGHT" ;
+  schema:nciCode "C25228" ;
+  schema:nciPreferredTerm "Right" ;
+  mms:inValueDomain sdtmterm:C99073 ;
+  skos:prefLabel "RIGHT" ;
 .
 code:MedicalCondition
   rdf:type owl:Class ;
@@ -732,6 +741,28 @@ code:Product
   rdfs:subClassOf code:DefinedConcept ;
   skos:prefLabel "Product" ;
 .
+code:Pulse
+  rdf:type mms:PermissibleValue ;
+  rdf:type owl:Class ;
+  schema:cdiscDefinition "The rate of the pulse as observed in an artery, expressed as beats per minute. It can be measured at several anatomical sites, including the wrist, neck, temple, groin, behind the knees, or on top of the foot. (NCI)" ;
+  schema:cdiscSubmissionValue "Pulse Rate" ;
+  schema:cdiscSynonyms "Pulse Rate" ;
+  schema:nciCode "C49676" ;
+  schema:nciPreferredTerm "Pulse Rate" ;
+  mms:inValueDomain sdtmterm:C67153 ;
+  rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "PULSE" ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Pulse Rate" ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  skos:prefLabel "Pulse Rate" ;
+.
 code:PulseUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
@@ -795,19 +826,19 @@ code:RuleOutcome
   rdfs:subClassOf code:DefinedActivityOutcome ;
   skos:prefLabel "Rule outcome" ;
 .
-code:RuleOutcome_1
-  rdf:type code:RuleOutcome ;
-  skos:prefLabel "Rule outcome TRUE" ;
-  code:hasValue "true"^^xsd:boolean ;
-.
-code:RuleOutcome_2
+code:RuleOutcome_FALSE
   rdf:type code:RuleOutcome ;
   skos:prefLabel "Rule outcome FALSE" ;
   code:hasValue "false"^^xsd:boolean ;
 .
-code:RuleOutcome_3
+code:RuleOutcome_NA
   rdf:type code:RuleOutcome ;
   code:hasValue "NOT-APPLICABLE" ;
+.
+code:RuleOutcome_TRUE
+  rdf:type code:RuleOutcome ;
+  skos:prefLabel "Rule outcome TRUE" ;
+  code:hasValue "true"^^xsd:boolean ;
 .
 code:Sex
   rdf:type owl:Class ;
@@ -862,6 +893,50 @@ code:SubstanceQuantity
 code:Successfully_Completed
   rdf:type code:GenericOutcome ;
   skos:prefLabel "Successfully Completed" ;
+.
+code:SystolicBP
+  rdf:type mms:PermissibleValue ;
+  rdf:type owl:Class ;
+  schema:cdiscDefinition "The blood pressure during the contraction of the left ventricle of the heart." ;
+  schema:cdiscSubmissionValue "Systolic Blood Pressure" ;
+  schema:cdiscSynonyms "Systolic Blood Pressure" ;
+  schema:nciCode "C25298" ;
+  schema:nciPreferredTerm "Systolic Blood Pressure" ;
+  mms:inValueDomain sdtmterm:C67153 ;
+  rdfs:subClassOf code:BloodPressure ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "SYSBP" ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Systolic Blood Pressure" ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  skos:prefLabel "Systolic Blood Pressure" ;
+.
+code:Temperature
+  rdf:type mms:PermissibleValue ;
+  rdf:type owl:Class ;
+  schema:cdiscDefinition "The property of a body or region of space that determines whether or not there will be a net flow of heat into it or out of it from a neighboring body or region and in which direction (if any) the heat will flow, perceptible by living organism as a somatic sensation of cold or heat. It is a measure of the average translational kinetic energy associated with the disordered microscopic motion of atoms and molecules. Temperature is measured in one of the three standard temperature scales: Celsius, Kelvin, and Fahrenheit. (NCI)" ;
+  schema:cdiscSubmissionValue "Temperature" ;
+  schema:cdiscSynonyms "Temperature" ;
+  schema:nciCode "C25206" ;
+  schema:nciPreferredTerm "Temperature" ;
+  mms:inValueDomain sdtmterm:C67153 ;
+  rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "TEMP" ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Temperature" ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  skos:prefLabel "Temperature" ;
 .
 code:TemperatureUnit
   rdf:type owl:Class ;
@@ -951,6 +1026,28 @@ code:VitalSignsUnit
   rdfs:subClassOf code:Unit ;
   skos:prefLabel "VSUNIT" ;
 .
+code:Weight
+  rdf:type mms:PermissibleValue ;
+  rdf:type owl:Class ;
+  schema:cdiscDefinition "The vertical force exerted by a mass as a result of gravity. (NCI)" ;
+  schema:cdiscSubmissionValue "Weight" ;
+  schema:cdiscSynonyms "Weight" ;
+  schema:nciCode "C25208" ;
+  schema:nciPreferredTerm "Weight" ;
+  mms:inValueDomain sdtmterm:C67153 ;
+  rdfs:subClassOf code:VitalSign ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "WEIGHT" ;
+      owl:onProperty skos:prefLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "Weight" ;
+      owl:onProperty skos:altLabel ;
+    ] ;
+  skos:prefLabel "Weight" ;
+.
 code:WeightUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
@@ -960,6 +1057,7 @@ code:WeightUnit
 code:hasAge
   rdf:type owl:ObjectProperty ;
   rdfs:domain <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#Person> ;
+  rdfs:range <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#AgeOutcome> ;
   skos:altLabel "" ;
   skos:prefLabel "has age" ;
 .
@@ -1264,3 +1362,63 @@ code:unitNormalized
   rdfs:subClassOf spin:Functions ;
   skos:prefLabel "unit normalized" ;
 .
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "DIABP" ;
+  owl:onProperty skos:prefLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "Diastolic Blood Pressure" ;
+  owl:onProperty skos:altLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "HEIGHT" ;
+  owl:onProperty skos:prefLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "Height" ;
+  owl:onProperty skos:altLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "PULSE" ;
+  owl:onProperty skos:prefLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "Pulse Rate" ;
+  owl:onProperty skos:altLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "SYSBP" ;
+  owl:onProperty skos:prefLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "Systolic Blood Pressure" ;
+  owl:onProperty skos:altLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "TEMP" ;
+  owl:onProperty skos:prefLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "Temperature" ;
+  owl:onProperty skos:altLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "WEIGHT" ;
+  owl:onProperty skos:prefLabel ;
+].
+[
+  rdf:type owl:Restriction ;
+  owl:hasValue "Weight" ;
+  owl:onProperty skos:altLabel ;
+].
