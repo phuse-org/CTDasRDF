@@ -36,20 +36,20 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 cdiscpilot01:Person_{usubjid}
-  study:participatesIn cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} ;
+  study:participatesIn cdiscpilot01:Visit_{visit_im_comp}_{usubjid} ;
 
 .
 
 #---- Visit  EG: cdiscpilot01:VisitScreening1_01-701-1015
 #  The hasPerformedDate is used as the date for the Drug Administration "visit",
 #   even though the actual administration is EX may be a later date!  See the
-#   EX Map for cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} .
+#   EX Map for cdiscpilot01:Visit_{visit_im_comp}_{usubjid} .
 
-cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
+cdiscpilot01:Visit_{visit_im_comp}_{usubjid}
   rdf:type               custom:Visit{visit_im_titleCSh} ;
   study:activityStatus   code:ActivityStatus_{vsactstatus_im} ;
   study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
-  study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{usubjid}_{visit_im_titleCSh};
+  study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid} ;
   study:hasSubActivity   cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} ;
 .
     # VisitDate - designate hasPerformedDate as a VisitDate
@@ -60,15 +60,14 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
     # AssumeBodyPosition, child of EG: "AssumeBodyPositionStanding_01-701-1015"
     # Only the 1 min standing has a start rule applied, since the previous was
     #   sitting, then stand.
-    cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{usubjid}_{visit_im_titleCSh}
-       rdf:type             cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid};
-       rdf:type             custom:AssumeBodyPosition{vspos_im_titleC} ;
-       skos:prefLabel       "Assume {vspos_im_titleC} position"^^xsd:string ;
-       study:activityStatus code:ActivityStatus_{vsactstatus_im} ;
-       study:hasDate        cdiscpilot01:Date_{vsdtc_en} ;
-       #DEL study:hasStartRule   cdiscpilot01:{startRule_im}_{usubjid}_{visit_im_titleCSh} ;
-       study:hasStartRule   cdiscpilot01:{vstpt_AssumeBodyPosStartRule_im}_{usubjid} ;
-       study:outcome        code:Vspos_{vspos} ;
+    cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid}
+       rdf:type                  cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid};
+       rdf:type                  custom:AssumeBodyPosition{vspos_im_titleC} ;
+       skos:prefLabel            "Assume {vspos_im_titleC} position"^^xsd:string ;
+       study:activityStatus      code:ActivityStatus_{vsactstatus_im} ;
+       study:hasDate             cdiscpilot01:Date_{vsdtc_en} ;
+       study:hasStartRule        cdiscpilot01:{vstpt_AssumeBodyPosStartRule_im}_{visit_im_comp}_{usubjid} ;
+       study:outcome             code:Vspos_{vspos} ;
     .
 
         # Visit<X>Activity, child of AssumeBodyPosition
@@ -79,43 +78,43 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
         .
 
         # Start Rule, child of AssumeBodyPosition
-        cdiscpilot01:{startRule_im}_{usubjid}_{visit_im_titleCSh}
+        cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid}
             rdf:type              cd01p:{startRule_im} ;
             skos:prefLabel        "{usubjid} {visit_im_titleC} Rule {vstpt}"^^xsd:string ;
-            study:hasPrerequisite cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{usubjid}_{visit_im_titleCSh} ;
+            study:hasPrerequisite cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid} ;
         .
 
 
 
 ##    # Each vstestcd.  vsseq used to show relative sequence.
-    cdiscpilot01:{vstestcd}_{usubjid}_{vsseq}
-      rdf:type               cd01p:Visit{visit_im_titleCSh}{vstest_testtype_im} ;
+    cdiscpilot01:{vstest_comp}_{visit_im_comp}_{usubjid}_{vsseq}
+      rdf:type               code:{vstest_comp} ;
+      rdf:type               cd01p:Visit{visit_im_titleCSh}{vstest_comp} ;
       rdf:type               cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} ;
-      rdf:type               code:Vtestcd_{vstestcd} ;
       study:activityStatus   code:ActivityStatus_{vsactstatus_im} ;
-      study:anatomicLocation code:Vsloc_{vsloc_im} ;
+      study:anatomicLocation code:{vsloc_im} ;
       study:baselineFlag     "{vsblfl}"^^xsd:string ;
-      study:bodyPosition     code:Vspos_{vspos} ;
       study:derivedFlag      "{vsdrvfl_im}"^^xsd:string ;
+      study:bodyPosition     code:Vspos_{vspos} ;
       study:groupID          "{vsgrpid_im}"^^xsd:string ;
       study:hasCategory      cd01p:{vscat_im} ;
       study:hasScheduledDate cdiscpilot01:Date_{vsdtc_en} ;
-      study:hasStartRule     cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid} ;
       study:hasSubcategory   cd01p:{vssubcat_im} ;
+      study:hasStartRule     cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid} ;
       study:laterality       code:Vslat_{vslat_im} ;
-      study:outcome          cdiscpilot01:{vstest_testtype_im}Outcome_{vsstresc_en} ;
+      study:outcome          cdiscpilot01:{vstestcd_im_titleC}Outcome_{vsorres_en} ;
       study:reasonNotDone    "{vsreasnotdone_im}"^^xsd:string ;
       study:seq              "{vsseq}"^^xsd:float ;
       study:sponsordefinedID "{vsspid_im}"^^xsd:string ;
     .
       # Test Outcome
       # working back from here
-        # vsstresc_en is the encoded value of the standardized test result used as IRI
+        # vsorres_en has decimals removed. May need to change for other types of values!
         # variable type (float/int etc) cannot be assigned due to varying types in source column, unless this is
         #   imputed during data massage.
-        cdiscpilot01:{vstest_testtype_im}Outcome_{vsstresc_en}
+        cdiscpilot01:{vstest_outcome_im}Outcome_{vsorres_en}
           code:hasUnit    code:Unit_{vsorresu} ;
           code:hasValue   "{vsorres}"^^xsd:string ;
-          rdf:type        study:{vstest_testtype_im}Outcome ;
+          rdf:type        study:{vstest_outcome_im}Outcome ;
           skos:prefLabel "{vsorres} {vsorresu}"^^xsd:string ;
         .
