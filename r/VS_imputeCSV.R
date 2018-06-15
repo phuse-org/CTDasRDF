@@ -87,20 +87,28 @@ vs[vs$vsseq %in% c(2,87)       & vs$personNum == 1, "vslat_im"] <- "LEFT"
 
 
 # vstestcd location. Add value for ARM, recode ORAL CAVITY to allow use in IRI
-vs[vs$vstestcd %in% c('DIABP', 'SYSBP'), "vsloc_im"]  <- "ARM"
-vs[vs$vsloc %in% c('ORAL CAVITY'), "vsloc_im"]  <- "ORALCAVITY"
+vs[vs$vstestcd %in% c('DIABP', 'SYSBP'), "vsloc_im"]  <- "Arm"
+vs[vs$vsloc %in% c('ORAL CAVITY'), "vsloc_im"]  <- "Oral"
 
 
-vs[vs$vstestcd %in% c("DIABP", "SYSBP"), "vstest_testtype_im"] <- "BloodPressure"
-vs[vs$vstestcd %in% c("HEIGHT"), "vstest_testtype_im"]         <- "Height"
-vs[vs$vstestcd %in% c("PULSE"), "vstest_testtype_im"]          <- "Pulse"
-vs[vs$vstestcd %in% c("TEMP"), "vstest_testtype_im"]           <- "Temperature"
-vs[vs$vstestcd %in% c("WEIGHT"), "vstest_testtype_im"]         <- "Weight"
+# Labels for testtype outcomes. Groups DIABP and SYSBP together into Blooderpressure outcomes
+#    email from AO 11JUN18
+vs[vs$vstestcd %in% c("DIABP", "SYSBP"), "vstest_outcome_im"] <- "BloodPressure"
+vs[vs$vstestcd %in% c("HEIGHT"), "vstest_outcome_im"]         <- "Height"
+vs[vs$vstestcd %in% c("PULSE"), "vstest_outcome_im"]          <- "Pulse"
+vs[vs$vstestcd %in% c("TEMP"), "vstest_outcome_im"]           <- "Temperature"
+vs[vs$vstestcd %in% c("WEIGHT"), "vstest_outcome_im"]         <- "Weight"
+
+
+vs$vstest_comp <- gsub(" ", "", vs$vstest )
+
 
 
 
 # vsstresc  : replace special characters with '_' to allow use as IRI
-vs$vsstresc_en  <- gsub("\\.", "_", vs$vsstresc, perl=TRUE)
+# vs$vsstresc_en  <- gsub("\\.", "_", vs$vsstresc, perl=TRUE)
+vs$vsorres_en  <- gsub("\\.", "_", vs$vsorres, perl=TRUE)
+
 
 # Title Case (titleC) Conversions. For RDF Labels.
 vs$visit_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$visit,    perl=TRUE)
@@ -121,7 +129,7 @@ vs[vs$vstpt == "AFTER STANDING FOR 1 MINUTE", "vstpt_AssumeBodyPosStartRule_im"]
 #   Encode fields  that may potentially have values that violate valid IRI format
 #   Function is in Functions.R
 vs <- encodeCol(data=vs, col="vsdtc")
-vs <- encodeCol(data=vs, col="vsorres")
+# vs <- encodeCol(data=vs, col="vsorres")
 
 
 # Sort column names in the df for quicker referencing
