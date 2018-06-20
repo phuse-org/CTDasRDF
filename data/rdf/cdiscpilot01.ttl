@@ -367,7 +367,6 @@ cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_1
   rdf:type code:DiastolicBloodPressure ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
-  study:baselineFlag "Y" ;
   study:bodyPosition code:BodyPosition_SUPINE ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
@@ -387,7 +386,6 @@ cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_2
   rdf:type code:DiastolicBloodPressure ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
-  study:baselineFlag "Y" ;
   study:bodyPosition code:BodyPosition_STANDING ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
@@ -407,7 +405,6 @@ cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_3
   rdf:type code:DiastolicBloodPressure ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
-  study:baselineFlag "Y" ;
   study:bodyPosition code:BodyPosition_STANDING ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
@@ -541,7 +538,6 @@ cdiscpilot01:Height_SCREENING1_01-701-1015_43
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Height ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:baselineFlag "Y" ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
@@ -965,7 +961,6 @@ cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_86
   rdf:type code:SystolicBloodPressure ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
-  study:baselineFlag "Y" ;
   study:bodyPosition code:BodyPosition_SUPINE ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
@@ -985,7 +980,6 @@ cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_87
   rdf:type code:SystolicBloodPressure ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
-  study:baselineFlag "Y" ;
   study:bodyPosition code:BodyPosition_STANDING ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
@@ -1005,7 +999,6 @@ cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_88
   rdf:type code:SystolicBloodPressure ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
-  study:baselineFlag "Y" ;
   study:bodyPosition code:BodyPosition_STANDING ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
@@ -1031,7 +1024,6 @@ cdiscpilot01:Temperature_SCREENING1_01-701-1015_128
   rdf:type code:Temperature ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Oral_Cavity ;
-  study:baselineFlag "Y" ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
@@ -1197,7 +1189,6 @@ cdiscpilot01:Weight_SCREENING1_01-701-1015_142
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Weight ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:baselineFlag "Y" ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
