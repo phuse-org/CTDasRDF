@@ -156,10 +156,9 @@ code:AnatomicLocation
   skos:definition "" ;
   skos:prefLabel "Anatomic location term" ;
 .
-code:AnatomicLocation_ARM
+code:Arm
   rdf:type mms:PermissibleValue ;
   rdf:type code:AnatomicLocation ;
-  rdf:type code:VitalSignsLocation ;
   schema:cdiscDefinition "The portion of the upper extremity between the shoulder and the elbow. For clinical purposes this term is also used to refer to the whole superior limb. (NCI)" ;
   schema:cdiscSubmissionValue "ARM" ;
   schema:cdiscSynonyms "Arm" ;
@@ -167,17 +166,6 @@ code:AnatomicLocation_ARM
   schema:nciPreferredTerm "Arm" ;
   mms:inValueDomain sdtmterm:C74456 ;
   skos:prefLabel "ARM" ;
-.
-code:AnatomicLocation_ORAL_CAVITY
-  rdf:type mms:PermissibleValue ;
-  rdf:type code:AnatomicLocation ;
-  schema:cdiscDefinition "The cavity located at the upper end of the alimentary canal, behind the teeth and gums that is bounded on the outside by the lips, above by the hard and soft palates and below by the tongue. (NCI)" ;
-  schema:cdiscSubmissionValue "ORAL CAVITY" ;
-  schema:cdiscSynonyms "Oral Cavity" ;
-  schema:nciCode "C12421" ;
-  schema:nciPreferredTerm "Oral Cavity" ;
-  mms:inValueDomain sdtmterm:C74456 ;
-  skos:prefLabel "ORAL CAVITY" ;
 .
 code:Assessment
   rdf:type owl:Class ;
@@ -333,7 +321,7 @@ code:DemographicDataCollection
   skos:definition "" ;
   skos:prefLabel "DEMOG DATA COLLECTION" ;
 .
-code:DiastolicBP
+code:DiastolicBloodPressure
   rdf:type mms:PermissibleValue ;
   rdf:type owl:Class ;
   schema:cdiscDefinition "The blood pressure after the contraction of the heart while the chambers of the heart refill with blood. (NCI)" ;
@@ -736,6 +724,17 @@ code:ObservationOutcome
   skos:definition "" ;
   skos:prefLabel "Observation outcome term" ;
 .
+code:Oral_Cavity
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:AnatomicLocation ;
+  schema:cdiscDefinition "The cavity located at the upper end of the alimentary canal, behind the teeth and gums that is bounded on the outside by the lips, above by the hard and soft palates and below by the tongue. (NCI)" ;
+  schema:cdiscSubmissionValue "ORAL CAVITY" ;
+  schema:cdiscSynonyms "Oral Cavity" ;
+  schema:nciCode "C12421" ;
+  schema:nciPreferredTerm "Oral Cavity" ;
+  mms:inValueDomain sdtmterm:C74456 ;
+  skos:prefLabel "ORAL CAVITY" ;
+.
 code:Product
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
@@ -894,7 +893,7 @@ code:Successfully_Completed
   rdf:type code:GenericOutcome ;
   skos:prefLabel "Successfully Completed" ;
 .
-code:SystolicBP
+code:SystolicBloodPressure
   rdf:type mms:PermissibleValue ;
   rdf:type owl:Class ;
   schema:cdiscDefinition "The blood pressure during the contraction of the left ventricle of the heart." ;
@@ -1015,11 +1014,6 @@ code:VitalSign
   rdfs:subClassOf code:Observation ;
   skos:definition "" ;
   skos:prefLabel "Vital signs test name" ;
-.
-code:VitalSignsLocation
-  rdf:type owl:Class ;
-  rdfs:subClassOf code:AnatomicLocation ;
-  skos:prefLabel "VSLOC" ;
 .
 code:VitalSignsUnit
   rdf:type owl:Class ;

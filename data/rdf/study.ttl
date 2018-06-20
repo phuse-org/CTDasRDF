@@ -100,10 +100,7 @@ code:AnatomicLocation
       owl:onProperty code:hasPermissibleOutcome ;
     ] ;
 .
-code:AnatomicLocation_ARM
-  rdf:type study:AnatomicLocation ;
-.
-code:AnatomicLocation_ORAL_CAVITY
+code:Arm
   rdf:type study:AnatomicLocation ;
 .
 code:AssumeBodyPosition
@@ -154,7 +151,7 @@ code:DemographicDataCollection
       owl:someValuesFrom code:SexDataCollection ;
     ] ;
 .
-code:DiastolicBP
+code:DiastolicBloodPressure
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:BloodPressureOutcome ;
@@ -199,6 +196,9 @@ code:InformedConsentOutcome_2
 .
 code:InformedConsentOutcome_3
   rdf:type study:InformedConsentOutcome ;
+.
+code:Oral_Cavity
+  rdf:type study:AnatomicLocation ;
 .
 code:Pulse
   rdfs:subClassOf [
@@ -259,7 +259,7 @@ code:Sex_U
 code:Sex_UN
   rdf:type study:SexOutcome ;
 .
-code:SystolicBP
+code:SystolicBloodPressure
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:BloodPressureOutcome ;

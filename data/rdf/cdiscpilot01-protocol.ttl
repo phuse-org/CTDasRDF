@@ -502,6 +502,11 @@ cd01p:VisitScreening1DemogDataColl
   rdf:type owl:Class ;
   rdfs:subClassOf custom:VisitScreening1Activity ;
 .
+cd01p:VisitScreening1DiastolicBloodPressure
+  rdf:type owl:Class ;
+  rdfs:label "Visit screening1Diastolic blood pressure" ;
+  rdfs:subClassOf cd01p:VisitScreening1BloodPressure ;
+.
 cd01p:VisitScreening1Height
   rdf:type owl:Class ;
   rdfs:subClassOf custom:VisitScreening1Activity ;
@@ -513,6 +518,11 @@ cd01p:VisitScreening1Pulse
   rdfs:subClassOf custom:VisitScreening1Activity ;
   skos:prefLabel "Visit Screening 1 Pulse" ;
   study:hasStartRule code:VisitScreening1Start ;
+.
+cd01p:VisitScreening1SystolicBloodPressure
+  rdf:type owl:Class ;
+  rdfs:label "Visit screening1Systolic blood pressure" ;
+  rdfs:subClassOf cd01p:VisitScreening1BloodPressure ;
 .
 cd01p:VisitScreening1Temperature
   rdf:type owl:Class ;
@@ -551,7 +561,7 @@ code:DemographicDataCollection
   rdfs:subClassOf study:Observation ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
-code:DiastolicBP
+code:DiastolicBloodPressure
   rdfs:subClassOf study:VitalSign ;
 .
 code:Ethnicity
@@ -579,7 +589,7 @@ code:Sex
   code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
-code:SystolicBP
+code:SystolicBloodPressure
   rdfs:subClassOf study:VitalSign ;
 .
 code:Temperature

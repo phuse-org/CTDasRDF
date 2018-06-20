@@ -122,19 +122,19 @@ sdtm-cdisc01:SDTM_VS_Record_1
   rdfs:comment "" ;
   rdfs:label "SDTM VS Record 1" ;
   skos:definition "" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#DiastolicBP_01-701-1015_SCREENING1_1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#DiastolicBloodPressure_SCREENING1_01-701-1015_1> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_128
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 128" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Temperature_01-701-1015_SCREENING1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Temperature_SCREENING1_01-701-1015_128> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_142
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 142" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Weight_01-701-1015_SCREENING1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Weight_SCREENING1_01-701-1015_142> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_2
@@ -142,7 +142,7 @@ sdtm-cdisc01:SDTM_VS_Record_2
   rdfs:comment "" ;
   rdfs:label "SDTM VS Record 2" ;
   skos:definition "" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#DiastolicBP_01-701-1015_SCREENING1_2> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#DiastolicBloodPressure_SCREENING1_01-701-1015_2> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_3
@@ -150,49 +150,49 @@ sdtm-cdisc01:SDTM_VS_Record_3
   rdfs:comment "" ;
   rdfs:label "SDTM VS Record 3" ;
   skos:definition "" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#DiastolicBP_01-701-1015_SCREENING1_3> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#DiastolicBloodPressure_SCREENING1_01-701-1015_3> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_43
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 43" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Height-01-701-1015_SCREENING1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Height_SCREENING1_01-701-1015_43> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_44
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 44" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Pulse_01-701-1015_SCREENING1_1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Pulse_SCREENING1_01-701-1015_44> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_45
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 45" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Pulse_01-701-1015_SCREENING1_2> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Pulse_SCREENING1_01-701-1015_45> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_46
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 46" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Pulse_01-701-1015_SCREENING1_3> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Pulse_SCREENING1_01-701-1015_46> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_86
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 86" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#SystolicBP_01-701-1015_SCREENING1> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#SystolicBloodPressure_SCREENING1_01-701-1015_86> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_87
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 87" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#SystolicBP_01-701-1015_SCREENING1_02> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#SystolicBloodPressure_SCREENING1_01-701-1015_87> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm-cdisc01:SDTM_VS_Record_88
   rdf:type sdtm:SDTM_VS_Record ;
   rdfs:label "SDTM VS Record 88" ;
-  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#SystolicBP_01-701-1015_SCREENING1_3> ;
+  sdtm:hasActivity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#SystolicBloodPressure_SCREENING1_01-701-1015_88> ;
   sdtm:hasEntity <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#Person_01-701-1015> ;
 .
 sdtm:SDTM_DM_Record
