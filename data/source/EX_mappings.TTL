@@ -34,6 +34,12 @@ cdiscpilot01:Person_{usubjid}
   study:participatesIn cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} ;
 .
 
+#DEL NEW
+# Add the cumulative drug admin periods to the respective usubjid values
+cdiscpilot01:CumulativeDrugAdministration_{usubjid}
+  study:hasSubActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en};
+.
+
 cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
   rdf:type                  study:CumulativeDrugAdministration ;
   skos:prefLabel            "Drug administration period {rfxstdtc} - {rfxendtc}"^^xsd:string ;
@@ -41,16 +47,6 @@ cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
   study:hasActivityInterval cdiscpilot01:Interval_{cumuDrugAdmin_im};
   study:hasSubActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en};
 .
-				## GUIDE
-				##cdiscpilot01:CumulativeDrugAdministration_2013-07-19_2014-01-14
-				##  rdf:type study:CumulativeDrugAdministration ;
-				##  skos:prefLabel "Drug administration period 2013-07-19 - 2014-01-14"^^xsd:string ;
-				##  study:activityStatus code:ActivityStatus_CO ;
-				##  study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 ;
-				##  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2014-08-01 ;
-				##  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06 ;
-				##  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
-				##.
 
   # Visit date comes from VS, NOT FROM EX, because the EX is sometimes a later date
   #   (EX not on the same day as the visit date!). So date is not here, but the drug admin that is
@@ -63,6 +59,7 @@ cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
   .
     # DrugAdministration
     #   Drug admin date exstdtc_en may be a later date than the visit date
+    #DEL this section is correct.
     cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en}
       rdf:type                       cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} ;
       rdf:type                       study:FixedDoseDrugAdministration ;
