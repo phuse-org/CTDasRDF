@@ -46,13 +46,11 @@ vs$visit_im_titleCSh <- car::recode (vs$visit,
 # Derived Flag Y/N 
 vs$vsdrvfl_im <- "N"  # None of the measurements here are derived: BP,HT,WT,TEMP...
 
-# Reason not done
-vs$vsreasnotdone_im <- "not applicable"
+# VSREASND : Reason not done - additional test values
+vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsreasnd"]  <- "not applicable"
 
-#Activity Status
-vs$vsactstatus_im <- "CO"
-
-
+# VSSTAT : Activity Status - additional test values
+vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsstat"]  <- "CO"
 
 # vsspid : Sponsor Defined ID
 vs[vs$vsseq %in% c(1)   & vs$personNum == 1, "vsspid_im"]  <- "123"
@@ -65,49 +63,52 @@ vs[vs$vsseq %in% c(88)  & vs$personNum == 1, "vsspid_im"]  <- "236"
 vs[vs$vsseq %in% c(128) & vs$personNum == 1, "vsspid_im"]  <- "3000"
 vs[vs$vsseq %in% c(142) & vs$personNum == 1, "vsspid_im"]  <- "5000"
 
-
-
-# Category and Subcategory for tests (vstestcd)
-vs$vscat_im    <- "Category_1"  
-vs$vssubcat_im <- "Subcategory_1"
-
 # Group ID assignement
-vs[vs$vsseq %in% c(1,2,3,43,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsgrpid_im"]  <- "GRPID1"
+vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsgrpid_im"]  <- "GRPID1"
 
+# Baseline flag - additional test values. as per AO 20JUN18 to match VS_imputed.xlsx  
+vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsblfl"]  <- "Y"
 
-#DEL : Converted to use im_titleC
-#vs$vspos_im_CCase <- car::recode(vs$vspos,
-#  " 'STANDING'  = 'Standing' ;
-#    'SUPINE'    = 'Supine'"
-#)
+# VScAT Category and Subcategory for tests (vstestcd)
+#  Deviation from VS_imputed.xlsx. These values confirmed with AO version 20JUn18.
+vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vscat_im"]    <- "Category_1"
+vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vssubcat_im"] <- "Subcategory_1"
+
+# Visit reference date?  Added to match AO  VS_imputed.xlsx. Essentially vs$vsrftdtc <- vs$vsdtc 
+vs[vs$vsseq %in% c(1,2,3,86,87,88) & vs$usubjid == "01-701-1015",  "vsrftdtc"]  <- "2013-12-26"
 
 # vslat
-vs[vs$vsseq %in% c(1,3,86,88)  & vs$personNum == 1, "vslat_im"] <- "RIGHT"
-vs[vs$vsseq %in% c(2,87)       & vs$personNum == 1, "vslat_im"] <- "LEFT"
-
+vs[vs$vsseq %in% c(1,3,44,46,86,88)  & vs$usubjid == "01-701-1015", "vslat_im"] <- "RIGHT"
+vs[vs$vsseq %in% c(2,45,87)          & vs$usubjid == "01-701-1015", "vslat_im"] <- "LEFT"
 
 # vstestcd location. Add value for ARM, recode ORAL CAVITY to allow use in IRI
 vs[vs$vstestcd %in% c('DIABP', 'SYSBP'), "vsloc_im"]  <- "Arm"
-vs[vs$vsloc %in% c('ORAL CAVITY'), "vsloc_im"]  <- "Oral"
-
+vs[vs$vsloc %in% c('ORAL CAVITY'), "vsloc_im"]  <- "Oral_Cavity"
 
 # Labels for testtype outcomes. Groups DIABP and SYSBP together into Blooderpressure outcomes
 #    email from AO 11JUN18
 vs[vs$vstestcd %in% c("DIABP", "SYSBP"), "vstest_outcome_im"] <- "BloodPressure"
 vs[vs$vstestcd %in% c("HEIGHT"), "vstest_outcome_im"]         <- "Height"
 vs[vs$vstestcd %in% c("PULSE"), "vstest_outcome_im"]          <- "Pulse"
-vs[vs$vstestcd %in% c("TEMP"), "vstest_outcome_im"]           <- "Temperature"
+vs[vs$vstestcd %in% c("TEMP"), "vstest_outcome_im"]           <- "Temp"
 vs[vs$vstestcd %in% c("WEIGHT"), "vstest_outcome_im"]         <- "Weight"
 
-
 vs$vstest_comp <- gsub(" ", "", vs$vstest )
-
-
-
+vs$vstest_comp <- gsub("Rate", "", vs$vstest_comp )  # Also remove Rate from PulseRate [AO 20JUN18]
 
 # vsstresc  : replace special characters with '_' to allow use as IRI
 # vs$vsstresc_en  <- gsub("\\.", "_", vs$vsstresc, perl=TRUE)
 vs$vsorres_en  <- gsub("\\.", "_", vs$vsorres, perl=TRUE)
+
+
+# units : imputed for links to code.ttl
+vs[vs$vsorresu %in% c("in"),       "vsorresu_im"] <- "IN"
+vs[vs$vsorresu %in% c("mmHg"),      "vsorresu_im"] <- "mmHG"
+vs[vs$vsorresu %in% c("beats/min"), "vsorresu_im"] <- "BEATS_MIN"
+vs[vs$vsorresu %in% c("F"),         "vsorresu_im"] <- "F"
+vs[vs$vsorresu %in% c("LB"),        "vsorresu_im"] <- "LB"
+
+
 
 
 # Title Case (titleC) Conversions. For RDF Labels.
@@ -116,12 +117,9 @@ vs$vspos_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$
 vs$vslat_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vslat,    perl=TRUE)
 vs$vstestcd_im_titleC <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vstestcd, perl=TRUE)
 
-
-
 # Study protcol has the patient lying for 5 min before standing for 1 min.
 #  The standing 1 min therefore has a previous 5 min start rule.
 vs[vs$vstpt == "AFTER STANDING FOR 1 MINUTE", "vstpt_AssumeBodyPosStartRule_im"] <- "StartRuleLying5"
-
 
 
 #------------------------------------------------------------------------------
@@ -129,13 +127,13 @@ vs[vs$vstpt == "AFTER STANDING FOR 1 MINUTE", "vstpt_AssumeBodyPosStartRule_im"]
 #   Encode fields  that may potentially have values that violate valid IRI format
 #   Function is in Functions.R
 vs <- encodeCol(data=vs, col="vsdtc")
-# vs <- encodeCol(data=vs, col="vsorres")
 
+vs <- encodeCol(data=vs, col="vsrftdtc")
+
+# vs <- encodeCol(data=vs, col="vsorres")
 
 # Sort column names in the df for quicker referencing
 vs <- vs %>% select(noquote(order(colnames(vs))))
-
-
 
 # vsspid : Sponsor defined ID for various tests. 
 #  TODO: Later change to be based on value of field vstestcd 
@@ -143,12 +141,14 @@ vs[vs$vsseq == 1   & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "123"
 vs[vs$vsseq == 2   & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "719"
 vs[vs$vsseq == 3   & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "235"
 vs[vs$vsseq == 43  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "1000"
+vs[vs$vsseq == 44  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "125"
+vs[vs$vsseq == 45  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "721"
+vs[vs$vsseq == 46  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "237"
 vs[vs$vsseq == 86  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "124"
 vs[vs$vsseq == 87  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "720"
 vs[vs$vsseq == 88  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "236"
 vs[vs$vsseq == 128 & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "3000"
 vs[vs$vsseq == 142 & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "5000"
-
 
 #------------- ORIGINAL IMPUTATIONS FOLLOW ------------------------------------
 #TW # All Subjects ----
@@ -175,8 +175,6 @@ vs[vs$vsseq == 142 & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "5000"
 #TW # invid set to same value as hard coded for DM in DM_impute.R
 #TW vs$invid <- "123"  # Later change to base on set of subjid or site or...?
 #TW 
-#TW # vsrftdtc
-#TW vs$vsrftdtc <- vs$vsdtc 
 #TW 
 #TW #______________________________________________________________________________
 #TW # Person 1 ----

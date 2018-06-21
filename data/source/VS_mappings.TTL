@@ -47,7 +47,7 @@ cdiscpilot01:Person_{usubjid}
 
 cdiscpilot01:Visit_{visit_im_comp}_{usubjid}
   rdf:type               custom:Visit{visit_im_titleCSh} ;
-  study:activityStatus   code:ActivityStatus_{vsactstatus_im} ;
+  study:activityStatus   code:ActivityStatus_{vsstat_im} ;
   study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
   study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_comp}_{usubjid} ;
   study:hasSubActivity   cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} ;
@@ -64,10 +64,10 @@ cdiscpilot01:Visit_{visit_im_comp}_{usubjid}
        rdf:type                  cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid};
        rdf:type                  custom:AssumeBodyPosition{vspos_im_titleC} ;
        skos:prefLabel            "Assume {vspos_im_titleC} position"^^xsd:string ;
-       study:activityStatus      code:ActivityStatus_{vsactstatus_im} ;
+       study:activityStatus      code:ActivityStatus_{vsstat_im} ;
        study:hasDate             cdiscpilot01:Date_{vsdtc_en} ;
        study:hasStartRule        cdiscpilot01:{vstpt_AssumeBodyPosStartRule_im}_{visit_im_comp}_{usubjid} ;
-       study:outcome             code:Vspos_{vspos} ;
+       study:outcome             code:BodyPosition_{vspos} ;
     .
 
         # Visit<X>Activity, child of AssumeBodyPosition
@@ -91,19 +91,18 @@ cdiscpilot01:Visit_{visit_im_comp}_{usubjid}
       rdf:type               code:{vstest_comp} ;
       rdf:type               cd01p:Visit{visit_im_titleCSh}{vstest_comp} ;
       rdf:type               cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} ;
-      study:activityStatus   code:ActivityStatus_{vsactstatus_im} ;
+      study:activityStatus   code:ActivityStatus_{vsstat_im} ;
       study:anatomicLocation code:{vsloc_im} ;
       study:baselineFlag     "{vsblfl}"^^xsd:string ;
-      study:derivedFlag      "{vsdrvfl_im}"^^xsd:string ;
-      study:bodyPosition     code:Vspos_{vspos} ;
+      study:bodyPosition     code:BodyPosition_{vspos} ;
       study:groupID          "{vsgrpid_im}"^^xsd:string ;
       study:hasCategory      cd01p:{vscat_im} ;
       study:hasScheduledDate cdiscpilot01:Date_{vsdtc_en} ;
       study:hasSubcategory   cd01p:{vssubcat_im} ;
       study:hasStartRule     cdiscpilot01:{startRule_im}_{visit_im_comp}_{usubjid} ;
-      study:laterality       code:Vslat_{vslat_im} ;
-      study:outcome          cdiscpilot01:{vstestcd_im_titleC}Outcome_{vsorres_en} ;
-      study:reasonNotDone    "{vsreasnotdone_im}"^^xsd:string ;
+      study:laterality       code:Laterality_{vslat_im} ;
+      study:outcome          cdiscpilot01:{vstest_outcome_im}Outcome_{vsorres_en} ;
+      study:reasonNotDone    "{vsreasnd}"^^xsd:string ;
       study:seq              "{vsseq}"^^xsd:float ;
       study:sponsordefinedID "{vsspid_im}"^^xsd:string ;
     .
@@ -113,7 +112,7 @@ cdiscpilot01:Visit_{visit_im_comp}_{usubjid}
         # variable type (float/int etc) cannot be assigned due to varying types in source column, unless this is
         #   imputed during data massage.
         cdiscpilot01:{vstest_outcome_im}Outcome_{vsorres_en}
-          code:hasUnit    code:Unit_{vsorresu} ;
+          code:hasUnit    code:Unit_{vsorresu_im} ;
           code:hasValue   "{vsorres}"^^xsd:string ;
           rdf:type        study:{vstest_outcome_im}Outcome ;
           skos:prefLabel "{vsorres} {vsorresu}"^^xsd:string ;
