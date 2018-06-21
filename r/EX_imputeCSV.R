@@ -53,8 +53,14 @@ ex <- encodeCol(data=ex, col="fixDoseInt_im")
 
 
 # Title case. For labels.
-ex$extrt_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$extrt, perl=TRUE)
-ex$visit_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$visit, perl=TRUE)
+# NOT USED AS OF 21JUN18
+#ex$extrt_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$extrt, perl=TRUE)
+#ex$visit_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$visit, perl=TRUE)
+
+# Low/High dose assigned to Product_1/_2 as per AO 21JUN18
+ex[ex$extrt == "PLACEBO", "extrt_exdose_im"]                      <- "Placebo"
+ex[ex$extrt == "XANOMELINE" & ex$exdose == 54, "extrt_exdose_im"]  <- "Product_1"
+ex[ex$extrt == "XANOMELINE" & ex$exdose == 81, "extrt_exdose_im"]  <- "Product_2"
 
 # Sort column names in the df for quicker referencing
 ex <- ex %>% select(noquote(order(colnames(ex))))

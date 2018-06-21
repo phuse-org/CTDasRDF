@@ -65,7 +65,7 @@ cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
       rdf:type                       study:FixedDoseDrugAdministration ;
       skos:prefLabel                 "Drug administration"^^xsd:string ;
       study:activityStatus           code:ActivityStatus_CO ;
-      study:administeredDrug         custom:{extrt_im_titleC}Drug ;
+      study:administeredDrug         custom:{extrt_exdose_im}Drug ;
       study:hasActivityInterval      cdiscpilot01:Interval_{fixDoseInt_im_en} ;
       study:hasDosageFrequency       code:ExDosFrq_{exdosfrq} ;
       study:hasRouteOfAdministration code:ExRoute_{exroute_en} ;

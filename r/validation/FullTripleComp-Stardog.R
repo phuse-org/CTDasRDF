@@ -6,7 +6,7 @@
 # IN  : Stardog graphs: CTDasRDFOnt, CTDasRDF
 # OUT : datatable
 # REQ : Stardog running, graph populated.
-# NOTE: 
+# NOTE:  CAUTION: Not comparing skos:prefLabel as of 21JUN18
 # TODO: Add "exceptions" dataframe to remove artifacts from either source in the
 #        in the comparison.
 ###############################################################################
@@ -104,5 +104,9 @@ SMSNotOnt <-SMSNotOnt[with(SMSNotOnt, order(s,p,o)), ]  # Not needed...
 
 OntNotSMS <- anti_join(triplesOnt, triplesSMS)
 OntNotSMS <- OntNotSMS[with(OntNotSMS, order(s,p,o)), ]  # Not needed...
+
+# TEMP!!
+# Remove preflabel for current checks.
+OntNotSMS <- OntNotSMS[!(OntNotSMS$p=="skos:prefLabel"),]
 
 datatable(OntNotSMS)
