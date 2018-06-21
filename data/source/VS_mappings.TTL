@@ -50,7 +50,7 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
   study:activityStatus   code:ActivityStatus_{vsstat_im} ;
   study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
   study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_titleCSh}_{usubjid} ;
-  study:hasSubActivity   cdiscpilot01:{vstestcd}_{usubjid}_{vsseq} ;
+  study:hasSubActivity   cdiscpilot01:{vstest_comp}_{visit_im_titleCSh}_{usubjid}_{vsseq} ;
 .
     # VisitDate - designate hasPerformedDate as a VisitDate
     cdiscpilot01:Date_{vsdtc_en}
@@ -86,7 +86,7 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
 
 
 
-##    # Each vstestcd.  vsseq used to show relative sequence.
+##    # Each vstestcd (vstest_comp).  vsseq used to show relative sequence.
     cdiscpilot01:{vstest_comp}_{visit_im_titleCSh}_{usubjid}_{vsseq}
       rdf:type               code:{vstest_comp} ;
       rdf:type               cd01p:Visit{visit_im_titleCSh}{vstest_comp} ;
