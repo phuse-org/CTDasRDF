@@ -44,13 +44,15 @@ vs$visit_im_titleCSh <- car::recode (vs$visit,
 
 
 # Derived Flag Y/N 
-vs$vsdrvfl_im <- "N"  # None of the measurements here are derived: BP,HT,WT,TEMP...
+# vs$vsdrvfl_im <- "N"  # None of the measurements here are derived: BP,HT,WT,TEMP...
+vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsdrvfl"]  <- "N"
+
 
 # VSREASND : Reason not done - additional test values
 vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsreasnd"]  <- "not applicable"
 
 # VSSTAT : Activity Status - additional test values
-vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsstat"]  <- "CO"
+vs[vs$vsseq %in% c(1,2,3,43,44,45,46,86,87,88,128,142) & vs$usubjid == "01-701-1015",  "vsstat_im"]  <- "CO"
 
 # vsspid : Sponsor Defined ID
 vs[vs$vsseq %in% c(1)   & vs$personNum == 1, "vsspid_im"]  <- "123"
@@ -100,15 +102,12 @@ vs$vstest_comp <- gsub("Rate", "", vs$vstest_comp )  # Also remove Rate from Pul
 # vs$vsstresc_en  <- gsub("\\.", "_", vs$vsstresc, perl=TRUE)
 vs$vsorres_en  <- gsub("\\.", "_", vs$vsorres, perl=TRUE)
 
-
-# units : imputed for links to code.ttl
+# units : imputed for links to code.ttl. Select values change from original data.
 vs[vs$vsorresu %in% c("in"),       "vsorresu_im"] <- "IN"
 vs[vs$vsorresu %in% c("mmHg"),      "vsorresu_im"] <- "mmHG"
 vs[vs$vsorresu %in% c("beats/min"), "vsorresu_im"] <- "BEATS_MIN"
 vs[vs$vsorresu %in% c("F"),         "vsorresu_im"] <- "F"
 vs[vs$vsorresu %in% c("LB"),        "vsorresu_im"] <- "LB"
-
-
 
 
 # Title Case (titleC) Conversions. For RDF Labels.
