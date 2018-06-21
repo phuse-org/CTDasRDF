@@ -527,7 +527,7 @@ cdiscpilot01:EthnicityDataCollection_01-701-1028
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
   study:outcome code:Ethnicity_NOT_HISPANIC_OR_LATINO ;
 .
-cdiscpilot01:HeightOutcome_58
+cdiscpilot01:HeightOutcome_58_0
   rdf:type study:HeightOutcome ;
   skos:prefLabel "58.0 IN" ;
   code:hasUnit code:Unit_IN ;
@@ -543,7 +543,7 @@ cdiscpilot01:Height_SCREENING1_01-701-1015_43
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
-  study:outcome cdiscpilot01:HeightOutcome_58 ;
+  study:outcome cdiscpilot01:HeightOutcome_58_0 ;
   study:reasonNotDone "not applicable" ;
   study:seq "43"^^xsd:float ;
   study:sponsordefinedID "1000" ;
@@ -832,6 +832,7 @@ cdiscpilot01:Pulse_SCREENING1_01-701-1015_44
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
   study:hasStartRule cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
+  study:laterality code:Laterality_RIGHT ;
   study:outcome cdiscpilot01:PulseOutcome_57 ;
   study:seq "44"^^xsd:float ;
   study:sponsordefinedID "125" ;
@@ -848,6 +849,7 @@ cdiscpilot01:Pulse_SCREENING1_01-701-1015_45
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
+  study:laterality code:Laterality_LEFT ;
   study:outcome cdiscpilot01:PulseOutcome_62 ;
   study:seq "45"^^xsd:float ;
   study:sponsordefinedID "721" ;
@@ -864,6 +866,7 @@ cdiscpilot01:Pulse_SCREENING1_01-701-1015_46
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
   study:hasStartRule cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
+  study:laterality code:Laterality_RIGHT ;
   study:outcome cdiscpilot01:PulseOutcome_65 ;
   study:seq "46"^^xsd:float ;
   study:sponsordefinedID "237" ;
