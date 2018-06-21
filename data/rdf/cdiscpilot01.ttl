@@ -79,16 +79,16 @@ cdiscpilot01:AgeOutcome_71
   code:hasUnit time:unitYear ;
   code:hasValue 71 ;
 .
-cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015
+cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type custom:AssumeBodyPositionStanding ;
   skos:prefLabel "assume standing position" ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_Screening1_01-701-1015 ;
   study:outcome code:BodyPosition_STANDING ;
 .
-cdiscpilot01:AssumeBodyPositionSupine_SCREENING1_01-701-1015
+cdiscpilot01:AssumeBodyPositionSupine_Screening1_01-701-1015
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type custom:AssumeBodyPositionSupine ;
   skos:prefLabel "assume supine position" ;
@@ -361,7 +361,7 @@ cdiscpilot01:DemographicDataCollection_01-701-1028
   study:hasSubActivity cdiscpilot01:SexDataCollection_01-701-1028 ;
   study:outcome code:Successfully_Completed ;
 .
-cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_1
+cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_1
   rdf:type cd01p:VisitScreening1DiastolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:DiastolicBloodPressure ;
@@ -372,7 +372,7 @@ cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_1
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
   study:outcome cdiscpilot01:BloodPressureOutcome_64 ;
@@ -380,7 +380,7 @@ cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_1
   study:seq "1"^^xsd:float ;
   study:sponsordefinedID "123" ;
 .
-cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_2
+cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_2
   rdf:type cd01p:VisitScreening1DiastolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:DiastolicBloodPressure ;
@@ -391,7 +391,7 @@ cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_2
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding1_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_LEFT ;
   study:outcome cdiscpilot01:BloodPressureOutcome_83 ;
@@ -399,7 +399,7 @@ cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_2
   study:seq "2"^^xsd:float ;
   study:sponsordefinedID "719" ;
 .
-cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_3
+cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_3
   rdf:type cd01p:VisitScreening1DiastolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:DiastolicBloodPressure ;
@@ -410,7 +410,7 @@ cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_3
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
   study:outcome cdiscpilot01:BloodPressureOutcome_57 ;
@@ -533,7 +533,7 @@ cdiscpilot01:HeightOutcome_58_0
   code:hasUnit code:Unit_IN ;
   code:hasValue "58.0"^^xsd:float ;
 .
-cdiscpilot01:Height_SCREENING1_01-701-1015_43
+cdiscpilot01:Height_Screening1_01-701-1015_43
   rdf:type cd01p:VisitScreening1Height ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Height ;
@@ -820,7 +820,7 @@ cdiscpilot01:PulseOutcome_65
   code:hasUnit code:Unit_BEATS_MIN ;
   code:hasValue 65 ;
 .
-cdiscpilot01:Pulse_SCREENING1_01-701-1015_44
+cdiscpilot01:Pulse_Screening1_01-701-1015_44
   rdf:type cd01p:VisitScreening1Pulse ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Pulse ;
@@ -830,14 +830,15 @@ cdiscpilot01:Pulse_SCREENING1_01-701-1015_44
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
   study:outcome cdiscpilot01:PulseOutcome_57 ;
+  study:reasonNotDone "not applicable" ;
   study:seq "44"^^xsd:float ;
   study:sponsordefinedID "125" ;
 .
-cdiscpilot01:Pulse_SCREENING1_01-701-1015_45
+cdiscpilot01:Pulse_Screening1_01-701-1015_45
   rdf:type cd01p:VisitScreening1Pulse ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Pulse ;
@@ -847,14 +848,15 @@ cdiscpilot01:Pulse_SCREENING1_01-701-1015_45
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding1_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_LEFT ;
   study:outcome cdiscpilot01:PulseOutcome_62 ;
+  study:reasonNotDone "not applicable" ;
   study:seq "45"^^xsd:float ;
   study:sponsordefinedID "721" ;
 .
-cdiscpilot01:Pulse_SCREENING1_01-701-1015_46
+cdiscpilot01:Pulse_Screening1_01-701-1015_46
   rdf:type cd01p:VisitScreening1Pulse ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Pulse ;
@@ -864,10 +866,11 @@ cdiscpilot01:Pulse_SCREENING1_01-701-1015_46
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
   study:outcome cdiscpilot01:PulseOutcome_65 ;
+  study:reasonNotDone "not applicable" ;
   study:seq "46"^^xsd:float ;
   study:sponsordefinedID "237" ;
 .
@@ -931,20 +934,20 @@ cdiscpilot01:SexDataCollection_01-701-1028
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
   study:outcome code:Sex_M ;
 .
-cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015
+cdiscpilot01:StartRuleLying5_Screening1_01-701-1015
   rdf:type cd01p:StartRuleLying5 ;
   skos:prefLabel "P1 Screening 1 Rule Lying 5 Min" ;
-  study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_SCREENING1_01-701-1015 ;
+  study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_Screening1_01-701-1015 ;
 .
-cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015
+cdiscpilot01:StartRuleStanding1_Screening1_01-701-1015
   rdf:type cd01p:StartRuleStanding1 ;
   skos:prefLabel "P1 Screening 1 Rule Standing 1 Min" ;
-  study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 ;
+  study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015 ;
 .
-cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015
+cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015
   rdf:type cd01p:StartRuleStanding3 ;
   skos:prefLabel "P1 Screening 1 Rule Standing 3 Min" ;
-  study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 ;
+  study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015 ;
 .
 cdiscpilot01:SubjectIdentifier_1015
   rdf:type study:SubjectIdentifier ;
@@ -958,7 +961,7 @@ cdiscpilot01:SubjectIdentifier_1028
   rdf:type study:SubjectIdentifier ;
   skos:prefLabel "1028" ;
 .
-cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_86
+cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_86
   rdf:type cd01p:VisitScreening1SystolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:SystolicBloodPressure ;
@@ -969,7 +972,7 @@ cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_86
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleLying5_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
   study:outcome cdiscpilot01:BloodPressureOutcome_131 ;
@@ -977,7 +980,7 @@ cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_86
   study:seq "86"^^xsd:float ;
   study:sponsordefinedID "124" ;
 .
-cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_87
+cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_87
   rdf:type cd01p:VisitScreening1SystolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:SystolicBloodPressure ;
@@ -988,7 +991,7 @@ cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_87
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding1_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_LEFT ;
   study:outcome cdiscpilot01:BloodPressureOutcome_129 ;
@@ -996,7 +999,7 @@ cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_87
   study:seq "87"^^xsd:float ;
   study:sponsordefinedID "720" ;
 .
-cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_88
+cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_88
   rdf:type cd01p:VisitScreening1SystolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:SystolicBloodPressure ;
@@ -1007,7 +1010,7 @@ cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_88
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasStartRule cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015 ;
+  study:hasStartRule cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
   study:outcome cdiscpilot01:BloodPressureOutcome_147 ;
@@ -1021,7 +1024,7 @@ cdiscpilot01:TempOutcome_96_9
   code:hasUnit code:Unit_F ;
   code:hasValue "96.9"^^xsd:float ;
 .
-cdiscpilot01:Temperature_SCREENING1_01-701-1015_128
+cdiscpilot01:Temperature_Screening1_01-701-1015_128
   rdf:type cd01p:VisitScreening1Temperature ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Temperature ;
@@ -1105,20 +1108,20 @@ cdiscpilot01:VisitScreening1_01-701-1015
   rdf:type custom:VisitScreening1 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasPerformedDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 ;
-  study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_SCREENING1_01-701-1015 ;
-  study:hasSubActivity cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_1 ;
-  study:hasSubActivity cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_2 ;
-  study:hasSubActivity cdiscpilot01:DiastolicBloodPressure_SCREENING1_01-701-1015_3 ;
-  study:hasSubActivity cdiscpilot01:Height_SCREENING1_01-701-1015_43 ;
-  study:hasSubActivity cdiscpilot01:Pulse_SCREENING1_01-701-1015_44 ;
-  study:hasSubActivity cdiscpilot01:Pulse_SCREENING1_01-701-1015_45 ;
-  study:hasSubActivity cdiscpilot01:Pulse_SCREENING1_01-701-1015_46 ;
-  study:hasSubActivity cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_86 ;
-  study:hasSubActivity cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_87 ;
-  study:hasSubActivity cdiscpilot01:SystolicBloodPressure_SCREENING1_01-701-1015_88 ;
-  study:hasSubActivity cdiscpilot01:Temperature_SCREENING1_01-701-1015_128 ;
-  study:hasSubActivity cdiscpilot01:Weight_SCREENING1_01-701-1015_142 ;
+  study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015 ;
+  study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_Screening1_01-701-1015 ;
+  study:hasSubActivity cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_1 ;
+  study:hasSubActivity cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_2 ;
+  study:hasSubActivity cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_3 ;
+  study:hasSubActivity cdiscpilot01:Height_Screening1_01-701-1015_43 ;
+  study:hasSubActivity cdiscpilot01:Pulse_Screening1_01-701-1015_44 ;
+  study:hasSubActivity cdiscpilot01:Pulse_Screening1_01-701-1015_45 ;
+  study:hasSubActivity cdiscpilot01:Pulse_Screening1_01-701-1015_46 ;
+  study:hasSubActivity cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_86 ;
+  study:hasSubActivity cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_87 ;
+  study:hasSubActivity cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_88 ;
+  study:hasSubActivity cdiscpilot01:Temperature_Screening1_01-701-1015_128 ;
+  study:hasSubActivity cdiscpilot01:Weight_Screening1_01-701-1015_142 ;
 .
 cdiscpilot01:VisitScreening1_01-701-1023
   rdf:type custom:VisitScreening1 ;
@@ -1187,7 +1190,7 @@ cdiscpilot01:WeightOutcome_119_0
   code:hasUnit code:Unit_LB ;
   code:hasValue "119.0"^^xsd:float ;
 .
-cdiscpilot01:Weight_SCREENING1_01-701-1015_142
+cdiscpilot01:Weight_Screening1_01-701-1015_142
   rdf:type cd01p:VisitScreening1Weight ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Weight ;
