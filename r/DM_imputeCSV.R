@@ -47,7 +47,7 @@ dm$cumuDrugAdmin_im       <- paste0(dm$rfxstdtc, "_", dm$rfxendtc)
 dm$cumuDrugAdmin_label_im <- paste0(dm$rfxstdtc, " to ", dm$rfxendtc) 
 
 dm$studyPartInt_im       <- paste0(dm$dmdtc,  "_", dm$rfpendtc_en)  
-dm$studyPartInt_label_im <- paste0(dm$dmdtc,  " to ", dm$rfpendtc_en)  
+dm$studyPartInt_label_im <- paste0(dm$dmdtc,  " to ", dm$rfpendtc)  
 
 #------------------------------------------------------------------------------
 # URL encoding

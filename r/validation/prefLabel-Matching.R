@@ -86,9 +86,10 @@ OntSMSdf <- OntSMSdf[with(OntSMSdf, order(s, p, o.ont)), ]
 
 datatable(OntSMSdf)
 
+library(xlsx)  # this is the Java one. Eeew.
+write.xlsx(OntSMSdf, "C:/_gitHub/CTDasRDF/data/source/prefLabel-QC.xlsx")
 
 
-# OLDE CODE FOLLOWS 
 #--- In R and not in Ontology 
 #SMSNotOnt <-anti_join(triplesSMS, triplesOnt)
 #SMSNotOnt <-SMSNotOnt[with(SMSNotOnt, order(s,p,o)), ]  # Not needed...

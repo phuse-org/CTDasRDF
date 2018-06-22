@@ -262,7 +262,7 @@ cdiscpilot01:Person_{usubjid}
  # -----------------------------------------------------------------------------
  cdiscpilot01:CumulativeDrugAdministration_{usubjid}
    rdf:type                  study:CumulativeDrugAdministration ;
-   skos:prefLabel            "Drug administration {cumuDrugAdmin_label_im} "^^xsd:string ;
+   skos:prefLabel            "Drug administration period {cumuDrugAdmin_label_im} "^^xsd:string ;
    study:activityStatus      code:ActivityStatus_CO ;
    study:hasActivityInterval cdiscpilot01:Interval_{cumuDrugAdmin_im_en} ;
  .
