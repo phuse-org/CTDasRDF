@@ -74,11 +74,11 @@ cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
       cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
         rdf:type         owl:Class ;
         rdfs:subClassOf  custom:Visit{visit_im_titleCSh}Activity ;
-        skos:prefLabel   "Visit {visit_im_titleCSh} Person {usubjid}" ;
+        skos:prefLabel   "Visit {visit_im_titleC} Person {usubjid}" ;
       .
       cdiscpilot01:Interval_{fixDoseInt_im_en}
         rdf:type          study:FixedDoseInterval ;
-        skos:prefLabel    "Interval {fixDoseInt_im}"^^xsd:string ;
+        skos:prefLabel    "Interval {fixDoseInt_label_im}"^^xsd:string ;
         time:hasBeginning cdiscpilot01:Date_{exstdtc_en} ;
         time:hasEnd       cdiscpilot01:Date_{exendtc_en} ;
       .

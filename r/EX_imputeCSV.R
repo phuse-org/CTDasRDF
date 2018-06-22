@@ -13,7 +13,8 @@
 #______________________________________________________________________________
 
 # Imputations ----
-ex$fixDoseInt_im   <- paste0(ex$exstdtc,  "_", ex$exendtc)
+ex$fixDoseInt_im        <- paste0(ex$exstdtc,  "_", ex$exendtc)    # Interval
+ex$fixDoseInt_label_im  <- paste0(ex$exstdtc,  " to ", ex$exendtc) # Interval Label
 
 ex$visit_im_comp <- gsub(" ", "", ex$visit )
 
@@ -37,6 +38,29 @@ ex$visit_im_titleCSh <- car::recode(ex$visit,
     'RETRIEVAL'            =  'Retrieval' ;
     'UNSCHEDULED 3.1'      =  'Unscheduled31' "
 )
+
+# following used in prefLabel. 
+# TODO: Change to casing function on vs$visit.
+ex$visit_im_titleC  <- car::recode (ex$visit,
+  " 'SCREENING 1'          =  'Screening 1' ;
+    'SCREENING 2'          =  'Screening 2' ;
+    'BASELINE'             =  'Baseline' ;
+    'AMBUL ECG PLACEMENT'  =  'Ambul ECG Placement' ;
+    'AMBUL ECG REMOVAL'    =  'Ambul ECG Removal' ;
+    'WEEK 2'               =  'Week 2' ;
+    'WEEK 4'               =  'Week 4' ;
+    'WEEK 6'               =  'Week 6' ;
+    'WEEK 8'               =  'Week 8' ;
+    'WEEK 12'              =  'Week 12' ;
+    'WEEK 16'              =  'Week 16' ;
+    'WEEK 20'              =  'Week 20' ;
+    'WEEK 24'              =  'Week 24' ;
+    'WEEK 26'              =  'Week 26' ;
+    'RETRIEVAL'            =  'Retrieval' ;
+    'UNSCHEDULED 3.1'      =  'Unscheduled 3.1' "
+)
+
+
 
 #------------------------------------------------------------------------------
 # URL encoding

@@ -30,19 +30,25 @@ dm$dthdtc <- as.character(dm$dthdtc)
 dm$dthdtc[dm$usubjid == '01-701-1015' ] <- "2013-12-26"  # Death Date
 dm$dthfl[dm$usubjid == '01-701-1015' ]  <- "Y" # Set a Death flag  for Person_1
 
-
 # Field has some timestamps with colons. Encode to remove colon.
 dm <- encodeCol(data=dm, col="rfpendtc")
 
-
-
 # TODO: Some of these values likely need to be encoded before use in interval IRIs!
-dm$lifeSpan_im      <- paste0(dm$brthdate, "_", dm$dthdtc)
-dm$refInt_im        <- paste0(dm$rfstdtc,  "_", dm$rfendtc) # Colon removed
+dm$lifeSpan_im        <- paste0(dm$brthdate, "_", dm$dthdtc)
+dm$lifeSpan_label_im  <- paste0(dm$brthdate, " to ", dm$dthdtc)
 
-dm$infConsInt_im    <- paste0(dm$rficdtc,  "_")  # No end date to informed consent interval so end in _
-dm$cumuDrugAdmin_im <- paste0(dm$rfxstdtc,    "_", dm$rfxendtc)
-dm$studyPartInt_im  <- paste0(dm$dmdtc,    "_", dm$rfpendtc_en)  # Imputed : no colon.
+dm$refInt_im        <- paste0(dm$rfstdtc,  "_", dm$rfendtc) 
+dm$refInt_label_im  <- paste0(dm$rfstdtc,  " to ", dm$rfendtc)
+
+dm$infConsInt_im       <- paste0(dm$rficdtc,  "_")  # No end date to informed consent interval so end in _
+dm$infConsInt_label_im <- paste0(dm$rficdtc,  " to ")  # No end date to informed consent interval so end in _
+
+dm$cumuDrugAdmin_im       <- paste0(dm$rfxstdtc, "_", dm$rfxendtc)
+dm$cumuDrugAdmin_label_im <- paste0(dm$rfxstdtc, " to ", dm$rfxendtc) 
+
+dm$studyPartInt_im       <- paste0(dm$dmdtc,  "_", dm$rfpendtc_en)  
+dm$studyPartInt_label_im <- paste0(dm$dmdtc,  " to ", dm$rfpendtc_en)  
+
 #------------------------------------------------------------------------------
 # URL encoding
 #   Encode fields  that may potentially have values that violate valid IRI format
