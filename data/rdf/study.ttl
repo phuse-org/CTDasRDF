@@ -97,7 +97,7 @@ code:AnatomicLocation
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:BodyPosition ;
-      owl:onProperty code:hasPermissibleOutcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:Arm
@@ -1643,7 +1643,7 @@ study:StudyActivity
             sp:object [
                 sp:varName "anchoroutcome" ;
               ] ;
-            sp:predicate code:hasPermissibleOutcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "anchor" ;
               ] ;

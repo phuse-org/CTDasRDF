@@ -181,7 +181,7 @@ code:AssumeBodyPosition
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:BodyPosition ;
-      owl:onProperty code:hasPermissibleOutcome ;
+      owl:onProperty code:outcome ;
     ] ;
   skos:definition "" ;
   skos:prefLabel "Assume body position term" ;
@@ -473,7 +473,7 @@ code:InformedConsent
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:InformedConsentOutcome ;
-      owl:onProperty code:hasPermissibleOutcome ;
+      owl:onProperty code:outcome ;
     ] ;
   skos:definition "" ;
   skos:prefLabel "Informed consent term" ;
@@ -771,12 +771,24 @@ code:Race
   rdfs:comment "" ;
   rdfs:subClassOf code:CategoricalOutcome ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
+  owl:oneOf (
+      code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
+      code:Race_ASIAN
+      code:Race_BLACK_OR_AFRICAN_AMERICAN
+      code:Race_NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER
+      code:Race_WHITE
+    ) ;
   skos:definition "" ;
   skos:prefLabel "RACE" ;
 .
 code:RaceDataCollection
   rdf:type owl:Class ;
   rdfs:subClassOf code:Observation ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Race ;
+      owl:onProperty code:outcome ;
+    ] ;
 .
 code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
   rdf:type code:Race ;
@@ -1107,13 +1119,6 @@ code:hasOriginalUnit
   skos:definition "" ;
   skos:prefLabel "has original unit" ;
 .
-code:hasPermissibleOutcome
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment "" ;
-  rdfs:domain code:DefinedActivity ;
-  skos:definition "" ;
-  skos:prefLabel "permissible outcome" ;
-.
 code:hasStandardUnit
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
@@ -1138,6 +1143,13 @@ code:hasValue
   rdfs:domain code:DefinedActivityOutcome ;
   skos:definition "" ;
   skos:prefLabel "has value" ;
+.
+code:outcome
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "" ;
+  rdfs:domain code:DefinedActivity ;
+  skos:definition "" ;
+  skos:prefLabel "permissible outcome" ;
 .
 code:randomizationQuotient
   rdf:type owl:DatatypeProperty ;
