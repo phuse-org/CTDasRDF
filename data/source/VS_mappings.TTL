@@ -63,7 +63,7 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
     cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_titleCSh}_{usubjid}
        rdf:type                  cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid};
        rdf:type                  custom:AssumeBodyPosition{vspos_im_titleC} ;
-       skos:prefLabel            "Assume {vspos_im_titleC} position"^^xsd:string ;
+       skos:prefLabel            "Assume {vspos_im_lowerC} position"^^xsd:string ;
        study:activityStatus      code:ActivityStatus_{vsstat_im} ;
        study:hasDate             cdiscpilot01:Date_{vsdtc_en} ;
        study:hasStartRule        cdiscpilot01:{vstpt_AssumeBodyPosStartRule_im}_{visit_im_titleCSh}_{usubjid} ;
@@ -80,7 +80,7 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
         # Start Rule, child of AssumeBodyPosition
         cdiscpilot01:{startRule_im}_{visit_im_titleCSh}_{usubjid}
             rdf:type              cd01p:{startRule_im} ;
-            skos:prefLabel        "{usubjid} {visit_im_titleC} Rule {vstpt}"^^xsd:string ;
+            skos:prefLabel        "Person {usubjid} {visit_im_titleC} Rule {vstpt_label_im}"^^xsd:string ;
             study:hasPrerequisite cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_titleCSh}_{usubjid} ;
         .
 

@@ -59,7 +59,7 @@ cdiscpilot01:Person_{usubjid}
 #      for that interval.
   cdiscpilot01:Interval_{lifeSpan_im_en}
     a                 study:Lifespan ;
-    skos:prefLabel    "Interval {lifeSpan_im}"^^xsd:string ;
+    skos:prefLabel    "Interval {lifeSpan_label_im}"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{brthdate_en} ;
     time:hasEnd       cdiscpilot01:Date_{dthdtc_en}
   .
@@ -81,7 +81,7 @@ cdiscpilot01:Person_{usubjid}
   # ReferenceInterval ----
   cdiscpilot01:Interval_{refInt_im_en}
     a study:ReferenceInterval ;
-    skos:prefLabel    "Interval {refInt_im}"^^xsd:string ;
+    skos:prefLabel    "Interval {refInt_label_im}"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{rfstdtc_en} ;
     time:hasEnd       cdiscpilot01:Date_{rfendtc_en}
   .
@@ -102,7 +102,7 @@ cdiscpilot01:Person_{usubjid}
   # StudyParticipationInterval
   cdiscpilot01:Interval_{studyPartInt_im_en}
     rdf:type          study:StudyParticipationInterval ;
-    skos:prefLabel    "Interval {studyPartInt_im}"^^xsd:string ;
+    skos:prefLabel    "Interval {studyPartInt_label_im}"^^xsd:string ;
     time:hasBeginning cdiscpilot01:Date_{dmdtc_en} ;
     time:hasEnd       cdiscpilot01:Date_{rfpendtc_en}
   .
@@ -152,7 +152,7 @@ cdiscpilot01:Person_{usubjid}
    rdf:type             cd01p:VisitScreening1DemogDataColl ;
    rdf:type             cdiscpilot01:VisitScreening1Activity_{usubjid} ;
    rdf:type             code:DemographicDataCollection ;
-   skos:prefLabel       "Screening 1 Demographic data collection Person {usubjid} "^^xsd:string ;  # Note Person comes last to match other labels. DO NOT CHANGE
+   skos:prefLabel       "Person {usubjid} Screening 1 Demographic data collection"^^xsd:string ;  # Note Person comes last to match other labels. DO NOT CHANGE
    study:activityStatus code:ActivityStatus_CO ;
    study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
    study:hasSubActivity cdiscpilot01:AgeDataCollection_{usubjid} ;
@@ -241,7 +241,7 @@ cdiscpilot01:Person_{usubjid}
      #InformedConsentInterval
      cdiscpilot01:Interval_{infConsInt_im_en}
        rdf:type          study:InformedConsentInterval ;
-       skos:prefLabel        "Interval {infConsInt_im}"^^xsd:string ;
+       skos:prefLabel        "Interval {infConsInt_label_im}"^^xsd:string ;
        time:hasBeginning cdiscpilot01:Date_{rficdtc_en} ;
      .
 
@@ -262,14 +262,14 @@ cdiscpilot01:Person_{usubjid}
  # -----------------------------------------------------------------------------
  cdiscpilot01:CumulativeDrugAdministration_{usubjid}
    rdf:type                  study:CumulativeDrugAdministration ;
-   skos:prefLabel            "Cumulative Drug Administration {cumuDrugAdmin_im} "^^xsd:string ;
+   skos:prefLabel            "Drug administration period {cumuDrugAdmin_label_im} "^^xsd:string ;
    study:activityStatus      code:ActivityStatus_CO ;
    study:hasActivityInterval cdiscpilot01:Interval_{cumuDrugAdmin_im_en} ;
  .
 
  cdiscpilot01:Interval_{cumuDrugAdmin_im_en}
    rdf:type           study:CumulativeDrugAdministrationInterval ;
-   skos:prefLabel         "Interval {cumuDrugAdmin_im}"^^xsd:string ;
+   skos:prefLabel         "Interval {cumuDrugAdmin_label_im}"^^xsd:string ;
    time:hasBeginning  cdiscpilot01:Date_{rfxstdtc_en} ;
    time:hasEnd        cdiscpilot01:Date_{rfxendtc_en} ;
  .

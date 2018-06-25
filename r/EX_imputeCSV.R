@@ -13,7 +13,8 @@
 #______________________________________________________________________________
 
 # Imputations ----
-ex$fixDoseInt_im   <- paste0(ex$exstdtc,  "_", ex$exendtc)
+ex$fixDoseInt_im        <- paste0(ex$exstdtc,  "_", ex$exendtc)    # Interval
+ex$fixDoseInt_label_im  <- paste0(ex$exstdtc,  " to ", ex$exendtc) # Interval Label
 
 ex$visit_im_comp <- gsub(" ", "", ex$visit )
 
@@ -38,6 +39,29 @@ ex$visit_im_titleCSh <- car::recode(ex$visit,
     'UNSCHEDULED 3.1'      =  'Unscheduled31' "
 )
 
+# following used in prefLabel. 
+# TODO: Change to casing function on vs$visit.
+ex$visit_im_titleC  <- car::recode (ex$visit,
+  " 'SCREENING 1'          =  'Screening 1' ;
+    'SCREENING 2'          =  'Screening 2' ;
+    'BASELINE'             =  'Baseline' ;
+    'AMBUL ECG PLACEMENT'  =  'Ambul ECG Placement' ;
+    'AMBUL ECG REMOVAL'    =  'Ambul ECG Removal' ;
+    'WEEK 2'               =  'Week 2' ;
+    'WEEK 4'               =  'Week 4' ;
+    'WEEK 6'               =  'Week 6' ;
+    'WEEK 8'               =  'Week 8' ;
+    'WEEK 12'              =  'Week 12' ;
+    'WEEK 16'              =  'Week 16' ;
+    'WEEK 20'              =  'Week 20' ;
+    'WEEK 24'              =  'Week 24' ;
+    'WEEK 26'              =  'Week 26' ;
+    'RETRIEVAL'            =  'Retrieval' ;
+    'UNSCHEDULED 3.1'      =  'Unscheduled 3.1' "
+)
+
+
+
 #------------------------------------------------------------------------------
 # URL encoding
 #   Encode fields  that may potentially have values that violate valid IRI format
@@ -53,8 +77,14 @@ ex <- encodeCol(data=ex, col="fixDoseInt_im")
 
 
 # Title case. For labels.
-ex$extrt_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$extrt, perl=TRUE)
-ex$visit_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$visit, perl=TRUE)
+# NOT USED AS OF 21JUN18
+#ex$extrt_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$extrt, perl=TRUE)
+#ex$visit_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$visit, perl=TRUE)
+
+# Low/High dose assigned to Product_1/_2 as per AO 21JUN18
+ex[ex$extrt == "PLACEBO", "extrt_exdose_im"]                      <- "Placebo"
+ex[ex$extrt == "XANOMELINE" & ex$exdose == 54, "extrt_exdose_im"]  <- "Product_1"
+ex[ex$extrt == "XANOMELINE" & ex$exdose == 81, "extrt_exdose_im"]  <- "Product_2"
 
 # Sort column names in the df for quicker referencing
 ex <- ex %>% select(noquote(order(colnames(ex))))
