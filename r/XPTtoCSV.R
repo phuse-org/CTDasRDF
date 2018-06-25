@@ -63,6 +63,8 @@ row.names = F,
 
 # EX ----
 ex  <- readXPT("ex")
+
+
 # subset for development
 ex <- ex[ex$usubjid %in% pntSubset,]  
 
@@ -83,12 +85,18 @@ vs  <- readXPT("vs")  # first row only for initial testing.
 
 # Subset for development
 # Subset to match ontology data. Expand to all of subjid 1015 later.
-vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37)
+# VS is also used to get performed dates for patients 1023, 1028
+#  for Baseline, screening, Wk2 and Wk24 dates.
+#   1023 : 153,159, 165
+#   1028 : 228, 234, 242, 264
+
+vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37, 153,159, 165, 228, 234, 242, 264)
 
 #ORIG vs <- vs[vsSubset, ]
 # TW TESTING
 vs <- data.frame(vs[vsSubset, ], stringsAsFactors=FALSE)  
 # vs <- vs[vs$usubjid %in% pntSubset,]  
+
 
 
 # for later development:

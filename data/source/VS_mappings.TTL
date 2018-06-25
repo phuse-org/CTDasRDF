@@ -107,13 +107,14 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
       study:sponsordefinedID "{vsspid_im}"^^xsd:string ;
     .
       # Test Outcome
-      # working back from here
+      # All results are FLOAT to match ontology instance data. In future some
+      #    will be INT (SYSBP, PULSE..) and others float. 
         # vsorres_en has decimals removed. May need to change for other types of values!
         # variable type (float/int etc) cannot be assigned due to varying types in source column, unless this is
         #   imputed during data massage.
         cdiscpilot01:{vstest_outcome_im}Outcome_{vsorres_en}
           code:hasUnit    code:Unit_{vsorresu_im} ;
-          code:hasValue   "{vsorres}"^^xsd:string ;
+          code:hasValue   "{vsorres}"^^xsd:float ;
           rdf:type        study:{vstest_outcome_im}Outcome ;
           skos:prefLabel "{vsorres} {vsorresu}"^^xsd:string ;
         .

@@ -82,7 +82,7 @@ ex <- encodeCol(data=ex, col="fixDoseInt_im")
 #ex$visit_im_titleC  <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ex$visit, perl=TRUE)
 
 # Low/High dose assigned to Product_1/_2 as per AO 21JUN18
-ex[ex$extrt == "PLACEBO", "extrt_exdose_im"]                      <- "Placebo"
+ex[ex$extrt == "PLACEBO", "extrt_exdose_im"]                      <- "PlaceboDrug"
 ex[ex$extrt == "XANOMELINE" & ex$exdose == 54, "extrt_exdose_im"]  <- "Product_1"
 ex[ex$extrt == "XANOMELINE" & ex$exdose == 81, "extrt_exdose_im"]  <- "Product_2"
 

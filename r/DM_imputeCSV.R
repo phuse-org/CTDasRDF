@@ -14,6 +14,9 @@
 #______________________________________________________________________________
 
 # Imputations ----
+dm[dm$actarmcd == "Pbo", "actarmcd_im"] <- "Pbo"
+dm[dm$actarmcd == "Xan_Hi", "actarmcd_im"] <- "XanomelineHigh"
+
 #---- Birthdate : asbsent in source data
 # NOTE: Date calculations based on SECONDS so you must convert the age in Years to seconds
 #      Change to character to avoid later ddply problem in DM_process.R
