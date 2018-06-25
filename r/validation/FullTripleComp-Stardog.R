@@ -107,6 +107,6 @@ OntNotSMS <- OntNotSMS[with(OntNotSMS, order(s,p,o)), ]  # Not needed...
 
 # TEMP!!
 # Remove preflabel for current checks.
-OntNotSMS <- OntNotSMS[!(OntNotSMS$p=="skos:prefLabel"),]
+# OntNotSMS <- OntNotSMS[!(OntNotSMS$p=="skos:prefLabel"),]
 
 datatable(OntNotSMS)
