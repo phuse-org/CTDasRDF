@@ -42,7 +42,7 @@ cdiscpilot01:CumulativeDrugAdministration_{usubjid}
 
 cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
   rdf:type                  study:CumulativeDrugAdministration ;
-  skos:prefLabel            "Drug administration period {rfxstdtc} - {rfxendtc}"^^xsd:string ;
+  skos:prefLabel            "Drug administration period {rfxstdtc} to {rfxendtc}"^^xsd:string ;
   study:activityStatus      code:ActivityStatus_CO ;
   study:hasActivityInterval cdiscpilot01:Interval_{cumuDrugAdmin_im};
   study:hasSubActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en};
