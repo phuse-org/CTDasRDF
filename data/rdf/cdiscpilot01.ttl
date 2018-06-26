@@ -1018,7 +1018,7 @@ cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_88
   study:seq "88"^^xsd:float ;
   study:sponsordefinedID "236" ;
 .
-cdiscpilot01:TempOutcome_96_9
+cdiscpilot01:TemperatureOutcome_96_9
   rdf:type study:TemperatureOutcome ;
   skos:prefLabel "96.9 F" ;
   code:hasUnit code:Unit_F ;
@@ -1035,7 +1035,7 @@ cdiscpilot01:Temperature_Screening1_01-701-1015_128
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
-  study:outcome cdiscpilot01:TempOutcome_96_9 ;
+  study:outcome cdiscpilot01:TemperatureOutcome_96_9 ;
   study:reasonNotDone "not applicable" ;
   study:seq "128"^^xsd:float ;
   study:sponsordefinedID "3000" ;
@@ -1136,9 +1136,6 @@ cdiscpilot01:VisitWk24_01-701-1015
   rdf:type custom:VisitWk24 ;
   study:hasPerformedDate cdiscpilot01:Date_2014-06-18 ;
   study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 ;
-.
-cdiscpilot01:VisitWk24_01-701-1023
-  rdf:type custom:VisitWk24 ;
 .
 cdiscpilot01:VisitWk24_01-701-1028
   rdf:type custom:VisitWk24 ;
