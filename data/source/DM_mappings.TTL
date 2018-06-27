@@ -38,7 +38,7 @@ cd01p:Study_{studyid}
 cdiscpilot01:Person_{usubjid}
   a study:EnrolledSubject;
   skos:prefLabel                      "Person {usubjid}"^^xsd:string ;
-  study:actualArm                     cd01p:Arm_{actarmcd} ;
+  study:actualArm                     cd01p:Arm_{actarmcd_im} ;
   study:deathFlag                     "{dthfl}"^^xsd:string ;
   study:hasLifespan                   cdiscpilot01:Interval_{lifeSpan_im_en};
   study:hasReferenceInterval          cdiscpilot01:Interval_{refInt_im_en} ;
@@ -47,7 +47,8 @@ cdiscpilot01:Person_{usubjid}
   study:hasSubjectID                  cdiscpilot01:SubjectIdentifier_{subjid} ;
   study:hasUniqueSubjectID            cdiscpilot01:UniqueSubjectIdentifier_{usubjid} ;
   study:participatesIn                cdiscpilot01:DemographicDataCollection_{usubjid};
-  study:participatesIn                cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im_en} ;
+  #DEL  study:participatesIn                cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im_en} ;
+  study:participatesIn                cdiscpilot01:CumulativeDrugAdministration_{usubjid} ;
   study:participatesIn                cdiscpilot01:InformedConsentAdult_{usubjid} ;
   study:participatesIn                cdiscpilot01:RandomizationBAL3_{usubjid} ;
 .

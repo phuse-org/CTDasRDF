@@ -92,7 +92,7 @@ vs[vs$vsloc %in% c('ORAL CAVITY'), "vsloc_im"]  <- "Oral_Cavity"
 vs[vs$vstestcd %in% c("DIABP", "SYSBP"), "vstest_outcome_im"] <- "BloodPressure"
 vs[vs$vstestcd %in% c("HEIGHT"), "vstest_outcome_im"]         <- "Height"
 vs[vs$vstestcd %in% c("PULSE"), "vstest_outcome_im"]          <- "Pulse"
-vs[vs$vstestcd %in% c("TEMP"), "vstest_outcome_im"]           <- "Temp"
+vs[vs$vstestcd %in% c("TEMP"), "vstest_outcome_im"]           <- "Temperature"  # updated 25JUn18
 vs[vs$vstestcd %in% c("WEIGHT"), "vstest_outcome_im"]         <- "Weight"
 
 vs$vstest_comp <- gsub(" ", "", vs$vstest )
