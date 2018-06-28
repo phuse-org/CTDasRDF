@@ -22,28 +22,28 @@
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
-cd01p:ArmScreenFailure
-  rdf:type study:Arm ;
-  skos:altLabel "Scrnfail" ;
-  skos:prefLabel "Screen Failure" ;
-.
-cd01p:ArmXanomelineHigh
-  rdf:type study:Arm ;
-  rdf:type study:RandomizationOutcome ;
-  skos:altLabel "Xan_Hi" ;
-  skos:prefLabel "Xanomeline High" ;
-.
-cd01p:ArmXanomelineLow
-  rdf:type study:Arm ;
-  rdf:type study:RandomizationOutcome ;
-  skos:altLabel "Xan_Lo" ;
-  skos:prefLabel "Xanomeline Low" ;
-.
 cd01p:Arm_Pbo
   rdf:type study:Arm ;
   rdf:type study:RandomizationOutcome ;
   skos:altLabel "Pbo" ;
   skos:prefLabel "Placebo" ;
+.
+cd01p:Arm_ScreenFailure
+  rdf:type study:Arm ;
+  skos:altLabel "Scrnfail" ;
+  skos:prefLabel "Screen Failure" ;
+.
+cd01p:Arm_XanomelineHigh
+  rdf:type study:Arm ;
+  rdf:type study:RandomizationOutcome ;
+  skos:altLabel "Xan_Hi" ;
+  skos:prefLabel "Xanomeline High" ;
+.
+cd01p:Arm_XanomelineLow
+  rdf:type study:Arm ;
+  rdf:type study:RandomizationOutcome ;
+  skos:altLabel "Xan_Lo" ;
+  skos:prefLabel "Xanomeline Low" ;
 .
 cd01p:CRFLocation_1
   rdf:type study:CRFLocation ;
@@ -442,10 +442,10 @@ cd01p:Study_CDISCPILOT01
   skos:altLabel "" ;
   skos:prefLabel "CDISCPILOT01" ;
   skos:prefLabel "Study CDISCPILOT01" ;
-  study:hasProtocolSpecifiedActivity cd01p:ArmScreenFailure ;
-  study:hasProtocolSpecifiedActivity cd01p:ArmXanomelineHigh ;
-  study:hasProtocolSpecifiedActivity cd01p:ArmXanomelineLow ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_Pbo ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_ScreenFailure ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_XanomelineHigh ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_XanomelineLow ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGPlaceActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGRemoveActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitBaselineActivity ;

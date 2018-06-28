@@ -363,17 +363,6 @@ code:DosageFrequency
   rdfs:subClassOf code:DefinedConcept ;
   skos:prefLabel "Dosage frequency" ;
 .
-code:DosageFrequency_QD
-  rdf:type mms:PermissibleValue ;
-  rdf:type code:DosageFrequency ;
-  schema:cdiscDefinition "Occurring or done each day. (NCI)" ;
-  schema:cdiscSubmissionValue "QD" ;
-  schema:cdiscSynonyms "Daily; Per Day" ;
-  schema:nciCode "C25473" ;
-  schema:nciPreferredTerm "Daily" ;
-  mms:inValueDomain sdtmterm:C71113 ;
-  skos:prefLabel "QD" ;
-.
 code:DrugProduct
   rdf:type owl:Class ;
   rdfs:subClassOf code:Product ;
@@ -413,7 +402,6 @@ code:Ethnicity_UNKNOWN
 .
 code:ExDosFrq_QD
   rdf:type code:DosageFrequency ;
-  owl:sameAs code:DosageFrequency_QD ;
   skos:altLabel "daily" ;
   skos:prefLabel "QD" ;
 .
