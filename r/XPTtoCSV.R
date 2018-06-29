@@ -1,20 +1,22 @@
-###############################################################################
+#______________________________________________________________________________
 # FILE: XPTtoCSV.R
-# DESC: Convert XPT domain file to CSV
+# DESC: Convert XPT domainS to CSV files for SMS mapping
 # SRC :
-# IN  : 
-# OUT : 
-# REQ : DM must be imported before EX. EX merges in dm$cumuDrugAdmin_im for the interval
+# IN  : 1. R Scripts for each domain, except SUPPDM which is subset and written 
+#         out from this script.
+#       2. Functions.R  - misc data processing functions
+#       3. ctdasrdf_graphmeta.csv  - metadata for graph creation process.
+#          written back out with new timestamp for which R scripts run.
+# OUT : <domain name>_subset.csv  
+# REQ : DM must be imported before EX. EX merges in dm$cumuDrugAdmin_im to 
+#        compute the drug admin interval. 
 # SRC : 
-# NOTE: Some imputed values to match ontology development requirements.
+# NOTE: Some values are imputed  to match ontology development requirements.
 # TODO: 
-###############################################################################
+#______________________________________________________________________________
 library(Hmisc)
 library(car)   # recode
-# library(plyr)
-library(utils)  #DEL for URLencode - no longer used.
 library(dplyr)  # mutate with pipe in Functions.R
-
 
 dm_n=3;  # The first n patients from the DM domain.
 
@@ -26,13 +28,12 @@ setwd("C:/_github/CTDasRDF")
 
 source('R/Functions.R')  # Functions: readXPT(), encodeCol(), etc.
 
-
 # ---- Graph Metadata ---------------------------------------------------------
 # Read in the source CSV, insert time stamp, and write it back out
 #  Source file needed UTF-8 spec to import first column correctly. Could be articfact
 #    that needs later replacement.
 graphMeta <- read.csv2("data/source/ctdasrdf_graphmeta.csv",
-   fileEncoding="UTF-8-BOM" , header=TRUE, sep=",");
+  fileEncoding="UTF-8-BOM" , header=TRUE, sep=",");
 
 graphMeta$createdOn<-gsub("(\\d\\d)$", ":\\1",strftime(Sys.time(),"%Y-%m-%dT%H:%M:%S%z"))
 
@@ -40,50 +41,41 @@ write.csv(graphMeta, file="data/source/ctdasrdf_graphmeta.csv",
   row.names = F,
   na = "")
 
-# -----------------------------------------------------------------------------
 # ---- XPT Import -------------------------------------------------------------
-
 # DM ----
 dm  <- head(readXPT("dm"), dm_n)
 
-# Impute values needed for testing
-source('R/DM_imputeCSV.R')  # Creates birthdate. 
-
+source('R/DM_imputeCSV.R')  # Impute values 
 
 write.csv(dm, file="data/source/DM_subset.csv", 
   row.names = F,
   na = "")
 
 # SUPPDM ----
+#  No imputation for SUPPDM (no SUPPDM_imputeCSV.R)
 suppdm  <- readXPT("suppdm")
-# subset for development
-suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  
+suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  # Subset for dev
 write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
-row.names = F,
+  row.names = F,
   na = "")
 
 # EX ----
 ex  <- readXPT("ex")
-
-
-# subset for development
-ex <- ex[ex$usubjid %in% pntSubset,]  
+ex <- ex[ex$usubjid %in% pntSubset,]  # Subset for dev
 
 # Merge in the Drug Administration interval from DM. Could also have been calculated
 #  from min(exstdtc)_max(exendtc) but would involve more calcs and DM is seen as the
-#  authoritative value (at least for purpose of this prototype)
+#  authoritative value (at least for this prototype)
 ex <- merge(dmDrugInt, ex, by.x = "usubjid", by.y="usubjid")
 
-# Impute values needed for testing
-source('R/EX_imputeCSV.R')#
+source('R/EX_imputeCSV.R') # Impute values 
 
 write.csv(ex, file="data/source/EX_subset.csv", 
 row.names = F,
   na = "")
 
 # VS ----
-vs  <- readXPT("vs")  # first row only for initial testing.
-
+vs  <- readXPT("vs")  
 # Subset for development
 # Subset to match ontology data. Expand to all of subjid 1015 later.
 # VS is also used to get performed dates for patients 1023, 1028
@@ -92,25 +84,15 @@ vs  <- readXPT("vs")  # first row only for initial testing.
 #   1028 : 228, 234, 242, 264
 
 vsSubset <-c(1:3, 86:88, 43, 44:46, 128, 142, 7, 13, 37, 153,159, 165, 228, 234, 242, 264)
-
-#ORIG vs <- vs[vsSubset, ]
-# TW TESTING
 vs <- data.frame(vs[vsSubset, ], stringsAsFactors=FALSE)  
-# vs <- vs[vs$usubjid %in% pntSubset,]  
 
-
-
-# for later development:
-# vs<-vs[vs$visit %in% c("BASELINE","SCREENING 1","WEEK 2","WEEK 24") & vs$usubjid==pntSubset,  ]
-
-# Impute values needed for testing
-source('R/VS_imputeCSV.R')  # Creates birthdate. 
+source('R/VS_imputeCSV.R') # Impute values
 
 write.csv(vs, file="data/source/vs_subset.csv", 
   row.names = F,
   na = "")
 
-
+# NOT YET IMPLEMENTED:
 # TS ----
 #ts  <- readXPT("ts")  # first row only for initial testing.
 #write.csv(ts, file="data/source/ts_subset.csv", 
