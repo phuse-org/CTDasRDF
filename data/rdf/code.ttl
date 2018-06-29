@@ -777,6 +777,11 @@ code:RaceDataCollection
       owl:allValuesFrom code:Race ;
       owl:onProperty code:outcome ;
     ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty code:outcome ;
+    ] ;
 .
 code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
   rdf:type code:Race ;

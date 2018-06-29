@@ -576,7 +576,7 @@ cdiscpilot01:Interval_1948-08-05_
 .
 cdiscpilot01:Interval_1951-01-02_2013-12-26
   rdf:type study:Lifespan ;
-  skos:prefLabel "Interval_1951-01-02 to 2013-12-26" ;
+  skos:prefLabel "Interval 1951-01-02 to 2013-12-26" ;
   time:hasBeginning cdiscpilot01:Date_1951-01-02 ;
   time:hasEnd cdiscpilot01:Date_2013-12-26 ;
 .
@@ -940,7 +940,7 @@ cdiscpilot01:StartRuleStanding1_Screening1_01-701-1015
 .
 cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015
   rdf:type cd01p:StartRuleStanding3 ;
-  skos:prefLabel "Person 01-701-1015 Screening 1 Rule after standing up for 3 minutes" ;
+  skos:prefLabel "Person 01-701-1015 Screening 1 Rule after standing for 3 minutes" ;
   study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015 ;
 .
 cdiscpilot01:SubjectIdentifier_1015
