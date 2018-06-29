@@ -12,7 +12,7 @@
 library(Hmisc)
 library(car)   # recode
 # library(plyr)
-library(utils)  # for URLencode - no longer used. DELETE
+library(utils)  #DEL for URLencode - no longer used.
 library(dplyr)  # mutate with pipe in Functions.R
 
 
@@ -48,6 +48,7 @@ dm  <- head(readXPT("dm"), dm_n)
 
 # Impute values needed for testing
 source('R/DM_imputeCSV.R')  # Creates birthdate. 
+
 
 write.csv(dm, file="data/source/DM_subset.csv", 
   row.names = F,

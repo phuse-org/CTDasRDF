@@ -17,10 +17,6 @@ vs$startRule_im <- car::recode(vs$vstpt,
     'AFTER STANDING FOR 3 MINUTES'    = 'StartRuleStanding3' "
 )
 
-# Without spaces, for use in forming IRIs (that do not long to ontology as per use of
-#   visit_im_CCaseSh )
-vs$visit_im_comp <- gsub(" ", "", vs$visit )
-
 # Change following to function. Used in other domains!
 # visit in Camel Case Short form for linking  IRIs to ont. Ont uses camel case
 vs$visit_im_titleCSh <- car::recode (vs$visit,
@@ -113,8 +109,6 @@ vs[vs$vsorresu %in% c("LB"),        "vsorresu_im"] <- "LB"
 vs$visit_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$visit,    perl=TRUE)
 vs$vspos_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vspos,    perl=TRUE)
 vs$vspos_im_lowerC    <- tolower(vs$vspos)
-vs$vslat_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vslat,    perl=TRUE)
-vs$vstestcd_im_titleC <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vstestcd, perl=TRUE)
 
 # Study protcol has the patient lying for 5 min before standing for 1 min.
 #  The standing 1 min therefore has a previous 5 min start rule.
@@ -126,8 +120,6 @@ vs$vstpt_label_im <- tolower(vs$vstpt)
 #   Encode fields  that may potentially have values that violate valid IRI format
 #   Function is in Functions.R
 vs <- encodeCol(data=vs, col="vsdtc")
-
-vs <- encodeCol(data=vs, col="vsrftdtc")
 
 # vs <- encodeCol(data=vs, col="vsorres")
 

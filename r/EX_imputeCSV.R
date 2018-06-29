@@ -16,8 +16,6 @@
 ex$fixDoseInt_im        <- paste0(ex$exstdtc,  "_", ex$exendtc)    # Interval
 ex$fixDoseInt_label_im  <- paste0(ex$exstdtc,  " to ", ex$exendtc) # Interval Label
 
-ex$visit_im_comp <- gsub(" ", "", ex$visit )
-
 # Change following to function. Used in other domains!
 # visit in Camel Case Short form for linking  IRIs to ont. Ont uses camel case
 ex$visit_im_titleCSh <- car::recode(ex$visit,
@@ -72,8 +70,7 @@ ex$visit_im_titleC  <- car::recode (ex$visit,
 ex <- encodeCol(data=ex, col="exstdtc")
 ex <- encodeCol(data=ex, col="exendtc")
 ex <- encodeCol(data=ex, col="exroute")
-
-ex <- encodeCol(data=ex, col="fixDoseInt_im")
+ex <- encodeCol(data=ex, col="fixDoseInt_im", removeCol=TRUE)
 
 
 # Title case. For labels.

@@ -43,8 +43,13 @@ dm$lifeSpan_label_im  <- paste0(dm$brthdate, " to ", dm$dthdtc)
 dm$refInt_im        <- paste0(dm$rfstdtc,  "_", dm$rfendtc) 
 dm$refInt_label_im  <- paste0(dm$rfstdtc,  " to ", dm$rfendtc)
 
-dm$infConsInt_im       <- paste0(dm$rficdtc,  "_")  # No end date to informed consent interval so end in _
-dm$infConsInt_label_im <- paste0(dm$rficdtc,  " to ")  # No end date to informed consent interval so end in _
+
+# No end date to informed consent interval so end in _
+# infConsInt_im later deleted after being used to create other fields
+dm$infConsInt_im       <- paste0(dm$rficdtc,  "_")  
+
+# No end date to informed consent interval so end in _
+dm$infConsInt_label_im <- paste0(dm$rficdtc,  " to ")  
 
 dm$cumuDrugAdmin_im       <- paste0(dm$rfxstdtc, "_", dm$rfxendtc)
 dm$cumuDrugAdmin_label_im <- paste0(dm$rfxstdtc, " to ", dm$rfxendtc) 
@@ -61,25 +66,23 @@ dm$studyPartInt_label_im <- paste0(dm$dmdtc,  " to ", dm$rfpendtc)
 # dm$age_en <- URLencode(paste(dm$age))
 dm <- encodeCol(data=dm, col="age")
 dm <- encodeCol(data=dm, col="brthdate")
+dm <- encodeCol(data=dm, col="cumuDrugAdmin_im")
 dm <- encodeCol(data=dm, col="dmdtc")
 dm <- encodeCol(data=dm, col="dthdtc")
 dm <- encodeCol(data=dm, col="ethnic")
+dm <- encodeCol(data=dm, col="infConsInt_im", removeCol=TRUE)
+dm <- encodeCol(data=dm, col="lifeSpan_im", removeCol=TRUE)
 dm <- encodeCol(data=dm, col="race")
 dm <- encodeCol(data=dm, col="rfendtc")
 dm <- encodeCol(data=dm, col="rficdtc")
 dm <- encodeCol(data=dm, col="rfstdtc")
 dm <- encodeCol(data=dm, col="rfxstdtc")
 dm <- encodeCol(data=dm, col="rfxendtc")
-
-dm <- encodeCol(data=dm, col="lifeSpan_im")
-dm <- encodeCol(data=dm, col="refInt_im")    
-dm <- encodeCol(data=dm, col="infConsInt_im")
-dm <- encodeCol(data=dm, col="studyPartInt_im")
-dm <- encodeCol(data=dm, col="cumuDrugAdmin_im")
+dm <- encodeCol(data=dm, col="refInt_im", removeCol=TRUE)
+dm <- encodeCol(data=dm, col="studyPartInt_im", removeCol=TRUE)
 
 # Sort column names in the df for quicker referencing
 dm <- dm %>% select(noquote(order(colnames(dm))))
-
 
 # Drug admin interval to be used for each usubjid in EX  
 #   rfxstdtc, rfxendtc needed for label in EX
