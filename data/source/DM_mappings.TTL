@@ -290,5 +290,5 @@ cdiscpilot01:Person_{usubjid}
    rdf:type             code:RandomizationBAL3 ;
    skos:prefLabel       "Randomization Person {usubjid}"^^xsd:string ;
    study:activityStatus code:ActivityStatus_CO ;
-   study:outcome        cd01p:Arm_{armcd} ;
+   study:outcome        cd01p:Arm_{armcd_im} ;
  .
