@@ -90,7 +90,7 @@ code:AgeDataCollection
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:AgeOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:AnatomicLocation
@@ -107,14 +107,14 @@ code:AssumeBodyPosition
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:BodyPosition ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:BloodPressure
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:BloodPressureOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:BodyPosition_STANDING
@@ -128,7 +128,7 @@ code:DemographicDataCollection
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:GenericOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -155,7 +155,7 @@ code:DiastolicBloodPressure
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:BloodPressureOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:EthnicityDataCollection
@@ -163,7 +163,7 @@ code:EthnicityDataCollection
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:EthnicOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:Ethnicity_HISPANIC_OR_LATINO
@@ -185,7 +185,7 @@ code:Height
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:HeightOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:InformedConsentOutcome_1
@@ -204,7 +204,7 @@ code:Pulse
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:PulseOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:RaceDataCollection
@@ -212,7 +212,7 @@ code:RaceDataCollection
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:RaceOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
@@ -244,7 +244,7 @@ code:SexDataCollection
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:SexOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:Sex_F
@@ -263,21 +263,21 @@ code:SystolicBloodPressure
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:BloodPressureOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:Temperature
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:TemperatureOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:Weight
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:WeightOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:hasAge
@@ -460,7 +460,7 @@ study:Assessment
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:MedicalCondition ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
   skos:definition "An examination of one or more clinical observations to identify and/or characterize a Medical Condition." ;
   skos:prefLabel "Assessment" ;
@@ -960,7 +960,7 @@ study:InformedConsent
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:InformedConsentOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
   skos:altLabel "" ;
   skos:prefLabel "Informed consent" ;
@@ -1151,7 +1151,7 @@ study:Person
             sp:object [
                 sp:varName "age" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "ageactivity" ;
               ] ;
@@ -1201,7 +1201,7 @@ study:Person
             sp:object [
                 sp:varName "race" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "raceactivity" ;
               ] ;
@@ -1251,7 +1251,7 @@ study:Person
             sp:object [
                 sp:varName "sex" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "sexactivity" ;
               ] ;
@@ -1348,7 +1348,7 @@ study:Randomization
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:RandomizationOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
   skos:definition "" ;
   skos:prefLabel "Randomization" ;
@@ -1395,7 +1395,7 @@ study:Rule
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:RuleOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
   skos:definition "An Analysis that examines whether one or more observations or derivations meet certain pre-defined target(s). If the target is met, then the rule outcome is set to true, otherwise it is set to false if the target is not met " ;
   skos:example "1.  Age >= 18  or 2. Sex = Female" ;
@@ -1481,7 +1481,7 @@ study:StartRuleDefault_1
   skos:definition "Activity may start at any time at the discretion of the Investigator" ;
   skos:prefLabel "Start rule default 1" ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:outcome code:RuleOutcome_TRUE ;
+  code:outcome code:RuleOutcome_TRUE ;
 .
 study:StartRuleInformedConsentGranted
   rdf:type owl:Class ;
@@ -1712,7 +1712,7 @@ study:StudyActivity
             sp:object [
                 sp:varName "outcome" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject spin:_this ;
           ]
           [
@@ -2081,7 +2081,7 @@ study:VitalSign
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:VitalSignOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
   skos:definition "" ;
   skos:prefLabel "VitalSign" ;
@@ -2735,7 +2735,7 @@ study:laterality
   skos:definition "" ;
   skos:prefLabel "laterality" ;
 .
-study:outcome
+code:outcome
   rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:StudyActivity ;

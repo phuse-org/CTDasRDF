@@ -1208,11 +1208,16 @@ sdtm:SDTMDomain
             sp:subject spin:_this ;
           ]
           [
-            sp:object [
-                sp:varName "RFICDTC" ;
-              ] ;
-            sp:predicate sdtm:hasRFICDTC ;
-            sp:subject spin:_this ;
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "RFICDTC" ;
+                    ] ;
+                  sp:predicate sdtm:hasRFICDTC ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
           ]
           [
             sp:object [
@@ -2292,7 +2297,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "plannedarm" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "rndmact" ;
               ] ;
@@ -2539,7 +2544,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "ethnout" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "ethn" ;
               ] ;
@@ -2714,7 +2719,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "raceout" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "rce" ;
               ] ;
@@ -2765,7 +2770,7 @@ sdtm:SDTM_DM_Record
           ]
           [
             sp:object code:InformedConsentOutcome_1 ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "informedconsent" ;
               ] ;
@@ -3145,7 +3150,7 @@ sdtm:SDTM_DM_Record
             sp:object [
                 sp:varName "sexout" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "sx" ;
               ] ;
@@ -3284,7 +3289,7 @@ sdtm:SDTM_SUPPDM_Record
             sp:object [
                 sp:varName "cde" ;
               ] ;
-            sp:predicate study:hasCode ;
+            sp:predicate rdfs:subClassOf ;
             sp:subject [
                 sp:varName "activity" ;
               ] ;
@@ -3318,7 +3323,7 @@ sdtm:SDTM_SUPPDM_Record
             sp:object [
                 sp:varName "qvalbin" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "activity" ;
               ] ;
@@ -3573,7 +3578,7 @@ sdtm:SDTM_SupplementalRecord
             sp:object [
                 sp:varName "outcome" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "suppact" ;
               ] ;
@@ -4204,7 +4209,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "anchroutcome" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "anchr" ;
               ] ;
@@ -4473,7 +4478,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "vstestoutcome" ;
               ] ;
-            sp:predicate study:outcome ;
+            sp:predicate code:outcome ;
             sp:subject [
                 sp:varName "vstst" ;
               ] ;

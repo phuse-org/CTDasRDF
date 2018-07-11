@@ -1114,7 +1114,7 @@ study:AssumeBodyPosition
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:BodyPosition ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 study:Country

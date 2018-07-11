@@ -43,23 +43,23 @@ cd01p:Study_CDISCPILOT01
 cdiscpilot01:AgeDataCollection_01-701-1015
   rdf:type code:AgeDataCollection ;
   skos:prefLabel "Person 01-701-1015 Screening 1 Age data collection" ;
+  code:outcome cdiscpilot01:AgeOutcome_63 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
-  study:outcome cdiscpilot01:AgeOutcome_63 ;
 .
 cdiscpilot01:AgeDataCollection_01-701-1023
   rdf:type code:AgeDataCollection ;
   skos:prefLabel "Person 01-701-1023 Screening 1 Age data collection" ;
+  code:outcome cdiscpilot01:AgeOutcome_64 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2012-07-22 ;
-  study:outcome cdiscpilot01:AgeOutcome_64 ;
 .
 cdiscpilot01:AgeDataCollection_01-701-1028
   rdf:type code:AgeDataCollection ;
   skos:prefLabel "Person 01-701-1028 Screening 1 Age data collection" ;
+  code:outcome cdiscpilot01:AgeOutcome_71 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
-  study:outcome cdiscpilot01:AgeOutcome_71 ;
 .
 cdiscpilot01:AgeOutcome_63
   rdf:type study:AgeOutcome ;
@@ -83,18 +83,18 @@ cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type custom:AssumeBodyPositionStanding ;
   skos:prefLabel "Assume standing position" ;
+  code:outcome code:BodyPosition_STANDING ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
   study:hasStartRule cdiscpilot01:StartRuleLying5_Screening1_01-701-1015 ;
-  study:outcome code:BodyPosition_STANDING ;
 .
 cdiscpilot01:AssumeBodyPositionSupine_Screening1_01-701-1015
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type custom:AssumeBodyPositionSupine ;
   skos:prefLabel "Assume supine position" ;
+  code:outcome code:BodyPosition_SUPINE ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
-  study:outcome code:BodyPosition_SUPINE ;
 .
 cdiscpilot01:BloodPressureOutcome_129
   rdf:type study:BloodPressureOutcome ;
@@ -321,44 +321,45 @@ cdiscpilot01:DemographicDataCollection_01-701-1015
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:DemographicDataCollection ;
   skos:prefLabel "Person 01-701-1015 Screening 1 Demographic data collection" ;
+  code:outcome code:Successfully_Completed ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
   study:hasSubActivity cdiscpilot01:AgeDataCollection_01-701-1015 ;
   study:hasSubActivity cdiscpilot01:EthnicityDataCollection_01-701-1015 ;
   study:hasSubActivity cdiscpilot01:RaceDataCollection_01-701-1015 ;
   study:hasSubActivity cdiscpilot01:SexDataCollection_01-701-1015 ;
-  study:outcome code:Successfully_Completed ;
 .
 cdiscpilot01:DemographicDataCollection_01-701-1023
   rdf:type cd01p:VisitScreening1DemogDataColl ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1023 ;
   rdf:type code:DemographicDataCollection ;
   skos:prefLabel "Person 01-701-1023 Screening 1 Demographic data collection" ;
+  code:outcome code:Successfully_Completed ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2012-07-22 ;
   study:hasSubActivity cdiscpilot01:AgeDataCollection_01-701-1023 ;
   study:hasSubActivity cdiscpilot01:EthnicityDataCollection_01-701-1023 ;
   study:hasSubActivity cdiscpilot01:RaceDataCollection_01-701-1023 ;
   study:hasSubActivity cdiscpilot01:SexDataCollection_01-701-1023 ;
-  study:outcome code:Successfully_Completed ;
 .
 cdiscpilot01:DemographicDataCollection_01-701-1028
   rdf:type cd01p:VisitScreening1DemogDataColl ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1028 ;
   rdf:type code:DemographicDataCollection ;
   skos:prefLabel "Person 01-701-1028 Screening 1 Demographic data collection" ;
+  code:outcome code:Successfully_Completed ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
   study:hasSubActivity cdiscpilot01:AgeDataCollection_01-701-1028 ;
   study:hasSubActivity cdiscpilot01:EthnicityDataCollection_01-701-1028 ;
   study:hasSubActivity cdiscpilot01:RaceDataCollection_01-701-1028 ;
   study:hasSubActivity cdiscpilot01:SexDataCollection_01-701-1028 ;
-  study:outcome code:Successfully_Completed ;
 .
 cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_1
   rdf:type cd01p:VisitScreening1DiastolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:DiastolicBloodPressure ;
+  code:outcome cdiscpilot01:BloodPressureOutcome_64 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
   study:bodyPosition code:BodyPosition_SUPINE ;
@@ -369,7 +370,6 @@ cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_1
   study:hasStartRule cdiscpilot01:StartRuleLying5_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_64 ;
   study:reasonNotDone "not applicable" ;
   study:seq "1"^^xsd:float ;
   study:sponsordefinedID "123" ;
@@ -378,6 +378,7 @@ cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_2
   rdf:type cd01p:VisitScreening1DiastolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:DiastolicBloodPressure ;
+  code:outcome cdiscpilot01:BloodPressureOutcome_83 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
   study:bodyPosition code:BodyPosition_STANDING ;
@@ -388,7 +389,6 @@ cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_2
   study:hasStartRule cdiscpilot01:StartRuleStanding1_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_LEFT ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_83 ;
   study:reasonNotDone "not applicable" ;
   study:seq "2"^^xsd:float ;
   study:sponsordefinedID "719" ;
@@ -397,6 +397,7 @@ cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_3
   rdf:type cd01p:VisitScreening1DiastolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:DiastolicBloodPressure ;
+  code:outcome cdiscpilot01:BloodPressureOutcome_57 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
   study:bodyPosition code:BodyPosition_STANDING ;
@@ -407,7 +408,6 @@ cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_3
   study:hasStartRule cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_57 ;
   study:reasonNotDone "not applicable" ;
   study:seq "3"^^xsd:float ;
   study:sponsordefinedID "235" ;
@@ -416,110 +416,110 @@ cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16
   rdf:type cdiscpilot01:VisitBaselineActivity_01-701-1015 ;
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration" ;
+  code:outcome study:DrugAdministrationComplete ;
   study:activityStatus code:ActivityStatus_CO ;
   study:administeredDrug custom:PlaceboDrug ;
   study:hasActivityInterval cdiscpilot01:Interval_2014-01-02_2014-01-16 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
-  study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18
   rdf:type cdiscpilot01:VisitWk2Activity_01-701-1015 ;
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration" ;
+  code:outcome study:DrugAdministrationComplete ;
   study:activityStatus code:ActivityStatus_CO ;
   study:administeredDrug custom:PlaceboDrug ;
   study:hasActivityInterval cdiscpilot01:Interval_2014-01-17_2014-06-18 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
-  study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02
   rdf:type cdiscpilot01:VisitWk24Activity_01-701-1015 ;
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration" ;
+  code:outcome study:DrugAdministrationComplete ;
   study:activityStatus code:ActivityStatus_CO ;
   study:administeredDrug custom:PlaceboDrug ;
   study:hasActivityInterval cdiscpilot01:Interval_2014-06-19_2014-07-02 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
-  study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1023_2012-08-05_2012-08-27
   rdf:type cdiscpilot01:VisitBaselineActivity_01-701-1023 ;
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration" ;
+  code:outcome study:DrugAdministrationComplete ;
   study:activityStatus code:ActivityStatus_CO ;
   study:administeredDrug custom:PlaceboDrug ;
   study:hasActivityInterval cdiscpilot01:Interval_2012-08-05_2012-08-27 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
-  study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1023_2012-08-28_2012-09-01
   rdf:type cdiscpilot01:VisitWk2Activity_01-701-1023 ;
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration" ;
+  code:outcome study:DrugAdministrationComplete ;
   study:activityStatus code:ActivityStatus_CO ;
   study:administeredDrug custom:PlaceboDrug ;
   study:hasActivityInterval cdiscpilot01:Interval_2012-08-28_2012-09-01 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
-  study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2013-08-01
   rdf:type cdiscpilot01:VisitBaselineActivity_01-701-1028 ;
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration" ;
+  code:outcome study:DrugAdministrationComplete ;
   study:activityStatus code:ActivityStatus_CO ;
   study:administeredDrug custom:Product_1 ;
   study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2013-08-01 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
-  study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06
   rdf:type cdiscpilot01:VisitWk2Activity_01-701-1028 ;
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration" ;
+  code:outcome study:DrugAdministrationComplete ;
   study:activityStatus code:ActivityStatus_CO ;
   study:administeredDrug custom:Product_2 ;
   study:hasActivityInterval cdiscpilot01:Interval_2013-08-02_2014-01-06 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
-  study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14
   rdf:type cdiscpilot01:VisitWk24Activity_01-701-1028 ;
   rdf:type study:FixedDoseDrugAdministration ;
   skos:prefLabel "Drug administration" ;
+  code:outcome study:DrugAdministrationComplete ;
   study:activityStatus code:ActivityStatus_CO ;
   study:administeredDrug custom:Product_1 ;
   study:hasActivityInterval cdiscpilot01:Interval_2014-01-07_2014-01-14 ;
   study:hasDosageFrequency code:ExDosFrq_QD ;
   study:hasRouteOfAdministration code:ExRoute_TRANSDERMAL ;
-  study:outcome study:DrugAdministrationComplete ;
 .
 cdiscpilot01:EthnicityDataCollection_01-701-1015
   rdf:type code:EthnicityDataCollection ;
   skos:prefLabel "Person 01-701-1015 Screening 1 Ethnicity data collection" ;
+  code:outcome code:Ethnicity_HISPANIC_OR_LATINO ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
-  study:outcome code:Ethnicity_HISPANIC_OR_LATINO ;
 .
 cdiscpilot01:EthnicityDataCollection_01-701-1023
   rdf:type code:EthnicityDataCollection ;
   skos:prefLabel "Person 01-701-1023 Screening 1 Ethnicity data collection" ;
+  code:outcome code:Ethnicity_HISPANIC_OR_LATINO ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2012-07-22 ;
-  study:outcome code:Ethnicity_HISPANIC_OR_LATINO ;
 .
 cdiscpilot01:EthnicityDataCollection_01-701-1028
   rdf:type code:EthnicityDataCollection ;
   skos:prefLabel "Person 01-701-1028 Screening 1 Ethnicity data collection" ;
+  code:outcome code:Ethnicity_NOT_HISPANIC_OR_LATINO ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
-  study:outcome code:Ethnicity_NOT_HISPANIC_OR_LATINO ;
 .
 cdiscpilot01:HeightOutcome_58_0
   rdf:type study:HeightOutcome ;
@@ -531,13 +531,13 @@ cdiscpilot01:Height_Screening1_01-701-1015_43
   rdf:type cd01p:VisitScreening1Height ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Height ;
+  code:outcome cdiscpilot01:HeightOutcome_58_0 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
-  study:outcome cdiscpilot01:HeightOutcome_58_0 ;
   study:reasonNotDone "not applicable" ;
   study:seq "43"^^xsd:float ;
   study:sponsordefinedID "1000" ;
@@ -545,24 +545,24 @@ cdiscpilot01:Height_Screening1_01-701-1015_43
 cdiscpilot01:InformedConsentAdult_01-701-1015
   rdf:type code:InformedConsentAdult ;
   skos:prefLabel "Informed consent Person 01-701-1015" ;
+  code:outcome code:InformedConsentOutcome_1 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasActivityInterval cdiscpilot01:Interval_2013-12-26_ ;
   study:hasStartRule study:StartRuleDefault_1 ;
-  study:outcome code:InformedConsentOutcome_1 ;
 .
 cdiscpilot01:InformedConsentAdult_01-701-1023
   rdf:type code:InformedConsentAdult ;
   skos:prefLabel "Informed consent Person 01-701-1023" ;
+  code:outcome code:InformedConsentOutcome_1 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasActivityInterval cdiscpilot01:Interval_2012-07-22_ ;
-  study:outcome code:InformedConsentOutcome_1 ;
 .
 cdiscpilot01:InformedConsentAdult_01-701-1028
   rdf:type code:InformedConsentAdult ;
   skos:prefLabel "Informed consent Person 01-701-1028" ;
+  code:outcome code:InformedConsentOutcome_1 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasActivityInterval cdiscpilot01:Interval_2013-07-11_ ;
-  study:outcome code:InformedConsentOutcome_1 ;
 .
 cdiscpilot01:Interval_1942-07-19_
   rdf:type study:Lifespan ;
@@ -762,39 +762,39 @@ cdiscpilot01:Person_01-701-1028
 .
 cdiscpilot01:PopFlagCOMPLT16_01-701-1015
   rdf:type custom:PopFlagCOMPLT16 ;
+  code:outcome "true"^^xsd:boolean ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasPerformer cd01p:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagCOMPLT24_01-701-1015
   rdf:type custom:PopFlagCOMPLT24 ;
+  code:outcome "true"^^xsd:boolean ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasPerformer cd01p:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagCOMPLT8_01-701-1015
   rdf:type custom:PopFlagCOMPLT8 ;
+  code:outcome "true"^^xsd:boolean ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasPerformer cd01p:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagEFFICACY_01-701-1015
   rdf:type custom:PopFlagEFFICACY ;
+  code:outcome "true"^^xsd:boolean ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasPerformer cd01p:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagITT_01-701-1015
   rdf:type custom:PopFlagITT ;
+  code:outcome "true"^^xsd:boolean ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasPerformer cd01p:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PopFlagSAFETY_01-701-1015
   rdf:type custom:PopFlagSAFETY ;
+  code:outcome "true"^^xsd:boolean ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasPerformer cd01p:Sponsor_1 ;
-  study:outcome "true"^^xsd:boolean ;
 .
 cdiscpilot01:PulseOutcome_57
   rdf:type study:PulseOutcome ;
@@ -818,6 +818,7 @@ cdiscpilot01:Pulse_Screening1_01-701-1015_44
   rdf:type cd01p:VisitScreening1Pulse ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Pulse ;
+  code:outcome cdiscpilot01:PulseOutcome_57 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:bodyPosition code:BodyPosition_SUPINE ;
   study:derivedFlag "N" ;
@@ -827,7 +828,6 @@ cdiscpilot01:Pulse_Screening1_01-701-1015_44
   study:hasStartRule cdiscpilot01:StartRuleLying5_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
-  study:outcome cdiscpilot01:PulseOutcome_57 ;
   study:reasonNotDone "not applicable" ;
   study:seq "44"^^xsd:float ;
   study:sponsordefinedID "125" ;
@@ -836,6 +836,7 @@ cdiscpilot01:Pulse_Screening1_01-701-1015_45
   rdf:type cd01p:VisitScreening1Pulse ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Pulse ;
+  code:outcome cdiscpilot01:PulseOutcome_62 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:bodyPosition code:BodyPosition_STANDING ;
   study:derivedFlag "N" ;
@@ -845,7 +846,6 @@ cdiscpilot01:Pulse_Screening1_01-701-1015_45
   study:hasStartRule cdiscpilot01:StartRuleStanding1_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_LEFT ;
-  study:outcome cdiscpilot01:PulseOutcome_62 ;
   study:reasonNotDone "not applicable" ;
   study:seq "45"^^xsd:float ;
   study:sponsordefinedID "721" ;
@@ -854,6 +854,7 @@ cdiscpilot01:Pulse_Screening1_01-701-1015_46
   rdf:type cd01p:VisitScreening1Pulse ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Pulse ;
+  code:outcome cdiscpilot01:PulseOutcome_65 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:bodyPosition code:BodyPosition_STANDING ;
   study:derivedFlag "N" ;
@@ -863,7 +864,6 @@ cdiscpilot01:Pulse_Screening1_01-701-1015_46
   study:hasStartRule cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
-  study:outcome cdiscpilot01:PulseOutcome_65 ;
   study:reasonNotDone "not applicable" ;
   study:seq "46"^^xsd:float ;
   study:sponsordefinedID "237" ;
@@ -871,62 +871,62 @@ cdiscpilot01:Pulse_Screening1_01-701-1015_46
 cdiscpilot01:RaceDataCollection_01-701-1015
   rdf:type code:RaceDataCollection ;
   skos:prefLabel "Person 01-701-1015 Screening 1 Race data collection" ;
+  code:outcome code:Race_WHITE ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
-  study:outcome code:Race_WHITE ;
 .
 cdiscpilot01:RaceDataCollection_01-701-1023
   rdf:type code:RaceDataCollection ;
   skos:prefLabel "Person 01-701-1023 Screening 1 Race data collection" ;
+  code:outcome code:Race_WHITE ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2012-07-22 ;
-  study:outcome code:Race_WHITE ;
 .
 cdiscpilot01:RaceDataCollection_01-701-1028
   rdf:type code:RaceDataCollection ;
   skos:prefLabel "Person 01-701-1028 Screening 1 Race data collection" ;
+  code:outcome code:Race_WHITE ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
-  study:outcome code:Race_WHITE ;
 .
 cdiscpilot01:RandomizationBAL3_01-701-1015
   rdf:type code:RandomizationBAL3 ;
   skos:prefLabel "Randomization Person 01-701-1015" ;
+  code:outcome cd01p:Arm_Pbo ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:outcome cd01p:Arm_Pbo ;
 .
 cdiscpilot01:RandomizationBAL3_01-701-1023
   rdf:type code:RandomizationBAL3 ;
   skos:prefLabel "Randomization Person 01-701-1023" ;
+  code:outcome cd01p:Arm_Pbo ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:outcome cd01p:Arm_Pbo ;
 .
 cdiscpilot01:RandomizationBAL3_01-701-1028
   rdf:type code:RandomizationBAL3 ;
   skos:prefLabel "Randomization Person 01-701-1028" ;
+  code:outcome cd01p:Arm_XanomelineHigh ;
   study:activityStatus code:ActivityStatus_CO ;
-  study:outcome cd01p:Arm_XanomelineHigh ;
 .
 cdiscpilot01:SexDataCollection_01-701-1015
   rdf:type code:SexDataCollection ;
   skos:prefLabel "Person 01-701-1015 Screening 1 Sex data collection" ;
+  code:outcome code:Sex_F ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
-  study:outcome code:Sex_F ;
 .
 cdiscpilot01:SexDataCollection_01-701-1023
   rdf:type code:SexDataCollection ;
   skos:prefLabel "Person 01-701-1023 Screening 1 Sex data collection" ;
+  code:outcome code:Sex_M ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2012-07-22 ;
-  study:outcome code:Sex_M ;
 .
 cdiscpilot01:SexDataCollection_01-701-1028
   rdf:type code:SexDataCollection ;
   skos:prefLabel "Person 01-701-1028 Screening 1 Sex data collection" ;
+  code:outcome code:Sex_M ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
-  study:outcome code:Sex_M ;
 .
 cdiscpilot01:StartRuleLying5_Screening1_01-701-1015
   rdf:type cd01p:StartRuleLying5 ;
@@ -959,6 +959,7 @@ cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_86
   rdf:type cd01p:VisitScreening1SystolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:SystolicBloodPressure ;
+  code:outcome cdiscpilot01:BloodPressureOutcome_131 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
   study:bodyPosition code:BodyPosition_SUPINE ;
@@ -969,7 +970,6 @@ cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_86
   study:hasStartRule cdiscpilot01:StartRuleLying5_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_131 ;
   study:reasonNotDone "not applicable" ;
   study:seq "86"^^xsd:float ;
   study:sponsordefinedID "124" ;
@@ -978,6 +978,7 @@ cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_87
   rdf:type cd01p:VisitScreening1SystolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:SystolicBloodPressure ;
+  code:outcome cdiscpilot01:BloodPressureOutcome_129 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
   study:bodyPosition code:BodyPosition_STANDING ;
@@ -988,7 +989,6 @@ cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_87
   study:hasStartRule cdiscpilot01:StartRuleStanding1_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_LEFT ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_129 ;
   study:reasonNotDone "not applicable" ;
   study:seq "87"^^xsd:float ;
   study:sponsordefinedID "720" ;
@@ -997,6 +997,7 @@ cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_88
   rdf:type cd01p:VisitScreening1SystolicBloodPressure ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:SystolicBloodPressure ;
+  code:outcome cdiscpilot01:BloodPressureOutcome_147 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Arm ;
   study:bodyPosition code:BodyPosition_STANDING ;
@@ -1007,7 +1008,6 @@ cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_88
   study:hasStartRule cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
   study:laterality code:Laterality_RIGHT ;
-  study:outcome cdiscpilot01:BloodPressureOutcome_147 ;
   study:reasonNotDone "not applicable" ;
   study:seq "88"^^xsd:float ;
   study:sponsordefinedID "236" ;
@@ -1022,6 +1022,7 @@ cdiscpilot01:Temperature_Screening1_01-701-1015_128
   rdf:type cd01p:VisitScreening1Temperature ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Temperature ;
+  code:outcome cdiscpilot01:TemperatureOutcome_96_9 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:anatomicLocation code:Oral_Cavity ;
   study:derivedFlag "N" ;
@@ -1029,7 +1030,6 @@ cdiscpilot01:Temperature_Screening1_01-701-1015_128
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
-  study:outcome cdiscpilot01:TemperatureOutcome_96_9 ;
   study:reasonNotDone "not applicable" ;
   study:seq "128"^^xsd:float ;
   study:sponsordefinedID "3000" ;
@@ -1176,13 +1176,13 @@ cdiscpilot01:Weight_Screening1_01-701-1015_142
   rdf:type cd01p:VisitScreening1Weight ;
   rdf:type cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
   rdf:type code:Weight ;
+  code:outcome cdiscpilot01:WeightOutcome_119_0 ;
   study:activityStatus code:ActivityStatus_CO ;
   study:derivedFlag "N" ;
   study:groupID "GRPID1" ;
   study:hasCategory cd01p:Category_1 ;
   study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
   study:hasSubcategory cd01p:Subcategory_1 ;
-  study:outcome cdiscpilot01:WeightOutcome_119_0 ;
   study:reasonNotDone "not applicable" ;
   study:seq "142"^^xsd:float ;
   study:sponsordefinedID "5000" ;

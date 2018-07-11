@@ -1140,9 +1140,8 @@ code:hasValue
 code:outcome
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
-  rdfs:domain code:DefinedActivity ;
   skos:definition "" ;
-  skos:prefLabel "permissible outcome" ;
+  skos:prefLabel "has outcome" ;
 .
 code:randomizationQuotient
   rdf:type owl:DatatypeProperty ;

@@ -345,7 +345,7 @@ code:RandomizationBAL3
   owl:equivalentClass [
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:RandomizationOutcome ;
-      owl:onProperty study:outcome ;
+      owl:onProperty code:outcome ;
     ] ;
 .
 code:hasValueSet
