@@ -67,7 +67,7 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
        study:activityStatus      code:ActivityStatus_{vsstat_im} ;
        study:hasDate             cdiscpilot01:Date_{vsdtc_en} ;
        study:hasStartRule        cdiscpilot01:{vstpt_AssumeBodyPosStartRule_im}_{visit_im_titleCSh}_{usubjid} ;
-       study:outcome             code:BodyPosition_{vspos} ;
+       code:outcome              code:BodyPosition_{vspos} ;
     .
 
         # Visit<X>Activity, child of AssumeBodyPosition
@@ -101,7 +101,7 @@ cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
       study:hasSubcategory   cd01p:{vssubcat_im} ;
       study:hasStartRule     cdiscpilot01:{startRule_im}_{visit_im_titleCSh}_{usubjid} ;
       study:laterality       code:Laterality_{vslat_im} ;
-      study:outcome          cdiscpilot01:{vstest_outcome_im}Outcome_{vsorres_en} ;
+      code:outcome           cdiscpilot01:{vstest_outcome_im}Outcome_{vsorres_en} ;
       study:reasonNotDone    "{vsreasnd}"^^xsd:string ;
       study:seq              "{vsseq}"^^xsd:float ;
       study:sponsordefinedID "{vsspid_im}"^^xsd:string ;

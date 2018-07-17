@@ -69,7 +69,7 @@ cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
       study:hasActivityInterval      cdiscpilot01:Interval_{fixDoseInt_im_en} ;
       study:hasDosageFrequency       code:ExDosFrq_{exdosfrq} ;
       study:hasRouteOfAdministration code:ExRoute_{exroute_en} ;
-      study:outcome                  study:DrugAdministrationComplete ;
+      code:outcome                   study:DrugAdministrationComplete ;
     .
       cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
         rdf:type         owl:Class ;

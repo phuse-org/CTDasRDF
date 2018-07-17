@@ -32,5 +32,5 @@ cdiscpilot01:PopFlag{qnam}_{usubjid}
   rdf:type             custom:PopFlag{qnam} ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasPerformer   cd01p:Sponsor_1 ;
-  study:outcome        "true"^^xsd:boolean ;
+  code:outcome        "true"^^xsd:boolean ;
 .
