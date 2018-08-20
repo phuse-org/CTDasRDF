@@ -131,11 +131,11 @@ code:AdministrativeActivityOutcome
 .
 code:Age
   rdf:type owl:Class ;
-  rdfs:subClassOf code:NumericOutcome ;
+  rdfs:subClassOf code:DemographicData ;
 .
 code:AgeDataCollection
   rdf:type owl:Class ;
-  rdfs:subClassOf code:Observation ;
+  rdfs:subClassOf code:DemographicDataCollection ;
 .
 code:AgeUnit
   rdf:type owl:Class ;
@@ -171,6 +171,11 @@ code:Assessment
   rdf:type owl:Class ;
   rdfs:comment "" ;
   rdfs:subClassOf code:Analysis ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:MedicalCondition ;
+      owl:onProperty code:outcome ;
+    ] ;
   skos:definition "" ;
   skos:prefLabel "Assessment term" ;
 .
@@ -178,7 +183,7 @@ code:AssumeBodyPosition
   rdf:type owl:Class ;
   rdfs:comment "" ;
   rdfs:subClassOf code:Intervention ;
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:BodyPosition ;
       owl:onProperty code:outcome ;
@@ -190,13 +195,21 @@ code:BloodPressure
   rdf:type owl:Class ;
   rdfs:subClassOf code:VitalSign ;
 .
+code:BloodPressureOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Blood pressure outcome" ;
+  rdfs:subClassOf code:NumericOutcome ;
+  rdfs:subClassOf code:VitalSignsOutcome ;
+.
 code:BodyPosition
   rdf:type owl:Class ;
   rdfs:comment "" ;
+  rdfs:subClassOf code:CategoricalOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:InterventionOutcome ;
   skos:definition "" ;
   skos:prefLabel "Body position term" ;
+  code:isExtensible "true"^^xsd:boolean ;
 .
 code:BodyPosition_STANDING
   rdf:type mms:PermissibleValue ;
@@ -224,13 +237,7 @@ code:BodyPosition_SUPINE
 .
 code:CategoricalOutcome
   rdf:type owl:Class ;
-  rdfs:subClassOf code:ObservationOutcome ;
-.
-code:ClinicalIntervention
-  rdf:type owl:Class ;
-  rdfs:subClassOf code:Intervention ;
-  skos:altLabel "" ;
-  skos:prefLabel "Clinical intervention" ;
+  rdfs:subClassOf code:DefinedActivityOutcome ;
 .
 code:ConversionFactor
   rdf:type owl:Class ;
@@ -314,6 +321,11 @@ code:DefinedConcept
   skos:definition "" ;
   skos:prefLabel "Controlled Terminology" ;
 .
+code:DemographicData
+  rdf:type owl:Class ;
+  rdfs:label "Demographic data" ;
+  rdfs:subClassOf code:ObservationOutcome ;
+.
 code:DemographicDataCollection
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -333,6 +345,11 @@ code:DiastolicBloodPressure
   rdfs:subClassOf code:BloodPressure ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
+      owl:allValuesFrom code:DiastolicBloodPressureOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
       owl:hasValue "DIABP" ;
       owl:onProperty skos:prefLabel ;
     ] ;
@@ -342,6 +359,11 @@ code:DiastolicBloodPressure
       owl:onProperty skos:altLabel ;
     ] ;
   skos:prefLabel "Diastolic Blood Pressure" ;
+.
+code:DiastolicBloodPressureOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Diastolic blood pressure outcome" ;
+  rdfs:subClassOf code:BloodPressureOutcome ;
 .
 code:DosageForm
   rdf:type owl:Class ;
@@ -371,14 +393,30 @@ code:DrugProduct
 code:Ethnicity
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf code:CategoricalOutcome ;
-  rdfs:subClassOf code:DefinedActivityOutcome ;
+  rdfs:subClassOf code:DemographicData ;
+  owl:oneOf (
+      code:Ethnicity_HISPANIC_OR_LATINO
+      code:Ethnicity_NOT_HISPANIC_OR_LATINO
+      code:Ethnicity_NOT_REPORTED
+      code:Ethnicity_UNKNOWN
+    ) ;
   skos:definition "" ;
   skos:prefLabel "ETHNIC" ;
+  code:isExtensible "false"^^xsd:boolean ;
 .
 code:EthnicityDataCollection
   rdf:type owl:Class ;
-  rdfs:subClassOf code:Observation ;
+  rdfs:subClassOf code:DemographicDataCollection ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Ethnicity ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty code:outcome ;
+    ] ;
 .
 code:Ethnicity_HISPANIC_OR_LATINO
   rdf:type code:Ethnicity ;
@@ -420,6 +458,7 @@ code:ExRoute_TRANSDERMAL
 code:GenericOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf code:CategoricalOutcome ;
+  rdfs:subClassOf code:ObservationOutcome ;
 .
 code:Height
   rdf:type mms:PermissibleValue ;
@@ -433,6 +472,11 @@ code:Height
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
+      owl:allValuesFrom code:HeightOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
       owl:hasValue "HEIGHT" ;
       owl:onProperty skos:prefLabel ;
     ] ;
@@ -442,6 +486,12 @@ code:Height
       owl:onProperty skos:altLabel ;
     ] ;
   skos:prefLabel "Height" ;
+.
+code:HeightOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Height outcome" ;
+  rdfs:subClassOf code:NumericOutcome ;
+  rdfs:subClassOf code:VitalSignsOutcome ;
 .
 code:HeightUnit
   rdf:type owl:Class ;
@@ -458,7 +508,7 @@ code:InformedConsent
   rdf:type owl:Class ;
   rdfs:comment "" ;
   rdfs:subClassOf code:AdministrativeActivity ;
-  owl:equivalentClass [
+  rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:InformedConsentOutcome ;
       owl:onProperty code:outcome ;
@@ -476,6 +526,7 @@ code:InformedConsentOutcome
   rdf:type owl:Class ;
   rdfs:comment "" ;
   rdfs:subClassOf code:AdministrativeActivityOutcome ;
+  rdfs:subClassOf code:CategoricalOutcome ;
   owl:oneOf (
       code:InformedConsentOutcome_1
       code:InformedConsentOutcome_2
@@ -483,6 +534,7 @@ code:InformedConsentOutcome
     ) ;
   skos:definition "" ;
   skos:prefLabel "Informed consent outcome" ;
+  code:isExtensible "false"^^xsd:boolean ;
 .
 code:InformedConsentOutcome_1
   rdf:type code:InformedConsentOutcome ;
@@ -546,6 +598,8 @@ code:Laterality_RIGHT
 code:MedicalCondition
   rdf:type owl:Class ;
   rdfs:comment "" ;
+  rdfs:subClassOf code:CategoricalOutcome ;
+  rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition "" ;
   skos:prefLabel "Medical condition term" ;
@@ -696,12 +750,17 @@ code:NullFlavor_9
 .
 code:NumericOutcome
   rdf:type owl:Class ;
-  rdfs:subClassOf code:ObservationOutcome ;
+  rdfs:subClassOf code:DefinedActivityOutcome ;
 .
 code:Observation
   rdf:type owl:Class ;
   rdfs:comment "could be replaced in the future with a robust terminology for observations such as CDISC terminology or LOINC" ;
   rdfs:subClassOf code:Intervention ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:ObservationOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
   skos:definition "" ;
   skos:prefLabel "Observation term" ;
 .
@@ -740,6 +799,11 @@ code:Pulse
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
+      owl:allValuesFrom code:PulseOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
       owl:hasValue "PULSE" ;
       owl:onProperty skos:prefLabel ;
     ] ;
@@ -750,6 +814,12 @@ code:Pulse
     ] ;
   skos:prefLabel "Pulse Rate" ;
 .
+code:PulseOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Pulse outcome" ;
+  rdfs:subClassOf code:NumericOutcome ;
+  rdfs:subClassOf code:VitalSignsOutcome ;
+.
 code:PulseUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
@@ -757,8 +827,7 @@ code:PulseUnit
 code:Race
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf code:CategoricalOutcome ;
-  rdfs:subClassOf code:DefinedActivityOutcome ;
+  rdfs:subClassOf code:DemographicData ;
   owl:oneOf (
       code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
       code:Race_ASIAN
@@ -768,10 +837,11 @@ code:Race
     ) ;
   skos:definition "" ;
   skos:prefLabel "RACE" ;
+  code:isExtensible "false"^^xsd:boolean ;
 .
 code:RaceDataCollection
   rdf:type owl:Class ;
-  rdfs:subClassOf code:Observation ;
+  rdfs:subClassOf code:DemographicDataCollection ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:Race ;
@@ -811,6 +881,11 @@ code:Race_WHITE
 code:Randomization
   rdf:type owl:Class ;
   rdfs:subClassOf code:AdministrativeActivity ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:RandomizationOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
   skos:altLabel "" ;
   skos:prefLabel "Randomization" ;
 .
@@ -820,15 +895,39 @@ code:RandomizationBAL3
   skos:altLabel "" ;
   skos:prefLabel "Randomization BAL3" ;
 .
+code:RandomizationOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Randomization outcome" ;
+  rdfs:subClassOf code:AdministrativeActivityOutcome ;
+  code:isExtensible "true"^^xsd:boolean ;
+.
 code:RouteOfAdministration
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
   skos:prefLabel "Route of administration" ;
 .
+code:Rule
+  rdf:type owl:Class ;
+  rdfs:label "Rule" ;
+  rdfs:subClassOf code:Analysis ;
+  rdfs:subClassOf code:CategoricalOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:RuleOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
+.
 code:RuleOutcome
   rdf:type owl:Class ;
+  rdfs:subClassOf code:CategoricalOutcome ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
+  owl:oneOf (
+      code:RuleOutcome_FALSE
+      code:RuleOutcome_NA
+      code:RuleOutcome_TRUE
+    ) ;
   skos:prefLabel "Rule outcome" ;
+  code:isExtensible "false"^^xsd:boolean ;
 .
 code:RuleOutcome_FALSE
   rdf:type code:RuleOutcome ;
@@ -847,14 +946,30 @@ code:RuleOutcome_TRUE
 code:Sex
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf code:CategoricalOutcome ;
-  rdfs:subClassOf code:DefinedActivityOutcome ;
+  rdfs:subClassOf code:DemographicData ;
+  owl:oneOf (
+      code:Sex_F
+      code:Sex_M
+      code:Sex_U
+      code:Sex_UN
+    ) ;
   skos:definition "" ;
   skos:prefLabel "SEX" ;
+  code:isExtensible "false"^^xsd:boolean ;
 .
 code:SexDataCollection
   rdf:type owl:Class ;
-  rdfs:subClassOf code:Observation ;
+  rdfs:subClassOf code:DemographicDataCollection ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Sex ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty code:outcome ;
+    ] ;
 .
 code:Sex_F
   rdf:type code:Sex ;
@@ -910,6 +1025,11 @@ code:SystolicBloodPressure
   rdfs:subClassOf code:BloodPressure ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
+      owl:allValuesFrom code:SystolicBloodPressureOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
       owl:hasValue "SYSBP" ;
       owl:onProperty skos:prefLabel ;
     ] ;
@@ -919,6 +1039,11 @@ code:SystolicBloodPressure
       owl:onProperty skos:altLabel ;
     ] ;
   skos:prefLabel "Systolic Blood Pressure" ;
+.
+code:SystolicBloodPressureOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Systolic blood pressure outcome" ;
+  rdfs:subClassOf code:BloodPressureOutcome ;
 .
 code:Temperature
   rdf:type mms:PermissibleValue ;
@@ -932,6 +1057,11 @@ code:Temperature
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
+      owl:allValuesFrom code:TemperatureOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
       owl:hasValue "TEMP" ;
       owl:onProperty skos:prefLabel ;
     ] ;
@@ -942,11 +1072,24 @@ code:Temperature
     ] ;
   skos:prefLabel "Temperature" ;
 .
+code:TemperatureOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Temperature outcome" ;
+  rdfs:subClassOf code:NumericOutcome ;
+  rdfs:subClassOf code:VitalSignsOutcome ;
+.
 code:TemperatureUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
   skos:altLabel "" ;
   skos:prefLabel "Temperature unit" ;
+.
+code:TherapeuticIntervention
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:Intervention ;
+  skos:altLabel "" ;
+  skos:definition "An intervention whose goal is to modify the natural history of a medical condition." ;
+  skos:prefLabel "Therapeutic intervention" ;
 .
 code:Unit
   rdf:type owl:Class ;
@@ -1020,6 +1163,11 @@ code:VitalSign
   skos:definition "" ;
   skos:prefLabel "Vital signs test name" ;
 .
+code:VitalSignsOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Vital signs outcome" ;
+  rdfs:subClassOf code:ObservationOutcome ;
+.
 code:VitalSignsUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
@@ -1037,6 +1185,11 @@ code:Weight
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
+      owl:allValuesFrom code:WeightOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
       owl:hasValue "WEIGHT" ;
       owl:onProperty skos:prefLabel ;
     ] ;
@@ -1046,6 +1199,12 @@ code:Weight
       owl:onProperty skos:altLabel ;
     ] ;
   skos:prefLabel "Weight" ;
+.
+code:WeightOutcome
+  rdf:type owl:Class ;
+  rdfs:label "Weight outcome" ;
+  rdfs:subClassOf code:NumericOutcome ;
+  rdfs:subClassOf code:VitalSignsOutcome ;
 .
 code:WeightUnit
   rdf:type owl:Class ;
@@ -1136,6 +1295,12 @@ code:hasValue
   rdfs:domain code:DefinedActivityOutcome ;
   skos:definition "" ;
   skos:prefLabel "has value" ;
+.
+code:isExtensible
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain code:CategoricalOutcome ;
+  rdfs:label "is extensible" ;
+  rdfs:range xsd:boolean ;
 .
 code:outcome
   rdf:type owl:ObjectProperty ;
