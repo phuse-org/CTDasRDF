@@ -82,6 +82,7 @@ nodes$group[grepl("Person_", nodes$id, perl=TRUE)] <- "Person"  #
 
 # Assign labels used for mouseover
 nodes$title <- nodes$id
+nodes$label <- nodes$id
 
 
 nodes$size <- 30
@@ -100,11 +101,15 @@ edges$length <- 500
 visNetwork(nodes, edges, width= "100%") %>%
     # visPhysics(solver = "forceAtlas2Based", forceAtlas2Based = list(gravitationalConstant = -10))%>%
     #centralGravity = 0.3
-    visPhysics(stabilization = FALSE, barnesHut = list(
-        gravitationalConstant = -1000,
-        centralGravity = .5,
-        springConstant = 0.002,
-        springLength = 100)) %>%
+    visPhysics(stabilization = FALSE, 
+               barnesHut = list(
+                 gravitationalConstant = -1000,
+                 centralGravity        = .5,
+                 springConstant        = 0.001,
+                 springLength          = 100,
+                 damping               = .1,
+                 avoidOverlap          = 1)) %>%
+    visEdges(smooth=FALSE) %>%
     visGroups(groupname = "Person", color = "darkblue") %>%
     visGroups(groupname = "SDTMTerm", color = "red")  %>%
     visGroups(groupname = "Study", color = "yellow")  %>%
