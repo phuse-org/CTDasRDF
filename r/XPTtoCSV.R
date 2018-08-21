@@ -15,8 +15,7 @@
 # TODO: 
 #______________________________________________________________________________
 library(Hmisc)
-library(car)   # recode
-library(dplyr)  # mutate with pipe in Functions.R
+library(dplyr)  # recode, mutate with pipe in Functions.R, other dplyr goodness
 
 dm_n=3;  # The first n patients from the DM domain.
 

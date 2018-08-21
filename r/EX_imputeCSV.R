@@ -6,53 +6,56 @@
 # IN  : ex dataframe 
 # OUT : modified ex dataframe 
 # NOTE:  Column names with _im, _im_en, _en are imputed, encoded from orig vals. 
-# TODO: 
+# TODO: visit recode move to function, share with VS,EX and other domains...
 #______________________________________________________________________________
 
 # Imputations ----
 ex$fixDoseInt_im        <- paste0(ex$exstdtc,  "_", ex$exendtc)    # Interval
 ex$fixDoseInt_label_im  <- paste0(ex$exstdtc,  " to ", ex$exendtc) # Interval Label
 
-# Change following to function. Used in other domains!
-# visit in Camel Case Short form for linking  IRIs to ont.
-ex$visit_im_titleCSh <- car::recode(ex$visit,
-  " 'SCREENING 1'          =  'Screening1' ;
-    'SCREENING 2'          =  'Screening2' ;
-    'BASELINE'             =  'Baseline' ;
-    'AMBUL ECG PLACEMENT'  =  'AmbulECGPlacement' ;
-    'AMBUL ECG REMOVAL'    =  'AmbulECGRemoval' ;
-    'WEEK 2'               =  'Wk2' ;
-    'WEEK 4'               =  'Wk4' ;
-    'WEEK 6'               =  'Wk6' ;
-    'WEEK 8'               =  'Wk8' ;
-    'WEEK 12'              =  'Wk12' ;
-    'WEEK 16'              =  'Wk16' ;
-    'WEEK 20'              =  'Wk20' ;
-    'WEEK 24'              =  'Wk24' ;
-    'WEEK 26'              =  'Wk26' ;
-    'RETRIEVAL'            =  'Retrieval' ;
-    'UNSCHEDULED 3.1'      =  'Unscheduled31' "
-)
 
-# Use in skos:prefLabel. 
-ex$visit_im_titleC  <- car::recode (ex$visit,
-  " 'SCREENING 1'          =  'Screening 1' ;
-    'SCREENING 2'          =  'Screening 2' ;
-    'BASELINE'             =  'Baseline' ;
-    'AMBUL ECG PLACEMENT'  =  'Ambul ECG Placement' ;
-    'AMBUL ECG REMOVAL'    =  'Ambul ECG Removal' ;
-    'WEEK 2'               =  'Week 2' ;
-    'WEEK 4'               =  'Week 4' ;
-    'WEEK 6'               =  'Week 6' ;
-    'WEEK 8'               =  'Week 8' ;
-    'WEEK 12'              =  'Week 12' ;
-    'WEEK 16'              =  'Week 16' ;
-    'WEEK 20'              =  'Week 20' ;
-    'WEEK 24'              =  'Week 24' ;
-    'WEEK 26'              =  'Week 26' ;
-    'RETRIEVAL'            =  'Retrieval' ;
-    'UNSCHEDULED 3.1'      =  'Unscheduled 3.1' "
-)
+# visit to Camel Case Short form for linking  IRIs to ont.
+ex <- ex %>%
+  mutate(visit_im_titleCSh = recode(visit,
+   'SCREENING 1'          =  'Screening1' ,
+    'SCREENING 2'         =  'Screening2' ,
+    'BASELINE'            =  'Baseline' ,
+    'AMBUL ECG PLACEMENT' =  'AmbulECGPlacement' ,
+    'AMBUL ECG REMOVAL'   =  'AmbulECGRemoval' ,
+    'WEEK 2'              =  'Wk2' ,
+    'WEEK 4'              =  'Wk4' ,
+    'WEEK 6'              =  'Wk6' ,
+    'WEEK 8'              =  'Wk8' ,
+    'WEEK 12'             =  'Wk12' ,
+    'WEEK 16'             =  'Wk16' ,
+    'WEEK 20'             =  'Wk20' ,
+    'WEEK 24'             =  'Wk24' ,
+    'WEEK 26'             =  'Wk26' ,
+    'RETRIEVAL'           =  'Retrieval' ,
+    'UNSCHEDULED 3.1'     =  'Unscheduled31' 
+  ))
+
+
+# visit as Title case for use in skos:prefLabel
+ex <- ex %>%
+  mutate(visit_im_titleC = recode(visit,
+    'SCREENING 1'          =  'Screening 1' ,
+    'SCREENING 2'          =  'Screening 2' ,
+    'BASELINE'             =  'Baseline' ,
+    'AMBUL ECG PLACEMENT'  =  'Ambul ECG Placement' ,
+    'AMBUL ECG REMOVAL'    =  'Ambul ECG Removal' ,
+    'WEEK 2'               =  'Week 2' ,
+    'WEEK 4'               =  'Week 4' ,
+    'WEEK 6'               =  'Week 6' ,
+    'WEEK 8'               =  'Week 8' ,
+    'WEEK 12'              =  'Week 12' ,
+    'WEEK 16'              =  'Week 16' ,
+    'WEEK 20'              =  'Week 20' ,
+    'WEEK 24'              =  'Week 24' ,
+    'WEEK 26'              =  'Week 26' ,
+    'RETRIEVAL'            =  'Retrieval' ,
+    'UNSCHEDULED 3.1'      =  'Unscheduled 3.1' 
+))
 
 #------------------------------------------------------------------------------
 # URL encoding

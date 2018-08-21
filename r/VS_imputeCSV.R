@@ -6,36 +6,41 @@
 # IN  : vs dataframe 
 # OUT : modified vs dataframe 
 # NOTE: 
-# TODO: 
+# TODO: visit recode move to function, share with VS,EX and other domains...
 #______________________________________________________________________________
 
-# StartRules based on vstpt 
-vs$startRule_im <- car::recode(vs$vstpt,
-  " 'AFTER LYING DOWN FOR 5 MINUTES'  = 'StartRuleLying5' ;
-    'AFTER STANDING FOR 1 MINUTE'     = 'StartRuleStanding1' ;
-    'AFTER STANDING FOR 3 MINUTES'    = 'StartRuleStanding3' "
-)
 
-# Change following to function. Used in other domains!
+
+# StartRules based on vstpt 
+vs <- vs %>%
+  mutate(startRule_im = recode(vstpt,
+    'AFTER LYING DOWN FOR 5 MINUTES'  = 'StartRuleLying5' ,
+    'AFTER STANDING FOR 1 MINUTE'     = 'StartRuleStanding1' ,
+    'AFTER STANDING FOR 3 MINUTES'    = 'StartRuleStanding3' 
+  ))
+
+# Change following to function. Used in other domains! (EX_imput has same recoding!)
 # visit in Camel Case Short form for linking  IRIs to ont. Ont uses camel case
-vs$visit_im_titleCSh <- car::recode (vs$visit,
-  " 'SCREENING 1'          =  'Screening1' ;
-    'SCREENING 2'          =  'Screening2' ;
-    'BASELINE'             =  'Baseline' ;
-    'AMBUL ECG PLACEMENT'  =  'AmbulECGPlacement' ;
-    'AMBUL ECG REMOVAL'    =  'AmbulECGRemoval' ;
-    'WEEK 2'               =  'Wk2' ;
-    'WEEK 4'               =  'Wk4' ;
-    'WEEK 6'               =  'Wk6' ;
-    'WEEK 8'               =  'Wk8' ;
-    'WEEK 12'              =  'Wk12' ;
-    'WEEK 16'              =  'Wk16' ;
-    'WEEK 20'              =  'Wk20' ;
-    'WEEK 24'              =  'Wk24' ;
-    'WEEK 26'              =  'Wk26' ;
-    'RETRIEVAL'            =  'Retrieval' ;
-    'UNSCHEDULED 3.1'      =  'Unscheduled31' "
-)
+
+vs <- vs %>%    
+  mutate(visit_im_titleC = recode(visit,
+    'SCREENING 1'          =  'Screening1' ,
+    'SCREENING 2'          =  'Screening2' ,
+    'BASELINE'             =  'Baseline' ,
+    'AMBUL ECG PLACEMENT'  =  'AmbulECGPlacement' ,
+    'AMBUL ECG REMOVAL'    =  'AmbulECGRemoval' ,
+    'WEEK 2'               =  'Wk2' ,
+    'WEEK 4'               =  'Wk4' ,
+    'WEEK 6'               =  'Wk6' ,
+    'WEEK 8'               =  'Wk8' ,
+    'WEEK 12'              =  'Wk12' ,
+    'WEEK 16'              =  'Wk16' ,
+    'WEEK 20'              =  'Wk20' ,
+    'WEEK 24'              =  'Wk24' ,
+    'WEEK 26'              =  'Wk26' ,
+    'RETRIEVAL'            =  'Retrieval' ,
+    'UNSCHEDULED 3.1'      =  'Unscheduled31' 
+  ))
 
 # Create Values [Existing Columns] ---- 
 #   Not present in original colums
