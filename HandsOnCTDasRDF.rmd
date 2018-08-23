@@ -1,0 +1,236 @@
+---
+title: "Getting hands on CTDasRDF Project"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Revision
+
+Date         | Comment
+------------ | ----------------------------
+2018-08-23   | Documentation creation (KG)
+
+
+
+## Installation Hints (Windows)
+
+- Install R (https://cran.r-project.org/bin/windows/base/)
+- Install RStudio (https://www.rstudio.com/products/rstudio/download/)
+- Install Stardog (https://www.stardog.com/docs/)
+
+You can install packages in R/RStudio easily through the install.packages("[name]") command.
+
+### Working with Proxy in R / RStudio
+
+You can use proxy settings for RStudio:  
+- run file.edit('~/.Renviron') in RStudio console, include:	 
+```
+http_proxy=http://<proxy-adress>:<proxy-port>  
+http_proxy_user=<Domain>%5C<ID>:<password>  
+https_proxy=https://<proxy-adress>:<proxy-port>  
+https_proxy_user=<Domain>%5C<ID>:<password>  
+```
+Be aware that the DEVTOOLS package does unluckily not work with an authentification proxy, but you can download the packages manually and install them through load_all("[path]"). For the R rrdf package you could do the following for example:
+```
+#1) If not behind a PROXY, use this simple way
+install.packages("rJava") # if not present already
+install.packages("devtools") # if not present already
+library(devtools)
+install_github("egonw/rrdf", subdir="rrdflibs")
+install_github("egonw/rrdf", subdir="rrdf", build_vignettes = FALSE)
+#2) If behind PROXY: download rrdf from github and unzip it into <path>
+#https://github.com/egonw/rrdf
+library(devtools)
+load_all('C:/<path>/rrdflibs')
+load_all('C:/<path>/rrdf')
+library(rrdf)
+```
+
+### Stardog installation / execution hints
+
+The windows installation is a bit complex like explained in their [documentation](https://www.stardog.com/docs/?utm_campaign=Stardog%3A%20Product%20Download&utm_source=hs_automation&utm_medium=email&utm_content=57254532&_hsenc=p2ANqtz-8zVpYrKT0H7p1ZHG_8vJD5zs7QE0-M7RhBS4K0DvJ1ar0XrbyTNlxmpgZf8b0gFG-s9Bt7V5BwBrlH9ROZt4rdhXKDyA&_hsmi=57254532#_quick_start_guide).  
+
+Make sure you set the environment variables in your environment - in the console do for example (windows->"cmd"):
+```
+SET STARDOG_HOME=C:\Temp\Programs\stardog-5.3.2
+SET PATH=%PATH%;C:\Temp\Programs\stardog-5.3.2\bin
+```
+
+Then you can start the server - in the console (windows->"cmd"):
+```
+stardog-admin.bat server start
+```
+
+Now you are hopefully ready to start the graphical user web interface through <http://localhost:5820>. The initial username and password might be "admin".  
+  
+  
+**Issues with Java**:  
+You might have issues with JAVA when stardog is not working. Make sure you have Java installed and it should be not 9 or 10 (so likely it will be 8). You can check the version in the console (windows -> "cmd"):
+```
+java -version
+```
+You could install multiple JAVA version on the PC. Make sure that when using Stardog, you have, e.g. the Java binaries from Java 8 in the PATH variable. You can investigate the content of %PATH% in the commando line through 
+```
+echo %PATH%
+```
+You could change the content to exclude the wrong JAVA binaries and include the JAVA 8 binaries through the SET PATH comment.
+
+## Download Repository
+
+The project files are available on Github <https://github.com/phuse-org/CTDasRDF> and are regularily updated. It is recommended to clone the repository and update this regularily with the git functionality easily. If you are not familar with git, you might want to just download the complete repository and unzip it a any location. Use the green button to "Clone or Download".
+
+You can read the documentation in the github repository by clicking the *.rmd or *.md files. You might want to read the following documentations in the following order:
+* CTDasRDF.rmd - project overview
+* DataMappingAndConversion.md - content details
+* HandsOnGuidance.rmd - guidance to get hands on experiences based on this project
+
+## Get Hands on Data Preparation Programming (R)
+
+Details on the general processes can be found in DataMappingAndConversion.md
+
+* _im are derived or computed variables
+* _en are encoded variables (special character replacement)
+
+You can run the XPTtoCSV.R Program and run all lines together or single execute the commands and the included files to check what's going on. The XPT files are used as basis. Data processing took place which is needed for encoding and similar. Also some data is made up to have a better playground. Finally CSV files are created which are used to import to Stardog.
+
+### XPTtoCSV
+
+Creates the content CSV files which will be read together with the Stardoc SMS mapping to directly load the triples to the Stardoc triple store
+
+Processing Step      | Description
+-------------------- | ------------------------------------
+initialization       | Initialize environment <br>Read Packages, Functions.R <br>Set Working directory <br>Set Selection number (first 3 subject) and usubjid list
+Traceability - update date | update data/source/ctdasrdf_graphmeta.csv to include current date/time
+DM Processing        | Read and subset XPT file <br>Impute & Encode variables <br>Create dmDrugInt for cummulative Drug Administration<br>Save DM_subset.csv
+EX Processing        | Read and subset XPT file <br>Impute & Encode variables <br>Merge dmDrugInt from DM for cummulative Drug Administration  <br>Save EX_subset.csv                       
+VS Processing        | Read XPT file <br>Subset XPT file  <br>Impute & Encode variables <br>Save VS_subset.csv 
+
+## Get Hands on Ontologies 
+
+The core of the linked data is the Ontologies which define the links, object types and for this the structure of the data. To get a first overview, have a look into the corresponding documentation which is available:
+
+* doc/Ontology Roadmap.docx - A short overview of available created/maintained ontology files
+* doc/StudyOntologyUserGuide.docx - Detailed information about the study ontology which is the base for this project
+
+### Browse Ontologies (e.g. Protege, WebVOWL)
+
+Expected later
+
+## View SMS (Stardog Mapping Syntax) TTL Files
+
+Expected later
+
+## Get Hands on triple store in Stardog
+
+### Setup the Database
+Make sure you installed Stardog and do not have any issues (like wrong Java version) including the correct setting of pathes. Then you can run the Stardog user web interface through <http://localhost:5820>. If you have not done so far, you need to create the CTDasRDFSMS database.
+
+* Databases (top navigation)
+* New DB
+* Database name: CTDasRDFSMS
+* Keep the rest as it is, and click Finish
+
+### Load Data and Triples to Stardog Database
+All you required data is located in the data/source file folder:
+
+* original XPT files
+* converted and upated data content as CSV files
+* Stardog Mapping Syntax TTL files
+* StarDogUpload.bat file to upload data into Stardog
+
+You might want to update StarDogUpload.bat, as the source location is defined as "C:\\_gitHub\\CTDasRDF\\data\\source" which you might want to change. You can see in detail which files are imported together. To import DM, the following line is included in the file:
+
+```
+call stardog-admin virtual import CTDasRDFSMS DM_mappings.TTL DM_subset.csv
+```
+
+The import is done into the database called CTDasRDFSMS. It uses the DM_mappings.TTL as a template and filles the bracket parts multiple times with the corresponding observations from the DM_subset.csv file. By inspecting the *.TTL files you can have a closer look how the triples will be loaded.
+
+Example - for each observation in the DM_subset.csv the studyid is linked to a "hasStudyParticipant" person.
+```
+# Study Partipants
+cd01p:Study_{studyid}
+  study:hasStudyParticipant cdiscpilot01:Person_{usubjid}
+```
+
+As everything is available after clone/download the repository, you could immediately import the data to stardog with the StarDogUpload.bat file without running an R scripts. Just make sure to exchange the location (right-click, edit) and have stardog running (stardog-admin.bat server start). 
+
+If the import does not work and you want to see details, you might want to start the program in the windows console (cmd). 
+
+* Open the console "cmd"
+* Go to the path of the bat file, e.g. cd "C:\\_gitHub\\CTDasRDF\\data\\source"
+* start the program by enter StarDogUpload.bat
+* Check the log for hints
+
+Your triples should be imported now into Stardog. You should be able to browse and send queries which you can do within the Stardog interface <http://localhost:5820/CTDasRDFSMS#!/schema> or other tools. 
+
+### Browse & Query instance data in Stardog
+
+When you have uploaded your data into Stardog, you can browse and query instance data. 
+
+In the "Browse" area you see the different "Classes" and "Properties" and you can click along to see for example that there is a "AgeDataCollection" has three instances. You might want to check the one for usubjid = "01-701-1015" which is named "AgeDataCollection_01-701-1015". You can see different classes which are attached through properties. For example is the class "AgeOutcome_63" connected through the "outcome" property. And when clicking on this class you finally see that is "hasUnit" which is linked to the W3-Standard unitYear, a "hasValue" of 63 and also a "prefLabel" which is 63 YEARS.
+
+You can  query results using the SPARQL language. If you want to see all links from a specific person instance, you can for example query the following:
+```
+SELECT ?p ?o
+WHERE
+{
+    cdiscpilot01:Person_01-701-1015  ?p ?o .
+} ORDER BY ?p ?o
+```
+
+To see all connections, simply use the following, but it might be wise to limit the results when you database is growing
+```
+SELECT ?s ?p ?o
+WHERE
+{
+    ?s ?p ?o .
+}
+```
+
+### Enhance Stardog Database
+
+You might not like the long prefixes which are displayed on every query result. During triple creation also shortcuts has been used. To have a look what prefixes are used in this project, open the data/config/prefixes.csv file. Checkout which ones you would like to have available as shortcut in your database. You might for example select the following:
+
+* cd01p=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#
+* cdiscpilot01=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#
+* code=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#
+* sdtm=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#
+* sdtmterm=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#
+* study=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#
+
+To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <http://localhost:5820/#/databases> and select your "http://localhost:5820/#/databases" database. Turn the database "OFF" and "Edit". Now you are able to "Add namespace" as you like. Remember to "Save" and turn the database "ON".
+
+When you now perform any queries, you will see the namespace abbreviations nicely in the result:
+```
+SELECT *
+WHERE {
+	?s ?p ?o
+} LIMIT 20
+```
+
+## Get Hands on triple store outside Stardog
+
+The main goal for having a triple store is to be able to develop and use tools which are powerful and performant to access and evaluate data. For this a triple store has been setup and filled and now can finally be accessed to create these tools. When you have your Stardog server running, you have a SPARQL endpoint which can be used by various programming languages including R, SAS, Java and nearly any other.
+
+Within the described setup, the endpoint is running locally on your machine <http://localhost:5820/CTDasRDFSMS/query>. But you can also setup a triple store on a server. You could export the triples from Stardog and import this into another triple store available. Then the data would be accessable through the network.
+
+### SPARQL and SAS
+
+When you want to use SPARQL from SAS, there are ways to do so. You might want to check out the SPARQLwrapper which is located in Github by Marc J. Andersen: <https://github.com/MarcJAndersen/SAS-SPARQLwrapper>. 
+
+Depending on your SAS environment you might not have access to the internet, in such cases you might expect issues.
+
+### SPARQL and R
+
+There is a R library called SPARQL where you can easily access an SPARQL endpoint like the one from localhost of stardog. You find an R program where you can run some SPARQL queries here:
+
+* r/query/Stardog-SPARQL-examples.R
+
+So you could read in the data in R and display this in any kind of format including a ShinyApp. The final programs are the ones that
+
