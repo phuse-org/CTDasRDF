@@ -1,7 +1,26 @@
 # CTDasRDF
-This repository holds the scripts and data for the PhUSE project "Clinical Trials Data as RDF." This is a work in progress. Expect 3rr0rs, inconsistencies, and occasional mayhem. 
+This repository holds the scripts and data for the PhUSE project "Clinical Trials Data as RDF." The project is ongoing and documentation will lag behind other repository content.  
 
-Your best source for project documentation is the CTDasRDF.rmd/html file. Clone the repository and view the .html file, or recreate the .html by knitting the rmd file.
+Documentation is created in Markdown (.rmd) files. Clone the repository and view the .html file, or recreate the .html by knitting the rmd file.
+Primary sources of information include:
+
+##Explanation
+  File: /docs/Markdown/Explanation.[rmd](Explanation.rmd) / [html](Explanation.html)
+  
+  An overview of the project goals and approach. Detailed background is available in the project WhitePaper: /doc/Pubs/WhitePaper/xxxxx (available after publication in late 2018)
+
+
+##Technical Reference
+  Specifics of the data conversion and mapping process. 
+  
+##How-To Guides
+  File:How-To.rmd/html
+  
+##Tutorials
+  File:Tutorials.rmd/html
+
+
+
 
 # Obtaining project files
 Github novices should download the files: 
