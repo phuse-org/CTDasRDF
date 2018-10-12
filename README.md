@@ -5,22 +5,25 @@ Documentation is created in Markdown (.rmd) files. Clone the repository and view
 Primary sources of information include:
 
 ##Explanation
-  File: /docs/Markdown/Explanation.[rmd](Explanation.rmd) / [html](Explanation.html)
-  
-  An overview of the project goals and approach. Detailed background is available in the project WhitePaper: /doc/Pubs/WhitePaper/xxxxx (available after publication in late 2018)
+An overview of the project background, goals, and approach. Includes links to the project Whitepaper and other related publications. 
+
+**File**: /doc/Markdown/Explanation.[rmd](doc/Markdown/Explanation.rmd) / [html](doc/Markdown/Explanation.html)
 
 
-##Technical Reference
-  Specifics of the data conversion and mapping process. 
+##Reference
+Specifics of the data conversion and mapping process.  Includes details of the structure of this Repository. 
+
+**File**: /doc/Markdown/Reference.[rmd](doc/Markdown/Reference.rmd) / [html](doc/Markdown/Reference.html)
   
 ##How-To Guides
-  File:How-To.rmd/html
+Step-by-step guides to working with the data.  
+
+**File**:  TBD .  
   
 ##Tutorials
-  File:Tutorials.rmd/html
+Lessons in data conversion, query, analysis.
 
-
-
+**File**: TBD
 
 # Obtaining project files
 Github novices should download the files: 
@@ -29,4 +32,4 @@ Extract the file to a location like  C:\\_github
 This will create the folder C:\\_github\\CTDasRDF-MASTER and subfolders. You will need to edit the paths in some files to get things running. 
 
 ```
-Contact the project leads for additional information. 
+Contact the project leads Tim Williams or Armando Oliva for additional information. 
