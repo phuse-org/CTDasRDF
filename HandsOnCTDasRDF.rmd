@@ -27,7 +27,9 @@ To get start your hands on the project you can perform the following steps:
 - Loading the data into stardog
 - Now you are ready to explore either in Stardog or in R
 
-```{r, echo=FALSE}
+![Figure: Screenshot to download .zip](./doc/images/compiled_overview.png)
+
+```
 library("Rgraphviz")
 roadmapGraph <- new("graphNEL", nodes=c("Installation", 
                                         "Setup Stardog", 
