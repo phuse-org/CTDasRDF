@@ -14,7 +14,38 @@ knitr::opts_chunk$set(echo = TRUE)
 Date         | Comment
 ------------ | ----------------------------
 2018-08-23   | Documentation creation (KG)
+2018-10-12   | Enhance documentation
 
+
+## Overview
+
+To get start your hands on the project you can perform the following steps:
+
+- Install software (R, RStudio, Stardog)
+- Setup stardog (create database, start stardog)
+- Then you can create the data in R via the scripts from the repository or skikp this as the data is also available
+- Loading the data into stardog
+- Now you are ready to explore either in Stardog or in R
+
+```{r, echo=FALSE}
+library("Rgraphviz")
+roadmapGraph <- new("graphNEL", nodes=c("Installation", 
+                                        "Setup Stardog", 
+                                        "Create Data \\\n(R)",
+                                        "Load Data \\\n(Stardog)",
+                                        "Query Data \\\n(Stardog/R)"), 
+                    edgemode="directed")
+
+roadmapGraph <- addEdge("Installation", "Setup Stardog", roadmapGraph, 1)
+roadmapGraph <- addEdge("Setup Stardog", "Create Data \\\n(R)", roadmapGraph, 1)
+roadmapGraph <- addEdge("Create Data \\\n(R)", "Load Data \\\n(Stardog)", roadmapGraph, 1)
+roadmapGraph <- addEdge("Load Data \\\n(Stardog)", "Query Data \\\n(Stardog/R)", roadmapGraph, 1)
+roadmapGraph <- addEdge("Setup Stardog", "Load Data \\\n(Stardog)", roadmapGraph, 1)
+
+plot(roadmapGraph, attrs=list(node=list(label="foo", fillcolor="lightgreen", 
+                                        fontsize=18, shape="box", width="1.5"),
+                              graph=list(rankdir="LR")), main = "Figure 1: Step overview")
+```
 
 
 ## Installation Hints (Windows)
@@ -83,6 +114,8 @@ You could change the content to exclude the wrong JAVA binaries and include the 
 ## Download Repository
 
 The project files are available on Github <https://github.com/phuse-org/CTDasRDF> and are regularily updated. It is recommended to clone the repository and update this regularily with the git functionality easily. If you are not familar with git, you might want to just download the complete repository and unzip it a any location. Use the green button to "Clone or Download".
+
+![Figure: Screenshot to download .zip](./doc/images/screen_download.png)
 
 You can read the documentation in the github repository by clicking the *.rmd or *.md files. You might want to read the following documentations in the following order:
 * CTDasRDF.rmd - project overview
