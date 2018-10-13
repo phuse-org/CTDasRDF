@@ -23,7 +23,7 @@ To get start your hands on the project you can perform the following steps:
 
 - Install software (R, RStudio, Stardog)
 - Setup stardog (create database, start stardog)
-- Then you can create the data in R via the scripts from the repository or skikp this as the data is also available
+- Then you can create the data in R via the scripts from the repository or skip this as the data is also available
 - Loading the data into stardog
 - Now you are ready to explore either in Stardog or in R
 
@@ -154,7 +154,14 @@ The core of the linked data is the Ontologies which define the links, object typ
 
 ### Browse Ontologies (e.g. Protege, WebVOWL)
 
-Expected later
+#### WebVOWL-based ontology visualizations
+
+* [cd01p](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#)
+* [cdiscpilot01](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#)
+* [code](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#)
+* [sdtm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#)
+* [sdtmterm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#)
+* [study](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#)
 
 ## View SMS (Stardog Mapping Syntax) TTL Files
 
