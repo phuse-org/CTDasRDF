@@ -171,6 +171,10 @@ $(document).ready(function () {
 <td>2018-10-12</td>
 <td>Enhance documentation</td>
 </tr>
+<tr class="odd">
+<td>2018-10-13</td>
+<td>Ontology viz and namespace cmds</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -402,6 +406,13 @@ WHERE
 <li>study=<a href="https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#" class="uri">https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#</a></li>
 </ul>
 <p>To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <a href="http://localhost:5820/#/databases" class="uri">http://localhost:5820/#/databases</a> and select your “<a href="http://localhost:5820/#/databases" class="uri">http://localhost:5820/#/databases</a>” database. Turn the database “OFF” and “Edit”. Now you are able to “Add namespace” as you like. Remember to “Save” and turn the database “ON”.</p>
+<p>Alternatively, you can set the namespaces from the commandline by pasting the following commands into the terminal:</p>
+<pre><code>stardog namespace add CTDasRDFSMS --prefix cd01p --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#
+stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#
+stardog namespace add CTDasRDFSMS --prefix code --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#
+stardog namespace add CTDasRDFSMS --prefix sdtm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#
+stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#
+stardog namespace add CTDasRDFSMS --prefix study --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#</code></pre>
 <p>When you now perform any queries, you will see the namespace abbreviations nicely in the result:</p>
 <pre><code>SELECT *
 WHERE {
