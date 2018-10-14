@@ -15,6 +15,7 @@ Date         | Comment
 ------------ | ----------------------------
 2018-08-23   | Documentation creation (KG)
 2018-10-12   | Enhance documentation
+2018-10-13   | Ontology viz and namespace cmds
 
 
 ## Overview
@@ -23,7 +24,7 @@ To get start your hands on the project you can perform the following steps:
 
 - Install software (R, RStudio, Stardog)
 - Setup stardog (create database, start stardog)
-- Then you can create the data in R via the scripts from the repository or skikp this as the data is also available
+- Then you can create the data in R via the scripts from the repository or skip this as the data is also available
 - Loading the data into stardog
 - Now you are ready to explore either in Stardog or in R
 
@@ -154,7 +155,14 @@ The core of the linked data is the Ontologies which define the links, object typ
 
 ### Browse Ontologies (e.g. Protege, WebVOWL)
 
-Expected later
+#### WebVOWL-based ontology visualizations
+
+* [cd01p](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#)
+* [cdiscpilot01](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#)
+* [code](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#)
+* [sdtm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#)
+* [sdtmterm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#)
+* [study](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#)
 
 ## View SMS (Stardog Mapping Syntax) TTL Files
 
@@ -240,6 +248,16 @@ You might not like the long prefixes which are displayed on every query result. 
 * study=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#
 
 To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <http://localhost:5820/#/databases> and select your "http://localhost:5820/#/databases" database. Turn the database "OFF" and "Edit". Now you are able to "Add namespace" as you like. Remember to "Save" and turn the database "ON".
+
+Alternatively, you can set the namespaces from the commandline by pasting the following commands into the terminal:
+```
+stardog namespace add CTDasRDFSMS --prefix cd01p --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#
+stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#
+stardog namespace add CTDasRDFSMS --prefix code --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#
+stardog namespace add CTDasRDFSMS --prefix sdtm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#
+stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#
+stardog namespace add CTDasRDFSMS --prefix study --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#
+```
 
 When you now perform any queries, you will see the namespace abbreviations nicely in the result:
 ```
