@@ -6,7 +6,7 @@
 # IN  : Any .TTL file that contains rdfs:subClassOf relations
 # OUT : 
 # NOTE: Authored by Yiqing Tian and Tim Williams
-# TODO: 
+# TODO: use qnames instead of full URIs in the graph.
 ###############################################################################
 library(plyr)  #  rename
 library(reshape)  #  melt

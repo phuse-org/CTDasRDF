@@ -18,6 +18,8 @@
 #        edges: source target
 #
 # TODO: Person_1 is hard coded, Must change to new naming convention in APR 2018
+#       Current query shows triples attached to single date URI. Query may need 
+#       Updates for latest CTDasRDF graph.
 #       
 ###############################################################################
 library(network3d)

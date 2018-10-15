@@ -11,7 +11,8 @@
 #      : 
 # OUT  : 
 # REQ  : 
-# TODO : add mouseover labels to nodes
+# TODO : NOT WORKING WITH CURRENT GRAPH 2018-10-14
+#        add mouseover labels to nodes
 #        add mouseover labels to edges
 #        add special icon for Person
 #        add different colours 
@@ -46,7 +47,7 @@ where { CDISCPILOT01:Person_1 (x:foo|!x:bar)* ?s .
 #DMTriples = as.data.frame(sparql.remote(rdfSource, query))  # for local EP
 
 #-- Local TTL file
-setwd("C:/_gitHub/SDTM2RDF")
+setwd("C:/_gitHub/CTDasRDF")
 rdfSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
 
 

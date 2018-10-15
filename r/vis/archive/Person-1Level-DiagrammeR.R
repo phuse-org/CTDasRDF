@@ -8,7 +8,8 @@
 # INPUT: cdiscpilot01.TTL  (OR) local endpoint graph SDTMTORDF
 # OUT  : 
 # REQ  : 
-# TODO : !! tooltip not working: Shows node ID
+# TODO :  NOT WORKING WITH CURRENT GRAPH 2018-10-14
+#          !! tooltip not working: Shows node ID
 ###############################################################################
 library(plyr)  #  rename
 library(reshape)  #  melt

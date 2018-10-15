@@ -1,13 +1,14 @@
 #______________________________________________________________________________
-# FILE: SMSMapVis.R
+# FILE: SMSMap-Vis.R
 # DESC: Visualization of SMS files in CTDasRDF Project
 #       Used to understand the mapping of SDTM domains to the graph schema and
-#       as an aid in creatin queries. 
+#       as an s creatin queries. 
+# STATUS: EARLY DEV, INCOMPLETE
 # SRC : 
 # IN  : hard coded TTL source files
 # OUT : visNetwork graph
 # REQ : 
-# SRC : Map files in data/source folder:
+# SRC : Map files in data/source 
 #           A.TTL
 #           B.TTL
 #           C.TTL
@@ -16,10 +17,11 @@
 #   label - appears on the node/edge.  HTML is not prermitted
 #   title - appears on mouseover.      HTML is permitted
 #
-#   Nodes that are the object of an rdf:type subject are identified as 
-#         Onotology nodes and are styled distinctly to imply their link to 
-#         ontology files. 
-# TODO:  Change Edge color to dark orange when value is rdf:type 
+#   rdf:type predicates shown in orange 
+#         
+#         
+# TODO: Change to format the nodes and edges using DATA instead of visGroups, etc.
+#       seee: NodesFormattingBasedOnData.R
 #______________________________________________________________________________
 library(stringr)
 library(visNetwork)
@@ -101,27 +103,42 @@ triples$Title <- triples$o
 # Re-order dataframe. 
 triples<-triples[c("s", "p", "o", "Title", "mapFile")]
 
-# Ontology Nodes --------------------------------------------------------------
-# Create a dataframe to assign the Ontology Group to objects preceded by
-#   the predicate rdf:type. Later merge back into the nodes list.
-#   Create a copy of the triples df otherwise get nodes named Ont and group
-#   in later transformations.
-ontMassage <- triples
-ontMassage[grepl("rdf:type", ontMassage$p) , "group"] <- 'Ontology'
-# Keep the O designated as ontology objects
-ontologyNodes <- ontMassage[ontMassage$group =="Ontology", c("o", "group")]
-ontologyNodes <- ontologyNodes[complete.cases(ontologyNodes), ]
-ontologyNodes <- ontologyNodes[!duplicated(ontologyNodes$o),] # Remove duplicate Objects
-
-# Rename to allow later merge name
-names(ontologyNodes)[1] <- "id"
-
-
-#-----------------------------------------------------
 # Remove duplicates from the df
 triples <- triples[!duplicated(triples),]
 
-#---- Nodes Construction
+#---- Formatting 
+#  _EC = edge colours
+#  _BC = background colours
+cdiscpilot01_bc <-"blue"
+cd01p_bc        <- "lightblue"
+code_bc         <- "red"
+study_bc        <- "green"
+time_bc         <- "purple"
+owl_bc          <- "orange"
+        
+dm_ec  <- '#B3CDE3'
+
+
+#---- Nodes Construction ------------------------------------------------------
+# Legend Nodes
+lnodes <- read.table(header = TRUE, text = "
+label        color.border color.background 
+DM           'blue'        'white'
+VS           'white'      '#CCEBC5'
+EX           'white'      '#DECBE4'
+TS           'white'      '#FF9A9A'
+cdiscpilot01 'blue'       'white'
+cdo1p        'lightblue'  'white'
+code         'red'        'white'
+study        'green'      ''
+time         'purple'     'white'
+owl          'orange'     'white'
+")
+lnodes$shape <- "box"
+lnodes$title <- "Legend"
+
+
+#---- Nodes from the data
 # Get the unique list of nodes 
 # Combine Subject and Object into a single column
 # "id.vars" is the list of columns to keep untouched. The unamed ones (s,o) are 
@@ -136,50 +153,32 @@ nodeList <- nodeList[!duplicated(nodeList$value),]
 nodeList <- reshape::rename(nodeList, c("value" = "id" ))
 nodes <- as.data.frame(nodeList[c("id", "mapFile")])
 
-
 # nodes$foo <- paste0(">", nodes$id, "<")
 nodes <- as.data.frame(nodes[!duplicated(nodes), ])
 
-# Merge in the Ontology designations
-nodes <- merge(nodes, ontologyNodes, by="id", all=TRUE)
-
-# Assign groups -----
-#TODO NEED UPDATESS FOR CTDasRDF!
-#  Used for icon types and colours
-# Prefixes in various files:
-#   cdiscpilot01, study, code, time, cdo1p, owl, 
+# Colors
+# Default edge and fill
+#DEL nodes$color.border     <- "black"
+#DEL nodes$color.background <- "white"
 
 
-nodes$group[ is.na(nodes$group) & 
-             grepl("DM_Mappings.TTL",  nodes$mapFile, perl=TRUE) &
-             grepl("^study:",                          nodes$id, perl=TRUE)] <- "ut_kricreatvalIRI"  
 
-nodes$group[ is.na(nodes$group) & 
-             grepl("ut_kricreatval_parsed_map.TTL",  nodes$mapFile, perl=TRUE) &
-             grepl("^\"",                            nodes$id, perl=TRUE)] <- "ut_kricreatval"  
+#TW WIP HERE
+# Set the fill color using nodes$color assignment
+# Set the node border colour using visGroup options in visNetwork after assigning groups based on the data.
 
 
-# Macros IRI, non-IRI
-nodes$group[is.na(nodes$group) & 
-            grepl("macros_parsed_map.TTL",          nodes$mapFile, perl=TRUE) &
-            grepl("^rbm:",                          nodes$id, perl=TRUE)] <- "MacrosIRI"
-nodes$group[is.na(nodes$group) & 
-            grepl("macros_parsed_map.TTL",          nodes$mapFile, perl=TRUE) &
-            grepl("^\"",                            nodes$id, perl=TRUE)] <- "Macros"
+# Set the fill based on the source file.
+# Imputations ----
+nodes[nodes$mapFile == "DM_Mappings.TTL", "color.border"] <- dm_ec
 
-# KRI Template IRI, non-IRI
-nodes$group[is.na(nodes$group) & 
-            grepl("KRITemplate_parsed_map.TTL", nodes$mapFile, perl=TRUE) & 
-            grepl("^rbm:",                      nodes$id, perl=TRUE)] <- "KRITemplateIRI"
-nodes$group[is.na(nodes$group) & 
-            grepl("KRITemplate_parsed_map.TTL", nodes$mapFile, perl=TRUE) & 
-            grepl("^\"",                        nodes$id, perl=TRUE) ] <- "KRITemplate"
- 
-# Special hard codes for nodes that join between maps. Later do this programatically
-#  by finding nodes that are repeated in more than one file.
-# nodes$group[nodes$id =="rbm:KriUid_{kriuid}"] <- "Joiner"
-nodes$group[grepl("rbm:KriUid_{kriuid}|rbm:MacroName_{macroname}",   
-        nodes$id, perl=TRUE)] <- "Joiner"  
+#TODO: Other mappings for edge colour based on source file
+
+#TODO: Fill colors baed on regex to find cdispilot01, cd01p, study (red) etc.
+
+
+head(nodes)
+
 
 # Label and Title ----
 nodes$title <- gsub("\\{", "<font color='red'>\\{", nodes$id, perl=FALSE)
@@ -194,7 +193,7 @@ nodes$label <- strtrim(nodes$id, maxLabelSize)
 
 # nodes$label <- paste0(strtrim(nodes$id, 20), "...")
 nodes$shape <- "box"
-
+nodes$borderWidth <- 2
 
 
 #---- Edges
@@ -208,8 +207,6 @@ edges$color <-"#808080" # Default edge color
 edges$color[ grepl("rdf:type", edges$p, perl=TRUE) ] <- "orange"
 edges$length <- 500
 
-
-
 #---- Legend
 #  Examples at : https://datastorm-open.github.io/visNetwork/legend.html  
 # Custom Legend dataframes
@@ -217,21 +214,11 @@ edges$length <- 500
 #   Styles:  Map file = Background color
 #            Prefix   = Border 
 
-lnodes <- read.table(header = TRUE, text = "
-label        color.border color.background 
-DM           'white'      '#B3CDE3'
-VS           'white'      '#CCEBC5'
-EX           'white'      '#DECBE4'
-TS           'white'      '#FF9A9A'
-cdiscpilot01 'blue'       'white'
-cdo1p        'lightblue'  'white'
-code         'red'        'white'
-study        'green'      'white'
-time         'purple'     'white'
-owl          'orange'     'white'
-")
-lnodes$shape <- "box"
-lnodes$title <- "Legend"
+# BlUE #B3CDE3
+# Red  #FF9A9A
+
+# visNetwork(nodes, edges, width= "100%", height=1100)
+head(nodes)
 
 
 #---- Visualize 
@@ -245,44 +232,9 @@ visNetwork(nodes, edges, width= "100%", height=1100) %>%
   # visEdges(smooth=FALSE, color="#808080") %>%
   visEdges(smooth=FALSE) %>%
   
-  #DEBUG  visConfigure(enabled = TRUE) %>%
-  
-  visGroups(groupname = "ut_kricreatvalIRI", 
-              borderWidth = 2,
-              color   = list(background="#B3CDE3", border="#7ba8ce"))  %>%
-  visGroups(groupname = "ut_kricreatval", 
-              borderWidth = 2,
-              color   = list(background="#ededed", border="#7ba8ce"))  %>%
-  
-  
-  visGroups(groupname = "MacrosIRI", 
-              borderWidth = 2,
-              color   = list(background="#CCEBC5", border="#9ad78c")) %>%
-  visGroups(groupname = "Macros", 
-              borderWidth = 2,
-              color   = list(background="#ededed", border="#9ad78c")) %>%
-  
-  
-  visGroups(groupname = "KRITemplateIRI", 
-              borderWidth = 2,    
-              color   = list(background="#DECBE4", border="#be99ca")) %>%
-  visGroups(groupname = "KRITemplate", 
-              borderWidth = 2,    
-              color   = list(background="#ededed", border="#be99ca")) %>%
-    
-  visGroups(groupname = "Ontology", 
-              borderWidth = 2,    
-              color   = list(background="#ffae1a", border="#e69500"))%>%
-  
-  visGroups(groupname = "Join", 
-              borderWidth = 2,    
-              color   = list(background="#ff9a9a", border="#ff1a1a"))%>%
-  # Legend
+##  # Legend
   #  Examples at : https://datastorm-open.github.io/visNetwork/legend.html  
   visLegend(addNodes  = lnodes, 
             useGroups = FALSE,
             width     =  .2,
             stepY     = 60)
-   
-
-

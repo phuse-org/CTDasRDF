@@ -1,66 +1,68 @@
 ###############################################################################
-# FILE: Person-MultLevel-VisNetwork-ForceNetwork.R
+# FILE: Person-MultLevel-VisNetwork-FN-TripleStore.R
 # DESC: Visualization of the nodes connected to Person_1 as a FN graph
-#       Traverse the graph outward from Person_1
+#       Traverse the graph outward from Person_1 using SPARQL
 # SRC : 
 # DOCS:  https://cran.r-project.org/web/packages/visNetwork/visNetwork.pdf 
 #
-# IN  : cdiscpilot01.TTL  (OR) local endpoint graph
-# OUT : 
+# IN  : Stardog graph CTDasRDFOnt
+# OUT : FN graph
 # REQ :
 # SRC :
-# NOTE: Loads prefixes from  prefixes.csv. Must also add the bogus 'x' prefix
-#       to allow path traversal.
-#       For use in Workshop Demo to show vis of actual RDF "Person" data.
-# TODO: Convert into Shiny app that allows selection of Person?  (Not now: limited
-#       data in the test dataset)
+# NOTE: NOT WORKING WITH CURRENT GRAPH 2018-10-14
+#       Loads prefixes from  prefixes.csv. 
+#       Bogus 'x' prefix needed for path traversal.
+# TODO: Group assignments missing for many rows.
+#       Person_1 is hard coded, Must change to new naming convention in APR 2018
+#       Convert into Shiny app that allows selection of Person?  (Not now: limited
+#         data in the test dataset)
 ###############################################################################
 library(plyr)     #  rename
 library(reshape)  #  melt
-library(rrdf)
+library(SPARQL)
 library(visNetwork)
 
-setwd("C:/_github/CTDasRDF")
-allPrefix <- "data/config/prefixes.csv"  # List of prefixes
+setwd("C:/_gitHub/CTDasRDF/r")
+source("validation/Functions.R")
 
-prefixes <- as.data.frame( read.csv(allPrefix,
-  header=T,
-  sep=',' ,
-  strip.white=TRUE))
-# Create individual PREFIX statements
-prefixes$prefixDef <- paste0("PREFIX ", prefixes$prefix, ": <", prefixes$namespace,">")
+epOnt = "http://localhost:5820/CTDasRDFOnt/query"
+
+# Read in the prefixes
+prefixList <- read.csv(file="prefixList.csv", header=TRUE, sep=",")
+
+# Create a combined prefix IRI column.
+prefixList$prefix_ <- paste0("PREFIX ",prefixList$prefix, " ", prefixList$iri)
+
+# Collapse into a single string
+prefixBlock <- paste(prefixList$prefix_, collapse = "\n")
 
 # Note addition of prefix 'x' needed for traversal
-query = paste0(paste(prefixes$prefixDef, collapse=""),
-  "PREFIX x: <http://example.org/bogus>
+query = paste0(prefixBlock,"
+  PREFIX x: <http://example.org/bogus>
   SELECT ?s ?p ?o 
-  FROM <http://localhost:8890/CTDasRDF>
   WHERE { cdiscpilot01:Person_1 (x:foo|!x:bar)* ?s . 
     ?s ?p ?o . 
   } LIMIT 20")
 
-
-# Two options: Can use either a SPARQL endpoint (Triplestore) or TTL file.
-#-- A. Endpoint 
-#rdfSource = "http://localhost:8890/sparql"  # local EP
-#DMTriples = as.data.frame(sparql.remote(rdfSource, query))  # for local EP
-
-#-- B. TTL file
-rdfSource = load.rdf("data/rdf/cdiscpilot01.TTL", format="N3")
-
-DMTriples = as.data.frame(sparql.rdf(rdfSource, query))
+# Query results dfs ----  
+qr <- SPARQL(url=epOnt, query=query)
+    
+personTriples <- as.data.frame(qr$results)
 
 # Remove any rows that have a blank Object. 
-DMTriples<-DMTriples[!(DMTriples$o==""),]
+personTriples<-personTriples[!(personTriples$o==""),]
 
 # Remove duplicates from the query
-DMTriples <- DMTriples[!duplicated(DMTriples),]
+personTriples <- personTriples[!duplicated(personTriples),]
+
+# shorten from IRI to qnam
+triplesDer <- IRItoPrefix(sourceDF=personTriples, colsToParse=c("s", "p", "o"))
 
 #---- Nodes Construction
 # Unique list of nodes by combine Subject and Object into a single column
 #   "id.vars" is the list of columns to keep untouched. The unamed ones (s,o) are 
 #   melt into the "value" column.
-nodeList <- melt(DMTriples, id.vars=c("p" ))
+nodeList <- melt(triplesDer, id.vars=c("p" ))
 
 # A node can be both Subject and Object. Ensure a unique list of node names
 #   by dropping duplicate values.
@@ -71,7 +73,8 @@ nodeList <- rename(nodeList, c("value" = "id" ))
 nodes<- as.data.frame(nodeList[c("id")])
 
 # Assign groups used for icon types and colours
-# Order is important.
+# Order is important. 
+# TODO: many not assigned with new data APR2018
 nodes$group[grepl("sdtm-terminology", nodes$id, perl=TRUE)] <- "SDTMTerm"  
 nodes$group[grepl("study",            nodes$id, perl=TRUE)] <- "Study"  
 nodes$group[grepl("code",             nodes$id, perl=TRUE)] <- "Code"  
@@ -90,7 +93,7 @@ nodes$label <- gsub("\\S+:", "", nodes$id)
 
 #---- Edges
 # Create list of edges by keeping the Subject and Predicate from query result.
-edges<-rename(DMTriples, c("s" = "from", "o" = "to"))
+edges<-rename(triplesDer, c("s" = "from", "o" = "to"))
 
 # Edge values
 #   use edges$label for values always present
@@ -98,7 +101,7 @@ edges<-rename(DMTriples, c("s" = "from", "o" = "to"))
 edges$title <-gsub("\\S+:", "", edges$p)   # label : text always present
 
 # Graph selectible by ID or Group. 
-visNetwork(nodes, edges, height = "500px", width = "100%") %>%
+visNetwork(nodes, edges, height = "800px", width = "100%") %>%
   visOptions(selectedBy = "group", 
              highlightNearest = TRUE, 
              nodesIdSelection = TRUE) %>%

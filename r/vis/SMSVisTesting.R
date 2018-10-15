@@ -1,13 +1,14 @@
 #______________________________________________________________________________
 # FILE: SMSVisTesting.R
-# DESC: Test visualization of SMS files as way to understand the structure of
-#       the data resulting from their use.
+# DESC: Example collapsible hierarchy view of SMS files as way to understand 
+#       the structure of the data resulting from their use.
 # SRC : 
 # IN  : hard coded TTL file: SUPPDM_mappings.TTL
 # OUT : dataframe
 # REQ : 
 # SRC : 
 # NOTE: 
+# PROB: Labels overlap each other and the graph.
 # TODO: Add process of the triples dataframe to a collapsible tree diagram
 #______________________________________________________________________________
 library(stringr)
