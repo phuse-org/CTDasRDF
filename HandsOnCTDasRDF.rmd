@@ -14,8 +14,8 @@ knitr::opts_chunk$set(echo = TRUE)
 Date         | Comment
 ------------ | ----------------------------
 2018-08-23   | Documentation creation (KG)
-2018-10-12   | Enhance documentation
-
+2018-10-12   | Enhance documentation (KG)
+2018-10-13   | Ontology viz and namespace cmds (NN)
 
 ## Overview
 
@@ -29,7 +29,7 @@ To get start your hands on the project you can perform the following steps:
 
 ![Figure: Screenshot to download .zip](./doc/images/compiled_overview.png)
 
-```
+``` {r eval=FALSE, echo=FALSE}
 library("Rgraphviz")
 roadmapGraph <- new("graphNEL", nodes=c("Installation", 
                                         "Setup Stardog", 
@@ -154,7 +154,16 @@ The core of the linked data is the Ontologies which define the links, object typ
 
 ### Browse Ontologies (e.g. Protege, WebVOWL)
 
-Expected later
+#### WebVOWL-based ontology visualizations
+The following links can be used to browse the ontologies through WebVOWL:
+
+* [cd01p](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#)
+* [cdiscpilot01](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#)
+* [code](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#)
+* [sdtm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#)
+* [sdtmterm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#)
+* [study](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#)
+
 
 ## View SMS (Stardog Mapping Syntax) TTL Files
 
@@ -241,6 +250,16 @@ You might not like the long prefixes which are displayed on every query result. 
 
 To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <http://localhost:5820/#/databases> and select your "http://localhost:5820/#/databases" database. Turn the database "OFF" and "Edit". Now you are able to "Add namespace" as you like. Remember to "Save" and turn the database "ON".
 
+Alternatively, you can set the namespaces from the commandline by pasting the following commands into the terminal:
+```
+stardog namespace add CTDasRDFSMS --prefix cd01p --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#
+stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#
+stardog namespace add CTDasRDFSMS --prefix code --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#
+stardog namespace add CTDasRDFSMS --prefix sdtm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#
+stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#
+stardog namespace add CTDasRDFSMS --prefix study --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#
+```
+
 When you now perform any queries, you will see the namespace abbreviations nicely in the result:
 ```
 SELECT *
@@ -248,6 +267,16 @@ WHERE {
 	?s ?p ?o
 } LIMIT 20
 ```
+
+s (subject)               |	p (predicate)                 |	o (object)
+------------------------- | ----------------------------- | -------------------------------
+cdiscpilot01:stdm-graph	  | rdfs:label	                  | Clinical Trials data as an RDF graph.
+cdiscpilot01:Date_2014-07-02	| skos:prefLabel |	2014-07-02
+cdiscpilot01:Date_2014-07-02	| study:dateTimeInXSDString	| 2014-07-02
+cdiscpilot01:Date_2014-07-02	| rdf:type	| study:CumulativeDrugAdministrationEnd
+cdiscpilot01:Date_2014-07-02	| rdf:type	| study:ReferenceEnd
+cdiscpilot01:DemographicDataCollection_01-701-1015	| study:hasSubActivity	| cdiscpilot01:EthnicityDataCollection_01-701-1015
+
 
 ## Get Hands on triple store outside Stardog
 
