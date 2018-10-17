@@ -601,7 +601,6 @@ code:MedicalCondition
   rdfs:subClassOf code:CategoricalOutcome ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   rdfs:subClassOf code:DefinedConcept ;
-  skos:definition "" ;
   skos:prefLabel "Medical condition term" ;
 .
 code:Method
@@ -761,7 +760,6 @@ code:Observation
       owl:allValuesFrom code:ObservationOutcome ;
       owl:onProperty code:outcome ;
     ] ;
-  skos:definition "" ;
   skos:prefLabel "Observation term" ;
 .
 code:ObservationOutcome
@@ -990,6 +988,15 @@ code:Sex_UN
   rdf:type code:Sex ;
   skos:altLabel "" ;
   skos:prefLabel "UN" ;
+.
+code:Sponsor
+  rdf:type owl:Class ;
+  rdfs:label "Sponsor" ;
+  rdfs:subClassOf code:DefinedConcept ;
+.
+code:Sponsor_CDISCPILOT01
+  rdf:type code:Sponsor ;
+  skos:prefLabel "CDISCPILOT01" ;
 .
 code:StandardFormat
   rdf:type owl:Class ;

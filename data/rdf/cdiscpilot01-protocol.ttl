@@ -268,10 +268,6 @@ cd01p:Site_9
   study:hasCountry code:Country_1 ;
   study:hasSiteID cd01p:SiteIdentifier_9 ;
 .
-cd01p:Sponsor_1
-  rdf:type study:Sponsor ;
-  skos:prefLabel "CLINICAL STUDY SPONSOR" ;
-.
 cd01p:StartRuleLying5
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -461,7 +457,9 @@ cd01p:Study_CDISCPILOT01
   study:hasProtocolSpecifiedActivity custom:VisitWk4Activity ;
   study:hasProtocolSpecifiedActivity custom:VisitWk6Activity ;
   study:hasProtocolSpecifiedActivity custom:VisitWk8Activity ;
+  study:hasSponsor code:Sponsor_CDISCPILOT01 ;
   study:hasStudyID cd01p:StudyIdentifier_1 ;
+  study:hasTitle cd01p:Title_CDISCPILOT01 ;
 .
 cd01p:Subcategory_1
   rdf:type study:Subcategory ;
@@ -472,7 +470,7 @@ cd01p:SubstanceQuantity_1
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 1" ;
-  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasIngredient custom:InvestigationalSubstance_xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 0 ;
 .
@@ -480,7 +478,7 @@ cd01p:SubstanceQuantity_2
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 2" ;
-  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasIngredient custom:InvestigationalSubstance_xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 54 ;
 .
@@ -488,9 +486,13 @@ cd01p:SubstanceQuantity_3
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 3" ;
-  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasIngredient custom:InvestigationalSubstance_xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 81 ;
+.
+cd01p:Title_CDISCPILOT01
+  rdf:type study:Title ;
+  skos:prefLabel "Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer’s Disease." ;
 .
 cd01p:VisitScreening1BloodPressure
   rdf:type owl:Class ;
@@ -589,6 +591,9 @@ code:Sex
   code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
+code:Sponsor_CDISCPILOT01
+  rdf:type study:Sponsor ;
+.
 code:SystolicBloodPressure
   rdfs:subClassOf study:VitalSign ;
 .
@@ -624,7 +629,7 @@ custom:AssumeBodyPositionSupine
   skos:definition "" ;
   skos:prefLabel "ASSUME BODY POSITION SUPINE" ;
 .
-custom:InvestigationalSubstance_1
+custom:InvestigationalSubstance_xanomeline
   rdf:type code:ActiveSubstance ;
   rdf:type study:InvestigationalSubstance ;
   skos:prefLabel "XANOMELINE" ;
