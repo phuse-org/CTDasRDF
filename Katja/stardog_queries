@@ -1,0 +1,64 @@
+#Delete all tripples
+DELETE{?s ?p ?o} WHERE{?s ?p ?o}
+
+
+SELECT * WHERE {?s  ?p ?o}
+
+#get all types
+SELECT DISTINCT ?t WHERE {?s rdf:type ?t}
+
+#get all classes
+SELECT DISTINCT ?s WHERE {?s rdf:type owl:Class}
+
+SELECT * WHERE {?s  study:hasSite ?o}
+
+SELECT * WHERE {cd01p:Site_701  ?p ?o}
+
+
+SELECT * WHERE {study:EnrolledSubject ?p ?o}
+
+# get all OWLs and import them
+SELECT * WHERE {?s owl:imports ?o}
+
+PREFIX code:   <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl>
+SELECT * WHERE {study:EnrolledSubject ?p ?o}
+
+PREFIX arg: <http://spinrdf.org/arg#> 
+PREFIX code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX sdtmterm: <http://rdf.cdisc.org/sdtmterm#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX smf: <http://topbraid.org/sparqlmotionfunctions#> 
+PREFIX sp: <http://spinrdf.org/sp#> 
+PREFIX spin: <http://spinrdf.org/spin#> 
+PREFIX spl: <http://spinrdf.org/spl#> 
+PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> 
+PREFIX time: <http://www.w3.org/2006/time#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+SELECT * WHERE {study:EnrolledSubject ?p ?o}
+SELECT * WHERE {?s ?p study:EnrolledSubject}
+SELECT * WHERE {study:actualArm ?p ?o}
+SELECT * WHERE {study:HumanStudySubject ?p ?o}
+SELECT * WHERE {?s ?p study:HumanStudySubject}
+
+rdf:type
+skos:prefLabel
+rdfs:subClassOf	
+rdfs:comment
+skos:definition
+owl:equivalentClass
+
+
+rdfs:range
+rdfs:subClassOf
+rdfs:domain
+rdfs:domain
+rdfs:domain
+rdfs:subClassOf
+rdfs:domain
+rdfs:range
+http://spinrdf.org/sp#object
+owl:allValuesFrom
+
