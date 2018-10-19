@@ -1,0 +1,126 @@
+@prefix stardog: <tag:stardog:api:> .
+@prefix : <http://api.stardog.com/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
+@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
+@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix sdtm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#> .
+@prefix sdtmterm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#> .
+@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+
+cdiscpilot01:Person_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Person 01-701-1028" ;
+	study:participatesIn cdiscpilot01:RandomizationBAL3_01-701-1028 , cdiscpilot01:InformedConsentAdult_01-701-1028 , cdiscpilot01:DemographicDataCollection_01-701-1028 , cdiscpilot01:CumulativeDrugAdministration_01-701-1028 ;
+	study:hasLifespan cdiscpilot01:Interval_1942-07-19_ ;
+	a study:EnrolledSubject ;
+	study:hasReferenceInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 ;
+	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 ;
+	study:hasSite cd01p:Site_701 ;
+	study:actualArm cd01p:Arm_XanomelineHigh ;
+	study:hasSubjectID cdiscpilot01:SubjectIdentifier_1028 ;
+	study:hasStudyParticipationInterval cdiscpilot01:Interval_2013-07-11_2014-01-14T11_10 .
+
+cdiscpilot01:RandomizationBAL3_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Randomization Person 01-701-1028" ;
+	a code:RandomizationBAL3 ;
+	code:outcome cd01p:Arm_XanomelineHigh ;
+	study:activityStatus code:ActivityStatus_CO .
+
+cdiscpilot01:Date_2013-07-11 <http://www.w3.org/2004/02/skos/core#prefLabel> "2013-07-11" ;
+	study:dateTimeInXSDString "2013-07-11" ;
+	a study:InformedConsentBegin , study:DemogDataCollectionDate , study:StudyParticipationBegin .
+
+cdiscpilot01:VisitScreening1Activity_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Visit Screening 1 Person 01-701-1028" ;
+	a owl:Class ;
+	rdfs:subClassOf <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#VisitScreening1Activity> .
+
+cdiscpilot01:Date_2013-07-19 <http://www.w3.org/2004/02/skos/core#prefLabel> "2013-07-19" ;
+	study:dateTimeInXSDString "2013-07-19" ;
+	a study:CumulativeDrugAdministrationBegin , study:ReferenceBegin .
+
+cd01p:Study_CDISCPILOT01 study:hasStudyParticipant cdiscpilot01:Person_01-701-1028 .
+
+cdiscpilot01:SubjectIdentifier_1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "1028" ;
+	a study:SubjectIdentifier .
+
+cdiscpilot01:InformedConsentAdult_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Informed consent Person 01-701-1028" ;
+	a code:InformedConsentAdult ;
+	code:outcome code:InformedConsentOutcome_1 ;
+	study:hasStartRule study:StartRuleDefault_1 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasActivityInterval cdiscpilot01:Interval_2013-07-11_ .
+
+cdiscpilot01:DemographicDataCollection_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Person 01-701-1028 Screening 1 Demographic data collection" ;
+	study:hasSubActivity cdiscpilot01:AgeDataCollection_01-701-1028 , cdiscpilot01:RaceDataCollection_01-701-1028 , cdiscpilot01:EthnicityDataCollection_01-701-1028 , cdiscpilot01:SexDataCollection_01-701-1028 ;
+	a cdiscpilot01:VisitScreening1Activity_01-701-1028 , cd01p:VisitScreening1DemogDataColl , code:DemographicDataCollection ;
+	code:outcome code:Successfully_Completed ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasDate cdiscpilot01:Date_2013-07-11 .
+
+cdiscpilot01:AgeDataCollection_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Person 01-701-1028 Screening 1 Age data collection" ;
+	a code:AgeDataCollection ;
+	code:outcome cdiscpilot01:AgeOutcome_71 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasDate cdiscpilot01:Date_2013-07-11 .
+
+cdiscpilot01:AgeOutcome_71 <http://www.w3.org/2004/02/skos/core#prefLabel> "71 YEARS" ;
+	a study:AgeOutcome ;
+	code:hasUnit <http://www.w3.org/2006/time#unitYear> ;
+	code:hasValue 71 .
+
+cdiscpilot01:RaceDataCollection_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Person 01-701-1028 Screening 1 Race data collection" ;
+	a code:RaceDataCollection ;
+	code:outcome code:Race_WHITE ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasDate cdiscpilot01:Date_2013-07-11 .
+
+cdiscpilot01:EthnicityDataCollection_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Person 01-701-1028 Screening 1 Ethnicity data collection" ;
+	a code:EthnicityDataCollection ;
+	code:outcome code:Ethnicity_NOT_HISPANIC_OR_LATINO ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasDate cdiscpilot01:Date_2013-07-11 .
+
+cdiscpilot01:Interval_2013-07-11_2014-01-14T11_10 <http://www.w3.org/2004/02/skos/core#prefLabel> "Interval 2013-07-11 to 2014-01-14T11:10" ;
+	<http://www.w3.org/2006/time#hasEnd> cdiscpilot01:Date_2014-01-14T11_10 ;
+	a study:StudyParticipationInterval ;
+	<http://www.w3.org/2006/time#hasBeginning> cdiscpilot01:Date_2013-07-11 .
+
+cdiscpilot01:Date_2014-01-14T11_10 <http://www.w3.org/2004/02/skos/core#prefLabel> "2014-01-14T11:10" ;
+	study:dateTimeInXSDString "2014-01-14T11:10" ;
+	a study:StudyParticipationEnd .
+
+cdiscpilot01:Date_2014-01-14 <http://www.w3.org/2004/02/skos/core#prefLabel> "2014-01-14" ;
+	study:dateTimeInXSDString "2014-01-14" ;
+	a study:CumulativeDrugAdministrationEnd , study:ReferenceEnd .
+
+cdiscpilot01:Interval_2013-07-19_2014-01-14 <http://www.w3.org/2004/02/skos/core#prefLabel> "Interval 2013-07-19 to 2014-01-14" ;
+	<http://www.w3.org/2006/time#hasEnd> cdiscpilot01:Date_2014-01-14 ;
+	a study:CumulativeDrugAdministrationInterval , study:ReferenceInterval ;
+	<http://www.w3.org/2006/time#hasBeginning> cdiscpilot01:Date_2013-07-19 .
+
+cdiscpilot01:SexDataCollection_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Person 01-701-1028 Screening 1 Sex data collection" ;
+	a code:SexDataCollection ;
+	code:outcome code:Sex_M ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasDate cdiscpilot01:Date_2013-07-11 .
+
+cdiscpilot01:Interval_1942-07-19_ <http://www.w3.org/2004/02/skos/core#prefLabel> "Interval 1942-07-19 to " ;
+	a study:Lifespan ;
+	<http://www.w3.org/2006/time#hasBeginning> cdiscpilot01:Date_1942-07-19 .
+
+cdiscpilot01:UniqueSubjectIdentifier_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "01-701-1028" ;
+	a study:UniqueSubjectIdentifier .
+
+cdiscpilot01:CumulativeDrugAdministration_01-701-1028 <http://www.w3.org/2004/02/skos/core#prefLabel> "Drug administration period 2013-07-19 to 2014-01-14" ;
+	a study:CumulativeDrugAdministration ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 .
+
+cdiscpilot01:Date_1942-07-19 <http://www.w3.org/2004/02/skos/core#prefLabel> "1942-07-19" ;
+	study:dateTimeInXSDString "1942-07-19" ;
+	a study:Birthdate .
+
+cdiscpilot01:Interval_2013-07-11_ <http://www.w3.org/2004/02/skos/core#prefLabel> "Interval 2013-07-11 to " ;
+	a study:InformedConsentInterval ;
+	<http://www.w3.org/2006/time#hasBeginning> cdiscpilot01:Date_2013-07-11 .

@@ -58,7 +58,11 @@ myEAttrs <- list()
 myEAttrs$label <- c("Study~Subject"="Participates in", "Study~Site"="has")
 plot(myGraph, edgeAttrs=myEAttrs)
 
-
+png(filename="example_graphViz.png")
+plot(myGraph, edgeAttrs=myEAttrs, attrs=list(node=list(label="foo", fillcolor="lightgreen", 
+                                                       fontsize=12, shape="box", width="1.5"),
+                                             graph=list(rankdir="LR")), main = "Figure 1: Step overview")
+dev.off()
 
 
 roadmapGraph <- new("graphNEL", nodes=c("Installation", 

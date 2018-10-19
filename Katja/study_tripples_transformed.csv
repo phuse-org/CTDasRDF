@@ -1,0 +1,267 @@
+subject,types,typeClass,typeProp,subClassOf,subPropOf,comment,definition,label,fromDomain,toRange
+<http://rdf.cdisc.org/sdtmterm#C66731.C16576>,,,,,,,,"""F""",,
+<http://rdf.cdisc.org/sdtmterm#C66731.C17998>,,,,,,,,"""U""",,
+<http://rdf.cdisc.org/sdtmterm#C66731.C20197>,,,,,,,,"""M""",,
+<http://rdf.cdisc.org/sdtmterm#C66731.C45908>,,,,,,,,"""UNDIFFERENTIATED""",,
+<https://raw.githubusercontent.com/phuse-org/CT,owl:Ontology,,,,,,,,,
+arg:activityDate,rdf:Property,,1,,,,,,,
+arg:birthdate,rdf:Property,,1,,,,,,,
+arg:datestring,rdf:Property,,1,,,,,,,
+arg:datestring1,rdf:Property,,1,,,,,,,
+arg:datestring2,rdf:Property,,1,,,,,,,
+arg:refDate,rdf:Property,,1,,,,,,,
+arg:refdate,rdf:Property,,1,,,,,,,
+code:ActivityStatus_CO,study:ActivityStatus,,,,,,,,,
+code:ActivityStatus_IC,study:ActivityStatus,,,,,,,,,
+code:ActivityStatus_ND,study:ActivityStatus,,,,,,,,,
+code:ActivityStatus_ST,study:ActivityStatus,,,,,,,,,
+code:AgeDataCollection,owl:Restriction,,,study:Observation,,,,,,
+code:AnatomicLocation,owl:Restriction,,,,,,,,,
+code:Arm,study:AnatomicLocation,,,,,,,,,
+code:AssumeBodyPosition,owl:Restriction,,,,,,,,,
+code:BloodPressure,owl:Restriction,,,,,,,,,
+code:BodyPosition_STANDING,study:BodyPosition,,,,,,,,,
+code:BodyPosition_SUPINE,study:BodyPosition,,,,,,,,,
+code:DemographicDataCollection,owl:Restriction,,,study:Observation,,,,,,
+code:DiastolicBloodPressure,owl:Restriction,,,,,,,,,
+code:EthnicityDataCollection,owl:Restriction,,,study:Observation,,,,,,
+code:Ethnicity_HISPANIC_OR_LATINO,study:EthnicOutcome,,,,,,,,,
+code:Ethnicity_NOT_HISPANIC_OR_LATINO,study:EthnicOutcome,,,,,,,,,
+code:Ethnicity_NOT_REPORTED,study:EthnicOutcome,,,,,,,,,
+code:Ethnicity_UNKNOWN,study:EthnicOutcome,,,,,,,,,
+code:GenericOutcome,,,,study:CategoricalOutcome,,,,,,
+code:Height,owl:Restriction,,,,,,,,,
+code:InformedConsentOutcome_1,study:InformedConsentOutcom,,,,,,,,,
+code:InformedConsentOutcome_2,study:InformedConsentOutcom,,,,,,,,,
+code:InformedConsentOutcome_3,study:InformedConsentOutcom,,,,,,,,,
+code:Oral_Cavity,study:AnatomicLocation,,,,,,,,,
+code:Pulse,owl:Restriction,,,,,,,,,
+code:RaceDataCollection,owl:Restriction,,,study:Observation,,,,,,
+code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE,study:RaceOutcome,,,,,,,,,
+code:Race_ASIAN,study:RaceOutcome,,,,,,,,,
+code:Race_BLACK_OR_AFRICAN_AMERICAN,study:RaceOutcome,,,,,,,,,
+code:Race_NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLA,study:RaceOutcome,,,,,,,,,
+code:Race_WHITE,study:RaceOutcome,,,,,,,,,
+code:RuleOutcome_FALSE,study:RuleOutcome,,,,,,,,,
+code:RuleOutcome_NA,study:RuleOutcome,,,,,,,,,
+code:RuleOutcome_TRUE,study:RuleOutcome,,,,,,,,,
+code:SexDataCollection,owl:Restriction,,,study:Observation,,,,,,
+code:Sex_F,study:SexOutcome,,,,,,,,,
+code:Sex_M,study:SexOutcome,,,,,,,,,
+code:Sex_U,study:SexOutcome,,,,,,,,,
+code:Sex_UN,study:SexOutcome,,,,,,,,,
+code:SystolicBloodPressure,owl:Restriction,,,,,,,,,
+code:Temperature,owl:Restriction,,,,,,,,,
+code:Weight,owl:Restriction,,,,,,,,,
+code:hasAge,,,,,,,,,,study:AgeOutcome
+code:outcome,owl:FunctionalProperty#owl:ObjectProperty,,1,,,,,"""has outcome""",study:StudyActivity,study:ActivityOutcome
+study:ActiveProduct,owl:Class,1,,study:Product,,,,"""Active product""",,
+study:Activity,owl:Class,1,,study:StudyComponent,,,,,,
+study:ActivityBegin,owl:Class,1,,study:BeginInstant,,,,"""Activity begin""",,
+study:ActivityDate,owl:Class,1,,study:Date,,"""""","""""","""Activity date""",,
+study:ActivityEnd,owl:Class,1,,study:EndInstant,,"""""","""""","""Activity end""",,
+study:ActivityInterval,owl:Class,1,,time:Interval,,"""""","""""","""Activity interval""",,
+study:ActivityOutcome,owl:Class,1,,study:Entity,,"""""","""An Entity that is the outc","""Activity outcome""",,
+study:ActivityStatus,owl:Class,1,,study:Entity,,,"""The Status or state of a S","""Activity status""",,
+study:AdministrativeActivity,owl:Class,1,,study:StudyActivity,,"""""","""A StudyActivity that is pe","""Administrative activity""",,
+study:AdministrativeActivityOutcome,owl:Class,1,,study:ActivityOutcome,,,,"""Administrative activity ou",,
+study:AdverseEvent,owl:Class,1,,study:MedicalCondition,,"""""","""An adverse Medical Conditi","""Adverse event""",,
+study:AgeOutcome,owl:Class#owl:Restriction#sp:Ask#sp:Filter#sp:lt,1,,study:NumericOutcome,,,,"""Age""",,
+study:Allocation,owl:Class,1,,study:AdministrativeActivit,,"""""","""""","""Allocation""",,
+study:AllocationOutcome,owl:Class,1,,study:AdministrativeActivit,,,,"""Allocation outcome""",,
+study:Analysis,owl:Class#owl:Restriction,1,,study:StudyActivity,,"""""","""An examination, sometimes","""Analysis""",,
+study:AnalysisOutcome,owl:Class,1,,study:ActivityOutcome,,,,"""Analysis outcome""",,
+study:AnatomicLocation,owl:Class,1,,study:Entity,,,"""The location on the body w","""Anatomic location""",,
+study:AnnotatedCaseReportForm,owl:Class,1,,study:BlankCaseReportForm,,,,"""Annotated Case Report Form",,
+study:Arm,owl:Class,1,,study:StudyActivity,,,"""A path though the study wh","""ARM""",,
+study:Assessment,owl:Class#owl:Restriction,1,,study:Analysis,,"""when formalized in a proto","""An examination of one or m","""Assessment""",,
+study:AssessmentRule,owl:Class,1,,study:Rule,,"""""","""""","""Assessment rule""",,
+study:Assessor,owl:Class#owl:Restriction,1,,study:Party,,"""""","""A Party that performs an A","""Assessor""",,
+study:AssumeBodyPosition,owl:Class,1,,study:Intervention,,"""""","""An Intervention whose inte","""Assume a specific body pos",,
+study:BeginInstant,owl:Class,1,,study:Date,,"""""","""""","""Begin""",,
+study:Birthdate,owl:Class,1,,study:BeginInstant,,"""""","""""","""Birthdate""",,
+study:BlankCaseReportForm,owl:Class,1,,study:CaseReportForm,,,,"""Blank case report form""",,
+study:BloodPressureOutcome,owl:Class#owl:Restriction,1,,study:NumericOutcome#study:VitalSignOutcome,,,,"""Blood pressure outcome""",,
+study:BodyPosition,owl:Class,1,,study:InterventionOutcome,,,,"""Body position""",,
+study:CRFLocation,owl:Class,1,,study:Entity,,,"""A portion of the case repo","""CRFComponent""",,
+study:CaseReportForm,owl:Class,1,,study:Document,,,,"""Case report form""",,
+study:CategoricalOutcome,owl:Class,1,,study:ObservationOutcome,,,,,,
+study:Category,owl:Class,1,,study:Entity,,,,"""Category""",,
+study:Country,owl:Class,1,,study:Entity,,,,"""Country""",,
+study:CumulativeDrugAdministration,owl:Class,1,,study:Intervention,,"""""","""The act of administering/t","""Product administration""",,
+study:CumulativeDrugAdministrationBegin,owl:Class,1,,study:ActivityBegin,,"""""","""""","""Product administration beg",,
+study:CumulativeDrugAdministrationEnd,owl:Class,1,,study:ActivityEnd,,"""""","""""","""Product administration end",,
+study:CumulativeDrugAdministrationInterval,owl:Class#sp:Bind#sp:Construct#sp:Max#sp:Min#sp:Select#sp:SubQuery#xsd:string,1,,study:ActivityInterval,,"""Calculate CumulativeProduc","""""","""Product administration int",,
+study:Date,owl:Class,1,,time:Instant,,"""""","""The date and time when som","""Date""",,
+study:DeathFlag,owl:Class,1,,study:Flag,,,,"""Death flag""",,
+study:Deathdate,owl:Class,1,,study:EndInstant,,"""""","""""","""Deathdate""",,
+study:DemogDataCollectionDate,owl:Class,1,,study:ActivityDate,,"""""","""""","""Demog data collect begin""",,
+study:Derivation,owl:Class,1,,study:Analysis,,,"""An Analysis that examines","""Derivation""",,
+study:Document,owl:Class,1,,study:Entity,,,,"""Document""",,
+study:DrugAdministrationComplete,study:DrugAdministrationOut,,,,,,,"""Drug administration comple",,
+study:DrugAdministrationOutcome,owl:Class,1,,study:ActivityOutcome,,,,"""Drug administration outcom",,
+study:EligibilityCriteria,owl:Class,1,,study:Rule,,"""""","""""","""Eligibility criteria""",,
+study:EligibleSubject,owl:Class,1,,study:HumanStudySubject,,"""The eligible subject meets","""A HumanStudySubject who ha","""Eligible subject""",,
+study:EndInstant,owl:Class,1,,time:Instant,,"""""","""""","""End""",,
+study:EnrolledSubject,owl:Class,1,,study:HumanStudySubject,,"""an Enrolled Subject includ","""A Human Study Subject that","""Enrolled subject""",,
+study:Entity,owl:Class,1,,study:StudyComponent,,"""""","""""","""Entity""",,
+study:EthnicOutcome,owl:Class,1,,study:CategoricalOutcome,,,,"""Ethnic outcome""",,
+study:Evaluator,owl:Class,1,,study:Party,,,"""<need definition to distin","""QEVAL""",,
+study:Event,owl:Class,1,,study:Entity,,"""""","""An occurrence; something t","""Event""",,
+study:FixedDoseDrugAdministration,owl:Class,1,,study:Intervention,,,"""A ClinicalIntervention whe","""Fixed Dose Drug administra",,
+study:FixedDoseInterval,owl:Class,1,,study:ActivityInterval,,,"""Provides the start and end","""Fixed dose interval""",,
+study:FixedDoseIntervalBegin,owl:Class,1,,study:ActivityBegin,,,,"""Fixed dose interval begin""",,
+study:FixedDoseIntervalEnd,owl:Class,1,,study:ActivityEnd,,,,"""Fixed dose interval end""",,
+study:Flag,owl:Class,1,,study:Derivation,,,"""A Derivation where the res","""Flag""",,
+study:HeightOutcome,owl:Class#owl:Restriction,1,,study:NumericOutcome#study:VitalSignOutcome,,,,"""Height length outcome""",,
+study:HumanStudySubject,owl:Class#owl:Restriction,1,,study:HumanSubject,,"""The subject participates i","""A Human Subject who partic","""Human study subject""",,
+study:HumanSubject,owl:Class,1,,study:Person,,,"""A Person of interest for p","""Human subject""",,
+study:Identifier,owl:Class,1,,study:Entity,,,,"""Identifier""",,
+study:Indication,owl:Class,1,,study:MedicalCondition,,"""""","""A medical condition that i","""Indication""",,
+study:InformedConsent,owl:Class#owl:Restriction,1,,study:AdministrativeActivit,,,,"""Informed consent""",,
+study:InformedConsentBegin,owl:Class,1,,study:ActivityBegin,,"""""","""""","""Informed consent begin""",,
+study:InformedConsentEnd,owl:Class,1,,study:ActivityEnd,,"""""","""""","""Informed consent end""",,
+study:InformedConsentInterval,owl:Class,1,,study:ActivityInterval,,"""""","""""","""Informed consent interval""",,
+study:InformedConsentOutcome,owl:Class,1,,study:AdministrativeActivit,,,,"""Informed consent outcome""",,
+study:Intervention,owl:Class,1,,study:StudyActivity,,"""""","""A study activity that invo","""Intervention""",,
+study:InterventionDate,owl:Class,1,,study:ActivityDate,,"""""","""""","""Intervention date""",,
+study:InterventionOutcome,owl:Class,1,,study:ActivityOutcome,,,,"""Intervention outcome""",,
+study:InvestigationalProduct,owl:Class,1,,study:ActiveProduct,,,,"""Investigational product""",,
+study:InvestigationalSubstance,owl:Class,1,,study:Substance,,,,"""Investigational substance""",,
+study:Investigator,owl:Class,1,,study:ResearchStaff,,"""""","""""","""Investigator""",,
+study:InvestigatorIdentifier,owl:Class,1,,study:Identifier,,,,"""Investigator identifier""",,
+study:LaboratoryObservation,owl:Class,1,,study:Observation,,"""""","""A Clinical Observation tha","""Laboratory observation""",,
+study:Lifespan,owl:Class,1,,time:Interval,,"""""","""""","""Lifespan""",,
+study:MedicalCondition,owl:Class,1,,study:Event,,,,"""Medical condition""",,
+study:NumericOutcome,owl:Class,1,,study:ObservationOutcome,,,,,,
+study:Observation,owl:Class,1,,study:Intervention,,,""" An Intervention whose int","""Observation""",,
+study:ObservationEndDate,owl:Class,1,,study:ActivityEnd,,"""""","""""","""Observation end date""",,
+study:ObservationOutcome,owl:Class,1,,study:InterventionOutcome,,,,"""Observation outcome""",,
+study:Organization,owl:Class,1,,study:Party,,"""""","""""","""Organization""",,
+study:Party,owl:Class,1,,study:Entity,,"""""","""A Person or an Organizatio","""Party""",,
+study:PerformedActivity,owl:Class#owl:Restriction,1,,study:StudyActivity,,,"""An Activity that was perfo","""Performed activity""",,
+study:PerformedActivityDate,owl:Class,1,,study:ActivityDate,,,,"""Performed activity date""",,
+study:Person,owl:Class#sp:Construct,1,,study:Party,,"""sex assignment""","""""","""Person""",,
+study:PlaceboProduct,owl:Class,1,,study:Product,,,,"""Placebo product""",,
+study:PlannedActivity,owl:Class#owl:Restriction,1,,study:StudyActivity,,"""a planned activity can als","""An Activity that is or was","""Planned activity""",,
+study:PopulationFlag,owl:Class,1,,study:Flag,,,,"""Population flag""",,
+study:PrerequisiteActivity,owl:Class,1,,study:StudyActivity,,,"""A StudyActivity whose Date","""Anchor / Time Point Refere",,
+study:Product,owl:Class,1,,study:Entity,,,,"""Product""",,
+study:ProtocolDocument,owl:Class,1,,study:Document,,,,"""Protocol document""",,
+study:ProtocolSpecifiedActivity,owl:Class,1,,study:StudyActivity,,,"""A StudyActivity that is sp","""Protocol specified activit",,
+study:PulseOutcome,owl:Class#owl:Restriction,1,,study:NumericOutcome#study:VitalSignOutcome,,,,"""Pulse or Heart Rate outcom",,
+study:RaceOutcome,owl:Class,1,,study:CategoricalOutcome,,,,"""Race outcome""",,
+study:Randomization,owl:Class#owl:Restriction,1,,study:Allocation,,"""""","""""","""Randomization""",,
+study:RandomizationOutcome,owl:Class,1,,study:AllocationOutcome,,,,"""Randomization outcome""",,
+study:ReferenceBegin,owl:Class,1,,study:BeginInstant,,"""""","""""","""Reference start date""",,
+study:ReferenceEnd,owl:Class,1,,study:EndInstant,,"""""","""""","""Reference end date""",,
+study:ReferenceInterval,owl:Class,1,,time:Interval,,"""""","""""","""Reference interval""",,
+study:ResearchStaff,owl:Class,1,,study:Person,,"""""","""""","""Research staff""",,
+study:Rule,owl:Class#owl:Restriction,1,,study:Analysis,,"""""","""An Analysis that examines","""Rule""",,
+study:RuleOutcome,owl:Class,1,,study:AnalysisOutcome,,,,"""Rule outcome""",,
+study:ScheduledActivity,owl:Class#owl:Restriction,1,,study:StudyActivity,,"""""","""An activity that is or was","""Scheduled activity""",,
+study:ScheduledActivityDate,owl:Class,1,,study:ActivityDate,,,,"""Scheduled activity date""",,
+study:SexOutcome,owl:Class,1,,study:CategoricalOutcome,,,,"""Sex outcome""",,
+study:Site,owl:Class,1,,study:Organization,,"""""","""""","""Site""",,
+study:SiteIdentifier,owl:Class,1,,study:Identifier,,,,"""Site identifier""",,
+study:Sponsor,owl:Class,1,,study:Organization,,"""""","""""","""Sponsor""",,
+study:StartRule,owl:Class,1,,study:Rule,,,,"""Start rule""",,
+study:StartRuleComposite,owl:Class#owl:Restriction,1,,study:StartRule,,,"""A collection of start rule","""Start rule composite""",,
+study:StartRuleDefault,owl:Class,1,,study:StartRuleSimple,,,"""Activity may start at any","""Start rule default""",,
+study:StartRuleDefault_1,study:StartRuleDefault,,,,,,"""Activity may start at any","""Start rule default 1""",,
+study:StartRuleInformedConsentGranted,owl:Class#owl:Restriction,1,,study:StartRulePrereqActivi,,,"""Target activity starts aft","""RULE INFORMED CONSENT GRAN",,
+study:StartRuleInformedConsentStart,owl:Class#owl:Restriction,1,,study:StartRulePrereqActivi,,,,"""Start rule informed consen",,
+study:StartRulePrereqActivityComplete,owl:Class#owl:Restriction,1,,study:StartRulePrerequisite,,,"""A collection of Start Rule","""Start rule prereq activity",,
+study:StartRulePrereqActivityOutcome,owl:Class#owl:Restriction,1,,study:StartRulePrereqActivi,,,"""A collection of Start Rule","""Start rule prereq activity",,
+study:StartRulePrereqActivityStart,owl:Class#owl:Restriction,1,,study:StartRulePrerequisite,,,"""A collection of Start Rule","""Start rule prereq activity",,
+study:StartRulePrerequisiteActivity,owl:Class#owl:Restriction,1,,study:StartRuleSimple,,,"""A start rule that relies o",,,
+study:StartRuleSimple,owl:Class,1,,study:StartRule,,,"""A start rule that is based",,,
+study:Study,owl:Class,1,,study:Activity,,"""""",,"""Study""",,
+study:StudyActivity,owl:Class#sp:Bind#sp:Construct#sp:Filter#sp:add#sp:bound#sp:eq#sp:if,1,,study:Activity,,"""derive scheduled start dat","""Any activity associated wi","""Activity""",,
+study:StudyComponent,owl:Class,1,,,,"""""","""""","""Study component""",,
+study:StudyIdentifier,owl:Class,1,,study:Identifier,,,,"""Study identifier""",,
+study:StudyParticipationBegin,owl:Class,1,,study:BeginInstant,,"""""","""""","""Study participation begin""",,
+study:StudyParticipationEnd,owl:Class,1,,study:EndInstant,,"""""","""""","""Study participation end""",,
+study:StudyParticipationInterval,owl:Class#sp:Bind#sp:Construct#sp:Max#sp:Min#sp:Select#sp:SubQuery#study:dateiso#xsd:string,1,,time:Interval,,"""Calculate Reference Exposr","""""","""Study participation interv",,
+study:Subcategory,owl:Class,1,,study:Entity,,,,"""Subcategory""",,
+study:SubjectIdentifier,owl:Class,1,,study:Identifier,,,,"""Subject identifier""",,
+study:Substance,owl:Class,1,,study:Entity,,,,"""Substance""",,
+study:SubstanceQuantity,owl:Class,1,,study:Entity,,,,"""Substance quantity""",,
+study:TemperatureOutcome,owl:Class#owl:Restriction,1,,study:NumericOutcome#study:VitalSignOutcome,,,,"""Temperature outcome""",,
+study:UniqueSubjectIdentifier,owl:Class,1,,study:Identifier,,,,"""Unique subject identifier""",,
+study:UnscheduledVisitActivity,owl:Class,1,,study:VisitActivity,,,,"""UNSCHEDULED VISIT ACTIVITY",,
+study:Visit,owl:Class,1,,study:StudyActivity,,,"""Any StudyActivity whose ma","""VISIT""",,
+study:VisitActivity,owl:Class,1,,study:StudyActivity,,"""""","""A study activity that take","""Visit Activity""",,
+study:VisitDate,owl:Class,1,,study:ActivityDate,,"""""","""""","""Visit begin""",,
+study:VitalSign,owl:Class#owl:Restriction,1,,study:Observation,,"""""","""""","""VitalSign""",,
+study:VitalSignOutcome,owl:Class,1,,study:ObservationOutcome,,,,"""Vital sign outcome""",,
+study:WeightOutcome,owl:Class#owl:Restriction,1,,study:NumericOutcome#study:VitalSignOutcome,,,,"""Weight mass outcome""",,
+study:activityStatus,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""activity status""",study:StudyActivity,study:ActivityStatus
+study:actualArm,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""actual arm""",study:EnrolledSubject,study:Arm
+study:administeredDrug,owl:ObjectProperty,,1,,,,,"""has route of administratio",study:FixedDoseDrugAdminist,study:Product
+study:agecalc,smf:duration#sp:Bind#sp:Select#sp:substr#spin:Function#spl:Argument#xsd:date,,,spl:DateFunctions,,"""calculates age from birthd","""""","""agecalc""",,
+study:anatomicLocation,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""anatomic location""",study:Observation,code:AnatomicLocation
+study:baselineFlag,owl:DatatypeProperty,,1,,,"""""","""""","""baseline flag""",study:Observation,xsd:string
+study:bodyPosition,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""body position""",study:Observation,code:BodyPosition
+study:crfLocation,owl:ObjectProperty,,1,,,,,"""CRF Origin""",study:StudyComponent,study:CRFLocation
+study:dateTimeInXSDString,owl:DatatypeProperty,,1,,,"""this is particularly usefu","""relates a date resource wi",,time:Instant,
+study:dateiso,sp:Bind#sp:Select#sp:substr#spin:Function#spl:Argument#xsd:date,,,spl:DateFunctions,,"""Takes date string in ISO 8","""""","""ISODate""",,
+study:deathFlag,owl:DatatypeProperty,,1,,,"""""","""""","""death flag""",study:Person,xsd:string
+study:derivedFlag,owl:DatatypeProperty,,1,,,"""""","""describes that the method","""derived flag""",study:StudyActivity,xsd:string
+study:durationiso,smf:duration#sp:Bind#sp:Select#sp:substr#spin:Function#spl:Argument#xsd:date,,,spl:DateFunctions,,"""converts two date strings","""""","""durationiso""",,
+study:engagesIn,owl:ObjectProperty,,1,,,"""""","""relates an Party with  an","""has activity""",study:Party,study:StudyActivity
+study:ethnicity,owl:FunctionalProperty#owl:ObjectProperty,,1,,,,,"""ethnicity""",study:Person,study:EthnicOutcome
+study:groupID,owl:DatatypeProperty,,1,,,"""""","""""","""group ID""",study:StudyActivity,xsd:string
+study:hasActivityInterval,owl:ObjectProperty,,1,,,"""""","""""","""has activity interval""",study:StudyActivity,study:ActivityInterval
+study:hasAnnotatedCRF,owl:ObjectProperty,,1,,,,,"""has annotated CRF""",study:Study,study:AnnotatedCaseReportFo
+study:hasCategory,owl:ObjectProperty,,1,,,"""""","""""","""has category""",study:StudyActivity,study:Category
+study:hasCountry,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""country""",study:Site,code:Country
+study:hasDate,owl:ObjectProperty,,1,,,"""""","""""","""has date""",study:Activity,time:Instant
+study:hasDelay,owl:DatatypeProperty,,1,,,"""""","""""","""has delay""",study:Rule,xsd:duration
+study:hasDocument,owl:ObjectProperty,,1,,,,,"""has document""",,study:Document
+study:hasDosageFrequency,owl:ObjectProperty,,1,,,,,"""has dosage frequency""",study:FixedDoseDrugAdminist,code:DosageFrequency
+study:hasIdentifier,rdf:Property,,1,,,,,,,
+study:hasInterval,owl:ObjectProperty,,1,,,"""""","""""","""has interval""",study:StudyComponent,time:Interval
+study:hasInvestigator,owl:ObjectProperty,,1,,,"""""","""""","""has investigator""",study:Site,study:Investigator
+study:hasInvestigatorID,owl:ObjectProperty,,1,,,"""""","""""","""has investigator ID""",study:Investigator,study:InvestigatorIdentifie
+study:hasLastName,owl:DatatypeProperty,,1,,,"""""","""""","""has last name""",study:Person,xsd:string
+study:hasLifespan,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""has lifespan""",study:Person,study:Lifespan
+study:hasNullFlavor,owl:ObjectProperty,,1,,,,,"""has null flavor""",,code:NullFlavor
+study:hasParticipant,owl:ObjectProperty,,1,,,"""""","""""","""has study participant""",study:StudyActivity,study:HumanStudySubject
+study:hasPerformedDate,owl:ObjectProperty,,1,,,,,"""Object property 1""",study:PerformedActivity,study:PerformedActivityDate
+study:hasPerformer,owl:ObjectProperty,,1,,,"""""","""""","""has performer""",study:StudyActivity,study:Party
+study:hasPrereqExpectedOutcome,owl:ObjectProperty,,1,,,"""""","""""","""has anchor outcome""",study:Rule,study:ActivityOutcome
+study:hasPrereqExpectedStatus,owl:ObjectProperty,,1,,,,,"""has prereq expected status",study:Rule,code:ActivityStatus
+study:hasPrerequisite,owl:ObjectProperty,,1,,,"""""","""links the start of an acti","""has Prerequisite""",study:Rule,study:StudyActivity
+study:hasProtocolSpecifiedActivity,owl:ObjectProperty,,1,,,,"""relates a study with a gro","""has protocol specified act",study:Study,study:ProtocolSpecifiedActi
+study:hasReferenceInterval,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""has lifespan""",study:HumanStudySubject,study:ReferenceInterval
+study:hasRouteOfAdministration,owl:ObjectProperty,,1,,,,,"""has route of administratio",study:FixedDoseDrugAdminist,code:RouteOfAdministration
+study:hasScheduledDate,owl:ObjectProperty,,1,,,"""""","""""","""has planned date""",study:ScheduledActivity,study:ScheduledActivityDate
+study:hasSite,owl:ObjectProperty,,1,,,"""""","""The organization (e.g. hos","""has Site""",study:HumanStudySubject,study:Site
+study:hasSiteID,owl:ObjectProperty,,1,,,"""""","""""","""has site ID""",study:Site,study:SiteIdentifier
+study:hasStartRule,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""has start rule""",study:StudyActivity,study:Rule
+study:hasStudyActivity,owl:ObjectProperty,,1,,,"""""","""Relates a Study with an Ac","""has study activity""",study:Study,study:StudyActivity
+study:hasStudyID,owl:ObjectProperty,,1,,,"""""","""""","""has study ID""",study:Study,study:StudyIdentifier
+study:hasStudyParticipant,owl:ObjectProperty,,1,,,"""""","""""","""has study participant""",study:Study,study:HumanStudySubject
+study:hasStudyParticipationInterval,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""has study participation in",study:HumanStudySubject,study:StudyParticipationInt
+study:hasSubActivity,owl:ObjectProperty#owl:TransitiveProperty,,1,,,"""""","""Relates an Activity with a","""has sub activity""",study:StudyActivity,study:StudyActivity
+study:hasSubRule,owl:ObjectProperty,,1,,,,,,,
+study:hasSubcategory,owl:ObjectProperty,,1,,,"""""","""""","""has subcategory""",study:StudyActivity,study:Subcategory
+study:hasSubjectID,owl:ObjectProperty,,1,,,"""""","""""","""has unique subject ID""",study:Person,study:SubjectIdentifier
+study:hasUniqueSubjectID,owl:InverseFunctionalProper#owl:ObjectProperty,,1,,,"""""","""""","""has unique subject ID""",study:Person,study:UniqueSubjectIdentifi
+study:isActivityOfStudy,owl:ObjectProperty,,1,,,"""""","""relates StudyActivity with","""is part of""",,study:Study
+study:isSubActivityOf,owl:ObjectProperty#owl:TransitiveProperty,,1,,,"""""","""relates an Activity with A","""is sub activity of""",study:StudyActivity,study:StudyActivity
+study:laterality,owl:FunctionalProperty#owl:ObjectProperty,,1,,,"""""","""""","""laterality""",study:StudyActivity,code:Laterality
+study:participatesIn,owl:ObjectProperty,,1,,,"""""","""relates an Entity with an","""participates in""",study:Person,study:StudyActivity
+study:participatesInStudy,owl:ObjectProperty,,1,,,"""""","""""","""participates in study""",study:HumanStudySubject,study:Study
+study:performsActivity,owl:ObjectProperty,,1,,,"""""","""relates an Entity with an","""performs activity""",study:Party,study:StudyActivity
+study:race,owl:ObjectProperty,,1,,,,,"""race""",study:Person,study:RaceOutcome
+study:reasonNotDone,owl:DatatypeProperty,,1,,,"""""","""""","""reason not done""",study:StudyActivity,xsd:string
+study:ruleDescription,owl:DatatypeProperty,,1,,,"""""","""""","""rule description""",study:Rule,xsd:string
+study:ruleDescriptionLong,owl:DatatypeProperty,,1,,,"""""","""""","""rule description long""",study:Rule,xsd:string
+study:seq,owl:DatatypeProperty,,1,,,"""""","""relates a resource to a se","""seq""",,xsd:float
+study:sex,owl:FunctionalProperty#owl:ObjectProperty,,1,,,,,"""sex""",study:Person,study:SexOutcome
+study:sponsordefinedID,owl:DatatypeProperty,,1,,,"""""","""""","""sponsordefined ID""",study:StudyActivity,xsd:string
+study:studyday,smf:duration#sp:Bind#sp:Select#sp:add#sp:if#sp:lt#sp:substr#spin:Function#spl:Argument#xsd:date,,,spl:DateFunctions,,"""the subject's reference st","""takes two date strings in","""studyday""",,
+time:hasBeginning,,,,,,,,,,
+time:inXSDDateTime,,,,,,,,,,

@@ -1,4 +1,4 @@
-#install.packages("rmarkdown")
+install.packages("shiny")
 #library(rmarkdown)
 #library(knitr)
 #knit('Katja/ProcessFlow.rmd', encoding = 'UTF-8')
