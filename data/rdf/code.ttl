@@ -25,6 +25,63 @@
 @prefix xhtm: <http://www.w3.org/1999/xhtml> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+sdtmterm:ControlType_PLACEBO
+  rdf:type mms:PermissibleValue ;
+  schema:cdiscDefinition "Use of an inactive compound identical in appearance to drug or treatment being tested in experimental research, which may or may not be known to the physician and/or subject, administered to distinguish between drug action and suggestive effect of the drug or treatment under study. The effects of the active drug or treatment are compared to the effects of the placebo. (NCI)" ;
+  schema:cdiscSubmissionValue "PLACEBO" ;
+  schema:nciCode "C49648" ;
+  schema:nciPreferredTerm "Placebo Control" ;
+  mms:inValueDomain sdtmterm:C66785 ;
+  skos:prefLabel "PLACEBO" ;
+  code:hasCode "C49648" ;
+.
+sdtmterm:NoYesResponse_N
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:NoYesResponse ;
+  schema:cdiscDefinition "The non-affirmative response to a question. (NCI)" ;
+  schema:cdiscSubmissionValue "N" ;
+  schema:cdiscSynonyms "No" ;
+  schema:nciCode "C49487" ;
+  schema:nciPreferredTerm "No" ;
+  mms:inValueDomain sdtmterm:C66742 ;
+  skos:prefLabel "N" ;
+  code:hasCode "C49487" ;
+.
+sdtmterm:NoYesResponse_NA
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:NoYesResponse ;
+  schema:cdiscDefinition "Determination of a value is not relevant in the current context. (NCI)" ;
+  schema:cdiscSubmissionValue "NA" ;
+  schema:cdiscSynonyms "NA" ;
+  schema:nciCode "C48660" ;
+  schema:nciPreferredTerm "Not Applicable" ;
+  mms:inValueDomain sdtmterm:C66742 ;
+  skos:prefLabel "NA" ;
+  code:hasCode "C48660" ;
+.
+sdtmterm:NoYesResponse_Y
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:NoYesResponse ;
+  schema:cdiscDefinition "The affirmative response to a question. (NCI)" ;
+  schema:cdiscSubmissionValue "Y" ;
+  schema:cdiscSynonyms "Yes" ;
+  schema:nciCode "C49488" ;
+  schema:nciPreferredTerm "Yes" ;
+  mms:inValueDomain sdtmterm:C66742 ;
+  skos:prefLabel "Y" ;
+  code:hasCode "C49488" ;
+.
+sdtmterm:TrialBlindingSchema_DOUBLE_BLIND
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialBlindingSchema ;
+  schema:cdiscDefinition "A study in which neither the subject nor the investigator nor the research team interacting with the subject or data during the trial knows what treatment a subject is receiving. (CDISC glossary)" ;
+  schema:cdiscSubmissionValue "DOUBLE BLIND" ;
+  schema:nciCode "C15228" ;
+  schema:nciPreferredTerm "Double Blind Study" ;
+  mms:inValueDomain sdtmterm:C66735 ;
+  skos:prefLabel "DOUBLE BLIND" ;
+  code:hasCode "C15228" ;
+.
 arg:origResult
   rdf:type rdf:Property ;
   rdfs:subPropertyOf sp:arg ;
@@ -137,6 +194,19 @@ code:AgeDataCollection
   rdf:type owl:Class ;
   rdfs:subClassOf code:DemographicDataCollection ;
 .
+code:AgeGroup
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Age group" ;
+.
+code:AgeGroup_ADULT
+  rdf:type code:AgeGroup ;
+  skos:prefLabel "ADULT (18-65)" ;
+.
+code:AgeGroup_ELDERLY
+  rdf:type code:AgeGroup ;
+  skos:prefLabel "ELDERLY (>65)" ;
+.
 code:AgeUnit
   rdf:type owl:Class ;
   rdfs:subClassOf code:Unit ;
@@ -238,6 +308,37 @@ code:BodyPosition_SUPINE
 code:CategoricalOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
+.
+code:CodeSystem
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Code system" ;
+.
+code:CodeSystem_CDISCTerminology
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "CDISC" ;
+.
+code:CodeSystem_ISO8601
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "ISO8601" ;
+.
+code:CodeSystem_SNOMED
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "SNOMED" ;
+.
+code:CodeSystem_UNII
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "UNII" ;
+.
+code:ControlType
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Control type" ;
 .
 code:ConversionFactor
   rdf:type owl:Class ;
@@ -393,6 +494,7 @@ code:DrugProduct
 code:Ethnicity
   rdf:type owl:Class ;
   rdfs:comment "" ;
+  rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:DemographicData ;
   owl:oneOf (
       code:Ethnicity_HISPANIC_OR_LATINO
@@ -628,6 +730,16 @@ code:Method_DERIVED
   skos:definition "" ;
   skos:prefLabel "DERIVED" ;
 .
+code:NoYesResponse
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "No yes response" ;
+.
 code:NullFlavor
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
@@ -780,6 +892,27 @@ code:Oral_Cavity
   mms:inValueDomain sdtmterm:C74456 ;
   skos:prefLabel "ORAL CAVITY" ;
 .
+code:PlannedSubjectAge
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_ISO8601 ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Planned subject age" ;
+.
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#PlannedSubjectAge_NULL.PINF>
+  rdf:type code:PlannedSubjectAge ;
+  skos:prefLabel "\"\"" ;
+  code:hasNullFlavor code:NullFlavor_4 ;
+  code:hasValue "\"\"" ;
+.
+code:PlannedSubjectAge_P50Y
+  rdf:type code:PlannedSubjectAge ;
+  skos:prefLabel "Planned subject age P50Y" ;
+  code:hasValue "P50Y"^^xsd:duration ;
+.
 code:Product
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
@@ -825,6 +958,7 @@ code:PulseUnit
 code:Race
   rdf:type owl:Class ;
   rdfs:comment "" ;
+  rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:DemographicData ;
   owl:oneOf (
       code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
@@ -944,6 +1078,7 @@ code:RuleOutcome_TRUE
 code:Sex
   rdf:type owl:Class ;
   rdfs:comment "" ;
+  rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:DemographicData ;
   owl:oneOf (
       code:Sex_F
@@ -1003,6 +1138,15 @@ code:StandardFormat
   rdfs:subClassOf code:DefinedConcept ;
   skos:prefLabel "Standard format" ;
 .
+code:StudyPopulation
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:MedicalCondition ;
+  skos:prefLabel "Study population" ;
+.
+code:StudyPopulation_PMMAD
+  rdf:type code:StudyPopulation ;
+  skos:prefLabel "Patients with Probable Mild to Moderate Alzheimer's Disease" ;
+.
 code:Substance
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -1015,6 +1159,12 @@ code:SubstanceQuantity
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition "Describes the name of the substance and the amount of the substance used in a unit dosage form (e.g. tablet, patch) of the product" ;
   skos:prefLabel "Substance quantity" ;
+.
+code:Substance_xanomeline
+  rdf:type code:ActiveSubstance ;
+  skos:prefLabel "XANOMELINE" ;
+  code:hasCode "9ORI6L73CJ" ;
+  code:hasCodeSystem code:CodeSystem_UNII ;
 .
 code:Successfully_Completed
   rdf:type code:GenericOutcome ;
@@ -1098,6 +1248,27 @@ code:TherapeuticIntervention
   skos:definition "An intervention whose goal is to modify the natural history of a medical condition." ;
   skos:prefLabel "Therapeutic intervention" ;
 .
+code:TrialBlindingSchema
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Trial blinding schema" ;
+.
+code:TrialIndication
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:MedicalCondition ;
+  skos:prefLabel "Trial indication" ;
+.
+code:TrialIndication_AD
+  rdf:type code:TrialIndication ;
+  skos:prefLabel "Alzheimer's Disease" ;
+  code:hasCode "26929004" ;
+  code:hasCodeSystem code:CodeSystem_SNOMED ;
+.
 code:Unit
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -1163,6 +1334,11 @@ code:Unit_mmHG
   skos:definition "" ;
   skos:prefLabel "mmHg" ;
 .
+code:Version
+  rdf:type owl:DatatypeProperty ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "Version" ;
+.
 code:VitalSign
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -1226,6 +1402,14 @@ code:hasAge
   skos:altLabel "" ;
   skos:prefLabel "has age" ;
 .
+code:hasCode
+  rdf:type owl:DatatypeProperty ;
+  skos:prefLabel "has code" ;
+.
+code:hasCodeSystem
+  rdf:type owl:ObjectProperty ;
+  skos:prefLabel "has code system" ;
+.
 code:hasConversionFactor
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
@@ -1268,6 +1452,10 @@ code:hasMethod
   rdfs:range code:Method ;
   skos:definition "" ;
   skos:prefLabel "has method" ;
+.
+code:hasNullFlavor
+  rdf:type owl:ObjectProperty ;
+  rdfs:range code:NullFlavor ;
 .
 code:hasOriginalUnit
   rdf:type owl:ObjectProperty ;
