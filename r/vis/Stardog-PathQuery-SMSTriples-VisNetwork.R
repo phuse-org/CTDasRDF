@@ -66,12 +66,14 @@ triplesDf <- IRItoPrefix(sourceDF=triplesDf, colsToParse=c("s", "p", "o"))
 # Br. Or Node: #FE7900
 
 lnodes <- read.table(header = TRUE, text = "
-label        color.border color.background
-cdiscpilot01 'black'       '#2C52DA'      
-cdo1p        'black'       '#008D00'      
-code         'black'       '#1C5B64'
-study        'black'       '#FFBD09'   
-custom       'black'       '#C71B5F'   
+label        color.border color.background font.color
+Start        'red'         'yellow'       'black'
+cdiscpilot01 'black'       '#2C52DA'      'white'
+cdo1p        'black'       '#008D00'      'white'
+code         'black'       '#1C5B64'      'white'
+study        'black'       '#FFBD09'      'white'
+custom       'black'       '#C71B5F'      'white'
+literal      'black'       'white'        'black'
 ")
 
 lnodes$shape <- "box"
@@ -93,23 +95,13 @@ nodeList <- nodeList[!duplicated(nodeList$value),]
 nodeList <- rename(nodeList, c("value" = "id" ))
 nodes<- as.data.frame(nodeList[c("id")])
 
-# Assign groups used for icon types and colours
-# Order is important.
-# p:Person_1
-# nodes$group[nodes$id == "p:Person_1"]    <- "Person"  # Works
-nodes$group[grepl("cdiscsdtm", nodes$id, perl=TRUE)] <- "SDTMTerm"  #
-nodes$group[grepl("study", nodes$id, perl=TRUE)] <- "Study"  #
-nodes$group[grepl("CDISCPILOT01", nodes$id, perl=TRUE)] <- "CDISCPilot"  #
-nodes$group[grepl("Person_", nodes$id, perl=TRUE)] <- "Person"  #
-
-# Assign labels used for mouseover
+# Lablels for mouseover
 nodes$title <- nodes$id
 nodes$label <- nodes$id
 
 nodes$size <- 30
 nodes$color.background <- "white"
 nodes$color.border     <- "black"
-
 
 # Nodes color based on prefix
 nodes$color.background[ grepl("cdiscpilot01:", nodes$id, perl=TRUE) ] <- "#2C52DA"
@@ -118,11 +110,10 @@ nodes$color.background[ grepl("code:",         nodes$id, perl=TRUE) ] <- '#1C5B6
 nodes$color.background[ grepl("study:",        nodes$id, perl=TRUE) ] <- '#FFBD09'  
 nodes$color.background[ grepl("custom:",        nodes$id, perl=TRUE) ] <- '#C71B5F'  
 
-#cdiscpilot01 'black'       '#2C52DA'      
-#cdo1p        'black'       '#008D00'      
-#code         'black'       '#1C5B64'
-#study        'black'       '#FFBD09'      
-
+# Finally, change the start node to larger size and special color
+nodes$color.background[ grepl(startNode,  nodes$id, perl=TRUE) ] <- 'yellow'  
+nodes$color.border[ grepl(startNode,  nodes$id, perl=TRUE) ]     <- 'red'  
+nodes$size[ grepl(startNode,  nodes$id, perl=TRUE) ]             <- 60  
 
 #---- Edges
 # Create list of edges by keeping the Subject and Predicate from query result.
@@ -130,7 +121,16 @@ edges<-rename(triplesDf, c("s" = "from", "o" = "to"))
 edges$arrows <- "to"
 # edges$label <-"Edge"   # label : text always present
 edges$title <- edges$p  # title: present when mouseover edge.
-edges$length <- 500
+edges$length <- 500  # Could make this dynamic for large vs small graphs based on dataframe size...
+
+edges$color <- "black"  # default and for literals
+edges$color[ grepl("cdiscpilot01:", edges$to, perl=TRUE) ] <- "#2C52DA"
+edges$color[ grepl("cd01p:",        edges$to, perl=TRUE) ] <- '#008D00'   
+edges$color[ grepl("code:",         edges$to, perl=TRUE) ] <- '#1C5B64'
+edges$color[ grepl("study:",        edges$to, perl=TRUE) ] <- '#FFBD09'  
+edges$color[ grepl("custom:",       edges$to, perl=TRUE) ] <- '#C71B5F'  
+
+
 
 
 #---- Visualize 
