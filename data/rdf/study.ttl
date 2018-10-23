@@ -67,6 +67,13 @@ owl:hasValue
       <http://rdf.cdisc.org/sdtmterm#C66731.C17998>
     ) ;
 .
+time:Instant
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_ISO8601 ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+.
 time:hasBeginning
   rdfs:subPropertyOf study:hasDate ;
 .
@@ -282,6 +289,19 @@ code:Weight
 .
 code:hasAge
   rdfs:range study:AgeOutcome ;
+.
+code:hasNullFlavor
+  rdfs:range code:NullFlavor ;
+  skos:altLabel "" ;
+  skos:prefLabel "has null flavor" ;
+.
+code:outcome
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:StudyActivity ;
+  rdfs:range study:ActivityOutcome ;
+  skos:altLabel "" ;
+  skos:prefLabel "has outcome" ;
 .
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl>
   rdf:type owl:Ontology ;
@@ -779,6 +799,16 @@ study:CumulativeDrugAdministrationInterval
   skos:definition "" ;
   skos:prefLabel "Product administration interval" ;
 .
+study:DataCutoff
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:AdministrativeActivity ;
+  skos:prefLabel "Data cutoff" ;
+.
+study:DataCutoffDate
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityDate ;
+  skos:prefLabel "Data cutoff date" ;
+.
 study:Date
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -829,7 +859,7 @@ study:DrugAdministrationOutcome
   rdfs:subClassOf study:ActivityOutcome ;
   skos:prefLabel "Drug administration outcome" ;
 .
-study:EligibilityCriteria
+study:EligibilityCriterion
   rdf:type owl:Class ;
   rdfs:comment "" ;
   rdfs:subClassOf study:Rule ;
@@ -911,6 +941,11 @@ study:Flag
   skos:altLabel "" ;
   skos:definition "A Derivation where the result (outcome) is binary e.g. Y/N. " ;
   skos:prefLabel "Flag" ;
+.
+study:Group
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Party ;
+  skos:prefLabel "Group" ;
 .
 study:HeightOutcome
   rdf:type owl:Class ;
@@ -1051,6 +1086,16 @@ study:Lifespan
   skos:definition "" ;
   skos:prefLabel "Lifespan" ;
 .
+study:MaximumSubjectAge
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ScreeningCriterion ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue study:StartRuleDefault_1 ;
+      owl:onProperty study:hasStartRule ;
+    ] ;
+  skos:prefLabel "Maximum age subject" ;
+.
 study:MedicalCondition
   rdf:type owl:Class ;
   rdfs:subClassOf study:Event ;
@@ -1059,9 +1104,19 @@ study:MedicalCondition
   skos:note "Medical conditions are the target of medical interventions.  Medical conditions explain the presence of clinical observations.  Most clinicians will agree that pregnancy is a medical condition because it benefits from medical intervention (e.g. prenatal care) to minimize complications to the mother and unborn child" ;
   skos:prefLabel "Medical condition" ;
 .
+study:MinimumSubjectAge
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ScreeningCriterion ;
+  skos:prefLabel "Minimum age subject" ;
+.
 study:NumericOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf study:ObservationOutcome ;
+.
+study:Objective
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:prefLabel "Objective" ;
 .
 study:Observation
   rdf:type owl:Class ;
@@ -1087,9 +1142,15 @@ study:ObservationOutcome
 study:Organization
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf study:Party ;
+  rdfs:subClassOf study:Group ;
   skos:definition "" ;
   skos:prefLabel "Organization" ;
+.
+study:OutcomeMeasure
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Observation ;
+  skos:definition "An observation that is used to measure a particular outcome of interest as described in a StudyObjective. " ;
+  skos:prefLabel "Outcome measure" ;
 .
 study:Party
   rdf:type owl:Class ;
@@ -1307,6 +1368,17 @@ study:PrerequisiteActivity
   skos:note "For example: An activity to assume a supine body position can be a prerequisite activity for a BP measurement 5 minutes later. An activity outcome could be a medical condition, e.g. the ActivityOutcome can be a migraine headache, which triggers another activity: drug administration. " ;
   skos:prefLabel "Anchor / Time Point Reference" ;
 .
+study:PrimaryObjective
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Objective ;
+  skos:prefLabel "Primary objective" ;
+.
+study:PrimaryOutcomeMeasure
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:OutcomeMeasure ;
+  skos:definition "An observation that is used to measure a particular outcome of interest as described in a Study Primary Objective" ;
+  skos:prefLabel "Primary outcome measure" ;
+.
 study:Product
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
@@ -1423,6 +1495,23 @@ study:ScheduledActivityDate
   rdfs:subClassOf study:ActivityDate ;
   skos:prefLabel "Scheduled activity date" ;
 .
+study:ScreeningCriterion
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:EligibilityCriterion ;
+  skos:definition "An Eligibility Criterion that is applied before screening to determine is Screening Activities may begin (e.g. Age, Sex)" ;
+  skos:prefLabel "Screening criterion" ;
+.
+study:SecondaryObjective
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Objective ;
+  skos:prefLabel "Secondary objective" ;
+.
+study:SecondaryOutcomeMeasure
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:OutcomeMeasure ;
+  skos:definition "An observation that is used to measure a particular outcome of interest as described in a Study Secondary Objective" ;
+  skos:prefLabel "Secondary outcome measure" ;
+.
 study:SexOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf study:CategoricalOutcome ;
@@ -1480,8 +1569,8 @@ study:StartRuleDefault_1
   rdf:type study:StartRuleDefault ;
   skos:definition "Activity may start at any time at the discretion of the Investigator" ;
   skos:prefLabel "Start rule default 1" ;
-  study:activityStatus code:ActivityStatus_CO ;
   code:outcome code:RuleOutcome_TRUE ;
+  study:activityStatus code:ActivityStatus_CO ;
 .
 study:StartRuleInformedConsentGranted
   rdf:type owl:Class ;
@@ -1740,11 +1829,26 @@ study:StudyActivity
   skos:definition "Any activity associated with the planning, conduct, analysis, and interpretation of a Study" ;
   skos:prefLabel "Activity" ;
 .
+study:StudyBegin
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityBegin ;
+  skos:prefLabel "Study begin" ;
+.
 study:StudyComponent
   rdf:type owl:Class ;
   rdfs:comment "" ;
   skos:definition "" ;
   skos:prefLabel "Study component" ;
+.
+study:StudyDuration
+  rdf:type owl:Class ;
+  rdfs:subClassOf time:Interval ;
+  skos:prefLabel "Study duration" ;
+.
+study:StudyEnd
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityEnd ;
+  skos:prefLabel "Study end" ;
 .
 study:StudyIdentifier
   rdf:type owl:Class ;
@@ -2008,6 +2112,12 @@ study:StudyParticipationInterval
   skos:definition "" ;
   skos:prefLabel "Study participation interval" ;
 .
+study:StudyPopulation
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Group ;
+  skos:definition "A population consisting of all persons who participates in at least one StudyActivity" ;
+  skos:prefLabel "Study population" ;
+.
 study:Subcategory
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
@@ -2040,6 +2150,11 @@ study:TemperatureOutcome
       owl:onProperty code:hasUnit ;
     ] ;
   skos:prefLabel "Temperature outcome" ;
+.
+study:Title
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:prefLabel "Title" ;
 .
 study:UniqueSubjectIdentifier
   rdf:type owl:Class ;
@@ -2102,6 +2217,12 @@ study:WeightOutcome
     ] ;
   skos:prefLabel "Weight mass outcome" ;
 .
+study:activityDescription
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:Activity ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "activity description" ;
+.
 study:activityStatus
   rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
@@ -2119,6 +2240,12 @@ study:actualArm
   rdfs:range study:Arm ;
   skos:definition "" ;
   skos:prefLabel "actual arm" ;
+.
+study:addOn
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "add on" ;
 .
 study:administeredDrug
   rdf:type owl:ObjectProperty ;
@@ -2468,7 +2595,8 @@ study:hasDosageFrequency
   skos:prefLabel "has dosage frequency" ;
 .
 study:hasIdentifier
-  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:range study:Identifier ;
 .
 study:hasInterval
   rdf:type owl:ObjectProperty ;
@@ -2513,12 +2641,6 @@ study:hasLifespan
   skos:definition "" ;
   skos:prefLabel "has lifespan" ;
 .
-study:hasNullFlavor
-  rdf:type owl:ObjectProperty ;
-  rdfs:range code:NullFlavor ;
-  skos:altLabel "" ;
-  skos:prefLabel "has null flavor" ;
-.
 study:hasParticipant
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
@@ -2544,6 +2666,12 @@ study:hasPerformer
   skos:definition "" ;
   skos:prefLabel "has performer" ;
 .
+study:hasPopulation
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:StudyPopulation ;
+  skos:prefLabel "has population" ;
+.
 study:hasPrereqExpectedOutcome
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
@@ -2565,6 +2693,18 @@ study:hasPrerequisite
   rdfs:range study:StudyActivity ;
   skos:definition "links the start of an activity relative to another activity known as a Prerequisite. " ;
   skos:prefLabel "has Prerequisite" ;
+.
+study:hasPrimObjective
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:PrimaryObjective ;
+  skos:prefLabel "has prim objective" ;
+.
+study:hasPrimOutcomeMeasure
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:PrimaryOutcomeMeasure ;
+  skos:prefLabel "has prim outcome measure" ;
 .
 study:hasProtocolSpecifiedActivity
   rdf:type owl:ObjectProperty ;
@@ -2599,6 +2739,18 @@ study:hasScheduledDate
   skos:definition "" ;
   skos:prefLabel "has planned date" ;
 .
+study:hasSecObjective
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:SecondaryObjective ;
+  skos:prefLabel "has sec objective" ;
+.
+study:hasSecOutcomeMeasure
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:SecondaryOutcomeMeasure ;
+  skos:prefLabel "has sec outcome measure" ;
+.
 study:hasSite
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
@@ -2615,6 +2767,12 @@ study:hasSiteID
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "" ;
   skos:prefLabel "has site ID" ;
+.
+study:hasSponsor
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:Sponsor ;
+  skos:prefLabel "has sponsor" ;
 .
 study:hasStartRule
   rdf:type owl:FunctionalProperty ;
@@ -2699,6 +2857,12 @@ study:hasSubjectID
   skos:definition "" ;
   skos:prefLabel "has unique subject ID" ;
 .
+study:hasTitle
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range study:Title ;
+  skos:prefLabel "has title" ;
+.
 study:hasUniqueSubjectID
   rdf:type owl:InverseFunctionalProperty ;
   rdf:type owl:ObjectProperty ;
@@ -2716,6 +2880,12 @@ study:isActivityOfStudy
   rdfs:subPropertyOf study:isSubActivityOf ;
   skos:definition "relates StudyActivity with the Study of which it is a part. " ;
   skos:prefLabel "is part of" ;
+.
+study:isAddOnStudy
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "is add on study" ;
 .
 study:isSubActivityOf
   rdf:type owl:ObjectProperty ;
@@ -2735,13 +2905,24 @@ study:laterality
   skos:definition "" ;
   skos:prefLabel "laterality" ;
 .
-code:outcome
-  rdf:type owl:FunctionalProperty ;
+study:longTitle
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:Title ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf skos:prefLabel ;
+  skos:prefLabel "long title" ;
+.
+study:maxSubjectAge
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:StudyActivity ;
-  rdfs:range study:ActivityOutcome ;
-  skos:altLabel "" ;
-  skos:prefLabel "has outcome" ;
+  rdfs:domain study:StudyPopulation ;
+  rdfs:range study:MaximumSubjectAge ;
+  skos:prefLabel "max age subjects" ;
+.
+study:minSubjectAge
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:StudyPopulation ;
+  rdfs:range study:MinimumSubjectAge ;
+  skos:prefLabel "min age subjects" ;
 .
 study:participatesIn
   rdf:type owl:ObjectProperty ;
@@ -2820,6 +3001,13 @@ study:sex
   rdfs:range study:SexOutcome ;
   skos:altLabel "" ;
   skos:prefLabel "sex" ;
+.
+study:shortTitle
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:Title ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf skos:altLabel ;
+  skos:prefLabel "short title" ;
 .
 study:sponsordefinedID
   rdf:type owl:DatatypeProperty ;

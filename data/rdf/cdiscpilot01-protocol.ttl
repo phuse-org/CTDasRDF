@@ -58,6 +58,41 @@ cd01p:Category_1
   skos:altLabel "" ;
   skos:prefLabel "CAT1" ;
 .
+cd01p:PrimaryObjective_1
+  rdf:type study:PrimaryObjective ;
+  skos:prefLabel "To determine if there is a statistically significant relationship between the change in both ADAS-Cog and CIBIC+ scores, and drug dose (0, 50 cm2 [54 mg], and 75 cm2 [81 mg])" ;
+  study:seq "1"^^xsd:float ;
+.
+cd01p:PrimaryObjective_2
+  rdf:type study:PrimaryObjective ;
+  skos:prefLabel "To document the safety profile of the xanomeline TTS." ;
+  study:seq "2"^^xsd:float ;
+.
+cd01p:PrimaryObjective_3
+  rdf:type study:PrimaryObjective ;
+  skos:prefLabel "Evaluate the efficacy and safety of transdermal xanomeline, 50cm2 and 75cm2, and placebo in subjects with mild to moderate Alzheimer's disease." ;
+  study:seq "3"^^xsd:float ;
+.
+cd01p:SecondaryObjective_1
+  rdf:type study:SecondaryObjective ;
+  skos:prefLabel "To assess the dose-dependent improvement in behavior. Improved scores on the Revised Neuropsychiatric Inventory (NPI-X) will indicate improvement in these areas." ;
+  study:seq "1"^^xsd:float ;
+.
+cd01p:SecondaryObjective_2
+  rdf:type study:SecondaryObjective ;
+  skos:prefLabel "To assess the dose-dependent improvements in activities of daily living. Improved scores on the Disability Assessment for Dementia (DAD) will indicate improvement in these areas." ;
+  study:seq "2"^^xsd:float ;
+.
+cd01p:SecondaryObjective_3
+  rdf:type study:SecondaryObjective ;
+  skos:prefLabel "To assess the dose-dependent improvements in an extended assessment of cognition that integrates attention/concentration tasks. The ADAS-Cog (14) will be used for this assessment." ;
+  study:seq "3"^^xsd:float ;
+.
+cd01p:SecondaryObjective_4
+  rdf:type study:SecondaryObjective ;
+  skos:prefLabel "To assess the treatment response as a function of Apo E genotype." ;
+  study:seq "4"^^xsd:float ;
+.
 cd01p:SiteIdentifier_1
   rdf:type study:SiteIdentifier ;
   skos:prefLabel "701" ;
@@ -268,10 +303,6 @@ cd01p:Site_9
   study:hasCountry code:Country_1 ;
   study:hasSiteID cd01p:SiteIdentifier_9 ;
 .
-cd01p:Sponsor_1
-  rdf:type study:Sponsor ;
-  skos:prefLabel "CLINICAL STUDY SPONSOR" ;
-.
 cd01p:StartRuleLying5
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -437,11 +468,22 @@ cd01p:StudyIdentifier_1
   code:hasMethod code:Method_ASSIGNED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
+cd01p:StudyPopulation_CDISCPILOT01
+  rdf:type study:StudyPopulation ;
+  skos:prefLabel "Study population CDISCPILOT01" ;
+  study:maxSubjectAge <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#PlannedSubjectAge_NULL.PINF> ;
+  study:minSubjectAge code:PlannedSubjectAge_P50Y ;
+.
 cd01p:Study_CDISCPILOT01
   rdf:type study:Study ;
   skos:altLabel "" ;
   skos:prefLabel "CDISCPILOT01" ;
-  skos:prefLabel "Study CDISCPILOT01" ;
+  study:addOn sdtmterm:NoYesResponse_N ;
+  study:hasPopulation cd01p:StudyPopulation_CDISCPILOT01 ;
+  study:hasPrimObjective cd01p:PrimaryObjective_1 ;
+  study:hasPrimObjective cd01p:PrimaryObjective_2 ;
+  study:hasPrimObjective cd01p:PrimaryObjective_3 ;
+  study:hasPrimOutcomeMeasure custom:PrimOutMeasure_ADAS-Cog ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_Pbo ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_ScreenFailure ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_XanomelineHigh ;
@@ -461,7 +503,14 @@ cd01p:Study_CDISCPILOT01
   study:hasProtocolSpecifiedActivity custom:VisitWk4Activity ;
   study:hasProtocolSpecifiedActivity custom:VisitWk6Activity ;
   study:hasProtocolSpecifiedActivity custom:VisitWk8Activity ;
+  study:hasSecObjective cd01p:SecondaryObjective_1 ;
+  study:hasSecObjective cd01p:SecondaryObjective_2 ;
+  study:hasSecObjective cd01p:SecondaryObjective_3 ;
+  study:hasSecObjective cd01p:SecondaryObjective_4 ;
+  study:hasSponsor code:Sponsor_CDISCPILOT01 ;
   study:hasStudyID cd01p:StudyIdentifier_1 ;
+  study:hasTitle cd01p:Title_CDISCPILOT01 ;
+  study:isAddOnStudy sdtmterm:NoYesResponse_N ;
 .
 cd01p:Subcategory_1
   rdf:type study:Subcategory ;
@@ -472,7 +521,7 @@ cd01p:SubstanceQuantity_1
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 1" ;
-  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasIngredient code:Substance_xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 0 ;
 .
@@ -480,7 +529,7 @@ cd01p:SubstanceQuantity_2
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 2" ;
-  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasIngredient code:Substance_xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 54 ;
 .
@@ -488,9 +537,13 @@ cd01p:SubstanceQuantity_3
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 3" ;
-  code:hasIngredient custom:InvestigationalSubstance_1 ;
+  code:hasIngredient code:Substance_xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 81 ;
+.
+cd01p:Title_CDISCPILOT01
+  rdf:type study:Title ;
+  skos:prefLabel "Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer’s Disease." ;
 .
 cd01p:VisitScreening1BloodPressure
   rdf:type owl:Class ;
@@ -575,6 +628,12 @@ code:InformedConsentAdult
   rdfs:subClassOf study:InformedConsent ;
   study:hasStartRule study:StartRuleDefault ;
 .
+<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#PlannedSubjectAge_NULL.PINF>
+  rdf:type study:MaximumSubjectAge ;
+.
+code:PlannedSubjectAge_P50Y
+  rdf:type study:MinimumSubjectAge ;
+.
 code:Pulse
   rdfs:subClassOf study:VitalSign ;
 .
@@ -588,6 +647,12 @@ code:RandomizationBAL3
 code:Sex
   code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_1 ;
+.
+code:Sponsor_CDISCPILOT01
+  rdf:type study:Sponsor ;
+.
+code:Substance_xanomeline
+  rdf:type study:InvestigationalSubstance ;
 .
 code:SystolicBloodPressure
   rdfs:subClassOf study:VitalSign ;
@@ -623,11 +688,6 @@ custom:AssumeBodyPositionSupine
   rdfs:subClassOf study:PrerequisiteActivity ;
   skos:definition "" ;
   skos:prefLabel "ASSUME BODY POSITION SUPINE" ;
-.
-custom:InvestigationalSubstance_1
-  rdf:type code:ActiveSubstance ;
-  rdf:type study:InvestigationalSubstance ;
-  skos:prefLabel "XANOMELINE" ;
 .
 custom:PlaceboDrug
   rdf:type code:DrugProduct ;
@@ -737,6 +797,10 @@ custom:PopFlagSAFETY
   skos:altLabel "Safety Population Flag" ;
   skos:prefLabel "SAFETY" ;
   code:hasMethod code:Method_DERIVED ;
+.
+custom:PrimOutMeasure_ADAS-Cog
+  rdf:type study:PrimaryOutcomeMeasure ;
+  skos:prefLabel "ADAS-Cog" ;
 .
 custom:Product_1
   rdf:type code:DrugProduct ;

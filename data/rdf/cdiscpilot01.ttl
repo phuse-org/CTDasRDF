@@ -27,6 +27,8 @@ cd01p:Site_701
   study:hasInvestigator cdiscpilot01:Investigator_123 ;
 .
 cd01p:Study_CDISCPILOT01
+  study:hasInterval cdiscpilot01:StudyDuration_1 ;
+  study:hasStudyActivity cdiscpilot01:DataCutoff_1 ;
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1015 ;
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1023 ;
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1028 ;
@@ -157,6 +159,17 @@ cdiscpilot01:CumulativeDrugAdministration_01-701-1028
   study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2013-08-01 ;
   study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06 ;
   study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
+.
+cdiscpilot01:DataCutoffDate_1
+  rdf:type study:DataCutoffDate ;
+  skos:prefLabel "Data cutoff date 1" ;
+  study:dateTimeInXSDString "2015-03-31" ;
+.
+cdiscpilot01:DataCutoff_1
+  rdf:type study:DataCutoff ;
+  skos:prefLabel "Data cutoff 1" ;
+  study:activityDescription "Interim Analysis Data Cutoff Date" ;
+  study:hasDate cdiscpilot01:DataCutoffDate_1 ;
 .
 cdiscpilot01:Date_1942-07-19
   rdf:type study:Birthdate ;
@@ -942,6 +955,22 @@ cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015
   rdf:type cd01p:StartRuleStanding3 ;
   skos:prefLabel "Person 01-701-1015 Screening 1 Rule after standing for 3 minutes" ;
   study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015 ;
+.
+cdiscpilot01:StudyBegin_1
+  rdf:type study:StudyBegin ;
+  skos:prefLabel "Study begin 1" ;
+  study:dateTimeInXSDString "2012-07-06" ;
+.
+cdiscpilot01:StudyDuration_1
+  rdf:type study:StudyDuration ;
+  skos:prefLabel "Study duration 1" ;
+  time:hasBeginning cdiscpilot01:StudyBegin_1 ;
+  time:hasEnd cdiscpilot01:StudyEnd_1 ;
+.
+cdiscpilot01:StudyEnd_1
+  rdf:type study:StudyEnd ;
+  skos:prefLabel "Study end 1" ;
+  study:dateTimeInXSDString "2015-03-05" ;
 .
 cdiscpilot01:SubjectIdentifier_1015
   rdf:type study:SubjectIdentifier ;

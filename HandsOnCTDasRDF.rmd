@@ -14,8 +14,9 @@ knitr::opts_chunk$set(echo = TRUE)
 Date         | Comment
 ------------ | ----------------------------
 2018-08-23   | Documentation creation (KG)
-2018-10-12   | Enhance documentation
-
+2018-10-12   | Enhance documentation (KG)
+2018-10-13   | Ontology viz and namespace cmds (NN)
+2018-10-17   | Enhance WebVOWL and Protégé documentation (KG)
 
 ## Overview
 
@@ -28,27 +29,6 @@ To get start your hands on the project you can perform the following steps:
 - Now you are ready to explore either in Stardog or in R
 
 ![Figure: Screenshot to download .zip](./doc/images/compiled_overview.png)
-
-```
-library("Rgraphviz")
-roadmapGraph <- new("graphNEL", nodes=c("Installation", 
-                                        "Setup Stardog", 
-                                        "Create Data \\\n(R)",
-                                        "Load Data \\\n(Stardog)",
-                                        "Query Data \\\n(Stardog/R)"), 
-                    edgemode="directed")
-
-roadmapGraph <- addEdge("Installation", "Setup Stardog", roadmapGraph, 1)
-roadmapGraph <- addEdge("Setup Stardog", "Create Data \\\n(R)", roadmapGraph, 1)
-roadmapGraph <- addEdge("Create Data \\\n(R)", "Load Data \\\n(Stardog)", roadmapGraph, 1)
-roadmapGraph <- addEdge("Load Data \\\n(Stardog)", "Query Data \\\n(Stardog/R)", roadmapGraph, 1)
-roadmapGraph <- addEdge("Setup Stardog", "Load Data \\\n(Stardog)", roadmapGraph, 1)
-
-plot(roadmapGraph, attrs=list(node=list(label="foo", fillcolor="lightgreen", 
-                                        fontsize=18, shape="box", width="1.5"),
-                              graph=list(rankdir="LR")), main = "Figure 1: Step overview")
-```
-
 
 ## Installation Hints (Windows)
 
@@ -152,9 +132,51 @@ The core of the linked data is the Ontologies which define the links, object typ
 * doc/Ontology Roadmap.docx - A short overview of available created/maintained ontology files
 * doc/StudyOntologyUserGuide.docx - Detailed information about the study ontology which is the base for this project
 
-### Browse Ontologies (e.g. Protege, WebVOWL)
+### Browse Ontologies with Protégé
+Protégé is an open source tool where you can develop and manage OWLs, so define the data structure and concept for the data linkage. It is used in this project by some members to create and maintain the OWL.
 
-Expected later
+![Figure: Screenshot of Protégé](./doc/images/protege_overview.PNG)
+
+On the picture you see the study.ttl file. The left pane displays the class hierarchy. Everything is a subclass of "Thing". What ever is in bold, this is defined in the currently opened owl file (so in study.ttl). All other items come from other referenced owl files. What you can see in the screenshot is that "Enrolled subject" is a subclass from "Human study subject" which is a subclass from "Human subject" and so on. This class hierarchy does not dipslay other relationships, so to investigate the connections using Protégé is a bit difficult.
+
+The relations you can see in the "Object properties" tab. In the "Description" window you see next to hierarchies also the "Domain" and "Range". The domain is the relationship-from and range is the relationship-to. When you checkout the "participates in" property which is a subclass of "has activity", you see that this comes from Person (domain, subject) and goes to Activity (range, object).
+
+The following terminology is used for the triples
+
+Subject      | Predicate       | Object
+-------------| --------------- | ----------------
+Domain       | Object Property | Range
+Person       | participates in | Activity
+
+If you follow the "Person" link, the person is displayed in the Classes tab. There is no indicator - neither in "Annotations" view nor in the "Description" view, that there is a relationship available.
+
+To build an OWL using Protégé is the typical process. To figure out the structure when you have an available OWL is difficult with this tool. If you have any tips, please add them or let the the project members know, so they can add this.
+
+### Browse Ontologies with WebVOWL
+If you want to explore the ontologies (OWL) used, you might want to use the graphical display of the OWLs with the WebVOWL tool. The following links can be used to browse the ontologies through WebVOWL:
+
+* [cd01p](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#)
+* [cdiscpilot01](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#)
+* [code](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#)
+* [sdtm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#)
+* [sdtmterm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#)
+* [study](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#)
+
+If you want more information on the Visualization with VOWL, you might read this paper where WebVOWL is explained very well: "[Visualizing Ontologies with VOWL](http://www.semantic-web-journal.net/system/files/swj1114.pdf)".
+
+When you load for example the study.ttl file, you might get some warnings that not all ontologies can be loaded - ignore them. Then you see light blue and dark blue bubbles with relationshipts. The light blue ones are the one from the current ontology, so you might want to explore them first. You can see the most important classes from the study.ttl ontology at the first glance.
+
+![Figure: Study.ttl Ontology - first glance](./doc/images/web_vowl_small.PNG)
+
+You might wonder, why you miss quite some classes like the "Human Study Subject". This is because the tool filters classes out to allow an overview display of the ontologies. On the bottom "Filter" menue, you might want to remove the Degree collapsing and shift this to zero. Then you can see all the relationships and sub classes. This might be the starting point to look into one class of interest and figure out how this is connected to other things.
+
+![Figure: Study.ttl Ontology - full glance](./doc/images/web_vowl_huge.PNG)
+
+You can use the "Pick and Pin" option from the bottom "Mode" menu, to get a deeper view of classes and connections of interest. You might for example start with a "StudyActivity" where there is a "Study" which "hasStudyActivity" connected. And then there are "HumanStudySubjects" which participates in the study. The subgroup "EnrolledSubjects" has also an "Arm" connected which is also a "StudyActivity".
+
+![Figure: Study.ttl Ontology - zoomed & pinned](./doc/images/web_vowl_zoomed.PNG)
+
+These connections are the ontologies and does not display the actual data. So these things define the structure of the relationships and classes which are used in our project.
 
 ## View SMS (Stardog Mapping Syntax) TTL Files
 
@@ -241,6 +263,16 @@ You might not like the long prefixes which are displayed on every query result. 
 
 To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <http://localhost:5820/#/databases> and select your "http://localhost:5820/#/databases" database. Turn the database "OFF" and "Edit". Now you are able to "Add namespace" as you like. Remember to "Save" and turn the database "ON".
 
+Alternatively, you can set the namespaces from the commandline by pasting the following commands into the terminal:
+```
+stardog namespace add CTDasRDFSMS --prefix cd01p --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#
+stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#
+stardog namespace add CTDasRDFSMS --prefix code --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#
+stardog namespace add CTDasRDFSMS --prefix sdtm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#
+stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#
+stardog namespace add CTDasRDFSMS --prefix study --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#
+```
+
 When you now perform any queries, you will see the namespace abbreviations nicely in the result:
 ```
 SELECT *
@@ -248,6 +280,16 @@ WHERE {
 	?s ?p ?o
 } LIMIT 20
 ```
+
+s (subject)               |	p (predicate)                 |	o (object)
+------------------------- | ----------------------------- | -------------------------------
+cdiscpilot01:stdm-graph	  | rdfs:label	                  | Clinical Trials data as an RDF graph.
+cdiscpilot01:Date_2014-07-02	| skos:prefLabel |	2014-07-02
+cdiscpilot01:Date_2014-07-02	| study:dateTimeInXSDString	| 2014-07-02
+cdiscpilot01:Date_2014-07-02	| rdf:type	| study:CumulativeDrugAdministrationEnd
+cdiscpilot01:Date_2014-07-02	| rdf:type	| study:ReferenceEnd
+cdiscpilot01:DemographicDataCollection_01-701-1015	| study:hasSubActivity	| cdiscpilot01:EthnicityDataCollection_01-701-1015
+
 
 ## Get Hands on triple store outside Stardog
 
