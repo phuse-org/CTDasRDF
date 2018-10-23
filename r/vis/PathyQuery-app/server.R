@@ -69,9 +69,9 @@ function(input, output, session) {
     nodes$color.background[ grepl("custom:",        nodes$id, perl=TRUE) ] <- '#C71B5F'  
 
     # Finally, change the start node to larger size and special color
-    #nodes$color.background[ grepl(startNode,  nodes$id, perl=TRUE) ] <- 'yellow'  
-    #nodes$color.border[ grepl(startNode,  nodes$id, perl=TRUE) ]     <- 'red'  
-    #nodes$size[ grepl(startNode,  nodes$id, perl=TRUE) ]             <- 60  
+    nodes$color.background[ grepl(input$startNode,  nodes$id, perl=TRUE) ] <- 'yellow'  
+    nodes$color.border[ grepl(input$startNode,  nodes$id, perl=TRUE) ]     <- 'red'  
+    nodes$size[ grepl(input$startNode,  nodes$id, perl=TRUE) ]             <- 45  
         #---- Edges
     # Create list of edges by keeping the Subject and Predicate from query result.
     edges<-rename(triples(), c("s" = "from", "o" = "to"))

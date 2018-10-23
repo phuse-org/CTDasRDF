@@ -41,7 +41,7 @@ cdo1p        'black'       '#008D00'      'white'
 code         'black'       '#1C5B64'      'white'
 study        'black'       '#FFBD09'      'white'
 custom       'black'       '#C71B5F'      'white'
-literal      'black'       'white'        'black'
+Literal      'black'       'white'        'black'
 ")
 
 lnodes$shape <- "box"

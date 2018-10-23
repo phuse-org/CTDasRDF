@@ -14,13 +14,15 @@
 # TODO: 
 # _____________________________________________________________________________
 fluidPage(
+  
+  
   tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
     ),
   titlePanel(HTML("Path Queries, CTDasRDF Project")),
   fluidRow(
-    column(7, textInput('startNode', "Start Node",  width = '400px', value = "cdiscpilot01:Person_01-701-1015")),
-    column(5, selectInput('hops',label = h4("Hops"), width= '100px', choices = list('1' = 1, '2' = 2, '3' = 3),
+    column(4, textInput('startNode', label=h4("Start Node"),  width = '400px', value = "cdiscpilot01:Person_01-701-1015")),
+    column(3, selectInput('hops',label = h4("Hops"), width= '100px', choices = list('1' = 1, '2' = 2, '3' = 3),
       selected = 1))
   ),
   fluidRow(
