@@ -34,14 +34,14 @@ endpoint <- "http://localhost:5820/CTDasRDFSMS/query"
 # Br. Or Node: #FE7900
 
 lnodes <- read.table(header = TRUE, text = "
-label        color.border color.background font.color
-Start        'red'         'yellow'       'black'
-cdiscpilot01 'black'       '#2C52DA'      'white'
-cdo1p        'black'       '#008D00'      'white'
-code         'black'       '#1C5B64'      'white'
-study        'black'       '#FFBD09'      'white'
-custom       'black'       '#C71B5F'      'white'
-Literal      'black'       'white'        'black'
+label         color.border color.background font.color
+'Start Node'  'red'         'yellow'       'black'
+cdiscpilot01  'black'       '#2C52DA'      'white'
+cdo1p         'black'       '#008D00'      'white'
+code          'black'       '#1C5B64'      'white'
+study         'black'       '#FFBD09'      'white'
+custom        'black'       '#C71B5F'      'white'
+Literal       'black'       'white'        'black'
 ")
 
 lnodes$shape <- "box"
