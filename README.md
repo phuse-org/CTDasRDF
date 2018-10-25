@@ -1,11 +1,12 @@
 # CTDasRDF
-This repository holds the scripts and data for the PhUSE project "Clinical Trials Data as RDF." The project is ongoing and documentation will lag behind other repository content.  
+This repository holds the scripts and data for the PhUSE project "Clinical Trials Data as RDF." The project is ongoing and documentation will lag behind other repository content. 
 
-Documentation is created in Markdown (.rmd) files. Clone the repository and view the .html file, or recreate the .html by knitting the rmd file.
+Project documentation is created in Markdown (.rmd) files. Clone the repository and view the .html file, or recreate the .html by knitting the rmd file.
 Primary sources of information include:
 
 ##Explanation
 An overview of the project background, goals, and approach. Includes links to the project Whitepaper and other related publications. 
+
 
 **File**: /doc/Markdown/Explanation.[rmd](doc/Markdown/Explanation.rmd) / [html](doc/Markdown/Explanation.html)
 
