@@ -13,6 +13,7 @@
 @prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl>
@@ -57,6 +58,11 @@ cd01p:Category_1
   rdf:type study:Category ;
   skos:altLabel "" ;
   skos:prefLabel "CAT1" ;
+.
+cd01p:EnrolledPopulation_CDISCPILOT01
+  rdf:type study:EnrolledPopulation ;
+  skos:prefLabel "Enrolled population CDISCPILOT01" ;
+  study:plannedPopulationSize 300 ;
 .
 cd01p:PrimaryObjective_1
   rdf:type study:PrimaryObjective ;
@@ -462,6 +468,11 @@ cd01p:StartRuleStanding3
   study:ruleDescription "AFTER STANDING FOR 3 MINUTES" ;
   study:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. " ;
 .
+cd01p:StudyDuration_CDISCPILOT01
+  rdf:type study:StudyDuration ;
+  skos:prefLabel "Study duration CDISCPILOT01" ;
+  time:hasXSDDuration "P182D"^^xsd:duration ;
+.
 cd01p:StudyIdentifier_1
   rdf:type study:StudyIdentifier ;
   skos:prefLabel "CDISCPILOT01" ;
@@ -471,14 +482,31 @@ cd01p:StudyIdentifier_1
 cd01p:StudyPopulation_CDISCPILOT01
   rdf:type study:StudyPopulation ;
   skos:prefLabel "Study population CDISCPILOT01" ;
+  study:Sexgroup sdtmterm:SexGroup_BOTH ;
+  study:ageGroup code:AgeGroup_ADULT ;
+  study:ageGroup code:AgeGroup_ELDERLY ;
   study:maxSubjectAge <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#PlannedSubjectAge_NULL.PINF> ;
   study:minSubjectAge code:PlannedSubjectAge_P50Y ;
+.
+cd01p:StudyRegistryIdentifier_NCT00987090
+  rdf:type study:StudyRegistryIdentifier ;
+  skos:prefLabel "NCT00987090" ;
+  code:hasCode "NCT00987090" ;
+  code:hasCodeSystem <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#CodeSystem_clinicaltrials.gov> ;
+.
+cd01p:StudyStopRule_1
+  rdf:type study:StudyStopRule ;
+  skos:prefLabel "Study stop rule 1" ;
+  study:ruleDescriptionLong "Last patient completed last visit or sponsor decided to discontinue study" ;
 .
 cd01p:Study_CDISCPILOT01
   rdf:type study:Study ;
   skos:altLabel "" ;
   skos:prefLabel "CDISCPILOT01" ;
   study:addOn sdtmterm:NoYesResponse_N ;
+  study:blinding sdtmterm:TrialBlindingSchema_DOUBLE_BLIND ;
+  study:controlType sdtmterm:ControlType_PLACEBO ;
+  study:hasPlannedDuration cd01p:StudyDuration_CDISCPILOT01 ;
   study:hasPopulation cd01p:StudyPopulation_CDISCPILOT01 ;
   study:hasPrimObjective cd01p:PrimaryObjective_1 ;
   study:hasPrimObjective cd01p:PrimaryObjective_2 ;
@@ -503,14 +531,23 @@ cd01p:Study_CDISCPILOT01
   study:hasProtocolSpecifiedActivity custom:VisitWk4Activity ;
   study:hasProtocolSpecifiedActivity custom:VisitWk6Activity ;
   study:hasProtocolSpecifiedActivity custom:VisitWk8Activity ;
+  study:hasRegistryID cd01p:StudyRegistryIdentifier_NCT00987090 ;
   study:hasSecObjective cd01p:SecondaryObjective_1 ;
   study:hasSecObjective cd01p:SecondaryObjective_2 ;
   study:hasSecObjective cd01p:SecondaryObjective_3 ;
   study:hasSecObjective cd01p:SecondaryObjective_4 ;
   study:hasSponsor code:Sponsor_CDISCPILOT01 ;
+  study:hasStopRule cd01p:StudyStopRule_1 ;
   study:hasStudyID cd01p:StudyIdentifier_1 ;
   study:hasTitle cd01p:Title_CDISCPILOT01 ;
+  study:interventionType sdtmterm:InterventionType_DRUG ;
   study:isAddOnStudy sdtmterm:NoYesResponse_N ;
+  study:studyDrug code:Substance_xanomeline ;
+  study:studyType sdtmterm:StudyType_INT ;
+  study:trialPhase sdtmterm:TrialPhase_PHASE2 ;
+  study:trialType sdtmterm:TrialType_EFF ;
+  study:trialType sdtmterm:TrialType_PK ;
+  study:trialType sdtmterm:TrialType_SAF ;
 .
 cd01p:Subcategory_1
   rdf:type study:Subcategory ;
@@ -624,6 +661,9 @@ code:Ethnicity
 code:Height
   rdfs:subClassOf study:VitalSign ;
 .
+code:Indication_01
+  rdf:type study:Indication ;
+.
 code:InformedConsentAdult
   rdfs:subClassOf study:InformedConsent ;
   study:hasStartRule study:StartRuleDefault ;
@@ -653,6 +693,7 @@ code:Sponsor_CDISCPILOT01
 .
 code:Substance_xanomeline
   rdf:type study:InvestigationalSubstance ;
+  study:studyIndication code:Indication_01 ;
 .
 code:SystolicBloodPressure
   rdfs:subClassOf study:VitalSign ;
@@ -1233,4 +1274,7 @@ study:VitalSign
 study:VitalSignOutcome
   code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_2 ;
+.
+study:hasPlannedDuration
+  rdfs:range study:StudyDuration ;
 .
