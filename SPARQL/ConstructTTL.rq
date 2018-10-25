@@ -1,11 +1,13 @@
 ###############################################################################
-# FILE : /CTDasRDF/SPARQL/ConstructTTL.rq
-# DESCR: Run in Stardog Studio then export to TTL. 
-# ENDP : 
-# GRAPH: 
-# OUT  : 
-# NOTES: 
-# TODO : 
+# FILE: ConstructTTL.rq
+# DESC: Run in Stardog Studio then export to TTL to extract all triples in the 
+#       graph
+# REQ : 
+# SRC : 
+# IN  : 
+# OUT : All triples in the graph ordered by ?s, ?o
+# NOTE: 
+# TODO: 
 ###############################################################################
 
 PREFIX cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> 

@@ -1,6 +1,0 @@
-# person1Paths.rq
-# All paths from Person_1
-PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
-PATHS 
-START ?x = cdiscpilot01:Person_1 END ?y 
-VIA ?p 
