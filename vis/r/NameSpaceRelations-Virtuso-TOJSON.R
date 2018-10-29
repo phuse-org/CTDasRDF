@@ -19,7 +19,7 @@
 #    - Number of triples for each namespace
 #    - Number of linkes between namespaces
 #______________________________________________________________________________
-library(rrdf)     # Read / Create RDF
+library(SPARQL)     # Read / Create RDF
 library(reshape)  # melt
 library(plyr)     # various goodies
 library(jsonlite) # Nice, clean JSON creation
@@ -28,26 +28,23 @@ library(jsonlite) # Nice, clean JSON creation
 setwd("C:/_github/CTDasRDF")
 
 #-- Local endpoint
-endpoint = "http://localhost:8890/sparql"
+endpoint <- "http://localhost:5820/CTDasRDFSMS/query"
 
-allPrefix <- "data/config/prefixes.csv"  # List of prefixes
-
-# Prefixes from config file ----
-prefixes <- as.data.frame( read.csv(allPrefix,
-  header=T,
-  sep=',' ,
-  strip.white=TRUE))
-# Create individual PREFIX statements
-prefixes$prefixDef <- paste0("PREFIX ", prefixes$prefix, ": <", prefixes$namespace,">")
- 
-## Set a limit for the queries during development or "" for all triples
-limit = ""
-# limit = "limit 1000"
 
 # Currently only looking at code, study, time, protocol namespaces
-nameSpaceQuery = '
+queryText = '
+prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> 
+prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
+prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> 
+prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#> 
+prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> 
+prefix time: <http://www.w3.org/2006/time#> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
 SELECT *
-FROM <http://localhost:8890/CTDasRDF>
 WHERE {
    ?s ?p ?o
 {FILTER(regex(str(?s), "(code#|study|time|cd01p)")) } 
@@ -55,18 +52,20 @@ UNION
   { FILTER(regex(str(?o), "(code#|study|time|cd01p)"))}
 } '
 
-# TEST QUERY FOR DEV
-#nameSpaceQuery = '
-#PREFIX study: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/study#>
-#SELECT ?s ?p ?o
-#FROM <http://localhost:8890/SDTMasRDF>
-#WHERE {
-#?s ?p study:hasDate
-#BIND("study:hasDate" AS ?o)
-#}'
+# WIP TESTING
 
-query<-paste0(paste(prefixes$prefixDef, collapse=""),nameSpaceQuery, limit)
-triples = as.data.frame(sparql.remote(endpoint, query))
+SELECT ?s
+WHERE {
+   ?s ?p ?o .
+   FILTER(regex(str(?s), "cdiscpilot01|cdp01|code|custom|")) 
+ # UNION
+  # { FILTER(regex(str(?o), "(code#|study|time|cd01p)"))}
+} LIMIT 100
+
+
+qd   <-  SPARQL(endpoint, queryText)
+
+triplesDf <- qd$results
 
 
 

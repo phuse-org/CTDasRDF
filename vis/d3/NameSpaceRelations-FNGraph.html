@@ -16,8 +16,8 @@ TODO: : Create the R code based on the original from the Annual conference, but 
 <head>
     <meta charset="utf-8">
     <title>SDTMasRDF Namespace Relations</title>
-    <script type="text/javascript" src="/ctdasRDF/vis/d3/d3/d3.v3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/ctdasRDF/vis/d3/css/CTDasRDF.css">
+    <script type="text/javascript" src="/js/d3.v3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/CTDasRDF.css">
 </head>
 <body>
 <h3>CTD Data as RDF: Namespace Relations</h3>
@@ -209,8 +209,8 @@ var nodeScale = d3.scale.linear()
 
 //---- LEGEND END -------------------------------------------------------------
 
- //d3.json("/ctdasRDF/vis/d3/data/DataRelations-FNGraph-test.JSON", function(dataset) {
- d3.json("/ctdasRDF/vis/d3/data/NamespaceRelations-FROMR.JSON", function(dataset) {
+ d3.json("/data/DataRelations-FNGraph-test.JSON", function(dataset) {
+// d3.json("/data/NamespaceRelations-FROMR.JSON", function(dataset) {
 
 // d3.json("/CTDasRDF/vis/d3/data/DataRelations-FNGraph-R.JSON", function(dataset) {
     var force = d3.layout.force()
