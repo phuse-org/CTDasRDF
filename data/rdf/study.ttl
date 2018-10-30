@@ -139,22 +139,22 @@ code:DemographicDataCollection
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:onProperty study:hasSubActivity ;
+      owl:onProperty study:hasActivity ;
       owl:someValuesFrom code:AgeDataCollection ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:onProperty study:hasSubActivity ;
+      owl:onProperty study:hasActivity ;
       owl:someValuesFrom code:EthnicityDataCollection ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:onProperty study:hasSubActivity ;
+      owl:onProperty study:hasActivity ;
       owl:someValuesFrom code:RaceDataCollection ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:onProperty study:hasSubActivity ;
+      owl:onProperty study:hasActivity ;
       owl:someValuesFrom code:SexDataCollection ;
     ] ;
 .
@@ -289,6 +289,9 @@ code:Weight
 .
 code:hasAge
   rdfs:range study:AgeOutcome ;
+.
+code:hasCodeSystem
+  code:hasCodeSystem code:CodeSystem_CDISCTerminology ;
 .
 code:hasNullFlavor
   rdfs:range code:NullFlavor ;
@@ -569,6 +572,21 @@ study:Category
   rdfs:subClassOf study:Entity ;
   skos:altLabel "" ;
   skos:prefLabel "Category" ;
+.
+study:CompletePopulation
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:StudyPopulation ;
+  skos:prefLabel "A Group of Subjects that participate in at least one Study Activity" ;
+.
+study:CompositeRule
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Rule ;
+  skos:prefLabel "Composite rule" ;
+.
+study:ControlArm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:TrueArm ;
+  skos:prefLabel "Control arm" ;
 .
 study:Country
   rdf:type owl:Class ;
@@ -883,7 +901,7 @@ study:EndInstant
 study:EnrolledPopulation
   rdf:type owl:Class ;
   rdfs:subClassOf study:StudyPopulation ;
-  skos:definition "A subset of the Study Population consisting of all Subjects who are Enrolled: It includes those who pass Screening, and those who fail screening but accidentally or intentionally participate in any Study Activity after Screening. " ;
+  skos:definition "A Group of Subjects consisting of all Subjects who are Enrolled: It includes those who pass Screening, and those who fail screening but accidentally or intentionally participate in any Study Activity after Screening. " ;
   skos:prefLabel "Enrolled population" ;
 .
 study:EnrolledSubject
@@ -918,6 +936,12 @@ study:Event
   rdfs:subClassOf study:Entity ;
   skos:definition "An occurrence; something that happens. An event persists in time. " ;
   skos:prefLabel "Event" ;
+.
+study:FalseArm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Arm ;
+  skos:definition "A StudyActivity that is tracked during the study as an Arm but is not really an Arm. e.g. ARM=Screen Failure  " ;
+  skos:prefLabel "False arm" ;
 .
 study:FixedDoseDrugAdministration
   rdf:type owl:Class ;
@@ -1057,6 +1081,11 @@ study:InterventionOutcome
   rdfs:subClassOf study:ActivityOutcome ;
   skos:altLabel "" ;
   skos:prefLabel "Intervention outcome" ;
+.
+study:InvestigationalArm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:TrueArm ;
+  skos:prefLabel "Investigational arm" ;
 .
 study:InvestigationalProduct
   rdf:type owl:Class ;
@@ -1673,6 +1702,64 @@ study:StopRule
 .
 study:Study
   rdf:type owl:Class ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "narms" ;
+              ] ;
+            sp:predicate study:narms ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object study:Study ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:SubQuery ;
+            sp:query [
+                rdf:type sp:Select ;
+                sp:resultVariables (
+                    [
+                      sp:expression [
+                          rdf:type sp:Count ;
+                          sp:expression [
+                              sp:varName "arm" ;
+                            ] ;
+                        ] ;
+                      sp:varName "narms" ;
+                    ]
+                  ) ;
+                sp:where (
+                    [
+                      sp:object study:Study ;
+                      sp:predicate rdf:type ;
+                      sp:subject spin:_this ;
+                    ]
+                    [
+                      sp:object [
+                          sp:varName "arm" ;
+                        ] ;
+                      sp:predicate study:hasActivity ;
+                      sp:subject spin:_this ;
+                    ]
+                    [
+                      sp:object study:TrueArm ;
+                      sp:predicate rdf:type ;
+                      sp:subject [
+                          sp:varName "arm" ;
+                        ] ;
+                    ]
+                  ) ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Derives the number of arms in the study" ;
+    ] ;
   rdfs:comment "" ;
   rdfs:subClassOf study:Activity ;
   skos:broader <http://www.bridgmodel.org/owl#Study> ;
@@ -1893,242 +1980,6 @@ study:StudyParticipationEnd
 .
 study:StudyParticipationInterval
   rdf:type owl:Class ;
-  spin:rule [
-      rdf:type sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "d1" ;
-              ] ;
-            sp:predicate time:hasBeginning ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "d2" ;
-              ] ;
-            sp:predicate time:hasEnd ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            rdf:type sp:SubQuery ;
-            sp:query [
-                rdf:type sp:Select ;
-                sp:groupBy (
-                    [
-                      sp:varName "s" ;
-                    ]
-                  ) ;
-                sp:resultVariables (
-                    [
-                      sp:varName "s" ;
-                    ]
-                    [
-                      sp:expression [
-                          rdf:type sp:Min ;
-                          sp:expression [
-                              sp:varName "startdate" ;
-                            ] ;
-                        ] ;
-                      sp:varName "refstartdate" ;
-                    ]
-                    [
-                      sp:expression [
-                          rdf:type sp:Max ;
-                          sp:expression [
-                              sp:varName "enddate" ;
-                            ] ;
-                        ] ;
-                      sp:varName "refenddate" ;
-                    ]
-                  ) ;
-                sp:where (
-                    [
-                      sp:object [
-                          sp:varName "visit" ;
-                        ] ;
-                      sp:predicate study:participatesIn ;
-                      sp:subject [
-                          sp:varName "s" ;
-                        ] ;
-                    ]
-                    [
-                      sp:object study:VisitActivity ;
-                      sp:predicate rdf:type ;
-                      sp:subject [
-                          sp:varName "visit" ;
-                        ] ;
-                    ]
-                    [
-                      sp:object [
-                          sp:varName "act" ;
-                        ] ;
-                      sp:predicate study:hasSubActivity ;
-                      sp:subject [
-                          sp:varName "visit" ;
-                        ] ;
-                    ]
-                    [
-                      sp:object study:FixedDoseDrugAdministration ;
-                      sp:predicate rdf:type ;
-                      sp:subject [
-                          sp:varName "act" ;
-                        ] ;
-                    ]
-                    [
-                      sp:object [
-                          sp:varName "acti" ;
-                        ] ;
-                      sp:predicate study:hasInterval ;
-                      sp:subject [
-                          sp:varName "act" ;
-                        ] ;
-                    ]
-                    [
-                      sp:object study:FixedDoseInterval ;
-                      sp:predicate rdf:type ;
-                      sp:subject [
-                          sp:varName "acti" ;
-                        ] ;
-                    ]
-                    [
-                      sp:object [
-                          sp:varName "start" ;
-                        ] ;
-                      sp:predicate time:hasBeginning ;
-                      sp:subject [
-                          sp:varName "acti" ;
-                        ] ;
-                    ]
-                    [
-                      sp:object [
-                          sp:varName "end" ;
-                        ] ;
-                      sp:predicate time:hasEnd ;
-                      sp:subject [
-                          sp:varName "acti" ;
-                        ] ;
-                    ]
-                    [
-                      sp:object [
-                          sp:varName "startstring" ;
-                        ] ;
-                      sp:predicate study:dateTimeInXSDString ;
-                      sp:subject [
-                          sp:varName "start" ;
-                        ] ;
-                    ]
-                    [
-                      rdf:type sp:Bind ;
-                      sp:expression [
-                          rdf:type study:dateiso ;
-                          arg:datestring [
-                              sp:varName "startstring" ;
-                            ] ;
-                        ] ;
-                      sp:variable [
-                          sp:varName "startdate" ;
-                        ] ;
-                    ]
-                    [
-                      sp:object [
-                          sp:varName "endstring" ;
-                        ] ;
-                      sp:predicate study:dateTimeInXSDString ;
-                      sp:subject [
-                          sp:varName "end" ;
-                        ] ;
-                    ]
-                    [
-                      rdf:type sp:Bind ;
-                      sp:expression [
-                          rdf:type study:dateiso ;
-                          arg:datestring [
-                              sp:varName "endstring" ;
-                            ] ;
-                        ] ;
-                      sp:variable [
-                          sp:varName "enddate" ;
-                        ] ;
-                    ]
-                  ) ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "padmin" ;
-              ] ;
-            sp:predicate study:participatesIn ;
-            sp:subject [
-                sp:varName "s" ;
-              ] ;
-          ]
-          [
-            sp:object study:CumulativeDrugAdministration ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "padmin" ;
-              ] ;
-          ]
-          [
-            sp:object spin:_this ;
-            sp:predicate study:hasInterval ;
-            sp:subject [
-                sp:varName "padmin" ;
-              ] ;
-          ]
-          [
-            sp:object study:CumulativeDrugAdministrationInterval ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type xsd:string ;
-                sp:arg1 [
-                    sp:varName "refstartdate" ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "refstartdatestring" ;
-              ] ;
-          ]
-          [
-            rdf:type sp:Bind ;
-            sp:expression [
-                rdf:type xsd:string ;
-                sp:arg1 [
-                    sp:varName "refenddate" ;
-                  ] ;
-              ] ;
-            sp:variable [
-                sp:varName "refenddatestring" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "refstartdatestring" ;
-              ] ;
-            sp:predicate study:dateTimeInXSDString ;
-            sp:subject [
-                sp:varName "d1" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "refenddatestring" ;
-              ] ;
-            sp:predicate study:dateTimeInXSDString ;
-            sp:subject [
-                sp:varName "d2" ;
-              ] ;
-          ]
-        ) ;
-      rdfs:comment "Calculate Reference Exposre Start and End dates from exposure data" ;
-    ] ;
   rdfs:comment "" ;
   rdfs:subClassOf time:Interval ;
   skos:definition "" ;
@@ -2137,7 +1988,7 @@ study:StudyParticipationInterval
 study:StudyPopulation
   rdf:type owl:Class ;
   rdfs:subClassOf study:Group ;
-  skos:definition "A Group of Persons consisting of all persons who participate in at least one StudyActivity" ;
+  skos:definition "A Group of Subjects associated with a Study" ;
   skos:prefLabel "Study population" ;
 .
 study:StudyRegistryIdentifier
@@ -2187,6 +2038,11 @@ study:Title
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
   skos:prefLabel "Title" ;
+.
+study:TrueArm
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Arm ;
+  skos:prefLabel "True arm" ;
 .
 study:UniqueSubjectIdentifier
   rdf:type owl:Class ;
@@ -2278,6 +2134,12 @@ study:actualPopulationSize
   rdfs:domain study:StudyPopulation ;
   rdfs:range xsd:integer ;
   skos:prefLabel "actual population size" ;
+.
+study:adaptiveDesign
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "adaptive design" ;
 .
 study:addOn
   rdf:type owl:ObjectProperty ;
@@ -2587,6 +2449,16 @@ study:groupID
   skos:definition "" ;
   skos:prefLabel "group ID" ;
 .
+study:hasActivity
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:TransitiveProperty ;
+  rdfs:comment "" ;
+  rdfs:domain study:Activity ;
+  rdfs:range study:Activity ;
+  owl:inverseOf study:isSubActivityOf ;
+  skos:definition "Relates an Activity with another activity nested beneath it (i.e. a sub-activity)" ;
+  skos:prefLabel "has activity" ;
+.
 study:hasActivityInterval
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
@@ -2771,9 +2643,9 @@ study:hasPrimOutcomeMeasure
 .
 study:hasProtocolSpecifiedActivity
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:Study ;
+  rdfs:domain study:Activity ;
   rdfs:range study:ProtocolSpecifiedActivity ;
-  rdfs:subPropertyOf study:hasSubActivity ;
+  rdfs:subPropertyOf study:hasActivity ;
   skos:definition "relates a study with a group of protocol specified activities, such as Glucose test at the Screening visit. The glucose test is performed multiple times, once for each Subject" ;
   skos:prefLabel "has protocol specified activity" ;
 .
@@ -2823,7 +2695,7 @@ study:hasSecOutcomeMeasure
 study:hasSite
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:HumanStudySubject ;
+  rdfs:domain study:Party ;
   rdfs:range study:Site ;
   skos:definition "The organization (e.g. hospital, clinic) where a Human Study Subject goes to participate in many Study Activities." ;
   skos:prefLabel "has Site" ;
@@ -2866,7 +2738,7 @@ study:hasStudyActivity
   rdfs:comment "" ;
   rdfs:domain study:Study ;
   rdfs:range study:StudyActivity ;
-  rdfs:subPropertyOf study:hasSubActivity ;
+  rdfs:subPropertyOf study:hasActivity ;
   owl:inverseOf study:isActivityOfStudy ;
   owl:propertyChainAxiom (
       study:hasStudyParticipant
@@ -2903,19 +2775,11 @@ study:hasStudyParticipationInterval
   skos:definition "" ;
   skos:prefLabel "has study participation interval" ;
 .
-study:hasSubActivity
-  rdf:type owl:ObjectProperty ;
-  rdf:type owl:TransitiveProperty ;
-  rdfs:comment "" ;
-  rdfs:domain study:StudyActivity ;
-  rdfs:range study:StudyActivity ;
-  owl:inverseOf study:isSubActivityOf ;
-  skos:definition "Relates an Activity with a Sub-activity" ;
-  skos:prefLabel "has sub activity" ;
-.
 study:hasSubRule
   rdf:type owl:ObjectProperty ;
-  rdfs:subPropertyOf study:hasSubActivity ;
+  rdfs:domain study:CompositeRule ;
+  rdfs:range study:Rule ;
+  rdfs:subPropertyOf study:hasActivity ;
 .
 study:hasSubcategory
   rdf:type owl:ObjectProperty ;
@@ -2950,6 +2814,18 @@ study:hasUniqueSubjectID
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "" ;
   skos:prefLabel "has unique subject ID" ;
+.
+study:healthySubject
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Party ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "healthy subject" ;
+.
+study:interventionModel
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range code:InterventionModel ;
+  skos:prefLabel "intervention model" ;
 .
 study:interventionType
   rdf:type owl:ObjectProperty ;
@@ -3008,6 +2884,12 @@ study:minSubjectAge
   rdfs:range study:MinimumSubjectAge ;
   skos:prefLabel "min age subjects" ;
 .
+study:narms
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "narms" ;
+.
 study:participatesIn
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
@@ -3016,7 +2898,7 @@ study:participatesIn
   rdfs:subPropertyOf study:engagesIn ;
   owl:propertyChainAxiom (
       study:participatesIn
-      study:hasSubActivity
+      study:hasActivity
     ) ;
   skos:definition "relates an Entity with an Activity that the Entity participates in passively; i.e. the activity is performed on the Entity" ;
   skos:prefLabel "participates in" ;
@@ -3052,6 +2934,12 @@ study:race
   rdfs:range study:RaceOutcome ;
   skos:altLabel "" ;
   skos:prefLabel "race" ;
+.
+study:randomizedTrial
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Study ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "randomized trial" ;
 .
 study:reasonNotDone
   rdf:type owl:DatatypeProperty ;

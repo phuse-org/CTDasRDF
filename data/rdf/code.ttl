@@ -117,6 +117,50 @@ sdtmterm:IndicationType_TREATMENT
   skos:prefLabel "TREATMENT" ;
   code:hasCode "C49656" ;
 .
+sdtmterm:InterventionModel_CROSS-OVER
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:InterventionModel ;
+  schema:cdiscDefinition "Participants receive one of two or more alternative intervention(s) during the initial epoch of the study and receive other intervention(s) during the subsequent epoch(s) of the study." ;
+  schema:cdiscSubmissionValue "CROSS-OVER" ;
+  schema:nciCode "C82637" ;
+  schema:nciPreferredTerm "Crossover Study" ;
+  mms:inValueDomain sdtmterm:C99076 ;
+  skos:prefLabel "CROSS-OVER" ;
+  code:hasCode "C82637" ;
+.
+sdtmterm:InterventionModel_FACTORIAL
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:InterventionModel ;
+  schema:cdiscDefinition "Two or more interventions, each alone and in combination, are evaluated in parallel against a control group." ;
+  schema:cdiscSubmissionValue "FACTORIAL" ;
+  schema:nciCode "C82638" ;
+  schema:nciPreferredTerm "Factorial Study" ;
+  mms:inValueDomain sdtmterm:C99076 ;
+  skos:prefLabel "FACTORIAL" ;
+  code:hasCode "C82638" ;
+.
+sdtmterm:InterventionModel_PARALLEL
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:InterventionModel ;
+  schema:cdiscDefinition "Participants are assigned to one of two or more arms in parallel for the duration of the study." ;
+  schema:cdiscSubmissionValue "PARALLEL" ;
+  schema:nciCode "C82639" ;
+  schema:nciPreferredTerm "Parallel Study" ;
+  mms:inValueDomain sdtmterm:C99076 ;
+  skos:prefLabel "PARALLEL" ;
+  code:hasCode "C82639" ;
+.
+sdtmterm:InterventionModel_SINGLE-GROUP
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:InterventionModel ;
+  schema:cdiscDefinition "Single arm study." ;
+  schema:cdiscSubmissionValue "SINGLE GROUP" ;
+  schema:nciCode "C82640" ;
+  schema:nciPreferredTerm "Single Group Study" ;
+  mms:inValueDomain sdtmterm:C99076 ;
+  skos:prefLabel "SINGLE GROUP" ;
+  code:hasCode "C82640" ;
+.
 sdtmterm:InterventionType_DRUG
   rdf:type mms:PermissibleValue ;
   rdf:type code:InterventionType ;
@@ -209,6 +253,7 @@ sdtmterm:StudyType_EXA
   schema:nciPreferredTerm "Expanded Access Study" ;
   mms:inValueDomain sdtmterm:C99077 ;
   skos:prefLabel "EXPANDED ACCESS" ;
+  code:hasCode "C98722" ;
 .
 sdtmterm:StudyType_INT
   rdf:type mms:PermissibleValue ;
@@ -219,6 +264,7 @@ sdtmterm:StudyType_INT
   schema:nciPreferredTerm "Interventional Study" ;
   mms:inValueDomain sdtmterm:C99077 ;
   skos:prefLabel "INTERVENTIONAL" ;
+  code:hasCode "C98388" ;
 .
 sdtmterm:StudyType_OBS
   rdf:type mms:PermissibleValue ;
@@ -229,6 +275,7 @@ sdtmterm:StudyType_OBS
   schema:nciPreferredTerm "Observational Study" ;
   mms:inValueDomain sdtmterm:C99077 ;
   skos:prefLabel "OBSERVATIONAL" ;
+  code:hasCode "C16084" ;
 .
 sdtmterm:TrialBlindingSchema_DOUBLE_BLIND
   rdf:type mms:PermissibleValue ;
@@ -832,6 +879,8 @@ code:Country_1
   rdfs:comment "" ;
   skos:definition "" ;
   skos:prefLabel "USA" ;
+  code:hasCode "USA" ;
+  code:hasCodeSystem code:CodeSystem_ISO3166 ;
 .
 code:DefinedActivity
   rdf:type owl:Class ;
@@ -982,12 +1031,16 @@ code:ExRoute_ORAL
   owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38288> ;
   skos:altLabel "" ;
   skos:prefLabel "ORAL" ;
+  code:hasCode "C38288" ;
+  code:hasCodeSystem code:CodeSystem_CDISCTerminology ;
 .
 code:ExRoute_TRANSDERMAL
   rdf:type code:RouteOfAdministration ;
   owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
   skos:altLabel "" ;
   skos:prefLabel "TRANSDERMAL" ;
+  code:hasCode "C38305" ;
+  code:hasCodeSystem code:CodeSystem_CDISCTerminology ;
 .
 code:GenericOutcome
   rdf:type owl:Class ;
@@ -1056,6 +1109,11 @@ code:IndicationCondition
 code:IndicationType
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
   skos:prefLabel "Indication type" ;
 .
 code:Indication_01
@@ -1121,6 +1179,16 @@ code:Intervention
   rdfs:subClassOf code:DefinedActivity ;
   skos:definition "" ;
   skos:prefLabel "Intervention term" ;
+.
+code:InterventionModel
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Intervention model" ;
 .
 code:InterventionOutcome
   rdf:type owl:Class ;
@@ -1341,6 +1409,11 @@ code:NullFlavor_9
 code:NumericOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
+.
+code:ObjectProperty_1
+  rdf:type owl:ObjectProperty ;
+  owl:inverseOf code:recFreqOfAdministration ;
+  skos:prefLabel "Object property 1" ;
 .
 code:Observation
   rdf:type owl:Class ;
@@ -1752,6 +1825,11 @@ code:TrialBlindingSchema
 code:TrialPhase
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
   skos:prefLabel "Trial phase" ;
 .
 code:TrialType
@@ -2029,6 +2107,18 @@ code:randomizationQuotient
   skos:definition "" ;
   skos:prefLabel "randomization quotient" ;
   code:randomizationQuotient "0.67"^^xsd:float ;
+.
+code:recFreqOfAdministration
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DrugProduct ;
+  rdfs:range code:DosageFrequency ;
+  skos:prefLabel "rec freq of administration" ;
+.
+code:recRouteOfAdministration
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:Product ;
+  rdfs:range code:RouteOfAdministration ;
+  skos:prefLabel "recommended route of administration" ;
 .
 code:underlyingCondition
   rdf:type owl:ObjectProperty ;

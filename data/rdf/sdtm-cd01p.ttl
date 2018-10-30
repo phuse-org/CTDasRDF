@@ -703,10 +703,40 @@ sdtm-cd01p:SDTM_TS_Record_11
   sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C89081> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
+sdtm-cd01p:SDTM_TS_Record_12
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 12 DOSU" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C73558> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
 sdtm-cd01p:SDTM_TS_Record_13
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 13 INDIC" ;
   sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C41184> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_14
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 14 TINDTP" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49652> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_15
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 15 LENGTH" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49697> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_16
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 16 OBJPRIM" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C85826> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_19
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 19 OBJSEC" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C85827> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_2
@@ -715,16 +745,165 @@ sdtm-cd01p:SDTM_TS_Record_2
   sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49694> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
+sdtm-cd01p:SDTM_TS_Record_23
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 23 TPHASE" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C48281> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_24
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 24 PLANSUB" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49692> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_25
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 25 RANDOM" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C25196> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_26
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 26 ROUTE" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C38114> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_27
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 27 SEXP" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49696> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_28
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 28 SPONSOR" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C70793> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_29
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 29 TITLE" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49802> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
 sdtm-cd01p:SDTM_TS_Record_3
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 3 AGEMIN" ;
   sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49693> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
+sdtm-cd01p:SDTM_TS_Record_30
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 30 TRT" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C41161> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_31
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 31 TTYP" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49660> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_34
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 34 STOPRULE" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49698> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_35
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 35 REGID" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98714> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_36
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 36 OUTMSPRI" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98772> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_37
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 37 FCNTRY" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98770> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_38
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 38 ADAPT" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98704> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_39
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 39 DCUTDTC" ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
 sdtm-cd01p:SDTM_TS_Record_4
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 4  AGESPAN" ;
   sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C20587> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_40
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 40 DCUTDESC" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98718> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_41
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 41 NARMS" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98771> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_42
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 42 STYPE" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C15320> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_43
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 43 SSTDTC" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C69208> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_44
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 44 SENDTC" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C90462> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_45
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 45 ACTSUB" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98703> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_46
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 46 HLTSUBJI" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98737> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_47
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 47 INTMODEL" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98746> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_48
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 48 INTTYPE" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98747> ;
+  sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+sdtm-cd01p:SDTM_TS_Record_49
+  rdf:type sdtm:SDTM_TS_Record ;
+  skos:prefLabel "SDTM TS Record 49 PCLAS" ;
+  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98768> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_6
@@ -787,6 +966,136 @@ sdtm:SDTMDefineRecord
           ]
         ) ;
       rdfs:comment "Get information for Comments column." ;
+    ] ;
+.
+sdtm:SDTM_TS_Record
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C38114> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate study:studyDrug ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate code:hasIngredient ;
+            sp:subject [
+                sp:varName "sq" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sq" ;
+              ] ;
+            sp:predicate code:hasIngredientQuantity ;
+            sp:subject [
+                sp:varName "dp" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "roa" ;
+              ] ;
+            sp:predicate code:recRouteOfAdministration ;
+            sp:subject [
+                sp:varName "dp" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "roa" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "roa" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "roa" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for ROUTE" ;
     ] ;
 .
 study:AnatomicLocation
