@@ -117,13 +117,14 @@ nodes$borderWidth <- 2
       visIgraphLayout(avoidOverlap = 1) %>%
 
       # visEdges(smooth=FALSE, color="#808080") %>%
-      visEdges(smooth=FALSE)  %>%
+      visEdges(smooth=FALSE)  
+    # %>%
 
       # Legend
       #   Examples at : https://datastorm-open.github.io/visNetwork/legend.html  
-      visLegend(addNodes  = lnodes, 
-                useGroups = FALSE,
-                width     =  .2,
-                stepY     = 60)
+     # visLegend(addNodes  = lnodes, 
+    #            useGroups = FALSE,
+    #            width     =  .2,
+    #            stepY     = 60)
   })
 } # end of server.R

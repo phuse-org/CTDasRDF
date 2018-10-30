@@ -11,6 +11,8 @@
 # OUT :
 # REQ :
 # NOTE: 
+# REF:  Here for late formating of checkbox group inputs to include HTML and images
+#        https://stackoverflow.com/questions/46354705/html-formatting-of-checkboxs-icons-and-text-for-shiny
 # TODO: 
 # _____________________________________________________________________________
 fluidPage(
@@ -20,25 +22,26 @@ fluidPage(
       tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
     ),
   titlePanel(HTML("SMS Map Visualization, PhUSE CTDasRDF Project")),
-  fluidRow(
-    column(2,
-           checkboxGroupInput("maps", "Maps:",
-             c("DM" = "DM",
-             "EX" = "EX",
-             "VS" = "VS")),
-           checkboxGroupInput("namespace", "Name Space:",
-             c("cdiscpilot01" = "cdiscpilot01",
-               "cd01p"        = "cd01p",
-               "code"         = "code",
-               "study"        = "study",
-               "custom"       = "custom",
-               "literal"      = "literal"),
-           selected = c('cdiscpilot01','cd01p', 'code', 'study', 'custom', 'literal')
-          )
+  sidebarLayout(
+    sidebarPanel(
+      width=2,
+      checkboxGroupInput("maps", "Maps:",
+        c("DM" = "DM",
+        "EX" = "EX",
+        "VS" = "VS"),
+        selected = 'DM'),
+      checkboxGroupInput("namespaces", "Name Space:",
+        c("cdiscpilot01 (blue)" = "cdiscpilot01",
+          "cd01p (green)"       = "cd01p",
+          "code (dk green)"      = "code",
+          "study (orange)"      = "study",
+          "custom (red)"        = "custom",
+          "literal (white)"     = "literal"),
+           selected = c('cdiscpilot01','cd01p', 'code', 'study', 'custom', 'literal'))
     ),
-    column(10,
-           offset = 0, 
-           style='padding:5px;',
-           visNetworkOutput("path_vis", height = '800px'))
+    mainPanel(
+      width=10,
+      visNetworkOutput("path_vis", height = '800px')
+    )
   )
 )

@@ -17,7 +17,6 @@ library(dplyr)
 # Configuration
 setwd("C:/_gitHub/CTDasRDF")
 source("r/validation/Functions.R")  # IRI to prefix and other fun
-
 maxLabelSize <- 40
 
 #' Parse SMS files
@@ -31,7 +30,6 @@ maxLabelSize <- 40
 #' parseFiles(sourceFiles=list("a.TTL", "b.TTL") 
 #' 
 parseFile <- function(sourceFiles){
-
   triples <- data.frame(s               = character(),
                         p               = character(), 
                         o               = character(), 
@@ -45,7 +43,6 @@ parseFile <- function(sourceFiles){
     print(paste0("FILE: ", fileNamePath))
     conn <- file(fileNamePath,open="r")
     linn <-readLines(conn)
-    #DEUBUG print(linn)
     for (i in 1:length(linn)){
       # SUBJECT : Starts Flush left, has prefix ':'
       #          Does not end with ; or .
@@ -70,24 +67,23 @@ parseFile <- function(sourceFiles){
         mapFile <-fileName  # Name of file without sub path
         triples <<- rbind(triples, data.frame(s=s, p=p, o=o, mapFile=mapFile))
       }
-      
     }  
     close(conn)
+    # Assign titles ----
+    triples$Title <- triples$o
+    # Re-order dataframe. 
+    triples<-triples[c("s", "p", "o", "Title", "mapFile")]
+    # Remove duplicates from the df
+    triples <- triples[!duplicated(triples),]
   })
+
+
   foo <- triples
 }  
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 triples<-data.frame(parseFile(sourceFiles=list("DM_Mappings.TTL")))
 
 
-# Assign titles ----
-triples$Title <- triples$o
-
-# Re-order dataframe. 
-triples<-triples[c("s", "p", "o", "Title", "mapFile")]
-
-# Remove duplicates from the df
-triples <- triples[!duplicated(triples),]
 
 #---- Formatting 
 #  _EC = edge colours
