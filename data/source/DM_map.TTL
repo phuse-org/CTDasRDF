@@ -1,5 +1,5 @@
 ###############################################################################
-# FILE: DM_mappings.ttl
+# FILE: DM_map.ttl
 # DESC: Stardog SMS Template file for mapping DM to graph.
 # REQ : File format requirements for both execution and consistent processing
 #         by visualization scripts:
@@ -76,8 +76,8 @@ cdiscpilot01:Interval_{lifeSpan_im_en}
 #  a) birthdate
 cdiscpilot01:Date_{brthdate_en}
   rdf:type                    study:Birthdate ;
-    skos:prefLabel            "{brthdate}"^^xsd:string ;
-    study:dateTimeInXSDString "{brthdate}"^^xsd:string
+  skos:prefLabel            "{brthdate}"^^xsd:string ;
+  study:dateTimeInXSDString "{brthdate}"^^xsd:string
   .
 # b) deathdate
 cdiscpilot01:Date_{dthdtc_en}
@@ -130,14 +130,14 @@ cdiscpilot01:Date_{rfpendtc_en}
 
 # SubjectIdentifier
 cdiscpilot01:SubjectIdentifier_{subjid}
-    rdf:type       study:SubjectIdentifier ;
-    skos:prefLabel "{subjid}"^^xsd:string
+  rdf:type       study:SubjectIdentifier ;
+  skos:prefLabel "{subjid}"^^xsd:string
 .
 
 # UniqueSubjectIdentifier
 cdiscpilot01:UniqueSubjectIdentifier_{usubjid}
-    rdf:type       study:UniqueSubjectIdentifier ;
-    skos:prefLabel "{usubjid}"^^xsd:string
+  rdf:type       study:UniqueSubjectIdentifier ;
+  skos:prefLabel "{usubjid}"^^xsd:string
 .
 
 # -----------------------------------------------------------------------------

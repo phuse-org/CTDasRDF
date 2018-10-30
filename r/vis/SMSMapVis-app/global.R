@@ -1,12 +1,13 @@
 #______________________________________________________________________________
 # FILE: global.R
 # DESC: Global for SMS Visualization App
+#       Includes function to parse map files into s,p,o
 # SRC :
-# IN  : 
+# IN  : Hard coded map file names as data source
 # OUT : 
 # REQ : 
 # SRC : 
-# NOTE: 
+# NOTE: Legend nodes not currently implemented. Delete?
 # TODO: 
 #______________________________________________________________________________
 library(stringr)     #      rename
@@ -39,7 +40,7 @@ parseFile <- function(sourceFiles){
     # Process each source file in the list
     sourceContent <- lapply(sourceFiles, function(fileName) {
     
-    fileNamePath <- paste0("data/source/",fileName)
+    fileNamePath <- paste0("data/source/",fileName, "_map.TTL")
     print(paste0("FILE: ", fileNamePath))
     conn <- file(fileNamePath,open="r")
     linn <-readLines(conn)
@@ -77,13 +78,12 @@ parseFile <- function(sourceFiles){
     triples <- triples[!duplicated(triples),]
   })
 
-
   foo <- triples
 }  
+
+
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-triples<-data.frame(parseFile(sourceFiles=list("DM_Mappings.TTL")))
-
-
+triples<-data.frame(parseFile(sourceFiles=list("DM", "SUPPDM", "EX", "VS", "Graphmeta", "Invest")))
 
 #---- Formatting 
 #  _EC = edge colours
@@ -140,6 +140,3 @@ Literal       'black'       'white'        'black'
 
 lnodes$shape <- "box"
 lnodes$title <- "Legend"
-
-
-

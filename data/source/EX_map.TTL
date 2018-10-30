@@ -1,0 +1,95 @@
+###############################################################################
+# FILE: EX_map.ttl
+# DESC: Stardog SMS Template file for mapping EX to graph.
+# REQ :
+# SRC :
+# IN  : CSV converted from EX.XPT, Subject 1015 only
+# OUT :
+# NOTE: stardog-admin virtual import CTDasRDF EX_mappings.TTL EX_subset.csv
+# TODO:
+###############################################################################
+
+@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
+@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
+@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# -----------------------------------------------------------------------------
+#
+# DrugAdministration_XXX - specific to a Person and that specific administration, so
+#   so the IRI is a combination of the USUBJID and the fixDoseInt.  FixDoseInt is a
+#   sub-triple of DrugAdministration so it makes sense to use that combination.
+# 26APR18:
+#        cumuDrugAdmin_im, rfxstdtc, rfxendtc are merged in from DM
+# -----------------------------------------------------------------------------
+cdiscpilot01:Person_{usubjid}
+  study:participatesIn cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} ;
+.
+
+# Add the cumulative drug admin periods to the respective usubjid values
+cdiscpilot01:CumulativeDrugAdministration_{usubjid}
+  study:hasSubActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en};
+.
+
+cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
+  rdf:type                  study:CumulativeDrugAdministration ;
+  skos:prefLabel            "Drug administration period {rfxstdtc} to {rfxendtc}"^^xsd:string ;
+  study:activityStatus      code:ActivityStatus_CO ;
+  study:hasActivityInterval cdiscpilot01:Interval_{cumuDrugAdmin_im};
+  study:hasSubActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en};
+.
+
+# Visit date comes from VS, NOT FROM EX, because the EX is sometimes a later date
+#   (EX not on the same day as the visit date!). So date is not here, but the drug admin that is
+#   associated with that visit is here, even though it may occur on a later date!
+#   May need to change this back to original coding.
+cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
+  rdf:type	             custom:Visit{visit_im_titleCSh} ;
+  study:hasSubActivity   cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en} ;
+  #DEL NO, NOT HERE!!! Date is set in VS.study:hasPerformedDate cdiscpilot01:Date_{exstdtc_en} ;
+.
+# DrugAdministration
+#   Drug admin date exstdtc_en may be a later date than the visit date
+#DEL this section is correct.
+cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en}
+  rdf:type                       cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} ;
+  rdf:type                       study:FixedDoseDrugAdministration ;
+  skos:prefLabel                 "Drug administration"^^xsd:string ;
+  study:activityStatus           code:ActivityStatus_CO ;
+  study:administeredDrug         custom:{extrt_exdose_im} ;
+  study:hasActivityInterval      cdiscpilot01:Interval_{fixDoseInt_im_en} ;
+  study:hasDosageFrequency       code:ExDosFrq_{exdosfrq} ;
+  study:hasRouteOfAdministration code:ExRoute_{exroute_en} ;
+  code:outcome                   study:DrugAdministrationComplete ;
+.
+cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
+  rdf:type         owl:Class ;
+  rdfs:subClassOf  custom:Visit{visit_im_titleCSh}Activity ;
+  skos:prefLabel   "Visit {visit_im_titleC} Person {usubjid}" ;
+.
+cdiscpilot01:Interval_{fixDoseInt_im_en}
+  rdf:type          study:FixedDoseInterval ;
+  skos:prefLabel    "Interval {fixDoseInt_label_im}"^^xsd:string ;
+  time:hasBeginning cdiscpilot01:Date_{exstdtc_en} ;
+  time:hasEnd       cdiscpilot01:Date_{exendtc_en} ;
+.
+# Assign date types
+cdiscpilot01:Date_{exstdtc_en}
+  rdf:type                  study:FixedDoseIntervalBegin ;
+  skos:prefLabel            "{exstdtc}"^^xsd:string ;
+  study:dateTimeInXSDString "{exstdtc}"^^xsd:string ;
+.
+cdiscpilot01:Date_{exendtc_en}
+  rdf:type                  study:FixedDoseIntervalEnd ;
+  rdf:type                  study:VisitDate ;
+  rdf:type                  time:Instant;
+  skos:prefLabel            "{exendtc}"^^xsd:string ;
+  study:dateTimeInXSDString "{exendtc}"^^xsd:string ;
+.

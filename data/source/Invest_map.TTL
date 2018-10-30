@@ -1,5 +1,5 @@
 ###############################################################################
-# FILE: invest_mappings.ttl
+# FILE: Invest_map.ttl
 # DESC: Stardog SMS Template file for mapping investigator and site data  
 # REQ : 
 # SRC : 
@@ -41,5 +41,3 @@ cdiscpilot01:InvestigatorIdentifier_{investID}
   rdf:type study:InvestigatorIdentifier ;
   skos:prefLabel "{investID}"^^xsd:string ;
 .
-
-

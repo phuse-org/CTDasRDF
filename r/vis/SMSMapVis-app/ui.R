@@ -4,9 +4,11 @@
 # $Date: 2018-10-02 16:36:05 -0400 (Tue, 02 Oct 2018) $
 # $Author: U041939 $
 # _____________________________________________________________________________
-# DESC: Left: Hierarchical network graph of KRI to Macro Relations
-#       Right: Details of a selected node. Only visible when a node is selected
-# SRC :
+# DESC: UI for SMS Map visualizatoin
+#       User can choose: 
+#        1. The map file(s) to display
+#        2. The namespaces within map files (NOT YET IMPLMENTED)
+# SRC : 
 # IN  :
 # OUT :
 # REQ :
@@ -19,18 +21,22 @@ fluidPage(
   
   
   tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
+      tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
+      textOutput("selectedMaps")
     ),
   titlePanel(HTML("SMS Map Visualization, PhUSE CTDasRDF Project")),
   sidebarLayout(
     sidebarPanel(
       width=2,
       checkboxGroupInput("maps", "Maps:",
-        c("DM" = "DM",
-        "EX" = "EX",
-        "VS" = "VS"),
-        selected = 'DM'),
-      checkboxGroupInput("namespaces", "Name Space:",
+        c("DM"       = "DM",
+          "SUPPDM"   = "SUPPDM",
+          "EX"       = "EX",
+          "VS"       = "VS",
+          "Invest"   = "Invest",
+          "Metadata" = "Graphmeta"),
+          selected   = 'DM'),
+      checkboxGroupInput("namespaces", "Name Space: NOT YET IMPLEMENTED",
         c("cdiscpilot01 (blue)" = "cdiscpilot01",
           "cd01p (green)"       = "cd01p",
           "code (dk green)"      = "code",

@@ -5,7 +5,7 @@
 # IN  : 1. R Scripts for each domain, except SUPPDM which is subset and written 
 #         out from this script.
 #       2. Functions.R  - misc data processing functions
-#       3. ctdasrdf_graphmeta.csv  - metadata for graph creation process.
+#       3. Graphmeta.csv  - metadata for graph creation process.
 #          written back out with new timestamp for which R scripts run.
 # OUT : <domain name>_subset.csv  
 # REQ : DM must be imported before EX. EX merges in dm$cumuDrugAdmin_im to 
@@ -29,14 +29,14 @@ source('R/Functions.R')  # Functions: readXPT(), encodeCol(), etc.
 
 # ---- Graph Metadata ---------------------------------------------------------
 # Read in the source CSV, insert time stamp, and write it back out
-#  Source file needed UTF-8 spec to import first column correctly. Could be articfact
+#  Source file needed UTF-8 spec to import first column correctly. Could be artifact
 #    that needs later replacement.
-graphMeta <- read.csv2("data/source/ctdasrdf_graphmeta.csv",
+graphMeta <- read.csv2("data/source/Graphmeta.csv",
   fileEncoding="UTF-8-BOM" , header=TRUE, sep=",");
 
 graphMeta$createdOn<-gsub("(\\d\\d)$", ":\\1",strftime(Sys.time(),"%Y-%m-%dT%H:%M:%S%z"))
 
-write.csv(graphMeta, file="data/source/ctdasrdf_graphmeta.csv",
+write.csv(graphMeta, file="data/source/Graphmeta.csv",
   row.names = F,
   na = "")
 
