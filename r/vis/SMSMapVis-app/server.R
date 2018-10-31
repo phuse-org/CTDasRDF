@@ -91,6 +91,9 @@ function(input, output, session) {
   edges$color[ grepl("study:",        edges$to, perl=TRUE) ] <- '#FFBD09'  
   edges$color[ grepl("custom:",       edges$to, perl=TRUE) ] <- '#C71B5F'  
 
+  edges$font.color <- "black"
+  edges$font.strokeColor <- "#919191"  # Set to background grey
+  
     
   visNetwork(nodes, edges, width= "100%", height=1100, background = "#919191") %>%
   
