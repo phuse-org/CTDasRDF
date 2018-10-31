@@ -46,8 +46,15 @@ fluidPage(
            selected = c('cdiscpilot01','cd01p', 'code', 'study', 'custom', 'literal'))
     ),
     mainPanel(
-      width=10,
-      visNetworkOutput("path_vis", height = '800px')
-    )
+      tabsetPanel( type = "tabs",
+        tabPanel( "Plot",
+          width=10,
+          visNetworkOutput("path_vis", height = '800px')
+        ),
+        tabPanel("Triples",
+          tableOutput("triplesTable")
+        )
+      )
+    )  
   )
 )

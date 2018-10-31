@@ -21,6 +21,12 @@ function(input, output, session) {
 
   output$selectedMaps <- renderText(input$maps)
 
+  output$triplesTable <- renderTable({
+    triplesDisplay()
+  })
+  
+  
+  
   #____________________________________________________________________________
   #  Vistnetwork render
   #____________________________________________________________________________
