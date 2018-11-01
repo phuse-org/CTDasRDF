@@ -918,6 +918,21 @@ study:Entity
   skos:definition "" ;
   skos:prefLabel "Entity" ;
 .
+study:Epoch
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:StudyActivity ;
+  skos:prefLabel "Epoch" ;
+.
+study:EpochDuration
+  rdf:type owl:Class ;
+  rdfs:subClassOf time:Duration ;
+  skos:prefLabel "Epoch duration" ;
+.
+study:EpochInterval
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityInterval ;
+  skos:prefLabel "Epoch interval" ;
+.
 study:EthnicOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf study:CategoricalOutcome ;
@@ -1434,7 +1449,7 @@ study:ProtocolDocument
 study:ProtocolSpecifiedActivity
   rdf:type owl:Class ;
   rdfs:subClassOf study:StudyActivity ;
-  skos:definition "A StudyActivity that is specified in the Protocol to occur in the Study. It is associated with a start rule but not necessarily with a subject. A protocol specified activity is instantiated for each Subject in the study. The instance of a protocol specified activity becomes a Planned Activity. " ;
+  skos:definition "A StudyActivity that is specified in the Protocol to occur in the Study. It is associated with a start rule but not necessarily with a subject. A protocol specified activity is instantiated for each Subject in the study. The instance of a protocol specified activity is a Planned Activity and is linked to a subject." ;
   skos:prefLabel "Protocol specified activity" ;
 .
 study:PulseOutcome
@@ -1556,12 +1571,6 @@ study:SexOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf study:CategoricalOutcome ;
   skos:prefLabel "Sex outcome" ;
-.
-study:Sexgroup
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain study:StudyPopulation ;
-  rdfs:range code:SexGroup ;
-  skos:prefLabel "Sexgroup" ;
 .
 study:Site
   rdf:type owl:Class ;
@@ -1963,6 +1972,11 @@ study:StudyIdentifier
   rdf:type owl:Class ;
   rdfs:subClassOf study:Identifier ;
   skos:prefLabel "Study identifier" ;
+.
+study:StudyInterval
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:ActivityInterval ;
+  skos:prefLabel "Study interval" ;
 .
 study:StudyParticipationBegin
   rdf:type owl:Class ;
@@ -2596,8 +2610,8 @@ study:hasPerformer
 .
 study:hasPlannedDuration
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:Activity ;
-  rdfs:range xsd:duration ;
+  rdfs:domain time:Interval ;
+  rdfs:range time:Duration ;
   rdfs:subPropertyOf time:hasDuration ;
   skos:prefLabel "has planned duration" ;
 .
@@ -2663,6 +2677,7 @@ study:hasRegistryID
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:Study ;
   rdfs:range study:StudyRegistryIdentifier ;
+  rdfs:subPropertyOf study:hasIdentifier ;
   skos:prefLabel "has registry ID" ;
 .
 study:hasRouteOfAdministration
@@ -2979,6 +2994,12 @@ study:sex
   rdfs:range study:SexOutcome ;
   skos:altLabel "" ;
   skos:prefLabel "sex" ;
+.
+study:sexGroup
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:StudyPopulation ;
+  rdfs:range code:SexGroup ;
+  skos:prefLabel "Sexgroup" ;
 .
 study:shortTitle
   rdf:type owl:DatatypeProperty ;

@@ -25,6 +25,16 @@
 @prefix xhtm: <http://www.w3.org/1999/xhtml> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+sdtmterm:BlindedTreatment
+  rdf:type mms:PermissibleValue ;
+  rdf:type sdtmterm:Epoch ;
+  schema:cdiscDefinition "A period in a clinical study during which subjects receive blinded therapeutic treatment." ;
+  schema:cdiscSubmissionValue "BLINDED TREATMENT" ;
+  schema:nciCode "C102255" ;
+  schema:nciPreferredTerm "Blinded Treatment Epoch" ;
+  mms:inValueDomain sdtmterm:C99079 ;
+  skos:prefLabel "BLINDED TREATMENT" ;
+.
 sdtmterm:ControlType_ACTIVE
   rdf:type mms:PermissibleValue ;
   rdf:type code:ControlType ;
@@ -57,6 +67,24 @@ sdtmterm:ControlType_PLACEBO
   mms:inValueDomain sdtmterm:C66785 ;
   skos:prefLabel "PLACEBO" ;
   code:hasCode "C49648" ;
+.
+sdtmterm:Epoch
+  rdf:type mms:EnumeratedValueDomain ;
+  rdf:type owl:Class ;
+  schema:cdiscDefinition "The name of the EPOCH." ;
+  schema:cdiscSubmissionValue "EPOCH" ;
+  schema:cdiscSynonyms "Epoch" ;
+  schema:codelistName "Epoch" ;
+  schema:isExtensibleCodelist "true"^^xsd:boolean ;
+  schema:nciCode "C99079" ;
+  schema:nciPreferredTerm "CDISC SDTM Epoch Terminology" ;
+  rdfs:subClassOf code:DefinedActivity ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "EPOCH" ;
 .
 sdtmterm:IndicationType_CURE
   rdf:type mms:PermissibleValue ;
@@ -549,6 +577,20 @@ arg:origResult
 <http://topbraid.org/countries#US>
   skos:prefLabel "USA" ;
 .
+time:Instant
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_ISO8601 ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+.
+time:TemporalEntity
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_ISO8601 ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+.
 time:TemporalUnit
   rdfs:subClassOf code:Unit ;
 .
@@ -785,12 +827,18 @@ code:CodeSystem_CDISCTerminology
   rdf:type code:CodeSystem ;
   skos:prefLabel "CDISC" ;
 .
+code:CodeSystem_DUNS
+  rdf:type code:CodeSystem ;
+  skos:altLabel "Dun and Bradstreet" ;
+  skos:prefLabel "DUNS" ;
+.
 code:CodeSystem_ISO3166
   rdf:type code:CodeSystem ;
   skos:prefLabel "ISO3166" ;
 .
 code:CodeSystem_ISO8601
-  rdf:type code:CodeSystem ;
+  rdf:type code:StandardFormat ;
+  skos:definition "International Standard for representing date and time information" ;
   skos:prefLabel "ISO8601" ;
 .
 code:CodeSystem_NDFRT
@@ -972,6 +1020,11 @@ code:DrugProduct
   rdfs:subClassOf code:Product ;
   skos:prefLabel "Drug product" ;
 .
+code:Epoch
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedActivity ;
+  skos:prefLabel "EPOCH" ;
+.
 code:Ethnicity
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -1085,11 +1138,6 @@ code:HeightUnit
   rdfs:subClassOf code:Unit ;
   skos:altLabel "" ;
   skos:prefLabel "Height unit" ;
-.
-code:ISO8601
-  rdf:type code:StandardFormat ;
-  skos:definition "International Standard for representing date and time information" ;
-  skos:prefLabel "ISO8601" ;
 .
 code:Indication
   rdf:type owl:Class ;
@@ -1697,7 +1745,7 @@ code:Sponsor_CDISCPILOT01
 .
 code:StandardFormat
   rdf:type owl:Class ;
-  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf code:CodeSystem ;
   skos:prefLabel "Standard format" ;
 .
 code:StudyType

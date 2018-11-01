@@ -23,6 +23,11 @@
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
+cd01p:AdminActivity_DataCutoff
+  rdf:type study:DataCutoff ;
+  skos:prefLabel "Admin activity Data cutoff" ;
+  study:hasDate cd01p:Date_2015-03-31 ;
+.
 cd01p:Arm_Pbo
   rdf:type study:ControlArm ;
   rdf:type study:RandomizationOutcome ;
@@ -59,11 +64,42 @@ cd01p:Category_1
   skos:altLabel "" ;
   skos:prefLabel "CAT1" ;
 .
+cd01p:Date_2012-07-06
+  rdf:type study:StudyBegin ;
+  skos:prefLabel "Date 2012-07-06" ;
+  study:dateTimeInXSDString "2012-07-06" ;
+.
+cd01p:Date_2015-03-05
+  rdf:type study:StudyEnd ;
+  skos:prefLabel "Date 2015-03-05" ;
+  study:dateTimeInXSDString "2015-03-05" ;
+.
+cd01p:Date_2015-03-31
+  rdf:type study:DataCutoffDate ;
+  skos:prefLabel "Interim Analysis Data Cutoff Date" ;
+  code:hasCodeSystem code:CodeSystem_ISO8601 ;
+  study:dateTimeInXSDString "2015-03-31" ;
+.
 cd01p:EnrolledPopulation_CDISCPILOT01
   rdf:type study:EnrolledPopulation ;
   skos:prefLabel "Enrolled population CDISCPILOT01" ;
   study:actualPopulationSize 254 ;
   study:plannedPopulationSize 300 ;
+.
+cd01p:EpochInterval_blindedtreatment
+  rdf:type study:EpochInterval ;
+  skos:prefLabel "Epoch interval blindedtreatment" ;
+.
+cd01p:Epoch_BlindedTreatment
+  rdf:type study:Epoch ;
+  skos:prefLabel "Epoch Blinded treatment" ;
+  study:hasActivityInterval cd01p:EpochInterval_blindedtreatment ;
+.
+cd01p:Interval_2012-07-06_to_2015-03-05
+  rdf:type study:StudyInterval ;
+  skos:prefLabel "Interval 2012-07-06 to 2015-03-05" ;
+  time:hasBeginning cd01p:Date_2012-07-06 ;
+  time:hasEnd cd01p:Date_2015-03-05 ;
 .
 cd01p:PrimaryObjective_1
   rdf:type study:PrimaryObjective ;
@@ -484,13 +520,13 @@ cd01p:StudyIdentifier_1
 cd01p:StudyPopulation_CDISCPILOT01
   rdf:type study:CompletePopulation ;
   skos:prefLabel "Study population CDISCPILOT01" ;
-  study:Sexgroup sdtmterm:SexGroup_BOTH ;
   study:ageGroup code:AgeGroup_ADULT ;
   study:ageGroup code:AgeGroup_ELDERLY ;
   study:hasSite cd01p:Site_701 ;
   study:healthySubject sdtmterm:NoYesResponse_N ;
   study:maxSubjectAge <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#PlannedSubjectAge_NULL.PINF> ;
   study:minSubjectAge code:PlannedSubjectAge_P50Y ;
+  study:sexGroup sdtmterm:SexGroup_BOTH ;
 .
 cd01p:StudyRegistryIdentifier_NCT00987090
   rdf:type study:StudyRegistryIdentifier ;
@@ -507,21 +543,23 @@ cd01p:Study_CDISCPILOT01
   rdf:type study:Study ;
   skos:altLabel "" ;
   skos:prefLabel "CDISCPILOT01" ;
-  study:adaptiveDesign sdtmterm:NoYesResponse_NA ;
+  study:adaptiveDesign sdtmterm:NoYesResponse_N ;
   study:addOn sdtmterm:NoYesResponse_N ;
   study:blinding sdtmterm:TrialBlindingSchema_DOUBLE_BLIND ;
   study:controlType sdtmterm:ControlType_PLACEBO ;
-  study:hasPlannedDuration cd01p:StudyDuration_CDISCPILOT01 ;
+  study:hasInterval cd01p:Interval_2012-07-06_to_2015-03-05 ;
   study:hasPopulation cd01p:EnrolledPopulation_CDISCPILOT01 ;
   study:hasPopulation cd01p:StudyPopulation_CDISCPILOT01 ;
   study:hasPrimObjective cd01p:PrimaryObjective_1 ;
   study:hasPrimObjective cd01p:PrimaryObjective_2 ;
   study:hasPrimObjective cd01p:PrimaryObjective_3 ;
-  study:hasPrimOutcomeMeasure custom:PrimOutMeasure_ADAS-Cog ;
+  study:hasPrimOutcomeMeasure custom:Observation_ADAS-Cog ;
+  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_DataCutoff ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_Pbo ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_ScreenFailure ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_XanomelineHigh ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_XanomelineLow ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_BlindedTreatment ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGPlaceActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGRemoveActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitBaselineActivity ;
@@ -699,6 +737,7 @@ code:Sex
 .
 code:Sponsor_CDISCPILOT01
   rdf:type study:Sponsor ;
+  code:hasCodeSystem code:CodeSystem_DUNS ;
 .
 code:Substance_xanomeline
   rdf:type study:InvestigationalSubstance ;
@@ -738,6 +777,12 @@ custom:AssumeBodyPositionSupine
   rdfs:subClassOf study:PrerequisiteActivity ;
   skos:definition "" ;
   skos:prefLabel "ASSUME BODY POSITION SUPINE" ;
+.
+custom:Observation_ADAS-Cog
+  rdf:type study:PrimaryOutcomeMeasure ;
+  skos:prefLabel "ADAS-Cog" ;
+  code:hasCode "C100762" ;
+  code:hasCodeSystem code:CodeSystem_CDISCTerminology ;
 .
 custom:PlaceboDrug
   rdf:type code:DrugProduct ;
@@ -849,10 +894,6 @@ custom:PopFlagSAFETY
   skos:altLabel "Safety Population Flag" ;
   skos:prefLabel "SAFETY" ;
   code:hasMethod code:Method_DERIVED ;
-.
-custom:PrimOutMeasure_ADAS-Cog
-  rdf:type study:PrimaryOutcomeMeasure ;
-  skos:prefLabel "ADAS-Cog" ;
 .
 custom:Product_1
   rdf:type code:DrugProduct ;
@@ -1289,7 +1330,4 @@ study:VitalSign
 study:VitalSignOutcome
   code:hasMethod code:Method_COLLECTED ;
   study:crfLocation cd01p:CRFLocation_2 ;
-.
-study:hasPlannedDuration
-  rdfs:range study:StudyDuration ;
 .
