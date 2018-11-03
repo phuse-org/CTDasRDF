@@ -348,6 +348,9 @@ code:InformedConsentOutcome_2
 code:InformedConsentOutcome_3
   rdf:type study:InformedConsentOutcome ;
 .
+code:PharmClass_ACReleaseInhib
+  code:hasCode "N00001757" ;
+.
 code:RandomizationBAL3
   owl:equivalentClass [
       rdf:type owl:Restriction ;

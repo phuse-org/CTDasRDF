@@ -1776,7 +1776,7 @@ code:Substance_xanomeline
   skos:prefLabel "XANOMELINE" ;
   code:hasCode "9ORI6L73CJ" ;
   code:hasCodeSystem code:CodeSystem_UNII ;
-  code:phamacologicClass code:PharmClass_ACReleaseInhib ;
+  code:pharmacologicClass code:PharmClass_ACReleaseInhib ;
 .
 code:Successfully_Completed
   rdf:type code:GenericOutcome ;
@@ -2142,7 +2142,7 @@ code:outcome
   skos:definition "" ;
   skos:prefLabel "has outcome" ;
 .
-code:phamacologicClass
+code:pharmacologicClass
   rdf:type owl:ObjectProperty ;
   rdfs:domain code:ActiveSubstance ;
   rdfs:range code:PharmacologicClass ;
