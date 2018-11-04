@@ -90,29 +90,25 @@ function(input, output, session) {
     nodes <- as.data.frame(nodeList[c("id", "mapFile")])
     #DEL nodes <- as.data.frame(nodes[!duplicated(nodes), ])
   
-    # Labels for mouseover
-    #    nodes$title <- nodes$id
-    #    nodes$label <- nodes$id
-    # Label and Title ----
+    #---- Labels for display and mouseover ------------------------------------
+    # Title - Full value of text on mouseover. HTML is allowed
+    #         Values within {} in red to show comes from data. 
     nodes$title <- gsub("\\{", "<font color='red'>\\{", nodes$id, perl=FALSE)
     nodes$title <- gsub("\\}", "\\}</font>", nodes$title)
       
-    #TW if the id value is longer than maxLabelSize and is a string. truncate using ...
-    # id gets coerced to integer within ifelse, must use as.character to overcome!
-    #nodes$label <-nodes$id  # label for the node. No HTMl allowed.
-    nodes$label="";
-    
+
+    # Label - on node in graph. Shortened for display. HTML NOT allowed
+    #   Truncate if value is string longer than maxLabelSize
+    nodes$label=""; # Default to none
     nodes$label <- strtrim(nodes$id, maxLabelSize) 
     
-    # nodes$label <- paste0(strtrim(nodes$id, 20), "...")
-    nodes$shape <- "box"
-    nodes$borderWidth <- 2
-
-
-    nodes$size <- 30
+    nodes$shape            <- "box"
+    nodes$borderWidth      <- 2
+    nodes$size             <- 30
     nodes$color.background <- "white"
     nodes$color.border     <- "black"
-     
+    
+# Tidy up to here     
     # Nodes color based on prefix
     nodes$color.background[ grepl("cdiscpilot01:", nodes$id, perl=TRUE) ] <- "#2C52DA"
     nodes$color.background[ grepl("cd01p:",        nodes$id, perl=TRUE) ] <- '#008D00'   
