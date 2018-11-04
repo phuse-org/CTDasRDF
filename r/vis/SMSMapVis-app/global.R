@@ -13,7 +13,8 @@
 library(stringr)     #      rename
 library(visNetwork)   
 library(reshape)  #  melt
-library(dplyr)           
+library(dplyr)  
+library(DT)
 
 # Configuration
 setwd("C:/_gitHub/CTDasRDF")

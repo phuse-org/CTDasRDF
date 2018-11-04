@@ -7,102 +7,160 @@
 # REQ : 
 # SRC : 
 # NOTE: 
-# TODO:  Add subsetting based on namespace selections
-#        Add drop down list to allow node selection (is part of visNetwork built-in)
+# TODO:   map  selections error: nodes show when no maps selected. See namespace logic for fix.
+#        Node Seletion: Widen selection drop down to show complete node value
+#        Confirm :bolean and :float literals are representedR
 #______________________________________________________________________________
 
 function(input, output, session) {
-  #startNode <- "cdiscpilot01:Person_01-701-1015"
-  # Note  input$startNode value is NOT enquoted!
-  triplesDisplay <- reactive({   
-    triplesDisplay <- dplyr::filter(triples, mapFile %in% input$maps)
 
-  })
-
-  output$selectedMaps <- renderText(input$maps)
-
-  output$triplesTable <- renderTable({
-    triplesDisplay()
-  })
-  
-  
-  
-  #____________________________________________________________________________
-  #  Vistnetwork render
-  #____________________________________________________________________________
-  output$path_vis <- renderVisNetwork({
-  # -----------------------------------------------------------------------------
-  # Nodes Construction ----
-  # -- Nodes: Data ----
-  # Get the unique list of nodes 
-  #   Combine Subject and Object into a single column
-  #   "id.vars" is the list of columns to keep untouched. The unamed ones (s,o) are 
-  #   melted into the "value" column.
-  #TODO switch to triples()
+    triplesDisplay <- reactive({   
     
-  nodeList <- melt(triplesDisplay(), id.vars=c("p", "mapFile"))
+    # Create pipe-delmited conditions that either keep (mapFile) or delete (namespace)
+    #   selections. Some selection from UI may already have a pipe.
+    
+    mapCond <- paste( unlist(input$maps), collapse='|')
+    nsCond  <- paste( unlist(input$namespaces), collapse='|')
 
-  # A node can be both a Subject and a Predicate so ensure a unique list of node names
-  #  by dropping duplicate values.
-  nodeList <- nodeList[!duplicated(nodeList$value),]
+    # Keep the values of the selected maps
+    #TODO: Keep ALL when nothing selected: If no selection, default to all maps
+    #      and only filter when a filter value is selected.
+    triplesMap <- triples %>% filter( grepl(mapCond, mapFile, perl=TRUE))
 
-  # Rename to ID for use in visNetwork and keep only that column
-  nodeList <- reshape::rename(nodeList, c("value" = "id" ))
-  nodes <- as.data.frame(nodeList[c("id", "mapFile")])
-  nodes <- as.data.frame(nodes[!duplicated(nodes), ])
-
-
-  # Labels for mouseover
-  #    nodes$title <- nodes$id
-  #    nodes$label <- nodes$id
-  # Label and Title ----
-  nodes$title <- gsub("\\{", "<font color='red'>\\{", nodes$id, perl=FALSE)
-  nodes$title <- gsub("\\}", "\\}</font>", nodes$title)
+    if (nchar(nsCond)>2 ){
+      # Remove Subject values that meet exclusion criteria
+      triplesMap <- triplesMap %>% filter(!grepl(nsCond, o, perl=TRUE)) 
       
-  #TW if the id value is longer than maxLabelSize and is a string. truncate using ...
-  # id gets coerced to integer within ifelse, must use as.character to overcome!
-  #nodes$label <-nodes$id  # label for the node. No HTMl allowed.
-  nodes$label="";
-  
-  nodes$label <- strtrim(nodes$id, maxLabelSize) 
-  
-  # nodes$label <- paste0(strtrim(nodes$id, 20), "...")
-  nodes$shape <- "box"
-  nodes$borderWidth <- 2
+      # Remove remaining Object values that meet the exclusion criteria
+      triplesMap <- triplesMap %>% filter(!grepl(nsCond, s, perl=TRUE)) 
+    }    
+    triplesDisplay <- triplesMap
 
+  })
 
-  nodes$size <- 30
-  nodes$color.background <- "white"
-  nodes$color.border     <- "black"
+  #DEBUG:  Display the selection criteria for debugging purposes  
+  #output$nsCond <- renderText({
+    # Convert to pipe delmiited list for multiple conditions in later selection that 
+    #  uses grepl
+    #foo <- paste( unlist(input$namespaces), collapse='|')
+    # foo <- gsub(" ", "|",input$namespaces) 
+  #})
     
-  # Nodes color based on prefix
-  nodes$color.background[ grepl("cdiscpilot01:", nodes$id, perl=TRUE) ] <- "#2C52DA"
-  nodes$color.background[ grepl("cd01p:",        nodes$id, perl=TRUE) ] <- '#008D00'   
-  nodes$color.background[ grepl("code:",         nodes$id, perl=TRUE) ] <- '#1C5B64'
-  nodes$color.background[ grepl("study:",        nodes$id, perl=TRUE) ] <- '#FFBD09'  
-  nodes$color.background[ grepl("custom:",        nodes$id, perl=TRUE) ] <- '#C71B5F'  
-
-  #---- Edges
-  # Create list of edges by keeping the Subject and Predicate from query result.
-  edges<-reshape::rename(triplesDisplay(), c("s" = "from", "o" = "to"))
-  edges$arrows <- "to"
-  edges$title <- edges$p  # title: present when mouseover edge.
-  edges$label <- edges$p  #TW  May need to shorten as did for node label
-  edges$length <- 500  # Could make this dynamic for large vs small graphs based on dataframe size...
+  # Triples data table  
+  output$triplesTable <- DT::renderDataTable({
+    datatable(
+      triplesDisplay(),
+      options  = list(width = 300, pageLength = 15),
+      rownames = FALSE
+    )  
+  })
   
-  edges$color <- "black"  # default and for literals
-  edges$color[ grepl("cdiscpilot01:", edges$to, perl=TRUE) ] <- "#2C52DA"
-  edges$color[ grepl("cd01p:",        edges$to, perl=TRUE) ] <- '#008D00'   
-  edges$color[ grepl("code:",         edges$to, perl=TRUE) ] <- '#1C5B64'
-  edges$color[ grepl("study:",        edges$to, perl=TRUE) ] <- '#FFBD09'  
-  edges$color[ grepl("custom:",       edges$to, perl=TRUE) ] <- '#C71B5F'  
-
-  edges$font.color <- "black"
-  edges$font.strokeColor <- "#919191"  # Set to background grey
+  # Nodes data table
+  output$nodesTable <- DT::renderDataTable({
+    datatable(
+      nodes(),
+      options  = list(width = 300, pageLength = 15),
+      rownames = FALSE
+    )  
+  })
   
+  # Edges data table
+  output$edgesTable <- renderTable({
+    datatable(
+     edges(),
+      options  = list(width = 300, pageLength = 15),
+      rownames = FALSE
+    )  
+  })
+
+  
+  #-- Nodes Construction ------------------------------------------------------
+  nodes <- reactive({
+
+    # Get the unique list of nodes: Subject and Object into a single column
+    #   "id.vars" is the list of columns to keep untouched. The unamed ones (s,o) are 
+    #   melted into the "value" column.
+    nodeList <- reshape::melt(triplesDisplay(), id.vars=c("p", "mapFile"))
+  
+    # A node can be both a Subject and Object so remove duplicates
+    nodeList <- nodeList[!duplicated(nodeList$value),]
+  
+    # Rename to ID for use in visNetwork and keep only that column
+    nodeList <- reshape::rename(nodeList, c("value" = "id" ))
+    nodes <- as.data.frame(nodeList[c("id", "mapFile")])
+    #DEL nodes <- as.data.frame(nodes[!duplicated(nodes), ])
+  
+    # Labels for mouseover
+    #    nodes$title <- nodes$id
+    #    nodes$label <- nodes$id
+    # Label and Title ----
+    nodes$title <- gsub("\\{", "<font color='red'>\\{", nodes$id, perl=FALSE)
+    nodes$title <- gsub("\\}", "\\}</font>", nodes$title)
+      
+    #TW if the id value is longer than maxLabelSize and is a string. truncate using ...
+    # id gets coerced to integer within ifelse, must use as.character to overcome!
+    #nodes$label <-nodes$id  # label for the node. No HTMl allowed.
+    nodes$label="";
     
-  visNetwork(nodes, edges, width= "100%", height=1100, background = "#919191") %>%
+    nodes$label <- strtrim(nodes$id, maxLabelSize) 
+    
+    # nodes$label <- paste0(strtrim(nodes$id, 20), "...")
+    nodes$shape <- "box"
+    nodes$borderWidth <- 2
+
+
+    nodes$size <- 30
+    nodes$color.background <- "white"
+    nodes$color.border     <- "black"
+     
+    # Nodes color based on prefix
+    nodes$color.background[ grepl("cdiscpilot01:", nodes$id, perl=TRUE) ] <- "#2C52DA"
+    nodes$color.background[ grepl("cd01p:",        nodes$id, perl=TRUE) ] <- '#008D00'   
+    nodes$color.background[ grepl("code:",         nodes$id, perl=TRUE) ] <- '#1C5B64'
+    nodes$color.background[ grepl("study:",        nodes$id, perl=TRUE) ] <- '#FFBD09'  
+    nodes$color.background[ grepl("custom:",       nodes$id, perl=TRUE) ] <- '#C71B5F'
+    # Create "other" namespace group
+    nodes$color.background[ grepl("time:|owl:",    nodes$id, perl=TRUE) ] <- '#FCFF98'  # Lt Yel
+    
+    nodes <- as.data.frame(nodes)
+  })
+    
+  edges <- reactive({
+    #---- Edges
+    # Create list of edges by keeping the Subject and Predicate from query result.
+    edges<-reshape::rename(triplesDisplay(), c("s" = "from", "o" = "to"))
+    edges$arrows <- "to"
+    edges$title <- edges$p  # title: present when mouseover edge.
+    edges$label <- edges$p  #TW  May need to shorten as did for node label
+    edges$length <- 500  # Could make this dynamic for large vs small graphs based on dataframe size...
   
+    edges$color <- "black"  # default and for literals
+    edges$color[ grepl("cdiscpilot01:", edges$to, perl=TRUE) ] <- "#2C52DA"
+    edges$color[ grepl("cd01p:",        edges$to, perl=TRUE) ] <- '#008D00'   
+    edges$color[ grepl("code:",         edges$to, perl=TRUE) ] <- '#1C5B64'
+    edges$color[ grepl("study:",        edges$to, perl=TRUE) ] <- '#FFBD09'  
+    edges$color[ grepl("custom:",       edges$to, perl=TRUE) ] <- '#C71B5F' 
+
+    # "other" group for misc categories    
+    edges$color[ grepl("time:|owl:",    edges$to, perl=TRUE) ] <- '#FCFF98'  # Lt Yel
+
+    edges$font.color <- "black"
+    edges$font.strokeColor <- "#919191"  # Set to background grey
+    edges <- as.data.frame(edges)    
+    
+  })
+
+  #---- Graph Render ----------------------------------------------------------  
+  output$path_vis <- renderVisNetwork({
+    visNetwork(nodes(), edges(), 
+      width= "100%", 
+      height=1100, 
+      background = "#919191") %>%
+  
+    visOptions(
+      highlightNearest = TRUE, 
+      nodesIdSelection = TRUE) %>%
+
     visIgraphLayout(layout  = "layout_nicely",
                     physics = FALSE) %>%  
     
@@ -110,14 +168,5 @@ function(input, output, session) {
 
     visEdges(smooth=FALSE)  
   
-    # Legend not currently in play
-    # %>%
-
-      # Legend
-      #   Examples at : https://datastorm-open.github.io/visNetwork/legend.html  
-     # visLegend(addNodes  = lnodes, 
-    #            useGroups = FALSE,
-    #            width     =  .2,
-    #            stepY     = 60)
   })
-} # end of server.R
+}
