@@ -10,6 +10,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
 @prefix sp: <http://spinrdf.org/sp#> .
@@ -485,7 +486,7 @@ study:Assessment
       owl:allValuesFrom study:MedicalCondition ;
       owl:onProperty code:outcome ;
     ] ;
-  skos:definition "An examination of one or more clinical observations to identify and/or characterize a Medical Condition." ;
+  skos:definition "An examination or Analysis of one or more clinical observations to identify and/or characterize a Medical Condition." ;
   skos:prefLabel "Assessment" ;
 .
 study:AssessmentRule
@@ -510,7 +511,7 @@ study:Assessor
 study:AssumeBodyPosition
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf study:Intervention ;
+  rdfs:subClassOf study:PreparatoryIntervention ;
   skos:definition "An Intervention whose intent is to observe the Person's body position and change it to the desired body position, usually in preparation for another intervention." ;
   skos:prefLabel "Assume a specific body position" ;
 .
@@ -596,7 +597,7 @@ study:Country
 study:CumulativeDrugAdministration
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf study:Intervention ;
+  rdfs:subClassOf study:TherapeuticIntervention ;
   skos:definition "The act of administering/taking a Drug Product over time; there may be breaks or the dose may change  over time" ;
   skos:prefLabel "Product administration" ;
 .
@@ -960,7 +961,7 @@ study:FalseArm
 .
 study:FixedDoseDrugAdministration
   rdf:type owl:Class ;
-  rdfs:subClassOf study:Intervention ;
+  rdfs:subClassOf study:TherapeuticIntervention ;
   skos:definition "A ClinicalIntervention where a fixed dosed of a drug product is administered over a documented interval of time. " ;
   skos:prefLabel "Fixed Dose Drug administration" ;
 .
@@ -1415,6 +1416,14 @@ study:PopulationFlag
   rdfs:subClassOf study:Flag ;
   skos:altLabel "" ;
   skos:prefLabel "Population flag" ;
+.
+study:PreparatoryIntervention
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Intervention ;
+  skos:definition "An Intervention whose purpose is to prepare a Person for a subsequent Intervention. " ;
+  skos:example "Assume a Body Posistion before a Blood Pressure Measurement. " ;
+  skos:prefLabel "Preparatory intervention" ;
 .
 study:PrerequisiteActivity
   rdf:type owl:Class ;
@@ -2047,6 +2056,12 @@ study:TemperatureOutcome
       owl:onProperty code:hasUnit ;
     ] ;
   skos:prefLabel "Temperature outcome" ;
+.
+study:TherapeuticIntervention
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Intervention ;
+  skos:definition " An Intervention whose intent is to have an effect (e.g. treat, cure, mitigate, prevent) a Medical Condition." ;
+  skos:prefLabel "Therapeutic intervention" ;
 .
 study:Title
   rdf:type owl:Class ;

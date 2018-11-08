@@ -1,4 +1,5 @@
 # baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
+# imports: http://datashapes.org/dash
 # imports: http://rdf.cdisc.org/ct/schema
 # imports: http://rdf.cdisc.org/mms
 # imports: http://rdf.cdisc.org/sdtmterm
@@ -6,6 +7,7 @@
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/2006/time
+# imports: http://www.w3.org/ns/shacl#
 # prefix: code
 
 @prefix arg: <http://spinrdf.org/arg#> .
@@ -16,6 +18,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://rdf.cdisc.org/ct/schema#> .
 @prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spif: <http://spinrdf.org/spif#> .
@@ -624,6 +627,7 @@ time:unitYear
   spin:imports <http://topbraid.org/spin/rdfsplus> ;
   spin:imports <http://topbraid.org/spin/skosspin> ;
   spin:imports <http://topbraid.org/spin/spinowl> ;
+  owl:imports <http://datashapes.org/dash> ;
   owl:imports <http://rdf.cdisc.org/ct/schema> ;
   owl:imports <http://rdf.cdisc.org/mms> ;
   owl:imports <http://rdf.cdisc.org/sdtmterm> ;
@@ -631,6 +635,7 @@ time:unitYear
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/2006/time> ;
+  owl:imports sh: ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 code:ActiveSubstance
@@ -1173,15 +1178,20 @@ code:Indication_01
 .
 code:InformedConsent
   rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
   rdfs:comment "" ;
   rdfs:subClassOf code:AdministrativeActivity ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom code:InformedConsentOutcome ;
-      owl:onProperty code:outcome ;
-    ] ;
   skos:definition "" ;
   skos:prefLabel "Informed consent term" ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path code:outcome ;
+      sh:maxCount 1 ;
+      sh:minCount 1 ;
+      sh:name "outcome" ;
+      sh:node code:InformedConsentOutcome ;
+      sh:nodeKind sh:IRI ;
+    ] ;
 .
 code:InformedConsentAdult
   rdf:type owl:Class ;
@@ -1191,6 +1201,7 @@ code:InformedConsentAdult
 .
 code:InformedConsentOutcome
   rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
   rdfs:comment "" ;
   rdfs:subClassOf code:AdministrativeActivityOutcome ;
   rdfs:subClassOf code:CategoricalOutcome ;
