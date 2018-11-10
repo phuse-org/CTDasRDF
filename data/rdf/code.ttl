@@ -858,7 +858,7 @@ code:CodeSystem_UNII
   rdf:type code:CodeSystem ;
   skos:prefLabel "UNII" ;
 .
-<http://w3id.org/phuse/code#>#CodeSystem_clinicaltrials.gov>
+<http://w3id.org/phuse/code#CodeSystem_clinicaltrials.gov>
   rdf:type code:CodeSystem ;
   skos:prefLabel "clinicaltrials.gov" ;
 .
@@ -1513,7 +1513,7 @@ code:PharmacologicClass
   rdfs:subClassOf code:DefinedConcept ;
   skos:prefLabel "Pharmacologic class" ;
 .
-<http://w3id.org/phuse/code#>#PlannedSubjectAge_NULL.PINF>
+<http://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF>
   rdf:type code:Age ;
   skos:prefLabel "\"\"" ;
   code:hasNullFlavor code:NullFlavor_4 ;

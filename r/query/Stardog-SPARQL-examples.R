@@ -27,8 +27,8 @@ library(SPARQL)
 endpoint <- "http://localhost:5820/CTDasRDFSMS/query"
 
 prefix <- c("cd01p",        "http://w3id.org/phuse/cd01p",
-            "cdiscpilot01", "<http://w3id.org/phuse/cdiscpilot01#>#",
-            "code",         "<http://w3id.org/phuse/code#>#",
+            "cdiscpilot01", "<http://w3id.org/phuse/cdiscpilot01#",
+            "code",         "<http://w3id.org/phuse/code#",
             "custom",       "<http://w3id.org/phuse/custom#>",
             "owl",          "http://www.w3.org/2002/07/owl#",
             "rdf",          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",

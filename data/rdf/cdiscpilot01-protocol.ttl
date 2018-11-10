@@ -524,7 +524,7 @@ cd01p:StudyPopulation_CDISCPILOT01
   study:ageGroup code:AgeGroup_ELDERLY ;
   study:hasSite cd01p:Site_701 ;
   study:healthySubject sdtmterm:NoYesResponse_N ;
-  study:maxSubjectAge <http://w3id.org/phuse/code#>#PlannedSubjectAge_NULL.PINF> ;
+  study:maxSubjectAge <http://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF> ;
   study:minSubjectAge code:PlannedSubjectAge_P50Y ;
   study:sexGroup sdtmterm:SexGroup_BOTH ;
 .
@@ -532,7 +532,7 @@ cd01p:StudyRegistryIdentifier_NCT00987090
   rdf:type study:StudyRegistryIdentifier ;
   skos:prefLabel "NCT00987090" ;
   code:hasCode "NCT00987090" ;
-  code:hasCodeSystem <http://w3id.org/phuse/code#>#CodeSystem_clinicaltrials.gov> ;
+  code:hasCodeSystem <http://w3id.org/phuse/code#CodeSystem_clinicaltrials.gov> ;
 .
 cd01p:StudyStopRule_1
   rdf:type study:StudyStopRule ;
@@ -715,7 +715,7 @@ code:InformedConsentAdult
   rdfs:subClassOf study:InformedConsent ;
   study:hasStartRule study:StartRuleDefault ;
 .
-<http://w3id.org/phuse/code#>#PlannedSubjectAge_NULL.PINF>
+<http://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF>
   rdf:type study:MaximumSubjectAge ;
 .
 code:PlannedSubjectAge_P50Y

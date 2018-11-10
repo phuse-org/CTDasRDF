@@ -156,8 +156,8 @@ To build an OWL using Prot�g� is the typical process. To figure out the stru
 If you want to explore the ontologies (OWL) used, you might want to use the graphical display of the OWLs with the WebVOWL tool. The following links can be used to browse the ontologies through WebVOWL:
 
 * [cd01p](http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/cd01p#)
-* [cdiscpilot01](http://visualdataweb.de/webvowl/#iri=<http://w3id.org/phuse/cdiscpilot01#>#)
-* [code](http://visualdataweb.de/webvowl/#iri=<http://w3id.org/phuse/code#>#)
+* [cdiscpilot01](http://visualdataweb.de/webvowl/#iri=<http://w3id.org/phuse/cdiscpilot01#)
+* [code](http://visualdataweb.de/webvowl/#iri=<http://w3id.org/phuse/code#)
 * [sdtm](http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/sdtm#)
 * [sdtmterm](http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/sdtmterm#)
 * [study](http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/study#)
@@ -255,8 +255,8 @@ WHERE
 You might not like the long prefixes which are displayed on every query result. During triple creation also shortcuts has been used. To have a look what prefixes are used in this project, open the data/config/prefixes.csv file. Checkout which ones you would like to have available as shortcut in your database. You might for example select the following:
 
 * cd01p=http://w3id.org/phuse/cd01p#
-* cdiscpilot01=<http://w3id.org/phuse/cdiscpilot01#>#
-* code=<http://w3id.org/phuse/code#>#
+* cdiscpilot01=<http://w3id.org/phuse/cdiscpilot01#
+* code=<http://w3id.org/phuse/code#
 * sdtm=http://w3id.org/phuse/sdtm#
 * sdtmterm=http://w3id.org/phuse/sdtmterm#
 * study=http://w3id.org/phuse/study#
@@ -266,8 +266,8 @@ To include these shortcuts into your database, you need to update the database. 
 Alternatively, you can set the namespaces from the commandline by pasting the following commands into the terminal:
 ```
 stardog namespace add CTDasRDFSMS --prefix cd01p --uri http://w3id.org/phuse/cd01p#
-stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri <http://w3id.org/phuse/cdiscpilot01#>#
-stardog namespace add CTDasRDFSMS --prefix code --uri <http://w3id.org/phuse/code#>#
+stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri <http://w3id.org/phuse/cdiscpilot01#
+stardog namespace add CTDasRDFSMS --prefix code --uri <http://w3id.org/phuse/code#
 stardog namespace add CTDasRDFSMS --prefix sdtm --uri http://w3id.org/phuse/sdtm#
 stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri http://w3id.org/phuse/sdtmterm#
 stardog namespace add CTDasRDFSMS --prefix study --uri http://w3id.org/phuse/study#

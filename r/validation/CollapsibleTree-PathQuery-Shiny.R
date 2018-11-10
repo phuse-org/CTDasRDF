@@ -107,16 +107,16 @@ server <- function(input, output, session) {
 
     # Create a function for this:
     # Subjects
-    triplesOnt$s <- gsub("<http://w3id.org/phuse/cdiscpilot01#>#",
+    triplesOnt$s <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesOnt$s)
     triplesOnt$s <- gsub("<http://w3id.org/phuse/cd01p",
       "cd01p:", triplesOnt$s)
 
 
     # Predicates
-    triplesOnt$p <- gsub("<http://w3id.org/phuse/cdiscpilot01#>#",
+    triplesOnt$p <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesOnt$p)
-    triplesOnt$p <- gsub("<http://w3id.org/phuse/code#>#",
+    triplesOnt$p <- gsub("<http://w3id.org/phuse/code#",
       "code:", triplesOnt$p)
     triplesOnt$p <- gsub("<http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "rdf:", triplesOnt$p)
@@ -130,9 +130,9 @@ server <- function(input, output, session) {
       "time:", triplesOnt$p)
 
     # Objects
-    triplesOnt$o <- gsub("<http://w3id.org/phuse/cdiscpilot01#>#",
+    triplesOnt$o <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesOnt$o)
-    triplesOnt$o <- gsub("<http://w3id.org/phuse/code#>#",
+    triplesOnt$o <- gsub("<http://w3id.org/phuse/code#",
       "code:", triplesOnt$o)
     triplesOnt$o <- gsub("<http://w3id.org/phuse/cd01p",
       "cd01p:", triplesOnt$o)
@@ -202,15 +202,15 @@ server <- function(input, output, session) {
 
     # Create a function for this:
     # Subjects
-    triplesDer$s <- gsub("<http://w3id.org/phuse/cdiscpilot01#>#",
+    triplesDer$s <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesDer$s)
     triplesDer$s <- gsub("<http://w3id.org/phuse/cd01p",
       "cd01p:", triplesDer$s)
 
     # Predicates
-    triplesDer$p <- gsub("<http://w3id.org/phuse/cdiscpilot01#>#",
+    triplesDer$p <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesDer$p)
-    triplesDer$p <- gsub("<http://w3id.org/phuse/code#>#",
+    triplesDer$p <- gsub("<http://w3id.org/phuse/code#",
       "code:", triplesDer$p)
     triplesDer$o <- gsub("<http://www.w3.org/2002/07/owl#",
       "owl:", triplesDer$o)
@@ -226,9 +226,9 @@ server <- function(input, output, session) {
       "time:", triplesDer$p)
 
     # Objects
-    triplesDer$o <- gsub("<http://w3id.org/phuse/cdiscpilot01#>#",
+    triplesDer$o <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesDer$o)
-    triplesDer$o <- gsub("<http://w3id.org/phuse/code#>#",
+    triplesDer$o <- gsub("<http://w3id.org/phuse/code#",
       "code:", triplesDer$o)
     triplesDer$o <- gsub("<http://w3id.org/phuse/cd01p",
       "cd01p:", triplesDer$o)
