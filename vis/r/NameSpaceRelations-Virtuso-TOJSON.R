@@ -36,7 +36,7 @@ queryText = '
 prefix cd01p: <http://w3id.org/phuse/cd01p#> 
 prefix cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#> 
 prefix code: <<http://w3id.org/phuse/code#> 
-prefix custom: <<http://w3id.org/phuse/custom#>> 
+prefix custom: <<http://w3id.org/phuse/custom#> 
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
 prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> 
 prefix skos: <http://www.w3.org/2004/02/skos/core#> 

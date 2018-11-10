@@ -1,6 +1,6 @@
 # baseURI: <http://w3id.org/phuse/code#>
 # imports: http://datashapes.org/dash
-# imports: http://rdf.cdisc.org/ct/schema
+# imports: http://w3id.org/phuse/cts
 # imports: <http://w3id.org/phuse/mms#>
 # imports: http://rdf.cdisc.org/sdtmterm
 # imports: http://spinrdf.org/spin
@@ -16,7 +16,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://rdf.cdisc.org/ct/schema#> .
+@prefix schema: <http://w3id.org/phuse/cts#> .
 @prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -621,15 +621,15 @@ time:unitYear
   rdf:type code:AgeUnit ;
   skos:prefLabel "YEAR" ;
 .
-<<http://w3id.org/phuse/code#>>
+<<http://w3id.org/phuse/code#>
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   spin:imports <http://topbraid.org/spin/rdfsplus> ;
   spin:imports <http://topbraid.org/spin/skosspin> ;
   spin:imports <http://topbraid.org/spin/spinowl> ;
   owl:imports <http://datashapes.org/dash> ;
-  owl:imports <http://rdf.cdisc.org/ct/schema> ;
-  owl:imports <<http://w3id.org/phuse/mms#>> ;
+  owl:imports <http://w3id.org/phuse/cts> ;
+  owl:imports <<http://w3id.org/phuse/mms#> ;
   owl:imports <http://rdf.cdisc.org/sdtmterm> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://spinrdf.org/spl> ;

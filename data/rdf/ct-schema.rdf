@@ -5,10 +5,10 @@
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns="http://rdf.cdisc.org/ct/schema#"
+    xmlns="http://w3id.org/phuse/cts#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-  xml:base="http://rdf.cdisc.org/ct/schema">
+  xml:base="http://w3id.org/phuse/cts">
   <owl:Ontology rdf:about="">
     <owl:imports rdf:resource="<http://w3id.org/phuse/mms#>"/>
     <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string"

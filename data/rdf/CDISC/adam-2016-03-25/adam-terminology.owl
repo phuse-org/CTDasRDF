@@ -5,11 +5,11 @@
     xmlns="http://rdf.cdisc.org/adam-terminology#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns:cts="http://rdf.cdisc.org/ct/schema#"
+    xmlns:cts="http://w3id.org/phuse/cts#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xml:base="http://rdf.cdisc.org/adam-terminology">
   <owl:Ontology rdf:about="">
-    <owl:imports rdf:resource="http://rdf.cdisc.org/ct/schema"/>
+    <owl:imports rdf:resource="http://w3id.org/phuse/cts"/>
     <owl:imports rdf:resource="<http://w3id.org/phuse/mms#>"/>
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Created with TopBraid Composer</owl:versionInfo>
