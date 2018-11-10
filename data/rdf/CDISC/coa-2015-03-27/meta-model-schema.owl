@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <rdf:RDF
-    xmlns="<http://w3id.org/phuse/mms#"
+    xmlns="http://w3id.org/phuse/mms#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-  xml:base="<http://w3id.org/phuse/mms#>">
+  xml:base="http://w3id.org/phuse/mms#">
   <owl:Ontology rdf:about="">
     <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >CDISC Common Meta Model Schema</rdfs:label>
