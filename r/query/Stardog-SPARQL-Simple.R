@@ -24,7 +24,7 @@ query <- "SELECT *
 prefix <- c("cd01p",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl",
             "cdiscpilot01", "<http://w3id.org/phuse/cdiscpilot01#>#",
             "code",         "<http://w3id.org/phuse/code#>#",
-            "custom",       "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#",
+            "custom",       "<http://w3id.org/phuse/custom#>",
             "owl",          "http://www.w3.org/2002/07/owl#",
             "rdf",          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",

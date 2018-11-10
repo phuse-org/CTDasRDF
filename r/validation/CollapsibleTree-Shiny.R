@@ -24,7 +24,7 @@ epOnt = "http://localhost:5820/CTDasRDFOnt/query"
 namespaces <- c('cd01p', '<http://w3id.org/phuse/cd01p#>',
 'cdiscpilot01', '<<http://w3id.org/phuse/cdiscpilot01#>#>',
 'code', '<<http://w3id.org/phuse/code#>#>',
-'custom', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#>',
+'custom', '<<http://w3id.org/phuse/custom#>>',
 'sdtmterm', '<http://rdf.cdisc.org/sdtmterm#>',
 'skos', '<http://www.w3.org/2004/02/skos/core#>',
 'study', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>',  

@@ -24,7 +24,7 @@ epOnt = "http://localhost:5820/CTDasRDFOnt/query"
 namespaces <- c('cd01p', '<http://w3id.org/phuse/cd01p#>',
 'cdiscpilot01', '<<http://w3id.org/phuse/cdiscpilot01#>#>',
 'code', '<<http://w3id.org/phuse/code#>#>',
-'custom', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#>',
+'custom', '<<http://w3id.org/phuse/custom#>>',
 'sdtmterm', '<http://rdf.cdisc.org/sdtmterm#>',
 'skos', '<http://www.w3.org/2004/02/skos/core#>',
 'study', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>',  
@@ -136,7 +136,7 @@ server <- function(input, output, session) {
       "code:", triplesOnt$o)
     triplesOnt$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl", 
       "cd01p:", triplesOnt$o)
-    triplesOnt$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#", 
+    triplesOnt$o <- gsub("<<http://w3id.org/phuse/custom#>", 
       "custom:", triplesOnt$o)
     triplesOnt$o <- gsub("<http://www.w3.org/2002/07/owl#", 
       "owl:", triplesOnt$o)
@@ -232,7 +232,7 @@ server <- function(input, output, session) {
       "code:", triplesDer$o)
     triplesDer$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl", 
       "cd01p:", triplesDer$o)
-    triplesDer$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#", 
+    triplesDer$o <- gsub("<<http://w3id.org/phuse/custom#>", 
       "custom:", triplesDer$o)
     triplesDer$o <- gsub("<http://www.w3.org/1999/02/22-rdf-syntax-ns#", 
       "rdf:", triplesDer$o)

@@ -6,7 +6,7 @@
 
 @prefix cd01p: <http://w3id.org/phuse/cd01p#> .
 @prefix code: <<http://w3id.org/phuse/code#>#> .
-@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
+@prefix custom: <<http://w3id.org/phuse/custom#>> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
