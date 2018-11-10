@@ -39,7 +39,7 @@ hops      <- 2  # Max of 3 in RShiny UI, else performance issues?
 endpoint <- "http://localhost:5820/CTDasRDFSMS/query"
 
 queryOnt = paste0("
-  PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
+  PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#> 
   PATHS START ?s = ", startNode, "  END ?o VIA ?p  MAX LENGTH ", hops, " ")
 
 qd <- SPARQL(endpoint, queryOnt)

@@ -23,7 +23,7 @@ parser <- new("Parser", world, name = 'turtle', mimeType = 'text/turtle')
 
 # Query
 queryString <- '
-PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#>
 PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
 SELECT ?dateFrag ?dateVal
 WHERE { ?date study:dateTimeInXSDString ?dateVal .

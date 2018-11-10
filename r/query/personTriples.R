@@ -16,8 +16,8 @@ library(rrdf)
 #  Assumes triplestore running on localhost on port 8890
 endpoint = "http://localhost:8890/sparql"
 
-query = 'PREFIX cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#>
-PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+query = 'PREFIX cd01p: <http://w3id.org/phuse/cd01p#>
+PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#>
 PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
 PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
 
@@ -35,8 +35,8 @@ personTriples_Virt <- as.data.frame(sparql.remote(endpoint, query))
 #  Assumes triplestore running on localhost on port 8890
 endpoint = "http://localhost:5820/CTDasRDF-R/query"
 
-query = 'PREFIX cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#>
-PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+query = 'PREFIX cd01p: <http://w3id.org/phuse/cd01p#>
+PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#>
 PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
 PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
 
@@ -57,8 +57,8 @@ setwd("C:/_gitHubShared/CTDasRDF")
 
 sourceTTL = load.rdf("data/rdf/cdiscpilot01-R.ttl", format="N3")
 
-queryTTL = 'PREFIX cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#>
-PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+queryTTL = 'PREFIX cd01p: <http://w3id.org/phuse/cd01p#>
+PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#>
 PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
 PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
 SELECT ?s ?p ?o

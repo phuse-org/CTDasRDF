@@ -21,9 +21,9 @@ epDer = "http://localhost:5820/CTDasRDF/query"
 epOnt = "http://localhost:5820/CTDasRDFOnt/query"
 
 # Define the namespaces
-namespaces <- c('cd01p', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#>',
-'cdiscpilot01', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>',
-'code', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#>',
+namespaces <- c('cd01p', '<http://w3id.org/phuse/cd01p#>',
+'cdiscpilot01', '<<http://w3id.org/phuse/cdiscpilot01#>#>',
+'code', '<<http://w3id.org/phuse/code#>#>',
 'custom', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#>',
 'sdtmterm', '<http://rdf.cdisc.org/sdtmterm#>',
 'skos', '<http://www.w3.org/2004/02/skos/core#>',
@@ -86,7 +86,7 @@ server <- function(input, output, session) {
     #   See if the prefixes assigned differently WITHIN Stardog DB.
 
     queryOnt = paste0("
-    PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
+    PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#> 
     SELECT ?s ?p ?o
     WHERE{", input$rootNodeOnt," ?p ?o
        BIND(\"", input$rootNodeOnt,"\" AS ?s)

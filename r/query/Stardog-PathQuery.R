@@ -18,7 +18,7 @@ library(collapsibleTree)
 endpoint <- "http://localhost:5820/CTDasRDFOnt/query"
 
 queryOnt = paste0("
-    PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
+    PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#> 
     PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> 
     PATHS
     START ?s = cdiscpilot01:Person_1 
@@ -30,8 +30,8 @@ queryOnt = paste0("
 
 # Or: ready prefixes in from prefixes.csv project file.
 prefix <- c("cd01p",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl",
-            "cdiscpilot01", "<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>",
-            "code",         "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#",
+            "cdiscpilot01", "<<http://w3id.org/phuse/cdiscpilot01#>#>",
+            "code",         "<http://w3id.org/phuse/code#>#",
             "custom",       "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#",
             "owl",          "http://www.w3.org/2002/07/owl#",
             "rdf",          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -52,16 +52,16 @@ triplesDF <- unique(triplesDF)  # Remove dupes
 
 # Create a function for this:
 # Subjects
-triplesDF$s <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#", 
+triplesDF$s <- gsub("<<http://w3id.org/phuse/cdiscpilot01#>#", 
   "cdiscpilot01:", triplesDF$s)
 triplesDF$s <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl", 
   "cd01p:", triplesDF$s)
 
 
 # Predicates 
-triplesDF$p <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#", 
+triplesDF$p <- gsub("<<http://w3id.org/phuse/cdiscpilot01#>#", 
   "cdiscpilot01:", triplesDF$p)
-triplesDF$p <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#", 
+triplesDF$p <- gsub("<<http://w3id.org/phuse/code#>#", 
   "code:", triplesDF$p)
 triplesDF$p <- gsub("<http://www.w3.org/1999/02/22-rdf-syntax-ns#", 
   "rdf:", triplesDF$p)
@@ -75,9 +75,9 @@ triplesDF$p <- gsub("<http://www.w3.org/2006/time#",
   "time:", triplesDF$p)
 
 # Objects
-triplesDF$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#", 
+triplesDF$o <- gsub("<<http://w3id.org/phuse/cdiscpilot01#>#", 
   "cdiscpilot01:", triplesDF$o)
-triplesDF$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#", 
+triplesDF$o <- gsub("<<http://w3id.org/phuse/code#>#", 
   "code:", triplesDF$o)
 triplesDF$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl", 
   "cd01p:", triplesDF$o)

@@ -12,7 +12,7 @@ library(rrdf)
 
 endpoint = "http://localhost:8890/sparql"
 
-query = 'PREFIX cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
+query = 'PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#>
 SELECT ?s ?p ?o
 FROM <http://localhost:8890/CTDasRDF-R>
 WHERE{
