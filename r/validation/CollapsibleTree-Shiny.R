@@ -22,9 +22,9 @@ epOnt = "http://localhost:5820/CTDasRDFOnt/query"
 
 # Define the namespaces
 namespaces <- c('cd01p', '<http://w3id.org/phuse/cd01p#>',
-'cdiscpilot01', '<<http://w3id.org/phuse/cdiscpilot01#>',
-'code', '<<http://w3id.org/phuse/code#>',
-'custom', '<<http://w3id.org/phuse/custom#>',
+'cdiscpilot01', '<http://w3id.org/phuse/cdiscpilot01#>',
+'code', '<http://w3id.org/phuse/code#>',
+'custom', '<http://w3id.org/phuse/custom#>',
 'sdtmterm', '<http://w3id.org/phuse/sdtmterm#>',
 'skos', '<http://www.w3.org/2004/02/skos/core#>',
 'study', '<http://w3id.org/phuse/study#>',  
@@ -86,7 +86,7 @@ server <- function(input, output, session) {
     #   See if the prefixes assigned differently WITHIN Stardog DB.
 
     queryOnt = paste0("
-    PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#> 
+    PREFIX cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#> 
     SELECT ?s ?p ?o
     WHERE{", input$rootNodeOnt," ?p ?o
        BIND(\"", input$rootNodeOnt,"\" AS ?s)

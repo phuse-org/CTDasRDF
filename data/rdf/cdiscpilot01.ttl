@@ -1,17 +1,17 @@
 # baseURI: <http://w3id.org/phuse/cdiscpilot01#>
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl
+# imports: http://w3id.org/phuse/cd01p
 # imports: <http://w3id.org/phuse/code#>
 # imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl
 # imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
 # prefix: cdiscpilot01
 
 @prefix cd01p: <http://w3id.org/phuse/cd01p#> .
-@prefix cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#> .
-@prefix code: <<http://w3id.org/phuse/code#> .
+@prefix cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#> .
+@prefix code: <http://w3id.org/phuse/code#> .
 @prefix cts: <http://w3id.org/phuse/cts#> .
-@prefix custom: <<http://w3id.org/phuse/custom#> .
-@prefix mms: <<http://w3id.org/phuse/mms#> .
+@prefix custom: <http://w3id.org/phuse/custom#> .
+@prefix mms: <http://w3id.org/phuse/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -33,11 +33,11 @@ cd01p:Study_CDISCPILOT01
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1023 ;
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1028 ;
 .
-<<http://w3id.org/phuse/cdiscpilot01#>
+<http://w3id.org/phuse/cdiscpilot01#>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl> ;
-  owl:imports <<http://w3id.org/phuse/code#> ;
+  owl:imports <http://w3id.org/phuse/cd01p> ;
+  owl:imports <http://w3id.org/phuse/code#> ;
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl> ;
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
   owl:versionInfo "Created with TopBraid Composer" ;

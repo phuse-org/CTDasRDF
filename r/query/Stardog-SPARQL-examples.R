@@ -26,7 +26,7 @@ library(SPARQL)
 # Query StardogTriple Store ----
 endpoint <- "http://localhost:5820/CTDasRDFSMS/query"
 
-prefix <- c("cd01p",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl",
+prefix <- c("cd01p",        "http://w3id.org/phuse/cd01p",
             "cdiscpilot01", "<http://w3id.org/phuse/cdiscpilot01#>#",
             "code",         "<http://w3id.org/phuse/code#>#",
             "custom",       "<http://w3id.org/phuse/custom#>",

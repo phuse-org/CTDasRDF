@@ -1,12 +1,12 @@
-# baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl
+# baseURI: http://w3id.org/phuse/cd01p
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: <http://w3id.org/phuse/code#>
 # imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
 # prefix: cd01p
 
 @prefix cd01p: <http://w3id.org/phuse/cd01p#> .
-@prefix code: <<http://w3id.org/phuse/code#> .
-@prefix custom: <<http://w3id.org/phuse/custom#> .
+@prefix code: <http://w3id.org/phuse/code#> .
+@prefix custom: <http://w3id.org/phuse/custom#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -16,10 +16,10 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl>
+<http://w3id.org/phuse/cd01p>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <<http://w3id.org/phuse/code#> ;
+  owl:imports <http://w3id.org/phuse/code#> ;
   owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
@@ -524,7 +524,7 @@ cd01p:StudyPopulation_CDISCPILOT01
   study:ageGroup code:AgeGroup_ELDERLY ;
   study:hasSite cd01p:Site_701 ;
   study:healthySubject sdtmterm:NoYesResponse_N ;
-  study:maxSubjectAge <<http://w3id.org/phuse/code#>#PlannedSubjectAge_NULL.PINF> ;
+  study:maxSubjectAge <http://w3id.org/phuse/code#>#PlannedSubjectAge_NULL.PINF> ;
   study:minSubjectAge code:PlannedSubjectAge_P50Y ;
   study:sexGroup sdtmterm:SexGroup_BOTH ;
 .
@@ -532,7 +532,7 @@ cd01p:StudyRegistryIdentifier_NCT00987090
   rdf:type study:StudyRegistryIdentifier ;
   skos:prefLabel "NCT00987090" ;
   code:hasCode "NCT00987090" ;
-  code:hasCodeSystem <<http://w3id.org/phuse/code#>#CodeSystem_clinicaltrials.gov> ;
+  code:hasCodeSystem <http://w3id.org/phuse/code#>#CodeSystem_clinicaltrials.gov> ;
 .
 cd01p:StudyStopRule_1
   rdf:type study:StudyStopRule ;
@@ -715,7 +715,7 @@ code:InformedConsentAdult
   rdfs:subClassOf study:InformedConsent ;
   study:hasStartRule study:StartRuleDefault ;
 .
-<<http://w3id.org/phuse/code#>#PlannedSubjectAge_NULL.PINF>
+<http://w3id.org/phuse/code#>#PlannedSubjectAge_NULL.PINF>
   rdf:type study:MaximumSubjectAge ;
 .
 code:PlannedSubjectAge_P50Y
