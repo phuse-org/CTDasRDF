@@ -2,8 +2,8 @@
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix cd01p: <http://w3id.org/phuse/cd01p#> .
-@prefix cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#> .
-@prefix code: <<http://w3id.org/phuse/code#>#> .
+@prefix cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#> .
+@prefix code: <<http://w3id.org/phuse/code#> .
 @prefix country: <http://psi.oasis-open.org/iso/3166/#> .
 @prefix cts: <http://rdf.cdisc.org/ct/schema#> .
 @prefix custom: <<http://w3id.org/phuse/custom#>> .
@@ -20,7 +20,7 @@
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
-@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix study: <http://w3id.org/phuse/study#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -30,7 +30,7 @@ cd01p:Site_1
 cd01p:Study_1
     study:hasStudyParticipant cdiscpilot01:Person_1 .
 
-<<http://w3id.org/phuse/cdiscpilot01#>#>
+<<http://w3id.org/phuse/cdiscpilot01#>
     study:outcome <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#>, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62166>, <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#C71148.C62167> .
 
 cdiscpilot01:AgeOutcome_1

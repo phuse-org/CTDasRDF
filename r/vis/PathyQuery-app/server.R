@@ -15,7 +15,7 @@ function(input, output, session) {
   triples <- reactive({   
     
     queryText <- paste0("
-      PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#> 
+      PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#> 
       PATHS START ?s =", input$startNode, " END ?o VIA ?p  MAX LENGTH ", input$hops, " ")
     foo<<-queryText
     qd <- SPARQL(endpoint, queryText)

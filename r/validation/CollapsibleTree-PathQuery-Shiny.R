@@ -22,12 +22,12 @@ epOnt = "http://localhost:5820/CTDasRDFOnt/query"
 
 # Define the namespaces
 namespaces <- c('cd01p', '<http://w3id.org/phuse/cd01p#>',
-'cdiscpilot01', '<<http://w3id.org/phuse/cdiscpilot01#>#>',
-'code', '<<http://w3id.org/phuse/code#>#>',
+'cdiscpilot01', '<<http://w3id.org/phuse/cdiscpilot01#>',
+'code', '<<http://w3id.org/phuse/code#>',
 'custom', '<<http://w3id.org/phuse/custom#>>',
-'sdtmterm', '<http://rdf.cdisc.org/sdtmterm#>',
+'sdtmterm', '<http://w3id.org/phuse/sdtmterm#>',
 'skos', '<http://www.w3.org/2004/02/skos/core#>',
-'study', '<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>',  
+'study', '<http://w3id.org/phuse/study#>',  
 'time', '<http://www.w3.org/2006/time#>',  
 'rdf', '<http://www.w3.org/1999/02/22-rdf-syntax-ns#>',
 'xsd', '<http://www.w3.org/2001/XMLSchema#>'
@@ -87,7 +87,7 @@ server <- function(input, output, session) {
     #   See if the prefixes assigned differently WITHIN Stardog DB.
 
     queryOnt = paste0("
-    PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#> 
+    PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#> 
     PATHS ALL
     START ?s = ", input$rootNodeOnt," 
     END ?o
@@ -124,7 +124,7 @@ server <- function(input, output, session) {
       "rdfs:", triplesOnt$p)
     triplesOnt$p <- gsub("<http://www.w3.org/2004/02/skos/core#", 
       "skos:", triplesOnt$p)
-    triplesOnt$p <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#", 
+    triplesOnt$p <- gsub("<http://w3id.org/phuse/study#", 
       "study:", triplesOnt$p)
     triplesOnt$p <- gsub("<http://www.w3.org/2006/time#", 
       "time:", triplesOnt$p)
@@ -148,13 +148,13 @@ server <- function(input, output, session) {
       "sdtmterm:", triplesOnt$o)
     
     # recoding needed in AO source!  Update URI!
-    triplesOnt$o <- gsub("<http://rdf.cdisc.org/sdtmterm#", 
+    triplesOnt$o <- gsub("<http://w3id.org/phuse/sdtmterm#", 
       "sdtmterm:", triplesOnt$o)
     
     
     triplesOnt$o <- gsub("<http://www.w3.org/2004/02/skos/core#", 
       "skos:", triplesOnt$o)
-    triplesOnt$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#", 
+    triplesOnt$o <- gsub("<http://w3id.org/phuse/study#", 
       "study:", triplesOnt$o)
     triplesOnt$o <- gsub("<http://www.w3.org/2006/time#", 
       "time:", triplesOnt$o)
@@ -183,7 +183,7 @@ server <- function(input, output, session) {
   triplesDer <- reactive({
 
     queryDer = paste0("
-    PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#> 
+    PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#> 
     PATHS ALL
     START ?s = ", input$rootNodeDer," 
     END ?o
@@ -220,7 +220,7 @@ server <- function(input, output, session) {
       "rdfs:", triplesDer$p)
     triplesDer$p <- gsub("<http://www.w3.org/2004/02/skos/core#", 
       "skos:", triplesDer$p)
-    triplesDer$p <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#", 
+    triplesDer$p <- gsub("<http://w3id.org/phuse/study#", 
       "study:", triplesDer$p)
     triplesDer$p <- gsub("<http://www.w3.org/2006/time#", 
       "time:", triplesDer$p)
@@ -242,7 +242,7 @@ server <- function(input, output, session) {
       "sdtmterm:", triplesDer$o)
     triplesDer$o <- gsub("<http://www.w3.org/2004/02/skos/core#", 
       "skos:", triplesDer$o)
-    triplesDer$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#", 
+    triplesDer$o <- gsub("<http://w3id.org/phuse/study#", 
       "study:", triplesDer$o)
     triplesDer$o <- gsub("<http://www.w3.org/2006/time#", 
       "time:", triplesDer$o)

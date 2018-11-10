@@ -351,7 +351,7 @@ You might have issues with JAVA when stardog is not working. Make sure you have 
 <li><a href="http://visualdataweb.de/webvowl/#iri=<http://w3id.org/phuse/code#>#">code</a></li>
 <li><a href="http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#">sdtm</a></li>
 <li><a href="http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#">sdtmterm</a></li>
-<li><a href="http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#">study</a></li>
+<li><a href="http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/study#">study</a></li>
 </ul>
 <p>If you want more information on the Visualization with VOWL, you might read this paper where WebVOWL is explained very well: “<a href="http://www.semantic-web-journal.net/system/files/swj1114.pdf">Visualizing Ontologies with VOWL</a>”.</p>
 <p>When you load for example the study.ttl file, you might get some warnings that not all ontologies can be loaded - ignore them. Then you see light blue and dark blue bubbles with relationshipts. The light blue ones are the one from the current ontology, so you might want to explore them first. You can see the most important classes from the study.ttl ontology at the first glance.</p>
@@ -440,7 +440,7 @@ WHERE
 <li>code=<a href="<http://w3id.org/phuse/code#>#" class="uri"><http://w3id.org/phuse/code#>#</a></li>
 <li>sdtm=<a href="https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#" class="uri">https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#</a></li>
 <li>sdtmterm=<a href="https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#" class="uri">https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#</a></li>
-<li>study=<a href="https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#" class="uri">https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#</a></li>
+<li>study=<a href="http://w3id.org/phuse/study#" class="uri">http://w3id.org/phuse/study#</a></li>
 </ul>
 <p>To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <a href="http://localhost:5820/#/databases" class="uri">http://localhost:5820/#/databases</a> and select your “<a href="http://localhost:5820/#/databases" class="uri">http://localhost:5820/#/databases</a>” database. Turn the database “OFF” and “Edit”. Now you are able to “Add namespace” as you like. Remember to “Save” and turn the database “ON”.</p>
 <p>Alternatively, you can set the namespaces from the commandline by pasting the following commands into the terminal:</p>
@@ -449,7 +449,7 @@ stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri <http://w3id.org/p
 stardog namespace add CTDasRDFSMS --prefix code --uri <http://w3id.org/phuse/code#>#
 stardog namespace add CTDasRDFSMS --prefix sdtm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#
 stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#
-stardog namespace add CTDasRDFSMS --prefix study --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#</code></pre>
+stardog namespace add CTDasRDFSMS --prefix study --uri http://w3id.org/phuse/study#</code></pre>
 <p>When you now perform any queries, you will see the namespace abbreviations nicely in the result:</p>
 <pre><code>SELECT *
 WHERE {

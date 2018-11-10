@@ -5,13 +5,13 @@
 @prefix stardog: <tag:stardog:api:> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix cd01p: <http://w3id.org/phuse/cd01p#> .
-@prefix cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#> .
-@prefix code: <<http://w3id.org/phuse/code#>#> .
+@prefix cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#> .
+@prefix code: <<http://w3id.org/phuse/code#> .
 @prefix custom: <<http://w3id.org/phuse/custom#>> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix study: <http://w3id.org/phuse/study#> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
 
 cdiscpilot01:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb skos:preflabel "Person 1" ;
 	a study:EnrolledSubject ;

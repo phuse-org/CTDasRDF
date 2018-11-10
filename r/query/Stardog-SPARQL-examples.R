@@ -35,7 +35,7 @@ prefix <- c("cd01p",        "https://raw.githubusercontent.com/phuse-org/CTDasRD
             "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",
             "sdtmterm",     "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#",
             "skos",         "http://www.w3.org/2004/02/skos/core#",
-            "study",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#",
+            "study",        "http://w3id.org/phuse/study#",
             "time",         "http://www.w3.org/2006/time#")
 
 # if you get an error like: Error: 1: AttValue: " or ' expected, then remove your proxy settings, e.g.

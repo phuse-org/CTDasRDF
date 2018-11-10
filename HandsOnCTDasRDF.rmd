@@ -160,7 +160,7 @@ If you want to explore the ontologies (OWL) used, you might want to use the grap
 * [code](http://visualdataweb.de/webvowl/#iri=<http://w3id.org/phuse/code#>#)
 * [sdtm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#)
 * [sdtmterm](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#)
-* [study](http://visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#)
+* [study](http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/study#)
 
 If you want more information on the Visualization with VOWL, you might read this paper where WebVOWL is explained very well: "[Visualizing Ontologies with VOWL](http://www.semantic-web-journal.net/system/files/swj1114.pdf)".
 
@@ -259,7 +259,7 @@ You might not like the long prefixes which are displayed on every query result. 
 * code=<http://w3id.org/phuse/code#>#
 * sdtm=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#
 * sdtmterm=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#
-* study=https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#
+* study=http://w3id.org/phuse/study#
 
 To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <http://localhost:5820/#/databases> and select your "http://localhost:5820/#/databases" database. Turn the database "OFF" and "Edit". Now you are able to "Add namespace" as you like. Remember to "Save" and turn the database "ON".
 
@@ -270,7 +270,7 @@ stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri <http://w3id.org/p
 stardog namespace add CTDasRDFSMS --prefix code --uri <http://w3id.org/phuse/code#>#
 stardog namespace add CTDasRDFSMS --prefix sdtm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#
 stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#
-stardog namespace add CTDasRDFSMS --prefix study --uri https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#
+stardog namespace add CTDasRDFSMS --prefix study --uri http://w3id.org/phuse/study#
 ```
 
 When you now perform any queries, you will see the namespace abbreviations nicely in the result:

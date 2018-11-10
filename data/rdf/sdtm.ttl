@@ -9,207 +9,207 @@
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix cdiscs: <http://rdf.cdisc.org/std/schema#> .
-@prefix code: <<http://w3id.org/phuse/code#>#> .
-@prefix mms: <<http://w3id.org/phuse/mms#>#> .
+@prefix code: <<http://w3id.org/phuse/code#> .
+@prefix mms: <<http://w3id.org/phuse/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdtm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#> .
 @prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#> .
-@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spif: <http://spinrdf.org/spif#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
-@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix study: <http://w3id.org/phuse/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://rdf.cdisc.org/sdtmterm#C66738.C15320>
+<http://w3id.org/phuse/sdtmterm#C66738.C15320>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Study Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C20587>
+<http://w3id.org/phuse/sdtmterm#C66738.C20587>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Age Span" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C25196>
+<http://w3id.org/phuse/sdtmterm#C66738.C25196>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial is Randomized" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C25488>
+<http://w3id.org/phuse/sdtmterm#C66738.C25488>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Dose per Administration" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C38114>
+<http://w3id.org/phuse/sdtmterm#C66738.C38114>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Route of Administration" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C41161>
+<http://w3id.org/phuse/sdtmterm#C66738.C41161>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Investigational Therapy or Treatment" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C41184>
+<http://w3id.org/phuse/sdtmterm#C66738.C41184>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial Indication" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C48281>
+<http://w3id.org/phuse/sdtmterm#C66738.C48281>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial Phase Classification" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49647>
+<http://w3id.org/phuse/sdtmterm#C66738.C49647>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Control Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49650>
+<http://w3id.org/phuse/sdtmterm#C66738.C49650>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Diagnosis Group" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49652>
+<http://w3id.org/phuse/sdtmterm#C66738.C49652>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial Indication Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49658>
+<http://w3id.org/phuse/sdtmterm#C66738.C49658>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial Blinding Schema" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49660>
+<http://w3id.org/phuse/sdtmterm#C66738.C49660>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49692>
+<http://w3id.org/phuse/sdtmterm#C66738.C49692>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Planned Number of Subjects; Planned Enrollment; Target Enrollment; Anticipated Enrollment" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49693>
+<http://w3id.org/phuse/sdtmterm#C66738.C49693>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Planned Minimum Age of Subjects" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49694>
+<http://w3id.org/phuse/sdtmterm#C66738.C49694>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Planned Maximum Age of Subjects" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49696>
+<http://w3id.org/phuse/sdtmterm#C66738.C49696>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Sex of Participants" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49697>
+<http://w3id.org/phuse/sdtmterm#C66738.C49697>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial Length" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49698>
+<http://w3id.org/phuse/sdtmterm#C66738.C49698>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Study Stop Rules" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49703>
+<http://w3id.org/phuse/sdtmterm#C66738.C49703>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Added on to Existing Treatments" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49802>
+<http://w3id.org/phuse/sdtmterm#C66738.C49802>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial Title" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C68612>
+<http://w3id.org/phuse/sdtmterm#C66738.C68612>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Comparative Treatment Name" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C69208>
+<http://w3id.org/phuse/sdtmterm#C66738.C69208>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Study Start Date" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C70793>
+<http://w3id.org/phuse/sdtmterm#C66738.C70793>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Clinical Study Sponsor; Study Sponsor; Sponsor" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C73558>
+<http://w3id.org/phuse/sdtmterm#C66738.C73558>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Dose Units" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C85582>
+<http://w3id.org/phuse/sdtmterm#C66738.C85582>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Current Therapy or Treatment" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C85826>
+<http://w3id.org/phuse/sdtmterm#C66738.C85826>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial Primary Objective" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C85827>
+<http://w3id.org/phuse/sdtmterm#C66738.C85827>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Trial Secondary Objective" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C89081>
+<http://w3id.org/phuse/sdtmterm#C66738.C89081>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Dosing Frequency" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C90462>
+<http://w3id.org/phuse/sdtmterm#C66738.C90462>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Study End Date" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98703>
+<http://w3id.org/phuse/sdtmterm#C66738.C98703>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Actual Number of Subjects" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98704>
+<http://w3id.org/phuse/sdtmterm#C66738.C98704>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Adaptive Design" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98714>
+<http://w3id.org/phuse/sdtmterm#C66738.C98714>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Registry Identifier" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98715>
+<http://w3id.org/phuse/sdtmterm#C66738.C98715>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Confirmed Response Minimum Duration" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98717>
+<http://w3id.org/phuse/sdtmterm#C66738.C98717>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Data Cutoff Date" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98718>
+<http://w3id.org/phuse/sdtmterm#C66738.C98718>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Data Cutoff Description" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98724>
+<http://w3id.org/phuse/sdtmterm#C66738.C98724>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Exploratory Outcome Measure" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98737>
+<http://w3id.org/phuse/sdtmterm#C66738.C98737>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Healthy Subject Indicator" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98746>
+<http://w3id.org/phuse/sdtmterm#C66738.C98746>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Intervention Model" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98747>
+<http://w3id.org/phuse/sdtmterm#C66738.C98747>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Intervention Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98768>
+<http://w3id.org/phuse/sdtmterm#C66738.C98768>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Pharmacological Class of Invest. Therapy" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98770>
+<http://w3id.org/phuse/sdtmterm#C66738.C98770>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Planned Country of Investigational Sites" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98771>
+<http://w3id.org/phuse/sdtmterm#C66738.C98771>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Planned Number of Arms" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98772>
+<http://w3id.org/phuse/sdtmterm#C66738.C98772>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Primary Outcome Measure" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98775>
+<http://w3id.org/phuse/sdtmterm#C66738.C98775>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Randomization Quotient" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98781>
+<http://w3id.org/phuse/sdtmterm#C66738.C98781>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Secondary Outcome Measure" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98783>
+<http://w3id.org/phuse/sdtmterm#C66738.C98783>
   rdf:type sdtm:Parameter ;
   skos:altLabel "Stable Disease Minimum Duration" ;
 .
@@ -3947,7 +3947,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C20587> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C20587> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4052,7 +4052,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C25196> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C25196> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4109,7 +4109,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C25488> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C25488> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4178,7 +4178,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49692> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49692> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4235,7 +4235,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C89081> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C89081> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4319,7 +4319,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98718> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98718> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4420,7 +4420,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C15320> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C15320> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4521,7 +4521,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C25196> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C25196> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4622,7 +4622,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C38114> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C38114> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4750,7 +4750,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C41161> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C41161> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4851,7 +4851,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C41184> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C41184> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -4970,7 +4970,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C48281> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C48281> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -5071,7 +5071,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49647> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49647> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -5172,7 +5172,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49650> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49650> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -5291,7 +5291,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49652> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49652> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -5410,7 +5410,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49658> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49658> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -5511,7 +5511,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49660> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49660> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -5612,7 +5612,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49696> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49696> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -5729,7 +5729,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49697> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49697> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -5855,7 +5855,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49698> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49698> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -5956,7 +5956,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49703> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49703> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6057,7 +6057,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49802> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49802> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6158,7 +6158,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C69208> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C69208> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6266,7 +6266,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C70793> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C70793> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6367,7 +6367,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C85826> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C85826> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6431,7 +6431,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C85827> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C85827> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6495,7 +6495,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C90462> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C90462> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6603,7 +6603,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98704> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98704> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6704,7 +6704,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98714> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98714> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6805,7 +6805,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98717> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98717> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -6929,7 +6929,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98737> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98737> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -7039,7 +7039,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98746> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98746> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -7140,7 +7140,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98747> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98747> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -7241,7 +7241,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98768> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98768> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -7358,7 +7358,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98770> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98770> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -7500,7 +7500,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C98772> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98772> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -7601,7 +7601,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49693> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49693> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]
@@ -7720,7 +7720,7 @@ sdtm:SDTM_TS_Record
             sp:subject spin:_this ;
           ]
           [
-            sp:object <http://rdf.cdisc.org/sdtmterm#C66738.C49694> ;
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49694> ;
             sp:predicate sdtm:hasTSParameter ;
             sp:subject spin:_this ;
           ]

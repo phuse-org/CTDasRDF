@@ -11,17 +11,17 @@
 ###############################################################################
 
 PREFIX cd01p: <http://w3id.org/phuse/cd01p#> 
-PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#> 
-PREFIX code: <<http://w3id.org/phuse/code#>#> 
+PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#> 
+PREFIX code: <<http://w3id.org/phuse/code#> 
 PREFIX custom: <<http://w3id.org/phuse/custom#>> 
 PREFIX owl: <http://www.w3.org/2002/07/owl#> 
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX sdtmterm: <http://rdf.cdisc.org/sdtmterm#> 
+PREFIX sdtmterm: <http://w3id.org/phuse/sdtmterm#> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
 PREFIX sp: <http://spinrdf.org/sp#> 
 PREFIX spin: <http://spinrdf.org/spin#> 
-PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> 
+PREFIX study: <http://w3id.org/phuse/study#> 
 PREFIX time: <http://www.w3.org/2006/time#> 
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 

@@ -17,9 +17,9 @@ library(rrdf)
 endpoint = "http://localhost:8890/sparql"
 
 query = 'PREFIX cd01p: <http://w3id.org/phuse/cd01p#>
-PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#>
+PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>
 PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
-PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
+PREFIX study: <http://w3id.org/phuse/study#>
 
 SELECT ?s ?p ?o
 FROM <http://localhost:8890/CTDasRDF-R>
@@ -36,9 +36,9 @@ personTriples_Virt <- as.data.frame(sparql.remote(endpoint, query))
 endpoint = "http://localhost:5820/CTDasRDF-R/query"
 
 query = 'PREFIX cd01p: <http://w3id.org/phuse/cd01p#>
-PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#>
+PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>
 PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
-PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
+PREFIX study: <http://w3id.org/phuse/study#>
 
 SELECT *
 WHERE{
@@ -58,9 +58,9 @@ setwd("C:/_gitHubShared/CTDasRDF")
 sourceTTL = load.rdf("data/rdf/cdiscpilot01-R.ttl", format="N3")
 
 queryTTL = 'PREFIX cd01p: <http://w3id.org/phuse/cd01p#>
-PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>#>
+PREFIX cdiscpilot01: <<http://w3id.org/phuse/cdiscpilot01#>
 PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
-PREFIX study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#>
+PREFIX study: <http://w3id.org/phuse/study#>
 SELECT ?s ?p ?o
 WHERE{
 cdiscpilot01:Person_1 ?p ?o
