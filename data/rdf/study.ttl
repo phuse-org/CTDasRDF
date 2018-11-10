@@ -1,4 +1,4 @@
-# baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
+# baseURI: http://w3id.org/phuse/study
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: <http://w3id.org/phuse/code#>
@@ -307,7 +307,7 @@ code:outcome
   skos:altLabel "" ;
   skos:prefLabel "has outcome" ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl>
+<http://w3id.org/phuse/study>
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   owl:imports <http://spinrdf.org/spl> ;

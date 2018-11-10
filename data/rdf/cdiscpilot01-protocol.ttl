@@ -1,7 +1,7 @@
 # baseURI: http://w3id.org/phuse/cd01p
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: <http://w3id.org/phuse/code#>
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
+# imports: http://w3id.org/phuse/study
 # prefix: cd01p
 
 @prefix cd01p: <http://w3id.org/phuse/cd01p#> .
@@ -20,7 +20,7 @@
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://w3id.org/phuse/code#> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
+  owl:imports <http://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 cd01p:AdminActivity_DataCutoff

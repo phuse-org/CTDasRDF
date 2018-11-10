@@ -144,7 +144,7 @@ server <- function(input, output, session) {
       "rdf:", triplesOnt$o)
     triplesOnt$o <- gsub("<http://www.w3.org/2000/01/rdf-schema#",
       "rdfs:", triplesOnt$o)
-    triplesOnt$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#",
+    triplesOnt$o <- gsub("<http://w3id.org/phuse/sdtmterm#",
       "sdtmterm:", triplesOnt$o)
 
     # recoding needed in AO source!  Update URI!
@@ -238,7 +238,7 @@ server <- function(input, output, session) {
       "rdf:", triplesDer$o)
     triplesDer$o <- gsub("<http://www.w3.org/2000/01/rdf-schema#",
       "rdfs:", triplesDer$o)
-    triplesDer$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#",
+    triplesDer$o <- gsub("<http://w3id.org/phuse/sdtmterm#",
       "sdtmterm:", triplesDer$o)
     triplesDer$o <- gsub("<http://www.w3.org/2004/02/skos/core#",
       "skos:", triplesDer$o)

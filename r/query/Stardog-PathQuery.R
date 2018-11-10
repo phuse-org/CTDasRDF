@@ -36,7 +36,7 @@ prefix <- c("cd01p",        "http://w3id.org/phuse/cd01p",
             "owl",          "http://www.w3.org/2002/07/owl#",
             "rdf",          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",
-            "sdtmterm",     "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#",
+            "sdtmterm",     "http://w3id.org/phuse/sdtmterm#",
             "skos",         "http://www.w3.org/2004/02/skos/core#",
             "study",        "http://w3id.org/phuse/study#",
             "time",         "http://www.w3.org/2006/time#")
@@ -87,7 +87,7 @@ triplesDF$o <- gsub("<http://www.w3.org/1999/02/22-rdf-syntax-ns#",
   "rdf:", triplesDF$o)
 triplesDF$o <- gsub("<http://www.w3.org/2000/01/rdf-schema#", 
   "rdfs:", triplesDF$o)
-triplesDF$o <- gsub("<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#", 
+triplesDF$o <- gsub("<http://w3id.org/phuse/sdtmterm#", 
   "sdtmterm:", triplesDF$o)
 triplesDF$o <- gsub("<http://www.w3.org/2004/02/skos/core#", 
   "skos:", triplesDF$o)

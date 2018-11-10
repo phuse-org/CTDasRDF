@@ -2,8 +2,8 @@
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://w3id.org/phuse/cd01p
 # imports: <http://w3id.org/phuse/code#>
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
+# imports: http://w3id.org/phuse/sdtm
+# imports: http://w3id.org/phuse/study
 # prefix: cdiscpilot01
 
 @prefix cd01p: <http://w3id.org/phuse/cd01p#> .
@@ -38,8 +38,8 @@ cd01p:Study_CDISCPILOT01
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://w3id.org/phuse/cd01p> ;
   owl:imports <http://w3id.org/phuse/code#> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
+  owl:imports <http://w3id.org/phuse/sdtm> ;
+  owl:imports <http://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 cdiscpilot01:AgeDataCollection_01-701-1015
