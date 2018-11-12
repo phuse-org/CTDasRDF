@@ -1,7 +1,7 @@
-# baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
+# baseURI: <http://w3id.org/phuse/code#>
 # imports: http://datashapes.org/dash
-# imports: http://rdf.cdisc.org/ct/schema
-# imports: http://rdf.cdisc.org/mms
+# imports: http://w3id.org/phuse/cts
+# imports: <http://w3id.org/phuse/mms#>
 # imports: http://rdf.cdisc.org/sdtmterm
 # imports: http://spinrdf.org/spin
 # imports: http://spinrdf.org/spl
@@ -11,13 +11,13 @@
 # prefix: code
 
 @prefix arg: <http://spinrdf.org/arg#> .
-@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
-@prefix mms: <http://rdf.cdisc.org/mms#> .
+@prefix code: <http://w3id.org/phuse/code#> .
+@prefix mms: <http://w3id.org/phuse/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://rdf.cdisc.org/ct/schema#> .
-@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix schema: <http://w3id.org/phuse/cts#> .
+@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
@@ -621,15 +621,15 @@ time:unitYear
   rdf:type code:AgeUnit ;
   skos:prefLabel "YEAR" ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl>
+<http://w3id.org/phuse/code#>
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   spin:imports <http://topbraid.org/spin/rdfsplus> ;
   spin:imports <http://topbraid.org/spin/skosspin> ;
   spin:imports <http://topbraid.org/spin/spinowl> ;
   owl:imports <http://datashapes.org/dash> ;
-  owl:imports <http://rdf.cdisc.org/ct/schema> ;
-  owl:imports <http://rdf.cdisc.org/mms> ;
+  owl:imports <http://w3id.org/phuse/cts> ;
+  owl:imports <http://w3id.org/phuse/mms#> ;
   owl:imports <http://rdf.cdisc.org/sdtmterm> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://spinrdf.org/spl> ;
@@ -858,7 +858,7 @@ code:CodeSystem_UNII
   rdf:type code:CodeSystem ;
   skos:prefLabel "UNII" ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#CodeSystem_clinicaltrials.gov>
+<http://w3id.org/phuse/code#CodeSystem_clinicaltrials.gov>
   rdf:type code:CodeSystem ;
   skos:prefLabel "clinicaltrials.gov" ;
 .
@@ -1086,7 +1086,7 @@ code:ExDosFrq_QD
 .
 code:ExRoute_ORAL
   rdf:type code:RouteOfAdministration ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38288> ;
+  owl:sameAs <http://w3id.org/phuse/sdtmterm#C66729.C38288> ;
   skos:altLabel "" ;
   skos:prefLabel "ORAL" ;
   code:hasCode "C38288" ;
@@ -1094,7 +1094,7 @@ code:ExRoute_ORAL
 .
 code:ExRoute_TRANSDERMAL
   rdf:type code:RouteOfAdministration ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  owl:sameAs <http://w3id.org/phuse/sdtmterm#C66729.C38305> ;
   skos:altLabel "" ;
   skos:prefLabel "TRANSDERMAL" ;
   code:hasCode "C38305" ;
@@ -1513,7 +1513,7 @@ code:PharmacologicClass
   rdfs:subClassOf code:DefinedConcept ;
   skos:prefLabel "Pharmacologic class" ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#PlannedSubjectAge_NULL.PINF>
+<http://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF>
   rdf:type code:Age ;
   skos:prefLabel "\"\"" ;
   code:hasNullFlavor code:NullFlavor_4 ;
@@ -2034,8 +2034,8 @@ code:WeightUnit
 .
 code:hasAge
   rdf:type owl:ObjectProperty ;
-  rdfs:domain <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#Person> ;
-  rdfs:range <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#AgeOutcome> ;
+  rdfs:domain <http://w3id.org/phuse/study#Person> ;
+  rdfs:range <http://w3id.org/phuse/study#AgeOutcome> ;
   skos:altLabel "" ;
   skos:prefLabel "has age" ;
 .

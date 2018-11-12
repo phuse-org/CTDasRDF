@@ -71,7 +71,7 @@ qrOnt <- SPARQL(url=epOnt, query=query)
 triplesOnt <- qrOnt$results
 
 # Remove triples that describe the source TTL file. Artifact from TopBraid.
-triplesOnt <- triplesOnt[ !(triplesOnt$s =='<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl>'), ]
+triplesOnt <- triplesOnt[ !(triplesOnt$s =='<http://w3id.org/phuse/cdiscpilot01#>'), ]
 
 
 

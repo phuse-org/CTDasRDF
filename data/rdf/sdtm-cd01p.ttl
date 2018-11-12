@@ -1,28 +1,28 @@
 # baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-cd01p.ttl
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl
+# imports: http://w3id.org/phuse/cd01p
+# imports: http://w3id.org/phuse/sdtm
 # prefix: sdtm-cd01p
 
 @prefix arg: <http://spinrdf.org/arg#> .
-@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
-@prefix cdiscs: <http://rdf.cdisc.org/std/schema#> .
-@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
-@prefix mms: <http://rdf.cdisc.org/mms#> .
+@prefix cd01p: <http://w3id.org/phuse/cd01p#> .
+@prefix cdiscs: <http://w3id.org/phuse/cdiscs#> .
+@prefix code: <http://w3id.org/phuse/code#> .
+@prefix mms: <http://w3id.org/phuse/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/ct-schema.rdf#> .
-@prefix sdtm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#> .
+@prefix schema: <http://w3id.org/phuse/cts#> .
+@prefix sdtm: <http://w3id.org/phuse/sdtm#> .
 @prefix sdtm-cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-cd01p.ttl#> .
 @prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#> .
-@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
-@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix study: <http://w3id.org/phuse/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARM>
@@ -369,8 +369,8 @@ code:hasValueSet
   rdf:type owl:Ontology ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl> ;
+  owl:imports <http://w3id.org/phuse/cd01p> ;
+  owl:imports <http://w3id.org/phuse/sdtm> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 sdtm-cd01p:SDTMDefineRecord_DM_1
@@ -703,241 +703,241 @@ sdtm-cd01p:SDTMDefineRecord_VS_9
 sdtm-cd01p:SDTM_TS_Record_1
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 1 ADDON" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49703> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49703> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_11
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 11 DOSEFRQ" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C89081> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C89081> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_12
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 12 DOSU" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C73558> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C73558> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_13
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 13 INDIC" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C41184> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C41184> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_14
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 14 TINDTP" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49652> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49652> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_15
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 15 LENGTH" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49697> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49697> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_16
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 16 OBJPRIM" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C85826> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C85826> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_19
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 19 OBJSEC" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C85827> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C85827> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_2
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 2 AGEMAX" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49694> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49694> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_23
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 23 TPHASE" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C48281> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C48281> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_24
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 24 PLANSUB" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49692> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49692> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_25
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 25 RANDOM" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C25196> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C25196> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_26
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 26 ROUTE" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C38114> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C38114> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_27
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 27 SEXPOP" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49696> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49696> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_28
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 28 SPONSOR" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C70793> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C70793> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_29
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 29 TITLE" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49802> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49802> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_3
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 3 AGEMIN" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49693> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49693> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_30
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 30 TRT" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C41161> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C41161> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_31
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 31 TTYP" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49660> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49660> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_34
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 34 STOPRULE" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49698> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49698> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_35
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 35 REGID" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98714> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98714> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_36
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 36 OUTMSPRI" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98772> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98772> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_37
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 37 FCNTRY" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98770> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98770> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_38
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 38 ADAPT" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98704> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98704> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_39
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 39 DCUTDTC" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98717> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98717> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_4
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 4  AGESPAN" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C20587> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C20587> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_40
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 40 DCUTDESC" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98718> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98718> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_41
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 41 NARMS" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98771> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98771> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_42
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 42 STYPE" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C15320> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C15320> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_43
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 43 SSTDTC" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C69208> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C69208> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_44
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 44 SENDTC" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C90462> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C90462> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_45
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 45 ACTSUB" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98703> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98703> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_46
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 46 HLTSUBJI" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98737> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98737> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_47
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 47 INTMODEL" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98746> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98746> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_48
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 48 INTTYPE" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98747> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98747> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_49
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 49 PCLAS" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C98768> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C98768> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_6
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 6 TBLIND" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49658> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49658> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_7
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 7 TCNTRL" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49647> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49647> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_8
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 8 TDIGRP" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C49650> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C49650> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm-cd01p:SDTM_TS_Record_9
   rdf:type sdtm:SDTM_TS_Record ;
   skos:prefLabel "SDTM TS Record 9 DOSE" ;
-  sdtm:hasTSParameter <http://rdf.cdisc.org/sdtmterm#C66738.C25488> ;
+  sdtm:hasTSParameter <http://w3id.org/phuse/sdtmterm#C66738.C25488> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
 .
 sdtm:SDTMDefineRecord

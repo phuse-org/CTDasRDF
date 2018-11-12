@@ -33,14 +33,14 @@ endpoint <- "http://localhost:5820/CTDasRDFSMS/query"
 
 # Currently only looking at code, study, time, protocol namespaces
 queryText = '
-prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> 
-prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> 
-prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> 
-prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> 
+prefix cd01p: <http://w3id.org/phuse/cd01p#> 
+prefix cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#> 
+prefix code: <http://w3id.org/phuse/code#> 
+prefix custom: <http://w3id.org/phuse/custom#> 
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> 
+prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> 
 prefix skos: <http://www.w3.org/2004/02/skos/core#> 
-prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> 
+prefix study: <http://w3id.org/phuse/study#> 
 prefix time: <http://www.w3.org/2006/time#> 
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 

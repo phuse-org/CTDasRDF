@@ -1,0 +1,120 @@
+###############################################################################
+# FILE: VS_mappings.ttl
+# DESC: Stardog SMS Template file for mapping VS to graph.
+# REQ :
+# SRC :
+# IN  : CSV converted from VS.XPT, Subject 1015 only
+# OUT :
+# NOTE: stardog-admin virtual import CTDasRDF VS_mappings.TTL VS_subset.csv
+#  Export to TTL: stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
+#
+#  Conventions:
+#    Visit IRIs:
+#      a) cdiscpilot01 : compressed form of original value in visit field: visit_im_titleCSh
+#          Closer match to actual source data.
+#      b) custom: and other external ont files: CamelCaseShortened: visit_im_CCaseSh to match
+#          naming conventions in ontologies for classes, etc.
+#  SDTM CODES:
+# C67153.C25206_1  = TEMP
+# C67153.C25208_1  =
+# C67153.C25298_1  = SYSBP 1
+# C67153.C25298_2  = SYSBP 2
+# C67153.C25298_3  = SYSBP 3
+# TODO:
+###############################################################################
+
+@prefix cd01p: <http://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#> .
+@prefix code: <http://w3id.org/phuse/code#> .
+@prefix custom: <http://w3id.org/phuse/custom#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix study: <http://w3id.org/phuse/study#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cdiscpilot01:Person_{usubjid}
+  study:participatesIn cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} ;
+
+.
+
+#---- Visit  EG: cdiscpilot01:VisitScreening1_01-701-1015
+#  The hasPerformedDate is used as the date for the Drug Administration "visit",
+#   even though the actual administration is EX may be a later date!  See the
+#   EX Map for cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid} .
+
+cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
+  rdf:type               custom:Visit{visit_im_titleCSh} ;
+  study:activityStatus   code:ActivityStatus_{vsstat_im} ;
+  study:hasPerformedDate cdiscpilot01:Date_{vsdtc_en} ;
+  study:hasSubActivity   cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_titleCSh}_{usubjid} ;
+  study:hasSubActivity   cdiscpilot01:{vstest_comp}_{visit_im_titleCSh}_{usubjid}_{vsseq} ;
+.
+    # VisitDate - designate hasPerformedDate as a VisitDate
+    cdiscpilot01:Date_{vsdtc_en}
+      rdf:type   study:VisitDate ;
+    .
+
+    # AssumeBodyPosition, child of EG: "AssumeBodyPositionStanding_01-701-1015"
+    # Only the 1 min standing has a start rule applied, since the previous was
+    #   sitting, then stand.
+    cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_titleCSh}_{usubjid}
+       rdf:type                  cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid};
+       rdf:type                  custom:AssumeBodyPosition{vspos_im_titleC} ;
+       skos:prefLabel            "Assume {vspos_im_lowerC} position"^^xsd:string ;
+       study:activityStatus      code:ActivityStatus_{vsstat_im} ;
+       study:hasDate             cdiscpilot01:Date_{vsdtc_en} ;
+       study:hasStartRule        cdiscpilot01:{vstpt_AssumeBodyPosStartRule_im}_{visit_im_titleCSh}_{usubjid} ;
+       code:outcome              code:BodyPosition_{vspos} ;
+    .
+
+        # Visit<X>Activity, child of AssumeBodyPosition
+        cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid}
+          rdf:type         owl:Class ;
+          rdfs:subClassOf  custom:Visit{visit_im_titleCSh}Activity ;
+          skos:prefLabel   "Visit {visit_im_titleC} Person {usubjid}"^^xsd:string ;
+        .
+
+        # Start Rule, child of AssumeBodyPosition
+        cdiscpilot01:{startRule_im}_{visit_im_titleCSh}_{usubjid}
+            rdf:type              cd01p:{startRule_im} ;
+            skos:prefLabel        "Person {usubjid} {visit_im_titleC} Rule {vstpt_label_im}"^^xsd:string ;
+            study:hasPrerequisite cdiscpilot01:AssumeBodyPosition{vspos_im_titleC}_{visit_im_titleCSh}_{usubjid} ;
+        .
+
+
+
+##    # Each vstestcd (vstest_comp).  vsseq used to show relative sequence.
+    cdiscpilot01:{vstest_comp}_{visit_im_titleCSh}_{usubjid}_{vsseq}
+      rdf:type               code:{vstest_comp} ;
+      rdf:type               cd01p:Visit{visit_im_titleCSh}{vstest_comp} ;
+      rdf:type               cdiscpilot01:Visit{visit_im_titleCSh}Activity_{usubjid} ;
+      study:activityStatus   code:ActivityStatus_{vsstat_im} ;
+      study:anatomicLocation code:{vsloc_im} ;
+      study:derivedFlag     "{vsdrvfl}"^^xsd:string ;
+      study:bodyPosition     code:BodyPosition_{vspos} ;
+      study:groupID          "{vsgrpid_im}"^^xsd:string ;
+      study:hasCategory      cd01p:{vscat_im} ;
+      study:hasScheduledDate cdiscpilot01:Date_{vsdtc_en} ;
+      study:hasSubcategory   cd01p:{vssubcat_im} ;
+      study:hasStartRule     cdiscpilot01:{startRule_im}_{visit_im_titleCSh}_{usubjid} ;
+      study:laterality       code:Laterality_{vslat_im} ;
+      code:outcome           cdiscpilot01:{vstest_outcome_im}Outcome_{vsorres_en} ;
+      study:reasonNotDone    "{vsreasnd}"^^xsd:string ;
+      study:seq              "{vsseq}"^^xsd:float ;
+      study:sponsordefinedID "{vsspid_im}"^^xsd:string ;
+    .
+      # Test Outcome
+      # All results are FLOAT to match ontology instance data. In future some
+      #    will be INT (SYSBP, PULSE..) and others float. 
+        # vsorres_en has decimals removed. May need to change for other types of values!
+        # variable type (float/int etc) cannot be assigned due to varying types in source column, unless this is
+        #   imputed during data massage.
+        cdiscpilot01:{vstest_outcome_im}Outcome_{vsorres_en}
+          code:hasUnit    code:Unit_{vsorresu_im} ;
+          code:hasValue   "{vsorres}"^^xsd:float ;
+          rdf:type        study:{vstest_outcome_im}Outcome ;
+          skos:prefLabel "{vsorres} {vsorresu}"^^xsd:string ;
+        .
