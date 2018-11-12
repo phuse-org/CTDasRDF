@@ -26,16 +26,16 @@ library(SPARQL)
 # Query StardogTriple Store ----
 endpoint <- "http://localhost:5820/CTDasRDFSMS/query"
 
-prefix <- c("cd01p",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl",
-            "cdiscpilot01", "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#",
-            "code",         "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#",
-            "custom",       "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#",
+prefix <- c("cd01p",        "http://w3id.org/phuse/cd01p",
+            "cdiscpilot01", "<http://w3id.org/phuse/cdiscpilot01#",
+            "code",         "<http://w3id.org/phuse/code#",
+            "custom",       "<http://w3id.org/phuse/custom#>",
             "owl",          "http://www.w3.org/2002/07/owl#",
             "rdf",          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",
-            "sdtmterm",     "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#",
+            "sdtmterm",     "http://w3id.org/phuse/sdtmterm#",
             "skos",         "http://www.w3.org/2004/02/skos/core#",
-            "study",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#",
+            "study",        "http://w3id.org/phuse/study#",
             "time",         "http://www.w3.org/2006/time#")
 
 # if you get an error like: Error: 1: AttValue: " or ' expected, then remove your proxy settings, e.g.
