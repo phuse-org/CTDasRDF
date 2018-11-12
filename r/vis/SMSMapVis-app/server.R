@@ -90,7 +90,7 @@ function(input, output, session) {
     nodes <- as.data.frame(nodeList[c("id", "mapFile")])
     #DEL nodes <- as.data.frame(nodes[!duplicated(nodes), ])
   
-    #---- Labels for display and mouseover ------------------------------------
+    #---- Labels for display and mouseover 
     # Title - Full value of text on mouseover. HTML is allowed
     #         Values within {} in red to show comes from data. 
     nodes$title <- gsub("\\{", "<font color='red'>\\{", nodes$id, perl=FALSE)
@@ -108,7 +108,6 @@ function(input, output, session) {
     nodes$color.background <- "white"
     nodes$color.border     <- "black"
     
-# Tidy up to here     
     # Nodes color based on prefix
     nodes$color.background[ grepl("cdiscpilot01:", nodes$id, perl=TRUE) ] <- "#2C52DA"
     nodes$color.background[ grepl("cd01p:",        nodes$id, perl=TRUE) ] <- '#008D00'   
@@ -118,19 +117,21 @@ function(input, output, session) {
     # Create "other" namespace group
     nodes$color.background[ grepl("time:|owl:",    nodes$id, perl=TRUE) ] <- '#FCFF98'  # Lt Yel
     
-    nodes <- as.data.frame(nodes)
+    nodes <- as.data.frame(nodes)  # Must return as dataframe 
   })
     
+  #---- Edges construction
   edges <- reactive({
-    #---- Edges
+
     # Create list of edges by keeping the Subject and Predicate from query result.
     edges<-reshape::rename(triplesDisplay(), c("s" = "from", "o" = "to"))
     edges$arrows <- "to"
-    edges$title <- edges$p  # title: present when mouseover edge.
-    edges$label <- edges$p  #TW  May need to shorten as did for node label
+    edges$title  <- edges$p  # title: present when mouseover edge.
+    edges$label  <- edges$p  # Consider shortening as did for node label
     edges$length <- 500  # Could make this dynamic for large vs small graphs based on dataframe size...
-  
-    edges$color <- "black"  # default and for literals
+    edges$color  <- "black"  # default and for literals
+
+    # Assign colors based on the target node
     edges$color[ grepl("cdiscpilot01:", edges$to, perl=TRUE) ] <- "#2C52DA"
     edges$color[ grepl("cd01p:",        edges$to, perl=TRUE) ] <- '#008D00'   
     edges$color[ grepl("code:",         edges$to, perl=TRUE) ] <- '#1C5B64'
@@ -139,11 +140,10 @@ function(input, output, session) {
 
     # "other" group for misc categories    
     edges$color[ grepl("time:|owl:",    edges$to, perl=TRUE) ] <- '#FCFF98'  # Lt Yel
-
-    edges$font.color <- "black"
+    edges$font.color       <- "black"
     edges$font.strokeColor <- "#919191"  # Set to background grey
-    edges <- as.data.frame(edges)    
-    
+
+    edges <- as.data.frame(edges) # Must return as dataframe   
   })
 
   #---- Graph Render ----------------------------------------------------------  
@@ -152,7 +152,8 @@ function(input, output, session) {
       width= "100%", 
       height=1100, 
       background = "#919191") %>%
-  
+ 
+    # Drop-down selection of node names. Could also select by type   
     visOptions(
       highlightNearest = TRUE, 
       nodesIdSelection = TRUE) %>%

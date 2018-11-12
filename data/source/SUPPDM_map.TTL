@@ -1,15 +1,15 @@
 ###############################################################################
 # FILE: SUPPDM_map.ttl
-# DESC: Stardog SMS Template file for mapping SUPPDM to graph.  
-# REQ : 
-# SRC : 
+# DESC: Stardog SMS Template file for mapping SUPPDM to graph.
+# REQ :
+# SRC :
 # IN  : CSV converted from SUPPDM.XPT, Subject 1015 only
-# OUT : 
+# OUT :
 # NOTE: stardog-admin virtual import CTDasRDF SUPPDM_mappings.TTL SUPPDM_subset.csv
 #  Export to TTL: stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
 #  Syntax conventions:
-#  1. Subjects 
-#       End with \n, not a space 
+#  1. Subjects
+#       End with \n, not a space
 #  2. Predicates
 #        Indented a minimum of 2 spaces
 #        On same line as object
@@ -18,10 +18,10 @@
 #        Ends with a ; preceded by a space
 #        Aligned for readability
 #        Last Object also ends with ;, not with .
-#  4. Termination of the P,O pairs for a Subject 
-#        Ends on a SEPARATE LINE with a . 
+#  4. Termination of the P,O pairs for a Subject
+#        Ends on a SEPARATE LINE with a .
 #        . is never on the same line as the Object.
-# TODO: 
+# TODO:
 ###############################################################################
 
 @prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .

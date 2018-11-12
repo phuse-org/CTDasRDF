@@ -4,7 +4,7 @@
 # REQ : File format requirements for both execution and consistent processing
 #         by visualization scripts:
 #         s line is hard left on line by itself
-#         p,o line - indented at least one space. 
+#         p,o line - indented at least one space.
 #                  - ends in ; on same line, no trailing spaces
 #         p : no short hand: 'rdf:type', not 'a'
 #         File must end with carriage return on a line by itself.
@@ -188,7 +188,7 @@ cdiscpilot01:AgeDataCollection_{usubjid}
 .
 cdiscpilot01:AgeOutcome_{age_en}
   rdf:type       study:AgeOutcome ;
-  skos:prefLabel "{age} YEARS" ;
+  skos:prefLabel "{age} YEARS"^^xsd:string ;
   code:hasUnit   time:unitYear ;
   code:hasValue  "{age}"^^xsd:int ;
 .
@@ -203,7 +203,7 @@ cdiscpilot01:Date_{dmdtc_en}
 #           : Activity status =completed.
 cdiscpilot01:EthnicityDataCollection_{usubjid}
   rdf:type             code:EthnicityDataCollection ;
-  skos:prefLabel       "Person {usubjid} Screening 1 Ethnicity data collection" ;
+  skos:prefLabel       "Person {usubjid} Screening 1 Ethnicity data collection"^^xsd:string;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
   code:outcome         code:Ethnicity_{ethnic_en} ;
@@ -213,7 +213,7 @@ cdiscpilot01:EthnicityDataCollection_{usubjid}
 #           : Activity status =completed.
 cdiscpilot01:RaceDataCollection_{usubjid}
   rdf:type             code:RaceDataCollection ;
-  skos:prefLabel       "Person {usubjid} Screening 1 Race data collection" ;
+  skos:prefLabel       "Person {usubjid} Screening 1 Race data collection"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
   code:outcome         code:Race_{race_en} ;
@@ -224,7 +224,7 @@ cdiscpilot01:RaceDataCollection_{usubjid}
 #           : Activity status =completed.
 cdiscpilot01:SexDataCollection_{usubjid}
   rdf:type             code:SexDataCollection ;
-  skos:prefLabel       "Person {usubjid} Screening 1 Sex data collection" ;
+  skos:prefLabel       "Person {usubjid} Screening 1 Sex data collection" ^^xsd:string;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
   code:outcome         code:Sex_{sex} ;

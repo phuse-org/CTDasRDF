@@ -1,4 +1,16 @@
 #______________________________________________________________________________
+# FILE: r/vis/SMSMapVis-app/ui.r
+# DESC: UI for visualization of SMS maps 
+# SRC :
+# IN  : 
+# OUT : 
+# REQ : 
+# SRC : 
+# NOTE: 
+# TODO: 
+#______________________________________________________________________________
+
+#______________________________________________________________________________
 # $HeadURL: http://brasvnap001/prod-gsp/oaa/LinkedData/RBMProgramFlow/r/vis/MacroImpactKRI-app/ui.R $
 # $Rev: 393 $
 # $Date: 2018-10-02 16:36:05 -0400 (Tue, 02 Oct 2018) $
