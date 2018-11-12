@@ -1,12 +1,12 @@
 ###############################################################################
-# FILE: ctdasrdf_graphmeta_mappings.TTL
+# FILE: Graphmeta_map.TTL
 # DESC: Stardog SMS Template file for mapping graph metadata to graph.  
 # REQ : 
 # SRC : 
 # IN  : CSV updated from R script XTPtoCSV.R 
 # OUT : 
 # NOTE:  R script updates the timestamp in the CVS prior to import to graph
-#        stardog-admin virtual import ctdasrdf_graphmeta_mappings.TTL ctdasrdf_graphmeta_mappings.CSV
+#        stardog-admin virtual import Graphmeta_map.TTL Graphmeta.CSV
 # TODO: 
 ###############################################################################
 @prefix bibo: <http://purl.org/ontology/bibo/> .

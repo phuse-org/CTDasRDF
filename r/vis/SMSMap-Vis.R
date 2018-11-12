@@ -50,6 +50,7 @@ parseFile <- function(sourceFiles){
                         mapFile         = character(), 
                         stringsAsFactors = FALSE) 
 
+    # Process each source file in the list
     sourceContent <- lapply(sourceFiles, function(fileName) {
     
     fileNamePath <- paste0("data/source/",fileName)
@@ -85,7 +86,7 @@ parseFile <- function(sourceFiles){
     }  
     close(conn)
   })
-  foo <<- triples
+  foo <- triples
 }  
 
 #triples<-data.frame(parseFile(sourceFiles=list("ut_kricreatval_parsed_map.TTL", 
