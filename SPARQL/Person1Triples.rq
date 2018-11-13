@@ -1,7 +1,0 @@
-PREFIX ctd: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>
-SELECT ?person ?p ?o
-WHERE
-{
-    ctd:Person_v29eedorsh9a5vr65uc1iob3mvn9blbb ?p ?o .
-    BIND("Person_1" AS ?person)
-} ORDER BY ?p ?o

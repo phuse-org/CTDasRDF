@@ -37,7 +37,7 @@ if (importsEnabled==TRUE){
   
   addStatement(cdiscpilot01,
     new("Statement", world=world,
-      subject   = paste0("https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl"),
+      subject   = paste0("<http://w3id.org/phuse/cdiscpilot01#>"),
       predicate = paste0(RDF,"type" ),
       object    = paste0(OWL, "Ontology")))
   ddply(imports, .(o), function(imports)

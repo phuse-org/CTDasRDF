@@ -1,46 +1,52 @@
-# baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl
+# baseURI: http://w3id.org/phuse/cd01p
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
+# imports: <http://w3id.org/phuse/code#>
+# imports: http://w3id.org/phuse/study
 # prefix: cd01p
 
-@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
-@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
-@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
+@prefix cd01p: <http://w3id.org/phuse/cd01p#> .
+@prefix code: <http://w3id.org/phuse/code#> .
+@prefix custom: <http://w3id.org/phuse/custom#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix study: <http://w3id.org/phuse/study#> .
+@prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl>
+<http://w3id.org/phuse/cd01p>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
+  owl:imports <http://w3id.org/phuse/code#> ;
+  owl:imports <http://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
+cd01p:AdminActivity_DataCutoff
+  rdf:type study:DataCutoff ;
+  skos:prefLabel "Admin activity Data cutoff" ;
+  study:hasDate cd01p:Date_2015-03-31 ;
+.
 cd01p:Arm_Pbo
-  rdf:type study:Arm ;
+  rdf:type study:ControlArm ;
   rdf:type study:RandomizationOutcome ;
   skos:altLabel "Pbo" ;
   skos:prefLabel "Placebo" ;
 .
 cd01p:Arm_ScreenFailure
-  rdf:type study:Arm ;
+  rdf:type study:FalseArm ;
   skos:altLabel "Scrnfail" ;
   skos:prefLabel "Screen Failure" ;
 .
 cd01p:Arm_XanomelineHigh
-  rdf:type study:Arm ;
+  rdf:type study:InvestigationalArm ;
   rdf:type study:RandomizationOutcome ;
   skos:altLabel "Xan_Hi" ;
   skos:prefLabel "Xanomeline High" ;
 .
 cd01p:Arm_XanomelineLow
-  rdf:type study:Arm ;
+  rdf:type study:InvestigationalArm ;
   rdf:type study:RandomizationOutcome ;
   skos:altLabel "Xan_Lo" ;
   skos:prefLabel "Xanomeline Low" ;
@@ -57,6 +63,78 @@ cd01p:Category_1
   rdf:type study:Category ;
   skos:altLabel "" ;
   skos:prefLabel "CAT1" ;
+.
+cd01p:Date_2012-07-06
+  rdf:type study:StudyBegin ;
+  skos:prefLabel "Date 2012-07-06" ;
+  study:dateTimeInXSDString "2012-07-06" ;
+.
+cd01p:Date_2015-03-05
+  rdf:type study:StudyEnd ;
+  skos:prefLabel "Date 2015-03-05" ;
+  study:dateTimeInXSDString "2015-03-05" ;
+.
+cd01p:Date_2015-03-31
+  rdf:type study:DataCutoffDate ;
+  skos:prefLabel "Interim Analysis Data Cutoff Date" ;
+  code:hasCodeSystem code:CodeSystem_ISO8601 ;
+  study:dateTimeInXSDString "2015-03-31" ;
+.
+cd01p:EnrolledPopulation_CDISCPILOT01
+  rdf:type study:EnrolledPopulation ;
+  skos:prefLabel "Enrolled population CDISCPILOT01" ;
+  study:actualPopulationSize 254 ;
+  study:plannedPopulationSize 300 ;
+.
+cd01p:EpochInterval_blindedtreatment
+  rdf:type study:EpochInterval ;
+  skos:prefLabel "Epoch interval blindedtreatment" ;
+.
+cd01p:Epoch_BlindedTreatment
+  rdf:type study:Epoch ;
+  skos:prefLabel "Epoch Blinded treatment" ;
+  study:hasActivityInterval cd01p:EpochInterval_blindedtreatment ;
+.
+cd01p:Interval_2012-07-06_to_2015-03-05
+  rdf:type study:StudyInterval ;
+  skos:prefLabel "Interval 2012-07-06 to 2015-03-05" ;
+  time:hasBeginning cd01p:Date_2012-07-06 ;
+  time:hasEnd cd01p:Date_2015-03-05 ;
+.
+cd01p:PrimaryObjective_1
+  rdf:type study:PrimaryObjective ;
+  skos:prefLabel "To determine if there is a statistically significant relationship between the change in both ADAS-Cog and CIBIC+ scores, and drug dose (0, 50 cm2 [54 mg], and 75 cm2 [81 mg])" ;
+  study:seq "1"^^xsd:float ;
+.
+cd01p:PrimaryObjective_2
+  rdf:type study:PrimaryObjective ;
+  skos:prefLabel "To document the safety profile of the xanomeline TTS." ;
+  study:seq "2"^^xsd:float ;
+.
+cd01p:PrimaryObjective_3
+  rdf:type study:PrimaryObjective ;
+  skos:prefLabel "Evaluate the efficacy and safety of transdermal xanomeline, 50cm2 and 75cm2, and placebo in subjects with mild to moderate Alzheimer's disease." ;
+  study:seq "3"^^xsd:float ;
+.
+cd01p:SecondaryObjective_1
+  rdf:type study:SecondaryObjective ;
+  skos:prefLabel "To assess the dose-dependent improvement in behavior. Improved scores on the Revised Neuropsychiatric Inventory (NPI-X) will indicate improvement in these areas." ;
+  study:seq "1"^^xsd:float ;
+.
+cd01p:SecondaryObjective_2
+  rdf:type study:SecondaryObjective ;
+  skos:prefLabel "To assess the dose-dependent improvements in activities of daily living. Improved scores on the Disability Assessment for Dementia (DAD) will indicate improvement in these areas." ;
+  study:seq "2"^^xsd:float ;
+.
+cd01p:SecondaryObjective_3
+  rdf:type study:SecondaryObjective ;
+  skos:prefLabel "To assess the dose-dependent improvements in an extended assessment of cognition that integrates attention/concentration tasks. The ADAS-Cog (14) will be used for this assessment." ;
+  study:seq "3"^^xsd:float ;
+.
+cd01p:SecondaryObjective_4
+  rdf:type study:SecondaryObjective ;
+  skos:prefLabel "To assess the treatment response as a function of Apo E genotype." ;
+  study:seq "4"^^xsd:float ;
 .
 cd01p:SiteIdentifier_1
   rdf:type study:SiteIdentifier ;
@@ -427,21 +505,61 @@ cd01p:StartRuleStanding3
   study:ruleDescription "AFTER STANDING FOR 3 MINUTES" ;
   study:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. " ;
 .
+cd01p:StudyDuration_CDISCPILOT01
+  rdf:type study:StudyDuration ;
+  skos:prefLabel "Study duration CDISCPILOT01" ;
+  time:hasXSDDuration "P182D"^^xsd:duration ;
+  code:hasCodeSystem code:CodeSystem_ISO8601 ;
+.
 cd01p:StudyIdentifier_1
   rdf:type study:StudyIdentifier ;
   skos:prefLabel "CDISCPILOT01" ;
   code:hasMethod code:Method_ASSIGNED ;
   study:crfLocation cd01p:CRFLocation_1 ;
 .
+cd01p:StudyPopulation_CDISCPILOT01
+  rdf:type study:CompletePopulation ;
+  skos:prefLabel "Study population CDISCPILOT01" ;
+  study:ageGroup code:AgeGroup_ADULT ;
+  study:ageGroup code:AgeGroup_ELDERLY ;
+  study:hasSite cd01p:Site_701 ;
+  study:healthySubject sdtmterm:NoYesResponse_N ;
+  study:maxSubjectAge <http://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF> ;
+  study:minSubjectAge code:PlannedSubjectAge_P50Y ;
+  study:sexGroup sdtmterm:SexGroup_BOTH ;
+.
+cd01p:StudyRegistryIdentifier_NCT00987090
+  rdf:type study:StudyRegistryIdentifier ;
+  skos:prefLabel "NCT00987090" ;
+  code:hasCode "NCT00987090" ;
+  code:hasCodeSystem <http://w3id.org/phuse/code#CodeSystem_clinicaltrials.gov> ;
+.
+cd01p:StudyStopRule_1
+  rdf:type study:StudyStopRule ;
+  skos:prefLabel "Study stop rule 1" ;
+  study:ruleDescriptionLong "Last patient completed last visit or sponsor decided to discontinue study" ;
+.
 cd01p:Study_CDISCPILOT01
   rdf:type study:Study ;
   skos:altLabel "" ;
   skos:prefLabel "CDISCPILOT01" ;
-  skos:prefLabel "Study CDISCPILOT01" ;
+  study:adaptiveDesign sdtmterm:NoYesResponse_N ;
+  study:addOn sdtmterm:NoYesResponse_N ;
+  study:blinding sdtmterm:TrialBlindingSchema_DOUBLE_BLIND ;
+  study:controlType sdtmterm:ControlType_PLACEBO ;
+  study:hasInterval cd01p:Interval_2012-07-06_to_2015-03-05 ;
+  study:hasPopulation cd01p:EnrolledPopulation_CDISCPILOT01 ;
+  study:hasPopulation cd01p:StudyPopulation_CDISCPILOT01 ;
+  study:hasPrimObjective cd01p:PrimaryObjective_1 ;
+  study:hasPrimObjective cd01p:PrimaryObjective_2 ;
+  study:hasPrimObjective cd01p:PrimaryObjective_3 ;
+  study:hasPrimOutcomeMeasure custom:Observation_ADAS-Cog ;
+  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_DataCutoff ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_Pbo ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_ScreenFailure ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_XanomelineHigh ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_XanomelineLow ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_BlindedTreatment ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGPlaceActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGRemoveActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitBaselineActivity ;
@@ -457,9 +575,26 @@ cd01p:Study_CDISCPILOT01
   study:hasProtocolSpecifiedActivity custom:VisitWk4Activity ;
   study:hasProtocolSpecifiedActivity custom:VisitWk6Activity ;
   study:hasProtocolSpecifiedActivity custom:VisitWk8Activity ;
+  study:hasRegistryID cd01p:StudyRegistryIdentifier_NCT00987090 ;
+  study:hasSecObjective cd01p:SecondaryObjective_1 ;
+  study:hasSecObjective cd01p:SecondaryObjective_2 ;
+  study:hasSecObjective cd01p:SecondaryObjective_3 ;
+  study:hasSecObjective cd01p:SecondaryObjective_4 ;
   study:hasSponsor code:Sponsor_CDISCPILOT01 ;
+  study:hasStopRule cd01p:StudyStopRule_1 ;
   study:hasStudyID cd01p:StudyIdentifier_1 ;
   study:hasTitle cd01p:Title_CDISCPILOT01 ;
+  study:interventionModel sdtmterm:InterventionModel_PARALLEL ;
+  study:interventionType sdtmterm:InterventionType_DRUG ;
+  study:isAddOnStudy sdtmterm:NoYesResponse_N ;
+  study:narms 3 ;
+  study:randomizedTrial sdtmterm:NoYesResponse_Y ;
+  study:studyDrug code:Substance_xanomeline ;
+  study:studyType sdtmterm:StudyType_INT ;
+  study:trialPhase sdtmterm:TrialPhase_PHASE2 ;
+  study:trialType sdtmterm:TrialType_EFF ;
+  study:trialType sdtmterm:TrialType_PK ;
+  study:trialType sdtmterm:TrialType_SAF ;
 .
 cd01p:Subcategory_1
   rdf:type study:Subcategory ;
@@ -470,7 +605,7 @@ cd01p:SubstanceQuantity_1
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 1" ;
-  code:hasIngredient custom:InvestigationalSubstance_xanomeline ;
+  code:hasIngredient code:Substance_xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 0 ;
 .
@@ -478,7 +613,7 @@ cd01p:SubstanceQuantity_2
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 2" ;
-  code:hasIngredient custom:InvestigationalSubstance_xanomeline ;
+  code:hasIngredient code:Substance_xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 54 ;
 .
@@ -486,7 +621,7 @@ cd01p:SubstanceQuantity_3
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 3" ;
-  code:hasIngredient custom:InvestigationalSubstance_xanomeline ;
+  code:hasIngredient code:Substance_xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 81 ;
 .
@@ -573,9 +708,18 @@ code:Ethnicity
 code:Height
   rdfs:subClassOf study:VitalSign ;
 .
+code:Indication_01
+  rdf:type study:Indication ;
+.
 code:InformedConsentAdult
   rdfs:subClassOf study:InformedConsent ;
   study:hasStartRule study:StartRuleDefault ;
+.
+<http://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF>
+  rdf:type study:MaximumSubjectAge ;
+.
+code:PlannedSubjectAge_P50Y
+  rdf:type study:MinimumSubjectAge ;
 .
 code:Pulse
   rdfs:subClassOf study:VitalSign ;
@@ -593,6 +737,11 @@ code:Sex
 .
 code:Sponsor_CDISCPILOT01
   rdf:type study:Sponsor ;
+  code:hasCodeSystem code:CodeSystem_DUNS ;
+.
+code:Substance_xanomeline
+  rdf:type study:InvestigationalSubstance ;
+  study:studyIndication code:Indication_01 ;
 .
 code:SystolicBloodPressure
   rdfs:subClassOf study:VitalSign ;
@@ -629,10 +778,11 @@ custom:AssumeBodyPositionSupine
   skos:definition "" ;
   skos:prefLabel "ASSUME BODY POSITION SUPINE" ;
 .
-custom:InvestigationalSubstance_xanomeline
-  rdf:type code:ActiveSubstance ;
-  rdf:type study:InvestigationalSubstance ;
-  skos:prefLabel "XANOMELINE" ;
+custom:Observation_ADAS-Cog
+  rdf:type study:PrimaryOutcomeMeasure ;
+  skos:prefLabel "ADAS-Cog" ;
+  code:hasCode "C100762" ;
+  code:hasCodeSystem code:CodeSystem_CDISCTerminology ;
 .
 custom:PlaceboDrug
   rdf:type code:DrugProduct ;
@@ -640,6 +790,8 @@ custom:PlaceboDrug
   skos:prefLabel "PLACEBO" ;
   code:hasDosageForm code:DosageForm_PATCH ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_1 ;
+  code:recFreqOfAdministration code:ExDosFrq_QD ;
+  code:recRouteOfAdministration code:ExRoute_TRANSDERMAL ;
 .
 custom:PopFlagCOMPLT16
   rdf:type owl:Class ;
@@ -749,6 +901,8 @@ custom:Product_1
   skos:prefLabel "XANOMELINE LO" ;
   code:hasDosageForm code:DosageForm_PATCH ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_2 ;
+  code:recFreqOfAdministration code:ExDosFrq_QD ;
+  code:recRouteOfAdministration code:ExRoute_TRANSDERMAL ;
 .
 custom:Product_2
   rdf:type code:DrugProduct ;
@@ -756,6 +910,8 @@ custom:Product_2
   skos:prefLabel "XANOMELINE HI" ;
   code:hasDosageForm code:DosageForm_PATCH ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_3 ;
+  code:recFreqOfAdministration code:ExDosFrq_QD ;
+  code:recRouteOfAdministration code:ExRoute_TRANSDERMAL ;
 .
 custom:UnscheduledVisit
   rdf:type owl:Class ;
@@ -775,7 +931,7 @@ custom:VisitAmbulECGPlace
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "AMBUL ECG PLACE" ;
-  study:hasSubActivity custom:VisitAmbulECGPlaceActivity ;
+  study:hasActivity custom:VisitAmbulECGPlaceActivity ;
 .
 custom:VisitAmbulECGPlaceActivity
   rdf:type owl:Class ;
@@ -797,7 +953,7 @@ custom:VisitAmbulECGRemoval
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "AMBUL ECG REMOVAL" ;
-  study:hasSubActivity custom:VisitAmbulECGRemoveActivity ;
+  study:hasActivity custom:VisitAmbulECGRemoveActivity ;
 .
 custom:VisitAmbulECGRemoveActivity
   rdf:type owl:Class ;
@@ -811,7 +967,7 @@ custom:VisitBaseline
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom custom:VisitBaselineActivity ;
-      owl:onProperty study:hasSubActivity ;
+      owl:onProperty study:hasActivity ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -824,7 +980,7 @@ custom:VisitBaseline
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "BASELINE" ;
-  study:hasSubActivity custom:VisitBaselineActivity ;
+  study:hasActivity custom:VisitBaselineActivity ;
 .
 custom:VisitBaselineActivity
   rdf:type owl:Class ;
@@ -841,7 +997,7 @@ custom:VisitRetrieval
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "RETRIEVAL" ;
-  study:hasSubActivity custom:VisitRetrievalActivity ;
+  study:hasActivity custom:VisitRetrievalActivity ;
 .
 custom:VisitRetrievalActivity
   rdf:type owl:Class ;
@@ -855,7 +1011,7 @@ custom:VisitScreening1
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom custom:VisitScreening1Activity ;
-      owl:onProperty study:hasSubActivity ;
+      owl:onProperty study:hasActivity ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -890,7 +1046,7 @@ custom:VisitScreening2
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "SCREENING 2" ;
-  study:hasSubActivity custom:VisitScreening2Activity ;
+  study:hasActivity custom:VisitScreening2Activity ;
 .
 custom:VisitScreening2Activity
   rdf:type owl:Class ;
@@ -912,7 +1068,7 @@ custom:VisitWk12
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "WEEK 12" ;
-  study:hasSubActivity custom:VisitWk12Activity ;
+  study:hasActivity custom:VisitWk12Activity ;
 .
 custom:VisitWk12Activity
   rdf:type owl:Class ;
@@ -934,7 +1090,7 @@ custom:VisitWk16
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "WEEK 16" ;
-  study:hasSubActivity custom:VisitWk16Activity ;
+  study:hasActivity custom:VisitWk16Activity ;
 .
 custom:VisitWk16Activity
   rdf:type owl:Class ;
@@ -948,7 +1104,7 @@ custom:VisitWk2
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom custom:VisitWk2Activity ;
-      owl:onProperty study:hasSubActivity ;
+      owl:onProperty study:hasActivity ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -961,7 +1117,7 @@ custom:VisitWk2
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "WEEK 2" ;
-  study:hasSubActivity custom:VisitWk2Activity ;
+  study:hasActivity custom:VisitWk2Activity ;
 .
 custom:VisitWk20
   rdf:type owl:Class ;
@@ -977,7 +1133,7 @@ custom:VisitWk20
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "WEEK 20" ;
-  study:hasSubActivity custom:VisitWk20Activity ;
+  study:hasActivity custom:VisitWk20Activity ;
 .
 custom:VisitWk20Activity
   rdf:type owl:Class ;
@@ -999,7 +1155,7 @@ custom:VisitWk24
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "WEEK 24" ;
-  study:hasSubActivity custom:VisitWk24Activity ;
+  study:hasActivity custom:VisitWk24Activity ;
 .
 custom:VisitWk24Activity
   rdf:type owl:Class ;
@@ -1013,7 +1169,7 @@ custom:VisitWk26
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom custom:VisitWk26Activity ;
-      owl:onProperty study:hasSubActivity ;
+      owl:onProperty study:hasActivity ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -1026,7 +1182,7 @@ custom:VisitWk26
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "WEEK 26" ;
-  study:hasSubActivity custom:VisitWk26Activity ;
+  study:hasActivity custom:VisitWk26Activity ;
 .
 custom:VisitWk26Activity
   rdf:type owl:Class ;
@@ -1054,7 +1210,7 @@ custom:VisitWk4
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "WEEK 4" ;
-  study:hasSubActivity custom:VisitWk4Activity ;
+  study:hasActivity custom:VisitWk4Activity ;
 .
 custom:VisitWk4Activity
   rdf:type owl:Class ;
@@ -1076,7 +1232,7 @@ custom:VisitWk6
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "WEEK 6" ;
-  study:hasSubActivity custom:VisitWk6Activity ;
+  study:hasActivity custom:VisitWk6Activity ;
 .
 custom:VisitWk6Activity
   rdf:type owl:Class ;
@@ -1098,7 +1254,7 @@ custom:VisitWk8
       owl:onProperty skos:prefLabel ;
     ] ;
   skos:prefLabel "WEEK 8" ;
-  study:hasSubActivity custom:VisitWk8Activity ;
+  study:hasActivity custom:VisitWk8Activity ;
 .
 custom:VisitWk8Activity
   rdf:type owl:Class ;

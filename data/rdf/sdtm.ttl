@@ -1,170 +1,217 @@
-# baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl
+# baseURI: http://w3id.org/phuse/sdtm
 # imports: http://rdf.cdisc.org/std/sdtm-1-3
 # imports: http://rdf.cdisc.org/std/sdtmig-3-1-3
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
+# imports: http://w3id.org/phuse/code#
+# imports: http://w3id.org/phuse/study
 # prefix: sdtm
 
 @prefix arg: <http://spinrdf.org/arg#> .
-@prefix cdiscs: <http://rdf.cdisc.org/std/schema#> .
-@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
-@prefix mms: <http://rdf.cdisc.org/mms#> .
+@prefix cdiscs: <http://w3id.org/phuse/cdiscs#> .
+@prefix code: <http://w3id.org/phuse/code#> .
+@prefix mms: <http://w3id.org/phuse/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdtm: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#> .
+@prefix sdtm: <http://w3id.org/phuse/sdtm#> .
 @prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#> .
-@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spif: <http://spinrdf.org/spif#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix spl: <http://spinrdf.org/spl#> .
-@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix study: <http://w3id.org/phuse/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://rdf.cdisc.org/sdtmterm#C66738.C15320>
+<http://w3id.org/phuse/sdtmterm#C66738.C15320>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Study Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C20587>
+<http://w3id.org/phuse/sdtmterm#C66738.C20587>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Age Span" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C25196>
+<http://w3id.org/phuse/sdtmterm#C66738.C25196>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial is Randomized" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C25488>
+<http://w3id.org/phuse/sdtmterm#C66738.C25488>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Dose per Administration" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C38114>
+<http://w3id.org/phuse/sdtmterm#C66738.C38114>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Route of Administration" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C41161>
+<http://w3id.org/phuse/sdtmterm#C66738.C41161>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Investigational Therapy or Treatment" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C41184>
+<http://w3id.org/phuse/sdtmterm#C66738.C41184>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Indication" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C48281>
+<http://w3id.org/phuse/sdtmterm#C66738.C48281>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Phase Classification" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49647>
+<http://w3id.org/phuse/sdtmterm#C66738.C49647>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Control Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49650>
+<http://w3id.org/phuse/sdtmterm#C66738.C49650>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Diagnosis Group" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49652>
+<http://w3id.org/phuse/sdtmterm#C66738.C49652>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Indication Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49658>
+<http://w3id.org/phuse/sdtmterm#C66738.C49658>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Blinding Schema" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49660>
+<http://w3id.org/phuse/sdtmterm#C66738.C49660>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49692>
+<http://w3id.org/phuse/sdtmterm#C66738.C49692>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Number of Subjects; Planned Enrollment; Target Enrollment; Anticipated Enrollment" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49693>
+<http://w3id.org/phuse/sdtmterm#C66738.C49693>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Minimum Age of Subjects" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49694>
+<http://w3id.org/phuse/sdtmterm#C66738.C49694>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Maximum Age of Subjects" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49696>
+<http://w3id.org/phuse/sdtmterm#C66738.C49696>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Sex of Participants" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49697>
+<http://w3id.org/phuse/sdtmterm#C66738.C49697>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Length" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49698>
+<http://w3id.org/phuse/sdtmterm#C66738.C49698>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Study Stop Rules" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49703>
+<http://w3id.org/phuse/sdtmterm#C66738.C49703>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Added on to Existing Treatments" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C49802>
+<http://w3id.org/phuse/sdtmterm#C66738.C49802>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Title" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C68612>
+<http://w3id.org/phuse/sdtmterm#C66738.C68612>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Comparative Treatment Name" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C69208>
+<http://w3id.org/phuse/sdtmterm#C66738.C69208>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Study Start Date" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C70793>
+<http://w3id.org/phuse/sdtmterm#C66738.C70793>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Clinical Study Sponsor; Study Sponsor; Sponsor" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C73558>
+<http://w3id.org/phuse/sdtmterm#C66738.C73558>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Dose Units" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C85582>
+<http://w3id.org/phuse/sdtmterm#C66738.C85582>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Current Therapy or Treatment" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C85826>
+<http://w3id.org/phuse/sdtmterm#C66738.C85826>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Primary Objective" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C85827>
+<http://w3id.org/phuse/sdtmterm#C66738.C85827>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Secondary Objective" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C89081>
+<http://w3id.org/phuse/sdtmterm#C66738.C89081>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Dosing Frequency" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C90462>
+<http://w3id.org/phuse/sdtmterm#C66738.C90462>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Study End Date" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98703>
+<http://w3id.org/phuse/sdtmterm#C66738.C98703>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Actual Number of Subjects" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98704>
+<http://w3id.org/phuse/sdtmterm#C66738.C98704>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Adaptive Design" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98714>
+<http://w3id.org/phuse/sdtmterm#C66738.C98714>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Registry Identifier" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98715>
+<http://w3id.org/phuse/sdtmterm#C66738.C98715>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Confirmed Response Minimum Duration" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98717>
+<http://w3id.org/phuse/sdtmterm#C66738.C98717>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Data Cutoff Date" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98718>
+<http://w3id.org/phuse/sdtmterm#C66738.C98718>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Data Cutoff Description" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98724>
+<http://w3id.org/phuse/sdtmterm#C66738.C98724>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Exploratory Outcome Measure" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98737>
+<http://w3id.org/phuse/sdtmterm#C66738.C98737>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Healthy Subject Indicator" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98746>
+<http://w3id.org/phuse/sdtmterm#C66738.C98746>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Intervention Model" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98747>
+<http://w3id.org/phuse/sdtmterm#C66738.C98747>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Intervention Type" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98768>
+<http://w3id.org/phuse/sdtmterm#C66738.C98768>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Pharmacological Class of Invest. Therapy" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98770>
+<http://w3id.org/phuse/sdtmterm#C66738.C98770>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Country of Investigational Sites" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98771>
+<http://w3id.org/phuse/sdtmterm#C66738.C98771>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Number of Arms" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98772>
+<http://w3id.org/phuse/sdtmterm#C66738.C98772>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Primary Outcome Measure" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98775>
+<http://w3id.org/phuse/sdtmterm#C66738.C98775>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Randomization Quotient" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98781>
+<http://w3id.org/phuse/sdtmterm#C66738.C98781>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Secondary Outcome Measure" ;
 .
-<http://rdf.cdisc.org/sdtmterm#C66738.C98783>
+<http://w3id.org/phuse/sdtmterm#C66738.C98783>
   rdf:type sdtm:Parameter ;
+  skos:altLabel "Stable Disease Minimum Duration" ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARM>
   rdf:type sdtm:Variable ;
@@ -191,7 +238,7 @@
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.BRTHDTC>
   rdf:type sdtm:Variable ;
-  cdiscs:controlledTermsOrFormat code:ISO8601 ;
+  cdiscs:controlledTermsOrFormat code:CodeSystem_ISO8601 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.COUNTRY>
   rdf:type sdtm:Variable ;
@@ -199,7 +246,7 @@
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDTC>
   rdf:type sdtm:Variable ;
-  cdiscs:controlledTermsOrFormat code:ISO8601 ;
+  cdiscs:controlledTermsOrFormat code:CodeSystem_ISO8601 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DMDY>
   rdf:type sdtm:Variable ;
@@ -209,7 +256,7 @@
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHDTC>
   rdf:type sdtm:Variable ;
-  cdiscs:controlledTermsOrFormat code:ISO8601 ;
+  cdiscs:controlledTermsOrFormat code:CodeSystem_ISO8601 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.DTHFL>
   rdf:type sdtm:Variable ;
@@ -231,31 +278,31 @@
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFENDTC>
   rdf:type sdtm:Variable ;
-  cdiscs:controlledTermsOrFormat code:ISO8601 ;
+  cdiscs:controlledTermsOrFormat code:CodeSystem_ISO8601 ;
   code:hasMethod code:Method_DERIVED ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFICDTC>
   rdf:type sdtm:Variable ;
-  cdiscs:controlledTermsOrFormat code:ISO8601 ;
+  cdiscs:controlledTermsOrFormat code:CodeSystem_ISO8601 ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFPENDTC>
   rdf:type sdtm:Variable ;
-  cdiscs:controlledTermsOrFormat code:ISO8601 ;
+  cdiscs:controlledTermsOrFormat code:CodeSystem_ISO8601 ;
   code:hasMethod code:Method_DERIVED ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFSTDTC>
   rdf:type sdtm:Variable ;
-  cdiscs:controlledTermsOrFormat code:ISO8601 ;
+  cdiscs:controlledTermsOrFormat code:CodeSystem_ISO8601 ;
   code:hasMethod code:Method_DERIVED ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXENDTC>
   rdf:type sdtm:Variable ;
-  cdiscs:controlledTermsOrFormat code:ISO8601 ;
+  cdiscs:controlledTermsOrFormat code:CodeSystem_ISO8601 ;
   code:hasMethod code:Method_DERIVED ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.RFXSTDTC>
   rdf:type sdtm:Variable ;
-  cdiscs:controlledTermsOrFormat code:ISO8601 ;
+  cdiscs:controlledTermsOrFormat code:CodeSystem_ISO8601 ;
   code:hasMethod code:Method_DERIVED ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.SEX>
@@ -443,17 +490,17 @@
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.VS>
   rdf:type sdtm:Domain ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl>
+<http://w3id.org/phuse/sdtm>
   rdf:type owl:Ontology ;
   owl:imports <http://rdf.cdisc.org/std/sdtm-1-3> ;
   owl:imports <http://rdf.cdisc.org/std/sdtmig-3-1-3> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
+  owl:imports <http://w3id.org/phuse/code#> ;
+  owl:imports <http://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl#Dataset.SUPPDM>
+<http://w3id.org/phuse/sdtm#Dataset.SUPPDM>
   rdf:type sdtm:Domain ;
   skos:prefLabel "SUPPDM" ;
 .
@@ -3799,6 +3846,49 @@ sdtm:SDTM_TS_Record
       sp:templates (
           [
             sp:object [
+                sp:varName "STUDYID" ;
+              ] ;
+            sp:predicate sdtm:hasSTUDYID ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "STUDYID" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Retrieve STUDYID" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSPARMCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSPARMCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
                 sp:varName "TSPARM" ;
               ] ;
             sp:predicate sdtm:hasTSPARM ;
@@ -3811,7 +3901,3911 @@ sdtm:SDTM_TS_Record
             sp:predicate rdf:type ;
             sp:subject spin:_this ;
           ]
+          [
+            sp:object [
+                sp:varName "ts" ;
+              ] ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSPARMCD" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "ts" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSPARM" ;
+              ] ;
+            sp:predicate skos:altLabel ;
+            sp:subject [
+                sp:varName "ts" ;
+              ] ;
+          ]
         ) ;
+      rdfs:comment "Retrieves TSPARMCD and TSPARM" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C20587> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pop" ;
+              ] ;
+            sp:predicate study:hasPopulation ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "agp" ;
+              ] ;
+            sp:predicate study:ageGroup ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "agp" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "nf" ;
+                    ] ;
+                  sp:predicate code:hasNullFlavor ;
+                  sp:subject [
+                      sp:varName "agp" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVALNF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "nf" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "agp" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALNF, TSVCDREF for AGESPAN." ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C25196> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pop" ;
+              ] ;
+            sp:predicate study:hasPopulation ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object study:EnrolledPopulation ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate study:actualPopulationSize ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL FOR ACTSUB" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C25488> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate study:studyDrug ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate code:hasIngredient ;
+            sp:subject [
+                sp:varName "sq" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate code:hasValue ;
+            sp:subject [
+                sp:varName "sq" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:gt ;
+                sp:arg1 [
+                    sp:varName "TSVAL" ;
+                  ] ;
+                sp:arg2 0 ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL for DOSE" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49692> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pop" ;
+              ] ;
+            sp:predicate study:hasPopulation ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object study:EnrolledPopulation ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate study:plannedPopulationSize ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL FOR PLANSUB" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C89081> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate study:studyDrug ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate code:hasIngredient ;
+            sp:subject [
+                sp:varName "sq" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sq" ;
+              ] ;
+            sp:predicate code:hasIngredientQuantity ;
+            sp:subject [
+                sp:varName "prod" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "freq" ;
+              ] ;
+            sp:predicate code:recFreqOfAdministration ;
+            sp:subject [
+                sp:varName "prod" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "freq" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL for DOSEFRQ" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98718> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "cut" ;
+              ] ;
+            sp:predicate study:hasProtocolSpecifiedActivity ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object study:DataCutoff ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "cut" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "cutd" ;
+              ] ;
+            sp:predicate study:hasDate ;
+            sp:subject [
+                sp:varName "cut" ;
+              ] ;
+          ]
+          [
+            sp:object study:DataCutoffDate ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "cutd" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "cutd" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "cutd" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for DCUTDESC" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C15320> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "st" ;
+              ] ;
+            sp:predicate study:studyType ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "st" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "st" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "st" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for STYPE" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C25196> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ran" ;
+              ] ;
+            sp:predicate study:randomizedTrial ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "ran" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "ran" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "ran" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for RANDOM" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C38114> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate study:studyDrug ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate code:hasIngredient ;
+            sp:subject [
+                sp:varName "sq" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sq" ;
+              ] ;
+            sp:predicate code:hasIngredientQuantity ;
+            sp:subject [
+                sp:varName "dp" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "roa" ;
+              ] ;
+            sp:predicate code:recRouteOfAdministration ;
+            sp:subject [
+                sp:varName "dp" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "roa" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "roa" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "roa" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for ROUTE" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C41161> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate study:studyDrug ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "drug" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "drug" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "drug" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for TRT" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C41184> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate study:studyDrug ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ind" ;
+              ] ;
+            sp:predicate study:studyIndication ;
+            sp:subject [
+                sp:varName "drug" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "icond" ;
+              ] ;
+            sp:predicate code:indicationCondition ;
+            sp:subject [
+                sp:varName "ind" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "icond" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "icond" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "icond" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for INDIC" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C48281> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "phase" ;
+              ] ;
+            sp:predicate study:trialPhase ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "phase" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "phase" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "phase" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVCDREF for TPHASE" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49647> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ct" ;
+              ] ;
+            sp:predicate study:controlType ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "ct" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "ct" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "ct" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for TCNTRL" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49650> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate study:studyDrug ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ind" ;
+              ] ;
+            sp:predicate study:studyIndication ;
+            sp:subject [
+                sp:varName "drug" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ucond" ;
+              ] ;
+            sp:predicate code:underlyingCondition ;
+            sp:subject [
+                sp:varName "ind" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "ucond" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "ucond" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "ucond" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for TDIGRP" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49652> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate study:studyDrug ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ind" ;
+              ] ;
+            sp:predicate study:studyIndication ;
+            sp:subject [
+                sp:varName "drug" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "itype" ;
+              ] ;
+            sp:predicate code:indicationType ;
+            sp:subject [
+                sp:varName "ind" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "itype" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "itype" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "itype" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for TINDTP" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49658> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "b" ;
+              ] ;
+            sp:predicate study:blinding ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "b" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "b" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "b" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for TBLIND" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49660> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ttp" ;
+              ] ;
+            sp:predicate study:trialType ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "ttp" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "ttp" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "ttp" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for TTYPE" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49696> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pop" ;
+              ] ;
+            sp:predicate study:hasPopulation ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object study:CompletePopulation ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sexg" ;
+              ] ;
+            sp:predicate study:sexGroup ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "sexg" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "sexg" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "sexg" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for SEXPOP" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49697> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "epoch" ;
+              ] ;
+            sp:predicate study:hasActivity ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object study:Epoch ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "epoch" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "int" ;
+              ] ;
+            sp:predicate study:hasInterval ;
+            sp:subject [
+                sp:varName "epoch" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "dur" ;
+              ] ;
+            sp:predicate study:hasPlannedDuration ;
+            sp:subject [
+                sp:varName "int" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasXSDDuration> ;
+            sp:subject [
+                sp:varName "dur" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "dur" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "dur" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for LENGTH" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49698> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "stop" ;
+              ] ;
+            sp:predicate study:hasStopRule ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate study:ruleDescriptionLong ;
+            sp:subject [
+                sp:varName "stop" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "stop" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "stop" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for STOPRULE" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49703> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "add" ;
+              ] ;
+            sp:predicate study:addOn ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "add" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "add" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "add" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for ADDON" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49802> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ttl" ;
+              ] ;
+            sp:predicate study:hasTitle ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "ttl" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "ttl" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "ttl" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for TITLE" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C69208> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "int" ;
+              ] ;
+            sp:predicate study:hasInterval ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object study:StudyInterval ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "int" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "begin" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
+            sp:subject [
+                sp:varName "int" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "begin" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "begin" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "begin" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for SSTDTC" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C70793> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "spon" ;
+              ] ;
+            sp:predicate study:hasSponsor ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "spon" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "spon" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "spon" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for SPONSOR" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C85826> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "prim" ;
+              ] ;
+            sp:predicate study:hasPrimObjective ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "prim" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL for OBJPRIM" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C85827> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sec" ;
+              ] ;
+            sp:predicate study:hasSecObjective ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "sec" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL for OBJSEC" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C90462> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "int" ;
+              ] ;
+            sp:predicate study:hasInterval ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object study:StudyInterval ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "int" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "end" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
+            sp:subject [
+                sp:varName "int" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "end" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "end" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "end" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for SENDTC" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98704> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ad" ;
+              ] ;
+            sp:predicate study:adaptiveDesign ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "ad" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "ad" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "ad" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for ADAPT" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98714> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "reg" ;
+              ] ;
+            sp:predicate study:hasRegistryID ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate code:hasCode ;
+            sp:subject [
+                sp:varName "reg" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "reg" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "reg" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for REGID" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98717> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "cut" ;
+              ] ;
+            sp:predicate study:hasProtocolSpecifiedActivity ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object study:DataCutoff ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "cut" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "cutd" ;
+              ] ;
+            sp:predicate study:hasDate ;
+            sp:subject [
+                sp:varName "cut" ;
+              ] ;
+          ]
+          [
+            sp:object study:DataCutoffDate ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "cutd" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "cutd" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "cutd" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "cutd" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for DCUTDTC" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98737> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pop" ;
+              ] ;
+            sp:predicate study:hasPopulation ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "hs" ;
+              ] ;
+            sp:predicate study:healthySubject ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "hs" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "hs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "hs" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for HLTSUBJI" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98746> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "model" ;
+              ] ;
+            sp:predicate study:interventionModel ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "model" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "model" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "model" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for INTMODEL" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98747> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "type" ;
+              ] ;
+            sp:predicate study:interventionType ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "type" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "type" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "type" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for INTTYPE" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98768> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "drug" ;
+              ] ;
+            sp:predicate study:studyDrug ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object study:InvestigationalSubstance ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "drug" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "pc" ;
+              ] ;
+            sp:predicate code:pharmacologicClass ;
+            sp:subject [
+                sp:varName "drug" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "pc" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "pc" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "pc" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for PCLAS" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98770> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pop" ;
+              ] ;
+            sp:predicate study:hasPopulation ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "site" ;
+              ] ;
+            sp:predicate study:hasSite ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "cntry" ;
+              ] ;
+            sp:predicate study:hasCountry ;
+            sp:subject [
+                sp:varName "site" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "cntry" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "cntry" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "nf" ;
+                    ] ;
+                  sp:predicate code:hasNullFlavor ;
+                  sp:subject [
+                      sp:varName "cntry" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVALNF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "nf" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "cntry" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALNF, TSVCDREF for FCNTRY." ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALCD" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C98772> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pom" ;
+              ] ;
+            sp:predicate study:hasPrimOutcomeMeasure ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "pom" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "TSVALCD" ;
+                    ] ;
+                  sp:predicate code:hasCode ;
+                  sp:subject [
+                      sp:varName "pom" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "pom" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALCD, TSVALCDREF for OUTMSPRI" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALNF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALNF ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49693> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pop" ;
+              ] ;
+            sp:predicate study:hasPopulation ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "min" ;
+              ] ;
+            sp:predicate study:minSubjectAge ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate code:hasValue ;
+            sp:subject [
+                sp:varName "min" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "nf" ;
+                    ] ;
+                  sp:predicate code:hasNullFlavor ;
+                  sp:subject [
+                      sp:varName "min" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVALNF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "nf" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "min" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALNF, TSVCDREF for AGEMIN" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate sdtm:hasTSVAL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVALNF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVALNF ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVCDREF" ;
+              ] ;
+            sp:predicate sdtm:hasTSVCDREF ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_TS_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://w3id.org/phuse/sdtmterm#C66738.C49694> ;
+            sp:predicate sdtm:hasTSParameter ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "study" ;
+              ] ;
+            sp:predicate sdtm:study ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "pop" ;
+              ] ;
+            sp:predicate study:hasPopulation ;
+            sp:subject [
+                sp:varName "study" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "max" ;
+              ] ;
+            sp:predicate study:maxSubjectAge ;
+            sp:subject [
+                sp:varName "pop" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "TSVAL" ;
+              ] ;
+            sp:predicate code:hasValue ;
+            sp:subject [
+                sp:varName "max" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "nf" ;
+                    ] ;
+                  sp:predicate code:hasNullFlavor ;
+                  sp:subject [
+                      sp:varName "max" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVALNF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "nf" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cs" ;
+                    ] ;
+                  sp:predicate code:hasCodeSystem ;
+                  sp:subject [
+                      sp:varName "max" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "TSVCDREF" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cs" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "Retrieves TSVAL, TSVALNF, TSVCDREF for AGEMAX" ;
     ] ;
   rdfs:label "SDTM TS Record" ;
   rdfs:subClassOf sdtm:SDTMRecord ;
@@ -3820,6 +7814,22 @@ sdtm:SDTM_TS_Record
       owl:hasValue "TS" ;
       owl:onProperty sdtm:hasDOMAIN ;
     ] ;
+  skos:note """# Retrieves TSVAL for NARMS (note this query is not working so it is provided as a comment for future troubleshooting)
+#CONSTRUCT {
+#    ?this sdtm:hasTSVAL ?TSVAL .
+#}
+#WHERE {
+#    ?this a sdtm:SDTM_TS_Record .
+#    ?this sdtm:hasTSParameter sdtmterm:C66738.C98771 .
+#    {
+#        SELECT (COUNT(?arm) AS ?TSVAL)
+#        WHERE {
+#            ?study a study:Study .
+#            ?study study:hasActivity ?arm .
+#            ?arm a study:TrueArm .
+#       }
+#    } .
+#}""" ;
 .
 sdtm:SDTM_VS_Record
   rdf:type owl:Class ;
@@ -3858,7 +7868,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "vstst" ;
               ] ;
-            sp:predicate study:hasSubActivity ;
+            sp:predicate study:hasActivity ;
             sp:subject [
                 sp:varName "vsvisit" ;
               ] ;
@@ -3943,7 +7953,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "vstst" ;
               ] ;
-            sp:predicate study:hasSubActivity ;
+            sp:predicate study:hasActivity ;
             sp:subject [
                 sp:varName "vsvisit" ;
               ] ;
@@ -4025,7 +8035,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "vstst" ;
               ] ;
-            sp:predicate study:hasSubActivity ;
+            sp:predicate study:hasActivity ;
             sp:subject [
                 sp:varName "vsvisit" ;
               ] ;
@@ -4264,7 +8274,7 @@ sdtm:SDTM_VS_Record
             sp:object [
                 sp:varName "vstst" ;
               ] ;
-            sp:predicate study:hasSubActivity ;
+            sp:predicate study:hasActivity ;
             sp:subject [
                 sp:varName "vsvisit" ;
               ] ;
@@ -5628,6 +9638,12 @@ sdtm:hasTSPARMCD
   rdfs:label "has TSPARMCD" ;
   rdfs:range xsd:string ;
 .
+sdtm:hasTSParameter
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain sdtm:SDTM_TS_Record ;
+  rdfs:range sdtm:Parameter ;
+  skos:prefLabel "has TSParameter" ;
+.
 sdtm:hasTSSEQ
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTM_TS_Record ;
@@ -5646,22 +9662,22 @@ sdtm:hasTSVALCD
   rdfs:label "has TSVALCD" ;
   rdfs:range xsd:string ;
 .
-sdtm:hasTSVALCDREF
+sdtm:hasTSVALNF
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_TS_Record ;
+  rdfs:label "has TSVALNF" ;
+  rdfs:range xsd:string ;
+.
+sdtm:hasTSVCDREF
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTM_TS_Record ;
   rdfs:label "has TSVALCDREF" ;
   rdfs:range xsd:string ;
 .
-sdtm:hasTSVALCDVER
+sdtm:hasTSVCDVER
   rdf:type owl:DatatypeProperty ;
   rdfs:domain sdtm:SDTM_TS_Record ;
   rdfs:label "has TSVALCDVER" ;
-  rdfs:range xsd:string ;
-.
-sdtm:hasTSVALNF
-  rdf:type owl:DatatypeProperty ;
-  rdfs:domain sdtm:SDTM_TS_Record ;
-  rdfs:label "has TSVALNF" ;
   rdfs:range xsd:string ;
 .
 sdtm:hasUSUBJID
@@ -5892,6 +9908,12 @@ sdtm:key
   rdfs:range xsd:integer ;
   skos:definition "Define.xml 2.0 record sort order" ;
   skos:prefLabel "key" ;
+.
+sdtm:study
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain sdtm:SDTM_TS_Record ;
+  rdfs:range study:Study ;
+  skos:prefLabel "study identifier" ;
 .
 sdtm:variableComment
   rdf:type owl:AnnotationProperty ;

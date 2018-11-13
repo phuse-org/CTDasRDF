@@ -1,25 +1,25 @@
-# baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl
+# baseURI: <http://w3id.org/phuse/cdiscpilot01#>
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl
-# imports: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl
+# imports: http://w3id.org/phuse/cd01p
+# imports: <http://w3id.org/phuse/code#>
+# imports: http://w3id.org/phuse/sdtm
+# imports: http://w3id.org/phuse/study
 # prefix: cdiscpilot01
 
-@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
-@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
-@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
-@prefix cts: <http://rdf.cdisc.org/ct/schema#> .
-@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
-@prefix mms: <http://rdf.cdisc.org/mms#> .
+@prefix cd01p: <http://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#> .
+@prefix code: <http://w3id.org/phuse/code#> .
+@prefix cts: <http://w3id.org/phuse/cts#> .
+@prefix custom: <http://w3id.org/phuse/custom#> .
+@prefix mms: <http://w3id.org/phuse/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
-@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix study: <http://w3id.org/phuse/study#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -27,17 +27,19 @@ cd01p:Site_701
   study:hasInvestigator cdiscpilot01:Investigator_123 ;
 .
 cd01p:Study_CDISCPILOT01
+  study:hasInterval cdiscpilot01:StudyDuration_1 ;
+  study:hasStudyActivity cdiscpilot01:DataCutoff_1 ;
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1015 ;
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1023 ;
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1028 ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl>
+<http://w3id.org/phuse/cdiscpilot01#>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm.ttl> ;
-  owl:imports <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl> ;
+  owl:imports <http://w3id.org/phuse/cd01p> ;
+  owl:imports <http://w3id.org/phuse/code#> ;
+  owl:imports <http://w3id.org/phuse/sdtm> ;
+  owl:imports <http://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 cdiscpilot01:AgeDataCollection_01-701-1015
@@ -136,27 +138,38 @@ cdiscpilot01:CumulativeDrugAdministration_01-701-1015
   rdf:type study:CumulativeDrugAdministration ;
   skos:prefLabel "Drug administration period 2014-01-02 to 2014-07-02" ;
   study:activityStatus code:ActivityStatus_CO ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 ;
   study:hasActivityInterval cdiscpilot01:Interval_2014-01-02_2014-07-02 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 ;
 .
 cdiscpilot01:CumulativeDrugAdministration_01-701-1023
   rdf:type study:CumulativeDrugAdministration ;
   skos:prefLabel "Drug administration period 2012-08-05 to 2012-09-01" ;
   study:activityStatus code:ActivityStatus_CO ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1023_2012-08-05_2012-08-27 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1023_2012-08-28_2012-09-01 ;
   study:hasActivityInterval cdiscpilot01:Interval_2012-08-05_2012-09-01 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1023_2012-08-05_2012-08-27 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1023_2012-08-28_2012-09-01 ;
 .
 cdiscpilot01:CumulativeDrugAdministration_01-701-1028
   rdf:type study:CumulativeDrugAdministration ;
   skos:prefLabel "Drug administration period 2013-07-19 to 2014-01-14" ;
   study:activityStatus code:ActivityStatus_CO ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2013-08-01 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
   study:hasActivityInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2013-08-01 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
+.
+cdiscpilot01:DataCutoffDate_1
+  rdf:type study:DataCutoffDate ;
+  skos:prefLabel "Data cutoff date 1" ;
+  study:dateTimeInXSDString "2015-03-31" ;
+.
+cdiscpilot01:DataCutoff_1
+  rdf:type study:DataCutoff ;
+  skos:prefLabel "Data cutoff 1" ;
+  study:activityDescription "Interim Analysis Data Cutoff Date" ;
+  study:hasDate cdiscpilot01:DataCutoffDate_1 ;
 .
 cdiscpilot01:Date_1942-07-19
   rdf:type study:Birthdate ;
@@ -323,11 +336,11 @@ cdiscpilot01:DemographicDataCollection_01-701-1015
   skos:prefLabel "Person 01-701-1015 Screening 1 Demographic data collection" ;
   code:outcome code:Successfully_Completed ;
   study:activityStatus code:ActivityStatus_CO ;
+  study:hasActivity cdiscpilot01:AgeDataCollection_01-701-1015 ;
+  study:hasActivity cdiscpilot01:EthnicityDataCollection_01-701-1015 ;
+  study:hasActivity cdiscpilot01:RaceDataCollection_01-701-1015 ;
+  study:hasActivity cdiscpilot01:SexDataCollection_01-701-1015 ;
   study:hasDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasSubActivity cdiscpilot01:AgeDataCollection_01-701-1015 ;
-  study:hasSubActivity cdiscpilot01:EthnicityDataCollection_01-701-1015 ;
-  study:hasSubActivity cdiscpilot01:RaceDataCollection_01-701-1015 ;
-  study:hasSubActivity cdiscpilot01:SexDataCollection_01-701-1015 ;
 .
 cdiscpilot01:DemographicDataCollection_01-701-1023
   rdf:type cd01p:VisitScreening1DemogDataColl ;
@@ -336,11 +349,11 @@ cdiscpilot01:DemographicDataCollection_01-701-1023
   skos:prefLabel "Person 01-701-1023 Screening 1 Demographic data collection" ;
   code:outcome code:Successfully_Completed ;
   study:activityStatus code:ActivityStatus_CO ;
+  study:hasActivity cdiscpilot01:AgeDataCollection_01-701-1023 ;
+  study:hasActivity cdiscpilot01:EthnicityDataCollection_01-701-1023 ;
+  study:hasActivity cdiscpilot01:RaceDataCollection_01-701-1023 ;
+  study:hasActivity cdiscpilot01:SexDataCollection_01-701-1023 ;
   study:hasDate cdiscpilot01:Date_2012-07-22 ;
-  study:hasSubActivity cdiscpilot01:AgeDataCollection_01-701-1023 ;
-  study:hasSubActivity cdiscpilot01:EthnicityDataCollection_01-701-1023 ;
-  study:hasSubActivity cdiscpilot01:RaceDataCollection_01-701-1023 ;
-  study:hasSubActivity cdiscpilot01:SexDataCollection_01-701-1023 ;
 .
 cdiscpilot01:DemographicDataCollection_01-701-1028
   rdf:type cd01p:VisitScreening1DemogDataColl ;
@@ -349,11 +362,11 @@ cdiscpilot01:DemographicDataCollection_01-701-1028
   skos:prefLabel "Person 01-701-1028 Screening 1 Demographic data collection" ;
   code:outcome code:Successfully_Completed ;
   study:activityStatus code:ActivityStatus_CO ;
+  study:hasActivity cdiscpilot01:AgeDataCollection_01-701-1028 ;
+  study:hasActivity cdiscpilot01:EthnicityDataCollection_01-701-1028 ;
+  study:hasActivity cdiscpilot01:RaceDataCollection_01-701-1028 ;
+  study:hasActivity cdiscpilot01:SexDataCollection_01-701-1028 ;
   study:hasDate cdiscpilot01:Date_2013-07-11 ;
-  study:hasSubActivity cdiscpilot01:AgeDataCollection_01-701-1028 ;
-  study:hasSubActivity cdiscpilot01:EthnicityDataCollection_01-701-1028 ;
-  study:hasSubActivity cdiscpilot01:RaceDataCollection_01-701-1028 ;
-  study:hasSubActivity cdiscpilot01:SexDataCollection_01-701-1028 ;
 .
 cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_1
   rdf:type cd01p:VisitScreening1DiastolicBloodPressure ;
@@ -943,6 +956,22 @@ cdiscpilot01:StartRuleStanding3_Screening1_01-701-1015
   skos:prefLabel "Person 01-701-1015 Screening 1 Rule after standing for 3 minutes" ;
   study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015 ;
 .
+cdiscpilot01:StudyBegin_1
+  rdf:type study:StudyBegin ;
+  skos:prefLabel "Study begin 1" ;
+  study:dateTimeInXSDString "2012-07-06" ;
+.
+cdiscpilot01:StudyDuration_1
+  rdf:type study:StudyDuration ;
+  skos:prefLabel "Study duration 1" ;
+  time:hasBeginning cdiscpilot01:StudyBegin_1 ;
+  time:hasEnd cdiscpilot01:StudyEnd_1 ;
+.
+cdiscpilot01:StudyEnd_1
+  rdf:type study:StudyEnd ;
+  skos:prefLabel "Study end 1" ;
+  study:dateTimeInXSDString "2015-03-05" ;
+.
 cdiscpilot01:SubjectIdentifier_1015
   rdf:type study:SubjectIdentifier ;
   skos:prefLabel "1015" ;
@@ -1063,18 +1092,18 @@ cdiscpilot01:VisitBaselineActivity_01-701-1028
 .
 cdiscpilot01:VisitBaseline_01-701-1015
   rdf:type custom:VisitBaseline ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 ;
   study:hasPerformedDate cdiscpilot01:Date_2014-01-02 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-02_2014-01-16 ;
 .
 cdiscpilot01:VisitBaseline_01-701-1023
   rdf:type custom:VisitBaseline ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1023_2012-08-05_2012-08-27 ;
   study:hasPerformedDate cdiscpilot01:Date_2012-08-05 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1023_2012-08-05_2012-08-27 ;
 .
 cdiscpilot01:VisitBaseline_01-701-1028
   rdf:type custom:VisitBaseline ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2013-08-01 ;
   study:hasPerformedDate cdiscpilot01:Date_2013-07-19 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-07-19_2013-08-01 ;
 .
 cdiscpilot01:VisitScreening1Activity_01-701-1015
   rdf:type owl:Class ;
@@ -1092,21 +1121,21 @@ cdiscpilot01:VisitScreening1Activity_01-701-1028
 cdiscpilot01:VisitScreening1_01-701-1015
   rdf:type custom:VisitScreening1 ;
   study:activityStatus code:ActivityStatus_CO ;
+  study:hasActivity cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015 ;
+  study:hasActivity cdiscpilot01:AssumeBodyPositionSupine_Screening1_01-701-1015 ;
+  study:hasActivity cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_1 ;
+  study:hasActivity cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_2 ;
+  study:hasActivity cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_3 ;
+  study:hasActivity cdiscpilot01:Height_Screening1_01-701-1015_43 ;
+  study:hasActivity cdiscpilot01:Pulse_Screening1_01-701-1015_44 ;
+  study:hasActivity cdiscpilot01:Pulse_Screening1_01-701-1015_45 ;
+  study:hasActivity cdiscpilot01:Pulse_Screening1_01-701-1015_46 ;
+  study:hasActivity cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_86 ;
+  study:hasActivity cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_87 ;
+  study:hasActivity cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_88 ;
+  study:hasActivity cdiscpilot01:Temperature_Screening1_01-701-1015_128 ;
+  study:hasActivity cdiscpilot01:Weight_Screening1_01-701-1015_142 ;
   study:hasPerformedDate cdiscpilot01:Date_2013-12-26 ;
-  study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_Screening1_01-701-1015 ;
-  study:hasSubActivity cdiscpilot01:AssumeBodyPositionSupine_Screening1_01-701-1015 ;
-  study:hasSubActivity cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_1 ;
-  study:hasSubActivity cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_2 ;
-  study:hasSubActivity cdiscpilot01:DiastolicBloodPressure_Screening1_01-701-1015_3 ;
-  study:hasSubActivity cdiscpilot01:Height_Screening1_01-701-1015_43 ;
-  study:hasSubActivity cdiscpilot01:Pulse_Screening1_01-701-1015_44 ;
-  study:hasSubActivity cdiscpilot01:Pulse_Screening1_01-701-1015_45 ;
-  study:hasSubActivity cdiscpilot01:Pulse_Screening1_01-701-1015_46 ;
-  study:hasSubActivity cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_86 ;
-  study:hasSubActivity cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_87 ;
-  study:hasSubActivity cdiscpilot01:SystolicBloodPressure_Screening1_01-701-1015_88 ;
-  study:hasSubActivity cdiscpilot01:Temperature_Screening1_01-701-1015_128 ;
-  study:hasSubActivity cdiscpilot01:Weight_Screening1_01-701-1015_142 ;
 .
 cdiscpilot01:VisitScreening1_01-701-1023
   rdf:type custom:VisitScreening1 ;
@@ -1128,13 +1157,13 @@ cdiscpilot01:VisitWk24Activity_01-701-1028
 .
 cdiscpilot01:VisitWk24_01-701-1015
   rdf:type custom:VisitWk24 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 ;
   study:hasPerformedDate cdiscpilot01:Date_2014-06-18 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-06-19_2014-07-02 ;
 .
 cdiscpilot01:VisitWk24_01-701-1028
   rdf:type custom:VisitWk24 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
   study:hasPerformedDate cdiscpilot01:Date_2014-01-06 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
 .
 cdiscpilot01:VisitWk2Activity_01-701-1015
   rdf:type owl:Class ;
@@ -1153,18 +1182,18 @@ cdiscpilot01:VisitWk2Activity_01-701-1028
 .
 cdiscpilot01:VisitWk2_01-701-1015
   rdf:type custom:VisitWk2 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 ;
   study:hasPerformedDate cdiscpilot01:Date_2014-01-16 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1015_2014-01-17_2014-06-18 ;
 .
 cdiscpilot01:VisitWk2_01-701-1023
   rdf:type custom:VisitWk2 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1023_2012-08-28_2012-09-01 ;
   study:hasPerformedDate cdiscpilot01:Date_2012-08-27 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1023_2012-08-28_2012-09-01 ;
 .
 cdiscpilot01:VisitWk2_01-701-1028
   rdf:type custom:VisitWk2 ;
+  study:hasActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06 ;
   study:hasPerformedDate cdiscpilot01:Date_2013-08-01 ;
-  study:hasSubActivity cdiscpilot01:DrugAdministration_01-701-1028_2013-08-02_2014-01-06 ;
 .
 cdiscpilot01:WeightOutcome_119_0
   rdf:type study:WeightOutcome ;

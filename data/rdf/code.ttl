@@ -1,21 +1,24 @@
-# baseURI: https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl
-# imports: http://rdf.cdisc.org/ct/schema
-# imports: http://rdf.cdisc.org/mms
+# baseURI: <http://w3id.org/phuse/code#>
+# imports: http://datashapes.org/dash
+# imports: http://w3id.org/phuse/cts
+# imports: <http://w3id.org/phuse/mms#>
 # imports: http://rdf.cdisc.org/sdtmterm
 # imports: http://spinrdf.org/spin
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: http://www.w3.org/2006/time
+# imports: http://www.w3.org/ns/shacl#
 # prefix: code
 
 @prefix arg: <http://spinrdf.org/arg#> .
-@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
-@prefix mms: <http://rdf.cdisc.org/mms#> .
+@prefix code: <http://w3id.org/phuse/code#> .
+@prefix mms: <http://w3id.org/phuse/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://rdf.cdisc.org/ct/schema#> .
-@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix schema: <http://w3id.org/phuse/cts#> .
+@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spif: <http://spinrdf.org/spif#> .
@@ -25,12 +28,571 @@
 @prefix xhtm: <http://www.w3.org/1999/xhtml> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+sdtmterm:BlindedTreatment
+  rdf:type mms:PermissibleValue ;
+  rdf:type sdtmterm:Epoch ;
+  schema:cdiscDefinition "A period in a clinical study during which subjects receive blinded therapeutic treatment." ;
+  schema:cdiscSubmissionValue "BLINDED TREATMENT" ;
+  schema:nciCode "C102255" ;
+  schema:nciPreferredTerm "Blinded Treatment Epoch" ;
+  mms:inValueDomain sdtmterm:C99079 ;
+  skos:prefLabel "BLINDED TREATMENT" ;
+.
+sdtmterm:ControlType_ACTIVE
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:ControlType ;
+  schema:cdiscDefinition "A type of control, which has a demonstrated effect, administered as a comparator, to subjects in a clinical trial. [From ICH E10]." ;
+  schema:cdiscSubmissionValue "ACTIVE" ;
+  schema:nciCode "C49649" ;
+  schema:nciPreferredTerm "Active Control" ;
+  mms:inValueDomain sdtmterm:C66785 ;
+  skos:prefLabel "ACTIVE" ;
+  code:hasCode "C49649" ;
+.
+sdtmterm:ControlType_NONE
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:ControlType ;
+  schema:cdiscDefinition "No person or thing, nobody, not any. (NCI)" ;
+  schema:cdiscSubmissionValue "NONE" ;
+  schema:nciCode "C41132" ;
+  schema:nciPreferredTerm "None" ;
+  mms:inValueDomain sdtmterm:C66785 ;
+  skos:prefLabel "NONE" ;
+  code:hasCode "C41132" ;
+.
+sdtmterm:ControlType_PLACEBO
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:ControlType ;
+  schema:cdiscDefinition "Use of an inactive compound identical in appearance to drug or treatment being tested in experimental research, which may or may not be known to the physician and/or subject, administered to distinguish between drug action and suggestive effect of the drug or treatment under study. The effects of the active drug or treatment are compared to the effects of the placebo. (NCI)" ;
+  schema:cdiscSubmissionValue "PLACEBO" ;
+  schema:nciCode "C49648" ;
+  schema:nciPreferredTerm "Placebo Control" ;
+  mms:inValueDomain sdtmterm:C66785 ;
+  skos:prefLabel "PLACEBO" ;
+  code:hasCode "C49648" ;
+.
+sdtmterm:Epoch
+  rdf:type mms:EnumeratedValueDomain ;
+  rdf:type owl:Class ;
+  schema:cdiscDefinition "The name of the EPOCH." ;
+  schema:cdiscSubmissionValue "EPOCH" ;
+  schema:cdiscSynonyms "Epoch" ;
+  schema:codelistName "Epoch" ;
+  schema:isExtensibleCodelist "true"^^xsd:boolean ;
+  schema:nciCode "C99079" ;
+  schema:nciPreferredTerm "CDISC SDTM Epoch Terminology" ;
+  rdfs:subClassOf code:DefinedActivity ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "EPOCH" ;
+.
+sdtmterm:IndicationType_CURE
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:IndicationType ;
+  schema:cdiscDefinition "A type of study protocol designed to evaluate intervention(s) aimed to cure a disease or condition. (NCI)" ;
+  schema:cdiscSubmissionValue "CURE" ;
+  schema:nciCode "C49654" ;
+  schema:nciPreferredTerm "Cure Study" ;
+  mms:inValueDomain sdtmterm:C66736 ;
+  skos:definition "An Intervention Strategy intended to permanently eliminate the signs and/or symptoms or underlying pathophysiology of a Medical Condition." ;
+  skos:prefLabel "CURE" ;
+  code:hasCode "C49654" ;
+.
+sdtmterm:IndicationType_DIAGNOSIS
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:IndicationType ;
+  schema:cdiscDefinition "A type of study protocol designed to evaluate intervention(s) aimed at identifying a disease or condition. (NCI)" ;
+  schema:cdiscSubmissionValue "DIAGNOSIS" ;
+  schema:nciCode "C49653" ;
+  schema:nciPreferredTerm "Diagnosis Study" ;
+  mms:inValueDomain sdtmterm:C66736 ;
+  skos:definition "An Intervention Strategy intended to help identify the presence of a Medical Condition." ;
+  skos:prefLabel "DIAGNOSIS" ;
+  code:hasCode "C49653" ;
+.
+sdtmterm:IndicationType_MITIGATION
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:IndicationType ;
+  schema:cdiscDefinition "A type of study designed to identify actions necessary to eliminate or reduce the risk to human life or well-being as a result of a particular medication or treatment regimen. (NCI)" ;
+  schema:cdiscSubmissionValue "MITIGATION" ;
+  schema:nciCode "C49655" ;
+  schema:nciPreferredTerm "Adverse Effect Mitigation Study" ;
+  mms:inValueDomain sdtmterm:C66736 ;
+  skos:definition "An Intervention Strategy intended to improve the signs and/or symptoms or underlying pathophysiology of a Medical Condition caused by another Intervention. (e.g. mitigation of chemotherapy induced vomiting)" ;
+  skos:prefLabel "MITIGATION" ;
+  code:hasCode "C49655" ;
+.
+sdtmterm:IndicationType_PREVENTION
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:IndicationType ;
+  schema:cdiscDefinition "A type of study designed to identify actions necessary to permanently eliminate or reduce the long-term risk to human life as a result of a particular medication or treatment regimen." ;
+  schema:cdiscSubmissionValue "PREVENTION" ;
+  schema:nciCode "C49657" ;
+  schema:nciPreferredTerm "Prevention Study" ;
+  mms:inValueDomain sdtmterm:C66736 ;
+  skos:prefLabel "PREVENTION" ;
+  code:hasCode "C49657" ;
+.
+sdtmterm:IndicationType_TREATMENT
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:IndicationType ;
+  schema:cdiscDefinition "A type of study protocol designed to evaluate intervention(s) for treatment of disease, syndrome or condition." ;
+  schema:cdiscSubmissionValue "TREATMENT" ;
+  schema:nciCode "C49656" ;
+  schema:nciPreferredTerm "Treatment Study" ;
+  mms:inValueDomain sdtmterm:C66736 ;
+  skos:definition "An Intervention Strategy intended to improve the signs and/or symptoms or underlying pathophysiology of a Medical Condition." ;
+  skos:prefLabel "TREATMENT" ;
+  code:hasCode "C49656" ;
+.
+sdtmterm:InterventionModel_CROSS-OVER
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:InterventionModel ;
+  schema:cdiscDefinition "Participants receive one of two or more alternative intervention(s) during the initial epoch of the study and receive other intervention(s) during the subsequent epoch(s) of the study." ;
+  schema:cdiscSubmissionValue "CROSS-OVER" ;
+  schema:nciCode "C82637" ;
+  schema:nciPreferredTerm "Crossover Study" ;
+  mms:inValueDomain sdtmterm:C99076 ;
+  skos:prefLabel "CROSS-OVER" ;
+  code:hasCode "C82637" ;
+.
+sdtmterm:InterventionModel_FACTORIAL
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:InterventionModel ;
+  schema:cdiscDefinition "Two or more interventions, each alone and in combination, are evaluated in parallel against a control group." ;
+  schema:cdiscSubmissionValue "FACTORIAL" ;
+  schema:nciCode "C82638" ;
+  schema:nciPreferredTerm "Factorial Study" ;
+  mms:inValueDomain sdtmterm:C99076 ;
+  skos:prefLabel "FACTORIAL" ;
+  code:hasCode "C82638" ;
+.
+sdtmterm:InterventionModel_PARALLEL
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:InterventionModel ;
+  schema:cdiscDefinition "Participants are assigned to one of two or more arms in parallel for the duration of the study." ;
+  schema:cdiscSubmissionValue "PARALLEL" ;
+  schema:nciCode "C82639" ;
+  schema:nciPreferredTerm "Parallel Study" ;
+  mms:inValueDomain sdtmterm:C99076 ;
+  skos:prefLabel "PARALLEL" ;
+  code:hasCode "C82639" ;
+.
+sdtmterm:InterventionModel_SINGLE-GROUP
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:InterventionModel ;
+  schema:cdiscDefinition "Single arm study." ;
+  schema:cdiscSubmissionValue "SINGLE GROUP" ;
+  schema:nciCode "C82640" ;
+  schema:nciPreferredTerm "Single Group Study" ;
+  mms:inValueDomain sdtmterm:C99076 ;
+  skos:prefLabel "SINGLE GROUP" ;
+  code:hasCode "C82640" ;
+.
+sdtmterm:InterventionType_DRUG
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:InterventionType ;
+  schema:cdiscDefinition "An active natural, synthetic or semi-synthetic ingredient including endogenous body substance that is intended to furnish pharmacological activity or other direct effect in the diagnosis, cure, mitigation, treatment, or prevention of disease or to affect the structure or any function of the human body, but does not include intermediates used in the synthesis of such ingredient (21 CFR 314.3(b))." ;
+  schema:cdiscSubmissionValue "DRUG" ;
+  schema:nciCode "C1909" ;
+  schema:nciPreferredTerm "Pharmacologic Substance" ;
+  mms:inValueDomain sdtmterm:C99078 ;
+  skos:prefLabel "DRUG" ;
+  code:hasCode "C1909" ;
+  code:hasCodeSystem code:CodeSystem_CDISCTerminology ;
+.
+sdtmterm:NoYesResponse_N
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:NoYesResponse ;
+  schema:cdiscDefinition "The non-affirmative response to a question. (NCI)" ;
+  schema:cdiscSubmissionValue "N" ;
+  schema:cdiscSynonyms "No" ;
+  schema:nciCode "C49487" ;
+  schema:nciPreferredTerm "No" ;
+  mms:inValueDomain sdtmterm:C66742 ;
+  skos:prefLabel "N" ;
+  code:hasCode "C49487" ;
+.
+sdtmterm:NoYesResponse_NA
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:NoYesResponse ;
+  schema:cdiscDefinition "Determination of a value is not relevant in the current context. (NCI)" ;
+  schema:cdiscSubmissionValue "NA" ;
+  schema:cdiscSynonyms "NA" ;
+  schema:nciCode "C48660" ;
+  schema:nciPreferredTerm "Not Applicable" ;
+  mms:inValueDomain sdtmterm:C66742 ;
+  skos:prefLabel "NA" ;
+  code:hasCode "C48660" ;
+.
+sdtmterm:NoYesResponse_Y
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:NoYesResponse ;
+  schema:cdiscDefinition "The affirmative response to a question. (NCI)" ;
+  schema:cdiscSubmissionValue "Y" ;
+  schema:cdiscSynonyms "Yes" ;
+  schema:nciCode "C49488" ;
+  schema:nciPreferredTerm "Yes" ;
+  mms:inValueDomain sdtmterm:C66742 ;
+  skos:prefLabel "Y" ;
+  code:hasCode "C49488" ;
+.
+sdtmterm:SexGroup_BOTH
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:SexGroup ;
+  schema:cdiscDefinition "One and the other; relating to or being two in conjunction. (NCI)" ;
+  schema:cdiscSubmissionValue "BOTH" ;
+  schema:nciCode "C49636" ;
+  schema:nciPreferredTerm "Both" ;
+  mms:inValueDomain sdtmterm:C66732 ;
+  skos:prefLabel "BOTH" ;
+  code:hasCode "C49636" ;
+.
+sdtmterm:SexGroup_F
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:SexGroup ;
+  schema:cdiscDefinition "A person who belongs to the sex that normally produces ova. The term is used to indicate biological sex distinctions, or cultural gender role distinctions, or both. (NCI)" ;
+  schema:cdiscSubmissionValue "F" ;
+  schema:cdiscSynonyms "Female" ;
+  schema:nciCode "C16576" ;
+  schema:nciPreferredTerm "Female" ;
+  mms:inValueDomain sdtmterm:C66732 ;
+  skos:prefLabel "F" ;
+  code:hasCode "C16576" ;
+.
+sdtmterm:SexGroup_M
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:SexGroup ;
+  schema:cdiscDefinition "A person who belongs to the sex that normally produces sperm. The term is used to indicate biological sex distinctions, cultural gender role distinctions, or both. (NCI)" ;
+  schema:cdiscSubmissionValue "M" ;
+  schema:cdiscSynonyms "Male" ;
+  schema:nciCode "C20197" ;
+  schema:nciPreferredTerm "Male" ;
+  mms:inValueDomain sdtmterm:C66732 ;
+  skos:prefLabel "M" ;
+  code:hasCode "C20197" ;
+.
+sdtmterm:StudyType_EXA
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:StudyType ;
+  schema:cdiscDefinition "Studies that provide a means for obtaining an experimental drug or device for patients who are not adequately treated by existing therapy, who do not meet the eligibility criteria for enrollment, or who are otherwise unable to participate in another clinical study. Expanded Access studies include individual-patient IND, treatment IND, compassionate use, emergency use or continued access." ;
+  schema:cdiscSubmissionValue "EXPANDED ACCESS" ;
+  schema:nciCode "C98722" ;
+  schema:nciPreferredTerm "Expanded Access Study" ;
+  mms:inValueDomain sdtmterm:C99077 ;
+  skos:prefLabel "EXPANDED ACCESS" ;
+  code:hasCode "C98722" ;
+.
+sdtmterm:StudyType_INT
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:StudyType ;
+  schema:cdiscDefinition "Studies in which individuals are assigned by an investigator based on a protocol to receive specific interventions. Subjects may receive diagnostic, therapeutic or other types of interventions. The assignment of the intervention may or may not be random. The individuals are then followed and biomedical and/or health outcomes are assessed." ;
+  schema:cdiscSubmissionValue "INTERVENTIONAL" ;
+  schema:nciCode "C98388" ;
+  schema:nciPreferredTerm "Interventional Study" ;
+  mms:inValueDomain sdtmterm:C99077 ;
+  skos:prefLabel "INTERVENTIONAL" ;
+  code:hasCode "C98388" ;
+.
+sdtmterm:StudyType_OBS
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:StudyType ;
+  schema:cdiscDefinition "Studies in which biomedical and/or health outcomes are assessed in pre-defined groups of individuals. Subjects in the study may receive diagnostic, therapeutic, or other interventions, but the investigator does not assign specific interventions to the subjects of the study." ;
+  schema:cdiscSubmissionValue "OBSERVATIONAL" ;
+  schema:nciCode "C16084" ;
+  schema:nciPreferredTerm "Observational Study" ;
+  mms:inValueDomain sdtmterm:C99077 ;
+  skos:prefLabel "OBSERVATIONAL" ;
+  code:hasCode "C16084" ;
+.
+sdtmterm:TrialBlindingSchema_DOUBLE_BLIND
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialBlindingSchema ;
+  schema:cdiscDefinition "A study in which neither the subject nor the investigator nor the research team interacting with the subject or data during the trial knows what treatment a subject is receiving. (CDISC glossary)" ;
+  schema:cdiscSubmissionValue "DOUBLE BLIND" ;
+  schema:nciCode "C15228" ;
+  schema:nciPreferredTerm "Double Blind Study" ;
+  mms:inValueDomain sdtmterm:C66735 ;
+  skos:prefLabel "DOUBLE BLIND" ;
+  code:hasCode "C15228" ;
+.
+sdtmterm:TrialBlindingSchema_OPEN_LABEL
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialBlindingSchema ;
+  schema:cdiscDefinition "A trial in which subjects and investigators know which product each subject is receiving; opposite of a blinded or double-blind study. (CDISC glossary)" ;
+  schema:cdiscSubmissionValue "OPEN LABEL" ;
+  schema:nciCode "C49659" ;
+  schema:nciPreferredTerm "Open Label Study" ;
+  mms:inValueDomain sdtmterm:C66735 ;
+  skos:prefLabel "OPEN LABEL" ;
+  code:hasCode "C49659" ;
+.
+sdtmterm:TrialBlindingSchema_SINGLE_BLIND
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialBlindingSchema ;
+  schema:cdiscDefinition "A study in which one party, either the investigator or the subject, does not know which medication or placebo is administered to the subject; also called singlemasked study. (CDISC glossary)" ;
+  schema:cdiscSubmissionValue "SINGLE BLIND" ;
+  schema:nciCode "C28233" ;
+  schema:nciPreferredTerm "Single Blind Study" ;
+  mms:inValueDomain sdtmterm:C66735 ;
+  skos:prefLabel "SINGLE BLIND" ;
+  code:hasCode "C28233" ;
+.
+sdtmterm:TrialPhase_NA
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "Determination of a value is not relevant in the current context. (NCI)" ;
+  schema:cdiscSubmissionValue "NA" ;
+  schema:cdiscSynonyms "NA" ;
+  schema:nciCode "C48660" ;
+  schema:nciPreferredTerm "Not Applicable" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "NA" ;
+  code:hasCode "C48660" ;
+.
+sdtmterm:TrialPhase_PHASE1
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "The initial introduction of an investigational new drug into humans. Phase 1 studies are typically closely monitored and may be conducted in patients or normal volunteer subjects. NOTE: These studies are designed to determine the metabolism and pharmacologic actions of the drug in humans, the side effects associated with increasing doses, and, if possible, to gain early evidence on effectiveness. During Phase 1, sufficient information about the drug's pharmacokinetics and pharmacological effects should be obtained to permit the design of well-controlled, scientifically valid, Phase 2 studies. The total number of subjects and patients included in Phase I studies varies with the drug, but is generally in the range of 20 to 80. Phase 1 studies also include studies of drug metabolism, structure-activity relationships, and mechanism of action in humans, as well as studies in which investigational drugs are used as research tools to explore biological phenomena or disease processes. [After FDA CDER Handbook, ICH E8] (CDISC glossary)" ;
+  schema:cdiscSubmissionValue "Phase I Trial" ;
+  schema:cdiscSynonyms "Trial Phase 1; 1" ;
+  schema:nciCode "C15600" ;
+  schema:nciPreferredTerm "Phase I Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase I Trial" ;
+  code:hasCode "C15600" ;
+.
+sdtmterm:TrialPhase_PHASE12
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "A class of clinical study that combines elements characteristic of traditional Phase I and Phase II trials. See also Phase I, Phase II." ;
+  schema:cdiscSubmissionValue "Phase I/II Trial" ;
+  schema:cdiscSynonyms "Trial Phase 1-2; 1-2" ;
+  schema:nciCode "C15693" ;
+  schema:nciPreferredTerm "Phase I/II Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase I/II Trial" ;
+  code:hasCode "C15693" ;
+.
+sdtmterm:TrialPhase_PHASE2
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "Phase 2. Controlled clinical studies conducted to evaluate the effectiveness of the drug for a particular indication or indications in patients with the disease or condition under study and to determine the common short-term side effects and risks associated with the drug. NOTE: Phase 2 studies are typically well controlled, closely monitored, and conducted in a relatively small number of patients, usually involving no more than several hundred subjects. [After FDA CDER Handbook, ICH E8] (CDISC glossary)" ;
+  schema:cdiscSubmissionValue "Phase II Trial" ;
+  schema:cdiscSynonyms "Trial Phase 2; 2" ;
+  schema:nciCode "C15601" ;
+  schema:nciPreferredTerm "Phase II Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase II Trial" ;
+  code:hasCode "C15601" ;
+.
+sdtmterm:TrialPhase_PHASE23
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "A class of clinical study that combines elements characteristic of traditional Phase II and Phase III trials." ;
+  schema:cdiscSubmissionValue "Phase II/III Trial" ;
+  schema:cdiscSynonyms "Trial Phase 2-3; 2-3" ;
+  schema:nciCode "C15694" ;
+  schema:nciPreferredTerm "Phase II/III Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase II/III Trial" ;
+  code:hasCode "C15694" ;
+.
+sdtmterm:TrialPhase_PHASE2A
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "A clinical research protocol generally referred to as a pilot or feasibility trial that aims to prove the concept of the new intervention in question. (NCI)" ;
+  schema:cdiscSubmissionValue "Phase IIa Trial" ;
+  schema:cdiscSynonyms "Trial Phase 2A; 2A" ;
+  schema:nciCode "C49686" ;
+  schema:nciPreferredTerm "Phase IIa Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase IIa Trial" ;
+  code:hasCode "C49686" ;
+.
+sdtmterm:TrialPhase_PHASE2B
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "A clinical research protocol generally referred to as a well-controlled and pivotal trial that aims to prove the mechanism of action of the new intervention in question. A pivotal study will generally be well-controlled, randomized, of adequate size, and whenever possible, double-blind. (NCI)" ;
+  schema:cdiscSubmissionValue "Phase IIb Trial" ;
+  schema:cdiscSynonyms "Trial Phase 2B; 2B" ;
+  schema:nciCode "C49688" ;
+  schema:nciPreferredTerm "Phase IIb Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase IIb Trial" ;
+  code:hasCode "C49688" ;
+.
+sdtmterm:TrialPhase_PHASE3
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "Phase 3. Studies are expanded controlled and uncontrolled trials. They are performed after preliminary evidence suggesting effectiveness of the drug has been obtained, and are intended to gather the additional information about effectiveness and safety that is needed to confirm efficacy and evaluate the overall benefit-risk relationship of the drug and to provide an adequate basis for physician labeling. NOTE: Phase 3 studies usually include from several hundred to several thousand subjects. [After FDA CDER Handbook, ICH E8] (CDISC glossary)" ;
+  schema:cdiscSubmissionValue "Phase III Trial" ;
+  schema:cdiscSynonyms "Trial Phase 3; 3" ;
+  schema:nciCode "C15602" ;
+  schema:nciPreferredTerm "Phase III Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase III Trial" ;
+  code:hasCode "C15602" ;
+.
+sdtmterm:TrialPhase_PHASE3A
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "A classification typically assigned retrospectively to a Phase III trial upon determination by regulatory authorities of a need for a Phase III B trial. (NCI)" ;
+  schema:cdiscSubmissionValue "Phase IIIa Trial" ;
+  schema:cdiscSynonyms "Trial Phase 3A; 3A" ;
+  schema:nciCode "C49687" ;
+  schema:nciPreferredTerm "Phase IIIa Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase IIIa Trial" ;
+  code:hasCode "C49687" ;
+.
+sdtmterm:TrialPhase_PHASE3B
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "A subcategory of Phase III trials done near the time of approval to elicit additional findings. NOTE: Dossier review may continue while associated Phase IIIB trials are conducted. These trials may be required as a condition of regulatory authority approval." ;
+  schema:cdiscSubmissionValue "Phase IIIb Trial" ;
+  schema:cdiscSynonyms "Trial Phase 3B; 3B" ;
+  schema:nciCode "C49689" ;
+  schema:nciPreferredTerm "Phase IIIb Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase IIIb Trial" ;
+  code:hasCode "C49689" ;
+.
+sdtmterm:TrialPhase_PHASE4
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "Phase 4. Postmarketing (Phase 4) studies to delineate additional information about the drug's risks, benefits, and optimal use that may be requested by regulatory authorities in conjunction with marketing approval. NOTE: These studies could include, but would not be limited to, studying different doses or schedules of administration than were used in Phase 2 studies, use of the drug in other patient populations or other stages of the disease, or use of the drug over a longer period of time. [After FDA CDER Handbook, ICH E8] (CDISC glossary)" ;
+  schema:cdiscSubmissionValue "Phase IV Trial" ;
+  schema:cdiscSynonyms "Trial Phase 4; 4" ;
+  schema:nciCode "C15603" ;
+  schema:nciPreferredTerm "Phase IV Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase IV Trial" ;
+  code:hasCode "C15603" ;
+.
+sdtmterm:TrialPhase_PHASE5
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialPhase ;
+  schema:cdiscDefinition "Postmarketing surveillance is sometimes referred to as Phase V." ;
+  schema:cdiscSubmissionValue "Phase V Trial" ;
+  schema:cdiscSynonyms "Trial Phase 5; 5" ;
+  schema:nciCode "C47865" ;
+  schema:nciPreferredTerm "Phase V Trial" ;
+  mms:inValueDomain sdtmterm:C66737 ;
+  skos:prefLabel "Phase V Trial" ;
+  code:hasCode "C47865" ;
+.
+sdtmterm:TrialType_BIOAV
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialType ;
+  schema:cdiscDefinition "A study of the degree to which or rate at which a drug or other substance is absorbed or becomes available at the site of physiological activity after administration. (NCI)" ;
+  schema:cdiscSubmissionValue "BIO-AVAILABILITY" ;
+  schema:nciCode "C49664" ;
+  schema:nciPreferredTerm "Bioavailability Study" ;
+  mms:inValueDomain sdtmterm:C66739 ;
+  skos:prefLabel "BIO-AVAILABILITY" ;
+  code:hasCode "C49664" ;
+.
+sdtmterm:TrialType_BIOEQ
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialType ;
+  schema:cdiscDefinition "A study most often used to compare the efficacy of different formulations to treat a given disease. It is the testing of an old versus a new formulation in healthy volunteers or subjects with the disease under study and usually in one dose. (NCI)" ;
+  schema:cdiscSubmissionValue "BIO-EQUIVALENCE" ;
+  schema:nciCode "C49665" ;
+  schema:nciPreferredTerm "Therapeutic Equivalency Study" ;
+  mms:inValueDomain sdtmterm:C66739 ;
+  skos:prefLabel "BIO-EQUIVALENCE" ;
+  code:hasCode "C49665" ;
+.
+sdtmterm:TrialType_EFF
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialType ;
+  schema:cdiscDefinition "A study of the relative therapeutic efficacy of treatment of a disease. Usually this is a Phase II or III study. (NCI)" ;
+  schema:cdiscSubmissionValue "EFFICACY" ;
+  schema:nciCode "C49666" ;
+  schema:nciPreferredTerm "Efficacy Study" ;
+  mms:inValueDomain sdtmterm:C66739 ;
+  skos:prefLabel "EFFICACY" ;
+  code:hasCode "C49666" ;
+.
+sdtmterm:TrialType_PD
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialType ;
+  schema:cdiscDefinition "A study of the biochemical and physiological effect of a drug and the mechanism of drug action and the relationship between drug concentration and effect. (NCI)" ;
+  schema:cdiscSubmissionValue "PHARMACODYNAMIC" ;
+  schema:nciCode "C49662" ;
+  schema:nciPreferredTerm "Pharmacodynamic Study" ;
+  mms:inValueDomain sdtmterm:C66739 ;
+  skos:prefLabel "PHARMACODYNAMIC" ;
+  code:hasCode "C49662" ;
+.
+sdtmterm:TrialType_PECON
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialType ;
+  schema:cdiscDefinition "A study that assesses the value associated with a given drug in therapeutic and economic terms. This type of study is multidisciplinary in nature and takes into consideration the social and economic costs (resource utilization costs including direct, indirect, and intangible costs) of drug therapy in addition to its direct therapeutic benefits. Analyses relate the difference in therapeutic benefits to the difference in costs between treatment alternatives. (NCI)" ;
+  schema:cdiscSubmissionValue "PHARMACOECONOMIC" ;
+  schema:nciCode "C39493" ;
+  schema:nciPreferredTerm "Pharmacoeconomic Study" ;
+  mms:inValueDomain sdtmterm:C66739 ;
+  skos:prefLabel "PHARMACOECONOMIC" ;
+  code:hasCode "C39493" ;
+.
+sdtmterm:TrialType_PGX
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialType ;
+  schema:cdiscDefinition "A study of identification and analysis of genomic variations that affect the efficacy of a drug. Pharmacogenomic studies can potentially be predictive of an individual's drug-response or adverse reactions or susceptibility to iatrogenic disorders, and may also reveal new targets that can help in the design of new drugs. (NCI)" ;
+  schema:cdiscSubmissionValue "PHARMACOGENOMIC" ;
+  schema:nciCode "C49661" ;
+  schema:nciPreferredTerm "Pharmacogenomic Study" ;
+  mms:inValueDomain sdtmterm:C66739 ;
+  skos:prefLabel "PHARMACOGENOMIC" ;
+  code:hasCode "C49661" ;
+.
+sdtmterm:TrialType_PK
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialType ;
+  schema:cdiscDefinition "A study of the process by which a drug is absorbed, distributed, metabolized, and eliminated by the body. (NCI)" ;
+  schema:cdiscSubmissionValue "PHARMACOKINETIC" ;
+  schema:nciCode "C49663" ;
+  schema:nciPreferredTerm "Pharmacokinetic Study" ;
+  mms:inValueDomain sdtmterm:C66739 ;
+  skos:prefLabel "PHARMACOKINETIC" ;
+  code:hasCode "C49663" ;
+.
+sdtmterm:TrialType_SAF
+  rdf:type mms:PermissibleValue ;
+  rdf:type code:TrialType ;
+  schema:cdiscDefinition "A study that assesses the medical risks to a subject. Safety is usually assessed by examining a wide range of clinical parameters, including adverse events, vital signs, physical exam, laboratory tests." ;
+  schema:cdiscSubmissionValue "SAFETY" ;
+  schema:nciCode "C49667" ;
+  schema:nciPreferredTerm "Safety Study" ;
+  mms:inValueDomain sdtmterm:C66739 ;
+  skos:prefLabel "SAFETY" ;
+  code:hasCode "C49667" ;
+.
 arg:origResult
   rdf:type rdf:Property ;
   rdfs:subPropertyOf sp:arg ;
 .
 <http://topbraid.org/countries#US>
   skos:prefLabel "USA" ;
+.
+time:Instant
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_ISO8601 ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+.
+time:TemporalEntity
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_ISO8601 ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
 .
 time:TemporalUnit
   rdfs:subClassOf code:Unit ;
@@ -59,19 +621,21 @@ time:unitYear
   rdf:type code:AgeUnit ;
   skos:prefLabel "YEAR" ;
 .
-<https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl>
+<http://w3id.org/phuse/code#>
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   spin:imports <http://topbraid.org/spin/rdfsplus> ;
   spin:imports <http://topbraid.org/spin/skosspin> ;
   spin:imports <http://topbraid.org/spin/spinowl> ;
-  owl:imports <http://rdf.cdisc.org/ct/schema> ;
-  owl:imports <http://rdf.cdisc.org/mms> ;
+  owl:imports <http://datashapes.org/dash> ;
+  owl:imports <http://w3id.org/phuse/cts> ;
+  owl:imports <http://w3id.org/phuse/mms#> ;
   owl:imports <http://rdf.cdisc.org/sdtmterm> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/2006/time> ;
+  owl:imports sh: ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 code:ActiveSubstance
@@ -131,11 +695,31 @@ code:AdministrativeActivityOutcome
 .
 code:Age
   rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:DemographicData ;
+  rdfs:subClassOf code:NumericOutcome ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_ISO8601 ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
 .
 code:AgeDataCollection
   rdf:type owl:Class ;
   rdfs:subClassOf code:DemographicDataCollection ;
+.
+code:AgeGroup
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Age group" ;
+.
+code:AgeGroup_ADULT
+  rdf:type code:AgeGroup ;
+  skos:prefLabel "ADULT (18-65)" ;
+.
+code:AgeGroup_ELDERLY
+  rdf:type code:AgeGroup ;
+  skos:prefLabel "ELDERLY (>65)" ;
 .
 code:AgeUnit
   rdf:type owl:Class ;
@@ -239,6 +823,55 @@ code:CategoricalOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
 .
+code:CodeSystem
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Code system" ;
+.
+code:CodeSystem_CDISCTerminology
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "CDISC" ;
+.
+code:CodeSystem_DUNS
+  rdf:type code:CodeSystem ;
+  skos:altLabel "Dun and Bradstreet" ;
+  skos:prefLabel "DUNS" ;
+.
+code:CodeSystem_ISO3166
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "ISO3166" ;
+.
+code:CodeSystem_ISO8601
+  rdf:type code:StandardFormat ;
+  skos:definition "International Standard for representing date and time information" ;
+  skos:prefLabel "ISO8601" ;
+.
+code:CodeSystem_NDFRT
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "ND-FRT" ;
+.
+code:CodeSystem_SNOMED
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "SNOMED" ;
+.
+code:CodeSystem_UNII
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "UNII" ;
+.
+<http://w3id.org/phuse/code#CodeSystem_clinicaltrials.gov>
+  rdf:type code:CodeSystem ;
+  skos:prefLabel "clinicaltrials.gov" ;
+.
+code:ControlType
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Control type" ;
+.
 code:ConversionFactor
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -299,6 +932,8 @@ code:Country_1
   rdfs:comment "" ;
   skos:definition "" ;
   skos:prefLabel "USA" ;
+  code:hasCode "USA" ;
+  code:hasCodeSystem code:CodeSystem_ISO3166 ;
 .
 code:DefinedActivity
   rdf:type owl:Class ;
@@ -390,9 +1025,15 @@ code:DrugProduct
   rdfs:subClassOf code:Product ;
   skos:prefLabel "Drug product" ;
 .
+code:Epoch
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedActivity ;
+  skos:prefLabel "EPOCH" ;
+.
 code:Ethnicity
   rdf:type owl:Class ;
   rdfs:comment "" ;
+  rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:DemographicData ;
   owl:oneOf (
       code:Ethnicity_HISPANIC_OR_LATINO
@@ -445,15 +1086,19 @@ code:ExDosFrq_QD
 .
 code:ExRoute_ORAL
   rdf:type code:RouteOfAdministration ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38288> ;
+  owl:sameAs <http://w3id.org/phuse/sdtmterm#C66729.C38288> ;
   skos:altLabel "" ;
   skos:prefLabel "ORAL" ;
+  code:hasCode "C38288" ;
+  code:hasCodeSystem code:CodeSystem_CDISCTerminology ;
 .
 code:ExRoute_TRANSDERMAL
   rdf:type code:RouteOfAdministration ;
-  owl:sameAs <http://rdf.cdisc.org/sdtmterm#C66729.C38305> ;
+  owl:sameAs <http://w3id.org/phuse/sdtmterm#C66729.C38305> ;
   skos:altLabel "" ;
   skos:prefLabel "TRANSDERMAL" ;
+  code:hasCode "C38305" ;
+  code:hasCodeSystem code:CodeSystem_CDISCTerminology ;
 .
 code:GenericOutcome
   rdf:type owl:Class ;
@@ -499,22 +1144,54 @@ code:HeightUnit
   skos:altLabel "" ;
   skos:prefLabel "Height unit" ;
 .
-code:ISO8601
-  rdf:type code:StandardFormat ;
-  skos:definition "International Standard for representing date and time information" ;
-  skos:prefLabel "ISO8601" ;
+code:Indication
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:definition "The reason for performing a clinical Intervention. An Indication has three components: [1] the IndicationType (e.g. TREATMENT, DIAGNOSIS), [2] the IndicationCondition (a Medical Condition), and [3] an optional third component describing an Underlying Medical Condition. The Indication is associated with the most important component of an Intervention, such as a drug, device, or surgery. " ;
+  skos:example "The CURE of HEPATITIS C INFECTION" ;
+  skos:example "The TREATMENT of ALZHEIMER'S DISEASE in patients with MILD TO MODERATE ALZHEIMER'S DISEASE" ;
+  skos:example "The TREATMENT of HEADACHE in patients with MIGRAINE" ;
+  skos:example "The TREATMENT of RHINITIS in patients with SEASONAL ALLERGIC RHINITIS." ;
+  skos:prefLabel "Indication" ;
+.
+code:IndicationCondition
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:MedicalCondition ;
+  skos:prefLabel "Trial indication" ;
+.
+code:IndicationType
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Indication type" ;
+.
+code:Indication_01
+  rdf:type code:Indication ;
+  skos:prefLabel "Indication 01" ;
+  code:indicationCondition code:MedicalCondition_AD ;
+  code:indicationType sdtmterm:IndicationType_TREATMENT ;
+  code:underlyingCondition code:MedicalCondition_PMMAD ;
 .
 code:InformedConsent
   rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
   rdfs:comment "" ;
   rdfs:subClassOf code:AdministrativeActivity ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom code:InformedConsentOutcome ;
-      owl:onProperty code:outcome ;
-    ] ;
   skos:definition "" ;
   skos:prefLabel "Informed consent term" ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path code:outcome ;
+      sh:maxCount 1 ;
+      sh:minCount 1 ;
+      sh:name "outcome" ;
+      sh:node code:InformedConsentOutcome ;
+      sh:nodeKind sh:IRI ;
+    ] ;
 .
 code:InformedConsentAdult
   rdf:type owl:Class ;
@@ -524,6 +1201,7 @@ code:InformedConsentAdult
 .
 code:InformedConsentOutcome
   rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
   rdfs:comment "" ;
   rdfs:subClassOf code:AdministrativeActivityOutcome ;
   rdfs:subClassOf code:CategoricalOutcome ;
@@ -561,12 +1239,32 @@ code:Intervention
   skos:definition "" ;
   skos:prefLabel "Intervention term" ;
 .
+code:InterventionModel
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Intervention model" ;
+.
 code:InterventionOutcome
   rdf:type owl:Class ;
   rdfs:comment "" ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
   skos:definition "" ;
   skos:prefLabel "Intervention outcome term" ;
+.
+code:InterventionType
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Study type" ;
 .
 code:Laterality
   rdf:type owl:Class ;
@@ -603,6 +1301,16 @@ code:MedicalCondition
   rdfs:subClassOf code:DefinedConcept ;
   skos:prefLabel "Medical condition term" ;
 .
+code:MedicalCondition_AD
+  rdf:type code:IndicationCondition ;
+  skos:prefLabel "Alzheimer's Disease" ;
+  code:hasCode "26929004" ;
+  code:hasCodeSystem code:CodeSystem_SNOMED ;
+.
+code:MedicalCondition_PMMAD
+  rdf:type code:UnderlyingCondition ;
+  skos:prefLabel "Patients with Probable Mild to Moderate Alzheimer's Disease" ;
+.
 code:Method
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -627,6 +1335,16 @@ code:Method_DERIVED
   rdfs:comment "" ;
   skos:definition "" ;
   skos:prefLabel "DERIVED" ;
+.
+code:NoYesResponse
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "No yes response" ;
 .
 code:NullFlavor
   rdf:type owl:Class ;
@@ -751,6 +1469,11 @@ code:NumericOutcome
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedActivityOutcome ;
 .
+code:ObjectProperty_1
+  rdf:type owl:ObjectProperty ;
+  owl:inverseOf code:recFreqOfAdministration ;
+  skos:prefLabel "Object property 1" ;
+.
 code:Observation
   rdf:type owl:Class ;
   rdfs:comment "could be replaced in the future with a robust terminology for observations such as CDISC terminology or LOINC" ;
@@ -779,6 +1502,27 @@ code:Oral_Cavity
   schema:nciPreferredTerm "Oral Cavity" ;
   mms:inValueDomain sdtmterm:C74456 ;
   skos:prefLabel "ORAL CAVITY" ;
+.
+code:PharmClass_ACReleaseInhib
+  rdf:type code:PharmacologicClass ;
+  skos:prefLabel "Acetylcholine Release Inhibitor" ;
+  code:hasCodeSystem code:CodeSystem_NDFRT ;
+.
+code:PharmacologicClass
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  skos:prefLabel "Pharmacologic class" ;
+.
+<http://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF>
+  rdf:type code:Age ;
+  skos:prefLabel "\"\"" ;
+  code:hasNullFlavor code:NullFlavor_4 ;
+  code:hasValue "\"\"" ;
+.
+code:PlannedSubjectAge_P50Y
+  rdf:type code:Age ;
+  skos:prefLabel "Planned subject age P50Y" ;
+  code:hasValue "P50Y"^^xsd:duration ;
 .
 code:Product
   rdf:type owl:Class ;
@@ -825,6 +1569,7 @@ code:PulseUnit
 code:Race
   rdf:type owl:Class ;
   rdfs:comment "" ;
+  rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:DemographicData ;
   owl:oneOf (
       code:Race_AMERICAN_INDIAN_OR_ALASKA_NATIVE
@@ -944,6 +1689,7 @@ code:RuleOutcome_TRUE
 code:Sex
   rdf:type owl:Class ;
   rdfs:comment "" ;
+  rdfs:subClassOf code:DefinedConcept ;
   rdfs:subClassOf code:DemographicData ;
   owl:oneOf (
       code:Sex_F
@@ -968,6 +1714,16 @@ code:SexDataCollection
       owl:cardinality "1"^^xsd:nonNegativeInteger ;
       owl:onProperty code:outcome ;
     ] ;
+.
+code:SexGroup
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Sex group" ;
 .
 code:Sex_F
   rdf:type code:Sex ;
@@ -1000,8 +1756,18 @@ code:Sponsor_CDISCPILOT01
 .
 code:StandardFormat
   rdf:type owl:Class ;
-  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf code:CodeSystem ;
   skos:prefLabel "Standard format" ;
+.
+code:StudyType
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Study type" ;
 .
 code:Substance
   rdf:type owl:Class ;
@@ -1015,6 +1781,13 @@ code:SubstanceQuantity
   rdfs:subClassOf code:DefinedConcept ;
   skos:definition "Describes the name of the substance and the amount of the substance used in a unit dosage form (e.g. tablet, patch) of the product" ;
   skos:prefLabel "Substance quantity" ;
+.
+code:Substance_xanomeline
+  rdf:type code:ActiveSubstance ;
+  skos:prefLabel "XANOMELINE" ;
+  code:hasCode "9ORI6L73CJ" ;
+  code:hasCodeSystem code:CodeSystem_UNII ;
+  code:pharmacologicClass code:PharmClass_ACReleaseInhib ;
 .
 code:Successfully_Completed
   rdf:type code:GenericOutcome ;
@@ -1098,6 +1871,41 @@ code:TherapeuticIntervention
   skos:definition "An intervention whose goal is to modify the natural history of a medical condition." ;
   skos:prefLabel "Therapeutic intervention" ;
 .
+code:TrialBlindingSchema
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Trial blinding schema" ;
+.
+code:TrialPhase
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Trial phase" ;
+.
+code:TrialType
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:DefinedConcept ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:CodeSystem_CDISCTerminology ;
+      owl:onProperty code:hasCodeSystem ;
+    ] ;
+  skos:prefLabel "Trial type" ;
+.
+code:UnderlyingCondition
+  rdf:type owl:Class ;
+  rdfs:subClassOf code:MedicalCondition ;
+  skos:prefLabel "Study population" ;
+.
 code:Unit
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -1163,6 +1971,11 @@ code:Unit_mmHG
   skos:definition "" ;
   skos:prefLabel "mmHg" ;
 .
+code:Version
+  rdf:type owl:DatatypeProperty ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "Version" ;
+.
 code:VitalSign
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -1221,10 +2034,19 @@ code:WeightUnit
 .
 code:hasAge
   rdf:type owl:ObjectProperty ;
-  rdfs:domain <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#Person> ;
-  rdfs:range <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#AgeOutcome> ;
+  rdfs:domain <http://w3id.org/phuse/study#Person> ;
+  rdfs:range <http://w3id.org/phuse/study#AgeOutcome> ;
   skos:altLabel "" ;
   skos:prefLabel "has age" ;
+.
+code:hasCode
+  rdf:type owl:DatatypeProperty ;
+  skos:prefLabel "has code" ;
+.
+code:hasCodeSystem
+  rdf:type owl:ObjectProperty ;
+  rdfs:range code:CodeSystem ;
+  skos:prefLabel "has code system" ;
 .
 code:hasConversionFactor
   rdf:type owl:DatatypeProperty ;
@@ -1269,6 +2091,10 @@ code:hasMethod
   skos:definition "" ;
   skos:prefLabel "has method" ;
 .
+code:hasNullFlavor
+  rdf:type owl:ObjectProperty ;
+  rdfs:range code:NullFlavor ;
+.
 code:hasOriginalUnit
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
@@ -1303,6 +2129,18 @@ code:hasValue
   skos:definition "" ;
   skos:prefLabel "has value" ;
 .
+code:indicationCondition
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:Indication ;
+  rdfs:range code:IndicationCondition ;
+  skos:prefLabel "indication condition" ;
+.
+code:indicationType
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:Indication ;
+  rdfs:range code:IndicationType ;
+  skos:prefLabel "indication type" ;
+.
 code:isExtensible
   rdf:type owl:DatatypeProperty ;
   rdfs:domain code:CategoricalOutcome ;
@@ -1315,6 +2153,12 @@ code:outcome
   skos:definition "" ;
   skos:prefLabel "has outcome" ;
 .
+code:pharmacologicClass
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:ActiveSubstance ;
+  rdfs:range code:PharmacologicClass ;
+  skos:prefLabel "phamacologic class" ;
+.
 code:randomizationQuotient
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
@@ -1322,6 +2166,24 @@ code:randomizationQuotient
   skos:definition "" ;
   skos:prefLabel "randomization quotient" ;
   code:randomizationQuotient "0.67"^^xsd:float ;
+.
+code:recFreqOfAdministration
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:DrugProduct ;
+  rdfs:range code:DosageFrequency ;
+  skos:prefLabel "rec freq of administration" ;
+.
+code:recRouteOfAdministration
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:Product ;
+  rdfs:range code:RouteOfAdministration ;
+  skos:prefLabel "recommended route of administration" ;
+.
+code:underlyingCondition
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain code:Indication ;
+  rdfs:range code:UnderlyingCondition ;
+  skos:prefLabel "underlying condition" ;
 .
 code:unitConversion
   rdf:type spin:Function ;
