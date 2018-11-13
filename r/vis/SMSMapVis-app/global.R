@@ -17,8 +17,8 @@ library(dplyr)
 library(DT)
 
 # Configuration
-setwd("C:/_gitHub/CTDasRDF")
-source("r/validation/Functions.R")  # IRI to prefix and other fun
+setwd("C:/temp/git/CTDasRDF")
+source("r/Functions.R")  # IRI to prefix and other fun
 maxLabelSize <- 40
 
 #' Parse SMS files

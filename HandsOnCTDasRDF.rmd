@@ -3,6 +3,7 @@ title: "Getting hands on CTDasRDF Project"
 output: 
   html_document:
     toc: true
+    keep_md: true
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +17,7 @@ Date         | Comment
 2018-08-23   | Documentation creation (KG)
 2018-10-12   | Enhance documentation (KG)
 2018-10-13   | Ontology viz and namespace cmds (NN)
-2018-10-17   | Enhance WebVOWL and Prot�g� documentation (KG)
+2018-10-17   | Enhance WebVOWL and Protege documentation (KG)
 
 
 ## Overview
@@ -133,10 +134,10 @@ The core of the linked data is the Ontologies which define the links, object typ
 * doc/Ontology Roadmap.docx - A short overview of available created/maintained ontology files
 * doc/StudyOntologyUserGuide.docx - Detailed information about the study ontology which is the base for this project
 
-### Browse Ontologies with Prot�g�
-Prot�g� is an open source tool where you can develop and manage OWLs, so define the data structure and concept for the data linkage. It is used in this project by some members to create and maintain the OWL.
+### Browse Ontologies with Protege
+Protege is an open source tool where you can develop and manage OWLs, so define the data structure and concept for the data linkage. It is used in this project by some members to create and maintain the OWL.
 
-![Figure: Screenshot of Prot�g�](./doc/images/protege_overview.PNG)
+![Figure: Screenshot of Protege](./doc/images/protege_overview.PNG)
 
 On the picture you see the study.ttl file. The left pane displays the class hierarchy. Everything is a subclass of "Thing". What ever is in bold, this is defined in the currently opened owl file (so in study.ttl). All other items come from other referenced owl files. What you can see in the screenshot is that "Enrolled subject" is a subclass from "Human study subject" which is a subclass from "Human subject" and so on. This class hierarchy does not dipslay other relationships, so to investigate the connections using Prot�g� is a bit difficult.
 
