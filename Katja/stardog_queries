@@ -10,12 +10,16 @@ SELECT DISTINCT ?t WHERE {?s rdf:type ?t}
 #get all classes
 SELECT DISTINCT ?s WHERE {?s rdf:type owl:Class}
 
+# investigate all types / classes?
+select distinct ?type where { { ?ind a ?type . }} ORDER BY ?type
+
+
 SELECT * WHERE {?s  study:hasSite ?o}
 
 SELECT * WHERE {cd01p:Site_701  ?p ?o}
 
-
 SELECT * WHERE {study:EnrolledSubject ?p ?o}
+SELECT * WHERE {?s ?p study:EnrolledSubject}
 
 # get all OWLs and import them
 SELECT * WHERE {?s owl:imports ?o}

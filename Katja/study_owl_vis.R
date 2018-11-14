@@ -22,7 +22,7 @@ library(reshape)  #  melt
 library(dplyr)
 
 # Configuration
-setwd("C:/Temp/git/CTDasRDF_PlaygroundKG")
+setwd("C:/Temp/git/CTDasRDF")
 maxLabelSize <- 40
 
 #' Parse TTL file
@@ -101,7 +101,7 @@ nodeList <- nodeList[!duplicated(nodeList$value),]
 nodeList<-reshape::rename(nodeList, c("value" = "subject"))
 class(nodeList)
 
-#nodupNodes <- trans[!duplicated(trans$subject),]
+nodupNodes <- trans[!duplicated(trans$subject),]
 
 nodesList <- as.data.frame(nodupNodes[!is.na(nodupNodes["typeClass"] == 1), c("subject", "label")])
 nodesList <- reshape::rename(nodesList, c("subject" = "id","label" = "description" ))

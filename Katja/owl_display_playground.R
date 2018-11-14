@@ -1,20 +1,22 @@
 
 library("Rgraphviz")
 library(SPARQL)
+library(visNetwork)
+
 
 # Query StardogTriple Store ----
 endpoint <- "http://localhost:5820/CTDasRDFOWL/query"
 
-prefix <- c("cd01p",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl",
-            "cdiscpilot01", "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#",
-            "code",         "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#",
-            "custom",       "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#",
+prefix <- c("cd01p",        "http://w3id.org/phuse/cd01p#",
+            "cdiscpilot01", "http://w3id.org/phuse/cdiscpilot01#",
+            "code",         "http://w3id.org/phuse/code#",
+            "custom",       "http://w3id.org/phuse/custom#",
             "owl",          "http://www.w3.org/2002/07/owl#",
             "rdf",          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",
-            "sdtmterm",     "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#",
+            "sdtmterm",     "http://w3id.org/phuse/sdtmterm#",
             "skos",         "http://www.w3.org/2004/02/skos/core#",
-            "study",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#",
+            "study",        "http://w3id.org/phuse/study#",
             "time",         "http://www.w3.org/2006/time#")
 
 # if you get an error like: Error: 1: AttValue: " or ' expected, then remove your proxy settings, e.g.
@@ -53,8 +55,6 @@ addConnection <- function (classLi, edgesIn, edgesLabelsIn, from, to, label){
 }
 
 
-
-
 classList <- list()
 edges <- na.omit(matrix(ncol=2))
 edgesLabels <- c()
@@ -83,13 +83,20 @@ for (i in 1 : dim(edges)[1]){
 }
 myEAttrs <- list()
 myEAttrs$label <- edgesLabels
-plot(studyGraph)
-
+#plot(studyGraph)
 plot(studyGraph, attrs=list(node=list(fillcolor="lightgreen", 
                                         fontsize=16, shape="box", width="2"),
                               graph=list(rankdir="LR")), main = "Figure 1: Step overview")
 
-edgesLabels
+
+plot(studyGraph, 
+      attrs=list(node=list(fillcolor="lightgreen", fontsize=16, shape="box", width="2"),
+                 graph=list(rankdir="LR")), main = "Figure 1: Step overview")
+
+
+
+#visNetwork(classList, edges, width= "100%", height=1100)
+#dim(edges)
 
 test <- c("Study~Subject"="Participates in", "Study~Site"="has")
 test
@@ -109,3 +116,9 @@ resultsDF[resultsDF[,] == "rdfs:subClassOf",][,2]
 resultsDF
 
 classList <- addToClasses(classList,"dummy")
+
+#get all triples
+query <- paste("SELECT * WHERE {?s ?p ?o}")
+qd <- SPARQL(endpoint, query, ns=prefix)
+resultsDF <- qd$results
+

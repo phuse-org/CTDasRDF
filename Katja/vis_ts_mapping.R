@@ -4,7 +4,7 @@ library(reshape)  #  melt
 library(dplyr)
 
 # Configuration
-setwd("C:/Temp/git/CTDasRDF_PlaygroundKG")
+setwd("C:/Temp/git/CTDasRDF")
 
 
 all <- read.csv(file = "r/vis/support/ts-mapping.csv", sep = ";")
