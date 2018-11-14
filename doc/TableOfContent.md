@@ -22,7 +22,7 @@ Data files, including source study files and project .TTL files generated from T
 
 #### [2.3 Ontology](Ontology-Ref.md)
 
-Ontology Details
+Ontology details.
 
 #### [2.4 Data Conversion](DataConv-Ref.md)
 

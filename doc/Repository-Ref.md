@@ -72,3 +72,5 @@ A brief description of the project folder structure and content.
 -   **/vis**
     -   Old visualization code using D3JS. Includes /d3 for D3 library. Also includes R scripts in /r that should be moved to /r/vis or deleted.
     -   **TODO:** Update/Delete this structure.
+
+[Back to TOC](TableOfContent.md)
