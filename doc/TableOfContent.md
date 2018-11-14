@@ -16,7 +16,7 @@ Details of project structure and methods including project data files, scripts, 
 
 Github repository structure.
 
-#### [2.2 Data Files](Data-Ref.md)
+#### [2.2 Data Source](DataSource-Ref.md)
 
 Data files, including source study files and project .TTL files generated from TopBraid.
 
@@ -24,7 +24,7 @@ Data files, including source study files and project .TTL files generated from T
 
 Ontology Details
 
-#### [2.4 Data Conversion](DataConversion-Ref.md)
+#### [2.4 Data Conversion](DataConv-Ref.md)
 
 Data Conversion process from SDTM XPT files to mapping and upload to the triplestore using Stardog SMS. Includes data review and validation tools written in R.
 
