@@ -1,8 +1,8 @@
 ---
 title: "CTDasRDF Project Documentation"
 output:
-  html_document:
-    toc: true
+  md_document:
+    variant: markdown_github
     
 ---
 ```{r setup, include=FALSE}
@@ -28,7 +28,7 @@ Some data augmentation was necessary to test the ontology, so recreated data wil
 
 ### RDF Files
 
-![Figure: RDF Files and Relations.  Source: /rdf subfolder](./doc/images/OntologyRoadmap.png)
+![Figure: RDF Files and Relations.  Source: /rdf subfolder](images/OntologyRoadmap.png)
 
 
 1.	**study.ttl** (namespace = study: ) . The main file. It contains the OWL classes and predicates to represent a single study in RDF. It is a metamodel in the sense that instantiation of study.ttl results in an ontology for a single study. study.ttl is heavily BRIDG-based but not entirely as it attempts to better align with how clinical data are generated and used in health care. study.ttl can be thought of as a generic study schema, not associated with any particular protocol. It can be the starting point for each new study and contains the items needed to derive the blank case report form and contributes to the DEFINE file.

@@ -18,7 +18,7 @@ library(DT)
 
 # Configuration
 setwd("C:/_gitHub/CTDasRDF")
-source("r/validation/Functions.R")  # IRI to prefix and other fun
+# source("r/validation/Functions.R")  # IRI to prefix and other fun
 maxLabelSize <- 40
 
 #' Parse SMS files
