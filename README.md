@@ -1,5 +1,5 @@
 # CTDasRDF
-This repository holds the scripts and data for the PhUSE project "Clinical Trials Data as RDF." Leads for the project at Tim Williams (NovasTaylor) and Armando Oliva (aolivamd).
+This repository holds the scripts and data for the PhUSE project "Clinical Trials Data as RDF." Leads for the project are Tim Williams (NovasTaylor) and Armando Oliva (aolivamd).
 
 # Documentation
 [Table of Content](doc/TableOfContent.md) - Start here!
