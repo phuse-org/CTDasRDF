@@ -1,7 +1,10 @@
 # CTDasRDF
 This repository holds the scripts and data for the PhUSE project "Clinical Trials Data as RDF." The project is ongoing and documentation will lag behind other repository content. 
 
-Project documentation is created in Markdown (.rmd) files located in the folder **CTDasRDF/doc** . Clone the repository and view the .html file, or recreate the .html by knitting the rmd files.
+# Documentation
+[Table of Content](doc/TableOfContent.md) - start here!
+
+Project documentation is is Github Markdown created from R (.rmd) files and located in the folder **CTDasRDF/doc** . Start with the Table of content. 
 
 # Obtaining project files
 Github novices should download the files: 
