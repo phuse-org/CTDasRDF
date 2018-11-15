@@ -1,12 +1,10 @@
 Folder Structure
 ----------------
 
-A brief description of the project folder structure and content.
+Project folder structure and content.
 
 -   **/SPARQL**
-    -   SPARQL scripts for working with the data in the triplestore. All scripts must contain a comment header describing their function. Files may contain multiple independent scripts, like MiscQueries.rq. Scripts should indicate SPARQL extensions specific to Stardog whenever used.
--   **/Wiki/Images**
-    -   TO BE REMOVED. Curentlly contains project logo and data conversion program flow (to be update/removed)
+    -   SPARQL scripts for working with the data in the triplestore. All scripts must contain a comment header describing their function and  should indicate SPARQL extensions specific to Stardog whenever used. Files like MiscQueries.rq contain multiple independent scripts.  
 
 ### Data
 
@@ -15,29 +13,28 @@ A brief description of the project folder structure and content.
     -   Project ontology TTL files
     -   External ontology files (eg: time.ttl)
 -   **/data/SAS**
-    -   CSV Files used in the SAS conversion process (analog to the R process).
+    -   CSV Files created by SAS from source XPT files. Alternative to the R process.
 -   **/data/source**
     -   Source XPT file for data conversion
-    -   .csv files created by converting XPT files (+ graph metadata CSV file created from R)
-    -   SMS Map files that map their corresponding CSV files to the triplestore.
+    -   CSV files created by R from source XPT files. Also contains graph metadata CSV file created by R.
+    -   Stardog SMS Map files that map their corresponding CSV files to the triplestore.
     -   .BAT files that drive the SMS to triplestore process
 -   **/data/source/updated\_cdiscpilot**
     -   SDTM files updated to version 3.2 by the PhUSE data generation team.
     -   Copy individual flies into the parent /source when ready to start developing conversion of that file.
 -   **/data/source/define content**
     -   Files related to DEFINE.
-    -   **TODO:** Determine if files still relevant. Last update was March 2018.
 
 ### Documentation
 
 -   **/doc**
-    -   Files in this folder are outdated (2018-10-25) and should be moved/updated/deleted...
+    -   Project documentation. Primary Github markdown.
 -   **/doc/Pubs**
     -   Project Publications, with subfolders for various conferences and the Project White Paper \[not yet available 2018-10-25\]
 -   **/doc/StudyDocs**
     -   Documents from the orginal study. Currently only contains the protocol as PDF.
 -   **/doc/images**
-    -   Images to be included in the project documentation, including the .rmd/html projec files.
+    -   Images to be included in the project documentation, including the Github Markdown files.
 
 ### R
 
