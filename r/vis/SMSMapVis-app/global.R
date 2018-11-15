@@ -17,7 +17,7 @@ library(dplyr)
 library(DT)
 
 # Configuration
-setwd("C:/_gitHub/CTDasRDF")
+setwd("C:/temp/git/CTDasRDF")
 # source("r/validation/Functions.R")  # IRI to prefix and other fun
 maxLabelSize <- 40
 

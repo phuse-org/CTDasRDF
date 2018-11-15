@@ -13,7 +13,7 @@ library(plyr)     #  rename
 library(reshape)  #  melt
 library(SPARQL)
 library(visNetwork)
-setwd("C:/_gitHub/CTDasRDF/r")
+setwd("C:/temp/git/CTDasRDF/r")
 source("validation/Functions.R")  # IRI to prefix and other fun
 
 

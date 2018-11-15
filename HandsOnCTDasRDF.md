@@ -193,14 +193,24 @@ Make sure you installed Stardog and do not have any issues (like wrong Java vers
 * Keep the rest as it is, and click Finish
 
 ### Load Data and Triples to Stardog Database
-All you required data is located in the data/source file folder:
+All required data is located in the data/source file folder:
 
 * original XPT files
 * converted and upated data content as CSV files
 * Stardog Mapping Syntax TTL files
 * StarDogUpload.bat file to upload data into Stardog
 
-You might want to update StarDogUpload.bat, as the source location is defined as "C:\\_gitHub\\CTDasRDF\\data\\source" which you might want to change. You can see in detail which files are imported together. To import DM, the following line is included in the file:
+You might want to update StarDogUpload.bat, as the source location is defined as "C:\\_gitHub\\CTDasRDF\\data\\source" which you might want to change. Execute this .bat file to import
+the data into the linked data graph database.
+
+***Issues?*** If you get an error, make sure you have your stardog binary in the PATH location. If you cannot store
+the path information permanently (administration options), you might want to include the following line in the beginning of the .bat file to set the path temporarily:
+
+```
+SET PATH=%PATH%;<path>\stardog-5.3.2\bin
+```
+
+***Additional Information:*** You can see in detail which files are imported together. To import DM, the following line is included in the file:
 
 ```
 call stardog-admin virtual import CTDasRDFSMS DM_mappings.TTL DM_subset.csv
@@ -255,11 +265,12 @@ WHERE
 You might not like the long prefixes which are displayed on every query result. During triple creation also shortcuts has been used. To have a look what prefixes are used in this project, open the data/config/prefixes.csv file. Checkout which ones you would like to have available as shortcut in your database. You might for example select the following:
 
 * cd01p=http://w3id.org/phuse/cd01p#
-* cdiscpilot01=<http://w3id.org/phuse/cdiscpilot01#
-* code=<http://w3id.org/phuse/code#
+* cdiscpilot01=http://w3id.org/phuse/cdiscpilot01#
+* code=http://w3id.org/phuse/code#
 * sdtm=http://w3id.org/phuse/sdtm#
 * sdtmterm=http://w3id.org/phuse/sdtmterm#
 * study=http://w3id.org/phuse/study#
+* custom=http://w3id.org/phuse/custom#
 
 To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <http://localhost:5820/#/databases> and select your "http://localhost:5820/#/databases" database. Turn the database "OFF" and "Edit". Now you are able to "Add namespace" as you like. Remember to "Save" and turn the database "ON".
 
@@ -271,6 +282,7 @@ stardog namespace add CTDasRDFSMS --prefix code --uri <http://w3id.org/phuse/cod
 stardog namespace add CTDasRDFSMS --prefix sdtm --uri http://w3id.org/phuse/sdtm#
 stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri http://w3id.org/phuse/sdtmterm#
 stardog namespace add CTDasRDFSMS --prefix study --uri http://w3id.org/phuse/study#
+stardog namespace add CTDasRDFSMS --prefix custom --uri http://w3id.org/phuse/custom#
 ```
 
 When you now perform any queries, you will see the namespace abbreviations nicely in the result:

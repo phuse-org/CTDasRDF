@@ -2,6 +2,7 @@
 install.packages("DiagrammeR")
 install.packages("reshape")
 install.packages("collapsibleTree")
+install.packages("SPARQL")
 
 install.packages("rJava") # if not present already
 install.packages("devtools") # if not present already

@@ -1,3 +1,17 @@
+# get all within a specified path
+SELECT DISTINCT *
+  WHERE {
+      cdiscpilot01:Person_01-701-1015 ?p ?o .
+      BIND("cdiscpilot01:Person_01-701-1015" as ?s)
+      OPTIONAL{
+          ?o ?p2 ?o2 .
+      }
+      OPTIONAL{
+          ?o2 ?p3 ?o3 .
+      }
+  }
+
+
 #Delete all tripples
 DELETE{?s ?p ?o} WHERE{?s ?p ?o}
 

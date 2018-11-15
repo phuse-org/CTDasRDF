@@ -4,7 +4,8 @@ REM StarDogUpload.bat
 REM Batch upload to Stardog using SMS files.
 REM ---------------------------------------------------------------------------
 @echo on
-cd C:\_gitHub\CTDasRDF\data\source
+cd C:\temp\git\CTDasRDF\data\source
+SET PATH=%PATH%;C:\Temp\Programs\stardog-5.3.2\bin
 
 
 @echo.
