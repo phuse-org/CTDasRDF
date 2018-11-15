@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <rdf:RDF
-    xmlns:mms="http://w3id.org/phuse/mms#"
+    xmlns:mms="https://w3id.org/phuse/mms#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns="http://rdf.cdisc.org/cdash-terminology#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns:cts="http://w3id.org/phuse/cts#"
+    xmlns:cts="https://w3id.org/phuse/cts#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xml:base="http://rdf.cdisc.org/cdash-terminology">
   <owl:Ontology rdf:about="">
-    <owl:imports rdf:resource="http://w3id.org/phuse/mms#"/>
-    <owl:imports rdf:resource="http://w3id.org/phuse/cts"/>
+    <owl:imports rdf:resource="https://w3id.org/phuse/mms#"/>
+    <owl:imports rdf:resource="https://w3id.org/phuse/cts"/>
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Created with TopBraid Composer</owl:versionInfo>
     <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>

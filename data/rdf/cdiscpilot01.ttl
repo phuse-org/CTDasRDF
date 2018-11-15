@@ -1,25 +1,25 @@
-# baseURI: <http://w3id.org/phuse/cdiscpilot01#>
+# baseURI: <https://w3id.org/phuse/cdiscpilot01#>
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: http://w3id.org/phuse/cd01p
-# imports: <http://w3id.org/phuse/code#>
-# imports: http://w3id.org/phuse/sdtm
-# imports: http://w3id.org/phuse/study
+# imports: https://w3id.org/phuse/cd01p
+# imports: <https://w3id.org/phuse/code#>
+# imports: https://w3id.org/phuse/sdtm
+# imports: https://w3id.org/phuse/study
 # prefix: cdiscpilot01
 
-@prefix cd01p: <http://w3id.org/phuse/cd01p#> .
-@prefix cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#> .
-@prefix code: <http://w3id.org/phuse/code#> .
-@prefix cts: <http://w3id.org/phuse/cts#> .
-@prefix custom: <http://w3id.org/phuse/custom#> .
-@prefix mms: <http://w3id.org/phuse/mms#> .
+@prefix cd01p: <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code: <https://w3id.org/phuse/code#> .
+@prefix cts: <https://w3id.org/phuse/cts#> .
+@prefix custom: <https://w3id.org/phuse/custom#> .
+@prefix mms: <https://w3id.org/phuse/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sdtmterm: <http://w3id.org/phuse/sdtmterm#> .
+@prefix sdtmterm: <https://w3id.org/phuse/sdtmterm#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
-@prefix study: <http://w3id.org/phuse/study#> .
+@prefix study: <https://w3id.org/phuse/study#> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -33,13 +33,13 @@ cd01p:Study_CDISCPILOT01
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1023 ;
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1028 ;
 .
-<http://w3id.org/phuse/cdiscpilot01#>
+<https://w3id.org/phuse/cdiscpilot01#>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <http://w3id.org/phuse/cd01p> ;
-  owl:imports <http://w3id.org/phuse/code#> ;
-  owl:imports <http://w3id.org/phuse/sdtm> ;
-  owl:imports <http://w3id.org/phuse/study> ;
+  owl:imports <https://w3id.org/phuse/cd01p> ;
+  owl:imports <https://w3id.org/phuse/code#> ;
+  owl:imports <https://w3id.org/phuse/sdtm> ;
+  owl:imports <https://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 cdiscpilot01:AgeDataCollection_01-701-1015

@@ -17,7 +17,7 @@
 #    Implement identifcation of "in one graph and not in the other "
 # ERROR:
 #  This query works fine in Stardog but not from the RShiny with this Subject node:
-#  prefix cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#>
+#  prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#>
 #  SELECT *
 #  WHERE{
 #    cdiscpilot01:StudyParticipationInterval_2013-12-26_2014-07-02T11%3A45  ?p ?o
