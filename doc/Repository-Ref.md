@@ -41,16 +41,16 @@ Project folder structure and content.
 -   **/r/conversion-gRaveyaRd**
 -   **/r/query**
     -   R scripts that query the triplestore.
--   **/r/utility**
+-   **/r/util**
     -   Utility/Example scripts. E.g.: Read XPT from R.
 -   **/r/validation**
     -   Validate instance data between SMS conversion approach and instance data from ontology development.
-    -   Not all scripts up to date
+    -   Not all scripts are up to date
     -   /www folder for RShiny validation apps.
 -   **/r/vis**
     -   Visualization scripts and RShiny apps.
     -   RShiny apps in subfolders named with "-app"
-    -   /archive - Coode from previous work that is outdated/nonfunctional. May serve as a reference for future work before deletion.
+    -   /archive - Code from previous work that is outdated/nonfunctional. May serve as a reference for future work prior to deletion.
     -   /doc - documentation that supports the R packages used to create visualization. Eg: visNetwork.
 -   **/r/vis/support**
     -   Supports the development process. Eg: TS mapping
