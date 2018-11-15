@@ -10,7 +10,7 @@
 ###############################################################################
 
 //-- Triples directly attached to a specified Person node
-PREFIX cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#>
+PREFIX cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#>
 SELECT ?person ?p ?o
 WHERE
 {
@@ -19,7 +19,7 @@ WHERE
 } ORDER BY ?p ?o
 
 //-- Paths from person node
-PREFIX cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#>
+PREFIX cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#>
 PATHS 
 START ?x = cdiscpilot01:Person_01-701-1015 END ?y 
 VIA ?p 

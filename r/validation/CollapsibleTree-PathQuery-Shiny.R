@@ -21,13 +21,13 @@ epDer = "http://localhost:5820/CTDasRDFSMS/query"
 epOnt = "http://localhost:5820/CTDasRDFOnt/query"
 
 # Define the namespaces
-namespaces <- c('cd01p', '<http://w3id.org/phuse/cd01p#>',
-'cdiscpilot01', '<http://w3id.org/phuse/cdiscpilot01#>',
-'code', '<http://w3id.org/phuse/code#>',
-'custom', '<http://w3id.org/phuse/custom#>',
-'sdtmterm', '<http://w3id.org/phuse/sdtmterm#>',
+namespaces <- c('cd01p', '<https://w3id.org/phuse/cd01p#>',
+'cdiscpilot01', '<https://w3id.org/phuse/cdiscpilot01#>',
+'code', '<https://w3id.org/phuse/code#>',
+'custom', '<https://w3id.org/phuse/custom#>',
+'sdtmterm', '<https://w3id.org/phuse/sdtmterm#>',
 'skos', '<http://www.w3.org/2004/02/skos/core#>',
-'study', '<http://w3id.org/phuse/study#>',
+'study', '<https://w3id.org/phuse/study#>',
 'time', '<http://www.w3.org/2006/time#>',
 'rdf', '<http://www.w3.org/1999/02/22-rdf-syntax-ns#>',
 'xsd', '<http://www.w3.org/2001/XMLSchema#>'
@@ -87,7 +87,7 @@ server <- function(input, output, session) {
     #   See if the prefixes assigned differently WITHIN Stardog DB.
 
     queryOnt = paste0("
-    PREFIX cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#>
+    PREFIX cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#>
     PATHS ALL
     START ?s = ", input$rootNodeOnt,"
     END ?o
@@ -107,16 +107,16 @@ server <- function(input, output, session) {
 
     # Create a function for this:
     # Subjects
-    triplesOnt$s <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
+    triplesOnt$s <- gsub("<https://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesOnt$s)
-    triplesOnt$s <- gsub("<http://w3id.org/phuse/cd01p",
+    triplesOnt$s <- gsub("<https://w3id.org/phuse/cd01p",
       "cd01p:", triplesOnt$s)
 
 
     # Predicates
-    triplesOnt$p <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
+    triplesOnt$p <- gsub("<https://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesOnt$p)
-    triplesOnt$p <- gsub("<http://w3id.org/phuse/code#",
+    triplesOnt$p <- gsub("<https://w3id.org/phuse/code#",
       "code:", triplesOnt$p)
     triplesOnt$p <- gsub("<http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "rdf:", triplesOnt$p)
@@ -124,19 +124,19 @@ server <- function(input, output, session) {
       "rdfs:", triplesOnt$p)
     triplesOnt$p <- gsub("<http://www.w3.org/2004/02/skos/core#",
       "skos:", triplesOnt$p)
-    triplesOnt$p <- gsub("<http://w3id.org/phuse/study#",
+    triplesOnt$p <- gsub("<https://w3id.org/phuse/study#",
       "study:", triplesOnt$p)
     triplesOnt$p <- gsub("<http://www.w3.org/2006/time#",
       "time:", triplesOnt$p)
 
     # Objects
-    triplesOnt$o <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
+    triplesOnt$o <- gsub("<https://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesOnt$o)
-    triplesOnt$o <- gsub("<http://w3id.org/phuse/code#",
+    triplesOnt$o <- gsub("<https://w3id.org/phuse/code#",
       "code:", triplesOnt$o)
-    triplesOnt$o <- gsub("<http://w3id.org/phuse/cd01p",
+    triplesOnt$o <- gsub("<https://w3id.org/phuse/cd01p",
       "cd01p:", triplesOnt$o)
-    triplesOnt$o <- gsub("<http://w3id.org/phuse/custom#>",
+    triplesOnt$o <- gsub("<https://w3id.org/phuse/custom#>",
       "custom:", triplesOnt$o)
     triplesOnt$o <- gsub("<http://www.w3.org/2002/07/owl#",
       "owl:", triplesOnt$o)
@@ -144,17 +144,17 @@ server <- function(input, output, session) {
       "rdf:", triplesOnt$o)
     triplesOnt$o <- gsub("<http://www.w3.org/2000/01/rdf-schema#",
       "rdfs:", triplesOnt$o)
-    triplesOnt$o <- gsub("<http://w3id.org/phuse/sdtmterm#",
+    triplesOnt$o <- gsub("<https://w3id.org/phuse/sdtmterm#",
       "sdtmterm:", triplesOnt$o)
 
     # recoding needed in AO source!  Update URI!
-    triplesOnt$o <- gsub("<http://w3id.org/phuse/sdtmterm#",
+    triplesOnt$o <- gsub("<https://w3id.org/phuse/sdtmterm#",
       "sdtmterm:", triplesOnt$o)
 
 
     triplesOnt$o <- gsub("<http://www.w3.org/2004/02/skos/core#",
       "skos:", triplesOnt$o)
-    triplesOnt$o <- gsub("<http://w3id.org/phuse/study#",
+    triplesOnt$o <- gsub("<https://w3id.org/phuse/study#",
       "study:", triplesOnt$o)
     triplesOnt$o <- gsub("<http://www.w3.org/2006/time#",
       "time:", triplesOnt$o)
@@ -183,7 +183,7 @@ server <- function(input, output, session) {
   triplesDer <- reactive({
 
     queryDer = paste0("
-    PREFIX cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#>
+    PREFIX cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#>
     PATHS ALL
     START ?s = ", input$rootNodeDer,"
     END ?o
@@ -202,15 +202,15 @@ server <- function(input, output, session) {
 
     # Create a function for this:
     # Subjects
-    triplesDer$s <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
+    triplesDer$s <- gsub("<https://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesDer$s)
-    triplesDer$s <- gsub("<http://w3id.org/phuse/cd01p",
+    triplesDer$s <- gsub("<https://w3id.org/phuse/cd01p",
       "cd01p:", triplesDer$s)
 
     # Predicates
-    triplesDer$p <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
+    triplesDer$p <- gsub("<https://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesDer$p)
-    triplesDer$p <- gsub("<http://w3id.org/phuse/code#",
+    triplesDer$p <- gsub("<https://w3id.org/phuse/code#",
       "code:", triplesDer$p)
     triplesDer$o <- gsub("<http://www.w3.org/2002/07/owl#",
       "owl:", triplesDer$o)
@@ -220,29 +220,29 @@ server <- function(input, output, session) {
       "rdfs:", triplesDer$p)
     triplesDer$p <- gsub("<http://www.w3.org/2004/02/skos/core#",
       "skos:", triplesDer$p)
-    triplesDer$p <- gsub("<http://w3id.org/phuse/study#",
+    triplesDer$p <- gsub("<https://w3id.org/phuse/study#",
       "study:", triplesDer$p)
     triplesDer$p <- gsub("<http://www.w3.org/2006/time#",
       "time:", triplesDer$p)
 
     # Objects
-    triplesDer$o <- gsub("<http://w3id.org/phuse/cdiscpilot01#",
+    triplesDer$o <- gsub("<https://w3id.org/phuse/cdiscpilot01#",
       "cdiscpilot01:", triplesDer$o)
-    triplesDer$o <- gsub("<http://w3id.org/phuse/code#",
+    triplesDer$o <- gsub("<https://w3id.org/phuse/code#",
       "code:", triplesDer$o)
-    triplesDer$o <- gsub("<http://w3id.org/phuse/cd01p",
+    triplesDer$o <- gsub("<https://w3id.org/phuse/cd01p",
       "cd01p:", triplesDer$o)
-    triplesDer$o <- gsub("<http://w3id.org/phuse/custom#>",
+    triplesDer$o <- gsub("<https://w3id.org/phuse/custom#>",
       "custom:", triplesDer$o)
     triplesDer$o <- gsub("<http://www.w3.org/1999/02/22-rdf-syntax-ns#",
       "rdf:", triplesDer$o)
     triplesDer$o <- gsub("<http://www.w3.org/2000/01/rdf-schema#",
       "rdfs:", triplesDer$o)
-    triplesDer$o <- gsub("<http://w3id.org/phuse/sdtmterm#",
+    triplesDer$o <- gsub("<https://w3id.org/phuse/sdtmterm#",
       "sdtmterm:", triplesDer$o)
     triplesDer$o <- gsub("<http://www.w3.org/2004/02/skos/core#",
       "skos:", triplesDer$o)
-    triplesDer$o <- gsub("<http://w3id.org/phuse/study#",
+    triplesDer$o <- gsub("<https://w3id.org/phuse/study#",
       "study:", triplesDer$o)
     triplesDer$o <- gsub("<http://www.w3.org/2006/time#",
       "time:", triplesDer$o)
