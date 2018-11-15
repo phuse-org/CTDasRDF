@@ -39,14 +39,10 @@ Project folder structure and content.
 ### R
 
 -   **/r/conversion-gRaveyaRd**
-    -   R scripts from outdated methods that should be deleted. Pre-SMS mapping where R (redland/rrdfs) used to create triples.
-    -   **TODO:** Delete these scripts.
 -   **/r/query**
     -   R scripts that query the triplestore.
-    -   Most scripts are outdated (query TTL or Virtuoso) and should be updated or deleted.
-    -   **TODO:** Update content in this folder.
 -   **/r/utility**
-    -   Utility/Example scripts. Eg: read XPT from R.
+    -   Utility/Example scripts. E.g.: Read XPT from R.
 -   **/r/validation**
     -   Validate instance data between SMS conversion approach and instance data from ontology development.
     -   Not all scripts up to date
