@@ -1,6 +1,6 @@
 #______________________________________________________________________________
-# FILE: 
-# DESC: 
+# FILE: r/vis/PathQuery-app/server.R
+# DESC: Path Query App
 # SRC :
 # IN  : 
 # OUT : 
@@ -8,29 +8,30 @@
 # SRC : 
 # NOTE: 
 # TODO: 
+# 
 #______________________________________________________________________________
 function(input, output, session) {
   #startNode <- "cdiscpilot01:Person_01-701-1015"
   # Note  input$startNode value is NOT enquoted!
   triples <- reactive({   
     
-    queryText <- paste0("
-      PREFIX cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> 
-      PATHS START ?s =", input$startNode, " END ?o VIA ?p  MAX LENGTH ", input$hops, " ")
+  queryText <- paste0("
+    PREFIX cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> 
+    PATHS START ?s =", input$startNode, " END ?o VIA ?p  MAX LENGTH ", input$hops, " ")
+
+#DEBUG queryText <-"prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> 
+#DEBUG    PATHS START ?s=cdiscpilot01:Person_01-701-1015 END ?o VIA ?p  MAX LENGTH 2"    
+    
     foo<<-queryText
     qd <- SPARQL(endpoint, queryText)
     triplesDf <- qd$results
+    
     # Remove artifacts from Stardog path query. complete.cases did not work here
     triplesDf <- triplesDf[!is.na(triplesDf[,1]),]
 
     triplesDf <- triplesDf[, c("s", "p", "o")]
     triples <- IRItoPrefix(sourceDF=triplesDf, colsToParse=c("s", "p", "o"))
   })
-
-
-
-
-
 
   #____________________________________________________________________________
   #  Vistnetwork render
@@ -61,7 +62,7 @@ function(input, output, session) {
     nodes$color.background <- "white"
     nodes$color.border     <- "black"
     
-    # Nodes color based on prefix
+    # Nodes color based on prefix. Prefix set in IRItoPrefix()
     nodes$color.background[ grepl("cdiscpilot01:", nodes$id, perl=TRUE) ] <- "#2C52DA"
     nodes$color.background[ grepl("cd01p:",        nodes$id, perl=TRUE) ] <- '#008D00'   
     nodes$color.background[ grepl("code:",         nodes$id, perl=TRUE) ] <- '#1C5B64'
@@ -81,11 +82,11 @@ function(input, output, session) {
     edges$length <- 500  # Could make this dynamic for large vs small graphs based on dataframe size...
     
     edges$color <- "black"  # default and for literals
-    edges$color[ grepl("cdiscpilot01:", edges$to, perl=TRUE) ] <- "#2C52DA"
-    edges$color[ grepl("cd01p:",        edges$to, perl=TRUE) ] <- '#008D00'   
-    edges$color[ grepl("code:",         edges$to, perl=TRUE) ] <- '#1C5B64'
-    edges$color[ grepl("study:",        edges$to, perl=TRUE) ] <- '#FFBD09'  
-    edges$color[ grepl("custom:",       edges$to, perl=TRUE) ] <- '#C71B5F'  
+    edges$color[ grepl("cdiscpilot01#", edges$to, perl=TRUE) ] <- "#2C52DA"
+    edges$color[ grepl("cd01p#",        edges$to, perl=TRUE) ] <- '#008D00'   
+    edges$color[ grepl("code#",         edges$to, perl=TRUE) ] <- '#1C5B64'
+    edges$color[ grepl("study#",        edges$to, perl=TRUE) ] <- '#FFBD09'  
+    edges$color[ grepl("custom#",       edges$to, perl=TRUE) ] <- '#C71B5F'  
 
     
     visNetwork(nodes, edges, width= "100%", height=1100, background = "#919191") %>%

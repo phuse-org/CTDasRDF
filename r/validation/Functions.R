@@ -22,22 +22,22 @@
 #' encodeCol(sourceDf=dmValus, colsToParse=c("s", "p", "o"))
 IRItoPrefix <- function(sourceDF, colsToParse)
 {  
-
-  # Use to build prefix list and to regex-out results to use prefixed value.
+  
+   # Use to build prefix list and to regex-out results to use prefixed value.
   prefixes <- read.table(header=T, text='
     prefix iri
-    cd01p:        <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> 
-    cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#>    
-    code:         <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> 
-    custom:       <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#>
+    cd01p:        <https://w3id.org/phuse/cd01p#> 
+    cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#>    
+    code:         <https://w3id.org/phuse/code#> 
+    custom:       <https://w3id.org/phuse/custom#>
     owl:          <http://www.w3.org/2002/07/owl#> 
     rdf:          <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
     rdfs:         <http://www.w3.org/2000/01/rdf-schema#> 
-    sdtmterm:     <http://rdf.cdisc.org/sdtmterm#> 
+    sdtmterm:     <https://w3id.org/phuse/sdtmterm#> 
     skos:         <http://www.w3.org/2004/02/skos/core#> 
     sp:           <http://spinrdf.org/sp#> 
     spin:         <http://spinrdf.org/spin#> 
-    study:        <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> 
+    study:        <https://w3id.org/phuse/study#> 
     time:         <http://www.w3.org/2006/time#> 
     xsd:          <http://www.w3.org/2001/XMLSchema#> 
   ')
