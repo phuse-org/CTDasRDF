@@ -32,3 +32,7 @@ How-To Guides **TBD**
 ---------------------
 
 Step-by-step guides to working with the data.
+
+### [Get Hands on CTDasRDF](HandsOnCTDasRDF.md)
+
+A step by step guide to install required software, create data, load data and browse data.

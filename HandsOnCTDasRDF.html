@@ -346,12 +346,12 @@ You might have issues with JAVA when stardog is not working. Make sure you have 
 <h3>Browse Ontologies with WebVOWL</h3>
 <p>If you want to explore the ontologies (OWL) used, you might want to use the graphical display of the OWLs with the WebVOWL tool. The following links can be used to browse the ontologies through WebVOWL:</p>
 <ul>
-<li><a href="http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/cd01p#">cd01p</a></li>
-<li><a href="http://visualdataweb.de/webvowl/#iri=<http://w3id.org/phuse/cdiscpilot01#">cdiscpilot01</a></li>
-<li><a href="http://visualdataweb.de/webvowl/#iri=<http://w3id.org/phuse/code#">code</a></li>
-<li><a href="http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/sdtm#">sdtm</a></li>
-<li><a href="http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/sdtmterm#">sdtmterm</a></li>
-<li><a href="http://visualdataweb.de/webvowl/#iri=http://w3id.org/phuse/study#">study</a></li>
+<li><a href="http://visualdataweb.de/webvowl/#iri=https://w3id.org/phuse/cd01p#">cd01p</a></li>
+<li><a href="http://visualdataweb.de/webvowl/#iri=<https://w3id.org/phuse/cdiscpilot01#">cdiscpilot01</a></li>
+<li><a href="http://visualdataweb.de/webvowl/#iri=<https://w3id.org/phuse/code#">code</a></li>
+<li><a href="http://visualdataweb.de/webvowl/#iri=https://w3id.org/phuse/sdtm#">sdtm</a></li>
+<li><a href="http://visualdataweb.de/webvowl/#iri=https://w3id.org/phuse/sdtmterm#">sdtmterm</a></li>
+<li><a href="http://visualdataweb.de/webvowl/#iri=https://w3id.org/phuse/study#">study</a></li>
 </ul>
 <p>If you want more information on the Visualization with VOWL, you might read this paper where WebVOWL is explained very well: “<a href="http://www.semantic-web-journal.net/system/files/swj1114.pdf">Visualizing Ontologies with VOWL</a>”.</p>
 <p>When you load for example the study.ttl file, you might get some warnings that not all ontologies can be loaded - ignore them. Then you see light blue and dark blue bubbles with relationshipts. The light blue ones are the one from the current ontology, so you might want to explore them first. You can see the most important classes from the study.ttl ontology at the first glance.</p>
@@ -435,21 +435,21 @@ WHERE
 <h3>Enhance Stardog Database</h3>
 <p>You might not like the long prefixes which are displayed on every query result. During triple creation also shortcuts has been used. To have a look what prefixes are used in this project, open the data/config/prefixes.csv file. Checkout which ones you would like to have available as shortcut in your database. You might for example select the following:</p>
 <ul>
-<li>cd01p=<a href="http://w3id.org/phuse/cd01p#" class="uri">http://w3id.org/phuse/cd01p#</a></li>
-<li>cdiscpilot01=<a href="http://w3id.org/phuse/cdiscpilot01#" class="uri"><http://w3id.org/phuse/cdiscpilot01#</a></li>
-<li>code=<a href="http://w3id.org/phuse/code#" class="uri"><http://w3id.org/phuse/code#</a></li>
-<li>sdtm=<a href="http://w3id.org/phuse/sdtm#" class="uri">http://w3id.org/phuse/sdtm#</a></li>
-<li>sdtmterm=<a href="http://w3id.org/phuse/sdtmterm#" class="uri">http://w3id.org/phuse/sdtmterm#</a></li>
-<li>study=<a href="http://w3id.org/phuse/study#" class="uri">http://w3id.org/phuse/study#</a></li>
+<li>cd01p=<a href="https://w3id.org/phuse/cd01p#" class="uri">https://w3id.org/phuse/cd01p#</a></li>
+<li>cdiscpilot01=<a href="https://w3id.org/phuse/cdiscpilot01#" class="uri"><https://w3id.org/phuse/cdiscpilot01#</a></li>
+<li>code=<a href="https://w3id.org/phuse/code#" class="uri"><https://w3id.org/phuse/code#</a></li>
+<li>sdtm=<a href="https://w3id.org/phuse/sdtm#" class="uri">https://w3id.org/phuse/sdtm#</a></li>
+<li>sdtmterm=<a href="https://w3id.org/phuse/sdtmterm#" class="uri">https://w3id.org/phuse/sdtmterm#</a></li>
+<li>study=<a href="https://w3id.org/phuse/study#" class="uri">https://w3id.org/phuse/study#</a></li>
 </ul>
 <p>To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <a href="http://localhost:5820/#/databases" class="uri">http://localhost:5820/#/databases</a> and select your “<a href="http://localhost:5820/#/databases" class="uri">http://localhost:5820/#/databases</a>” database. Turn the database “OFF” and “Edit”. Now you are able to “Add namespace” as you like. Remember to “Save” and turn the database “ON”.</p>
 <p>Alternatively, you can set the namespaces from the commandline by pasting the following commands into the terminal:</p>
-<pre><code>stardog namespace add CTDasRDFSMS --prefix cd01p --uri http://w3id.org/phuse/cd01p#
-stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri <http://w3id.org/phuse/cdiscpilot01#
-stardog namespace add CTDasRDFSMS --prefix code --uri <http://w3id.org/phuse/code#
-stardog namespace add CTDasRDFSMS --prefix sdtm --uri http://w3id.org/phuse/sdtm#
-stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri http://w3id.org/phuse/sdtmterm#
-stardog namespace add CTDasRDFSMS --prefix study --uri http://w3id.org/phuse/study#</code></pre>
+<pre><code>stardog namespace add CTDasRDFSMS --prefix cd01p --uri https://w3id.org/phuse/cd01p#
+stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri <https://w3id.org/phuse/cdiscpilot01#
+stardog namespace add CTDasRDFSMS --prefix code --uri <https://w3id.org/phuse/code#
+stardog namespace add CTDasRDFSMS --prefix sdtm --uri https://w3id.org/phuse/sdtm#
+stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri https://w3id.org/phuse/sdtmterm#
+stardog namespace add CTDasRDFSMS --prefix study --uri https://w3id.org/phuse/study#</code></pre>
 <p>When you now perform any queries, you will see the namespace abbreviations nicely in the result:</p>
 <pre><code>SELECT *
 WHERE {
