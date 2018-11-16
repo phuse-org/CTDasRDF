@@ -18,9 +18,12 @@ library(visNetwork)
 
 # Set wd 3 levels up, to folder CTDasRDF. Navigate down from 
 # there to data/source/ to obtain TTL source data.
-setwd("../../../")
+setwd("c:/Temp/git/CTDasRDF")
 currDir<-getwd()
 source("r/validation/Functions.R")  # IRI to prefix and other fun
+
+Sys.setenv(http_proxy="")
+Sys.setenv(https_proxy="")
 
 # Endpoint
 endpoint <- "http://localhost:5820/CTDasRDFOnt/query"

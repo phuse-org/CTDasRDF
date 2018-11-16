@@ -10,6 +10,13 @@ SELECT DISTINCT *
           ?o2 ?p3 ?o3 .
       }
   }
+  
+  
+  
+# build range/domain pairs
+SELECT * WHERE {?predicate  rdfs:domain ?domain 
+                OPTIONAL {?predicate rdfs:range ?range}
+                    }
 
 
 #Delete all tripples
