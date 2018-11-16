@@ -1,24 +1,27 @@
 #______________________________________________________________________________
-# FILE: global.R
-# DESC: Global for SMS Visualization App
+# FILE: r/vis/SMSMapVis-app/global.R
+# DESC: SMS Visualization App
 #       Includes function to parse map files into s,p,o
 # SRC :
 # IN  : Hard coded map file names as data source
 # OUT : 
 # REQ : 
 # SRC : 
-# NOTE: Legend nodes not currently implemented. Delete?
+# NOTE: 
 # TODO: 
 #______________________________________________________________________________
-library(stringr)     #      rename
+library(stringr)     # str_extract
 library(visNetwork)   
-library(reshape)  #  melt
+library(reshape)     # melt, rename
 library(dplyr)  
 library(DT)
 
-# Configuration
-setwd("C:/temp/git/CTDasRDF")
-# source("r/validation/Functions.R")  # IRI to prefix and other fun
+# Set wd 3 levels up, to folder CTDasRDF. Navigate down from 
+# there to data/source/ to obtain TTL source data.
+setwd("../../../")
+currDir<-getwd()
+
+cat("Current Dir=",currDir)
 maxLabelSize <- 40
 
 #' Parse SMS files
@@ -82,24 +85,20 @@ parseFile <- function(sourceFiles){
   foo <- triples
 }  
 
-
-#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# Create triples DF from known TTL files
 triples<-data.frame(parseFile(sourceFiles=list("DM", "SUPPDM", "EX", "VS", "Graphmeta", "Invest")))
 
 #---- Formatting 
-#  _EC = edge colours
-#  _BC = background colours
+#  _bc = background colours
+#  _ec = edge colours
 cdiscpilot01_bc <-"blue"
 cd01p_bc        <- "lightblue"
 code_bc         <- "red"
 study_bc        <- "green"
 time_bc         <- "purple"
 owl_bc          <- "orange"
-        
-dm_ec  <- '#B3CDE3'
+dm_ec           <- '#B3CDE3'
 
-
-#---- Nodes Construction ------------------------------------------------------
 # Legend Nodes
 lnodes <- read.table(header = TRUE, text = "
 label        color.border color.background 
@@ -117,17 +116,16 @@ owl          'orange'     'white'
 lnodes$shape <- "box"
 lnodes$title <- "Legend"
 
-
 #-- Legend Nodes Legend ----
-# Yellow node: #FFBD09
-# Blue node: #2C52DA
-# Bright. Turq:  #3DDAFD
-# Green node: #008D00
+# Yellow node:    #FFBD09
+# Blue node:      #2C52DA
+# Bright. Turq:   #3DDAFD
+# Green node:     #008D00
 # BlueGreen node: #1C5B64
-# DK red node: #870922
-# Br red node: #C71B5F
-# Purp Node: #482C79
-# Br. Or Node: #FE7900
+# DK red node:    #870922
+# Br red node:    #C71B5F
+# Purp Node:      #482C79
+# Br. Or Node:    #FE7900
 
 lnodes <- read.table(header = TRUE, text = "
 label         color.border color.background font.color

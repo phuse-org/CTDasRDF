@@ -21,16 +21,16 @@ query <- "SELECT *
   } LIMIT 100"
 
 # Or: ready prefixes in from prefixes.csv project file.
-prefix <- c("cd01p",        "http://w3id.org/phuse/cd01p",
-            "cdiscpilot01", "<http://w3id.org/phuse/cdiscpilot01#",
-            "code",         "<http://w3id.org/phuse/code#",
-            "custom",       "<http://w3id.org/phuse/custom#>",
+prefix <- c("cd01p",        "https://w3id.org/phuse/cd01p",
+            "cdiscpilot01", "<https://w3id.org/phuse/cdiscpilot01#",
+            "code",         "<https://w3id.org/phuse/code#",
+            "custom",       "<https://w3id.org/phuse/custom#>",
             "owl",          "http://www.w3.org/2002/07/owl#",
             "rdf",          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",
-            "sdtmterm",     "http://w3id.org/phuse/sdtmterm#",
+            "sdtmterm",     "https://w3id.org/phuse/sdtmterm#",
             "skos",         "http://www.w3.org/2004/02/skos/core#",
-            "study",        "http://w3id.org/phuse/study#",
+            "study",        "https://w3id.org/phuse/study#",
             "time",         "http://www.w3.org/2006/time#")
 
 qd <- SPARQL(endpoint, query, ns=prefix)

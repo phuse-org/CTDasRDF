@@ -1,15 +1,14 @@
 #______________________________________________________________________________
-# FILE: server.R
-# DESC: Server for SMS Map visualization
+# FILE: r/vis/SMSMapVis-app/server.R
+# DESC: SMS Visualization App
 # SRC :
 # IN  : triples df, subset using the UI input$maps
 # OUT : 
 # REQ : 
 # SRC : 
 # NOTE: 
-# TODO:   map  selections error: nodes show when no maps selected. See namespace logic for fix.
-#        Node Seletion: Widen selection drop down to show complete node value
-#        Confirm :bolean and :float literals are representedR
+# TODO:  Node Seletion: Widen selection drop down to show complete node value
+#        Confirm :bolean and :float literals are represented
 #______________________________________________________________________________
 
 function(input, output, session) {
@@ -73,13 +72,12 @@ function(input, output, session) {
     )  
   })
 
-  
   #-- Nodes Construction ------------------------------------------------------
   nodes <- reactive({
 
-    # Get the unique list of nodes: Subject and Object into a single column
-    #   "id.vars" is the list of columns to keep untouched. The unamed ones (s,o) are 
-    #   melted into the "value" column.
+    # Get the unique list of nodes: Subject and Object into a single column.
+    #   "id.vars" is the list of columns to keep untouched. The unamed ones 
+    #   (s,o) are melted into the "value" column.
     nodeList <- reshape::melt(triplesDisplay(), id.vars=c("p", "mapFile"))
   
     # A node can be both a Subject and Object so remove duplicates
@@ -96,7 +94,6 @@ function(input, output, session) {
     nodes$title <- gsub("\\{", "<font color='red'>\\{", nodes$id, perl=FALSE)
     nodes$title <- gsub("\\}", "\\}</font>", nodes$title)
       
-
     # Label - on node in graph. Shortened for display. HTML NOT allowed
     #   Truncate if value is string longer than maxLabelSize
     nodes$label=""; # Default to none
@@ -128,8 +125,8 @@ function(input, output, session) {
     edges$arrows <- "to"
     edges$title  <- edges$p  # title: present when mouseover edge.
     edges$label  <- edges$p  # Consider shortening as did for node label
-    edges$length <- 500  # Could make this dynamic for large vs small graphs based on dataframe size...
-    edges$color  <- "black"  # default and for literals
+    edges$length <- 500      # ? Make dynamic for lg vs small dataframe
+    edges$color  <- "black"  # Default and literals
 
     # Assign colors based on the target node
     edges$color[ grepl("cdiscpilot01:", edges$to, perl=TRUE) ] <- "#2C52DA"

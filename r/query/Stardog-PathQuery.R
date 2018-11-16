@@ -18,8 +18,8 @@ library(collapsibleTree)
 endpoint <- "http://localhost:5820/CTDasRDFOnt/query"
 
 queryOnt = paste0("
-    PREFIX cdiscpilot01: <http://w3id.org/phuse/cdiscpilot01#> 
-    PREFIX study: <http://w3id.org/phuse/study#> 
+    PREFIX cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> 
+    PREFIX study: <https://w3id.org/phuse/study#> 
     PATHS
     START ?s = cdiscpilot01:Person_1 
     END ?o
@@ -29,16 +29,16 @@ queryOnt = paste0("
 
 
 # Or: ready prefixes in from prefixes.csv project file.
-prefix <- c("cd01p",        "http://w3id.org/phuse/cd01p",
-            "cdiscpilot01", "<http://w3id.org/phuse/cdiscpilot01#>",
-            "code",         "<http://w3id.org/phuse/code#",
-            "custom",       "<http://w3id.org/phuse/custom#>",
+prefix <- c("cd01p",        "https://w3id.org/phuse/cd01p",
+            "cdiscpilot01", "<https://w3id.org/phuse/cdiscpilot01#>",
+            "code",         "<https://w3id.org/phuse/code#",
+            "custom",       "<https://w3id.org/phuse/custom#>",
             "owl",          "http://www.w3.org/2002/07/owl#",
             "rdf",          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",
-            "sdtmterm",     "http://w3id.org/phuse/sdtmterm#",
+            "sdtmterm",     "https://w3id.org/phuse/sdtmterm#",
             "skos",         "http://www.w3.org/2004/02/skos/core#",
-            "study",        "http://w3id.org/phuse/study#",
+            "study",        "https://w3id.org/phuse/study#",
             "time",         "http://www.w3.org/2006/time#")
 
 # qd <- SPARQL(endpoint, queryOnt, ns=prefix)
@@ -52,16 +52,16 @@ triplesDF <- unique(triplesDF)  # Remove dupes
 
 # Create a function for this:
 # Subjects
-triplesDF$s <- gsub("<http://w3id.org/phuse/cdiscpilot01#", 
+triplesDF$s <- gsub("<https://w3id.org/phuse/cdiscpilot01#", 
   "cdiscpilot01:", triplesDF$s)
-triplesDF$s <- gsub("<http://w3id.org/phuse/cd01p", 
+triplesDF$s <- gsub("<https://w3id.org/phuse/cd01p", 
   "cd01p:", triplesDF$s)
 
 
 # Predicates 
-triplesDF$p <- gsub("<http://w3id.org/phuse/cdiscpilot01#", 
+triplesDF$p <- gsub("<https://w3id.org/phuse/cdiscpilot01#", 
   "cdiscpilot01:", triplesDF$p)
-triplesDF$p <- gsub("<http://w3id.org/phuse/code#", 
+triplesDF$p <- gsub("<https://w3id.org/phuse/code#", 
   "code:", triplesDF$p)
 triplesDF$p <- gsub("<http://www.w3.org/1999/02/22-rdf-syntax-ns#", 
   "rdf:", triplesDF$p)
@@ -69,29 +69,29 @@ triplesDF$p <- gsub("<http://www.w3.org/2000/01/rdf-schema#",
   "rdfs:", triplesDF$p)
 triplesDF$p <- gsub("<http://www.w3.org/2004/02/skos/core#", 
   "skos:", triplesDF$p)
-triplesDF$p <- gsub("<http://w3id.org/phuse/study#", 
+triplesDF$p <- gsub("<https://w3id.org/phuse/study#", 
   "study:", triplesDF$p)
 triplesDF$p <- gsub("<http://www.w3.org/2006/time#", 
   "time:", triplesDF$p)
 
 # Objects
-triplesDF$o <- gsub("<http://w3id.org/phuse/cdiscpilot01#", 
+triplesDF$o <- gsub("<https://w3id.org/phuse/cdiscpilot01#", 
   "cdiscpilot01:", triplesDF$o)
-triplesDF$o <- gsub("<http://w3id.org/phuse/code#", 
+triplesDF$o <- gsub("<https://w3id.org/phuse/code#", 
   "code:", triplesDF$o)
-triplesDF$o <- gsub("<http://w3id.org/phuse/cd01p", 
+triplesDF$o <- gsub("<https://w3id.org/phuse/cd01p", 
   "cd01p:", triplesDF$o)
-triplesDF$o <- gsub("<http://w3id.org/phuse/custom#>", 
+triplesDF$o <- gsub("<https://w3id.org/phuse/custom#>", 
   "custom:", triplesDF$o)
 triplesDF$o <- gsub("<http://www.w3.org/1999/02/22-rdf-syntax-ns#", 
   "rdf:", triplesDF$o)
 triplesDF$o <- gsub("<http://www.w3.org/2000/01/rdf-schema#", 
   "rdfs:", triplesDF$o)
-triplesDF$o <- gsub("<http://w3id.org/phuse/sdtmterm#", 
+triplesDF$o <- gsub("<https://w3id.org/phuse/sdtmterm#", 
   "sdtmterm:", triplesDF$o)
 triplesDF$o <- gsub("<http://www.w3.org/2004/02/skos/core#", 
   "skos:", triplesDF$o)
-triplesDF$o <- gsub("<http://w3id.org/phuse/study#", 
+triplesDF$o <- gsub("<https://w3id.org/phuse/study#", 
   "study:", triplesDF$o)
 triplesDF$o <- gsub("<http://www.w3.org/2006/time#", 
   "time:", triplesDF$o)

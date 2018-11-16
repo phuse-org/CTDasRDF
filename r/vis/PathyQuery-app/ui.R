@@ -1,21 +1,17 @@
 #______________________________________________________________________________
-# $HeadURL: http://brasvnap001/prod-gsp/oaa/LinkedData/RBMProgramFlow/r/vis/MacroImpactKRI-app/ui.R $
-# $Rev: 393 $
-# $Date: 2018-10-02 16:36:05 -0400 (Tue, 02 Oct 2018) $
-# $Author: U041939 $
-# _____________________________________________________________________________
-# DESC: Left: Hierarchical network graph of KRI to Macro Relations
-#       Right: Details of a selected node. Only visible when a node is selected
-# SRC :
-# IN  :
-# OUT :
-# REQ :
-# NOTE: 
+# FILE: r/vis/PathQuery-app/ui.R
+# DESC: Path Query App
+# SRC : 
+# IN  : Stardog Triplestore
+# OUT : 
+# REQ : 
+# SRC : 
+# NOTE:  hard coded start node: cdiscpilot01:Person_01-701-1015
 # TODO: 
-# _____________________________________________________________________________
+# 
+#______________________________________________________________________________
 fluidPage(
-  
-  
+
   tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
     ),
