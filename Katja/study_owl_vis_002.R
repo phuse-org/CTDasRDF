@@ -2,15 +2,16 @@ library(stringr)
 library(visNetwork)
 library(reshape)  #  melt
 library(dplyr)
+library(SPARQL)
 
 # Configuration
 setwd("C:/Temp/git/CTDasRDF")
 maxLabelSize <- 40
 
 # provide functions
-addToNodes <- function(list, id, description){
+addToNodes <- function(list, id, description, label=id){
   if (! id %in% unlist(nodesListXX["id"])){
-    newItem <- data.frame(id,description)
+    newItem <- data.frame(id,description, label)
     colnames(newItem) <- nodesListLabels
     list <- rbind(list, newItem)
     return(list)
@@ -29,8 +30,12 @@ addToEdges <- function(list, from, to, connectionDescription){
 }
 
 addToGraph <- function(from, to, connectionDescription){
+  label_to <- to
+  if (unlist(strsplit(to,":"))[1] == "xsd"){
+    to <- paste0(to,"_",from,"_",connectionDescription)
+  }
   nodesListXX <<- addToNodes(nodesListXX,from,unlist(strsplit(from,":"))[2])
-  nodesListXX <<- addToNodes(nodesListXX,to,unlist(strsplit(to,":"))[2])
+  nodesListXX <<- addToNodes(nodesListXX,to,unlist(strsplit(to,":"))[2], label=label_to)
   edgesListXX <<- addToEdges(edgesListXX, from, to,connectionDescription)
 }
 
@@ -38,18 +43,37 @@ addToGraph <- function(from, to, connectionDescription){
 #edgesList - from, to, arrows, title, label, color, length
 
 # initialize lists
-nodesListXX     <- data.frame(matrix(ncol = 2, nrow = 0))
-nodesListLabels <- c("id", "description")
-colnames(nodesListXX) <- nodesListLabels
+initLists <- function (){
+  nodesListXX     <<- data.frame(matrix(ncol = 3, nrow = 0))
+  nodesListLabels <<- c("id", "description", "label")
+  colnames(nodesListXX) <<- nodesListLabels
+  
+  edgesListXX <<- data.frame(matrix(ncol = 3, nrow = 0))
+  edgesListLabels <<- c("from", "to", "title")
+  colnames(edgesListXX) <<- edgesListLabels
+}
+initLists()
 
-edgesListXX <- data.frame(matrix(ncol = 3, nrow = 0))
-edgesListLabels <- c("from", "to", "title")
-colnames(edgesListXX) <- edgesListLabels
 
 
 # fill lists
 addToGraph("study:Study","study:Title","study:hasTitle")
+addToGraph("study:Activity","time:Instant","study:hasDate")
+addToGraph("study:Activity", "xsd:string", "study:activityDescription")
+addToGraph("study:Activity", "xsd:string", "study:anotherDescription")
 
+
+
+"xsd:string_rfd:something" %in% unlist(nodesListXX["id"])
+
+print("xsd:string" %in% unlist(nodesListXX["id"]))
+addToNodes(nodesListXX,"xsd:string_rfd:something",unlist(strsplit("xsd:string_rfd:something",":"))[2], label="xsd:string")
+
+addToNodes(nodesListXX,"xsd:string_rfd:something",unlist(strsplit("xsd:string_rfd:something",":"))[2], label="xsd:string")
+
+unlist(strsplit("xsd:string_rfd:something",":"))[2]
+
+"xsd:string_rfd:something" %in% unlist(nodesListXX["id"])
 
 # nodesListXX <- addToNodes(nodesListXX,"study:Study","Study")
 # nodesListXX <- addToNodes(nodesListXX,"study:Study","Study")
@@ -59,14 +83,18 @@ addToGraph("study:Study","study:Title","study:hasTitle")
 
 
 # include formatting
-nodesListXX$label <- strtrim(nodesListXX$id, maxLabelSize) 
-nodesListXX$shape <- "box"
-nodesListXX$borderWidth <- 2
+formatList <- function(){
+  nodesListXX$label <<- strtrim(nodesListXX$label, maxLabelSize)   
+  nodesListXX$shape <<- "box"
+  nodesListXX$borderWidth <<- 2
+  
+  edgesListXX$arrows <<- "to"
+  edgesListXX$label <<- strtrim(edgesListXX$title, maxLabelSize) 
+  edgesListXX$color <<-"#808080"
+  edgesListXX$length <<- 500  
+}
+formatList()
 
-edgesListXX$arrows <- "to"
-edgesListXX$label <- strtrim(edgesListXX$title, maxLabelSize) 
-edgesListXX$color <-"#808080"
-edgesListXX$length <- 500
 
 
 # print list
@@ -84,6 +112,7 @@ visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
 
   visEdges(smooth=FALSE)
 
+#___________________________________________________________________
 
 
 Sys.setenv(http_proxy="")
@@ -102,19 +131,53 @@ prefix <- c("cd01p",        "http://w3id.org/phuse/cd01p#",
             "sdtmterm",     "http://w3id.org/phuse/sdtmterm#",
             "skos",         "http://www.w3.org/2004/02/skos/core#",
             "study",        "http://w3id.org/phuse/study#",
-            "time",         "http://www.w3.org/2006/time#")
+            "time",         "http://www.w3.org/2006/time#",
+            "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",
+            "xsd",          "http://www.w3.org/2001/XMLSchema#")
+
 
 queryOnt = paste0("SELECT * WHERE {?predicate  rdfs:domain ?domain 
-                OPTIONAL {?predicate rdfs:range ?range}} LIMIT 10")
+                OPTIONAL {?predicate rdfs:range ?range}}")
 
 qd <- SPARQL(endpoint, queryOnt, ns=prefix)
 triplesDf <- qd$results
 
 
+initLists()
 
+# include triples
 for (row in 1:nrow(triplesDf)) {
-  addToGraph(triplesDf$domain,triplesDf$range,triplesDf$predicate)
+  if (!is.na(triplesDf$domain[row]) && !is.na(triplesDf$range[row]) && !is.na(triplesDf$predicate[row])){
+    addToGraph(triplesDf$domain[row],triplesDf$range[row],triplesDf$predicate[row])  
+  }
 }
+
+
+
+formatList()
+
+visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+  
+  visIgraphLayout(layout = "layout_nicely",
+                  physics = FALSE) %>%
+  
+  visIgraphLayout(avoidOverlap = 1) %>%
+  
+  visEdges(smooth=FALSE)
+
+
+
+
+# ______________________________________________
+
+var1 <- "study:Activity"
+var2 <- "time:Instant"
+var3 <- "study:hasDate"
+addToGraph(var1,var2,var3)
+addToGraph("study:Activity","time:Instant","study:hasDate")
+
+typeof(var1)
+typeof("study:Study")
 
 warnings()
 
