@@ -1,3 +1,20 @@
+#______________________________________________________________________________
+# FILE: r/vis/study_ttl_vis.r
+# DESC: Study TTL visualization
+# SRC :
+# IN  : stardog database: CTDasRDFOWL, containing the study.ttl file loaded as triples
+# OUT : r/vis/study_ttl_vis.html    visualization of study.ttl domain-ranges
+#       r/vis/study_ttl_vis.html    visualization of study.ttl subclass connections
+# REQ : 
+# SRC : 
+# NOTE: 
+# TODO: 
+# DATE: 2018-11-22
+# BY  : KG
+#______________________________________________________________________________
+
+
+# initialize
 library(stringr)
 library(visNetwork)
 library(reshape)  #  melt
@@ -5,10 +22,14 @@ library(dplyr)
 library(SPARQL)
 
 # Configuration
-setwd("C:/Temp/git/CTDasRDF")
+setwd("C:/Temp/git/CTDasRDF/r/vis")
 maxLabelSize <- 40
 
-# provide functions
+
+#####################################################
+# include functions
+#####################################################
+
 addToNodes <- function(list, id, description, label=id){
   if (! id %in% unlist(nodesListXX["id"])){
     newItem <- data.frame(id,description, label, stringsAsFactors = FALSE)
@@ -20,7 +41,6 @@ addToNodes <- function(list, id, description, label=id){
 }
 
 addToEdges <- function(list, from, to, connectionDescription){
-  
   # if from and to is already available, check whether connectionDescription is already available, add if appropriate
   if (dim(edgesListXX[edgesListXX$from == from & edgesListXX$to == to,])[1] != 0){
     # check if description is already in
@@ -52,9 +72,6 @@ addToGraph <- function(from, to, connectionDescription){
   edgesListXX <<- addToEdges(edgesListXX, from, to,connectionDescription)
 }
 
-#nodesList - dataFrame with id, description, label, shape, borderWidth
-#edgesList - from, to, arrows, title, label, color, length
-
 # initialize lists
 initLists <- function (){
   nodesListXX     <<- data.frame(matrix(ncol = 3, nrow = 0), stringsAsFactors = FALSE)
@@ -65,15 +82,6 @@ initLists <- function (){
   edgesListLabels <<- c("from", "to", "title")
   colnames(edgesListXX) <<- edgesListLabels
 }
-initLists()
-
-
-
-# fill lists
-addToGraph("study:Study","study:Title","study:hasTitle")
-addToGraph("study:Activity","time:Instant","study:hasDate")
-addToGraph("study:Activity", "xsd:string", "study:activityDescription")
-addToGraph("study:Activity", "xsd:string", "study:anotherDescription")
 
 # include formatting
 formatList <- function(){
@@ -95,27 +103,10 @@ formatList <- function(){
   edgesListXX$color <<-"#808080"
   edgesListXX$length <<- 500  
 }
-formatList()
 
-
-
-# print list
-nodesListXX
-edgesListXX
-
-
-
-visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
-
-  visIgraphLayout(layout = "layout_nicely",
-                  physics = FALSE) %>%
-
-  visIgraphLayout(avoidOverlap = 1) %>%
-
-  visEdges(smooth=FALSE)
-
-#___________________________________________________________________
-
+#####################################################
+# create content graph
+#####################################################
 
 Sys.setenv(http_proxy="")
 Sys.setenv(https_proxy="")
@@ -139,7 +130,7 @@ prefix <- c("cd01p",        "https://w3id.org/phuse/cd01p#",
 
 
 queryOnt = paste0("SELECT * WHERE {?predicate  rdfs:domain ?domain 
-                OPTIONAL {?predicate rdfs:range ?range}}")
+                  OPTIONAL {?predicate rdfs:range ?range}}")
 
 qd <- SPARQL(endpoint, queryOnt, ns=prefix)
 triplesDf <- qd$results
@@ -156,16 +147,20 @@ for (row in 1:nrow(triplesDf)) {
 
 formatList()
 
-visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
-  visIgraphLayout(layout = "layout_nicely",
-                  physics = FALSE) %>%
-  visIgraphLayout(avoidOverlap = 1) %>%
-  visEdges(smooth=FALSE) %>% 
-  visOptions(manipulation = TRUE)
+graph <- visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+              visIgraphLayout(layout = "layout_nicely",
+                              physics = FALSE) %>%
+              visIgraphLayout(avoidOverlap = 1) %>%
+              visEdges(smooth=FALSE) %>% 
+              visOptions(manipulation = TRUE)
 
 
+visSave(graph, "study_ttl_vis.html", selfcontained = TRUE, background = "white")
 
-# ___________ Printout CLASS hierarchy _________________________________
+
+#####################################################
+# create subClass graph
+#####################################################
 
 queryOnt = paste0("SELECT * WHERE {?s  rdfs:subClassOf ?o}")
 
@@ -178,111 +173,18 @@ initLists()
 for (row in 1:nrow(triplesDf)) {
   if (!is.na(triplesDf$s[row]) && !is.na(triplesDf$o[row])){
     if (grepl("study:",triplesDf$s[row]) || grepl("study:",triplesDf$o[row])){
-      addToGraph(triplesDf$s[row],triplesDf$o[row],"rdfs:subClassOf")    
+      addToGraph(triplesDf$s[row],triplesDf$o[row],"")    
     }
   }
 }
 
 formatList()
 
-visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
-  visIgraphLayout(layout = "layout_nicely",
-                  physics = FALSE) %>%
-  visIgraphLayout(avoidOverlap = 1) %>%
-  visEdges(smooth=FALSE) %>% 
-  visOptions(manipulation = TRUE)
+graph <- visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+            visIgraphLayout(layout = "layout_nicely",
+                            physics = FALSE) %>%
+            visIgraphLayout(avoidOverlap = 1) %>%
+            visEdges(smooth=FALSE) %>% 
+            visOptions(manipulation = TRUE)
 
-
-
-# ______________________________________________
-
-var1 <- "study:Activity"
-var2 <- "time:Instant"
-var3 <- "study:hasDate"
-addToGraph(var1,var2,var3)
-addToGraph("study:Activity","time:Instant","study:hasDate")
-
-typeof(var1)
-typeof("study:Study")
-
-warnings()
-
-
-##- function with extra args:
-#cave <- function(x, c1, c2) c(mean(x[c1]), mean(x[c2]))
-apply(triplesDf, 1, addToGraph,  from = "domain", to = "range", connectionDescription="predicate")
-
-
-apply(triplesDf, 2, addToGraph, from=triplesDf$domain, to=triplesDf$range, connectionDescription=triplesDf$predicate)
-
-apply(triplesDf, 2, print)
-
-
-
-
-
-m <- matrix(c(1:10, 11:20), nrow = 10, ncol = 2)
-foo <- function(x)
-{
-  print( c("hallo", x, "World"));
-  return(NULL)
-}
-m
-apply(triplesDf, 1, FUN=foo)
-
-#__________________________________________________________________
-
-initLists()
-# fill lists
-addToGraph("study:Study","study:Title","study:hasTitle")
-addToGraph("study:Study","study:Title","study:hasTitleConnection")
-addToGraph("study:Title","study:Study","study:belongsToStudy")
-
-addToGraph("study:Activity","time:Instant","study:hasDate")
-addToGraph("study:Activity", "xsd:string", "study:activityDescription")
-addToGraph("study:Activity", "xsd:string", "study:anotherDescription")
-addToGraph("study:test1", "study:test2", "study:this\nstudy:that")
-
-
-
-formatList()
-visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
-  visIgraphLayout(layout = "layout_nicely",
-                  physics = TRUE) %>%
-  visIgraphLayout(avoidOverlap = 1) %>%
-  visEdges(smooth=FALSE)
-
-
-
-
-if ("study:hasTitle" %in% edgesListXX[edgesListXX$from == "study:Study" & edgesListXX$to == "study:Title",]$title){
-  print("title is in")
-}
-
-
-edgesListXX[edgesListXX$from == "study:Study",]
-
-blub <- edgesListXX[edgesListXX$from == "study:Study" & edgesListXX$to == "study:Title",]$title
-
-typeof(blub)
-print(toString(blub))
-
-grepl("study:hasTitle",blub)
-grepl("study:hasTitle0000",blub)
-
-edgesListXX[edgesListXX$from == "study:Study",]
-
-
-if (!is.null(edgesListXX[edgesListXX$from == "study:Study1" && edgesListXX$to == "study:Title",])){
-  print("yes")
-}
-
-
-is.null(edgesListXX[edgesListXX$from == "study:Study" && edgesListXX$to == "study:Title",])
-
-
-if (dim(edgesListXX[edgesListXX$from == "study:Study" && edgesListXX$to == "study:Title",])[1] != 0){
-  print("yes")
-}
-
-print(edgesListXX[edgesListXX$from == "study:Study" && edgesListXX$to == "study:Title",]$title)
+visSave(graph, "study_ttl_vis_subclass.html", selfcontained = TRUE, background = "white")
