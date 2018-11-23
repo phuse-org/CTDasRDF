@@ -1,7 +1,7 @@
 #install.packages("shiny")
 #install.packages("rmarkdown")
 #install.packages("knitr")
-install.packages("rmarkdown", lib="H:/Personal Data/R/win-library/3.5")
+#install.packages("rmarkdown", lib="H:/Personal Data/R/win-library/3.5")
 
 .libPaths("H:/Personal Data/R/win-library/3.5")
 library(rmarkdown)

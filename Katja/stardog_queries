@@ -25,6 +25,11 @@ DELETE{?s ?p ?o} WHERE{?s ?p ?o}
 
 SELECT * WHERE {?s  ?p ?o}
 
+SELECT ?SecondaryObjective
+WHERE
+  { ?s rdf:type study:SecondaryObjective .
+    ?s skos:prefLabel ?SecondaryObjective }
+
 #get all types
 SELECT DISTINCT ?t WHERE {?s rdf:type ?t}
 

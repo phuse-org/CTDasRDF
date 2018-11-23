@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream:doc/HandsOnCTDasRDF.md
 ---
 title: "Getting hands on CTDasRDF Project"
 output: 
@@ -30,7 +29,7 @@ To get start your hands on the project you can perform the following steps:
 - Loading the data into stardog
 - Now you are ready to explore either in Stardog or in R
 
-![Figure: Screenshot to download .zip](./doc/images/compiled_overview.png)
+![Figure: Screenshot to download .zip](./images/compiled_overview.png)
 
 ## Installation Hints (Windows)
 
@@ -99,7 +98,7 @@ You could change the content to exclude the wrong JAVA binaries and include the 
 
 The project files are available on Github <https://github.com/phuse-org/CTDasRDF> and are regularily updated. It is recommended to clone the repository and update this regularily with the git functionality easily. If you are not familar with git, you might want to just download the complete repository and unzip it a any location. Use the green button to "Clone or Download".
 
-![Figure: Screenshot to download .zip](./doc/images/screen_download.png)
+![Figure: Screenshot to download .zip](./images/screen_download.png)
 
 You can read the documentation in the github repository by clicking the *.rmd or *.md files. You might want to read the following documentations in the following order:
 * CTDasRDF.rmd - project overview
@@ -137,7 +136,7 @@ The core of the linked data is the Ontologies which define the links, object typ
 ### Browse Ontologies with Protege
 Protege is an open source tool where you can develop and manage OWLs, so define the data structure and concept for the data linkage. It is used in this project by some members to create and maintain the OWL.
 
-![Figure: Screenshot of Protege](./doc/images/protege_overview.PNG)
+![Figure: Screenshot of Protege](./images/protege_overview.PNG)
 
 On the picture you see the study.ttl file. The left pane displays the class hierarchy. Everything is a subclass of "Thing". What ever is in bold, this is defined in the currently opened owl file (so in study.ttl). All other items come from other referenced owl files. What you can see in the screenshot is that "Enrolled subject" is a subclass from "Human study subject" which is a subclass from "Human subject" and so on. This class hierarchy does not dipslay other relationships, so to investigate the connections using Protege is a bit difficult.
 
@@ -168,15 +167,15 @@ If you want more information on the Visualization with VOWL, you might read this
 
 When you load for example the study.ttl file, you might get some warnings that not all ontologies can be loaded - ignore them. Then you see light blue and dark blue bubbles with relationshipts. The light blue ones are the one from the current ontology, so you might want to explore them first. You can see the most important classes from the study.ttl ontology at the first glance.
 
-![Figure: Study.ttl Ontology - first glance](./doc/images/web_vowl_small.PNG)
+![Figure: Study.ttl Ontology - first glance](./images/web_vowl_small.PNG)
 
 You might wonder, why you miss quite some classes like the "Human Study Subject". This is because the tool filters classes out to allow an overview display of the ontologies. On the bottom "Filter" menue, you might want to remove the Degree collapsing and shift this to zero. Then you can see all the relationships and sub classes. This might be the starting point to look into one class of interest and figure out how this is connected to other things.
 
-![Figure: Study.ttl Ontology - full glance](./doc/images/web_vowl_huge.PNG)
+![Figure: Study.ttl Ontology - full glance](./images/web_vowl_huge.PNG)
 
 You can use the "Pick and Pin" option from the bottom "Mode" menu, to get a deeper view of classes and connections of interest. You might for example start with a "StudyActivity" where there is a "Study" which "hasStudyActivity" connected. And then there are "HumanStudySubjects" which participates in the study. The subgroup "EnrolledSubjects" has also an "Arm" connected which is also a "StudyActivity".
 
-![Figure: Study.ttl Ontology - zoomed & pinned](./doc/images/web_vowl_zoomed.PNG)
+![Figure: Study.ttl Ontology - zoomed & pinned](./images/web_vowl_zoomed.PNG)
 
 These connections are the ontologies and does not display the actual data. So these things define the structure of the relationships and classes which are used in our project.
 
@@ -363,7 +362,7 @@ To get start your hands on the project you can perform the following steps:
 - Loading the data into stardog
 - Now you are ready to explore either in Stardog or in R
 
-![Figure: Screenshot to download .zip](./doc/images/compiled_overview.png)
+![Figure: Screenshot to download .zip](./images/compiled_overview.png)
 
 ## Installation Hints (Windows)
 
@@ -432,7 +431,7 @@ You could change the content to exclude the wrong JAVA binaries and include the 
 
 The project files are available on Github <https://github.com/phuse-org/CTDasRDF> and are regularily updated. It is recommended to clone the repository and update this regularily with the git functionality easily. If you are not familar with git, you might want to just download the complete repository and unzip it a any location. Use the green button to "Clone or Download".
 
-![Figure: Screenshot to download .zip](./doc/images/screen_download.png)
+![Figure: Screenshot to download .zip](./images/screen_download.png)
 
 You can read the documentation in the github repository by clicking the *.rmd or *.md files. You might want to read the following documentations in the following order:
 * CTDasRDF.rmd - project overview
@@ -470,7 +469,7 @@ The core of the linked data is the Ontologies which define the links, object typ
 ### Browse Ontologies with Protege
 Protege is an open source tool where you can develop and manage OWLs, so define the data structure and concept for the data linkage. It is used in this project by some members to create and maintain the OWL.
 
-![Figure: Screenshot of Protege](./doc/images/protege_overview.PNG)
+![Figure: Screenshot of Protege](./images/protege_overview.PNG)
 
 On the picture you see the study.ttl file. The left pane displays the class hierarchy. Everything is a subclass of "Thing". What ever is in bold, this is defined in the currently opened owl file (so in study.ttl). All other items come from other referenced owl files. What you can see in the screenshot is that "Enrolled subject" is a subclass from "Human study subject" which is a subclass from "Human subject" and so on. This class hierarchy does not dipslay other relationships, so to investigate the connections using Protege is a bit difficult.
 
@@ -501,15 +500,15 @@ If you want more information on the Visualization with VOWL, you might read this
 
 When you load for example the study.ttl file, you might get some warnings that not all ontologies can be loaded - ignore them. Then you see light blue and dark blue bubbles with relationshipts. The light blue ones are the one from the current ontology, so you might want to explore them first. You can see the most important classes from the study.ttl ontology at the first glance.
 
-![Figure: Study.ttl Ontology - first glance](./doc/images/web_vowl_small.PNG)
+![Figure: Study.ttl Ontology - first glance](./images/web_vowl_small.PNG)
 
 You might wonder, why you miss quite some classes like the "Human Study Subject". This is because the tool filters classes out to allow an overview display of the ontologies. On the bottom "Filter" menue, you might want to remove the Degree collapsing and shift this to zero. Then you can see all the relationships and sub classes. This might be the starting point to look into one class of interest and figure out how this is connected to other things.
 
-![Figure: Study.ttl Ontology - full glance](./doc/images/web_vowl_huge.PNG)
+![Figure: Study.ttl Ontology - full glance](./images/web_vowl_huge.PNG)
 
 You can use the "Pick and Pin" option from the bottom "Mode" menu, to get a deeper view of classes and connections of interest. You might for example start with a "StudyActivity" where there is a "Study" which "hasStudyActivity" connected. And then there are "HumanStudySubjects" which participates in the study. The subgroup "EnrolledSubjects" has also an "Arm" connected which is also a "StudyActivity".
 
-![Figure: Study.ttl Ontology - zoomed & pinned](./doc/images/web_vowl_zoomed.PNG)
+![Figure: Study.ttl Ontology - zoomed & pinned](./images/web_vowl_zoomed.PNG)
 
 These connections are the ontologies and does not display the actual data. So these things define the structure of the relationships and classes which are used in our project.
 
