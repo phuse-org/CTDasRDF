@@ -15,6 +15,7 @@ THIS IS UNDER DEVELOPMENT, many changes expected.
 Date         | Comment
 ------------ | ----------------------------
 2018-11-23   | Documentation creation (KG)
+2018-11-26   | Further Documentation (KG)
 
 
 ## Overview
@@ -35,7 +36,7 @@ In the r/vis subfolder you can also find various program for different visualiza
 
 ## Starting small for first experiences
 
-### Setup and first instances
+### Setup and start with first instances
 
 Let's concentrate first on a small subset to see how things are working. Checking the Ontology, we currently concentrate only on a few objects:
 
@@ -50,6 +51,8 @@ Let's concentrate first on a small subset to see how things are working. Checkin
 * study:SecondaryObjective
 
 We are going to start with the "Study" as core element and associate different objects to this. The "Title" object has potentially a longTitle and shortTitle which is a simple string. Then there is the narms (number of arms) as a simple integer assignment and finally we will include a PrimaryObjective and SecondaryObjective.
+
+The Visualization is done throug r/vis/vis_stardog_dbs.R in section "create Ontology graph for CTDasRDFOWL (ofInterest_01)".
 
 ![Figure: Ontology with parts of interest](./images/hands_on_triples_01.png)
 
@@ -93,17 +96,17 @@ cdiscpilot01:Study_CDISCPILOT01
 
 To get a visualization, we store the ts_test001.ttl file including the prefix definitions and first instances, upload these triples into a triple store - e.g. the stardog database - and run the visualization.
 
-### Example Clear DB, Add instances, Run Visualization
+### Example - Clear DB, Add instances, Run Visualization
 
 Delete all triples from the CTDasRDFSMS database trouth the Stardog Web interface. Open your database <http://localhost:5820/CTDasRDFSMS>. Go to ">_Query" and execute the delete all tripples command: DELETE{?s ?p ?o} WHERE{?s ?p ?o}.
 
 Load the ts_test001.ttl file into the the database through "Data" -> "+Add", choose the corresponding file and click "Upload". You should get a "Success!" message. You can check the success by selecting all triples in the store with the command: SELECT * WHERE {?s  ?p ?o}.
 
-Now you can run the program XXX to visualize all instances in the database.
+The Visualization is done throug r/vis/vis_stardog_dbs.R in section "create content graph for CTDasRDFSMS".
 
 ![Figure: Instances](./images/hands_on_triples_02.png)
 
-### Continue first instances
+### Continue with first instances
 
 As a next step we need to define the linked instances further. In our case these are the three for the title, the primary objective and the secondary objective. Out study has just one long Title. Furthermore we should also specify the type of the Title. This we can do with the following triples:
 
@@ -173,7 +176,9 @@ cdiscpilot01:SecondaryObjective_CDISCPILOT01_004
 
 ### Visualize first instances
 
-Now we have loaded all information available from the selected ontology parts into our graph database. We can visualize this again through the above described process: delete data, add data, visualize via R. The following graphic displays the content:
+Now we have loaded all information available from the selected ontology parts into our graph database. We can visualize this again through the above described process: delete data, add data, visualize via R. 
+
+The following graphic displays the content (r/vis/vis_stardog_dbs.R - section "create content graph for CTDasRDFSMS"):
 
 ![Figure: Instances](./images/hands_on_triples_03.png)
 
@@ -192,3 +197,37 @@ And will get the following output:
 * To assess the dose-dependent improvements in activities of daily living. Improved scores on the Disability Assessment for Dementia (DAD) will indicate improvement in these areas.
 * To assess the dose-dependent improvements in an extended assessment of cognition that integrates attention/concentration tasks. The ADAS-Cog (14) will be used for this assessment.
 * To assess the treatment response as a function of Apo E genotype.
+
+## Complete TS mapping
+
+### Get related ontology elements out of domain-range connections
+
+To continue with the TS mapping from the pilot study we check which ontology elements we need to fill. Quite a lot of the content can simply be mapped when looking into the domain-range connections of the ontology. 
+
+The Visualization is done throug r/vis/vis_stardog_dbs.R in section "create Ontology graph for CTDasRDFOWL (ofInterest_02)".
+
+![Figure: Ontology for simple mappings](./images/hands_on_triples_04.png)
+
+So we are able to map 65% of all observations after this step in our TS domain and are missing 35% observations which are 17 in numbers. But where to map the other observations? Some might be missing as the ontology is under development, but some are already available, but can only be mapped when considering the sub-class connections.
+
+### Connecting sub-class hierarchies
+
+As the next step we might want to look into the Data Cutoff example. 
+
+TSPARMCD     |   TSPARM 
+------------ | ----------------------------
+DCUTDESC     | Data Cutoff Description
+DCUTDTC      | Data Cutoff Date
+
+Where might this mapping go? When we look into the ontology, for example with Protege, we find a class called "study:DateCutoff". Checking the sub-class hierarchy, we figure out that this is a sub-class of "study:AdministrativeActivity", which is a sub-class of "study:StudyActivity" which is a sub-class of "study:Activity".
+
+![Figure: Sub-Class hierarchy for DateCutoff](./images/hands_on_triples_05.png)
+
+According the class hierarchy, the sub-classes have the same attributes like the "parents" and might have further connections. The "study:Activity" class has already the required attributes we find in our TS domain which is study:activityDescription and study:hasDate. Furthermore we see the link from "study:Study" to "study:StudyActivity".
+
+
+![Figure: Attributes for class study:Activity](./images/hands_on_triples_06.png)
+
+So now we merge all reqiured attributes and sub-class values together to be able to map the two Cutoff values to our graph.
+
+![Figure: Attributes for class study:Activity](./images/hands_on_triples_07.png)
