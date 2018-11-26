@@ -225,3 +225,119 @@ visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
   visIgraphLayout(avoidOverlap = 1) %>%
   visEdges(smooth=FALSE) %>% 
   visOptions(manipulation = TRUE)
+
+
+#####################################################
+# create Ontology graph for CTDasRDFOWL (ofInterest_02)
+#####################################################
+
+
+endpoint <- "http://localhost:5820/CTDasRDFOWL/query"
+queryOnt = paste0("SELECT * WHERE {?predicate  rdfs:domain ?domain 
+                  OPTIONAL {?predicate rdfs:range ?range}}")
+qd <- SPARQL(endpoint, queryOnt, ns=prefix)
+triplesDf <- qd$results
+
+ofInterst=c("study:Study",
+            "skos:prefLabel",
+            "study:actualPopulationSize",
+            "study:adaptiveDesign",
+            "study:addOn",
+            "study:ageGroup",
+            "study:blinding",
+            "study:controlType",
+            "study:hasTitle",
+            "study:longTitle",
+            "study:interventionModel",
+            "study:interventionType",
+            "study:InvestigationalSubstance",
+            "study:isAddOnStudy",
+            "study:MaximumSubjectAge",
+            "study:MinimumSubjectAge",
+            "study:narms",
+            "study:plannedPopulationSize",
+            "study:PrimaryObjective",
+            "study:PrimaryOutcomeMeasure",
+            "study:randomizedTrial",
+            "study:SecondaryObjective",
+            "study:sexGroup",
+            "study:Sponsor",
+            "study:studyDrug",
+            "study:StudyIdentifier",
+            "study:StudyPopulation",
+            "study:StudyRegistryIdentifier",
+            "study:studyType",
+            "study:Title",
+            "study:trialPhase",
+            "study:trialType")
+
+triplesDf <- triplesDf[(triplesDf$domain %in% ofInterst & triplesDf$range %in% ofInterst) | 
+                           (triplesDf$domain %in% ofInterst & triplesDf$predicate %in% ofInterst),]
+
+initLists()
+# include triples
+for (row in 1:nrow(triplesDf)) {
+    if (!is.na(triplesDf$domain[row]) && !is.na(triplesDf$range[row]) && !is.na(triplesDf$predicate[row])){
+        addToGraph(triplesDf$domain[row],triplesDf$range[row],triplesDf$predicate[row])  
+    }
+}
+
+formatList()
+
+visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+    visIgraphLayout(layout = "layout_nicely",
+                    physics = FALSE) %>%
+    visIgraphLayout(avoidOverlap = 1) %>%
+    visEdges(smooth=FALSE) %>% 
+    visOptions(manipulation = TRUE)
+
+
+#####################################################
+# create Ontology graph for CTDasRDFOWL (ofInterest_03)
+#####################################################
+
+
+endpoint <- "http://localhost:5820/CTDasRDFOWL/query"
+queryOnt = paste0("SELECT * WHERE {?predicate  rdfs:domain ?domain 
+                  OPTIONAL {?predicate rdfs:range ?range}}")
+qd <- SPARQL(endpoint, queryOnt, ns=prefix)
+triplesDf <- qd$results
+
+ofInterst=c("study:Study","study:StudyActivity")
+
+triplesDf <- triplesDf[(triplesDf$domain %in% ofInterst & triplesDf$range %in% ofInterst) | 
+                           (triplesDf$domain %in% ofInterst & triplesDf$predicate %in% ofInterst),]
+
+initLists()
+# include triples
+for (row in 1:nrow(triplesDf)) {
+    if (!is.na(triplesDf$domain[row]) && !is.na(triplesDf$range[row]) && !is.na(triplesDf$predicate[row])){
+        addToGraph(triplesDf$domain[row],triplesDf$range[row],triplesDf$predicate[row])  
+    }
+}
+
+formatList()
+
+visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+    visIgraphLayout(layout = "layout_nicely",
+                    physics = FALSE) %>%
+    visIgraphLayout(avoidOverlap = 1) %>%
+    visEdges(smooth=FALSE) %>% 
+    visOptions(manipulation = TRUE)
+
+#####################################################
+# create Ontology graph for Cutoff mapping
+#####################################################
+
+initLists()
+addToGraph("study:Study","study:DataCutoff","study:hasStudyActivity")
+addToGraph("study:DataCutoff","xsd:string","study:activityDescription")
+addToGraph("study:DataCutoff","time:instant","study:hasDate")  
+formatList()
+
+visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+    visIgraphLayout(layout = "layout_nicely",
+                    physics = FALSE) %>%
+    visIgraphLayout(avoidOverlap = 1) %>%
+    visEdges(smooth=FALSE) %>% 
+    visOptions(manipulation = TRUE)

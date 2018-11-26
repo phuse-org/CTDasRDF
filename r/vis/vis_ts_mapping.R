@@ -25,7 +25,7 @@ edges$title <- edges$p  # title: present when mouseover edge.
 edges$label <- edges$p  #TW  May need to shorten as did for node label
 #edges$color <-"#808080" # Default edge color
 #edges$length <- 500
-edgesList$arrows <- "to"
+edges$arrows <- "to"
 
 
 visNetwork(nodes, edges, width= "100%", height=1100) %>%
