@@ -32,6 +32,16 @@ In this hands on we use the Trial Summary (TS) as example. The ontology is locat
 
 The more complex an ontology is, the more difficult it is to figure out how the final structure should look like. You can use various ways to browse the ontology provided. In [HandsOnCTDasRDF](https://github.com/phuse-org/CTDasRDF/blob/master/doc/HandsOnCTDasRDF.md) there is a section "Get Hands on Ontologies" where different ways are made available.
 
+You find different HTML files containing a visualization in the r/vis/output folder. To look at them you need to download these files, as somehow the display through github does not work. The following visualizations are available:
+
+Name                            |  Description
+-----------------------------   | -----------------
+study_ttl_vis.html              | Domain-Range connections of the study.ttl
+study_ttl_vis_subclass.html     | Class-SubClass connections of the study.ttl
+cdiscpilot01_protocol_ttl.html  | Visualization of the protocol triples, so the instances
+sdtm_ttl_first300obs.html       | Part of the Tripples for sdtm.ttl ontology
+code_tts_first300obs.html       | Part of the Tripples for code.ttl ontology
+
 In the r/vis subfolder you can also find various program for different visualizations. To get on overview of the related Ontology elements required for the TS mapping, the program r/vis/vis_stardog_dbs.R is used - "create Ontology graph for CTDasRDFOWL (ofInterest_01)".
 
 ## Starting small for first experiences
