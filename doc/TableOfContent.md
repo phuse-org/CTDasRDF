@@ -28,7 +28,7 @@ Ontology details.
 
 Data Conversion process from SDTM XPT files to mapping and upload to the triplestore using Stardog SMS. Includes data review and validation tools written in R.
 
-How-To Guides **TBD**
+How-To Guides
 ---------------------
 
 Step-by-step guides to working with the data.
@@ -36,3 +36,11 @@ Step-by-step guides to working with the data.
 ### [Get Hands on CTDasRDF](HandsOnCTDasRDF.md)
 
 A step by step guide to install required software, create data, load data and browse data.
+
+### [Get Hands on Triple Creation from Ontology (Trial Summary)](HandsOnCreateTriplesFromOWL.md)
+
+A step by step guide to hands-on how to create triples based on an ontology using the Trial Summary as example.
+
+### [Get Hands Stardog Mapping Syntax Visualization App](Hands-On-SMSVisualization.md)
+
+A guide hot to use the SMS visualization app available in the repository.

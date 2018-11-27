@@ -63,15 +63,19 @@ addToEdges <- function(list, from, to, connectionDescription){
   return(list)
 }
 
-addToGraph <- function(from, to, connectionDescription){
+addToGraph <- function(from, to, connectionDescription, 
+                       listUniquesPrefixes = c("xsd","code")){
+  # make a unique label, to map not all, e.g. to xsd:string
   label_to <- to
-  if (unlist(strsplit(to,":"))[1] %in% c("xsd","code")){
+  if (unlist(strsplit(to,":"))[1] %in% listUniquesPrefixes || ignoreCondition){
     to <- paste0(to,"_",from,"_",connectionDescription)
   }
+  
   nodesListXX <<- addToNodes(nodesListXX,from,unlist(strsplit(from,":"))[2])
   nodesListXX <<- addToNodes(nodesListXX,to,unlist(strsplit(to,":"))[2], label=label_to)
   edgesListXX <<- addToEdges(edgesListXX, from, to,connectionDescription)
 }
+
 
 # initialize lists
 initLists <- function (){
@@ -118,7 +122,11 @@ prefix <- c("cd01p",        "https://w3id.org/phuse/cd01p#",
             "study",        "https://w3id.org/phuse/study#",
             "time",         "http://www.w3.org/2006/time#",
             "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",
-            "xsd",          "http://www.w3.org/2001/XMLSchema#")
+            "xsd",          "http://www.w3.org/2001/XMLSchema#",
+            "cts",          "https://w3id.org/phuse/cts#",
+            "mms",          "https://w3id.org/phuse/mms#",
+            "sdtm313",      "http://rdf.cdisc.org/std/sdtmig-3-1-3#",
+            "sdtm",         "https://w3id.org/phuse/sdtm#")
 
 Sys.setenv(http_proxy="")
 Sys.setenv(https_proxy="")
@@ -140,7 +148,8 @@ initLists()
 # include triples
 for (row in 1:nrow(triplesDf)) {
   if (!is.na(triplesDf$subject[row]) && !is.na(triplesDf$predicate[row]) && !is.na(triplesDf$object[row])  ){
-    if (!grepl("owl:",triplesDf$predicate[row]) && !grepl("owl:",triplesDf$object[row])){
+    if ( triplesDf$subject[row] != "" && triplesDf$predicate[row] != "" && triplesDf$object[row] != "" &&
+        (!grepl("owl:",triplesDf$predicate[row]) && !grepl("owl:",triplesDf$object[row]))){
       addToGraph(triplesDf$subject[row],triplesDf$object[row],triplesDf$predicate[row])    
     }
   }
@@ -341,3 +350,78 @@ visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
     visIgraphLayout(avoidOverlap = 1) %>%
     visEdges(smooth=FALSE) %>% 
     visOptions(manipulation = TRUE)
+
+
+#####################################################
+# create content graph for CTDasRDFSMS for cdiscpilot01-protocol.ttl
+# prerequisite: delete all data from CTDasRDFSMS:
+#     DELETE{?s ?p ?o} WHERE{?s ?p ?o}
+#     then include data by reading cdiscpilot01-protocol.ttl into CTDasRDFSMS
+#####################################################
+
+# Endpoint
+endpoint <- "http://localhost:5820/CTDasRDFSMS/query"
+queryOnt = paste0("SELECT * WHERE {?subject ?predicate ?object}")
+qd <- SPARQL(endpoint, queryOnt, ns=prefix)
+triplesDf <- qd$results
+
+
+initLists()
+
+# include triples
+for (row in 1:nrow(triplesDf)) {
+  # exclude na and missings
+  if (!is.na(triplesDf$subject[row]) && !is.na(triplesDf$predicate[row]) && !is.na(triplesDf$object[row])  ){
+    if ( triplesDf$subject[row] != "" && triplesDf$predicate[row] != "" && triplesDf$object[row] != "" &&
+         # exclude owl prefixes in predicate or object
+         (!grepl("owl:",triplesDf$predicate[row]) && !grepl("owl:",triplesDf$object[row])) &&
+         # exclude rdfs:subClassOf and rdf:type
+         (triplesDf$predicate[row] != "rdfs:subClassOf" && triplesDf$predicate[row] != "rdf:type"))
+      {
+      addToGraph(triplesDf$subject[row],triplesDf$object[row],triplesDf$predicate[row])    
+    }
+  }
+}
+
+formatList()
+
+visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+  visIgraphLayout(layout = "layout_nicely",
+                  physics = FALSE) %>%
+  visIgraphLayout(avoidOverlap = 1) %>%
+  visEdges(smooth=FALSE) %>% 
+  visOptions(manipulation = TRUE)
+
+#####################################################
+# create content graph for CTDasRDFOWL for code.ttl
+#####################################################
+
+# Endpoint
+endpoint <- "http://localhost:5820/CTDasRDFOWL/query"
+queryOnt = paste0("SELECT * WHERE {?subject ?predicate ?object} Limit 300")
+qd <- SPARQL(endpoint, queryOnt, ns=prefix)
+triplesDf <- qd$results
+
+
+initLists()
+
+# include triples
+for (row in 1:nrow(triplesDf)) {
+  if (!is.na(triplesDf$subject[row]) && !is.na(triplesDf$predicate[row]) && !is.na(triplesDf$object[row])  ){
+    if ( triplesDf$subject[row] != "" && triplesDf$predicate[row] != "" && triplesDf$object[row] != "" &&
+         (!grepl("owl:",triplesDf$predicate[row]) && !grepl("owl:",triplesDf$object[row])
+          && !grepl("_:",triplesDf$object[row]) && !grepl("_:",triplesDf$subject[row]) )){
+      addToGraph(triplesDf$subject[row],triplesDf$object[row],triplesDf$predicate[row],
+                 listUniquesPrefixes = c())    
+    }
+  }
+}
+
+formatList()
+
+visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+  visIgraphLayout(layout = "layout_nicely",
+                  physics = FALSE) %>%
+  visIgraphLayout(avoidOverlap = 1) %>%
+  visEdges(smooth=FALSE) %>% 
+  visOptions(manipulation = TRUE)
