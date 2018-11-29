@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream:doc/HandsOnCTDasRDF.md
 ---
 title: "Getting hands on CTDasRDF Project"
 output: 
@@ -17,6 +16,7 @@ Date         | Comment
 2018-10-12   | Enhance documentation (KG)
 2018-10-13   | Ontology viz and namespace cmds (NN)
 2018-10-17   | Enhance WebVOWL and Protege documentation (KG)
+2018-11-22   | Minor enhancment & https (KG)
 
 
 ## Overview
@@ -29,7 +29,7 @@ To get start your hands on the project you can perform the following steps:
 - Loading the data into stardog
 - Now you are ready to explore either in Stardog or in R
 
-![Figure: Screenshot to download .zip](./doc/images/compiled_overview.png)
+![Figure: Screenshot to download .zip](./images/compiled_overview.png)
 
 ## Installation Hints (Windows)
 
@@ -98,7 +98,7 @@ You could change the content to exclude the wrong JAVA binaries and include the 
 
 The project files are available on Github <https://github.com/phuse-org/CTDasRDF> and are regularily updated. It is recommended to clone the repository and update this regularily with the git functionality easily. If you are not familar with git, you might want to just download the complete repository and unzip it a any location. Use the green button to "Clone or Download".
 
-![Figure: Screenshot to download .zip](./doc/images/screen_download.png)
+![Figure: Screenshot to download .zip](./images/screen_download.png)
 
 You can read the documentation in the github repository by clicking the *.rmd or *.md files. You might want to read the following documentations in the following order:
 * CTDasRDF.rmd - project overview
@@ -136,9 +136,9 @@ The core of the linked data is the Ontologies which define the links, object typ
 ### Browse Ontologies with Protege
 Protege is an open source tool where you can develop and manage OWLs, so define the data structure and concept for the data linkage. It is used in this project by some members to create and maintain the OWL.
 
-![Figure: Screenshot of Protege](./doc/images/protege_overview.PNG)
+![Figure: Screenshot of Protege](./images/protege_overview.PNG)
 
-On the picture you see the study.ttl file. The left pane displays the class hierarchy. Everything is a subclass of "Thing". What ever is in bold, this is defined in the currently opened owl file (so in study.ttl). All other items come from other referenced owl files. What you can see in the screenshot is that "Enrolled subject" is a subclass from "Human study subject" which is a subclass from "Human subject" and so on. This class hierarchy does not dipslay other relationships, so to investigate the connections using Prot�g� is a bit difficult.
+On the picture you see the study.ttl file. The left pane displays the class hierarchy. Everything is a subclass of "Thing". What ever is in bold, this is defined in the currently opened owl file (so in study.ttl). All other items come from other referenced owl files. What you can see in the screenshot is that "Enrolled subject" is a subclass from "Human study subject" which is a subclass from "Human subject" and so on. This class hierarchy does not dipslay other relationships, so to investigate the connections using Protege is a bit difficult.
 
 The relations you can see in the "Object properties" tab. In the "Description" window you see next to hierarchies also the "Domain" and "Range". The domain is the relationship-from and range is the relationship-to. When you checkout the "participates in" property which is a subclass of "has activity", you see that this comes from Person (domain, subject) and goes to Activity (range, object).
 
@@ -151,7 +151,7 @@ Person       | participates in | Activity
 
 If you follow the "Person" link, the person is displayed in the Classes tab. There is no indicator - neither in "Annotations" view nor in the "Description" view, that there is a relationship available.
 
-To build an OWL using Prot�g� is the typical process. To figure out the structure when you have an available OWL is difficult with this tool. If you have any tips, please add them or let the the project members know, so they can add this.
+To build an OWL using Protege is the typical process. To figure out the structure when you have an available OWL is difficult with this tool. If you have any tips, please add them or let the the project members know, so they can add this.
 
 ### Browse Ontologies with WebVOWL
 If you want to explore the ontologies (OWL) used, you might want to use the graphical display of the OWLs with the WebVOWL tool. The following links can be used to browse the ontologies through WebVOWL:
@@ -167,15 +167,15 @@ If you want more information on the Visualization with VOWL, you might read this
 
 When you load for example the study.ttl file, you might get some warnings that not all ontologies can be loaded - ignore them. Then you see light blue and dark blue bubbles with relationshipts. The light blue ones are the one from the current ontology, so you might want to explore them first. You can see the most important classes from the study.ttl ontology at the first glance.
 
-![Figure: Study.ttl Ontology - first glance](./doc/images/web_vowl_small.PNG)
+![Figure: Study.ttl Ontology - first glance](./images/web_vowl_small.PNG)
 
 You might wonder, why you miss quite some classes like the "Human Study Subject". This is because the tool filters classes out to allow an overview display of the ontologies. On the bottom "Filter" menue, you might want to remove the Degree collapsing and shift this to zero. Then you can see all the relationships and sub classes. This might be the starting point to look into one class of interest and figure out how this is connected to other things.
 
-![Figure: Study.ttl Ontology - full glance](./doc/images/web_vowl_huge.PNG)
+![Figure: Study.ttl Ontology - full glance](./images/web_vowl_huge.PNG)
 
 You can use the "Pick and Pin" option from the bottom "Mode" menu, to get a deeper view of classes and connections of interest. You might for example start with a "StudyActivity" where there is a "Study" which "hasStudyActivity" connected. And then there are "HumanStudySubjects" which participates in the study. The subgroup "EnrolledSubjects" has also an "Arm" connected which is also a "StudyActivity".
 
-![Figure: Study.ttl Ontology - zoomed & pinned](./doc/images/web_vowl_zoomed.PNG)
+![Figure: Study.ttl Ontology - zoomed & pinned](./images/web_vowl_zoomed.PNG)
 
 These connections are the ontologies and does not display the actual data. So these things define the structure of the relationships and classes which are used in our project.
 
@@ -265,25 +265,32 @@ WHERE
 
 You might not like the long prefixes which are displayed on every query result. During triple creation also shortcuts has been used. To have a look what prefixes are used in this project, open the data/config/prefixes.csv file. Checkout which ones you would like to have available as shortcut in your database. You might for example select the following:
 
-* cd01p=http://w3id.org/phuse/cd01p#
-* cdiscpilot01=http://w3id.org/phuse/cdiscpilot01#
-* code=http://w3id.org/phuse/code#
-* sdtm=http://w3id.org/phuse/sdtm#
-* sdtmterm=http://w3id.org/phuse/sdtmterm#
-* study=http://w3id.org/phuse/study#
-* custom=http://w3id.org/phuse/custom#
+* cd01p=https://w3id.org/phuse/cd01p#
+* cdiscpilot01=https://w3id.org/phuse/cdiscpilot01#
+* code=https://w3id.org/phuse/code#
+* sdtm=https://w3id.org/phuse/sdtm#
+* sdtmterm=https://w3id.org/phuse/sdtmterm#
+* study=https://w3id.org/phuse/study#
+* custom=https://w3id.org/phuse/custom#
+* xsd=http://www.w3.org/2001/XMLSchema#
+* rdfs=http://www.w3.org/2000/01/rdf-schema#
+* time=http://www.w3.org/2006/time#
+
 
 To include these shortcuts into your database, you need to update the database. Manage your stardog databases through the web interface <http://localhost:5820/#/databases> and select your "http://localhost:5820/#/databases" database. Turn the database "OFF" and "Edit". Now you are able to "Add namespace" as you like. Remember to "Save" and turn the database "ON".
 
 Alternatively, you can set the namespaces from the commandline by pasting the following commands into the terminal:
 ```
-stardog namespace add CTDasRDFSMS --prefix cd01p --uri http://w3id.org/phuse/cd01p#
-stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri <http://w3id.org/phuse/cdiscpilot01#
-stardog namespace add CTDasRDFSMS --prefix code --uri <http://w3id.org/phuse/code#
-stardog namespace add CTDasRDFSMS --prefix sdtm --uri http://w3id.org/phuse/sdtm#
-stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri http://w3id.org/phuse/sdtmterm#
-stardog namespace add CTDasRDFSMS --prefix study --uri http://w3id.org/phuse/study#
-stardog namespace add CTDasRDFSMS --prefix custom --uri http://w3id.org/phuse/custom#
+stardog namespace add CTDasRDFSMS --prefix cd01p --uri https://w3id.org/phuse/cd01p#
+stardog namespace add CTDasRDFSMS --prefix cdiscpilot01 --uri <https://w3id.org/phuse/cdiscpilot01#
+stardog namespace add CTDasRDFSMS --prefix code --uri <https://w3id.org/phuse/code#
+stardog namespace add CTDasRDFSMS --prefix sdtm --uri https://w3id.org/phuse/sdtm#
+stardog namespace add CTDasRDFSMS --prefix sdtmterm --uri https://w3id.org/phuse/sdtmterm#
+stardog namespace add CTDasRDFSMS --prefix study --uri https://w3id.org/phuse/study#
+stardog namespace add CTDasRDFSMS --prefix custom --uri https://w3id.org/phuse/custom#
+stardog namespace add CTDasRDFSMS --prefix xsd --uri http://www.w3.org/2001/XMLSchema#
+stardog namespace add CTDasRDFSMS --prefix rdfs --uri http://www.w3.org/2000/01/rdf-schema#
+stardog namespace add CTDasRDFSMS --prefix time --uri http://www.w3.org/2006/time#
 ```
 
 When you now perform any queries, you will see the namespace abbreviations nicely in the result:
@@ -343,7 +350,7 @@ Date         | Comment
 2018-08-23   | Documentation creation (KG)
 2018-10-12   | Enhance documentation (KG)
 2018-10-13   | Ontology viz and namespace cmds (NN)
-2018-10-17   | Enhance WebVOWL and Prot�g� documentation (KG)
+2018-10-17   | Enhance WebVOWL and Protege documentation (KG)
 
 ## Overview
 
@@ -355,7 +362,7 @@ To get start your hands on the project you can perform the following steps:
 - Loading the data into stardog
 - Now you are ready to explore either in Stardog or in R
 
-![Figure: Screenshot to download .zip](./doc/images/compiled_overview.png)
+![Figure: Screenshot to download .zip](./images/compiled_overview.png)
 
 ## Installation Hints (Windows)
 
@@ -424,7 +431,7 @@ You could change the content to exclude the wrong JAVA binaries and include the 
 
 The project files are available on Github <https://github.com/phuse-org/CTDasRDF> and are regularily updated. It is recommended to clone the repository and update this regularily with the git functionality easily. If you are not familar with git, you might want to just download the complete repository and unzip it a any location. Use the green button to "Clone or Download".
 
-![Figure: Screenshot to download .zip](./doc/images/screen_download.png)
+![Figure: Screenshot to download .zip](./images/screen_download.png)
 
 You can read the documentation in the github repository by clicking the *.rmd or *.md files. You might want to read the following documentations in the following order:
 * CTDasRDF.rmd - project overview
@@ -459,12 +466,12 @@ The core of the linked data is the Ontologies which define the links, object typ
 * doc/Ontology Roadmap.docx - A short overview of available created/maintained ontology files
 * doc/StudyOntologyUserGuide.docx - Detailed information about the study ontology which is the base for this project
 
-### Browse Ontologies with Prot�g�
-Prot�g� is an open source tool where you can develop and manage OWLs, so define the data structure and concept for the data linkage. It is used in this project by some members to create and maintain the OWL.
+### Browse Ontologies with Protege
+Protege is an open source tool where you can develop and manage OWLs, so define the data structure and concept for the data linkage. It is used in this project by some members to create and maintain the OWL.
 
-![Figure: Screenshot of Prot�g�](./doc/images/protege_overview.PNG)
+![Figure: Screenshot of Protege](./images/protege_overview.PNG)
 
-On the picture you see the study.ttl file. The left pane displays the class hierarchy. Everything is a subclass of "Thing". What ever is in bold, this is defined in the currently opened owl file (so in study.ttl). All other items come from other referenced owl files. What you can see in the screenshot is that "Enrolled subject" is a subclass from "Human study subject" which is a subclass from "Human subject" and so on. This class hierarchy does not dipslay other relationships, so to investigate the connections using Prot�g� is a bit difficult.
+On the picture you see the study.ttl file. The left pane displays the class hierarchy. Everything is a subclass of "Thing". What ever is in bold, this is defined in the currently opened owl file (so in study.ttl). All other items come from other referenced owl files. What you can see in the screenshot is that "Enrolled subject" is a subclass from "Human study subject" which is a subclass from "Human subject" and so on. This class hierarchy does not dipslay other relationships, so to investigate the connections using Protege is a bit difficult.
 
 The relations you can see in the "Object properties" tab. In the "Description" window you see next to hierarchies also the "Domain" and "Range". The domain is the relationship-from and range is the relationship-to. When you checkout the "participates in" property which is a subclass of "has activity", you see that this comes from Person (domain, subject) and goes to Activity (range, object).
 
@@ -477,7 +484,7 @@ Person       | participates in | Activity
 
 If you follow the "Person" link, the person is displayed in the Classes tab. There is no indicator - neither in "Annotations" view nor in the "Description" view, that there is a relationship available.
 
-To build an OWL using Prot�g� is the typical process. To figure out the structure when you have an available OWL is difficult with this tool. If you have any tips, please add them or let the the project members know, so they can add this.
+To build an OWL using Protege is the typical process. To figure out the structure when you have an available OWL is difficult with this tool. If you have any tips, please add them or let the the project members know, so they can add this.
 
 ### Browse Ontologies with WebVOWL
 If you want to explore the ontologies (OWL) used, you might want to use the graphical display of the OWLs with the WebVOWL tool. The following links can be used to browse the ontologies through WebVOWL:
@@ -493,15 +500,15 @@ If you want more information on the Visualization with VOWL, you might read this
 
 When you load for example the study.ttl file, you might get some warnings that not all ontologies can be loaded - ignore them. Then you see light blue and dark blue bubbles with relationshipts. The light blue ones are the one from the current ontology, so you might want to explore them first. You can see the most important classes from the study.ttl ontology at the first glance.
 
-![Figure: Study.ttl Ontology - first glance](./doc/images/web_vowl_small.PNG)
+![Figure: Study.ttl Ontology - first glance](./images/web_vowl_small.PNG)
 
 You might wonder, why you miss quite some classes like the "Human Study Subject". This is because the tool filters classes out to allow an overview display of the ontologies. On the bottom "Filter" menue, you might want to remove the Degree collapsing and shift this to zero. Then you can see all the relationships and sub classes. This might be the starting point to look into one class of interest and figure out how this is connected to other things.
 
-![Figure: Study.ttl Ontology - full glance](./doc/images/web_vowl_huge.PNG)
+![Figure: Study.ttl Ontology - full glance](./images/web_vowl_huge.PNG)
 
 You can use the "Pick and Pin" option from the bottom "Mode" menu, to get a deeper view of classes and connections of interest. You might for example start with a "StudyActivity" where there is a "Study" which "hasStudyActivity" connected. And then there are "HumanStudySubjects" which participates in the study. The subgroup "EnrolledSubjects" has also an "Arm" connected which is also a "StudyActivity".
 
-![Figure: Study.ttl Ontology - zoomed & pinned](./doc/images/web_vowl_zoomed.PNG)
+![Figure: Study.ttl Ontology - zoomed & pinned](./images/web_vowl_zoomed.PNG)
 
 These connections are the ontologies and does not display the actual data. So these things define the structure of the relationships and classes which are used in our project.
 
