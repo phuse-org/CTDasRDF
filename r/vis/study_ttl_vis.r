@@ -22,7 +22,7 @@ library(dplyr)
 library(SPARQL)
 
 # Configuration
-setwd("C:/Temp/git/CTDasRDF/r/vis")
+setwd("C:/Temp/git/CTDasRDF/r/vis/output")
 maxLabelSize <- 40
 
 
