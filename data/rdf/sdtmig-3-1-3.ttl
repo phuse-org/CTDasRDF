@@ -1,5 +1,5 @@
 # baseURI: http://rdf.cdisc.org/std/sdtmig-3-1-3
-# imports: http://rdf.cdisc.org/sdtmterm
+# imports: https://w3id.org/phuse/sdtmterm
 # imports: http://rdf.cdisc.org/std/sdtm-1-3
 
 @prefix cdiscs: <https://w3id.org/phuse/cdiscs#> .
@@ -18,7 +18,7 @@
 <http://rdf.cdisc.org/std/sdtmig-3-1-3>
   rdf:type owl:Ontology ;
   dc:creator "FDA/PhUSE CSS Semantic Technology Project"^^xsd:string ;
-  owl:imports <http://rdf.cdisc.org/sdtmterm> ;
+  owl:imports <https://w3id.org/phuse/sdtmterm> ;
   owl:imports <http://rdf.cdisc.org/std/sdtm-1-3> ;
   owl:versionInfo "3.1.3"^^xsd:string ;
   skos:definition "An ontology representing the content of the Study Data Tabulation Model Implementation Guide (SDTMIG) Version 3.1.3 as published by CDISC."^^xsd:string ;

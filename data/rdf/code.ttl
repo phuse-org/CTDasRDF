@@ -1,6 +1,6 @@
 # baseURI: https://w3id.org/phuse/code#
 # imports: http://datashapes.org/dash
-# imports: http://rdf.cdisc.org/sdtmterm
+# imports: https://w3id.org/phuse/sdtmterm
 # imports: http://spinrdf.org/spin
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
@@ -83,7 +83,7 @@ code:
   spin:imports <http://topbraid.org/spin/skosspin> ;
   spin:imports <http://topbraid.org/spin/spinowl> ;
   owl:imports <http://datashapes.org/dash> ;
-  owl:imports <http://rdf.cdisc.org/sdtmterm> ;
+  owl:imports <https://w3id.org/phuse/sdtmterm> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
