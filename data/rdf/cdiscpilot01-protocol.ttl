@@ -1,6 +1,6 @@
 # baseURI: https://w3id.org/phuse/cd01p
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: <https://w3id.org/phuse/code#>
+# imports: https://w3id.org/phuse/code#
 # imports: https://w3id.org/phuse/study
 # prefix: cd01p
 
@@ -19,7 +19,7 @@
 <https://w3id.org/phuse/cd01p>
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://w3id.org/phuse/code#> ;
+  owl:imports code: ;
   owl:imports <https://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
@@ -786,7 +786,7 @@ custom:Observation_ADAS-Cog
 .
 custom:PlaceboDrug
   rdf:type code:DrugProduct ;
-  rdf:type study:PlaceboProduct ;
+  rdf:type study:PlaceboDrugProduct ;
   skos:prefLabel "PLACEBO" ;
   code:hasDosageForm code:DosageForm_PATCH ;
   code:hasIngredientQuantity cd01p:SubstanceQuantity_1 ;

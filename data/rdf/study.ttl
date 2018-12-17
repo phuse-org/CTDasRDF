@@ -1,7 +1,7 @@
 # baseURI: https://w3id.org/phuse/study
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
-# imports: <https://w3id.org/phuse/code#>
+# imports: https://w3id.org/phuse/code#
 # prefix: study
 
 @prefix arg: <http://spinrdf.org/arg#> .
@@ -20,18 +20,6 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/phuse/sdtmterm#C66731.C16576>
-  skos:prefLabel "F" ;
-.
-<https://w3id.org/phuse/sdtmterm#C66731.C17998>
-  skos:prefLabel "U" ;
-.
-<https://w3id.org/phuse/sdtmterm#C66731.C20197>
-  skos:prefLabel "M" ;
-.
-<https://w3id.org/phuse/sdtmterm#C66731.C45908>
-  skos:prefLabel "UNDIFFERENTIATED" ;
-.
 arg:activityDate
   rdf:type rdf:Property ;
   rdfs:subPropertyOf sp:arg ;
@@ -307,17 +295,29 @@ code:outcome
   skos:altLabel "" ;
   skos:prefLabel "has outcome" ;
 .
+<https://w3id.org/phuse/sdtmterm#C66731.C16576>
+  skos:prefLabel "F" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66731.C17998>
+  skos:prefLabel "U" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66731.C20197>
+  skos:prefLabel "M" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66731.C45908>
+  skos:prefLabel "UNDIFFERENTIATED" ;
+.
 <https://w3id.org/phuse/study>
   rdf:type owl:Ontology ;
   spin:imports <http://topbraid.org/spin/owlrl-all> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://w3id.org/phuse/code#> ;
+  owl:imports code: ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
-study:ActiveProduct
+study:ActiveDrugProduct
   rdf:type owl:Class ;
-  rdfs:subClassOf study:Product ;
+  rdfs:subClassOf study:DrugProduct ;
   skos:altLabel "" ;
   skos:prefLabel "Active product" ;
 .
@@ -878,6 +878,20 @@ study:DrugAdministrationOutcome
   rdfs:subClassOf study:ActivityOutcome ;
   skos:prefLabel "Drug administration outcome" ;
 .
+study:DrugProduct
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Product ;
+  skos:definition "A Product that is \"intended for use in the diagnosis, cure, mitigation, treatment, or prevention of disease” and “articles (other than food) intended to affect the structure or any function of the body of man or other animals.\" (USA Food, Drug, and Cosmetic Act) " ;
+  skos:prefLabel "Drug product" ;
+.
+study:DrugSubstance
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Substance ;
+  skos:definition "A Substance that is found in a DrugProduct" ;
+  skos:prefLabel "Drug substance" ;
+.
 study:EligibilityCriterion
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -1031,13 +1045,16 @@ study:Identifier
 study:Indication
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
+  skos:definition "The Reason that a TherapeuticIntervention is performed on a Subject. " ;
+  skos:example "Indication: the PREVENTION of STROKE in patients with CHRONIC ATRIAL FIBRILLATION.  or the TREATMENT of HODGKIN'S DISEASE; or the TREATMENT of SEIZURES in patients with PRIMARY GENERALIZED EPILEPSY. " ;
+  skos:note "An Indication has three components: the IndicationType (e.g. the intended effect of the TherapeuticIntervention, such as treat, cure, prevent), the IndicatioinCondition (e.g. the MedicalCondition on which the TherapeuticIntervention is expected to affect), and an optional UnderlyingCondition (e.g. an important coexisting MedicalCondition)  See example. " ;
   skos:prefLabel "Indication" ;
 .
 study:IndicationCondition
   rdf:type owl:Class ;
   rdfs:comment "" ;
   rdfs:subClassOf study:MedicalCondition ;
-  skos:definition "A medical condition that is the target of an Intervention in a study" ;
+  skos:definition "A MedicalCondition that is the target of a TherapeuticIntervention in a Study" ;
   skos:prefLabel "Indication" ;
 .
 study:InformedConsent
@@ -1105,15 +1122,17 @@ study:InvestigationalArm
 .
 study:InvestigationalProduct
   rdf:type owl:Class ;
-  rdfs:subClassOf study:ActiveProduct ;
+  rdfs:subClassOf study:ActiveDrugProduct ;
   owl:equivalentClass <http://www.bridgmodel.org/owl#StudyAgent> ;
   skos:altLabel "" ;
   skos:prefLabel "Investigational product" ;
 .
 study:InvestigationalSubstance
   rdf:type owl:Class ;
-  rdfs:subClassOf study:Substance ;
+  rdfs:subClassOf study:DrugSubstance ;
   skos:altLabel "" ;
+  skos:definition "A DrugSubstance that is the primary focus of a Study. " ;
+  skos:note "Often an InvestigationalSubstance is not approved for the Indication being studied. " ;
   skos:prefLabel "Investigational substance" ;
 .
 study:Investigator
@@ -1388,9 +1407,9 @@ study:Person
   skos:definition "" ;
   skos:prefLabel "Person" ;
 .
-study:PlaceboProduct
+study:PlaceboDrugProduct
   rdf:type owl:Class ;
-  rdfs:subClassOf study:Product ;
+  rdfs:subClassOf study:DrugProduct ;
   skos:altLabel "" ;
   skos:prefLabel "Placebo product" ;
 .
@@ -1781,8 +1800,7 @@ study:Study
   rdfs:comment "" ;
   rdfs:subClassOf study:Activity ;
   skos:broader <http://www.bridgmodel.org/owl#Study> ;
-  skos:definition """A research project conducted on HumanStudySubjects whose objectives are to test or confirm hypotheses concerning the utility, impact, pharmacological, physiological, and/or psychological effects of a particular treatment, procedure, drug, device, biologic, food product,
-cosmetic, care plan, or subject characteristic.""" ;
+  skos:definition "A research project conducted on HumanStudySubjects whose objectives are to test or confirm hypotheses concerning the utility, impact, pharmacological, physiological, and/or psychological effects of a particular treatment, procedure, drug, device, biologic, food product,cosmetic, care plan, or subject characteristic." ;
   skos:note "The BRIDG concept Study is broader in that it includes nonclinical studies whereas this ontology is limited to human studies" ;
   skos:prefLabel "Study" ;
 .
@@ -2374,6 +2392,12 @@ study:derivedFlag
   skos:definition "describes that the method of obtaining the results of the test involve a derivation from other observations" ;
   skos:prefLabel "derived flag" ;
 .
+study:dosageQuantity
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:FixedDoseDrugAdministration ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "dosage quantity" ;
+.
 study:durationiso
   rdf:type spin:Function ;
   spin:body [
@@ -2792,7 +2816,7 @@ study:hasStudyParticipant
   rdfs:domain study:Study ;
   rdfs:range study:HumanStudySubject ;
   owl:inverseOf study:participatesInStudy ;
-  skos:definition "" ;
+  skos:definition "relates a study with a HumanStudySubject as a participant in the Study" ;
   skos:prefLabel "has study participant" ;
 .
 study:hasStudyParticipationInterval
