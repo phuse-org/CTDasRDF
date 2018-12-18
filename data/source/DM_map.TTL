@@ -224,7 +224,7 @@ cdiscpilot01:RaceDataCollection_{usubjid}
 #           : Activity status =completed.
 cdiscpilot01:SexDataCollection_{usubjid}
   rdf:type             code:SexDataCollection ;
-  skos:prefLabel       "Person {usubjid} Screening 1 Sex data collection" ^^xsd:string;
+  skos:prefLabel       "Person {usubjid} Screening 1 Sex data collection"^^xsd:string;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
   code:outcome         code:Sex_{sex} ;
