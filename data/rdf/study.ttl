@@ -459,6 +459,14 @@ study:AnatomicLocation
   skos:definition "The location on the body where an activity/process occurs or an entity is located. " ;
   skos:prefLabel "Anatomic location" ;
 .
+study:Animal
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:BiologicEntity ;
+  skos:definition "A non-human living organism that has membranous cell walls, requires oxygen and organic foods, and is capable of voluntary movement, as distinguished from a plant or mineral. [BRIDG 5.0]" ;
+  skos:note "maps to BRIDG Animal Class" ;
+  skos:prefLabel "Animal" ;
+.
 study:AnnotatedCaseReportForm
   rdf:type owl:Class ;
   rdfs:subClassOf study:BlankCaseReportForm ;
@@ -521,6 +529,14 @@ study:BeginInstant
   rdfs:subClassOf study:Date ;
   skos:definition "" ;
   skos:prefLabel "Begin" ;
+.
+study:BiologicEntity
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Party ;
+  skos:definition "Any individual living (or previously living) being. [BRIDG 5.0]" ;
+  skos:note "maps to BRIDG BiologicEntity class. " ;
+  skos:prefLabel "Biologic entity" ;
 .
 study:Birthdate
   rdf:type owl:Class ;
@@ -867,6 +883,8 @@ study:Document
   rdf:type owl:Class ;
   rdfs:subClassOf study:Entity ;
   skos:altLabel "" ;
+  skos:definition "An organized representation of information in publishable, human-readable form (that persists over time). [BRIDG 5.0]" ;
+  skos:note "maps to BRIDG Document class" ;
   skos:prefLabel "Document" ;
 .
 study:DrugAdministrationComplete
@@ -976,7 +994,7 @@ study:FalseArm
 study:FixedDoseDrugAdministration
   rdf:type owl:Class ;
   rdfs:subClassOf study:TherapeuticIntervention ;
-  skos:definition "A ClinicalIntervention where a fixed dosed of a drug product is administered over a documented interval of time. " ;
+  skos:definition "A Therapeutic Intervention during which a fixed dose of a drug product is administered over a documented interval of time. " ;
   skos:prefLabel "Fixed Dose Drug administration" ;
 .
 study:FixedDoseInterval
@@ -1123,9 +1141,9 @@ study:InvestigationalArm
 study:InvestigationalProduct
   rdf:type owl:Class ;
   rdfs:subClassOf study:ActiveDrugProduct ;
-  owl:equivalentClass <http://www.bridgmodel.org/owl#StudyAgent> ;
   skos:altLabel "" ;
   skos:prefLabel "Investigational product" ;
+  skos:related <http://www.bridgmodel.org/owl#StudyAgent> ;
 .
 study:InvestigationalSubstance
   rdf:type owl:Class ;
@@ -1137,9 +1155,10 @@ study:InvestigationalSubstance
 .
 study:Investigator
   rdf:type owl:Class ;
-  rdfs:comment "" ;
+  rdfs:comment "maps to BRIDG StudyInvestigator class. " ;
   rdfs:subClassOf study:ResearchStaff ;
-  skos:definition "" ;
+  skos:definition """A researcher in a study who oversees multiple aspects of the study, such as concept development, protocol writing, protocol submission for IRB approval, participant recruitment, informed consent, data collection, analysis, interpretation and
+presentation. [BRIDG 5.0]""" ;
   skos:prefLabel "Investigator" ;
 .
 study:InvestigatorIdentifier
@@ -1403,7 +1422,7 @@ study:Person
       rdfs:comment "sex assignment" ;
     ] ;
   rdfs:comment "" ;
-  rdfs:subClassOf study:Party ;
+  rdfs:subClassOf study:BiologicEntity ;
   skos:definition "" ;
   skos:prefLabel "Person" ;
 .
@@ -1461,6 +1480,14 @@ study:PrimaryOutcomeMeasure
   rdfs:subClassOf study:OutcomeMeasure ;
   skos:definition "An observation that is used to measure a particular outcome of interest as described in a Study Primary Objective" ;
   skos:prefLabel "Primary outcome measure" ;
+.
+study:PrincipalInvestigator
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Investigator ;
+  skos:definition "The principal investigator (PI) at a site who is responsible for all activities related to a specific organizational network's research at that site. [BRIDG 5.0]" ;
+  skos:note "maps to the BRIDG AdministrativeMemberPI Class" ;
+  skos:prefLabel "Principal investigator" ;
 .
 study:Product
   rdf:type owl:Class ;
@@ -1969,7 +1996,7 @@ study:StudyActivity
         ) ;
       rdfs:comment "Marks an activity as COMPLETE if there is a recorded activity outcome" ;
     ] ;
-  rdfs:comment "" ;
+  rdfs:comment "maps to BRIDG 5.0 Activity: Any action that can, in the context of a study, experiment or a post-marketing investigation, be defined, planned, scheduled or performed. " ;
   rdfs:subClassOf study:Activity ;
   skos:definition "Any activity associated with the planning, conduct, analysis, and interpretation of a Study" ;
   skos:prefLabel "Activity" ;
@@ -2078,7 +2105,7 @@ study:TemperatureOutcome
 study:TherapeuticIntervention
   rdf:type owl:Class ;
   rdfs:subClassOf study:Intervention ;
-  skos:definition " An Intervention whose intent is to have an effect (e.g. treat, cure, mitigate, prevent) a Medical Condition." ;
+  skos:definition " An Intervention whose intent is to have an effect (e.g. treat, cure, mitigate, prevent) on a Medical Condition." ;
   skos:prefLabel "Therapeutic intervention" ;
 .
 study:Title
@@ -2090,6 +2117,12 @@ study:TrueArm
   rdf:type owl:Class ;
   rdfs:subClassOf study:Arm ;
   skos:prefLabel "True arm" ;
+.
+study:UnderlyingCondition
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:MedicalCondition ;
+  skos:prefLabel "Underlying condition" ;
 .
 study:UniqueSubjectIdentifier
   rdf:type owl:Class ;
@@ -2199,6 +2232,12 @@ study:administeredDrug
   rdfs:domain study:FixedDoseDrugAdministration ;
   rdfs:range study:Product ;
   skos:prefLabel "has route of administration" ;
+.
+study:afflictedBy
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Person ;
+  rdfs:range study:MedicalCondition ;
+  skos:prefLabel "afflicted by" ;
 .
 study:ageGroup
   rdf:type owl:ObjectProperty ;
@@ -2622,6 +2661,12 @@ study:hasLifespan
   skos:definition "" ;
   skos:prefLabel "has lifespan" ;
 .
+study:hasMember
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:StudyPopulation ;
+  rdfs:range study:HumanStudySubject ;
+  skos:prefLabel "has member" ;
+.
 study:hasParticipant
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
@@ -2931,6 +2976,13 @@ study:maxSubjectAge
   rdfs:domain study:StudyPopulation ;
   rdfs:range study:MaximumSubjectAge ;
   skos:prefLabel "max age subjects" ;
+.
+study:memberOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:HumanStudySubject ;
+  rdfs:range study:StudyPopulation ;
+  owl:inverseOf study:hasMember ;
+  skos:prefLabel "member of" ;
 .
 study:minSubjectAge
   rdf:type owl:ObjectProperty ;

@@ -715,6 +715,12 @@ code:InformedConsentAdult
   rdfs:subClassOf study:InformedConsent ;
   study:hasStartRule study:StartRuleDefault ;
 .
+code:MedicalCondition_AD
+  rdf:type study:IndicationCondition ;
+.
+code:MedicalCondition_PMMAD
+  rdf:type study:UnderlyingCondition ;
+.
 <https://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF>
   rdf:type study:MaximumSubjectAge ;
 .
