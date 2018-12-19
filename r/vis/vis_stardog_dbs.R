@@ -67,7 +67,7 @@ addToGraph <- function(from, to, connectionDescription,
                        listUniquesPrefixes = c("xsd","code")){
   # make a unique label, to map not all, e.g. to xsd:string
   label_to <- to
-  if (unlist(strsplit(to,":"))[1] %in% listUniquesPrefixes || ignoreCondition){
+  if (unlist(strsplit(to,":"))[1] %in% listUniquesPrefixes){
     to <- paste0(to,"_",from,"_",connectionDescription)
   }
   
