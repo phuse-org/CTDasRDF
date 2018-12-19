@@ -1,7 +1,7 @@
-# baseURI: <https://w3id.org/phuse/cdiscpilot01#>
+# baseURI: https://w3id.org/phuse/cdiscpilot01#
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://w3id.org/phuse/cd01p
-# imports: <https://w3id.org/phuse/code#>
+# imports: https://w3id.org/phuse/code#
 # imports: https://w3id.org/phuse/sdtm
 # imports: https://w3id.org/phuse/study
 # prefix: cdiscpilot01
@@ -33,11 +33,11 @@ cd01p:Study_CDISCPILOT01
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1023 ;
   study:hasStudyParticipant cdiscpilot01:Person_01-701-1028 ;
 .
-<https://w3id.org/phuse/cdiscpilot01#>
+cdiscpilot01:
   rdf:type owl:Ontology ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://w3id.org/phuse/cd01p> ;
-  owl:imports <https://w3id.org/phuse/code#> ;
+  owl:imports code: ;
   owl:imports <https://w3id.org/phuse/sdtm> ;
   owl:imports <https://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
