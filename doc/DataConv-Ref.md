@@ -1,5 +1,8 @@
+
 Data Conversion
 ===============
+TO BE MERGED WITH OTHER CONTENT
+
 This page describes the methods used to convert XPT files to the graph. These activities occur in parallel
 with ontology development, which also creates instance data. Instance data from the SMS conversion (described on this page)
 is compared with instance data created during ontology development. 
