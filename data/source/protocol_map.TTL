@@ -1,0 +1,74 @@
+﻿###############################################################################
+# FILE: protocol_map.ttl
+# DESC: Stardog SMS Template file for mapping protocol information to graph.
+#       Procotol information source is excel file. IRL, this would be parsed
+#         from the protocol document + other sources, plus information on 
+#         sites, etc.
+# REQ : File format requirements for both execution and consistent processing
+#         by visualization scripts:
+#         s line is hard left on line by itself
+#         p,o line - indented at least one space.
+#                  - ends in ; on same line, no trailing spaces
+#         p : no short hand: 'rdf:type', not 'a'
+#         File must end with carriage return on a line by itself.
+# SRC :
+# IN  : procotol.csv
+# OUT :
+# NOTE: stardog-admin virtual import CTDasRDFSMS protocol_map.TTL protocol.csv
+#  Export to TTL: stardog data export --format TURTLE CTDasRDFSMS C:/temp/test.ttl
+# TODO:
+###############################################################################
+@prefix cd01p:        <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code:         <https://w3id.org/phuse/code#> .
+@prefix custom:       <https://w3id.org/phuse/custom#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm:     <https://w3id.org/phuse/sdtmterm#> .
+@prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
+@prefix study:        <https://w3id.org/phuse/study#> .
+@prefix time:         <http://www.w3.org/2006/time#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+
+# -----------------------------------------------------------------------------
+# Study
+# cd01p:Study_{studyid}
+cd01p:Study_foo
+  rdf:type study:Study ;
+  skos:altLabel        " "^^xsd:string ;
+#  skos:prefLabel       "{studyid}"^^xsd:string ;
+  study:adaptiveDesign sdtmterm:NoYesResponse_{adaptiveDesignNY} ;
+#  study:addOn          sdtmterm:NoYesResponse_{addOnNY} ;
+#  study:blinding       sdtmterm:TrialBlindingSchema_{blindingSchema} ;
+#  study:controlType    sdtmterm:ControlType_{controlType} ;
+#  study:hasInterval    cd01p:Interval_{studyBegin}_to_{studyEnd} ;
+#  study:hasPopulation  cd01p:EnrolledPopulation_{studyid} ;
+#  study:hasPopulation  cd01p:StudyPopulation_{studyid} ;
+.
+
+##---- Study Interval ----------------------------------------------------------
+#cd01p:Interval_{studyBegin}_to_{studyEnd}
+#  rdf:type          study:StudyInterval ;
+#  skos:prefLabel    "Interval {studyBegin} to {studyEnd}" ;
+#  time:hasBeginning cd01p:Date_{studyBegin} ;
+#  time:hasEnd       cd01p:Date_{studyEnd} ;
+#.
+##---- Enrolled Population -----------------------------------------------------
+#cd01p:EnrolledPopulation_{studyid}
+#  rdf:type                    study:EnrolledPopulation ;
+#  skos:prefLabel              "Enrolled population {studyid}" ;
+#  study:actualPopulationSize  {actualPopSize} ;
+#  study:plannedPopulationSize {plannedPopSize} ;
+#.
+#
+##---- Study Population --------------------------------------------------------
+#cd01p:StudyPopulation_{studyid}
+#  rdf:type             study:CompletePopulation ;
+#  skos:prefLabel       "Study population {studyid}" ;
+#  study:ageGroup       code:AgeGroup_{ageGroup} ;
+#  study:ageGroup       code:AgeGroup_{ageGroup} ;
+#  study:hasSite        cd01p:Site_{siteid} ;
+#  study:healthySubject sdtmterm:NoYesResponse_{sdtmtermNY} ;
+#  study:maxSubjectAge  <https://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF> ;
+#  study:minSubjectAge  code:PlannedSubjectAge_P50Y ;
+#  study:sexGroup       sdtmterm:SexGroup_{sexGroup} ;
+#.
