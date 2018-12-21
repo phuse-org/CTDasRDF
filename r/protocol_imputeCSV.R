@@ -31,19 +31,36 @@ singleRow <- data.frame(
   adaptiveDesignNY = "N",
   addOnNY          = "N",
   ageGroup         = c("ADULT", "ELDERLY"),  
+  nArms            = "3",
   blindingSchema   = "DOUBLE_BLIND",
   controlType      = "PLACEBO",
+  countryIdSeq     = "1",
+  intervModel      = "PARALLEL",
+  intervType       = "DRUG",
   maxSubjAge       = "NULL",
   minSubjAge       = "P50Y",
   plannedPopSize   = "300",
+  primOutMeas      = "ADAS-Cog",
+  randTrialNY      = "Y",
+  regid            = "NCT00987090",
   sdtmtermNY       = "N",
   sexGroup         = "BOTH",
-  siteid           = "710",
+  siteid           = "701",
+  siteIdSeq        = "1",
   studyBegin       = "2012-07-06",
+  studyDrug        = "xanomeline",
   studyEnd         = "2015-03-05",
-  studyid          = "CDISCPILOT01"
-  
-)
+  studyid          = "CDISCPILOT01",
+  studyIdSeq       = "1",
+  studyIdMeth      = "ASSIGNED",
+  studyIdCRFLoc    = "1",
+  studyIdCRFLocPg  = "7",
+  studyStopRuleSeq = "1",
+  studyStopRuleDsc = "Last patient completed last visit or sponsor decided to discontinue study",
+  studyTitle       = "Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimers Disease.",
+  studyType        = "INT",
+    trialPhase       = "PHASE2"
+  )
   
 studyPop <- data.frame(
       studyPop = c("ADULT", "ELDERLY")
@@ -65,7 +82,14 @@ secObj <- data.frame(
                        "To assess the treatment response as a function of Apo E genotype."
                         )
 )
-protocol  <- cbind.fill(singleRow, studyPop, primObj, secObj)
+
+trialType <- data.frame(
+  trialType = c("EFF", "PK", "SAF")
+  
+)
+
+# Bring the data together
+protocol  <- cbind.fill(singleRow, studyPop, primObj, secObj, trialType)
 
 # Sort column names in the df for quicker referencing
 protocol <- protocol %>% select(noquote(order(colnames(protocol))))
