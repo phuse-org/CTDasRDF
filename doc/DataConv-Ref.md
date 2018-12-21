@@ -1,16 +1,19 @@
 Data Conversion
 ===============
-All content on this page is seriously out of date as of 1028-Nov. Update pending.
+This page describes the methods used to convert XPT files to the graph. These activities occur in parallel
+with ontology development, which also creates instance data. Instance data from the SMS conversion (described on this page)
+is compared with instance data created during ontology development. 
+
+Information here is incomplete and may move to other pages. [2018-12-21]
 
 
 Background
 ----------
 
-Data conversion from XPT to graph was originally used R script. In September 2017 the project switched from use of Egon Willighagen's R package rrdf <https://github.com/egonw/rrdf> to the redland package <https://cran.r-project.org/web/packages/redland/>. This change removes dependencies on rJava and provides a data conversion mechanism that relies on a package available from CRAN.
+The source data XPT files are converted to .CSV format using R. The conversion process massages the data into the form required for Stardog Mapping Syntax (SMS) to map the instance data to the graph.. 
 
-Following discussions at the PhUSE CSS in March 2018, data conversion is moving from R to use of Stardog Mapping Syntax (SMS). SMS can be converted back to R2RML, the open source W3C standard.
+SMS can be converted back to R2RML, the open source W3C standard.
 
-Additional details about the SMS mapping will be placed in this document in the coming weeks. R content was removed 14Mar18.
 
 R Scripts
 =========
@@ -118,16 +121,7 @@ This sequence is not explicit in the SDTM data. For data conversion purposes, it
 
 Start Rules indicate the pre-requisite activities. The measurements conducted in the standing position are preceded by lying down, then the subject stands for 1 min and measurements are conducted. Then the 3min measurements are conducted. This means that the **AssumeBodyPositionStanding\_1** triples have a prequisite **StartRuleLying5\_1** , as illustrated in the following set of triples:
 
-THE FOLLOWING TRIPLES ARE OUTDATED AS OF 14MAR18:
 
-    cdiscpilot01:AssumeBodyPositionStanding_1 ;
-      rdf:type custom:AssumeBodyPositionStanding ;
-      skos:prefLabel "assume standing position"^^xsd:string ;
-      study:activityStatus code:ActivityStatus_1 ;
-      study:hasCode custom:AssumeBodyPositionStanding ;
-      study:hasDate cdiscpilot01:Date_19 ;
-      study:hasStartRule cdiscpilot01:StartRuleLying5_1 ;
-      study:outcome sdtmterm:#C71148.C62166 . 
 
 ### Miscellaneous
 

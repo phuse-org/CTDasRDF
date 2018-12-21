@@ -9,8 +9,6 @@
 # TODO: visit recode move to function, share with VS,EX and other domains...
 #______________________________________________________________________________
 
-
-
 # StartRules based on vstpt 
 vs <- vs %>%
   mutate(startRule_im = recode(vstpt,
@@ -19,11 +17,14 @@ vs <- vs %>%
     'AFTER STANDING FOR 3 MINUTES'    = 'StartRuleStanding3' 
   ))
 
+
+
+
 # Change following to function. Used in other domains! (EX_imput has same recoding!)
 # visit in Camel Case Short form for linking  IRIs to ont. Ont uses camel case
 
 vs <- vs %>%    
-  mutate(visit_im_titleC = recode(visit,
+  mutate(visit_im_titleCSh = recode(visit,
     'SCREENING 1'          =  'Screening1' ,
     'SCREENING 2'          =  'Screening2' ,
     'BASELINE'             =  'Baseline' ,
@@ -127,7 +128,8 @@ vs$vspos_im_lowerC    <- tolower(vs$vspos)
 # vstpt_AssumeBodyPosStartRule_im ----
 # Study protcol has the patient lying for 5 min before standing for 1 min.
 #  The standing 1 min therefore has a previous 5 min start rule.
-vs[vs$vstpt == "AFTER STANDING FOR 1 MINUTE", "vstpt_AssumeBodyPosStartRule_im"] <- "StartRuleLying5"
+#  NOTE: Must only operate on non is.na values of vstpt
+vs[!is.na(vs$vstpt) &  vs$vstpt == "AFTER STANDING FOR 1 MINUTE", "vstpt_AssumeBodyPosStartRule_im"] <- "StartRuleLying5"
 
 # vstpt_label_im ----
 vs$vstpt_label_im <- tolower(vs$vstpt)
