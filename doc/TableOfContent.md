@@ -24,9 +24,9 @@ Data files, including source study files and project .TTL files generated from T
 
 Ontology details.
 
-#### [2.4 Data Conversion](DataConv-Ref.md)
+#### [2.4 Data Conversion and Mapping](DataMappingAndConversion.md)
 
-Data Conversion process from SDTM XPT files to mapping and upload to the triplestore using Stardog SMS. Includes data review and validation tools written in R.
+Data Conversion process from SDTM XPT to the graph. Includes upload of ontologies, code conventions, validation tools, etc.
 
 How-To Guides
 ---------------------
