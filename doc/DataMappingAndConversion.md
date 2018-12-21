@@ -1,10 +1,7 @@
 # Data Mapping and Conversion
-_Last updated 27 APR 2018 _
 
 ## Introduction
-This document describes the conversion of data from the source XPT files to RDF.
-**CAUTION**: It is almost certain this document is out of date. It is definitely
-incomplete.
+Most instance data is uploaded to the graph by converting source XPT files. Notable exceptions include graph metadata (when and how the graph was created) and other information that is not stored in the XPT files  [ADD EXAMPLE - TW]
 
 Pre-processing and creation of new data not in the original sources is minimized wherever possible. Data imputation is used for values typically seen in SDTM source data but absent from the study used to develop the prototype. The value for birth date is an example described later in this document.
 
@@ -33,8 +30,8 @@ SDTM version 3.2. The files are available within this project at: ./data/source/
 | 2.     | Functions.R          | Functions called during conversion process |
 | 3.     | DM_imputeCSV.R       | DM imputation, encoding. Must be run before EX. See Details for DM,EX data files. |
 |        | XPTtoCVS:SUPPDM      | No imputation for SUPPMD. XPTtoCVS.R processes SUPPDM directly. |
-| 4.     | EX_imputeCSV.R       | EX imputation, encoding. 
-| 5.     | VS_imputeCSV.R       | ** UNDER CONSTRUCTION ** |
+| 4.     | EX_imputeCSV.R       | EX imputation, encoding. Incomplete 2012-12-21
+| 5.     | VS_imputeCSV.R       | VS Imputation|
 | 6.     | _TS_impute.CVS_      | **_planned_** |
 | 7.     | _TBD_                | _TBD_ |
 
