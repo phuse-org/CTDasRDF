@@ -33,16 +33,18 @@
 # Study
 # cd01p:Study_{studyid}
 cd01p:Study_foo
-  rdf:type study:Study ;
-  skos:altLabel        " "^^xsd:string ;
-  skos:prefLabel       "{studyid}"^^xsd:string ;
-  study:adaptiveDesign sdtmterm:NoYesResponse_{adaptiveDesignNY} ;
-  study:addOn          sdtmterm:NoYesResponse_{addOnNY} ;
-  study:blinding       sdtmterm:TrialBlindingSchema_{blindingSchema} ;
-  study:controlType    sdtmterm:ControlType_{controlType} ;
-  study:hasInterval    cd01p:Interval_{studyBegin}_to_{studyEnd} ;
-  study:hasPopulation  cd01p:EnrolledPopulation_{studyid} ;
-  study:hasPopulation  cd01p:StudyPopulation_{studyid} ;
+  rdf:type               study:Study ;
+  skos:altLabel          " "^^xsd:string ;
+  skos:prefLabel         "{studyid}"^^xsd:string ;
+  study:adaptiveDesign   sdtmterm:NoYesResponse_{adaptiveDesignNY} ;
+  study:addOn            sdtmterm:NoYesResponse_{addOnNY} ;
+  study:blinding         sdtmterm:TrialBlindingSchema_{blindingSchema} ;
+  study:controlType      sdtmterm:ControlType_{controlType} ;
+  study:hasInterval      cd01p:Interval_{studyBegin}_to_{studyEnd} ;
+  study:hasPopulation    cd01p:EnrolledPopulation_{studyid} ;
+  study:hasPopulation    cd01p:StudyPopulation_{studyid} ;
+  study:hasPrimObjective cd01p:PrimaryObjective_{primObjSeq} ;
+  study:hasSecObjective  cd01p:SecondaryObjective_{secObjSeq} ;
 .
 
 #---- Study Interval ----------------------------------------------------------
@@ -66,10 +68,22 @@ cd01p:StudyPopulation_{studyid}
   rdf:type             study:CompletePopulation ;
   skos:prefLabel       "Study population {studyid}"^^xsd:string ;
   study:ageGroup       code:AgeGroup_{ageGroup} ;
-  study:ageGroup       code:AgeGroup_{ageGroup} ;
   study:hasSite        cd01p:Site_{siteid} ;
   study:healthySubject sdtmterm:NoYesResponse_{sdtmtermNY} ;
-  study:maxSubjectAge  <https://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF> ;
-  study:minSubjectAge  code:PlannedSubjectAge_P50Y ;
+  study:maxSubjectAge  code:PlannedSubjectAge_{maxSubjAge} ;
+  study:minSubjectAge  code:PlannedSubjectAge_{minSubjAge} ;
   study:sexGroup       sdtmterm:SexGroup_{sexGroup} ;
+.
+#---- Primary Objective -------------------------------------------------------
+cd01p:PrimaryObjective_{primObjSeq}
+  rdf:type study:PrimaryObjective ;
+  skos:prefLabel "{primObj}"^^xsd:string ;
+  study:seq "{primObjSeq}"^^xsd:float ;
+.
+
+#---- Secondary Objective -------------------------------------------------------
+cd01p:SecondaryObjective_{secObjSeq}
+  rdf:type study:SecondaryObjective ;
+  skos:prefLabel "{secObj}"^^xsd:string ;
+  study:seq "{secObjSeq}"^^xsd:float ;
 .
