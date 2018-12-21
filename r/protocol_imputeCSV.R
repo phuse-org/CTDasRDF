@@ -30,15 +30,21 @@ singleRow <- data.frame(
   actualPopSize    = "254",
   adaptiveDesignNY = "N",
   addOnNY          = "N",
+  adminActivity    = "DataCutoff",
+  adminActivityLbl = "Admin activity Data cutoff",
+  adminActivityDt  = "2015-03-31",
   ageGroup         = c("ADULT", "ELDERLY"),  
-  nArms            = "3",
   blindingSchema   = "DOUBLE_BLIND",
   controlType      = "PLACEBO",
   countryIdSeq     = "1",
+  epoch            = "BlindedTreatment",
+  epochLC          = "blindedtreatment",
+  epochLbl         = "Epoch Blinded treatment",
   intervModel      = "PARALLEL",
   intervType       = "DRUG",
   maxSubjAge       = "NULL",
   minSubjAge       = "P50Y",
+  nArms            = "3",
   plannedPopSize   = "300",
   primOutMeas      = "ADAS-Cog",
   randTrialNY      = "Y",
@@ -59,7 +65,7 @@ singleRow <- data.frame(
   studyStopRuleDsc = "Last patient completed last visit or sponsor decided to discontinue study",
   studyTitle       = "Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimers Disease.",
   studyType        = "INT",
-    trialPhase       = "PHASE2"
+  trialPhase       = "PHASE2"
   )
   
 studyPop <- data.frame(
@@ -85,11 +91,44 @@ secObj <- data.frame(
 
 trialType <- data.frame(
   trialType = c("EFF", "PK", "SAF")
-  
 )
 
+# Treatment Arms have variable number of rdf:type. Define separately.
+# Each arm defined on separate lines for the code below and must match
+#   the number of items across variables. eg: PBO has two arm types, so 
+#   all data for PBO has two values. This is just one kludgy way to do it.
+arms <- data.frame(
+  armAbbr    = c("Pbo", "Pbo",
+                 "ScreenFailure",
+                 "XanomelineHigh", "XanomelineHigh",
+                 "XanomelineLow", "XanomelineLow"
+  ),
+  armType    = c("ControlArm", "RandomizationOutcome",
+                  "FalseArm",
+                  "InvestigationalArm","RandomizationOutcome",
+                  "InvestigationalArm","RandomizationOutcome"
+  ),
+  armAltLbl  = c("Pbo","Pbo",
+                 "Scrnfail",
+                 "Xan_High","Xan_High",
+                 "Xan_Lo","Xan_Lo"
+  ),
+  armPrefLbl = c("Placebo","Placebo",
+                 "Screen Failure",
+                "Xanomeline High","Xanomeline High",
+                "Xanomeline Low", "Xanomeline Low"
+  )
+)
+
+visits <- data.frame(
+  visitActivity = c("AmbulECGPlace", "AmbulECGRemove", "Baseline", "Retrieval", 
+    "Screening1", "Screening2", "Wk12", "Wk16", "Wk20", "Wk24", "Wk26", "Wk2",
+    "Wk4", "Wk6", "Wk8" )
+)
+
+
 # Bring the data together
-protocol  <- cbind.fill(singleRow, studyPop, primObj, secObj, trialType)
+protocol  <- cbind.fill(singleRow, studyPop, primObj, secObj, trialType, arms, visits)
 
 # Sort column names in the df for quicker referencing
 protocol <- protocol %>% select(noquote(order(colnames(protocol))))
