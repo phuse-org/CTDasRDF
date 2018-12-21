@@ -35,35 +35,36 @@
 cd01p:Study_foo
   rdf:type study:Study ;
   skos:altLabel        " "^^xsd:string ;
-#  skos:prefLabel       "{studyid}"^^xsd:string ;
+  skos:prefLabel       "{studyid}"^^xsd:string ;
   study:adaptiveDesign sdtmterm:NoYesResponse_{adaptiveDesignNY} ;
-#  study:addOn          sdtmterm:NoYesResponse_{addOnNY} ;
-#  study:blinding       sdtmterm:TrialBlindingSchema_{blindingSchema} ;
-#  study:controlType    sdtmterm:ControlType_{controlType} ;
-#  study:hasInterval    cd01p:Interval_{studyBegin}_to_{studyEnd} ;
-#  study:hasPopulation  cd01p:EnrolledPopulation_{studyid} ;
-#  study:hasPopulation  cd01p:StudyPopulation_{studyid} ;
+  study:addOn          sdtmterm:NoYesResponse_{addOnNY} ;
+  study:blinding       sdtmterm:TrialBlindingSchema_{blindingSchema} ;
+  study:controlType    sdtmterm:ControlType_{controlType} ;
+  study:hasInterval    cd01p:Interval_{studyBegin}_to_{studyEnd} ;
+  study:hasPopulation  cd01p:EnrolledPopulation_{studyid} ;
+  study:hasPopulation  cd01p:StudyPopulation_{studyid} ;
 .
 
-##---- Study Interval ----------------------------------------------------------
-#cd01p:Interval_{studyBegin}_to_{studyEnd}
-#  rdf:type          study:StudyInterval ;
-#  skos:prefLabel    "Interval {studyBegin} to {studyEnd}" ;
-#  time:hasBeginning cd01p:Date_{studyBegin} ;
-#  time:hasEnd       cd01p:Date_{studyEnd} ;
-#.
+#---- Study Interval ----------------------------------------------------------
+cd01p:Interval_{studyBegin}_to_{studyEnd}
+  rdf:type          study:StudyInterval ;
+  skos:prefLabel    "Interval {studyBegin} to {studyEnd}"^^xsd:string ;
+  time:hasBeginning cd01p:Date_{studyBegin} ;
+  time:hasEnd       cd01p:Date_{studyEnd} ;
+.
+
 ##---- Enrolled Population -----------------------------------------------------
 #cd01p:EnrolledPopulation_{studyid}
 #  rdf:type                    study:EnrolledPopulation ;
-#  skos:prefLabel              "Enrolled population {studyid}" ;
+#  skos:prefLabel              "Enrolled population {studyid}"^^xsd:string ;
 #  study:actualPopulationSize  {actualPopSize} ;
 #  study:plannedPopulationSize {plannedPopSize} ;
 #.
 #
-##---- Study Population --------------------------------------------------------
+#---- Study Population --------------------------------------------------------
 #cd01p:StudyPopulation_{studyid}
 #  rdf:type             study:CompletePopulation ;
-#  skos:prefLabel       "Study population {studyid}" ;
+#  skos:prefLabel       "Study population {studyid}"^^xsd:string ;
 #  study:ageGroup       code:AgeGroup_{ageGroup} ;
 #  study:ageGroup       code:AgeGroup_{ageGroup} ;
 #  study:hasSite        cd01p:Site_{siteid} ;
