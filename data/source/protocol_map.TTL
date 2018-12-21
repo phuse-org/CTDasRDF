@@ -53,23 +53,23 @@ cd01p:Interval_{studyBegin}_to_{studyEnd}
   time:hasEnd       cd01p:Date_{studyEnd} ;
 .
 
-##---- Enrolled Population -----------------------------------------------------
-#cd01p:EnrolledPopulation_{studyid}
-#  rdf:type                    study:EnrolledPopulation ;
-#  skos:prefLabel              "Enrolled population {studyid}"^^xsd:string ;
-#  study:actualPopulationSize  {actualPopSize} ;
-#  study:plannedPopulationSize {plannedPopSize} ;
-#.
-#
+#---- Enrolled Population -----------------------------------------------------
+cd01p:EnrolledPopulation_{studyid}
+  rdf:type                    study:EnrolledPopulation ;
+  skos:prefLabel              "Enrolled population {studyid}"^^xsd:string ;
+  study:actualPopulationSize  "{actualPopSize}"^^xsd:int ;
+  study:plannedPopulationSize "{plannedPopSize}"^^xsd:int ; ;
+.
+
 #---- Study Population --------------------------------------------------------
-#cd01p:StudyPopulation_{studyid}
-#  rdf:type             study:CompletePopulation ;
-#  skos:prefLabel       "Study population {studyid}"^^xsd:string ;
-#  study:ageGroup       code:AgeGroup_{ageGroup} ;
-#  study:ageGroup       code:AgeGroup_{ageGroup} ;
-#  study:hasSite        cd01p:Site_{siteid} ;
-#  study:healthySubject sdtmterm:NoYesResponse_{sdtmtermNY} ;
-#  study:maxSubjectAge  <https://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF> ;
-#  study:minSubjectAge  code:PlannedSubjectAge_P50Y ;
-#  study:sexGroup       sdtmterm:SexGroup_{sexGroup} ;
-#.
+cd01p:StudyPopulation_{studyid}
+  rdf:type             study:CompletePopulation ;
+  skos:prefLabel       "Study population {studyid}"^^xsd:string ;
+  study:ageGroup       code:AgeGroup_{ageGroup} ;
+  study:ageGroup       code:AgeGroup_{ageGroup} ;
+  study:hasSite        cd01p:Site_{siteid} ;
+  study:healthySubject sdtmterm:NoYesResponse_{sdtmtermNY} ;
+  study:maxSubjectAge  <https://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF> ;
+  study:minSubjectAge  code:PlannedSubjectAge_P50Y ;
+  study:sexGroup       sdtmterm:SexGroup_{sexGroup} ;
+.

@@ -12,7 +12,7 @@
 # SRC :
 # IN  : CSV converted from DM.XPT. First row only
 # OUT :
-# NOTE: stardog-admin virtual import CTDasRDF DM_mappings.TTL DM_subset.csv
+# NOTE: stardog-admin virtual import CTDasRDFSMS DM_map.TTL DM_subset.csv
 #  Export to TTL: stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
 #   - Birthdate and Deathdate are of the Lifespan interval.
 #   - StudyParticipationBegin = date of informed consent: AO email 2071-02-16
@@ -54,7 +54,7 @@ cdiscpilot01:Person_{usubjid}
   study:hasSubjectID                  cdiscpilot01:SubjectIdentifier_{subjid} ;
   study:hasUniqueSubjectID            cdiscpilot01:UniqueSubjectIdentifier_{usubjid} ;
   study:participatesIn                cdiscpilot01:DemographicDataCollection_{usubjid};
-  #DEL  study:participatesIn                cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im_en} ;
+  #DEL  study:participatesIn          cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im_en} ;
   study:participatesIn                cdiscpilot01:CumulativeDrugAdministration_{usubjid} ;
   study:participatesIn                cdiscpilot01:InformedConsentAdult_{usubjid} ;
   study:participatesIn                cdiscpilot01:RandomizationBAL3_{usubjid} ;
@@ -163,10 +163,10 @@ cdiscpilot01:DemographicDataCollection_{usubjid}
   skos:prefLabel       "Person {usubjid} Screening 1 Demographic data collection"^^xsd:string ;
   study:activityStatus code:ActivityStatus_CO ;
   study:hasDate        cdiscpilot01:Date_{dmdtc_en} ;
-  study:hasSubActivity cdiscpilot01:AgeDataCollection_{usubjid} ;
-  study:hasSubActivity cdiscpilot01:EthnicityDataCollection_{usubjid} ;
-  study:hasSubActivity cdiscpilot01:RaceDataCollection_{usubjid} ;
-  study:hasSubActivity cdiscpilot01:SexDataCollection_{usubjid} ;
+  study:hasActivity cdiscpilot01:AgeDataCollection_{usubjid} ;
+  study:hasActivity cdiscpilot01:EthnicityDataCollection_{usubjid} ;
+  study:hasActivity cdiscpilot01:RaceDataCollection_{usubjid} ;
+  study:hasActivity cdiscpilot01:SexDataCollection_{usubjid} ;
   code:outcome        code:Successfully_Completed ;
 .
 # DemographicDataCollection subtriples
