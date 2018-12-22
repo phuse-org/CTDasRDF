@@ -586,7 +586,6 @@ cd01p:Study_CDISCPILOT01
   study:hasTitle cd01p:Title_CDISCPILOT01 ;
   study:interventionModel sdtmterm:InterventionModel_PARALLEL ;
   study:interventionType sdtmterm:InterventionType_DRUG ;
-  study:isAddOnStudy sdtmterm:NoYesResponse_N ;
   study:narms 3 ;
   study:randomizedTrial sdtmterm:NoYesResponse_Y ;
   study:studyDrug code:Substance_xanomeline ;
@@ -681,6 +680,9 @@ cd01p:VitalsSignsBodyPosition
 code:AgeUnit
   code:hasMethod code:Method_ASSIGNED ;
 .
+code:AssumeBodyPosition
+  rdfs:subClassOf study:PreparatoryIntervention ;
+.
 code:BodyPosition_STANDING
   rdf:type cd01p:VitalsSignsBodyPosition ;
 .
@@ -771,16 +773,14 @@ code:Weight
 custom:AssumeBodyPositionStanding
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf study:AssumeBodyPosition ;
-  rdfs:subClassOf study:PrerequisiteActivity ;
+  rdfs:subClassOf code:AssumeBodyPosition ;
   skos:definition "" ;
   skos:prefLabel "ASSUME BODY POSITION STANDING" ;
 .
 custom:AssumeBodyPositionSupine
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf study:AssumeBodyPosition ;
-  rdfs:subClassOf study:PrerequisiteActivity ;
+  rdfs:subClassOf code:AssumeBodyPosition ;
   skos:definition "" ;
   skos:prefLabel "ASSUME BODY POSITION SUPINE" ;
 .
