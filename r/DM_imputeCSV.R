@@ -33,7 +33,7 @@ dm$dthfl[dm$usubjid == '01-701-1015' ]  <- "Y" # Set a Death flag  for Person_1
 
 
 #-- Intervals
-dm$cumuDrugAdmin_im       <- paste0(dm$rfxstdtc, "_", dm$rfxendtc)
+dm$cumuDrugAdmin_im  <- paste0(dm$rfxstdtc, "_", dm$rfxendtc)
 dm$lifeSpan_im       <- paste0(dm$brthdate, "_", dm$dthdtc)
 dm$lifeSpan_label_im <- paste0(dm$brthdate, " to ", dm$dthdtc)
 dm$refInt_im         <- paste0(dm$rfstdtc,  "_", dm$rfendtc) 

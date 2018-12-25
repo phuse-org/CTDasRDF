@@ -17,9 +17,6 @@ vs <- vs %>%
     'AFTER STANDING FOR 3 MINUTES'    = 'StartRuleStanding3' 
   ))
 
-
-
-
 # Change following to function. Used in other domains! (EX_imput has same recoding!)
 # visit in Camel Case Short form for linking  IRIs to ont. Ont uses camel case
 
@@ -124,7 +121,6 @@ vs$visit_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$
 vs$vspos_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vspos,    perl=TRUE)
 vs$vspos_im_lowerC    <- tolower(vs$vspos)
 
-
 # vstpt_AssumeBodyPosStartRule_im ----
 # Study protcol has the patient lying for 5 min before standing for 1 min.
 #  The standing 1 min therefore has a previous 5 min start rule.
@@ -156,7 +152,6 @@ vs[vs$vsseq == 87  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "720"
 vs[vs$vsseq == 88  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "236"
 vs[vs$vsseq == 128 & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "3000"
 vs[vs$vsseq == 142 & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "5000"
-
 
 # Sort column names in the df for quicker referencing
 vs <- vs %>% select(noquote(order(colnames(vs))))

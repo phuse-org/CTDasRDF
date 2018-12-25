@@ -48,6 +48,7 @@ cd01p:Study_{studyid}
   study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminActivity} ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_{armAbbr} ;
   study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch} ;
+  study:hasProtocolSpecifiedActivity custom:Visit{visitActivity}Activity ;
   study:hasRegistryID                cd01p:StudyRegistryIdentifier_{regid} ;
   study:hasSponsor                   code:Sponsor_{studyid} ;
   study:hasStopRule                  cd01p:StudyStopRule_{studyStopRuleSeq} ;

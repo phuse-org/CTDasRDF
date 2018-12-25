@@ -13,6 +13,8 @@
 #         this intiial POC until a better method is employed.
 # TODO:   
 #______________________________________________________________________________
+
+#  DELETE AND REPLACE with TS_impute.CSV
 #
 # Remove next lines when integrated with XPTtoCSV.R 
 # Set working directory to the root of the work area
@@ -132,7 +134,7 @@ protocol  <- cbind.fill(singleRow, studyPop, primObj, secObj, trialType, arms, v
 
 # Sort column names in the df for quicker referencing
 protocol <- protocol %>% select(noquote(order(colnames(protocol))))
-
+head(protocol)
 write.csv(protocol, file="data/source/protocol.csv", 
   row.names = F,
   na = "")
