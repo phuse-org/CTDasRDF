@@ -243,6 +243,29 @@ Date for the visit is extracted from VS, not from EX, because the EX date is som
 Recall that the Drug Exposure interval is created from data in DM, not EX. See DM details, above.
 
 
+## TS
+
+| File        | Role                     | Description                                  |
+| ---------   | ------------------------ | ---------------------------------------------|
+| TS.XPT      | Orginal XPT              |  From pilot data |
+| TS_wide.csv | Wide format for map      |  Complete, original TS with corrections and imputations  |
+| TS_wide_map.TTL | SMS Map              |  Map to graph. |
+
+### Data Corrections and Imputations
+The file is converted from the original TS.XPT long form to the wide form for mapping using SMS.
+
+*Notes from AO, paraphrased from* https://phuse.teamworkpm.net/#messages/535928
+
+Primary outcome measure(s) are those measures needed to support the Primary Objective of the trial. An outcome measure is a type of (i.e. subClassOf) an Observation, with  study:OutcomeMeasure a subclass of study:Observation. Subclasses are added for Primary and Secondary outcome measures (and in the future, tertiary & exploratory measures). 
+
+In the original TS data, OUTMPRI = "Evaluate the efficacy and safety of transdermal xanomeline, 50cm2 and 75cm2, and placebo in subjects with mild to moderate Alzheimer's disease."  This is an objective, not an outcome measure so it was recoded as the third Primary Objective.
+
+In typical Alzheimer's trials, the **primary outcome measure** is the ADAS-Cog (Alzheimer's Disease Assessment Scale, Cognitive Subscale). ADAS-Cog was added as the primary outcome measure.
+
+### SMS details
+To be added.
+
+
 # Data Validation
 
 Location:  ./r/validation
@@ -255,7 +278,7 @@ Location:  ./r/validation
 
 
 
-# Exporing TTL from Stardog
+# Exporting TTL from Stardog
 
 A TTL file is constructed from within Stardog Studio using this query, then saving as TTL:
 ./SPARQL/ConstructTT.rq
