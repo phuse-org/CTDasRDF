@@ -1,0 +1,19 @@
+###############################################################################
+# FILE: DeleteAllTriples.rq
+# DESC: Delete all triples in the current graph
+# REQ : 
+# SRC : 
+# IN  : 
+# OUT : 
+# NOTE: 
+#        !! Careful you must be, young Jedi !!
+#         ---- This script deletes ALL TRIPLES in your graph -----
+#         Are you sure this is really what you want to do?  
+# TODO: 
+###############################################################################
+DELETE{
+  ?s ?p ?o
+}
+WHERE{
+  ?s ?p ?o
+}

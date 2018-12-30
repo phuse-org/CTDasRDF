@@ -1,0 +1,31 @@
+###############################################################################
+# FILE: ConstructTTL.rq
+# DESC: Run in Stardog Studio then export to TTL to extract all triples in the 
+#       graph
+# REQ : 
+# SRC : 
+# IN  : 
+# OUT : All triples in the graph ordered by ?s, ?o
+# NOTE: 
+# TODO: 
+###############################################################################
+
+PREFIX cd01p: <https://w3id.org/phuse/cd01p#> 
+PREFIX cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> 
+PREFIX code: <https://w3id.org/phuse/code#> 
+PREFIX custom: <https://w3id.org/phuse/custom#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX sdtmterm: <https://w3id.org/phuse/sdtmterm#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX sp: <http://spinrdf.org/sp#> 
+PREFIX spin: <http://spinrdf.org/spin#> 
+PREFIX study: <https://w3id.org/phuse/study#> 
+PREFIX time: <http://www.w3.org/2006/time#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+CONSTRUCT{?s ?p ?o} 
+WHERE {
+  ?s ?p ?o
+} ORDER BY ?s ?p

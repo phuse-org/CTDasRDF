@@ -1,12 +1,13 @@
 ###############################################################################
-# FILE: 
-# DESC: 
+# FILE: ProgramFlow-Mermaid.R
+# DESC: Program and data flow in the CTDasRDF conversion process.
+#       Awkward to update and maintain. Helpful diagram.
 # SRC :
 # IN  : 
 # OUT : 
 # REQ : 
 # SRC : 
-# NOTE: 
+# NOTE: OUTDATED. Requires update for latest process 2018-1014
 #   To install DiagrammeR:   
 #      devtools::install_github('rich-iannone/DiagrammeR')
 # TODO: 

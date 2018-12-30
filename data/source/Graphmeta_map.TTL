@@ -1,0 +1,34 @@
+###############################################################################
+# FILE: Graphmeta_map.TTL
+# DESC: Stardog SMS Template file for mapping graph metadata to graph.  
+# REQ : 
+# SRC : 
+# IN  : CSV updated from R script XTPtoCSV.R 
+# OUT : 
+# NOTE:  R script updates the timestamp in the CVS prior to import to graph
+#        stardog-admin virtual import Graphmeta_map.TTL Graphmeta.CSV
+# TODO: 
+###############################################################################
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix cd01p: <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code: <https://w3id.org/phuse/code#> .
+@prefix custom: <https://w3id.org/phuse/custom#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm: <https://w3id.org/phuse/sdtmterm#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix study: <https://w3id.org/phuse/study#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cdiscpilot01:stdm-graph 
+  rdfs:label          "{label}"^^xsd:string ;
+  dcterms:description "{description}"^^xsd:string ;
+  dcterms:title       "{title}"^^xsd:string ;
+  bibo:status         "{status}"^^xsd:string ; 
+  pav:createdOn       "{createdon}"^^xsd:dateTime ; 
+  pav:version         "{version}"^^xsd:string ; 
+.

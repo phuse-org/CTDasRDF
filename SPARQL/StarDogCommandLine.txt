@@ -1,0 +1,13 @@
+###############################################################################
+# FILE: StarDogCommandLine.txt
+# DESC: Stardog commands executed from the command line
+# REQ : Stardog
+# SRC : 
+# IN  : 
+# OUT : TTL file
+# NOTE: 
+# TODO: 
+###############################################################################
+
+#-- Export a graph to a TTL file
+stardog data export --format TURTLE CTDasRDFSMS C:/temp/CTDasRDF_Persons.TTL

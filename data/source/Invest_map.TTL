@@ -1,0 +1,43 @@
+###############################################################################
+# FILE: Invest_map.ttl
+# DESC: Stardog SMS Template file for mapping investigator and site data  
+# REQ : 
+# SRC : 
+# IN  : invest_imputed.CSV : values not in the orignal data, used for testing
+#       the model.
+# OUT : 
+# NOTE: stardog-admin virtual import CTDasRDF ctdasrdf_invest_mappings.TTL ctdasrdf_invtest.csv
+#  Export to TTL: stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
+#  
+#  
+# TODO: 
+###############################################################################
+@prefix cd01p: <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code: <https://w3id.org/phuse/code#> .
+@prefix custom: <https://w3id.org/phuse/custom#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm: <https://w3id.org/phuse/sdtmterm#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix study: <https://w3id.org/phuse/study#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# -----------------------------------------------------------------------------
+# Site
+cd01p:Site_{siteid}
+  study:hasInvestigator cdiscpilot01:Investigator_{investID} ;
+.
+
+cdiscpilot01:Investigator_{investID}
+  rdf:type study:Investigator ;
+  skos:prefLabel "Investigator {investID}"^^xsd:string ;
+  study:hasInvestigatorID cdiscpilot01:InvestigatorIdentifier_{investID} ;
+  study:hasLastName "{investLN}"^^xsd:string ;
+.
+
+# Can this second set of triples be removed: combined with those above?
+cdiscpilot01:InvestigatorIdentifier_{investID}
+  rdf:type study:InvestigatorIdentifier ;
+  skos:prefLabel "{investID}"^^xsd:string ;
+.

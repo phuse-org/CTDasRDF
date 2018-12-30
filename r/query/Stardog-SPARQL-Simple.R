@@ -21,16 +21,16 @@ query <- "SELECT *
   } LIMIT 100"
 
 # Or: ready prefixes in from prefixes.csv project file.
-prefix <- c("cd01p",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl",
-            "cdiscpilot01", "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#",
-            "code",         "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#",
-            "custom",       "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#",
+prefix <- c("cd01p",        "https://w3id.org/phuse/cd01p",
+            "cdiscpilot01", "<https://w3id.org/phuse/cdiscpilot01#",
+            "code",         "<https://w3id.org/phuse/code#",
+            "custom",       "<https://w3id.org/phuse/custom#>",
             "owl",          "http://www.w3.org/2002/07/owl#",
             "rdf",          "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
             "rdfs",         "http://www.w3.org/2000/01/rdf-schema#",
-            "sdtmterm",     "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-terminology.rdf#",
+            "sdtmterm",     "https://w3id.org/phuse/sdtmterm#",
             "skos",         "http://www.w3.org/2004/02/skos/core#",
-            "study",        "https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#",
+            "study",        "https://w3id.org/phuse/study#",
             "time",         "http://www.w3.org/2006/time#")
 
 qd <- SPARQL(endpoint, query, ns=prefix)
