@@ -7,7 +7,7 @@
 	ODMVersion="1.3.2"
 	FileOID="null.SDTM.Define-XML"
 	FileType="Snapshot"
-	CreationDateTime="2018-03-18T20:39:59"
+	CreationDateTime="2018-12-31T00:25:17"
 	Originator="null">
 	<Study OID="null">
 		<GlobalVariables>
@@ -106,647 +106,364 @@
   <def:leaf ID="LF.VS" xlink:href="vs.xpt">
     <def:title>vs.xpt</def:title>
   </def:leaf>
-</ItemGroupDef><ItemDef OID="IT.DM.STUDYID" Name="STUDYID" SASFieldName="STUDYID" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+</ItemGroupDef><ItemDef OID="IT.DM.STUDYID" Name="STUDYID" SASFieldName="STUDYID" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Study Identifier</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.DM.DOMAIN" Name="DOMAIN" SASFieldName="DOMAIN" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.DM.DOMAIN" Name="DOMAIN" SASFieldName="DOMAIN" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Domain Abbreviation</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.DM.USUBJID" Name="USUBJID" SASFieldName="USUBJID" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.USUBJID">
+<ItemDef OID="IT.DM.USUBJID" Name="USUBJID" SASFieldName="USUBJID" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Unique Subject Identifier</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.SUBJID" Name="SUBJID" SASFieldName="SUBJID" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.DM.SUBJID" Name="SUBJID" SASFieldName="SUBJID" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Subject Identifier for the Study</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.DM.RFSTDTC" Name="RFSTDTC" SASFieldName="RFSTDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.RFSTDTC">
+<ItemDef OID="IT.DM.RFSTDTC" Name="RFSTDTC" SASFieldName="RFSTDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Subject Reference Start Date/Time</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.RFENDTC" Name="RFENDTC" SASFieldName="RFENDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.RFENDTC">
+<ItemDef OID="IT.DM.RFENDTC" Name="RFENDTC" SASFieldName="RFENDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Subject Reference End Date/Time</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.RFXSTDTC" Name="RFXSTDTC" SASFieldName="RFXSTDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.RFXSTDTC">
+<ItemDef OID="IT.DM.RFXSTDTC" Name="RFXSTDTC" SASFieldName="RFXSTDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Date/Time of First Study Treatment</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.RFXENDTC" Name="RFXENDTC" SASFieldName="RFXENDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.RFXENDTC">
+<ItemDef OID="IT.DM.RFXENDTC" Name="RFXENDTC" SASFieldName="RFXENDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Date/Time of Last Study Treatment</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.RFICDTC" Name="RFICDTC" SASFieldName="RFICDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.RFICDTC">
+<ItemDef OID="IT.DM.RFICDTC" Name="RFICDTC" SASFieldName="RFICDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Date/Time of Informed Consent</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.RFPENDTC" Name="RFPENDTC" SASFieldName="RFPENDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.RFPENDTC">
+<ItemDef OID="IT.DM.RFPENDTC" Name="RFPENDTC" SASFieldName="RFPENDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Date/Time of End of Participation</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.DTHDTC" Name="DTHDTC" SASFieldName="DTHDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.DTHDTC">
+<ItemDef OID="IT.DM.DTHDTC" Name="DTHDTC" SASFieldName="DTHDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Date/Time of Death</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.DTHFL" Name="DTHFL" SASFieldName="DTHFL" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.DTHFL">
+<ItemDef OID="IT.DM.DTHFL" Name="DTHFL" SASFieldName="DTHFL" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Subject Death Flag</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.No Yes Response" />
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.NY" />
 </ItemDef>
-<ItemDef OID="IT.DM.SITEID" Name="SITEID" SASFieldName="SITEID" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.DM.SITEID" Name="SITEID" SASFieldName="SITEID" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Study Site Identifier</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.DM.INVID" Name="INVID" SASFieldName="INVID" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.DM.INVID" Name="INVID" SASFieldName="INVID" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Investigator Identifier</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.DM.BRTHDTC" Name="BRTHDTC" SASFieldName="BRTHDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.DM.BRTHDTC" Name="BRTHDTC" SASFieldName="BRTHDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Date/Time of Birth</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="CRF" />
 </ItemDef>
-<ItemDef OID="IT.DM.AGE" Name="AGE" SASFieldName="AGE" DataType="xsd:positiveInteger^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.AGE">
+<ItemDef OID="IT.DM.AGE" Name="AGE" SASFieldName="AGE" DataType="integer">
   <Description>
     <TranslatedText xml:lang="en">Age</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.AGEU" Name="AGEU" SASFieldName="AGEU" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.AGEU">
+<ItemDef OID="IT.DM.AGEU" Name="AGEU" SASFieldName="AGEU" DataType="text" def:CommentOID="COM.AGEU">
   <Description>
     <TranslatedText xml:lang="en">Age Units</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Age Unit" />
+  <def:Origin Type="ASSIGNED" />
+  <CodeListRef CodeListOID="CL.AGEU" />
 </ItemDef>
-<ItemDef OID="IT.DM.SEX" Name="SEX" SASFieldName="SEX" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.DM.SEX" Name="SEX" SASFieldName="SEX" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Sex</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Sex" />
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.SEX" />
 </ItemDef>
-<ItemDef OID="IT.DM.RACE" Name="RACE" SASFieldName="RACE" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.DM.RACE" Name="RACE" SASFieldName="RACE" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Race</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Race" />
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.RACE" />
 </ItemDef>
-<ItemDef OID="IT.DM.ETHNIC" Name="ETHNIC" SASFieldName="ETHNIC" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.ETHNIC">
+<ItemDef OID="IT.DM.ETHNIC" Name="ETHNIC" SASFieldName="ETHNIC" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Ethnicity</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Ethnic Group" />
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.ETHNIC" />
 </ItemDef>
-<ItemDef OID="IT.DM.ARMCD" Name="ARMCD" SASFieldName="ARMCD" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.ARMCD">
+<ItemDef OID="IT.DM.ARMCD" Name="ARMCD" SASFieldName="ARMCD" DataType="text" def:CommentOID="COM.ARMCD">
   <Description>
     <TranslatedText xml:lang="en">Planned Arm Code</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.DM.ARM" Name="ARM" SASFieldName="ARM" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.ARM">
+<ItemDef OID="IT.DM.ARM" Name="ARM" SASFieldName="ARM" DataType="text" def:CommentOID="COM.ARM">
   <Description>
     <TranslatedText xml:lang="en">Description of Planned Arm</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.DM.ACTARMCD" Name="ACTARMCD" SASFieldName="ACTARMCD" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.ACTARMCD">
+<ItemDef OID="IT.DM.ACTARMCD" Name="ACTARMCD" SASFieldName="ACTARMCD" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Actual Arm Code</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.DM.ACTARM" Name="ACTARM" SASFieldName="ACTARM" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.DM.ACTARM" Name="ACTARM" SASFieldName="ACTARM" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Description of Actual Arm</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.DM.COUNTRY" Name="COUNTRY" SASFieldName="COUNTRY" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.COUNTRY">
+<ItemDef OID="IT.DM.COUNTRY" Name="COUNTRY" SASFieldName="COUNTRY" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Country</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Country" />
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.COUNTRY" />
 </ItemDef>
-<ItemDef OID="IT.DM.DMDTC" Name="DMDTC" SASFieldName="DMDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.DM.DMDTC" Name="DMDTC" SASFieldName="DMDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Date/Time of Collection</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="CRF" />
 </ItemDef>
-<ItemDef OID="IT.DM.DMDY" Name="DMDY" SASFieldName="DMDY" DataType="xsd:integer^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.DMDY">
+<ItemDef OID="IT.DM.DMDY" Name="DMDY" SASFieldName="DMDY" DataType="integer">
   <Description>
     <TranslatedText xml:lang="en">Study Day of Collection</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
-</ItemDef><ItemDef OID="IT.VS.STUDYID" Name="STUDYID" SASFieldName="STUDYID" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+  <def:Origin Type="DERIVED" />
+</ItemDef><ItemDef OID="IT.VS.STUDYID" Name="STUDYID" SASFieldName="STUDYID" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Study Identifier</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.VS.DOMAIN" Name="DOMAIN" SASFieldName="DOMAIN" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.DOMAIN" Name="DOMAIN" SASFieldName="DOMAIN" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Domain Abbreviation</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.VS.USUBJID" Name="USUBJID" SASFieldName="USUBJID" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.USUBJID">
+<ItemDef OID="IT.VS.USUBJID" Name="USUBJID" SASFieldName="USUBJID" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Unique Subject Identifier</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSSEQ" Name="VSSEQ" SASFieldName="VSSEQ" DataType="xsd:decimal^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.VSSEQ">
+<ItemDef OID="IT.VS.VSSEQ" Name="VSSEQ" SASFieldName="VSSEQ" DataType="float">
   <Description>
     <TranslatedText xml:lang="en">Sequence Number</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSGRPID" Name="VSGRPID" SASFieldName="VSGRPID" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSGRPID" Name="VSGRPID" SASFieldName="VSGRPID" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Group ID</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSSPID" Name="VSSPID" SASFieldName="VSSPID" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSSPID" Name="VSSPID" SASFieldName="VSSPID" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Sponsor-Defined Identifier</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSTESTCD" Name="VSTESTCD" SASFieldName="VSTESTCD" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSTESTCD" Name="VSTESTCD" SASFieldName="VSTESTCD" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Vital Signs Test Short Name</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Vital Signs Test Code" />
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.VSTESTCD" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSTEST" Name="VSTEST" SASFieldName="VSTEST" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSTEST" Name="VSTEST" SASFieldName="VSTEST" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Vital Signs Test Name</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Vital Signs Test Name" />
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.VSTEST" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSCAT" Name="VSCAT" SASFieldName="VSCAT" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSCAT" Name="VSCAT" SASFieldName="VSCAT" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Category for Vital Signs</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSSCAT" Name="VSSCAT" SASFieldName="VSSCAT" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSSCAT" Name="VSSCAT" SASFieldName="VSSCAT" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Subcategory for Vital Signs</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSPOS" Name="VSPOS" SASFieldName="VSPOS" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSPOS" Name="VSPOS" SASFieldName="VSPOS" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Vital Signs Position of Subject</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Position" />
+  <def:Origin Type="ASSIGNED" />
+  <CodeListRef CodeListOID="CL.POSITION" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSORRES" Name="VSORRES" SASFieldName="VSORRES" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSORRES" Name="VSORRES" SASFieldName="VSORRES" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Result or Finding in Original Units</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="CRF" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSORRESU" Name="VSORRESU" SASFieldName="VSORRESU" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSORRESU" Name="VSORRESU" SASFieldName="VSORRESU" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Original Units</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Units for Vital Signs Results" />
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.VSRESU" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSSTRESC" Name="VSSTRESC" SASFieldName="VSSTRESC" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.VSSTRESC">
+<ItemDef OID="IT.VS.VSSTRESC" Name="VSSTRESC" SASFieldName="VSSTRESC" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Character Result/Finding in Std Format</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSSTRESN" Name="VSSTRESN" SASFieldName="VSSTRESN" DataType="xsd:decimal^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.VSSTRESN">
+<ItemDef OID="IT.VS.VSSTRESN" Name="VSSTRESN" SASFieldName="VSSTRESN" DataType="float">
   <Description>
     <TranslatedText xml:lang="en">Numeric Result/Finding in Standard Units</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSSTRESU" Name="VSSTRESU" SASFieldName="VSSTRESU" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.VSSTRESU">
+<ItemDef OID="IT.VS.VSSTRESU" Name="VSSTRESU" SASFieldName="VSSTRESU" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Standard Units</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Units for Vital Signs Results" />
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.VSRESU" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSSTAT" Name="VSSTAT" SASFieldName="VSSTAT" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSSTAT" Name="VSSTAT" SASFieldName="VSSTAT" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Completion Status</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Not Done" />
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.ND" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSREASND" Name="VSREASND" SASFieldName="VSREASND" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSREASND" Name="VSREASND" SASFieldName="VSREASND" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Reason Not Performed</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="CRF" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSLOC" Name="VSLOC" SASFieldName="VSLOC" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSLOC" Name="VSLOC" SASFieldName="VSLOC" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Location of Vital Signs Measurement</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.Anatomical Location" />
+  <def:Origin Type="ASSIGNED" />
+  <CodeListRef CodeListOID="CL.LOC" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSBLFL" Name="VSBLFL" SASFieldName="VSBLFL" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.VSBLFL">
+<ItemDef OID="IT.VS.VSBLFL" Name="VSBLFL" SASFieldName="VSBLFL" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Baseline Flag</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.No Yes Response" />
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.NY" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSDRVFL" Name="VSDRVFL" SASFieldName="VSDRVFL" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSDRVFL" Name="VSDRVFL" SASFieldName="VSDRVFL" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Derived Flag</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
-  <CodeListRef CodeListOID="CL.No Yes Response" />
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.NY" />
 </ItemDef>
-<ItemDef OID="IT.VS.VISITNUM" Name="VISITNUM" SASFieldName="VISITNUM" DataType="xsd:decimal^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VISITNUM" Name="VISITNUM" SASFieldName="VISITNUM" DataType="float">
   <Description>
     <TranslatedText xml:lang="en">Visit Number</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VISIT" Name="VISIT" SASFieldName="VISIT" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VISIT" Name="VISIT" SASFieldName="VISIT" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Visit Name</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VISITDY" Name="VISITDY" SASFieldName="VISITDY" DataType="xsd:integer^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.VISITDY">
+<ItemDef OID="IT.VS.VISITDY" Name="VISITDY" SASFieldName="VISITDY" DataType="integer">
   <Description>
     <TranslatedText xml:lang="en">Planned Study Day of Visit</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSDTC" Name="VSDTC" SASFieldName="VSDTC" DataType="xsd:dateTime^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSDTC" Name="VSDTC" SASFieldName="VSDTC" DataType="datetime">
   <Description>
     <TranslatedText xml:lang="en">Date/Time of Measurements</TranslatedText>
   </Description>
-  <def:Origin Type="COLLECTED">
-    <Description>
-      <TranslatedText xml:lang="en">COLLECTED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="CRF" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSDY" Name="VSDY" SASFieldName="VSDY" DataType="xsd:integer^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.VSDY">
+<ItemDef OID="IT.VS.VSDY" Name="VSDY" SASFieldName="VSDY" DataType="integer">
   <Description>
     <TranslatedText xml:lang="en">Study Day of Vital Signs</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSTPT" Name="VSTPT" SASFieldName="VSTPT" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSTPT" Name="VSTPT" SASFieldName="VSTPT" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Planned Time Point Name</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSTPTNUM" Name="VSTPTNUM" SASFieldName="VSTPTNUM" DataType="xsd:decimal^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSTPTNUM" Name="VSTPTNUM" SASFieldName="VSTPTNUM" DataType="float">
   <Description>
     <TranslatedText xml:lang="en">Planned Time Point Number</TranslatedText>
   </Description>
-  <def:Origin Type="DERIVED">
-    <Description>
-      <TranslatedText xml:lang="en">DERIVED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="DERIVED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSELTM" Name="VSELTM" SASFieldName="VSELTM" DataType="xsd:duration^^http://www.w3.org/2001/XMLSchema#anySimpleType" def:CommentOID="COM.VSELTM">
+<ItemDef OID="IT.VS.VSELTM" Name="VSELTM" SASFieldName="VSELTM" DataType="xsd:duration" def:CommentOID="COM.VSELTM">
   <Description>
     <TranslatedText xml:lang="en">Planned Elapsed Time from Time Point Ref</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
+  <def:Origin Type="ASSIGNED" />
 </ItemDef>
-<ItemDef OID="IT.VS.VSTPTREF" Name="VSTPTREF" SASFieldName="VSTPTREF" DataType="xsd:string^^http://www.w3.org/2001/XMLSchema#anySimpleType">
+<ItemDef OID="IT.VS.VSTPTREF" Name="VSTPTREF" SASFieldName="VSTPTREF" DataType="text">
   <Description>
     <TranslatedText xml:lang="en">Time Point Reference</TranslatedText>
   </Description>
-  <def:Origin Type="ASSIGNED">
-    <Description>
-      <TranslatedText xml:lang="en">ASSIGNED</TranslatedText>
-    </Description>
-  </def:Origin>
-</ItemDef><def:CommentDef OID="COM.USUBJID">
-  <Description>
-    <TranslatedText xml:lang="en">Concatenation of STUDYID, DM.SITEID and DM.SUBJID </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.RFSTDTC">
-  <Description>
-    <TranslatedText xml:lang="en">Date/time of first study drug treatment derived from EX</TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.RFENDTC">
-  <Description>
-    <TranslatedText xml:lang="en">Date/time of last study drug treatment derived from EX</TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.RFXSTDTC">
-  <Description>
-    <TranslatedText xml:lang="en">RFXSTDTC=RFSTDTC </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.RFXENDTC">
-  <Description>
-    <TranslatedText xml:lang="en">RFXENDTC=RFENDTC </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.RFICDTC">
-  <Description>
-    <TranslatedText xml:lang="en">Date of informed consent was not entered in database (see annotated CRF) </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.RFPENDTC">
-  <Description>
-    <TranslatedText xml:lang="en">DSSTDTC of last disposition event </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.DTHDTC">
-  <Description>
-    <TranslatedText xml:lang="en">If DS record exists with DSDECOD=\"DEATH\" then DTHDTC=AEENDTC.</TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.DTHFL">
-  <Description>
-    <TranslatedText xml:lang="en">If DS record exists with DSDECOD=\"DEATH\" then DEATHFL=Y.</TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.AGE">
-  <Description>
-    <TranslatedText xml:lang="en">Subject's Age at start of study drug (RFSTDTC). </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.AGEU">
+  <def:Origin Type="ASSIGNED" />
+</ItemDef><def:CommentDef OID="COM.AGEU">
   <Description>
     <TranslatedText xml:lang="en">AGEU=\"YEARS\" </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.ETHNIC">
-  <Description>
-    <TranslatedText xml:lang="en">Derived from Origin entered on CRF: ETHINC=\"HISPANIC OR LATINO\" if Origin=\"Hispanic\". Otherwise ETHNIC=\"NOT HISPANIC OR LATINO\"</TranslatedText>
   </Description>
 </def:CommentDef>
 <def:CommentDef OID="COM.ARMCD">
@@ -757,61 +474,6 @@
 <def:CommentDef OID="COM.ARM">
   <Description>
     <TranslatedText xml:lang="en">According to randomization list</TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.ACTARMCD">
-  <Description>
-    <TranslatedText xml:lang="en">Derived from EX</TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.COUNTRY">
-  <Description>
-    <TranslatedText xml:lang="en">Derived from site information</TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.DMDY">
-  <Description>
-    <TranslatedText xml:lang="en">See Computational Method: COMPMETHOD.STUDY_DAY</TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.USUBJID">
-  <Description>
-    <TranslatedText xml:lang="en">Concatenation of STUDYID, DM.SITEID and DM.SUBJID </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.VSSEQ">
-  <Description>
-    <TranslatedText xml:lang="en">Sequential number identifying records within each USUBJID </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.VSSTRESC">
-  <Description>
-    <TranslatedText xml:lang="en">VSORRES converted to standard unit </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.VSSTRESN">
-  <Description>
-    <TranslatedText xml:lang="en">VSSTRESC converted to numeric </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.VSSTRESU">
-  <Description>
-    <TranslatedText xml:lang="en">Standard unit defined per parameter for summarizing analysis </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.VSBLFL">
-  <Description>
-    <TranslatedText xml:lang="en">If VISIT=\"BASELINE\" then VSBLFL=\"Y\" </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.VISITDY">
-  <Description>
-    <TranslatedText xml:lang="en">TV.VISITDY </TranslatedText>
-  </Description>
-</def:CommentDef>
-<def:CommentDef OID="COM.VSDY">
-  <Description>
-    <TranslatedText xml:lang="en">See Computational Method: COMPMETHOD.STUDY_DAY </TranslatedText>
   </Description>
 </def:CommentDef>
 <def:CommentDef OID="COM.VSELTM">

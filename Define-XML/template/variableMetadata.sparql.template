@@ -4,12 +4,12 @@ WHERE{
                         sdtm:hasDFVariable                ?varEntity.
     ?varEntity          sdtm:additionalMetadata           ?adMetadata.
     ?adMetadata         code:hasMethod                    ?activity.
-    ?activity           rdfs:label                        ?Origin.
+    ?activity           skos:prefLabel                    ?Origin.
     ?varEntity          rdf:type                          mms:Column;
                         mms:ordinal                       ?ordinal;
                         mms:dataElementName               ?dataElementName;
                         mms:dataElementLabel              ?dataElementLabel;
-                        mms:dataElementType               ?dataType;
+                        mms:dataElementType               ?dataType_;
                         cdiscs:dataElementCompliance      ?dataElementCompliance;
   		                  cdiscs:dataElementRole            ?Role_.
     ?Role_              rdf:type                          cdiscs:DataElementRole;
@@ -18,9 +18,10 @@ WHERE{
     ?dataElementCompliance rdfs:label ?Core_.
 
  		optional{ ?varEntity mms:dataElementValueDomain ?codeList.
-              ?codeList cts:codelistName ?codeListName.}
+              ?codeList cts:cdiscSubmissionValue ?codeListName.}
     optional{ ?varEntity sdtm:variableComment ?comment.}
 
+  bind( str(?dataType_) as ?dataType )
   bind( str(?ordinal) as ?ordinal_ )
   bind(replace(?Core_, " Variable", "") as ?Core)
 }

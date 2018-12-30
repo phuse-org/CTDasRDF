@@ -39,7 +39,7 @@ class genDefineXMLFile {
 	//Constructor
 	def genDefineXMLFile() {
 		readRdfFiles()
-		
+
 		Query query = QueryFactory.create(queryString)
 		// Execute the query and obtain results
 		QueryExecution qe = QueryExecutionFactory.create(query, model)
@@ -80,15 +80,14 @@ class genDefineXMLFile {
 		"sdtmig-3-1-3.ttl",
 		"study.ttl",
 		"time.ttl"]
-		
+
 		for (i in fileList) {
 			model.read("../data/rdf/" + i)
 		}
-		println model.size()
 	}
-	
-	
-	
+
+
+
 	def genDefineXML() {
 		// Generate ItemGroupDef
 		def _DefineXml=""
@@ -171,6 +170,7 @@ class genDefineXMLFile {
 				dsname = sol.Domain
 				dslabel = sol.DatasetLabel
 			}
+
 			// Repeating Attribute
 			if (dsname in [
 				"DM",
@@ -202,6 +202,7 @@ class genDefineXMLFile {
 					'def:Class': sol.defClass,
 					'def:CommentOID': "",
 					'def:ArchiveLocationID': "LF.${dsname}"
+
 					) {
 						'Description'({'TranslatedText'('xml:lang':"en",  dslabel )})
 						for (ResultSet variableResultset = variableMetadataQE.execSelect(); variableResultset.hasNext() ; ) {
@@ -228,28 +229,56 @@ class genDefineXMLFile {
 
 		for (ResultSet variableItemDefResultset = variableItemDefMetadataQE.execSelect(); variableItemDefResultset.hasNext(); ) {
 			QuerySolution solVarItem = variableItemDefResultset.nextSolution()
+
+
+			//Convert Data Type Name
+			def datatype
+			if ( solVarItem.dataType.toString() == "xsd:string"){
+				datatype = "text"
+			} else if ( solVarItem.dataType.toString().toLowerCase().contains("integer")){
+				datatype = "integer"
+			} else if ( solVarItem.dataType.toString() == "xsd:dateTime"){
+					datatype = "datetime"
+			} else if ( solVarItem.dataType.toString() == "xsd:decimal"){
+							datatype = "float"
+			} else{
+				datatype = solVarItem.dataType
+			}
+
+			//Convert Origin name
+			def origin
+			if ( solVarItem.Origin.toString() == "COLLECTED"){
+				origin = "CRF"
+			} else{
+				origin = solVarItem.Origin.toString()
+			}
+
+			//Hnadling CommentOID
 			def comOID
-			if (solVarItem.comment != null){
+			if (solVarItem.comment != null && origin != "DERIVED" ){
 				Map comMap =[("COM."+solVarItem.dataElementName):(solVarItem.comment)]
 				comentCollection << comMap
 				comOID = "COM."+solVarItem.dataElementName
 			}
+
 			if (solVarItem.codeListName != null){
 				codelistCollection << solVarItem.codeListName
 			}
+
 			xml.'ItemDef'(
 					'OID': "IT.${datasetName}.${solVarItem.dataElementName}",
 					'Name': solVarItem.dataElementName,
 					'SASFieldName': solVarItem.dataElementName,
-					'DataType': solVarItem.dataType,
+					'DataType': datatype,
 					'SignificantDigits': "",
 					'Length': "",
 					'def:DisplayFormat': "",
-					"def:CommentOID": comOID
+					'def:CommentOID': comOID
+					//"def:CommentOID": if (origin != "DERIVED"){ comOID }
 					) {
 						'Description'({'TranslatedText'('xml:lang':"en",  solVarItem.dataElementLabel )})
 						if (solVarItem.Origin != null){
-							'def:Origin'(Type:solVarItem.Origin, {'Description'({'TranslatedText'('xml:lang':"en",  solVarItem.Origin )})})
+							'def:Origin'(Type:origin)
 						}
 						if (solVarItem.codeListName != null){
 							'CodeListRef'('CodeListOID': "CL.${solVarItem.codeListName}" )
