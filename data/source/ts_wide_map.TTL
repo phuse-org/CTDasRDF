@@ -41,8 +41,11 @@ cd01p:Study_{studyid}
   study:hasInterval                  cd01p:Interval_{sstdtc}_to_{sendtc} ;
   study:hasPopulation                cd01p:EnrolledPopulation_{studyid} ;
   study:hasPopulation                cd01p:StudyPopulation_{studyid} ;
+  study:hasPrimObjective             cd01p:PrimaryObjective_{objprim_seq_im} ;
+  study:hasSecObjective              cd01p:SecondaryObjective_{objsec_seq_im} ;
+  study:hasPrimOutcomeMeasure        custom:Observation_{outmspri} ;
+  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminact_im} ;
 .
-
 
 #------------------------------------------------------------------------------
 #---- SUB TRIPLES -------------------------------------------------------------
@@ -91,3 +94,31 @@ cd01p:StudyPopulation_{studyid}
   study:sexGroup       sdtmterm:SexGroup_{sexpop} ;
 .
 
+
+#---- Primary Objective -------------------------------------------------------
+cd01p:PrimaryObjective_{objprim_seq_im}
+  rdf:type       study:PrimaryObjective ;
+  skos:prefLabel "{objprim}"^^xsd:string ;
+  study:seq      "{objprim_seq_im}"^^xsd:float ;
+.
+
+#---- Secondary Objective -------------------------------------------------------
+cd01p:SecondaryObjective_{objsec_seq_im}
+  rdf:type       study:SecondaryObjective ;
+  skos:prefLabel "{objsec}"^^xsd:string ;
+  study:seq      "{objsec_seq_im}"^^xsd:float ;
+.
+
+
+#---- Admin Activity      -------------------------------------------------------
+cd01p:AdminActivity_{adminact_im} 
+  rdf:type       study:{adminact_im} ;
+  skos:prefLabel "{dcutdesc}"^^xsd:string ;
+  study:hasDate  cd01p:Date_{dcutdtc} ;
+.
+  cd01p:Date_{dcutdtc}
+    rdf:type                  study:DataCutoffDate ;
+    skos:prefLabel            "{dcutdesc}"^^xsd:string ; 
+    code:hasCodeSystem        code:CodeSystem_{tsvcdref_iri_im} ;
+    study:dateTimeInXSDString "{dcutdtc}" ;
+.

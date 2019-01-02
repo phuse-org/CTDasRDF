@@ -30,19 +30,44 @@ ts<-ts[!(ts$tsparmcd =="OUTMSPRI"), ]
 tsAdditions <- read_excel("data/source/TS_supplemental.xlsx", col_names=TRUE)
 tsAdditions <- tsAdditions[, !(names(tsAdditions) == 'NOTES')] # Drop the notes column (explation of data)
 
-ts<-rbind(ts, tsAdditions)
 
-tswide <- dcast(setDT(ts), studyid + tsseq ~ tsparmcd, 
+# Kludge: All to char prior to bind
+ts <- data.frame(lapply(ts, as.character), stringsAsFactors=FALSE)
+tsAdditions <- data.frame(lapply(tsAdditions, as.character), stringsAsFactors=FALSE)
+
+tsAll<-dplyr::bind_rows(ts, tsAdditions)
+
+
+
+tswide <- dcast(setDT(tsAll), studyid + tsseq +tsvcdref ~ tsparmcd, 
   value.var = "tsval")
 
 tswide <- tswide %>% setNames(tolower(names(.))) %>% head  # all column names to lowercase
 
 #---- Imputation  (recoding)
-tswide$tblind_im      <- gsub(" ", "_", tswide$tblind )    # Blinding schema
-tswide$agespan_iri_im <- gsub( " .*$", "", tswide$agespan) # ADULT, ELDERLY iri 
+tswide$tblind_im       <- gsub(" ", "_", tswide$tblind )    # Blinding schema
+tswide$agespan_iri_im  <- gsub( " .*$", "", tswide$agespan) # ADULT, ELDERLY iri 
+tswide$tsvcdref_iri_im <- gsub( " ", "", tswide$tsvcdref) 
 tswide[1,"agemax"] <- "NULL"  # Recode existing NA to "NULL" for use in IRI
 
-#TW tswide[1,"dcut_iri_im"] <- "DataCutoff"  # to forum IRI for Data cutoff information
+
+
+
+# Primary and Secondary Objective sequence number for IRIs. Value needed for comp
+#   with source XPT.
+#   When objprim != NA, then the seq_im is the value of tsseq.
+#   See here : https://stackoverflow.com/questions/22814515/replace-value-in-column-with-corresponding-value-from-another-column-in-same-dat
+#   df[ df$X1 == "a" , "X1" ] <- df[ df$X1 == "a", "X2" ]
+
+# Primary Objective sequence
+tswide[ ! is.na(objprim) , "objprim_seq_im" ] <- tswide[ ! is.na(objprim), "tsseq" ]
+
+# Secondary Objective sequence
+tswide[ ! is.na(objsec) , "objsec_seq_im" ] <- tswide[ ! is.na(objsec), "tsseq" ]
+
+
+#---- OLDE BELOW HERE -----------------------------------------------------------------
+
 
 # Arm information
 #TW tsArms <-read.table(header = TRUE, fill=TRUE, text = "
@@ -71,16 +96,6 @@ tswide[1,"agemax"] <- "NULL"  # Recode existing NA to "NULL" for use in IRI
 #TW tswide<-cbind(tswide,tsEpoch)
 
 
-# WIP HERE ----------------------------------------
-# When objprim != NA, then the seq_im is the value of tsseq.
-# See here : https://stackoverflow.com/questions/22814515/replace-value-in-column-with-corresponding-value-from-another-column-in-same-dat
-# df[ df$X1 == "a" , "X1" ] <- df[ df$X1 == "a", "X2" ]
-
-# Sequence for primary objective, needed for comparision with XPT source
-#TW tswide[ ! is.na(objprim) , "objprim_seq" ] <- tswide[ ! is.na(objprim), "tsseq" ]
-
-# Sequence for secondary objective, needed for comparision with XPT source
-#TW tswide[ ! is.na(objsec) , "objsec_seq" ] <- tswide[ ! is.na(objsec), "tsseq" ]
 
 
 # Move this code to the driver script.
