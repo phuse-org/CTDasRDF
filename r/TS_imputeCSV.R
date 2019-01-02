@@ -23,7 +23,8 @@
 # Primary Outcome in original data should bean additional Primary objective 
 #    Objective is not in the original data.
 # Remove the original OUTMSPRI row. 
-ts<-ts[!(ts$tsparmcd =="OUTMSPRI"), ]
+ts <- ts[!(ts$tsparmcd =="OUTMSPRI"), ]
+ts <- ts[, !(names(ts) %in% c('domain'))] # Drop the notes column (explation of data)
 
 # Data not in original TS. 
 # Includes replacement of what was OUTMSPRI and is now a primary objective.
@@ -37,12 +38,40 @@ tsAdditions <- data.frame(lapply(tsAdditions, as.character), stringsAsFactors=FA
 
 tsAll<-dplyr::bind_rows(ts, tsAdditions)
 
+tsAll$rowID <- seq.int(nrow(tsAll))
+
+# WIP HERE ----------------------------------------------------------------------------
+#TW APPROACH
+#  Get the tsparmcd values as variables across the top, the values as tsparm 
+# do again for tsval? or multiple value.var?
+
+# Do also for the new label values, etc?  
+# Merge back in based on rowID?
+
+# Look at this result and see how to use it.  Unlike the other domains, TS will be VERY WIDE instead of long
+#   Because of the many uniqe types of things being recorded. At the same time, some values must be 
+#    kept together on the same line, like sstdtc}_to_{sendtc} in order to be used in the map.
+# Make some trickery to rename columns from 1_2  to 2_1 in order to sort by names. switch order of text
+#  with some regex wizardy
+
+foo <- data.table::dcast( setDT(ts),
+  tsseq ~ tsparmcd,
+  value.var = c("tsval", "tsparm"  )
+  )
 
 
-tswide <- dcast(setDT(tsAll), studyid + tsseq +tsvcdref ~ tsparmcd, 
-  value.var = "tsval")
+tswide <- data.table::dcast( setDT(tsAll),
+  ... ~tsparmcd,
+  value.var = "tsval"
+  )
 
-tswide <- tswide %>% setNames(tolower(names(.))) %>% head  # all column names to lowercase
+# tswide <- dcast(setDT(tsAll), studyid + tsseq +tsvcdref ~ tsparmcd, 
+# value.var = "tsval")
+
+#TW 2018-01-02 tswide <- dcast(setDT(tsAll), ... ~ tsparmcd, 
+#TW 2018-01-02   value.var = "tsval")
+
+names(tswide) <- tolower(names(tswide))
 
 #---- Imputation  (recoding)
 tswide$tblind_im       <- gsub(" ", "_", tswide$tblind )    # Blinding schema
@@ -95,6 +124,8 @@ tswide[ ! is.na(objsec) , "objsec_seq_im" ] <- tswide[ ! is.na(objsec), "tsseq" 
 
 #TW tswide<-cbind(tswide,tsEpoch)
 
+# Sort column names ease of refernece 
+tswide <- tswide %>% select(noquote(order(colnames(tswide))))
 
 
 

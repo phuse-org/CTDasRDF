@@ -13,7 +13,7 @@
 # IN  : ts_wide.csv , created by TS_imputeCSV.R
 # OUT :
 # NOTE: stardog-admin virtual import CTDasRDFSMS ts_wide_map.TTL ts_wide.csv
-#  Export to TTL: stardog data export --format TURTLE CTDasRDFSMS C:/temp/test.ttl
+#  Export to TTL: stardog data export --format TURTLE CTDasRDFSMS C:/_github/CTDasRDF/data/source/EXPORT.ttl
 #  Site information to be read in from a seperate source file (site seq, country id, etc.)
 # TODO:
 ###############################################################################
@@ -28,6 +28,7 @@
 @prefix time:         <http://www.w3.org/2006/time#> .
 @prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
 
+# ---- Main Triple Set: STUDY -------------------------------------------------
 # -----------------------------------------------------------------------------
 # Study
 cd01p:Study_{studyid}
@@ -45,6 +46,8 @@ cd01p:Study_{studyid}
   study:hasSecObjective              cd01p:SecondaryObjective_{objsec_seq_im} ;
   study:hasPrimOutcomeMeasure        custom:Observation_{outmspri} ;
   study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminact_im} ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_{arm_im} ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch_im} ;
 .
 
 #------------------------------------------------------------------------------
@@ -94,7 +97,6 @@ cd01p:StudyPopulation_{studyid}
   study:sexGroup       sdtmterm:SexGroup_{sexpop} ;
 .
 
-
 #---- Primary Objective -------------------------------------------------------
 cd01p:PrimaryObjective_{objprim_seq_im}
   rdf:type       study:PrimaryObjective ;
@@ -109,7 +111,6 @@ cd01p:SecondaryObjective_{objsec_seq_im}
   study:seq      "{objsec_seq_im}"^^xsd:float ;
 .
 
-
 #---- Admin Activity      -------------------------------------------------------
 cd01p:AdminActivity_{adminact_im} 
   rdf:type       study:{adminact_im} ;
@@ -122,3 +123,24 @@ cd01p:AdminActivity_{adminact_im}
     code:hasCodeSystem        code:CodeSystem_{tsvcdref_iri_im} ;
     study:dateTimeInXSDString "{dcutdtc}" ;
 .
+
+#---- Treatment Arms   --------------------------------------------------------
+cd01p:Arm_{arm_im}
+  rdf:type       study:{type_im};
+  rdf:type       study:{type2_im};
+  skos:altLabel  "{altlbl_im}"^^xsd:string ;
+  skos:prefLabel "{preflbl_im}"^^xsd:string ;
+.
+
+#---- Epoch            --------------------------------------------------------
+cd01p:Epoch_{epoch_im}
+  rdf:type study:Epoch ;
+  skos:prefLabel "{preflbl_im}"^^xsd:string ;
+  study:hasActivityInterval cd01p:EpochInterval_{tsvalcd} ;
+.
+
+cd01p:EpochInterval_{tsvalcd}
+  rdf:type study:EpochInterval ;
+  skos:prefLabel "Epoch interval blindedtreatment" ;
+.
+
