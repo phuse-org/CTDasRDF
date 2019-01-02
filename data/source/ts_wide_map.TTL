@@ -14,6 +14,7 @@
 # OUT :
 # NOTE: stardog-admin virtual import CTDasRDFSMS ts_wide_map.TTL ts_wide.csv
 #  Export to TTL: stardog data export --format TURTLE CTDasRDFSMS C:/temp/test.ttl
+#  Site information to be read in from a seperate source file (site seq, country id, etc.)
 # TODO:
 ###############################################################################
 @prefix cd01p:        <https://w3id.org/phuse/cd01p#> .
@@ -40,29 +41,53 @@ cd01p:Study_{studyid}
   study:hasInterval                  cd01p:Interval_{sstdtc}_to_{sendtc} ;
   study:hasPopulation                cd01p:EnrolledPopulation_{studyid} ;
   study:hasPopulation                cd01p:StudyPopulation_{studyid} ;
-  study:hasPrimObjective             cd01p:PrimaryObjective_{objprim_seq} ;
-  study:hasPrimOutcomeMeasure        custom:Observation_{outmspri} ;
-  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{dcut_iri_im} ;
-  study:hasProtocolSpecifiedActivity cd01p:Arm_{arm_im} ;
-  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminActivity} ;
-  study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch_im} ;
-##  study:hasProtocolSpecifiedActivity custom:Visit{visitActivity}Activity ;
+.
 
 
+#------------------------------------------------------------------------------
+#---- SUB TRIPLES -------------------------------------------------------------
+#------------------------------------------------------------------------------
 
-## study:hasSecObjective              cd01p:SecondaryObjective_{objsec_seq} ;
-##  study:hasRegistryID                cd01p:StudyRegistryIdentifier_{regid} ;
-##  study:hasSponsor                   code:Sponsor_{studyid} ;
-##  study:hasStopRule                  cd01p:StudyStopRule_{studyStopRuleSeq} ;
-##  study:hasStudyID                   cd01p:StudyIdentifier_{studyIdSeq} ;
-##  study:hasTitle                     cd01p:Title_{studyid} ;
-##  study:interventionModel            sdtmterm:InterventionModel_{intervModel} ;
-##  study:interventionType             sdtmterm:InterventionType_{intervType} ;
-##  study:narms                        "3"^^xsd:int ;
-##  study:randomizedTrial              sdtmterm:NoYesResponse_{randTrialNY} ;
-##  study:studyDrug                    code:Substance_{studyDrug} ; 
-##  study:studyType                    sdtmterm:StudyType_{studyType} ;
-##  study:trialPhase                   sdtmterm:TrialPhase_{trialPhase} ;
-##  study:trialType                    sdtmterm:TrialType_{trialType} ; 
-##.
+#---- Study Interval ----------------------------------------------------------
+cd01p:Interval_{sstdtc}_to_{sendtc} 
+  rdf:type          study:StudyInterval ;
+  skos:prefLabel    "Interval {sstdtc} to {sendtc}"^^xsd:string ;
+  time:hasBeginning cd01p:Date_{sstdtc} ;
+  time:hasEnd       cd01p:Date_{sendtc} ;
+.
+
+  #---- Study Begin -----------------------------------------------------------
+  cd01p:Date_{sstdtc} 
+    rdf:type study:StudyBegin ;
+    skos:prefLabel "Date {sstdtc}"^^xsd:string ;
+    study:dateTimeInXSDString "{sstdtc}"^^xsd:string ;
+.
+
+  #---- Study End -------------------------------------------------------------
+  cd01p:Date_{sendtc} 
+    rdf:type study:StudyEnd ;
+    skos:prefLabel "Date {sendtc}"^^xsd:string ;
+    study:dateTimeInXSDString "{sendtc}"^^xsd:string ;
+.
+
+#---- Enrolled Population -----------------------------------------------------
+cd01p:EnrolledPopulation_{studyid}
+  rdf:type                    study:EnrolledPopulation ;
+  skos:prefLabel              "Enrolled population {studyid}"^^xsd:string ;
+  study:actualPopulationSize  "{actsub}"^^xsd:int ;
+  study:plannedPopulationSize "{plansub}"^^xsd:int ; ;
+.
+
+#---- Study Population --------------------------------------------------------
+#---- site subtriples are a separate import, not mapped here 
+cd01p:StudyPopulation_{studyid}
+  rdf:type             study:CompletePopulation ;
+  skos:prefLabel       "Study population {studyid}"^^xsd:string ;
+  study:ageGroup       code:AgeGroup_{agespan_iri_im} ;
+  study:hasSite        cd01p:Site_{siteid_im} ;
+  study:healthySubject sdtmterm:NoYesResponse_{hltsubji} ;
+  study:maxSubjectAge  code:PlannedSubjectAge_{agemax} ;
+  study:minSubjectAge  code:PlannedSubjectAge_{agemin} ;
+  study:sexGroup       sdtmterm:SexGroup_{sexpop} ;
+.
 

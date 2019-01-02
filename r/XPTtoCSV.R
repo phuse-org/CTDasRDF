@@ -14,8 +14,10 @@
 # NOTE: Some values are imputed  to match ontology development requirements.
 # TODO: 
 #______________________________________________________________________________
-library(Hmisc)
+library(data.table)  # dcast
 library(dplyr)  # recode, mutate with pipe in Functions.R, other dplyr goodness
+library(Hmisc)
+library(readxl)  # supplemental data
 
 dm_n=3;  # The first n patients from the DM domain.
 
