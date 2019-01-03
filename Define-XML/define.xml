@@ -5,20 +5,20 @@
 	xmlns:def="http://www.cdisc.org/ns/def/v2.0"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	ODMVersion="1.3.2"
-	FileOID="null.SDTM.Define-XML"
+	FileOID="CDISCPILOT01.SDTM.Define-XML"
 	FileType="Snapshot"
-	CreationDateTime="2018-12-31T00:25:17"
-	Originator="null">
-	<Study OID="null">
+	CreationDateTime="2019-01-02T23:16:34"
+	Originator="CDISCPILOT01">
+	<Study OID="CDISCPILOT01">
 		<GlobalVariables>
-			<StudyName>null</StudyName>
-			<StudyDescription>null</StudyDescription>
-			<ProtocolName>null</ProtocolName>
+			<StudyName>CDISCPILOT01</StudyName>
+			<StudyDescription>CDISCPILOT01</StudyDescription>
+			<ProtocolName>CDISCPILOT01</ProtocolName>
 		</GlobalVariables>
-		<MetaDataVersion OID="MDV.null.SDTMIG3.2" Name="null, SDTM Data Definitions" Description="null, SDTM Data Definitions"
+		<MetaDataVersion OID="MDV.CDISCPILOT01.SDTMIG3.2" Name="CDISCPILOT01, SDTM Data Definitions" Description="CDISCPILOT01, SDTM Data Definitions"
 				  def:DefineVersion="2.0.0"
 					def:StandardName="SDTM-IG"
-					def:StandardVersion="null">
+					def:StandardVersion="3.1.3">
 			<!-- Supporting Documents -->
 			<def:SupplementalDoc>
 				<def:DocumentRef leafID="LF.ACRF"/>
@@ -32,33 +32,33 @@
   <Description>
     <TranslatedText xml:lang="en">Demographics</TranslatedText>
   </Description>
-  <ItemRef ItemOID="IT.DM.STUDYID" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.DOMAIN" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.USUBJID" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.SUBJID" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.RFSTDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.RFENDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.RFXSTDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.RFXENDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.RFICDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.RFPENDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.DTHDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.DTHFL" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.SITEID" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.INVID" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.BRTHDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.AGE" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.AGEU" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.SEX" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.RACE" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.ETHNIC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.ARMCD" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.ARM" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.ACTARMCD" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.ACTARM" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.COUNTRY" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.DM.DMDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.DM.DMDY" Mandatory="No" />
+  <ItemRef ItemOID="IT.DM.STUDYID" Mandatory="Yes" MethodOID="MT.DM.STUDYID" />
+  <ItemRef ItemOID="IT.DM.DOMAIN" Mandatory="Yes" MethodOID="MT.DM.DOMAIN" />
+  <ItemRef ItemOID="IT.DM.USUBJID" Mandatory="Yes" MethodOID="MT.DM.USUBJID" />
+  <ItemRef ItemOID="IT.DM.SUBJID" Mandatory="Yes" MethodOID="MT.DM.SUBJID" />
+  <ItemRef ItemOID="IT.DM.RFSTDTC" Mandatory="No" MethodOID="MT.DM.RFSTDTC" />
+  <ItemRef ItemOID="IT.DM.RFENDTC" Mandatory="No" MethodOID="MT.DM.RFENDTC" />
+  <ItemRef ItemOID="IT.DM.RFXSTDTC" Mandatory="No" MethodOID="MT.DM.RFXSTDTC" />
+  <ItemRef ItemOID="IT.DM.RFXENDTC" Mandatory="No" MethodOID="MT.DM.RFXENDTC" />
+  <ItemRef ItemOID="IT.DM.RFICDTC" Mandatory="No" MethodOID="MT.DM.RFICDTC" />
+  <ItemRef ItemOID="IT.DM.RFPENDTC" Mandatory="No" MethodOID="MT.DM.RFPENDTC" />
+  <ItemRef ItemOID="IT.DM.DTHDTC" Mandatory="No" MethodOID="MT.DM.DTHDTC" />
+  <ItemRef ItemOID="IT.DM.DTHFL" Mandatory="No" MethodOID="MT.DM.DTHFL" />
+  <ItemRef ItemOID="IT.DM.SITEID" Mandatory="Yes" MethodOID="MT.DM.SITEID" />
+  <ItemRef ItemOID="IT.DM.INVID" Mandatory="No" MethodOID="MT.DM.INVID" />
+  <ItemRef ItemOID="IT.DM.BRTHDTC" Mandatory="No" MethodOID="MT.DM.BRTHDTC" />
+  <ItemRef ItemOID="IT.DM.AGE" Mandatory="No" MethodOID="MT.DM.AGE" />
+  <ItemRef ItemOID="IT.DM.AGEU" Mandatory="No" MethodOID="MT.DM.AGEU" />
+  <ItemRef ItemOID="IT.DM.SEX" Mandatory="Yes" MethodOID="MT.DM.SEX" />
+  <ItemRef ItemOID="IT.DM.RACE" Mandatory="No" MethodOID="MT.DM.RACE" />
+  <ItemRef ItemOID="IT.DM.ETHNIC" Mandatory="No" MethodOID="MT.DM.ETHNIC" />
+  <ItemRef ItemOID="IT.DM.ARMCD" Mandatory="Yes" MethodOID="MT.DM.ARMCD" />
+  <ItemRef ItemOID="IT.DM.ARM" Mandatory="Yes" MethodOID="MT.DM.ARM" />
+  <ItemRef ItemOID="IT.DM.ACTARMCD" Mandatory="Yes" MethodOID="MT.DM.ACTARMCD" />
+  <ItemRef ItemOID="IT.DM.ACTARM" Mandatory="Yes" MethodOID="MT.DM.ACTARM" />
+  <ItemRef ItemOID="IT.DM.COUNTRY" Mandatory="Yes" MethodOID="MT.DM.COUNTRY" />
+  <ItemRef ItemOID="IT.DM.DMDTC" Mandatory="No" MethodOID="MT.DM.DMDTC" />
+  <ItemRef ItemOID="IT.DM.DMDY" Mandatory="No" MethodOID="MT.DM.DMDY" />
   <def:leaf ID="LF.DM" xlink:href="dm.xpt">
     <def:title>dm.xpt</def:title>
   </def:leaf>
@@ -73,36 +73,36 @@
   <Description>
     <TranslatedText xml:lang="en">Vital Signs</TranslatedText>
   </Description>
-  <ItemRef ItemOID="IT.VS.STUDYID" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.VS.DOMAIN" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.VS.USUBJID" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.VS.VSSEQ" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.VS.VSGRPID" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSSPID" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSTESTCD" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.VS.VSTEST" Mandatory="Yes" />
-  <ItemRef ItemOID="IT.VS.VSCAT" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSSCAT" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSPOS" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSORRES" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSORRESU" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSSTRESC" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSSTRESN" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSSTRESU" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSSTAT" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSREASND" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSLOC" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSBLFL" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSDRVFL" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VISITNUM" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VISIT" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VISITDY" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSDTC" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSDY" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSTPT" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSTPTNUM" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSELTM" Mandatory="No" />
-  <ItemRef ItemOID="IT.VS.VSTPTREF" Mandatory="No" />
+  <ItemRef ItemOID="IT.VS.STUDYID" Mandatory="Yes" MethodOID="MT.VS.STUDYID" />
+  <ItemRef ItemOID="IT.VS.DOMAIN" Mandatory="Yes" MethodOID="MT.VS.DOMAIN" />
+  <ItemRef ItemOID="IT.VS.USUBJID" Mandatory="Yes" MethodOID="MT.VS.USUBJID" />
+  <ItemRef ItemOID="IT.VS.VSSEQ" Mandatory="Yes" MethodOID="MT.VS.VSSEQ" />
+  <ItemRef ItemOID="IT.VS.VSGRPID" Mandatory="No" MethodOID="MT.VS.VSGRPID" />
+  <ItemRef ItemOID="IT.VS.VSSPID" Mandatory="No" MethodOID="MT.VS.VSSPID" />
+  <ItemRef ItemOID="IT.VS.VSTESTCD" Mandatory="Yes" MethodOID="MT.VS.VSTESTCD" />
+  <ItemRef ItemOID="IT.VS.VSTEST" Mandatory="Yes" MethodOID="MT.VS.VSTEST" />
+  <ItemRef ItemOID="IT.VS.VSCAT" Mandatory="No" MethodOID="MT.VS.VSCAT" />
+  <ItemRef ItemOID="IT.VS.VSSCAT" Mandatory="No" MethodOID="MT.VS.VSSCAT" />
+  <ItemRef ItemOID="IT.VS.VSPOS" Mandatory="No" MethodOID="MT.VS.VSPOS" />
+  <ItemRef ItemOID="IT.VS.VSORRES" Mandatory="No" MethodOID="MT.VS.VSORRES" />
+  <ItemRef ItemOID="IT.VS.VSORRESU" Mandatory="No" MethodOID="MT.VS.VSORRESU" />
+  <ItemRef ItemOID="IT.VS.VSSTRESC" Mandatory="No" MethodOID="MT.VS.VSSTRESC" />
+  <ItemRef ItemOID="IT.VS.VSSTRESN" Mandatory="No" MethodOID="MT.VS.VSSTRESN" />
+  <ItemRef ItemOID="IT.VS.VSSTRESU" Mandatory="No" MethodOID="MT.VS.VSSTRESU" />
+  <ItemRef ItemOID="IT.VS.VSSTAT" Mandatory="No" MethodOID="MT.VS.VSSTAT" />
+  <ItemRef ItemOID="IT.VS.VSREASND" Mandatory="No" MethodOID="MT.VS.VSREASND" />
+  <ItemRef ItemOID="IT.VS.VSLOC" Mandatory="No" MethodOID="MT.VS.VSLOC" />
+  <ItemRef ItemOID="IT.VS.VSBLFL" Mandatory="No" MethodOID="MT.VS.VSBLFL" />
+  <ItemRef ItemOID="IT.VS.VSDRVFL" Mandatory="No" MethodOID="MT.VS.VSDRVFL" />
+  <ItemRef ItemOID="IT.VS.VISITNUM" Mandatory="No" MethodOID="MT.VS.VISITNUM" />
+  <ItemRef ItemOID="IT.VS.VISIT" Mandatory="No" MethodOID="MT.VS.VISIT" />
+  <ItemRef ItemOID="IT.VS.VISITDY" Mandatory="No" MethodOID="MT.VS.VISITDY" />
+  <ItemRef ItemOID="IT.VS.VSDTC" Mandatory="No" MethodOID="MT.VS.VSDTC" />
+  <ItemRef ItemOID="IT.VS.VSDY" Mandatory="No" MethodOID="MT.VS.VSDY" />
+  <ItemRef ItemOID="IT.VS.VSTPT" Mandatory="No" MethodOID="MT.VS.VSTPT" />
+  <ItemRef ItemOID="IT.VS.VSTPTNUM" Mandatory="No" MethodOID="MT.VS.VSTPTNUM" />
+  <ItemRef ItemOID="IT.VS.VSELTM" Mandatory="No" MethodOID="MT.VS.VSELTM" />
+  <ItemRef ItemOID="IT.VS.VSTPTREF" Mandatory="No" MethodOID="MT.VS.VSTPTREF" />
   <def:leaf ID="LF.VS" xlink:href="vs.xpt">
     <def:title>vs.xpt</def:title>
   </def:leaf>
@@ -461,7 +461,116 @@
     <TranslatedText xml:lang="en">Time Point Reference</TranslatedText>
   </Description>
   <def:Origin Type="ASSIGNED" />
-</ItemDef><def:CommentDef OID="COM.AGEU">
+</ItemDef><MethodDef OID="MT.DM.USUBJID" Name="Algorithm to derive DM.USUBJID" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Concatenation of STUDYID, DM.SITEID and DM.SUBJID </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFSTDTC" Name="Algorithm to derive DM.RFSTDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Date/time of first study drug treatment derived from EX</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFENDTC" Name="Algorithm to derive DM.RFENDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Date/time of last study drug treatment derived from EX</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFXSTDTC" Name="Algorithm to derive DM.RFXSTDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">RFXSTDTC=RFSTDTC </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFXENDTC" Name="Algorithm to derive DM.RFXENDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">RFXENDTC=RFENDTC </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFICDTC" Name="Algorithm to derive DM.RFICDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Date of informed consent was not entered in database (see annotated CRF) </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFPENDTC" Name="Algorithm to derive DM.RFPENDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">DSSTDTC of last disposition event </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.DTHDTC" Name="Algorithm to derive DM.DTHDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">If DS record exists with DSDECOD=\"DEATH\" then DTHDTC=AEENDTC.</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.DTHFL" Name="Algorithm to derive DM.DTHFL" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">If DS record exists with DSDECOD=\"DEATH\" then DEATHFL=Y.</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.AGE" Name="Algorithm to derive DM.AGE" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Subject's Age at start of study drug (RFSTDTC). </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.ETHNIC" Name="Algorithm to derive DM.ETHNIC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Derived from Origin entered on CRF: ETHINC=\"HISPANIC OR LATINO\" if Origin=\"Hispanic\". Otherwise ETHNIC=\"NOT HISPANIC OR LATINO\"</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.ACTARMCD" Name="Algorithm to derive DM.ACTARMCD" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Derived from EX</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.COUNTRY" Name="Algorithm to derive DM.COUNTRY" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Derived from site information</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.DMDY" Name="Algorithm to derive DM.DMDY" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">See Computational Method: COMPMETHOD.STUDY_DAY</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.USUBJID" Name="Algorithm to derive VS.USUBJID" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Concatenation of STUDYID, DM.SITEID and DM.SUBJID </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSSEQ" Name="Algorithm to derive VS.VSSEQ" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Sequential number identifying records within each USUBJID </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSSTRESC" Name="Algorithm to derive VS.VSSTRESC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">VSORRES converted to standard unit </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSSTRESN" Name="Algorithm to derive VS.VSSTRESN" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">VSSTRESC converted to numeric </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSSTRESU" Name="Algorithm to derive VS.VSSTRESU" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Standard unit defined per parameter for summarizing analysis </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSBLFL" Name="Algorithm to derive VS.VSBLFL" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">If VISIT=\"BASELINE\" then VSBLFL=\"Y\" </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VISITDY" Name="Algorithm to derive VS.VISITDY" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">TV.VISITDY </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSDY" Name="Algorithm to derive VS.VSDY" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">See Computational Method: COMPMETHOD.STUDY_DAY </TranslatedText>
+  </Description>
+</MethodDef><def:CommentDef OID="COM.AGEU">
   <Description>
     <TranslatedText xml:lang="en">AGEU=\"YEARS\" </TranslatedText>
   </Description>

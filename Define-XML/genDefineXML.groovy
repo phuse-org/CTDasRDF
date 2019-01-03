@@ -29,7 +29,7 @@ class genDefineXMLFile {
 	def comentCollection = []
 	def methodCollection = []
 	def codelistCollection = []
-	def datasetList = ["DM", "SUPPDM", "VS"]
+	def datasetList = []
 
 	// Construct Other Metadata
 	def writer = new StringWriter()
@@ -37,7 +37,8 @@ class genDefineXMLFile {
 
 
 	//Constructor
-	def genDefineXMLFile() {
+	def genDefineXMLFile(datasets) {
+		this.datasetList=datasets
 		readRdfFiles()
 
 		Query query = QueryFactory.create(queryString)
@@ -48,7 +49,7 @@ class genDefineXMLFile {
 				QuerySolution sol = rs.nextSolution()
 				ProtocolId=sol.StudyId
 				StudyDescription=sol.StudyDescription
-				Sponsor=sol.Sponsor
+				Sponsor=sol.SponsorName
 				StdVersion=sol.StdVersion
 			}
 		} finally {
@@ -133,11 +134,14 @@ class genDefineXMLFile {
 
 			_DefineXml <<= genItemDef(variableItemDefMetadataQE,i)
 		}
+		// Generate MethodDef
+		_DefineXml <<= genMethodDef()
 		// Generate def:comment
 		_DefineXml <<= genComment()
 		// Construct CreationDataTime
 		def CreationDateTime = new Date(System.currentTimeMillis()).format("yyyy-MM-dd'T'HH:mm:ss")
 		def f = new File('template/define.xml.template')
+
 		def binding = ['ProtocolId': ProtocolId,
 			'StudyDescription': StudyDescription,
 			'Sponsor': Sponsor,
@@ -207,8 +211,17 @@ class genDefineXMLFile {
 						'Description'({'TranslatedText'('xml:lang':"en",  dslabel )})
 						for (ResultSet variableResultset = variableMetadataQE.execSelect(); variableResultset.hasNext() ; ) {
 							QuerySolution sol2 = variableResultset.nextSolution()
+
+							// Generate Method comOID
+							def origin = sol2.Origin.toString()
+							def mtOID = "MT.${datasetName}.${sol2.dataElementName}"
+							if (sol2.comment != null && origin == "DERIVED" ){
+								Map mtMap =[(mtOID):(sol2.comment)]
+								methodCollection << mtMap
+							}
+
 							'ItemRef'(ItemOID: "IT.${datasetName}.${sol2.dataElementName}",
-							OrderNumber: sol2.ordinal_, Mandatory: (sol2.Core.toString() == "Required" ? "Yes" : "No"), KeySequence: "", MethodOID: "")
+							OrderNumber: sol2.ordinal_, Mandatory: (sol2.Core.toString() == "Required" ? "Yes" : "No"), KeySequence: "", MethodOID: mtOID)
 						}
 						'def:leaf'('ID':"LF.${dsname}", 'xlink:href':"${dsname}.xpt".toLowerCase(), {
 							'def:title'("${dsname}.xpt".toLowerCase())}
@@ -289,9 +302,35 @@ class genDefineXMLFile {
 	}
 
 
+	def String genMethodDef(){
+		def writer = new StringWriter()
+		def xml = new MarkupBuilder(writer)
+
+		xml.setOmitNullAttributes(true)
+		xml.setOmitEmptyAttributes(true)
+		xml.setDoubleQuotes(true)
+		xml.setEscapeAttributes(true)
+
+		for (mtind in methodCollection){
+			def mkey = mtind.keySet()[0]
+			def mval = mtind.get(mkey)
+			def mname = mkey - "MT."
+			xml.'MethodDef'('OID':mkey, 'Name':"Algorithm to derive ${mname}", 'Type':"Computation"){
+				'Description'({'TranslatedText'('xml:lang':"en",  mval)})
+			}
+		}
+		return(writer)
+// 	<MethodDef OID="MT.CMENDY" Name="Algorithm to derive CMENDY" Type="Computation">
+// 		<Description>
+// 			<TranslatedText xml:lang="en">CMENDY = CMENDTC - RFSTDTC +1 if CMENDTC is on or after RFSTDTC. CMENDTC - RFSTDTC if
+// CMENDTC precedes RFSTDTC</TranslatedText>
+// 		</Description>
+// 	</MethodDef>
+	}
 
 
-	def String genComment( ){
+
+	def String genComment(){
 		def writer = new StringWriter()
 		def xml = new MarkupBuilder(writer)
 
@@ -316,5 +355,5 @@ class genDefineXMLFile {
 }
 
 
-define_generator = new genDefineXMLFile()
+define_generator = new genDefineXMLFile(["DM", "SUPPDM", "VS"])
 define_generator.genDefineXML()
