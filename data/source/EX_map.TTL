@@ -35,15 +35,15 @@ cdiscpilot01:Person_{usubjid}
 
 # Add the cumulative drug admin periods to the respective usubjid values
 cdiscpilot01:CumulativeDrugAdministration_{usubjid}
-  study:hasSubActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en};
+  study:hasActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en};
 .
 
-cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
+cdiscpilot01:DrugAdministration_{cumuDrugAdmin_im}
   rdf:type                  study:CumulativeDrugAdministration ;
   skos:prefLabel            "Drug administration period {rfxstdtc} to {rfxendtc}"^^xsd:string ;
   study:activityStatus      code:ActivityStatus_CO ;
   study:hasActivityInterval cdiscpilot01:Interval_{cumuDrugAdmin_im};
-  study:hasSubActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en};
+  study:hasActivity      cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en};
 .
 
 # Visit date comes from VS, NOT FROM EX, because the EX is sometimes a later date
@@ -52,7 +52,7 @@ cdiscpilot01:CumulativeDrugAdministration_{cumuDrugAdmin_im}
 #   May need to change this back to original coding.
 cdiscpilot01:Visit{visit_im_titleCSh}_{usubjid}
   rdf:type	             custom:Visit{visit_im_titleCSh} ;
-  study:hasSubActivity   cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en} ;
+  study:hasActivity   cdiscpilot01:DrugAdministration_{usubjid}_{fixDoseInt_im_en} ;
   #DEL NO, NOT HERE!!! Date is set in VS.study:hasPerformedDate cdiscpilot01:Date_{exstdtc_en} ;
 .
 # DrugAdministration

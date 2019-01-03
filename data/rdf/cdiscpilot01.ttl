@@ -244,7 +244,6 @@ cdiscpilot01:Date_2013-07-19
   study:dateTimeInXSDString "2013-07-19" ;
 .
 cdiscpilot01:Date_2013-08-01
-  rdf:type time:Instant ;
   rdf:type study:FixedDoseIntervalEnd ;
   rdf:type study:VisitDate ;
   skos:prefLabel "2013-08-01" ;
@@ -273,7 +272,6 @@ cdiscpilot01:Date_2014-01-02
   study:dateTimeInXSDString "2014-01-02" ;
 .
 cdiscpilot01:Date_2014-01-06
-  rdf:type time:Instant ;
   rdf:type study:VisitDate ;
   skos:prefLabel "2014-01-06" ;
   study:dateTimeInXSDString "2014-01-06" ;
@@ -287,6 +285,7 @@ cdiscpilot01:Date_2014-01-14
   rdf:type study:CumulativeDrugAdministrationEnd ;
   rdf:type study:FixedDoseIntervalEnd ;
   rdf:type study:ReferenceEnd ;
+  rdf:type study:VisitDate ;
   skos:prefLabel "2014-01-14" ;
   study:dateTimeInXSDString "2014-01-14" ;
 .
@@ -321,6 +320,7 @@ cdiscpilot01:Date_2014-07-02
   rdf:type study:CumulativeDrugAdministrationEnd ;
   rdf:type study:FixedDoseIntervalEnd ;
   rdf:type study:ReferenceEnd ;
+  rdf:type study:VisitDate ;
   skos:prefLabel "2014-07-02" ;
   study:dateTimeInXSDString "2014-07-02" ;
 .
@@ -1164,6 +1164,14 @@ cdiscpilot01:VisitWk24_01-701-1028
   rdf:type custom:VisitWk24 ;
   study:hasActivity cdiscpilot01:DrugAdministration_01-701-1028_2014-01-07_2014-01-14 ;
   study:hasPerformedDate cdiscpilot01:Date_2014-01-06 ;
+.
+cdiscpilot01:VisitWk26_01-701-1015
+  rdf:type custom:VisitWk26 ;
+  study:hasPerformedDate cdiscpilot01:Date_2014-07-02 ;
+.
+cdiscpilot01:VisitWk26_01-701-1028
+  rdf:type custom:VisitWk26 ;
+  study:hasPerformedDate cdiscpilot01:Date_2014-01-14 ;
 .
 cdiscpilot01:VisitWk2Activity_01-701-1015
   rdf:type owl:Class ;

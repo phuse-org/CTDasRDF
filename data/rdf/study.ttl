@@ -99,13 +99,6 @@ code:AnatomicLocation
 code:Arm
   rdf:type study:AnatomicLocation ;
 .
-code:AssumeBodyPosition
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:BodyPosition ;
-      owl:onProperty code:outcome ;
-    ] ;
-.
 code:BloodPressure
   owl:equivalentClass [
       rdf:type owl:Restriction ;
@@ -515,13 +508,6 @@ study:Assessor
     ] ;
   skos:definition "A Party that performs an Assessment (See study:Assessment) " ;
   skos:prefLabel "Assessor" ;
-.
-study:AssumeBodyPosition
-  rdf:type owl:Class ;
-  rdfs:comment "" ;
-  rdfs:subClassOf study:PreparatoryIntervention ;
-  skos:definition "An Intervention whose intent is to observe the Person's body position and change it to the desired body position, usually in preparation for another intervention." ;
-  skos:prefLabel "Assume a specific body position" ;
 .
 study:BeginInstant
   rdf:type owl:Class ;
@@ -2547,7 +2533,7 @@ study:hasActivity
   rdfs:comment "" ;
   rdfs:domain study:Activity ;
   rdfs:range study:Activity ;
-  owl:inverseOf study:isSubActivityOf ;
+  owl:inverseOf study:isActivityOf ;
   skos:definition "Relates an Activity with another activity nested beneath it (i.e. a sub-activity)" ;
   skos:prefLabel "has activity" ;
 .
@@ -2932,28 +2918,22 @@ study:interventionType
   rdfs:range code:InterventionType ;
   skos:prefLabel "intervention type" ;
 .
-study:isActivityOfStudy
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment "" ;
-  rdfs:range study:Study ;
-  rdfs:subPropertyOf study:isSubActivityOf ;
-  skos:definition "relates StudyActivity with the Study of which it is a part. " ;
-  skos:prefLabel "is part of" ;
-.
-study:isAddOnStudy
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain study:Study ;
-  rdfs:range code:NoYesResponse ;
-  skos:prefLabel "is add on study" ;
-.
-study:isSubActivityOf
+study:isActivityOf
   rdf:type owl:ObjectProperty ;
   rdf:type owl:TransitiveProperty ;
   rdfs:comment "" ;
   rdfs:domain study:StudyActivity ;
   rdfs:range study:StudyActivity ;
   skos:definition "relates an Activity with Another Activity of which it is a part" ;
-  skos:prefLabel "is sub activity of" ;
+  skos:prefLabel "is activity of" ;
+.
+study:isActivityOfStudy
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "" ;
+  rdfs:range study:Study ;
+  rdfs:subPropertyOf study:isActivityOf ;
+  skos:definition "relates StudyActivity with the Study of which it is a part. " ;
+  skos:prefLabel "is part of" ;
 .
 study:laterality
   rdf:type owl:FunctionalProperty ;

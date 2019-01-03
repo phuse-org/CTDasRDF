@@ -1,0 +1,68 @@
+﻿###############################################################################
+# FILE: tw_wide_map.ttl
+# DESC: Stardog SMS Template file for mapping TS (mostly protocol) information 
+#       to graph.
+# REQ : File format requirements for both execution and consistent processing
+#         by visualization scripts:
+#         s line is hard left on line by itself
+#         p,o line - indented at least one space.
+#                  - ends in ; on same line, no trailing spaces
+#         p : no short hand: 'rdf:type', not 'a'
+#         File must end with carriage return on a line by itself.
+# SRC :
+# IN  : ts_wide.csv , created by TS_imputeCSV.R
+# OUT :
+# NOTE: stardog-admin virtual import CTDasRDFSMS ts_wide_map.TTL ts_wide.csv
+#  Export to TTL: stardog data export --format TURTLE CTDasRDFSMS C:/temp/test.ttl
+# TODO:
+###############################################################################
+@prefix cd01p:        <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code:         <https://w3id.org/phuse/code#> .
+@prefix custom:       <https://w3id.org/phuse/custom#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm:     <https://w3id.org/phuse/sdtmterm#> .
+@prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
+@prefix study:        <https://w3id.org/phuse/study#> .
+@prefix time:         <http://www.w3.org/2006/time#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+
+# -----------------------------------------------------------------------------
+# Study
+cd01p:Study_{studyid}
+  rdf:type                           study:Study ;
+  skos:altLabel                      " "^^xsd:string ;
+  skos:prefLabel                     "{studyid}"^^xsd:string ;
+  study:adaptiveDesign               sdtmterm:NoYesResponse_{adapt} ;
+  study:addOn                        sdtmterm:NoYesResponse_{addon} ;
+  study:blinding                     sdtmterm:TrialBlindingSchema_{tblind_im} ;
+  study:controlType                  sdtmterm:ControlType_{tcntrl} ;
+  study:hasInterval                  cd01p:Interval_{sstdtc}_to_{sendtc} ;
+  study:hasPopulation                cd01p:EnrolledPopulation_{studyid} ;
+  study:hasPopulation                cd01p:StudyPopulation_{studyid} ;
+  study:hasPrimObjective             cd01p:PrimaryObjective_{objprim_seq} ;
+  study:hasPrimOutcomeMeasure        custom:Observation_{outmspri} ;
+  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{dcut_iri_im} ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_{arm_im} ;
+  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminActivity} ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch_im} ;
+##  study:hasProtocolSpecifiedActivity custom:Visit{visitActivity}Activity ;
+
+
+
+## study:hasSecObjective              cd01p:SecondaryObjective_{objsec_seq} ;
+##  study:hasRegistryID                cd01p:StudyRegistryIdentifier_{regid} ;
+##  study:hasSponsor                   code:Sponsor_{studyid} ;
+##  study:hasStopRule                  cd01p:StudyStopRule_{studyStopRuleSeq} ;
+##  study:hasStudyID                   cd01p:StudyIdentifier_{studyIdSeq} ;
+##  study:hasTitle                     cd01p:Title_{studyid} ;
+##  study:interventionModel            sdtmterm:InterventionModel_{intervModel} ;
+##  study:interventionType             sdtmterm:InterventionType_{intervType} ;
+##  study:narms                        "3"^^xsd:int ;
+##  study:randomizedTrial              sdtmterm:NoYesResponse_{randTrialNY} ;
+##  study:studyDrug                    code:Substance_{studyDrug} ; 
+##  study:studyType                    sdtmterm:StudyType_{studyType} ;
+##  study:trialPhase                   sdtmterm:TrialPhase_{trialPhase} ;
+##  study:trialType                    sdtmterm:TrialType_{trialType} ; 
+##.
+

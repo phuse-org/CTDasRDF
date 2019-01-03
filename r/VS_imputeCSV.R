@@ -9,8 +9,6 @@
 # TODO: visit recode move to function, share with VS,EX and other domains...
 #______________________________________________________________________________
 
-
-
 # StartRules based on vstpt 
 vs <- vs %>%
   mutate(startRule_im = recode(vstpt,
@@ -23,7 +21,7 @@ vs <- vs %>%
 # visit in Camel Case Short form for linking  IRIs to ont. Ont uses camel case
 
 vs <- vs %>%    
-  mutate(visit_im_titleC = recode(visit,
+  mutate(visit_im_titleCSh = recode(visit,
     'SCREENING 1'          =  'Screening1' ,
     'SCREENING 2'          =  'Screening2' ,
     'BASELINE'             =  'Baseline' ,
@@ -123,11 +121,11 @@ vs$visit_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$
 vs$vspos_im_titleC    <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", vs$vspos,    perl=TRUE)
 vs$vspos_im_lowerC    <- tolower(vs$vspos)
 
-
 # vstpt_AssumeBodyPosStartRule_im ----
 # Study protcol has the patient lying for 5 min before standing for 1 min.
 #  The standing 1 min therefore has a previous 5 min start rule.
-vs[vs$vstpt == "AFTER STANDING FOR 1 MINUTE", "vstpt_AssumeBodyPosStartRule_im"] <- "StartRuleLying5"
+#  NOTE: Must only operate on non is.na values of vstpt
+vs[!is.na(vs$vstpt) &  vs$vstpt == "AFTER STANDING FOR 1 MINUTE", "vstpt_AssumeBodyPosStartRule_im"] <- "StartRuleLying5"
 
 # vstpt_label_im ----
 vs$vstpt_label_im <- tolower(vs$vstpt)
@@ -154,7 +152,6 @@ vs[vs$vsseq == 87  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "720"
 vs[vs$vsseq == 88  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "236"
 vs[vs$vsseq == 128 & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "3000"
 vs[vs$vsseq == 142 & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "5000"
-
 
 # Sort column names in the df for quicker referencing
 vs <- vs %>% select(noquote(order(colnames(vs))))
