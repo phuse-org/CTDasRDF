@@ -10,9 +10,9 @@
 #         available in the original TS.XPT file.  NOTES column offers 
 #         explanation of the values as needed.
 # OUT : modified ts dataframe 
-# NOTE: 
-#       
-#       
+# NOTE: Unlike other conversions, this code does not produce _im variables, 
+#         due to complications in the post processing of the CAST
+#       Source variables (prior to CASTing) must not have '_' in column names.
 # REF :  Datatable reshape: 
 #          https://cran.r-project.org/web/packages/data.table/vignettes/datatable-reshape.html
 # TODO: visit recode move to function, share with VS,EX and other domains...
@@ -38,61 +38,47 @@ tsAdditions <- data.frame(lapply(tsAdditions, as.character), stringsAsFactors=FA
 
 tsAll<-dplyr::bind_rows(ts, tsAdditions)
 
-tsAll$rowID <- seq.int(nrow(tsAll))
 
-# WIP HERE ----------------------------------------------------------------------------
-#TW APPROACH
-#  Get the tsparmcd values as variables across the top, the values as tsparm 
-# do again for tsval? or multiple value.var?
+# CAST from long to wide to get TSPARMCD values as column names, combining with other value.var 
+# fields as in xxxx_tsval, xxx_tsparm, etc. 
+# TODO: Add additional value.var as needed
+# NOTE: data.table:dcast used for its ability to use mutliple value.var columns.
 
-# Do also for the new label values, etc?  
-# Merge back in based on rowID?
-
-# Look at this result and see how to use it.  Unlike the other domains, TS will be VERY WIDE instead of long
-#   Because of the many uniqe types of things being recorded. At the same time, some values must be 
-#    kept together on the same line, like sstdtc}_to_{sendtc} in order to be used in the map.
-# Make some trickery to rename columns from 1_2  to 2_1 in order to sort by names. switch order of text
-#  with some regex wizardy
-
-foo <- data.table::dcast( setDT(ts),
-  tsseq ~ tsparmcd,
+tswide <- data.table::dcast( setDT(tsAll),
+  studyid + tsseq ~ tsparmcd,
   value.var = c("tsval", "tsparm"  )
   )
 
+# CAST results in tsval_xxx, tsparm_xxx,  we need xxx_tsval, xxx_tsparm, so reverse
+#  the text on either side of '_' created during the CAST. 
+names(tswide) <- gsub('(.*)_(.*)', '\\2_\\1', names(tswide))
 
-tswide <- data.table::dcast( setDT(tsAll),
-  ... ~tsparmcd,
-  value.var = "tsval"
-  )
-
-# tswide <- dcast(setDT(tsAll), studyid + tsseq +tsvcdref ~ tsparmcd, 
-# value.var = "tsval")
-
-#TW 2018-01-02 tswide <- dcast(setDT(tsAll), ... ~ tsparmcd, 
-#TW 2018-01-02   value.var = "tsval")
+# Sort column names ease of reference 
+tswide <- tswide %>% select(noquote(order(colnames(tswide))))
 
 names(tswide) <- tolower(names(tswide))
 
+
 #---- Imputation  (recoding)
-tswide$tblind_im       <- gsub(" ", "_", tswide$tblind )    # Blinding schema
-tswide$agespan_iri_im  <- gsub( " .*$", "", tswide$agespan) # ADULT, ELDERLY iri 
-tswide$tsvcdref_iri_im <- gsub( " ", "", tswide$tsvcdref) 
-tswide[1,"agemax"] <- "NULL"  # Recode existing NA to "NULL" for use in IRI
+tswide$tblind_tsval_iri       <- gsub(" ", "_", tswide$tblind_tsval )    # Blinding schema
+tswide$agespan_tsval_iri<- gsub( " .*$", "", tswide$agespan_tsval) # ADULT, ELDERLY iri 
+#TODO: REDO!!! tswide$tsvcdref_tsval_iri <- gsub( " ", "", tswide$tsvcdref) 
+tswide[1,"agemax_tsval"] <- "NULL"  # Recode existing NA to "NULL" for use in IRI
 
 
 
 
 # Primary and Secondary Objective sequence number for IRIs. Value needed for comp
 #   with source XPT.
-#   When objprim != NA, then the seq_im is the value of tsseq.
+#   When objprim != NA, then the seq is the value of tsseq.
 #   See here : https://stackoverflow.com/questions/22814515/replace-value-in-column-with-corresponding-value-from-another-column-in-same-dat
 #   df[ df$X1 == "a" , "X1" ] <- df[ df$X1 == "a", "X2" ]
 
 # Primary Objective sequence
-tswide[ ! is.na(objprim) , "objprim_seq_im" ] <- tswide[ ! is.na(objprim), "tsseq" ]
+tswide[ ! is.na(objprim_tsval) , "objprim_tsval_seq" ] <- tswide[ ! is.na(objprim_tsval), "tsseq" ]
 
 # Secondary Objective sequence
-tswide[ ! is.na(objsec) , "objsec_seq_im" ] <- tswide[ ! is.na(objsec), "tsseq" ]
+tswide[ ! is.na(objsec_tsval) , "objsec_tsval_seq" ] <- tswide[ ! is.na(objsec_tsval), "tsseq" ]
 
 
 #---- OLDE BELOW HERE -----------------------------------------------------------------

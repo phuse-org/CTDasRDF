@@ -35,19 +35,19 @@ cd01p:Study_{studyid}
   rdf:type                           study:Study ;
   skos:altLabel                      " "^^xsd:string ;
   skos:prefLabel                     "{studyid}"^^xsd:string ;
-  study:adaptiveDesign               sdtmterm:NoYesResponse_{adapt} ;
-  study:addOn                        sdtmterm:NoYesResponse_{addon} ;
-  study:blinding                     sdtmterm:TrialBlindingSchema_{tblind_im} ;
-  study:controlType                  sdtmterm:ControlType_{tcntrl} ;
-  study:hasInterval                  cd01p:Interval_{sstdtc}_to_{sendtc} ;
+  study:adaptiveDesign               sdtmterm:NoYesResponse_{adapt_tsval} ;
+  study:addOn                        sdtmterm:NoYesResponse_{addon_tsval} ;
+  study:blinding                     sdtmterm:TrialBlindingSchema_{tblind_tsval_iri} ;
+  study:controlType                  sdtmterm:ControlType_{tcntrl_tsval} ;
+  study:hasInterval                  cd01p:Interval_{sstdtc_tsval}_to_{sendtc_tsval} ;
   study:hasPopulation                cd01p:EnrolledPopulation_{studyid} ;
   study:hasPopulation                cd01p:StudyPopulation_{studyid} ;
-  study:hasPrimObjective             cd01p:PrimaryObjective_{objprim_seq_im} ;
-  study:hasSecObjective              cd01p:SecondaryObjective_{objsec_seq_im} ;
-  study:hasPrimOutcomeMeasure        custom:Observation_{outmspri} ;
-  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminact_im} ;
-  study:hasProtocolSpecifiedActivity cd01p:Arm_{arm_im} ;
-  study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch_im} ;
+  study:hasPrimObjective             cd01p:PrimaryObjective_{objprim_tsval_seq} ;
+  study:hasSecObjective              cd01p:SecondaryObjective_{objsec_tsval_seq} ;
+  study:hasPrimOutcomeMeasure        custom:Observation_{outmspri_tsval} ;
+  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminact_tsval} ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_{arm_tsval} ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch_tsval} ;
 .
 
 #------------------------------------------------------------------------------
@@ -55,33 +55,33 @@ cd01p:Study_{studyid}
 #------------------------------------------------------------------------------
 
 #---- Study Interval ----------------------------------------------------------
-cd01p:Interval_{sstdtc}_to_{sendtc} 
+cd01p:Interval_{sstdtc_tsval}_to_{sendtc_tsval}
   rdf:type          study:StudyInterval ;
-  skos:prefLabel    "Interval {sstdtc} to {sendtc}"^^xsd:string ;
-  time:hasBeginning cd01p:Date_{sstdtc} ;
-  time:hasEnd       cd01p:Date_{sendtc} ;
+  skos:prefLabel    "Interval {sstdtc_tsval} to {sendtc_tsval}"^^xsd:string ;
+  time:hasBeginning cd01p:Date_{sstdtc_tsval} ;
+  time:hasEnd       cd01p:Date_{sendtc_tsval} ;
 .
 
   #---- Study Begin -----------------------------------------------------------
-  cd01p:Date_{sstdtc} 
+  cd01p:Date_{sstdtc_tsval} 
     rdf:type study:StudyBegin ;
-    skos:prefLabel "Date {sstdtc}"^^xsd:string ;
-    study:dateTimeInXSDString "{sstdtc}"^^xsd:string ;
+    skos:prefLabel "Date {sstdtc_tsval}"^^xsd:string ;
+    study:dateTimeInXSDString "{sstdtc_tsval}"^^xsd:string ;
 .
 
   #---- Study End -------------------------------------------------------------
-  cd01p:Date_{sendtc} 
+  cd01p:Date_{sendtc_tsval} 
     rdf:type study:StudyEnd ;
-    skos:prefLabel "Date {sendtc}"^^xsd:string ;
-    study:dateTimeInXSDString "{sendtc}"^^xsd:string ;
+    skos:prefLabel "Date {sendtc_tsval}"^^xsd:string ;
+    study:dateTimeInXSDString "{sendtc_tsval}"^^xsd:string ;
 .
 
 #---- Enrolled Population -----------------------------------------------------
 cd01p:EnrolledPopulation_{studyid}
   rdf:type                    study:EnrolledPopulation ;
   skos:prefLabel              "Enrolled population {studyid}"^^xsd:string ;
-  study:actualPopulationSize  "{actsub}"^^xsd:int ;
-  study:plannedPopulationSize "{plansub}"^^xsd:int ; ;
+  study:actualPopulationSize  "{actsub_tsval}"^^xsd:int ;
+  study:plannedPopulationSize "{plansub_tsval}"^^xsd:int ; ;
 .
 
 #---- Study Population --------------------------------------------------------
@@ -89,58 +89,31 @@ cd01p:EnrolledPopulation_{studyid}
 cd01p:StudyPopulation_{studyid}
   rdf:type             study:CompletePopulation ;
   skos:prefLabel       "Study population {studyid}"^^xsd:string ;
-  study:ageGroup       code:AgeGroup_{agespan_iri_im} ;
-  study:hasSite        cd01p:Site_{siteid_im} ;
-  study:healthySubject sdtmterm:NoYesResponse_{hltsubji} ;
-  study:maxSubjectAge  code:PlannedSubjectAge_{agemax} ;
-  study:minSubjectAge  code:PlannedSubjectAge_{agemin} ;
-  study:sexGroup       sdtmterm:SexGroup_{sexpop} ;
+  study:ageGroup       code:AgeGroup_{agespan_tsval_iri} ;
+  study:hasSite        cd01p:Site_{siteid_tsval} ;
+  study:healthySubject sdtmterm:NoYesResponse_{hltsubji_tsval} ;
+  study:maxSubjectAge  code:PlannedSubjectAge_{agemax_tsval} ;
+  study:minSubjectAge  code:PlannedSubjectAge_{agemin_tsval} ;
+  study:sexGroup       sdtmterm:SexGroup_{sexpop_tsval} ;
 .
 
 #---- Primary Objective -------------------------------------------------------
-cd01p:PrimaryObjective_{objprim_seq_im}
+cd01p:PrimaryObjective_{objprim_tsval_seq}
   rdf:type       study:PrimaryObjective ;
-  skos:prefLabel "{objprim}"^^xsd:string ;
-  study:seq      "{objprim_seq_im}"^^xsd:float ;
+  skos:prefLabel "{objprim_tsval}"^^xsd:string ;
+  study:seq      "{objprim_tsval_seq}"^^xsd:float ;
 .
 
 #---- Secondary Objective -------------------------------------------------------
-cd01p:SecondaryObjective_{objsec_seq_im}
+cd01p:SecondaryObjective_{objsec_tsval_seq}
   rdf:type       study:SecondaryObjective ;
-  skos:prefLabel "{objsec}"^^xsd:string ;
-  study:seq      "{objsec_seq_im}"^^xsd:float ;
+  skos:prefLabel "{objsec_tsval}"^^xsd:string ;
+  study:seq      "{objsec_tsval_seq}"^^xsd:float ;
 .
 
 #---- Admin Activity      -------------------------------------------------------
-cd01p:AdminActivity_{adminact_im} 
-  rdf:type       study:{adminact_im} ;
-  skos:prefLabel "{dcutdesc}"^^xsd:string ;
-  study:hasDate  cd01p:Date_{dcutdtc} ;
+cd01p:AdminActivity_{adminact_tsval} 
+  rdf:type       study:{adminact_tsval} ;
+  skos:prefLabel "{dcutdesc_tsval}"^^xsd:string ;
+  study:hasDate  cd01p:Date_{dcutdtc_tsval} ;
 .
-  cd01p:Date_{dcutdtc}
-    rdf:type                  study:DataCutoffDate ;
-    skos:prefLabel            "{dcutdesc}"^^xsd:string ; 
-    code:hasCodeSystem        code:CodeSystem_{tsvcdref_iri_im} ;
-    study:dateTimeInXSDString "{dcutdtc}" ;
-.
-
-#---- Treatment Arms   --------------------------------------------------------
-cd01p:Arm_{arm_im}
-  rdf:type       study:{type_im};
-  rdf:type       study:{type2_im};
-  skos:altLabel  "{altlbl_im}"^^xsd:string ;
-  skos:prefLabel "{preflbl_im}"^^xsd:string ;
-.
-
-#---- Epoch            --------------------------------------------------------
-cd01p:Epoch_{epoch_im}
-  rdf:type study:Epoch ;
-  skos:prefLabel "{preflbl_im}"^^xsd:string ;
-  study:hasActivityInterval cd01p:EpochInterval_{tsvalcd} ;
-.
-
-cd01p:EpochInterval_{tsvalcd}
-  rdf:type study:EpochInterval ;
-  skos:prefLabel "Epoch interval blindedtreatment" ;
-.
-
