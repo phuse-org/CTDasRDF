@@ -18,6 +18,7 @@
 
 @prefix cd01p: <https://w3id.org/phuse/cd01p#> .
 @prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix prot: <https://w3id.org/phuse/prot#> .
 @prefix code: <https://w3id.org/phuse/code#> .
 @prefix custom: <https://w3id.org/phuse/custom#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -29,52 +30,53 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
-cdiscpilot01:Study_CDISCPILOT01
+prot:Study_CDISCPILOT01
   rdf:type                            study:Study;
   skos:prefLabel                      "Study: CDISCPILOT01"^^xsd:string ;
   study:narms                         "3"^^xsd:int;
-  study:hasTitle                      cdiscpilot01:Title_CDISCPILOT01;
-  study:hasPrimObjective              cdiscpilot01:PrimaryObjective_CDISCPILOT01_001;
-  study:hasPrimObjective              cdiscpilot01:PrimaryObjective_CDISCPILOT01_002;
-  study:hasSecObjective               cdiscpilot01:SecondaryObjective_CDISCPILOT01_001;
-  study:hasSecObjective               cdiscpilot01:SecondaryObjective_CDISCPILOT01_002;
-  study:hasSecObjective               cdiscpilot01:SecondaryObjective_CDISCPILOT01_003;
-  study:hasSecObjective               cdiscpilot01:SecondaryObjective_CDISCPILOT01_004;
+  study:adaptiveDesign                sdtmterm:NoYesResponse_N ;
+  study:hasTitle                      prot:Title_CDISCPILOT01;
+  study:hasPrimObjective              prot:PrimaryObjective_CDISCPILOT01_001;
+  study:hasPrimObjective              prot:PrimaryObjective_CDISCPILOT01_002;
+  study:hasSecObjective               prot:SecondaryObjective_CDISCPILOT01_001;
+  study:hasSecObjective               prot:SecondaryObjective_CDISCPILOT01_002;
+  study:hasSecObjective               prot:SecondaryObjective_CDISCPILOT01_003;
+  study:hasSecObjective               prot:SecondaryObjective_CDISCPILOT01_004;
 .
 
-cdiscpilot01:Title_CDISCPILOT01
+prot:Title_CDISCPILOT01
   rdf:type                            study:Title;
   study:longTitle                     "Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer’s Disease."^^xsd:string ;
 .
   
-cdiscpilot01:PrimaryObjective_CDISCPILOT01_001
+prot:PrimaryObjective_CDISCPILOT01_001
   rdf:type                            study:PrimaryObjective;
   skos:prefLabel										  "To determine if there is a statistically significant relationship between the change in both ADAS-Cog and CIBIC+ scores, and drug dose (0, 50 cm2 [54 mg], and 75 cm2 [81 mg])"^^xsd:string ;
 .
 
-cdiscpilot01:PrimaryObjective_CDISCPILOT01_002
+prot:PrimaryObjective_CDISCPILOT01_002
   rdf:type                            study:PrimaryObjective;
   skos:prefLabel										  "To document the safety profile of the xanomeline TTS."^^xsd:string ;
 .
 
-cdiscpilot01:SecondaryObjective_CDISCPILOT01_001
+prot:SecondaryObjective_CDISCPILOT01_001
   rdf:type                            study:SecondaryObjective;
   skos:prefLabel										  "To assess the dose-dependent improvement in behavior. Improved scores on the Revised Neuropsychiatric Inventory (NPI-X) will indicate improvement in these areas."^^xsd:string ;
 .
 
-cdiscpilot01:SecondaryObjective_CDISCPILOT01_002
+prot:SecondaryObjective_CDISCPILOT01_002
   rdf:type                            study:SecondaryObjective;
   skos:prefLabel										  "To assess the dose-dependent improvements in activities of daily living. Improved scores on the Disability Assessment for Dementia (DAD) will indicate improvement in these areas."^^xsd:string ;
 .
 
 
-cdiscpilot01:SecondaryObjective_CDISCPILOT01_003
+prot:SecondaryObjective_CDISCPILOT01_003
   rdf:type                            study:SecondaryObjective;
   skos:prefLabel										  "To assess the dose-dependent improvements in an extended assessment of cognition that integrates attention/concentration tasks. The ADAS-Cog (14) will be used for this assessment."^^xsd:string ;
 .
 
 
-cdiscpilot01:SecondaryObjective_CDISCPILOT01_004
+prot:SecondaryObjective_CDISCPILOT01_004
   rdf:type                            study:SecondaryObjective;
   skos:prefLabel										  "To assess the treatment response as a function of Apo E genotype."^^xsd:string ;
 .

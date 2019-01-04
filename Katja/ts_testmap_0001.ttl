@@ -1,0 +1,40 @@
+###############################################################################
+# FILE: TS_map.ttl
+# DESC: Stardog SMS Template file for mapping TS to graph.
+# REQ : File format requirements for both execution and consistent processing
+#         by visualization scripts:
+#         s line is hard left on line by itself
+#         p,o line - indented at least one space.
+#                  - ends in ; on same line, no trailing spaces
+#         p : no short hand: 'rdf:type', not 'a'
+#         File must end with carriage return on a line by itself.
+# SRC :
+# IN  : CSV converted from TS.XPT. First row only
+# OUT :
+# NOTE: stardog-admin virtual import CTDasRDF TS_mappings.TTL TS_subset.csv
+#  Export to TTL: stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
+# TODO:
+###############################################################################
+
+@prefix cd01p: <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix prot: <https://w3id.org/phuse/prot#> .
+@prefix code: <https://w3id.org/phuse/code#> .
+@prefix custom: <https://w3id.org/phuse/custom#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm: <https://w3id.org/phuse/sdtmterm#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix study: <https://w3id.org/phuse/study#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+prot:Study_CDISCPILOT01
+  rdf:type                            study:Study;
+  skos:prefLabel                      "Study: CDISCPILOT01"^^xsd:string ;
+  study:narms                         "3"^^xsd:int;
+  study:hasTitle                      prot:Title_CDISCPILOT01;
+  study:hasPrimObjective              prot:PrimaryObjective_CDISCPILOT01_001;
+  study:hasSecObjective               prot:SecondaryObjective_CDISCPILOT01_001;
+.
