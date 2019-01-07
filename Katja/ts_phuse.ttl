@@ -1,0 +1,128 @@
+###############################################################################
+# FILE: ts_test.ttl                                                            
+# DESC: triples to create TS for PhUSE project                                 
+# REQ :                                                                        
+# SRC :                                                                        
+# IN  :                                                                        
+# OUT :                                                                        
+# NOTE:                                                                        
+# TODO:                                                                        
+# DATE: 2019-01                                                                
+# BY  : KG                                                                     
+###############################################################################
+
+@prefix cd01p: <https://w3id.org/phuse/cd01p#> .              
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code: <https://w3id.org/phuse/code#> .                
+@prefix custom: <https://w3id.org/phuse/custom#> .            
+@prefix owl: <http://www.w3.org/2002/07/owl#> .               
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .       
+@prefix sdtmterm: <https://w3id.org/phuse/sdtmterm#> .        
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .        
+@prefix study: <https://w3id.org/phuse/study#> .              
+@prefix time: <http://www.w3.org/2006/time#> .                
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .            
+@prefix prot: <https://w3id.org/phuse/prot_test#> .            
+
+
+
+prot:Study_CDISCPILOT01
+   rdf:type                                      study:Study;
+   skos:prefLabel                                "Study: CDISCPILOT01"^^xsd:string ;
+   study:hasPopulation                           prot:EnrolledPopulation_CDISCPILOT01;
+   study:hasPopulation                           prot:StudyPopulation_CDISCPILOT01;
+   study:adaptiveDesign                          sdtmterm:NoYesResponse_N ;
+   study:isAddOnStudy                            sdtmterm:NoYesResponse_N ;
+   study:hasProtocolSpecifiedActivity            prot:AdminActivity_DataCutoff_CDISCPILOT01_1 ;
+   study:interventionModel                       sdtmterm:InterventionModel_PARALLEL    ;
+   study:interventionType                        sdtmterm:InterventionType_DRUG;
+   study:narms                                   3 ;
+   study:hasPrimObjective                        prot:PrimaryObjective_CDISCPILOT01_1 ;
+   study:hasPrimObjective                        prot:PrimaryObjective_CDISCPILOT01_2 ;
+   study:hasSecObjective                         prot:SecondaryObjective_CDISCPILOT01_1 ;
+   study:hasSecObjective                         prot:SecondaryObjective_CDISCPILOT01_2 ;
+   study:hasSecObjective                         prot:SecondaryObjective_CDISCPILOT01_3 ;
+   study:hasSecObjective                         prot:SecondaryObjective_CDISCPILOT01_4 ;
+   study:randomizedTrial                         sdtmterm:NoYesResponse_Y ;
+   study:sexGroup                                sdtmterm:SexGroup_BOTH;
+   study:studyType                               sdtmterm:StudyType_INT;
+   study:blinding                                sdtmterm:TrialBlindingSchema_DOUBLE_BLIND;
+   study:controlType                             sdtmterm:ControlType_PLACEBO;
+   study:trialPhase                              sdtmterm:TrialPhase_PHASE2 ;
+   study:studyDrug                               code:Substance_xanomeline                                                                             ;
+   study:trialType                               sdtmterm:TrialType_SAF  ;
+   study:trialType                               sdtmterm:TrialType_EFF  ;
+   study:trialType                               sdtmterm:TrialType_PK   ;
+.
+
+
+prot:EnrolledPopulation_CDISCPILOT01
+   rdf:type                                      study:EnrolledPopulation;
+   skos:prefLabel                                "Enrolled population CDISCPILOT01 ";
+.
+
+prot:StudyPopulation_CDISCPILOT01
+   rdf:type                                      study:CompletePopulation;
+   skos:prefLabel                                "Study population CDISCPILOT01 ";
+.
+
+prot:EnrolledPopulation_CDISCPILOT01             study:actualPopulationSize              254 ;.
+
+prot:AdminActivity_DataCutoff_CDISCPILOT01_1
+   rdf:type                                      study:DataCutoff;
+   skos:prefLabel                                "Interim Analysis Data Cutoff Date ";
+   study:hasDate                                 prot:DataCutoffDate_2015-03-31 ;
+.
+
+prot:DataCutoffDate_2015-03-31
+   rdf:type                                      study:DataCutoffDate;
+   skos:prefLabel                                "Interim Analysis Data Cutoff Date";
+   code:hasCodeSystem                            code:CodeSystem_ISO8601;
+   study:dateTimeInXSDString                     "2015-03-31";
+.
+
+prot:PrimaryObjective_CDISCPILOT01_1
+   rdf:type                                      study:PrimaryObjective ;
+   skos:prefLabel                                "To determine if there is a statistically significant relationship between the change in both ADAS-Cog and CIBIC+ scores, and drug dose (0, 50 cm2 [54 mg], and 75 cm2 [81 mg]) ";
+   study:seq                                     "1 "^^xsd:float;
+.
+
+prot:PrimaryObjective_CDISCPILOT01_2
+   rdf:type                                      study:PrimaryObjective ;
+   skos:prefLabel                                "To document the safety profile of the xanomeline TTS. ";
+   study:seq                                     "2 "^^xsd:float;
+.
+
+prot:SecondaryObjective_CDISCPILOT01_1
+   rdf:type                                      study:SecondaryObjective;
+   skos:prefLabel                                "To assess the dose-dependent improvement in behavior. Improved scores on the Revised Neuropsychiatric Inventory (NPI-X) will indicate improvement in these areas. ";
+   study:seq                                     "1 "^^xsd:float;
+.
+
+prot:SecondaryObjective_CDISCPILOT01_2
+   rdf:type                                      study:SecondaryObjective;
+   skos:prefLabel                                "To assess the dose-dependent improvements in activities of daily living. Improved scores on the Disability Assessment for Dementia (DAD) will indicate improvement in these areas. ";
+   study:seq                                     "2 "^^xsd:float;
+.
+
+prot:SecondaryObjective_CDISCPILOT01_3
+   rdf:type                                      study:SecondaryObjective;
+   skos:prefLabel                                "To assess the dose-dependent improvements in an extended assessment of cognition that integrates attention/concentration tasks. The ADAS-Cog (14) will be used for this assessment. ";
+   study:seq                                     "3 "^^xsd:float;
+.
+
+prot:SecondaryObjective_CDISCPILOT01_4
+   rdf:type                                      study:SecondaryObjective;
+   skos:prefLabel                                "To assess the treatment response as a function of Apo E genotype. ";
+   study:seq                                     "4 "^^xsd:float;
+.
+
+prot:EnrolledPopulation_CDISCPILOT01             study:plannedPopulationSize             300 ;.
+
+prot:Study_CDISCPILOT01                          study:hasTitle                          prot:Title_CDISCPILOT01;.
+
+prot:Title_CDISCPILOT01
+   rdf:type                                      study:Title;
+   skos:prefLabel                                "Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer’s Disease. ";
+.
+

@@ -128,7 +128,8 @@ prefix <- c("cd01p",        "https://w3id.org/phuse/cd01p#",
             "cts",          "https://w3id.org/phuse/cts#",
             "mms",          "https://w3id.org/phuse/mms#",
             "sdtm313",      "http://rdf.cdisc.org/std/sdtmig-3-1-3#",
-            "sdtm",         "https://w3id.org/phuse/sdtm#")
+            "sdtm",         "https://w3id.org/phuse/sdtm#",
+            "prot",         "https://w3id.org/phuse/prot_test#")
 
 Sys.setenv(http_proxy="")
 Sys.setenv(https_proxy="")
