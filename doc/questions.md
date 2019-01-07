@@ -27,9 +27,9 @@ study:Study     study:isAddOnStudy  code:NoYesResponse
 
 **Answer**:
 
-## Code.ttl - Prefix differences code: vs sdtm:
+## Code.ttl - Prefix differences code: vs sdtmterm:
 
-**Question**: I guess we use "code:" as prefix for cutstom code items and "sdtm:" for CDISC codelists? Extensible codelists are also maintained under "code:", even though the values might be CDISC Terminology for our pilot? Or should we include all CDISC terms with the "sdtm:" prefix instead? How would it look like for having CDISC code + extensions? These extensions are typically company specific.
+**Question**: I guess we use "code:" as prefix for cutstom code items and "sdtmterm:" for CDISC codelists? Extensible codelists are also maintained under "code:", even though the values might be CDISC Terminology for our pilot? Or should we include all CDISC terms with the "sdtmterm:" prefix instead? How would it look like for having CDISC code + extensions? These extensions are typically company specific.
 
 Example: code:AgeGroup uses the code prefix but only CDISC terminology for the extended codelist.
 
