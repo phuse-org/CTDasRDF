@@ -25,7 +25,7 @@ study:Study     study:isAddOnStudy  code:NoYesResponse
 
 **Question**: Where is the difference? In the TS domain there is only the TSPARMCD = ADDON.
 
-**Answer**:
+**Answer**:  Duplicate data, corrected in committed version 2018-12-22. Please update to the latest version where only this will be presented:  study:addOn sdtmterm:NoYesResponse_N ;  
 
 ## Code.ttl - Prefix differences code: vs sdtmterm:
 
