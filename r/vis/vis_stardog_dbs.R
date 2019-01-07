@@ -67,7 +67,7 @@ addToGraph <- function(from, to, connectionDescription,
                        listUniquesPrefixes = c("xsd","code")){
   # make a unique label, to map not all, e.g. to xsd:string
   label_to <- to
-  if (unlist(strsplit(to,":"))[1] %in% listUniquesPrefixes || ignoreCondition){
+  if (unlist(strsplit(to,":"))[1] %in% listUniquesPrefixes){
     to <- paste0(to,"_",from,"_",connectionDescription)
   }
   
@@ -97,6 +97,7 @@ formatList <- function(){
   # Nodes color based on prefix
   nodesListXX$color.background[ grepl("study:",        nodesListXX$id, perl=TRUE) ] <<- '#FFBD09'  
   nodesListXX$color.background[ grepl("cdiscpilot01:", nodesListXX$id, perl=TRUE) ] <<- "#CCFFCC"
+  nodesListXX$color.background[ grepl("prot:",         nodesListXX$id, perl=TRUE) ] <<- "#CCFFCC"
   nodesListXX$color.background[ grepl("cd01p:",        nodesListXX$id, perl=TRUE) ] <<- '#008D00'   
   nodesListXX$color.background[ grepl("code:",         nodesListXX$id, perl=TRUE) ] <<- '#80F3EF'
   nodesListXX$color.background[ grepl("custom:",       nodesListXX$id, perl=TRUE) ] <<- '#C71B5F'
@@ -112,6 +113,7 @@ formatList <- function(){
 
 prefix <- c("cd01p",        "https://w3id.org/phuse/cd01p#",
             "cdiscpilot01", "https://w3id.org/phuse/cdiscpilot01#",
+            "prot",         "https://w3id.org/phuse/prot#",
             "code",         "https://w3id.org/phuse/code#",
             "custom",       "https://w3id.org/phuse/custom#",
             "owl",          "http://www.w3.org/2002/07/owl#",
@@ -425,3 +427,62 @@ visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
   visIgraphLayout(avoidOverlap = 1) %>%
   visEdges(smooth=FALSE) %>% 
   visOptions(manipulation = TRUE)
+
+
+
+#####################################################
+# Population Modified
+#####################################################
+
+# 
+# endpoint <- "http://localhost:5820/CTDasRDFOWL/query"
+# queryOnt = paste0("SELECT * WHERE {?predicate  rdfs:domain ?domain 
+#                   OPTIONAL {?predicate rdfs:range ?range}}")
+# qd <- SPARQL(endpoint, queryOnt, ns=prefix)
+# triplesDf <- qd$results
+# 
+# ofInterst=c("study:Study",
+#             "study:actualPopulationSize",
+#             "study:ageGroup",
+#             "study:MaximumSubjectAge",
+#             "study:MinimumSubjectAge",
+#             "study:plannedPopulationSize",
+#             "study:sexGroup",
+#             "study:StudyPopulation")
+# 
+# triplesDf <- triplesDf[(triplesDf$domain %in% ofInterst & triplesDf$range %in% ofInterst) | 
+#                            (triplesDf$domain %in% ofInterst & triplesDf$predicate %in% ofInterst),]
+# 
+# initLists()
+# # include triples
+# for (row in 1:nrow(triplesDf)) {
+#     if (!is.na(triplesDf$domain[row]) && !is.na(triplesDf$range[row]) && !is.na(triplesDf$predicate[row])){
+#         addToGraph(triplesDf$domain[row],triplesDf$range[row],triplesDf$predicate[row])  
+#         print(paste0("addToGraph('",triplesDf$domain[row],"','",triplesDf$range[row],"','",triplesDf$predicate[row],"')"));
+#     }
+# }
+
+initLists()
+addToGraph('study:Study','prot:StudyPopulation_CDISCPILOT01','study:hasPopulation')
+addToGraph('study:Study','prot:EnrolledPopulation_CDISCPILOT01','study:hasPopulation')
+
+
+addToGraph('prot:EnrolledPopulation_CDISCPILOT01','xsd:integer','study:actualPopulationSize')
+addToGraph('prot:StudyPopulation_CDISCPILOT01','code:AgeGroup','study:ageGroup')
+addToGraph('prot:StudyPopulation_CDISCPILOT01','study:MaximumSubjectAge','study:maxSubjectAge')
+addToGraph('prot:StudyPopulation_CDISCPILOT01','study:MinimumSubjectAge','study:minSubjectAge')
+addToGraph('prot:EnrolledPopulation_CDISCPILOT01','xsd:integer','study:plannedPopulationSize')
+addToGraph('prot:StudyPopulation_CDISCPILOT01','code:SexGroup','study:sexGroup')
+
+addToGraph('prot:EnrolledPopulation_CDISCPILOT01','study:StudyPopulation','rdf:type')
+addToGraph('prot:StudyPopulation_CDISCPILOT01','study:StudyPopulation','rdf:type')
+
+
+formatList()
+
+visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+    visIgraphLayout(layout = "layout_nicely",
+                    physics = FALSE) %>%
+    visIgraphLayout(avoidOverlap = 1) %>%
+    visEdges(smooth=FALSE) %>% 
+    visOptions(manipulation = TRUE)

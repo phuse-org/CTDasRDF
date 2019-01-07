@@ -1,0 +1,1298 @@
+@prefix : <https://w3id.org/phuse/cd01p#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix code: <https://w3id.org/phuse/code#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix cd01p: <https://w3id.org/phuse/cd01p#> .
+@prefix study: <https://w3id.org/phuse/study#> .
+@prefix custom: <https://w3id.org/phuse/custom#> .
+@prefix sdtmterm: <https://w3id.org/phuse/sdtmterm#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2006/time#hasBeginning
+time:hasBeginning rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/time#hasEnd
+time:hasEnd rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/time#hasXSDDuration
+time:hasXSDDuration rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#hasCode
+code:hasCode rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#hasCodeSystem
+code:hasCodeSystem rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#hasDosageForm
+code:hasDosageForm rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#hasIngredient
+code:hasIngredient rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#hasIngredientQuantity
+code:hasIngredientQuantity rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#hasMethod
+code:hasMethod rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#hasUnit
+code:hasUnit rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#hasValue
+code:hasValue rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#recFreqOfAdministration
+code:recFreqOfAdministration rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/code#recRouteOfAdministration
+code:recRouteOfAdministration rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#actualPopulationSize
+study:actualPopulationSize rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#adaptiveDesign
+study:adaptiveDesign rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#addOn
+study:addOn rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#ageGroup
+study:ageGroup rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#blinding
+study:blinding rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#controlType
+study:controlType rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#crfLocation
+study:crfLocation rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#dateTimeInXSDString
+study:dateTimeInXSDString rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasActivityInterval
+study:hasActivityInterval rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasCountry
+study:hasCountry rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasDate
+study:hasDate rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasInterval
+study:hasInterval rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasPopulation
+study:hasPopulation rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasPrereqExpectedStatus
+study:hasPrereqExpectedStatus rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasPrimObjective
+study:hasPrimObjective rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasPrimOutcomeMeasure
+study:hasPrimOutcomeMeasure rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasProtocolSpecifiedActivity
+study:hasProtocolSpecifiedActivity rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasRegistryID
+study:hasRegistryID rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasSecObjective
+study:hasSecObjective rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasSite
+study:hasSite rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasSiteID
+study:hasSiteID rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasSponsor
+study:hasSponsor rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasStartRule
+study:hasStartRule rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasStopRule
+study:hasStopRule rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasStudyID
+study:hasStudyID rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#hasTitle
+study:hasTitle rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#healthySubject
+study:healthySubject rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#interventionModel
+study:interventionModel rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#interventionType
+study:interventionType rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#isAddOnStudy
+study:isAddOnStudy rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#maxSubjectAge
+study:maxSubjectAge rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#minSubjectAge
+study:minSubjectAge rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#narms
+study:narms rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#plannedPopulationSize
+study:plannedPopulationSize rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#randomizedTrial
+study:randomizedTrial rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#sexGroup
+study:sexGroup rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#studyDrug
+study:studyDrug rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#studyIndication
+study:studyIndication rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#studyType
+study:studyType rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#trialPhase
+study:trialPhase rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/phuse/study#trialType
+study:trialType rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#duration
+xsd:duration rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/phuse/code#outcome
+code:outcome rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/phuse/study#participatesIn
+study:participatesIn rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/phuse/study#hasDelay
+study:hasDelay rdf:type owl:DatatypeProperty .
+
+
+###  https://w3id.org/phuse/study#seq
+study:seq rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/phuse/cd01p#StartRuleLying5
+cd01p:StartRuleLying5 rdf:type owl:Class ;
+                      rdfs:subClassOf study:StartRulePrereqActivityOutcome ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty study:hasPrerequisite ;
+                                        owl:allValuesFrom custom:AssumeBodyPositionSupine
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty study:hasPrereqExpectedOutcome ;
+                                        owl:hasValue code:BodyPosition_SUPINE
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty skos:altLabel ;
+                                        owl:hasValue "815"
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty skos:definition ;
+                                        owl:hasValue "Target activity starts after the subject has assumed a supine position for 5 minutes"
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty skos:prefLabel ;
+                                        owl:hasValue "Rule Lying 5 Min"
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty study:hasDelay ;
+                                        owl:hasValue "PT5M"^^xsd:duration
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty study:ruleDescription ;
+                                        owl:hasValue "AFTER LYING DOWN FOR 5 MINUTES"
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty study:ruleDescriptionLong ;
+                                        owl:hasValue "Activity takes place 5 minutes after assuming a supine body position"
+                                      ] ;
+                      rdfs:comment "" ;
+                      skos:altLabel "815" ;
+                      skos:definition "Target activity starts after the subject has assumed a supine position for 5 minutes" ;
+                      skos:prefLabel "Rule Lying 5 Min" ;
+                      study:hasPrereqExpectedOutcome code:BodyPosition_SUPINE ;
+                      study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
+                      study:hasPrerequisite custom:AssumeBodyPositionSupine ;
+                      study:ruleDescription "AFTER LYING DOWN FOR 5 MINUTES" ;
+                      study:ruleDescriptionLong "Activity takes place 5 minutes after assuming a supine body position" .
+
+
+###  https://w3id.org/phuse/cd01p#StartRuleStanding1
+cd01p:StartRuleStanding1 rdf:type owl:Class ;
+                         rdfs:subClassOf study:StartRulePrereqActivityOutcome ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:hasPrerequisite ;
+                                           owl:allValuesFrom custom:AssumeBodyPositionStanding
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:hasPrereqExpectedOutcome ;
+                                           owl:hasValue code:BodyPosition_STANDING
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty skos:altLabel ;
+                                           owl:hasValue "816"
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty skos:definition ;
+                                           owl:hasValue "Target activity starts after the subject has assumed a standing position for 1 minute"
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty skos:prefLabel ;
+                                           owl:hasValue "Rule Standing 1 Min"
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:hasDelay ;
+                                           owl:hasValue "PT1M"^^xsd:duration
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:ruleDescription ;
+                                           owl:hasValue "AFTER STANDING FOR 1 MINUTE"
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:ruleDescriptionLong ;
+                                           owl:hasValue "Activity takes place 1 minute after assuming a standing body position"
+                                         ] ;
+                         rdfs:comment "" ;
+                         skos:altLabel "816" ;
+                         skos:definition "Target activity starts after the subject has assumed a standing position for 1 minute" ;
+                         skos:prefLabel "Rule Standing 1 Min" ;
+                         study:hasPrereqExpectedOutcome code:BodyPosition_STANDING ;
+                         study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
+                         study:hasPrerequisite custom:AssumeBodyPositionStanding ;
+                         study:ruleDescription "AFTER STANDING FOR 1 MINUTE" ;
+                         study:ruleDescriptionLong "Activity takes place 1 minute after assuming a standing body position" .
+
+
+###  https://w3id.org/phuse/cd01p#StartRuleStanding3
+cd01p:StartRuleStanding3 rdf:type owl:Class ;
+                         rdfs:subClassOf study:StartRulePrereqActivityOutcome ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:hasPrerequisite ;
+                                           owl:allValuesFrom custom:AssumeBodyPositionStanding
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:hasPrereqExpectedOutcome ;
+                                           owl:hasValue code:BodyPosition_STANDING
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty skos:altLabel ;
+                                           owl:hasValue "817"
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty skos:definition ;
+                                           owl:hasValue "Target activity starts after the subject has assumed a standing position for 3 minutes"
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty skos:prefLabel ;
+                                           owl:hasValue "Rule Standing 3 Min"
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:hasDelay ;
+                                           owl:hasValue "PT3M"^^xsd:duration
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:ruleDescription ;
+                                           owl:hasValue "AFTER STANDING FOR 3 MINUTES"
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty study:ruleDescriptionLong ;
+                                           owl:hasValue "Activity takes place 1 minute after assuming a standing body position"
+                                         ] ;
+                         rdfs:comment "" ;
+                         skos:altLabel "817" ;
+                         skos:definition "Target activity starts after the subject has assumed a standing position for 3 minutes" ;
+                         skos:prefLabel "Rule Standing 3 Min" ;
+                         study:hasPrereqExpectedOutcome code:BodyPosition_STANDING ;
+                         study:hasPrereqExpectedStatus code:ActivityStatus_CO ;
+                         study:hasPrerequisite custom:AssumeBodyPositionStanding ;
+                         study:ruleDescription "AFTER STANDING FOR 3 MINUTES" ;
+                         study:ruleDescriptionLong "Activity takes place 3 minutes after assuming a standing body position. " .
+
+
+###  https://w3id.org/phuse/cd01p#VisitScreening1BloodPressure
+cd01p:VisitScreening1BloodPressure rdf:type owl:Class ;
+                                   rdfs:subClassOf custom:VisitScreening1Activity ;
+                                   skos:prefLabel "Visit Screening 1 Blood Pressure" ;
+                                   study:hasStartRule code:VisitScreening1Start .
+
+
+###  https://w3id.org/phuse/cd01p#VisitScreening1DemogDataColl
+cd01p:VisitScreening1DemogDataColl rdf:type owl:Class ;
+                                   rdfs:subClassOf custom:VisitScreening1Activity .
+
+
+###  https://w3id.org/phuse/cd01p#VisitScreening1DiastolicBloodPressure
+cd01p:VisitScreening1DiastolicBloodPressure rdf:type owl:Class ;
+                                            rdfs:subClassOf cd01p:VisitScreening1BloodPressure ;
+                                            rdfs:label "Visit screening1Diastolic blood pressure" .
+
+
+###  https://w3id.org/phuse/cd01p#VisitScreening1Height
+cd01p:VisitScreening1Height rdf:type owl:Class ;
+                            rdfs:subClassOf custom:VisitScreening1Activity ;
+                            skos:prefLabel "Visit Screening 1 Height" ;
+                            study:hasStartRule code:VisitScreening1Start .
+
+
+###  https://w3id.org/phuse/cd01p#VisitScreening1Pulse
+cd01p:VisitScreening1Pulse rdf:type owl:Class ;
+                           rdfs:subClassOf custom:VisitScreening1Activity ;
+                           skos:prefLabel "Visit Screening 1 Pulse" ;
+                           study:hasStartRule code:VisitScreening1Start .
+
+
+###  https://w3id.org/phuse/cd01p#VisitScreening1SystolicBloodPressure
+cd01p:VisitScreening1SystolicBloodPressure rdf:type owl:Class ;
+                                           rdfs:subClassOf cd01p:VisitScreening1BloodPressure ;
+                                           rdfs:label "Visit screening1Systolic blood pressure" .
+
+
+###  https://w3id.org/phuse/cd01p#VisitScreening1Temperature
+cd01p:VisitScreening1Temperature rdf:type owl:Class ;
+                                 rdfs:subClassOf custom:VisitScreening1Activity ;
+                                 skos:prefLabel "Visit Screening 1Temperature" ;
+                                 study:hasStartRule code:VisitScreening1Start .
+
+
+###  https://w3id.org/phuse/cd01p#VisitScreening1Weight
+cd01p:VisitScreening1Weight rdf:type owl:Class ;
+                            rdfs:subClassOf custom:VisitScreening1Activity ;
+                            skos:prefLabel "Visit screening1Weight" ;
+                            study:hasStartRule code:VisitScreening1Start .
+
+
+###  https://w3id.org/phuse/cd01p#VitalsSignsBodyPosition
+cd01p:VitalsSignsBodyPosition rdf:type owl:Class ;
+                              rdfs:subClassOf study:BodyPosition ;
+                              skos:prefLabel "VSPOS" .
+
+
+###  https://w3id.org/phuse/code#DemographicDataCollection
+code:DemographicDataCollection rdf:type owl:Class ;
+                               rdfs:subClassOf custom:VisitScreening1Activity ,
+                                               study:Observation ;
+                               study:crfLocation cd01p:CRFLocation_1 .
+
+
+###  https://w3id.org/phuse/code#DiastolicBloodPressure
+code:DiastolicBloodPressure rdf:type owl:Class ;
+                            rdfs:subClassOf study:VitalSign .
+
+
+###  https://w3id.org/phuse/code#DrugProduct
+code:DrugProduct rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/code#Height
+code:Height rdf:type owl:Class ;
+            rdfs:subClassOf study:VitalSign .
+
+
+###  https://w3id.org/phuse/code#InformedConsentAdult
+code:InformedConsentAdult rdf:type owl:Class ;
+                          rdfs:subClassOf study:InformedConsent ;
+                          study:hasStartRule study:StartRuleDefault .
+
+
+###  https://w3id.org/phuse/code#Pulse
+code:Pulse rdf:type owl:Class ;
+           rdfs:subClassOf study:VitalSign .
+
+
+###  https://w3id.org/phuse/code#RandomizationBAL3
+code:RandomizationBAL3 rdf:type owl:Class ;
+                       rdfs:subClassOf study:Randomization .
+
+
+###  https://w3id.org/phuse/code#SubstanceQuantity
+code:SubstanceQuantity rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/code#SystolicBloodPressure
+code:SystolicBloodPressure rdf:type owl:Class ;
+                           rdfs:subClassOf study:VitalSign .
+
+
+###  https://w3id.org/phuse/code#Temperature
+code:Temperature rdf:type owl:Class ;
+                 rdfs:subClassOf study:VitalSign .
+
+
+###  https://w3id.org/phuse/code#VisitScreening1Start
+code:VisitScreening1Start rdf:type owl:Class ;
+                          rdfs:subClassOf study:StartRulePrereqActivityStart ;
+                          rdfs:comment "" ;
+                          skos:prefLabel "SCREENING1 VISIT START" ;
+                          study:hasPrereqExpectedStatus code:ActivityStatus_ST ;
+                          study:hasPrerequisite custom:VisitScreening1Activity ;
+                          study:ruleDescription "AFTER SCREENING1 VISIT STARTS" ;
+                          study:ruleDescriptionLong "Activity takes place after Screening1 Visit Starts" .
+
+
+###  https://w3id.org/phuse/code#Weight
+code:Weight rdf:type owl:Class ;
+            rdfs:subClassOf study:VitalSign .
+
+
+###  https://w3id.org/phuse/custom#AssumeBodyPositionStanding
+custom:AssumeBodyPositionStanding rdf:type owl:Class ;
+                                  rdfs:subClassOf study:AssumeBodyPosition ,
+                                                  study:PrerequisiteActivity ;
+                                  rdfs:comment "" ;
+                                  skos:definition "" ;
+                                  skos:prefLabel "ASSUME BODY POSITION STANDING" .
+
+
+###  https://w3id.org/phuse/custom#AssumeBodyPositionSupine
+custom:AssumeBodyPositionSupine rdf:type owl:Class ;
+                                rdfs:subClassOf study:AssumeBodyPosition ,
+                                                study:PrerequisiteActivity ;
+                                rdfs:comment "" ;
+                                skos:definition "" ;
+                                skos:prefLabel "ASSUME BODY POSITION SUPINE" .
+
+
+###  https://w3id.org/phuse/custom#PopFlagCOMPLT16
+custom:PopFlagCOMPLT16 rdf:type owl:Class ;
+                       rdfs:subClassOf study:PopulationFlag ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty skos:altLabel ;
+                                         owl:hasValue "Completers of Week 16 Population Flag"
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty skos:prefLabel ;
+                                         owl:hasValue "COMPLT16"
+                                       ] ;
+                       skos:altLabel "Completers of Week 16 Population Flag" ;
+                       skos:prefLabel "COMPLT16" ;
+                       code:hasMethod code:Method_DERIVED .
+
+
+###  https://w3id.org/phuse/custom#PopFlagCOMPLT24
+custom:PopFlagCOMPLT24 rdf:type owl:Class ;
+                       rdfs:subClassOf study:PopulationFlag ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty skos:altLabel ;
+                                         owl:hasValue "Completers of Week 24 Population Flag"
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty skos:prefLabel ;
+                                         owl:hasValue "COMPLT24"
+                                       ] ;
+                       skos:altLabel "Completers of Week 24 Population Flag" ;
+                       skos:prefLabel "COMPLT24" ;
+                       code:hasMethod code:Method_DERIVED .
+
+
+###  https://w3id.org/phuse/custom#PopFlagCOMPLT8
+custom:PopFlagCOMPLT8 rdf:type owl:Class ;
+                      rdfs:subClassOf study:PopulationFlag ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty skos:altLabel ;
+                                        owl:hasValue "Completers of Week 8 Population Flag"
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty skos:prefLabel ;
+                                        owl:hasValue "COMPLT8"
+                                      ] ;
+                      skos:altLabel "Completers of Week 8 Population Flag" ;
+                      skos:prefLabel "COMPLT8" ;
+                      code:hasMethod code:Method_DERIVED .
+
+
+###  https://w3id.org/phuse/custom#PopFlagEFFICACY
+custom:PopFlagEFFICACY rdf:type owl:Class ;
+                       rdfs:subClassOf study:PopulationFlag ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty skos:altLabel ;
+                                         owl:hasValue "Efficacy Population Flag"
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty skos:prefLabel ;
+                                         owl:hasValue "EFFICACY"
+                                       ] ;
+                       skos:altLabel "Eficacy Population Flag" ;
+                       skos:prefLabel "EFFICACY" ;
+                       code:hasMethod code:Method_DERIVED .
+
+
+###  https://w3id.org/phuse/custom#PopFlagITT
+custom:PopFlagITT rdf:type owl:Class ;
+                  rdfs:subClassOf study:PopulationFlag ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty skos:altLabel ;
+                                    owl:hasValue "ITT Population Flag"
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty skos:prefLabel ;
+                                    owl:hasValue "ITT"
+                                  ] ;
+                  skos:altLabel "Intent To Treat Population Flag" ;
+                  skos:prefLabel "ITT" ;
+                  code:hasMethod code:Method_DERIVED .
+
+
+###  https://w3id.org/phuse/custom#PopFlagSAFETY
+custom:PopFlagSAFETY rdf:type owl:Class ;
+                     rdfs:subClassOf study:PopulationFlag ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty skos:altLabel ;
+                                       owl:hasValue "Safety Population Flag"
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty skos:prefLabel ;
+                                       owl:hasValue "SAFETY"
+                                     ] ;
+                     skos:altLabel "Safety Population Flag" ;
+                     skos:prefLabel "SAFETY" ;
+                     code:hasMethod code:Method_DERIVED .
+
+
+###  https://w3id.org/phuse/custom#UnscheduledVisit
+custom:UnscheduledVisit rdf:type owl:Class ;
+                        rdfs:subClassOf study:Visit .
+
+
+###  https://w3id.org/phuse/custom#VisitAmbulECGPlace
+custom:VisitAmbulECGPlace rdf:type owl:Class ;
+                          rdfs:subClassOf study:Visit ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty skos:prefLabel ;
+                                            owl:hasValue "AMBUL ECG PLACE"
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty study:seq ;
+                                            owl:hasValue "3.5"
+                                          ] ;
+                          skos:prefLabel "AMBUL ECG PLACE" ;
+                          study:hasActivity custom:VisitAmbulECGPlaceActivity .
+
+
+###  https://w3id.org/phuse/custom#VisitAmbulECGPlaceActivity
+custom:VisitAmbulECGPlaceActivity rdf:type owl:Class ;
+                                  rdfs:subClassOf study:VisitActivity ;
+                                  skos:altLabel "" ;
+                                  skos:prefLabel "AMBUL ECG PLACE ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitAmbulECGRemoval
+custom:VisitAmbulECGRemoval rdf:type owl:Class ;
+                            rdfs:subClassOf study:Visit ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty skos:prefLabel ;
+                                              owl:hasValue "AMBUL ECG REMOVAL"
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty study:seq ;
+                                              owl:hasValue "6"
+                                            ] ;
+                            skos:prefLabel "AMBUL ECG REMOVAL" ;
+                            study:hasActivity custom:VisitAmbulECGRemoveActivity .
+
+
+###  https://w3id.org/phuse/custom#VisitAmbulECGRemoveActivity
+custom:VisitAmbulECGRemoveActivity rdf:type owl:Class ;
+                                   rdfs:subClassOf study:VisitActivity ;
+                                   skos:altLabel "" ;
+                                   skos:prefLabel "AMBUL ECG REMOVAL ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitBaseline
+custom:VisitBaseline rdf:type owl:Class ;
+                     rdfs:subClassOf study:Visit ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty study:hasActivity ;
+                                       owl:allValuesFrom custom:VisitBaselineActivity
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty skos:prefLabel ;
+                                       owl:hasValue "BASELINE"
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty study:seq ;
+                                       owl:hasValue "3"
+                                     ] ;
+                     skos:prefLabel "BASELINE" ;
+                     study:hasActivity custom:VisitBaselineActivity .
+
+
+###  https://w3id.org/phuse/custom#VisitBaselineActivity
+custom:VisitBaselineActivity rdf:type owl:Class ;
+                             rdfs:subClassOf study:VisitActivity ;
+                             skos:altLabel "" ;
+                             skos:prefLabel "BASELINE ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitRetrieval
+custom:VisitRetrieval rdf:type owl:Class ;
+                      rdfs:subClassOf study:Visit ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty skos:prefLabel ;
+                                        owl:hasValue "RETRIEVAL"
+                                      ] ;
+                      skos:prefLabel "RETRIEVAL" ;
+                      study:hasActivity custom:VisitRetrievalActivity .
+
+
+###  https://w3id.org/phuse/custom#VisitRetrievalActivity
+custom:VisitRetrievalActivity rdf:type owl:Class ;
+                              rdfs:subClassOf study:VisitActivity ;
+                              skos:altLabel "" ;
+                              skos:prefLabel "RETRIEVAL ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitScreening1
+custom:VisitScreening1 rdf:type owl:Class ;
+                       rdfs:subClassOf study:Visit ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty study:hasActivity ;
+                                         owl:allValuesFrom custom:VisitScreening1Activity
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty skos:prefLabel ;
+                                         owl:hasValue "SCREENING 1"
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty study:seq ;
+                                         owl:hasValue "1"
+                                       ] ;
+                       skos:prefLabel "SCREENING 1" .
+
+
+###  https://w3id.org/phuse/custom#VisitScreening1Activity
+custom:VisitScreening1Activity rdf:type owl:Class ;
+                               rdfs:subClassOf study:ProtocolSpecifiedActivity ,
+                                               study:VisitActivity ;
+                               skos:altLabel "" ;
+                               skos:prefLabel "SCREENING 1 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitScreening2
+custom:VisitScreening2 rdf:type owl:Class ;
+                       rdfs:subClassOf study:Visit ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty skos:prefLabel ;
+                                         owl:hasValue "SCREENING 2"
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty study:seq ;
+                                         owl:hasValue "2"
+                                       ] ;
+                       skos:prefLabel "SCREENING 2" ;
+                       study:hasActivity custom:VisitScreening2Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitScreening2Activity
+custom:VisitScreening2Activity rdf:type owl:Class ;
+                               rdfs:subClassOf study:VisitActivity ;
+                               skos:altLabel "" ;
+                               skos:prefLabel "SCREENING 2 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitWk12
+custom:VisitWk12 rdf:type owl:Class ;
+                 rdfs:subClassOf study:Visit ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty skos:prefLabel ;
+                                   owl:hasValue "WEEK 12"
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty study:seq ;
+                                   owl:hasValue "9"
+                                 ] ;
+                 skos:prefLabel "WEEK 12" ;
+                 study:hasActivity custom:VisitWk12Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitWk12Activity
+custom:VisitWk12Activity rdf:type owl:Class ;
+                         rdfs:subClassOf study:VisitActivity ;
+                         skos:altLabel "" ;
+                         skos:prefLabel "WEEK 12 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitWk16
+custom:VisitWk16 rdf:type owl:Class ;
+                 rdfs:subClassOf study:Visit ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty skos:prefLabel ;
+                                   owl:hasValue "WEEK 16"
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty study:seq ;
+                                   owl:hasValue "10"
+                                 ] ;
+                 skos:prefLabel "WEEK 16" ;
+                 study:hasActivity custom:VisitWk16Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitWk16Activity
+custom:VisitWk16Activity rdf:type owl:Class ;
+                         rdfs:subClassOf study:VisitActivity ;
+                         skos:altLabel "" ;
+                         skos:prefLabel "WEEK 16 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitWk2
+custom:VisitWk2 rdf:type owl:Class ;
+                rdfs:subClassOf study:Visit ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty study:hasActivity ;
+                                  owl:allValuesFrom custom:VisitWk2Activity
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty skos:prefLabel ;
+                                  owl:hasValue "WEEK 2"
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty study:seq ;
+                                  owl:hasValue "4"
+                                ] ;
+                skos:prefLabel "WEEK 2" ;
+                study:hasActivity custom:VisitWk2Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitWk20
+custom:VisitWk20 rdf:type owl:Class ;
+                 rdfs:subClassOf study:Visit ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty skos:prefLabel ;
+                                   owl:hasValue "WEEK 20"
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty study:seq ;
+                                   owl:hasValue "11"
+                                 ] ;
+                 skos:prefLabel "WEEK 20" ;
+                 study:hasActivity custom:VisitWk20Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitWk20Activity
+custom:VisitWk20Activity rdf:type owl:Class ;
+                         rdfs:subClassOf study:VisitActivity ;
+                         skos:altLabel "" ;
+                         skos:prefLabel "WEEK 20 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitWk24
+custom:VisitWk24 rdf:type owl:Class ;
+                 rdfs:subClassOf study:Visit ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty skos:prefLabel ;
+                                   owl:hasValue "WEEK 24"
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty study:seq ;
+                                   owl:hasValue "12"
+                                 ] ;
+                 skos:prefLabel "WEEK 24" ;
+                 study:hasActivity custom:VisitWk24Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitWk24Activity
+custom:VisitWk24Activity rdf:type owl:Class ;
+                         rdfs:subClassOf study:VisitActivity ;
+                         skos:altLabel "" ;
+                         skos:prefLabel "WEEK 24 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitWk26
+custom:VisitWk26 rdf:type owl:Class ;
+                 rdfs:subClassOf study:Visit ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty study:hasActivity ;
+                                   owl:allValuesFrom custom:VisitWk26Activity
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty skos:prefLabel ;
+                                   owl:hasValue "WEEK 26"
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty study:seq ;
+                                   owl:hasValue "13"
+                                 ] ;
+                 skos:prefLabel "WEEK 26" ;
+                 study:hasActivity custom:VisitWk26Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitWk26Activity
+custom:VisitWk26Activity rdf:type owl:Class ;
+                         rdfs:subClassOf study:VisitActivity ;
+                         skos:altLabel "" ;
+                         skos:prefLabel "WEEK 26 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitWk2Activity
+custom:VisitWk2Activity rdf:type owl:Class ;
+                        rdfs:subClassOf study:VisitActivity ;
+                        skos:altLabel "" ;
+                        skos:prefLabel "WEEK 2 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitWk4
+custom:VisitWk4 rdf:type owl:Class ;
+                rdfs:subClassOf study:Visit ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty skos:prefLabel ;
+                                  owl:hasValue "WEEK 4"
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty study:seq ;
+                                  owl:hasValue "5"
+                                ] ;
+                skos:prefLabel "WEEK 4" ;
+                study:hasActivity custom:VisitWk4Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitWk4Activity
+custom:VisitWk4Activity rdf:type owl:Class ;
+                        rdfs:subClassOf study:VisitActivity ;
+                        skos:altLabel "" ;
+                        skos:prefLabel "WEEK 4 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitWk6
+custom:VisitWk6 rdf:type owl:Class ;
+                rdfs:subClassOf study:Visit ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty skos:prefLabel ;
+                                  owl:hasValue "WEEK 6"
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty study:seq ;
+                                  owl:hasValue "7"
+                                ] ;
+                skos:prefLabel "WEEK 6" ;
+                study:hasActivity custom:VisitWk6Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitWk6Activity
+custom:VisitWk6Activity rdf:type owl:Class ;
+                        rdfs:subClassOf study:VisitActivity ;
+                        skos:altLabel "" ;
+                        skos:prefLabel "WEEK 6 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/custom#VisitWk8
+custom:VisitWk8 rdf:type owl:Class ;
+                rdfs:subClassOf study:Visit ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty skos:prefLabel ;
+                                  owl:hasValue "WEEK 8"
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty study:seq ;
+                                  owl:hasValue "8"
+                                ] ;
+                skos:prefLabel "WEEK 8" ;
+                study:hasActivity custom:VisitWk8Activity .
+
+
+###  https://w3id.org/phuse/custom#VisitWk8Activity
+custom:VisitWk8Activity rdf:type owl:Class ;
+                        rdfs:subClassOf study:VisitActivity ;
+                        skos:altLabel "" ;
+                        skos:prefLabel "WEEK 8 ACTIVITY" .
+
+
+###  https://w3id.org/phuse/study#AssumeBodyPosition
+study:AssumeBodyPosition rdf:type owl:Class ;
+                         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                           owl:onProperty code:outcome ;
+                                           owl:allValuesFrom study:BodyPosition
+                                         ] .
+
+
+###  https://w3id.org/phuse/study#BodyPosition
+study:BodyPosition rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#CRFLocation
+study:CRFLocation rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Category
+study:Category rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#CompletePopulation
+study:CompletePopulation rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#ControlArm
+study:ControlArm rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Country
+study:Country rdf:type owl:Class ;
+              code:hasMethod code:Method_DERIVED .
+
+
+###  https://w3id.org/phuse/study#DataCutoff
+study:DataCutoff rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#DataCutoffDate
+study:DataCutoffDate rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#EnrolledPopulation
+study:EnrolledPopulation rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Epoch
+study:Epoch rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#EpochInterval
+study:EpochInterval rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#FalseArm
+study:FalseArm rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#HumanStudySubject
+study:HumanStudySubject rdf:type owl:Class ;
+                        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                          owl:onProperty study:participatesIn ;
+                                          owl:someValuesFrom code:DemographicDataCollection
+                                        ] .
+
+
+###  https://w3id.org/phuse/study#Indication
+study:Indication rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#IndicationCondition
+study:IndicationCondition rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#InformedConsent
+study:InformedConsent rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#InvestigationalArm
+study:InvestigationalArm rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#InvestigationalProduct
+study:InvestigationalProduct rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#InvestigationalSubstance
+study:InvestigationalSubstance rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#MaximumSubjectAge
+study:MaximumSubjectAge rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#MinimumSubjectAge
+study:MinimumSubjectAge rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Observation
+study:Observation rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#PlaceboDrugProduct
+study:PlaceboDrugProduct rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#PopulationFlag
+study:PopulationFlag rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#PrerequisiteActivity
+study:PrerequisiteActivity rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#PrimaryObjective
+study:PrimaryObjective rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#PrimaryOutcomeMeasure
+study:PrimaryOutcomeMeasure rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#ProtocolSpecifiedActivity
+study:ProtocolSpecifiedActivity rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Randomization
+study:Randomization rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#RandomizationOutcome
+study:RandomizationOutcome rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#SecondaryObjective
+study:SecondaryObjective rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Site
+study:Site rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#SiteIdentifier
+study:SiteIdentifier rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Sponsor
+study:Sponsor rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#StartRulePrereqActivityOutcome
+study:StartRulePrereqActivityOutcome rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#StartRulePrereqActivityStart
+study:StartRulePrereqActivityStart rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Study
+study:Study rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#StudyBegin
+study:StudyBegin rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#StudyDuration
+study:StudyDuration rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#StudyEnd
+study:StudyEnd rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#StudyIdentifier
+study:StudyIdentifier rdf:type owl:Class ;
+                      code:hasMethod code:Method_ASSIGNED ;
+                      study:crfLocation cd01p:CRFLocation_1 .
+
+
+###  https://w3id.org/phuse/study#StudyInterval
+study:StudyInterval rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#StudyRegistryIdentifier
+study:StudyRegistryIdentifier rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#StudyStopRule
+study:StudyStopRule rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Subcategory
+study:Subcategory rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#SubstanceQuantity
+study:SubstanceQuantity rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Title
+study:Title rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#UnderlyingCondition
+study:UnderlyingCondition rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#Visit
+study:Visit rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#VisitActivity
+study:VisitActivity rdf:type owl:Class .
+
+
+###  https://w3id.org/phuse/study#VitalSign
+study:VitalSign rdf:type owl:Class ;
+                code:hasMethod code:Method_COLLECTED ;
+                study:crfLocation cd01p:CRFLocation_2 .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://w3id.org/phuse/code#BodyPosition_STANDING
+code:BodyPosition_STANDING rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/phuse/code#BodyPosition_SUPINE
+code:BodyPosition_SUPINE rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+code:AgeUnit code:hasMethod code:Method_ASSIGNED .
+
+
+code:Country code:hasMethod code:Method_DERIVED .
+
+
+code:Ethnicity study:crfLocation cd01p:CRFLocation_1 ;
+               code:hasMethod code:Method_COLLECTED .
+
+
+code:Race code:hasMethod code:Method_COLLECTED ;
+          study:crfLocation cd01p:CRFLocation_1 .
+
+
+code:Sex code:hasMethod code:Method_COLLECTED ;
+         study:crfLocation cd01p:CRFLocation_1 .
+
+
+study:ActivityStatus code:hasMethod code:Method_COLLECTED .
+
+
+study:AgeOutcome code:hasMethod code:Method_DERIVED .
+
+
+study:Arm code:hasMethod code:Method_ASSIGNED .
+
+
+study:Deathdate code:hasMethod code:Method_DERIVED .
+
+
+study:DemogDataCollectionDate code:hasMethod code:Method_COLLECTED ;
+                              study:crfLocation cd01p:CRFLocation_1 .
+
+
+study:EthnicOutcome code:hasMethod code:Method_DERIVED .
+
+
+study:InformedConsentBegin code:hasMethod code:Method_DERIVED .
+
+
+study:InvestigatorIdentifier code:hasMethod code:Method_ASSIGNED .
+
+
+study:RaceOutcome code:hasMethod code:Method_COLLECTED ;
+                  study:crfLocation cd01p:CRFLocation_1 .
+
+
+study:SexOutcome code:hasMethod code:Method_COLLECTED ;
+                 study:crfLocation cd01p:CRFLocation_1 .
+
+
+study:SubjectIdentifier code:hasMethod code:Method_ASSIGNED ;
+                        study:crfLocation cd01p:CRFLocation_1 .
+
+
+study:UniqueSubjectIdentifier code:hasMethod code:Method_DERIVED .
+
+
+study:VitalSignOutcome code:hasMethod code:Method_COLLECTED ;
+                       study:crfLocation cd01p:CRFLocation_2 .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

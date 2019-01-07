@@ -333,38 +333,6 @@
   code:hasMethod code:Method_ASSIGNED ;
   sdtm:additionalMetadata <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTREF> ;
 .
-cd01p:AdminActivity_DataCutoff
-  study:hasDate cd01p:Date_2015-03-31 ;
-.
-cd01p:EpochInterval_blindedtreatment
-  study:hasPlannedDuration cd01p:StudyDuration_CDISCPILOT01 ;
-.
-code:InformedConsentOutcome_1
-  rdf:type study:InformedConsentOutcome ;
-.
-code:InformedConsentOutcome_2
-  rdf:type study:InformedConsentOutcome ;
-.
-code:InformedConsentOutcome_3
-  rdf:type study:InformedConsentOutcome ;
-.
-code:PharmClass_ACReleaseInhib
-  code:hasCode "N00001757" ;
-.
-code:RandomizationBAL3
-  owl:equivalentClass [
-      rdf:type owl:Restriction ;
-      owl:allValuesFrom study:RandomizationOutcome ;
-      owl:onProperty code:outcome ;
-    ] ;
-.
-code:Sponsor_CDISCPILOT01
-  rdf:type study:Sponsor ;
-.
-code:hasValueSet
-  rdf:type owl:ObjectProperty ;
-  skos:prefLabel "has value set" ;
-.
 <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/sdtm-cd01p.ttl>
   rdf:type owl:Ontology ;
   owl:imports <http://spinrdf.org/spl> ;
@@ -939,6 +907,38 @@ sdtm-cd01p:SDTM_TS_Record_9
   skos:prefLabel "SDTM TS Record 9 DOSE" ;
   sdtm:hasTSParameter <https://w3id.org/phuse/sdtmterm#C66738.C25488> ;
   sdtm:study cd01p:Study_CDISCPILOT01 ;
+.
+cd01p:AdminActivity_DataCutoff
+  study:hasDate cd01p:Date_2015-03-31 ;
+.
+cd01p:EpochInterval_blindedtreatment
+  study:hasPlannedDuration cd01p:StudyDuration_CDISCPILOT01 ;
+.
+code:InformedConsentOutcome_1
+  rdf:type study:InformedConsentOutcome ;
+.
+code:InformedConsentOutcome_2
+  rdf:type study:InformedConsentOutcome ;
+.
+code:InformedConsentOutcome_3
+  rdf:type study:InformedConsentOutcome ;
+.
+code:PharmClass_ACReleaseInhib
+  code:hasCode "N00001757" ;
+.
+code:RandomizationBAL3
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom study:RandomizationOutcome ;
+      owl:onProperty code:outcome ;
+    ] ;
+.
+code:Sponsor_CDISCPILOT01
+  rdf:type study:Sponsor ;
+.
+code:hasValueSet
+  rdf:type owl:ObjectProperty ;
+  skos:prefLabel "has value set" ;
 .
 sdtm:SDTMDefineRecord
   spin:rule [

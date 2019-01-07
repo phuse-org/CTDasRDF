@@ -1,6 +1,5 @@
 # baseURI: https://w3id.org/phuse/code#
 # imports: http://datashapes.org/dash
-# imports: https://w3id.org/phuse/sdtmterm
 # imports: http://spinrdf.org/spin
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
@@ -8,6 +7,7 @@
 # imports: http://www.w3.org/ns/shacl#
 # imports: https://w3id.org/phuse/cts
 # imports: https://w3id.org/phuse/mms#
+# imports: https://w3id.org/phuse/sdtmterm
 # prefix: code
 
 @prefix arg: <http://spinrdf.org/arg#> .
@@ -83,7 +83,6 @@ code:
   spin:imports <http://topbraid.org/spin/skosspin> ;
   spin:imports <http://topbraid.org/spin/spinowl> ;
   owl:imports <http://datashapes.org/dash> ;
-  owl:imports <https://w3id.org/phuse/sdtmterm> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
@@ -91,6 +90,7 @@ code:
   owl:imports sh: ;
   owl:imports <https://w3id.org/phuse/cts> ;
   owl:imports mms: ;
+  owl:imports <https://w3id.org/phuse/sdtmterm> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
 code:ActiveSubstance
@@ -609,11 +609,6 @@ code:Indication
   skos:example "The TREATMENT of RHINITIS in patients with SEASONAL ALLERGIC RHINITIS." ;
   skos:prefLabel "Indication" ;
 .
-code:IndicationCondition
-  rdf:type owl:Class ;
-  rdfs:subClassOf code:MedicalCondition ;
-  skos:prefLabel "Trial indication" ;
-.
 code:IndicationType
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
@@ -757,13 +752,13 @@ code:MedicalCondition
   skos:prefLabel "Medical condition term" ;
 .
 code:MedicalCondition_AD
-  rdf:type code:IndicationCondition ;
+  rdf:type code:MedicalCondition ;
   skos:prefLabel "Alzheimer's Disease" ;
   code:hasCode "26929004" ;
   code:hasCodeSystem code:CodeSystem_SNOMED ;
 .
 code:MedicalCondition_PMMAD
-  rdf:type code:UnderlyingCondition ;
+  rdf:type code:MedicalCondition ;
   skos:prefLabel "Patients with Probable Mild to Moderate Alzheimer's Disease" ;
 .
 code:Method
@@ -1351,11 +1346,6 @@ code:TrialType
     ] ;
   skos:prefLabel "Trial type" ;
 .
-code:UnderlyingCondition
-  rdf:type owl:Class ;
-  rdfs:subClassOf code:MedicalCondition ;
-  skos:prefLabel "Study population" ;
-.
 code:Unit
   rdf:type owl:Class ;
   rdfs:comment "" ;
@@ -1582,7 +1572,7 @@ code:hasValue
 code:indicationCondition
   rdf:type owl:ObjectProperty ;
   rdfs:domain code:Indication ;
-  rdfs:range code:IndicationCondition ;
+  rdfs:range code:MedicalCondition ;
   skos:prefLabel "indication condition" ;
 .
 code:indicationType
@@ -1632,7 +1622,7 @@ code:recRouteOfAdministration
 code:underlyingCondition
   rdf:type owl:ObjectProperty ;
   rdfs:domain code:Indication ;
-  rdfs:range code:UnderlyingCondition ;
+  rdfs:range code:MedicalCondition ;
   skos:prefLabel "underlying condition" ;
 .
 code:unitConversion
@@ -2023,6 +2013,7 @@ sdtmterm:InterventionType_DRUG
 sdtmterm:NoYesResponse_N
   rdf:type code:NoYesResponse ;
   rdf:type mms:PermissibleValue ;
+  skos:altLabel "No" ;
   skos:prefLabel "N" ;
   code:hasCode "C49487" ;
   schema:cdiscDefinition "The non-affirmative response to a question. (NCI)" ;
@@ -2035,6 +2026,7 @@ sdtmterm:NoYesResponse_N
 sdtmterm:NoYesResponse_NA
   rdf:type code:NoYesResponse ;
   rdf:type mms:PermissibleValue ;
+  skos:altLabel "Not Applicable" ;
   skos:prefLabel "NA" ;
   code:hasCode "C48660" ;
   schema:cdiscDefinition "Determination of a value is not relevant in the current context. (NCI)" ;
@@ -2047,6 +2039,7 @@ sdtmterm:NoYesResponse_NA
 sdtmterm:NoYesResponse_Y
   rdf:type code:NoYesResponse ;
   rdf:type mms:PermissibleValue ;
+  skos:altLabel "Yes" ;
   skos:prefLabel "Y" ;
   code:hasCode "C49488" ;
   schema:cdiscDefinition "The affirmative response to a question. (NCI)" ;

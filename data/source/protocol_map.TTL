@@ -1,0 +1,196 @@
+﻿###############################################################################
+# FILE: protocol_map.ttl
+# DESC: Stardog SMS Template file for mapping protocol information to graph.
+#       Procotol information source is excel file. IRL, this would be parsed
+#         from the protocol document + other sources, plus information on 
+#         sites, etc.
+# REQ : File format requirements for both execution and consistent processing
+#         by visualization scripts:
+#         s line is hard left on line by itself
+#         p,o line - indented at least one space.
+#                  - ends in ; on same line, no trailing spaces
+#         p : no short hand: 'rdf:type', not 'a'
+#         File must end with carriage return on a line by itself.
+# SRC :
+# IN  : procotol.csv
+# OUT :
+# NOTE: stardog-admin virtual import CTDasRDFSMS protocol_map.TTL protocol.csv
+#  Export to TTL: stardog data export --format TURTLE CTDasRDFSMS C:/temp/test.ttl
+# TODO:
+###############################################################################
+@prefix cd01p:        <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code:         <https://w3id.org/phuse/code#> .
+@prefix custom:       <https://w3id.org/phuse/custom#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm:     <https://w3id.org/phuse/sdtmterm#> .
+@prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
+@prefix study:        <https://w3id.org/phuse/study#> .
+@prefix time:         <http://www.w3.org/2006/time#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+
+# -----------------------------------------------------------------------------
+# Study
+cd01p:Study_{studyid}
+  rdf:type                           study:Study ;
+  skos:altLabel                      " "^^xsd:string ;
+  skos:prefLabel                     "{studyid}"^^xsd:string ;
+  study:adaptiveDesign               sdtmterm:NoYesResponse_{adaptiveDesignNY} ;
+  study:addOn                        sdtmterm:NoYesResponse_{addOnNY} ;
+  study:blinding                     sdtmterm:TrialBlindingSchema_{blindingSchema} ;
+  study:controlType                  sdtmterm:ControlType_{controlType} ;
+  study:hasInterval                  cd01p:Interval_{studyBegin}_to_{studyEnd} ;
+  study:hasPopulation                cd01p:EnrolledPopulation_{studyid} ;
+  study:hasPopulation                cd01p:StudyPopulation_{studyid} ;
+  study:hasPrimObjective             cd01p:PrimaryObjective_{primObjSeq} ;
+  study:hasSecObjective              cd01p:SecondaryObjective_{secObjSeq} ;
+  study:hasPrimOutcomeMeasure        custom:Observation_{primOutMeas} ;
+  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminActivity} ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_{armAbbr} ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch} ;
+  study:hasProtocolSpecifiedActivity custom:Visit{visitActivity}Activity ;
+  study:hasRegistryID                cd01p:StudyRegistryIdentifier_{regid} ;
+  study:hasSponsor                   code:Sponsor_{studyid} ;
+  study:hasStopRule                  cd01p:StudyStopRule_{studyStopRuleSeq} ;
+  study:hasStudyID                   cd01p:StudyIdentifier_{studyIdSeq} ;
+  study:hasTitle                     cd01p:Title_{studyid} ;
+  study:interventionModel            sdtmterm:InterventionModel_{intervModel} ;
+  study:interventionType             sdtmterm:InterventionType_{intervType} ;
+  study:narms                        "3"^^xsd:int ;
+  study:randomizedTrial              sdtmterm:NoYesResponse_{randTrialNY} ;
+  study:studyDrug                    code:Substance_{studyDrug} ; 
+  study:studyType                    sdtmterm:StudyType_{studyType} ;
+  study:trialPhase                   sdtmterm:TrialPhase_{trialPhase} ;
+  study:trialType                    sdtmterm:TrialType_{trialType} ; 
+.
+
+#---- Study Interval ----------------------------------------------------------
+cd01p:Interval_{studyBegin}_to_{studyEnd}
+  rdf:type          study:StudyInterval ;
+  skos:prefLabel    "Interval {studyBegin} to {studyEnd}"^^xsd:string ;
+  time:hasBeginning cd01p:Date_{studyBegin} ;
+  time:hasEnd       cd01p:Date_{studyEnd} ;
+.
+
+  #---- Study Begin -----------------------------------------------------------
+  cd01p:Date_{studyBegin} 
+    rdf:type study:StudyBegin ;
+    skos:prefLabel "Date {studyBegin}"^^xsd:string ;
+    study:dateTimeInXSDString "{studyBegin}"^^xsd:string ;
+.
+
+  #---- Study Begin -----------------------------------------------------------
+  cd01p:Date_{studyEnd} 
+    rdf:type study:StudyEnd ;
+    skos:prefLabel "Date {studyEnd}"^^xsd:string ;
+    study:dateTimeInXSDString "{studyEnd}"^^xsd:string ;
+.
+
+#---- Enrolled Population -----------------------------------------------------
+cd01p:EnrolledPopulation_{studyid}
+  rdf:type                    study:EnrolledPopulation ;
+  skos:prefLabel              "Enrolled population {studyid}"^^xsd:string ;
+  study:actualPopulationSize  "{actualPopSize}"^^xsd:int ;
+  study:plannedPopulationSize "{plannedPopSize}"^^xsd:int ; ;
+.
+
+#---- Study Population --------------------------------------------------------
+cd01p:StudyPopulation_{studyid}
+  rdf:type             study:CompletePopulation ;
+  skos:prefLabel       "Study population {studyid}"^^xsd:string ;
+  study:ageGroup       code:AgeGroup_{ageGroup} ;
+  study:hasSite        cd01p:Site_{siteid} ;
+  study:healthySubject sdtmterm:NoYesResponse_{sdtmtermNY} ;
+  study:maxSubjectAge  code:PlannedSubjectAge_{maxSubjAge} ;
+  study:minSubjectAge  code:PlannedSubjectAge_{minSubjAge} ;
+  study:sexGroup       sdtmterm:SexGroup_{sexGroup} ;
+.
+  #---- Site ------------------------------------------------------------------
+  cd01p:Site_{siteid} 
+    rdf:type         study:Site ;
+    rdfs:comment     ""^^xsd:string ;
+    skos:definition  ""^^xsd:string ;
+    skos:prefLabel   "site-{siteid}"^^xsd:string ;
+    study:hasCountry code:Country_{countryIdSeq} ;
+    study:hasSiteID  cd01p:SiteIdentifier_{siteIdSeq} ;
+  .
+    #---- Site Identifier -----------------------------------------------------
+    # Other site information will be added separately as addition mappings from
+    #   site info sources [TODO]
+    cd01p:SiteIdentifier_{siteIdSeq} 
+      rdf:type       study:SiteIdentifier ;
+      skos:prefLabel "{siteid}"^^xsd:string ;
+    .
+
+#---- Primary Objective -------------------------------------------------------
+cd01p:PrimaryObjective_{primObjSeq}
+  rdf:type       study:PrimaryObjective ;
+  skos:prefLabel "{primObj}"^^xsd:string ;
+  study:seq      "{primObjSeq}"^^xsd:float ;
+.
+
+#---- Secondary Objective -------------------------------------------------------
+cd01p:SecondaryObjective_{secObjSeq}
+  rdf:type       study:SecondaryObjective ;
+  skos:prefLabel "{secObj}"^^xsd:string ;
+  study:seq      "{secObjSeq}"^^xsd:float ;
+.
+
+#---- Admin Activity      -------------------------------------------------------
+cd01p:AdminActivity_{adminActivity} 
+  rdf:type study:{adminActivity} ;
+  skos:prefLabel "adminActivityLbl"^^xsd:string ;
+  study:hasDate cd01p:Date_{adminActivityDt} ;
+.
+
+#---- Treatment Arms   --------------------------------------------------------
+cd01p:Arm_{armAbbr}
+  rdf:type       study:{armType};
+  skos:altLabel  "{armAltLbl}"^^xsd:string ;
+  skos:prefLabel "{armPrefLbl}"^^xsd:string ;
+.
+
+#---- Epoch            --------------------------------------------------------
+cd01p:Epoch_{epoch}
+  rdf:type study:Epoch ;
+  skos:prefLabel "{epochLbl}"^^xsd:string ;
+  study:hasActivityInterval cd01p:EpochInterval_{epochLC} ;
+.
+  #---- Epoch Interval   --------------------------------------------------------
+  cd01p:EpochInterval_{epochLC} 
+    rdf:type study:EpochInterval ;
+    skos:prefLabel "Epoch interval {epochLC}" ;
+.
+
+#---- Registry ID -------------------------------------------------------------
+cd01p:StudyRegistryIdentifier_{regid}
+  rdf:type           study:StudyRegistryIdentifier ;
+  skos:prefLabel     "{regid}"^^xsd:string ;
+  code:hasCode       "{regid}"^^xsd:string ;
+  code:hasCodeSystem <https://w3id.org/phuse/code#CodeSystem_clinicaltrials.gov> ;
+.
+
+#---- Study Stop Rule ---------------------------------------------------------
+cd01p:StudyStopRule_{studyStopRuleSeq}
+  rdf:type                  study:StudyStopRule ;
+  skos:prefLabel            "Study stop rule {studyStopRuleSeq}"^^xsd:string ;
+  study:ruleDescriptionLong "{studyStopRuleDsc}"^^xsd:string ;
+.
+
+#---- Study Identifier --------------------------------------------------------
+cd01p:StudyIdentifier_{studyIdSeq} 
+  rdf:type           study:StudyIdentifier ;
+  skos:prefLabel     "{studyid}"^^xsd:string ;
+  code:hasMethod     code:Method_{studyIdMeth} ;
+  study:crfLocation  cd01p:CRFLocation_{studyIdCRFLoc};
+.
+  #---- CRF Location Page -----------------------------------------------------
+  cd01p:CRFLocation_{studyIdCRFLoc}
+    rdf:type study:CRFLocation ;
+    skos:prefLabel "CRF Page {studyIdCRFLocPg}"^^xsd:string ;
+  .
+#---- Study Title      --------------------------------------------------------
+cd01p:Title_{studyid}
+  rdf:type study:Title ;
+  skos:prefLabel "{studyTitle}"^^xsd:string ;
+.
