@@ -1,31 +1,7 @@
----
-title: "Questions related to the ontology"
-output: 
-  html_document:
-    toc: true
-    keep_md: true
----
 
+## Purpose
 
-## Revision
-
-Date         | Comment
------------- | ----------------------------
-2019-01      | Document creation & Update (KG)
-
-
-## Trial Summary - addOn/isAddOnStudy
-
-We do have two triples in the study.ttl:
-
-```
-study:Study     study:addOn         code:NoYesResponse
-study:Study     study:isAddOnStudy  code:NoYesResponse
-```
-
-**Question**: Where is the difference? In the TS domain there is only the TSPARMCD = ADDON.
-
-**Answer**:  Duplicate data, corrected in committed version 2018-12-22. Please update to the latest version where only this will be presented:  study:addOn sdtmterm:NoYesResponse_N ;  
+Please ask your questions related to data or ontologies here to get answers from the project. You can simply login to Github and use the "Edit" Button in the top-right action box. Please remove your question when it is answered and you noticed the answer. If a question/answer is relevant to others, the content might go into general documentation.
 
 ## Code.ttl - Prefix differences code: vs sdtmterm:
 
