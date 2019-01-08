@@ -1,27 +1,18 @@
----
-title: "Questions related to the ontology"
-output: 
-  html_document:
-    toc: true
-    keep_md: true
----
 
+## Purpose
 
-## Revision
+Please ask your questions related to data or ontologies here to get answers from the project. You can simply login to Github and use the "Edit" Button in the top-right action box. Please remove your question when it is answered and you noticed the answer. If a question/answer is relevant to others, the content might go into general documentation.
 
-Date         | Comment
------------- | ----------------------------
-2019-01-04   | Document creation (KG)
+## Code.ttl - Prefix differences code: vs sdtmterm:
 
+**Question**: I guess we use "code:" as prefix for cutstom code items and "sdtmterm:" for CDISC codelists? Extensible codelists are also maintained under "code:", even though the values might be CDISC Terminology for our pilot? Or should we include all CDISC terms with the "sdtmterm:" prefix instead? How would it look like for having CDISC code + extensions? These extensions are typically company specific.
 
-## Trial Summary - addOn/isAddOnStudy
+Example: code:AgeGroup uses the code prefix but only CDISC terminology for the extended codelist.
 
-We do have two triples in the study.ttl:
+**Answer**:
 
-```
-study:Study     study:addOn         code:NoYesResponse
-study:Study     study:isAddOnStudy  code:NoYesResponse
-```
+## Code.ttl - update with CDISC Controlled Terminology
 
-**Question**: Where is the difference? In the TS domain there is only the TSPARMCD = ADDON.
+**Question**: 1) Would it be ok to include additional CDISC Controlled Terminology using the same strategy as available in code.ttl and update code.ttl accordingly? For example include also other AgeGroup declarations which are available in CDISC controlled terminology? 2) Can we include altLabels where it make sense? "No" / "Yes" has already been included as alternative Labels for the response code.
+
 **Answer**:
