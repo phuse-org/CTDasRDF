@@ -7,7 +7,7 @@
 	ODMVersion="1.3.2"
 	FileOID="CDISCPILOT01.SDTM.Define-XML"
 	FileType="Snapshot"
-	CreationDateTime="2019-01-02T23:16:34"
+	CreationDateTime="2019-01-06T14:23:14"
 	Originator="CDISCPILOT01">
 	<Study OID="CDISCPILOT01">
 		<GlobalVariables>
@@ -461,7 +461,21 @@
     <TranslatedText xml:lang="en">Time Point Reference</TranslatedText>
   </Description>
   <def:Origin Type="ASSIGNED" />
-</ItemDef><MethodDef OID="MT.DM.USUBJID" Name="Algorithm to derive DM.USUBJID" Type="Computation">
+</ItemDef><CodeList OID="CL.NY" />
+<CodeList OID="CL.AGEU" />
+<CodeList OID="CL.SEX" />
+<CodeList OID="CL.RACE" />
+<CodeList OID="CL.ETHNIC" />
+<CodeList OID="CL.COUNTRY" />
+<CodeList OID="CL.VSTESTCD" />
+<CodeList OID="CL.VSTEST" />
+<CodeList OID="CL.POSITION" />
+<CodeList OID="CL.VSRESU" />
+<CodeList OID="CL.VSRESU" />
+<CodeList OID="CL.ND" />
+<CodeList OID="CL.LOC" />
+<CodeList OID="CL.NY" />
+<CodeList OID="CL.NY" /><MethodDef OID="MT.DM.USUBJID" Name="Algorithm to derive DM.USUBJID" Type="Computation">
   <Description>
     <TranslatedText xml:lang="en">Concatenation of STUDYID, DM.SITEID and DM.SUBJID </TranslatedText>
   </Description>

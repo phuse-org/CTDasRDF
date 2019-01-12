@@ -134,6 +134,8 @@ class genDefineXMLFile {
 
 			_DefineXml <<= genItemDef(variableItemDefMetadataQE,i)
 		}
+		// Generate CodeList
+		_DefineXml <<= genCodeList()
 		// Generate MethodDef
 		_DefineXml <<= genMethodDef()
 		// Generate def:comment
@@ -153,6 +155,14 @@ class genDefineXMLFile {
 		fileWriter.write template.toString()
 	}
 
+	/**
+	 * Creates a ItemGroupDef as dataset level metadata.
+	 *
+	 * @param datasetMetadataQE
+	 * @param variableMetadataQE
+	 * @param datasetName Specific dataset name, i.e. DM, VS, SUPPAE, and others
+	 * @return xml document
+	 */
 	def genItemGroupDef(QueryExecution datasetMetadataQE, QueryExecution variableMetadataQE, String datasetName) {
 		def writer = new StringWriter()
 		def xml = new MarkupBuilder(writer)
@@ -206,7 +216,6 @@ class genDefineXMLFile {
 					'def:Class': sol.defClass,
 					'def:CommentOID': "",
 					'def:ArchiveLocationID': "LF.${dsname}"
-
 					) {
 						'Description'({'TranslatedText'('xml:lang':"en",  dslabel )})
 						for (ResultSet variableResultset = variableMetadataQE.execSelect(); variableResultset.hasNext() ; ) {
@@ -242,29 +251,27 @@ class genDefineXMLFile {
 
 		for (ResultSet variableItemDefResultset = variableItemDefMetadataQE.execSelect(); variableItemDefResultset.hasNext(); ) {
 			QuerySolution solVarItem = variableItemDefResultset.nextSolution()
-
-
-			//Convert Data Type Name
-			def datatype
-			if ( solVarItem.dataType.toString() == "xsd:string"){
-				datatype = "text"
-			} else if ( solVarItem.dataType.toString().toLowerCase().contains("integer")){
-				datatype = "integer"
-			} else if ( solVarItem.dataType.toString() == "xsd:dateTime"){
-					datatype = "datetime"
-			} else if ( solVarItem.dataType.toString() == "xsd:decimal"){
+					//Convert Data Type Name
+					def datatype
+					if ( solVarItem.dataType.toString() == "xsd:string"){
+							datatype = "text"
+					} else if ( solVarItem.dataType.toString().toLowerCase().contains("integer")){
+							datatype = "integer"
+					} else if ( solVarItem.dataType.toString() == "xsd:dateTime"){
+							datatype = "datetime"
+					} else if ( solVarItem.dataType.toString() == "xsd:decimal"){
 							datatype = "float"
-			} else{
-				datatype = solVarItem.dataType
-			}
+					} else{
+							datatype = solVarItem.dataType
+					}
 
-			//Convert Origin name
-			def origin
-			if ( solVarItem.Origin.toString() == "COLLECTED"){
-				origin = "CRF"
-			} else{
-				origin = solVarItem.Origin.toString()
-			}
+					//Convert Origin name
+					def origin
+					if ( solVarItem.Origin.toString() == "COLLECTED"){
+							origin = "CRF"
+					} else{
+							origin = solVarItem.Origin.toString()
+					}
 
 			//Hnadling CommentOID
 			def comOID
@@ -287,7 +294,6 @@ class genDefineXMLFile {
 					'Length': "",
 					'def:DisplayFormat': "",
 					'def:CommentOID': comOID
-					//"def:CommentOID": if (origin != "DERIVED"){ comOID }
 					) {
 						'Description'({'TranslatedText'('xml:lang':"en",  solVarItem.dataElementLabel )})
 						if (solVarItem.Origin != null){
@@ -320,14 +326,7 @@ class genDefineXMLFile {
 			}
 		}
 		return(writer)
-// 	<MethodDef OID="MT.CMENDY" Name="Algorithm to derive CMENDY" Type="Computation">
-// 		<Description>
-// 			<TranslatedText xml:lang="en">CMENDY = CMENDTC - RFSTDTC +1 if CMENDTC is on or after RFSTDTC. CMENDTC - RFSTDTC if
-// CMENDTC precedes RFSTDTC</TranslatedText>
-// 		</Description>
-// 	</MethodDef>
 	}
-
 
 
 	def String genComment(){
@@ -349,8 +348,21 @@ class genDefineXMLFile {
 		return(writer)
 	}
 
-	def setCommet(String comOID, String comDescription){
 
+	def String genCodeList(){
+		def writer = new StringWriter()
+		def xml = new MarkupBuilder(writer)
+
+		xml.setOmitNullAttributes(true)
+		xml.setOmitEmptyAttributes(true)
+		xml.setDoubleQuotes(true)
+		xml.setEscapeAttributes(true)
+
+		for (clindex in this.codelistCollection){
+			xml.'CodeList'( 'OID': "CL.${clindex}" ){
+			}
+		}
+		return(writer)
 	}
 }
 
