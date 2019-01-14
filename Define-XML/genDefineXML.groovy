@@ -134,8 +134,6 @@ class genDefineXMLFile {
 
 			_DefineXml <<= genItemDef(variableItemDefMetadataQE,i)
 		}
-		// Generate CodeList
-		_DefineXml <<= genCodeList()
 		// Generate MethodDef
 		_DefineXml <<= genMethodDef()
 		// Generate def:comment
