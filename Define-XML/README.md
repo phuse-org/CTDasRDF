@@ -1,6 +1,6 @@
 # CTDasRDF define.xml generator
 
-## Install Groovy Script engine
+## Install Groovy Script Engine
 This define.xml generator written in groovy language. To running this groovy script, it is necessary to install groovy script engine. [Official install document](http://groovy-lang.org/install.html "Install Document") is very helpful your installation work.   
 Groovy script engine is distributed on [groovy website](http://groovy-lang.org/download.html "groovy website")  
 
@@ -50,7 +50,7 @@ Groovy script engine is distributed on [groovy website](http://groovy-lang.org/d
 ├── README.md
 └── directory.txt
 ```
-Following listed files located under CTDasRDF/data/rdf directory are utilized by genDefineXML.groovy that directory read these files, thus any sparql endpoint is not needed.
+Following listed files located under CTDasRDF/data/rdf directory are utilized by genDefineXML.groovy. GenDefineXML.groovy read these files, thus any sparql endpoint is not needed.
 * cdisc-schema.rdf  
 * cdiscpilot01-R.TTL
 * cdiscpilot01-protocol.ttl
@@ -68,12 +68,25 @@ Following listed files located under CTDasRDF/data/rdf directory are utilized by
 * time.ttl
 
 ## Template files
+Template files are located under CTDasRDF/Define-XML/template and including two types template that are template of define.xml and sparql query.
+Define.xml.template is the template file of define.xml.
+And other template files are sparql query template.
+
+## Groovy Script
+GenDefineXML.groovy is the groovy script for generating define.xml. This script is defined as class and last 2 lenes in this script execute the instantiation and to call the method for generating define.xml.
+```
+define_generator = new genDefineXMLFile(["DM", "SUPPDM", "VS"])
+define_generator.genDefineXML()
+```
+
+
 
 
 ## Execute to generate define.xml
-Change directory to "CTDasRDF/Define-XML", and type "groovy genDefineXML.groovy"  
-define.xml is generated into same directory.  
+To run this tool, change directory to "CTDasRDF/Define-XML", and type "groovy genDefineXML.groovy" in your shell interface.   
+Define.xml is generated into same directory in few seconds.  
 
 
-## Note
-This tool is under developing, it is not enough as validated define.xml.
+## Limitation
+The goal of this tool is proof of concept (POC) implementation that define.xml is generated from CTDasRDF via sparql query. Therefore, it is not recommended to utilize creating any deliverables for data submission to the regulatory agency.
+This POC implementation can not generate value level metadata and codelist metadata, and include into a define.xml file. These are future work.

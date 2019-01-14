@@ -2,7 +2,7 @@
 @Grab('org.apache.jena:jena-arq:3.6.0')
 
 /**
- * @author ippei
+ * @author Ippei Akiya
  *
  */
 
@@ -348,22 +348,6 @@ class genDefineXMLFile {
 		return(writer)
 	}
 
-
-	def String genCodeList(){
-		def writer = new StringWriter()
-		def xml = new MarkupBuilder(writer)
-
-		xml.setOmitNullAttributes(true)
-		xml.setOmitEmptyAttributes(true)
-		xml.setDoubleQuotes(true)
-		xml.setEscapeAttributes(true)
-
-		for (clindex in this.codelistCollection){
-			xml.'CodeList'( 'OID': "CL.${clindex}" ){
-			}
-		}
-		return(writer)
-	}
 }
 
 
