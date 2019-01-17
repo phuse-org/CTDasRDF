@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="define2-0-0.xsl"?>
+<ODM
+	xmlns="http://www.cdisc.org/ns/odm/v1.3"
+	xmlns:def="http://www.cdisc.org/ns/def/v2.0"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	ODMVersion="1.3.2"
+	FileOID="CDISCPILOT01.SDTM.Define-XML"
+	FileType="Snapshot"
+	CreationDateTime="2019-01-14T13:00:34"
+	Originator="CDISCPILOT01">
+	<Study OID="CDISCPILOT01">
+		<GlobalVariables>
+			<StudyName>CDISCPILOT01</StudyName>
+			<StudyDescription>CDISCPILOT01</StudyDescription>
+			<ProtocolName>CDISCPILOT01</ProtocolName>
+		</GlobalVariables>
+		<MetaDataVersion OID="MDV.CDISCPILOT01.SDTMIG3.2" Name="CDISCPILOT01, SDTM Data Definitions" Description="CDISCPILOT01, SDTM Data Definitions"
+				  def:DefineVersion="2.0.0"
+					def:StandardName="SDTM-IG"
+					def:StandardVersion="3.1.3">
+			<!-- Supporting Documents -->
+			<def:SupplementalDoc>
+				<def:DocumentRef leafID="LF.ACRF"/>
+				<def:DocumentRef leafID="LF.CSDRG"/>
+			</def:SupplementalDoc>
+			<def:leaf ID="LF.CSDRG" xlink:href="csdrg.pdf">
+				<def:title>Study Data Reviewer's Guide</def:title>
+			</def:leaf>
+
+			<ItemGroupDef OID="IG.DM" Name="DM" Domain="DM" SASDatasetName="DM" Repeating="Yes" IsReferenceData="No" Purpose="Tabulation" def:Structure="One record per subject" def:Class="Special Purpose Domain" def:ArchiveLocationID="LF.DM">
+  <Description>
+    <TranslatedText xml:lang="en">Demographics</TranslatedText>
+  </Description>
+  <ItemRef ItemOID="IT.DM.STUDYID" Mandatory="Yes" MethodOID="MT.DM.STUDYID" />
+  <ItemRef ItemOID="IT.DM.DOMAIN" Mandatory="Yes" MethodOID="MT.DM.DOMAIN" />
+  <ItemRef ItemOID="IT.DM.USUBJID" Mandatory="Yes" MethodOID="MT.DM.USUBJID" />
+  <ItemRef ItemOID="IT.DM.SUBJID" Mandatory="Yes" MethodOID="MT.DM.SUBJID" />
+  <ItemRef ItemOID="IT.DM.RFSTDTC" Mandatory="No" MethodOID="MT.DM.RFSTDTC" />
+  <ItemRef ItemOID="IT.DM.RFENDTC" Mandatory="No" MethodOID="MT.DM.RFENDTC" />
+  <ItemRef ItemOID="IT.DM.RFXSTDTC" Mandatory="No" MethodOID="MT.DM.RFXSTDTC" />
+  <ItemRef ItemOID="IT.DM.RFXENDTC" Mandatory="No" MethodOID="MT.DM.RFXENDTC" />
+  <ItemRef ItemOID="IT.DM.RFICDTC" Mandatory="No" MethodOID="MT.DM.RFICDTC" />
+  <ItemRef ItemOID="IT.DM.RFPENDTC" Mandatory="No" MethodOID="MT.DM.RFPENDTC" />
+  <ItemRef ItemOID="IT.DM.DTHDTC" Mandatory="No" MethodOID="MT.DM.DTHDTC" />
+  <ItemRef ItemOID="IT.DM.DTHFL" Mandatory="No" MethodOID="MT.DM.DTHFL" />
+  <ItemRef ItemOID="IT.DM.SITEID" Mandatory="Yes" MethodOID="MT.DM.SITEID" />
+  <ItemRef ItemOID="IT.DM.INVID" Mandatory="No" MethodOID="MT.DM.INVID" />
+  <ItemRef ItemOID="IT.DM.BRTHDTC" Mandatory="No" MethodOID="MT.DM.BRTHDTC" />
+  <ItemRef ItemOID="IT.DM.AGE" Mandatory="No" MethodOID="MT.DM.AGE" />
+  <ItemRef ItemOID="IT.DM.AGEU" Mandatory="No" MethodOID="MT.DM.AGEU" />
+  <ItemRef ItemOID="IT.DM.SEX" Mandatory="Yes" MethodOID="MT.DM.SEX" />
+  <ItemRef ItemOID="IT.DM.RACE" Mandatory="No" MethodOID="MT.DM.RACE" />
+  <ItemRef ItemOID="IT.DM.ETHNIC" Mandatory="No" MethodOID="MT.DM.ETHNIC" />
+  <ItemRef ItemOID="IT.DM.ARMCD" Mandatory="Yes" MethodOID="MT.DM.ARMCD" />
+  <ItemRef ItemOID="IT.DM.ARM" Mandatory="Yes" MethodOID="MT.DM.ARM" />
+  <ItemRef ItemOID="IT.DM.ACTARMCD" Mandatory="Yes" MethodOID="MT.DM.ACTARMCD" />
+  <ItemRef ItemOID="IT.DM.ACTARM" Mandatory="Yes" MethodOID="MT.DM.ACTARM" />
+  <ItemRef ItemOID="IT.DM.COUNTRY" Mandatory="Yes" MethodOID="MT.DM.COUNTRY" />
+  <ItemRef ItemOID="IT.DM.DMDTC" Mandatory="No" MethodOID="MT.DM.DMDTC" />
+  <ItemRef ItemOID="IT.DM.DMDY" Mandatory="No" MethodOID="MT.DM.DMDY" />
+  <def:leaf ID="LF.DM" xlink:href="dm.xpt">
+    <def:title>dm.xpt</def:title>
+  </def:leaf>
+</ItemGroupDef><ItemGroupDef OID="IG.SUPPDM" Name="SUPPDM" Domain="SUPPDM" SASDatasetName="SUPPDM" Repeating="Yes" IsReferenceData="No" Purpose="Tabulation" def:Structure="One record per IDVAR, IDVARVAL, and QNAM value per subject" def:Class="Relationship Dataset" def:ArchiveLocationID="LF.SUPPDM">
+  <Description>
+    <TranslatedText xml:lang="en">Supplemental Qualifiers for SUPPDM</TranslatedText>
+  </Description>
+  <def:leaf ID="LF.SUPPDM" xlink:href="suppdm.xpt">
+    <def:title>suppdm.xpt</def:title>
+  </def:leaf>
+</ItemGroupDef><ItemGroupDef OID="IG.VS" Name="VS" Domain="VS" SASDatasetName="VS" Repeating="Yes" IsReferenceData="No" Purpose="Tabulation" def:Structure="One record per vital sign measurement per time point per visit per subject" def:Class="Findings Observation Class" def:ArchiveLocationID="LF.VS">
+  <Description>
+    <TranslatedText xml:lang="en">Vital Signs</TranslatedText>
+  </Description>
+  <ItemRef ItemOID="IT.VS.STUDYID" Mandatory="Yes" MethodOID="MT.VS.STUDYID" />
+  <ItemRef ItemOID="IT.VS.DOMAIN" Mandatory="Yes" MethodOID="MT.VS.DOMAIN" />
+  <ItemRef ItemOID="IT.VS.USUBJID" Mandatory="Yes" MethodOID="MT.VS.USUBJID" />
+  <ItemRef ItemOID="IT.VS.VSSEQ" Mandatory="Yes" MethodOID="MT.VS.VSSEQ" />
+  <ItemRef ItemOID="IT.VS.VSGRPID" Mandatory="No" MethodOID="MT.VS.VSGRPID" />
+  <ItemRef ItemOID="IT.VS.VSSPID" Mandatory="No" MethodOID="MT.VS.VSSPID" />
+  <ItemRef ItemOID="IT.VS.VSTESTCD" Mandatory="Yes" MethodOID="MT.VS.VSTESTCD" />
+  <ItemRef ItemOID="IT.VS.VSTEST" Mandatory="Yes" MethodOID="MT.VS.VSTEST" />
+  <ItemRef ItemOID="IT.VS.VSCAT" Mandatory="No" MethodOID="MT.VS.VSCAT" />
+  <ItemRef ItemOID="IT.VS.VSSCAT" Mandatory="No" MethodOID="MT.VS.VSSCAT" />
+  <ItemRef ItemOID="IT.VS.VSPOS" Mandatory="No" MethodOID="MT.VS.VSPOS" />
+  <ItemRef ItemOID="IT.VS.VSORRES" Mandatory="No" MethodOID="MT.VS.VSORRES" />
+  <ItemRef ItemOID="IT.VS.VSORRESU" Mandatory="No" MethodOID="MT.VS.VSORRESU" />
+  <ItemRef ItemOID="IT.VS.VSSTRESC" Mandatory="No" MethodOID="MT.VS.VSSTRESC" />
+  <ItemRef ItemOID="IT.VS.VSSTRESN" Mandatory="No" MethodOID="MT.VS.VSSTRESN" />
+  <ItemRef ItemOID="IT.VS.VSSTRESU" Mandatory="No" MethodOID="MT.VS.VSSTRESU" />
+  <ItemRef ItemOID="IT.VS.VSSTAT" Mandatory="No" MethodOID="MT.VS.VSSTAT" />
+  <ItemRef ItemOID="IT.VS.VSREASND" Mandatory="No" MethodOID="MT.VS.VSREASND" />
+  <ItemRef ItemOID="IT.VS.VSLOC" Mandatory="No" MethodOID="MT.VS.VSLOC" />
+  <ItemRef ItemOID="IT.VS.VSBLFL" Mandatory="No" MethodOID="MT.VS.VSBLFL" />
+  <ItemRef ItemOID="IT.VS.VSDRVFL" Mandatory="No" MethodOID="MT.VS.VSDRVFL" />
+  <ItemRef ItemOID="IT.VS.VISITNUM" Mandatory="No" MethodOID="MT.VS.VISITNUM" />
+  <ItemRef ItemOID="IT.VS.VISIT" Mandatory="No" MethodOID="MT.VS.VISIT" />
+  <ItemRef ItemOID="IT.VS.VISITDY" Mandatory="No" MethodOID="MT.VS.VISITDY" />
+  <ItemRef ItemOID="IT.VS.VSDTC" Mandatory="No" MethodOID="MT.VS.VSDTC" />
+  <ItemRef ItemOID="IT.VS.VSDY" Mandatory="No" MethodOID="MT.VS.VSDY" />
+  <ItemRef ItemOID="IT.VS.VSTPT" Mandatory="No" MethodOID="MT.VS.VSTPT" />
+  <ItemRef ItemOID="IT.VS.VSTPTNUM" Mandatory="No" MethodOID="MT.VS.VSTPTNUM" />
+  <ItemRef ItemOID="IT.VS.VSELTM" Mandatory="No" MethodOID="MT.VS.VSELTM" />
+  <ItemRef ItemOID="IT.VS.VSTPTREF" Mandatory="No" MethodOID="MT.VS.VSTPTREF" />
+  <def:leaf ID="LF.VS" xlink:href="vs.xpt">
+    <def:title>vs.xpt</def:title>
+  </def:leaf>
+</ItemGroupDef><ItemDef OID="IT.DM.STUDYID" Name="STUDYID" SASFieldName="STUDYID" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Study Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.DM.DOMAIN" Name="DOMAIN" SASFieldName="DOMAIN" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Domain Abbreviation</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.DM.USUBJID" Name="USUBJID" SASFieldName="USUBJID" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Unique Subject Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.SUBJID" Name="SUBJID" SASFieldName="SUBJID" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Subject Identifier for the Study</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.DM.RFSTDTC" Name="RFSTDTC" SASFieldName="RFSTDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Subject Reference Start Date/Time</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.RFENDTC" Name="RFENDTC" SASFieldName="RFENDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Subject Reference End Date/Time</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.RFXSTDTC" Name="RFXSTDTC" SASFieldName="RFXSTDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of First Study Treatment</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.RFXENDTC" Name="RFXENDTC" SASFieldName="RFXENDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Last Study Treatment</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.RFICDTC" Name="RFICDTC" SASFieldName="RFICDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Informed Consent</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.RFPENDTC" Name="RFPENDTC" SASFieldName="RFPENDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of End of Participation</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.DTHDTC" Name="DTHDTC" SASFieldName="DTHDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Death</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.DTHFL" Name="DTHFL" SASFieldName="DTHFL" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Subject Death Flag</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.NY" />
+</ItemDef>
+<ItemDef OID="IT.DM.SITEID" Name="SITEID" SASFieldName="SITEID" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Study Site Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.DM.INVID" Name="INVID" SASFieldName="INVID" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Investigator Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.DM.BRTHDTC" Name="BRTHDTC" SASFieldName="BRTHDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Birth</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+</ItemDef>
+<ItemDef OID="IT.DM.AGE" Name="AGE" SASFieldName="AGE" DataType="integer">
+  <Description>
+    <TranslatedText xml:lang="en">Age</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.AGEU" Name="AGEU" SASFieldName="AGEU" DataType="text" def:CommentOID="COM.AGEU">
+  <Description>
+    <TranslatedText xml:lang="en">Age Units</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+  <CodeListRef CodeListOID="CL.AGEU" />
+</ItemDef>
+<ItemDef OID="IT.DM.SEX" Name="SEX" SASFieldName="SEX" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Sex</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.SEX" />
+</ItemDef>
+<ItemDef OID="IT.DM.RACE" Name="RACE" SASFieldName="RACE" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Race</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.RACE" />
+</ItemDef>
+<ItemDef OID="IT.DM.ETHNIC" Name="ETHNIC" SASFieldName="ETHNIC" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Ethnicity</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.ETHNIC" />
+</ItemDef>
+<ItemDef OID="IT.DM.ARMCD" Name="ARMCD" SASFieldName="ARMCD" DataType="text" def:CommentOID="COM.ARMCD">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Arm Code</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.DM.ARM" Name="ARM" SASFieldName="ARM" DataType="text" def:CommentOID="COM.ARM">
+  <Description>
+    <TranslatedText xml:lang="en">Description of Planned Arm</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.DM.ACTARMCD" Name="ACTARMCD" SASFieldName="ACTARMCD" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Actual Arm Code</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.DM.ACTARM" Name="ACTARM" SASFieldName="ACTARM" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Description of Actual Arm</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.DM.COUNTRY" Name="COUNTRY" SASFieldName="COUNTRY" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Country</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.COUNTRY" />
+</ItemDef>
+<ItemDef OID="IT.DM.DMDTC" Name="DMDTC" SASFieldName="DMDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Collection</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+</ItemDef>
+<ItemDef OID="IT.DM.DMDY" Name="DMDY" SASFieldName="DMDY" DataType="integer">
+  <Description>
+    <TranslatedText xml:lang="en">Study Day of Collection</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef><ItemDef OID="IT.VS.STUDYID" Name="STUDYID" SASFieldName="STUDYID" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Study Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.VS.DOMAIN" Name="DOMAIN" SASFieldName="DOMAIN" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Domain Abbreviation</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.VS.USUBJID" Name="USUBJID" SASFieldName="USUBJID" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Unique Subject Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSSEQ" Name="VSSEQ" SASFieldName="VSSEQ" DataType="float">
+  <Description>
+    <TranslatedText xml:lang="en">Sequence Number</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSGRPID" Name="VSGRPID" SASFieldName="VSGRPID" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Group ID</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSSPID" Name="VSSPID" SASFieldName="VSSPID" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Sponsor-Defined Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSTESTCD" Name="VSTESTCD" SASFieldName="VSTESTCD" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Vital Signs Test Short Name</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.VSTESTCD" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSTEST" Name="VSTEST" SASFieldName="VSTEST" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Vital Signs Test Name</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.VSTEST" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSCAT" Name="VSCAT" SASFieldName="VSCAT" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Category for Vital Signs</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSSCAT" Name="VSSCAT" SASFieldName="VSSCAT" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Subcategory for Vital Signs</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSPOS" Name="VSPOS" SASFieldName="VSPOS" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Vital Signs Position of Subject</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+  <CodeListRef CodeListOID="CL.POSITION" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSORRES" Name="VSORRES" SASFieldName="VSORRES" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Result or Finding in Original Units</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSORRESU" Name="VSORRESU" SASFieldName="VSORRESU" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Original Units</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+  <CodeListRef CodeListOID="CL.VSRESU" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSSTRESC" Name="VSSTRESC" SASFieldName="VSSTRESC" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Character Result/Finding in Std Format</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSSTRESN" Name="VSSTRESN" SASFieldName="VSSTRESN" DataType="float">
+  <Description>
+    <TranslatedText xml:lang="en">Numeric Result/Finding in Standard Units</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSSTRESU" Name="VSSTRESU" SASFieldName="VSSTRESU" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Standard Units</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.VSRESU" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSSTAT" Name="VSSTAT" SASFieldName="VSSTAT" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Completion Status</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.ND" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSREASND" Name="VSREASND" SASFieldName="VSREASND" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Reason Not Performed</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSLOC" Name="VSLOC" SASFieldName="VSLOC" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Location of Vital Signs Measurement</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+  <CodeListRef CodeListOID="CL.LOC" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSBLFL" Name="VSBLFL" SASFieldName="VSBLFL" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Baseline Flag</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.NY" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSDRVFL" Name="VSDRVFL" SASFieldName="VSDRVFL" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Derived Flag</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+  <CodeListRef CodeListOID="CL.NY" />
+</ItemDef>
+<ItemDef OID="IT.VS.VISITNUM" Name="VISITNUM" SASFieldName="VISITNUM" DataType="float">
+  <Description>
+    <TranslatedText xml:lang="en">Visit Number</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VISIT" Name="VISIT" SASFieldName="VISIT" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Visit Name</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VISITDY" Name="VISITDY" SASFieldName="VISITDY" DataType="integer">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Study Day of Visit</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSDTC" Name="VSDTC" SASFieldName="VSDTC" DataType="datetime">
+  <Description>
+    <TranslatedText xml:lang="en">Date/Time of Measurements</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSDY" Name="VSDY" SASFieldName="VSDY" DataType="integer">
+  <Description>
+    <TranslatedText xml:lang="en">Study Day of Vital Signs</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSTPT" Name="VSTPT" SASFieldName="VSTPT" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Time Point Name</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSTPTNUM" Name="VSTPTNUM" SASFieldName="VSTPTNUM" DataType="float">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Time Point Number</TranslatedText>
+  </Description>
+  <def:Origin Type="DERIVED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSELTM" Name="VSELTM" SASFieldName="VSELTM" DataType="xsd:duration" def:CommentOID="COM.VSELTM">
+  <Description>
+    <TranslatedText xml:lang="en">Planned Elapsed Time from Time Point Ref</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef>
+<ItemDef OID="IT.VS.VSTPTREF" Name="VSTPTREF" SASFieldName="VSTPTREF" DataType="text">
+  <Description>
+    <TranslatedText xml:lang="en">Time Point Reference</TranslatedText>
+  </Description>
+  <def:Origin Type="ASSIGNED" />
+</ItemDef><MethodDef OID="MT.DM.USUBJID" Name="Algorithm to derive DM.USUBJID" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Concatenation of STUDYID, DM.SITEID and DM.SUBJID </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFSTDTC" Name="Algorithm to derive DM.RFSTDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Date/time of first study drug treatment derived from EX</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFENDTC" Name="Algorithm to derive DM.RFENDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Date/time of last study drug treatment derived from EX</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFXSTDTC" Name="Algorithm to derive DM.RFXSTDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">RFXSTDTC=RFSTDTC </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFXENDTC" Name="Algorithm to derive DM.RFXENDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">RFXENDTC=RFENDTC </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFICDTC" Name="Algorithm to derive DM.RFICDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Date of informed consent was not entered in database (see annotated CRF) </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.RFPENDTC" Name="Algorithm to derive DM.RFPENDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">DSSTDTC of last disposition event </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.DTHDTC" Name="Algorithm to derive DM.DTHDTC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">If DS record exists with DSDECOD=\"DEATH\" then DTHDTC=AEENDTC.</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.DTHFL" Name="Algorithm to derive DM.DTHFL" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">If DS record exists with DSDECOD=\"DEATH\" then DEATHFL=Y.</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.AGE" Name="Algorithm to derive DM.AGE" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Subject's Age at start of study drug (RFSTDTC). </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.ETHNIC" Name="Algorithm to derive DM.ETHNIC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Derived from Origin entered on CRF: ETHINC=\"HISPANIC OR LATINO\" if Origin=\"Hispanic\". Otherwise ETHNIC=\"NOT HISPANIC OR LATINO\"</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.ACTARMCD" Name="Algorithm to derive DM.ACTARMCD" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Derived from EX</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.COUNTRY" Name="Algorithm to derive DM.COUNTRY" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Derived from site information</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.DM.DMDY" Name="Algorithm to derive DM.DMDY" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">See Computational Method: COMPMETHOD.STUDY_DAY</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.USUBJID" Name="Algorithm to derive VS.USUBJID" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Concatenation of STUDYID, DM.SITEID and DM.SUBJID </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSSEQ" Name="Algorithm to derive VS.VSSEQ" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Sequential number identifying records within each USUBJID </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSSTRESC" Name="Algorithm to derive VS.VSSTRESC" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">VSORRES converted to standard unit </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSSTRESN" Name="Algorithm to derive VS.VSSTRESN" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">VSSTRESC converted to numeric </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSSTRESU" Name="Algorithm to derive VS.VSSTRESU" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Standard unit defined per parameter for summarizing analysis </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSBLFL" Name="Algorithm to derive VS.VSBLFL" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">If VISIT=\"BASELINE\" then VSBLFL=\"Y\" </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VISITDY" Name="Algorithm to derive VS.VISITDY" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">TV.VISITDY </TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.VS.VSDY" Name="Algorithm to derive VS.VSDY" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">See Computational Method: COMPMETHOD.STUDY_DAY </TranslatedText>
+  </Description>
+</MethodDef><def:CommentDef OID="COM.AGEU">
+  <Description>
+    <TranslatedText xml:lang="en">AGEU=\"YEARS\" </TranslatedText>
+  </Description>
+</def:CommentDef>
+<def:CommentDef OID="COM.ARMCD">
+  <Description>
+    <TranslatedText xml:lang="en">According to randomization list</TranslatedText>
+  </Description>
+</def:CommentDef>
+<def:CommentDef OID="COM.ARM">
+  <Description>
+    <TranslatedText xml:lang="en">According to randomization list</TranslatedText>
+  </Description>
+</def:CommentDef>
+<def:CommentDef OID="COM.VSELTM">
+  <Description>
+    <TranslatedText xml:lang="en">VSTPT expressed in the ISO 8601 format for durations </TranslatedText>
+  </Description>
+</def:CommentDef>
+
+		</MetaDataVersion>
+	</Study>
+</ODM>
