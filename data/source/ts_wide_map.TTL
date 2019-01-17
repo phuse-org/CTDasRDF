@@ -53,6 +53,8 @@ cd01p:Study_{studyid}
   study:hasSponsor                   code:Sponsor_{studyid} ;
   study:hasStopRule                  cd01p:StudyStopRule_{stoprule_tsval_seq} ;
   study:hasStudyID                   cd01p:StudyIdentifier_1 ;
+  study:hasTitle                     cd01p:Title_{studyid};
+  study:interventionModel            sdtmterm:InterventionModel_{intmodel_tsval};
 .
 
 #------------------------------------------------------------------------------
@@ -163,10 +165,17 @@ cd01p:StudyStopRule_{stoprule_tsval_seq}
   study:ruleDescriptionLong "{stoprule_tsval}"^^xsd:string ;
 .
 
-#---- Stop Rule   -------------------------------------------------------------
+#---- Study Identifier---------------------------------------------------------
 cd01p:StudyIdentifier_1
   rdf:type study:StudyIdentifier ;
   skos:prefLabel "{studyid}"^^xsd:string ;
   code:hasMethod code:Method_ASSIGNED ;
   study:crfLocation cd01p:CRFLocation_1 ;  # hard coded for now...
 .
+
+#---- Study Title--------------------------------------------------------------
+cd01p:Title_{studyid}
+  rdf:type study:Title ;
+  skos:prefLabel "{title_tsval}"^^xsd:string ;
+.
+  
