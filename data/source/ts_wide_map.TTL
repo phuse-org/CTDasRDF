@@ -53,8 +53,14 @@ cd01p:Study_{studyid}
   study:hasSponsor                   code:Sponsor_{studyid} ;
   study:hasStopRule                  cd01p:StudyStopRule_{stoprule_tsval_seq} ;
   study:hasStudyID                   cd01p:StudyIdentifier_1 ;
-  study:hasTitle                     cd01p:Title_{studyid};
-  study:interventionModel            sdtmterm:InterventionModel_{intmodel_tsval};
+  study:hasTitle                     cd01p:Title_{studyid} ;
+  study:interventionModel            sdtmterm:InterventionModel_{intmodel_tsval} ;
+  study:interventionType             sdtmterm:InverventionType_{inttype_tsval} ;
+  study:isAddOnStudy                 sdtmterm:NoYesResponse_{addon_tsval} ;
+  study:narms                        "{narms_tsval}"^^xsd:int ;
+  study:randomizedTrial              sdtmterm:NoYesResponse_{random_tsval} ;
+  study:studyDrug                    code:Substance_{trt_tsval} ;
+  study:studyType                    sdtmterm:StudyType_{} ;
 .
 
 #------------------------------------------------------------------------------
