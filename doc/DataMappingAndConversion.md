@@ -262,6 +262,19 @@ In the original TS data, OUTMPRI = "Evaluate the efficacy and safety of transder
 
 In typical Alzheimer's trials, the **primary outcome measure** is the ADAS-Cog (Alzheimer's Disease Assessment Scale, Cognitive Subscale). ADAS-Cog was added as the primary outcome measure.
 
+Maximum age (Object of predicate study:maxSubjectAge predicate) is changed from NA to NULL.4, indicating 
+that the value for age is missing due to null flavor reason #4.  [AO to TW, 2019-01-06]
+
+
+
+### Data Additions
+####Visit Activities
+VistAmbulECGPlaceActivity, VisitBaselineActivity, VisitWk12Acvitity, etc.
+
+Are created in **TS_supplemental.xlsx**. Visit information was needed to complete the VS and EX data representations in support of derviving DM reference exposure start and end dates. Full visit information should be in SV.xpt, a domain we have not yet converted. At that time, the Visit Activity values can be removed from the spreadhseet.  [notes from AO to TW 2019-01-06]
+
+
+
 ### SMS details
 To be added.
 

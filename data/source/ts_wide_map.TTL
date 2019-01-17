@@ -15,7 +15,7 @@
 # NOTE: stardog-admin virtual import CTDasRDFSMS ts_wide_map.TTL ts_wide.csv
 #  Export to TTL: stardog data export --format TURTLE CTDasRDFSMS C:/_github/CTDasRDF/data/source/EXPORT.ttl
 #  Site information to be read in from a seperate source file (site seq, country id, etc.)
-# TODO:
+# TODO: AdminActivity Data cutoff preflabel needs to come from the data
 ###############################################################################
 @prefix cd01p:        <https://w3id.org/phuse/cd01p#> .
 @prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
@@ -47,7 +47,12 @@ cd01p:Study_{studyid}
   study:hasPrimOutcomeMeasure        custom:Observation_{outmspri_tsval} ;
   study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminact_tsval} ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_{arm_tsval} ;
-  study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch_tsval} ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch_tsvalcd} ;
+  study:hasProtocolSpecifiedActivity custom:Visit{visit_tsvalcd}Activity;
+  study:hasRegistryID                cd01p:StudyRegistryIdentifier_{regid_tsval} ;
+  study:hasSponsor                   code:Sponsor_{studyid} ;
+  study:hasStopRule                  cd01p:StudyStopRule_{stoprule_tsval_seq} ;
+  study:hasStudyID                   cd01p:StudyIdentifier_1 ;
 .
 
 #------------------------------------------------------------------------------
@@ -114,6 +119,54 @@ cd01p:SecondaryObjective_{objsec_tsval_seq}
 #---- Admin Activity      -------------------------------------------------------
 cd01p:AdminActivity_{adminact_tsval} 
   rdf:type       study:{adminact_tsval} ;
-  skos:prefLabel "{dcutdesc_tsval}"^^xsd:string ;
+  skos:prefLabel "Admin activity Data cutoff"^^xsd:string ;
   study:hasDate  cd01p:Date_{dcutdtc_tsval} ;
+.
+  cd01p:Date_{dcutdtc_tsval}
+    rdf:type                  study:DataCutoffDate ;
+    skos:prefLabel            "{dcutdesc_tsval}"^^xsd:string ; 
+    code:hasCodeSystem        code:CodeSystem_{dcutdtc_tsvcdref_iri} ;
+    study:dateTimeInXSDString "{dcutdtc_tsval}" ;
+.
+
+#---- Treatment Arms   --------------------------------------------------------
+cd01p:Arm_{arm_tsval}
+  rdf:type       study:{arm_type};  
+  rdf:type       study:{arm_type2}; 
+  skos:altLabel  "{arm_tsvalcd}"^^xsd:string ; 
+  skos:prefLabel "{arm_tsval}"^^xsd:string ;
+.
+
+cd01p:Epoch_{epoch_tsvalcd}
+  rdf:type                  study:Epoch ;
+  skos:prefLabel            "{epoch_tsparm}"^^xsd:string ; 
+  study:hasActivityInterval cd01p:EpochInterval_{epoch_tsvalcd_lc} ;
+.
+
+cd01p:EpochInterval_{epoch_tsvalcd_lc}
+  rdf:type       study:EpochInterval ;
+  skos:prefLabel "Epoch interval blindedtreatment" ;
+.
+
+#---- Registry ID   -----------------------------------------------------------
+cd01p:StudyRegistryIdentifier__{regid_tsval}
+  rdf:type           study:StudyRegistryIdentifier ;
+  skos:prefLabel     "{regid_tsval}"^^xsd:string ;
+  code:hasCode       "{regid_tsval}" ;
+  code:hasCodeSystem <https://w3id.org/phuse/code#CodeSystem_clinicaltrials.gov> ;
+.
+
+#---- Stop Rule   -------------------------------------------------------------
+cd01p:StudyStopRule_{stoprule_tsval_seq} 
+  rdf:type                  study:StudyStopRule ;
+  skos:prefLabel            "Study stop rule {stoprule_tsval_seq}"^^xsd:string ;
+  study:ruleDescriptionLong "{stoprule_tsval}"^^xsd:string ;
+.
+
+#---- Stop Rule   -------------------------------------------------------------
+cd01p:StudyIdentifier_1
+  rdf:type study:StudyIdentifier ;
+  skos:prefLabel "{studyid}"^^xsd:string ;
+  code:hasMethod code:Method_ASSIGNED ;
+  study:crfLocation cd01p:CRFLocation_1 ;  # hard coded for now...
 .

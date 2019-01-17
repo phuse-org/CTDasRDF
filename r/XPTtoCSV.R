@@ -48,17 +48,18 @@ dm  <- head(readXPT("dm"), dm_n)
 
 source('R/DM_imputeCSV.R')  # Impute values 
 
-write.csv(dm, file="data/source/DM_subset.csv", 
-  row.names = F,
-  na = "")
+#TW write.csv(dm, file="data/source/DM_subset.csv", 
+#TW   row.names = F,
+#TW   na = "")
 
 # SUPPDM ----
 #  No imputation for SUPPDM (no SUPPDM_imputeCSV.R)
 suppdm  <- readXPT("suppdm")
 suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  # Subset for dev
-write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
-  row.names = F,
-  na = "")
+
+#TW write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
+#TW   row.names = F,
+#TW   na = "")
 
 # EX ----
 ex  <- readXPT("ex")
@@ -71,9 +72,9 @@ ex <- merge(dmDrugInt, ex, by.x = "usubjid", by.y="usubjid")
 
 source('R/EX_imputeCSV.R') # Impute values 
 
-write.csv(ex, file="data/source/EX_subset.csv", 
-row.names = F,
-  na = "")
+#TW write.csv(ex, file="data/source/EX_subset.csv", 
+#TW row.names = F,
+#TW   na = "")
 
 # VS ----
 vs  <- readXPT("vs")  
@@ -89,19 +90,15 @@ vs <- data.frame(vs[vsSubset, ], stringsAsFactors=FALSE)
 
 source('R/VS_imputeCSV.R') # Impute values
 
-write.csv(vs, file="data/source/vs_subset.csv", 
-  row.names = F,
-  na = "")
+#TW write.csv(vs, file="data/source/vs_subset.csv", 
+#TW   row.names = F,
+#TW   na = "")
 
-# NOT YET IMPLEMENTED:
 # TS ----
 ts  <- readXPT("ts")  # first row only for initial testing.
 
-
-
 source('R/TS_imputeCSV.R') # Impute values
 
-
-#write.csv(ts, file="data/source/ts_subset.csv", 
-#  row.names = F,
-#  na = "")
+write.csv(tswide, file="data/source/ts_wide.csv", 
+  row.names = F,
+  na = "")

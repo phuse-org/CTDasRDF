@@ -46,8 +46,13 @@ tsAll<-dplyr::bind_rows(ts, tsAdditions)
 
 tswide <- data.table::dcast( setDT(tsAll),
   studyid + tsseq ~ tsparmcd,
-  value.var = c("tsval", "tsparm"  )
+  value.var = c("tsval", "tsvalcd", "tsparm", "tsvcdref", "type", "type2" )
   )
+
+# dplyr approach to removing columns filled with NA (no values in entire column)
+not_all_na <- function(x) any(!is.na(x))
+tswide <- tswide %>% select_if(not_all_na)
+
 
 # CAST results in tsval_xxx, tsparm_xxx,  we need xxx_tsval, xxx_tsparm, so reverse
 #  the text on either side of '_' created during the CAST. 
@@ -60,63 +65,36 @@ names(tswide) <- tolower(names(tswide))
 
 
 #---- Imputation  (recoding)
-tswide$tblind_tsval_iri       <- gsub(" ", "_", tswide$tblind_tsval )    # Blinding schema
-tswide$agespan_tsval_iri<- gsub( " .*$", "", tswide$agespan_tsval) # ADULT, ELDERLY iri 
-#TODO: REDO!!! tswide$tsvcdref_tsval_iri <- gsub( " ", "", tswide$tsvcdref) 
-tswide[1,"agemax_tsval"] <- "NULL"  # Recode existing NA to "NULL" for use in IRI
+tswide$tblind_tsval_iri     <- gsub(" ", "_", tswide$tblind_tsval )    # Blinding schema
+tswide$agespan_tsval_iri    <- gsub( " .*$", "", tswide$agespan_tsval) # ADULT, ELDERLY iri 
+tswide$dcutdtc_tsvcdref_iri <- gsub( " ", "", tswide$dcutdtc_tsvcdref) 
+tswide$epoch_tsvalcd_lc     <- tolower(tswide$epoch_tsvalcd) 
+
+
+# Age max is recoded from NA to NULL.4 to represent a reason for the NULL (a Null Flavor):
+#  age is missing due to null flavor reason #4.
+
+tswide[1,"agemax_tsval"] <- "NULL.4"  # Recode existing NA to "NULL.4" for use in IRI
 
 
 
-
-# Primary and Secondary Objective sequence number for IRIs. Value needed for comp
-#   with source XPT.
-#   When objprim != NA, then the seq is the value of tsseq.
-#   See here : https://stackoverflow.com/questions/22814515/replace-value-in-column-with-corresponding-value-from-another-column-in-same-dat
-#   df[ df$X1 == "a" , "X1" ] <- df[ df$X1 == "a", "X2" ]
-
+#---- Sequence Numbers
+# Primary and Secondary Objective, Stop Rule sequence number for IRIs.
+#   When xxx_tsval != NA, then the seq is the value of tsseq.
 # Primary Objective sequence
 tswide[ ! is.na(objprim_tsval) , "objprim_tsval_seq" ] <- tswide[ ! is.na(objprim_tsval), "tsseq" ]
 
 # Secondary Objective sequence
 tswide[ ! is.na(objsec_tsval) , "objsec_tsval_seq" ] <- tswide[ ! is.na(objsec_tsval), "tsseq" ]
 
+# Stop rule sequence
+tswide[ ! is.na(stoprule_tsval) , "stoprule_tsval_seq" ] <- tswide[ ! is.na(stoprule_tsval), "tsseq" ]
 
 #---- OLDE BELOW HERE -----------------------------------------------------------------
 
-
-# Arm information
-#TW tsArms <-read.table(header = TRUE, fill=TRUE, text = "
-#TW arm_im           arm_type_im             arm_altlbl_im   arm_preflbl_im    
-#TW 'Pbo'            'ControlArm'            'Pbo'           'Placebo'         
-#TW 'Pbo'            'RandomizationOutcome'  'Pbo'           'Placebo'
-#TW 'ScreenFailue'   'FalseArm'              'Scrnfail'      'Screen Failure'
-#TW 'XanomelineHigh' 'InvestigationalArm'    'Xan_Hi'        'Xanomeline High'
-#TW 'XanomelineHigh' 'RandomizationOutcome'  'Xan_Hi'        'Xanomeline High'
-#TW 'XanomelineLow'  'InvestigationalArm'    'Xan_Lo'        'Xanomeline Low'
-#TW 'XanomelineLow'  'RandomizationOutcome'  'Xan_Lo'        'Xanomeline Low'
-#TW ")
-#TW tswide<-cbind(tswide,tsArms)
-
-
-# Epoch Data
-#TW tsEpoch <- data.frame(
-#TW   epoch_im              = 'BlindedTreatment',
-#TW   epoch_type_imtime     = 'Epoch',
-#TW   epoch_preflbl         = 'Epoch Blinded treatment' ,
-#TW   epoch_int_im          = 'blindedtreatment',
-#TW   epoch_int_type_im     = 'EpochInterval',
-#TW   epoch_int_preflbl_im  = 'Epoch interval blindedtreatment'
-#TW )
-
-#TW tswide<-cbind(tswide,tsEpoch)
 
 # Sort column names ease of refernece 
 tswide <- tswide %>% select(noquote(order(colnames(tswide))))
 
 
-
-# Move this code to the driver script.
-write.csv(tswide, file="data/source/ts_wide.csv", 
-  row.names = F,
-  na = "")
 
