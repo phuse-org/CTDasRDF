@@ -2,12 +2,12 @@
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://w3id.org/phuse/cd01p
-# imports: <https://w3id.org/phuse/cdiscpilot01#>
-# imports: <https://w3id.org/phuse/code#>
+# imports: https://w3id.org/phuse/cdiscpilot01#
+# imports: https://w3id.org/phuse/code#
 # imports: https://w3id.org/phuse/cts
 # imports: https://w3id.org/phuse/mms
-# imports: https://w3id.org/phuse/sdtmterm
 # imports: https://w3id.org/phuse/sdtm
+# imports: https://w3id.org/phuse/sdtmterm
 # imports: https://w3id.org/phuse/study
 # prefix: sdtm-cdisc01
 
@@ -36,8 +36,8 @@
   owl:imports <https://w3id.org/phuse/code#> ;
   owl:imports <https://w3id.org/phuse/cts> ;
   owl:imports <https://w3id.org/phuse/mms> ;
-  owl:imports <https://w3id.org/phuse/sdtmterm> ;
   owl:imports <https://w3id.org/phuse/sdtm> ;
+  owl:imports <https://w3id.org/phuse/sdtmterm> ;
   owl:imports <https://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
@@ -47,6 +47,78 @@ sdtm-cdisc01:SDTMDefineRecord_DM_STUDYID_1
   skos:prefLabel "SDTMDefine record DM STUDYID 1" ;
   sdtm:hasDFSequence 1 ;
   sdtm:hasDFVariable <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.STUDYID> ;
+.
+sdtm-cdisc01:SDTM_AE_Record_1
+  rdf:type sdtm:SDTM_AE_Record ;
+  rdfs:comment "" ;
+  rdfs:label "SDTM AE Record 1" ;
+  skos:definition "" ;
+  sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1015> ;
+  sdtm:hasEvent <https://w3id.org/phuse/cdiscpilot01#AE01_AppSiteErythema> ;
+.
+sdtm-cdisc01:SDTM_AE_Record_2
+  rdf:type sdtm:SDTM_AE_Record ;
+  rdfs:comment "" ;
+  rdfs:label "SDTM AE Record 2" ;
+  skos:definition "" ;
+  sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1015> ;
+  sdtm:hasEvent <https://w3id.org/phuse/cdiscpilot01#AE02_AppSitePruritus> ;
+.
+sdtm-cdisc01:SDTM_AE_Record_3
+  rdf:type sdtm:SDTM_AE_Record ;
+  rdfs:comment "" ;
+  rdfs:label "SDTM AE Record 3" ;
+  skos:definition "" ;
+  sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1015> ;
+  sdtm:hasEvent <https://w3id.org/phuse/cdiscpilot01#AE03_DIarrhoea> ;
+.
+sdtm-cdisc01:SDTM_AE_Record_4
+  rdf:type sdtm:SDTM_AE_Record ;
+  rdfs:comment "" ;
+  rdfs:label "SDTM AE Record 4" ;
+  skos:definition "" ;
+  sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1023> ;
+  sdtm:hasEvent <https://w3id.org/phuse/cdiscpilot01#AE04_AVBlock2ndDeg> ;
+.
+sdtm-cdisc01:SDTM_AE_Record_5
+  rdf:type sdtm:SDTM_AE_Record ;
+  rdfs:comment "" ;
+  rdfs:label "SDTM AE Record 5" ;
+  skos:definition "" ;
+  sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1023> ;
+  sdtm:hasEvent <https://w3id.org/phuse/cdiscpilot01#AE05_Erythema> ;
+.
+sdtm-cdisc01:SDTM_AE_Record_6
+  rdf:type sdtm:SDTM_AE_Record ;
+  rdfs:comment "" ;
+  rdfs:label "SDTM AE Record 6" ;
+  skos:definition "" ;
+  sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1023> ;
+  sdtm:hasEvent <https://w3id.org/phuse/cdiscpilot01#AE06_Erythema> ;
+.
+sdtm-cdisc01:SDTM_AE_Record_7
+  rdf:type sdtm:SDTM_AE_Record ;
+  rdfs:comment "" ;
+  rdfs:label "SDTM AE Record 7" ;
+  skos:definition "" ;
+  sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1023> ;
+  sdtm:hasEvent <https://w3id.org/phuse/cdiscpilot01#AE07_Erythema> ;
+.
+sdtm-cdisc01:SDTM_AE_Record_8
+  rdf:type sdtm:SDTM_AE_Record ;
+  rdfs:comment "" ;
+  rdfs:label "SDTM AE Record 8" ;
+  skos:definition "" ;
+  sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1028> ;
+  sdtm:hasEvent <https://w3id.org/phuse/cdiscpilot01#AE08_AppSiteErythema> ;
+.
+sdtm-cdisc01:SDTM_AE_Record_9
+  rdf:type sdtm:SDTM_AE_Record ;
+  rdfs:comment "" ;
+  rdfs:label "SDTM AE Record 9" ;
+  skos:definition "" ;
+  sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1028> ;
+  sdtm:hasEvent <https://w3id.org/phuse/cdiscpilot01#AE09_AppSitePruritus> ;
 .
 sdtm-cdisc01:SDTM_DM_Record_1
   rdf:type sdtm:SDTM_DM_Record ;
@@ -194,4 +266,11 @@ sdtm-cdisc01:SDTM_VS_Record_88
   rdfs:label "SDTM VS Record 88" ;
   sdtm:hasActivity <https://w3id.org/phuse/cdiscpilot01#SystolicBloodPressure_Screening1_01-701-1015_88> ;
   sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1015> ;
+.
+sdtm:SDTM_AE_Record
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "AE" ;
+      owl:onProperty sdtm:hasDOMAIN ;
+    ] ;
 .

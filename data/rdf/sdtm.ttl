@@ -17,6 +17,7 @@
 @prefix sdtm: <https://w3id.org/phuse/sdtm#> .
 @prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#> .
 @prefix sdtmterm: <https://w3id.org/phuse/sdtmterm#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spif: <http://spinrdf.org/spif#> .
@@ -25,193 +26,158 @@
 @prefix study: <https://w3id.org/phuse/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/phuse/sdtmterm#C66738.C15320>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Study Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEACN>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C20587>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Age Span" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEACNOTH>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C25196>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial is Randomized" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEBDSYCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C25488>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Dose per Administration" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEBODSYS>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C38114>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Route of Administration" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AECAT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C41161>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Investigational Therapy or Treatment" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AECONTRT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C41184>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Indication" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEDECOD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C48281>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Phase Classification" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEDUR>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49647>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Control Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENDTC>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49650>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Diagnosis Group" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENDY>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49652>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Indication Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENRF>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49658>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Blinding Schema" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENRTPT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49660>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENTPT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49692>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Number of Subjects; Planned Enrollment; Target Enrollment; Anticipated Enrollment" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEGRPID>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49693>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Minimum Age of Subjects" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEHLGT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49694>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Maximum Age of Subjects" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEHLGTCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49696>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Sex of Participants" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEHLT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49697>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Length" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEHLTCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49698>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Study Stop Rules" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AELLT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49703>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Added on to Existing Treatments" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AELLTCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49802>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Title" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AELOC>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C68612>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Comparative Treatment Name" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEMODIFY>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C69208>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Study Start Date" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEOUT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C70793>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Clinical Study Sponsor; Study Sponsor; Sponsor" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEPATT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C73558>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Dose Units" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEPRESP>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C85582>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Current Therapy or Treatment" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEPTCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C85826>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Primary Objective" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEREFID>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C85827>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Secondary Objective" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEREL>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C89081>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Dosing Frequency" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AERELNST>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C90462>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Study End Date" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESCAN>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98703>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Actual Number of Subjects" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESCAT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98704>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Adaptive Design" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESCONG>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98714>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Registry Identifier" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESDISAB>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98715>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Confirmed Response Minimum Duration" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESDTH>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98717>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Data Cutoff Date" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESEQ>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98718>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Data Cutoff Description" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESER>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98724>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Exploratory Outcome Measure" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESEV>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98737>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Healthy Subject Indicator" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESHOSP>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98746>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Intervention Model" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESLIFE>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98747>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Intervention Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESMIE>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98768>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Pharmacological Class of Invest. Therapy" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESOC>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98770>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Country of Investigational Sites" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESOCCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98771>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Number of Arms" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESOD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98772>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Primary Outcome Measure" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESPID>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98775>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Randomization Quotient" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESTDTC>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98781>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Secondary Outcome Measure" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESTDY>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98783>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Stable Disease Minimum Duration" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AETERM>
+  rdf:type sdtm:Variable ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AETOXGR>
+  rdf:type sdtm:Variable ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.DOMAIN>
+  rdf:type sdtm:Variable ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.STUDYID>
+  rdf:type sdtm:Variable ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.USUBJID>
+  rdf:type sdtm:Variable ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARM>
   rdf:type sdtm:Variable ;
@@ -478,6 +444,9 @@
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTREF>
   rdf:type sdtm:Variable ;
 .
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.AE>
+  rdf:type sdtm:Domain ;
+.
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.DM>
   rdf:type sdtm:Domain ;
 .
@@ -496,7 +465,7 @@
   owl:imports <http://rdf.cdisc.org/std/sdtmig-3-1-3> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://w3id.org/phuse/code#> ;
+  owl:imports code: ;
   owl:imports <https://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
@@ -2315,6 +2284,323 @@ sdtm:SDTMTerminology
   rdfs:comment "" ;
   skos:definition "" ;
   skos:prefLabel "SDTMTerminology" ;
+.
+sdtm:SDTM_AE_Record
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AEGRPID" ;
+              ] ;
+            sp:predicate sdtm:hasAEGRPID ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEGRPID" ;
+              ] ;
+            sp:predicate study:groupID ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AEGRPID mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AEREFID" ;
+              ] ;
+            sp:predicate sdtm:hasAEREFID ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEREFID" ;
+              ] ;
+            sp:predicate study:referenceID ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AEREFID mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AESEQ" ;
+              ] ;
+            sp:predicate sdtm:hasAESEQ ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESEQ" ;
+              ] ;
+            sp:predicate study:seq ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AESEQ mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AESPID" ;
+              ] ;
+            sp:predicate sdtm:hasAESPID ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESPID" ;
+              ] ;
+            sp:predicate study:sponsordefinedID ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AESPID mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AETERM" ;
+              ] ;
+            sp:predicate sdtm:hasAETERM ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEMODIFY" ;
+              ] ;
+            sp:predicate sdtm:hasAEMODIFY ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AETERM" ;
+              ] ;
+            sp:predicate study:reportedTerm ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEMODIFY" ;
+              ] ;
+            sp:predicate study:modifiedTerm ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AETERM and AEMODIFY mapping" ;
+    ] ;
+  rdfs:subClassOf sdtm:SDTMSubjectLevelRecord ;
+  skos:prefLabel "SDTM AE Record" ;
 .
 sdtm:SDTM_DM_Record
   rdf:type owl:Class ;
@@ -9226,6 +9512,42 @@ sdtm:hasACTARMCD
   skos:definition "" ;
   skos:prefLabel "ACTARMCD" ;
 .
+sdtm:hasAEGRPID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AESEQ" ;
+.
+sdtm:hasAEMODIFY
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AEMODIFY" ;
+.
+sdtm:hasAEREFID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AEREFID" ;
+.
+sdtm:hasAESEQ
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AESEQ" ;
+.
+sdtm:hasAESPID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AESPID" ;
+.
+sdtm:hasAETERM
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AETERM" ;
+.
 sdtm:hasAGE
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
@@ -9429,6 +9751,15 @@ sdtm:hasEntity
   rdfs:range study:HumanStudySubject ;
   skos:definition "" ;
   skos:prefLabel "has entity" ;
+.
+sdtm:hasEvent
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "" ;
+  rdfs:domain sdtm:SDTMRecord ;
+  rdfs:label "has event" ;
+  rdfs:range study:Event ;
+  skos:definition "" ;
+  skos:prefLabel "has event" ;
 .
 sdtm:hasIDVAR
   rdf:type owl:DatatypeProperty ;
@@ -9921,4 +10252,192 @@ sdtm:variableComment
   rdfs:range xsd:string ;
   rdfs:subPropertyOf skos:note ;
   skos:prefLabel "variable comment" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C15320>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Study Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C20587>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Age Span" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C25196>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial is Randomized" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C25488>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Dose per Administration" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C38114>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Route of Administration" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C41161>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Investigational Therapy or Treatment" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C41184>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Indication" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C48281>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Phase Classification" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49647>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Control Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49650>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Diagnosis Group" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49652>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Indication Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49658>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Blinding Schema" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49660>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49692>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Number of Subjects; Planned Enrollment; Target Enrollment; Anticipated Enrollment" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49693>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Minimum Age of Subjects" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49694>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Maximum Age of Subjects" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49696>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Sex of Participants" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49697>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Length" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49698>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Study Stop Rules" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49703>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Added on to Existing Treatments" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49802>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Title" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C68612>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Comparative Treatment Name" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C69208>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Study Start Date" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C70793>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Clinical Study Sponsor; Study Sponsor; Sponsor" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C73558>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Dose Units" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C85582>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Current Therapy or Treatment" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C85826>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Primary Objective" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C85827>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Secondary Objective" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C89081>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Dosing Frequency" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C90462>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Study End Date" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98703>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Actual Number of Subjects" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98704>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Adaptive Design" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98714>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Registry Identifier" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98715>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Confirmed Response Minimum Duration" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98717>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Data Cutoff Date" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98718>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Data Cutoff Description" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98724>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Exploratory Outcome Measure" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98737>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Healthy Subject Indicator" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98746>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Intervention Model" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98747>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Intervention Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98768>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Pharmacological Class of Invest. Therapy" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98770>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Country of Investigational Sites" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98771>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Number of Arms" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98772>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Primary Outcome Measure" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98775>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Randomization Quotient" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98781>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Secondary Outcome Measure" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98783>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Stable Disease Minimum Duration" ;
 .
