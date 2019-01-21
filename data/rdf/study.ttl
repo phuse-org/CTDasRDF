@@ -2586,6 +2586,12 @@ study:causality
   rdfs:range code:Causality ;
   skos:prefLabel "causality" ;
 .
+study:concomitantTreatmentGiven
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "concomitant treatment given" ;
+.
 study:congenitalDefect
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:AdverseEvent ;
@@ -3258,6 +3264,12 @@ study:isActivityOfStudy
   skos:definition "relates StudyActivity with the Study of which it is a part. " ;
   skos:prefLabel "is part of" ;
 .
+study:isPrespecified
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "is prespecified" ;
+.
 study:laterality
   rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
@@ -3286,6 +3298,12 @@ study:maxSubjectAge
   rdfs:domain study:StudyPopulation ;
   rdfs:range study:MaximumSubjectAge ;
   skos:prefLabel "max age subjects" ;
+.
+study:medicallyImportantSeriousEvent
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "is a medically important serious adverse event" ;
 .
 study:memberOf
   rdf:type owl:ObjectProperty ;

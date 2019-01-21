@@ -1203,7 +1203,7 @@ code:Severity_MILD
 .
 code:Severity_MODERATE
   rdf:type code:Severity ;
-  skos:prefLabel "Severity MODERATE" ;
+  skos:prefLabel "MODERATE" ;
   code:hasCode <https://w3id.org/phuse/sdtmterm#C66769.C41339> ;
 .
 code:Severity_SEVERE
@@ -1932,9 +1932,10 @@ meddra:HLGT10001316_AdminSiteReaction
   code:hasIdentifier "10001316" ;
   meddra:hasSOC meddra:SOC10018065_GenDisordersAdminSite ;
 .
-meddra:HLGT10007521_CardiacArrhythmia
+meddra:HLGT10007521_CardiacArrhythmias
   rdf:type meddra:HighLevelGroupTerm ;
-  skos:prefLabel "CARDIAC ARRYTHMIAS" ;
+  skos:prefLabel "CARDIAC ARRHYTHMIAS" ;
+  code:hasIdentifier "10007521" ;
   meddra:hasSOC meddra:SOC10007541_Cardiac ;
 .
 meddra:HLGT10014982_EpiDermCond
@@ -1949,11 +1950,11 @@ meddra:HLGT10017977_GIMotility
   code:hasIdentifier "10017977" ;
   meddra:hasSOC meddra:SOC10017947_Gastrointestinal ;
 .
-meddra:HLT10000032_CardiacConDisorders
+meddra:HLT10000032_CardiacCondDisorder
   rdf:type meddra:HighLevelTerm ;
   skos:prefLabel "CARDIAC CONDUCTION DISORDERS" ;
   code:hasIdentifier "10000032" ;
-  meddra:hasHLGT meddra:HLGT10007521_CardiacArrhythmia ;
+  meddra:hasHLGT meddra:HLGT10007521_CardiacArrhythmias ;
 .
 meddra:HLT10003057_AppReaction
   rdf:type meddra:HighLevelTerm ;
@@ -2003,9 +2004,9 @@ meddra:LLT10003058_AppSiteRedness
   code:hasIdentifier "10003058" ;
   meddra:hasPT meddra:PT10003041_AppSiteErythema ;
 .
-meddra:LLT10003851_AVBlock2ndDeg
+meddra:LLT10003851_AVBlock
   rdf:type meddra:LowerLevelTerm ;
-  skos:prefLabel "ATRIOVENTRICULAR BLOCK SECOND DEGREE" ;
+  skos:prefLabel "AV BLOCK SECOND DEGREE" ;
   code:hasIdentifier "10003851" ;
   meddra:hasPT meddra:PT1003677_AVBlock2ndDeg ;
 .
@@ -2031,7 +2032,7 @@ meddra:LowerLevelTerm
   rdf:type owl:Class ;
   rdf:type sh:NodeShape ;
   rdfs:subClassOf meddra:MedDRAConcept ;
-  skos:prefLabel "Lowere level term" ;
+  skos:prefLabel "Lower level term" ;
 .
 meddra:MedDRAConcept
   rdf:type owl:Class ;
@@ -2065,8 +2066,8 @@ meddra:PT10015150_Erythema
 meddra:PT1003677_AVBlock2ndDeg
   rdf:type meddra:PreferredTerm ;
   skos:prefLabel "ATRIOVENTRICULAR BLOCK SECOND DEGREE" ;
-  code:hasIdentifier "10003851" ;
-  meddra:hasHLT meddra:HLT10000032_CardiacConDisorders ;
+  code:hasIdentifier "10003677" ;
+  meddra:hasHLT meddra:HLT10000032_CardiacCondDisorder ;
 .
 meddra:PreferredTerm
   rdf:type owl:Class ;
@@ -2077,6 +2078,7 @@ meddra:PreferredTerm
 meddra:SOC10007541_Cardiac
   rdf:type meddra:SystemOrganClass ;
   skos:prefLabel "CARDIAC DISORDERS" ;
+  code:hasIdentifier "10007541" ;
 .
 meddra:SOC10017947_Gastrointestinal
   rdf:type meddra:SystemOrganClass ;

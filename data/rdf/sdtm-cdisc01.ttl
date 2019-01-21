@@ -12,6 +12,7 @@
 # prefix: sdtm-cdisc01
 
 @prefix arg: <http://spinrdf.org/arg#> .
+@prefix code: <https://w3id.org/phuse/code#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -33,7 +34,7 @@
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <https://w3id.org/phuse/cd01p> ;
   owl:imports <https://w3id.org/phuse/cdiscpilot01#> ;
-  owl:imports <https://w3id.org/phuse/code#> ;
+  owl:imports code: ;
   owl:imports <https://w3id.org/phuse/cts> ;
   owl:imports <https://w3id.org/phuse/mms> ;
   owl:imports <https://w3id.org/phuse/sdtm> ;
@@ -267,7 +268,90 @@ sdtm-cdisc01:SDTM_VS_Record_88
   sdtm:hasActivity <https://w3id.org/phuse/cdiscpilot01#SystolicBloodPressure_Screening1_01-701-1015_88> ;
   sdtm:hasEntity <https://w3id.org/phuse/cdiscpilot01#Person_01-701-1015> ;
 .
+<https://w3id.org/phuse/meddra#HLGT10007521_CardiacArrhythmia>
+  code:hasIdentifier "10007521" ;
+.
 sdtm:SDTM_AE_Record
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AECAT" ;
+              ] ;
+            sp:predicate sdtm:hasAECAT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESCAT" ;
+              ] ;
+            sp:predicate sdtm:hasAESCAT ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AECAT" ;
+              ] ;
+            sp:predicate study:hasCategory ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AESCAT" ;
+                    ] ;
+                  sp:predicate study:hasSubcategory ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "AECAT and AESCAT mapping" ;
+    ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:hasValue "AE" ;
