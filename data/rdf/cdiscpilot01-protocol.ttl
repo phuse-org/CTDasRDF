@@ -99,6 +99,7 @@ cd01p:Interval_2012-07-06_to_2015-03-05
   rdf:type study:StudyInterval ;
   skos:prefLabel "Interval 2012-07-06 to 2015-03-05" ;
   time:hasBeginning cd01p:Date_2012-07-06 ;
+  time:hasDuration cd01p:StudyDuration_CDISCPILOT01 ;
   time:hasEnd cd01p:Date_2015-03-05 ;
 .
 cd01p:PrimaryObjective_1
@@ -588,12 +589,12 @@ cd01p:Study_CDISCPILOT01
   study:interventionType sdtmterm:InterventionType_DRUG ;
   study:narms 3 ;
   study:randomizedTrial sdtmterm:NoYesResponse_Y ;
-  study:studyDrug code:Substance_xanomeline ;
+  study:studyDrug code:Substance_Xanomeline ;
   study:studyType sdtmterm:StudyType_INT ;
   study:trialPhase sdtmterm:TrialPhase_PHASE2 ;
-  study:trialType sdtmterm:TrialType_EFF ;
-  study:trialType sdtmterm:TrialType_PK ;
-  study:trialType sdtmterm:TrialType_SAF ;
+  study:trialType sdtmterm:TrialType_EFFICACY ;
+  study:trialType sdtmterm:TrialType_PHARMACOKINETIC ;
+  study:trialType sdtmterm:TrialType_SAFETY ;
 .
 cd01p:Subcategory_1
   rdf:type study:Subcategory ;
@@ -604,7 +605,7 @@ cd01p:SubstanceQuantity_1
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 1" ;
-  code:hasIngredient code:Substance_xanomeline ;
+  code:hasIngredient code:Substance_Xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 0 ;
 .
@@ -612,7 +613,7 @@ cd01p:SubstanceQuantity_2
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 2" ;
-  code:hasIngredient code:Substance_xanomeline ;
+  code:hasIngredient code:Substance_Xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 54 ;
 .
@@ -620,7 +621,7 @@ cd01p:SubstanceQuantity_3
   rdf:type code:SubstanceQuantity ;
   rdf:type study:SubstanceQuantity ;
   skos:prefLabel "Substance quantity 3" ;
-  code:hasIngredient code:Substance_xanomeline ;
+  code:hasIngredient code:Substance_Xanomeline ;
   code:hasUnit code:Unit_mg ;
   code:hasValue 81 ;
 .
@@ -747,7 +748,7 @@ code:Sponsor_CDISCPILOT01
   rdf:type study:Sponsor ;
   code:hasCodeSystem code:CodeSystem_DUNS ;
 .
-code:Substance_xanomeline
+code:Substance_Xanomeline
   rdf:type study:InvestigationalSubstance ;
   study:studyIndication code:Indication_01 ;
 .
