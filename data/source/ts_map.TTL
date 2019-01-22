@@ -1,5 +1,5 @@
 ﻿###############################################################################
-# FILE: tw_wide_map.ttl
+# FILE: ts_map.ttl
 # DESC: Stardog SMS Template file for mapping TS (mostly protocol) information 
 #       to graph.
 # REQ : File format requirements for both execution and consistent processing
@@ -12,7 +12,7 @@
 # SRC :
 # IN  : ts_wide.csv , created by TS_imputeCSV.R
 # OUT :
-# NOTE: stardog-admin virtual import CTDasRDFSMS ts_wide_map.TTL ts_wide.csv
+# NOTE: stardog-admin virtual import CTDasRDFSMS ts_map.TTL ts.csv
 #  Export to TTL: stardog data export --format TURTLE CTDacd sRDFSMS C:/_github/CTDasRDF/data/source/EXPORT.ttl
 #  Site information to be read in from a seperate source file (site seq, country id, etc.)
 # TODO: AdminActivity Data cutoff preflabel needs to come from the data

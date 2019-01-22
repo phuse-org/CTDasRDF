@@ -28,6 +28,7 @@ library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!
 library(reshape) #  melt
 library(SPARQL)
 library(shiny)
+library(DT)
 
 setwd("C:/_gitHub/CTDasRDF/r")
 source("validation/Functions.R")
@@ -50,26 +51,32 @@ queryStart <- "SELECT ?p ?o "
 ui <- fluidPage(
   titlePanel("Instance Data: Ontology vs SMS Map"),
   fluidRow (
-    column(6, textInput('rootNodeOnt', "Ontology Subject", width='500px', value = "cdiscpilot01:Person_01-701-1015")),
-    column(6, textInput('rootNodeSMS', "SMS Subject",  width='500px', value = "cdiscpilot01:Person_01-701-1015"))
+    column(12, textInput('rootNode', "SUBJECT node", width='400px', value = "cd01p:Study_CDISCPILOT01"))
   ),
   fluidRow(
-    column(dataTableOutput('triplesTableOnt'), width=6)
+    column(HTML("Ontology P,O (all)"),
+      div(
+        dataTableOutput('triplesTableOnt'), style = "font-size:80%"
+      ),  
+      width = 5)
     ,
-    column(dataTableOutput('triplesTableSMS'), width=6)
+    column(HTML("SMS P,O (all)"),
+      div(
+        dataTableOutput('triplesTableSMS'), style = "font-size:80%"
+      ),  
+      width = 5)
   ),
   # Section for identifying triples in one graph and not the other.   
   fluidRow(
-    column(radioButtons("comp", "Compare:",
-                c("In Ont, not in SMS" = "inOntNotSMS",
-                  "In SMS, not in Ont" = "inSMSNotOnt")), width=4)
-  ),
-  fluidRow(
     column(h4("Comparison Result:",
-    style= "color:#e60000"), width=5)
+    style= "color:#e60000"), width = 5)
   ),
   fluidRow(
-    column(dataTableOutput('triplesMiss'), width=6)
+    column(h3("In Ont, not in SMS"),
+      dataTableOutput('OntNotSMS'), width = 6),
+    column(h3("In SMS, not in Ont"),
+      dataTableOutput('SMSNotOnt'), width = 6)
+    
   )  
 )
 
@@ -85,7 +92,7 @@ server <- function(input, output) {
     
   triplesOnt <- reactive({ 
     queryOnt = paste0(prefixBlock, queryStart, "
-      WHERE {", input$rootNodeOnt," ?p ?o . } ORDER BY ?p ?o "
+      WHERE {", input$rootNode," ?p ?o . } ORDER BY ?p ?o "
     )
 
     # Query results dfs ----  
@@ -98,14 +105,17 @@ server <- function(input, output) {
     triplesOnt<-triplesOnt[with(triplesOnt, order(p, o)), ]
   })
   
-  output$triplesTableOnt <-renderDataTable({triplesOnt()}, 
-    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
+  output$triplesTableOnt <- DT::renderDataTable({triplesOnt()}, 
+    options = list( pageLength = 10,
+                    paging     = TRUE, 
+                    scrollX    = TRUE, 
+                    searching  = FALSE))    
   
   # SMS Triples -----------------------------------------------------------
   triplesSMS <- reactive({ 
-    # print(input$rootNodeSMS)
+    # print(input$rootNode)
     querySMS = paste0(prefixBlock, queryStart, "
-      WHERE {", input$rootNodeSMS," ?p ?o . } ORDER BY ?p ?o "
+      WHERE {", input$rootNode," ?p ?o . } ORDER BY ?p ?o "
     )
 
     # Query results dfs ----  
@@ -118,22 +128,27 @@ server <- function(input, output) {
     triplesSMS<-triplesSMS[with(triplesSMS, order(p, o)), ]
   })
   
-  output$triplesTableSMS <-renderDataTable({triplesSMS()}, 
-    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
+  output$triplesTableSMS <- DT::renderDataTable({triplesSMS()}, 
+    options = list(pageLength = 10,
+                   paging     = TRUE, 
+                   scrollX    = TRUE, 
+                   searching  = FALSE))    
 
  # Comparsion to find in one graph and not in the other
-  compResult <- reactive({
-    if (input$comp=='inSMSNotOnt') {
+  compResultSMS <- reactive({
       compResult <-anti_join(triplesSMS(), triplesOnt())
-    }
-    else if (input$comp=='inOntNotSMS') {
-        compResult <- anti_join(triplesOnt(), triplesSMS())
-    }
+      
   })
   
-  output$triplesMiss <- renderDataTable({compResult()},
-    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))    
-
+  compResultOnt <- reactive({    
+    compResult <- anti_join(triplesOnt(), triplesSMS())
+  })
+  
+  output$OntNotSMS <- DT::renderDataTable({compResultOnt()},
+    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))
+  
+  output$SMSNotOnt <- DT::renderDataTable({compResultSMS()},
+    options = list(paging=FALSE, scrollX = TRUE, searching=FALSE))
   
 } # End of server portion
 
