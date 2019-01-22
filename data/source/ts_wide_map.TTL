@@ -13,7 +13,7 @@
 # IN  : ts_wide.csv , created by TS_imputeCSV.R
 # OUT :
 # NOTE: stardog-admin virtual import CTDasRDFSMS ts_wide_map.TTL ts_wide.csv
-#  Export to TTL: stardog data export --format TURTLE CTDasRDFSMS C:/_github/CTDasRDF/data/source/EXPORT.ttl
+#  Export to TTL: stardog data export --format TURTLE CTDacd sRDFSMS C:/_github/CTDasRDF/data/source/EXPORT.ttl
 #  Site information to be read in from a seperate source file (site seq, country id, etc.)
 # TODO: AdminActivity Data cutoff preflabel needs to come from the data
 ###############################################################################
@@ -60,7 +60,9 @@ cd01p:Study_{studyid}
   study:narms                        "{narms_tsval}"^^xsd:int ;
   study:randomizedTrial              sdtmterm:NoYesResponse_{random_tsval} ;
   study:studyDrug                    code:Substance_{trt_tsval} ;
-  study:studyType                    sdtmterm:StudyType_{} ;
+  study:studyType                    sdtmterm:StudyType_{studytype_tsval} ;
+  study:trialPhase                   sdtmterm:TrialPhase_{phase_tsval} ;
+  study:trialType                    sdtmterm:TrialType_{ttype_tsval} ;
 .
 
 #------------------------------------------------------------------------------
