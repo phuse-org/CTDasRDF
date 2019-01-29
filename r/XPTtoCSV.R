@@ -95,10 +95,21 @@ source('R/VS_imputeCSV.R') # Impute values
 #TW   na = "")
 
 # TS ----
-ts  <- readXPT("ts")  # first row only for initial testing.
+ts  <- readXPT("ts")  
 
 source('R/TS_imputeCSV.R') # Impute values
 
-write.csv(tswide, file="data/source/ts_wide.csv", 
+write.csv(tswide, file="data/source/ts.csv", 
   row.names = F,
   na = "")
+
+
+# AE ----
+ae  <- readXPT("ae")  
+ae  <- ae[ae$usubjid %in% pntSubset,]  # Subset for dev
+
+source('R/AE_imputeCSV.R') # Impute values
+
+#write.csv(tswide, file="data/source/ae.csv", 
+#  row.names = F,
+#  na = "")

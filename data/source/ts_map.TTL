@@ -46,7 +46,7 @@ cd01p:Study_{studyid}
   study:hasSecObjective              cd01p:SecondaryObjective_{objsec_tsval_seq} ;
   study:hasPrimOutcomeMeasure        custom:Observation_{outmspri_tsval} ;
   study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminact_tsval} ;
-  study:hasProtocolSpecifiedActivity cd01p:Arm_{arm_tsval} ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_{arm_tsvalcd} ;
   study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch_tsvalcd} ;
   study:hasProtocolSpecifiedActivity custom:Visit{visit_tsvalcd}Activity;
   study:hasRegistryID                cd01p:StudyRegistryIdentifier_{regid_tsval} ;
@@ -55,8 +55,7 @@ cd01p:Study_{studyid}
   study:hasStudyID                   cd01p:StudyIdentifier_1 ;
   study:hasTitle                     cd01p:Title_{studyid} ;
   study:interventionModel            sdtmterm:InterventionModel_{intmodel_tsval} ;
-  study:interventionType             sdtmterm:InverventionType_{inttype_tsval} ;
-  study:isAddOnStudy                 sdtmterm:NoYesResponse_{addon_tsval} ;
+  study:interventionType             sdtmterm:InterventionType_{inttype_tsval} ;
   study:narms                        "{narms_tsval}"^^xsd:int ;
   study:randomizedTrial              sdtmterm:NoYesResponse_{random_tsval} ;
   study:studyDrug                    code:Substance_{trt_tsval} ;
@@ -74,7 +73,9 @@ cd01p:Interval_{sstdtc_tsval}_to_{sendtc_tsval}
   rdf:type          study:StudyInterval ;
   skos:prefLabel    "Interval {sstdtc_tsval} to {sendtc_tsval}"^^xsd:string ;
   time:hasBeginning cd01p:Date_{sstdtc_tsval} ;
+  time:hasDuration  cd01p:StudyDuration_{studyid} ;
   time:hasEnd       cd01p:Date_{sendtc_tsval} ;
+
 .
 
   #---- Study Begin -----------------------------------------------------------
@@ -140,7 +141,7 @@ cd01p:AdminActivity_{adminact_tsval}
 .
 
 #---- Treatment Arms   --------------------------------------------------------
-cd01p:Arm_{arm_tsval}
+cd01p:Arm_{arm_tsvalcd}
   rdf:type       study:{arm_type};  
   rdf:type       study:{arm_type2}; 
   skos:altLabel  "{arm_tsvalcd}"^^xsd:string ; 
@@ -159,7 +160,7 @@ cd01p:EpochInterval_{epoch_tsvalcd_lc}
 .
 
 #---- Registry ID   -----------------------------------------------------------
-cd01p:StudyRegistryIdentifier__{regid_tsval}
+cd01p:StudyRegistryIdentifier_{regid_tsval}
   rdf:type           study:StudyRegistryIdentifier ;
   skos:prefLabel     "{regid_tsval}"^^xsd:string ;
   code:hasCode       "{regid_tsval}" ;

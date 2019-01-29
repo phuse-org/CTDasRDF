@@ -1,39 +1,34 @@
 ###############################################################################
 # FILE: compTriples-Stardog-Shiny.R
-# DESC: Create a table of triples that differ from the Sujbect node to all 
-#         attached predicates,objects (1 level only) 
+# DESC: Compare instance data triples created by the Ontology Subteam with 
+#       those created by the data derivation team using XPT conversion and SMS
+#       mapping. 
+#       Specify a SUBJECT value and compare the predicates and objects at that
+#       level only (no traversal)
 # SRC : 
 # IN  : prefixList.csv, Stardog Graphs
 # OUT : ShinyApp window
-# REQ : data uploaded to graphs Stardog: CTDasRDF,  CTDasRDFOnt
+# REQ : data uploaded to graphs Stardog: CTDasRDFSMS,  CTDasRDFOnt
 #       Prefixs file, IRI parsing function in Functions.R
-# NOTE: Includes display of the triples available from both graphs
-#         that do not match.
+# NOTE: Includes display of the triples available from both graphs, and those 
+#       that are in one, but not in the other.
 #   Full IRIs returned even if you specified PREFIX statements the query, so why 
 #     note remove them from the query? They are needed to allow specification 
 #     of different Subject nodes using their qnam and not full IRI  when 
 #     validating different parts of the graph.
 # TODO: 
-#    Implement identifcation of "in one graph and not in the other "
-# ERROR:
-#  This query works fine in Stardog but not from the RShiny with this Subject node:
-#  prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#>
-#  SELECT *
-#  WHERE{
-#    cdiscpilot01:StudyParticipationInterval_2013-12-26_2014-07-02T11%3A45  ?p ?o
-#  } 
 ###############################################################################
-library(plyr)    #  rename
+library(plyr)    # rename
 library(dplyr)   # anti_join. MUst load dplyr AFTER plyr!!
-library(reshape) #  melt
+library(DT)      # oh so pretty data table.
+library(reshape) # melt
 library(SPARQL)
 library(shiny)
-library(DT)
 
 setwd("C:/_gitHub/CTDasRDF/r")
 source("validation/Functions.R")
 
-# Endpoints
+# Ontology and SMS graphs running on local server
 epOnt = "http://localhost:5820/CTDasRDFOnt/query"
 epSMS = "http://localhost:5820/CTDasRDFSMS/query"
 
@@ -83,7 +78,7 @@ ui <- fluidPage(
 server <- function(input, output) {
 
   # Ontology Triples ----------------------------------------------------------   
-      # QC of the query as a text render
+      # QC of the query as a text render when debugging.
         #output$queryCheckOnt <- renderText({
         #  paste0(prefixBlock, queryStart, "
         # WHERE {", input$rootNodeOnt," ?p ?o . } ORDER BY ?p ?o "

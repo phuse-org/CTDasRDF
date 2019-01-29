@@ -1,23 +1,22 @@
 # Data Mapping and Conversion
 
 ## Introduction
-Most instance data is uploaded to the graph by converting source XPT files. Notable exceptions include graph metadata (when and how the graph was created) and other information that is not stored in the XPT files  [ADD EXAMPLE - TW]
+Data from study CDISCPILOT01, part of the PhUSE project "Test Data Factory", provides the source XPT files for this project as SDTM version 3.2. The files are available within this project at: ./data/source/updated_cdiscpilot.
 
-Pre-processing and creation of new data not in the original sources is minimized wherever possible. Data imputation is used for values typically seen in SDTM source data but absent from the study used to develop the prototype. The value for birth date is an example described later in this document.
+Instance data from source XPT files is converted to CSV files for mapping to the  graph database using Stardog SMS. Data correction and augmentation occurs during the conversion process and includes correction of obvious data errors, creation of new data to facilitate testing and graph development, and creation of graph metadata (when and how the graph was created). Creation of new data is discouraged but necessary in many cases. The value for birth date is an example described later in this document.
+
+R scripts convert the XPT files and perform data manipulation. Creation of new data within the R Scripts create should be limited to changes to values already present in the source XPT to create values suitable for URI creation, etc. As a general rule, **augmentation** data should be sourced from Excel files created for this purpose with the naming convention *<domain name>*_SUPPLMENTAL.XLSX  (Example TS_SUPPLEMENTAL.XLSX). *This approach was initiated with the TS domain in January 2019. R scripts for DM, VS, and EX  should be revisited and the supplmental XLSX files created where appropriate*. 
+
+The resulting CSV files are mapped to the graph using Stardog Mapping Syntax (SMS). SMS files are created manually in a text editor by referencing the ontology and instance data created by the ontology team. Map files are named using the convention  *domainname*_map.TTL and are located in the same /data/source folder as the CSV files.
 
 
-## General Notes
-XPT files are converted to CSV using R. The conversion process then relies on Stardog Mapping Syntax (SMS) to convert CSV files to the graph. Mapping files are named using the convention *domainname*_mappings.TTL and are located in the same /data/source folder as the CSV files.
-
-## Data Files
-Source data comes from the PhUSE "Test Data Factory" CDISCPILOT01 study,
-SDTM version 3.2. The files are available within this project at: ./data/source/updated_cdiscpilot . Domains under construction include: DM, SUPPM, EX, and VS. SUPPVS is pending and the projet is likely to extend to TS in the near future.
-
+Ontology triples that are NOT instance data are not recreated during the data conversion process. Rather, this information is extracted from the ontology TTL files, saved, and uploaded to the CTDasRDFSMS graph manually.  *Documentation will be added for this process.*
 
 ## Process Overview
 1. Run ./r/**XPTtoCSV.R**
   * Convert sources from XPT
   * Impute values
+  * Read in augmentation data
   * Subset as needed for testing
   * Create .CSV for each domain
 2. Upload to Stardog using SMS mapping
@@ -26,27 +25,24 @@ SDTM version 3.2. The files are available within this project at: ./data/source/
 ### R Programs
 | Order  | File                 | Description                                  |
 | ------ | -------------------- | ---------------------------------------------|
-| 1.     | XPTtoCSV.R           | Main driver program data conversion using R. Metadata import and timestamp. |
+| 1.     | XPTtoCSV.R           | Main driver program for data conversion. Metadata import and timestamp. |
 | 2.     | Functions.R          | Functions called during conversion process |
-| 3.     | DM_imputeCSV.R       | DM imputation, encoding. Must be run before EX. See Details for DM,EX data files. |
+| 3.     | DM_imputeCSV.R       | DM imputation, encoding. **Must be run before EX.** See Details for DM,EX data files. |
 |        | XPTtoCVS:SUPPDM      | No imputation for SUPPMD. XPTtoCVS.R processes SUPPDM directly. |
-| 4.     | EX_imputeCSV.R       | EX imputation, encoding. Incomplete 2012-12-21
+| 4.     | EX_imputeCSV.R       | EX imputation, encoding. *Currently incomplete.*
 | 5.     | VS_imputeCSV.R       | VS Imputation|
-| 6.     | _TS_impute.CVS_      | **_planned_** |
-| 7.     | _TBD_                | _TBD_ |
+| 6.     | TS_imputeCSV.R       | TS imputation. |
+| 7.     | AE_imputeCSV.R       | **planned** |
 
 ### Stardog .BAT files
 | Order  | File                 | Description                                  |
 | ------ | -------------------- | ---------------------------------------------|
 | NA     | StarDogUpload.BAT    | Calls the individual mapping files to upload domains to the triplestore. |
 
-
-
-
 ## General Rules
 
 ### Data Creation
-Some data required for developing and testing the model is not present in the source XPT files. Examples include `Investigator` and `InvestigatorID`. Values created for this purpose are stored in CSV files prefixed with the name `ctdasrdf_` to identify it as supplemental data created for the project. Each CSV file has a corresponding `_mappings.TTL` file. The timesstamp in the metadata file ctdasrdf_graphMeta.csv is updated programmatically when XPTtoCSV.R is run. The other CSV files are created and maintained manually.
+Some data required for developing and testing the model is not present in the source XPT files. Examples include `Investigator` and `InvestigatorID`. Values created for this purpose are stored in CSV files prefixed with the name `ctdasrdf_` to identify it as supplemental data created for the project. Each CSV file has a corresponding `_map.TTL` file. The timesstamp in the metadata file ctdasrdf_graphMeta.csv is updated programmatically when XPTtoCSV.R is run. The other CSV files are created and maintained manually.
 
 | File                   | Description                       |
 | ---------------------- | ----------------------------------|
@@ -118,8 +114,8 @@ Graph metadata including data conversion date and graph version is stored in the
 
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
-|ctdasrdf_graphmeta.csv | Basic graph metadata | Description of graph content, status, version, and timestamp information.
-|ctdasrdf_graphmeta_mappings.TTL|SMS Map | Map to graph. |
+|Graphmeta.csv | Basic graph metadata | Description of graph content, status, version, and timestamp information.
+|Graphmeta_map.TTL|SMS Map | Map to graph. |
 
 
 ## Investigator and Site
@@ -127,10 +123,10 @@ Investigator and site information was not available in the original data. This i
 
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
-|ctdasrdf_invest.csv | Investigator and site data | Investigator and assignment of investigator to site 
-|ctdasrdf_invest_mappings.TTL | SMS Map        | Map to graph. |
+|Invest.csv | Investigator and site data | Investigator and assignment of investigator to site 
+|Invest_map.TTL | SMS Map        | Map to graph. |
 
-
+-------------------------------------------------------------------------------
 ## DM
 
 | File      | Role                     | Description                                  |
@@ -138,7 +134,7 @@ Investigator and site information was not available in the original data. This i
 |DM_imputeCSV.R | Data imputation and encoding| Creation of *birthdate* <br/>Assignment of Informed Consent Date<br/>Subject 01-701-1015: Death Date and Flag created. Creates dmDrugInt dataframe to merge into EX.|
 | DM.XPT | Orginal XPT  |  From pilot data |
 | DM_subset.csv | Subset for dev  |  First 3 patients (subject to change) |
-| DM_mappings.TTL | SMS Map |   Map to graph. |
+| DM_map.TTL | SMS Map |   Map to graph. |
  
 
 ### SMS details
@@ -146,7 +142,7 @@ Investigator and site information was not available in the original data. This i
 Most `study:participatesIn` relations use *usubjid* in the IRIs because the participatesIn Objects are unique to that person. Examples include *InformedConsentAdult_{usubjid}* and *DemographicDataCollection_{usubjid}* . CumulativeDrugAdministration is an exception because it is an interval that may be common to more then one usubjid. It is therefore based on the CumulativeDrugAdministration interval as `CumulativeDrugAdministration_{cumuDrugAdmin_im_en}` where `cumuDrugAdmin_im_en` is created in **DM_imputeCSV.R** as the combination of `rfxstdtc` and `rfxendtc`  (drug admin start and end dates).
 
 
-The following values are created in the mapping:
+The following values are created in the map file:
 
 * `VisitScreening1DemogDataColl` because DEMOG info was collected at Screening 1 for this study
 *  `code:ActivityStatus_CO` : Assumes successful collection of data for demographics, informed consent, etc.
@@ -157,7 +153,7 @@ DM contains the Drug Exposure interval: `rfxstdtc` to `rfxendtc`  and is therefo
 
 DM_imputeCSV.R also creates the dataframe dmDrugInt that contains the field `cumuDrugAdmin_im`, the cumulative drug adminstration interval which is the combination of `rfxstdtc` and `rfxendtc`.  This value could also be computed for EX (min and max exposure dates on a per-patient basis) but the values in DM as taken as the authority.  dmDrugInt is merged into EX within XPTtoCSV.R (this may later move to EX_imputeCSV.R).
 
-
+-------------------------------------------------------------------------------
 ## SUPPDM
 This domain is very simple so there is no SUPPDM_imputeCSV.R The XPT is loaded within XPTtoCSV.R, subset to the correct list of usubjids, then written out to the CSV file.
 
@@ -166,11 +162,11 @@ This domain is very simple so there is no SUPPDM_imputeCSV.R The XPT is loaded w
 | --------- | ------------------------ | ---------------------------------------------|
 | SUPPDM.XPT | Orginal XPT  |  From pilot data |
 | SUPPDM_subset.csv | Subset for dev  |  First 3 patients (subject to change) |
-| SUPPDM_mappings.TTL | SMS Map |   Map to graph. |
+| SUPPDM_map.TTL | SMS Map |   Map to graph. |
 
 ### SMS details
 
-The following values are created in the mapping. 
+The following values are created in the map: 
 
  * `study:activityStatus code:ActivityStatus_CO;`
  * `study:hasPerformer cd01p:Sponsor_1 ;`
@@ -184,6 +180,7 @@ The following values are created in the mapping.
 | Population Flags  | `PopFlag{qnam}_{usubjid}`  | Unique to each Person,  a combination of the qnam and subjid |
 
 
+-------------------------------------------------------------------------------
 ## VS
 
 ### Visit Activity
@@ -210,16 +207,12 @@ The data is modeled to the graph using this pattern:
 | 8  | Perform tests | `vstestcd=DIABP, SYSBP, TEMP |
 
 
-
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
 | VX.XPT    | Orginal XPT              |  From pilot data |
 | VS_subset.csv | Subset for dev       |  All VS obs. for patient 1015. this is more data than Ont Instances. |
-| VS_mappings.TTL | SMS Map | Map to graph. |
+| VS_map.TTL | SMS Map | Map to graph. |
 
-
-### Inferencing of Protocol Rules using OWL 2
-_[Approach being implemented April 2018 with documentation to follow]_
 
 ### SMS details
 
@@ -229,13 +222,14 @@ _[Approach being implemented April 2018 with documentation to follow]_
 | AssumeBodyPosition | AssumeBodyPosition{im_vspos_CCase}_{usubjid} | im_vspos_CCase = Camel-cased `vspos` (=Supine or Standing) specific to each patient.  Patient 1 Standing, Patient 2 standing, etc.
 
 
+-------------------------------------------------------------------------------
 ## EX
 
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
 | EX.XPT    | Orginal XPT              |  From pilot data |
 | EX_subset.csv | Subset for dev       |  First 3 exposure events for patient 1015    |
-| EX_mappings.TTL | SMS Map |   Map to graph. |
+| EX_map.TTL | SMS Map |   Map to graph. |
 
 ### SMS details
 Date for the visit is extracted from VS, not from EX, because the EX date is sometimes later (not on the same day as the visit date). Date of the visit from VS:`vsdtc_en` while the EX exposure date is `exstdtc_en`.
@@ -243,6 +237,7 @@ Date for the visit is extracted from VS, not from EX, because the EX date is som
 Recall that the Drug Exposure interval is created from data in DM, not EX. See DM details, above.
 
 
+-------------------------------------------------------------------------------
 ## TS
 
 | File        | Role                     | Description                                  |
@@ -274,11 +269,28 @@ VistAmbulECGPlaceActivity, VisitBaselineActivity, VisitWk12Acvitity, etc.
 Are created in **TS_supplemental.xlsx**. Visit information was needed to complete the VS and EX data representations in support of derviving DM reference exposure start and end dates. Full visit information should be in SV.xpt, a domain we have not yet converted. At that time, the Visit Activity values can be removed from the spreadhseet.  [notes from AO to TW 2019-01-06]
 
 
-
 ### SMS details
 To be added.
 
 
+-------------------------------------------------------------------------------
+## AE
+TO BE DEVELOPED  
+
+| File        | Role                     | Description                                  |
+| ---------   | ------------------------ | ---------------------------------------------|
+| AE.XPT      | Orginal XPT              |  From pilot data |
+| AE.csv      |                          |                |
+| AE_map.TTL  | SMS Map                 |  Map to graph. |
+
+### Data Corrections and Imputations
+
+### Data Additions
+
+### SMS details
+
+
+-------------------------------------------------------------------------------
 # Data Validation
 
 Location:  ./r/validation
