@@ -15,11 +15,17 @@
 #  Export to TTL: stardog data export --format TURTLE CTDacd sRDFSMS C:/_github/CTDasRDF/data/source/EXPORT.ttl
 #  Site information to be read in from a seperate source file (site seq, country id, etc.)
 # TODO: AdminActivity Data cutoff preflabel needs to come from the data
+# QUESTIONS to AO 2019-01-29 : Source of these p,o? 
+#   code:outcome code:AEOutcome_NRNR ;# ??
+#   study:referencePeriodDay 64 ;
+#   study:referenceTimePointDay 34 ;
+#  
 ###############################################################################
 @prefix cd01p:        <https://w3id.org/phuse/cd01p#> .
 @prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
 @prefix code:         <https://w3id.org/phuse/code#> .
 @prefix custom:       <https://w3id.org/phuse/custom#> .
+@prefix meddra:       <https://w3id.org/phuse/meddra#> .
 @prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdtmterm:     <https://w3id.org/phuse/sdtmterm#> .
 @prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
@@ -37,76 +43,65 @@ cdiscpilot01:Person_{usubjid}
 # ---- Subtriples ----
 #  Label will have wrong case until correctd 
 cdiscpilot01:AE{aeseq_im}_{aedecod_im} 
-  code:hasCode                       meddra:LLT{aellt_meddraN_im}_{aellt_meddraN_im};
-  rdf:type                           study:AdverseEvent ;
-  skos:prefLabel                     "AE{aeseq_im} {aedecod}"^^xsd:string ;
-  study:actionTaken                  "{aeacn}" ;
-  study:cancer                       sdtmterm:NoYesResponse_{aescan} ;
-  study:causality                    code:Causality_{aerel_im_titleC} ;
-  study:congenitalDefect             sdtmterm:NoYesResponse_{aescong} ;
-  study:death                        sdtmterm:NoYesResponse_{aesdth} ;
-  study:disabling                    sdtmterm:NoYesResponse_{aesdisab} ;
-  study:endDay                       "{aeendy}"^^xsd:int ;
-  study:groupID                      "{aeggrpid_im}" ;  
-  study:hasCategory                  "{aecat_im}" ;
-  study:hasDataCollectionDate        cdiscpilot01:Date_{aedtc} ;   # NEED TO ADD DATE TRIPLES
-  study:hasInterval                  cdiscpilot01:Interval_{aestdtc}_{aeendtc} ;  # NEED INTERVAL TRIPLES!
-  study:hasSubcategory               "{aescat_im}" ;  # hard coded?
-  study:hospitalization              sdtmterm:NoYesResponse_{aeshosp} ;
-  study:lifeThreatening              sdtmterm:NoYesResponse_{aeslife} ;
-  study:modifiedTerm                 "{aedecod}" ; 
-  study:overdose                     sdtmterm:NoYesResponse_{aesod} ;
-  study:referenceID                  "REFID{aeseq_im}" ; 
-  study:reportedTerm                 "{aedecod}" ;
-  study:serious                      sdtmterm:NoYesResponse_{aeser} ;
-  study:severity                     code:Severity_{aesev} ;
-  study:sponsordefinedID             "{aespid}" ;
-  study:startDay                     "{aestdy}"^^xsd:int ;
-
-# QUESTIONS to AO OR TO RESEARCH IN THE DATA
-#  code:outcome code:AEOutcome_NRNR ;# ??
-#   # aeacn is NA for all obs.
-#  study:actionTakenOther "N/A" ; # Source?
-#  study:adverseEventPattern "SINGLE EVENT" ; # ?
-#  study:concomitantTreatmentGiven sdtmterm:NoYesResponse_N ;  # ?
-
-#  study:hasReferenceTimePointEndDate cdiscpilot01:Date_2012-07-07 ;  # where this date comes from?
-#  
-#  study:isPrespecified sdtmterm:NoYesResponse_N ;
-#  study:medicallyImportantSeriousEvent sdtmterm:NoYesResponse_N ;
-#  
-#  
-#  study:referencePeriodDay 64 ;
-#  study:referenceTimePointDay 34 ;
-#  study:relationshipToNonStudyDrug "NONE" ;
-#  
-#  study:seq "1"^^xsd:float ;
+  code:hasCode                         meddra:LLT{aellt_meddraN_im}_{aellt_meddraN_im} ;
+  rdf:type                             study:AdverseEvent ;
+  skos:prefLabel                       "AE{aeseq_im} {aedecod}"^^xsd:string ;
+  study:actionTaken                    "{aeacn}"^^xsd:string ;
+  study:actionTakenOther               "{aeacnoth_im}"^^xsd:string ;
+  study:adverseEventPattern            "{aepatt_im}"^^xsd:string ; 
+  study:cancer                         sdtmterm:NoYesResponse_{aescan} ;
+  study:causality                      code:Causality_{aerel_im_titleC} ;
+  study:concomitantTreatmentGiven      sdtmterm:NoYesResponse_{aecontrt_im} ;
+  study:congenitalDefect               sdtmterm:NoYesResponse_{aescong} ;
+  study:death                          sdtmterm:NoYesResponse_{aesdth} ;
+  study:disabling                      sdtmterm:NoYesResponse_{aesdisab} ;
+  study:endDay                         "{aeendy}"^^xsd:int ;
+  study:groupID                        "{aegrpid_im}"^^xsd:string ;
+  study:hasCategory                    "{aecat_im}"^^xsd:string ;
+  study:hasDataCollectionDate          cdiscpilot01:Date_{aedtc} ;
+  study:hasInterval                    cdiscpilot01:Interval_{aestdtc}_{aeendtc} ;
+  study:hasReferenceTimePointEndDate   cdiscpilot01:Date_{aeentpt_im} ;
+  study:hasSubcategory                 "{aescat_im}"^^xsd:string ;
+  study:hospitalization                sdtmterm:NoYesResponse_{aeshosp} ;
+  study:isPrespecified                 sdtmterm:NoYesResponse_{aepresp} ;
+  study:lifeThreatening                sdtmterm:NoYesResponse_{aeslife} ;
+  study:medicallyImportantSeriousEvent sdtmterm:NoYesResponse_{aesmie_im} ;
+  study:modifiedTerm                   "{aedecod}"^^xsd:string ;
+  study:overdose                       sdtmterm:NoYesResponse_{aesod} ;
+  study:referenceID                    "REFID{aeseq_im}" ;
+  study:relationshipToNonStudyDrug     "{aerelnst_im}" ;
+  study:reportedTerm                   "{aedecod}"^^xsd:string ;
+  study:serious                        sdtmterm:NoYesResponse_{aeser} ;
+  study:severity                       code:Severity_{aesev} ;
+  study:sponsordefinedID               "{aespid}"^^xsd:string ;
+  study:startDay                       "{aestdy}"^^xsd:int ;
+  study:seq                            "{aeseq}"^^xsd:int ;
+.
 
 # ---- Subtriples ----
 cdiscpilot01:Date_{aedtc} 
-  rdf:type study:DataCollectionDate ;
-  rdf:type study:FixedDoseIntervalEnd ;
-  rdf:type study:VisitDate ;
-  skos:prefLabel "{aedtc}" ;
+  rdf:type                  study:DataCollectionDate ;
+  rdf:type                  study:FixedDoseIntervalEnd ;
+  rdf:type                  study:VisitDate ;
+  skos:prefLabel            "{aedtc}" ;
   study:dateTimeInXSDString "{aedtc}" ;
 .
 
-cdiscpilot01:Interval_{aestdtc}_{aeendtc}
-#DEL cdiscpilot01:Interval_2012-08-07_2012-08-30
-  rdf:type study:AdverseEventInterval ;
-  skos:prefLabel "Interval {aestdtc} to" ;
+cdiscpilot01:Interval_{aestdtc}_{aeendtc} 
+  rdf:type          study:AdverseEventInterval ;
+  skos:prefLabel    "Interval {aestdtc} to {aeendtc}" ;
   time:hasBeginning cdiscpilot01:Date_{aestdtc} ;
-  time:hasEnd cdiscpilot01:Date_{aeendtc} ;
+  time:hasEnd       cdiscpilot01:Date_{aeendtc} ;
 .
 
-cdiscpilot01:Date_{aestdtc}
-  rdf:type study:AdverseEventBegin ;
-  skos:prefLabel "{aestdtc}" ;
+cdiscpilot01:Date_{aestdtc} 
+  rdf:type                  study:AdverseEventBegin ;
+  skos:prefLabel            "{aestdtc}" ;
   study:dateTimeInXSDString "{aestdtc}" ;
 .
 
 cdiscpilot01:Date_{aeendtc} 
-  rdf:type study:AdverseEventEnd ;
-  skos:prefLabel "{aeendtc} " ;
-  study:dateTimeInXSDString "{aeendtc} " ;
+  rdf:type                  study:AdverseEventEnd ;
+  skos:prefLabel            "{aeendtc}" ;
+  study:dateTimeInXSDString "{aeendtc}" ;
 .

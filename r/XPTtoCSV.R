@@ -110,6 +110,6 @@ ae  <- ae[ae$usubjid %in% pntSubset,]  # Subset for dev
 
 source('R/AE_imputeCSV.R') # Impute values
 
-#write.csv(tswide, file="data/source/ae.csv", 
-#  row.names = F,
-#  na = "")
+write.csv(ae, file="data/source/ae.csv", 
+  row.names = F,
+  na = "")

@@ -94,8 +94,18 @@ ae$aerel_im_titleC <- gsub("([[:alpha:]])([[:alpha:]]+)", "\\U\\1\\L\\2", ae$aer
 ae[ae$aeseq_im < 10, "aeacn"] <- "none"
 ae[ae$aeseq_im == 6, "aeacn"] <- "dose reduced"
 
-vs[vs$vsseq == 86  & vs$usubjid == "01-701-1015", "vsspid_im"]  <- "124"
+ae[ae$aeseq_im < 10, "aepatt_im"]   <- "SINGLE EVENT"
+ae[ae$aeseq_im < 10, "aecontrt_im"] <- "N"
+ae[ae$aeseq_im < 10, "aeacnoth_im"] <- "N/A"
 
+ae[ae$aeseq_im < 10, "aesmie_im"] <- "N"
+
+ae[ae$aeseq_im < 10, "aerelnst_im"] <- "NONE"
+
+
+ae[ae$aeseq_im == 3, "aeentpt_im"] <- "2013-12-09"
+ae[ae$aeseq_im == 5, "aeentpt_im"] <- "2012-07-07"
+ae[ae$aeseq_im == 7, "aeentpt_im"] <- "2012-08-01"
 
 #aeAll<-dplyr::bind_rows(ae, aeAdditions)
 

@@ -31,7 +31,6 @@ ts <- ts[, !(names(ts) %in% c('domain'))] # Drop the notes column (explation of 
 tsAdditions <- read_excel("data/source/TS_supplemental.xlsx", col_names=TRUE)
 tsAdditions <- tsAdditions[, !(names(tsAdditions) == 'NOTES')] # Drop the notes column (explation of data)
 
-
 # Kludge: All to char prior to bind
 ts <- data.frame(lapply(ts, as.character), stringsAsFactors=FALSE)
 tsAdditions <- data.frame(lapply(tsAdditions, as.character), stringsAsFactors=FALSE)
@@ -53,7 +52,6 @@ tswide <- data.table::dcast( setDT(tsAll),
 not_all_na <- function(x) any(!is.na(x))
 tswide <- tswide %>% select_if(not_all_na)
 
-
 # CAST results in tsval_xxx, tsparm_xxx,  we need xxx_tsval, xxx_tsparm, so reverse
 #  the text on either side of '_' created during the CAST. 
 names(tswide) <- gsub('(.*)_(.*)', '\\2_\\1', names(tswide))
@@ -62,7 +60,6 @@ names(tswide) <- gsub('(.*)_(.*)', '\\2_\\1', names(tswide))
 tswide <- tswide %>% select(noquote(order(colnames(tswide))))
 
 names(tswide) <- tolower(names(tswide))
-
 
 #---- Imputation  (recoding)
 tswide$tblind_tsval_iri     <- gsub(" ", "_", tswide$tblind_tsval )    # Blinding schema
@@ -75,8 +72,6 @@ tswide$epoch_tsvalcd_lc     <- tolower(tswide$epoch_tsvalcd)
 #  age is missing due to null flavor reason #4.
 
 tswide[1,"agemax_tsval"] <- "NULL.4"  # Recode existing NA to "NULL.4" for use in IRI
-
-
 
 #---- Sequence Numbers
 # Primary and Secondary Objective, Stop Rule sequence number for IRIs.
@@ -92,9 +87,5 @@ tswide[ ! is.na(stoprule_tsval) , "stoprule_tsval_seq" ] <- tswide[ ! is.na(stop
 
 #---- OLDE BELOW HERE -----------------------------------------------------------------
 
-
 # Sort column names ease of refernece 
 tswide <- tswide %>% select(noquote(order(colnames(tswide))))
-
-
-

@@ -136,6 +136,11 @@ Investigator and site information was not available in the original data. This i
 | DM_subset.csv | Subset for dev  |  First 3 patients (subject to change) |
 | DM_map.TTL | SMS Map |   Map to graph. |
  
+### Data limitations
+
+In the source data, there is no explicit link between the *SITE ID* in *DM* and the country in *TS* domain. These links are created as part of the conversion process and show the benefit of representing this data in a graph. Country is an important component in understanding and making decisions with the data, yet this information is typically not explicitly available in SDTM!
+
+
 
 ### SMS details
 
@@ -236,8 +241,8 @@ Date for the visit is extracted from VS, not from EX, because the EX date is som
 
 Recall that the Drug Exposure interval is created from data in DM, not EX. See DM details, above.
 
-
 -------------------------------------------------------------------------------
+
 ## TS
 
 | File        | Role                     | Description                                  |
@@ -260,13 +265,17 @@ In typical Alzheimer's trials, the **primary outcome measure** is the ADAS-Cog (
 Maximum age (Object of predicate study:maxSubjectAge predicate) is changed from NA to NULL.4, indicating 
 that the value for age is missing due to null flavor reason #4.  [AO to TW, 2019-01-06]
 
-
-
 ### Data Additions
+
+Some values did original data did not have CDISC code.
+Trial length was missing so it was added *182 days
+
+
 ####Visit Activities
 VistAmbulECGPlaceActivity, VisitBaselineActivity, VisitWk12Acvitity, etc.
 
-Are created in **TS_supplemental.xlsx**. Visit information was needed to complete the VS and EX data representations in support of derviving DM reference exposure start and end dates. Full visit information should be in SV.xpt, a domain we have not yet converted. At that time, the Visit Activity values can be removed from the spreadhseet.  [notes from AO to TW 2019-01-06]
+Are created in **TS_supplemental.xlsx**. Visit information was needed to complete the VS and EX data representations in support of derviving DM reference exposure start and end dates. 
+
 
 
 ### SMS details
@@ -274,14 +283,17 @@ To be added.
 
 
 -------------------------------------------------------------------------------
+
 ## AE
-TO BE DEVELOPED  
+
+Under development starting January 2019  
+
 
 | File        | Role                     | Description                                  |
 | ---------   | ------------------------ | ---------------------------------------------|
-| AE.XPT      | Orginal XPT              |  From pilot data |
-| AE.csv      |                          |                |
-| AE_map.TTL  | SMS Map                 |  Map to graph. |
+| AE.XPT      | Orginal XPT        |  From pilot data |
+| AE.csv      | Instance data      |                |
+| AE_map.TTL  | SMS Map            |  Map to graph. |
 
 ### Data Corrections and Imputations
 

@@ -75,7 +75,6 @@ cd01p:Interval_{sstdtc_tsval}_to_{sendtc_tsval}
   time:hasBeginning cd01p:Date_{sstdtc_tsval} ;
   time:hasDuration  cd01p:StudyDuration_{studyid} ;
   time:hasEnd       cd01p:Date_{sendtc_tsval} ;
-
 .
 
   #---- Study Begin -----------------------------------------------------------

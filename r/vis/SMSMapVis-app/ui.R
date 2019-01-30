@@ -26,24 +26,27 @@ fluidPage(
     sidebarPanel(
       width=2,
       checkboxGroupInput("maps", HTML("<font class='include'>Include</font> Maps:"),
-        c("DM"       = "DM",
+        c("AE"       = "AE",
+          "DM"       = "DM",
           "SUPPDM"   = "SUPPDM",
           "EX"       = "EX",
           "VS"       = "VS",
           "Invest"   = "Invest",
           "Metadata" = "Graphmeta"),
-          selected   = list('DM','SUPPDM','EX','VS','Invest','Graphmeta' )),
+          # selected   = list('AE','DM','SUPPDM','EX','VS','Invest','Graphmeta' )),
+          selected   = list('AE')),
       checkboxGroupInput("namespaces", HTML("<font class='exclude'>Exclude</font> Name Spaces:"),
         c("cdiscpilot01 (blue)" = "cdiscpilot01:",
           "cd01p (green)"       = "cd01p:",
           "code (dk green)"     = "code:",
-          "study (orange)"      = "study:",
           "custom (red)"        = "custom:",
+          "sdtmterm (cdisc gr)" = "sdtmterm:",
+          "study (orange)"      = "study:",
           "other IRI (yel)"     = "time:|owl:",
           "literal (white)"     = "xsd:")
         )
     ),
-    mainPanel(
+    mainPanel( 
       tabsetPanel( type = "tabs",
         tabPanel( "Plot",
           width=10,
