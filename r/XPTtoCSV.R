@@ -44,7 +44,24 @@ write.csv(graphMeta, file="data/source/Graphmeta.csv",
 
 # ---- XPT Import -------------------------------------------------------------
 # DM ----
-dm  <- head(readXPT("dm"), dm_n)
+
+dm_all <- readXPT("dm")   # For  site ID  list
+dm  <- head(dm_all, dm_n) #subset for instance data testing 
+
+# DM Sites ----   
+# Get the list of sites from DM
+sites <- data.frame(unique(dm_all$siteid))
+colnames(sites)[1] <- "siteid"
+sites$siteNum_im <- seq.int(nrow(sites)) # sequence id used in creating AE URIs
+sites$fcntry <- "USA"   # Name of the field in TS, hard coded here to create a mappable file
+sites$fcntryNum_im <- 1 # hard code for this study: only 1 country.
+
+# Sort column names in the df for quicker referencing
+sites <- sites %>% select(noquote(order(colnames(sites))))
+
+write.csv(sites, file="data/source/sites.csv", 
+  row.names = F,
+  na = "")
 
 source('R/DM_imputeCSV.R')  # Impute values 
 

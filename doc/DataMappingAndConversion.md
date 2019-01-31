@@ -131,7 +131,7 @@ Investigator and site information was not available in the original data. This i
 
 | File      | Role                     | Description                                  |
 | --------- | ------------------------ | ---------------------------------------------|
-|DM_imputeCSV.R | Data imputation and encoding| Creation of *birthdate* <br/>Assignment of Informed Consent Date<br/>Subject 01-701-1015: Death Date and Flag created. Creates dmDrugInt dataframe to merge into EX.|
+|DM_imputeCSV.R | Data imputation and encoding| Creation of *birthdate* <br/>Assignment of Informed Consent Date<br/>Subject 01-701-1015: Death Date and Flag created. Creates dmDrugInt dataframe to merge into EX. |
 | DM.XPT | Orginal XPT  |  From pilot data |
 | DM_subset.csv | Subset for dev  |  First 3 patients (subject to change) |
 | DM_map.TTL | SMS Map |   Map to graph. |
@@ -139,8 +139,6 @@ Investigator and site information was not available in the original data. This i
 ### Data limitations
 
 In the source data, there is no explicit link between the *SITE ID* in *DM* and the country in *TS* domain. These links are created as part of the conversion process and show the benefit of representing this data in a graph. Country is an important component in understanding and making decisions with the data, yet this information is typically not explicitly available in SDTM!
-
-
 
 ### SMS details
 
@@ -157,6 +155,17 @@ The following values are created in the map file:
 DM contains the Drug Exposure interval: `rfxstdtc` to `rfxendtc`  and is therefore mapped in the SMS file for DM, not for EX as one may expect.
 
 DM_imputeCSV.R also creates the dataframe dmDrugInt that contains the field `cumuDrugAdmin_im`, the cumulative drug adminstration interval which is the combination of `rfxstdtc` and `rfxendtc`.  This value could also be computed for EX (min and max exposure dates on a per-patient basis) but the values in DM as taken as the authority.  dmDrugInt is merged into EX within XPTtoCSV.R (this may later move to EX_imputeCSV.R).
+
+
+### Site and Country in DM
+Site identifier (siteid) is present in DM, while the country for sites is stored in TS. There is no explicit link between the two!
+For data processing, siteid is extracted to sites.cvs and country (USA) hard coded. 
+
+| File      | Role                     | Description                                  |
+| --------- | ------------------------ | ---------------------------------------------|
+| sites.csv | Site identifiers         |  All sites listed in DM + country            |
+| sites_map.TTL | SMS Map |   Map to graph. |
+
 
 -------------------------------------------------------------------------------
 ## SUPPDM
