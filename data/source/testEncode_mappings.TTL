@@ -1,0 +1,28 @@
+###############################################################################
+# FILE: ctdasrdf_graphmeta_mappings.TTL
+# DESC: Stardog SMS Template file for mapping graph metadata to graph.  
+# REQ : 
+# SRC : 
+# IN  : CSV updated from R script XTPtoCSV.R 
+# OUT : 
+# NOTE:  R script updates the timestamp in the CVS prior to import to graph
+#        stardog-admin virtual import CTDasRDF testEncode_mappings.TTL testEncode.CSV
+# TODO: 
+###############################################################################
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix test: <http://www.example.org/test#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+test:Date_{rfpend_en}
+  rdf:type           test:encodedDate ;
+  test:hasEncodedVal "{rfpend_en}"^^xsd:string ;
+  skos:prefLabel     "{rfpend}"^^xsd:string ;
+.
+
+test:Ethnic_{ethnic_en}
+  rdf:type           test:encodedString ;
+  test:hasEncodedVal "{ethnic_en}"^^xsd:string ;
+  skos:prefLabel     "{ethnic}"^^xsd:string ;
+.
+

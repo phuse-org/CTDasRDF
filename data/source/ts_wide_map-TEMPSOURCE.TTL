@@ -1,0 +1,25 @@
+﻿#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+# January 3
+
+
+
+
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+## 
+##  
+##  
+##  study:hasStudyID                   cd01p:StudyIdentifier_{studyIdSeq} ;
+##  study:hasTitle                     cd01p:Title_{studyid} ;
+##  study:interventionModel            sdtmterm:InterventionModel_{intervModel} ;
+##  study:interventionType             sdtmterm:InterventionType_{intervType} ;
+##  study:narms                        "3"^^xsd:int ;
+##  study:randomizedTrial              sdtmterm:NoYesResponse_{randTrialNY} ;
+##  study:studyDrug                    code:Substance_{studyDrug} ; 
+##  study:studyType                    sdtmterm:StudyType_{studyType} ;
+##  study:trialPhase                   sdtmterm:TrialPhase_{trialPhase} ;
+##  study:trialType                    sdtmterm:TrialType_{trialType} ; 
+##.
+

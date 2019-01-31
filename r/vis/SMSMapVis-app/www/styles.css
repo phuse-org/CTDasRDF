@@ -1,0 +1,76 @@
+/*-----------------------------------------------------------------------------
+
+FILE: styles.css
+DESC: Styles for app
+REQ : import league-gothic for use of that font
+SRC : 
+IN  : 
+OUT : 
+NOTE: 
+TODO: Clean up form other app
+-----------------------------------------------------------------------------*/
+@import url(league-gothic.css);
+
+
+body {
+  background-color: #919191;
+}
+.nodeLabel{
+    font-size: 2em;
+    color: red;
+}
+
+.tooltip .tooltiptext{
+    font-size: 2em;
+}
+
+a {
+  color: #0000EE;
+  font-weight: bold;
+  text-decoration:underline;
+  font-size: 0.8em;
+  
+}
+h2 { 
+  font-size: 1.11em;
+  font-weight: bold;
+}
+
+h4 { 
+  font-size: 1.0em; 
+  font-weight: bold;
+}
+
+/*---- Fonts ----------------------------------------------------------------*/
+/* Size */
+.regSmall{
+  font-size: 0.8em;
+}
+
+
+.appTitle{
+  color:#00008b
+}
+
+/* Row headers. Eg: Purpose, Primary author, etc. */
+.rowHead{
+  font-weight: bold;
+}
+
+
+
+/* include = green */
+.include{
+  font-family:'Arial';
+  color: #008000;
+  font-weight: bold;
+  font-size: 1.0em;
+}
+
+/* exclude = red */
+.exclude{
+  font-family:'Arial';
+  color: #b30000;
+  font-weight: bold;
+  font-size: 1.0em;
+}

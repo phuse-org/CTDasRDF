@@ -1,0 +1,70 @@
+@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+code:AssumeBodyPosition_o89vhmn7q0jdvg7hfa09ln886cd72pra owl:sameAs sdtmterm:C71148.C62166 ;
+	skos:prefLabel "STANDING" .
+
+code:AssumeBodyPosition_vatqe2l0e4k6tlvl3s19dsbfpq1kb104 owl:sameAs sdtmterm:C71148.C62167 ;
+	skos:prefLabel "SUPINE" .
+
+code:Ethnic_4mt49r1r74dq9jivnf99f5hls9a7enjt owl:sameAs sdtmterm:C66790.C17998 ;
+	skos:prefLabel "UNKNOWN" .
+
+code:Ethnic_6nr4j5sk6aaoiss7uo4genrc517oatrj owl:sameAs sdtmterm:C66790.C43234 ;
+	skos:prefLabel "NOT REPORTED" .
+
+code:Ethnic_gnja37oohiiipittns2ro9rma4k5q8i5 owl:sameAs sdtmterm:C66790.C17459 ;
+	skos:prefLabel "HISPANIC OR LATINO" .
+
+code:Ethnic_j6df4va0bc0gqgc4movdocc72ukinvhm owl:sameAs sdtmterm:C66790.C41222 ;
+	skos:prefLabel "NOT HISPANIC OR LATINO" .
+
+code:Lat_ikij40vnic29g4a3b6eervdac1nggf52 owl:sameAs sdtmterm:C99073.C25228 ;
+	skos:prefLabel "RIGHT" .
+
+code:Lat_iqf2ph3mvtrbsgc1bcbthussd1fpfoi3 owl:sameAs sdtmterm:C99073.C25229 ;
+	skos:prefLabel "LEFT" .
+
+code:Loc_2j7ulvg07bm1u7mka3jrptp0v78mehkh owl:sameAs sdtmterm:C74456.C12421 ;
+	skos:prefLabel "ORAL" .
+
+code:Loc_3fs6a2orjf2697on8jje479spac9idp4 owl:sameAs sdtmterm:C74456.C12394 ;
+	skos:prefLabel "EAR" .
+
+code:Loc_57cdth1uh2q7b0gnjnijtsji1mc1t2lh owl:sameAs sdtmterm:C74456.C32141 ;
+	skos:prefLabel "ARM" .
+
+code:Race_664d446pnc5irsmuq1md34dg2k93b077 owl:sameAs sdtmterm:C74457.C41259 ;
+	skos:prefLabel "AMERICAN INDIAN OR ALASKA NATIVE" .
+
+code:Race_6esgibca5khh91das4d3pvnbihni5dhp owl:sameAs sdtmterm:C74457.C41260 ;
+	skos:prefLabel "ASIAN" .
+
+code:Race_8393uepqv42l9mmuen518i9178bnc8sv owl:sameAs sdtmterm:C74457.C41261 ;
+	skos:prefLabel "WHITE" .
+
+code:Race_d316b9ejag9dgagrin7hr2sohhqjmngq owl:sameAs sdtmterm:C74457.C16352 ;
+	skos:prefLabel "BLACK OR AFRICAN AMERICAN" .
+
+code:Race_p486f16un5h9j4kbp547rtc9g8bfs2ti owl:sameAs sdtmterm:C74457.C41219 ;
+	skos:prefLabel "NATIVE HAWAIIAN OR OTHER PACIFIC ISLANDER" .
+
+code:Test_dqjccn5606hr9t3t0e1m9b2b5h07htva owl:sameAs sdtmterm:C67153.C25347 ;
+	skos:prefLabel "HEIGHT" .
+
+code:Test_eqv3qai8kcbd6ov3c3ssungsaa1l9lcv owl:sameAs sdtmterm:C67153.C25299 ;
+	skos:prefLabel "DIABP" .
+
+code:Test_i5rmh27rob1a1igj258amoljo80muklt owl:sameAs sdtmterm:C67153.C25298 ;
+	skos:prefLabel "SYSBP" .
+
+code:Test_qk1dsgtkkl9f71od3b1str5054fqp44i owl:sameAs sdtmterm:C67153.C49676 ;
+	skos:prefLabel "PULSE" .
+
+code:Test_r778u45sraqmm2i8k47lphnrdrcd6k48 owl:sameAs sdtmterm:C67153.C25208 ;
+	skos:prefLabel "WEIGHT" .
+
+code:Test_rrosli17fdarcbb8h7ih6kl7fooocm3r owl:sameAs sdtmterm:C67153.C25206 ;
+	skos:prefLabel "TEMP" .

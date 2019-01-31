@@ -1,0 +1,34 @@
+###############################################################################
+# FILE: TermConversion_mappings.ttl
+# DESC: SMS Template to upload terminology conversion values into Stardog.
+#       The values are used to rework the existing instance data and code.ttl 
+#       to change from direct use of sdtm codes to hashed values of the original 
+#       data, mapped within code.ttl.
+#       using 
+# REQ : 
+# SRC : 
+# IN  : TermConversion.csv   - file listing original values to be hashed and their
+#       corresponding sdtm terminlogy values.
+# OUT : 
+# NOTE: stardog-admin virtual import termConversion TermConverson_mappings.TTL TermConversion.csv
+#  To Export to TTL: 1)  stardog data export --format TURTLE CTDasRDF C:/temp/test.ttl
+#      (OR)  use a SPARQL CONSTRUCT query and save as Turtle from Stardog studio
+#
+###############################################################################
+@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
+@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
+@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# -----------------------------------------------------------------------------
+code:{fragprefix}{#original}
+  owl:sameAs sdtmterm:{sdtm} ;
+  skos:prefLabel "{original}"^^xsd:string ;
+.
