@@ -1640,7 +1640,7 @@ study:PreparatoryIntervention
   rdf:type sh:NodeShape ;
   rdfs:subClassOf study:Intervention ;
   skos:definition "An Intervention whose purpose is to prepare a Person for a subsequent Intervention. " ;
-  skos:example "Assume a Body Posistion before a Blood Pressure Measurement. " ;
+  skos:example "Assume a Body Position before a Blood Pressure Measurement. " ;
   skos:prefLabel "Preparatory intervention" ;
 .
 study:PrerequisiteActivity
@@ -3405,22 +3405,6 @@ study:referenceID
   skos:definition "" ;
   skos:prefLabel "reference ID" ;
 .
-study:referencePeriodDay
-  rdf:type owl:DatatypeProperty ;
-  rdfs:domain study:StudyComponent ;
-  rdfs:range xsd:integer ;
-  rdfs:subPropertyOf study:day ;
-  skos:definition "The end of the event relative to the sponsor-defined reference period" ;
-  skos:prefLabel "study reference period day" ;
-.
-study:referenceTimePointDay
-  rdf:type owl:DatatypeProperty ;
-  rdfs:domain study:StudyComponent ;
-  rdfs:range xsd:integer ;
-  rdfs:subPropertyOf study:day ;
-  skos:definition "The end of the event relative to the sponsor-defined reference time point" ;
-  skos:prefLabel "study reference time point day" ;
-.
 study:relationshipToNonStudyDrug
   rdf:type owl:DatatypeProperty ;
   rdfs:domain study:AdverseEvent ;
@@ -3632,6 +3616,12 @@ study:studyday
   rdfs:subClassOf spl:DateFunctions ;
   skos:definition "takes two date strings in ISO 8601 format and calculates the study day using activity date as the first argument and reference date as the 2nd argument" ;
   skos:prefLabel "studyday" ;
+.
+study:toxGrade
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "tox grade" ;
 .
 study:trialPhase
   rdf:type owl:ObjectProperty ;

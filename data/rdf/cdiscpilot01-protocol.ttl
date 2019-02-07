@@ -690,9 +690,6 @@ code:BodyPosition_STANDING
 code:BodyPosition_SUPINE
   rdf:type cd01p:VitalsSignsBodyPosition ;
 .
-code:Country
-  code:hasMethod code:Method_DERIVED ;
-.
 code:Country_1
   rdf:type study:Country ;
 .

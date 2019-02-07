@@ -42,7 +42,7 @@ cdiscpilot01:
   owl:imports <https://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
-cdiscpilot01:AE01_AppSiteErythema
+cdiscpilot01:AE1_AppSiteErythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "APPLICATION SITE ERYTHEMA" ;
   code:hasCode meddra:LLT10003058_AppSiteRedness ;
@@ -75,8 +75,9 @@ cdiscpilot01:AE01_AppSiteErythema
   study:severity code:Severity_MILD ;
   study:sponsordefinedID "E07" ;
   study:startDay 2 ;
+  study:toxGrade 1 ;
 .
-cdiscpilot01:AE02_AppSitePruritus
+cdiscpilot01:AE2_AppSitePruritus
   rdf:type study:AdverseEvent ;
   skos:prefLabel "APPLICATION SITE PRURITUS" ;
   code:hasCode meddra:LLT10003047_AppSiteItching ;
@@ -109,8 +110,9 @@ cdiscpilot01:AE02_AppSitePruritus
   study:severity code:Severity_MILD ;
   study:sponsordefinedID "E08" ;
   study:startDay 2 ;
+  study:toxGrade 1 ;
 .
-cdiscpilot01:AE03_DIarrhoea
+cdiscpilot01:AE3_Diarrhoea
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE03 DIarrhoea" ;
   code:hasCode meddra:LLT10012727_Diarrhea ;
@@ -129,7 +131,7 @@ cdiscpilot01:AE03_DIarrhoea
   study:hasCategory "CAT1" ;
   study:hasDataCollectionDate cdiscpilot01:Date_2014-01-16 ;
   study:hasInterval cdiscpilot01:Interval_2014-01-09-2014-01-11 ;
-  study:hasReferenceTimePointEndDate cdiscpilot01:Date_2013-12-09 ;
+  study:hasReferenceTimePointEndDate cdiscpilot01:Date_2014-01-13 ;
   study:hasSubcategory "SCAT1" ;
   study:hospitalization sdtmterm:NoYesResponse_N ;
   study:isPrespecified sdtmterm:NoYesResponse_N ;
@@ -138,8 +140,6 @@ cdiscpilot01:AE03_DIarrhoea
   study:modifiedTerm "DIARRHEA" ;
   study:overdose sdtmterm:NoYesResponse_N ;
   study:referenceID "REFID3" ;
-  study:referencePeriodDay 10 ;
-  study:referenceTimePointDay 32 ;
   study:relationshipToNonStudyDrug "NONE" ;
   study:reportedTerm "DIARRHOEA" ;
   study:seq "3"^^xsd:float ;
@@ -147,8 +147,9 @@ cdiscpilot01:AE03_DIarrhoea
   study:severity code:Severity_MILD ;
   study:sponsordefinedID "E06" ;
   study:startDay 8 ;
+  study:toxGrade 1 ;
 .
-cdiscpilot01:AE04_AVBlock2ndDeg
+cdiscpilot01:AE4_AVBlock2ndDeg
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE04AVBlock2nd deg" ;
   code:hasCode meddra:LLT10003851_AVBlock ;
@@ -181,8 +182,9 @@ cdiscpilot01:AE04_AVBlock2ndDeg
   study:severity code:Severity_MILD ;
   study:sponsordefinedID "E10" ;
   study:startDay 22 ;
+  study:toxGrade 1 ;
 .
-cdiscpilot01:AE05_Erythema
+cdiscpilot01:AE5_Erythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE05 Erythema" ;
   code:hasCode meddra:LLT10015150_Erythema ;
@@ -201,7 +203,7 @@ cdiscpilot01:AE05_Erythema
   study:hasCategory "CAT1" ;
   study:hasDataCollectionDate cdiscpilot01:Date_2012-08-27 ;
   study:hasInterval cdiscpilot01:Interval_2012-08-07_2012-08-30 ;
-  study:hasReferenceTimePointEndDate cdiscpilot01:Date_2012-07-07 ;
+  study:hasReferenceTimePointEndDate cdiscpilot01:Date_2012-08-06 ;
   study:hasSubcategory "SCAT1" ;
   study:hospitalization sdtmterm:NoYesResponse_N ;
   study:isPrespecified sdtmterm:NoYesResponse_N ;
@@ -210,8 +212,6 @@ cdiscpilot01:AE05_Erythema
   study:modifiedTerm "ERYTHEMA" ;
   study:overdose sdtmterm:NoYesResponse_N ;
   study:referenceID "REFID5" ;
-  study:referencePeriodDay 64 ;
-  study:referenceTimePointDay 34 ;
   study:relationshipToNonStudyDrug "NONE" ;
   study:reportedTerm "ERYTHEMA" ;
   study:seq "1"^^xsd:float ;
@@ -219,8 +219,9 @@ cdiscpilot01:AE05_Erythema
   study:severity code:Severity_MILD ;
   study:sponsordefinedID "E08" ;
   study:startDay 3 ;
+  study:toxGrade 2 ;
 .
-cdiscpilot01:AE06_Erythema
+cdiscpilot01:AE6_Erythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE06 Erythema" ;
   code:hasCode meddra:LLT10024781_LocErythema ;
@@ -253,8 +254,9 @@ cdiscpilot01:AE06_Erythema
   study:severity code:Severity_MODERATE ;
   study:sponsordefinedID "E09" ;
   study:startDay 3 ;
+  study:toxGrade 1 ;
 .
-cdiscpilot01:AE07_Erythema
+cdiscpilot01:AE7_Erythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE07 Erythema" ;
   code:hasCode meddra:LLT10015150_Erythema ;
@@ -272,7 +274,7 @@ cdiscpilot01:AE07_Erythema
   study:hasCategory "CAT1" ;
   study:hasDataCollectionDate cdiscpilot01:Date_2012-09-02 ;
   study:hasInterval cdiscpilot01:Interval_2012-08-07_2012-08-30 ;
-  study:hasReferenceTimePointEndDate cdiscpilot01:Date_2012-08-01 ;
+  study:hasReferenceTimePointEndDate cdiscpilot01:Date_2012-08-14 ;
   study:hasSubcategory "SCAT1" ;
   study:hospitalization sdtmterm:NoYesResponse_N ;
   study:isPrespecified sdtmterm:NoYesResponse_N ;
@@ -281,8 +283,6 @@ cdiscpilot01:AE07_Erythema
   study:modifiedTerm "ERYTHEMA" ;
   study:overdose sdtmterm:NoYesResponse_N ;
   study:referenceID "REFID7" ;
-  study:referencePeriodDay 64 ;
-  study:referenceTimePointDay 34 ;
   study:relationshipToNonStudyDrug "NONE" ;
   study:reportedTerm "ERYTHEMA" ;
   study:seq "4"^^xsd:float ;
@@ -290,8 +290,9 @@ cdiscpilot01:AE07_Erythema
   study:severity code:Severity_MILD ;
   study:sponsordefinedID "E08" ;
   study:startDay 3 ;
+  study:toxGrade 1 ;
 .
-cdiscpilot01:AE08_AppSiteErythema
+cdiscpilot01:AE8_AppSiteErythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE08 App site erythema" ;
   code:hasCode meddra:LLT10003041_AppSiteErythema ;
@@ -325,8 +326,9 @@ cdiscpilot01:AE08_AppSiteErythema
   study:severity code:Severity_MILD ;
   study:sponsordefinedID "E04" ;
   study:startDay 3 ;
+  study:toxGrade 1 ;
 .
-cdiscpilot01:AE09_AppSitePruritus
+cdiscpilot01:AE9_AppSitePruritus
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE09 App site pruritis" ;
   code:hasCode meddra:LLT10003047_AppSiteItching ;
@@ -359,6 +361,7 @@ cdiscpilot01:AE09_AppSitePruritus
   study:severity code:Severity_MILD ;
   study:sponsordefinedID "E05" ;
   study:startDay 21 ;
+  study:toxGrade 1 ;
 .
 cdiscpilot01:AgeDataCollection_01-701-1015
   rdf:type code:AgeDataCollection ;
@@ -499,11 +502,6 @@ cdiscpilot01:Date_1951-01-02
   skos:prefLabel "1951-01-02" ;
   study:dateTimeInXSDString "1951-01-02" ;
 .
-cdiscpilot01:Date_2012-07-07
-  rdf:type study:ReferenceEnd ;
-  skos:prefLabel "2012-07-07" ;
-  study:dateTimeInXSDString "2012-07-07" ;
-.
 cdiscpilot01:Date_2012-07-22
   rdf:type study:DemogDataCollectionDate ;
   rdf:type study:InformedConsentBegin ;
@@ -512,11 +510,6 @@ cdiscpilot01:Date_2012-07-22
   skos:prefLabel "2012-07-22" ;
   study:dateTimeInXSDString "2012-07-22" ;
 .
-cdiscpilot01:Date_2012-08-01
-  rdf:type study:ReferenceEnd ;
-  skos:prefLabel "2012-08-01" ;
-  study:dateTimeInXSDString "2012-08-01" ;
-.
 cdiscpilot01:Date_2012-08-05
   rdf:type study:CumulativeDrugAdministrationBegin ;
   rdf:type study:FixedDoseIntervalBegin ;
@@ -524,10 +517,20 @@ cdiscpilot01:Date_2012-08-05
   skos:prefLabel "2012-08-05" ;
   study:dateTimeInXSDString "2012-08-05" ;
 .
+cdiscpilot01:Date_2012-08-06
+  rdf:type study:ReferenceEnd ;
+  skos:prefLabel "2012-08-06" ;
+  study:dateTimeInXSDString "2012-08-06" ;
+.
 cdiscpilot01:Date_2012-08-07
   rdf:type study:AdverseEventBegin ;
   skos:prefLabel "2012-08-07" ;
   study:dateTimeInXSDString "2012-08-07" ;
+.
+cdiscpilot01:Date_2012-08-14
+  rdf:type study:ReferenceEnd ;
+  skos:prefLabel "2012-08-14" ;
+  study:dateTimeInXSDString "2012-08-14" ;
 .
 cdiscpilot01:Date_2012-08-26
   rdf:type study:AdverseEventBegin ;
@@ -610,11 +613,6 @@ cdiscpilot01:Date_2013-08-14
   skos:prefLabel "2013-08-14" ;
   study:dateTimeInXSDString "2013-08-14" ;
 .
-cdiscpilot01:Date_2013-12-09
-  rdf:type study:ReferenceEnd ;
-  skos:prefLabel "2013-12-09" ;
-  study:dateTimeInXSDString "2013-12-09" ;
-.
 cdiscpilot01:Date_2013-12-26
   rdf:type study:Deathdate ;
   rdf:type study:DemogDataCollectionDate ;
@@ -656,6 +654,11 @@ cdiscpilot01:Date_2014-01-11
   rdf:type study:AdverseEventEnd ;
   skos:prefLabel "2014-01-11" ;
   study:dateTimeInXSDString "2014-01-11" ;
+.
+cdiscpilot01:Date_2014-01-13
+  rdf:type study:ReferenceEnd ;
+  skos:prefLabel "2014-01-13" ;
+  study:dateTimeInXSDString "2014-01-13" ;
 .
 cdiscpilot01:Date_2014-01-14
   rdf:type study:CumulativeDrugAdministrationEnd ;
@@ -1128,9 +1131,9 @@ cdiscpilot01:Person_01-701-1015
   rdf:type study:EnrolledSubject ;
   skos:prefLabel "Person 01-701-1015" ;
   study:actualArm cd01p:Arm_Pbo ;
-  study:afflictedBy cdiscpilot01:AE01_AppSiteErythema ;
-  study:afflictedBy cdiscpilot01:AE02_AppSitePruritus ;
-  study:afflictedBy cdiscpilot01:AE03_DIarrhoea ;
+  study:afflictedBy cdiscpilot01:AE1_AppSiteErythema ;
+  study:afflictedBy cdiscpilot01:AE2_AppSitePruritus ;
+  study:afflictedBy cdiscpilot01:AE3_Diarrhoea ;
   study:deathFlag "Y" ;
   study:hasLifespan cdiscpilot01:Interval_1951-01-02_2013-12-26 ;
   study:hasReferenceInterval cdiscpilot01:Interval_2014-01-02_2014-07-02 ;
@@ -1157,10 +1160,10 @@ cdiscpilot01:Person_01-701-1023
   rdf:type study:EnrolledSubject ;
   skos:prefLabel "Person 01-701-1023" ;
   study:actualArm cd01p:Arm_Pbo ;
-  study:afflictedBy cdiscpilot01:AE04_AVBlock2ndDeg ;
-  study:afflictedBy cdiscpilot01:AE05_Erythema ;
-  study:afflictedBy cdiscpilot01:AE06_Erythema ;
-  study:afflictedBy cdiscpilot01:AE07_Erythema ;
+  study:afflictedBy cdiscpilot01:AE4_AVBlock2ndDeg ;
+  study:afflictedBy cdiscpilot01:AE5_Erythema ;
+  study:afflictedBy cdiscpilot01:AE6_Erythema ;
+  study:afflictedBy cdiscpilot01:AE7_Erythema ;
   study:hasLifespan cdiscpilot01:Interval_1948-08-05_ ;
   study:hasReferenceInterval cdiscpilot01:Interval_2012-08-05_2012-09-02 ;
   study:hasSite cd01p:Site_701 ;
@@ -1179,8 +1182,8 @@ cdiscpilot01:Person_01-701-1028
   rdf:type study:EnrolledSubject ;
   skos:prefLabel "Person 01-701-1028" ;
   study:actualArm cd01p:Arm_Xan_Hi ;
-  study:afflictedBy cdiscpilot01:AE08_AppSiteErythema ;
-  study:afflictedBy cdiscpilot01:AE09_AppSitePruritus ;
+  study:afflictedBy cdiscpilot01:AE8_AppSiteErythema ;
+  study:afflictedBy cdiscpilot01:AE9_AppSitePruritus ;
   study:hasLifespan cdiscpilot01:Interval_1942-07-19_ ;
   study:hasReferenceInterval cdiscpilot01:Interval_2013-07-19_2014-01-14 ;
   study:hasSite cd01p:Site_701 ;
