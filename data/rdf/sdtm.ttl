@@ -3590,7 +3590,7 @@ sdtm:SDTM_AE_Record
             sp:object [
                 sp:varName "pt" ;
               ] ;
-            sp:predicate <https://w3id.org/phuse/meddra#hasPT> ;
+            sp:predicate <https://w3id.org/phuse/mdra#hasPT> ;
             sp:subject [
                 sp:varName "LLT" ;
               ] ;
@@ -3617,7 +3617,7 @@ sdtm:SDTM_AE_Record
             sp:object [
                 sp:varName "hlt" ;
               ] ;
-            sp:predicate <https://w3id.org/phuse/meddra#hasHLT> ;
+            sp:predicate <https://w3id.org/phuse/mdra#hasHLT> ;
             sp:subject [
                 sp:varName "pt" ;
               ] ;
@@ -3644,7 +3644,7 @@ sdtm:SDTM_AE_Record
             sp:object [
                 sp:varName "hlgt" ;
               ] ;
-            sp:predicate <https://w3id.org/phuse/meddra#hasHLGT> ;
+            sp:predicate <https://w3id.org/phuse/mdra#hasHLGT> ;
             sp:subject [
                 sp:varName "hlt" ;
               ] ;
@@ -3671,7 +3671,7 @@ sdtm:SDTM_AE_Record
             sp:object [
                 sp:varName "soc" ;
               ] ;
-            sp:predicate <https://w3id.org/phuse/meddra#hasSOC> ;
+            sp:predicate <https://w3id.org/phuse/mdra#hasSOC> ;
             sp:subject [
                 sp:varName "hlgt" ;
               ] ;

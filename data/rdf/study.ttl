@@ -428,8 +428,7 @@ study:AdverseEvent
   sh:property [
       rdf:type sh:PropertyShape ;
       sh:path code:hasCode ;
-      sh:class <https://w3id.org/phuse/meddra#MedDRAConcept> ;
-      sh:description "	" ;
+      sh:class <https://w3id.org/phuse/mdra#MedDRAConcept> ;
       sh:maxCount 1 ;
       sh:minCount 1 ;
       sh:name "has code" ;
