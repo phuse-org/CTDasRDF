@@ -22,7 +22,9 @@ readXPTDomain <- function (domainName){
    
 }
 
-domainVals <- readXPTDomain("vs")
+domainVals <- readXPTDomain("ts")
+
+
 
 foo<-data.frame(domainVals$visit)
 summary(foo)

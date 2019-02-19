@@ -1,0 +1,119 @@
+<https://w3id.org/phuse/cd01p#AdminActivity_DataCutoff> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#DataCutoff> .
+<https://w3id.org/phuse/cd01p#Arm_Pbo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#ControlArm> .
+<https://w3id.org/phuse/cd01p#Arm_Pbo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#RandomizationOutcome> .
+<https://w3id.org/phuse/cd01p#Arm_Pbo> <http://www.w3.org/2004/02/skos/core#altLabel> "Pbo" .
+<https://w3id.org/phuse/cd01p#Arm_Pbo> <http://www.w3.org/2004/02/skos/core#prefLabel> "Placebo" .
+<https://w3id.org/phuse/cd01p#Arm_ScreenFailure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#FalseArm> .
+<https://w3id.org/phuse/cd01p#Arm_ScreenFailure> <http://www.w3.org/2004/02/skos/core#altLabel> "Scrnfail" .
+<https://w3id.org/phuse/cd01p#Arm_ScreenFailure> <http://www.w3.org/2004/02/skos/core#prefLabel> "Screen Failure" .
+<https://w3id.org/phuse/cd01p#Arm_XanolemineHigh> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#RandomizationOutcome> .
+<https://w3id.org/phuse/cd01p#Arm_XanolemineHigh> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#InvestigationalArm> .
+<https://w3id.org/phuse/cd01p#Arm_XanolemineHigh> <http://www.w3.org/2004/02/skos/core#altLabel> "Xan_Hi" .
+<https://w3id.org/phuse/cd01p#Arm_XanolemineHigh> <http://www.w3.org/2004/02/skos/core#prefLabel> "Xanomeline High" .
+<https://w3id.org/phuse/cd01p#Arm_XanolemineLow> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#RandomizationOutcome> .
+<https://w3id.org/phuse/cd01p#Arm_XanolemineLow> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#InvestigationalArm> .
+<https://w3id.org/phuse/cd01p#Arm_XanolemineLow> <http://www.w3.org/2004/02/skos/core#altLabel> "Xan_Low" .
+<https://w3id.org/phuse/cd01p#Arm_XanolemineLow> <http://www.w3.org/2004/02/skos/core#prefLabel> "Xanomeline Low" .
+<https://w3id.org/phuse/cd01p#Date_2012-07-06> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#StudyBegin> .
+<https://w3id.org/phuse/cd01p#Date_2012-07-06> <http://www.w3.org/2004/02/skos/core#prefLabel> "Date 2012-07-06" .
+<https://w3id.org/phuse/cd01p#Date_2012-07-06> <https://w3id.org/phuse/study#dateTimeInXSDString> "2012-07-06" .
+<https://w3id.org/phuse/cd01p#Date_2015-03-05> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#StudyEnd> .
+<https://w3id.org/phuse/cd01p#Date_2015-03-05> <http://www.w3.org/2004/02/skos/core#prefLabel> "Date 2015-03-05" .
+<https://w3id.org/phuse/cd01p#Date_2015-03-05> <https://w3id.org/phuse/study#dateTimeInXSDString> "2015-03-05" .
+<https://w3id.org/phuse/cd01p#Date_2015-03-31> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#DataCutoffDate> .
+<https://w3id.org/phuse/cd01p#Date_2015-03-31> <https://w3id.org/phuse/code#hasCodeSystem> <https://w3id.org/phuse/code#CodeSystem_ISO8601> .
+<https://w3id.org/phuse/cd01p#Date_2015-03-31> <https://w3id.org/phuse/study#dateTimeInXSDString> "2015-03-31" .
+<https://w3id.org/phuse/cd01p#EnrolledPopulation_CDISCPILOT01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EnrolledPopulation> .
+<https://w3id.org/phuse/cd01p#EnrolledPopulation_CDISCPILOT01> <http://www.w3.org/2004/02/skos/core#prefLabel> "Enrolled population CDISCPILOT01" .
+<https://w3id.org/phuse/cd01p#EnrolledPopulation_CDISCPILOT01> <https://w3id.org/phuse/study#actualPopulationSize> "254"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/phuse/cd01p#EnrolledPopulation_CDISCPILOT01> <https://w3id.org/phuse/study#plannedPopulationSize> "300"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://w3id.org/phuse/cd01p#EpochInterval_26929004> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_26929004> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_9ORI6L73CJ> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_9ORI6L73CJ> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_C100762> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_C100762> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_C1909> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_C1909> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_C49487> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_C49487> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_C49648> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_C49648> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_C82639> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_C82639> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_C98388> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_C98388> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_ISO8601> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_ISO8601> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_N0000175771> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_N0000175771> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_NCT00987090> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_NCT00987090> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_Pbo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_Pbo> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_ScreenFailure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_ScreenFailure> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_USA> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_USA> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_XanolemineHigh> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_XanolemineHigh> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_XanolemineLow> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_XanolemineLow> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#EpochInterval_blindedtreatment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#EpochInterval> .
+<https://w3id.org/phuse/cd01p#EpochInterval_blindedtreatment> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch interval blindedtreatment" .
+<https://w3id.org/phuse/cd01p#Epoch_BlindedTreatment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#Epoch> .
+<https://w3id.org/phuse/cd01p#Epoch_BlindedTreatment> <http://www.w3.org/2004/02/skos/core#prefLabel> "Epoch Blinded treatment" .
+<https://w3id.org/phuse/cd01p#Epoch_BlindedTreatment> <https://w3id.org/phuse/study#hasActivityInterval> <https://w3id.org/phuse/cd01p#EpochInterval_blindedtreatment> .
+<https://w3id.org/phuse/cd01p#PrimaryObjective_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#PrimaryObjective> .
+<https://w3id.org/phuse/cd01p#PrimaryObjective_1> <http://www.w3.org/2004/02/skos/core#prefLabel> "To determine if there is a statistically significant relationship between the change in both ADAS-Cog and CIBIC+ scores, and drug dose (0, 50 cm2 [54 mg], and 75 cm2 [81 mg])" .
+<https://w3id.org/phuse/cd01p#PrimaryObjective_1> <https://w3id.org/phuse/study#seq> "1.0"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/phuse/cd01p#PrimaryObjective_2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#PrimaryObjective> .
+<https://w3id.org/phuse/cd01p#PrimaryObjective_2> <http://www.w3.org/2004/02/skos/core#prefLabel> "To document the safety profile of the xanomeline TTS." .
+<https://w3id.org/phuse/cd01p#PrimaryObjective_2> <https://w3id.org/phuse/study#seq> "2.0"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/phuse/cd01p#PrimaryObjective_3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#PrimaryObjective> .
+<https://w3id.org/phuse/cd01p#PrimaryObjective_3> <http://www.w3.org/2004/02/skos/core#prefLabel> "Evaluate the efficacy and safety of transdermal xanomeline, 50cm2 and 75cm2, and placebo in subjects with mild to moderate Alzheimers disease." .
+<https://w3id.org/phuse/cd01p#PrimaryObjective_3> <https://w3id.org/phuse/study#seq> "3.0"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#SecondaryObjective> .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_1> <http://www.w3.org/2004/02/skos/core#prefLabel> "To assess the dose-dependent improvement in behavior. Improved scores on the Revised Neuropsychiatric Inventory (NPI-X) will indicate improvement in these areas." .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_1> <https://w3id.org/phuse/study#seq> "1.0"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#SecondaryObjective> .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_2> <http://www.w3.org/2004/02/skos/core#prefLabel> "To assess the dose-dependent improvements in activities of daily living. Improved scores on the Disability Assessment for Dementia (DAD) will indicate improvement in these areas." .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_2> <https://w3id.org/phuse/study#seq> "2.0"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#SecondaryObjective> .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_3> <http://www.w3.org/2004/02/skos/core#prefLabel> "To assess the dose-dependent improvements in an extended assessment of cognition that integrates attention/concentration tasks. The ADAS-Cog (14) will be used for this assessment." .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_3> <https://w3id.org/phuse/study#seq> "3.0"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#SecondaryObjective> .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_4> <http://www.w3.org/2004/02/skos/core#prefLabel> "To assess the treatment response as a function of Apo E genotype." .
+<https://w3id.org/phuse/cd01p#SecondaryObjective_4> <https://w3id.org/phuse/study#seq> "4.0"^^<http://www.w3.org/2001/XMLSchema#float> .
+<https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#CompletePopulation> .
+<https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> <http://www.w3.org/2004/02/skos/core#prefLabel> "Study population CDISCPILOT01" .
+<https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> <https://w3id.org/phuse/study#ageGroup> <https://w3id.org/phuse/code#AgeGroup_ADULT> .
+<https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> <https://w3id.org/phuse/study#ageGroup> <https://w3id.org/phuse/code#AgeGroup_ELDERLY> .
+<https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> <https://w3id.org/phuse/study#hasSite> <https://w3id.org/phuse/cd01p#Site_701> .
+<https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> <https://w3id.org/phuse/study#healthySubject> <https://w3id.org/phuse/sdtmterm#NoYesResponse_N> .
+<https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> <https://w3id.org/phuse/study#maxSubjectAge> <https://w3id.org/phuse/code#PlannedSubjectAge_NULL> .
+<https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> <https://w3id.org/phuse/study#minSubjectAge> <https://w3id.org/phuse/code#PlannedSubjectAge_P50Y> .
+<https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> <https://w3id.org/phuse/study#sexGroup> <https://w3id.org/phuse/sdtmterm#SexGroup_BOTH> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/phuse/study#Study> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <http://www.w3.org/2004/02/skos/core#altLabel> " " .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <http://www.w3.org/2004/02/skos/core#prefLabel> "CDISCPILOT01" .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#adaptiveDesign> <https://w3id.org/phuse/sdtmterm#NoYesResponse_N> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#addOn> <https://w3id.org/phuse/sdtmterm#NoYesResponse_N> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#blinding> <https://w3id.org/phuse/sdtmterm#TrialBlindingSchema_DOUBLE_BLIND> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#controlType> <https://w3id.org/phuse/sdtmterm#ControlType_PLACEBO> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasPopulation> <https://w3id.org/phuse/cd01p#StudyPopulation_CDISCPILOT01> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasPopulation> <https://w3id.org/phuse/cd01p#EnrolledPopulation_CDISCPILOT01> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasPrimObjective> <https://w3id.org/phuse/cd01p#PrimaryObjective_3> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasPrimObjective> <https://w3id.org/phuse/cd01p#PrimaryObjective_2> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasPrimObjective> <https://w3id.org/phuse/cd01p#PrimaryObjective_1> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasPrimOutcomeMeasure> <https://w3id.org/phuse/custom#Observation_ADAS-cog> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasProtocolSpecifiedActivity> <https://w3id.org/phuse/cd01p#AdminActivity_DataCutoff> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasProtocolSpecifiedActivity> <https://w3id.org/phuse/cd01p#Arm_ScreenFailure> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasProtocolSpecifiedActivity> <https://w3id.org/phuse/cd01p#Epoch_BlindedTreatment> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasProtocolSpecifiedActivity> <https://w3id.org/phuse/cd01p#Arm_XanolemineLow> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasProtocolSpecifiedActivity> <https://w3id.org/phuse/cd01p#Arm_XanolemineHigh> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasProtocolSpecifiedActivity> <https://w3id.org/phuse/cd01p#Arm_Pbo> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasSecObjective> <https://w3id.org/phuse/cd01p#SecondaryObjective_3> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasSecObjective> <https://w3id.org/phuse/cd01p#SecondaryObjective_4> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasSecObjective> <https://w3id.org/phuse/cd01p#SecondaryObjective_1> .
+<https://w3id.org/phuse/cd01p#Study_CDISCPILOT01> <https://w3id.org/phuse/study#hasSecObjective> <https://w3id.org/phuse/cd01p#SecondaryObjective_2> .

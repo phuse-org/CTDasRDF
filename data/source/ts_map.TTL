@@ -1,0 +1,189 @@
+﻿###############################################################################
+# FILE: ts_map.ttl
+# DESC: Stardog SMS Template file for mapping TS (mostly protocol) information 
+#       to graph.
+# REQ : File format requirements for both execution and consistent processing
+#         by visualization scripts:
+#         s line is hard left on line by itself
+#         p,o line - indented at least one space.
+#                  - ends in ; on same line, no trailing spaces
+#         p : no short hand: 'rdf:type', not 'a'
+#         File must end with carriage return on a line by itself.
+# SRC :
+# IN  : ts_wide.csv , created by TS_imputeCSV.R
+# OUT :
+# NOTE: stardog-admin virtual import CTDasRDFSMS ts_map.TTL ts.csv
+#  Export to TTL: stardog data export --format TURTLE CTDacd sRDFSMS C:/_github/CTDasRDF/data/source/EXPORT.ttl
+#  Site information to be read in from a seperate source file (site seq, country id, etc.)
+# TODO: AdminActivity Data cutoff preflabel needs to come from the data
+###############################################################################
+@prefix cd01p:        <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code:         <https://w3id.org/phuse/code#> .
+@prefix custom:       <https://w3id.org/phuse/custom#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm:     <https://w3id.org/phuse/sdtmterm#> .
+@prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
+@prefix study:        <https://w3id.org/phuse/study#> .
+@prefix time:         <http://www.w3.org/2006/time#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+
+# ---- Main Triple Set: STUDY -------------------------------------------------
+# -----------------------------------------------------------------------------
+# Study
+cd01p:Study_{studyid}
+  rdf:type                           study:Study ;
+  skos:altLabel                      " "^^xsd:string ;
+  skos:prefLabel                     "{studyid}"^^xsd:string ;
+  study:adaptiveDesign               sdtmterm:NoYesResponse_{adapt_tsval} ;
+  study:addOn                        sdtmterm:NoYesResponse_{addon_tsval} ;
+  study:blinding                     sdtmterm:TrialBlindingSchema_{tblind_tsval_iri} ;
+  study:controlType                  sdtmterm:ControlType_{tcntrl_tsval} ;
+  study:hasInterval                  cd01p:Interval_{sstdtc_tsval}_to_{sendtc_tsval} ;
+  study:hasPopulation                cd01p:EnrolledPopulation_{studyid} ;
+  study:hasPopulation                cd01p:StudyPopulation_{studyid} ;
+  study:hasPrimObjective             cd01p:PrimaryObjective_{objprim_tsval_seq} ;
+  study:hasSecObjective              cd01p:SecondaryObjective_{objsec_tsval_seq} ;
+  study:hasPrimOutcomeMeasure        custom:Observation_{outmspri_tsval} ;
+  study:hasProtocolSpecifiedActivity cd01p:AdminActivity_{adminact_tsval} ;
+  study:hasProtocolSpecifiedActivity cd01p:Arm_{arm_tsvalcd} ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_{epoch_tsvalcd} ;
+  study:hasProtocolSpecifiedActivity custom:Visit{visit_tsvalcd}Activity;
+  study:hasRegistryID                cd01p:StudyRegistryIdentifier_{regid_tsval} ;
+  study:hasSponsor                   code:Sponsor_{studyid} ;
+  study:hasStopRule                  cd01p:StudyStopRule_{stoprule_tsval_seq} ;
+  study:hasStudyID                   cd01p:StudyIdentifier_1 ;
+  study:hasTitle                     cd01p:Title_{studyid} ;
+  study:interventionModel            sdtmterm:InterventionModel_{intmodel_tsval} ;
+  study:interventionType             sdtmterm:InterventionType_{inttype_tsval} ;
+  study:narms                        "{narms_tsval}"^^xsd:int ;
+  study:randomizedTrial              sdtmterm:NoYesResponse_{random_tsval} ;
+  study:studyDrug                    code:Substance_{trt_tsval} ;
+  study:studyType                    sdtmterm:StudyType_{studytype_tsval} ;
+  study:trialPhase                   sdtmterm:TrialPhase_{phase_tsval} ;
+  study:trialType                    sdtmterm:TrialType_{ttype_tsval} ;
+.
+
+#------------------------------------------------------------------------------
+#---- SUB TRIPLES -------------------------------------------------------------
+#------------------------------------------------------------------------------
+
+#---- Study Interval ----------------------------------------------------------
+cd01p:Interval_{sstdtc_tsval}_to_{sendtc_tsval}
+  rdf:type          study:StudyInterval ;
+  skos:prefLabel    "Interval {sstdtc_tsval} to {sendtc_tsval}"^^xsd:string ;
+  time:hasBeginning cd01p:Date_{sstdtc_tsval} ;
+  time:hasDuration  cd01p:StudyDuration_{studyid} ;
+  time:hasEnd       cd01p:Date_{sendtc_tsval} ;
+.
+
+  #---- Study Begin -----------------------------------------------------------
+  cd01p:Date_{sstdtc_tsval} 
+    rdf:type study:StudyBegin ;
+    skos:prefLabel "Date {sstdtc_tsval}"^^xsd:string ;
+    study:dateTimeInXSDString "{sstdtc_tsval}"^^xsd:string ;
+.
+
+  #---- Study End -------------------------------------------------------------
+  cd01p:Date_{sendtc_tsval} 
+    rdf:type study:StudyEnd ;
+    skos:prefLabel "Date {sendtc_tsval}"^^xsd:string ;
+    study:dateTimeInXSDString "{sendtc_tsval}"^^xsd:string ;
+.
+
+#---- Enrolled Population -----------------------------------------------------
+cd01p:EnrolledPopulation_{studyid}
+  rdf:type                    study:EnrolledPopulation ;
+  skos:prefLabel              "Enrolled population {studyid}"^^xsd:string ;
+  study:actualPopulationSize  "{actsub_tsval}"^^xsd:int ;
+  study:plannedPopulationSize "{plansub_tsval}"^^xsd:int ; ;
+.
+
+#---- Study Population --------------------------------------------------------
+#---- site subtriples are a separate import, not mapped here 
+cd01p:StudyPopulation_{studyid}
+  rdf:type             study:CompletePopulation ;
+  skos:prefLabel       "Study population {studyid}"^^xsd:string ;
+  study:ageGroup       code:AgeGroup_{agespan_tsval_iri} ;
+  study:hasSite        cd01p:Site_{siteid_tsval} ;
+  study:healthySubject sdtmterm:NoYesResponse_{hltsubji_tsval} ;
+  study:maxSubjectAge  code:PlannedSubjectAge_{agemax_tsval} ;
+  study:minSubjectAge  code:PlannedSubjectAge_{agemin_tsval} ;
+  study:sexGroup       sdtmterm:SexGroup_{sexpop_tsval} ;
+.
+
+#---- Primary Objective -------------------------------------------------------
+cd01p:PrimaryObjective_{objprim_tsval_seq}
+  rdf:type       study:PrimaryObjective ;
+  skos:prefLabel "{objprim_tsval}"^^xsd:string ;
+  study:seq      "{objprim_tsval_seq}"^^xsd:float ;
+.
+
+#---- Secondary Objective -------------------------------------------------------
+cd01p:SecondaryObjective_{objsec_tsval_seq}
+  rdf:type       study:SecondaryObjective ;
+  skos:prefLabel "{objsec_tsval}"^^xsd:string ;
+  study:seq      "{objsec_tsval_seq}"^^xsd:float ;
+.
+
+#---- Admin Activity      -------------------------------------------------------
+cd01p:AdminActivity_{adminact_tsval} 
+  rdf:type       study:{adminact_tsval} ;
+  skos:prefLabel "Admin activity Data cutoff"^^xsd:string ;
+  study:hasDate  cd01p:Date_{dcutdtc_tsval} ;
+.
+  cd01p:Date_{dcutdtc_tsval}
+    rdf:type                  study:DataCutoffDate ;
+    skos:prefLabel            "{dcutdesc_tsval}"^^xsd:string ; 
+    code:hasCodeSystem        code:CodeSystem_{dcutdtc_tsvcdref_iri} ;
+    study:dateTimeInXSDString "{dcutdtc_tsval}" ;
+.
+
+#---- Treatment Arms   --------------------------------------------------------
+cd01p:Arm_{arm_tsvalcd}
+  rdf:type       study:{arm_type};  
+  rdf:type       study:{arm_type2}; 
+  skos:altLabel  "{arm_tsvalcd}"^^xsd:string ; 
+  skos:prefLabel "{arm_tsval}"^^xsd:string ;
+.
+
+cd01p:Epoch_{epoch_tsvalcd}
+  rdf:type                  study:Epoch ;
+  skos:prefLabel            "{epoch_tsparm}"^^xsd:string ; 
+  study:hasActivityInterval cd01p:EpochInterval_{epoch_tsvalcd_lc} ;
+.
+
+cd01p:EpochInterval_{epoch_tsvalcd_lc}
+  rdf:type       study:EpochInterval ;
+  skos:prefLabel "Epoch interval blindedtreatment" ;
+.
+
+#---- Registry ID   -----------------------------------------------------------
+cd01p:StudyRegistryIdentifier_{regid_tsval}
+  rdf:type           study:StudyRegistryIdentifier ;
+  skos:prefLabel     "{regid_tsval}"^^xsd:string ;
+  code:hasCode       "{regid_tsval}" ;
+  code:hasCodeSystem <https://w3id.org/phuse/code#CodeSystem_clinicaltrials.gov> ;
+.
+
+#---- Stop Rule   -------------------------------------------------------------
+cd01p:StudyStopRule_{stoprule_tsval_seq} 
+  rdf:type                  study:StudyStopRule ;
+  skos:prefLabel            "Study stop rule {stoprule_tsval_seq}"^^xsd:string ;
+  study:ruleDescriptionLong "{stoprule_tsval}"^^xsd:string ;
+.
+
+#---- Study Identifier---------------------------------------------------------
+cd01p:StudyIdentifier_1
+  rdf:type study:StudyIdentifier ;
+  skos:prefLabel "{studyid}"^^xsd:string ;
+  code:hasMethod code:Method_ASSIGNED ;
+  study:crfLocation cd01p:CRFLocation_1 ;  # hard coded for now...
+.
+
+#---- Study Title--------------------------------------------------------------
+cd01p:Title_{studyid}
+  rdf:type study:Title ;
+  skos:prefLabel "{title_tsval}"^^xsd:string ;
+.
+  
