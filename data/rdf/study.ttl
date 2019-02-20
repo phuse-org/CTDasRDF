@@ -2849,19 +2849,6 @@ study:hasAnnotatedCRF
   skos:altLabel "" ;
   skos:prefLabel "has annotated CRF" ;
 .
-study:hasBodySystem
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain study:AdverseEvent ;
-  rdfs:range <https://w3id.org/phuse/meddra#SystemOrganClass> ;
-  owl:propertyChainAxiom (
-      code:hasCode
-      <https://w3id.org/phuse/meddra#hasPT>
-      <https://w3id.org/phuse/meddra#hasHLT>
-      <https://w3id.org/phuse/meddra#hasHLGT>
-      <https://w3id.org/phuse/meddra#hasSOC>
-    ) ;
-  skos:prefLabel "has body system" ;
-.
 study:hasCategory
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
