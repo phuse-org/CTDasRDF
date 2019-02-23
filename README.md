@@ -2,7 +2,7 @@
 This repository holds the scripts and data for the PhUSE project "Clinical Trials Data as RDF." Leads for the project are Tim Williams (NovasTaylor) and Armando Oliva (aolivamd).
 
 # Documentation
-[Table of Content](doc/TableOfContent.md) - Start here!  **NOTE**: Reworking content November/December 2018. 
+[Table of Contents](doc/TableOfContent.md) - Start here!  **NOTE**: Reworking content November/December 2018. 
 
 Project documentation format is Github Markdown, stored in the **/doc**/ subfolder. Documentation will lag behind development due to the ongoing nature of the project.
 
