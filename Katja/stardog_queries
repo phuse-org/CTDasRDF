@@ -25,6 +25,19 @@ DELETE{?s ?p ?o} WHERE{?s ?p ?o}
 
 SELECT * WHERE {?s  ?p ?o}
 
+# get subClass Properties
+SELECT DISTINCT *
+	WHERE { BIND(study:MedicalCondition AS ?item)
+      		?item rdfs:subClassOf ?mother
+            OPTIONAL {?child rdfs:subClassOf ?item}}
+
+
+#get shacl rules:
+SELECT * WHERE {study:AdverseEvent  sh:property ?temp .
+                ?temp sh:path ?p .
+                ?temp sh:class ?o
+               }
+
 SELECT ?SecondaryObjective
 WHERE
   { ?s rdf:type study:SecondaryObjective .
@@ -49,6 +62,14 @@ SELECT * WHERE {?s ?p study:EnrolledSubject}
 
 # get all OWLs and import them
 SELECT * WHERE {?s owl:imports ?o}
+
+
+SELECT DISTINCT ?domain ?predicate ?range ?child ?mother
+	WHERE {?predicate  rdfs:domain ?domain 
+            OPTIONAL {?predicate rdfs:range ?range}
+            OPTIONAL {?domain rdfs:subClassOf ?mother}
+            OPTIONAL {?child rdfs:subClassOf ?domain}
+          }
 
 PREFIX code:   <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl>
 SELECT * WHERE {study:EnrolledSubject ?p ?o}

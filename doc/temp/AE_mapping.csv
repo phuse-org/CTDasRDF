@@ -1,0 +1,38 @@
+domain;|;predicate;|;range;;
+study:Person;|;study:afflictedBy;|;study:MedicalCondition;;
+study:AdverseEvent;|;code:hasCode;|;<https://w3id.org/phuse/mdra#MedDRAConcept>;;"  code:hasCode <https://w3id.org/phuse/mdra#M10003058> ;"
+study:AdverseEvent;|;code:outcome;|;code:AdverseEventOutcome;;"  code:outcome code:AEOutcome_NRNR ;"
+study:AdverseEvent;|;study:actionTaken;|;xsd:string;;"  study:actionTaken ""none"" ;"
+study:AdverseEvent;|;study:actionTakenOther;|;xsd:string;;"  study:actionTakenOther ""N/A"" ;"
+study:AdverseEvent;|;study:adverseEventPattern;|;xsd:string;;"  study:adverseEventPattern ""SINGLE EVENT"" ;"
+study:AdverseEvent;|;study:causality;|;code:Causality;1xSHACL;"  study:cancer sdtmterm:NoYesResponse_N ;"
+study:AdverseEvent;|;study:causality;|;code:Causality;1xDirect;"  study:causality code:Causality_Probable ;"
+study:AdverseEvent;|;study:concomitantTreatmentGiven;|;code:NoYesResponse;;"  study:concomitantTreatmentGiven sdtmterm:NoYesResponse_N ;"
+study:AdverseEvent;|;study:congenitalDefect;|;code:NoYesResponse;;"  study:congenitalDefect sdtmterm:NoYesResponse_N ;"
+study:StudyComponent;|;study:crfLocation;|;study:CRFLocation;;
+study:StudyComponent;|;study:dataCollectionDay;|;xsd:integer;;
+study:StudyComponent;|;study:day;|;xsd:integer;;
+study:AdverseEvent;|;study:death;|;code:NoYesResponse;;"  study:death sdtmterm:NoYesResponse_N ;"
+study:AdverseEvent;|;study:disabling;|;code:NoYesResponse;;"  study:disabling sdtmterm:NoYesResponse_N ;"
+study:StudyComponent;|;study:endDay;|;xsd:integer;;
+study:StudyComponent;|;study:groupID;|;xsd:string;;"  study:groupID ""GRP1"" ;"
+study:StudyComponent;|;study:hasDate;|;time:Instant;;"  study:hasCategory ""CAT1"" ;"
+study:StudyComponent;|;study:hasInterval;|;time:Interval;;"  study:hasDataCollectionDate cdiscpilot01:Date_2014-01-16 ;"
+study:AdverseEvent;|;study:hasInterval;|;study:AdverseEventInterval;;"  study:hasInterval cdiscpilot01:Interval_2014-01-03_ ;"
+study:AdverseEvent;|;study:hasReferenceTimePointEndDate;|;study:ReferenceEnd;;"  study:hasSubcategory ""SCAT1"" ;"
+study:AdverseEvent;|;study:hospitalization;|;code:NoYesResponse;;"  study:hospitalization sdtmterm:NoYesResponse_N ;"
+study:AdverseEvent;|;study:isPrespecified;|;code:NoYesResponse;;"  study:isPrespecified sdtmterm:NoYesResponse_Y ;"
+study:AdverseEvent;|;study:lifeThreatening;|;code:NoYesResponse;;"  study:lifeThreatening sdtmterm:NoYesResponse_N ;"
+study:AdverseEvent;|;study:medicallyImportantSeriousEvent;|;code:NoYesResponse;;"  study:medicallyImportantSeriousEvent sdtmterm:NoYesResponse_N ;"
+study:AdverseEvent;|;study:modifiedTerm;|;xsd:string;;"  study:modifiedTerm ""ERYTHEMA"" ;"
+study:AdverseEvent;|;study:overdose;|;code:NoYesResponse;;"  study:overdose sdtmterm:NoYesResponse_N ;"
+study:StudyComponent;|;study:referenceID;|;xsd:string;;"  study:referenceID ""REFID1"" ;"
+study:AdverseEvent;|;study:relationshipToNonStudyDrug;|;xsd:string;;"  study:relationshipToNonStudyDrug ""NONE"" ;"
+study:AdverseEvent;|;study:reportedTerm;|;xsd:string;;"  study:reportedTerm ""APPLICATION SITE ERYTHEMA"" ;"
+study:StudyComponent;|;study:seq;|;xsd:float;;"  study:seq ""1""^^xsd:float ;"
+study:AdverseEvent;|;study:serious;|;code:NoYesResponse;;"  study:serious sdtmterm:NoYesResponse_N ;"
+study:AdverseEvent;|;study:severity;|;code:Severity;1xSHACL;"  study:severity code:Severity_MILD ;"
+study:AdverseEvent;|;study:severity;|;code:Severity;1xDirect;
+study:StudyComponent;|;study:sponsordefinedID;|;xsd:string;;"  study:sponsordefinedID ""E07"" ;"
+study:StudyComponent;|;study:startDay;|;xsd:integer;;"  study:startDay 2 ;"
+study:AdverseEvent;|;study:toxGrade;|;xsd:integer;;"  study:toxGrade 1 ;"
