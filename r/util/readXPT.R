@@ -17,11 +17,14 @@ library(Hmisc)
 setwd("C:/_github/CTDasRDF/data/source")
 
 readXPTDomain <- function (domainName){
-   domainValues <- sasxport.get(paste0(domainName, ".xpt"))
-   ## dataSubset   <- head(domainValues, 300)    
+   
+   domainValues <- data.frame(sasxport.get(paste0(domainName, ".xpt")), stringsAsFactors = FALSE)
+   
 }
 
-domainVals <- readXPTDomain("vs")
+domainVals <- readXPTDomain("ts")
+
+
 
 foo<-data.frame(domainVals$visit)
 summary(foo)

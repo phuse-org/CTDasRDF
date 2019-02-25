@@ -1,0 +1,28 @@
+SELECT ?ordinal ?dataElementName ?dataElementLabel ?dataType ?Core ?codeList ?codeListName ?Origin ?dataElementCompliance ?Role ?comment
+WHERE{
+    ?s                  rdf:type                          sdtm:SDTMDefineRecord_${Dataset};
+                        sdtm:hasDFVariable                ?varEntity.
+    ?varEntity          sdtm:additionalMetadata           ?adMetadata.
+    ?adMetadata         code:hasMethod                    ?activity.
+    ?activity           skos:prefLabel                    ?Origin.
+    ?varEntity          rdf:type                          mms:Column;
+                        mms:ordinal                       ?ordinal;
+                        mms:dataElementName               ?dataElementName;
+                        mms:dataElementLabel              ?dataElementLabel;
+                        mms:dataElementType               ?dataType_;
+                        cdiscs:dataElementCompliance      ?dataElementCompliance;
+  		                  cdiscs:dataElementRole            ?Role_.
+    ?Role_              rdf:type                          cdiscs:DataElementRole;
+    		                rdfs:label                        ?Role.
+
+    ?dataElementCompliance rdfs:label ?Core_.
+
+ 		optional{ ?varEntity mms:dataElementValueDomain ?codeList.
+              ?codeList cts:cdiscSubmissionValue ?codeListName.}
+    optional{ ?varEntity sdtm:variableComment ?comment.}
+
+  bind( str(?dataType_) as ?dataType )
+  bind( str(?ordinal) as ?ordinal_ )
+  bind(replace(?Core_, " Variable", "") as ?Core)
+}
+ORDER BY ?ordinal

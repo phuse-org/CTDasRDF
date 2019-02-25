@@ -69,6 +69,10 @@ parseFile <- function(sourceFiles){
         s <- gsub("^\\s+", "", s) 
         o <- gsub("^\\s+", "", o) 
         
+        # Regex above is crap, so in some cases ^^xsd:string and ^^xsd:int remain. Remove them.
+        o <- gsub("\\^\\^\\S+", "", o, perl=TRUE)
+        
+        
         mapFile <-fileName  # Name of file without sub path
         triples <<- rbind(triples, data.frame(s=s, p=p, o=o, mapFile=mapFile))
       }
@@ -86,7 +90,7 @@ parseFile <- function(sourceFiles){
 }  
 
 # Create triples DF from known TTL files
-triples<-data.frame(parseFile(sourceFiles=list("DM", "SUPPDM", "EX", "VS", "Graphmeta", "Invest")))
+triples<-data.frame(parseFile(sourceFiles=list("AE", "DM", "SUPPDM", "EX", "VS", "Graphmeta", "Invest")))
 
 #---- Formatting 
 #  _bc = background colours
@@ -97,12 +101,14 @@ code_bc         <- "red"
 study_bc        <- "green"
 time_bc         <- "purple"
 owl_bc          <- "orange"
+ae_bc           <- "yellow"
 dm_ec           <- '#B3CDE3'
 
 # Legend Nodes
 lnodes <- read.table(header = TRUE, text = "
 label        color.border color.background 
-DM           'blue'        'white'
+AE           'red'        'yellow'
+DM           'blue'       'white'
 VS           'white'      '#CCEBC5'
 EX           'white'      '#DECBE4'
 TS           'white'      '#FF9A9A'

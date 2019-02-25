@@ -347,7 +347,7 @@ study:ActivityInterval
 study:ActivityOutcome
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf study:Entity ;
+  rdfs:subClassOf study:Outcome ;
   skos:definition "An Entity that is the outcome of a Study Activity. For an Observation, this is the result of the observation. " ;
   skos:prefLabel "Activity outcome" ;
 .
@@ -372,10 +372,152 @@ study:AdministrativeActivityOutcome
 .
 study:AdverseEvent
   rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "dur" ;
+              ] ;
+            sp:predicate study:duration ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "start" ;
+              ] ;
+            sp:predicate study:startDay ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "end" ;
+              ] ;
+            sp:predicate study:endDay ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:add ;
+                sp:arg1 [
+                    rdf:type sp:sub ;
+                    sp:arg1 [
+                        sp:varName "end" ;
+                      ] ;
+                    sp:arg2 [
+                        sp:varName "start" ;
+                      ] ;
+                  ] ;
+                sp:arg2 1 ;
+              ] ;
+            sp:variable [
+                sp:varName "dur" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "calculates duration in days when start day and end day are known." ;
+    ] ;
   rdfs:comment "" ;
   rdfs:subClassOf study:MedicalCondition ;
   skos:definition "An adverse Medical Condition that emerges or worsens following a Medical Intervention, including the use of a drug. Note: there is no presumption of causality." ;
   skos:prefLabel "Adverse event" ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path code:hasCode ;
+      sh:class <https://w3id.org/phuse/mdra#MedDRAConcept> ;
+      sh:maxCount 1 ;
+      sh:minCount 1 ;
+      sh:name "has code" ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path code:outcome ;
+      sh:class code:AdverseEventOutcome ;
+      sh:maxCount 1 ;
+      sh:name "outcome" ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path study:causality ;
+      sh:class code:Causality ;
+      sh:maxCount 1 ;
+      sh:minCount 1 ;
+      sh:name "causality" ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path study:hasInterval ;
+      sh:class study:AdverseEventInterval ;
+      sh:maxCount 1 ;
+      sh:minCount 1 ;
+      sh:name "has interval" ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path study:reportedTerm ;
+      sh:datatype xsd:string ;
+      sh:maxCount 1 ;
+      sh:minCount 1 ;
+      sh:name "reported term" ;
+    ] ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path study:severity ;
+      sh:class code:Severity ;
+      sh:maxCount 1 ;
+      sh:minCount 1 ;
+      sh:name "severity" ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+.
+study:AdverseEventBegin
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:BeginInstant ;
+  skos:prefLabel "Adverse event begin" ;
+.
+study:AdverseEventEnd
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:EndInstant ;
+  skos:prefLabel "Adverse event end" ;
+.
+study:AdverseEventInterval
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:MedicalConditionInterval ;
+  skos:prefLabel "Adverse event interval" ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path time:hasBeginning ;
+      sh:class study:AdverseEventBegin ;
+      sh:maxCount 1 ;
+      sh:minCount 1 ;
+      sh:name "has beginning" ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path time:hasEnd ;
+      sh:class study:AdverseEventEnd ;
+      sh:maxCount 1 ;
+      sh:name "has end" ;
+      sh:nodeKind sh:IRI ;
+    ] ;
+.
+study:AdverseEventOutcome
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:MedicalConditionOutcome ;
+  skos:prefLabel "Adverse event outcome" ;
 .
 study:AgeOutcome
   rdf:type owl:Class ;
@@ -459,6 +601,19 @@ study:Animal
   skos:definition "A non-human living organism that has membranous cell walls, requires oxygen and organic foods, and is capable of voluntary movement, as distinguished from a plant or mineral. [BRIDG 5.0]" ;
   skos:note "maps to BRIDG Animal Class" ;
   skos:prefLabel "Animal" ;
+.
+study:AnimalStudySubject
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:AnimalSubject ;
+  skos:prefLabel "Animal study subject" ;
+.
+study:AnimalSubject
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Animal ;
+  rdfs:subClassOf study:Subject ;
+  skos:prefLabel "Animal subject" ;
 .
 study:AnnotatedCaseReportForm
   rdf:type owl:Class ;
@@ -820,6 +975,12 @@ study:CumulativeDrugAdministrationInterval
   skos:definition "" ;
   skos:prefLabel "Product administration interval" ;
 .
+study:DataCollectionDate
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Date ;
+  skos:prefLabel "Data collection date" ;
+.
 study:DataCutoff
   rdf:type owl:Class ;
   rdfs:subClassOf study:AdministrativeActivity ;
@@ -937,6 +1098,18 @@ study:Entity
   skos:definition "" ;
   skos:prefLabel "Entity" ;
 .
+study:EntityInterval
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf time:Interval ;
+  skos:prefLabel "Entity interval" ;
+.
+study:EntityOutcome
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Outcome ;
+  skos:prefLabel "Entity outcome" ;
+.
 study:Epoch
   rdf:type owl:Class ;
   rdfs:subClassOf study:StudyActivity ;
@@ -1037,6 +1210,7 @@ study:HumanStudySubject
 study:HumanSubject
   rdf:type owl:Class ;
   rdfs:subClassOf study:Person ;
+  rdfs:subClassOf study:Subject ;
   skos:definition "A Person of interest for participation in a Study. 45 CFR 46 defines a human subject as “a living individual about whom an investigator...conducting research obtains: Data through intervention or interaction with the individual, or Identifiable private information.”" ;
   skos:note "typically a Human Subject is the target of some recruitment activity or voluntarily inquires about participating in a Study. a human subject need not paraticipate in a study, but allows the collection of data or identifiable private information for the purpose of research. " ;
   skos:prefLabel "Human subject" ;
@@ -1162,7 +1336,7 @@ study:LaboratoryObservation
 study:Lifespan
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf time:Interval ;
+  rdfs:subClassOf study:EntityInterval ;
   skos:definition "" ;
   skos:prefLabel "Lifespan" ;
 .
@@ -1178,11 +1352,24 @@ study:MaximumSubjectAge
 .
 study:MedicalCondition
   rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
   rdfs:subClassOf study:Event ;
   skos:definition """An event that is a disease, injury, disorder, or transient physiologic state that interferes or may interfere with well-being. A medical condition persists in time. 
 """ ;
   skos:note "Medical conditions are the target of medical interventions.  Medical conditions explain the presence of clinical observations.  Most clinicians will agree that pregnancy is a medical condition because it benefits from medical intervention (e.g. prenatal care) to minimize complications to the mother and unborn child" ;
   skos:prefLabel "Medical condition" ;
+.
+study:MedicalConditionInterval
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:EntityInterval ;
+  skos:prefLabel "Medical event interval" ;
+.
+study:MedicalConditionOutcome
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:EntityOutcome ;
+  skos:prefLabel "Medical condition outcome" ;
 .
 study:MinimumSubjectAge
   rdf:type owl:Class ;
@@ -1225,6 +1412,12 @@ study:Organization
   rdfs:subClassOf study:Group ;
   skos:definition "" ;
   skos:prefLabel "Organization" ;
+.
+study:Outcome
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Entity ;
+  skos:prefLabel "Outcome" ;
 .
 study:OutcomeMeasure
   rdf:type owl:Class ;
@@ -1446,7 +1639,7 @@ study:PreparatoryIntervention
   rdf:type sh:NodeShape ;
   rdfs:subClassOf study:Intervention ;
   skos:definition "An Intervention whose purpose is to prepare a Person for a subsequent Intervention. " ;
-  skos:example "Assume a Body Posistion before a Blood Pressure Measurement. " ;
+  skos:example "Assume a Body Position before a Blood Pressure Measurement. " ;
   skos:prefLabel "Preparatory intervention" ;
 .
 study:PrerequisiteActivity
@@ -2035,7 +2228,7 @@ study:StudyParticipationEnd
 study:StudyParticipationInterval
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf time:Interval ;
+  rdfs:subClassOf study:EntityInterval ;
   skos:definition "" ;
   skos:prefLabel "Study participation interval" ;
 .
@@ -2060,6 +2253,13 @@ study:Subcategory
   rdfs:subClassOf study:Entity ;
   skos:altLabel "" ;
   skos:prefLabel "Subcategory" ;
+.
+study:Subject
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:Party ;
+  skos:note "same as BRIDG Subject, which can be a human, non-human animal, or inanimate object (e.g. drug substance or product or device, etc.)" ;
+  skos:prefLabel "Subject" ;
 .
 study:SubjectIdentifier
   rdf:type owl:Class ;
@@ -2171,6 +2371,18 @@ study:WeightOutcome
     ] ;
   skos:prefLabel "Weight mass outcome" ;
 .
+study:actionTaken
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "action taken" ;
+.
+study:actionTakenOther
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "action taken other" ;
+.
 study:activityDescription
   rdf:type owl:DatatypeProperty ;
   rdfs:domain study:Activity ;
@@ -2218,6 +2430,12 @@ study:administeredDrug
   rdfs:domain study:FixedDoseDrugAdministration ;
   rdfs:range study:Product ;
   skos:prefLabel "has route of administration" ;
+.
+study:adverseEventPattern
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "adverse event pattern" ;
 .
 study:afflictedBy
   rdf:type owl:ObjectProperty ;
@@ -2319,6 +2537,19 @@ study:anatomicLocation
   skos:definition "" ;
   skos:prefLabel "anatomic location" ;
 .
+study:assesses
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Observation ;
+  rdfs:range study:Assessment ;
+  owl:inverseOf study:assessmentInput ;
+  skos:prefLabel "assesses" ;
+.
+study:assessmentInput
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Observation ;
+  rdfs:range study:Assessment ;
+  skos:prefLabel "assessment input" ;
+.
 study:baselineFlag
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
@@ -2342,6 +2573,31 @@ study:bodyPosition
   skos:definition "" ;
   skos:prefLabel "body position" ;
 .
+study:cancer
+  rdf:type owl:ObjectProperty ;
+  rdfs:range code:NoYesResponse ;
+  rdfs:subPropertyOf study:seriousCriterion ;
+  skos:prefLabel "cancer associated" ;
+.
+study:causality
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:Causality ;
+  skos:prefLabel "causality" ;
+.
+study:concomitantTreatmentGiven
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "concomitant treatment given" ;
+.
+study:congenitalDefect
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  rdfs:subPropertyOf study:seriousCriterion ;
+  skos:prefLabel "cancer associated" ;
+.
 study:controlType
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:Study ;
@@ -2353,6 +2609,13 @@ study:crfLocation
   rdfs:domain study:StudyComponent ;
   rdfs:range study:CRFLocation ;
   skos:prefLabel "CRF Origin" ;
+.
+study:dataCollectionDay
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:StudyComponent ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf study:day ;
+  skos:prefLabel "data collection day" ;
 .
 study:dateTimeInXSDString
   rdf:type owl:DatatypeProperty ;
@@ -2401,6 +2664,19 @@ study:dateiso
   skos:definition "" ;
   skos:prefLabel "ISODate" ;
 .
+study:day
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:StudyComponent ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "study day" ;
+.
+study:death
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  rdfs:subPropertyOf study:seriousCriterion ;
+  skos:prefLabel "disabling" ;
+.
 study:deathFlag
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
@@ -2417,11 +2693,23 @@ study:derivedFlag
   skos:definition "describes that the method of obtaining the results of the test involve a derivation from other observations" ;
   skos:prefLabel "derived flag" ;
 .
+study:disabling
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  rdfs:subPropertyOf study:seriousCriterion ;
+  skos:prefLabel "disabling" ;
+.
 study:dosageQuantity
   rdf:type owl:DatatypeProperty ;
   rdfs:domain study:FixedDoseDrugAdministration ;
   rdfs:range xsd:integer ;
   skos:prefLabel "dosage quantity" ;
+.
+study:duration
+  rdf:type owl:DatatypeProperty ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "duration" ;
 .
 study:durationiso
   rdf:type spin:Function ;
@@ -2502,6 +2790,13 @@ study:durationiso
   skos:definition "" ;
   skos:prefLabel "durationiso" ;
 .
+study:endDay
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:StudyComponent ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf study:day ;
+  skos:prefLabel "study end day" ;
+.
 study:engagesIn
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
@@ -2521,7 +2816,7 @@ study:ethnicity
 study:groupID
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:StudyActivity ;
+  rdfs:domain study:StudyComponent ;
   rdfs:range xsd:string ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "" ;
@@ -2572,10 +2867,16 @@ study:hasCountry
   skos:definition "" ;
   skos:prefLabel "country" ;
 .
+study:hasDataCollectionDate
+  rdf:type owl:ObjectProperty ;
+  rdfs:range study:DataCollectionDate ;
+  rdfs:subPropertyOf study:hasDate ;
+  skos:prefLabel "has data collection date" ;
+.
 study:hasDate
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:Activity ;
+  rdfs:domain study:StudyComponent ;
   rdfs:range time:Instant ;
   skos:definition "" ;
   skos:prefLabel "has date" ;
@@ -2743,6 +3044,13 @@ study:hasReferenceInterval
   skos:definition "" ;
   skos:prefLabel "has lifespan" ;
 .
+study:hasReferenceTimePointEndDate
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range study:ReferenceEnd ;
+  rdfs:subPropertyOf time:hasEnd ;
+  skos:prefLabel "has reference time point end date" ;
+.
 study:hasRegistryID
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:Study ;
@@ -2906,6 +3214,13 @@ study:healthySubject
   rdfs:range code:NoYesResponse ;
   skos:prefLabel "healthy subject" ;
 .
+study:hospitalization
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  rdfs:subPropertyOf study:seriousCriterion ;
+  skos:prefLabel "hospitalization associated" ;
+.
 study:interventionModel
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:Study ;
@@ -2935,6 +3250,12 @@ study:isActivityOfStudy
   skos:definition "relates StudyActivity with the Study of which it is a part. " ;
   skos:prefLabel "is part of" ;
 .
+study:isPrespecified
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "is prespecified" ;
+.
 study:laterality
   rdf:type owl:FunctionalProperty ;
   rdf:type owl:ObjectProperty ;
@@ -2943,6 +3264,13 @@ study:laterality
   rdfs:range code:Laterality ;
   skos:definition "" ;
   skos:prefLabel "laterality" ;
+.
+study:lifeThreatening
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  rdfs:subPropertyOf study:seriousCriterion ;
+  skos:prefLabel "life threatening" ;
 .
 study:longTitle
   rdf:type owl:DatatypeProperty ;
@@ -2957,6 +3285,12 @@ study:maxSubjectAge
   rdfs:range study:MaximumSubjectAge ;
   skos:prefLabel "max age subjects" ;
 .
+study:medicallyImportantSeriousEvent
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "is a medically important serious adverse event" ;
+.
 study:memberOf
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:HumanStudySubject ;
@@ -2970,11 +3304,24 @@ study:minSubjectAge
   rdfs:range study:MinimumSubjectAge ;
   skos:prefLabel "min age subjects" ;
 .
+study:modifiedTerm
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "reported term modified" ;
+.
 study:narms
   rdf:type owl:DatatypeProperty ;
   rdfs:domain study:Study ;
   rdfs:range xsd:integer ;
   skos:prefLabel "narms" ;
+.
+study:overdose
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  rdfs:subPropertyOf study:seriousCriterion ;
+  skos:prefLabel "overdose associated	" ;
 .
 study:participatesIn
   rdf:type owl:ObjectProperty ;
@@ -3035,6 +3382,27 @@ study:reasonNotDone
   skos:definition "" ;
   skos:prefLabel "reason not done" ;
 .
+study:referenceID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "" ;
+  rdfs:domain study:StudyComponent ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf study:hasIdentifier ;
+  skos:definition "" ;
+  skos:prefLabel "reference ID" ;
+.
+study:relationshipToNonStudyDrug
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "relationship to non study drug" ;
+.
+study:reportedTerm
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "reported term" ;
+.
 study:ruleDescription
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
@@ -3054,9 +3422,26 @@ study:ruleDescriptionLong
 study:seq
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
+  rdfs:domain study:StudyComponent ;
   rdfs:range xsd:float ;
   skos:definition "relates a resource to a sequence number used for sorting similar resources" ;
   skos:prefLabel "seq" ;
+.
+study:serious
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "serious" ;
+.
+study:seriousCriterion
+  rdf:type owl:ObjectProperty ;
+  skos:prefLabel "serious criterion" ;
+.
+study:severity
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range code:Severity ;
+  skos:prefLabel "severity" ;
 .
 study:sex
   rdf:type owl:FunctionalProperty ;
@@ -3082,11 +3467,18 @@ study:shortTitle
 study:sponsordefinedID
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:StudyActivity ;
+  rdfs:domain study:StudyComponent ;
   rdfs:range xsd:string ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "" ;
   skos:prefLabel "sponsordefined ID" ;
+.
+study:startDay
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:StudyComponent ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf study:day ;
+  skos:prefLabel "study start day" ;
 .
 study:studyDrug
   rdf:type owl:ObjectProperty ;
@@ -3210,6 +3602,12 @@ study:studyday
   rdfs:subClassOf spl:DateFunctions ;
   skos:definition "takes two date strings in ISO 8601 format and calculates the study day using activity date as the first argument and reference date as the 2nd argument" ;
   skos:prefLabel "studyday" ;
+.
+study:toxGrade
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain study:AdverseEvent ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "tox grade" ;
 .
 study:trialPhase
   rdf:type owl:ObjectProperty ;

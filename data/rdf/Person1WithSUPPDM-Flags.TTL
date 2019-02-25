@@ -1,0 +1,46 @@
+cdiscpilot01:Person_01-701-1015 skos:preflabel "Person 1" ;
+	a study:EnrolledSubject ;
+	study:actualArm cd01p:Arm_Pbo ;
+	study:hasReferenceInterval cdiscpilot01:ReferenceInterval_s6rc8otorv5ukcpag29jggn8m8h5127t_cpkmsvqhc92dn75siimpl3fj20mmtdei ;
+	study:StudyParticipationInterval cdiscpilot01:StudyParticipationInterval_n6l0u58r7lrhic8l4b1e4u7k8182j6fq_k78l4og87v61q51vabbketftn59735lb ;
+	study:hasSite cd01p:Site_701 ;
+	study:participatesIn cdiscpilot01:RandomizationBAL3_01-701-1015 , 
+                       cdiscpilot01:DemographicDataCollection_01-701-1015 , 
+                       cdiscpilot01:CumulativeProductAdministration_01-701-1015 , 
+                       cdiscpilot01:PopFlagCOMPLT24_01-701-1015 , 
+                       cdiscpilot01:PopFlagEFFICACY_01-701-1015 , 
+                       cdiscpilot01:PopFlagCOMPLT16_01-701-1015 , 
+                       cdiscpilot01:PopFlagCOMPLT8_01-701-1015 , 
+                       cdiscpilot01:PopFlagSAFETY_01-701-1015 , 
+                       cdiscpilot01:PopFlagITT_01-701-1015 ;
+	study:hasUniqueSubjectID cdiscpilot01:UniqueSubjectIdentifier_01-701-1015 ;
+	study:hasSubjectID cdiscpilot01::SubjectIdentifier_1015 .
+
+
+cdiscpilot01:RandomizationBAL3_01-701-1015 a code:RandomizationBAL3 ;
+	skos:prefLabel "Randomization Person 1" ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:outcome cd01p:Arm_Pbo .
+
+cdiscpilot01:DemographicDataCollection_01-701-1015 
+  a cd01p:VisitScreening1DemogDataColl , 
+    code:DemographicDataCollection , 
+    cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	skos:prefLabel "Person 1 Screening 1 Demographic data collection" ;
+	study:participatesIn cdiscpilot01:InformedConsentAdult_01-701-1015 ;
+	study:sex code:Sex_F ;
+	study:hasDate cdiscpilot01:Date_n6l0u58r7lrhic8l4b1e4u7k8182j6fq ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:race code:Race_8393uepqv42l9mmuen518i9178bnc8sv ;
+	code:hasAge cdiscpilot01:AgeOutcome_k5ql986im5d6cj0eee80312k9scue0h7 ;
+	study:ethnicity code:Enthnicity_gnja37oohiiipittns2ro9rma4k5q8i5 .
+
+cdiscpilot01:CumulativeProductAdministration_01-701-1015 a study:CumulativeDrugAdministration ;
+	skos:prefLabel "Product administration 1" ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:hasActivityInterval cdiscpilot01:CumulativeProductAdministrationInterval_01-701-1015 .
+
+cdiscpilot01:PopFlagCOMPLT24_01-701-1015 a custom:PopFlagCOMPLT24 ;
+	study:activityStatus code:ActivityStatus_1 ;
+	study:outcome true ;
+	study:hasPerformer cd01p:Sponsor_1 .

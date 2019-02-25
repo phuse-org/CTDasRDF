@@ -1,0 +1,312 @@
+@prefix study: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/study.ttl#> .
+@prefix code: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cdiscpilot01: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01.ttl#> .
+@prefix custom: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/custom#> .
+@prefix sdtmterm: <http://rdf.cdisc.org/sdtmterm#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cd01p: <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/cdiscpilot01-protocol.ttl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix x: <example.org/foo/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+
+cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 a cdiscpilot01:VisitScreening1Activity_01-701-1015 , custom:AssumeBodyPositionStanding_01-701-1015 ;
+	skos:prefLabel "Assume Standing position" ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015 , cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015 ;
+	study:outcome code:Vspos_STANDING .
+
+cdiscpilot01:AssumeBodyPositionSupine_SCREENING1_01-701-1015 a cdiscpilot01:VisitScreening1Activity_01-701-1015 , custom:AssumeBodyPositionSupine_01-701-1015 ;
+	skos:prefLabel "Assume Supine position" ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 ;
+	study:outcome code:Vspos_SUPINE .
+
+cdiscpilot01:DIABP_01-701-1015_1 a cd01p:VisitScreening1BloodPressure , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_ARM ;
+	study:bodyPosition code:Vspos_SUPINE ;
+	study:derivedFlag "N" ;
+	study:groupID "GRPID1" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:DiabpOutcome_64 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "1.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_DIABP .
+
+cdiscpilot01:DIABP_01-701-1015_2 a cd01p:VisitScreening1BloodPressure , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_ARM ;
+	study:bodyPosition code:Vspos_STANDING ;
+	study:derivedFlag "N" ;
+	study:groupID "GRPID1" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:DiabpOutcome_83 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "2.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_DIABP .
+
+cdiscpilot01:DIABP_01-701-1015_3 a cd01p:VisitScreening1BloodPressure , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_ARM ;
+	study:bodyPosition code:Vspos_STANDING ;
+	study:derivedFlag "N" ;
+	study:groupID "GRPID1" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:DiabpOutcome_57 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "3.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_DIABP .
+
+cdiscpilot01:Date_2013-12-26 a study:Deathdate , study:DemogDataCollectionDate , study:InformedConsentBegin , study:StudyParticipationBegin , study:VisitDate ;
+	skos:prefLabel "2013-12-26" ;
+	study:dateTimeInXSDString "2013-12-26" .
+
+cdiscpilot01:DiabpOutcome_57 a study:DiabpOutcome ;
+	skos:prefLabel "57 mmHg" ;
+	code:hasUnit code:Unit_mmHg ;
+	code:hasValue "57" .
+
+cdiscpilot01:DiabpOutcome_64 a study:DiabpOutcome ;
+	skos:prefLabel "64 mmHg" ;
+	code:hasUnit code:Unit_mmHg ;
+	code:hasValue "64" .
+
+cdiscpilot01:DiabpOutcome_83 a study:DiabpOutcome ;
+	skos:prefLabel "83 mmHg" ;
+	code:hasUnit code:Unit_mmHg ;
+	code:hasValue "83" .
+
+cdiscpilot01:HEIGHT_01-701-1015_43 a cd01p:VisitScreening1Height , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_NA ;
+	study:derivedFlag "N" ;
+	study:groupID "GRPID1" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:HeightOutcome_58.0 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "43.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_HEIGHT .
+
+cdiscpilot01:HeightOutcome_58.0 a study:HeightOutcome ;
+	skos:prefLabel "58.0 in" ;
+	code:hasUnit code:Unit_in ;
+	code:hasValue "58.0" .
+
+cdiscpilot01:PULSE_01-701-1015_44 a cd01p:VisitScreening1Pulse , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_NA ;
+	study:bodyPosition code:Vspos_SUPINE ;
+	study:derivedFlag "N" ;
+	study:groupID "NA" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:PulseOutcome_57 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "44.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_PULSE .
+
+cdiscpilot01:PULSE_01-701-1015_45 a cd01p:VisitScreening1Pulse , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_NA ;
+	study:bodyPosition code:Vspos_STANDING ;
+	study:derivedFlag "N" ;
+	study:groupID "NA" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:PulseOutcome_62 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "45.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_PULSE .
+
+cdiscpilot01:PULSE_01-701-1015_46 a cd01p:VisitScreening1Pulse , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_NA ;
+	study:bodyPosition code:Vspos_STANDING ;
+	study:derivedFlag "N" ;
+	study:groupID "NA" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:PulseOutcome_65 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "46.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_PULSE .
+
+cdiscpilot01:PulseOutcome_57 a study:PulseOutcome ;
+	skos:prefLabel "57 beats/min" ;
+	code:hasUnit <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#Unit_beats/min> ;
+	code:hasValue "57" .
+
+cdiscpilot01:PulseOutcome_62 a study:PulseOutcome ;
+	skos:prefLabel "62 beats/min" ;
+	code:hasUnit <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#Unit_beats/min> ;
+	code:hasValue "62" .
+
+cdiscpilot01:PulseOutcome_65 a study:PulseOutcome ;
+	skos:prefLabel "65 beats/min" ;
+	code:hasUnit <https://raw.githubusercontent.com/phuse-org/CTDasRDF/master/data/rdf/code.ttl#Unit_beats/min> ;
+	code:hasValue "65" .
+
+cdiscpilot01:SYSBP_01-701-1015_86 a cd01p:VisitScreening1BloodPressure , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_ARM ;
+	study:bodyPosition code:Vspos_SUPINE ;
+	study:derivedFlag "N" ;
+	study:groupID "GRPID1" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:SysbpOutcome_131 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "86.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_SYSBP .
+
+cdiscpilot01:SYSBP_01-701-1015_87 a cd01p:VisitScreening1BloodPressure , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_ARM ;
+	study:bodyPosition code:Vspos_STANDING ;
+	study:derivedFlag "N" ;
+	study:groupID "GRPID1" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:SysbpOutcome_129 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "87.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_SYSBP .
+
+cdiscpilot01:SYSBP_01-701-1015_88 a cd01p:VisitScreening1BloodPressure , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_ARM ;
+	study:bodyPosition code:Vspos_STANDING ;
+	study:derivedFlag "N" ;
+	study:groupID "GRPID1" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasStartRule cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:SysbpOutcome_147 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "88.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_SYSBP .
+
+cdiscpilot01:StartRuleLying5_SCREENING1_01-701-1015 a cd01p:StartRuleLying5 ;
+	skos:prefLabel "01-701-1015 Screening 1 Rule AFTER LYING DOWN FOR 5 MINUTES" ;
+	study:hasPrerequisite cdiscpilot01:AssumeBodyPositionSupine_SCREENING1_01-701-1015 .
+
+cdiscpilot01:StartRuleStanding1_SCREENING1_01-701-1015 a cd01p:StartRuleStanding1 ;
+	skos:prefLabel "01-701-1015 Screening 1 Rule AFTER STANDING FOR 1 MINUTE" ;
+	study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 .
+
+cdiscpilot01:StartRuleStanding3_SCREENING1_01-701-1015 a cd01p:StartRuleStanding3 ;
+	skos:prefLabel "01-701-1015 Screening 1 Rule AFTER STANDING FOR 3 MINUTES" ;
+	study:hasPrerequisite cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 .
+
+cdiscpilot01:SysbpOutcome_129 a study:SysbpOutcome ;
+	skos:prefLabel "129 mmHg" ;
+	code:hasUnit code:Unit_mmHg ;
+	code:hasValue "129" .
+
+cdiscpilot01:SysbpOutcome_131 a study:SysbpOutcome ;
+	skos:prefLabel "131 mmHg" ;
+	code:hasUnit code:Unit_mmHg ;
+	code:hasValue "131" .
+
+cdiscpilot01:SysbpOutcome_147 a study:SysbpOutcome ;
+	skos:prefLabel "147 mmHg" ;
+	code:hasUnit code:Unit_mmHg ;
+	code:hasValue "147" .
+
+cdiscpilot01:TEMP_01-701-1015_128 a cd01p:VisitScreening1Temperature , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_ORALCAVITY ;
+	study:derivedFlag "N" ;
+	study:groupID "GRPID1" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:TempOutcome_96.9 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "128.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_TEMP .
+
+cdiscpilot01:TempOutcome_96.9 a study:TempOutcome ;
+	skos:prefLabel "96.9 F" ;
+	code:hasUnit code:Unit_F ;
+	code:hasValue "96.9" .
+
+cdiscpilot01:VisitScreening1Activity_01-701-1015 a owl:Class ;
+	rdfs:subClassOf custom:VisitScreening1Activity ;
+	skos:prefLabel "Visit Screening 1 Person 01-701-1015" .
+
+cdiscpilot01:VisitScreening1_01-701-1015 a custom:VisitScreening1 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:hasPerformedDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasSubActivity cdiscpilot01:AssumeBodyPositionStanding_SCREENING1_01-701-1015 , cdiscpilot01:AssumeBodyPositionSupine_SCREENING1_01-701-1015 , cdiscpilot01:DIABP_01-701-1015_1 , cdiscpilot01:DIABP_01-701-1015_2 , cdiscpilot01:DIABP_01-701-1015_3 , cdiscpilot01:HEIGHT_01-701-1015_43 , cdiscpilot01:PULSE_01-701-1015_44 , cdiscpilot01:PULSE_01-701-1015_45 , cdiscpilot01:PULSE_01-701-1015_46 , cdiscpilot01:SYSBP_01-701-1015_86 , cdiscpilot01:SYSBP_01-701-1015_87 , cdiscpilot01:SYSBP_01-701-1015_88 , cdiscpilot01:TEMP_01-701-1015_128 , cdiscpilot01:WEIGHT_01-701-1015_142 .
+
+cdiscpilot01:WEIGHT_01-701-1015_142 a cd01p:VisitScreening1Weight , cdiscpilot01:VisitScreening1Activity_01-701-1015 ;
+	study:activityStatus code:ActivityStatus_CO ;
+	study:anatomicLocation code:Vsloc_NA ;
+	study:derivedFlag "N" ;
+	study:groupID "GRPID1" ;
+	study:hasCategory cd01p:Category_1 ;
+	study:hasScheduledDate cdiscpilot01:Date_2013-12-26 ;
+	study:hasSubcategory cd01p:Subcategory_1 ;
+	study:laterality code:Vslat_NA ;
+	study:outcome cdiscpilot01:WeightOutcome_119.0 ;
+	study:reasonNotDone "not applicable" ;
+	study:seq "142.0"^^xsd:float ;
+	study:sponsordefinedID "NA" ;
+	study:vstestcd code:Vtestcd_WEIGHT .
+
+cdiscpilot01:WeightOutcome_119.0 a study:WeightOutcome ;
+	skos:prefLabel "119.0 LB" ;
+	code:hasUnit code:Unit_LB ;
+	code:hasValue "119.0" .

@@ -17,6 +17,7 @@
 @prefix sdtm: <https://w3id.org/phuse/sdtm#> .
 @prefix sdtmig-3-1-3: <http://rdf.cdisc.org/std/sdtmig-3-1-3#> .
 @prefix sdtmterm: <https://w3id.org/phuse/sdtmterm#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spif: <http://spinrdf.org/spif#> .
@@ -25,193 +26,158 @@
 @prefix study: <https://w3id.org/phuse/study#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<https://w3id.org/phuse/sdtmterm#C66738.C15320>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Study Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEACN>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C20587>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Age Span" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEACNOTH>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C25196>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial is Randomized" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEBDSYCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C25488>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Dose per Administration" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEBODSYS>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C38114>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Route of Administration" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AECAT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C41161>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Investigational Therapy or Treatment" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AECONTRT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C41184>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Indication" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEDECOD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C48281>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Phase Classification" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEDUR>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49647>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Control Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENDTC>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49650>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Diagnosis Group" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENDY>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49652>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Indication Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENRF>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49658>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Blinding Schema" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENRTPT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49660>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEENTPT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49692>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Number of Subjects; Planned Enrollment; Target Enrollment; Anticipated Enrollment" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEGRPID>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49693>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Minimum Age of Subjects" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEHLGT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49694>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Maximum Age of Subjects" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEHLGTCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49696>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Sex of Participants" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEHLT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49697>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Length" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEHLTCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49698>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Study Stop Rules" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AELLT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49703>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Added on to Existing Treatments" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AELLTCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C49802>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Title" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AELOC>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C68612>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Comparative Treatment Name" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEMODIFY>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C69208>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Study Start Date" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEOUT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C70793>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Clinical Study Sponsor; Study Sponsor; Sponsor" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEPATT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C73558>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Dose Units" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEPRESP>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C85582>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Current Therapy or Treatment" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEPTCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C85826>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Primary Objective" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEREFID>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C85827>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Trial Secondary Objective" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AEREL>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C89081>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Dosing Frequency" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AERELNST>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C90462>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Study End Date" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESCAN>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98703>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Actual Number of Subjects" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESCAT>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98704>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Adaptive Design" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESCONG>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98714>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Registry Identifier" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESDISAB>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98715>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Confirmed Response Minimum Duration" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESDTH>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98717>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Data Cutoff Date" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESEQ>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98718>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Data Cutoff Description" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESER>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98724>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Exploratory Outcome Measure" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESEV>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98737>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Healthy Subject Indicator" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESHOSP>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98746>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Intervention Model" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESLIFE>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98747>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Intervention Type" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESMIE>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98768>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Pharmacological Class of Invest. Therapy" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESOC>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98770>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Country of Investigational Sites" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESOCCD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98771>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Planned Number of Arms" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESOD>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98772>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Primary Outcome Measure" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESPID>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98775>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Randomization Quotient" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESTDTC>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98781>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Secondary Outcome Measure" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AESTDY>
+  rdf:type sdtm:Variable ;
 .
-<https://w3id.org/phuse/sdtmterm#C66738.C98783>
-  rdf:type sdtm:Parameter ;
-  skos:altLabel "Stable Disease Minimum Duration" ;
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AETERM>
+  rdf:type sdtm:Variable ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.AETOXGR>
+  rdf:type sdtm:Variable ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.DOMAIN>
+  rdf:type sdtm:Variable ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.STUDYID>
+  rdf:type sdtm:Variable ;
+.
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.AE.USUBJID>
+  rdf:type sdtm:Variable ;
 .
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.DM.ACTARM>
   rdf:type sdtm:Variable ;
@@ -478,6 +444,9 @@
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Column.VS.VSTPTREF>
   rdf:type sdtm:Variable ;
 .
+<http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.AE>
+  rdf:type sdtm:Domain ;
+.
 <http://rdf.cdisc.org/std/sdtmig-3-1-3#Dataset.DM>
   rdf:type sdtm:Domain ;
 .
@@ -496,7 +465,7 @@
   owl:imports <http://rdf.cdisc.org/std/sdtmig-3-1-3> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
-  owl:imports <https://w3id.org/phuse/code#> ;
+  owl:imports code: ;
   owl:imports <https://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
@@ -1759,6 +1728,647 @@ sdtm:SDTMDomain
               ] ;
           ]
           [
+            sp:varName "AESEQ" ;
+          ]
+        ) ;
+      sp:resultVariables (
+          [
+            sp:varName "STUDYID" ;
+          ]
+          [
+            sp:varName "DOMAIN" ;
+          ]
+          [
+            sp:varName "USUBJID" ;
+          ]
+          [
+            sp:varName "AESEQ" ;
+          ]
+          [
+            sp:varName "AEGRPID" ;
+          ]
+          [
+            sp:varName "AEREFID" ;
+          ]
+          [
+            sp:varName "AESPID" ;
+          ]
+          [
+            sp:varName "AETERM" ;
+          ]
+          [
+            sp:varName "AEMODIFY" ;
+          ]
+          [
+            sp:varName "AELLT" ;
+          ]
+          [
+            sp:varName "AELLTCD" ;
+          ]
+          [
+            sp:varName "AEDECOD" ;
+          ]
+          [
+            sp:varName "AEPTCD" ;
+          ]
+          [
+            sp:varName "AEHLT" ;
+          ]
+          [
+            sp:varName "AEHLTCD" ;
+          ]
+          [
+            sp:varName "AEHLGT" ;
+          ]
+          [
+            sp:varName "AEHLGTCD" ;
+          ]
+          [
+            sp:varName "AECAT" ;
+          ]
+          [
+            sp:varName "AESCAT" ;
+          ]
+          [
+            sp:varName "AEPRESP" ;
+          ]
+          [
+            sp:varName "AEBODSYS" ;
+          ]
+          [
+            sp:varName "AEBDSYCD" ;
+          ]
+          [
+            sp:varName "AESOC" ;
+          ]
+          [
+            sp:varName "AESOCCD" ;
+          ]
+          [
+            sp:varName "AESEV" ;
+          ]
+          [
+            sp:varName "AESER" ;
+          ]
+          [
+            sp:varName "AEACN" ;
+          ]
+          [
+            sp:varName "AEACNOTH" ;
+          ]
+          [
+            sp:varName "AEREL" ;
+          ]
+          [
+            sp:varName "AERELNST" ;
+          ]
+          [
+            sp:varName "AEPATT" ;
+          ]
+          [
+            sp:varName "AEOUT" ;
+          ]
+          [
+            sp:varName "AESCAN" ;
+          ]
+          [
+            sp:varName "AESCONG" ;
+          ]
+          [
+            sp:varName "AESDISAB" ;
+          ]
+          [
+            sp:varName "AESDTH" ;
+          ]
+          [
+            sp:varName "AESHOSP" ;
+          ]
+          [
+            sp:varName "AESLIFE" ;
+          ]
+          [
+            sp:varName "AESOD" ;
+          ]
+          [
+            sp:varName "AESMIE" ;
+          ]
+          [
+            sp:varName "AECONTRT" ;
+          ]
+          [
+            sp:varName "AETOXGR" ;
+          ]
+          [
+            sp:varName "AEDTC" ;
+          ]
+          [
+            sp:varName "AESTDTC" ;
+          ]
+          [
+            sp:varName "AEENDTC" ;
+          ]
+          [
+            sp:varName "AESTDY" ;
+          ]
+          [
+            sp:varName "AEENDY" ;
+          ]
+          [
+            sp:varName "AEDUR" ;
+          ]
+          [
+            sp:varName "AEENRF" ;
+          ]
+          [
+            sp:varName "AEENRTPT" ;
+          ]
+          [
+            sp:varName "AEENTPT" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTM_AE_Record ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "STUDYID" ;
+              ] ;
+            sp:predicate sdtm:hasSTUDYID ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "DOMAIN" ;
+              ] ;
+            sp:predicate sdtm:hasDOMAIN ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "USUBJID" ;
+              ] ;
+            sp:predicate sdtm:hasUSUBJID ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AETERM" ;
+              ] ;
+            sp:predicate sdtm:hasAETERM ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEMODIFY" ;
+              ] ;
+            sp:predicate sdtm:hasAEMODIFY ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AELLT" ;
+              ] ;
+            sp:predicate sdtm:hasAELLT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AELLTCD" ;
+              ] ;
+            sp:predicate sdtm:hasAELLTCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEDECOD" ;
+              ] ;
+            sp:predicate sdtm:hasAEDECOD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEPTCD" ;
+              ] ;
+            sp:predicate sdtm:hasAEPTCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLT" ;
+              ] ;
+            sp:predicate sdtm:hasAEHLT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLTCD" ;
+              ] ;
+            sp:predicate sdtm:hasAEHLTCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLGT" ;
+              ] ;
+            sp:predicate sdtm:hasAEHLGT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLGTCD" ;
+              ] ;
+            sp:predicate sdtm:hasAEHLGTCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESOC" ;
+              ] ;
+            sp:predicate sdtm:hasAESOC ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESOCCD" ;
+              ] ;
+            sp:predicate sdtm:hasAESOCCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEBODSYS" ;
+              ] ;
+            sp:predicate sdtm:hasAEBODSYS ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEBDSYCD" ;
+              ] ;
+            sp:predicate sdtm:hasAEBDSYCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESEV" ;
+              ] ;
+            sp:predicate sdtm:hasAESEV ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESER" ;
+              ] ;
+            sp:predicate sdtm:hasAESER ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEREL" ;
+              ] ;
+            sp:predicate sdtm:hasAEREL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEOUT" ;
+              ] ;
+            sp:predicate sdtm:hasAEOUT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESCAN" ;
+              ] ;
+            sp:predicate sdtm:hasAESCAN ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESCONG" ;
+              ] ;
+            sp:predicate sdtm:hasAESCONG ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESDISAB" ;
+              ] ;
+            sp:predicate sdtm:hasAESDISAB ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESDTH" ;
+              ] ;
+            sp:predicate sdtm:hasAESDTH ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESHOSP" ;
+              ] ;
+            sp:predicate sdtm:hasAESHOSP ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESLIFE" ;
+              ] ;
+            sp:predicate sdtm:hasAESLIFE ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESOD" ;
+              ] ;
+            sp:predicate sdtm:hasAESOD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESMIE" ;
+              ] ;
+            sp:predicate sdtm:hasAESMIE ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AECONTRT" ;
+              ] ;
+            sp:predicate sdtm:hasAECONTRT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AETOXGR" ;
+              ] ;
+            sp:predicate sdtm:hasAETOXGR ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESTDTC" ;
+              ] ;
+            sp:predicate sdtm:hasAESTDTC ;
+            sp:subject spin:_this ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AESEQ" ;
+                    ] ;
+                  sp:predicate sdtm:hasAESEQ ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEGRPID" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEGRPID ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEREFID" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEREFID ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AESPID" ;
+                    ] ;
+                  sp:predicate sdtm:hasAESPID ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AECAT" ;
+                    ] ;
+                  sp:predicate sdtm:hasAECAT ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AESCAT" ;
+                    ] ;
+                  sp:predicate sdtm:hasAESCAT ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEPRESP" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEPRESP ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEACN" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEACN ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEACNOTH" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEACNOTH ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AERELNST" ;
+                    ] ;
+                  sp:predicate sdtm:hasAERELNST ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEPATT" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEPATT ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AESMIE" ;
+                    ] ;
+                  sp:predicate sdtm:hasAESMIE ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AECONTRT" ;
+                    ] ;
+                  sp:predicate sdtm:hasAECONTRT ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AETOXGR" ;
+                    ] ;
+                  sp:predicate sdtm:hasAETOXGR ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEENDTC" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEENDTC ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEENDY" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEENDY ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEDUR" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEDUR ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEENRF" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEENRF ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEENRTPT" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEENRTPT ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEENTPT" ;
+                    ] ;
+                  sp:predicate sdtm:hasAEENTPT ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "AE domain query" ;
+    ] ;
+  spin:query [
+      rdf:type sp:Select ;
+      sp:orderBy (
+          [
+            rdf:type sp:Asc ;
+            sp:expression [
+                sp:varName "USUBJID" ;
+              ] ;
+          ]
+          [
             sp:varName "VSSEQ" ;
           ]
         ) ;
@@ -2315,6 +2925,1903 @@ sdtm:SDTMTerminology
   rdfs:comment "" ;
   skos:definition "" ;
   skos:prefLabel "SDTMTerminology" ;
+.
+sdtm:SDTM_AE_Record
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AEACN" ;
+              ] ;
+            sp:predicate sdtm:hasAEACN ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEACNOTH" ;
+              ] ;
+            sp:predicate sdtm:hasAEACNOTH ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEREL" ;
+              ] ;
+            sp:predicate sdtm:hasAEREL ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AERELNST" ;
+              ] ;
+            sp:predicate sdtm:hasAERELNST ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEPATT" ;
+              ] ;
+            sp:predicate sdtm:hasAEPATT ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEACN" ;
+                    ] ;
+                  sp:predicate study:actionTaken ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEACNOTH" ;
+                    ] ;
+                  sp:predicate study:actionTakenOther ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cause" ;
+                    ] ;
+                  sp:predicate study:causality ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AEREL" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cause" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AERELNST" ;
+                    ] ;
+                  sp:predicate study:relationshipToNonStudyDrug ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEPATT" ;
+                    ] ;
+                  sp:predicate study:adverseEventPattern ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "AEACN, AEACNOTH, AEREL, AERELNST, and AEPATT mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AECAT" ;
+              ] ;
+            sp:predicate sdtm:hasAECAT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESCAT" ;
+              ] ;
+            sp:predicate sdtm:hasAESCAT ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AECAT" ;
+              ] ;
+            sp:predicate study:hasCategory ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AESCAT" ;
+                    ] ;
+                  sp:predicate study:hasSubcategory ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "AECAT and AESCAT mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AEDTC" ;
+              ] ;
+            sp:predicate sdtm:hasAEDTC ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aedt" ;
+              ] ;
+            sp:predicate study:hasDataCollectionDate ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEDTC" ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "aedt" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AEDTC mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AEENRF" ;
+              ] ;
+            sp:predicate sdtm:hasAEENRF ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEENRTPT" ;
+              ] ;
+            sp:predicate sdtm:hasAEENRTPT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEENTPT" ;
+              ] ;
+            sp:predicate sdtm:hasAEENTPT ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aeint" ;
+              ] ;
+            sp:predicate study:hasInterval ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aend" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
+            sp:subject [
+                sp:varName "aeint" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEENDTC" ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "aend" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "rtp" ;
+              ] ;
+            sp:predicate study:hasReferenceTimePointEndDate ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEENTPT" ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "rtp" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type study:studyday ;
+                arg:activityDate [
+                    sp:varName "AEENDTC" ;
+                  ] ;
+                arg:refDate [
+                    sp:varName "AEENTPT" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "AEENRF" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    rdf:type sp:ge ;
+                    sp:arg1 [
+                        sp:varName "AEENRF" ;
+                      ] ;
+                    sp:arg2 0 ;
+                  ] ;
+                sp:arg2 "AFTER" ;
+                sp:arg3 "BEFORE" ;
+              ] ;
+            sp:variable [
+                sp:varName "AEENRTPT" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AENRF AEENRTP AEENTPT mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AEGRPID" ;
+              ] ;
+            sp:predicate sdtm:hasAEGRPID ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEGRPID" ;
+              ] ;
+            sp:predicate study:groupID ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AEGRPID mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AELLT" ;
+              ] ;
+            sp:predicate sdtm:hasAELLT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AELLTCD" ;
+              ] ;
+            sp:predicate sdtm:hasAELLTCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEDECOD" ;
+              ] ;
+            sp:predicate sdtm:hasAEDECOD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEPTCD" ;
+              ] ;
+            sp:predicate sdtm:hasAEPTCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLT" ;
+              ] ;
+            sp:predicate sdtm:hasAEHLT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLTCD" ;
+              ] ;
+            sp:predicate sdtm:hasAEHLTCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLGT" ;
+              ] ;
+            sp:predicate sdtm:hasAEHLGT ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLGTCD" ;
+              ] ;
+            sp:predicate sdtm:hasAEHLGTCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESOC" ;
+              ] ;
+            sp:predicate sdtm:hasAESOC ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESOCCD" ;
+              ] ;
+            sp:predicate sdtm:hasAESOCCD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEBODSYS" ;
+              ] ;
+            sp:predicate sdtm:hasAEBODSYS ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEBDSYCD" ;
+              ] ;
+            sp:predicate sdtm:hasAEBDSYCD ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "LLT" ;
+              ] ;
+            sp:predicate code:hasCode ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AELLT" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "LLT" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AELLTCD" ;
+              ] ;
+            sp:predicate code:hasIdentifier ;
+            sp:subject [
+                sp:varName "LLT" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "pt" ;
+              ] ;
+            sp:predicate <https://w3id.org/phuse/mdra#hasPT> ;
+            sp:subject [
+                sp:varName "LLT" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEDECOD" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "pt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEPTCD" ;
+              ] ;
+            sp:predicate code:hasIdentifier ;
+            sp:subject [
+                sp:varName "pt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "hlt" ;
+              ] ;
+            sp:predicate <https://w3id.org/phuse/mdra#hasHLT> ;
+            sp:subject [
+                sp:varName "pt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLT" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "hlt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLTCD" ;
+              ] ;
+            sp:predicate code:hasIdentifier ;
+            sp:subject [
+                sp:varName "hlt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "hlgt" ;
+              ] ;
+            sp:predicate <https://w3id.org/phuse/mdra#hasHLGT> ;
+            sp:subject [
+                sp:varName "hlt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLGT" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "hlgt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEHLGTCD" ;
+              ] ;
+            sp:predicate code:hasIdentifier ;
+            sp:subject [
+                sp:varName "hlgt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "soc" ;
+              ] ;
+            sp:predicate <https://w3id.org/phuse/mdra#hasSOC> ;
+            sp:subject [
+                sp:varName "hlgt" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESOC" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "soc" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESOCCD" ;
+              ] ;
+            sp:predicate code:hasIdentifier ;
+            sp:subject [
+                sp:varName "soc" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEBODSYS" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "soc" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEBDSYCD" ;
+              ] ;
+            sp:predicate code:hasIdentifier ;
+            sp:subject [
+                sp:varName "soc" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AEDECOD and Full MedDRA mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AEOUT" ;
+              ] ;
+            sp:predicate sdtm:hasAEOUT ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "out" ;
+              ] ;
+            sp:predicate code:outcome ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEOUT" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "out" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AEOUT mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AEPRESP" ;
+              ] ;
+            sp:predicate sdtm:hasAEPRESP ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "presp" ;
+              ] ;
+            sp:predicate study:isPrespecified ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEPRESP" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "presp" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AEPRESP mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AEREFID" ;
+              ] ;
+            sp:predicate sdtm:hasAEREFID ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEREFID" ;
+              ] ;
+            sp:predicate study:referenceID ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AEREFID mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AESCAN" ;
+              ] ;
+            sp:predicate sdtm:hasAESCAN ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESCONG" ;
+              ] ;
+            sp:predicate sdtm:hasAESCONG ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESDISAB" ;
+              ] ;
+            sp:predicate sdtm:hasAESDISAB ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESDTH" ;
+              ] ;
+            sp:predicate sdtm:hasAESDTH ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESHOSP" ;
+              ] ;
+            sp:predicate sdtm:hasAESHOSP ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESLIFE" ;
+              ] ;
+            sp:predicate sdtm:hasAESLIFE ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESOD" ;
+              ] ;
+            sp:predicate sdtm:hasAESOD ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESMIE" ;
+              ] ;
+            sp:predicate sdtm:hasAESMIE ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AECONTRT" ;
+              ] ;
+            sp:predicate sdtm:hasAECONTRT ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "aes" ;
+                    ] ;
+                  sp:predicate study:cancer ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AESCAN" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "aes" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "cong" ;
+                    ] ;
+                  sp:predicate study:congenitalDefect ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AESCONG" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "cong" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "disab" ;
+                    ] ;
+                  sp:predicate study:disabling ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AESDISAB" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "disab" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "dth" ;
+                    ] ;
+                  sp:predicate study:death ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AESDTH" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "dth" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "hosp" ;
+                    ] ;
+                  sp:predicate study:hospitalization ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AESHOSP" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "hosp" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "threat" ;
+                    ] ;
+                  sp:predicate study:lifeThreatening ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AESLIFE" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "threat" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "ovr" ;
+                    ] ;
+                  sp:predicate study:overdose ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AESOD" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "ovr" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "mie" ;
+                    ] ;
+                  sp:predicate study:medicallyImportantSeriousEvent ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AESMIE" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "mie" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "ctg" ;
+                    ] ;
+                  sp:predicate study:concomitantTreatmentGiven ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AECONTRT" ;
+                    ] ;
+                  sp:predicate skos:prefLabel ;
+                  sp:subject [
+                      sp:varName "ctg" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "AESCAN, AESCONG, AESDISAB, AESDTH, AESHOSP, AESOD, AESMIE, AECONTRT mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AESEQ" ;
+              ] ;
+            sp:predicate sdtm:hasAESEQ ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESEQ" ;
+              ] ;
+            sp:predicate study:seq ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AESEQ mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AESER" ;
+              ] ;
+            sp:predicate sdtm:hasAESER ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ser" ;
+              ] ;
+            sp:predicate study:serious ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESER" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "ser" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AESER mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AESEV" ;
+              ] ;
+            sp:predicate sdtm:hasAESEV ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sev" ;
+              ] ;
+            sp:predicate study:severity ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESEV" ;
+              ] ;
+            sp:predicate skos:prefLabel ;
+            sp:subject [
+                sp:varName "sev" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AESEV mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AESPID" ;
+              ] ;
+            sp:predicate sdtm:hasAESPID ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESPID" ;
+              ] ;
+            sp:predicate study:sponsordefinedID ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AESPID mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AESTDTC" ;
+              ] ;
+            sp:predicate sdtm:hasAESTDTC ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEENDTC" ;
+              ] ;
+            sp:predicate sdtm:hasAEENDTC ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESTDY" ;
+              ] ;
+            sp:predicate sdtm:hasAESTDY ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEENDY" ;
+              ] ;
+            sp:predicate sdtm:hasAEENDY ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEDUR" ;
+              ] ;
+            sp:predicate sdtm:hasAEDUR ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aeint" ;
+              ] ;
+            sp:predicate study:hasInterval ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "aestart" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
+            sp:subject [
+                sp:varName "aeint" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESTDTC" ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "aestart" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "aeend" ;
+                    ] ;
+                  sp:predicate <http://www.w3.org/2006/time#hasEnd> ;
+                  sp:subject [
+                      sp:varName "aeint" ;
+                    ] ;
+                ]
+                [
+                  sp:object [
+                      sp:varName "AEENDTC" ;
+                    ] ;
+                  sp:predicate study:dateTimeInXSDString ;
+                  sp:subject [
+                      sp:varName "aeend" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            sp:object [
+                sp:varName "refintrvl" ;
+              ] ;
+            sp:predicate study:hasReferenceInterval ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "refstrt" ;
+              ] ;
+            sp:predicate <http://www.w3.org/2006/time#hasBeginning> ;
+            sp:subject [
+                sp:varName "refintrvl" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "RFSTDTC" ;
+              ] ;
+            sp:predicate study:dateTimeInXSDString ;
+            sp:subject [
+                sp:varName "refstrt" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type study:studyday ;
+                arg:activityDate [
+                    sp:varName "AESTDTC" ;
+                  ] ;
+                arg:refDate [
+                    sp:varName "RFSTDTC" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "AESTDY" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type study:studyday ;
+                arg:activityDate [
+                    sp:varName "AEENDTC" ;
+                  ] ;
+                arg:refDate [
+                    sp:varName "RFSTDTC" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "AEENDY" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:add ;
+                sp:arg1 [
+                    rdf:type sp:sub ;
+                    sp:arg1 [
+                        sp:varName "AEENDY" ;
+                      ] ;
+                    sp:arg2 [
+                        sp:varName "AESTDY" ;
+                      ] ;
+                  ] ;
+                sp:arg2 1 ;
+              ] ;
+            sp:variable [
+                sp:varName "AEDUR" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AESTDTC AEENDTC AESTDY AEENDY AEDUR mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AETERM" ;
+              ] ;
+            sp:predicate sdtm:hasAETERM ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "AEMODIFY" ;
+              ] ;
+            sp:predicate sdtm:hasAEMODIFY ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AETERM" ;
+              ] ;
+            sp:predicate study:reportedTerm ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "AEMODIFY" ;
+                    ] ;
+                  sp:predicate study:modifiedTerm ;
+                  sp:subject [
+                      sp:varName "ae" ;
+                    ] ;
+                ]
+              ) ;
+          ]
+        ) ;
+      rdfs:comment "AETERM and AEMODIFY mapping" ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "AETOXGR" ;
+              ] ;
+            sp:predicate sdtm:hasAETOXGR ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object sdtm:SDTMRecord ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "subject" ;
+              ] ;
+            sp:predicate sdtm:hasEntity ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate study:afflictedBy ;
+            sp:subject [
+                sp:varName "subject" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "ae" ;
+              ] ;
+            sp:predicate sdtm:hasEvent ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object study:AdverseEvent ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AETOXGR" ;
+              ] ;
+            sp:predicate study:toxGrade ;
+            sp:subject [
+                sp:varName "ae" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "AETOXGR mapping" ;
+    ] ;
+  rdfs:subClassOf sdtm:SDTMSubjectLevelRecord ;
+  skos:prefLabel "SDTM AE Record" ;
 .
 sdtm:SDTM_DM_Record
   rdf:type owl:Class ;
@@ -9226,6 +11733,300 @@ sdtm:hasACTARMCD
   skos:definition "" ;
   skos:prefLabel "ACTARMCD" ;
 .
+sdtm:hasAEACN
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEACN" ;
+.
+sdtm:hasAEACNOTH
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEACNOTH" ;
+.
+sdtm:hasAEBDSYCD
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AEPTCD" ;
+.
+sdtm:hasAEBODSYS
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEBODYSYS" ;
+.
+sdtm:hasAECAT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AECAT" ;
+.
+sdtm:hasAECONTRT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESCONTRT" ;
+.
+sdtm:hasAEDECOD
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEDECOD" ;
+.
+sdtm:hasAEDISAB
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has disability" ;
+.
+sdtm:hasAEDTC
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEDTC" ;
+.
+sdtm:hasAEDUR
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEDUR" ;
+.
+sdtm:hasAEENDTC
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEENDTC" ;
+.
+sdtm:hasAEENDY
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEENDY" ;
+.
+sdtm:hasAEENRF
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEENRF" ;
+.
+sdtm:hasAEENRTPT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEENRTPT" ;
+.
+sdtm:hasAEENTPT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEENTPT" ;
+.
+sdtm:hasAEGRPID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AESEQ" ;
+.
+sdtm:hasAEHLGT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEHLGT" ;
+.
+sdtm:hasAEHLGTCD
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AEHLGTCD" ;
+.
+sdtm:hasAEHLT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEHLT" ;
+.
+sdtm:hasAEHLTCD
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AEHLTCD" ;
+.
+sdtm:hasAELLT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AELLT" ;
+.
+sdtm:hasAELLTCD
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AELLTCD" ;
+.
+sdtm:hasAEMODIFY
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEMODIFY" ;
+.
+sdtm:hasAEOUT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESCAT" ;
+.
+sdtm:hasAEPATT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEPATT" ;
+.
+sdtm:hasAEPRESP
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AEPRESP" ;
+.
+sdtm:hasAEPTCD
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AEPTCD" ;
+.
+sdtm:hasAEREFID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AEREFID" ;
+.
+sdtm:hasAEREL
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESCAT" ;
+.
+sdtm:hasAERELNST
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AERELNST" ;
+.
+sdtm:hasAESCAN
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESCAN" ;
+.
+sdtm:hasAESCAT
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESCAT" ;
+.
+sdtm:hasAESCONG
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESCONG" ;
+.
+sdtm:hasAESDISAB
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESDISAB" ;
+.
+sdtm:hasAESDTH
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESDEATH" ;
+.
+sdtm:hasAESEQ
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AESEQ" ;
+.
+sdtm:hasAESER
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESER" ;
+.
+sdtm:hasAESEV
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESEV" ;
+.
+sdtm:hasAESHOSP
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESHOSP" ;
+.
+sdtm:hasAESLIFE
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESLIFE" ;
+.
+sdtm:hasAESMIE
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESOD" ;
+.
+sdtm:hasAESOC
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESOC" ;
+.
+sdtm:hasAESOCCD
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AESOCCD" ;
+.
+sdtm:hasAESOD
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESOD" ;
+.
+sdtm:hasAESPID
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has AESPID" ;
+.
+sdtm:hasAESTDTC
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESTDTC" ;
+.
+sdtm:hasAESTDY
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AESTDY" ;
+.
+sdtm:hasAETERM
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AETERM" ;
+.
+sdtm:hasAETOXGR
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain sdtm:SDTM_AE_Record ;
+  rdfs:range xsd:string ;
+  skos:prefLabel "has AETOXGR" ;
+.
 sdtm:hasAGE
   rdf:type owl:DatatypeProperty ;
   rdfs:comment "" ;
@@ -9429,6 +12230,15 @@ sdtm:hasEntity
   rdfs:range study:HumanStudySubject ;
   skos:definition "" ;
   skos:prefLabel "has entity" ;
+.
+sdtm:hasEvent
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "" ;
+  rdfs:domain sdtm:SDTMRecord ;
+  rdfs:label "has event" ;
+  rdfs:range study:Event ;
+  skos:definition "" ;
+  skos:prefLabel "has event" ;
 .
 sdtm:hasIDVAR
   rdf:type owl:DatatypeProperty ;
@@ -9921,4 +12731,192 @@ sdtm:variableComment
   rdfs:range xsd:string ;
   rdfs:subPropertyOf skos:note ;
   skos:prefLabel "variable comment" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C15320>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Study Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C20587>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Age Span" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C25196>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial is Randomized" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C25488>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Dose per Administration" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C38114>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Route of Administration" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C41161>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Investigational Therapy or Treatment" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C41184>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Indication" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C48281>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Phase Classification" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49647>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Control Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49650>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Diagnosis Group" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49652>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Indication Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49658>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Blinding Schema" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49660>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49692>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Number of Subjects; Planned Enrollment; Target Enrollment; Anticipated Enrollment" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49693>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Minimum Age of Subjects" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49694>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Maximum Age of Subjects" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49696>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Sex of Participants" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49697>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Length" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49698>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Study Stop Rules" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49703>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Added on to Existing Treatments" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C49802>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Title" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C68612>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Comparative Treatment Name" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C69208>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Study Start Date" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C70793>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Clinical Study Sponsor; Study Sponsor; Sponsor" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C73558>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Dose Units" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C85582>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Current Therapy or Treatment" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C85826>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Primary Objective" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C85827>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Trial Secondary Objective" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C89081>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Dosing Frequency" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C90462>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Study End Date" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98703>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Actual Number of Subjects" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98704>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Adaptive Design" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98714>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Registry Identifier" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98715>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Confirmed Response Minimum Duration" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98717>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Data Cutoff Date" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98718>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Data Cutoff Description" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98724>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Exploratory Outcome Measure" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98737>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Healthy Subject Indicator" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98746>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Intervention Model" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98747>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Intervention Type" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98768>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Pharmacological Class of Invest. Therapy" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98770>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Country of Investigational Sites" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98771>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Planned Number of Arms" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98772>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Primary Outcome Measure" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98775>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Randomization Quotient" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98781>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Secondary Outcome Measure" ;
+.
+<https://w3id.org/phuse/sdtmterm#C66738.C98783>
+  rdf:type sdtm:Parameter ;
+  skos:altLabel "Stable Disease Minimum Duration" ;
 .

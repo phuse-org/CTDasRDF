@@ -6,83 +6,86 @@
 # REQ : Prior import of the TS XPT file  by driver script.
 # SRC : N/A
 # IN  : ts dataframe 
+#       TS_supplemental.XLSX - supplemental data needed in the graph that is not
+#         available in the original TS.XPT file.  NOTES column offers 
+#         explanation of the values as needed.
 # OUT : modified ts dataframe 
-# NOTE: 
+# NOTE: Unlike other conversions, this code does not produce _im variables, 
+#         due to complications in the post processing of the CAST
+#       Source variables (prior to CASTing) must not have '_' in column names.
 # REF :  Datatable reshape: 
 #          https://cran.r-project.org/web/packages/data.table/vignettes/datatable-reshape.html
 # TODO: visit recode move to function, share with VS,EX and other domains...
+#       Site info to be read in from a a file: Site, site seq, country code
 #______________________________________________________________________________
 
-library(data.table)  # dcast
+# Data Corrections 
+# Primary Outcome in original data should bean additional Primary objective 
+#    Objective is not in the original data.
+# Remove the original OUTMSPRI row. 
+ts <- ts[!(ts$tsparmcd =="OUTMSPRI"), ]
+ts <- ts[, !(names(ts) %in% c('domain'))] # Drop the notes column (explation of data)
+
+# Data not in original TS. 
+# Includes replacement of what was OUTMSPRI and is now a primary objective.
+tsAdditions <- read_excel("data/source/TS_supplemental.xlsx", col_names=TRUE)
+tsAdditions <- tsAdditions[, !(names(tsAdditions) == 'NOTES')] # Drop the notes column (explation of data)
+
+# Kludge: All to char prior to bind
+ts <- data.frame(lapply(ts, as.character), stringsAsFactors=FALSE)
+tsAdditions <- data.frame(lapply(tsAdditions, as.character), stringsAsFactors=FALSE)
+
+tsAll<-dplyr::bind_rows(ts, tsAdditions)
 
 
-# Data Error Corrections 
-# Primary Outcome is actually another Primary objective and Primary 
-#    Objective is not in the original data
-# 1. remove the original OUTMSPRI row. 
-ts<-ts[!(ts$tsparmcd =="OUTMSPRI"), ]
+# CAST from long to wide to get TSPARMCD values as column names, combining with other value.var 
+# fields as in xxxx_tsval, xxx_tsparm, etc. 
+# TODO: Add additional value.var as needed
+# NOTE: data.table:dcast used for its ability to use mutliple value.var columns.
+
+tswide <- data.table::dcast( setDT(tsAll),
+  studyid + tsseq ~ tsparmcd,
+  value.var = c("tsval", "tsvalcd", "tsparm", "tsvcdref", "type", "type2" )
+  )
+
+# dplyr approach to removing columns filled with NA (no values in entire column)
+not_all_na <- function(x) any(!is.na(x))
+tswide <- tswide %>% select_if(not_all_na)
+
+# CAST results in tsval_xxx, tsparm_xxx,  we need xxx_tsval, xxx_tsparm, so reverse
+#  the text on either side of '_' created during the CAST. 
+names(tswide) <- gsub('(.*)_(.*)', '\\2_\\1', names(tswide))
+
+# Sort column names ease of reference 
+tswide <- tswide %>% select(noquote(order(colnames(tswide))))
+
+names(tswide) <- tolower(names(tswide))
+
+#---- Imputation  (recoding)
+tswide$tblind_tsval_iri     <- gsub(" ", "_", tswide$tblind_tsval )    # Blinding schema
+tswide$agespan_tsval_iri    <- gsub( " .*$", "", tswide$agespan_tsval) # ADULT, ELDERLY iri 
+tswide$dcutdtc_tsvcdref_iri <- gsub( " ", "", tswide$dcutdtc_tsvcdref) 
+tswide$epoch_tsvalcd_lc     <- tolower(tswide$epoch_tsvalcd) 
 
 
-# 2. Create the correct Primary Objective and Primary Outcome Measure data
-tsAdditions <-read.table(header = TRUE, fill=TRUE, text = "
-studyid       domain tsseq  tsparmcd  tsparm                     tsval                                                                                                                                             tsvalnf  tsvalcd  tsvcdref tsvcdver
-CDISPILOT01   TS     3      OBJPRIM   'Trial Primary Objective'  'Evaluate the efficacy and safety of transdermal xanomeline, 50cm2 and 75cm2, and placebo in subjects with mild to moderate Alzheimers disease.'                                                                                                                                         
-CDISPILOT01   TS     1      OUTMSPRI  'Primary Outcome Measure'  'ADAS-cog'                                                                                                                                                 C100762
-")
+# Age max is recoded from NA to NULL.4 to represent a reason for the NULL (a Null Flavor):
+#  age is missing due to null flavor reason #4.
 
-ts<-rbind(ts, tsAdditions)
+tswide[1,"agemax_tsval"] <- "NULL.4"  # Recode existing NA to "NULL.4" for use in IRI
 
+#---- Sequence Numbers
+# Primary and Secondary Objective, Stop Rule sequence number for IRIs.
+#   When xxx_tsval != NA, then the seq is the value of tsseq.
+# Primary Objective sequence
+tswide[ ! is.na(objprim_tsval) , "objprim_tsval_seq" ] <- tswide[ ! is.na(objprim_tsval), "tsseq" ]
 
-tswide <- dcast(setDT(ts), studyid + tsseq ~ tsparmcd, 
-  value.var = "tsval")
+# Secondary Objective sequence
+tswide[ ! is.na(objsec_tsval) , "objsec_tsval_seq" ] <- tswide[ ! is.na(objsec_tsval), "tsseq" ]
 
-tswide <- tswide %>% setNames(tolower(names(.))) %>% head  # all column names to lowercase
+# Stop rule sequence
+tswide[ ! is.na(stoprule_tsval) , "stoprule_tsval_seq" ] <- tswide[ ! is.na(stoprule_tsval), "tsseq" ]
 
-#---- Imputation
-tswide$tblind_im <- gsub(" ", "_", tswide$tblind )
+#---- OLDE BELOW HERE -----------------------------------------------------------------
 
-tswide[1,"dcut_iri_im"] <- "DataCutoff"  # to forum IRI for Data cutoff information
-
-# Arm information
-tsArms <-read.table(header = TRUE, fill=TRUE, text = "
-arm_im           arm_type_im             arm_altlbl_im   arm_preflbl_im    
-'Pbo'            'ControlArm'            'Pbo'           'Placebo'         
-'Pbo'            'RandomizationOutcome'  'Pbo'           'Placebo'
-'ScreenFailue'   'FalseArm'              'Scrnfail'      'Screen Failure'
-'XanomelineHigh' 'InvestigationalArm'    'Xan_Hi'        'Xanomeline High'
-'XanomelineHigh' 'RandomizationOutcome'  'Xan_Hi'        'Xanomeline High'
-'XanomelineLow'  'InvestigationalArm'    'Xan_Lo'        'Xanomeline Low'
-'XanomelineLow'  'RandomizationOutcome'  'Xan_Lo'        'Xanomeline Low'
-")
-tswide<-cbind(tswide,tsArms)
-
-
-# Epoch Data
-tsEpoch <- data.frame(
-  epoch_im              = 'BlindedTreatment',
-  epoch_type_imtime     = 'Epoch',
-  epoch_preflbl         = 'Epoch Blinded treatment' ,
-  epoch_int_im          = 'blindedtreatment',
-  epoch_int_type_im     = 'EpochInterval',
-  epoch_int_preflbl_im  = 'Epoch interval blindedtreatment'
-)
-
-tswide<-cbind(tswide,tsEpoch)
-
-
-# WIP HERE ----------------------------------------
-# When objprim != NA, then the seq_im is the value of tsseq.
-# See here : https://stackoverflow.com/questions/22814515/replace-value-in-column-with-corresponding-value-from-another-column-in-same-dat
-# df[ df$X1 == "a" , "X1" ] <- df[ df$X1 == "a", "X2" ]
-
-# Sequence for primary objective, needed for comparision with XPT source
-tswide[ ! is.na(objprim) , "objprim_seq" ] <- tswide[ ! is.na(objprim), "tsseq" ]
-
-# Sequence for secondary objective, needed for comparision with XPT source
-tswide[ ! is.na(objsec) , "objsec_seq" ] <- tswide[ ! is.na(objsec), "tsseq" ]
-
-
-# Move this code to the driver script.
-write.csv(tswide, file="data/source/ts_wide.csv", 
-  row.names = F,
-  na = "")
+# Sort column names ease of refernece 
+tswide <- tswide %>% select(noquote(order(colnames(tswide))))

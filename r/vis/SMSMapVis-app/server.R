@@ -111,6 +111,8 @@ function(input, output, session) {
     nodes$color.background[ grepl("code:",         nodes$id, perl=TRUE) ] <- '#1C5B64'
     nodes$color.background[ grepl("study:",        nodes$id, perl=TRUE) ] <- '#FFBD09'  
     nodes$color.background[ grepl("custom:",       nodes$id, perl=TRUE) ] <- '#C71B5F'
+    nodes$color.background[ grepl("sdtmterm:",       nodes$id, perl=TRUE) ] <- '#6AA295'
+    
     # Create "other" namespace group
     nodes$color.background[ grepl("time:|owl:",    nodes$id, perl=TRUE) ] <- '#FCFF98'  # Lt Yel
     

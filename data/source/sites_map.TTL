@@ -1,0 +1,55 @@
+﻿###############################################################################
+# FILE: sites_map.ttl
+# DESC: Stardog SMS Template file for mapping site information to graph.
+# REQ : File format requirements for both execution and consistent processing
+#         by visualization scripts:
+#         s line is hard left on line by itself
+#         p,o line - indented at least one space.
+#                  - ends in ; on same line, no trailing spaces
+#         p : no short hand: 'rdf:type', not 'a'
+#         File must end with carriage return on a line by itself.
+# SRC :
+# IN  : sites.csv , created from DM dataset within the XPTtoCVS.R driver code
+# OUT :
+# NOTE: stardog-admin virtual import CTDasRDFSMS sites_map.TTL sites.csv
+#  Export to TTL: stardog data export --format TURTLE CTDacd sRDFSMS C:/_github/CTDasRDF/data/source/EXPORT.ttl
+#  Site information to be read in from a seperate source file (site seq, country id, etc.)
+# TODO: 
+###############################################################################
+@prefix cd01p:        <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code:         <https://w3id.org/phuse/code#> .
+@prefix custom:       <https://w3id.org/phuse/custom#> .
+@prefix meddra:       <https://w3id.org/phuse/meddra#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm:     <https://w3id.org/phuse/sdtmterm#> .
+@prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
+@prefix study:        <https://w3id.org/phuse/study#> .
+@prefix time:         <http://www.w3.org/2006/time#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+
+# -----------------------------------------------------------------------------
+# Country
+
+code:Country
+  code:hasMethod code:Method_DERIVED ;
+.
+code:Country_{fcntryNum_im}
+  rdf:type study:Country ;
+.
+
+# Site 
+
+cd01p:SiteIdentifier_{siteNum_im}
+  rdf:type study:SiteIdentifier ;
+  skos:prefLabel "{siteid}" ;
+.
+
+cd01p:Site_{siteNum_im}
+  rdf:type study:Site ;
+  rdfs:comment "" ;
+  skos:definition "" ;
+  skos:prefLabel "site-{siteid}" ;
+  study:hasCountry code:Country_{fcntryNum_im} ;
+  study:hasSiteID cd01p:SiteIdentifier_{siteNum_im} ;
+.

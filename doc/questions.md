@@ -16,3 +16,22 @@ Example: code:AgeGroup uses the code prefix but only CDISC terminology for the e
 **Question**: 1) Would it be ok to include additional CDISC Controlled Terminology using the same strategy as available in code.ttl and update code.ttl accordingly? For example include also other AgeGroup declarations which are available in CDISC controlled terminology? 2) Can we include altLabels where it make sense? "No" / "Yes" has already been included as alternative Labels for the response code.
 
 **Answer**:
+
+## Duration vs. hasValue - Age
+
+**Question**: We use an age duration for the minimum & maximum planned subject age in the protocol and use a number for age in the DM domain. According CDISC the attached codelist for min/max age in TS is duration. Do we go with mixtures or might it be easier to use a hasValue also for the min/max planned subject age and map it to the duration format for download?
+
+```
+clinicspilot1:AgeOutcome_74
+  rdf:type study:AgeOutcome ;
+  skos:prefLabel "74 YEARS" ;
+  code:hasUnit time:unitYear ;
+  code:hasValue 74 ;
+  
+code:PlannedSubjectAge_P50Y
+  rdf:type code:Age ;
+  skos:prefLabel "Planned subject age P50Y" ;
+  code:hasValue "P50Y"^^xsd:duration ;
+```
+
+**Answer**:

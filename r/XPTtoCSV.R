@@ -14,8 +14,10 @@
 # NOTE: Some values are imputed  to match ontology development requirements.
 # TODO: 
 #______________________________________________________________________________
-library(Hmisc)
+library(data.table)  # dcast
 library(dplyr)  # recode, mutate with pipe in Functions.R, other dplyr goodness
+library(Hmisc)
+library(readxl)  # supplemental data
 
 dm_n=3;  # The first n patients from the DM domain.
 
@@ -42,21 +44,39 @@ write.csv(graphMeta, file="data/source/Graphmeta.csv",
 
 # ---- XPT Import -------------------------------------------------------------
 # DM ----
-dm  <- head(readXPT("dm"), dm_n)
+
+dm_all <- readXPT("dm")   # For  site ID  list
+dm  <- head(dm_all, dm_n) #subset for instance data testing 
+
+# DM Sites ----   
+# Get the list of sites from DM
+sites <- data.frame(unique(dm_all$siteid))
+colnames(sites)[1] <- "siteid"
+sites$siteNum_im <- seq.int(nrow(sites)) # sequence id used in creating AE URIs
+sites$fcntry <- "USA"   # Name of the field in TS, hard coded here to create a mappable file
+sites$fcntryNum_im <- 1 # hard code for this study: only 1 country.
+
+# Sort column names in the df for quicker referencing
+sites <- sites %>% select(noquote(order(colnames(sites))))
+
+write.csv(sites, file="data/source/sites.csv", 
+  row.names = F,
+  na = "")
 
 source('R/DM_imputeCSV.R')  # Impute values 
 
-write.csv(dm, file="data/source/DM_subset.csv", 
-  row.names = F,
-  na = "")
+#TW write.csv(dm, file="data/source/DM_subset.csv", 
+#TW   row.names = F,
+#TW   na = "")
 
 # SUPPDM ----
 #  No imputation for SUPPDM (no SUPPDM_imputeCSV.R)
 suppdm  <- readXPT("suppdm")
 suppdm <- suppdm[suppdm$usubjid %in% pntSubset,]  # Subset for dev
-write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
-  row.names = F,
-  na = "")
+
+#TW write.csv(suppdm, file="data/source/SUPPDM_subset.csv", 
+#TW   row.names = F,
+#TW   na = "")
 
 # EX ----
 ex  <- readXPT("ex")
@@ -69,9 +89,9 @@ ex <- merge(dmDrugInt, ex, by.x = "usubjid", by.y="usubjid")
 
 source('R/EX_imputeCSV.R') # Impute values 
 
-write.csv(ex, file="data/source/EX_subset.csv", 
-row.names = F,
-  na = "")
+#TW write.csv(ex, file="data/source/EX_subset.csv", 
+#TW row.names = F,
+#TW   na = "")
 
 # VS ----
 vs  <- readXPT("vs")  
@@ -87,17 +107,26 @@ vs <- data.frame(vs[vsSubset, ], stringsAsFactors=FALSE)
 
 source('R/VS_imputeCSV.R') # Impute values
 
-write.csv(vs, file="data/source/vs_subset.csv", 
-  row.names = F,
-  na = "")
+#TW write.csv(vs, file="data/source/vs_subset.csv", 
+#TW   row.names = F,
+#TW   na = "")
 
-# NOT YET IMPLEMENTED:
 # TS ----
-ts  <- readXPT("ts")  # first row only for initial testing.
+ts  <- readXPT("ts")  
 
 source('R/TS_imputeCSV.R') # Impute values
 
+write.csv(tswide, file="data/source/ts.csv", 
+  row.names = F,
+  na = "")
 
-#write.csv(ts, file="data/source/ts_subset.csv", 
-#  row.names = F,
-#  na = "")
+
+# AE ----
+ae  <- readXPT("ae")  
+ae  <- ae[ae$usubjid %in% pntSubset,]  # Subset for dev
+
+source('R/AE_imputeCSV.R') # Impute values
+
+write.csv(ae, file="data/source/ae.csv", 
+  row.names = F,
+  na = "")

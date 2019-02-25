@@ -1,0 +1,107 @@
+﻿###############################################################################
+# FILE: ae_map.ttl
+# DESC: Stardog SMS Template file for mapping AE information to graph.
+# REQ : File format requirements for both execution and consistent processing
+#         by visualization scripts:
+#         s line is hard left on line by itself
+#         p,o line - indented at least one space.
+#                  - ends in ; on same line, no trailing spaces
+#         p : no short hand: 'rdf:type', not 'a'
+#         File must end with carriage return on a line by itself.
+# SRC :
+# IN  : ae.csv , created by AE_imputeCSV.R
+# OUT :
+# NOTE: stardog-admin virtual import CTDasRDFSMS ae_map.TTL ae.csv
+#  Export to TTL: stardog data export --format TURTLE CTDacd sRDFSMS C:/_github/CTDasRDF/data/source/EXPORT.ttl
+#  Site information to be read in from a seperate source file (site seq, country id, etc.)
+# TODO: AdminActivity Data cutoff preflabel needs to come from the data
+# QUESTIONS to AO 2019-01-29 : Source of these p,o? 
+#   code:outcome code:AEOutcome_NRNR ;# ??
+#   study:referencePeriodDay 64 ;
+#   study:referenceTimePointDay 34 ;
+#  
+###############################################################################
+@prefix cd01p:        <https://w3id.org/phuse/cd01p#> .
+@prefix cdiscpilot01: <https://w3id.org/phuse/cdiscpilot01#> .
+@prefix code:         <https://w3id.org/phuse/code#> .
+@prefix custom:       <https://w3id.org/phuse/custom#> .
+@prefix meddra:       <https://w3id.org/phuse/meddra#> .
+@prefix rdfs:         <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdtmterm:     <https://w3id.org/phuse/sdtmterm#> .
+@prefix skos:         <http://www.w3.org/2004/02/skos/core#> .
+@prefix study:        <https://w3id.org/phuse/study#> .
+@prefix time:         <http://www.w3.org/2006/time#> .
+@prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
+
+# ---- section 1 -------------------------------------------------
+# -----------------------------------------------------------------------------
+# Person afflicted by AE 
+cdiscpilot01:Person_{usubjid} 
+  study:afflictedBy cdiscpilot01:AE{aeseq_im}_{aedecod_im} ;
+.
+
+# ---- Subtriples ----
+#  Label will have wrong case until correctd 
+cdiscpilot01:AE{aeseq_im}_{aedecod_im} 
+  code:hasCode                         meddra:LLT{aellt_meddraN_im}_{aellt_meddraN_im} ;
+  rdf:type                             study:AdverseEvent ;
+  skos:prefLabel                       "AE{aeseq_im} {aedecod}"^^xsd:string ;
+  study:actionTaken                    "{aeacn}"^^xsd:string ;
+  study:actionTakenOther               "{aeacnoth_im}"^^xsd:string ;
+  study:adverseEventPattern            "{aepatt_im}"^^xsd:string ; 
+  study:cancer                         sdtmterm:NoYesResponse_{aescan} ;
+  study:causality                      code:Causality_{aerel_im_titleC} ;
+  study:concomitantTreatmentGiven      sdtmterm:NoYesResponse_{aecontrt_im} ;
+  study:congenitalDefect               sdtmterm:NoYesResponse_{aescong} ;
+  study:death                          sdtmterm:NoYesResponse_{aesdth} ;
+  study:disabling                      sdtmterm:NoYesResponse_{aesdisab} ;
+  study:endDay                         "{aeendy}"^^xsd:int ;
+  study:groupID                        "{aegrpid_im}"^^xsd:string ;
+  study:hasCategory                    "{aecat_im}"^^xsd:string ;
+  study:hasDataCollectionDate          cdiscpilot01:Date_{aedtc} ;
+  study:hasInterval                    cdiscpilot01:Interval_{aestdtc}_{aeendtc} ;
+  study:hasReferenceTimePointEndDate   cdiscpilot01:Date_{aeentpt_im} ;
+  study:hasSubcategory                 "{aescat_im}"^^xsd:string ;
+  study:hospitalization                sdtmterm:NoYesResponse_{aeshosp} ;
+  study:isPrespecified                 sdtmterm:NoYesResponse_{aepresp} ;
+  study:lifeThreatening                sdtmterm:NoYesResponse_{aeslife} ;
+  study:medicallyImportantSeriousEvent sdtmterm:NoYesResponse_{aesmie_im} ;
+  study:modifiedTerm                   "{aedecod}"^^xsd:string ;
+  study:overdose                       sdtmterm:NoYesResponse_{aesod} ;
+  study:referenceID                    "REFID{aeseq_im}" ;
+  study:relationshipToNonStudyDrug     "{aerelnst_im}" ;
+  study:reportedTerm                   "{aedecod}"^^xsd:string ;
+  study:serious                        sdtmterm:NoYesResponse_{aeser} ;
+  study:severity                       code:Severity_{aesev} ;
+  study:sponsordefinedID               "{aespid}"^^xsd:string ;
+  study:startDay                       "{aestdy}"^^xsd:int ;
+  study:seq                            "{aeseq}"^^xsd:int ;
+.
+
+# ---- Subtriples ----
+cdiscpilot01:Date_{aedtc} 
+  rdf:type                  study:DataCollectionDate ;
+  rdf:type                  study:FixedDoseIntervalEnd ;
+  rdf:type                  study:VisitDate ;
+  skos:prefLabel            "{aedtc}" ;
+  study:dateTimeInXSDString "{aedtc}" ;
+.
+
+cdiscpilot01:Interval_{aestdtc}_{aeendtc} 
+  rdf:type          study:AdverseEventInterval ;
+  skos:prefLabel    "Interval {aestdtc} to {aeendtc}" ;
+  time:hasBeginning cdiscpilot01:Date_{aestdtc} ;
+  time:hasEnd       cdiscpilot01:Date_{aeendtc} ;
+.
+
+cdiscpilot01:Date_{aestdtc} 
+  rdf:type                  study:AdverseEventBegin ;
+  skos:prefLabel            "{aestdtc}" ;
+  study:dateTimeInXSDString "{aestdtc}" ;
+.
+
+cdiscpilot01:Date_{aeendtc} 
+  rdf:type                  study:AdverseEventEnd ;
+  skos:prefLabel            "{aeendtc}" ;
+  study:dateTimeInXSDString "{aeendtc}" ;
+.

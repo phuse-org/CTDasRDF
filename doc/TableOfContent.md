@@ -1,7 +1,7 @@
 Project Documentation
 =====================
 
-Table of Content
+Table of Contents
 ----------------
 
 ### [1.Explanation](Explanation.md)
