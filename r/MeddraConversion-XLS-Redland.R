@@ -76,7 +76,6 @@ hlt_ptKey <- subset(hlt_ptKey, PT_code==10003041)
 ptData <- merge(ptData, hlt_ptKey, by.x="code", by.y="PT_code", all=FALSE)
 ptData$rowID <- 1:nrow(ptData) # row index
 
-
 #------------------------------------------------------------------------------
 #--- hlt ---
 hltData <- read_excel("data/source/meddra/meddra.xlsx", 
