@@ -123,6 +123,7 @@ Inclusing these links as well all required Adverse Event information have a loca
 The following attributes are finally available according the current study.ttl ontology. The only "incoming" link to the study:AdverseEvent is coming from study:Person through the "study:afflictedBy" property. All other Attributes are more or less simpyl linked to the Adverse Event object.
 
 Domain	|	Predicate	|	Range
+--- | --- | ---
 _study:Person_**	|	_study:afflictedBy_**	|	_study:MedicalCondition_**
 study:AdverseEvent	|	code:hasCode	|	<https://w3id.org/phuse/mdra#MedDRAConcept>
 study:AdverseEvent	|	code:outcome	|	code:AdverseEventOutcome
