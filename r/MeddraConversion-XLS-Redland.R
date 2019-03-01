@@ -323,9 +323,7 @@ ddply(socData, .(rowID), function(socData)
   ))
 }) #--- End of SOC ---  
 
-
-
-#--- Triple build complete ---
+#--- Triple build complete ----------------------------------------------------
 
 #--- Serialize the model to a TTL file ----------------------------------------
 serializer <- new("Serializer", world, name="turtle", mimeType="text/turtle")
