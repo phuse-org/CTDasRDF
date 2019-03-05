@@ -39,13 +39,14 @@ ptOntSubset <- c('10003041',
                  '10003053',
                  '10003677',
                  '10012735',
-                 '10015150',
-                 '10024781' )
+                 '10015150'
+                  )
 # llt 
 ltOntSubset <- c('10003047',
                  '10003058',
                  '10003851',
-                 '10012727')
+                 '10012727',
+                 '10024781')
 #  hlt
 hltOntSubset <- c( '10000032',
                    '10003057',
@@ -164,7 +165,8 @@ hlt_ptKey$rowID <- 1:nrow(hlt_ptKey) # row index
 ptData <- merge(ptData, hlt_ptKey, by.x="code", by.y="PT_code", all=FALSE)
 ptData$rowID <- 1:nrow(ptData) # row index
 
-# hlgt_hlt key table to obtain HLT code
+# hlgt_hlt 
+#   key table to obtain HLT code
 hlgt_hltKey <- readAscFile(ascFile="hlgt_hlt", colNames=c("HLGT_code", "HLT_code"))
 
 # DEV Subset for testing (match to ptcode in llt sheet)

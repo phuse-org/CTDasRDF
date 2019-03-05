@@ -130,6 +130,12 @@ meddra:M10022117
     skos:topConceptOf meddra:MedDRA ;
     meddra:hasIdentifier "10022117"^^xsd:string .
 
+meddra:M10024781
+    a meddra:LowLevelConcept ;
+    skos:prefLabel "Localized erythema"^^xsd:string ;
+    meddra:hasIdentifier "10024781"^^xsd:string ;
+    meddra:hasPT meddra:M10015150 .
+
 meddra:M10040785
     a skos:Concept, meddra:SystemOrganClassConcept ;
     skos:prefLabel "Skin and subcutaneous tissue disorders"^^xsd:string ;
