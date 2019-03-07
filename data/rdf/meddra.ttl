@@ -1,0 +1,290 @@
+# baseURI: https://w3id.org/phuse/meddra
+# imports: http://www.w3.org/2004/02/skos/core
+# prefix: meddra
+
+@prefix meddra: <https://w3id.org/phuse/meddra#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/phuse/meddra>
+  rdf:type owl:Ontology ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+meddra:HighLevelConcept
+  rdf:type owl:Class ;
+  rdfs:subClassOf meddra:MeddraConcept ;
+  skos:prefLabel "High level concept" ;
+.
+meddra:HighLevelGroupConcept
+  rdf:type owl:Class ;
+  rdfs:subClassOf meddra:MeddraConcept ;
+  skos:prefLabel "High level group concept" ;
+.
+meddra:HighLevelGroupTerm
+  rdf:type meddra:MeddraCollection ;
+  skos:member meddra:m10001316 ;
+  skos:member meddra:m10007521 ;
+  skos:member meddra:m10014982 ;
+  skos:member meddra:m10017977 ;
+  skos:prefLabel "High level group term" ;
+.
+meddra:HighLevelTerm
+  rdf:type meddra:MeddraCollection ;
+  skos:member meddra:m10000032 ;
+  skos:member meddra:m10003057 ;
+  skos:member meddra:m10012736 ;
+  skos:member meddra:m10015151 ;
+  skos:prefLabel "High level term" ;
+.
+meddra:LowLevelConcept
+  rdf:type owl:Class ;
+  rdfs:subClassOf meddra:MeddraConcept ;
+  skos:prefLabel "Low level concept" ;
+.
+meddra:LowLevelTerm
+  rdf:type meddra:MeddraCollection ;
+  skos:member meddra:m10003041 ;
+  skos:member meddra:m10003047 ;
+  skos:member meddra:m10003058 ;
+  skos:member meddra:m10003851 ;
+  skos:member meddra:m10012727 ;
+  skos:member meddra:m10015150 ;
+  skos:member meddra:m10024781 ;
+  skos:prefLabel "Low level term" ;
+.
+meddra:MedDRA211
+  rdf:type skos:ConceptScheme ;
+  skos:prefLabel "Med DRA211" ;
+.
+meddra:MeddraCollection
+  rdf:type owl:Class ;
+  rdfs:subClassOf skos:Collection ;
+  skos:prefLabel "Meddra collection" ;
+.
+meddra:MeddraConcept
+  rdf:type owl:Class ;
+  rdfs:subClassOf skos:Concept ;
+  skos:prefLabel "Meddra concept" ;
+.
+meddra:PreferredConcept
+  rdf:type owl:Class ;
+  rdfs:subClassOf meddra:MeddraConcept ;
+  skos:prefLabel "Preferred concept" ;
+.
+meddra:PreferredTerm
+  rdf:type meddra:MeddraCollection ;
+  skos:member meddra:m10003041 ;
+  skos:member meddra:m10003053 ;
+  skos:member meddra:m10003677 ;
+  skos:member meddra:m10012735 ;
+  skos:member meddra:m10015150 ;
+  skos:prefLabel "Preferred term" ;
+.
+meddra:SystemOrganClassConcept
+  rdf:type owl:Class ;
+  rdfs:subClassOf meddra:MeddraConcept ;
+  skos:prefLabel "System organ class concept" ;
+.
+meddra:SystemOrganClassTerm
+  rdf:type meddra:MeddraCollection ;
+  skos:member meddra:m10007541 ;
+  skos:member meddra:m10017947 ;
+  skos:member meddra:m10018065 ;
+  skos:member meddra:m10022117 ;
+  skos:member meddra:m10040785 ;
+  skos:prefLabel "System organ class term" ;
+.
+meddra:hasHLGT
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain meddra:HighLevelConcept ;
+  rdfs:range meddra:HighLevelGroupConcept ;
+  rdfs:subPropertyOf skos:broader ;
+  skos:prefLabel "has HLGT" ;
+.
+meddra:hasHLT
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain meddra:PreferredConcept ;
+  rdfs:range meddra:HighLevelConcept ;
+  rdfs:subPropertyOf skos:broader ;
+  skos:prefLabel "has HLT" ;
+.
+meddra:hasIdentifier
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain meddra:MeddraConcept ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "has identifier" ;
+.
+meddra:hasPT
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain meddra:LowLevelConcept ;
+  rdfs:range meddra:PreferredConcept ;
+  rdfs:subPropertyOf skos:broader ;
+  skos:prefLabel "has PT" ;
+.
+meddra:hasPrimaryPTSOC
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain meddra:PreferredConcept ;
+  rdfs:range meddra:SystemOrganClassConcept ;
+  skos:prefLabel "has primary PTSOC" ;
+.
+meddra:hasSOC
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain meddra:HighLevelGroupConcept ;
+  rdfs:range meddra:SystemOrganClassConcept ;
+  rdfs:subPropertyOf skos:broader ;
+  skos:prefLabel "has SOC" ;
+.
+meddra:m10000032
+  rdf:type meddra:HighLevelConcept ;
+  skos:prefLabel "CARDIAC CONDUCTION DISORDERS" ;
+  meddra:hasHLGT meddra:m10007521 ;
+  meddra:hasIdentifier 10000032 ;
+.
+meddra:m10001316
+  rdf:type meddra:HighLevelGroupConcept ;
+  skos:prefLabel "ADMINISTRATION SITE REACTIONS" ;
+  meddra:hasIdentifier 10001316 ;
+  meddra:hasSOC meddra:m10018065 ;
+  meddra:hasSOC meddra:m10022117 ;
+.
+meddra:m10003041
+  rdf:type meddra:LowLevelConcept ;
+  rdf:type meddra:PreferredConcept ;
+  skos:prefLabel "APPLICATION SITE ERYTHEMA" ;
+  meddra:hasHLT meddra:m10003057 ;
+  meddra:hasHLT meddra:m10015151 ;
+  meddra:hasIdentifier 10003041 ;
+  meddra:hasPT meddra:m10003041 ;
+  meddra:hasPrimaryPTSOC meddra:m10018065 ;
+.
+meddra:m10003047
+  rdf:type meddra:LowLevelConcept ;
+  skos:prefLabel "APPLICATION SITE ITCHING" ;
+  meddra:hasIdentifier 10003047 ;
+  meddra:hasPT meddra:m10003053 ;
+.
+meddra:m10003053
+  rdf:type meddra:PreferredConcept ;
+  skos:prefLabel "APPLICATION SITE PRURITUS" ;
+  meddra:hasHLT meddra:m10003057 ;
+  meddra:hasIdentifier 10003053 ;
+  meddra:hasPrimaryPTSOC meddra:m10018065 ;
+.
+meddra:m10003057
+  rdf:type meddra:HighLevelConcept ;
+  skos:prefLabel "APPLICATION AND INSTILLATION SITE REACTIONS" ;
+  meddra:hasHLGT meddra:m10001316 ;
+  meddra:hasIdentifier 10003057 ;
+.
+meddra:m10003058
+  rdf:type meddra:LowLevelConcept ;
+  skos:prefLabel "APPLICATION SITE REDNESS" ;
+  meddra:hasIdentifier 10003058 ;
+  meddra:hasPT meddra:m10003041 ;
+.
+meddra:m10003677
+  rdf:type meddra:PreferredConcept ;
+  skos:prefLabel "ATRIOVENTRICULAR BLOCK SECOND DEGREE" ;
+  meddra:hasHLT meddra:m10000032 ;
+  meddra:hasIdentifier 10003677 ;
+  meddra:hasPrimaryPTSOC meddra:m10007541 ;
+.
+meddra:m10003851
+  rdf:type meddra:LowLevelConcept ;
+  skos:prefLabel "AV BLOCK SECOND DEGREE" ;
+  meddra:hasIdentifier 10003851 ;
+  meddra:hasPT meddra:m10003677 ;
+.
+meddra:m10007521
+  rdf:type meddra:HighLevelGroupConcept ;
+  skos:prefLabel "CARDIAC ARRYTHMIAS" ;
+  meddra:hasIdentifier 10007521 ;
+  meddra:hasSOC meddra:m10007541 ;
+.
+meddra:m10007541
+  rdf:type meddra:SystemOrganClassConcept ;
+  skos:prefLabel "CARDIAC DISORDERS" ;
+  skos:topConceptOf meddra:MedDRA211 ;
+  meddra:hasIdentifier 10007541 ;
+.
+meddra:m10012727
+  rdf:type meddra:LowLevelConcept ;
+  skos:prefLabel "DIARRHEA" ;
+  meddra:hasIdentifier 10012727 ;
+  meddra:hasPT meddra:m10012735 ;
+.
+meddra:m10012735
+  rdf:type meddra:PreferredConcept ;
+  skos:prefLabel "DIARRHOEA" ;
+  meddra:hasHLT meddra:m10012736 ;
+  meddra:hasIdentifier 10012735 ;
+  meddra:hasPrimaryPTSOC meddra:m10017947 ;
+.
+meddra:m10012736
+  rdf:type meddra:HighLevelConcept ;
+  skos:prefLabel "DIARRHOEA (EXCL INFECTIVE)" ;
+  meddra:hasHLGT meddra:m10017977 ;
+  meddra:hasIdentifier 10012736 ;
+.
+meddra:m10014982
+  rdf:type meddra:HighLevelGroupConcept ;
+  skos:prefLabel "EPIDERMAL AND DERMAL CONDITIONS" ;
+  meddra:hasIdentifier 10014982 ;
+  meddra:hasSOC meddra:m10040785 ;
+.
+meddra:m10015150
+  rdf:type meddra:LowLevelConcept ;
+  rdf:type meddra:PreferredConcept ;
+  skos:prefLabel "ERYTHEMA" ;
+  meddra:hasHLT meddra:m10015151 ;
+  meddra:hasIdentifier 10015150 ;
+  meddra:hasPT meddra:m10015150 ;
+  meddra:hasPrimaryPTSOC meddra:m10040785 ;
+.
+meddra:m10015151
+  rdf:type meddra:HighLevelConcept ;
+  skos:prefLabel "ERYTHEMAS" ;
+  meddra:hasHLGT meddra:m10014982 ;
+  meddra:hasIdentifier 10003057 ;
+.
+meddra:m10017947
+  rdf:type meddra:SystemOrganClassConcept ;
+  skos:prefLabel "GASTROINTESTINAL DISORDERS" ;
+  skos:topConceptOf meddra:MedDRA211 ;
+  meddra:hasIdentifier 10017947 ;
+.
+meddra:m10017977
+  rdf:type meddra:HighLevelGroupConcept ;
+  skos:prefLabel "GASTROINTESTINAL MOTILITY AND DEFAECATION CONDITIONS" ;
+  meddra:hasIdentifier 10017977 ;
+  meddra:hasSOC meddra:m10017947 ;
+.
+meddra:m10018065
+  rdf:type meddra:SystemOrganClassConcept ;
+  skos:prefLabel "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS" ;
+  skos:topConceptOf meddra:MedDRA211 ;
+  meddra:hasIdentifier 10018065 ;
+.
+meddra:m10022117
+  rdf:type meddra:SystemOrganClassConcept ;
+  skos:prefLabel "INJURY, POISONING AND PROCEDURAL COMPLICATIONS" ;
+  skos:topConceptOf meddra:MedDRA211 ;
+  meddra:hasIdentifier 10022117 ;
+.
+meddra:m10024781
+  rdf:type meddra:LowLevelConcept ;
+  skos:prefLabel "LOCALIZED ERYTHEMA" ;
+  meddra:hasIdentifier 10024781 ;
+  meddra:hasPT meddra:m10015150 ;
+.
+meddra:m10040785
+  rdf:type meddra:SystemOrganClassConcept ;
+  skos:prefLabel "SKIN AND SUBCUTANEOUS TISSUE DISORDERS" ;
+  skos:topConceptOf meddra:MedDRA211 ;
+  meddra:hasIdentifier 10040785 ;
+.

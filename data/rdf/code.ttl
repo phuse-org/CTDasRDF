@@ -6,13 +6,13 @@
 # imports: http://www.w3.org/2006/time
 # imports: http://www.w3.org/ns/shacl#
 # imports: https://w3id.org/phuse/cts
+# imports: https://w3id.org/phuse/meddra
 # imports: https://w3id.org/phuse/mms#
 # imports: https://w3id.org/phuse/sdtmterm
 # prefix: code
 
 @prefix arg: <http://spinrdf.org/arg#> .
 @prefix code: <https://w3id.org/phuse/code#> .
-@prefix mdra: <https://w3id.org/phuse/mdra#> .
 @prefix mms: <https://w3id.org/phuse/mms#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -83,6 +83,7 @@ code:
   owl:imports <http://www.w3.org/2006/time> ;
   owl:imports sh: ;
   owl:imports <https://w3id.org/phuse/cts> ;
+  owl:imports <https://w3id.org/phuse/meddra> ;
   owl:imports mms: ;
   owl:imports <https://w3id.org/phuse/sdtmterm> ;
   owl:versionInfo "Created with TopBraid Composer" ;
@@ -193,6 +194,16 @@ code:Age
 code:AgeDataCollection
   rdf:type owl:Class ;
   rdfs:subClassOf code:DemographicDataCollection ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Age ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty code:outcome ;
+    ] ;
 .
 code:AgeGroup
   rdf:type owl:Class ;
@@ -252,7 +263,7 @@ code:Assessment
 code:AssumeBodyPosition
   rdf:type owl:Class ;
   rdfs:comment "" ;
-  rdfs:subClassOf code:Intervention ;
+  rdfs:subClassOf code:PreparatoryIntervention ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:BodyPosition ;
@@ -635,6 +646,11 @@ code:Height
       rdf:type owl:Restriction ;
       owl:hasValue "Height" ;
       owl:onProperty skos:altLabel ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "The vertical measurement or distance from the base to the top of an object; the vertical dimension of extension. (NCI)" ;
+      owl:onProperty skos:definition ;
     ] ;
   skos:prefLabel "Height" ;
   schema:cdiscDefinition "The vertical measurement or distance from the base to the top of an object; the vertical dimension of extension. (NCI)" ;
@@ -1026,6 +1042,12 @@ code:PlannedSubjectAge_P50Y
   skos:prefLabel "Planned subject age P50Y" ;
   code:hasValue "P50Y"^^xsd:duration ;
 .
+code:PreparatoryIntervention
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf code:Intervention ;
+  skos:prefLabel "Preparatory intervention" ;
+.
 code:Product
   rdf:type owl:Class ;
   rdfs:subClassOf code:DefinedConcept ;
@@ -1232,6 +1254,16 @@ code:SexDataCollection
   rdf:type owl:Class ;
   rdf:type sh:NodeShape ;
   rdfs:subClassOf code:DemographicDataCollection ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom code:Sex ;
+      owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty code:outcome ;
+    ] ;
   sh:property [
       rdf:type sh:PropertyShape ;
       sh:path code:outcome ;
@@ -1534,6 +1566,16 @@ code:Weight
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
+      owl:hasValue "C25208" ;
+      owl:onProperty code:hasIdentifier ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue "The vertical force exerted by a mass as a result of gravity. (NCI)" ;
+      owl:onProperty skos:definition ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
       owl:hasValue "WEIGHT" ;
       owl:onProperty skos:prefLabel ;
     ] ;
@@ -1599,6 +1641,7 @@ code:hasIdentifier
   rdfs:comment "" ;
   rdfs:domain code:DefinedConcept ;
   rdfs:range xsd:string ;
+  rdfs:subPropertyOf code:hasCode ;
   skos:definition "" ;
   skos:prefLabel "has Identifier" ;
 .
@@ -1926,289 +1969,73 @@ code:unitNormalized
   rdfs:subClassOf spin:Functions ;
   skos:prefLabel "unit normalized" ;
 .
-mdra:HighLevelConcept
-  rdf:type owl:Class ;
-  rdf:type sh:NodeShape ;
-  rdfs:subClassOf mdra:MedDRAConcept ;
-  skos:prefLabel "High level term" ;
+schema:cdiscSynonyms
+  rdfs:subPropertyOf skos:altLabel ;
 .
-mdra:HighLevelGroupConcept
-  rdf:type owl:Class ;
-  rdf:type sh:NodeShape ;
-  rdfs:subClassOf mdra:MedDRAConcept ;
-  skos:prefLabel "" ;
+schema:nciCode
+  rdfs:subPropertyOf code:hasIdentifier ;
 .
-mdra:HighLevelGroupTerm
-  rdf:type mdra:MedDRACollection ;
-  skos:member mdra:M10001316 ;
-  skos:member mdra:M10007521 ;
-  skos:member mdra:M10014982 ;
-  skos:member mdra:M10017977 ;
+<https://w3id.org/phuse/mdra#HighLevelGroupTerm>
+  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
   skos:prefLabel "High level group term" ;
 .
-mdra:HighLevelTerm
-  rdf:type mdra:MedDRACollection ;
-  skos:member mdra:M10000032 ;
-  skos:member mdra:M10003057 ;
-  skos:member mdra:M10012736 ;
-  skos:member mdra:M10015151 ;
+<https://w3id.org/phuse/mdra#HighLevelTerm>
+  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
   skos:prefLabel "High level term" ;
 .
-mdra:LowLevelConcept
-  rdf:type owl:Class ;
-  rdf:type sh:NodeShape ;
-  rdfs:subClassOf mdra:MedDRAConcept ;
+<https://w3id.org/phuse/mdra#LowerLevelTerm>
+  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
   skos:prefLabel "Lower level term" ;
 .
-mdra:LowerLevelTerm
-  rdf:type mdra:MedDRACollection ;
-  skos:member mdra:M10003047 ;
-  skos:member mdra:M10003058 ;
-  skos:member mdra:M10003851 ;
-  skos:member mdra:M10012727 ;
-  skos:member mdra:M10015150 ;
-  skos:member mdra:M10024781 ;
-  skos:prefLabel "Lower level term" ;
-.
-mdra:M10000032
-  rdf:type skos:Concept ;
-  rdf:type mdra:HighLevelConcept ;
-  skos:prefLabel "CARDIAC CONDUCTION DISORDERS" ;
-  code:hasIdentifier "10000032" ;
-  mdra:hasHLGT mdra:M10007521 ;
-.
-mdra:M10001316
-  rdf:type skos:Concept ;
-  rdf:type mdra:HighLevelGroupConcept ;
-  skos:prefLabel "ADMINISTRATION SITE REACTIONS" ;
-  code:hasIdentifier "10001316" ;
-  mdra:hasSOC mdra:M10018065 ;
-.
-mdra:M10003041
-  rdf:type skos:Concept ;
-  rdf:type mdra:LowLevelConcept ;
-  rdf:type mdra:PreferredConcept ;
-  skos:prefLabel "APPLICATION SITE ERYTHEMA" ;
-  code:hasIdentifier "10003041" ;
-  mdra:hasHLT mdra:M10003057 ;
-  mdra:hasPT mdra:M10003041 ;
-.
-mdra:M10003047
-  rdf:type skos:Concept ;
-  rdf:type mdra:LowLevelConcept ;
-  skos:prefLabel "APPLICATION SITE ITCHING" ;
-  code:hasIdentifier "10003047" ;
-  mdra:hasPT mdra:M10003053 ;
-.
-mdra:M10003053
-  rdf:type skos:Concept ;
-  rdf:type mdra:PreferredConcept ;
-  skos:prefLabel "APPLICATION SITE PRURITUS" ;
-  code:hasIdentifier "10003047" ;
-  mdra:hasHLT mdra:M10003057 ;
-.
-mdra:M10003057
-  rdf:type skos:Concept ;
-  rdf:type mdra:HighLevelConcept ;
-  skos:prefLabel "APPLICATION AND INSTILLATION SITE REACTIONS" ;
-  code:hasIdentifier "10003057" ;
-  mdra:hasHLGT mdra:M10001316 ;
-.
-mdra:M10003058
-  rdf:type skos:Concept ;
-  rdf:type mdra:LowLevelConcept ;
-  skos:prefLabel "APPLICATION SITE REDNESS" ;
-  code:hasIdentifier "10003058" ;
-  mdra:hasPT mdra:M10003041 ;
-.
-mdra:M10003677
-  rdf:type skos:Concept ;
-  rdf:type mdra:PreferredConcept ;
-  skos:prefLabel "ATRIOVENTRICULAR BLOCK SECOND DEGREE" ;
-  code:hasIdentifier "10003677" ;
-  mdra:hasHLT mdra:M10000032 ;
-.
-mdra:M10003851
-  rdf:type skos:Concept ;
-  rdf:type mdra:LowLevelConcept ;
-  skos:prefLabel "AV BLOCK SECOND DEGREE" ;
-  code:hasIdentifier "10003851" ;
-  mdra:hasPT mdra:M10003677 ;
-.
-mdra:M10007521
-  rdf:type skos:Concept ;
-  rdf:type mdra:HighLevelGroupConcept ;
-  skos:prefLabel "CARDIAC ARRHYTHMIAS" ;
-  code:hasIdentifier "10007521" ;
-  mdra:hasSOC mdra:M10007541 ;
-.
-mdra:M10007541
-  rdf:type skos:Concept ;
-  rdf:type mdra:SystemOrganClassConcept ;
-  skos:prefLabel "CARDIAC DISORDERS" ;
-  skos:topConceptOf mdra:MedDRA ;
-  code:hasIdentifier "10007541" ;
-.
-mdra:M10012727
-  rdf:type skos:Concept ;
-  rdf:type mdra:LowLevelConcept ;
-  skos:prefLabel "DIARRHEA" ;
-  code:hasIdentifier "10012727" ;
-  mdra:hasPT mdra:M10012735 ;
-.
-mdra:M10012735
-  rdf:type skos:Concept ;
-  rdf:type mdra:PreferredConcept ;
-  skos:prefLabel "DIARRHOEA" ;
-  code:hasIdentifier "10012735" ;
-  mdra:hasHLT mdra:M10012736 ;
-.
-mdra:M10012736
-  rdf:type skos:Concept ;
-  rdf:type mdra:HighLevelConcept ;
-  skos:prefLabel "DIARRHOEA (EXCL INFECTIVE)" ;
-  code:hasIdentifier "10012736" ;
-  mdra:hasHLGT mdra:M10017977 ;
-.
-mdra:M10014982
-  rdf:type skos:Concept ;
-  rdf:type mdra:HighLevelGroupConcept ;
-  skos:prefLabel "EPIDERMAL AND DERMAL CONDITIONS" ;
-  code:hasIdentifier "10014982" ;
-  mdra:hasSOC mdra:M10040785 ;
-.
-mdra:M10015150
-  rdf:type skos:Concept ;
-  rdf:type mdra:LowLevelConcept ;
-  rdf:type mdra:PreferredConcept ;
-  skos:prefLabel "ERYTHEMA" ;
-  code:hasIdentifier "10015150" ;
-  mdra:hasHLT mdra:M10015151 ;
-  mdra:hasPT mdra:M10015150 ;
-.
-mdra:M10015151
-  rdf:type skos:Concept ;
-  rdf:type mdra:HighLevelConcept ;
-  skos:prefLabel "ERYTHEMAS" ;
-  code:hasIdentifier "10015151" ;
-  mdra:hasHLGT mdra:M10014982 ;
-.
-mdra:M10017947
-  rdf:type skos:Concept ;
-  rdf:type mdra:SystemOrganClassConcept ;
-  skos:prefLabel "GASTROINTESTINAL DISORDERS" ;
-  skos:topConceptOf mdra:MedDRA ;
-  code:hasIdentifier "10017977" ;
-.
-mdra:M10017977
-  rdf:type skos:Concept ;
-  rdf:type mdra:HighLevelGroupConcept ;
-  skos:prefLabel "GASTROINTESTINAL MOTILITY AND DEFAECATION CONDITIONS" ;
-  code:hasIdentifier "10017977" ;
-  mdra:hasSOC mdra:M10017947 ;
-.
-mdra:M10018065
-  rdf:type skos:Concept ;
-  rdf:type mdra:SystemOrganClassConcept ;
-  skos:prefLabel "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS" ;
-  skos:topConceptOf mdra:MedDRA ;
-  code:hasIdentifier "10018065" ;
-.
-mdra:M10024781
-  rdf:type skos:Concept ;
-  rdf:type mdra:LowLevelConcept ;
-  skos:prefLabel "LOCALIZED ERYTHEMA" ;
-  code:hasIdentifier "10024781" ;
-  mdra:hasPT mdra:M10015150 ;
-.
-mdra:M10040785
-  rdf:type skos:Concept ;
-  rdf:type mdra:SystemOrganClassConcept ;
-  skos:prefLabel "SKIN AND SUBCUTANEOUS TISSUE DISORDERS" ;
-  skos:topConceptOf mdra:MedDRA ;
-  code:hasIdentifier "10040785" ;
-.
-mdra:MedDRA
+<https://w3id.org/phuse/mdra#MedDRA>
   rdf:type skos:ConceptScheme ;
   skos:prefLabel "Med DRAConcept scheme" ;
 .
-mdra:MedDRACollection
+<https://w3id.org/phuse/mdra#MedDRACollection>
   rdf:type owl:Class ;
   rdf:type sh:NodeShape ;
   rdfs:subClassOf skos:Collection ;
   skos:prefLabel "Med DRACollection" ;
 .
-mdra:MedDRAConcept
-  rdf:type owl:Class ;
-  rdf:type sh:NodeShape ;
-  rdfs:subClassOf owl:Thing ;
-  skos:prefLabel "MedDRAConcept" ;
-.
-mdra:PreferredConcept
-  rdf:type owl:Class ;
-  rdf:type sh:NodeShape ;
-  rdfs:subClassOf mdra:MedDRAConcept ;
+<https://w3id.org/phuse/mdra#PreferredTerm>
+  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
   skos:prefLabel "Preferred term" ;
 .
-mdra:PreferredTerm
-  rdf:type mdra:MedDRACollection ;
-  skos:member mdra:M10003041 ;
-  skos:member mdra:M10003053 ;
-  skos:member mdra:M10003677 ;
-  skos:member mdra:M10012735 ;
-  skos:prefLabel "Preferred term" ;
-.
-mdra:SystemOrganClass
-  rdf:type mdra:MedDRACollection ;
-  skos:member mdra:M10007541 ;
-  skos:member mdra:M10017947 ;
-  skos:member mdra:M10018065 ;
-  skos:member mdra:M10040785 ;
+<https://w3id.org/phuse/mdra#SystemOrganClass>
+  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
   skos:prefLabel "System organ class" ;
-.
-mdra:SystemOrganClassConcept
-  rdf:type owl:Class ;
-  rdf:type sh:NodeShape ;
-  rdfs:subClassOf mdra:MedDRAConcept ;
-  skos:prefLabel "System organ class" ;
-.
-mdra:hasHLGT
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain mdra:HighLevelConcept ;
-  rdfs:range mdra:HighLevelGroupConcept ;
-  rdfs:subPropertyOf skos:broader ;
-  skos:prefLabel "has HLGT" ;
-.
-mdra:hasHLT
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain mdra:PreferredConcept ;
-  rdfs:range mdra:HighLevelConcept ;
-  rdfs:subPropertyOf skos:broader ;
-  skos:prefLabel "has HLT" ;
-.
-mdra:hasPT
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain mdra:LowLevelConcept ;
-  rdfs:range mdra:PreferredConcept ;
-  rdfs:subPropertyOf skos:broader ;
-  skos:prefLabel "has PT" ;
-.
-mdra:hasSOC
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain mdra:HighLevelGroupConcept ;
-  rdfs:range mdra:SystemOrganClassConcept ;
-  rdfs:subPropertyOf skos:broader ;
-  skos:prefLabel "has SOC" ;
 .
 sdtmterm:BlindedTreatment
+  rdf:type owl:Class ;
   rdf:type mms:PermissibleValue ;
-  rdf:type sdtmterm:Epoch ;
+  rdfs:subClassOf sdtmterm:Epoch ;
   skos:prefLabel "BLINDED TREATMENT" ;
   schema:cdiscDefinition "A period in a clinical study during which subjects receive blinded therapeutic treatment." ;
   schema:cdiscSubmissionValue "BLINDED TREATMENT" ;
   schema:nciCode "C102255" ;
   schema:nciPreferredTerm "Blinded Treatment Epoch" ;
   mms:inValueDomain sdtmterm:C99079 ;
+.
+<https://w3id.org/phuse/sdtmterm#C99079.C101526>
+  rdfs:subClassOf sdtmterm:Epoch ;
+.
+<https://w3id.org/phuse/sdtmterm#C99079.C102255>
+  rdfs:subClassOf sdtmterm:Epoch ;
+.
+<https://w3id.org/phuse/sdtmterm#C99079.C102256>
+  rdfs:subClassOf sdtmterm:Epoch ;
+.
+<https://w3id.org/phuse/sdtmterm#C99079.C16032>
+  rdfs:subClassOf sdtmterm:Epoch ;
+.
+<https://w3id.org/phuse/sdtmterm#C99079.C42872>
+  rdfs:subClassOf sdtmterm:Epoch ;
+.
+<https://w3id.org/phuse/sdtmterm#C99079.C98779>
+  rdfs:subClassOf sdtmterm:Epoch ;
+.
+<https://w3id.org/phuse/sdtmterm#C99079.C99158>
+  rdfs:subClassOf sdtmterm:Epoch ;
 .
 sdtmterm:ControlType_ACTIVE
   rdf:type code:ControlType ;
@@ -2414,6 +2241,9 @@ sdtmterm:NoYesResponse_Y
   schema:nciCode "C49488" ;
   schema:nciPreferredTerm "Yes" ;
   mms:inValueDomain sdtmterm:C66742 ;
+.
+sdtmterm:Screening
+  rdfs:subClassOf sdtmterm:Epoch ;
 .
 sdtmterm:SexGroup_BOTH
   rdf:type code:SexGroup ;

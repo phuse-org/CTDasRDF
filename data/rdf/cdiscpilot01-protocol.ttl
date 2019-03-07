@@ -90,11 +90,6 @@ cd01p:EpochInterval_blindedtreatment
   rdf:type study:EpochInterval ;
   skos:prefLabel "Epoch interval blindedtreatment" ;
 .
-cd01p:Epoch_BlindedTreatment
-  rdf:type study:Epoch ;
-  skos:prefLabel "Epoch Blinded treatment" ;
-  study:hasActivityInterval cd01p:EpochInterval_blindedtreatment ;
-.
 cd01p:Interval_2012-07-06_to_2015-03-05
   rdf:type study:StudyInterval ;
   skos:prefLabel "Interval 2012-07-06 to 2015-03-05" ;
@@ -560,7 +555,6 @@ cd01p:Study_CDISCPILOT01
   study:hasProtocolSpecifiedActivity cd01p:Arm_Scrnfail ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_Xan_Hi ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_Xan_Lo ;
-  study:hasProtocolSpecifiedActivity cd01p:Epoch_BlindedTreatment ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGPlaceActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGRemoveActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitBaselineActivity ;

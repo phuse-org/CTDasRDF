@@ -428,7 +428,7 @@ study:AdverseEvent
   sh:property [
       rdf:type sh:PropertyShape ;
       sh:path code:hasCode ;
-      sh:class <https://w3id.org/phuse/mdra#MedDRAConcept> ;
+      sh:class <https://w3id.org/phuse/meddra#MeddraConcept> ;
       sh:maxCount 1 ;
       sh:minCount 1 ;
       sh:name "has code" ;
@@ -590,7 +590,7 @@ study:AnalysisOutcome
 .
 study:AnatomicLocation
   rdf:type owl:Class ;
-  rdfs:subClassOf study:Entity ;
+  rdfs:subClassOf study:Document ;
   skos:definition "The location on the body where an activity/process occurs or an entity is located. " ;
   skos:prefLabel "Anatomic location" ;
 .
@@ -1887,6 +1887,11 @@ study:StartRuleInformedConsentStart
       owl:allValuesFrom study:InformedConsent ;
       owl:onProperty study:hasPrerequisite ;
     ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:ActivityStatus_ST ;
+      owl:onProperty study:hasPrereqExpectedStatus ;
+    ] ;
   skos:prefLabel "Start rule informed consent started" ;
   study:hasPrereqExpectedStatus code:ActivityStatus_ST ;
 .
@@ -2870,7 +2875,7 @@ study:hasCountry
 study:hasDataCollectionDate
   rdf:type owl:ObjectProperty ;
   rdfs:range study:DataCollectionDate ;
-  rdfs:subPropertyOf study:hasDate ;
+  rdfs:subPropertyOf study:hasPerformedDate ;
   skos:prefLabel "has data collection date" ;
 .
 study:hasDate
