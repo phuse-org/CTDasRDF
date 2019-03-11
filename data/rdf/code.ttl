@@ -493,12 +493,16 @@ code:DemographicDataCollection
 .
 code:DiastolicBloodPressure
   rdf:type owl:Class ;
-  rdf:type mms:PermissibleValue ;
   rdfs:subClassOf code:BloodPressure ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:DiastolicBloodPressureOutcome ;
       owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <https://w3id.org/phuse/sdtmterm#C67153.C25299> ;
+      owl:onProperty code:hasCode ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -511,12 +515,6 @@ code:DiastolicBloodPressure
       owl:onProperty skos:altLabel ;
     ] ;
   skos:prefLabel "Diastolic Blood Pressure" ;
-  schema:cdiscDefinition "The blood pressure after the contraction of the heart while the chambers of the heart refill with blood. (NCI)" ;
-  schema:cdiscSubmissionValue "Diastolic Blood Pressure" ;
-  schema:cdiscSynonyms "Diastolic Blood Pressure" ;
-  schema:nciCode "C25299" ;
-  schema:nciPreferredTerm "Diastolic Blood Pressure" ;
-  mms:inValueDomain sdtmterm:C67153 ;
 .
 code:DiastolicBloodPressureOutcome
   rdf:type owl:Class ;
@@ -630,12 +628,16 @@ code:GenericOutcome
 .
 code:Height
   rdf:type owl:Class ;
-  rdf:type mms:PermissibleValue ;
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:HeightOutcome ;
       owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <https://w3id.org/phuse/sdtmterm#C67153.C25347> ;
+      owl:onProperty code:hasCode ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -647,18 +649,7 @@ code:Height
       owl:hasValue "Height" ;
       owl:onProperty skos:altLabel ;
     ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "The vertical measurement or distance from the base to the top of an object; the vertical dimension of extension. (NCI)" ;
-      owl:onProperty skos:definition ;
-    ] ;
   skos:prefLabel "Height" ;
-  schema:cdiscDefinition "The vertical measurement or distance from the base to the top of an object; the vertical dimension of extension. (NCI)" ;
-  schema:cdiscSubmissionValue "Height" ;
-  schema:cdiscSynonyms "Height" ;
-  schema:nciCode "C25347" ;
-  schema:nciPreferredTerm "Height" ;
-  mms:inValueDomain sdtmterm:C67153 ;
 .
 code:HeightOutcome
   rdf:type owl:Class ;
@@ -1055,12 +1046,16 @@ code:Product
 .
 code:Pulse
   rdf:type owl:Class ;
-  rdf:type mms:PermissibleValue ;
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:PulseOutcome ;
       owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <https://w3id.org/phuse/sdtmterm#C67153.C49676> ;
+      owl:onProperty code:hasCode ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -1073,12 +1068,6 @@ code:Pulse
       owl:onProperty skos:altLabel ;
     ] ;
   skos:prefLabel "Pulse Rate" ;
-  schema:cdiscDefinition "The rate of the pulse as observed in an artery, expressed as beats per minute. It can be measured at several anatomical sites, including the wrist, neck, temple, groin, behind the knees, or on top of the foot. (NCI)" ;
-  schema:cdiscSubmissionValue "Pulse Rate" ;
-  schema:cdiscSynonyms "Pulse Rate" ;
-  schema:nciCode "C49676" ;
-  schema:nciPreferredTerm "Pulse Rate" ;
-  mms:inValueDomain sdtmterm:C67153 ;
 .
 code:PulseOutcome
   rdf:type owl:Class ;
@@ -1362,12 +1351,16 @@ code:Successfully_Completed
 .
 code:SystolicBloodPressure
   rdf:type owl:Class ;
-  rdf:type mms:PermissibleValue ;
   rdfs:subClassOf code:BloodPressure ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:SystolicBloodPressureOutcome ;
       owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <https://w3id.org/phuse/sdtmterm#C67153.C25298> ;
+      owl:onProperty code:hasCode ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -1380,12 +1373,6 @@ code:SystolicBloodPressure
       owl:onProperty skos:altLabel ;
     ] ;
   skos:prefLabel "Systolic Blood Pressure" ;
-  schema:cdiscDefinition "The blood pressure during the contraction of the left ventricle of the heart." ;
-  schema:cdiscSubmissionValue "Systolic Blood Pressure" ;
-  schema:cdiscSynonyms "Systolic Blood Pressure" ;
-  schema:nciCode "C25298" ;
-  schema:nciPreferredTerm "Systolic Blood Pressure" ;
-  mms:inValueDomain sdtmterm:C67153 ;
 .
 code:SystolicBloodPressureOutcome
   rdf:type owl:Class ;
@@ -1394,12 +1381,16 @@ code:SystolicBloodPressureOutcome
 .
 code:Temperature
   rdf:type owl:Class ;
-  rdf:type mms:PermissibleValue ;
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
       owl:allValuesFrom code:TemperatureOutcome ;
       owl:onProperty code:outcome ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue <https://w3id.org/phuse/sdtmterm#C67153.C25206> ;
+      owl:onProperty code:hasCode ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -1412,12 +1403,6 @@ code:Temperature
       owl:onProperty skos:altLabel ;
     ] ;
   skos:prefLabel "Temperature" ;
-  schema:cdiscDefinition "The property of a body or region of space that determines whether or not there will be a net flow of heat into it or out of it from a neighboring body or region and in which direction (if any) the heat will flow, perceptible by living organism as a somatic sensation of cold or heat. It is a measure of the average translational kinetic energy associated with the disordered microscopic motion of atoms and molecules. Temperature is measured in one of the three standard temperature scales: Celsius, Kelvin, and Fahrenheit. (NCI)" ;
-  schema:cdiscSubmissionValue "Temperature" ;
-  schema:cdiscSynonyms "Temperature" ;
-  schema:nciCode "C25206" ;
-  schema:nciPreferredTerm "Temperature" ;
-  mms:inValueDomain sdtmterm:C67153 ;
 .
 code:TemperatureOutcome
   rdf:type owl:Class ;
@@ -1557,7 +1542,6 @@ code:VitalSignsUnit
 .
 code:Weight
   rdf:type owl:Class ;
-  rdf:type mms:PermissibleValue ;
   rdfs:subClassOf code:VitalSign ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -1566,13 +1550,8 @@ code:Weight
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
-      owl:hasValue "C25208" ;
-      owl:onProperty code:hasIdentifier ;
-    ] ;
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:hasValue "The vertical force exerted by a mass as a result of gravity. (NCI)" ;
-      owl:onProperty skos:definition ;
+      owl:hasValue <https://w3id.org/phuse/sdtmterm#C67153.C25208> ;
+      owl:onProperty code:hasCode ;
     ] ;
   rdfs:subClassOf [
       rdf:type owl:Restriction ;
@@ -1585,12 +1564,6 @@ code:Weight
       owl:onProperty skos:altLabel ;
     ] ;
   skos:prefLabel "Weight" ;
-  schema:cdiscDefinition "The vertical force exerted by a mass as a result of gravity. (NCI)" ;
-  schema:cdiscSubmissionValue "Weight" ;
-  schema:cdiscSynonyms "Weight" ;
-  schema:nciCode "C25208" ;
-  schema:nciPreferredTerm "Weight" ;
-  mms:inValueDomain sdtmterm:C67153 ;
 .
 code:WeightOutcome
   rdf:type owl:Class ;
@@ -1974,36 +1947,6 @@ schema:cdiscSynonyms
 .
 schema:nciCode
   rdfs:subPropertyOf code:hasIdentifier ;
-.
-<https://w3id.org/phuse/mdra#HighLevelGroupTerm>
-  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
-  skos:prefLabel "High level group term" ;
-.
-<https://w3id.org/phuse/mdra#HighLevelTerm>
-  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
-  skos:prefLabel "High level term" ;
-.
-<https://w3id.org/phuse/mdra#LowerLevelTerm>
-  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
-  skos:prefLabel "Lower level term" ;
-.
-<https://w3id.org/phuse/mdra#MedDRA>
-  rdf:type skos:ConceptScheme ;
-  skos:prefLabel "Med DRAConcept scheme" ;
-.
-<https://w3id.org/phuse/mdra#MedDRACollection>
-  rdf:type owl:Class ;
-  rdf:type sh:NodeShape ;
-  rdfs:subClassOf skos:Collection ;
-  skos:prefLabel "Med DRACollection" ;
-.
-<https://w3id.org/phuse/mdra#PreferredTerm>
-  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
-  skos:prefLabel "Preferred term" ;
-.
-<https://w3id.org/phuse/mdra#SystemOrganClass>
-  rdf:type <https://w3id.org/phuse/mdra#MedDRACollection> ;
-  skos:prefLabel "System organ class" ;
 .
 sdtmterm:BlindedTreatment
   rdf:type owl:Class ;

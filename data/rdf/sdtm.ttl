@@ -8163,7 +8163,7 @@ sdtm:SDTM_TS_Record
               ] ;
           ]
           [
-            sp:object study:CompletePopulation ;
+            sp:object study:StudyPopulation ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "pop" ;

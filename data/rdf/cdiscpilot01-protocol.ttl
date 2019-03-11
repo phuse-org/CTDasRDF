@@ -514,7 +514,7 @@ cd01p:StudyIdentifier_1
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 cd01p:StudyPopulation_CDISCPILOT01
-  rdf:type study:CompletePopulation ;
+  rdf:type study:StudyPopulation ;
   skos:prefLabel "Study population CDISCPILOT01" ;
   study:ageGroup code:AgeGroup_ADULT ;
   study:ageGroup code:AgeGroup_ELDERLY ;
