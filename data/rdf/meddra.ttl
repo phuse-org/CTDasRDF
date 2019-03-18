@@ -122,7 +122,6 @@ meddra:hasPT
   rdf:type owl:ObjectProperty ;
   rdfs:domain meddra:LowLevelConcept ;
   rdfs:range meddra:PreferredConcept ;
-  rdfs:subPropertyOf skos:broader ;
   skos:prefLabel "has PT" ;
 .
 meddra:hasPrimaryPTSOC
