@@ -29,6 +29,39 @@
 @prefix xhtm: <http://www.w3.org/1999/xhtml> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C101526>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C102255>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C102256>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C123452>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C123453>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C125938>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C16032>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C42872>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C48262>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C98779>
+  rdf:type mms:AdministeredItem ;
+.
+<http://rdf.cdisc.org/sdtm-terminology#C99079.C99158>
+  rdf:type mms:AdministeredItem ;
+.
 arg:origResult
   rdf:type rdf:Property ;
   rdfs:subPropertyOf sp:arg ;
@@ -1947,17 +1980,6 @@ schema:cdiscSynonyms
 .
 schema:nciCode
   rdfs:subPropertyOf code:hasIdentifier ;
-.
-sdtmterm:BlindedTreatment
-  rdf:type owl:Class ;
-  rdf:type mms:PermissibleValue ;
-  rdfs:subClassOf sdtmterm:Epoch ;
-  skos:prefLabel "BLINDED TREATMENT" ;
-  schema:cdiscDefinition "A period in a clinical study during which subjects receive blinded therapeutic treatment." ;
-  schema:cdiscSubmissionValue "BLINDED TREATMENT" ;
-  schema:nciCode "C102255" ;
-  schema:nciPreferredTerm "Blinded Treatment Epoch" ;
-  mms:inValueDomain sdtmterm:C99079 ;
 .
 <https://w3id.org/phuse/sdtmterm#C99079.C101526>
   rdfs:subClassOf sdtmterm:Epoch ;

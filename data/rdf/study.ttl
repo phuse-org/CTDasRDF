@@ -2580,6 +2580,7 @@ study:bodyPosition
 .
 study:cancer
   rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
   rdfs:range code:NoYesResponse ;
   rdfs:subPropertyOf study:seriousCriterion ;
   skos:prefLabel "cancer associated" ;
@@ -2857,11 +2858,11 @@ study:hasAnnotatedCRF
 study:hasCategory
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:StudyActivity ;
-  rdfs:range study:Category ;
+  rdfs:domain study:StudyComponent ;
+  rdfs:range study:Subcategory ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "" ;
-  skos:prefLabel "has category" ;
+  skos:prefLabel "has subcategory" ;
 .
 study:hasCountry
   rdf:type owl:FunctionalProperty ;
@@ -2874,6 +2875,7 @@ study:hasCountry
 .
 study:hasDataCollectionDate
   rdf:type owl:ObjectProperty ;
+  rdfs:domain study:StudyComponent ;
   rdfs:range study:DataCollectionDate ;
   rdfs:subPropertyOf study:hasPerformedDate ;
   skos:prefLabel "has data collection date" ;
