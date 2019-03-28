@@ -35,3 +35,27 @@ code:PlannedSubjectAge_P50Y
 ```
 
 **Answer**:
+
+
+## Adverse Event Mapping
+
+**Question**:
+
+Thanks Armando, the mapping looks really good. I try to follow up what is defined where. I checked the study.ttl and have some questions. I investigated the "direct links", "indirect links" and "SHACL links" and documented those in https://github.com/phuse-org/CTDasRDF/blob/master/doc/HandsOnUnderstandingAE.md.
+
+Then I checked the mapping of one AE in the cdiscpilot.ttl. I found some questions which I have as overview also here https://github.com/phuse-org/CTDasRDF/blob/master/doc/temp/ae_mapping.xlsx :
+
+I have not found a mapping for the following links in the study.ttl for study:AdverseEvent:
++ study:cancer
++ study:hasCategory
++ study:hasDataCollectionDate
++ study:hasSubcategory
+
+The following definitions appear twice, as SHACL rule and as direct triple. Is this intended? If so is there a rational?
++ study:causality
++ study:severity
++ The "study:hasInterval" is defined on the upper class study:StudyComponent with time:Interval and on "study:AdverseEvent" with "study:AdverseEventInterval". Does the AdverseEventInterval has something special? Should it be a separate thing?
+
+Thanks, Katja
+
+**Answer**:
