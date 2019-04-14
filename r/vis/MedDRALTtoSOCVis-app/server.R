@@ -6,7 +6,15 @@
 # OUT : 
 # REQ : 
 # SRC : 
-# NOTE: 
+# NOTE: Hard coded LT for this POC code.
+#   Color range, lt Purple to Dark Purple
+#   #E6E0EC
+#   #CCC1DA
+#   #B3A2C7
+#   #604A7B
+#   Docs: Collapsible tree Git Eg page: https://github.com/AdeelK93/collapsibleTree
+#         CRAN PDF:  https://cran.r-project.org/web/packages/collapsibleTree/collapsibleTree.pdf
+
 # TODO: 
 #______________________________________________________________________________
 
@@ -50,7 +58,7 @@ function(input, output, session) {
     #                         stringsAsFactors=FALSE)
     
 
-    rootNodeDF <- data.frame(s=NA,p="hasLT", o=input$rootNode, title=input$rootNode,
+    rootNodeDF <- data.frame(s=NA,p="hasLLT", o=input$rootNode, title=input$rootNode,
                              stringsAsFactors=FALSE)
     
     
@@ -63,17 +71,17 @@ function(input, output, session) {
     # Node color
     triplesRel <- triplesRel %>%
       mutate(fillColor = recode(p,
-      'hasLT'   = 'white' ,                     
+      'hasLLT'   = 'white' ,                     
       'hasPT'   = '#E6E0EC' ,
       'hasHLT'  = '#CCC1DA' ,
       'hasHLGT' = '#B3A2C7' ,
       'hasSOC'  = '#604A7B'
       ))
     
-    # Note type
+    # Node type
     triplesRel <- triplesRel %>%
       mutate(nodeType = recode(p,
-      'hasLT'   = 'LT' ,                     
+      'hasLLT'  = 'LLT' ,                     
       'hasPT'   = 'PT' ,
       'hasHLT'  = 'HLT' ,
       'hasHLGT' = 'HLGT' ,
@@ -107,10 +115,13 @@ function(input, output, session) {
     collapsibleTreeNetwork(
       treeDf(),
       c("s", "o"),
+      linkLength  = 100,
+      fontSize    = 12, 
       fill        = "fillColor",
       nodeSize    = NULL,         # All nodes same size
       tooltipHtml = "tooltip",
       width       = "100%",
+      height      = "400px", 
       collapsed   = FALSE
     )
   })
