@@ -14,6 +14,7 @@
 
 function(input, output, session) {
 
+  
       output$contents <- renderTable({ 
   
         req(input$fileR)
@@ -31,23 +32,7 @@ function(input, output, session) {
         file.rename(inFileOnt$datapath,
             paste(inFileOnt$datapath, ".ttl", sep=""))
 
-        query = paste0("PREFIX cd01p: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p#>
-PREFIX cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#>
-PREFIX code:  <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#>
-PREFIX country: <http://psi.oasis-open.org/iso/3166/#>
-PREFIX custom: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#>
-PREFIX meddra: <https://w3id.org/phuse/meddra#>
-prefix owl:   <http://www.w3.org/2002/07/owl#>
-PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
-PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 
-PREFIX sdtm: <https://github.com/phuse-org/SDTMasRDF/blob/master/data/rdf/sdtm#>
-PREFIX sdtm-terminology: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/sdtm-terminology#> 
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX sp: <http://spinrdf.org/sp#> 
-PREFIX spin: <http://spinrdf.org/spin#> 
-PREFIX study:  <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/study#>
-PREFIX time:  <http://www.w3.org/2006/time#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+        query = paste0(prefixes,"
 SELECT ?s ?p ?o
 WHERE {", input$qnam, " ?p ?o . 
   BIND(\"", input$qnam, "\" as ?s) } ")
@@ -61,7 +46,7 @@ WHERE {", input$qnam, " ?p ?o .
     
        # Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
        triplesOnt <-triplesOnt[!(triplesOnt$o==""),]
-       triplesOnt <<- triplesOnt[complete.cases(triplesOnt), ]
+       triplesOnt <- triplesOnt[complete.cases(triplesOnt), ]
        if (input$comp=='inRNotOnt') {
            compResult <<-anti_join(triplesR, triplesOnt)
        }
@@ -69,21 +54,59 @@ WHERE {", input$qnam, " ?p ?o .
            compResult <- anti_join(triplesOnt, triplesR)
        }
   
-       triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
-       triplesR   <- triplesR[with(triplesR, order(s,p,o)), ]
+       #triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
+       #triplesR   <- triplesR[with(triplesR, order(s,p,o)), ]
        
-       output$triplesOnt <-renderTable({triplesOnt})    
-       output$triplesR <-renderTable({triplesR})    
+       #output$triplesOnt <-renderTable({triplesOnt})    
+       #output$triplesR <-renderTable({triplesR})    
 
        compResult
     })
     
+    # Ontology Triples Table 
     output$triplesOnt <-renderTable({
       req(input$fileOnt)
+      
+      inFileOnt <- input$fileOnt
+      
+      file.rename(inFileOnt$datapath,
+                  paste(inFileOnt$datapath, ".ttl", sep=""))
+      
+      query = paste0(prefixes,"
+         SELECT ?s ?p ?o
+         WHERE {", input$qnam, " ?p ?o . 
+         BIND(\"", input$qnam, "\" as ?s) } ")
+      
+      sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
+      triplesOnt <- as.data.frame(sparql.rdf(sourceOnt, query))
+      
+      # Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
+      triplesOnt <-triplesOnt[!(triplesOnt$o==""),]
+      triplesOnt <- triplesOnt[complete.cases(triplesOnt), ]
+      
+      triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
+      triplesOnt <- triplesOnt[, c("p","o"), ]
       triplesOnt
     })    
+    
+    
+    # R Triples Table
     output$triplesR <-renderTable({
       req(input$fileR)
-      triplesR
+      inFileR   <- input$fileR
+      file.rename(inFileR$datapath,
+                  paste(inFileR$datapath, ".ttl", sep=""))
+      
+      query = paste0(prefixes,"
+        SELECT ?s ?p ?o
+        WHERE {", input$qnam, " ?p ?o . 
+        BIND(\"", input$qnam, "\" as ?s) } ")
+      
+      sourceR = load.rdf(paste(inFileR$datapath,".ttl",sep=""), format="N3")
+      # Global assign for trouble shooting
+      triplesR <- as.data.frame(sparql.rdf(sourceR, query))
+      triplesR <- triplesR[with(triplesR, order(s,p,o)), ]
+      triplesR <- triplesR[, c("p","o"), ]
+      
     })    
 }    
