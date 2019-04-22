@@ -8,7 +8,8 @@
 # OUT : 
 # REQ : 
 # SRC : 
-# NOTE: 
+# NOTE: Currently used for MedDRA construction with default subject set in 
+#       ui.R
 # TODO: 
 #______________________________________________________________________________
 library(plyr)    #  rename

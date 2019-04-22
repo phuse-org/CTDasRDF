@@ -8,7 +8,8 @@
 # OUT : 
 # REQ : 
 # SRC : 
-# NOTE: 
+# NOTE: Currently used for MedDRA construction with default subject set in 
+#       ui.R
 # TODO: 
 #______________________________________________________________________________
 
@@ -32,5 +33,5 @@ fluidPage(
     tableOutput('ontSP'),
   h4("R Triples",
     style= "color:#00802b"),
-  tableOutput('triplesR')
+  tableOutput('rSP')
 )    
