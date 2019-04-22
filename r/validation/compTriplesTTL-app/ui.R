@@ -28,10 +28,14 @@ fluidPage(
     style= "color:#e60000"),
   hr(),    
   tableOutput('unmatched'), 
-  h4("Ontology Triples",
-      style= "color:#000099"),
-    tableOutput('ontSP'),
-  h4("R Triples",
-    style= "color:#00802b"),
-  tableOutput('rSP')
+  fluidRow (
+    column(6, 
+      h4("Ontology Triples",
+        style= "color:#000099"),
+      tableOutput('ontSP')),
+    column(6, 
+      h4("R Triples",
+        style= "color:#00802b"),
+      tableOutput('rSP'))
+  )  
 )    
