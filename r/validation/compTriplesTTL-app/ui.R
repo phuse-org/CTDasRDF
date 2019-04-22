@@ -26,10 +26,10 @@ fluidPage(
   h4("Unmatched Triples:",
     style= "color:#e60000"),
   hr(),    
-  tableOutput('contents'), 
+  tableOutput('unmatched'), 
   h4("Ontology Triples",
       style= "color:#000099"),
-    tableOutput('triplesOnt'),
+    tableOutput('ontSP'),
   h4("R Triples",
     style= "color:#00802b"),
   tableOutput('triplesR')
