@@ -91,10 +91,8 @@ The following SPARQL query inputs the adverse event record from our study instan
 
 # Data Conversion with R
 
-## Introduction
-
-This project  to RDF. The files are supplied as five 
-The project converts the MedDRA files supplied as ASCII .asc files by the MSSO. 
+## Source Files
+MedDRA files supplied as ASCII .asc files by the MSSO are serialized to RDF in the Terse Triple Language (TTL) format.
 
 * Five files contain the medication conditions and codes (LLT, PT, HLT, HLGT, SOC)
     * LLT file contains the PT codes to provide the LLT to PT mapping
@@ -103,13 +101,30 @@ The project converts the MedDRA files supplied as ASCII .asc files by the MSSO.
 
 These files enable mapping of any LLT to its Primary SOC and optionally to Secondary SOC's.
 
-<img src="images/Meddra-AscFileLinks.png" width=800"/>
+<img src="images/Meddra-AscFileLinks.png" width=800/>
 
 
-<img src="images/MedDRA-LLTtoSOC.png" width=800"/>
+<img src="images/MedDRA-LLTtoSOC.png" width=800/>
+
+
+## R Script
+The R library `rdflib` is used to serialize the data into RDF. This package is a wrapper around the `redland` package, providing a much cleaner implementation. 
+
+
+<img src="images/MedDRA-ProgramFlow-medDRAReadAsc.png" width=600/>
+
+## Validation
+TODO: 
+1. Add RShiny app validation.
+2. Collapsible tree visualization
 
 
 
+
+
+
+
+## Validation
 
 
 
