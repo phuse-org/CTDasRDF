@@ -7,7 +7,10 @@
 # OUT :  data/rdf/MedDRA211.TTL
 # REQ : 
 # SRC : 
-# NOTE: for construction of subsetting values, see: /r/MedDRA_Subsetting_To_OntInstanceDatak.xlsx
+# NOTE: addStatements are ordered alphabetically by predicate QNAM for ease of 
+#         comparison during QA.
+#       Construction: for subsetting values, see: /r/MedDRA_Subsetting_To_OntInstanceDatak.xlsx
+# TESTING:  LLT: meddra:m10003851
 # TODO:  Should MedDRA be : https://w3id.org/phuse/MEDDRA21_1/  or 
 #        as is now: https://w3id.org/phuse/meddra#
 #______________________________________________________________________________
@@ -26,7 +29,7 @@ subsetFlag = "Y"
 
 # Subsetting values for each files. This could later move to a configuration file
 #  created as a result of a query against the ontology instance data. For now, 
-#  enjoy this manual, nasty kludge for values indentified in the Ontology
+#  enjoy this nasty manualkludge for values indentified in the Ontology
 #  instance data.
 
 # Note that 10003041 and 10003053 each map to TWO HLT codes.
@@ -35,6 +38,7 @@ subsetFlag = "Y"
 #           10015151
 # 10003053	10049293
 #           10003057
+
 ptOntSubset <- c('10003041', 
                  '10003053',
                  '10003677',
@@ -190,7 +194,7 @@ soc_hlgtKey <- readAscFile(ascFile="soc_hlgt", colNames=c("SOC_code", "HLGT_code
 # Uses same subset as the subsetting of hlgt earlier
 soc_hlgtKey <- subset(soc_hlgtKey, HLGT_code %in% hlgtOntSubset)
 
-# Merge in the HLGT code to the htl dataframe
+# Merge in the HLGT code to the hlt dataframe
 hlgtData <- merge(hlgtData, soc_hlgtKey, by.x="code", by.y="HLGT_code", all=FALSE)
 hlgtData$rowID <- 1:nrow(hlgtData) # row index
 
@@ -203,65 +207,89 @@ socData$rowID <- 1:nrow(socData) # row index
 
 #------------------------------------------------------------------------------
 #--- RDF Creation Statements --------------------------------------------------
-#--- LLT Creation ---
+
+#--- 1. LLT Creation ---
 ddply(lltData, .(rowID), function(lltData)
 {
   
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", lltData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(MEDDRA, "LowLevelConcept")
-               ))
-  
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("M", lltData$code)), 
-                   predicate    = paste0(SKOS,  "prefLabel"), 
-                   object       = paste0(lltData$label),
-                   objectType   = "literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
   # Identifier as a string xsd:string 
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("M", lltData$code)), 
+                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
                    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
                    object       = paste0(lltData$code),
                    objectType   = "literal", 
                    datatype_uri = paste0(XSD,"string")
                ))
-  
   # pt Code witin llt sheet
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("M", lltData$code)), 
+                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
                    predicate    = paste0(MEDDRA,  "hasPT"), 
-                   object       = paste0(MEDDRA, "M", lltData$PT_code)
+                   object       = paste0(MEDDRA, "m", lltData$PT_code)
                ))
-  
+  addStatement(model, 
+               new("Statement", world = world,                                                    
+                   subject   = paste0(MEDDRA, paste0("m", lltData$code)), 
+                   predicate = paste0(RDF,  "type"), 
+                   object    = paste0(MEDDRA, "LowLevelConcept")
+               ))
+  addStatement(model, 
+               new("Statement", world = world,                                                    
+                   subject   = paste0(MEDDRA, paste0("m", lltData$code)), 
+                   predicate = paste0(RDF,  "type"), 
+                   object    = paste0(MEDDRA, "MeddraConcept")
+               ))
+  addStatement(model, 
+               new("Statement", world = world,                                                    
+                   subject   = paste0(MEDDRA, paste0("m", lltData$code)), 
+                   predicate = paste0(RDF,  "type"), 
+                   object    = paste0(RDFS, "Resource")
+               ))
+  addStatement(model, 
+               new("Statement", world = world,                                                    
+                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
+                   predicate    = paste0(RDF,  "type"), 
+                   object       = paste0(SKOS, "Concept")
+               ))
+  addStatement(model, 
+               new("Statement", world = world,                                                    
+                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
+                   predicate    = paste0(RDFS,  "label"), 
+                   object       = paste0(lltData$label),
+                   objectType   = "literal", 
+                   datatype_uri = paste0(XSD,"string")
+               ))
+  addStatement(model, 
+               new("Statement", world = world,                                                    
+                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
+                   predicate    = paste0(SKOS,  "prefLabel"), 
+                   object       = paste0(lltData$label),
+                   objectType   = "literal", 
+                   datatype_uri = paste0(XSD,"string")
+               ))
 })  #--- End llt triples
 
 
-###--- pt Creation ---
+###--- 2. pt Creation ---
 ddply(ptData, .(rowID), function(ptData)
 {
   
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", ptData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", ptData$code)), 
                    predicate = paste0(RDF,  "type"), 
                    object    = paste0(SKOS, "Concept")
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", ptData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", ptData$code)), 
                    predicate = paste0(RDF,  "type"), 
                    object    = paste0(MEDDRA, "PreferredConcept")
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject         = paste0(MEDDRA, paste0("M", ptData$code)), 
+                   subject         = paste0(MEDDRA, paste0("m", ptData$code)), 
                    predicate     = paste0(SKOS,  "prefLabel"), 
                    object        = ptData$label,
                    objectType    = "literal", 
@@ -269,7 +297,7 @@ ddply(ptData, .(rowID), function(ptData)
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("M", ptData$code)), 
+                   subject      = paste0(MEDDRA, paste0("m", ptData$code)), 
                    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
                    object       = paste0(ptData$code),
                    objectType   ="literal", 
@@ -277,30 +305,30 @@ ddply(ptData, .(rowID), function(ptData)
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", ptData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", ptData$code)), 
                    predicate = paste0(MEDDRA,  "hasHLT"), 
-                   object    = paste0(MEDDRA, "M", ptData$HLT_code)
+                   object    = paste0(MEDDRA, "m", ptData$HLT_code)
                ))
 }) #--- End of PT ---  
 
-###--- hlt Creation ---
+###--- 3. hlt Creation ---
 ddply(hltData, .(rowID), function(hltData)
 {
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", hltData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", hltData$code)), 
                    predicate = paste0(RDF,  "type"), 
                    object    = paste0(SKOS, "Concept")
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", hltData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", hltData$code)), 
                    predicate = paste0(RDF,  "type"), 
                    object    = paste0(MEDDRA, "HighLevelConcept")
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject       = paste0(MEDDRA, paste0("M", hltData$code)), 
+                   subject       = paste0(MEDDRA, paste0("m", hltData$code)), 
                    predicate     = paste0(SKOS,  "prefLabel"), 
                    object        = hltData$label,
                    objectType    = "literal", 
@@ -308,7 +336,7 @@ ddply(hltData, .(rowID), function(hltData)
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("M", hltData$code)), 
+                   subject      = paste0(MEDDRA, paste0("m", hltData$code)), 
                    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
                    object       = paste0(hltData$code),
                    objectType   ="literal", 
@@ -317,30 +345,30 @@ ddply(hltData, .(rowID), function(hltData)
   #TW POSSIBLE TYPO IN SOURCE XLS? HLGT_CODE should be HLGT? 
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", hltData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", hltData$code)), 
                    predicate = paste0(MEDDRA,  "hasHLGT"), 
-                   object    = paste0(MEDDRA, "M", hltData$HLGT_code)
+                   object    = paste0(MEDDRA, "m", hltData$HLGT_code)
                ))
 }) #--- End of HLT ---  
 
-###--- hlgt Creation ---
+###--- 4. hlgt Creation ---
 ddply(hlgtData, .(rowID), function(hlgtData)
 {
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", hlgtData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", hlgtData$code)), 
                    predicate = paste0(RDF,  "type"), 
                    object    = paste0(SKOS, "Concept")
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", hlgtData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", hlgtData$code)), 
                    predicate = paste0(RDF,  "type"), 
                    object    = paste0(MEDDRA, "HighLevelGroupConcept")
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("M", hlgtData$code)), 
+                   subject      = paste0(MEDDRA, paste0("m", hlgtData$code)), 
                    predicate    = paste0(SKOS,  "prefLabel"), 
                    object       = hlgtData$label,
                    objectType   = "literal", 
@@ -348,7 +376,7 @@ ddply(hlgtData, .(rowID), function(hlgtData)
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("M", hlgtData$code)), 
+                   subject      = paste0(MEDDRA, paste0("m", hlgtData$code)), 
                    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
                    object       = paste0(hlgtData$code),
                    objectType   = "literal", 
@@ -356,31 +384,31 @@ ddply(hlgtData, .(rowID), function(hlgtData)
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", hlgtData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", hlgtData$code)), 
                    predicate = paste0(MEDDRA,  "hasSOC"), 
-                   object    = paste0(MEDDRA, "M", hlgtData$SOC_code)
+                   object    = paste0(MEDDRA, "m", hlgtData$SOC_code)
                ))
 }) #--- End of HLGT ---  
 
 
-#--- soc Creation ---
+#--- 5. soc Creation ---
 ddply(socData, .(rowID), function(socData)
 {
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", socData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", socData$code)), 
                    predicate = paste0(RDF,  "type"), 
                    object    = paste0(SKOS, "Concept")
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", socData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", socData$code)), 
                    predicate = paste0(RDF,  "type"), 
                    object    = paste0(MEDDRA, "SystemOrganClassConcept")
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("M", socData$code)), 
+                   subject      = paste0(MEDDRA, paste0("m", socData$code)), 
                    predicate    = paste0(SKOS,  "prefLabel"), 
                    object       = socData$label,
                    objectType   = "literal", 
@@ -388,13 +416,13 @@ ddply(socData, .(rowID), function(socData)
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("M", socData$code)), 
+                   subject   = paste0(MEDDRA, paste0("m", socData$code)), 
                    predicate = paste0(SKOS,  "topConceptOf"), 
                    object    = paste0(MEDDRA, "MedDRA")
                ))
   addStatement(model, 
                new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("M", socData$code)), 
+                   subject      = paste0(MEDDRA, paste0("m", socData$code)), 
                    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
                    object       = paste0(socData$code),
                    objectType   = "literal", 
@@ -417,5 +445,5 @@ for (i in 1:nrow(prefixList))
                          prefix = tolower(prefixList[i, "prefixUC"]) ) 
 }  
 
-filePath <- 'data/rdf/MedDRA211.TTL'
+filePath <- 'data/rdf/MedDRA211-R.TTL'
 status <- serializeToFile(serializer, world, model, filePath)

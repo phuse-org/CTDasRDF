@@ -22,19 +22,9 @@ A term may map to two or more terms at a higher level. In the example below, the
 
 <img src="images/Meddra-MultiAxial.png" width=700"/>
 
-
 ## MedDRA Terminology Distribution
 MedDRA is licensed, so source files are not provided as a part of this PhUSE project. We obtained a Research/Non Commercial license from the MSSO in order to perform this work.
 The R conversion scripts detailed below can be freely used by anyone to construct the RDF from  licensed copy of terminology files.
-
-Our project uses the following ASCII files,  provided as part of the distribution from MSSO:
-
-* Five files contain the medication conditions and codes (LLT, PT, HLT, HLGT, SOC)
-* LLT file contains the PT codees to provide the LLT to PT mapping
-* PT file contains the *Primary SOC* code to which the PT term is mapped.
-* Three files contain additional mappings evident in their names:  HLT-PT, HLGT-HLT, SOC-HLGT
-
-These files enable mapping of any LLT to its Primary and (optional) Secondary SOC's.
 
 ### Why RDF for MedDRA Terminology?
 
@@ -70,13 +60,20 @@ Predicates were defined to express the relationships within the hieararchy, as w
 
 In the diagram below, yellow boxes represent instance data and the pink are classes.  `skos:ConceptScheme` has an instance for the MedDRA version, `meddra:Meddra211` for the version of MedDRA used in this project. `skos:Collection` has the subclass `meddra:Collection` under which there are the five instances for the terminology level (Lowel to SOC).  The `skos:hasMember` predicate links the collection to the individual concepts that make up each collection. The diagram shows only the first nine AE's in the project data. 
 
-<img src="images/Meddra-Structure.png" width=500"/>
+<img src="images/Meddra-Structure.png" width=800"/>
 
 It is versy common for a  concept to appear in multiple classes. For example, the LLT `'m10003041` is mapped to itself as a PT (the lower level term *is* the preferred term in this case). 
 
 Under `skos:Concep` we defined `meddra:MeddraConcept` and then further divided the concepts into the five classes of LLTConcept to SOCConcept (pink boxes).  The instances (yellow) are related to the classes by the `rdf:type` predicate. The instance data is linked together using the predicates `hasPT`, '`hasHLT`, etc. With the exception of `hasPT`, these latter predicates are a subproperty of `skos:broader`.
 
 Note the how the predicate `hasPrimaryPTSOC` links with a blue line from a Preferred Term (`PTConcept`) to the `SOCConcept` to identify the Primary SOC. `hasPrimaryPTSOC` has a 1:1 relationship with the `PTConcept` and so is an `owl:FunctionalProperty`.  `hasPT` is expressing the synonym relationship between LLTconcept and PTConcept. 
+
+**TODO: Update the new relation updated after 18MAR for the predicate that replaces `skos:broader` between LLTConcept and PTConcept**
+
+
+### Instance data
+File sdtm-cdisc01.ttl contains instance data that links a subject `cdiscpilot01:Person_01-701-1015` to the adverse event `cdiscpilot01:AE1_AppSiteErythema`. 
+
 
 
 
@@ -89,7 +86,28 @@ The project uses human-interpretable names for the resources as a way to aid und
 ## Linking to the Subject data
 The following SPARQL query inputs the adverse event record from our study instance data. The line `?ae code:hasCode ?LLT1` identifies the low level term for that event. Each higher level term in the hierarchy is queried and extracted. Our SDTM ontology contains this query as a SPIN rule. 
 
-<img src="images/Meddra-Query.png" width=500"/>
+<img src="images/Meddra-Query.png" width=200"/>
+
+
+# Data Conversion with R
+
+## Introduction
+
+This project  to RDF. The files are supplied as five 
+The project converts the MedDRA files supplied as ASCII .asc files by the MSSO. 
+
+* Five files contain the medication conditions and codes (LLT, PT, HLT, HLGT, SOC)
+    * LLT file contains the PT codes to provide the LLT to PT mapping
+    * PT file contains the *Primary SOC* code to which the PT term is mapped.
+* Three files contain additional mappings evident in their names:  HLT_PT, HLGT_HLT, SOC_HLGT
+
+These files enable mapping of any LLT to its Primary SOC and optionally to Secondary SOC's.
+
+<img src="images/Meddra-AscFileLinks.png" width=800"/>
+
+
+<img src="images/MedDRA-LLTtoSOC.png" width=800"/>
+
 
 
 

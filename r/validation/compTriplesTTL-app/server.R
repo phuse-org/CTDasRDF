@@ -10,8 +10,8 @@
 # SRC : 
 # NOTE: Currently used for MedDRA construction with default subject set in 
 #       ui.R
-# TODO: Move R query sep as per Ont query. 
-#       Move data table to be side-by-side for comparison
+# TODO: Convert from rrdf to rdflib for file read. See ReadTTL-rdflib.R for read
+#       Add IRItoPrefix() function and function call.
 #
 #______________________________________________________________________________
 
@@ -19,20 +19,24 @@ function(input, output, session) {
 
   ontTriples <- reactive({
     req(input$fileOnt)
-    
+
     inFileOnt <- input$fileOnt
     
     file.rename(inFileOnt$datapath,
                 paste(inFileOnt$datapath, ".ttl", sep=""))
     
-    query = paste0(prefixes,"
+    queryString = paste0(prefixes,"
          SELECT ?s ?p ?o
          WHERE {", input$qnam, " ?p ?o . 
          BIND(\"", input$qnam, "\" as ?s) } ")
     
-    sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
-    triplesOnt <- as.data.frame(sparql.rdf(sourceOnt, query))
+    #sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
+    #triplesOnt <- as.data.frame(sparql.rdf(sourceOnt, query))
     
+    ttlSrc <- system.file(paste(inFileOnt$datapath, ".ttl", sep=""), package="redland")
+    rdf <- rdf_parse(ttlSrc, format = "turtle")
+    triplesOnt <- rdf_query(rdf, queryString)
+
     # Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
     triplesOnt <- triplesOnt[!(triplesOnt$o==""),]
     triplesOnt <- triplesOnt[complete.cases(triplesOnt), ]

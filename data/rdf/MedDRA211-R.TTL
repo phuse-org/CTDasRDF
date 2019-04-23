@@ -23,7 +23,8 @@ meddra:m10003041
     meddra:hasIdentifier "10003041"^^xsd:string .
 
 meddra:m10003047
-    a meddra:LowLevelConcept ;
+    a rdfs:Resource, skos:Concept, meddra:LowLevelConcept, meddra:MeddraConcept ;
+    rdfs:label "Application site itching"^^xsd:string ;
     skos:prefLabel "Application site itching"^^xsd:string ;
     meddra:hasIdentifier "10003047"^^xsd:string ;
     meddra:hasPT meddra:m10003053 .
@@ -41,7 +42,8 @@ meddra:m10003057
     meddra:hasIdentifier "10003057"^^xsd:string .
 
 meddra:m10003058
-    a meddra:LowLevelConcept ;
+    a rdfs:Resource, skos:Concept, meddra:LowLevelConcept, meddra:MeddraConcept ;
+    rdfs:label "Application site redness"^^xsd:string ;
     skos:prefLabel "Application site redness"^^xsd:string ;
     meddra:hasIdentifier "10003058"^^xsd:string ;
     meddra:hasPT meddra:m10003041 .
@@ -53,7 +55,8 @@ meddra:m10003677
     meddra:hasIdentifier "10003677"^^xsd:string .
 
 meddra:m10003851
-    a meddra:LowLevelConcept ;
+    a rdfs:Resource, skos:Concept, meddra:LowLevelConcept, meddra:MeddraConcept ;
+    rdfs:label "AV block second degree"^^xsd:string ;
     skos:prefLabel "AV block second degree"^^xsd:string ;
     meddra:hasIdentifier "10003851"^^xsd:string ;
     meddra:hasPT meddra:m10003677 .
@@ -71,7 +74,8 @@ meddra:m10007541
     meddra:hasIdentifier "10007541"^^xsd:string .
 
 meddra:m10012727
-    a meddra:LowLevelConcept ;
+    a rdfs:Resource, skos:Concept, meddra:LowLevelConcept, meddra:MeddraConcept ;
+    rdfs:label "Diarrhea"^^xsd:string ;
     skos:prefLabel "Diarrhea"^^xsd:string ;
     meddra:hasIdentifier "10012727"^^xsd:string ;
     meddra:hasPT meddra:m10012735 .
@@ -131,7 +135,8 @@ meddra:m10022117
     meddra:hasIdentifier "10022117"^^xsd:string .
 
 meddra:m10024781
-    a meddra:LowLevelConcept ;
+    a rdfs:Resource, skos:Concept, meddra:LowLevelConcept, meddra:MeddraConcept ;
+    rdfs:label "Localized erythema"^^xsd:string ;
     skos:prefLabel "Localized erythema"^^xsd:string ;
     meddra:hasIdentifier "10024781"^^xsd:string ;
     meddra:hasPT meddra:m10015150 .

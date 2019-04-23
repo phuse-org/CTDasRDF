@@ -25,7 +25,7 @@ Ontology triples that are NOT instance data are not recreated during the data co
 ### R Programs
 | Order  | File                 | Description                                  |
 | ------ | -------------------- | ---------------------------------------------|
-| 1.     | XPTtoCSV.R           | Main driver program for data conversion. Metadata import and timestamp. |
+| 1.     | XPTtoCSV.R           | Main driver program for data conversion. Metadata import and time stamp. |
 | 2.     | Functions.R          | Functions called during conversion process |
 | 3.     | DM_imputeCSV.R       | DM imputation, encoding. **Must be run before EX.** See Details for DM,EX data files. |
 |        | XPTtoCVS:SUPPDM      | No imputation for SUPPMD. XPTtoCVS.R processes SUPPDM directly. |
@@ -42,12 +42,12 @@ Ontology triples that are NOT instance data are not recreated during the data co
 ## General Rules
 
 ### Data Creation
-Some data required for developing and testing the model is not present in the source XPT files. Examples include `Investigator` and `InvestigatorID`. Values created for this purpose are stored in CSV files prefixed with the name `ctdasrdf_` to identify it as supplemental data created for the project. Each CSV file has a corresponding `_map.TTL` file. The timesstamp in the metadata file ctdasrdf_graphMeta.csv is updated programmatically when XPTtoCSV.R is run. The other CSV files are created and maintained manually.
+Some data required for developing and testing the model is not present in the source XPT files. Examples include `Investigator` and `InvestigatorID`. Values created for this purpose are stored in CSV files prefixed with the name `ctdasrdf_` to identify it as supplemental data created for the project. Each CSV file has a corresponding `_map.TTL` file. The times stamp in the metadata file ctdasrdf_graphMeta.csv is updated when XPTtoCSV.R is run. The other CSV files are created and maintained manually.
 
 | File                   | Description                       |
 | ---------------------- | ----------------------------------|
 | ctdasrdf_invest.csv    | Site and Investigator |
-| ctdasrdf_graphmeta.csv | Graph Metadata. Timestamp updated by XPTtoCVS.R . |
+| ctdasrdf_graphmeta.csv | Graph Metadata. Time stamp updated by XPTtoCVS.R . |
 
 
 ### Data Creation: Adding Rules
@@ -55,7 +55,7 @@ _Creation of rules in the RDF data is currently under development. OWL 2 is bein
 
 
 #### Interval IRIs
-In many cases, either the start or end date of an interval may be missing in the source data. Missing values within SMS entity map result in that entity not being created. But the start of an interval must be represented in the data even when that interval has note yet been completed (eg: Lifespan). For this reason, interval IRI source values are computed during the XPT to CSV conversion process by concatenating the start and end dates with an underscore. When the end date is missing, the interval value ends in an underscore.
+In many cases, either the start or end date of an interval may be missing in the source data. Missing values within SMS entity map result in that entity not being created. But the start of an interval must be represented in the data even when that interval has note yet been completed (example: Lifespan). For this reason, interval IRI source values are computed during the XPT to CSV conversion process by concatenating the start and end dates with an underscore. When the end date is missing, the interval value ends in an underscore.
 
 Example of complete and incomplete LifeSpan intervals:
 
