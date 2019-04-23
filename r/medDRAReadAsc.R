@@ -1,25 +1,25 @@
 #______________________________________________________________________________
 # FILE: medDRAReadAsc.R
-# DESC:  Read the original .asc files from MedDRA into R dataframes for 
-#        processing into RDF. Create TTL file using Redland.
-# SRC :
-# IN  : 
-# OUT :  data/rdf/MedDRA211.TTL
+# DESC: Read the source .asc files from MedDRA into R dataframes for 
+#         processing into RDF. 
+#       Create TTL file.
+# SRC : 
+# IN  : *.asc MedDRA files from MSSO
+# OUT : data/rdf/MedDRA211-R.TTL
 # REQ : 
 # SRC : 
-# NOTE: addStatements are ordered alphabetically by predicate QNAM for ease of 
-#         comparison during QA.
-#       Construction: for subsetting values, see: /r/MedDRA_Subsetting_To_OntInstanceDatak.xlsx
+# NOTE: rdf_add statements ordered alphabetically by predicate QNAM for ease of 
+#         comparison with ordered QA query results.
+#       Use of for loop instead of ddply. Looping with ddply may be incompatible
+#         with rdflib?
 # TESTING:  LLT: meddra:m10003851
+#
+#
 # TODO:  Should MedDRA be : https://w3id.org/phuse/MEDDRA21_1/  or 
 #        as is now: https://w3id.org/phuse/meddra#
 #______________________________________________________________________________
-library(redland)
-library(plyr)
-
+library(rdflib)
 setwd("C:/_github/CTDasRDF")
-
-
 
 #--- Subsetting ---------------------------------------------------------------
 # If Y, subset the data to only the data present in the ontology instance data.
@@ -44,7 +44,7 @@ ptOntSubset <- c('10003041',
                  '10003677',
                  '10012735',
                  '10015150'
-                  )
+)
 # llt 
 ltOntSubset <- c('10003047',
                  '10003058',
@@ -93,11 +93,11 @@ socOntSubset <- c('10007541',
 readAscFile <- function(ascFile, colNames)
 {
   sourceFile <- paste0("data/medDRA/meddra_21_1_english/MedAscii/", ascFile, ".asc")
-
+  
   result <- read.delim2(sourceFile, 
-              header = FALSE, 
-              sep = "$", 
-              quote = "\"")
+                        header = FALSE, 
+                        sep = "$", 
+                        quote = "\"")
   
   names(result) <- colNames
   #cols <- colnames(result)
@@ -106,39 +106,31 @@ readAscFile <- function(ascFile, colNames)
   result <- result[,colNames]  
 } 
 
-# Scope the model for Redland
-world <- new("World")
-# In-memory hashes as mechanism to store models. (convenient for small models, may not scale)
-storage <- new("Storage", world, "hashes", name="", options="hash-type='memory'")
-# A model is a set of Statements, and is associated with a particular Storage instance
-model <- new("Model", world = world, storage, options="")
-
 # Dataframe of prefix assignments . Dataframe used for ease of data entry. 
 #   May later change to external file?
 prefixList <-read.table(header = TRUE, text = "
-  prefixUC  url
-  'MEDDRA'  'https://w3id.org/phuse/meddra#'
-  'RDF'     'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
-  'RDFS'    'http://www.w3.org/2000/01/rdf-schema#'
-  'SKOS'    'http://www.w3.org/2004/02/skos/core#'
-  'XSD'     'http://www.w3.org/2001/XMLSchema#'  "
+                        prefixUC  url
+                        'MEDDRA'  'https://w3id.org/phuse/meddra#'
+                        'RDF'     'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+                        'RDFS'    'http://www.w3.org/2000/01/rdf-schema#'
+                        'SKOS'    'http://www.w3.org/2004/02/skos/core#'
+                        'XSD'     'http://www.w3.org/2001/XMLSchema#'  "
 )                         
 
 # Transform the df of prefixes and values into variable names and their values
-#   for use within the redland statements.
+#   for use within the rdf_add statements.
 prefixUC        <- as.list(prefixList$url)
 names(prefixUC) <- as.list(prefixList$prefixUC)
 list2env(prefixUC , envir = .GlobalEnv)
 
-#--- Read (and subset Source Data ---------------------------------------------
-
+#--- Read (and optionally subset) Source Data ---------------------------------
 #------------------------------------------------------------------------------
 #--- llt ---
 lltData <- readAscFile(ascFile="llt", colNames=c("code", "label", "PT_code"))
 
 # Subset
 if(subsetFlag == "Y"){ lltData <- subset(lltData, code  %in% ltOntSubset) }
-  
+
 lltData$rowID <- 1:nrow(lltData) # row index
 
 #--- pt ---
@@ -207,243 +199,209 @@ socData$rowID <- 1:nrow(socData) # row index
 
 #------------------------------------------------------------------------------
 #--- RDF Creation Statements --------------------------------------------------
+some_rdf <- rdf()  # initialize 
 
 #--- 1. LLT Creation ---
-ddply(lltData, .(rowID), function(lltData)
+for(i in 1:nrow(lltData))
 {
-  
   # Identifier as a string xsd:string 
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
-                   predicate    = paste0(MEDDRA,  "hasIdentifier"), 
-                   object       = paste0(lltData$code),
-                   objectType   = "literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", lltData[i,"code"])), 
+    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
+    object       = paste0(lltData[i,"code"]),
+    objectType   = "literal", 
+    datatype_uri = paste0(XSD,"string")
+  )
   # pt Code witin llt sheet
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
-                   predicate    = paste0(MEDDRA,  "hasPT"), 
-                   object       = paste0(MEDDRA, "m", lltData$PT_code)
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", lltData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(MEDDRA, "LowLevelConcept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", lltData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(MEDDRA, "MeddraConcept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", lltData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(RDFS, "Resource")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
-                   predicate    = paste0(RDF,  "type"), 
-                   object       = paste0(SKOS, "Concept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
-                   predicate    = paste0(RDFS,  "label"), 
-                   object       = paste0(lltData$label),
-                   objectType   = "literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", lltData$code)), 
-                   predicate    = paste0(SKOS,  "prefLabel"), 
-                   object       = paste0(lltData$label),
-                   objectType   = "literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
-})  #--- End llt triples
-
-
-###--- 2. pt Creation ---
-ddply(ptData, .(rowID), function(ptData)
-{
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", lltData[i,"code"])), 
+    predicate    = paste0(MEDDRA,  "hasPT"), 
+    object       = paste0(MEDDRA, "m", lltData[i,"PT_code"])
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", lltData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(MEDDRA, "LowLevelConcept")
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", lltData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(MEDDRA, "MeddraConcept")
+  )
   
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", ptData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(SKOS, "Concept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", ptData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(MEDDRA, "PreferredConcept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject         = paste0(MEDDRA, paste0("m", ptData$code)), 
-                   predicate     = paste0(SKOS,  "prefLabel"), 
-                   object        = ptData$label,
-                   objectType    = "literal", 
-                   datatype_uri  = paste0(XSD,"string")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", ptData$code)), 
-                   predicate    = paste0(MEDDRA,  "hasIdentifier"), 
-                   object       = paste0(ptData$code),
-                   objectType   ="literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", ptData$code)), 
-                   predicate = paste0(MEDDRA,  "hasHLT"), 
-                   object    = paste0(MEDDRA, "m", ptData$HLT_code)
-               ))
-}) #--- End of PT ---  
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", lltData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(RDFS, "Resource")
+  )
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", lltData[i,"code"])), 
+    predicate    = paste0(RDF,  "type"), 
+    object       = paste0(SKOS, "Concept")
+  )
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", lltData[i,"code"])), 
+    predicate    = paste0(RDFS,  "label"), 
+    object       = paste0(lltData[i,"label"]),
+    objectType   = "literal", 
+    datatype_uri = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", lltData[i,"code"])), 
+    predicate    = paste0(SKOS,  "prefLabel"), 
+    object       = paste0(lltData[i,"label"]),
+    objectType   = "literal", 
+    datatype_uri = paste0(XSD,"string")
+  )
+}  #--- End llt triples
 
-###--- 3. hlt Creation ---
-ddply(hltData, .(rowID), function(hltData)
+
+#--- 2. pt Creation ---
+for(i in 1:nrow(ptData))
 {
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", hltData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(SKOS, "Concept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", hltData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(MEDDRA, "HighLevelConcept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject       = paste0(MEDDRA, paste0("m", hltData$code)), 
-                   predicate     = paste0(SKOS,  "prefLabel"), 
-                   object        = hltData$label,
-                   objectType    = "literal", 
-                   datatype_uri  = paste0(XSD,"string")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", hltData$code)), 
-                   predicate    = paste0(MEDDRA,  "hasIdentifier"), 
-                   object       = paste0(hltData$code),
-                   objectType   ="literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
-  #TW POSSIBLE TYPO IN SOURCE XLS? HLGT_CODE should be HLGT? 
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", hltData$code)), 
-                   predicate = paste0(MEDDRA,  "hasHLGT"), 
-                   object    = paste0(MEDDRA, "m", hltData$HLGT_code)
-               ))
-}) #--- End of HLT ---  
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", ptData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(SKOS, "Concept")
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", ptData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(MEDDRA, "PreferredConcept")
+  )
+  rdf_add(some_rdf, 
+    subject       = paste0(MEDDRA, paste0("m", ptData[i,"code"])), 
+    predicate     = paste0(SKOS,  "prefLabel"), 
+    object        = ptData[i,"label"],
+    objectType    = "literal", 
+    datatype_uri  = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", ptData[i,"code"])), 
+    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
+    object       = paste0(ptData[i,"code"]),
+    objectType   ="literal", 
+    datatype_uri = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", ptData[i,"code"])), 
+    predicate = paste0(MEDDRA,  "hasHLT"), 
+    object    = paste0(MEDDRA, "m", ptData[i,"HLT_code"])
+  )
+} #--- End of PT ---  
 
-###--- 4. hlgt Creation ---
-ddply(hlgtData, .(rowID), function(hlgtData)
+#--- 3. hlt Creation ---
+for(i in 1:nrow(hltData))
 {
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", hlgtData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(SKOS, "Concept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", hlgtData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(MEDDRA, "HighLevelGroupConcept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", hlgtData$code)), 
-                   predicate    = paste0(SKOS,  "prefLabel"), 
-                   object       = hlgtData$label,
-                   objectType   = "literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", hlgtData$code)), 
-                   predicate    = paste0(MEDDRA,  "hasIdentifier"), 
-                   object       = paste0(hlgtData$code),
-                   objectType   = "literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", hlgtData$code)), 
-                   predicate = paste0(MEDDRA,  "hasSOC"), 
-                   object    = paste0(MEDDRA, "m", hlgtData$SOC_code)
-               ))
-}) #--- End of HLGT ---  
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", hltData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(SKOS, "Concept")
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", hltData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(MEDDRA, "HighLevelConcept")
+  )
+  rdf_add(some_rdf, 
+    subject       = paste0(MEDDRA, paste0("m", hltData[i,"code"])), 
+    predicate     = paste0(SKOS,  "prefLabel"), 
+    object        = hltData[i,"label"],
+    objectType    = "literal", 
+    datatype_uri  = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", hltData[i,"code"])), 
+    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
+    object       = paste0(hltData[i,"code"]),
+    objectType   ="literal", 
+    datatype_uri = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", hltData[i,"code"])), 
+    predicate = paste0(MEDDRA,  "hasHLGT"), 
+    object    = paste0(MEDDRA, "m", hltData[i,"HLGT_code"])
+  )
+} #--- End of HLT ---  
 
+#--- 4. hlgt Creation ---
+for(i in 1:nrow(hlgtData))
+{
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", hlgtData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(SKOS, "Concept")
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", hlgtData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(MEDDRA, "HighLevelGroupConcept")
+  )
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", hlgtData[i,"code"])), 
+    predicate    = paste0(SKOS,  "prefLabel"), 
+    object       = hlgtData[i,"label"],
+    objectType   = "literal", 
+    datatype_uri = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", hlgtData[i,"code"])), 
+    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
+    object       = paste0(hlgtData[i,"code"]),
+    objectType   = "literal", 
+    datatype_uri = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", hlgtData[i,"code"])), 
+    predicate = paste0(MEDDRA,  "hasSOC"), 
+    object    = paste0(MEDDRA, "m", hlgtData[i,"SOC_code"])
+  )
+} #--- End of HLGT ---  
 
 #--- 5. soc Creation ---
-ddply(socData, .(rowID), function(socData)
+for(i in 1:nrow(socData))
 {
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", socData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(SKOS, "Concept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", socData$code)), 
-                   predicate = paste0(RDF,  "type"), 
-                   object    = paste0(MEDDRA, "SystemOrganClassConcept")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", socData$code)), 
-                   predicate    = paste0(SKOS,  "prefLabel"), 
-                   object       = socData$label,
-                   objectType   = "literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject   = paste0(MEDDRA, paste0("m", socData$code)), 
-                   predicate = paste0(SKOS,  "topConceptOf"), 
-                   object    = paste0(MEDDRA, "MedDRA")
-               ))
-  addStatement(model, 
-               new("Statement", world = world,                                                    
-                   subject      = paste0(MEDDRA, paste0("m", socData$code)), 
-                   predicate    = paste0(MEDDRA,  "hasIdentifier"), 
-                   object       = paste0(socData$code),
-                   objectType   = "literal", 
-                   datatype_uri = paste0(XSD,"string")
-               ))
-}) #--- End of SOC ---  
-
-
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", socData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(SKOS, "Concept")
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", socData[i,"code"])), 
+    predicate = paste0(RDF,  "type"), 
+    object    = paste0(MEDDRA, "SystemOrganClassConcept")
+  )
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", socData[i,"code"])), 
+    predicate    = paste0(SKOS,  "prefLabel"), 
+    object       = socData[i,"label"],
+    objectType   = "literal", 
+    datatype_uri = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+    subject   = paste0(MEDDRA, paste0("m", socData[i,"code"])), 
+    predicate = paste0(SKOS,  "topConceptOf"), 
+    object    = paste0(MEDDRA, "MedDRA")
+  )
+  rdf_add(some_rdf, 
+    subject      = paste0(MEDDRA, paste0("m", socData[i,"code"])), 
+    predicate    = paste0(MEDDRA,  "hasIdentifier"), 
+    object       = paste0(socData[i,"code"]),
+    objectType   = "literal", 
+    datatype_uri = paste0(XSD,"string")
+  )
+} #--- End of SOC ---  
 #--- Triple build complete ---
 
-#--- Serialize the model to a TTL file ----------------------------------------
-serializer <- new("Serializer", world, name="turtle", mimeType="text/turtle")
+#--- Serialize the some_rdf to a TTL file ----------------------------------------
+outFile <- 'data/rdf/MedDRA211-R.TTL'
 
-# Create the prefix list for the top of the TTL file. 
-#   Do not move code from this location. 
-for (i in 1:nrow(prefixList))
-{
-  status <- setNameSpace(serializer, world, 
-                         namespace = prefixList[i, "url"], 
-                         prefix = tolower(prefixList[i, "prefixUC"]) ) 
-}  
-
-filePath <- 'data/rdf/MedDRA211-R.TTL'
-status <- serializeToFile(serializer, world, model, filePath)
+rdf_serialize(some_rdf,
+              outFile,
+              format = "turtle",
+              namespace = c( meddra = "https://w3id.org/phuse/meddra#",
+                             rdf    = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                             rdfs   = "http://www.w3.org/2000/01/rdf-schema#",
+                             skos   = "http://www.w3.org/2004/02/skos/core#",
+                             xsd    = "http://www.w3.org/2001/XMLSchema#"
+              ))

@@ -1,5 +1,5 @@
 #______________________________________________________________________________
-# FILE: r/validation/compTriplesTTL-appp/global.R
+# FILE: r/validation/compTriplesTTL-app/global.R
 # DESC: Compare triples in two TTL files, starting at a named Subject.
 #         Used to compare instance data created in the Ontology approach with
 #         data converted using R
@@ -15,11 +15,17 @@
 library(plyr)    #  rename
 library(dplyr)   # anti_join. Must load dplyr AFTER plyr!!
 library(reshape) #  melt
-library(rrdf)
+library(rrdf)    #TODO: Del after rdflib implemented
 library(rdflib)  # new for testing 
-library(redland)
+library(redland) #TODO: Del after rdflib implemented
 library(shiny)
-setwd("C:/_gitHub/CTDasRDF/data/rdf")
+
+rm(list = ls(all.names = TRUE))  # Clear workspace
+
+setwd("C:/_gitHub/CTDasRDF")
+
+# Functions
+source('r/Functions.R')
 
 prefixes <-"PREFIX cd01p: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cd01p#>
 PREFIX cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/cdiscpilot01#>

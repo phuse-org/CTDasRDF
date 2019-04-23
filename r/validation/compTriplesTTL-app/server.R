@@ -17,6 +17,7 @@
 
 function(input, output, session) {
 
+  # Ontology triples
   ontTriples <- reactive({
     req(input$fileOnt)
 
@@ -30,41 +31,48 @@ function(input, output, session) {
          WHERE {", input$qnam, " ?p ?o . 
          BIND(\"", input$qnam, "\" as ?s) } ")
     
-    #sourceOnt = load.rdf(paste(inFileOnt$datapath,".ttl",sep=""), format="N3")
-    #triplesOnt <- as.data.frame(sparql.rdf(sourceOnt, query))
-    
-    ttlSrc <- system.file(paste(inFileOnt$datapath, ".ttl", sep=""), package="redland")
-    rdf <- rdf_parse(ttlSrc, format = "turtle")
+    rdf <- rdf_parse(paste(inFileOnt$datapath,".ttl",sep=""), format = "turtle")
     triplesOnt <- rdf_query(rdf, queryString)
 
     # Remove cases where O is missing in the Ontology source(atrifact from TopBraid)
     triplesOnt <- triplesOnt[!(triplesOnt$o==""),]
     triplesOnt <- triplesOnt[complete.cases(triplesOnt), ]
-    triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
     
+    # Change URI to QNAM for display purposes
+    triplesOnt <- shortenIRI(sourceDF   = triplesOnt, 
+                            colsToParse = c("p", "o") ,
+                            usePrefix   = TRUE)
+    triplesOnt <- triplesOnt[with(triplesOnt, order(s,p,o)), ]
   })
   
-  # Ontology Triples Table. Predicate and Objects only
+  # Ontology triples table. Predicate and Objects only
   output$ontSP <-renderTable({
     triplesSPO <- ontTriples()
     triplesSPO <- triplesSPO[, c("p","o"), ]
   })    
   
+  # R triples 
   rTriples <- reactive({
     req(input$fileR)
     inFileR <- input$fileR
         file.rename(inFileR$datapath,
       paste(inFileR$datapath, ".ttl", sep=""))
 
-    query = paste0(prefixes,"
+    queryString = paste0(prefixes,"
       SELECT ?s ?p ?o
       WHERE {", input$qnam, " ?p ?o . 
       BIND(\"", input$qnam, "\" as ?s) } ")
 
-    sourceR = load.rdf(paste(inFileR$datapath,".ttl",sep=""), format="N3")
-    triplesR <- as.data.frame(sparql.rdf(sourceR, query))
+    rdf <- rdf_parse(paste(inFileR$datapath,".ttl",sep=""), format = "turtle")
+    triplesR <- rdf_query(rdf, queryString)
+    
+    # Change URI to QNAM for display purposes
+    triplesR <- shortenIRI(sourceDF      = triplesR, 
+                             colsToParse = c("p", "o") ,
+                             usePrefix   = TRUE)
+    
     triplesR <- triplesR[with(triplesR, order(s,p,o)), ]
-    triplesR <- triplesR[, c("p","o"), ]
+    
    }) 
     
   # R Triples Table. Predicate and Objects only
