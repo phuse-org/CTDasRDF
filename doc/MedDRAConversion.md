@@ -1,8 +1,3 @@
----
-output: 
-  html_document: 
-    css: css/GoTWLD.css
----
 # MedDRA Ontology and Data Conversion
 
 

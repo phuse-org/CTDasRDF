@@ -1,6 +1,4 @@
----
-output: html_document
----
+
 Project Documentation
 =====================
 

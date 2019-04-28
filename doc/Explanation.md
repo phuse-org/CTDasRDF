@@ -15,4 +15,4 @@ Related PhUSE Publications
 
 -   **Transforming Clinical Trials with Linked Data.** USConnect18 (Williams, Oliva). [Paper](http://phusewiki.org/docs/2018_US%20Connect18/TT%20STREAM%202/tt17%20final%20.pdf), [Presentation](http://phusewiki.org/docs/2018_US%20Connect18/TT%20STREAM%202/tt17%20pres.pdf)
 
-[Back to TOC](TableOfContent.md)
+[Back to TOC](TableOfContents.md)

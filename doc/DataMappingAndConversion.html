@@ -90,8 +90,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -100,14 +106,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -123,6 +189,7 @@ $(document).ready(function () {
 
 <div id="data-mapping-and-conversion" class="section level1">
 <h1>Data Mapping and Conversion</h1>
+<p><font class="warning">NOTE: The R Scripts described in this section need updated to match lastest changes in the Ontology. Code should also be restructured to follow the most recent conversion domain, working backward from AE to DM. </font></p>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>Data from study CDISCPILOT01, part of the PhUSE project “Test Data Factory”, provides the source XPT files for this project as SDTM version 3.2. The files are available within this project at: ./data/source/updated_cdiscpilot.</p>
@@ -168,7 +235,7 @@ $(document).ready(function () {
 <tr class="odd">
 <td>1.</td>
 <td>XPTtoCSV.R</td>
-<td>Main driver program for data conversion. Metadata import and timestamp.</td>
+<td>Main driver program for data conversion. Metadata import and time stamp.</td>
 </tr>
 <tr class="even">
 <td>2.</td>
@@ -178,7 +245,7 @@ $(document).ready(function () {
 <tr class="odd">
 <td>3.</td>
 <td>DM_imputeCSV.R</td>
-<td>DM imputation, encoding. <strong>Must be run before EX.</strong> See Details for DM,EX data files.</td>
+<td>DM imputation, encoding. <strong>NOTE Must be run before EX.</strong> See Details for DM,EX data files.</td>
 </tr>
 <tr class="even">
 <td></td>
@@ -203,7 +270,7 @@ $(document).ready(function () {
 <tr class="even">
 <td>7.</td>
 <td>AE_imputeCSV.R</td>
-<td><strong>planned</strong></td>
+<td><strong>Work in progress</strong></td>
 </tr>
 </tbody>
 </table>
@@ -237,7 +304,7 @@ $(document).ready(function () {
 <h2>General Rules</h2>
 <div id="data-creation" class="section level3">
 <h3>Data Creation</h3>
-<p>Some data required for developing and testing the model is not present in the source XPT files. Examples include <code>Investigator</code> and <code>InvestigatorID</code>. Values created for this purpose are stored in CSV files prefixed with the name <code>ctdasrdf_</code> to identify it as supplemental data created for the project. Each CSV file has a corresponding <code>_map.TTL</code> file. The timesstamp in the metadata file ctdasrdf_graphMeta.csv is updated programmatically when XPTtoCSV.R is run. The other CSV files are created and maintained manually.</p>
+<p>Some data required for developing and testing the model is not present in the source XPT files. Examples include <code>Investigator</code> and <code>InvestigatorID</code>. Values created for this purpose are stored in CSV files prefixed with the name <code>ctdasrdf_</code> to identify it as supplemental data created for the project. Each CSV file has a corresponding <code>_map.TTL</code> file. The times stamp in the metadata file ctdasrdf_graphMeta.csv is updated when XPTtoCSV.R is run. The other CSV files are created and maintained manually.</p>
 <table>
 <thead>
 <tr class="header">
@@ -252,7 +319,7 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td>ctdasrdf_graphmeta.csv</td>
-<td>Graph Metadata. Timestamp updated by XPTtoCVS.R .</td>
+<td>Graph Metadata. Time stamp updated by XPTtoCVS.R .</td>
 </tr>
 </tbody>
 </table>
@@ -262,7 +329,7 @@ $(document).ready(function () {
 <p><em>Creation of rules in the RDF data is currently under development. OWL 2 is being invesitaged as a way to infer the assigned rules instead of creating them during the import process.</em></p>
 <div id="interval-iris" class="section level4">
 <h4>Interval IRIs</h4>
-<p>In many cases, either the start or end date of an interval may be missing in the source data. Missing values within SMS entity map result in that entity not being created. But the start of an interval must be represented in the data even when that interval has note yet been completed (eg: Lifespan). For this reason, interval IRI source values are computed during the XPT to CSV conversion process by concatenating the start and end dates with an underscore. When the end date is missing, the interval value ends in an underscore.</p>
+<p>In many cases, either the start or end date of an interval may be missing in the source data. Missing values within SMS entity map result in that entity not being created. But the start of an interval must be represented in the data even when that interval has note yet been completed (example: Lifespan). For this reason, interval IRI source values are computed during the XPT to CSV conversion process by concatenating the start and end dates with an underscore. When the end date is missing, the interval value ends in an underscore.</p>
 <p>Example of complete and incomplete LifeSpan intervals:</p>
 <pre><code>study:hasLifespan  cdiscpilot01:Interval_1925-04-08_2013-07-14
 study:hasLifespan  cdiscpilot01:Interval_1972-05-11_</code></pre>
@@ -380,7 +447,13 @@ Then in code.ttl:
 <td align="left">## DM</td>
 </tr>
 <tr class="even">
-<td align="left">| File | Role | Description | | ——— | ———————— | ———————————————| |DM_imputeCSV.R | Data imputation and encoding| Creation of <em>birthdate</em> <br />Assignment of Informed Consent Date<br />Subject 01-701-1015: Death Date and Flag created. Creates dmDrugInt dataframe to merge into EX.| | DM.XPT | Orginal XPT | From pilot data | | DM_subset.csv | Subset for dev | First 3 patients (subject to change) | | DM_map.TTL | SMS Map | Map to graph. |</td>
+<td align="left">| File | Role | Description | | ——— | ———————— | ———————————————| |DM_imputeCSV.R | Data imputation and encoding| Creation of <em>birthdate</em> <br />Assignment of Informed Consent Date<br />Subject 01-701-1015: Death Date and Flag created. Creates dmDrugInt dataframe to merge into EX. | | DM.XPT | Orginal XPT | From pilot data | | DM_subset.csv | Subset for dev | First 3 patients (subject to change) | | DM_map.TTL | SMS Map | Map to graph. |</td>
+</tr>
+<tr class="odd">
+<td align="left">### Data limitations</td>
+</tr>
+<tr class="even">
+<td align="left">In the source data, there is no explicit link between the <em>SITE ID</em> in <em>DM</em> and the country in <em>TS</em> domain. These links are created as part of the conversion process and show the benefit of representing this data in a graph. Country is an important component in understanding and making decisions with the data, yet this information is typically not explicitly available in SDTM!</td>
 </tr>
 <tr class="odd">
 <td align="left">### SMS details</td>
@@ -399,6 +472,12 @@ Then in code.ttl:
 </tr>
 <tr class="even">
 <td align="left">DM_imputeCSV.R also creates the dataframe dmDrugInt that contains the field <code>cumuDrugAdmin_im</code>, the cumulative drug adminstration interval which is the combination of <code>rfxstdtc</code> and <code>rfxendtc</code>. This value could also be computed for EX (min and max exposure dates on a per-patient basis) but the values in DM as taken as the authority. dmDrugInt is merged into EX within XPTtoCSV.R (this may later move to EX_imputeCSV.R).</td>
+</tr>
+<tr class="odd">
+<td align="left">### Site and Country in DM Site identifier (siteid) is present in DM, while the country for sites is stored in TS. There is no explicit link between the two! For data processing, siteid is extracted to sites.cvs and country (USA) hard coded.</td>
+</tr>
+<tr class="even">
+<td align="left">| File | Role | Description | | ——— | ———————— | ———————————————| | sites.csv | Site identifiers | All sites listed in DM + country | | sites_map.TTL | SMS Map | Map to graph. |</td>
 </tr>
 </tbody>
 </table>
@@ -581,7 +660,7 @@ Then in code.ttl:
 <div id="visit-activities" class="section level4">
 <h4>Visit Activities</h4>
 <p>VistAmbulECGPlaceActivity, VisitBaselineActivity, VisitWk12Acvitity, etc.</p>
-<p>Are created in <strong>TS_supplemental.xlsx</strong>. Visit information was needed to complete the VS and EX data representations in support of derviving DM reference exposure start and end dates. Full visit information should be in SV.xpt, a domain we have not yet converted. At that time, the Visit Activity values can be removed from the spreadhseet. [notes from AO to TW 2019-01-06]</p>
+<p>Are created in <strong>TS_supplemental.xlsx</strong>. Visit information was needed to complete the VS and EX data representations in support of derviving DM reference exposure start and end dates.</p>
 </div>
 </div>
 <div id="sms-details-2" class="section level3">
