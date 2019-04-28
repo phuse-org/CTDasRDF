@@ -10,8 +10,8 @@
 # SRC : 
 # NOTE: Currently used for MedDRA construction with default subject set in 
 #       ui.R
-# TODO: Convert from rrdf to rdflib for file read. See ReadTTL-rdflib.R for read
-#       Add IRItoPrefix() function and function call.
+# TODO: 
+#     
 #
 #______________________________________________________________________________
 

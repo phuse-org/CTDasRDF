@@ -1,3 +1,6 @@
+---
+output: html_document
+---
 Project Documentation
 =====================
 
@@ -24,9 +27,12 @@ Data files, including source study files and project .TTL files generated from T
 
 Ontology details.
 
-#### [2.4 Data Conversion and Mapping](DataMappingAndConversion.md)
+#### 2.4 Data Conversion and Mapping
 
-Data Conversion process from SDTM XPT to the graph. Includes upload of ontologies, code conventions, validation tools, etc.
+The approach to data conversion differs between MedDRA and the SDTM XPT files. Please see their respective sections for details. For methods using SAS, please see the "Hands-on" guides in the next section.
+
+* [2.4.1 MedDRA conversion](MedDRAConversion.md)
+* [2.4.2 SDTM Mapping and conversion](DataMappingAndConversion.md)
 
 How-To Guides
 ---------------------

@@ -1,5 +1,8 @@
 # Data Mapping and Conversion
 
+<font class="warning">NOTE: The R Scripts described in this section need updated to match lastest changes in the Ontology. Code should also be restructured to follow the most recent conversion domain, working backward from AE to DM. </font>
+
+
 ## Introduction
 Data from study CDISCPILOT01, part of the PhUSE project "Test Data Factory", provides the source XPT files for this project as SDTM version 3.2. The files are available within this project at: ./data/source/updated_cdiscpilot.
 
@@ -27,12 +30,12 @@ Ontology triples that are NOT instance data are not recreated during the data co
 | ------ | -------------------- | ---------------------------------------------|
 | 1.     | XPTtoCSV.R           | Main driver program for data conversion. Metadata import and time stamp. |
 | 2.     | Functions.R          | Functions called during conversion process |
-| 3.     | DM_imputeCSV.R       | DM imputation, encoding. **Must be run before EX.** See Details for DM,EX data files. |
+| 3.     | DM_imputeCSV.R       | DM imputation, encoding. **NOTE Must be run before EX.** See Details for DM,EX data files. |
 |        | XPTtoCVS:SUPPDM      | No imputation for SUPPMD. XPTtoCVS.R processes SUPPDM directly. |
 | 4.     | EX_imputeCSV.R       | EX imputation, encoding. *Currently incomplete.*
 | 5.     | VS_imputeCSV.R       | VS Imputation|
 | 6.     | TS_imputeCSV.R       | TS imputation. |
-| 7.     | AE_imputeCSV.R       | **planned** |
+| 7.     | AE_imputeCSV.R       | **Work in progress** |
 
 ### Stardog .BAT files
 | Order  | File                 | Description                                  |

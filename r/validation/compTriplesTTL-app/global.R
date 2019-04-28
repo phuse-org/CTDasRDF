@@ -10,14 +10,12 @@
 # SRC : 
 # NOTE: Currently used for MedDRA construction with default subject set in 
 #       ui.R
-# TODO: Convert from rrdf to rdflib for file read
+# TODO: 
 #______________________________________________________________________________
 library(plyr)    #  rename
 library(dplyr)   # anti_join. Must load dplyr AFTER plyr!!
 library(reshape) #  melt
-library(rrdf)    #TODO: Del after rdflib implemented
 library(rdflib)  # new for testing 
-library(redland) #TODO: Del after rdflib implemented
 library(shiny)
 
 rm(list = ls(all.names = TRUE))  # Clear workspace

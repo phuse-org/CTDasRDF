@@ -1,3 +1,8 @@
+---
+output: 
+  html_document: 
+    css: css/GoTWLD.css
+---
 # MedDRA Ontology and Data Conversion
 
 
@@ -91,6 +96,8 @@ The following SPARQL query inputs the adverse event record from our study instan
 
 # Data Conversion with R
 
+<font class="warning">NOTE: Current scripts must be updated to account for multi-axiality</font>
+
 ## Source Files
 MedDRA files supplied as ASCII .asc files by the MSSO are serialized to RDF in the Terse Triple Language (TTL) format.
 
@@ -101,7 +108,7 @@ MedDRA files supplied as ASCII .asc files by the MSSO are serialized to RDF in t
 
 These files enable mapping of any LLT to its Primary SOC and optionally to Secondary SOC's.
 
-<img src="images/Meddra-AscFileLinks.png" width=800/>
+<img src="images/MedDRA-AscFileLinks.png" width=800/>
 
 
 <img src="images/MedDRA-LLTtoSOC.png" width=800/>
@@ -113,18 +120,18 @@ The R library `rdflib` is used to serialize the data into RDF. This package is a
 
 <img src="images/MedDRA-ProgramFlow-medDRAReadAsc.png" width=600/>
 
-## Validation
-TODO: 
-1. Add RShiny app validation.
+## Validation 
+1.Ontology vs. R Script Validation
+
+* r/validation/**compTriplesTTL-app**
+* Local TTL files.
+* RShiny app that reads the MedDRA ontology instance data (/rdf/meddra.ttl) and compares it with the instance data from the R conversion (MedDRA-211-R.ttl) on a "by Subject" basis.
+
 2. Collapsible tree visualization
 
-
-
-
-
-
-
-## Validation
+* r/vis/**MedDRALTtoSOCVis-app**
+* Stardog Server (localhost), MedDRA database with TTL loaded
+* TODO: Create a version of the app that uses local TTL file
 
 
 
