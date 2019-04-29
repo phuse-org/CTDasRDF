@@ -2,7 +2,7 @@
 This is a continuation of the PhUSE project "Clinical Trials Data as RDF", extended to include non-clinical (SEND) concepts and additional SDTM domains. Leads for the project are Tim Williams (NovasTaylor), Armando Oliva (aolivamd), and Drashtti Vasant.
 
 # Documentation
-[Table of Contents](doc/TableOfContent.md) - Start here!  **NOTE**: Documentation lags behind development.  
+[Table of Contents](doc/TableOfContents.md) - Start here!  **NOTE**: Documentation lags behind development.  
 
 Project documentation format is Github Markdown, stored in the **/doc**/ subfolder. Documentation will lag behind development due to the ongoing nature of the project.
 
