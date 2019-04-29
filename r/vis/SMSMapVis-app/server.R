@@ -9,6 +9,8 @@
 # NOTE: 
 # TODO:  Node Seletion: Widen selection drop down to show complete node value
 #        Confirm :bolean and :float literals are represented
+#       !! Error:  Requested removal of literals (white nodes) is not working 
+#         correctly.
 #______________________________________________________________________________
 
 function(input, output, session) {
