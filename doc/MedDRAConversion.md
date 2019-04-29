@@ -13,6 +13,8 @@ In our project, we need to model the Adverse Event data and link it to a represe
 
 ## MedDRA Terminology Organization
 
+_Much of this content comes from Armando's presentation on 2019-03-18. The project team can watch the recording on the Teamwork site under "Files."_
+
 Each AE term is organized into five levels, from the Low Level Term (LLT) which is often the common term documented by the subject or investigator. There may be many synonyms at the Low Level which are then mapped to the Preferred Term (PT). Mapping continue to the High Level Term (HLT), High Level Group Term (HLGT), and System Organ Class (SOC). The thousands of terms map up to 27 SOCs in the current version of MedDRA. 
 
 <img src="images/Meddra-TermsOrg.png" width=700/>
