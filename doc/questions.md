@@ -17,3 +17,10 @@ I see triples in the cdiscpilot01.ttl using the category and subcategory:
 ```
 cdiscpilot01:AE3_Diarrhoea	study:hasSubcategory	SCAT1
 ```
+
+
+## SPIN Rules - Get Data Tabular
+
+### Question: How to query a SPIN rule?
+
+SPIN rules, like the one for the MedDRA extract are modeled. How can this spin rule query be executed to receive the content? Same we have for domain load, don't we?

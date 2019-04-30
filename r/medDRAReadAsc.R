@@ -19,7 +19,7 @@
 #        as is now: https://w3id.org/phuse/meddra#
 #______________________________________________________________________________
 library(rdflib)
-setwd("C:/_github/CTDasRDF")
+setwd("C:/Temp/git/CTDasRDF")
 
 #--- Subsetting ---------------------------------------------------------------
 # If Y, subset the data to only the data present in the ontology instance data.
@@ -200,6 +200,13 @@ socData$rowID <- 1:nrow(socData) # row index
 #------------------------------------------------------------------------------
 #--- RDF Creation Statements --------------------------------------------------
 some_rdf <- rdf()  # initialize 
+
+MEDDRA <- "https://w3id.org/phuse/meddra#"
+XSD <- "http://www.w3.org/2001/XMLSchema#"
+RDF <- "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+SKOS <- "http://www.w3.org/2004/02/skos/core#"
+RDFS <- "http://www.w3.org/2000/01/rdf-schema#"
+
 
 #--- 1. LLT Creation ---
 for(i in 1:nrow(lltData))
@@ -394,7 +401,7 @@ for(i in 1:nrow(socData))
 #--- Triple build complete ---
 
 #--- Serialize the some_rdf to a TTL file ----------------------------------------
-outFile <- 'data/rdf/MedDRA211-R.TTL'
+outFile <- 'data/medDRA/MedDRA211-R.TTL'
 
 rdf_serialize(some_rdf,
               outFile,
