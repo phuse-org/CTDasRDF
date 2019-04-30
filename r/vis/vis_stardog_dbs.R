@@ -10,6 +10,7 @@
 # NOTE: 
 # TODO: 
 # DATE: 2018-11-23
+# MOD : 2019-04-19
 # BY  : KG
 #______________________________________________________________________________
 
@@ -108,6 +109,17 @@ formatList <- function(){
   edgesListXX$label <<- strtrim(edgesListXX$title, maxLabelSize) 
   edgesListXX$color <<-"#808080"
   edgesListXX$length <<- 500  
+}
+
+vis_nodeList_network <- function() {
+    formatList()
+    
+    visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
+        visIgraphLayout(layout = "layout_nicely",
+                        physics = FALSE) %>%
+        visIgraphLayout(avoidOverlap = 1) %>%
+        visEdges(smooth=FALSE) %>% 
+        visOptions(manipulation = TRUE)
 }
 
 
@@ -487,3 +499,82 @@ visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
     visIgraphLayout(avoidOverlap = 1) %>%
     visEdges(smooth=FALSE) %>% 
     visOptions(manipulation = TRUE)
+
+
+
+#################### ADVERSE EVENTS ########################################
+#####################################################
+# create Ontology graph for Adverse Events (direct connections)
+#####################################################
+
+#Endpoint DB name was changed to: PhUSE-Ontology
+
+endpoint <- "http://localhost:5820/PhUSE-Ontology/query"
+queryOnt = paste0("SELECT ?domain ?predicate ?range 
+                    WHERE {
+                        {BIND(study:AdverseEvent as ?domain)
+                            ?predicate  rdfs:domain ?domain .
+                            ?predicate rdfs:range ?range .
+                        }UNION
+                        {BIND(study:AdverseEvent as ?range)
+                            ?predicate  rdfs:domain ?domain .
+                            ?predicate rdfs:range ?range .
+                        }
+                    }")
+
+qd <- SPARQL(endpoint, queryOnt, ns=prefix)
+triplesDf <- qd$results
+
+initLists()
+# include triples
+for (row in 1:nrow(triplesDf)) {
+    if (!is.na(triplesDf$domain[row]) && !is.na(triplesDf$range[row]) && !is.na(triplesDf$predicate[row])){
+        addToGraph(triplesDf$domain[row],triplesDf$range[row],triplesDf$predicate[row])  
+    }
+}
+
+vis_nodeList_network()
+
+
+#####################################################
+# create Ontology graph for Adverse Events (indirect connections), exclude study:AdverseEvent
+#####################################################
+
+#Endpoint DB name was changed to: PhUSE-Ontology
+
+endpoint <- "http://localhost:5820/PhUSE-Ontology/query"
+queryOnt = paste0("SELECT *
+                  WHERE {{
+                  SELECT DISTINCT *
+                  WHERE { VALUES ?domain {study:AdverseEvent study:MedicalCondition study:Event study:Entity study:StudyComponent}
+                  BIND (rdfs:subClassOf as ?predicate)
+                  ?domain rdfs:subClassOf ?range
+                  }}
+                  UNION {
+                  SELECT ?domain ?predicate ?range 
+                  WHERE {
+                  {VALUES ?domain {study:MedicalCondition study:Event study:Entity study:StudyComponent}
+                  ?predicate  rdfs:domain ?domain .
+                  ?predicate rdfs:range ?range .
+                  }UNION
+                  {VALUES ?range {study:MedicalCondition study:Event study:Entity study:StudyComponent}
+                  ?predicate  rdfs:domain ?domain .
+                  ?predicate rdfs:range ?range .
+                  }
+                  }
+                  }}")
+
+qd <- SPARQL(endpoint, queryOnt, ns=prefix)
+triplesDf <- qd$results
+
+initLists()
+# include triples
+for (row in 1:nrow(triplesDf)) {
+    if (!is.na(triplesDf$domain[row]) && !is.na(triplesDf$range[row]) && !is.na(triplesDf$predicate[row])){
+        addToGraph(triplesDf$domain[row],triplesDf$range[row],triplesDf$predicate[row])  
+    }
+}
+
+vis_nodeList_network()
+
+

@@ -96,6 +96,31 @@ By exchanging the "item", the complete class hierarchy can be investigated. Alte
 
 To investigate all potential links to and from "study:AdverveEvent", also the potential links for upper classes has to be considered as options for "study:AdverveEvent".
 
+The complete query to get the following graph is the following:
+
+```
+SELECT *
+WHERE {{
+SELECT DISTINCT *
+	WHERE { VALUES ?domain {study:AdverseEvent study:MedicalCondition study:Event study:Entity study:StudyComponent}
+            BIND (rdfs:subClassOf as ?predicate)
+      		?domain rdfs:subClassOf ?range
+          }}
+UNION {
+  SELECT ?domain ?predicate ?range 
+	WHERE {
+      {VALUES ?domain {study:AdverseEvent study:MedicalCondition study:Event study:Entity study:StudyComponent}
+       ?predicate  rdfs:domain ?domain .
+       ?predicate rdfs:range ?range .
+      }UNION
+      {VALUES ?range {study:AdverseEvent study:MedicalCondition study:Event study:Entity study:StudyComponent}
+       ?predicate  rdfs:domain ?domain .
+       ?predicate rdfs:range ?range .
+      }
+	}
+  }}
+```
+
 ![Figure: Indirect Connections for "study:AdverseEvent"](./images/hands_on_aes_02.png)
 
 There is one incoming link which is the "study:Person" who is afflicted by a "study:MedicalCondition", so also by a "study:AdverseEvent". Important date, sequence and other required information links are available through the basis class "study:StudyComponent" where the "study:AdverseEvent" is also a child of.
@@ -122,43 +147,53 @@ Inclusing these links as well all required Adverse Event information have a loca
 
 The following attributes are finally available according the current study.ttl ontology. The only "incoming" link to the study:AdverseEvent is coming from study:Person through the "study:afflictedBy" property. All other Attributes are more or less simpyl linked to the Adverse Event object.
 
-Domain	|	Predicate	|	Range
---- | --- | ---
-_study:Person_**	|	_study:afflictedBy_**	|	_study:MedicalCondition_**
-study:AdverseEvent	|	code:hasCode	|	<https://w3id.org/phuse/mdra#MedDRAConcept>
-study:AdverseEvent	|	code:outcome	|	code:AdverseEventOutcome
-study:AdverseEvent	|	study:actionTaken	|	xsd:string
-study:AdverseEvent	|	study:actionTakenOther	|	xsd:string
-study:AdverseEvent	|	study:adverseEventPattern	|	xsd:string
-study:AdverseEvent	|	study:causality	|	code:Causality
-study:AdverseEvent	|	study:causality	|	code:Causality
-study:AdverseEvent	|	study:concomitantTreatmentGiven	|	code:NoYesResponse
-study:AdverseEvent	|	study:congenitalDefect	|	code:NoYesResponse
-study:StudyComponent	|	study:crfLocation	|	study:CRFLocation
-study:StudyComponent	|	study:dataCollectionDay	|	xsd:integer
-study:StudyComponent	|	study:day	|	xsd:integer
-study:AdverseEvent	|	study:death	|	code:NoYesResponse
-study:AdverseEvent	|	study:disabling	|	code:NoYesResponse
-study:StudyComponent	|	study:endDay	|	xsd:integer
-study:StudyComponent	|	study:groupID	|	xsd:string
-study:StudyComponent	|	study:hasDate	|	time:Instant
-study:StudyComponent	|	study:hasInterval	|	time:Interval
-study:AdverseEvent	|	study:hasInterval	|	study:AdverseEventInterval
-study:AdverseEvent	|	study:hasReferenceTimePointEndDate	|	study:ReferenceEnd
-study:AdverseEvent	|	study:hospitalization	|	code:NoYesResponse
-study:AdverseEvent	|	study:isPrespecified	|	code:NoYesResponse
-study:AdverseEvent	|	study:lifeThreatening	|	code:NoYesResponse
-study:AdverseEvent	|	study:medicallyImportantSeriousEvent	|	code:NoYesResponse
-study:AdverseEvent	|	study:modifiedTerm	|	xsd:string
-study:AdverseEvent	|	study:overdose	|	code:NoYesResponse
-study:StudyComponent	|	study:referenceID	|	xsd:string
-study:AdverseEvent	|	study:relationshipToNonStudyDrug	|	xsd:string
-study:AdverseEvent	|	study:reportedTerm	|	xsd:string
-study:StudyComponent	|	study:seq	|	xsd:float
-study:AdverseEvent	|	study:serious	|	code:NoYesResponse
-study:AdverseEvent	|	study:severity	|	code:Severity
-study:AdverseEvent	|	study:severity	|	code:Severity
-study:StudyComponent	|	study:sponsordefinedID	|	xsd:string
-study:StudyComponent	|	study:startDay	|	xsd:integer
-study:AdverseEvent	|	study:toxGrade	|	xsd:integer
+| Domain | Predicate | Range                                                     |
+| --- | --- | --- |
+| _study:Person_** | _study:afflictedBy_** | _study:MedicalCondition_**   |
+| study:Entity | rdfs:subClassOf | study:StudyComponent                          |
+| study:AdverseEvent | rdfs:subClassOf | study:MedicalCondition                  |
+| study:MedicalCondition | rdfs:subClassOf | study:Event                         |
+| study:Event | rdfs:subClassOf | study:Entity                                   |
+| study:StudyComponent | study:hasDate | time:Instant                            |
+| study:StudyComponent | study:startDay | xsd:integer                            |
+| study:StudyComponent | study:endDay | xsd:integer                              |
+| study:AdverseEvent | study:causality | code:Causality                          |
+| study:StudyComponent | study:hasInterval | time:Interval                       |
+| study:AdverseEvent | study:reportedTerm | xsd:string                           |
+| study:AdverseEvent | study:severity | code:Severity                            |
+| study:AdverseEvent | study:actionTaken | xsd:string                            |
+| study:AdverseEvent | study:actionTakenOther | xsd:string                       |
+| study:AdverseEvent | study:adverseEventPattern | xsd:string                    |
+| study:AdverseEvent | study:cancer | code:NoYesResponse                         |
+| study:AdverseEvent | study:concomitantTreatmentGiven | code:NoYesResponse      |
+| study:AdverseEvent | study:congenitalDefect | code:NoYesResponse               |
+| study:StudyComponent | study:crfLocation | study:CRFLocation                   |
+| study:StudyComponent | study:dataCollectionDay | xsd:integer                   |
+| study:StudyComponent | study:day | xsd:integer                                 |
+| study:AdverseEvent | study:death | code:NoYesResponse                          |
+| study:AdverseEvent | study:disabling | code:NoYesResponse                      |
+| study:StudyComponent | study:groupID | xsd:string                              |
+| study:StudyComponent | study:hasCategory | study:Subcategory                   |
+| study:StudyComponent | study:hasDataCollectionDate | study:DataCollectionDate  |
+| study:AdverseEvent | study:hasReferenceTimePointEndDate | study:ReferenceEnd   |
+| study:AdverseEvent | study:hospitalization | code:NoYesResponse                |
+| study:AdverseEvent | study:isPrespecified | code:NoYesResponse                 |
+| study:AdverseEvent | study:lifeThreatening | code:NoYesResponse                |
+| study:AdverseEvent | study:medicallyImportantSeriousEvent | code:NoYesResponse |
+| study:AdverseEvent | study:modifiedTerm | xsd:string                           |
+| study:AdverseEvent | study:overdose | code:NoYesResponse                       |
+| study:StudyComponent | study:referenceID | xsd:string                          |
+| study:AdverseEvent | study:relationshipToNonStudyDrug | xsd:string             |
+| study:StudyComponent | study:seq | xsd:float                                   |
+| study:AdverseEvent | study:serious | code:NoYesResponse                        |
+| study:StudyComponent | study:sponsordefinedID | xsd:string                     |
+| study:AdverseEvent | study:toxGrade | xsd:integer                              |
+| study:AdverseEvent | code:hasCode | meddra:MeddraConcept                       |
+| study:AdverseEvent | code:outcome | code:AdverseEventOutcome                   |
+| study:AdverseEvent | study:causality | code:Causality                          |
+| study:AdverseEvent | study:hasInterval | study:AdverseEventInterval            |
+| study:AdverseEvent | study:severity | code:Severity                            |
+| study:AdverseEventInterval | time:hasBeginning | study:AdverseEventBegin       |
+| study:AdverseEventInterval | time:hasEnd | study:AdverseEventEnd               |
+                                                                                 |
 
