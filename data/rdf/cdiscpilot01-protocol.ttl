@@ -93,7 +93,17 @@ cd01p:EpochInterval_blindedtreatment
 cd01p:Epoch_BlindedTreatment
   rdf:type study:Epoch ;
   skos:prefLabel "Epoch Blinded treatment" ;
-  study:hasActivityInterval cd01p:EpochInterval_blindedtreatment ;
+  code:hasCode <https://w3id.org/phuse/sdtmterm#C99079.C102255> ;
+.
+cd01p:Epoch_FollowUp
+  rdf:type study:Epoch ;
+  skos:prefLabel "Epoch Follow up" ;
+  code:hasCode <https://w3id.org/phuse/sdtmterm#C99079.C99158> ;
+.
+cd01p:Epoch_Screening
+  rdf:type study:Epoch ;
+  skos:prefLabel "Epoch Screening" ;
+  code:hasCode sdtmterm:Screening ;
 .
 cd01p:Interval_2012-07-06_to_2015-03-05
   rdf:type study:StudyInterval ;
@@ -519,7 +529,7 @@ cd01p:StudyIdentifier_1
   study:crfLocation cd01p:CRFLocation_1 ;
 .
 cd01p:StudyPopulation_CDISCPILOT01
-  rdf:type study:CompletePopulation ;
+  rdf:type study:StudyPopulation ;
   skos:prefLabel "Study population CDISCPILOT01" ;
   study:ageGroup code:AgeGroup_ADULT ;
   study:ageGroup code:AgeGroup_ELDERLY ;
@@ -561,6 +571,8 @@ cd01p:Study_CDISCPILOT01
   study:hasProtocolSpecifiedActivity cd01p:Arm_Xan_Hi ;
   study:hasProtocolSpecifiedActivity cd01p:Arm_Xan_Lo ;
   study:hasProtocolSpecifiedActivity cd01p:Epoch_BlindedTreatment ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_FollowUp ;
+  study:hasProtocolSpecifiedActivity cd01p:Epoch_Screening ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGPlaceActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitAmbulECGRemoveActivity ;
   study:hasProtocolSpecifiedActivity custom:VisitBaselineActivity ;

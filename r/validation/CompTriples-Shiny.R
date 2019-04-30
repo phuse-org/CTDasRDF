@@ -62,6 +62,7 @@ PREFIX cdiscpilot01: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf
 PREFIX code:  <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/code#>
 PREFIX country: <http://psi.oasis-open.org/iso/3166/#>
 PREFIX custom: <https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf/custom#>
+PREFIX meddra: <https://w3id.org/phuse/meddra#>
 prefix owl:   <http://www.w3.org/2002/07/owl#>
 PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#> 

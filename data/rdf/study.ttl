@@ -428,7 +428,7 @@ study:AdverseEvent
   sh:property [
       rdf:type sh:PropertyShape ;
       sh:path code:hasCode ;
-      sh:class <https://w3id.org/phuse/mdra#MedDRAConcept> ;
+      sh:class <https://w3id.org/phuse/meddra#MeddraConcept> ;
       sh:maxCount 1 ;
       sh:minCount 1 ;
       sh:name "has code" ;
@@ -730,11 +730,6 @@ study:Category
   rdfs:subClassOf study:Entity ;
   skos:altLabel "" ;
   skos:prefLabel "Category" ;
-.
-study:CompletePopulation
-  rdf:type owl:Class ;
-  rdfs:subClassOf study:StudyPopulation ;
-  skos:prefLabel "A Group of Subjects that participate in at least one Study Activity" ;
 .
 study:CompositeRule
   rdf:type owl:Class ;
@@ -1080,7 +1075,7 @@ study:EndInstant
 .
 study:EnrolledPopulation
   rdf:type owl:Class ;
-  rdfs:subClassOf study:StudyPopulation ;
+  rdfs:subClassOf study:Population ;
   skos:definition "A Group of Subjects consisting of all Subjects who are Enrolled: It includes those who pass Screening, and those who fail screening but accidentally or intentionally participate in any Study Activity after Screening. " ;
   skos:prefLabel "Enrolled population" ;
 .
@@ -1628,6 +1623,12 @@ study:PlannedActivity
   skos:definition "An Activity that is or was intended to occur. It is associated with a performer and/or a participant and is associated with a start rule that is described in the protocol. " ;
   skos:prefLabel "Planned activity" ;
 .
+study:Population
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:definition "A Group of Subjects associated with a Study" ;
+  skos:prefLabel "Study population" ;
+.
 study:PopulationFlag
   rdf:type owl:Class ;
   rdfs:subClassOf study:Flag ;
@@ -1886,6 +1887,11 @@ study:StartRuleInformedConsentStart
       rdf:type owl:Restriction ;
       owl:allValuesFrom study:InformedConsent ;
       owl:onProperty study:hasPrerequisite ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue code:ActivityStatus_ST ;
+      owl:onProperty study:hasPrereqExpectedStatus ;
     ] ;
   skos:prefLabel "Start rule informed consent started" ;
   study:hasPrereqExpectedStatus code:ActivityStatus_ST ;
@@ -2234,9 +2240,8 @@ study:StudyParticipationInterval
 .
 study:StudyPopulation
   rdf:type owl:Class ;
-  rdfs:subClassOf study:Group ;
-  skos:definition "A Group of Subjects associated with a Study" ;
-  skos:prefLabel "Study population" ;
+  rdfs:subClassOf study:Population ;
+  skos:prefLabel "A Group of Subjects that participate in at least one Study Activity" ;
 .
 study:StudyRegistryIdentifier
   rdf:type owl:Class ;
@@ -2409,7 +2414,7 @@ study:actualArm
 .
 study:actualPopulationSize
   rdf:type owl:DatatypeProperty ;
-  rdfs:domain study:StudyPopulation ;
+  rdfs:domain study:Population ;
   rdfs:range xsd:integer ;
   skos:prefLabel "actual population size" ;
 .
@@ -2445,7 +2450,7 @@ study:afflictedBy
 .
 study:ageGroup
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:StudyPopulation ;
+  rdfs:domain study:Population ;
   rdfs:range code:AgeGroup ;
   skos:prefLabel "age group" ;
 .
@@ -2575,6 +2580,7 @@ study:bodyPosition
 .
 study:cancer
   rdf:type owl:ObjectProperty ;
+  rdfs:domain study:AdverseEvent ;
   rdfs:range code:NoYesResponse ;
   rdfs:subPropertyOf study:seriousCriterion ;
   skos:prefLabel "cancer associated" ;
@@ -2852,11 +2858,11 @@ study:hasAnnotatedCRF
 study:hasCategory
   rdf:type owl:ObjectProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:StudyActivity ;
-  rdfs:range study:Category ;
+  rdfs:domain study:StudyComponent ;
+  rdfs:range study:Subcategory ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "" ;
-  skos:prefLabel "has category" ;
+  skos:prefLabel "has subcategory" ;
 .
 study:hasCountry
   rdf:type owl:FunctionalProperty ;
@@ -2869,8 +2875,9 @@ study:hasCountry
 .
 study:hasDataCollectionDate
   rdf:type owl:ObjectProperty ;
+  rdfs:domain study:StudyComponent ;
   rdfs:range study:DataCollectionDate ;
-  rdfs:subPropertyOf study:hasDate ;
+  rdfs:subPropertyOf study:hasPerformedDate ;
   skos:prefLabel "has data collection date" ;
 .
 study:hasDate
@@ -2950,7 +2957,7 @@ study:hasLifespan
 .
 study:hasMember
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:StudyPopulation ;
+  rdfs:domain study:Population ;
   rdfs:range study:HumanStudySubject ;
   skos:prefLabel "has member" ;
 .
@@ -2989,7 +2996,7 @@ study:hasPlannedDuration
 study:hasPopulation
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:Study ;
-  rdfs:range study:StudyPopulation ;
+  rdfs:range study:Population ;
   skos:prefLabel "has population" ;
 .
 study:hasPrereqExpectedOutcome
@@ -3281,7 +3288,7 @@ study:longTitle
 .
 study:maxSubjectAge
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:StudyPopulation ;
+  rdfs:domain study:Population ;
   rdfs:range study:MaximumSubjectAge ;
   skos:prefLabel "max age subjects" ;
 .
@@ -3294,13 +3301,13 @@ study:medicallyImportantSeriousEvent
 study:memberOf
   rdf:type owl:ObjectProperty ;
   rdfs:domain study:HumanStudySubject ;
-  rdfs:range study:StudyPopulation ;
+  rdfs:range study:Population ;
   owl:inverseOf study:hasMember ;
   skos:prefLabel "member of" ;
 .
 study:minSubjectAge
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:StudyPopulation ;
+  rdfs:domain study:Population ;
   rdfs:range study:MinimumSubjectAge ;
   skos:prefLabel "min age subjects" ;
 .
@@ -3357,7 +3364,7 @@ study:performsActivity
 .
 study:plannedPopulationSize
   rdf:type owl:DatatypeProperty ;
-  rdfs:domain study:StudyPopulation ;
+  rdfs:domain study:Population ;
   rdfs:range xsd:integer ;
   skos:prefLabel "planned population size" ;
 .
@@ -3453,7 +3460,7 @@ study:sex
 .
 study:sexGroup
   rdf:type owl:ObjectProperty ;
-  rdfs:domain study:StudyPopulation ;
+  rdfs:domain study:Population ;
   rdfs:range code:SexGroup ;
   skos:prefLabel "Sexgroup" ;
 .

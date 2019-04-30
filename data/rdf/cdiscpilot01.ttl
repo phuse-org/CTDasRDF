@@ -45,7 +45,7 @@ cdiscpilot01:
 cdiscpilot01:AE1_AppSiteErythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "APPLICATION SITE ERYTHEMA" ;
-  code:hasCode <https://w3id.org/phuse/mdra#M10003058> ;
+  code:hasCode meddra:m10003058 ;
   code:outcome code:AEOutcome_NRNR ;
   study:actionTaken "none" ;
   study:actionTakenOther "N/A" ;
@@ -80,7 +80,7 @@ cdiscpilot01:AE1_AppSiteErythema
 cdiscpilot01:AE2_AppSitePruritus
   rdf:type study:AdverseEvent ;
   skos:prefLabel "APPLICATION SITE PRURITUS" ;
-  code:hasCode <https://w3id.org/phuse/mdra#M10003047> ;
+  code:hasCode meddra:m10003047 ;
   code:outcome code:AEOutcome_NRNR ;
   study:actionTaken "none" ;
   study:actionTakenOther "N/A" ;
@@ -114,8 +114,8 @@ cdiscpilot01:AE2_AppSitePruritus
 .
 cdiscpilot01:AE3_Diarrhoea
   rdf:type study:AdverseEvent ;
-  skos:prefLabel "AE03 DIarrhoea" ;
-  code:hasCode <https://w3id.org/phuse/mdra#M10012727> ;
+  skos:prefLabel "AE03 Diarrhoea" ;
+  code:hasCode meddra:m10012727 ;
   code:outcome code:AEOutcome_RR ;
   study:actionTaken "none" ;
   study:actionTakenOther "N/A" ;
@@ -152,7 +152,7 @@ cdiscpilot01:AE3_Diarrhoea
 cdiscpilot01:AE4_AVBlock2ndDeg
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE04AVBlock2nd deg" ;
-  code:hasCode <https://w3id.org/phuse/mdra#M10003851> ;
+  code:hasCode meddra:m10003851 ;
   code:outcome code:AEOutcome_NRNR ;
   study:actionTaken "none" ;
   study:actionTakenOther "N/A" ;
@@ -187,7 +187,7 @@ cdiscpilot01:AE4_AVBlock2ndDeg
 cdiscpilot01:AE5_Erythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE05 Erythema" ;
-  code:hasCode <https://w3id.org/phuse/mdra#M10015150> ;
+  code:hasCode meddra:m10015150 ;
   code:outcome code:AEOutcome_NRNR ;
   study:actionTaken "none" ;
   study:actionTakenOther "N/A" ;
@@ -224,7 +224,7 @@ cdiscpilot01:AE5_Erythema
 cdiscpilot01:AE6_Erythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE06 Erythema" ;
-  code:hasCode <https://w3id.org/phuse/mdra#M10024781> ;
+  code:hasCode meddra:m10024781 ;
   code:outcome code:AEOutcome_NRNR ;
   study:actionTaken "dose reduction" ;
   study:actionTakenOther "N/A" ;
@@ -259,7 +259,7 @@ cdiscpilot01:AE6_Erythema
 cdiscpilot01:AE7_Erythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE07 Erythema" ;
-  code:hasCode <https://w3id.org/phuse/mdra#M10015150> ;
+  code:hasCode meddra:m10015150 ;
   code:outcome code:AEOutcome_RR ;
   study:actionTaken "none" ;
   study:actionTakenOther "N/A" ;
@@ -295,7 +295,7 @@ cdiscpilot01:AE7_Erythema
 cdiscpilot01:AE8_AppSiteErythema
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE08 App site erythema" ;
-  code:hasCode <https://w3id.org/phuse/mdra#M10003041> ;
+  code:hasCode meddra:m10003041 ;
   code:outcome code:AEOutcome_NRNR ;
   study:actionTaken "none" ;
   study:actionTakenOther "N/A" ;
@@ -331,7 +331,7 @@ cdiscpilot01:AE8_AppSiteErythema
 cdiscpilot01:AE9_AppSitePruritus
   rdf:type study:AdverseEvent ;
   skos:prefLabel "AE09 App site pruritis" ;
-  code:hasCode <https://w3id.org/phuse/mdra#M10003047> ;
+  code:hasCode meddra:m10003047 ;
   code:outcome code:AEOutcome_NRNR ;
   study:actionTaken "none" ;
   study:actionTakenOther "N/A" ;
@@ -1646,4 +1646,11 @@ cdiscpilot01:Weight_Screening1_01-701-1015_142
 .
 meddra:PT10003041_AppSiteErythema
   meddra:hasHLT meddra:HLT10003057_AppReaction ;
+.
+sdtmterm:BlindedTreatment
+  rdfs:subClassOf study:Epoch ;
+.
+sdtmterm:Screening
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Epoch ;
 .

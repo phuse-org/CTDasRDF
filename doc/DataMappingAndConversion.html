@@ -90,8 +90,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -100,14 +106,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -123,6 +189,7 @@ $(document).ready(function () {
 
 <div id="data-mapping-and-conversion" class="section level1">
 <h1>Data Mapping and Conversion</h1>
+<p><strong>NOTE: The R Scripts described in this section need updated to match latest changes in the Ontology. Code should also be restructured to follow the most recent conversion domain, working backward from AE to DM.</strong></p>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>Data from study CDISCPILOT01, part of the PhUSE project “Test Data Factory”, provides the source XPT files for this project as SDTM version 3.2. The files are available within this project at: ./data/source/updated_cdiscpilot.</p>
@@ -168,7 +235,7 @@ $(document).ready(function () {
 <tr class="odd">
 <td>1.</td>
 <td>XPTtoCSV.R</td>
-<td>Main driver program for data conversion. Metadata import and timestamp.</td>
+<td>Main driver program for data conversion. Metadata import and time stamp.</td>
 </tr>
 <tr class="even">
 <td>2.</td>
@@ -178,7 +245,7 @@ $(document).ready(function () {
 <tr class="odd">
 <td>3.</td>
 <td>DM_imputeCSV.R</td>
-<td>DM imputation, encoding. <strong>Must be run before EX.</strong> See Details for DM,EX data files.</td>
+<td>DM imputation, encoding. <strong>NOTE Must be run before EX.</strong> See Details for DM,EX data files.</td>
 </tr>
 <tr class="even">
 <td></td>
@@ -203,7 +270,7 @@ $(document).ready(function () {
 <tr class="even">
 <td>7.</td>
 <td>AE_imputeCSV.R</td>
-<td><strong>planned</strong></td>
+<td><strong>Work in progress</strong></td>
 </tr>
 </tbody>
 </table>
@@ -237,7 +304,7 @@ $(document).ready(function () {
 <h2>General Rules</h2>
 <div id="data-creation" class="section level3">
 <h3>Data Creation</h3>
-<p>Some data required for developing and testing the model is not present in the source XPT files. Examples include <code>Investigator</code> and <code>InvestigatorID</code>. Values created for this purpose are stored in CSV files prefixed with the name <code>ctdasrdf_</code> to identify it as supplemental data created for the project. Each CSV file has a corresponding <code>_map.TTL</code> file. The timesstamp in the metadata file ctdasrdf_graphMeta.csv is updated programmatically when XPTtoCSV.R is run. The other CSV files are created and maintained manually.</p>
+<p>Some data required for developing and testing the model is not present in the source XPT files. Examples include <code>Investigator</code> and <code>InvestigatorID</code>. Values created for this purpose are stored in CSV files prefixed with the name <code>ctdasrdf_</code> to identify it as supplemental data created for the project. Each CSV file has a corresponding <code>_map.TTL</code> file. The times stamp in the metadata file ctdasrdf_graphMeta.csv is updated when XPTtoCSV.R is run. The other CSV files are created and maintained manually.</p>
 <table>
 <thead>
 <tr class="header">
@@ -252,7 +319,7 @@ $(document).ready(function () {
 </tr>
 <tr class="even">
 <td>ctdasrdf_graphmeta.csv</td>
-<td>Graph Metadata. Timestamp updated by XPTtoCVS.R .</td>
+<td>Graph Metadata. Time stamp updated by XPTtoCVS.R .</td>
 </tr>
 </tbody>
 </table>
@@ -262,27 +329,27 @@ $(document).ready(function () {
 <p><em>Creation of rules in the RDF data is currently under development. OWL 2 is being invesitaged as a way to infer the assigned rules instead of creating them during the import process.</em></p>
 <div id="interval-iris" class="section level4">
 <h4>Interval IRIs</h4>
-<p>In many cases, either the start or end date of an interval may be missing in the source data. Missing values within SMS entity map result in that entity not being created. But the start of an interval must be represented in the data even when that interval has note yet been completed (eg: Lifespan). For this reason, interval IRI source values are computed during the XPT to CSV conversion process by concatenating the start and end dates with an underscore. When the end date is missing, the interval value ends in an underscore.</p>
+<p>In many cases, either the start or end date of an interval may be missing in the source data. Missing values within SMS entity map result in that entity not being created. But the start of an interval must be represented in the data even when that interval has note yet been completed (example: Lifespan). For this reason, interval IRI source values are computed during the XPT to CSV conversion process by concatenating the start and end dates with an underscore. When the end date is missing, the interval value ends in an underscore.</p>
 <p>Example of complete and incomplete LifeSpan intervals:</p>
 <pre><code>study:hasLifespan  cdiscpilot01:Interval_1925-04-08_2013-07-14
 study:hasLifespan  cdiscpilot01:Interval_1972-05-11_</code></pre>
-<p>skos:prefLabel for intervals are derived from the imputed (_im) interval value used in their corresponding subject IRIs (_im_en) (format: xxxxx_xxxx), not the original dates: “Interval 1925-04-08_2013-07-14” “Interval 1972-05-11_” See addtional details in the <strong>Labels</strong> section, below.</p>
+<p>skos:prefLabel for intervals are derived from the imputed (_im) interval value used in their corresponding subject IRIs (_im_en) (format: xxxxx_xxxx), not the original dates: “Interval 1925-04-08_2013-07-14” “Interval 1972-05-11_” See additional details in the <strong>Labels</strong> section, below.</p>
 </div>
 </div>
 <div id="encoding" class="section level3">
 <h3>Encoding</h3>
-<p>Date fields may contain dateTime values that include colons. Other fields to be converted to IRIs may contain spaces or other characters observed to be problematic in TopBraid and queries from R. The values must be “encoded” by replacing the problematic characters. URLencoding/percent coding was tested but was also found to be an issue in TopBraid and R. The current kludge is to replace the characters with an underbar using the function <code>encodeCol()</code> located in <strong><code>Functions.R</code></strong> .</p>
+<p>Date fields may contain dateTime values that include colons. Other fields to be converted to IRIs may contain spaces or other characters observed to be problematic in TopBraid and queries from R. The values must be “encoded” by replacing the problematic characters. URLencoding/percent coding was tested but was also found to be an issue in TopBraid and R. The current kludge is to replace the characters with an under bar using the function <code>encodeCol()</code> located in <strong><code>Functions.R</code></strong> .</p>
 <p>Encoded fields include “_en&quot; their name. Examples: <code>lifeSpan_im_en</code>, <code>refInt_im_en</code>, <code>studyPartInt_im_en</code> .</p>
 <p><code>_im</code> - indicates values are data derived or computed from the combination of other columns of original data. I.e., non-original values.</p>
 <p><code>_en</code> - values that have been “encoded” as described above in order to use them in IRIs that are compatible with TopBraid and R interfaces.</p>
 <div id="hashing" class="section level4">
 <h4>Hashing</h4>
-<p>Stardog SMS can hash source values using the SHA-1 hash over a UTF-8 encoded string represented in base 32 encoding with padding omitted. This approach was tested in addition to the URLencoding and percent encoding. The resulting IRI values work in TopBraid and R but are not very human-readable, which is a consideration in this prototype. Hashing may be revisted at a later date.</p>
+<p>Stardog SMS can hash source values using the SHA-1 hash over a UTF-8 encoded string represented in base 32 encoding with padding omitted. This approach was tested in addition to the URLencoding and percent encoding. The resulting IRI values work in TopBraid and R but are not very human-readable, which is a consideration in this prototype. Hashing may be revisited at a later date.</p>
 </div>
 </div>
 <div id="links-to-sdtm-terminology-and-other-external-codelists" class="section level3">
 <h3>Links to SDTM Terminology and Other External Codelists</h3>
-<p>Values are linked to their corresponding SDTM Terminology codes via the <code>code.ttl</code> file and corrsponding <code>code:</code> prefix. Values for the code come directly from the data whenever possible. In the example below, the “F” is from the <code>sex</code> column in the DM domain.</p>
+<p>Values are linked to their corresponding SDTM Terminology codes via the <code>code.ttl</code> file and corresponding <code>code:</code> prefix. Values for the code come directly from the data whenever possible. In the example below, the “F” is from the <code>sex</code> column in the DM domain.</p>
 Example:
 <pre>
   cdiscpilot01:DemographicDataCollection_01-701-1015 study:sex code:<b><font color="red">Sex_</font><font color="blue">F</font></b>
@@ -302,9 +369,9 @@ Then in code.ttl:
 <div id="labels" class="section level4">
 <h4>Labels</h4>
 <ul>
-<li><code>skos:prefLabel</code> is the primary label used in the graph. It may be supplmented later with <code>rdfs:label</code> and language tags.</li>
+<li><code>skos:prefLabel</code> is the primary label used in the graph. It may be supplemented later with <code>rdfs:label</code> and language tags.</li>
 <li>Labels specific to a person, including intervals specific to that person, include the value of usubjid in that label.</li>
-<li>Labels for <em>intervals</em> use the imputed (_im) values as the <code>skos:prefLabel</code> instead of the more readable indivdual dates. The reason is that if one date is missing, as is common for LifeSpan and InformedConsent intervals, the label is not created.</li>
+<li>Labels for <em>intervals</em> use the imputed (_im) values as the <code>skos:prefLabel</code> instead of the more readable individual dates. The reason is that if one date is missing, as is common for LifeSpan and InformedConsent intervals, the label is not created.</li>
 </ul>
 </div>
 </div>
@@ -314,7 +381,7 @@ Then in code.ttl:
 <h1>Data Files and Mapping Detail</h1>
 <div id="graph-metadata" class="section level2">
 <h2>Graph Metadata</h2>
-<p>Graph metadata including data conversion date and graph version is stored in the file <strong>ctdasrdf_graphmeta.CSV</strong>. When the data conversion scripts are executed in R, <strong>XPTtoCSV.R</strong> reads in the CSV file, updates the timestamp value, then overwrites the file with the new information. The CSV file is mapped to the graph using the SMS process.</p>
+<p>Graph metadata including data conversion date and graph version is stored in the file <strong>ctdasrdf_graphmeta.CSV</strong>. When the data conversion scripts are executed in R, <strong>XPTtoCSV.R</strong> reads in the CSV file, updates the time stamp value, then overwrites the file with the new information. The CSV file is mapped to the graph using the SMS process.</p>
 <table>
 <colgroup>
 <col width="12%"></col>
@@ -332,7 +399,7 @@ Then in code.ttl:
 <tr class="odd">
 <td>Graphmeta.csv</td>
 <td>Basic graph metadata</td>
-<td>Description of graph content, status, version, and timestamp information.</td>
+<td>Description of graph content, status, version, and time stamp information.</td>
 </tr>
 <tr class="even">
 <td>Graphmeta_map.TTL</td>
@@ -380,7 +447,13 @@ Then in code.ttl:
 <td align="left">## DM</td>
 </tr>
 <tr class="even">
-<td align="left">| File | Role | Description | | ——— | ———————— | ———————————————| |DM_imputeCSV.R | Data imputation and encoding| Creation of <em>birthdate</em> <br />Assignment of Informed Consent Date<br />Subject 01-701-1015: Death Date and Flag created. Creates dmDrugInt dataframe to merge into EX.| | DM.XPT | Orginal XPT | From pilot data | | DM_subset.csv | Subset for dev | First 3 patients (subject to change) | | DM_map.TTL | SMS Map | Map to graph. |</td>
+<td align="left">| File | Role | Description | | ——— | ———————— | ———————————————| |DM_imputeCSV.R | Data imputation and encoding| Creation of <em>birthdate</em> <br />Assignment of Informed Consent Date<br />Subject 01-701-1015: Death Date and Flag created. Creates dmDrugInt dataframe to merge into EX. | | DM.XPT | Original XPT | From pilot data | | DM_subset.csv | Subset for dev | First 3 patients (subject to change) | | DM_map.TTL | SMS Map | Map to graph. |</td>
+</tr>
+<tr class="odd">
+<td align="left">### Data limitations</td>
+</tr>
+<tr class="even">
+<td align="left">In the source data, there is no explicit link between the <em>SITE ID</em> in <em>DM</em> and the country in <em>TS</em> domain. These links are created as part of the conversion process and show the benefit of representing this data in a graph. Country is an important component in understanding and making decisions with the data, yet this information is typically not explicitly available in SDTM!</td>
 </tr>
 <tr class="odd">
 <td align="left">### SMS details</td>
@@ -392,13 +465,19 @@ Then in code.ttl:
 <td align="left">The following values are created in the map file:</td>
 </tr>
 <tr class="even">
-<td align="left">* <code>VisitScreening1DemogDataColl</code> because DEMOG info was collected at Screening 1 for this study * <code>code:ActivityStatus_CO</code> : Assumes successful collection of data for demographics, informed consent, etc. <code>RandomizationBAL3</code> : should be moved out conversion from a datasource at a future time.</td>
+<td align="left">* <code>VisitScreening1DemogDataColl</code> because DEMOG info was collected at Screening 1 for this study * <code>code:ActivityStatus_CO</code> : Assumes successful collection of data for demographics, informed consent, etc. <code>RandomizationBAL3</code> : should be moved out conversion from a data source at a future time.</td>
 </tr>
 <tr class="odd">
 <td align="left">### Exposure in DM DM contains the Drug Exposure interval: <code>rfxstdtc</code> to <code>rfxendtc</code> and is therefore mapped in the SMS file for DM, not for EX as one may expect.</td>
 </tr>
 <tr class="even">
-<td align="left">DM_imputeCSV.R also creates the dataframe dmDrugInt that contains the field <code>cumuDrugAdmin_im</code>, the cumulative drug adminstration interval which is the combination of <code>rfxstdtc</code> and <code>rfxendtc</code>. This value could also be computed for EX (min and max exposure dates on a per-patient basis) but the values in DM as taken as the authority. dmDrugInt is merged into EX within XPTtoCSV.R (this may later move to EX_imputeCSV.R).</td>
+<td align="left">DM_imputeCSV.R also creates the dataframe dmDrugInt that contains the field <code>cumuDrugAdmin_im</code>, the cumulative drug administration interval which is the combination of <code>rfxstdtc</code> and <code>rfxendtc</code>. This value could also be computed for EX (min and max exposure dates on a per-patient basis) but the values in DM as taken as the authority. dmDrugInt is merged into EX within XPTtoCSV.R (this may later move to EX_imputeCSV.R).</td>
+</tr>
+<tr class="odd">
+<td align="left">### Site and Country in DM Site identifier (siteid) is present in DM, while the country for sites is stored in TS. There is no explicit link between the two! For data processing, siteid is extracted to sites.csv and country (USA) hard coded.</td>
+</tr>
+<tr class="even">
+<td align="left">| File | Role | Description | | ——— | ———————— | ———————————————| | sites.csv | Site identifiers | All sites listed in DM + country | | sites_map.TTL | SMS Map | Map to graph. |</td>
 </tr>
 </tbody>
 </table>
@@ -417,7 +496,7 @@ Then in code.ttl:
 <tbody>
 <tr class="odd">
 <td>SUPPDM.XPT</td>
-<td>Orginal XPT</td>
+<td>Original XPT</td>
 <td>From pilot data</td>
 </tr>
 <tr class="even">
@@ -474,7 +553,7 @@ Then in code.ttl:
 <td align="left">### Visit Activity A <strong>visit activity</strong> is defined as one that is <em>scheduled</em> to begin during a Visit but may extend <em>beyond</em> the visit date. The actual performed date may be different from the scheduled date. For example, you have doctor’s appointment on a Monday; they prescribe a medicine, tells you to start taking it the same day, but you wait and take it on Tuesday. The visit was Monday. The scheduled exposure was Monday, but the actual exposure was Tuesday. Three dates are needed to represent this information: 1. Actual Visit date (<code>vsdtc</code>) 2. scheduled Exposure date 3. Actual exposure date (<code>exstdtc</code>). SDTM only collects 1. and 3. These dates are often not the same, as shown in the Week 2 visit for subject usubjid=01-701-1015: vsdtc= 1/16/2014 , exstdtc= 1/<strong>17</strong>/2014 [AO- 15APR18]</td>
 </tr>
 <tr class="odd">
-<td align="left">### Sequence of events in VS The sequence of data collection from each patient is important to how the data in VS is represented. The patient is told to lie down. After 5 min supine, blood pressures and temp are recorded. The patient then stands up. After 1 min standng the same tests are performed, and then again after 3 min standing time.</td>
+<td align="left">### Sequence of events in VS The sequence of data collection from each patient is important to how the data in VS is represented. The patient is told to lie down. After 5 min supine, blood pressures and temp are recorded. The patient then stands up. After 1 min standing the same tests are performed, and then again after 3 min standing time.</td>
 </tr>
 <tr class="even">
 <td align="left">#<font color="red">—- THE FOLLOWING SECTIONS ARE UNDER REVISION APRIL 2018 —-</font></td>
@@ -486,13 +565,13 @@ Then in code.ttl:
 <td align="left">| # | Event | Coded as | | – | ————————- | ———————————————–| | 1 | Lie Down | <code>AssumeBodyPositionSupine_{usubjid}</code> | | 2 | After lying 5 min | <code>StartRuleLying5_{usubjid}</code> | | 3 | Perform tests | vstested=DIABP, SYSBP, TEMP | | 4 | Stand up | <code>AssumeBodyPositionStanding_{usubjid}</code> | | 5 | After standing for 1 min | <code>StartRuleStanding1_{usubjid}</code> | | 6 | Perform tests | vstestcd=DIABP, SYSBP, TEMP | | 7 | After standing for 3 min | <code>StartRuleStanding3_{usubjid}</code> | | 8 | Perform tests | `vstestcd=DIABP, SYSBP, TEMP |</td>
 </tr>
 <tr class="odd">
-<td align="left">| File | Role | Description | | ——— | ———————— | ———————————————| | VX.XPT | Orginal XPT | From pilot data | | VS_subset.csv | Subset for dev | All VS obs. for patient 1015. this is more data than Ont Instances. | | VS_map.TTL | SMS Map | Map to graph. |</td>
+<td align="left">| File | Role | Description | | ——— | ———————— | ———————————————| | VX.XPT | Original XPT | From pilot data | | VS_subset.csv | Subset for dev | All VS obs. for patient 1015. this is more data than Ont Instances. | | VS_map.TTL | SMS Map | Map to graph. |</td>
 </tr>
 <tr class="even">
 <td align="left">### SMS details</td>
 </tr>
 <tr class="odd">
-<td align="left">| Entity | SMS | Description | ——— | ———————— | ——————————————— | Visit | Visit_{im_visit_CCaseSh}<em>{usubjid} | Unique to each visit x person. im_visit_CCaseSh is Camel-cased <code>visit</code> shortned, no spaces. | AssumeBodyPosition | AssumeBodyPosition{im_vspos_CCase}</em>{usubjid} | im_vspos_CCase = Camel-cased <code>vspos</code> (=Supine or Standing) specific to each patient. Patient 1 Standing, Patient 2 standing, etc.</td>
+<td align="left">| Entity | SMS | Description | ——— | ———————— | ——————————————— | Visit | Visit_{im_visit_CCaseSh}<em>{usubjid} | Unique to each visit x person. im_visit_CCaseSh is Camel-cased <code>visit</code> shortened, no spaces. | AssumeBodyPosition | AssumeBodyPosition{im_vspos_CCase}</em>{usubjid} | im_vspos_CCase = Camel-cased <code>vspos</code> (=Supine or Standing) specific to each patient. Patient 1 Standing, Patient 2 standing, etc.</td>
 </tr>
 </tbody>
 </table>
@@ -511,7 +590,7 @@ Then in code.ttl:
 <tbody>
 <tr class="odd">
 <td>EX.XPT</td>
-<td>Orginal XPT</td>
+<td>Original XPT</td>
 <td>From pilot data</td>
 </tr>
 <tr class="even">
@@ -551,7 +630,7 @@ Then in code.ttl:
 <tbody>
 <tr class="odd">
 <td>TS.XPT</td>
-<td>Orginal XPT</td>
+<td>Original XPT</td>
 <td>From pilot data</td>
 </tr>
 <tr class="even">
@@ -570,7 +649,7 @@ Then in code.ttl:
 <h3>Data Corrections and Imputations</h3>
 <p>The file is converted from the original TS.XPT long form to the wide form for mapping using SMS.</p>
 <p><em>Notes from AO, paraphrased from</em> <a href="https://phuse.teamworkpm.net/#messages/535928" class="uri">https://phuse.teamworkpm.net/#messages/535928</a></p>
-<p>Primary outcome measure(s) are those measures needed to support the Primary Objective of the trial. An outcome measure is a type of (i.e. subClassOf) an Observation, with study:OutcomeMeasure a subclass of study:Observation. Subclasses are added for Primary and Secondary outcome measures (and in the future, tertiary &amp; exploratory measures).</p>
+<p>Primary outcome measure(s) are those measures needed to support the Primary Objective of the trial. An outcome measure is a type of (i.e. subClassOf) an Observation, with study:OutcomeMeasure a subclass of study:Observation. Sub classes are added for Primary and Secondary outcome measures (and in the future, tertiary &amp; exploratory measures).</p>
 <p>In the original TS data, OUTMPRI = “Evaluate the efficacy and safety of transdermal xanomeline, 50cm2 and 75cm2, and placebo in subjects with mild to moderate Alzheimer’s disease.” This is an objective, not an outcome measure so it was recoded as the third Primary Objective.</p>
 <p>In typical Alzheimer’s trials, the <strong>primary outcome measure</strong> is the ADAS-Cog (Alzheimer’s Disease Assessment Scale, Cognitive Subscale). ADAS-Cog was added as the primary outcome measure.</p>
 <p>Maximum age (Object of predicate study:maxSubjectAge predicate) is changed from NA to NULL.4, indicating that the value for age is missing due to null flavor reason #4. [AO to TW, 2019-01-06]</p>
@@ -581,7 +660,7 @@ Then in code.ttl:
 <div id="visit-activities" class="section level4">
 <h4>Visit Activities</h4>
 <p>VistAmbulECGPlaceActivity, VisitBaselineActivity, VisitWk12Acvitity, etc.</p>
-<p>Are created in <strong>TS_supplemental.xlsx</strong>. Visit information was needed to complete the VS and EX data representations in support of derviving DM reference exposure start and end dates. Full visit information should be in SV.xpt, a domain we have not yet converted. At that time, the Visit Activity values can be removed from the spreadhseet. [notes from AO to TW 2019-01-06]</p>
+<p>Are created in <strong>TS_supplemental.xlsx</strong>. Visit information was needed to complete the VS and EX data representations in support of deriving DM reference exposure start and end dates.</p>
 </div>
 </div>
 <div id="sms-details-2" class="section level3">
@@ -604,7 +683,7 @@ Then in code.ttl:
 <tbody>
 <tr class="odd">
 <td>AE.XPT</td>
-<td>Orginal XPT</td>
+<td>Original XPT</td>
 <td>From pilot data</td>
 </tr>
 <tr class="even">
@@ -661,7 +740,7 @@ Then in code.ttl:
 <tr class="odd">
 <td>FullTripleComp-Stardog.R</td>
 <td>Triples Comparison</td>
-<td>Comparision of all triples from Ontology and SMS graphs in Stardog.</td>
+<td>Comparison of all triples from Ontology and SMS graphs in Stardog.</td>
 </tr>
 </tbody>
 </table>
@@ -669,7 +748,8 @@ Then in code.ttl:
 <div id="exporting-ttl-from-stardog" class="section level1">
 <h1>Exporting TTL from Stardog</h1>
 <p>A TTL file is constructed from within Stardog Studio using this query, then saving as TTL: ./SPARQL/ConstructTT.rq</p>
-<p>The TTL file is usually saved to : ./data/rdf/cdiscpilot01-SMS.TTL when exporing the mapped instance data.</p>
+<p>The TTL file is usually saved to : ./data/rdf/cdiscpilot01-SMS.TTL when exploring the mapped instance data.</p>
+<p><a href="TableOfContents.md">Back to TOC</a></p>
 </div>
 
 

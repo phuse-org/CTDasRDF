@@ -4,6 +4,7 @@
 # imports: http://spinrdf.org/spl
 # imports: http://www.w3.org/2004/02/skos/core
 # imports: https://w3id.org/phuse/code#
+# imports: https://w3id.org/phuse/meddra
 # imports: https://w3id.org/phuse/study
 # prefix: sdtm
 
@@ -466,6 +467,7 @@
   owl:imports <http://spinrdf.org/spl> ;
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports code: ;
+  owl:imports <https://w3id.org/phuse/meddra> ;
   owl:imports <https://w3id.org/phuse/study> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
@@ -3581,16 +3583,16 @@ sdtm:SDTM_AE_Record
             sp:object [
                 sp:varName "AELLTCD" ;
               ] ;
-            sp:predicate code:hasIdentifier ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasIdentifier> ;
             sp:subject [
                 sp:varName "LLT" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "pt" ;
+                sp:varName "ptconcept" ;
               ] ;
-            sp:predicate <https://w3id.org/phuse/mdra#hasPT> ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasPT> ;
             sp:subject [
                 sp:varName "LLT" ;
               ] ;
@@ -3601,25 +3603,34 @@ sdtm:SDTM_AE_Record
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "pt" ;
+                sp:varName "ptconcept" ;
               ] ;
           ]
           [
             sp:object [
                 sp:varName "AEPTCD" ;
               ] ;
-            sp:predicate code:hasIdentifier ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasIdentifier> ;
             sp:subject [
-                sp:varName "pt" ;
+                sp:varName "ptconcept" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "hlt" ;
+                sp:varName "hltconcept" ;
               ] ;
-            sp:predicate <https://w3id.org/phuse/mdra#hasHLT> ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasHLT> ;
             sp:subject [
-                sp:varName "pt" ;
+                sp:varName "ptconcept" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "primarysoc" ;
+              ] ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasPrimaryPTSOC> ;
+            sp:subject [
+                sp:varName "ptconcept" ;
               ] ;
           ]
           [
@@ -3628,25 +3639,25 @@ sdtm:SDTM_AE_Record
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "hlt" ;
+                sp:varName "hltconcept" ;
               ] ;
           ]
           [
             sp:object [
                 sp:varName "AEHLTCD" ;
               ] ;
-            sp:predicate code:hasIdentifier ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasIdentifier> ;
             sp:subject [
-                sp:varName "hlt" ;
+                sp:varName "hltconcept" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "hlgt" ;
+                sp:varName "hlgtconcept" ;
               ] ;
-            sp:predicate <https://w3id.org/phuse/mdra#hasHLGT> ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasHLGT> ;
             sp:subject [
-                sp:varName "hlt" ;
+                sp:varName "hltconcept" ;
               ] ;
           ]
           [
@@ -3655,25 +3666,25 @@ sdtm:SDTM_AE_Record
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "hlgt" ;
+                sp:varName "hlgtconcept" ;
               ] ;
           ]
           [
             sp:object [
                 sp:varName "AEHLGTCD" ;
               ] ;
-            sp:predicate code:hasIdentifier ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasIdentifier> ;
             sp:subject [
-                sp:varName "hlgt" ;
+                sp:varName "hlgtconcept" ;
               ] ;
           ]
           [
             sp:object [
-                sp:varName "soc" ;
+                sp:varName "socconcept" ;
               ] ;
-            sp:predicate <https://w3id.org/phuse/mdra#hasSOC> ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasSOC> ;
             sp:subject [
-                sp:varName "hlgt" ;
+                sp:varName "hlgtconcept" ;
               ] ;
           ]
           [
@@ -3682,16 +3693,7 @@ sdtm:SDTM_AE_Record
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "soc" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "AESOCCD" ;
-              ] ;
-            sp:predicate code:hasIdentifier ;
-            sp:subject [
-                sp:varName "soc" ;
+                sp:varName "socconcept" ;
               ] ;
           ]
           [
@@ -3700,20 +3702,41 @@ sdtm:SDTM_AE_Record
               ] ;
             sp:predicate skos:prefLabel ;
             sp:subject [
-                sp:varName "soc" ;
+                sp:varName "socconcept" ;
               ] ;
           ]
           [
             sp:object [
                 sp:varName "AEBDSYCD" ;
               ] ;
-            sp:predicate code:hasIdentifier ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasIdentifier> ;
             sp:subject [
-                sp:varName "soc" ;
+                sp:varName "socconcept" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "AESOCCD" ;
+              ] ;
+            sp:predicate <https://w3id.org/phuse/meddra#hasIdentifier> ;
+            sp:subject [
+                sp:varName "socconcept" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:eq ;
+                sp:arg1 [
+                    sp:varName "socconcept" ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "primarysoc" ;
+                  ] ;
               ] ;
           ]
         ) ;
-      rdfs:comment "AEDECOD and Full MedDRA mapping" ;
+      rdfs:comment "mapping full MedDRA Hierarchy using Primary SOC" ;
     ] ;
   spin:rule [
       rdf:type sp:Construct ;
@@ -8140,7 +8163,7 @@ sdtm:SDTM_TS_Record
               ] ;
           ]
           [
-            sp:object study:CompletePopulation ;
+            sp:object study:StudyPopulation ;
             sp:predicate rdf:type ;
             sp:subject [
                 sp:varName "pop" ;

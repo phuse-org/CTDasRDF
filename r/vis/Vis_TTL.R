@@ -105,10 +105,15 @@ server <- function(input, output, session) {
         iriToPref <- function(elem)
         {
             # meddra:
-            elem <- gsub('<https://w3id.org/phuse/MEDDRA/', "meddra:", elem)
+            elem <- gsub('<https://w3id.org/phuse/meddra#', "meddra:", elem)
+
+            # rdf
+            elem <- gsub("<http://www.w3.org/1999/02/22-rdf-syntax-ns#","rdf:", elem)
             
             # skos:
-            elem <- gsub("<http://www.w3.org/2004/02/skos/core#", "skos:",elem)
+            elem <- gsub("<http://www.w3.org/2004/02/skos/core#", "skos:", elem)
+            
+            
             # Remove the trailing >
             elem <- gsub(">", "", elem)
             
@@ -182,7 +187,9 @@ server <- function(input, output, session) {
         #   edges$label : always displayed, so not set in current vis.
         #   edges$title : only displayed on mouseover. Used in current vis.
         edges$title <- edges$p
-
+        
+        edges$label <- edges$p
+        
         visNetwork(nodes, edges, height = "100px", width = "100%") %>%
           visIgraphLayout(layout = "layout_nicely",
                           physics = FALSE) %>%
