@@ -623,7 +623,7 @@ study:AnnotatedCaseReportForm
 .
 study:Arm
   rdf:type owl:Class ;
-  rdfs:subClassOf study:StudyActivity ;
+  rdfs:subClassOf study:StudyDesignActivity ;
   skos:altLabel "ARMCD" ;
   skos:definition "A path though the study which describes what activities the study subject or experimental unit will be involved in as they pass through the study (BRIDG 5.0)" ;
   skos:prefLabel "ARM" ;
@@ -1107,7 +1107,7 @@ study:EntityOutcome
 .
 study:Epoch
   rdf:type owl:Class ;
-  rdfs:subClassOf study:StudyActivity ;
+  rdfs:subClassOf study:StudyDesignActivity ;
   skos:prefLabel "Epoch" ;
 .
 study:EpochDuration
@@ -2197,6 +2197,12 @@ study:StudyComponent
   skos:definition "" ;
   skos:prefLabel "Study component" ;
 .
+study:StudyDesignActivity
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:subClassOf study:StudyActivity ;
+  skos:prefLabel "Study design activity" ;
+.
 study:StudyDuration
   rdf:type owl:Class ;
   rdfs:subClassOf time:Duration ;
@@ -2328,7 +2334,7 @@ study:UnscheduledVisitActivity
 .
 study:Visit
   rdf:type owl:Class ;
-  rdfs:subClassOf study:StudyActivity ;
+  rdfs:subClassOf study:StudyDesignActivity ;
   skos:definition "Any StudyActivity whose main focus is an interaction with the investigational staff, usually intended to collect and/or assess observations. " ;
   skos:note "A Visit may be virtual (phone, teleconference etc.)" ;
   skos:prefLabel "VISIT" ;
