@@ -79,6 +79,7 @@
         %DO _i = 1 %TO %SYSFUNC(COUNTW(&columns%STR( )));
             ATTRIB %SCAN(&columns,&_i) FORMAT=$200.;
         %END;
+        ATTRIB ulabel FORMAT=$200.;
         INFILE "&meddra_path./&name..asc" DELIMITER='$';
         INPUT
             %DO _i = 1 %TO %SYSFUNC(COUNTW(&columns%STR( )));
@@ -91,6 +92,7 @@
         %END;
         * mask quotes;
         label = TRANWRD(label,'"','\"');
+        ulabel = UPCASE(label);
     RUN;
 
 %MEND;
@@ -107,9 +109,9 @@
 %read_meddra_file(name=soc_hlgt, columns=soc_code hlgt_code, subsetting_where=hlgt_code IN &hlgtOntSubset);
 
 PROC SQL NOPRINT;
-    CREATE TABLE pt_2   AS SELECT a.code, a.label, a.soc_code, b.hlt_code FROM pt as a, hlt_pt as b WHERE a.code = b.pt_code ORDER BY a.code;
-    CREATE TABLE hlgt_2 AS SELECT a.code, a.label, b.soc_code  FROM hlgt as a, soc_hlgt as b WHERE a.code = b.hlgt_code ORDER BY a.code;
-    CREATE TABLE hlt_2  AS SELECT a.code, a.label, b.hlgt_code FROM hlt as a, hlgt_hlt as b WHERE a.code = b.hlt_code ORDER BY a.code;
+    CREATE TABLE pt_2   AS SELECT a.code, a.label, a.ulabel, a.soc_code, b.hlt_code FROM pt as a, hlt_pt as b WHERE a.code = b.pt_code ORDER BY a.code;
+    CREATE TABLE hlgt_2 AS SELECT a.code, a.label, a.ulabel, b.soc_code  FROM hlgt as a, soc_hlgt as b WHERE a.code = b.hlgt_code ORDER BY a.code;
+    CREATE TABLE hlt_2  AS SELECT a.code, a.label, a.ulabel, b.hlgt_code FROM hlt as a, hlgt_hlt as b WHERE a.code = b.hlt_code ORDER BY a.code;
 QUIT;
 
 ******************************************************************************;
@@ -148,6 +150,7 @@ DATA _NULL_;
     PUT @5 "a rdfs:Resource, skos:Concept, meddra:LowLevelConcept, meddra:MeddraConcept ;";
     PUT @5 "rdfs:label """ label  +(-1)  """^^xsd:string;";
     PUT @5 "skos:prefLabel """ label  +(-1)  """^^xsd:string;";
+    PUT @5 "skos:altLabel """ ulabel  +(-1)  """^^xsd:string;";
     PUT @5 "meddra:hasIdentifier """ code  +(-1)  """^^xsd:string;";
     PUT @5 "meddra:hasPT meddra:m" pt_code   +(-1) ".";
     PUT ;
@@ -163,6 +166,7 @@ DATA _NULL_;
         PUT "meddra:m" code;
         PUT @5 "a skos:Concept, meddra:PreferredConcept ;";
         PUT @5 "skos:prefLabel """ label  +(-1)  """^^xsd:string;";
+        PUT @5 "skos:altLabel """ ulabel  +(-1)  """^^xsd:string;";
         PUT @5 "meddra:hasIdentifier """ code  +(-1)  """^^xsd:string;";
     END;
     PUT @5 "meddra:hasHLT meddra:m" hlt_code   +(-1) ";";
@@ -183,6 +187,7 @@ DATA _NULL_;
         PUT "meddra:m" code;
         PUT @5 "a skos:Concept, meddra:HighLevelConcept ;";
         PUT @5 "skos:prefLabel """ label  +(-1)  """^^xsd:string;";
+        PUT @5 "skos:altLabel """ ulabel  +(-1)  """^^xsd:string;";
         PUT @5 "meddra:hasIdentifier """ code  +(-1)  """^^xsd:string;";
     END;
     PUT @5 "meddra:hasHLGT meddra:m" hlgt_code  +(-1)  ";";
@@ -203,6 +208,7 @@ DATA _NULL_;
         PUT "meddra:m" code;
         PUT @5 "a skos:Concept, meddra:HighLevelGroupConcept ;";
         PUT @5 "skos:prefLabel """ label  +(-1)  """^^xsd:string;";
+        PUT @5 "skos:altLabel """ ulabel  +(-1)  """^^xsd:string;";
         PUT @5 "meddra:hasIdentifier """ code  +(-1)  """^^xsd:string;";
     END;
     PUT @5 "meddra:hasSOC meddra:m" soc_code   +(-1) ";";
@@ -221,6 +227,7 @@ DATA _NULL_;
     PUT @5 "a skos:Concept, meddra:SystemOrganClassConcept ;";
     PUT @5 "skos:topConceptOf meddra:MedDRA ;";
     PUT @5 "skos:prefLabel """ label  +(-1)  """^^xsd:string;";
+    PUT @5 "skos:altLabel """ ulabel  +(-1)  """^^xsd:string;";
     PUT @5 "meddra:hasIdentifier """ code  +(-1)  """^^xsd:string;";
     PUT @5 ".";
     PUT ;
