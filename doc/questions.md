@@ -7,10 +7,89 @@ Please ask your questions related to data or ontologies here to get answers from
 
 ### Question: How to query a SPIN rule?
 
-SPIN rules, like the one for the MedDRA extract are modeled. How can this spin rule query be executed to receive the content? Same we have for domain load, don't we? Or do I have to reconstruct the query and execute this?
+SPIN rules, like the one for the [MedDRA extract](https://github.com/phuse-org/CTDasRDF/blob/master/doc/images/Meddra-Query.png) are modeled. How can this spin rule query be executed to receive the content? Same we have for domain load, don't we? Or do I have to reconstruct the query and execute this as SPARQL query?
 
 ## MedDRA Mapping
 
 ### Question: How to deal with quotes in string?
 
 There seems to be three LLT codes having a quote in the label, e.g. Feeling "cool". The R program removes all quotes, so the string would be 'Feeling cool', currently the SAS program uses the masking of \" to mask the quote. Which way should we go?
+
+## Protocol Drug&Dosage - Ontology / Instantiation
+
+### Question: Can you please check and update the Ontology / Instances?
+
+It seems the ontology does not fit the instances in "cdiscpilot01-protocol.ttl".
+
+According "study.ttl" there are some major proerties and connections missing for study:SubstanceQuantity.
+
+![Connections according Instances](./images/questions_TS_DRUG_SubstanceQuantityVis.png)
+
+```
+study:SubstanceQuantity
+  rdf:type owl:Class ;
+  rdfs:subClassOf study:Entity ;
+  skos:prefLabel "Substance quantity" ;
+```
+
+In the instances the dosage information are available through study:SubstanceQuantity in "cdiscpilot01-protocol.ttl".
+
+![Connections according Instances](./images/questions_TS_DRUG_InstanceClassVis.png)
+
+```
+cd01p:SubstanceQuantity_1
+  rdf:type code:SubstanceQuantity ;
+  rdf:type study:SubstanceQuantity ;
+  skos:prefLabel "Substance quantity 1" ;
+  code:hasIngredient code:Substance_Xanomeline ;
+  code:hasUnit code:Unit_mg ;
+  code:hasValue 0 ;
+```
+
+## Protocol Population - Ontology / Instantiation
+
+### Question: child attibutes located at mother - intended or to-change?
+
+As we have two childs of study:Population (study:StudyPopulation & study:EnrolledPopulation), should we have all attributes on the "mother", even though these might only be applicable for one of the childs and not all, e.g. plannedPopulation Size?
+
+![Population](./images/hands_on_triples_08_a.png)
+
+### Question: Population attributes in Instances, but not in Ontology - need for change?
+
+In the instances, we map from study:StudyPopulation through study:hasSite and study:healthySubject. According study.ttl this is not a valid route as the population is no 
+
+Instances cdiscpilot01-protocol.ttl:
+
+```
+cd01p:StudyPopulation_CDISCPILOT01
+  rdf:type study:StudyPopulation ;
+  skos:prefLabel "Study population CDISCPILOT01" ;
+  study:ageGroup code:AgeGroup_ADULT ;
+  study:ageGroup code:AgeGroup_ELDERLY ;
+  study:hasSite cd01p:Site_701 ;
+  study:healthySubject sdtmterm:NoYesResponse_N ;
+  study:maxSubjectAge <https://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF> ;
+  study:minSubjectAge code:PlannedSubjectAge_P50Y ;
+  study:sexGroup sdtmterm:SexGroup_BOTH ;
+.
+```
+
+Ontology study.ttl:
+
+```
+study:hasSite
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "" ;
+  rdfs:domain study:Party ;
+  rdfs:range study:Site ;
+  skos:definition "The organization (e.g. hospital, clinic) where a Human Study Subject goes to participate in many Study Activities." ;
+  skos:prefLabel "has Site" ;
+.
+
+study:healthySubject
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain study:Party ;
+  rdfs:range code:NoYesResponse ;
+  skos:prefLabel "healthy subject" ;
+.
+```
