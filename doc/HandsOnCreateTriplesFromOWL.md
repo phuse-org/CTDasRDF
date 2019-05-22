@@ -1,11 +1,6 @@
----
-title: "Getting hands on Creating Triples from Ontology"
-output: 
-  html_document:
-    toc: true
-    keep_md: true
----
+# Getting hands on Creating Triples from Ontology
 
+[Go to TOC](TableOfContents.md)
 
 ## Revision
 

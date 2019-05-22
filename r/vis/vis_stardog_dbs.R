@@ -542,8 +542,14 @@ vis_nodeList_network()
 
 #Endpoint DB name was changed to: PhUSE-Ontology
 
-endpoint <- "http://localhost:5820/PhUSE-Ontology/query"
-queryOnt = paste0("SELECT *
+#endpoint <- "http://localhost:5820/PhUSE-Ontology/query"
+#changes to use Apache Jena Fuseki
+
+endpoint <- "http://localhost:3030/PhUSE_Ontology/query" 
+queryOnt = paste0("prefix study: <https://w3id.org/phuse/study#>
+                  prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+
+                  SELECT *
                   WHERE {{
                   SELECT DISTINCT *
                   WHERE { VALUES ?domain {study:AdverseEvent study:MedicalCondition study:Event study:Entity study:StudyComponent}
@@ -564,7 +570,7 @@ queryOnt = paste0("SELECT *
                   }
                   }}")
 
-qd <- SPARQL(endpoint, queryOnt, ns=prefix)
+qd <- SPARQL(endpoint, queryOnt)
 triplesDf <- qd$results
 
 initLists()
