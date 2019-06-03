@@ -1,12 +1,6 @@
----
-title: "Hands on Understanding AE"
-output: 
-  html_document:
-    toc: true
-    keep_md: true
----
-
 # Hands on Understanding AE
+
+[Go to TOC](TableOfContents.md)
 
 ## Revision
 
