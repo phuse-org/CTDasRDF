@@ -52,10 +52,54 @@ After setting the databases, data needs to be included.
 
 With "upload data", data can be uploaded. The following files from the CTDasRDF repository should be uploaded (https://github.com/phuse-org/CTDasRDF/tree/master/data/rdf).
 
-| Dataset         | File to upload |
-| --------------- | -------------- |
-| PhUSE_Instances | blub           |
-| PhUSE_Ontology  | blob           |
+| Dataset         | File to upload   |
+| --------------- | ---------------- |
+| PhUSE_Ontology  | study.ttl        |
+| PhUSE_Ontology  | code.ttl         |
+| PhUSE_Ontology  | meddra.ttl       |
+| PhUSE_Ontology  | time.ttl         |
+| PhUSE_Instances | cdiscpilot01.ttl |
+| PhUSE_Instances | code.ttl         |
+
+![Figure: Upload Data"](./images/apache_jena_fuseki_05.png)
+
+## Query Triples through Web GUI
+
+Queries can be submitted in the "Query" tab. Any SPARQL query can be submitted to the server through the "play" button in the Query editing are.
+In the top two example queries can be selected. 
+
+"Selection of triples" fills the editing are with the following SPARQL query:
+
+```
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT ?subject ?predicate ?object
+WHERE {
+  ?subject ?predicate ?object
+}
+LIMIT 25
+```
+
+The result is displayed per default as table. The following prefixes might be included in the query to display prefixes instead of long URIs.
+
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix code: <https://w3id.org/phuse/code#>                          
+prefix study: <https://w3id.org/phuse/study#> 
+prefix sdtmterm: <https://w3id.org/phuse/sdtmterm#> 
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+# prefix ...
+
+SELECT ?subject ?predicate ?object
+WHERE {
+  ?subject ?predicate ?object
+}
+LIMIT 300
+```
+![Figure: Prefix definitions"](./images/apache_jena_fuseki_06.png)
 
 ## Remove all triples
 
