@@ -1,8 +1,20 @@
+@base <localhost://> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix bibio: <http://purl.org/ontology/bibo/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix meddra: <https://w3id.org/phuse/meddra#> .
+@prefix pav: <http://purl.org/pav> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+meddra:MedDRA211
+    dcterms:description "MedDRA 211 converted to RDF"^^xsd:string ;
+    dcterms:title "MedDRA 211 as RDF"^^xsd:string ;
+    bibio:status "Draft/Defv"^^xsd:string ;
+    pav:createdOn "2019-06-11T19:46:42-04:00"^^xsd:datetime ;
+    pav:version "0.0.1"^^xsd:string ;
+    rdfs:label "MedDRA 211 converted to RDF"^^xsd:string .
 
 meddra:m10000032
     a skos:Concept, meddra:HighLevelConcept ;
