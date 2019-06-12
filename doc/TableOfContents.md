@@ -29,8 +29,7 @@ Ontology details.
 
 The approach to data conversion differs between MedDRA and the SDTM XPT files. Please see their respective sections for details. For methods using SAS, please see the "Hands-on" guides in the next section.
 
-* [2.4.1 MedDRA conversion](MedDRAConversion.md)
-* [2.4.2 SDTM Mapping and conversion](DataMappingAndConversion.md)
+* [2.4.1 SDTM Mapping and conversion](DataMappingAndConversion.md)
 
 How-To Guides
 ---------------------
