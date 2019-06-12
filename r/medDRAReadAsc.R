@@ -15,7 +15,10 @@
 # TESTING:  LLT: meddra:m10003851
 #
 #
-# TODO:  Should MedDRA be : https://w3id.org/phuse/MEDDRA21_1/  or 
+# TODO:  * move subsetting to separate code/function for easy of enable/disable
+#        * What do we call this graph? What is the Subject and how do we attach 
+#            everything to it.
+#        * Should MedDRA be : https://w3id.org/phuse/MEDDRA21_1/  or 
 #        as is now: https://w3id.org/phuse/meddra#
 #______________________________________________________________________________
 library(rdflib)
@@ -70,7 +73,6 @@ socOntSubset <- c('10007541',
                   '10040785')
 
 #--- FUNCTIONS ----------------------------------------------------------------
-
 #' Read MedDRA asc files.
 #' 
 #'
@@ -110,7 +112,10 @@ readAscFile <- function(ascFile, colNames)
 #   May later change to external file?
 prefixList <-read.table(header = TRUE, text = "
                         prefixUC  url
+                        'DCTERMS' 'http://purl.org/dc/terms/'
+                        'BIBO'    'http://purl.org/ontology/bibo/'
                         'MEDDRA'  'https://w3id.org/phuse/meddra#'
+                        'PAV'     'http://purl.org/pav'
                         'RDF'     'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
                         'RDFS'    'http://www.w3.org/2000/01/rdf-schema#'
                         'SKOS'    'http://www.w3.org/2004/02/skos/core#'
@@ -200,6 +205,54 @@ socData$rowID <- 1:nrow(socData) # row index
 #------------------------------------------------------------------------------
 #--- RDF Creation Statements --------------------------------------------------
 some_rdf <- rdf()  # initialize 
+
+#---- 0. Graph Creation metadata for creation date and method
+rdf_add(some_rdf, 
+        subject      = paste0(MEDDRA, "MedDRA211"), 
+        predicate    = paste0(RDFS,  "label"), 
+        object       = "MedDRA 211 converted to RDF",
+        objectType   = "literal", 
+        datatype_uri = paste0(XSD,"string")
+)
+rdf_add(some_rdf, 
+        subject      = paste0(MEDDRA, "MedDRA211"), 
+        predicate    = paste0(DCTERMS,  "description"), 
+        object       = "A subset of MedDRA 211 terms to support the observations
+                        in the GoTWLD project, converted to RDF using R Scripts",
+        objectType   = "literal", 
+        datatype_uri = paste0(XSD,"string")
+)
+rdf_add(some_rdf, 
+        subject      = paste0(MEDDRA, "MedDRA211"), 
+        predicate    = paste0(DCTERMS,  "title"), 
+        object       = "MedDRA 211 as RDF",
+        objectType   = "literal", 
+        datatype_uri = paste0(XSD,"string")
+)
+rdf_add(some_rdf, 
+        subject      = paste0(MEDDRA, "MedDRA211"), 
+        predicate    = paste0(BIBO,  "status"), 
+        object       = "Draft/Dev",
+        objectType   = "literal", 
+        datatype_uri = paste0(XSD,"string")
+)
+rdf_add(some_rdf, 
+        subject      = paste0(MEDDRA, "MedDRA211"), 
+        predicate    = paste0(PAV,  "version"), 
+        object       = "0.0.1",
+        objectType   = "literal", 
+        datatype_uri = paste0(XSD,"string")
+)
+# Calculate the date time of the run.
+conversionDate<-gsub("(\\d\\d)$", ":\\1",strftime(Sys.time(),"%Y-%m-%dT%H:%M:%S%z"))
+
+rdf_add(some_rdf, 
+        subject      = paste0(MEDDRA, "MedDRA211"), 
+        predicate    = paste0(PAV,  "createdOn"), 
+        object       = conversionDate,
+        objectType   = "literal", 
+        datatype_uri = paste0(XSD,"datetime")
+)
 
 #--- 1. LLT Creation ---
 for(i in 1:nrow(lltData))
@@ -399,9 +452,12 @@ outFile <- 'data/rdf/MedDRA211-R.TTL'
 rdf_serialize(some_rdf,
               outFile,
               format = "turtle",
-              namespace = c( meddra = "https://w3id.org/phuse/meddra#",
-                             rdf    = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-                             rdfs   = "http://www.w3.org/2000/01/rdf-schema#",
-                             skos   = "http://www.w3.org/2004/02/skos/core#",
-                             xsd    = "http://www.w3.org/2001/XMLSchema#"
+              namespace = c( bibio   = "http://purl.org/ontology/bibo/",
+                             dcterms = "http://purl.org/dc/terms/",
+                             meddra  = "https://w3id.org/phuse/meddra#",
+                             pav     = "http://purl.org/pav",
+                             rdf     = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                             rdfs    = "http://www.w3.org/2000/01/rdf-schema#",
+                             skos    = "http://www.w3.org/2004/02/skos/core#",
+                             xsd     = "http://www.w3.org/2001/XMLSchema#"
               ))
