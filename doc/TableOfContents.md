@@ -48,12 +48,3 @@ A step by step guide to hands-on how to create triples based on an ontology usin
 ### [Get Hands Stardog Mapping Syntax Visualization App](Hands-On-SMSVisualization.md)
 
 A guide hot to use the SMS visualization app available in the repository.
-
-### [Get Hands on Understanding Adverse Events](HandsOnUnderstandingAE.md)
-
-A guide to understand the Adverse Event Ontology, how to investigate this and see data realated to one Adverse Event triplefied.
-
-
-### [Use Apache Jena Fuseki Triple Store](ApacheJenaFusekiTripleStore.md)
-
-These instructions show how to setup an Apache Jena Fuseki triple store to locally upload triples and perform queries.

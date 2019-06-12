@@ -1,6 +1,12 @@
-# Getting hands on CTDasRDF Project
+---
+title: "Getting hands on CTDasRDF Project"
+output: 
+  html_document:
+    toc: true
+    keep_md: true
+---
 
-[Go to TOC](TableOfContents.md)
+
 
 ## Revision
 

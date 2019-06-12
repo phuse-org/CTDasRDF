@@ -3,93 +3,44 @@
 
 Please ask your questions related to data or ontologies here to get answers from the project. You can simply login to Github and use the "Edit" Button in the top-right action box. Please remove your question when it is answered and you noticed the answer. If a question/answer is relevant to others, the content might go into general documentation.
 
-## SPIN Rules - Get Data Tabular
+# Temporary Keep for tracking
 
-### Question: How to query a SPIN rule?
+## Adverse Event Mapping
 
-SPIN rules, like the one for the [MedDRA extract](https://github.com/phuse-org/CTDasRDF/blob/master/doc/images/Meddra-Query.png) are modeled. How can this spin rule query be executed to receive the content? Same we have for domain load, don't we? Or do I have to reconstruct the query and execute this as SPARQL query?
+**Question**:
 
-## MedDRA Mapping
+Thanks Armando, the mapping looks really good. I try to follow up what is defined where. I checked the study.ttl and have some questions. I investigated the "direct links", "indirect links" and "SHACL links" and documented those in https://github.com/phuse-org/CTDasRDF/blob/master/doc/HandsOnUnderstandingAE.md.
 
-### Question: How to deal with quotes in string?
+Then I checked the mapping of one AE in the cdiscpilot.ttl. I found some questions which I have as overview also here https://github.com/phuse-org/CTDasRDF/blob/master/doc/temp/ae_mapping.xlsx :
 
-There seems to be three LLT codes having a quote in the label, e.g. Feeling "cool". The R program removes all quotes, so the string would be 'Feeling cool', currently the SAS program uses the masking of \" to mask the quote. Which way should we go?
+I have not found a mapping for the following links in the study.ttl for study:AdverseEvent:
++ study:cancer
++ study:hasCategory
++ study:hasDataCollectionDate
++ study:hasSubcategory
 
-## Protocol Drug&Dosage - Ontology / Instantiation
+The following definitions appear twice, as SHACL rule and as direct triple. Is this intended? If so is there a rational?
++ study:causality
++ study:severity
++ The "study:hasInterval" is defined on the upper class study:StudyComponent with time:Interval and on "study:AdverseEvent" with "study:AdverseEventInterval". Does the AdverseEventInterval has something special? Should it be a separate thing?
 
-### Question: Can you please check and update the Ontology / Instances?
+Thanks, Katja
 
-It seems the ontology does not fit the instances in "cdiscpilot01-protocol.ttl".
+**Answer**: Katja, I am very impressed by your thorough review. You have correctly identified some errors and inconsistencies which need to be addressed, and which I have corrected in the underlying ontology. Thank you! The corrections/changes are as follows:
+1. study:cancer is missing the triple:  study:cancer rdfs:domain study:AdverseEvent. I have added it to study.ttl and this establishes the link that you found was missing. 
+2. study:hasCategory and study:hasSubcategory: I do not see these variables in the pilot AE domain, therefore, there is no direct link in the ontology between these concepts and Adverse Event. However, I recognize that they might exist in other AE domains for othe studies. Therefore, I have replaced the follwowing triples:
+study:hasCategory rdfs:domain study:Activity  and
+study:hasSubcategory rdfs:domain study:Activity with the following triples:
+study:hasCategory rdfs:domain study:StudyComponent  and
+study:hasSubcategory rdfs:domain study:StudyComponent. 
+Since study:AdverseEvent is a subclass of Study:Component, I believe the link is now established. 
+3. study:hasDataCollectionDate is missing a link to the AdverseEvent class. I have added the following triple, which should solve this problem. 
+study:hasDataCollectionDeate rdfs:domain study:studyComponent 
 
-According "study.ttl" there are some major proerties and connections missing for study:SubstanceQuantity.
+study:Causality and study:Severity  the asserted triples define the rdfs:domain (study:AdverseEvent) and rdfs:range (i.e. controlled terminology) for each predicate; The SHACL constraints add additional constraints on the data (specifically, cardinality constraints) It is desirable to have both, I think. 
 
-![Connections according Instances](./images/questions_TS_DRUG_SubstanceQuantityVis.png)
+Regarding study:AdverseEventInterval, the ontology recognizes that an AdverseEventInterval is a subclass of time:Interval. Other "types" intervals are also defined, such as FixedDoseInterval, Lifespan, StudyInterval, etc. The SHACL constraint retricts the range of study:interval only to AdverseEventInterval when talking about AdverseEvents. We can, and should, add similar constraints to the other intervals, thereby applying the constraint equally among all the types of intervals. We haven't done that (yet) simply because we haven't gotten around to it. 
 
-```
-study:SubstanceQuantity
-  rdf:type owl:Class ;
-  rdfs:subClassOf study:Entity ;
-  skos:prefLabel "Substance quantity" ;
-```
 
-In the instances the dosage information are available through study:SubstanceQuantity in "cdiscpilot01-protocol.ttl".
 
-![Connections according Instances](./images/questions_TS_DRUG_InstanceClassVis.png)
 
-```
-cd01p:SubstanceQuantity_1
-  rdf:type code:SubstanceQuantity ;
-  rdf:type study:SubstanceQuantity ;
-  skos:prefLabel "Substance quantity 1" ;
-  code:hasIngredient code:Substance_Xanomeline ;
-  code:hasUnit code:Unit_mg ;
-  code:hasValue 0 ;
-```
-
-## Protocol Population - Ontology / Instantiation
-
-### Question: child attibutes located at mother - intended or to-change?
-
-As we have two childs of study:Population (study:StudyPopulation & study:EnrolledPopulation), should we have all attributes on the "mother", even though these might only be applicable for one of the childs and not all, e.g. plannedPopulation Size?
-
-![Population](./images/hands_on_triples_08_a.png)
-
-### Question: Population attributes in Instances, but not in Ontology - need for change?
-
-In the instances, we map from study:StudyPopulation through study:hasSite and study:healthySubject. According study.ttl this is not a valid route as the population is no 
-
-Instances cdiscpilot01-protocol.ttl:
-
-```
-cd01p:StudyPopulation_CDISCPILOT01
-  rdf:type study:StudyPopulation ;
-  skos:prefLabel "Study population CDISCPILOT01" ;
-  study:ageGroup code:AgeGroup_ADULT ;
-  study:ageGroup code:AgeGroup_ELDERLY ;
-  study:hasSite cd01p:Site_701 ;
-  study:healthySubject sdtmterm:NoYesResponse_N ;
-  study:maxSubjectAge <https://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF> ;
-  study:minSubjectAge code:PlannedSubjectAge_P50Y ;
-  study:sexGroup sdtmterm:SexGroup_BOTH ;
-.
-```
-
-Ontology study.ttl:
-
-```
-study:hasSite
-  rdf:type owl:ObjectProperty ;
-  rdfs:comment "" ;
-  rdfs:domain study:Party ;
-  rdfs:range study:Site ;
-  skos:definition "The organization (e.g. hospital, clinic) where a Human Study Subject goes to participate in many Study Activities." ;
-  skos:prefLabel "has Site" ;
-.
-
-study:healthySubject
-  rdf:type owl:ObjectProperty ;
-  rdfs:domain study:Party ;
-  rdfs:range code:NoYesResponse ;
-  skos:prefLabel "healthy subject" ;
-.
-```

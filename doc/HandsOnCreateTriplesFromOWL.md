@@ -1,6 +1,11 @@
-# Getting hands on Creating Triples from Ontology
+---
+title: "Getting hands on Creating Triples from Ontology"
+output: 
+  html_document:
+    toc: true
+    keep_md: true
+---
 
-[Go to TOC](TableOfContents.md)
 
 ## Revision
 
@@ -9,7 +14,6 @@ Date         | Comment
 2018-11-23   | Documentation creation (KG)
 2018-11-26   | Further Documentation (KG)
 2019-01-04   | Updates (KG)
-2019-05-09   | Updates (KG)
 
 
 ## Overview
@@ -215,7 +219,7 @@ The Visualization is done through r/vis/vis_stardog_dbs.R in section "create Ont
 
 ![Figure: Ontology for simple mappings](./images/hands_on_triples_04.png)
 
-So we are able to map more than half of all observations from Trial Summary after this step in our domain and are missing just a few observations. But where should the other observations be mapped to? Some might be missing as the ontology is under development, but some are already available, but can only be mapped when considering the sub-class connections.
+So we are able to map 65% of all observations after this step in our TS domain and are missing 35% observations which are 17 in numbers. But where should the other observations be mapped to? Some might be missing as the ontology is under development, but some are already available, but can only be mapped when considering the sub-class connections.
 
 ### Connecting sub-class hierarchies
 
@@ -278,39 +282,18 @@ prot:Study_CDISCPILOT01
 
 ### Populations
 
-When looking also into sub-class connections of the model, there are two different types of populations available, the StudyPopulation and the EnrolledPopulation. These have different meanings and content and are for this two different items. So properties only belong to the StudyPopulation as the complete population and others are available for the EnrolledPopulation.
+Content wise the two items for the planned population size and the actual population size are not applicable for the complete population size, but only contain those subjects which are in the enrolled population. For this it has been decided that a study has two different populations, the StudyPopulation containing all subjects and the EnrolledPopulation containing only attributes for enrolled subjects.
 
-![Figure: Ontology details for Population](./images/hands_on_triples_08_a.png)
-
-The final mapping considers two populations with different attributes. So we create our study with two populations:
+So we create our study with two populations:
 
 ```
 prot:Study_CDISCPILOT01
-   study:hasPopulation prot:EnrolledPopulation_CDISCPILOT01;
-   study:hasPopulation prot:StudyPopulation_CDISCPILOT01;
+   study:hasPopulation  prot:EnrolledPopulation_CDISCPILOT01;
+   study:hasPopulation  prot:StudyPopulation_CDISCPILOT01;
 .
 ```
 
-And then create the corresponding attributes for the populations:
-
-```
-cd01p:EnrolledPopulation_CDISCPILOT01
-  rdf:type study:EnrolledPopulation ;
-  skos:prefLabel "Enrolled population CDISCPILOT01" ;
-  study:actualPopulationSize 254 ;
-  study:plannedPopulationSize 300 ;
-.
-
-cd01p:StudyPopulation_CDISCPILOT01
-  rdf:type study:StudyPopulation ;
-  skos:prefLabel "Study population CDISCPILOT01" ;
-  study:ageGroup code:AgeGroup_ADULT ;
-  study:ageGroup code:AgeGroup_ELDERLY ;
-  study:maxSubjectAge <https://w3id.org/phuse/code#PlannedSubjectAge_NULL.PINF> ;
-  study:minSubjectAge code:PlannedSubjectAge_P50Y ;
-  study:sexGroup sdtmterm:SexGroup_BOTH ;
-.
-```
+And then attach the attributes to the corresponding instance. This looks like the following:
 
 ![Figure: Using two different populations](./images/hands_on_triples_08.png)
 
