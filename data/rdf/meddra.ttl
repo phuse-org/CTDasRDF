@@ -140,15 +140,13 @@ meddra:hasSOC
 .
 meddra:m10000032
   rdf:type meddra:HighLevelConcept ;
-  skos:altLabel "CARDIAC CONDUCTION DISORDERS" ;
-  skos:prefLabel "Cardiac Conduction Disorders" ;
+  skos:prefLabel "CARDIAC CONDUCTION DISORDERS" ;
   meddra:hasHLGT meddra:m10007521 ;
   meddra:hasIdentifier 10000032 ;
 .
 meddra:m10001316
   rdf:type meddra:HighLevelGroupConcept ;
-  skos:altLabel "ADMINISTRATION SITE REACTIONS" ;
-  skos:prefLabel "Administration Site Reactions" ;
+  skos:prefLabel "ADMINISTRATION SITE REACTIONS" ;
   meddra:hasIdentifier 10001316 ;
   meddra:hasSOC meddra:m10018065 ;
   meddra:hasSOC meddra:m10022117 ;
@@ -156,8 +154,7 @@ meddra:m10001316
 meddra:m10003041
   rdf:type meddra:LowLevelConcept ;
   rdf:type meddra:PreferredConcept ;
-  skos:altLabel "APPLICATION SITE ERYTHEMA" ;
-  skos:prefLabel "Application Site Erythema" ;
+  skos:prefLabel "APPLICATION SITE ERYTHEMA" ;
   meddra:hasHLT meddra:m10003057 ;
   meddra:hasHLT meddra:m10015151 ;
   meddra:hasIdentifier 10003041 ;
@@ -166,96 +163,83 @@ meddra:m10003041
 .
 meddra:m10003047
   rdf:type meddra:LowLevelConcept ;
-  skos:altLabel "APPLICATION SITE ITCHING" ;
-  skos:prefLabel "Application Site Itching" ;
+  skos:prefLabel "APPLICATION SITE ITCHING" ;
   meddra:hasIdentifier 10003047 ;
   meddra:hasPT meddra:m10003053 ;
 .
 meddra:m10003053
   rdf:type meddra:PreferredConcept ;
-  skos:altLabel "APPLICATION SITE PRURITUS" ;
-  skos:prefLabel "Application Site Pruritus" ;
+  skos:prefLabel "APPLICATION SITE PRURITUS" ;
   meddra:hasHLT meddra:m10003057 ;
   meddra:hasIdentifier 10003053 ;
   meddra:hasPrimaryPTSOC meddra:m10018065 ;
 .
 meddra:m10003057
   rdf:type meddra:HighLevelConcept ;
-  skos:altLabel "APPLICATION AND INSTILLATION SITE REACTIONS" ;
-  skos:prefLabel "Application and Instillation Site Reactions" ;
+  skos:prefLabel "APPLICATION AND INSTILLATION SITE REACTIONS" ;
   meddra:hasHLGT meddra:m10001316 ;
   meddra:hasIdentifier 10003057 ;
 .
 meddra:m10003058
   rdf:type meddra:LowLevelConcept ;
-  skos:altLabel "APPLICATION SITE REDNESS" ;
-  skos:prefLabel "Application Site Redness" ;
+  skos:prefLabel "APPLICATION SITE REDNESS" ;
   meddra:hasIdentifier 10003058 ;
   meddra:hasPT meddra:m10003041 ;
 .
 meddra:m10003677
   rdf:type meddra:PreferredConcept ;
-  skos:altLabel "ATRIOVENTRICULAR BLOCK SECOND DEGREE" ;
-  skos:prefLabel "Atrioventricular Block Second Degree" ;
+  skos:prefLabel "ATRIOVENTRICULAR BLOCK SECOND DEGREE" ;
   meddra:hasHLT meddra:m10000032 ;
   meddra:hasIdentifier 10003677 ;
   meddra:hasPrimaryPTSOC meddra:m10007541 ;
 .
 meddra:m10003851
   rdf:type meddra:LowLevelConcept ;
-  skos:altLabel "AV BLOCK SECOND DEGREE" ;
-  skos:prefLabel "AV Block Second Degree" ;
+  skos:prefLabel "AV BLOCK SECOND DEGREE" ;
   meddra:hasIdentifier 10003851 ;
   meddra:hasPT meddra:m10003677 ;
 .
 meddra:m10007521
   rdf:type meddra:HighLevelGroupConcept ;
-  skos:altLabel "CARDIAC ARRYTHMIAS" ;
-  skos:prefLabel "Cardiac Arrythmias" ;
+  skos:prefLabel "CARDIAC ARRYTHMIAS" ;
   meddra:hasIdentifier 10007521 ;
   meddra:hasSOC meddra:m10007541 ;
 .
 meddra:m10007541
   rdf:type meddra:SystemOrganClassConcept ;
-  skos:altLabel "CARDIAC DISORDERS" ;
-  skos:prefLabel "Cardiac Disorders" ;
+  skos:prefLabel "CARDIAC DISORDERS" ;
   skos:topConceptOf meddra:MedDRA211 ;
   meddra:hasIdentifier 10007541 ;
 .
 meddra:m10012727
   rdf:type meddra:LowLevelConcept ;
-  skos:altLabel "DIARRHEA" ;
-  skos:prefLabel "Diarrhea" ;
+  skos:prefLabel "DIARRHEA" ;
   meddra:hasIdentifier 10012727 ;
   meddra:hasPT meddra:m10012735 ;
 .
 meddra:m10012735
   rdf:type meddra:PreferredConcept ;
-  skos:altLabel "DIARRHOEA" ;
-  skos:prefLabel "Diarrhoea" ;
+  skos:prefLabel "DIARRHOEA" ;
   meddra:hasHLT meddra:m10012736 ;
   meddra:hasIdentifier 10012735 ;
   meddra:hasPrimaryPTSOC meddra:m10017947 ;
 .
 meddra:m10012736
   rdf:type meddra:HighLevelConcept ;
-  skos:altLabel "DIARRHOEA (EXCL INFECTIVE)" ;
-  skos:prefLabel "Diarrhoea (Excl Infective)" ;
+  skos:prefLabel "DIARRHOEA (EXCL INFECTIVE)" ;
   meddra:hasHLGT meddra:m10017977 ;
   meddra:hasIdentifier 10012736 ;
 .
 meddra:m10014982
   rdf:type meddra:HighLevelGroupConcept ;
-  skos:altLabel "EPIDERMAL AND DERMAL CONDITIONS" ;
-  skos:prefLabel "Epidermal and Dermal Conditions" ;
+  skos:prefLabel "EPIDERMAL AND DERMAL CONDITIONS" ;
   meddra:hasIdentifier 10014982 ;
   meddra:hasSOC meddra:m10040785 ;
 .
 meddra:m10015150
   rdf:type meddra:LowLevelConcept ;
   rdf:type meddra:PreferredConcept ;
-  skos:altLabel "ERYTHEMA" ;
-  skos:prefLabel "Erythema" ;
+  skos:prefLabel "ERYTHEMA" ;
   meddra:hasHLT meddra:m10015151 ;
   meddra:hasIdentifier 10015150 ;
   meddra:hasPT meddra:m10015150 ;
@@ -263,50 +247,43 @@ meddra:m10015150
 .
 meddra:m10015151
   rdf:type meddra:HighLevelConcept ;
-  skos:altLabel "ERYTHEMAS" ;
-  skos:prefLabel "Erythemas" ;
+  skos:prefLabel "ERYTHEMAS" ;
   meddra:hasHLGT meddra:m10014982 ;
   meddra:hasIdentifier 10003057 ;
 .
 meddra:m10017947
   rdf:type meddra:SystemOrganClassConcept ;
-  skos:altLabel "GASTROINTESTINAL DISORDERS" ;
-  skos:prefLabel "Gastrointestinal Disorders" ;
+  skos:prefLabel "GASTROINTESTINAL DISORDERS" ;
   skos:topConceptOf meddra:MedDRA211 ;
   meddra:hasIdentifier 10017947 ;
 .
 meddra:m10017977
   rdf:type meddra:HighLevelGroupConcept ;
-  skos:altLabel "GASTROINTESTINAL MOTILITY AND DEFAECATION CONDITIONS" ;
-  skos:prefLabel "Gastrointestinal Motility and Defaecation Conditions" ;
+  skos:prefLabel "GASTROINTESTINAL MOTILITY AND DEFAECATION CONDITIONS" ;
   meddra:hasIdentifier 10017977 ;
   meddra:hasSOC meddra:m10017947 ;
 .
 meddra:m10018065
   rdf:type meddra:SystemOrganClassConcept ;
-  skos:altLabel "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS" ;
-  skos:prefLabel "General Disorders and Administration Site Conditions" ;
+  skos:prefLabel "GENERAL DISORDERS AND ADMINISTRATION SITE CONDITIONS" ;
   skos:topConceptOf meddra:MedDRA211 ;
   meddra:hasIdentifier 10018065 ;
 .
 meddra:m10022117
   rdf:type meddra:SystemOrganClassConcept ;
-  skos:altLabel "INJURY, POISONING AND PROCEDURAL COMPLICATIONS" ;
-  skos:prefLabel "Injury, Poisoning and Procedural Complications" ;
+  skos:prefLabel "INJURY, POISONING AND PROCEDURAL COMPLICATIONS" ;
   skos:topConceptOf meddra:MedDRA211 ;
   meddra:hasIdentifier 10022117 ;
 .
 meddra:m10024781
   rdf:type meddra:LowLevelConcept ;
-  skos:altLabel "LOCALIZED ERYTHEMA" ;
-  skos:prefLabel "Localized Erythema" ;
+  skos:prefLabel "LOCALIZED ERYTHEMA" ;
   meddra:hasIdentifier 10024781 ;
   meddra:hasPT meddra:m10015150 ;
 .
 meddra:m10040785
   rdf:type meddra:SystemOrganClassConcept ;
-  skos:altLabel "SKIN AND SUBCUTANEOUS TISSUE DISORDERS" ;
-  skos:prefLabel "Skin and Subcutaneous Tissue Disorders" ;
+  skos:prefLabel "SKIN AND SUBCUTANEOUS TISSUE DISORDERS" ;
   skos:topConceptOf meddra:MedDRA211 ;
   meddra:hasIdentifier 10040785 ;
 .
