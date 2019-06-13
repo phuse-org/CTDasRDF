@@ -29,7 +29,8 @@ Ontology details.
 
 The approach to data conversion differs between MedDRA and the SDTM XPT files. Please see their respective sections for details. For methods using SAS, please see the "Hands-on" guides in the next section.
 
-* [2.4.1 SDTM Mapping and conversion](DataMappingAndConversion.md)
+* [2.4.1 MedDRA conversion](MedDRAConversion.md)
+* [2.4.2 SDTM Mapping and conversion](DataMappingAndConversion.md)
 
 How-To Guides
 ---------------------
@@ -47,3 +48,12 @@ A step by step guide to hands-on how to create triples based on an ontology usin
 ### [Get Hands Stardog Mapping Syntax Visualization App](Hands-On-SMSVisualization.md)
 
 A guide hot to use the SMS visualization app available in the repository.
+
+### [Get Hands on Understanding Adverse Events](HandsOnUnderstandingAE.md)
+
+A guide to understand the Adverse Event Ontology, how to investigate this and see data realated to one Adverse Event triplefied.
+
+
+### [Use Apache Jena Fuseki Triple Store](ApacheJenaFusekiTripleStore.md)
+
+These instructions show how to setup an Apache Jena Fuseki triple store to locally upload triples and perform queries.

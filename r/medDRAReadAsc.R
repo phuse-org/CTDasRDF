@@ -15,14 +15,15 @@
 # TESTING:  LLT: meddra:m10003851
 #
 #
-# TODO:  * move subsetting to separate code/function for easy of enable/disable
-#        * What do we call this graph? What is the Subject and how do we attach 
-#            everything to it.
-#        * Should MedDRA be : https://w3id.org/phuse/MEDDRA21_1/  or 
+# TODO:  Should MedDRA be : https://w3id.org/phuse/MEDDRA21_1/  or 
 #        as is now: https://w3id.org/phuse/meddra#
+#
+# BY: TW
+# MOD: KG - update subsetFlag usage at some points, include altLabel definition, 
+#           direct prefix definitions
 #______________________________________________________________________________
 library(rdflib)
-setwd("C:/_github/CTDasRDF")
+setwd("C:/Temp/git/CTDasRDF")
 
 #--- Subsetting ---------------------------------------------------------------
 # If Y, subset the data to only the data present in the ontology instance data.
@@ -73,6 +74,7 @@ socOntSubset <- c('10007541',
                   '10040785')
 
 #--- FUNCTIONS ----------------------------------------------------------------
+
 #' Read MedDRA asc files.
 #' 
 #'
@@ -112,10 +114,7 @@ readAscFile <- function(ascFile, colNames)
 #   May later change to external file?
 prefixList <-read.table(header = TRUE, text = "
                         prefixUC  url
-                        'DCTERMS' 'http://purl.org/dc/terms/'
-                        'BIBO'    'http://purl.org/ontology/bibo/'
                         'MEDDRA'  'https://w3id.org/phuse/meddra#'
-                        'PAV'     'http://purl.org/pav'
                         'RDF'     'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
                         'RDFS'    'http://www.w3.org/2000/01/rdf-schema#'
                         'SKOS'    'http://www.w3.org/2004/02/skos/core#'
@@ -137,6 +136,7 @@ lltData <- readAscFile(ascFile="llt", colNames=c("code", "label", "PT_code"))
 if(subsetFlag == "Y"){ lltData <- subset(lltData, code  %in% ltOntSubset) }
 
 lltData$rowID <- 1:nrow(lltData) # row index
+lltData$ulabel <- toupper(lltData$label) # upcase label
 
 #--- pt ---
 ptData <- readAscFile(ascFile="pt", colNames=c("code", "label", "SOC_code"))
@@ -145,6 +145,7 @@ ptData <- readAscFile(ascFile="pt", colNames=c("code", "label", "SOC_code"))
 if(subsetFlag == "Y"){ ptData <- subset(ptData, code %in% ptOntSubset )}
 
 ptData$rowID <- 1:nrow(ptData) # row index  
+ptData$ulabel <- toupper(ptData$label) # upcase label
 
 #--- hlt ---
 hltData <- readAscFile(ascFile="hlt", colNames=c("code", "label"))
@@ -153,13 +154,14 @@ hltData <- readAscFile(ascFile="hlt", colNames=c("code", "label"))
 if(subsetFlag == "Y"){hltData <- subset(hltData, code %in% hltOntSubset)}
 
 hltData$rowID <- 1:nrow(hltData) # row index  
+hltData$ulabel <- toupper(hltData$label) # upcase label
 
 #--- hlt_pt ---
 hlt_ptKey <- readAscFile(ascFile="hlt_pt", colNames=c("HLT_code", "PT_code"))
 
 #DEV  Subset for testing
 # Uses same subset as the subsetting of pt earlier
-hlt_ptKey <- subset(hlt_ptKey, PT_code %in% ptOntSubset)
+if(subsetFlag == "Y"){hlt_ptKey <- subset(hlt_ptKey, PT_code %in% ptOntSubset)}
 hlt_ptKey$rowID <- 1:nrow(hlt_ptKey) # row index  
 
 # Merge in the HLT code to the PT dataframe
@@ -172,7 +174,7 @@ hlgt_hltKey <- readAscFile(ascFile="hlgt_hlt", colNames=c("HLGT_code", "HLT_code
 
 # DEV Subset for testing (match to ptcode in llt sheet)
 # Uses same subset as the subsetting of pt earlier
-hlgt_hltKey <- subset(hlgt_hltKey, HLT_code %in% hltOntSubset)
+if(subsetFlag == "Y"){hlgt_hltKey <- subset(hlgt_hltKey, HLT_code %in% hltOntSubset)}
 
 # Merge in the HLGT code to the htl dataframe
 hltData <- merge(hltData, hlgt_hltKey, by.x="code", by.y="HLT_code", all=FALSE)
@@ -189,11 +191,12 @@ soc_hlgtKey <- readAscFile(ascFile="soc_hlgt", colNames=c("SOC_code", "HLGT_code
 
 # DEV Subset for testing (match to ptcode in llt sheet)
 # Uses same subset as the subsetting of hlgt earlier
-soc_hlgtKey <- subset(soc_hlgtKey, HLGT_code %in% hlgtOntSubset)
+if(subsetFlag == "Y"){soc_hlgtKey <- subset(soc_hlgtKey, HLGT_code %in% hlgtOntSubset)}
 
 # Merge in the HLGT code to the hlt dataframe
 hlgtData <- merge(hlgtData, soc_hlgtKey, by.x="code", by.y="HLGT_code", all=FALSE)
 hlgtData$rowID <- 1:nrow(hlgtData) # row index
+hlgtData$ulabel <- toupper(hlgtData$label) # upcase label
 
 #--- soc ---
 socData <- readAscFile(ascFile="soc", colNames=c("code", "label", "short"))
@@ -201,58 +204,18 @@ socData <- readAscFile(ascFile="soc", colNames=c("code", "label", "short"))
 # Subset
 if(subsetFlag == "Y"){ socData <- subset(socData, code %in% socOntSubset) }
 socData$rowID <- 1:nrow(socData) # row index
+socData$ulabel <- toupper(socData$label) # upcase label
 
 #------------------------------------------------------------------------------
 #--- RDF Creation Statements --------------------------------------------------
 some_rdf <- rdf()  # initialize 
 
-#---- 0. Graph Creation metadata for creation date and method
-rdf_add(some_rdf, 
-        subject      = paste0(MEDDRA, "MedDRA211"), 
-        predicate    = paste0(RDFS,  "label"), 
-        object       = "MedDRA 211 converted to RDF",
-        objectType   = "literal", 
-        datatype_uri = paste0(XSD,"string")
-)
-rdf_add(some_rdf, 
-        subject      = paste0(MEDDRA, "MedDRA211"), 
-        predicate    = paste0(DCTERMS,  "description"), 
-        object       = "A subset of MedDRA 211 terms to support the observations
-                        in the GoTWLD project, converted to RDF using R Scripts",
-        objectType   = "literal", 
-        datatype_uri = paste0(XSD,"string")
-)
-rdf_add(some_rdf, 
-        subject      = paste0(MEDDRA, "MedDRA211"), 
-        predicate    = paste0(DCTERMS,  "title"), 
-        object       = "MedDRA 211 as RDF",
-        objectType   = "literal", 
-        datatype_uri = paste0(XSD,"string")
-)
-rdf_add(some_rdf, 
-        subject      = paste0(MEDDRA, "MedDRA211"), 
-        predicate    = paste0(BIBO,  "status"), 
-        object       = "Draft/Dev",
-        objectType   = "literal", 
-        datatype_uri = paste0(XSD,"string")
-)
-rdf_add(some_rdf, 
-        subject      = paste0(MEDDRA, "MedDRA211"), 
-        predicate    = paste0(PAV,  "version"), 
-        object       = "0.0.1",
-        objectType   = "literal", 
-        datatype_uri = paste0(XSD,"string")
-)
-# Calculate the date time of the run.
-conversionDate<-gsub("(\\d\\d)$", ":\\1",strftime(Sys.time(),"%Y-%m-%dT%H:%M:%S%z"))
+MEDDRA <- "https://w3id.org/phuse/meddra#"
+XSD <- "http://www.w3.org/2001/XMLSchema#"
+RDF <- "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+SKOS <- "http://www.w3.org/2004/02/skos/core#"
+RDFS <- "http://www.w3.org/2000/01/rdf-schema#"
 
-rdf_add(some_rdf, 
-        subject      = paste0(MEDDRA, "MedDRA211"), 
-        predicate    = paste0(PAV,  "createdOn"), 
-        object       = conversionDate,
-        objectType   = "literal", 
-        datatype_uri = paste0(XSD,"datetime")
-)
 
 #--- 1. LLT Creation ---
 for(i in 1:nrow(lltData))
@@ -306,6 +269,13 @@ for(i in 1:nrow(lltData))
     objectType   = "literal", 
     datatype_uri = paste0(XSD,"string")
   )
+  rdf_add(some_rdf, 
+          subject      = paste0(MEDDRA, paste0("m", lltData[i,"code"])), 
+          predicate    = paste0(SKOS,  "altLabel"), 
+          object       = paste0(lltData[i,"ulabel"]),
+          objectType   = "literal", 
+          datatype_uri = paste0(XSD,"string")
+  )
 }  #--- End llt triples
 
 
@@ -328,6 +298,13 @@ for(i in 1:nrow(ptData))
     object        = ptData[i,"label"],
     objectType    = "literal", 
     datatype_uri  = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+          subject       = paste0(MEDDRA, paste0("m", ptData[i,"code"])), 
+          predicate     = paste0(SKOS,  "altLabel"), 
+          object        = ptData[i,"ulabel"],
+          objectType    = "literal", 
+          datatype_uri  = paste0(XSD,"string")
   )
   rdf_add(some_rdf, 
     subject      = paste0(MEDDRA, paste0("m", ptData[i,"code"])), 
@@ -364,6 +341,13 @@ for(i in 1:nrow(hltData))
     datatype_uri  = paste0(XSD,"string")
   )
   rdf_add(some_rdf, 
+          subject       = paste0(MEDDRA, paste0("m", hltData[i,"code"])), 
+          predicate     = paste0(SKOS,  "altLabel"), 
+          object        = hltData[i,"ulabel"],
+          objectType    = "literal", 
+          datatype_uri  = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
     subject      = paste0(MEDDRA, paste0("m", hltData[i,"code"])), 
     predicate    = paste0(MEDDRA,  "hasIdentifier"), 
     object       = paste0(hltData[i,"code"]),
@@ -396,6 +380,13 @@ for(i in 1:nrow(hlgtData))
     object       = hlgtData[i,"label"],
     objectType   = "literal", 
     datatype_uri = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
+          subject      = paste0(MEDDRA, paste0("m", hlgtData[i,"code"])), 
+          predicate    = paste0(SKOS,  "altLabel"), 
+          object       = hlgtData[i,"ulabel"],
+          objectType   = "literal", 
+          datatype_uri = paste0(XSD,"string")
   )
   rdf_add(some_rdf, 
     subject      = paste0(MEDDRA, paste0("m", hlgtData[i,"code"])), 
@@ -432,6 +423,13 @@ for(i in 1:nrow(socData))
     datatype_uri = paste0(XSD,"string")
   )
   rdf_add(some_rdf, 
+          subject      = paste0(MEDDRA, paste0("m", socData[i,"code"])), 
+          predicate    = paste0(SKOS,  "altLabel"), 
+          object       = socData[i,"ulabel"],
+          objectType   = "literal", 
+          datatype_uri = paste0(XSD,"string")
+  )
+  rdf_add(some_rdf, 
     subject   = paste0(MEDDRA, paste0("m", socData[i,"code"])), 
     predicate = paste0(SKOS,  "topConceptOf"), 
     object    = paste0(MEDDRA, "MedDRA")
@@ -447,17 +445,14 @@ for(i in 1:nrow(socData))
 #--- Triple build complete ---
 
 #--- Serialize the some_rdf to a TTL file ----------------------------------------
-outFile <- 'data/rdf/MedDRA211-R.TTL'
+outFile <- 'data/medDRA/MedDRA211-R.TTL'
 
 rdf_serialize(some_rdf,
               outFile,
               format = "turtle",
-              namespace = c( bibio   = "http://purl.org/ontology/bibo/",
-                             dcterms = "http://purl.org/dc/terms/",
-                             meddra  = "https://w3id.org/phuse/meddra#",
-                             pav     = "http://purl.org/pav",
-                             rdf     = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-                             rdfs    = "http://www.w3.org/2000/01/rdf-schema#",
-                             skos    = "http://www.w3.org/2004/02/skos/core#",
-                             xsd     = "http://www.w3.org/2001/XMLSchema#"
+              namespace = c( meddra = "https://w3id.org/phuse/meddra#",
+                             rdf    = "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+                             rdfs   = "http://www.w3.org/2000/01/rdf-schema#",
+                             skos   = "http://www.w3.org/2004/02/skos/core#",
+                             xsd    = "http://www.w3.org/2001/XMLSchema#"
               ))
