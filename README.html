@@ -90,8 +90,14 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -100,14 +106,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -121,35 +187,25 @@ $(document).ready(function () {
 </div>
 
 
-<div id="ctdasrdf" class="section level1">
-<h1>CTDasRDF</h1>
-<p>This repository holds the scripts and data for the PhUSE project “Clinical Trials Data as RDF.” The project is ongoing and documentation will lag behind other repository content.</p>
-<p>Documentation is created in Markdown (.rmd) files. Clone the repository and view the .html file, or recreate the .html by knitting the rmd file. Primary sources of information include:</p>
-<div id="explanation" class="section level2">
-<h2>Explanation</h2>
-<p>An overview of the project background, goals, and approach. Includes links to the project Whitepaper and other related publications.</p>
-<p><strong>File</strong>: /doc/Markdown/Explanation.<a href="doc/Markdown/Explanation.rmd">rmd</a> / <a href="doc/Markdown/Explanation.html">html</a></p>
-</div>
-<div id="reference" class="section level2">
-<h2>Reference</h2>
-<p>Specifics of the data conversion and mapping process. Includes details of the structure of this Repository.</p>
-<p><strong>File</strong>: /doc/Markdown/Reference.<a href="doc/Markdown/Reference.rmd">rmd</a> / <a href="doc/Markdown/Reference.html">html</a></p>
-</div>
-<div id="how-to-guides" class="section level2">
-<h2>How-To Guides</h2>
-<p>Step-by-step guides to working with the data.</p>
-<p><strong>File</strong>: TBD .</p>
-</div>
-<div id="tutorials" class="section level2">
-<h2>Tutorials</h2>
-<p>Lessons in data conversion, query, analysis.</p>
-<p><strong>File</strong>: TBD</p>
-</div>
+<div id="going-translational-with-linked-data-gotwld" class="section level1">
+<h1>Going Translational With Linked Data (GoTWLD)</h1>
+<p>GoTWLD is the successor to the PhUSE project “Clinical Trials Data as RDF (CTDasRDF).” CTDasRDF successfully modeled the CDISC Study Data Tabulation (SDTM) domains AE, DM, EX, TS, and VS. Instance data from SAS Transport Files was converted to Linked Data as Resource Description Framework (RDF) based on the supporting ontologies developed for this project. Information about the ontologies, source data, conversion scripts, and other related files can be found by following the links in the <a href="doc/TableOfContents.md">Table of Contents</a>.</p>
+<p>At the PhUSE CSS Conference in June 2019, it was decided change project focus away from modeling additional SDTM domains to instead create three subprojects, each with its own dedicated Git Hub repository:</p>
+<ul>
+<li>Conversion of MedDRA terminology to RDF <a href="https://github.com/phuse-org/MedDRAasRDF" class="uri">https://github.com/phuse-org/MedDRAasRDF</a></li>
+<li>Unique Identifiers for the Pharmaceutical Industry <a href="https://github.com/phuse-org/UIDPharma" class="uri">https://github.com/phuse-org/UIDPharma</a></li>
+<li>Conformance Rules for Non-Clinical data (SEND) <a href="https://github.com/phuse-org/SENDConform" class="uri">https://github.com/phuse-org/SENDConform</a></li>
+</ul>
+<p>Work on converting additional SDTM domains may continue as time permits. You can obtain more information by contacting the project leads:</p>
+<ul>
+<li><p>Tim Williams <a href="mailto:tim.williams@phuse.eu">tim.williams@phuse.eu</a></p></li>
+<li><p>Armando Oliva <a href="https://github.com/aolivamd" class="uri">https://github.com/aolivamd</a></p></li>
+</ul>
 </div>
 <div id="obtaining-project-files" class="section level1">
 <h1>Obtaining project files</h1>
-<p>Github novices should download the files: Click “Clone or Download” and select “Download Zip” Extract the file to a location like C:\_github This will create the folder C:\_github\CTDasRDF-MASTER and subfolders. You will need to edit the paths in some files to get things running.</p>
-<p>``` Contact the project leads Tim Williams or Armando Oliva for additional information.</p>
+<p>Github novices should download the files: Click “Clone or Download” and select “Download Zip” Extract the file to a location like C:\_github This will create the folder C:\_github\CTDasRDF-MASTER and subfolders. You will need to some file paths to get things running.<br />
+Contact the project leads if you would like to become a contributor.</p>
 </div>
 
 

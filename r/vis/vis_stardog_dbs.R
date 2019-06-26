@@ -24,7 +24,7 @@ library(dplyr)
 library(SPARQL)
 
 # Configuration
-setwd("C:/Temp/git/CTDasRDF/r/vis")
+setwd("C:/_github/CTDasRDF/r/vis")
 maxLabelSize <- 40
 
 
@@ -184,7 +184,7 @@ visNetwork(nodesListXX, edgesListXX, width= "100%", height=1100) %>%
 #####################################################
 
 
-endpoint <- "http://localhost:5820/CTDasRDFOWL/query"
+endpoint <- "http://localhost:5820/CTDasRDFOnt/query"
 queryOnt = paste0("SELECT * WHERE {?predicate  rdfs:domain ?domain 
                   OPTIONAL {?predicate rdfs:range ?range}}")
 qd <- SPARQL(endpoint, queryOnt, ns=prefix)

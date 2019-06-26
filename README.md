@@ -1,14 +1,21 @@
 # Going Translational With Linked Data (GoTWLD) 
-This is a continuation of the PhUSE project "Clinical Trials Data as RDF", extended to include non-clinical (SEND) concepts and additional SDTM domains. Leads for the project are Tim Williams (NovasTaylor), Armando Oliva (aolivamd), and Drashtti Vasant.
+GoTWLD is the successor to the PhUSE project "Clinical Trials Data as RDF (CTDasRDF)." CTDasRDF successfully modeled the CDISC Study Data Tabulation (SDTM) domains AE, DM, EX, TS, and VS. Instance data from  SAS Transport Files was converted to Linked Data as Resource Description Framework (RDF) based on the supporting ontologies developed for this project. Information about the ontologies, source data, conversion scripts, and other related files can be found by following the links in the  [Table of Contents](doc/TableOfContents.md).
 
-# Documentation
-[Table of Contents](doc/TableOfContents.md) - Start here!  **NOTE**: Documentation lags behind development.  
+At the PhUSE CSS Conference in June 2019, it was decided change project focus away from modeling additional SDTM domains to instead create three subprojects, each with its own dedicated Git Hub repository:
 
-Project documentation format is Github Markdown, stored in the **/doc**/ subfolder. Documentation will lag behind development due to the ongoing nature of the project.
+* Conversion of MedDRA terminology to RDF <https://github.com/phuse-org/MedDRAasRDF>
+* Unique Identifiers for the Pharmaceutical Industry <https://github.com/phuse-org/UIDPharma>
+* Conformance Rules for Non-Clinical data (SEND) <https://github.com/phuse-org/SENDConform>
+
+Work on converting additional SDTM domains may continue as time permits. You can obtain more information by contacting the project leads:
+
+* Tim Williams <tim.williams@phuse.eu>
+
+* Armando Oliva <https://github.com/aolivamd>
+
 
 # Obtaining project files
 Github novices should download the files: 
 Click "Clone or Download" and select "Download Zip"
 Extract the file to a location like  C:\\_github
-This will create the folder C:\\_github\\CTDasRDF-MASTER and subfolders. You will need to some file paths to get things running.   
-Contact the project leads if you would like to become a contributor.
+This will create the folder C:\\_github\\CTDasRDF-MASTER and subfolders. Some file paths must change for scripts to run. 
