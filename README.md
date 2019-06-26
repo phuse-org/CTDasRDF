@@ -7,7 +7,7 @@ At the PhUSE CSS Conference in June 2019, it was decided change project focus aw
 * Unique Identifiers for the Pharmaceutical Industry <https://github.com/phuse-org/UIDPharma>
 * Conformance Rules for Non-Clinical data (SEND) <https://github.com/phuse-org/SENDConform>
 
-Work on converting additional SDTM domains may continue as time permits. You can obtain more information by contacting the project leads:
+Work on converting additional SDTM domains may continue as time permits. More information can be obtained by contacting the project leads:
 
 * Tim Williams <tim.williams@phuse.eu>
 
