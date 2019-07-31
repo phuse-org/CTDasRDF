@@ -70,7 +70,7 @@ dm <- encodeCol(data=dm, col="rfendtc")
 dm$studyPartInt_im       <- paste0(dm$dmdtc,  "_", dm$rfpendtc_en)  
 dm <- encodeCol(data=dm, col="studyPartInt_im", removeCol=TRUE)
 
-# Sort column names ease of refernece 
+# Sort column names ease of reference 
 dm <- dm %>% select(noquote(order(colnames(dm))))
 
 #-- dmDrugInt df for use by EX coding ----
