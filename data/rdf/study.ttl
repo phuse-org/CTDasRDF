@@ -635,7 +635,8 @@ study:AnimalSubject
   a owl:Class ;
   a sh:NodeShape ;
   rdfs:subClassOf study:Animal ;
-  rdfs:subClassOf study:StudySubject ;
+  rdfs:subClassOf study:Subject ;
+  skos:definition "A Subject that is also an Animal (see definition of both). An Animal Subject need not participate in a Study. " ;
   skos:prefLabel "Animal subject" ;
 .
 study:AnnotatedCaseReportForm
@@ -754,6 +755,56 @@ study:BiologicEntity
           ]
         ) ;
       rdfs:comment "age assignment" ;
+    ] ;
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "sex" ;
+              ] ;
+            sp:predicate study:sex ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object study:BiologicEntity ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "sexactivity" ;
+              ] ;
+            sp:predicate study:participatesIn ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object code:SexDataCollection ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "sexactivity" ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "sex" ;
+              ] ;
+            sp:predicate code:outcome ;
+            sp:subject [
+                sp:varName "sexactivity" ;
+              ] ;
+          ]
+          [
+            sp:object study:SexOutcome ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "sex" ;
+              ] ;
+          ]
+        ) ;
+      rdfs:comment "sex assignment" ;
     ] ;
   rdfs:subClassOf study:Party ;
   skos:definition "Any individual living (or previously living) being. [BRIDG 5.0]" ;
@@ -1149,8 +1200,8 @@ study:EligibilityDeterminationOutcome
 study:EligibleSubject
   a owl:Class ;
   rdfs:comment "The eligible subject meets all eligibility criteria and is a candidate to proceed to the next activity, often allocation to a treatment strategy in a randomized trial." ;
-  rdfs:subClassOf study:HumanStudySubject ;
-  skos:definition "A HumanStudySubject who has succesfully completed the Screening Activity" ;
+  rdfs:subClassOf study:StudySubject ;
+  skos:definition "A StudySubject who has succesfully completed the Screening Activity" ;
   skos:prefLabel "Eligible subject" ;
 .
 study:EndInstant
@@ -1169,8 +1220,8 @@ study:EnrolledPopulation
 study:EnrolledSubject
   a owl:Class ;
   rdfs:comment "an Enrolled Subject includes Eligible subjects but may include ineligible subjects who are accidentally or intentionally allocated to a treatment arm; therefore is not a subClass of Eligible Subject necessarily. In a randomized trial, it is equivalent to a Randomized Subject. " ;
-  rdfs:subClassOf study:HumanStudySubject ;
-  skos:definition "A Human Study Subject that has been allocated to a treatment arm in a Study" ;
+  rdfs:subClassOf study:StudySubject ;
+  skos:definition "A Study Subject that has been allocated to a treatment arm in a Study" ;
   skos:prefLabel "Enrolled subject" ;
 .
 study:Entity
@@ -1287,7 +1338,7 @@ study:HumanStudySubject
 study:HumanSubject
   a owl:Class ;
   rdfs:subClassOf study:Person ;
-  rdfs:subClassOf study:StudySubject ;
+  rdfs:subClassOf study:Subject ;
   skos:definition "A Person of interest for participation in a Study. 45 CFR 46 defines a human subject as “a living individual about whom an investigator...conducting research obtains: Data through intervention or interaction with the individual, or Identifiable private information.”" ;
   skos:note "typically a Human Subject is the target of some recruitment activity or voluntarily inquires about participating in a Study. a human subject need not paraticipate in a study, but allows the collection of data or identifiable private information for the purpose of research. " ;
   skos:prefLabel "Human subject" ;
@@ -1576,56 +1627,6 @@ study:Person
           ]
         ) ;
       rdfs:comment "race assignment" ;
-    ] ;
-  spin:rule [
-      a sp:Construct ;
-      sp:templates (
-          [
-            sp:object [
-                sp:varName "sex" ;
-              ] ;
-            sp:predicate study:sex ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object study:Person ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object [
-                sp:varName "sexactivity" ;
-              ] ;
-            sp:predicate study:participatesIn ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object code:SexDataCollection ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "sexactivity" ;
-              ] ;
-          ]
-          [
-            sp:object [
-                sp:varName "sex" ;
-              ] ;
-            sp:predicate code:outcome ;
-            sp:subject [
-                sp:varName "sexactivity" ;
-              ] ;
-          ]
-          [
-            sp:object study:SexOutcome ;
-            sp:predicate rdf:type ;
-            sp:subject [
-                sp:varName "sex" ;
-              ] ;
-          ]
-        ) ;
-      rdfs:comment "sex assignment" ;
     ] ;
   rdfs:comment "" ;
   rdfs:subClassOf study:BiologicEntity ;
@@ -2326,8 +2327,9 @@ study:Subcategory
 study:Subject
   a owl:Class ;
   a sh:NodeShape ;
-  rdfs:subClassOf study:Party ;
-  skos:note "same as BRIDG Subject, which can be a human, non-human animal, or inanimate object (e.g. drug substance or product or device, etc.)" ;
+  rdfs:subClassOf study:Entity ;
+  skos:definition "An Entity of interest for participation in a Study, about whom an Investigator collects data for the purpose of conducting research. " ;
+  skos:note "same as BRIDG Subject, which can be a human, non-human animal, or inanimate object (e.g. drug substance or product or device, etc.). A Subject need not participate in a Study although often does. " ;
   skos:prefLabel "Subject" ;
 .
 study:SubjectIdentifier
@@ -2508,7 +2510,7 @@ study:adverseEventPattern
 .
 study:afflictedBy
   a owl:ObjectProperty ;
-  rdfs:domain study:Person ;
+  rdfs:domain study:Subject ;
   rdfs:range study:MedicalCondition ;
   skos:prefLabel "afflicted by" ;
 .
@@ -2750,7 +2752,7 @@ study:death
 study:deathFlag
   a owl:DatatypeProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:Person ;
+  rdfs:domain study:Subject ;
   rdfs:range xsd:string ;
   skos:definition "" ;
   skos:prefLabel "death flag" ;
@@ -3021,8 +3023,8 @@ study:hasLifespan
 .
 study:hasMember
   a owl:ObjectProperty ;
-  rdfs:domain study:Population ;
-  rdfs:range study:HumanStudySubject ;
+  rdfs:domain study:StudyPopulation ;
+  rdfs:range study:StudySubject ;
   skos:prefLabel "has member" ;
 .
 study:hasParticipant
@@ -3224,16 +3226,16 @@ study:hasStudyParticipant
   a owl:ObjectProperty ;
   rdfs:comment "" ;
   rdfs:domain study:Study ;
-  rdfs:range study:Subject ;
+  rdfs:range study:StudySubject ;
   owl:inverseOf study:participatesInStudy ;
-  skos:definition "relates a study with a HumanStudySubject as a participant in the Study" ;
+  skos:definition "relates a study with a StudySubject as a participant in the Study" ;
   skos:prefLabel "has study participant" ;
 .
 study:hasStudyParticipationInterval
   a owl:FunctionalProperty ;
   a owl:ObjectProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:HumanStudySubject ;
+  rdfs:domain study:StudySubject ;
   rdfs:range study:StudyParticipationInterval ;
   rdfs:subPropertyOf study:hasInterval ;
   skos:definition "" ;
@@ -3257,7 +3259,7 @@ study:hasSubcategory
 study:hasSubjectID
   a owl:ObjectProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:Person ;
+  rdfs:domain study:Subject ;
   rdfs:range study:SubjectIdentifier ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "" ;
@@ -3273,7 +3275,7 @@ study:hasUniqueSubjectID
   a owl:InverseFunctionalProperty ;
   a owl:ObjectProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:Person ;
+  rdfs:domain study:Subject ;
   rdfs:range study:UniqueSubjectIdentifier ;
   rdfs:subPropertyOf study:hasIdentifier ;
   skos:definition "" ;
@@ -3410,7 +3412,7 @@ study:participatesIn
 study:participatesInStudy
   a owl:ObjectProperty ;
   rdfs:comment "" ;
-  rdfs:domain study:HumanStudySubject ;
+  rdfs:domain study:StudySubject ;
   rdfs:range study:Study ;
   owl:inverseOf study:hasStudyParticipant ;
   skos:definition "" ;
@@ -3517,7 +3519,7 @@ study:severity
 study:sex
   a owl:FunctionalProperty ;
   a owl:ObjectProperty ;
-  rdfs:domain study:Person ;
+  rdfs:domain study:Subject ;
   rdfs:range study:SexOutcome ;
   skos:altLabel "" ;
   skos:prefLabel "sex" ;
