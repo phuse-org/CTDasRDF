@@ -108,12 +108,12 @@ function(input, output, session) {
     nodes$color.border     <- "black"
     
     # Nodes color based on prefix
-    nodes$color.background[ grepl("cdiscpilot01:", nodes$id, perl=TRUE) ] <- "#2C52DA"
-    nodes$color.background[ grepl("cd01p:",        nodes$id, perl=TRUE) ] <- '#008D00'   
-    nodes$color.background[ grepl("code:",         nodes$id, perl=TRUE) ] <- '#1C5B64'
+    nodes$color.background[ grepl("cdiscpilot01:", nodes$id, perl=TRUE) ] <- "#aebcf1"
+    nodes$color.background[ grepl("cd01p:",        nodes$id, perl=TRUE) ] <- '#00da00'   
+    nodes$color.background[ grepl("code:",         nodes$id, perl=TRUE) ] <- '#c9fdc9'
     nodes$color.background[ grepl("study:",        nodes$id, perl=TRUE) ] <- '#FFBD09'  
     nodes$color.background[ grepl("custom:",       nodes$id, perl=TRUE) ] <- '#C71B5F'
-    nodes$color.background[ grepl("sdtmterm:",       nodes$id, perl=TRUE) ] <- '#6AA295'
+    nodes$color.background[ grepl("sdtmterm:",       nodes$id, perl=TRUE) ] <- '#bfa399'
     
     # Create "other" namespace group
     nodes$color.background[ grepl("time:|owl:",    nodes$id, perl=TRUE) ] <- '#FCFF98'  # Lt Yel
@@ -133,9 +133,9 @@ function(input, output, session) {
     edges$color  <- "black"  # Default and literals
 
     # Assign colors based on the target node
-    edges$color[ grepl("cdiscpilot01:", edges$to, perl=TRUE) ] <- "#2C52DA"
-    edges$color[ grepl("cd01p:",        edges$to, perl=TRUE) ] <- '#008D00'   
-    edges$color[ grepl("code:",         edges$to, perl=TRUE) ] <- '#1C5B64'
+    edges$color[ grepl("cdiscpilot01:", edges$to, perl=TRUE) ] <- "#aebcf1"
+    edges$color[ grepl("cd01p:",        edges$to, perl=TRUE) ] <- '#00da00'   
+    edges$color[ grepl("code:",         edges$to, perl=TRUE) ] <- '#c9fdc9'
     edges$color[ grepl("study:",        edges$to, perl=TRUE) ] <- '#FFBD09'  
     edges$color[ grepl("custom:",       edges$to, perl=TRUE) ] <- '#C71B5F' 
 
@@ -152,8 +152,8 @@ function(input, output, session) {
     visNetwork(nodes(), edges(), 
       width= "100%", 
       height=1100, 
-      background = "#919191") %>%
- 
+     #  background = "#919191") %>% 
+      background = "white") %>%
     # Drop-down selection of node names. Could also select by type   
     visOptions(
       highlightNearest = TRUE, 

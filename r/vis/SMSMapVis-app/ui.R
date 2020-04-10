@@ -38,9 +38,9 @@ fluidPage(
       checkboxGroupInput("namespaces", HTML("<font class='exclude'>Exclude</font> Name Spaces:"),
         c("cdiscpilot01 (blue)" = "cdiscpilot01:",
           "cd01p (green)"       = "cd01p:",
-          "code (dk green)"     = "code:",
+          "code (lt green)"     = "code:",
           "custom (red)"        = "custom:",
-          "sdtmterm (cdisc gr)" = "sdtmterm:",
+          "sdtmterm (lt brown)" = "sdtmterm:",
           "study (orange)"      = "study:",
           "other IRI (yel)"     = "time:|owl:",
           "literal (white)"     = "xsd:")
